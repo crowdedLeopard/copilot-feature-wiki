@@ -91,15 +91,17 @@ changes:
     note: "Corrected after verification: the package-blocking Graph API note now cites the Agent 365 service description, which lists it as unavailable in GCC; reworded the GCC licensing gap."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 55 statements confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 53 statements confirmed"
 version: 3
 verification:
   status: "verified"
-  date: "2026-11-22"
+  date: "2026-11-26"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 55
-  confirmed: 55
+  claims: 53
+  confirmed: 53
   unconfirmed: 0
   contradicted: 0
   attempts: 0

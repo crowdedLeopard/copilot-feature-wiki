@@ -123,15 +123,17 @@ changes:
     note: "Corrected the Cowork spending-policy path to 'Agents and services', added the Work IQ alternative route for the Dataverse setting, and reworded a checklist bullet to match the controls table."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 105 statements confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 107 statements not yet confirmed"
 version: 3
 verification:
-  status: "verified"
-  date: "2026-11-23"
+  status: "verified-with-gaps"
+  date: "2026-11-26"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 105
-  confirmed: 105
+  claims: 107
+  confirmed: 107
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -232,4 +234,10 @@ Inside the finance and operations environment, the Allowed MCP clients page (Sys
 risk: Medium. The plugin can create, update and delete ERP records for licensed users, bounded by their ERP security roles and by Cowork's approval prompts.
 cost: Variable. Cowork usage is metered in Copilot Credits, on top of a Microsoft 365 Copilot licence and a qualifying Dynamics 365 finance and operations apps licence for each user.
 impact: Medium. Only users who hold both licences and are given Cowork access notice it, mainly finance and supply chain staff; administrators carry the setup.
+-->
+
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[1].governs; Why it matters; Governance guidance: At rollout / applicability: Administrators can block a plugin where they do not want users to access it. | Found: Blocking takes effect for new conversations. Conversations already in progress that use the plugin continue until they end. | Fix: Append to controls[1].note and its rendered table note: 'Blocking takes effect for new conversations; conversations already using the plugin continue until they end.' This qualification is documented at https://learn.microsoft.com/microsoft-365/copilot/cowork/cowork-manage-plugins#block-a-plugin-thats-already-been-shared. | Source: https://learn.microsoft.com/microsoft-365/copilot/cowork/cowork-manage-plugins
 -->

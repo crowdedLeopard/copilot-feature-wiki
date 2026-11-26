@@ -52,6 +52,9 @@ sources:
   - title: "License requirements for tables"
     url: "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-entity-licenses"
     kind: "learn"
+  - title: "Query data by using FetchXML in Dataverse"
+    url: "https://learn.microsoft.com/power-apps/developer/data-platform/fetchxml/overview"
+    kind: "learn"
   - title: "Which records a record filter selects (its FetchXML condition) (Power Apps (maker))"
     url: "https://learn.microsoft.com/power-apps/maker/data-platform/filtered-view-record-ownership#create-a-record-filter"
     kind: "learn"
@@ -116,7 +119,7 @@ controls:
       kind: "rest"
       call: "POST [Organization URI]/api/data/v9.0/systemusers(azureactivedirectoryobjectid=<user object ID>)/systemuserroles_association/$ref"
       docs: "https://learn.microsoft.com/power-apps/developer/data-platform/aad-group-team#assign-a-security-role-to-a-user"
-    note: "Needs at least Read and Assign on the Security Role table; an assigner can't grant a role with more privileges than they hold."
+    note: "Needs at least Read and Assign on the Security Role table; an assigner can't grant a role with more privileges than they hold. The request body sets @odata.id to [Organization URI]/api/data/v9.0/roles(<role ID>)."
 confidence: "medium"
 created: "2026-11-26"
 updated: "2026-11-26"
@@ -126,19 +129,23 @@ changes:
     note: "New briefing: planned maker-portal screen for Dataverse filter-based security filters, with the documented filter, role and assignment controls."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 66 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected: Dynamics 365 restricted-table licence wording, the full admin path to security roles, filter-edit timing and the autonomy bullet; added the FetchXML source and the role-assignment request body note."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 67 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-26"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 66
-  confirmed: 62
-  unconfirmed: 2
-  contradicted: 2
-  attempts: 1
-  hash: "3f627bc7ead0ed27fa5cec45818daa04"
+  claims: 67
+  confirmed: 67
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "86fb38e96e21736eb486c5235c9422f2"
 ---
 
 ## What's changing
@@ -159,14 +166,14 @@ Microsoft has not stated what happens on arrival. No source says existing securi
 
 **Data exposure**
 - A filter privilege grants access to every record that matches its FetchXML. On user, team and organisation-owned tables it adds to what roles, ownership and sharing already grant, including across business units, so an over-broad condition exposes more records. Control: which roles carry each filter privilege (controls table, row 3).
-- Editing a Record Filter that roles already grant changes access at once for those role holders. Microsoft documents no approval step for filter edits.
+- Editing a Record Filter that roles already grant can change access for those role holders. Microsoft documents no approval step for filter edits.
 
 **Security & identity**
 - Filtered record ownership tables give the System Administrator role a system-created **All records** filter privilege, so administrators see every row. Microsoft advises testing with a non-administrator account for this reason.
 - Learn says the System Administrator security role is needed to create and assign the security roles this feature uses. Which privileges let a maker create or edit Record Filters in the new screen is not stated.
 
 **Autonomy & actions**
-- No change: filters are evaluated by Dataverse on each query and take no action of their own.
+- Dataverse evaluates filter permissions on each query.
 
 **Change & support**
 - Learn's FAQ says every query applies filter permissions, so complex filters can slow apps; an efficient data model and filter design should mitigate this.
@@ -175,7 +182,7 @@ Microsoft has not stated what happens on arrival. No source says existing securi
 
 ## Cost and licensing
 
-- **Licence.** The License requirements for tables page says makers can use custom tables and Common Data Model tables to build apps and flows for users who have a Power Apps or Power Automate licence; restricted tables tied to Dynamics 365 apps need the matching Dynamics 365 licence. The filter-based security and filtered record ownership pages name no licence of their own.
+- **Licence.** The License requirements for tables page says makers can use custom tables and Common Data Model tables to build apps and flows for users who have a Power Apps or Power Automate licence; restricted tables tied to Dynamics 365 apps require app users to have the corresponding application's licence if they want to create, update or delete rows within those tables. The filter-based security and filtered record ownership pages name no licence of their own.
 - **Meter.** The filter-based security pages publish no separate meter or charge.
 - **Indirect costs.** Admin time to design filters and roles, testing with non-administrator accounts, and possible query slow-downs that Learn attributes to filter permissions.
 - **Not yet published.** Licensing or pricing specific to the new maker-portal screen.
@@ -191,7 +198,7 @@ Microsoft has not stated what happens on arrival. No source says existing securi
 ## Governance guidance
 
 ### Before rollout
-- List the environments where filter-based security is in use by checking which security roles hold filter privileges (Power Platform admin center > Security roles).
+- List the environments where filter-based security is in use by checking which security roles hold filter privileges (Power Platform admin center > Manage > Environments > environment > Settings > Users + permissions > Security roles).
 - Decide who may create and edit Record Filters in each environment, and confirm with Microsoft which privileges the new screen requires before makers are given it.
 - Agree that filters move between environments in solutions, built and tested first in a non-production environment, given the feature is still preview.
 
@@ -215,7 +222,7 @@ Microsoft has not stated what happens on arrival. No source says existing securi
 <tr><td data-label="Control"><strong>Which records a record filter selects (its FetchXML condition)</strong><br><small>Environment</small><br><small class="controls__note">Preview. The request body sets fetchxml, uniquename and displayname. Records are also editable through PATCH on the recordfilter table.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>environment › Solutions › solution › + New › More › Other › Record Filter <a href="https://learn.microsoft.com/power-apps/maker/data-platform/filtered-view-record-ownership#create-a-record-filter" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST [Organization URI]/api/data/v9.2/recordfilters</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/filtered-record-ownership" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which table a record filter is attached to (entity record filter)</strong><br><small>Environment</small><br><small class="controls__note">Preview. The request body sets objecttypecode and RecordFilterId. Deleting a record filter also deletes its entity record filters.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>environment › Solutions › solution › + New › More › Other › EntityRecordFilter <a href="https://learn.microsoft.com/power-apps/maker/data-platform/filtered-view-record-ownership#create-an-entity-record-filter" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST [Organization URI]/api/data/v9.2/entityrecordfilters</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/filtered-record-ownership" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which security roles grant each filter privilege</strong><br><small>Environment</small><br><small class="controls__note">The Privileges parameter takes RolePrivilege entries, which include RecordFilterId. The System Administrator role can't be edited; copy it instead.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Users + permissions › Security roles › security role › table › filter privilege <a href="https://learn.microsoft.com/power-platform/admin/filter-based-security#grant-filter-privileges-in-security-roles" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST [Organization Uri]/api/data/v9.2/roles(&lt;roleid&gt;)/Microsoft.Dynamics.CRM.AddPrivilegesRole</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/web-api-functions-actions-sample" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which users hold a security role that carries filter privileges</strong><br><small>User</small><br><small class="controls__note">Needs at least Read and Assign on the Security Role table; an assigner can't grant a role with more privileges than they hold.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Users + permissions › Users › user › Manage security roles › security role <a href="https://learn.microsoft.com/power-platform/admin/assign-security-roles" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST [Organization URI]/api/data/v9.0/systemusers(azureactivedirectoryobjectid=&lt;user object ID&gt;)/systemuserroles_association/$ref</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/aad-group-team#assign-a-security-role-to-a-user" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users hold a security role that carries filter privileges</strong><br><small>User</small><br><small class="controls__note">Needs at least Read and Assign on the Security Role table; an assigner can't grant a role with more privileges than they hold. The request body sets @odata.id to [Organization URI]/api/data/v9.0/roles(&lt;role ID&gt;).</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Users + permissions › Users › user › Manage security roles › security role <a href="https://learn.microsoft.com/power-platform/admin/assign-security-roles" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST [Organization URI]/api/data/v9.0/systemusers(azureactivedirectoryobjectid=&lt;user object ID&gt;)/systemuserroles_association/$ref</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/aad-group-team#assign-a-security-role-to-a-user" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -235,14 +242,10 @@ cost: Low. Filter-based security uses Dataverse tables under the Power Apps or P
 impact: Low. The new screen is used by administrators and makers who configure Dataverse security; end users notice only when a filter granted in their role changes the records they see.
 -->
 
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Data exposure, second bullet / behaviour: Editing a granted Record Filter changes access at once for role holders. | Found: Searched: Dataverse "record filter" "immediately" "changes"; Dataverse Record Filter fetchxml editing changes immediate approval security role filter privileges AddPrivilegesRole. Opened filtered-record-ownership, filter-based-security and recordfilter reference; no enforcement timing statement. | Fix: Replace 'changes access at once for those role holders' with 'can change access for those role holders'. The developer guidance warns of changes in data access but publishes no propagation timing.
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: There is no change in autonomy or actions because filters take no action of their own. | Found: Searched: Dataverse filter-based security filters autonomous actions automatically execute operations. Opened filter-based-security and filtered-record-ownership. They describe query authorization, not a categorical absence of actions or historical change in autonomy. | Fix: Replace the bullet with 'Dataverse evaluates filter permissions on each query.' Remove 'No change' and 'take no action of their own'.
-- [contradicted, blocker] Cost and licensing: Licence / licensing: Restricted tables tied to Dynamics 365 apps require the matching Dynamics 365 licence without qualification by operation. | Found: tables that are tied to the functionality of Dynamics 365 apps (such as Dynamics 365 Sales or Dynamics 365 Customer Service) require app users to have the corresponding license for that application if they want to create, update, or delete rows within the tables. | Fix: Replace 'restricted tables tied to Dynamics 365 apps need the matching Dynamics 365 licence' with 'restricted tables tied to Dynamics 365 apps require app users to have the corresponding application's licence if they want to create, update or delete rows within those tables'. | Source: https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-entity-licenses
-- [contradicted, blocker] Governance guidance: Before rollout, first bullet / admin-path: Security roles can be reached directly through Power Platform admin center > Security roles. | Found: Select Manage on the navigation pane. On the Manage pane, select Environments and then select an environment. On the command bar, select Settings. Expand Users + permissions and select Security roles. | Fix: Replace '(Power Platform admin center > Security roles)' with '(Power Platform admin center > Manage > Environments > environment > Settings > Users + permissions > Security roles)'. The full route is already supported in controls[2].ui. | Source: https://learn.microsoft.com/power-platform/admin/create-edit-security-role
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing: FetchXML parenthesis / behaviour: FetchXML is Dataverse's XML query language. | Found: FetchXML is a proprietary XML-based query language used to retrieve data from Dataverse. | Fix: Add https://learn.microsoft.com/power-apps/developer/data-platform/fetchxml/overview to sources for the FetchXML definition. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/fetchxml/overview
-- [supported, minor] controls[3].api; Governance controls row 4 / command: POST [Organization URI]/api/data/v9.0/systemusers(azureactivedirectoryobjectid=<user object ID>)/systemuserroles_association/$ref assigns a security role to a user. | Found: POST [Organization URI]/api/data/v9.0/systemusers(azureactivedirectoryobjectid=<user object ID>)/systemuserroles_association/$ref { "@odata.id":"[Organization URI]/api/data/v9.0/roles(<role ID>)" } | Fix: Add to controls[3].note: 'The request body sets @odata.id to [Organization URI]/api/data/v9.0/roles(<role ID>).' Repeat the note in the rendered row; leave the method and path unchanged. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/aad-group-team#assign-a-security-role-to-a-user
+- [supported, minor] controls[0].ui / admin-path: Power Apps (maker) > environment > Solutions > solution > + New > More > Other > Record Filter reaches the form defining selected records. | Found: Go to Power Apps. Select your environment. Go to Solutions and create a new solution or open an existing solution. Select + New. Select More and Other. Select Record Filter. ... Copy the FetchXML and paste it in the FetchXML box. | Fix: Extend controls[0].ui.path to 'environment > Solutions > solution > + New > More > Other > Record Filter > FetchXML'. The cited page identifies FetchXML as the deciding field on the form. | Source: https://learn.microsoft.com/power-apps/maker/data-platform/filtered-view-record-ownership#create-a-record-filter
+- [supported, minor] controls[1].ui / admin-path: Power Apps (maker) > environment > Solutions > solution > + New > More > Other > EntityRecordFilter reaches the table-association form. | Found: Return to your Solution. Select + New. Select More and Other. Select EntityRecordFilter. Enter a Name ... Select the Record Filter ... Enter the Related Entity, the logical name of the table, such as account. | Fix: Extend controls[1].ui.path to 'environment > Solutions > solution > + New > More > Other > EntityRecordFilter > Record Filter > Related Entity', following the cited form's filter selection and table field. | Source: https://learn.microsoft.com/power-apps/maker/data-platform/filtered-view-record-ownership#create-an-entity-record-filter
+- [supported, minor] controls[3].ui; Governance controls / admin-path: Manage > Environments > environment > Settings > Users + permissions > Users > user > Manage security roles > security role manages users' role assignments. | Found: On the Users page select a user, and then select Manage security roles. Select or deselect security roles. ... The specified steps help you manage only direct role assignments for the user. | Fix: Append to controls[3].note: 'This UI manages direct role assignments only; roles inherited through group teams are managed separately.' This qualification is stated at https://learn.microsoft.com/power-platform/admin/assign-security-roles. | Source: https://learn.microsoft.com/power-platform/admin/assign-security-roles
 -->

@@ -1,0 +1,767 @@
+{
+  "slug": "m365-copilot-copilot-chat-agent-mode-in-excel",
+  "roadmapId": 543242,
+  "title": "Excel: Copilot Agent Mode (Edit with Copilot) for Microsoft 365 users without a Copilot licence",
+  "status": "held",
+  "date": "2026-11-26",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-26",
+    "reasons": [
+      "2 blocking findings (claims 24, 51)"
+    ]
+  },
+  "counts": {
+    "claims": 56,
+    "confirmed": 53,
+    "unconfirmed": 0,
+    "contradicted": 3,
+    "blocker": 2,
+    "major": 0,
+    "minor": 12
+  },
+  "summary": "Hold: the briefing treats protection of labelled workbooks as an open question, although Microsoft documents that the Copilot DLP policy covers open Excel files. Its default-state rating also conflates availability with user-initiated workbook editing. The listed policy path, registry setting and licence-assignment command are supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap item's status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is January CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap record gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists Desktop, Mac and Web, and its description names Excel for the web, Windows and Mac.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Agent Mode is releasing to Copilot in Excel for the web, Windows and Mac",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "title; summary; licensing.notes; What's changing; Cost and licensing; Scope; rationale: cost",
+      "type": "record",
+      "claim": "The roadmap says the feature is available for Microsoft 365 subscribers without a Microsoft 365 Copilot licence.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Available for Microsoft 365 subscribers without a Microsoft 365 Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "summary; What's changing; Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "record",
+      "claim": "Agent Mode builds and edits workbooks using multi-step workflows.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "enabling users to build and edit workbooks with Copilot using multi-step workflows",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Agent Mode uses tables, charts, PivotTables and formulas.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Agent Mode uses Excel's most powerful tools like tables, charts, PivotTables, and formulas",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap names updating budgets, creating financial models and analysing data as example tasks.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "When you're updating budgets, creating financial models, or analyzing data",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "title; What's changing",
+      "type": "behaviour",
+      "claim": "Microsoft's release notes call the capability Edit with Copilot in Excel, formerly Agent Mode.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Edit with Copilot in Excel to enhance your productivity (formerly Agent Mode)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Why it matters; Risk assessment: Data exposure; rationale: impact",
+      "type": "behaviour",
+      "claim": "Copilot directly edits the user's open workbook based on their requests.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/en-us/excel/copilot/frequently-asked-questions-about-copilot-in-excel",
+      "quote": "In editing mode, Copilot in Excel edits your workbook directly based on your requests.",
+      "severity": "minor",
+      "fix": "Cite https://support.microsoft.com/en-us/excel/copilot/frequently-asked-questions-about-copilot-in-excel for direct workbook editing based on user requests."
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "The release-notes entry describing Edit with Copilot in Excel is dated March 10, 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "## March 10, 2026\nUpdates released between February 24, 2026, and March 10, 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The March entry tells users to look for the Let's edit together welcome message.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Open Copilot chat in Excel and see \"Let's edit together\" welcome message.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Governance guidance: Before rollout and At rollout",
+      "type": "admin-path",
+      "claim": "Users can select Edit with Copilot from the tools menu in Copilot chat in Excel.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "If you don't see the message, then go to the tools menu and select \"Edit with Copilot\".",
+      "severity": "minor",
+      "fix": "Keep the historical March entry attributed, but replace the current user instructions with: 'Select the Copilot icon in the lower-right corner of Excel. Copilot opens in edit mode by default.' Cite https://support.microsoft.com/en-us/excel/copilot/get-started-with-copilot-in-excel, which now describes edit, plan and chat modes rather than the older tools-menu entry."
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The March release-notes entry cites roadmap items 542182 and 527835 rather than 543242.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Roadmap IDs: 542182, 527835",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "The release-notes entries about response navigation and Show Changes attribution are dated September 23, 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "## September 23, 2026\nUpdates released between August 26, 2026, and September 22, 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Copilot responses link to changed sheets, tables, ranges and objects.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "In Copilot in Excel, the response contains links to highlight where changes are made in your workbook. Navigate directly to new sheets, tables, ranges, and objects like charts and shapes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The Show Changes pane includes cards attributing edits or suggestions to Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Now, the pane includes on-card attribution showing when Copilot made edits or suggestions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Users reach Show Changes through Excel's Review tab.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Select Review tab, then click Show Changes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "summary; licensing.notes; What's changing; Cost and licensing; Scope; controls[1].note",
+      "type": "licensing",
+      "claim": "The service description lists Edit with Copilot as a Premium feature requiring a Microsoft 365 Copilot licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+      "quote": "Edit with Copilot in Word, Excel, PowerPoint, and OneNote [footnote 2]. Microsoft 365 Copilot (Premium) features: A Microsoft 365 Copilot license is required to access this feature.",
+      "severity": "minor",
+      "fix": "Retain the service-description attribution and add: 'The Copilot in Excel FAQ also lists a Copilot Chat-eligible Microsoft 365 or Office 365 business or enterprise subscription and says Basic users without the add-on have standard access.' Cite https://support.microsoft.com/en-us/excel/copilot/frequently-asked-questions-about-copilot-in-excel. This is another Microsoft statement supporting the roadmap, not just a tenant-testing uncertainty."
+    },
+    {
+      "n": 22,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 Copilot is an add-on plan with licensing prerequisites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+      "quote": "Microsoft 365 Copilot is an add-on plan with specific licensing prerequisites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The feature is included for subscribers without the Copilot add-on, with the conflicting service-description requirement noted.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/en-us/excel/copilot/frequently-asked-questions-about-copilot-in-excel",
+      "quote": "M365 Copilot (Basic) indicates that a user does not have the Microsoft Copilot add-on license but does have standard access to Copilot in Excel.",
+      "severity": "minor",
+      "fix": "Keep licensing.model as included and add the FAQ's eligible entitlement to licensing.notes: 'The Excel FAQ lists a Copilot Chat-eligible Microsoft 365 or Office 365 business or enterprise subscription for standard access without the add-on.' Cite https://support.microsoft.com/en-us/excel/copilot/frequently-asked-questions-about-copilot-in-excel and retain the attributed service-description conflict."
+    },
+    {
+      "n": 24,
+      "where": "front matter: defaultState; Why it matters; rationale: impact",
+      "type": "consistency",
+      "claim": "The default is rated on even though the briefing describes a capability users choose to invoke and says users who never open Copilot notice nothing.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "defaultState: \"on\"; impact: \"users who never open the Copilot pane notice nothing\". The standard defines user-opt-in as \"available, but each user or maker chooses to turn it on or to use it\".",
+      "severity": "blocker",
+      "fix": "Set defaultState to user-opt-in. Replace 'it arrives with no admin action' in Why it matters with 'users initiate workbook edits by submitting a request to Copilot'. https://support.microsoft.com/en-us/excel/copilot/get-started-with-copilot-in-excel says editing follows a submitted prompt; its default edit mode does not mean unattended workbook changes."
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Neither this roadmap record nor the March release-notes entry describes a required administrator enablement step.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Edit with Copilot Excel admin action', '543242 default'. Read the roadmap and March 10 release-notes entry; their steps describe opening Copilot and submitting a request, not administrator enablement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "The feature description does not specify a new sign-in, permission or connector requirement.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Excel Agent Mode sign in permissions'. Read the roadmap, March release notes, Excel get-started page and Excel FAQ. They describe existing subscription, privacy and tenant requirements, not a new Agent Mode sign-in or connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[2]; Why it matters; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No tenant UI or API setting is documented that independently turns Agent Mode in Excel on or off.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Edit with Copilot Excel policy', 'Excel Agent Mode disable Graph', 'Edit with Copilot Excel Microsoft Graph settings'. Read overview, Manage Copilot Chat and Excel FAQ; FAQ says Copilot in Excel can't be turned off independently.",
+      "severity": "minor",
+      "fix": "Keep both null sides. Replace the row note with: 'The Excel FAQ says Copilot in Excel is a Microsoft Copilot Chat tool, cannot be turned off independently, and all admin settings controlling Copilot Chat access apply.' Cite https://support.microsoft.com/en-us/excel/copilot/frequently-asked-questions-about-copilot-in-excel."
+    },
+    {
+      "n": 28,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Group Policy Management locates the analyse-content policy under User Configuration > Policies > Administrative Templates > Microsoft Office 2016 > Privacy > Trust Center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls",
+      "quote": "all these policy settings are located under User Configuration\\Policies\\Administrative Templates\\Microsoft Office 2016\\Privacy\\Trust Center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Setting UserContentDisabled to 2 under HKCU\\Software\\Policies\\Microsoft\\office\\16.0\\common\\privacy disables the analyse-content policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls",
+      "quote": "Allow the use of connected experiences in Office that analyze content | UserContentDisabled | 1=Enabled 2=Disabled. [HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\office\\16.0\\common\\privacy]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[0].governs and note; Why it matters; Risk assessment; Governance controls; rationale: risk",
+      "type": "applicability",
+      "claim": "Turning off connected experiences that analyse content makes Copilot unavailable in Excel, OneNote, Outlook, PowerPoint and Word on devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy",
+      "quote": "If you turn off connected experiences that analyze your content on devices in your organization, Microsoft Copilot features won't be available to your users in the following apps: Excel; OneNote; Outlook; PowerPoint; Word.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[0].note",
+      "type": "behaviour",
+      "claim": "The privacy policy is also configurable through Cloud Policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls",
+      "quote": "These policy settings can be implemented by using either Group Policy or Cloud Policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[0].note",
+      "type": "default",
+      "claim": "Content-analysing connected experiences remain available when the policy is unconfigured.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls",
+      "quote": "If you don’t configure this policy setting, these connected experiences will be available to your users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Change & support; Governance controls",
+      "type": "behaviour",
+      "claim": "The analyse-content policy affects other content-analysing features, including PowerPoint Designer and Translator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls",
+      "quote": "These are experiences that use your Office content to provide you with design recommendations, editing suggestions, data insights, and similar features. For example, PowerPoint Designer or Translator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "The privacy page's Copilot restriction applies to the most current versions of the named apps on Windows, Mac, iOS and Android.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy",
+      "quote": "This applies to when you're running the most current version of these apps on Windows, Mac, iOS, or Android devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Office for Mac and Office for the web have separate privacy-control documentation from the Windows Group Policy route.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls",
+      "quote": "Use preferences to manage privacy controls for Office for Mac; Use policy settings to manage privacy controls for Office for the web applications",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Microsoft 365 admin center licence-assignment route is Users > Active users > user > Licenses and Apps > Licenses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "go to the Users > Active users page. Select the row of the user that you want to assign a license to. In the right pane, select Licenses and Apps. Expand the Licenses section",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-MgUserLicense with UserId, AddLicenses containing SkuId, and an empty RemoveLicenses collection assigns a licence through Microsoft Graph PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+      "quote": "To assign a license to a user, use the following command in PowerShell. Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @()",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The overview says Basic users without the add-on cannot use organisational data through Microsoft Graph when interacting with Copilot Chat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Copilot Chat (Basic) and Microsoft 365 Copilot (Basic) can't use organizational data via Microsoft Graph when interacting with Copilot Chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The overview describes providing content through uploads or working with open content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "You must upload the content with your prompt, work with open content (Teams and Outlook), or use a pay-as-you-go agent that has access to organizational data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Copilot Basic and Premium experiences, including prompts and responses, receive Enterprise Data Protection when users sign in with Microsoft Entra accounts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Copilot Chat (Basic), Microsoft 365 Copilot (Basic), and Microsoft 365 Copilot (Premium) are protected by Enterprise Data Protection (EDP) when you sign in with Microsoft Entra accounts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The overview states that EU traffic stays within the EU Data Boundary.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "EU traffic stays within the EU Data Boundary",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The overview states that worldwide traffic can be sent to other regions for LLM processing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "worldwide traffic can be sent to the EU and other countries or regions for LLM processing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Change & support",
+      "type": "licensing",
+      "claim": "The separate Excel Agent in the Copilot app requires a paid Microsoft 365 Copilot licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/wordexcelppt-agents",
+      "quote": "Access to Word, Excel, and PowerPoint Agents requires a paid Microsoft 365 Copilot license. The agents aren't available to Copilot Chat users who don't have a Microsoft 365 Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Some features for users without the Copilot add-on are subject to fair use limits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Microsoft 365 Copilot (Basic) refers to users without the Copilot add-on license, but who have access to Copilot capabilities inside apps (for example, Word or Excel). It doesn't include full chat integration. Some features are subject to fair use limits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "A specific fair use limit for Agent Mode in Excel has not been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Edit with Copilot Excel limits', 'Excel Copilot Agent Mode admin disable policy fair use limits'. Read overview, Excel FAQ and Limits for features in Microsoft Copilot Chat; the limits page says Microsoft does not publish specific numeric limits.",
+      "severity": "minor",
+      "fix": "Narrow the sentence to 'A numeric fair use limit specific to Agent Mode in Excel is not published' and cite https://support.microsoft.com/microsoft-365-copilot/limits-for-features-copilot-chat, which says service limits vary and Microsoft does not publish or share specific numeric limits."
+    },
+    {
+      "n": 46,
+      "where": "Scope: Clouds; Open questions",
+      "type": "availability",
+      "claim": "The service description marks Edit with Copilot as not currently available in GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+      "quote": "Edit with Copilot in Word, Excel, PowerPoint, and OneNote | Yes | Not currently available | Not currently available | Not currently available",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Scope: Admin role",
+      "type": "role",
+      "claim": "The overview names AI Administrator as a least-privilege role for managing Copilot and AI features across Basic and Premium experiences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "AI Administrator role, which provides least-privilege access to manage Copilot and AI features across Copilot Chat (Basic), Microsoft 365 Copilot (Basic), and Microsoft 365 Copilot (Premium) without requiring Global Administrator permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Governance guidance: After rollout",
+      "type": "applicability",
+      "claim": "The Microsoft Copilot usage report covers Excel adoption, including the Basic in-app experience without the add-on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "the Microsoft Copilot usage report focuses on usage of Microsoft Copilot within Microsoft 365 apps such as Teams, Outlook, Word, Excel, and PowerPoint (requires Microsoft 365 (Basic) or Microsoft 365 Copilot (Premium) licenses).",
+      "severity": "minor",
+      "fix": "Replace the bullet with: 'Review the Microsoft Copilot usage report for Excel adoption, but confirm whether your Basic users appear: the overview includes Basic, while the report reference describes its user-level table as users licensed for Microsoft Copilot during the past 180 days.' Cite https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-usage alongside the overview."
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing: Not yet published; Open questions",
+      "type": "absence",
+      "claim": "Microsoft's published statements have not resolved the conflicting licence descriptions.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Edit with Copilot Excel limits', 'Edit with Copilot Excel policy'. Read service description and Excel FAQ: service description requires Premium; FAQ explicitly grants Basic standard access without the add-on. The conflict remains.",
+      "severity": "minor",
+      "fix": "Replace 'Which of the two licence statements Microsoft will stand by for this feature' with 'The service description still conflicts with both the roadmap and the Excel FAQ, which documents Basic standard access without the add-on.' Cite https://support.microsoft.com/en-us/excel/copilot/frequently-asked-questions-about-copilot-in-excel and keep the unresolved question limited to that documentation conflict."
+    },
+    {
+      "n": 50,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Manage Copilot Chat describes Integrated Apps blocking for the Copilot app, Teams, Outlook and web, without naming Excel in that passage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/manage-copilot-chat",
+      "quote": "This setting blocks Copilot in the Microsoft Copilot app, Teams, Outlook, and Copilot Chat on the web for all users.",
+      "severity": "minor",
+      "fix": "Add to this bullet: 'However, the Excel FAQ says Copilot in Excel is a Copilot Chat tool and all admin settings controlling Copilot Chat access apply.' Cite https://support.microsoft.com/en-us/excel/copilot/frequently-asked-questions-about-copilot-in-excel. Do not use omission of Excel from the older blocking passage to imply the control cannot govern Excel."
+    },
+    {
+      "n": 51,
+      "where": "Open questions: Microsoft Purview DLP",
+      "type": "absence",
+      "claim": "Whether the Microsoft Copilot and Copilot Chat DLP location prevents processing labelled workbooks in this Excel experience remains undocumented.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "When a file is open in Word, Excel, or PowerPoint and has a sensitivity label for which DLP policy is configured to prevent processing by Microsoft 365 Copilot and Copilot Chat, the skills in these apps are disabled.",
+      "severity": "blocker",
+      "fix": "Remove this open question, or replace it with: 'Microsoft documents that Copilot DLP can prevent processing sensitivity-labelled files open in Excel. The policy is evaluated at file open; a label applied mid-session is enforced when the file is next opened.' Cite https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about. The Excel FAQ identifies this experience as a Copilot Chat tool; do not retain an unlicensed-user applicability gap."
+    },
+    {
+      "n": 52,
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "The low cost rating reflects indirect administration and communication costs under the roadmap's no-add-on entitlement, while noting the competing add-on statement.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Available for Microsoft 365 subscribers without a Microsoft 365 Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Response navigation links and Show Changes attribution are user review features, not administrator configuration controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Select Review tab, then click Show Changes. Look for Copilot attribution cards indicating AI-generated changes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance guidance: At rollout and After rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist tells readers to check Show Changes and the Microsoft Copilot usage report, but neither has a control row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "'check each change through Review > Show Changes'; 'Review the Microsoft Copilot usage report'. The table contains only connected-experiences policy, licence assignment and the absent independent switch.",
+      "severity": "minor",
+      "fix": "The Show Changes review step and Microsoft Copilot usage-report review step have no corresponding table rows. For a correction that does not add rows, remove these two checklist bullets; their independently verified factual descriptions may remain elsewhere."
+    },
+    {
+      "n": 55,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Copilot in Excel can add worksheets.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/en-us/excel/copilot/get-started-with-copilot-in-excel",
+      "quote": "Edit worksheets: Add, rename, and delete worksheets",
+      "severity": "minor",
+      "fix": "Cite https://support.microsoft.com/en-us/excel/copilot/get-started-with-copilot-in-excel for the statement that Copilot can add sheets."
+    },
+    {
+      "n": 56,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Copilot's edits can affect shared workbooks seen by collaborators.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/en-us/excel/copilot/frequently-asked-questions-about-copilot-in-excel",
+      "quote": "When you save Copilot changes to your workbook, anyone with access to the file can see those changes, including people in a coauthoring session.",
+      "severity": "minor",
+      "fix": "Cite https://support.microsoft.com/en-us/excel/copilot/frequently-asked-questions-about-copilot-in-excel for the shared-workbook premise."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-26T03:50:33.393Z",
+    "summary": {
+      "links": 10,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 1,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=543242",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/manage/manage-copilot-chat",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/manage/wordexcelppt-agents",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether Copilot features, Agent Mode included, are available in Excel and other Office desktop apps",
+        "docs": "https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls",
+        "reachable": true,
+        "segments": [
+          "User Configuration",
+          "Policies",
+          "Administrative Templates",
+          "Microsoft Office 2016",
+          "Privacy",
+          "Trust Center",
+          "Allow the use of connected experiences in Office that analyze content"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether Copilot features, Agent Mode included, are available in Excel and other Office desktop apps",
+        "docs": "https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls",
+        "reachable": true,
+        "token": "Registry value",
+        "found": false
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which users hold the Microsoft 365 Copilot licence the service description ties Edit with Copilot to",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+        "reachable": true,
+        "segments": [
+          "Users",
+          "Active users",
+          "Licenses and Apps",
+          "Licenses"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which users hold the Microsoft 365 Copilot licence the service description ties Edit with Copilot to",
+        "docs": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+        "reachable": true,
+        "token": "Set-MgUserLicense",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

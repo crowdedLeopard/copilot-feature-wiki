@@ -14,11 +14,11 @@ previewDate: null
 risk: "medium"
 cost: "low"
 impact: "medium"
-defaultState: "on"
+defaultState: "unknown"
 action: "act-now"
 licensing:
   model: "included"
-  notes: "Copilot Analytics is available in the Viva Insights web app with a Microsoft 365 or Office 365 business or enterprise subscription and Exchange Online; features depend on Copilot and Viva Insights licences. Nothing specific to Access Management is published."
+  notes: "The Copilot Analytics introduction says the Copilot Dashboard is available in the Viva Insights web app with a Microsoft 365 or Office 365 business or enterprise subscription and an active Exchange Online account; its features and metrics depend on assigned Copilot and Viva Insights licences. Nothing specific to Access Management is published."
 audiences: ["m365-admin","service-owner","security","compliance"]
 tags: ["viva-insights","viva-feature-access-management","analytics","privacy","least-privilege","admin-controls","entra-id","gcc"]
 sources:
@@ -87,7 +87,7 @@ controls:
     scope: "group"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Settings > Viva > Settings > Manage feature access > Create a policy"
+      path: "Settings > Viva > Settings > Manage feature access > Create a policy > Access setting"
       docs: "https://learn.microsoft.com/viva/control-access-admin-center"
     api:
       kind: "powershell"
@@ -106,10 +106,10 @@ controls:
     scope: "other"
     ui:
       surface: "Viva Insights web app"
-      path: "Settings > Partitions > Create new partition"
+      path: "Settings > Partitions > Create new partition > Partition setup"
       docs: "https://learn.microsoft.com/viva/insights/advanced/admin/partitions"
     api: null
-    note: "Admin experience of the Viva Insights web app; the Insights Administrator configures partitions."
+    note: "Admin experience of the Viva Insights web app; the Insights Administrator configures partitions. In the form, filter employee data, add attributes, assign analysts and select the dataset."
   - governs: "Copilot Analytics access policies, permission sets and partitions in the new Access Management experience"
     scope: "tenant"
     ui: null
@@ -124,26 +124,30 @@ changes:
     note: "New briefing: planned Access Management for Copilot Analytics, with today's role, VFAM, Manager settings and partition controls."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 75 statements contradicted, 5 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected: default state now Not stated; licensing narrowed to the Copilot Dashboard entitlement; role inventory step uses the documented Add-on Plan route; risk wording and two control paths tightened; removed the unsupported change-log step."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 78 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-26"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 75
-  confirmed: 69
-  unconfirmed: 5
-  contradicted: 1
-  attempts: 1
-  hash: "ed5efc2ed31123dfdf61f10e6ab855d9"
+  claims: 78
+  confirmed: 78
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "a067a228b15c0e5fcfb08112ac43004e"
 ---
 
 ## What's changing
 
 Microsoft plans to add an **Access Management** experience inside Viva Insights - Copilot Analytics, where Global administrators, AI administrators and Viva Insights administrators assign roles and permissions in one place. The roadmap item states that this replaces managing access across Viva Feature Access Management (VFAM, the Microsoft 365 admin center policies that switch Viva features on or off for people and groups) and the in-product Manager Settings. Microsoft Learn does not describe this feature for Copilot Analytics yet, so what follows about its behaviour is the roadmap's description.
 
-Admins will create **access policies**, each combining a **permission set** (what users can do) with a **partition** (the population and datasets users can see). Policies can be assigned to individual users, Microsoft Entra security groups or, for group managers, organisational attributes. The roadmap item states that existing role assignments continue to work and that users are automatically moved to system-defined access policies.
+Admins will create **access policies**, each combining a **permission set** (what users can do) with a **partition** (the population and datasets users can see). Policies can be assigned to individual users, Microsoft Entra security groups or, for group managers, organisational attributes. Microsoft has not stated the new control's default enforcement state; the roadmap separately says existing role assignments continue to work and users are moved automatically to system-defined access policies.
 
 Microsoft Learn already documents an Access management page built from the same three parts in [Agent 365 Business Analytics](https://learn.microsoft.com/a365-business-analytics/manage/access), a Frontier preview app. There, every tenant starts with system-defined Chief Officer, Group Manager and Analyst permission sets and access policies paired with a read-only Global partition, and a user's effective access is the combination of all their assignments. That page describes a different app in preview, so read it as a likely pattern, not as how Copilot Analytics will behave.
 
@@ -158,21 +162,21 @@ The bigger question is delegation. The roadmap names Viva Insights administrator
 ## Risk assessment
 
 **Data exposure**
-- A policy pairs a permission set with a partition, so one broad pairing (a permissive set with the whole-organisation population) widens who sees employee-level Copilot data in one step. Partitions today are a row- and column-level control over which employees and attributes analysts can query.
+- A policy pairs a permission set with a partition, so review both what users can do and which population and datasets they can see. Partitions today are a row- and column-level control over which employees and attributes analysts can query.
 - Policies can be assigned to Entra security groups, so whoever can change a group's membership changes who sees analytics data. Check ownership of any group you assign.
 
 **Security & identity**
 - Three admin roles are named as access managers. Global Administrators already inherit Insights Administrator privileges in Viva Insights, and the AI Administrator manages the Viva Insights web app control. Microsoft has not published whether Viva Insights administrators will be able to grant identification or export in Copilot Analytics.
 
 **Autonomy & actions**
-- No change: this is an admin console. The automatic move of users to system-defined policies is a one-time migration described by the roadmap, not an agent acting on data.
+- No change: this is an admin console. The automatic move of users to system-defined policies is an automatic migration described by the roadmap, not an agent acting on data.
 
 **Change & support**
 - Runbooks that use Manager settings or VFAM policies for Viva Insights features may stop being where access is decided. Microsoft has not said how existing VFAM policies map to access policies, so expect access questions from leaders, managers and analysts after the move.
 
 ## Cost and licensing
 
-Access Management is a screen inside Copilot Analytics, which the [Copilot Analytics introduction](https://learn.microsoft.com/viva/insights/copilot-analytics-introduction) describes as available in the Viva Insights web app for any customer with a Microsoft 365 or Office 365 subscription for business or enterprise who has an active Exchange Online account, with features and metrics depending on the number of assigned Copilot and Viva Insights licences. Nothing specific to Access Management is published: Microsoft documents no separate licence, price or meter for it at the time of writing (November 2026).
+Access Management is a screen inside Copilot Analytics. The [Copilot Analytics introduction](https://learn.microsoft.com/viva/insights/copilot-analytics-introduction) says the Copilot Dashboard is available in the Viva Insights web app with a Microsoft 365 or Office 365 business or enterprise subscription and an active Exchange Online account; its features and metrics depend on assigned Copilot and Viva Insights licences. Nothing specific to Access Management is published: Microsoft documents no separate licence, price or meter for it at the time of writing (November 2026).
 
 The cost you can see is admin time: taking stock of current roles, VFAM policies, Manager settings and partitions before January, and checking the migrated policies afterwards.
 
@@ -188,7 +192,7 @@ The cost you can see is admin time: taking stock of current roles, VFAM policies
 ## Governance guidance
 
 ### Before rollout
-- Export the current Insights Administrator and Insights Analyst assignments from the Microsoft 365 admin center (Viva Insights, Add-on Plan) so you can compare them with the migrated policies.
+- Record the current Insights Administrator and Insights Analyst assignments from Microsoft 365 admin center > Settings > Viva > Viva Insights > Add-on Plan > role so you can compare them with the migrated policies.
 - Record every Viva Insights VFAM policy, including the Viva Insights web app control, with Get-VivaModuleFeaturePolicy or the Manage feature access page.
 - Capture Manager settings (which managers are enabled and through which groups) and the list of partitions with their assigned analysts.
 - Decide which of your Global, AI and Viva Insights administrators should manage Copilot Analytics access, and remove standing role assignments you do not need.
@@ -199,7 +203,6 @@ The cost you can see is admin time: taking stock of current roles, VFAM policies
 - Tell leaders, managers and analysts where access is now managed and who to ask.
 
 ### After rollout
-- Review the VFAM change logs in Microsoft Purview for policy changes made around the migration.
 - Re-check the Copilot Analytics pages on Microsoft Learn for documented permission sets, roles and automation, and update runbooks that still point at Manager settings.
 
 ## Governance controls
@@ -211,9 +214,9 @@ The cost you can see is admin time: taking stock of current roles, VFAM policies
 <tbody>
 <tr><td data-label="Control"><strong>Whether the Viva Insights web app that hosts Copilot Analytics is available</strong><br><small>Tenant</small><br><small class="controls__note">AI Administrator. On by default; settable at tenant, group or user level. Turning it off disables the whole app, admin tools included.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Microsoft Viva › Viva Insights › Set up and management › Microsoft Copilot Dashboard › Manage access settings for Microsoft Copilot Dashboard › Users › Add <a href="https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId &quot;Viva Insights web app&quot; -Name DisableFeatureForAll -IsFeatureEnabled $false -Everyone</code> <a href="https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Who holds the Insights Administrator and Insights Analyst roles</strong><br><small>User</small><br><small class="controls__note">Admin center steps are performed by a Global Administrator. The request body sets roleDefinitionId and principalId.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Viva › Viva Insights › Add-on Plan › role › Add users <a href="https://learn.microsoft.com/viva/insights/advanced/setup-maint/assign-user-roles" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/roleManagement/directory/roleAssignments</code> <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which Viva Insights features each user or group can use (VFAM policies)</strong><br><small>Group</small><br><small class="controls__note">The app, feature and access setting are chosen in the Create a policy pane. Get-VivaModuleFeature -ModuleId VivaInsights lists feature IDs.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Viva › Settings › Manage feature access › Create a policy <a href="https://learn.microsoft.com/viva/control-access-admin-center" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId &lt;featureID&gt; -Name &lt;policy name&gt; -IsFeatureEnabled $false -Everyone</code> <a href="https://learn.microsoft.com/viva/manage-access-policies" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which Viva Insights features each user or group can use (VFAM policies)</strong><br><small>Group</small><br><small class="controls__note">The app, feature and access setting are chosen in the Create a policy pane. Get-VivaModuleFeature -ModuleId VivaInsights lists feature IDs.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Viva › Settings › Manage feature access › Create a policy › Access setting <a href="https://learn.microsoft.com/viva/control-access-admin-center" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId &lt;featureID&gt; -Name &lt;policy name&gt; -IsFeatureEnabled $false -Everyone</code> <a href="https://learn.microsoft.com/viva/manage-access-policies" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which managers get team-scoped insights (Manager settings)</strong><br><small>Group</small><br><small class="controls__note">Viva Insights Administrator or AI admin. The roadmap says Access Management replaces managing access here.</small></td><td data-label="Admin UI"><strong>Viva Insights Admin portal</strong><br>Settings › Manager Settings › Use AAD groups › Add group <a href="https://learn.microsoft.com/viva/insights/advanced/setup-maint/manager-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which employees, attributes and datasets analysts can query (partitions)</strong><br><small class="controls__note">Admin experience of the Viva Insights web app; the Insights Administrator configures partitions.</small></td><td data-label="Admin UI"><strong>Viva Insights web app</strong><br>Settings › Partitions › Create new partition <a href="https://learn.microsoft.com/viva/insights/advanced/admin/partitions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which employees, attributes and datasets analysts can query (partitions)</strong><br><small class="controls__note">Admin experience of the Viva Insights web app; the Insights Administrator configures partitions. In the form, filter employee data, add attributes, assign analysts and select the dataset.</small></td><td data-label="Admin UI"><strong>Viva Insights web app</strong><br>Settings › Partitions › Create new partition › Partition setup <a href="https://learn.microsoft.com/viva/insights/advanced/admin/partitions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Copilot Analytics access policies, permission sets and partitions in the new Access Management experience</strong><br><small>Tenant</small><br><small class="controls__note">Planned for January CY2027. Learn documents an equivalent page for Agent 365 Business Analytics (Frontier preview), not for Copilot Analytics.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -230,20 +233,14 @@ The rows describe today's controls, which the roadmap says Access Management bri
 
 <!-- rationale
 risk: Medium. Access to employee-level Copilot data is re-expressed automatically in a new policy model that three admin roles can change; existing roles, VFAM and partitions cover today's access but need checking after the move.
-cost: Low. It sits inside Copilot Analytics, which comes with Microsoft 365 or Office 365 business and enterprise subscriptions; no separate licence or meter is published, so the cost is admin time to inventory and check access.
+cost: Low. It sits inside Copilot Analytics; the introduction publishes a subscription entitlement for the Copilot Dashboard, not the entire analytics suite; no separate licence or meter is published, so the cost is admin time to inventory and check access.
 impact: Medium. Admins, plus the leaders, managers and analysts who use Copilot Analytics and whose access the roadmap says moves to system-defined policies.
 -->
 
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] front matter: defaultState / default: The new Access Management control starts enforcing by default, represented by defaultState on. | Found: Searched: Viva Insights Copilot Analytics Access Management default enforcement existing VFAM policies migration. Read roadmap, Manage settings, Identification, and Business Analytics access; automatic migration is stated, but the new control's default enforcement is not. | Fix: Set defaultState to unknown. Add: 'Microsoft has not stated the new control's default enforcement state; the roadmap separately says existing role assignments continue to work and users are moved automatically to system-defined access policies.' Keep the documented automatic-migration statements.
-- [unsupported, blocker] front matter: licensing.notes; Cost and licensing; rationale: cost / licensing: Copilot Analytics as a whole is available with a Microsoft 365 or Office 365 business or enterprise subscription and Exchange Online. | Found: Searched: Viva Insights Copilot Analytics licensing access management new experience price prerequisites. Read Copilot Analytics introduction and Environment requirements excerpt; the cited subscription entitlement explicitly describes the Copilot Dashboard, not all Copilot Analytics. | Fix: Replace the entitlement sentence in licensing.notes and Cost and licensing with: 'The Copilot Analytics introduction says the Copilot Dashboard is available in the Viva Insights web app with a Microsoft 365 or Office 365 business or enterprise subscription and an active Exchange Online account; its features and metrics depend on assigned Copilot and Viva Insights licences.' In the cost rationale, replace 'Copilot Analytics, which comes with Microsoft 365 or Office 365 business and enterprise subscriptions' with 'Copilot Analytics; the introduction publishes a subscription entitlement for the Copilot Dashboard, not the entire analytics suite'.
-- [unsupported, blocker] Governance guidance: Before rollout, first bullet / admin-path: Current Insights role assignments can be exported from Viva Insights > Add-on Plan in the Microsoft 365 admin center. | Found: Searched: Viva Insights Insights Administrator Analyst export role assignments Microsoft 365 admin center Add-on Plan; Viva Insights export role assignments. Read Assign roles and export search excerpts; Add-on Plan documents assignment and verification, not an export operation. | Fix: Replace the bullet with: 'Record the current Insights Administrator and Insights Analyst assignments from Microsoft 365 admin center > Settings > Viva > Viva Insights > Add-on Plan > role so you can compare them with the migrated policies.' This verification route is documented at https://learn.microsoft.com/viva/insights/advanced/setup-maint/assign-user-roles.
-- [unsupported, major] Risk assessment: Data exposure, first bullet / behaviour: A permissive permission-set/partition pairing in the planned Copilot Analytics experience provides employee-level Copilot data access in one step. | Found: Searched: Copilot Analytics Access management permission sets; Copilot Analytics Access Management PowerShell Graph permission sets licensing. Read roadmap and Business Analytics access; employee-level identification/export capabilities are documented for the latter app, not this planned experience. | Fix: Replace the first sentence with: 'A policy pairs a permission set with a partition, so review both what users can do and which population and datasets they can see.' Keep the separately supported sentence about today's partitions.
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: The roadmap specifies that the automatic migration happens only once. | Found: Searched: Viva Insights Copilot Analytics Access Management default enforcement existing VFAM policies migration. Read roadmap and Business Analytics access; both describe automatic transition, neither specifies that assignments or migration run only once. | Fix: Replace 'a one-time migration described by the roadmap' with 'an automatic migration described by the roadmap'.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].ui; rendered controls table / admin-path: Settings > Viva > Settings > Manage feature access > Create a policy reaches the VFAM policy form in the Microsoft 365 admin center. | Found: select Viva from the settings menu. ... Select the Settings tab and select Manage feature access. ... Select Create a policy. ... Select the Access setting option and choose On or Off to enable or disable the feature. | Fix: Extend controls[2].ui.path to 'Settings > Viva > Settings > Manage feature access > Create a policy > Access setting'. Keep the note that the app and feature are selected in the form. | Source: https://learn.microsoft.com/viva/control-access-admin-center
-- [supported, minor] controls[4].ui; controls[4].note; rendered controls table / admin-path: Settings > Partitions > Create new partition reaches partition creation in the Viva Insights web app admin experience. | Found: In the Viva Insights web app's admin experience, select Partitions under Settings. ... Select Create new partition. ... Under Partition setup: ... Filter which employee data ... Add employee attributes. ... Pick which analysts ... Select which dataset | Fix: Extend controls[4].ui.path to 'Settings > Partitions > Create new partition > Partition setup'. Append to its note: 'In the form, filter employee data, add attributes, assign analysts and select the dataset.' The existing Insights Administrator role statement is supported. | Source: https://learn.microsoft.com/viva/insights/advanced/admin/partitions
-- [contradicted, minor] Governance guidance: After rollout; controls table / consistency: The checklist's instruction to review VFAM change logs has a corresponding controls-table row. | Found: Checklist: 'Review the VFAM change logs in Microsoft Purview for policy changes made around the migration.' The six controls rows cover web app access, roles, VFAM feature policies, Manager settings, partitions and the new experience; none covers audit-log review. | Fix: Remove the After rollout bullet instructing the reader to review VFAM change logs; that checklist step has no matching controls row. Do not add a new row in this correction.
+- [supported, minor] front matter: licensing.model; Cost and licensing; rationale: cost / licensing: The cited introduction gives a Microsoft 365 or Office 365 business or enterprise subscription entitlement for the Copilot Dashboard. | Found: The Copilot Dashboard is available in the Viva Insights web app for any customer with a Microsoft 365 or Office 365 subscription for business or enterprise, who has an active Exchange Online account. | Fix: Keep the entitlement attributed to the introduction, and add: 'The Viva Insights environment requirements page separately says at least 50 assigned Viva Insights licences are required to access advanced analysis and the Copilot Dashboard, including a combination of Copilot and Viva Insights licences.' Cite https://learn.microsoft.com/viva/insights/advanced/setup-maint/environment-requirements. This is conflicting background guidance, not a published Access Management licence. | Source: https://learn.microsoft.com/viva/insights/copilot-analytics-introduction
+- [supported, minor] controls[0].api; rendered controls table / command: The printed Add-VivaModuleFeaturePolicy call disables the Viva Insights web app for everyone. | Found: Example: Turn off the Viva Insights web app for all users in your tenant ... ModuleId : VivaInsights ... FeatureId : Viva Insights web app ... Name : DisableFeatureForAll ... IsFeatureEnabled : false ... Everyone | Fix: Add https://learn.microsoft.com/powershell/module/exchange/add-vivamodulefeaturepolicy to sources: its syntax verifies the command and each printed parameter for this call and controls[2].api. Keep both calls unchanged. | Source: https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard
+- [supported, minor] controls[4].ui; controls[4].note; rendered controls table / admin-path: Settings > Partitions > Create new partition > Partition setup reaches the partition creation form in the web app admin experience. | Found: In the Viva Insights web app's admin experience, select Partitions under Settings. ... Select Create new partition. ... Under Partition setup ... Filter which employee data ... you'd select Add condition | Fix: Extend controls[4].ui.path to 'Settings > Partitions > Create new partition > Partition setup > Add condition', reaching the first data-boundary control rather than stopping at the form heading. Keep the note explaining attribute, analyst and dataset selection. | Source: https://learn.microsoft.com/viva/insights/advanced/admin/partitions
 -->

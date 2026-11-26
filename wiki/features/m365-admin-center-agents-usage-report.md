@@ -96,15 +96,17 @@ changes:
     note: "Corrected after verification: licensing now mixed and cost medium per the Agent 365 service description; added the firewall enforcement caveat on blocking; removed an unsupported 'first' claim."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 84 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 99 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-22"
+  date: "2026-11-26"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 84
-  confirmed: 83
+  claims: 99
+  confirmed: 98
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -210,10 +212,10 @@ cost: Medium. The Microsoft Agent 365 service description lists basic active-use
 impact: Low. Administrators and report readers see it; end users notice nothing because the report observes usage and changes no agent's availability.
 -->
 
-<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Governance guidance: At rollout / admin-path: The report is reached through Microsoft 365 admin center > Reports > Usage > Microsoft Copilot > Agents. | Found: In the navigation menu, select Reports. ... Select Usage. ... On the Usage page, under Reports, select Microsoft Copilot, and then select Agents. | Fix: Use 'Microsoft 365 admin center > Reports > Usage > Reports > Microsoft Copilot > Agents' in the rollout checklist, retaining the Reports heading that the What's changing prose already gives. | Source: https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new
-- [supported, minor] Scope: Who and where; Open questions / availability: The overview lists Agent usage as Public Yes, GCC and GCC High N/A with future-release note 1, and DoD N/A with no-plan note 2. | Found: Microsoft Copilot Agent usage ... Yes | N/A^1^ | N/A^1^ | N/A^2^ | N/A^2^ ... N/A^1^: The report will be released in the future. ... N/A^2^: The service isn't available in the environment; hence, there's no plan to release the report. | Fix: Add: 'The Agent 365 service description separately marks GCC availability as Yes for basic 1P and 3P active-user insights in the MAC agent usage report, while the usage reports overview still lists GCC as a future release.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365. Retain the roadmap and overview statements as attributed facts. | Source: https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports
-- [contradicted, minor] Governance guidance; Governance controls / consistency: Every control the governance checklist asks readers to check or decide appears in the controls table. | Found: Decide which of the roles Learn lists for usage reports will read this report ... Open Reports > Usage > Microsoft Copilot > Agents ... Compare unlicensed agent usage with the Microsoft Copilot credits report ... Table rows: conceal names; block agent. | Fix: The role-assignment decision and the Agents and Copilot Credits report checks have no corresponding controls rows. Do not add rows during correction; remove those checklist bullets or retain the report comparisons as analytical advice outside the governance checklist. The two existing controls rows can remain unchanged.
+- [supported, minor] What's changing; Governance guidance: At rollout / admin-path: The report is reached through Microsoft 365 admin center > Reports > Usage > Microsoft Copilot > Agents. | Found: In the navigation menu, select Reports. ... Select Usage. ... On the Usage page, under Reports, select Microsoft Copilot, and then select Agents. | Fix: In the rollout checklist, use 'Microsoft 365 admin center > Reports > Usage > Reports > Microsoft Copilot > Agents', including the Reports heading already named in the What's changing prose. | Source: https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new
+- [supported, minor] Scope: Who and where; Open questions / availability: The usage overview lists Agent usage in GCC as a future release. | Found: Microsoft Copilot Agent usage | Yes | N/A^1^ | N/A^1^ | N/A^2^ | N/A^2^ ... N/A^1^: The report will be released in the future. | Fix: Add: 'The Agent 365 service description separately marks GCC availability as Yes for basic 1P and 3P active-user insights in the MAC agent usage report, while the usage reports overview still lists GCC as a future release.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365; retain the attributed roadmap and overview statements. | Source: https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: Every control the governance checklist asks the reader to decide appears in the controls table. | Found: Decide which of the roles Learn lists for usage reports will read this report ... Controls rows: Whether usage reports ... conceal user, group and site names; Whether an agent listed in the report is available to anyone in the organisation. | Fix: Move the first Before rollout bullet, beginning 'Decide which of the roles Learn lists for usage reports', into the Scope: Who can read it paragraph as advice rather than a checklist control. Do not add a controls row.
 -->

@@ -171,15 +171,17 @@ changes:
     note: "Correction after verification: the access row now says permission sets control dashboards, export and identification, not whose data users see; manager eligibility reworded to minimum team size; Viva web app note and paths updated."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 121 statements confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 126 statements confirmed"
 version: 8
 verification:
   status: "verified"
-  date: "2026-11-25"
+  date: "2026-11-26"
   version: 8
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 121
-  confirmed: 121
+  claims: 126
+  confirmed: 126
   unconfirmed: 0
   contradicted: 0
   attempts: 0

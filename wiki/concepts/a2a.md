@@ -163,14 +163,16 @@ changes:
     note: "Corrected after the independent check: package blocking now points to Agents > Tools > Plugins, an unsupported claim about unauthenticated endpoints is removed, and the connected-agent, Work IQ enablement and spending-policy statements are qualified and sourced."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 106 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 111 statements not yet confirmed"
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-24"
+  date: "2026-11-26"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 106
-  confirmed: 106
+  claims: 111
+  confirmed: 111
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -259,8 +261,9 @@ The controls act at different points. Consent and enabling decide whether a call
 - Tenant-level data policies can classify custom connector host URL patterns as Blocked; the * pattern applies to all custom connectors. This is a custom-connector control, not a separate A2A switch.
 - Does Block in the agent registry apply to an agent registered only through an A2A agent card?
 
-<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What it is: Microsoft 365 connected agents table row / behaviour: A Microsoft 365 primary agent can invoke a connected agent. | Found: For connected agents to work, both the primary agent and the connected agent must be acquired for the user. You can install each agent for users from the Microsoft 365 admin center. | Fix: Add after the Microsoft 365 connected-agent description: 'Both the primary agent and the connected agent must be acquired for the user before delegation works.' The cited Manage connected agents page states this qualification. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-connected-agents
+- [supported, minor] What it is: Microsoft 365 connected agents table row / behaviour: A Microsoft 365 primary agent can invoke a connected agent. | Found: For connected agents to work, both the primary agent and the connected agent must be acquired for the user. You can install each agent for users from the Microsoft 365 admin center. | Fix: Add after the Microsoft 365 connected-agent description: 'Both the primary agent and the connected agent must be acquired for the user before delegation works.' This qualification is stated at https://learn.microsoft.com/microsoft-agent-365/admin/manage-connected-agents. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-connected-agents
+- [supported, minor] controls[1].note; Governance controls / role: The Entra portal consent procedure requires at least Cloud Application Administrator. | Found: Sign in to the Microsoft Entra admin center as at least a Cloud Application Administrator. | Fix: Add after the portal consent role statement: 'The Foundry Work IQ setup guide instead requires Global Administrator for its one-time tenant-wide consent step.' The conflicting wording is at https://learn.microsoft.com/azure/foundry/agents/how-to/tools/work-iq#authentication-and-security; keep the cited Entra role statement. | Source: https://learn.microsoft.com/entra/identity/enterprise-apps/grant-admin-consent
 -->

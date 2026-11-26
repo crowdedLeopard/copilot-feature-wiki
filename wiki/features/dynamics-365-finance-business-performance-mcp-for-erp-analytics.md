@@ -101,15 +101,17 @@ changes:
     note: "Corrected the Copilot Studio inclusion to standard-harness agents within fair usage limits, excluding Microsoft Copilot harness agents; removed an external-model checklist bullet with no controls row."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 89 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 107 statements not yet confirmed"
 version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-25"
+  date: "2026-11-26"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 89
-  confirmed: 89
+  claims: 107
+  confirmed: 107
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -208,8 +210,9 @@ cost: Variable. Copilot Studio agents can consume Copilot Credits. Qualifying em
 impact: Low. Learn lists Business performance analytics and finance and operations roles as prerequisites, so the people who notice are makers building agents and analysts who hold those roles.
 -->
 
-<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance controls / role: The first user who signs in to BPA becomes the BPA admin. | Found: The first user who signs in to the app is assigned the BPA admin role. | Fix: Replace the sentence with: 'The security setup page says the first user who signs in becomes BPA admin; the installation page separately says that, as of BPA version 2.5, installation does not create an admin by default and the current user must be set up as a BPA admin.' Cite https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/install-bpa, whose Important notice states that version qualification. | Source: https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/set-up-security
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: Business performance analytics > Administration > Set up user opens user setup for BPA access. | Found: In Business performance analytics, on the Administration or Users page, select Set up user. Search for the user name or email address ... Select Next. Assign at least one role and one dimension group to the user. | Fix: Keep the documented entry path, but append to controls[1].note: 'The control is the role and dimension-group assignment on the next setup page.' The full procedure is Business performance analytics > Administration > Set up user, search for the user, select Next, then assign at least one role and one dimension group, as documented at https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/set-up-security. | Source: https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/set-up-security
+- [supported, minor] Governance controls / role: The first user who signs in to BPA becomes BPA admin. | Found: The first user who signs in to the app is assigned the BPA admin role. | Fix: Replace the sentence with: 'The security setup page says the first user who signs in becomes BPA admin; the installation page separately says that, as of BPA version 2.5, installation does not create an admin by default and the current user must be set up as a BPA admin.' Cite https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/install-bpa, which states: 'As of Business performance analytics version 2.5, the installation process doesn't create Business performance analytics admin by default. You must set up your current user as a Business performance analytics admin.' | Source: https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/set-up-security
 -->

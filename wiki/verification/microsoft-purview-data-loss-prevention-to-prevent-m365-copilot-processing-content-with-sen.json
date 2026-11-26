@@ -1,0 +1,756 @@
+{
+  "slug": "microsoft-purview-data-loss-prevention-to-prevent-m365-copilot-processing-content-with-sen",
+  "roadmapId": 557255,
+  "title": "Microsoft Purview DLP: Copilot label restrictions in Word, Excel and PowerPoint apply wherever the file is stored",
+  "status": "held",
+  "date": "2026-11-26",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-26",
+    "reasons": [
+      "1 blocking finding (claim 55)"
+    ]
+  },
+  "counts": {
+    "claims": 57,
+    "confirmed": 56,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 1,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "Hold: the briefing incorrectly says Microsoft Learn provides no step-by-step instructions inside the sensitivity-label rule. Microsoft publishes those instructions in its education deployment guide. The roadmap facts, licensing, policy behaviour and PowerShell examples are supported; the UI routes stop before the scope and label-rule configuration.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Why it matters; risk and impact rationales",
+      "type": "record",
+      "claim": "The Copilot DLP restriction now applies regardless of file storage location, including local, network and other cloud storage.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The Microsoft Purview Data Loss Prevention policy to restrict Microsoft 365 Copilot processing sensitive files in Word, Excel, and PowerPoint will now apply regardless of file storage location.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing; Scope: Apps",
+      "type": "record",
+      "claim": "The storage-location extension covers Copilot in Word, Excel and PowerPoint.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The Microsoft Purview Data Loss Prevention policy to restrict Microsoft 365 Copilot processing sensitive files in Word, Excel, and PowerPoint will now apply regardless of file storage location.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is April CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"April CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap lists Current Channel and General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"Current Channel\", \"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope: Clouds",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and GCC.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; Scope: Platforms",
+      "type": "record",
+      "claim": "The roadmap lists Android, Desktop, iOS and Mac.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-07-17T22:12:56.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-07-17T22:12:56\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: defaultState; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The label restriction requires administrator configuration of a DLP policy; tenants without such a policy are not restricted by this control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "To set this up, create DLP policies that use the Microsoft Copilot, Copilot Chat, and Copilot Cowork policy location with the Content contains > Sensitivity labels condition to exclude items from being processed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "DLP to restrict Copilot processing files and emails is included in Microsoft 365 E5/A5.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft 365 E5/A5 ... | Purview Data Loss Prevention (DLP) to restrict Copilot from processing files and emails | Not included | Not included | Not included | Included | Included |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The included plans also comprise Microsoft Purview Suite/EDU/FLW and Microsoft Defender + Purview Suite FLW.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft Purview Suite/EDU/FLW and Microsoft Defender + Purview Suite FLW ... | Purview Data Loss Prevention (DLP) to restrict Copilot from processing files and emails | Not included | Not included | Not included | Included | Included |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The capability is included in Microsoft 365 E5/A5/F5 Information Protection and Governance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft 365 E5/A5/F5 Information Protection and Governance ... | Purview Data Loss Prevention (DLP) to restrict Copilot from processing files and emails | Not included | Not included | Not included | Included | Included |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The capability is included in Office 365 E5/A5.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Office 365 E5/A5 | ... | Purview Data Loss Prevention (DLP) to restrict Copilot from processing files and emails | Not included | Not included | Not included | Included | Included |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The capability is not included in Microsoft 365 Business Basic/Standard/Premium.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft 365 Business Basic/Standard/Premium ... | Purview Data Loss Prevention (DLP) to restrict Copilot from processing files and emails | Not included | Not included | Not included | Included | Included |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The capability is not included in Microsoft 365 E3/A3/A1/G3/F3/F1.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft 365 E3/A3/A1/G3/F3/F1 ... | Purview Data Loss Prevention (DLP) to restrict Copilot from processing files and emails | Not included | Not included | Not included | Included | Included |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The capability is not included in Office 365 E3/E1/A3/A1/G3/G1/F3.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Office 365 E3/E1/A3/A1/G3/G1/F3 ... | Purview Data Loss Prevention (DLP) to restrict Copilot from processing files and emails | Not included | Not included | Not included | Included | Included |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "The printed Purview route reaches the Copilot DLP location used to create the policy and scope it to users and groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "Go to Data Loss Prevention > Policies and select + Create policy. Select the Custom template, then Custom policy. On the Locations page, set the Microsoft Copilot, Copilot Chat, and Copilot Cowork location to on.",
+      "severity": "minor",
+      "fix": "Keep the documented location path, and add to the note: 'At the Copilot location, choose the users and groups to include or exclude.' This is the scope-selection step described at https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about#admin-units; the printed path stops at the location."
+    },
+    {
+      "n": 19,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "New-DlpCompliancePolicy -Name \"<policy-name>\" -Locations $loc -EnforcementPlanes @(\"CopilotExperiences\") creates the Copilot policy with the specified location and scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy",
+      "quote": "New-DLPCompliancePolicy -Name \"Copilot Policy\" -Locations $loc -EnforcementPlanes @(\"CopilotExperiences\")",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[0].note",
+      "type": "command",
+      "claim": "The Microsoft 365 Copilot location identifier used in $loc is 470f2276-e011-4e9d-a6ec-20768be3a4b0.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy",
+      "quote": "Location: Where the DLP policy applies. For Microsoft 365 Copilot, use the value 470f2276-e011-4e9d-a6ec-20768be3a4b0.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[0].note; Governance guidance: After rollout",
+      "type": "command",
+      "claim": "Inclusions and Exclusions in $loc determine which users and groups the policy covers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy",
+      "quote": "Inclusions: Who the DLP policy applies to. ... Exclusions: Exclude security groups, distribution groups, or users from the scope of this DLP policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "The printed Purview route is the entry route for configuring the sensitivity-label restriction.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "Go to Data Loss Prevention > Policies and select + Create policy. Select the Custom template, then Custom policy. On the Locations page, set the Microsoft Copilot, Copilot Chat, and Copilot Cowork location to on.",
+      "severity": "minor",
+      "fix": "Keep the supported route ending at the Copilot location, but clarify the note with: 'The path reaches the policy location. In the policy, add a rule with Content contains > Sensitivity labels, choose the labels, and set Prevent Copilot and Cowork from processing content.' The condition and action are given at https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about#supported-conditions-and-actions. Remove the separate assertion that Learn gives no rule-level steps."
+    },
+    {
+      "n": 23,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "New-DlpComplianceRule -Policy \"<policy-name>\" -AdvancedRule $advRule -RestrictAccess @(@{setting=\"ExcludeContentProcessing\";value=\"Block\"}) creates the label-processing restriction rule.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy",
+      "quote": "New-DLPComplianceRule -Name \"Copilot Rule\" -Policy \"Copilot Policy\" -AdvancedRule $advrule -RestrictAccess @(@{setting=\"ExcludeContentProcessing\";value=\"Block\"})",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[1].note",
+      "type": "command",
+      "claim": "$advRule specifies the sensitivity-label GUIDs for the restriction.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy",
+      "quote": "The second command stores the GUID value of the sensitivity label in the variable named $guidVar. ... The fifth command creates the variable named $advRule. The advanced rule needs to be updated depending on the grouping of labels you want to provide as input.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "The policy and rule example is run in Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy",
+      "quote": "This cmdlet is available only in Security & Compliance PowerShell. ... New-DLPComplianceRule -Name \"Copilot Rule\" -Policy \"Copilot Policy\" -AdvancedRule $advrule -RestrictAccess @(@{setting=\"ExcludeContentProcessing\";value=\"Block\"})",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; controls[1].note; Governance controls",
+      "type": "applicability",
+      "claim": "Content contains > Sensitivity labels is the condition used on the Copilot location to restrict labelled content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "To set this up, create DLP policies that use the Microsoft Copilot, Copilot Chat, and Copilot Cowork policy location with the Content contains > Sensitivity labels condition to exclude items from being processed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[1].note; Governance controls",
+      "type": "admin-path",
+      "claim": "The documented action for the sensitivity-label condition is Prevent Copilot and Cowork from processing content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "| Content contains > Sensitivity labels | Prevent Copilot and Cowork from processing content | Detects when a file or an email in Exchange has a chosen sensitivity label.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Items excluded from content processing can still appear in response citations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "Identified items still appear in the citations of the response, but Copilot and Cowork don't access or use the content of the item in the response.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Copilot does not access or use the excluded item's content in its response.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "Identified items still appear in the citations of the response, but Copilot and Cowork don't access or use the content of the item in the response.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing; Change & support; Governance guidance; rationale: impact",
+      "type": "behaviour",
+      "claim": "Copilot skills in Word, Excel and PowerPoint are disabled when an open file has a label covered by the processing-prevention policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "When a file is open in Word, Excel, or PowerPoint and has a sensitivity label for which DLP policy is configured to prevent processing by Microsoft 365 Copilot and Copilot Chat, the skills in these apps are disabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Some experiences that do not reference file content or use large language models are not currently blocked in the user experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "Certain experiences that don't reference file content or that aren't using any large language models aren't currently blocked on the user experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The policy is evaluated at file open in Word, Excel and PowerPoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "In Word, Excel, and PowerPoint the Microsoft Copilot, Copilot Chat, and Copilot Cowork policy to prevent Copilot from processing content is evaluated at file open.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "A sensitivity label applied mid-session is enforced starting the next time the file is opened.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "If a sensitivity label is applied mid-session, the policy will be enforced starting the next time the file is opened.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing: documentation gap",
+      "type": "absence",
+      "claim": "At the time of writing, Learn does not describe the storage-location extension itself.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Copilot DLP sensitivity labels all storage locations local files separate setting; \"Copilot\" \"DLP\" \"storage location\". Read Copilot DLP, architecture-data-protection-auditing and ai-m365-copilot excerpts; none describes this DLP extension.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Why it matters: related encryption behaviour",
+      "type": "behaviour",
+      "claim": "Copilot honours the same protection settings for labelled or encrypted files outside Microsoft 365 while they are open in an Office app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/architecture-data-protection-auditing",
+      "quote": "When a labeled or encrypted file stored outside Microsoft 365 (for example, on local storage, a network share, or another cloud service) is open in an Office app, Copilot honors the same protection settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "DLP does not scan the contents of files uploaded directly into prompts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "DLP can't scan the contents of files that you upload directly into prompts, so evaluation of the uploaded file for sensitive data doesn't occur.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "For direct prompt input, DLP checks the text typed into the prompt itself.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "DLP only checks the text you type into the prompt itself.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Microsoft 365 Copilot prompts run in the initiating user's security context.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "All Microsoft 365 Copilot prompts run in the security context of the user who initiates the prompt.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Security & identity; Scope: Users",
+      "type": "applicability",
+      "claim": "Copilot DLP policy scope follows the user submitting the prompt, not the file owner.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "DLP policy scoping for Microsoft 365 Copilot, Copilot Chat, and Cowork is based on the user who submits the prompt, not the owner of a file or email that the experience accesses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "DLP policy updates can take up to four hours to reach the Copilot experiences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "Updates to a DLP policy can take up to four hours to reflect in the Microsoft Copilot, Copilot Chat, and Copilot Cowork experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Scope: Roles",
+      "type": "role",
+      "claim": "Microsoft Entra AI Admin can create or edit a policy for this Copilot location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "Accounts with one of the following roles or role groups can create or edit a DLP policy for the Microsoft Copilot, Copilot Chat, and Copilot Cowork location: Microsoft Entra AI Admin",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Scope: Roles",
+      "type": "role",
+      "claim": "Purview Data Security AI Admin can create or edit a policy for this Copilot location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "Purview Data Security AI Admin - Role for editing Data Loss Prevention policies related to Copilot and viewing AI content in Data Security Posture Management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Scope: Roles",
+      "type": "role",
+      "claim": "Purview Compliance Administrator can create or edit a policy for this Copilot location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "Accounts with one of the following roles or role groups can create or edit a DLP policy for the Microsoft Copilot, Copilot Chat, and Copilot Cowork location: ... Purview Compliance Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Scope: Roles",
+      "type": "role",
+      "claim": "Purview Information Protection Admin can create or edit a policy for this Copilot location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "Accounts with one of the following roles or role groups can create or edit a DLP policy for the Microsoft Copilot, Copilot Chat, and Copilot Cowork location: ... Purview Information Protection Admin",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Scope: Roles",
+      "type": "role",
+      "claim": "Microsoft Entra Global Admin can create or edit a policy for this Copilot location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "Accounts with one of the following roles or role groups can create or edit a DLP policy for the Microsoft Copilot, Copilot Chat, and Copilot Cowork location: ... Microsoft Entra Global Admin",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope: Prerequisites",
+      "type": "applicability",
+      "claim": "The sensitivity-label restriction requires the chosen label to be applied to the file.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "Detects when a file or an email in Exchange has a chosen sensitivity label.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Scope: Prerequisites",
+      "type": "admin-path",
+      "claim": "The Copilot policy location is available only in the Custom template.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "The Microsoft Copilot, Copilot Chat, and Copilot Cowork policy location is only available in the Custom policy template.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "Selecting the Copilot location disables all other locations for that policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "When you select the Microsoft Copilot, Copilot Chat, and Copilot Cowork policy location, all other locations for that policy are disabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Sensitivity-label and sensitive-information-type conditions must be in separate rules, although both rules may be in the same policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "You can't use both content contains sensitive info types and content contains sensitivity labels conditions in the same rule. You can create a rule for each condition in the same policy, but not in the same rule.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Policy simulation mode is available for this Copilot location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "Policy simulation mode is available for Microsoft 365 Copilot and Cowork.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "The New-DlpCompliancePolicy reference supplies an example creating both the Copilot policy and its sensitivity-label rule.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy",
+      "quote": "The fourth command creates the DLP policy using the $loc variable for the value of the Locations parameter ... The last command creates the DLP rule with the name \"Copilot Rule\" (use any unique name).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance controls: storage-location setting",
+      "type": "absence",
+      "claim": "Learn documents no separate setting for the storage-location extension at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Copilot DLP sensitivity labels all storage locations local files separate setting; \"Copilot\" \"DLP\" \"storage location\". Read Copilot DLP and New-DlpCompliancePolicy's Copilot example and Locations parameter; no separate storage-extension setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Cost and licensing: meter",
+      "type": "absence",
+      "claim": "No meter is documented for this Copilot DLP capability.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview DLP restrict Copilot files emails pay as you go meter pricing. Read the Purview service description's Copilot DLP table and purview-billing-models, plus Copilot pay-as-you-go-meters excerpt; none names a meter for this restriction.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Cost and licensing: roadmap licensing",
+      "type": "record",
+      "claim": "The roadmap record names no new licence for the storage-location extension.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The Microsoft Purview Data Loss Prevention policy to restrict Microsoft 365 Copilot processing sensitive files in Word, Excel, and PowerPoint will now apply regardless of file storage location.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[1].note",
+      "type": "absence",
+      "claim": "Learn gives no step-by-step navigation inside the sensitivity-label rule.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/education/guide/1-reference/purview-data-security-posture-management-education",
+      "quote": "1. Add another rule. 2. Set the condition to Content contains > Sensitivity labels. 3. Select the labels the district wants excluded from Copilot processing. 4. Set the action to Prevent Copilot from processing content. 5. Save the rule and policy.",
+      "severity": "blocker",
+      "fix": "Remove 'Learn gives no step-by-step navigation inside the rule.' Microsoft provides rule-level steps under 'Protection pattern C — Exclude labeled files and emails from Copilot processing' at https://learn.microsoft.com/microsoft-365/education/guide/1-reference/purview-data-security-posture-management-education. Keep the existing condition and action names supported by the cited feature page."
+    },
+    {
+      "n": 56,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The excluded item's citation remains visible only to users with permission to access the item.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "This means for a user to see an item in a prompt response, they must first have the necessary permissions to access the content of the item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Scope: Apps",
+      "type": "availability",
+      "claim": "Learn documents the label restriction in Microsoft 365 Copilot, Copilot Chat, Cowork and Copilot in Word, Excel and PowerPoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "This feature is available in Microsoft 365 Copilot, Copilot Chat, Cowork, and Copilot in Word, Excel, and PowerPoint.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-26T03:50:26.432Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/architecture-data-protection-auditing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=557255",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Copilot DLP policy on the Copilot location, and which users and groups it covers",
+        "docs": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+        "reachable": true,
+        "segments": [
+          "Data Loss Prevention",
+          "Policies",
+          "+ Create policy",
+          "Custom",
+          "Custom policy",
+          "Locations",
+          "Microsoft Copilot, Copilot Chat, and Copilot Cowork"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Copilot DLP policy on the Copilot location, and which users and groups it covers",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy",
+        "reachable": true,
+        "token": "New-DlpCompliancePolicy",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which sensitivity labels Copilot is prevented from processing",
+        "docs": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+        "reachable": true,
+        "segments": [
+          "Data Loss Prevention",
+          "Policies",
+          "+ Create policy",
+          "Custom",
+          "Custom policy",
+          "Locations",
+          "Microsoft Copilot, Copilot Chat, and Copilot Cowork"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which sensitivity labels Copilot is prevented from processing",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy",
+        "reachable": true,
+        "token": "New-DlpComplianceRule",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

@@ -1,0 +1,871 @@
+{
+  "slug": "microsoft-teams-ability-for-it-admins-to-customize-the-user-notification-strings-for-recor",
+  "roadmapId": 536570,
+  "title": "Microsoft Teams: customise the recording and transcription notification and consent text",
+  "status": "held",
+  "date": "2026-11-26",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-26",
+    "reasons": [
+      "2 blocking findings (claims 8, 40)"
+    ]
+  },
+  "counts": {
+    "claims": 62,
+    "confirmed": 58,
+    "unconfirmed": 1,
+    "contradicted": 3,
+    "blocker": 2,
+    "major": 1,
+    "minor": 2
+  },
+  "summary": "Hold: the summary incorrectly places the privacy policy link under individual meeting policies; Microsoft documents it as a tenant-wide meeting setting. The briefing also describes the later calls feature as the same meeting capability in more clouds. The documented paths and command names check out, and the warning about the unfinished PowerShell route is justified.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is January CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and GCC.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Desktop and Mac.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Mac\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The record associates this item with Microsoft Teams and Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Teams\", \"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing: first paragraph; title",
+      "type": "record",
+      "claim": "The roadmap describes custom messages and privacy links for implicit notification or explicit consent during meeting recording and transcription.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "IT admins can customize the message and privacy link used to notify implicitly or gain explicit consent from meeting participants for the use of recording, transcription during the meeting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "summary",
+      "type": "applicability",
+      "claim": "The privacy policy link can be replaced per meeting policy.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
+      "quote": "The Teams admin center through Meeting settings > Email invitation > Privacy and Security URL.",
+      "severity": "blocker",
+      "fix": "Replace the summary's first sentence with: 'Teams admins can customise recording and transcription messages per meeting policy and set the privacy policy link tenant-wide.' The tenant-wide setting is documented at https://learn.microsoft.com/microsoftteams/meeting-recording#set-a-custom-privacy-policy-url and https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingconfiguration?view=teams-ps."
+    },
+    {
+      "n": 9,
+      "where": "controls[0].ui; Governance controls table; Governance guidance",
+      "type": "admin-path",
+      "claim": "The toggle is at Teams admin center > Meetings > Meeting policies > policy > Recording & transcription > Show customized in-meeting notification for recording and transcription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "Navigate to Meetings → Meeting policies. Select or create a meeting policy where you want to enable custom messages. In the Recording & transcription section, find the new setting: Show customized in-meeting notification for recording and transcription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -EnableRecordingAndTranscriptionCustomMessage $true is the documented custom-message toggle call, subject to the page's PowerShell warning.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps",
+      "quote": "This feature has not been fully released yet, so the setting will have no effect. This policy controls whether custom strings can be shown for recording and transcription in user's Teams meetings. It need to work with RecordingAndTranscriptionCustomMessageIdentifier.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "controls[1].ui; Governance controls table; Governance guidance",
+      "type": "admin-path",
+      "claim": "Custom text is configured at Teams admin center > Meetings > Meeting policies > policy > Recording & transcription > Customize notification.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "In the Recording & transcription section, find the new setting: Show customized in-meeting notification for recording and transcription. Use the toggle to enable or disable custom messages for this policy. Click the Customize notification button to set your custom message.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -RecordingAndTranscriptionCustomMessageIdentifier <Guid> assigns the custom message identifier, subject to the stated no-effect warning.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps",
+      "quote": "This feature has not been fully released yet, so the setting will have no effect. This attribute holds the unique identifier for the custom recording and transcription meeting message. It stores a GUID that points to the CustomMessage in TeamsCustomMessageConfiguration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[2].ui; Governance controls table; Governance guidance",
+      "type": "admin-path",
+      "claim": "The privacy URL field is at Teams admin center > Meetings > Meeting settings > Email invitation > Privacy and security URL.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/customize-meeting-invitations",
+      "quote": "In the left navigation, expand Meetings > Meeting settings. Under Email invitation, do the following: Privacy and security URL If your organization has a legal website that you want people to go to for any legal concerns, enter the URL here.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingConfiguration -LegalURL <String> sets the privacy URL.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingconfiguration?view=teams-ps",
+      "quote": "-LegalURL: URL to a website containing legal information and meeting disclaimers. This would be included in the meeting invite. Please ensure this URL is publicly accessible for invites that go beyond your federation boundaries",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[3].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Explicit consent is at Teams admin center > Meetings > Meeting Policies > policy > Recording & Transcription > Require participant agreement for recording and transcription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/participant-agreement-recording-transcription",
+      "quote": "Under Meetings, select Meeting Policies. Either select an existing policy or create a new one. Within your chosen policy, navigate to the Recording & Transcription section. Toggle the Require participant agreement for recording and transcription setting On or Off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[3].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -ExplicitRecordingConsent Enabled requires explicit recording and transcription consent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
+      "quote": "To require participants to give their explicit consent to be recorded or transcribed in any meeting that organizers with this policy create, run the following command: Set-CsTeamsMeetingPolicy -Identity <policy name> -ExplicitRecordingConsent Enabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "This Teams option sits within the product's Teams licence requirement, except for anonymous meeting joining.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/user-access",
+      "quote": "Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No licence requirement specific to custom recording and transcription notifications is published as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams custom recording transcription notification licensing price meter Teams Premium. Read custom-message feature and user-access pages; searched licensing-enhance-teams feature tables. None names a licence specific to custom notification strings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No meter specific to custom recording and transcription notifications is published as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams custom recording transcription notification licensing price meter Teams Premium. Read recording-transcription-custom-message and user-access; searched licensing-enhance-teams. Results document other licensed features, not a meter for custom notification text.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: defaultState; Why it matters; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated the custom notification toggle's arrival default.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"EnableRecordingAndTranscriptionCustomMessage\" default recording transcription custom notification. Read feature page and targeted Set-CsTeamsMeetingPolicy parameter text; search returned New-CsTeamsMeetingPolicy Default value: None, not an arrival default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "title; summary; What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "IT admins can customise recording and transcription notification text and its privacy policy URL.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "IT admins can customize the Recording and Transcription message and the URL of the privacy policy used to notify implicitly or gain explicit consent from meeting participants for the use of recording and transcription during the meeting",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing: second paragraph",
+      "type": "behaviour",
+      "claim": "Teams displays the notification banner when recording or transcription starts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "When recording or transcription starts, Teams displays a notification banner composed of four elements.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing: second paragraph",
+      "type": "behaviour",
+      "claim": "The banner's custom consent message supports plain text.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "Consent message (#3): Supports plain text and HTML <a> tags for adding multiple custom links.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The banner's custom consent message supports HTML <a> links.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "Consent message (#3): Supports plain text and HTML <a> tags for adding multiple custom links.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing: second paragraph",
+      "type": "behaviour",
+      "claim": "The display text Privacy policy cannot be changed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "Only the URL can be changed. The display text \"Privacy policy\" is fixed and cannot be modified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "In explicit-consent meetings, the consent dialog is shown when a user unmutes or turns on the camera.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "For meetings that require explicit consent, Teams displays a consent dialog when a user unmutes/turns on the camera.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing: second paragraph",
+      "type": "behaviour",
+      "claim": "The consent dialog's custom message accepts plain text only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "Customizable consent message (#3): Only supports plain text, HTML <a> tag is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; controls[1].note; Governance guidance; controls table",
+      "type": "behaviour",
+      "claim": "Admins download and upload a CSV template to set custom text in the admin centre.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "Download the CSV template from the customization panel. Open the downloaded template, and fill in your custom messages for each scenario and language as needed. Upload the completed CSV using the Select a file button.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Cost and licensing; Governance guidance",
+      "type": "behaviour",
+      "claim": "The template has six scenario keys, including initiator_implicit and agreement_dialogue.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "initiator_implicit; participant_implicit; initiator_explicit; participant_explicit_requested; participant_explicit_provided; agreement_dialogue",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Each custom message is limited to 200 characters.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "Custom messages can't exceed 200 characters; longer messages aren't permitted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing: second paragraph",
+      "type": "behaviour",
+      "claim": "Fixed information such as the initiator's name and privacy policy remains included.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "The message you set appears in the notification for the corresponding scenarios, along with fixed information (such as the initiator’s name and privacy policy) that is always included.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing; controls[0].note; Scope; Governance controls; rationale: impact",
+      "type": "applicability",
+      "claim": "Custom messages follow the meeting policy assigned to the organiser.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "Once the custom message is enabled for a meeting policy, all users assigned to that policy see the custom notifications in meetings they organize.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing; controls[0].note; Risk assessment; Governance controls; rationale: risk",
+      "type": "applicability",
+      "claim": "All participants in an affected meeting follow the organiser's custom-message settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "All participants in those meetings follow the organizer’s custom message settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The message selected depends on the scenario and participant's client language.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "The message displayed depends on the scenario and the participant’s client language.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing; Why it matters; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "A missing custom message for a language or scenario falls back to the default Teams message.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "If there's no custom message for a specific language or scenario, the user sees the default message in Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What's changing; Scope; Governance guidance; Open questions",
+      "type": "availability",
+      "claim": "The custom in-meeting messages documented on the feature page are not supported in 1:1 calls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "Custom messages are not supported in 1:1 calls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "Learn lists Teams Windows, macOS and Web as supported clients.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "Custom messages are supported on Teams Windows, macOS, and Web clients.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "iOS and Android currently support plain text only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "iOS and Android currently support plain text only, with full message customizability coming soon.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Open questions: iOS and Android",
+      "type": "behaviour",
+      "claim": "Learn describes fuller mobile message customisation as coming soon.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "iOS and Android currently support plain text only, with full message customizability coming soon.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "What's changing: final sentence",
+      "type": "record",
+      "claim": "The linked later roadmap item covers the same meeting capability in more clouds.",
+      "status": "contradicted",
+      "source": "roadmap record",
+      "quote": "567302: \"description\": \"This feature enables IT admins to customize a portion of the user notification messages for recording and transcription during Teams calls.\"; \"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": "blocker",
+      "fix": "Remove the sentence 'A later roadmap item covers the same capability in more clouds' and its inline link. Roadmap item 567302 describes custom notification messages during Teams calls, not simply expanded cloud availability for this meeting feature."
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "No new data access is documented for the custom notification setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams recording transcription custom message audit changes policy permissions data access. Read custom-message feature and meeting-recording; results describe message/URL customisation and existing recording storage, not new data access by the message setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "No change to permissions or sign-in is documented for custom notification messages.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams recording transcription custom message audit changes policy permissions data access. Read recording-transcription-custom-message and meeting-recording; no returned text describes changed permissions or sign-in for notification customisation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Autonomy & actions; Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "The custom notification setting does not start, stop or block recording or transcription, or change what is recorded or who can record.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Teams recording transcription custom message audit changes policy permissions data access. Read custom-message feature and meeting-recording: they describe message customisation and separate recording permission controls, but do not expressly state this exhaustive no-effect claim.",
+      "severity": "major",
+      "fix": "Replace 'No change: the setting does not start, stop or block recording or transcription' with 'The documented setting customises notification text and its privacy policy link.' Remove ', not what is recorded or transcribed' from Data exposure. Replace the risk rationale with: 'Low. The documented setting customises recording-notice wording and the privacy policy link; the risk is a misleading or broken message reaching every participant in affected meetings.'"
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Entering <empty> for a language or scenario leaves only the fixed notification information.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "If you don’t want to display any message (excluding the fixed information), you can insert <empty> for the specific language or scenario. In this case, the notification shows only the fixed information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Excel uses a different default CSV delimiter in some non-English system languages.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "In some non-English system languages (for example, German, French, Spanish, Italian, Portuguese, and other European locales), Excel uses a different default CSV delimiter based on regional settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Microsoft advises admins using those system languages to edit the template in a plain text editor rather than Excel.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "To avoid formatting issues, admins using these system languages should edit the CSV template using another plain text editor. Please do not edit or re-save the CSV file using Excel.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Security & identity; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The Preview button shows customised strings with differences highlighted against defaults.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "Once uploaded, the policy preview displays customized strings, with differences highlighted compared to the system defaults.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[1].note; Governance controls; controls table",
+      "type": "command",
+      "claim": "New-CsTeamsRecordingAndTranscriptionCustomMessage creates a message set whose generated Id is associated through RecordingAndTranscriptionCustomMessageIdentifier.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/new-csteamsrecordingandtranscriptioncustommessage?view=teams-ps",
+      "quote": "After this configuration is successfully completed, you can assign the generated Id to the user’s RecordingAndTranscriptionCustomMessageIdentifier field to apply the policy to that user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[1].note; Risk assessment; Governance controls; Open questions",
+      "type": "behaviour",
+      "claim": "The New-CsTeamsRecordingAndTranscriptionCustomMessage reference says the feature is not fully released and the setting has no effect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/new-csteamsrecordingandtranscriptioncustommessage?view=teams-ps",
+      "quote": "This feature has not been fully released yet, so the setting will have no effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[2].scope; What's changing; Governance controls; controls table",
+      "type": "applicability",
+      "claim": "The privacy URL is a tenant-wide meeting configuration rather than a per-meeting-policy setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingconfiguration?view=teams-ps",
+      "quote": "The CsTeamsMeetingConfiguration cmdlets enable administrators to control the meetings configurations in their tenants. Use this cmdlet to set the configuration for your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[2].note; Governance controls; controls table",
+      "type": "applicability",
+      "claim": "The privacy URL setting is also used in meeting invitations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingconfiguration?view=teams-ps",
+      "quote": "URL to a website containing legal information and meeting disclaimers. This would be included in the meeting invite.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[2].note; Risk assessment: Security & identity; controls table",
+      "type": "default",
+      "claim": "When no custom privacy URL is set, Teams displays the Microsoft Entra ID privacy policy for internal users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
+      "quote": "If you don't enter a privacy and security URL in Teams meeting settings or PowerShell, we display Microsoft Entra ID's privacy policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[2].note; Risk assessment: Security & identity; controls table",
+      "type": "default",
+      "claim": "External tenant users and anonymous users instead see the Microsoft Privacy policy when no custom privacy URL is set.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
+      "quote": "The Microsoft Entra ID's privacy policy isn't shown to external tenant users or anonymous users. If you don't create a privacy and security URL in Teams meeting settings or PowerShell, the Microsoft Privacy policy is shown instead.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[3].note; Scope; controls table",
+      "type": "default",
+      "claim": "The explicit participant agreement setting defaults to Off (Disabled).",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/participant-agreement-recording-transcription",
+      "quote": "Off | Disabled | This setting is the default value. For organizers with this policy, participants aren't asked for consent to be recorded and transcribed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[3].note; Scope; Governance controls; controls table",
+      "type": "applicability",
+      "claim": "Enabling explicit consent selects the explicit-consent scenario notifications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "Turn on explicit consent: With this on, users see the \"explicit consent scenario\" notifications.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Consent data can be reviewed in the meeting attendance report.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/participant-agreement-recording-transcription",
+      "quote": "The consent choice for each participant is included in the attendance report. When the attendance report is disabled or participants aren't in the attendance report, organizers and co-organizers don't see consent data.",
+      "severity": "minor",
+      "fix": "Remove the After rollout bullet beginning 'Review consent data', also resolving the missing monitoring row. The attendance-report route is conditional on the report being enabled and participants being included, as documented at https://learn.microsoft.com/microsoftteams/participant-agreement-recording-transcription."
+    },
+    {
+      "n": 57,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Consent data can be reviewed in Teams meeting audit logs in Microsoft Purview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/participant-agreement-recording-transcription",
+      "quote": "The second is with the Added information about meeting participants filter in the Teams meeting audit logs in Purview. Consent data is in the audit logs regardless of your policy that manages the attendance and engagement report or your users' option for tracking attendance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance guidance: After rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist tells readers to review consent monitoring, but the controls table has no row for that monitoring surface.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Review consent data in the meeting attendance report or the Teams meeting audit logs in Microsoft Purview where explicit consent is on. The table lists custom notification enablement, custom text, the privacy URL and explicit consent, but no consent monitoring.",
+      "severity": "minor",
+      "fix": "Remove the After rollout bullet beginning 'Review consent data'. This resolves the checklist/table mismatch without adding an unverified control row."
+    },
+    {
+      "n": 59,
+      "where": "Scope: Languages",
+      "type": "availability",
+      "claim": "The feature's Learn page lists supported languages and their CSV codes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "Supported Languages and Codes | Language name | Code | English (United Kingdom) | en-GB | English (United States) | en-US",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap record gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record's modification timestamp is 2026-01-30T23:15:49.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-01-30T23:15:49\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "No source says existing notifications change on their own.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"EnableRecordingAndTranscriptionCustomMessage\" default recording transcription custom notification. Read roadmap record, custom-message feature page and meeting-policy parameter text. None states an automatic replacement of existing notification text.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-26T03:50:39.567Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 4,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=536570",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/participant-agreement-recording-transcription",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/meeting-recording",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/customize-meeting-invitations",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/new-csteamsrecordingandtranscriptioncustommessage?view=teams-ps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/user-access",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingconfiguration?view=teams-ps",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether a meeting policy shows custom recording and transcription notifications",
+        "docs": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+        "reachable": true,
+        "segments": [
+          "Meetings",
+          "Meeting policies",
+          "Recording & transcription",
+          "Show customized in-meeting notification for recording and transcription"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether a meeting policy shows custom recording and transcription notifications",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps",
+        "reachable": true,
+        "token": "Set-CsTeamsMeetingPolicy",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which custom message text a meeting policy displays",
+        "docs": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+        "reachable": true,
+        "segments": [
+          "Meetings",
+          "Meeting policies",
+          "Recording & transcription",
+          "Customize notification"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which custom message text a meeting policy displays",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps",
+        "reachable": true,
+        "token": "Set-CsTeamsMeetingPolicy",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Which privacy policy URL the recording and transcription notice links to",
+        "docs": "https://learn.microsoft.com/microsoftteams/customize-meeting-invitations",
+        "reachable": true,
+        "segments": [
+          "Meetings",
+          "Meeting settings",
+          "Email invitation",
+          "Privacy and security URL"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Which privacy policy URL the recording and transcription notice links to",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingconfiguration?view=teams-ps",
+        "reachable": true,
+        "token": "Set-CsTeamsMeetingConfiguration",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Whether meetings require participants to give explicit consent to recording and transcription",
+        "docs": "https://learn.microsoft.com/microsoftteams/participant-agreement-recording-transcription",
+        "reachable": true,
+        "segments": [
+          "Meetings",
+          "Meeting Policies",
+          "Recording & Transcription",
+          "Require participant agreement for recording and transcription"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Whether meetings require participants to give explicit consent to recording and transcription",
+        "docs": "https://learn.microsoft.com/microsoftteams/meeting-recording",
+        "reachable": true,
+        "token": "Set-CsTeamsMeetingPolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

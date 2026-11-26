@@ -1,0 +1,1308 @@
+{
+  "slug": "authentication",
+  "kind": "concept",
+  "roadmapId": null,
+  "title": "Authentication methods in Microsoft Entra ID: which ways can users prove who they are?",
+  "status": "held",
+  "date": "2026-11-26",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-26",
+    "reasons": [
+      "6 blocking findings (claims 43, 46, 48, 70, 75, 89)"
+    ]
+  },
+  "counts": {
+    "claims": 97,
+    "confirmed": 90,
+    "unconfirmed": 0,
+    "contradicted": 7,
+    "blocker": 6,
+    "major": 0,
+    "minor": 12
+  },
+  "summary": "Hold: the page overstates which changes the Authentication methods policy governs and incorrectly says migration changes security-question password reset. It also overlooks documented transaction-based SMS authentication charges and treats published Microsoft-managed campaign settings as unknown.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "Passkey group availability and settings are managed in Microsoft Entra admin center under Entra ID > Authentication methods > Policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods-manage",
+      "quote": "browse to Entra ID > Authentication methods > Policies.",
+      "severity": "minor",
+      "fix": "The route stops on the method list. Extend it to 'Entra ID > Authentication methods > Policies > Passkey (FIDO2) > Enable and Target > Enable'; note that group assignments use Add target and method settings use Configure. See https://learn.microsoft.com/entra/identity/authentication/how-to-enable-authenticator-passkey and https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2. The latter page also inserts Security after Entra ID; report that navigation difference rather than silently selecting it."
+    },
+    {
+      "n": 2,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "PATCH /v1.0/policies/authenticationMethodsPolicy/authenticationMethodConfigurations/fido2 updates passkey availability, target groups and settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/fido2authenticationmethodconfiguration-update?view=graph-rest-1.0",
+      "quote": "PATCH https://graph.microsoft.com/v1.0/policies/authenticationMethodsPolicy/authenticationMethodConfigurations/fido2",
+      "severity": "minor",
+      "fix": "Keep the call and add to the row note: 'Request-body property state enables or disables the method; includeTargets assigns groups and passkey profiles; passkeyProfiles configures profile settings.' These properties appear in the cited v1.0 request."
+    },
+    {
+      "n": 3,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Microsoft Authenticator availability and settings are managed in Microsoft Entra admin center under Entra ID > Authentication methods > Policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods-manage",
+      "quote": "To manage the Authentication methods policy, sign in to the Microsoft Entra admin center as at least an Authentication Policy Administrator and browse to Entra ID > Authentication methods > Policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "PATCH /v1.0/policies/authenticationMethodsPolicy/authenticationMethodConfigurations/microsoftAuthenticator updates Authenticator configuration, with state enabling or disabling it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/microsoftauthenticatorauthenticationmethodconfiguration-update?view=graph-rest-1.0",
+      "quote": "PATCH https://graph.microsoft.com/v1.0/policies/authenticationMethodsPolicy/authenticationMethodConfigurations/microsoftAuthenticator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "Migration state is managed in Microsoft Entra admin center under Entra ID > Authentication methods > Policies > Manage migration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods-manage",
+      "quote": "To view the migration options, open the Authentication methods policy and click Manage migration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "Microsoft.Graph.Identity.SignIns provides Update-MgPolicyAuthenticationMethodPolicy -PolicyMigrationState <state> to update migration state.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.graph.identity.signins/update-mgpolicyauthenticationmethodpolicy?view=graph-powershell-1.0",
+      "quote": "Microsoft.Graph.Identity.SignIns Module\nUpdate the properties of an authenticationMethodsPolicy object.\n[-PolicyMigrationState <string>]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "Registration campaign settings and targeting are edited in Microsoft Entra admin center under Entra ID > Authentication methods > Registration campaign > Edit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-mfa-registration-campaign",
+      "quote": "Browse to Entra ID > Authentication methods > Registration campaign, and select Edit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "controls[3].api",
+      "type": "command",
+      "claim": "PATCH /v1.0/policies/authenticationMethodsPolicy configures the registration campaign through registrationEnforcement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/authenticationmethodspolicy-update?view=graph-rest-1.0",
+      "quote": "PATCH https://graph.microsoft.com/v1.0/policies/authenticationMethodsPolicy\nregistrationEnforcement | registrationEnforcement | Enforce registration at sign-in time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "controls[4].ui",
+      "type": "admin-path",
+      "claim": "Custom strengths are created in Microsoft Entra admin center under Entra ID > Authentication methods > Authentication strengths > New authentication strength.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strength-advanced-options",
+      "quote": "Browse to Entra ID > Authentication methods > Authentication strengths.\nSelect New authentication strength.\nSelect the available methods that you want to allow.",
+      "severity": "minor",
+      "fix": "Keep the route, which reaches the creation form, and add to the note: 'On the creation form, select the available methods that you want to allow.' This gives the documented deciding control without inventing a label."
+    },
+    {
+      "n": 10,
+      "where": "controls[4].api",
+      "type": "command",
+      "claim": "POST /v1.0/policies/authenticationStrengthPolicies creates a custom strength with allowedCombinations specifying its permitted combinations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/authenticationstrengthroot-post-policies",
+      "quote": "POST https://graph.microsoft.com/v1.0/policies/authenticationStrengthPolicies\nallowedCombinations | authenticationMethodModes collection | The authentication method combinations allowed by this authentication strength policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "controls[0].note; Governance controls: Roles",
+      "type": "role",
+      "claim": "Authentication Policy Administrator is the least-privileged role for managing the Authentication methods policy and its method configurations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/fido2authenticationmethodconfiguration-update?view=graph-rest-1.0",
+      "quote": "Authentication Policy Administrator is the least privileged role supported for this operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "controls[2].note",
+      "type": "behaviour",
+      "claim": "Migration state values are premigration, migrationInProgress and migrationComplete.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/authenticationmethodspolicy?view=graph-rest-1.0",
+      "quote": "premigration - means the authentication methods policy is used for authentication only, legacy policies are respected.\nmigrationInProgress - means the authentication methods policy is used for both authentication and SSPR, legacy policies are respected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[4].note; Cost and licensing",
+      "type": "licensing",
+      "claim": "Authentication strengths use Conditional Access, which requires Microsoft Entra ID P1.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strength-advanced-options",
+      "quote": "To use Conditional Access, your tenant needs to have Microsoft Entra ID P1 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[4].note; Governance controls: Roles",
+      "type": "role",
+      "claim": "Creating custom strengths in the admin centre requires at least Security Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strength-advanced-options",
+      "quote": "Sign in to the Microsoft Entra admin center as at least a Security Administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "Governance controls: Roles",
+      "type": "role",
+      "claim": "Graph supports Conditional Access Administrator or Security Administrator for creating a custom strength.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/authenticationstrengthroot-post-policies",
+      "quote": "This operation supports the following built-in roles, which provide only the least privilege necessary:\nConditional Access administrator\nSecurity Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "summary; What it is",
+      "type": "behaviour",
+      "claim": "The Authentication methods policy determines which authentication methods groups may register and use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods-manage",
+      "quote": "Authentication Policy Administrators can edit this policy to enable authentication methods for all users or specific groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "summary; What it is: How it works",
+      "type": "applicability",
+      "claim": "Authentication strengths are Conditional Access controls that determine which method combinations can access a resource.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strengths",
+      "quote": "An authentication strength is a Microsoft Entra Conditional Access control that specifies which combinations of authentication methods users can use to access a resource.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "Authentication verifies identity before granting access to apps, services, devices or networks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods",
+      "quote": "Authentication is a security process that verifies a user's identity before granting access to apps, services, devices, or networks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What it is: How it works, method list",
+      "type": "behaviour",
+      "claim": "The policy has entries for passkeys, Authenticator, SMS, voice calls, Temporary Access Pass, certificate-based authentication and software and hardware OATH tokens.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-methods-manage",
+      "quote": "The Authentication methods policy has other methods that aren't available in the legacy policies, such as FIDO2 security key, Temporary Access Pass, and Microsoft Entra certificate-based authentication.",
+      "severity": "minor",
+      "fix": "Change 'hardware OATH tokens' to 'hardware OATH tokens (preview)' in this list, as marked in https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods."
+    },
+    {
+      "n": 20,
+      "where": "What it is: How it works, first paragraph",
+      "type": "behaviour",
+      "claim": "Method entries have an on/off state, target groups and method-specific settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods-manage",
+      "quote": "Most methods also have configuration parameters to more precisely control how that method can be used.",
+      "severity": "minor",
+      "fix": "Replace 'with an on/off state, the groups it targets and method-specific settings' with 'with an on/off state and the groups it targets; most methods also have method-specific configuration parameters'. This preserves Microsoft's qualification."
+    },
+    {
+      "n": 21,
+      "where": "What it is: How it works",
+      "type": "behaviour",
+      "claim": "Methods enabled in the policy can typically be used for authentication and self-service password reset.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods-manage",
+      "quote": "Methods enabled in the Authentication methods policy can typically be used anywhere in Microsoft Entra ID, for both authentication and password reset scenarios.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What it is: How it works",
+      "type": "behaviour",
+      "claim": "FIDO2 is limited to authentication rather than SSPR.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods",
+      "quote": "Passkey (FIDO2) | Yes | MFA | No",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What it is: How it works",
+      "type": "behaviour",
+      "claim": "Windows Hello for Business is limited to authentication rather than SSPR.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods",
+      "quote": "Windows Hello for Business | Yes | MFA | No",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What it is: How it works",
+      "type": "behaviour",
+      "claim": "Security questions are limited to password reset rather than sign-in.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-security-questions",
+      "quote": "Security questions aren't used as an authentication method during a sign-in event. Instead, security questions can be used during the self-service password reset (SSPR) process to confirm who you are.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What it is: method-role table, Primary",
+      "type": "behaviour",
+      "claim": "Password can satisfy primary authentication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods",
+      "quote": "Password | Yes | No | No",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What it is: method-role table, Primary",
+      "type": "behaviour",
+      "claim": "Passkey (FIDO2) can satisfy primary authentication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods",
+      "quote": "Passkey (FIDO2) | Yes | MFA | No",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What it is: method-role table, Primary",
+      "type": "behaviour",
+      "claim": "Certificate-based authentication can satisfy primary authentication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods",
+      "quote": "Certificate-based authentication | Yes | MFA | No",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What it is: method-role table, Primary",
+      "type": "behaviour",
+      "claim": "QR code can satisfy primary authentication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods",
+      "quote": "QR code | Yes | No | No",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What it is: method-role table, Secondary",
+      "type": "behaviour",
+      "claim": "Authenticator push notifications can satisfy MFA.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods",
+      "quote": "Microsoft Authenticator push notifications | No | MFA | SSPR",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What it is: method-role table, Secondary",
+      "type": "behaviour",
+      "claim": "Voice calls can satisfy MFA.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods",
+      "quote": "Voice call | No | MFA | SSPR",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What it is: method-role table, Secondary",
+      "type": "behaviour",
+      "claim": "Software OATH tokens can satisfy MFA.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods",
+      "quote": "Software OATH tokens | No | MFA | SSPR",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What it is: method-role table, SSPR",
+      "type": "behaviour",
+      "claim": "SMS sign-in can be used for SSPR.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods",
+      "quote": "SMS sign-in | Yes | MFA | SSPR",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What it is: method-role table, SSPR",
+      "type": "behaviour",
+      "claim": "Email OTP can be used for SSPR.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods",
+      "quote": "Email OTP is available for tenant members for self-service password reset (SSPR).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What it is: method-role table; Verified ID paragraph",
+      "type": "behaviour",
+      "claim": "Verified ID supplies identity proof for account recovery when all authentication methods are lost.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods",
+      "quote": "Verified ID provides cryptographic proof of a user's verified identity for scenarios where trust must be re-established, such as account recovery when all authentication methods are lost.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What it is: Verified ID paragraph",
+      "type": "behaviour",
+      "claim": "Verified ID is not a sign-in authentication method.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods",
+      "quote": "It can't be used to satisfy authentication requirements like sign-in, MFA, or SSPR.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What it is: phishing-resistant methods",
+      "type": "behaviour",
+      "claim": "Microsoft classifies Windows Hello for Business as phishing-resistant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods",
+      "quote": "The following phishing-resistant authentication methods are available in Microsoft Entra ID:\nWindows Hello for Business",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What it is: phishing-resistant methods",
+      "type": "behaviour",
+      "claim": "Microsoft classifies Platform Credential for macOS as phishing-resistant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods",
+      "quote": "The following phishing-resistant authentication methods are available in Microsoft Entra ID:\nWindows Hello for Business\nPlatform Credential for macOS",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What it is: phishing-resistant methods",
+      "type": "behaviour",
+      "claim": "Microsoft classifies synced passkeys as phishing-resistant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods",
+      "quote": "The following phishing-resistant authentication methods are available in Microsoft Entra ID:\nWindows Hello for Business\nPlatform Credential for macOS\nSynced passkeys (FIDO2)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What it is: phishing-resistant methods",
+      "type": "behaviour",
+      "claim": "Microsoft classifies FIDO2 security keys as phishing-resistant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods",
+      "quote": "Microsoft recommends using phishing-resistant authentication methods such as Windows Hello for Business, passkeys (FIDO2) and FIDO2 security keys, or certificate-based authentication (CBA)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "What it is: phishing-resistant methods",
+      "type": "behaviour",
+      "claim": "Microsoft classifies passkeys in Microsoft Authenticator as phishing-resistant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods",
+      "quote": "The following phishing-resistant authentication methods are available in Microsoft Entra ID:\nWindows Hello for Business\nPlatform Credential for macOS\nSynced passkeys (FIDO2)\nFIDO2 security keys\nPasskeys in Microsoft Authenticator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "What it is: phishing-resistant methods",
+      "type": "behaviour",
+      "claim": "Microsoft classifies certificate-based authentication as phishing-resistant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods",
+      "quote": "Microsoft recommends using phishing-resistant authentication methods such as Windows Hello for Business, passkeys (FIDO2) and FIDO2 security keys, or certificate-based authentication (CBA)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "What it is: authentication strengths paragraph",
+      "type": "behaviour",
+      "claim": "There are three built-in strengths named Multifactor authentication strength, Passwordless MFA strength and Phishing-resistant MFA strength, as well as custom strengths.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strengths",
+      "quote": "They can choose from three built-in authentication strengths: Multifactor authentication strength, Passwordless MFA strength, and Phishing-resistant MFA strength. They can also create a custom authentication strength",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Why it matters: first sentence",
+      "type": "applicability",
+      "claim": "Every passkey, Authenticator or Windows Hello change lands in the Authentication methods policy, where registration availability is decided.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/windows/security/identity-protection/hello-for-business/configure",
+      "quote": "You can configure Windows Hello for Business by using the following options:\nConfiguration Service Provider (CSP)\nGroup policy (GPO)",
+      "severity": "blocker",
+      "fix": "Replace the first sentence with: 'The Authentication methods policy governs passkey and Authenticator availability; authentication strengths can restrict which methods access a resource. Windows Hello for Business enrollment is configured separately through CSP or Group Policy.' Cite https://learn.microsoft.com/windows/security/identity-protection/hello-for-business/configure. Do not imply this policy manages every Windows Hello change."
+    },
+    {
+      "n": 44,
+      "where": "Why it matters: first paragraph",
+      "type": "availability",
+      "claim": "An authentication method enabled for all users is made available across that user scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods-manage",
+      "quote": "All desired methods can be enabled in the Authentication methods policy if the policy targets intended user groups, or all users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Why it matters; Risks and limits: any policy enables it",
+      "type": "behaviour",
+      "claim": "Before migration is complete, enabling a method in any respected legacy or modern policy can allow registration and use despite disabling it in another.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods-manage",
+      "quote": "Microsoft Entra ID respects the settings in all of the policies so a user who is enabled for an authentication method in any policy can register and use that method. To prevent users from using a method, it must be disabled in all policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Why it matters: 30 September 2025 sentence",
+      "type": "date",
+      "claim": "Since 30 September 2025 authentication methods can no longer be managed in the legacy policies.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-methods-manage",
+      "quote": "No changes can be made to the legacy policies if Migration Complete is set, except for security questions in the SSPR policy.",
+      "severity": "blocker",
+      "fix": "Replace with: 'Microsoft deprecated management of authentication methods in the legacy MFA and SSPR policies from 30 September 2025, but security questions remain manageable in legacy SSPR, including after Migration Complete.' Cite https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-methods-manage alongside the overview."
+    },
+    {
+      "n": 47,
+      "where": "Risks and limits: Security questions; What to check",
+      "type": "behaviour",
+      "claim": "Security questions can currently be enabled only in the legacy SSPR policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods-manage",
+      "quote": "Security questions can only be enabled today by using the legacy SSPR policy.",
+      "severity": "minor",
+      "fix": "Add the qualification 'Microsoft documents their retirement from SSPR in March 2027' and cite https://learn.microsoft.com/entra/identity/authentication/concept-authentication-security-questions. The mechanism overview supports the present location but does not mention the retirement documented on the method's own page."
+    },
+    {
+      "n": 48,
+      "where": "Risks and limits: Security questions",
+      "type": "behaviour",
+      "claim": "Moving to Migration Complete changes password reset for users who rely on security questions.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-methods-manage",
+      "quote": "You can finish migration as described in the next section with security questions enabled.",
+      "severity": "blocker",
+      "fix": "Replace 'moving to Migration Complete without planning for them changes password reset for users who rely on them' with 'migration can be completed with security questions still enabled in legacy SSPR'. Cite https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-methods-manage."
+    },
+    {
+      "n": 49,
+      "where": "Risks and limits: Many targeted groups",
+      "type": "behaviour",
+      "claim": "Including many groups can cause authentication-method registration to fail.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods-manage",
+      "quote": "Registration of an authentication method can fail if many groups are included in the Authentication methods policy or a registration campaign.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risks and limits: Many targeted groups; What to check",
+      "type": "behaviour",
+      "claim": "Updates may not save when the policy targets many groups and exceeds 20 KB.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods-manage",
+      "quote": "You might not be able to save updates to the Authentication methods policy if it targets many groups and the policy size exceeds 20 KB.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risks and limits: Many targeted groups",
+      "type": "behaviour",
+      "claim": "New targeting of individual users in the Authentication methods policy has been removed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods-manage",
+      "quote": "In recent updates, we removed the ability to target individual users. Previously targeted users will remain in the policy, but we recommend moving them to a targeted group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risks and limits: converged registration",
+      "type": "behaviour",
+      "claim": "Only the converged registration experience is aware of the Authentication methods policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods-manage",
+      "quote": "Only the converged registration experience is aware of the Authentication methods policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risks and limits: converged registration",
+      "type": "behaviour",
+      "claim": "Users in scope of the policy but outside converged registration do not see the correct registration methods.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods-manage",
+      "quote": "Users in scope of the Authentication methods policy but not the converged registration experience won't see the correct methods to register.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risks and limits: Strengths do not restrict first sign-in",
+      "type": "behaviour",
+      "claim": "Conditional Access evaluates after initial authentication, so strengths do not restrict initial authentication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strengths",
+      "quote": "Conditional Access policies are evaluated only after the initial authentication. As a result, an authentication strength doesn't restrict a user's initial authentication.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risks and limits: Strengths do not restrict first sign-in",
+      "type": "behaviour",
+      "claim": "Users can enter a password before satisfying the required authentication method.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strengths",
+      "quote": "A user can still enter a password but must sign in by using a phishing-resistant method, such as a FIDO2 security key, before they can continue.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Risks and limits: Windows Hello for Business",
+      "type": "behaviour",
+      "claim": "If a user initially signs in with a password, a strength requiring Windows Hello for Business does not prompt for it mid-session and the user must restart the session.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strengths",
+      "quote": "the user isn't prompted to sign in with Windows Hello for Business. The user needs to restart the session, select Sign-in options, and select a method that the authentication strength requires.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Risks and limits: Email one-time pass (Guest)",
+      "type": "behaviour",
+      "claim": "Email one-time pass (Guest) is not supported in available authentication-strength combinations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strengths",
+      "quote": "The Email one-time pass (Guest) authentication method isn't currently supported in the available combinations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Risks and limits: grant controls",
+      "type": "behaviour",
+      "claim": "Require multifactor authentication and Require authentication strength cannot be combined in one Conditional Access policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strengths",
+      "quote": "You can't use the Require multifactor authentication and Require authentication strength grant controls together in the same Conditional Access policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Risks and limits: Custom strengths",
+      "type": "behaviour",
+      "claim": "Administrators can create up to 15 custom authentication strengths.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strength-advanced-options",
+      "quote": "As an administrator, you can create up to 15 custom authentication strengths to exactly suit your requirements.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Risks and limits: Custom strengths",
+      "type": "behaviour",
+      "claim": "A custom strength referenced by a Conditional Access policy cannot be deleted.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strength-advanced-options",
+      "quote": "If a Conditional Access policy references that authentication strength, you can't delete it, and you need to confirm any edit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Cost and licensing: first paragraph",
+      "type": "licensing",
+      "claim": "The licensing table lists Admin control over verification methods for Free's Global Administrators-only column, Office 365, P1 and P2.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/fundamentals/licensing",
+      "quote": "Feature | Microsoft Entra ID Free - Security defaults (enabled for all users) | Microsoft Entra ID Free - Global Administrators only | Office 365 | Microsoft Entra ID P1 | Microsoft Entra ID P2\nAdmin control over verification methods |  | ✅ | ✅ | ✅ | ✅",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Cost and licensing: first paragraph",
+      "type": "licensing",
+      "claim": "Microsoft's licensing page says only Microsoft Authenticator can be used for the Free security-defaults authentication prompt.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/fundamentals/licensing",
+      "quote": "although Microsoft Entra ID Free provides security defaults with multifactor authentication, only Microsoft Authenticator can be used for the authentication prompt",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Cost and licensing: Activity report",
+      "type": "licensing",
+      "claim": "Authentication methods Activity Usage and insights requires P1 or P2.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/howto-authentication-methods-activity",
+      "quote": "A Microsoft Entra ID P1 or P2 license is required to access Usage and insights.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Cost and licensing: SSPR writeback",
+      "type": "licensing",
+      "claim": "SSPR writeback requires P1 or P2.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/fundamentals/licensing",
+      "quote": "SSPR with writeback |  |  |  | ✅ | ✅",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Cost and licensing: Face Check",
+      "type": "licensing",
+      "claim": "Face Check is a premium add-on to Microsoft Entra Verified ID.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/fundamentals/licensing",
+      "quote": "Microsoft Entra Verified ID also provides Face Check as a premium feature available as an add-on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Cost and licensing: Face Check",
+      "type": "licensing",
+      "claim": "Face Check is included in the Microsoft Entra Suite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/fundamentals/licensing",
+      "quote": "Face Check is included as a full capability in the Microsoft Entra Suite.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Cost and licensing: Face Check",
+      "type": "applicability",
+      "claim": "Face Check is used in identity-verified account recovery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods",
+      "quote": "Microsoft Entra Verified ID Face Check, powered by Azure AI services, verifies proof of presence by matching a user's real-time selfie to the photo from their identity document.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Cost and licensing: last paragraph",
+      "type": "cost",
+      "claim": "Microsoft directs readers to the Microsoft Entra pricing page for specific pricing details.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-mfa-licensing",
+      "quote": "For specific details about pricing and billing, see the Microsoft Entra pricing page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Cost and licensing: last paragraph",
+      "type": "absence",
+      "claim": "The Learn pages researched for authentication licensing do not publish the specific prices themselves.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Entra authentication pricing Face Check $0.25 verification; authentication methods per sign-in meter pricing billing. Read licensing, concept-mfa-licensing, external-identities-pricing, and the verified-id-pricing search excerpt; they direct current prices to Microsoft pricing pages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Cost and licensing: last sentence",
+      "type": "absence",
+      "claim": "No per-sign-in meter for authentication methods is documented.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/entra/external-id/external-identities-pricing",
+      "quote": "SMS Phone Authentication | Workforce, External | Transaction-based | Additional charges for each SMS-based authentication event (text only; voice isn't supported).",
+      "severity": "blocker",
+      "fix": "Remove 'No per-sign-in meter for authentication methods is documented.' The page discusses guests as well as members, so it cannot make this blanket absence claim: Microsoft documents transaction-based SMS Phone Authentication in External ID for workforce and external tenants at https://learn.microsoft.com/entra/external-id/external-identities-pricing."
+    },
+    {
+      "n": 71,
+      "where": "Governance controls: Roles",
+      "type": "role",
+      "claim": "Viewing a user's identity verification history requires at least Security Reader.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods-manage",
+      "quote": "To view a user's identity verification status and history, use at least the Security Reader role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Governance controls: How they interact, legacy MFA path",
+      "type": "admin-path",
+      "claim": "Legacy MFA settings are reached through Entra ID > Multifactor authentication > Getting started > Configure > Additional cloud-based multifactor authentication settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods-manage",
+      "quote": "To manage the legacy MFA policy, Browse to Entra ID > Multifactor authentication > Getting started > Configure > Additional cloud-based multifactor authentication settings.",
+      "severity": "minor",
+      "fix": "Keep the cited route but add: 'The migration guide gives another route: Entra ID > Users > Per-user MFA > service settings.' Cite https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-methods-manage, whose navigation differs from the overview."
+    },
+    {
+      "n": 73,
+      "where": "Governance controls: How they interact, legacy SSPR path",
+      "type": "admin-path",
+      "claim": "Legacy SSPR methods are reached through Entra ID > Password reset > Authentication methods.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods-manage",
+      "quote": "To manage authentication methods for self-service password reset (SSPR), browse to Entra ID > Password reset > Authentication methods.",
+      "severity": "minor",
+      "fix": "Keep the overview's route but add: 'The migration guide inserts Users: Entra ID > Users > Password reset > Authentication methods.' Cite https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-methods-manage."
+    },
+    {
+      "n": 74,
+      "where": "Governance controls: How they interact",
+      "type": "default",
+      "claim": "Tenants start in Pre-migration or Migration in Progress depending on their current state.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods-manage",
+      "quote": "Tenants are set to either Pre-migration or Migration in Progress by default, depending on their tenant's current state.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Governance controls: How they interact",
+      "type": "behaviour",
+      "claim": "From Migration in Progress a tenant cannot return to Pre-migration.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods-manage",
+      "quote": "If you start in Pre-migration, you can move to any of the states at any time. If you started in Migration in Progress, you can move between Migration in Progress and Migration Complete at any time, but won't be allowed to move to Pre-migration.",
+      "severity": "blocker",
+      "fix": "Replace 'from Migration in Progress you cannot return to Pre-migration' with 'tenants that started in Migration in Progress cannot move to Pre-migration; tenants that started in Pre-migration can move to any state at any time'."
+    },
+    {
+      "n": 76,
+      "where": "Governance controls: How they interact",
+      "type": "behaviour",
+      "claim": "After migration, Number of methods required to reset remains active in legacy SSPR.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods-manage",
+      "quote": "After all authentication methods are fully migrated, the following elements of the legacy SSPR policy remain active:\nThe Number of methods required to reset control",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "Governance controls: How they interact",
+      "type": "behaviour",
+      "claim": "After migration, the SSPR administrator policy remains active in legacy SSPR.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods-manage",
+      "quote": "The SSPR administrator policy: admins can continue to register and use any methods listed under the legacy SSPR administrator policy or methods they're enabled to use in the Authentication methods policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "Governance controls: How they interact",
+      "type": "behaviour",
+      "claim": "Authentication-strength combinations require methods users have registered and administrators have enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strengths",
+      "quote": "These combinations include methods that users need to register and that admins need to enable in the policy for authentication methods or the policy for legacy MFA settings",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "Governance controls: Watching it; What to check",
+      "type": "admin-path",
+      "claim": "The Activity report is reached through Entra ID > Authentication methods > Activity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/howto-authentication-methods-activity",
+      "quote": "Browse to Entra ID > Authentication methods > Activity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "Governance controls: Watching it; What to check",
+      "type": "behaviour",
+      "claim": "The Activity report has a Registration tab showing registered authentication methods.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/howto-authentication-methods-activity",
+      "quote": "There are two tabs in the report: Registration and Usage.\nUsers registered by authentication method shows how many users are registered for each authentication method.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
+      "where": "Governance controls: Watching it; What to check",
+      "type": "behaviour",
+      "claim": "The Activity report has a Usage tab showing methods used to sign in and reset passwords.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/howto-authentication-methods-activity",
+      "quote": "The Usage report shows which authentication methods are used to sign-in and reset passwords.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 82,
+      "where": "Governance controls: Watching it",
+      "type": "role",
+      "claim": "Reports Reader can access the Activity report.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/howto-authentication-methods-activity",
+      "quote": "The following roles have the required permissions:\nReports Reader",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 83,
+      "where": "Governance controls: Watching it",
+      "type": "role",
+      "claim": "Security Reader can access the Activity report.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/howto-authentication-methods-activity",
+      "quote": "The following roles have the required permissions:\nReports Reader\nSecurity Reader",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 84,
+      "where": "Governance controls: Watching it",
+      "type": "role",
+      "claim": "Global Reader can access the Activity report.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/howto-authentication-methods-activity",
+      "quote": "The following roles have the required permissions:\nReports Reader\nSecurity Reader\nGlobal Reader",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 85,
+      "where": "Governance controls: Watching it",
+      "type": "behaviour",
+      "claim": "Microsoft Entra ID writes audit log entries when an administrator changes authentication methods.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-deploy-phishing-resistant-passwordless-authentication",
+      "quote": "Microsoft Entra ID adds entries to audit logs when these conditions occur:\nAn administrator changes authentication methods.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 86,
+      "where": "Governance controls: Watching it",
+      "type": "behaviour",
+      "claim": "Microsoft Entra ID writes audit log entries when a user changes their credentials.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-deploy-phishing-resistant-passwordless-authentication",
+      "quote": "Microsoft Entra ID adds entries to audit logs when these conditions occur:\nA user makes any kind of change to their credentials within Microsoft Entra ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 87,
+      "where": "What to check: method review and Activity report",
+      "type": "consistency",
+      "claim": "The checklist asks readers to review SMS and voice-call settings and the Activity report, but the controls table has no rows for them.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: review SMS and voice call; read the Activity report's Registration and Usage tabs. Table: passkeys, Authenticator, migration state, registration campaign, custom strengths; no SMS, voice-call or Activity row.",
+      "severity": "minor",
+      "fix": "The SMS/voice-call review and Activity-report checklist steps have no corresponding controls-table rows. Remove those two checklist bullets to make the checklist match the existing table; do not add unverified rows. Legacy security questions are a retiring control and do not require a new row."
+    },
+    {
+      "n": 88,
+      "where": "Open questions: migration of legacy SSPR controls",
+      "type": "absence",
+      "claim": "A migration date for security questions, Number of methods required to reset and the SSPR administrator policy is not published in the researched documentation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Authentication methods policy security questions Number of methods required reset administrator policy migration future date. Read methods-manage, how-to-authentication-methods-manage and concept-authentication-security-questions; no migration date found, but retirement is March 2027.",
+      "severity": "minor",
+      "fix": "Replace the first open question with: 'When will the Number of methods required to reset control and the SSPR administrator policy move into the Authentication methods policy?' Security questions have a documented SSPR retirement in March 2027, not a published migration schedule."
+    },
+    {
+      "n": 89,
+      "where": "Open questions: Microsoft managed campaign method and settings",
+      "type": "absence",
+      "claim": "Which methods and settings Microsoft managed registration campaigns choose is an open documentation question.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-mfa-registration-campaign",
+      "quote": "Microsoft targets passkey (FIDO2) when included users are enabled for passkeys, and Microsoft Authenticator when they aren't enabled for passkeys but are enabled for Authenticator.",
+      "severity": "blocker",
+      "fix": "Remove 'Which methods and settings does the Microsoft managed registration campaign choose' from Open questions. The cited page publishes targeting, eligibility and settings: one-day snooze for both methods; three allowed snoozes for Authenticator and unlimited snoozes for passkeys. Do not describe those documented values as unknown."
+    },
+    {
+      "n": 90,
+      "where": "Open questions: announcements of managed-default changes",
+      "type": "absence",
+      "claim": "Whether Microsoft guarantees notification whenever managed campaign defaults change remains open.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft managed registration campaign default method snooze change announcement. Read how-to-mfa-registration-campaign and concept-authentication-default-enablement: Microsoft can announce protection in release notes and Tech Community; no every-change notification guarantee found.",
+      "severity": "minor",
+      "fix": "Replace the notification part of the question with: 'Microsoft says it can announce Microsoft-managed default protection in release notes and Tech Community; does it guarantee advance notification for every registration-campaign default change?' Cite https://learn.microsoft.com/entra/identity/authentication/concept-authentication-default-enablement."
+    },
+    {
+      "n": 91,
+      "where": "Open questions: policy-size warning",
+      "type": "absence",
+      "claim": "A warning before the Authentication methods policy reaches 20 KB is not documented in the researched pages.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Authentication methods policy 20 KB policy size warning before save. Read concept-authentication-methods-manage and how-to-authentication-passkeys-fido2; they describe save failures and consolidation, not an advance policy-size warning.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 92,
+      "where": "sources",
+      "type": "behaviour",
+      "claim": "Some verified statements rely on Microsoft pages not included in the concept page's sources.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/microsoftauthenticatorauthenticationmethodconfiguration?view=graph-rest-1.0",
+      "quote": "state | authenticationMethodState | The possible values are: enabled, disabled.\nincludeTargets ... A collection of groups that are enabled to use the authentication method.",
+      "severity": "minor",
+      "fix": "Add these researched supporting pages to sources: https://learn.microsoft.com/graph/api/resources/microsoftauthenticatorauthenticationmethodconfiguration?view=graph-rest-1.0; https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-methods-manage; https://learn.microsoft.com/entra/identity/authentication/concept-authentication-security-questions; https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2; https://learn.microsoft.com/entra/identity/authentication/how-to-enable-authenticator-passkey; https://learn.microsoft.com/entra/identity/authentication/howto-authentication-passwordless-phone; https://learn.microsoft.com/entra/identity/authentication/concept-authentication-default-enablement; https://learn.microsoft.com/power-pages/security/authentication/configure-site; https://learn.microsoft.com/connectors/custom-connectors/. Add https://learn.microsoft.com/windows/security/identity-protection/hello-for-business/configure only if retaining the verified replacement about separate Windows Hello enrollment controls."
+    },
+    {
+      "n": 93,
+      "where": "What it is: other uses of the authentication tag",
+      "type": "behaviour",
+      "claim": "Power Pages uses identity providers to authenticate site users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/security/authentication/configure-site",
+      "quote": "If you enforce authentication, users authenticate through an identity provider.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 94,
+      "where": "What it is: other uses of the authentication tag",
+      "type": "behaviour",
+      "claim": "Connectors can use OAuth to authenticate to another service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/connectors/custom-connectors/",
+      "quote": "Use one of these standard authentication methods for your APIs and connectors ... Generic OAuth 2.0 ... OAuth 2.0 for specific services, including Microsoft Entra ID, Dropbox, GitHub, and SalesForce",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 95,
+      "where": "controls[3].note; Governance controls: Roles",
+      "type": "role",
+      "claim": "Managing the registration campaign requires at least Authentication Policy Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-mfa-registration-campaign",
+      "quote": "Sign in to the Microsoft Entra admin center as at least an Authentication Policy Administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 96,
+      "where": "Risks and limits: any policy enables it",
+      "type": "behaviour",
+      "claim": "Microsoft's example explains voice-call sign-in outside the targeted group through legacy SSPR or MFA settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods-manage",
+      "quote": "it's likely those users are enabled for Mobile phone in the legacy SSPR policy or Call to phone in the legacy MFA policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 97,
+      "where": "controls[3].governs; What to check: registration campaign",
+      "type": "behaviour",
+      "claim": "A registration campaign can target Authenticator or passkeys, with configurable included and excluded users or groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-mfa-registration-campaign",
+      "quote": "Use microsoftAuthenticator to nudge users to set up Authenticator, or use fido2 to nudge users to register a passkey.\nSelect the users or groups to include in or exclude from the registration campaign, and then select Save.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-26T03:50:29.160Z",
+    "summary": {
+      "links": 15,
+      "unreachable": 0,
+      "uiPaths": 5,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 5,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods-manage",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strengths",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strength-advanced-options",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/authenticationstrengthroot-post-policies",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/fido2authenticationmethodconfiguration-update?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/microsoftauthenticatorauthenticationmethodconfiguration-update?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/authenticationmethodspolicy-update?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/authenticationmethodspolicy?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoft.graph.identity.signins/update-mgpolicyauthenticationmethodpolicy?view=graph-powershell-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/authentication/how-to-mfa-registration-campaign",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/authentication/howto-authentication-methods-activity",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/authentication/how-to-deploy-phishing-resistant-passwordless-authentication",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/fundamentals/licensing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/authentication/concept-mfa-licensing",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether passkeys (FIDO2) are enabled, for which groups, and their method settings",
+        "docs": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods-manage",
+        "reachable": true,
+        "segments": [
+          "Entra ID",
+          "Authentication methods",
+          "Policies"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether passkeys (FIDO2) are enabled, for which groups, and their method settings",
+        "docs": "https://learn.microsoft.com/graph/api/fido2authenticationmethodconfiguration-update?view=graph-rest-1.0",
+        "reachable": true,
+        "token": "/v1.0/policies/authenticationMethodsPolicy",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether Microsoft Authenticator is enabled, for which groups, and its settings",
+        "docs": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods-manage",
+        "reachable": true,
+        "segments": [
+          "Entra ID",
+          "Authentication methods",
+          "Policies"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether Microsoft Authenticator is enabled, for which groups, and its settings",
+        "docs": "https://learn.microsoft.com/graph/api/microsoftauthenticatorauthenticationmethodconfiguration-update?view=graph-rest-1.0",
+        "reachable": true,
+        "token": "/v1.0/policies/authenticationMethodsPolicy",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Migration state: whether legacy MFA and SSPR policy settings are still respected",
+        "docs": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods-manage",
+        "reachable": true,
+        "segments": [
+          "Entra ID",
+          "Authentication methods",
+          "Policies",
+          "Manage migration"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Migration state: whether legacy MFA and SSPR policy settings are still respected",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoft.graph.identity.signins/update-mgpolicyauthenticationmethodpolicy?view=graph-powershell-1.0",
+        "reachable": true,
+        "token": "Update-MgPolicyAuthenticationMethodPolicy",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Registration campaign that nudges users to set up Authenticator or a passkey, and who is included or excluded",
+        "docs": "https://learn.microsoft.com/entra/identity/authentication/how-to-mfa-registration-campaign",
+        "reachable": true,
+        "segments": [
+          "Entra ID",
+          "Authentication methods",
+          "Registration campaign",
+          "Edit"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Registration campaign that nudges users to set up Authenticator or a passkey, and who is included or excluded",
+        "docs": "https://learn.microsoft.com/graph/api/authenticationmethodspolicy-update?view=graph-rest-1.0",
+        "reachable": true,
+        "token": "/v1.0/policies/authenticationMethodsPolicy",
+        "found": true
+      },
+      {
+        "index": 4,
+        "side": "ui",
+        "governs": "Custom authentication strengths: which method combinations a resource accepts",
+        "docs": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strength-advanced-options",
+        "reachable": true,
+        "segments": [
+          "Entra ID",
+          "Authentication methods",
+          "Authentication strengths",
+          "New authentication strength"
+        ],
+        "missing": []
+      },
+      {
+        "index": 4,
+        "side": "api",
+        "governs": "Custom authentication strengths: which method combinations a resource accepts",
+        "docs": "https://learn.microsoft.com/graph/api/authenticationstrengthroot-post-policies",
+        "reachable": true,
+        "token": "/v1.0/policies/authenticationStrengthPolicies",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

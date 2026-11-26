@@ -90,15 +90,17 @@ changes:
     note: "Corrected after verification: block is qualified for SharePoint and Foundry agents, the role requirement is limited to the two read APIs, and the unsupported 'nothing happens until called' claim is removed."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 74 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 77 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-25"
+  date: "2026-11-26"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 74
-  confirmed: 74
+  claims: 77
+  confirmed: 77
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -193,9 +195,10 @@ cost: Medium. Learn says access to the Package Management API requires a Microso
 impact: Low. Administrators and developers who script agent governance notice it; end users see no change from the read endpoints.
 -->
 
-<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Security & identity / behaviour: An app with the application permission can read package information without a signed-in user. | Found: CopilotPackages.Read.All ... DisplayText | Read all packages information ... Description | Allows the app to read packages information without a signed-in user. | Fix: Add https://learn.microsoft.com/graph/permissions-reference and https://learn.microsoft.com/graph/permissions-overview to sources for the explanations of app-only and delegated access. | Source: https://learn.microsoft.com/graph/permissions-reference#all-permissions
-- [supported, minor] front matter: licensing.model; rationale: cost / licensing: Agent 365 can be added separately when it is not already included in the tenant's plan, supporting the add-on model. | Found: Microsoft Agent 365 is available as a stand-alone subscription for use with eligible Microsoft 365 subscriptions and is also included with Microsoft 365 E7. | Fix: Add https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365 to sources to support the separate subscription option used by the add-on model and cost rationale. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365
+- [supported, minor] Risk assessment: Security & identity / behaviour: An app with the application permission can read package information without a signed-in user. | Found: CopilotPackages.Read.All ... DisplayText | Read all packages information ... Description | Allows the app to read packages information without a signed-in user. | Fix: Add https://learn.microsoft.com/graph/permissions-reference to sources for the explanation of app-only package access. | Source: https://learn.microsoft.com/graph/permissions-reference#all-permissions
+- [supported, minor] front matter: licensing.model; rationale: cost / licensing: Agent 365 can be added as a separate subscription when not already included, supporting the add-on model and medium cost. | Found: Microsoft Agent 365 is available as a stand-alone subscription for use with eligible Microsoft 365 subscriptions and is also included with Microsoft 365 E7. | Fix: Add https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365 to sources. Replace the final clause of the cost rationale with 'a tenant without either can add Agent 365 as a stand-alone subscription for use with an eligible Microsoft 365 subscription'. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365
+- [supported, minor] Governance controls: delegated access / behaviour: The delegated-only block operation must run on behalf of a signed-in administrator rather than in app-only context. | Found: In delegated access, the app calls Microsoft Graph on behalf of a signed-in user. In app-only access, the app calls Microsoft Graph with its own identity, without a signed-in user. | Fix: Add https://learn.microsoft.com/graph/permissions-overview to sources for the explanation of delegated versus app-only execution. | Source: https://learn.microsoft.com/graph/permissions-overview
 -->

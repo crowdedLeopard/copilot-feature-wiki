@@ -149,15 +149,17 @@ changes:
     note: "Corrected after verification: the publisher-type and User access rows now give the Graph beta Tenant Configuration Management applyOnce API, and the automation gaps in the notes and open questions are narrowed to match."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 119 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 105 statements not yet confirmed"
 version: 4
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-23"
+  date: "2026-11-26"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 119
-  confirmed: 119
+  claims: 105
+  confirmed: 105
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -270,8 +272,8 @@ cost: Low. Learn lists the Microsoft 365 Copilot add-on licence (or Microsoft 36
 impact: Medium. Users with a Microsoft 365 Copilot licence see the connectors in Copilot Chat, Researcher and other Copilot experiences once the controls allow it, and for sources that require authentication each user connects with their own sign-in.
 -->
 
-<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: defaultState; Why it matters; Scope; Open questions; rationale: risk / default: The current documentation leaves new-tenant publisher-type selections unstated, so the briefing records the arrival default as unknown. | Found: Searched: federated Copilot connectors default allowed agent types Microsoft external publishers new tenant selected. Read current federated overview, manage/custom setup and Agent settings; initial publisher selections unstated. Older preview search excerpt says enabled by default for a tenant. | Fix: After the default discussion, add: 'An indexed early-access preview version of the federated overview described connectors as enabled by default for a tenant; the current overview instead describes availability conditional on publisher-type selections and User access, without stating initial publisher-type selections.' Keep defaultState unknown for that narrower current-documentation gap. Cite https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview#admin-experience-and-controls. The quoted default was read in the Learn search excerpt, not in the freshly fetched current page.
+- [supported, minor] front matter: defaultState; Why it matters; Scope; Open questions; rationale: risk / default: Current documentation does not state initial new-tenant publisher-type selections, so the briefing records the arrival default as unknown. | Found: Searched: federated Copilot connectors new tenant default publisher types selected enabled by default. Read overview, manage, custom setup and agent settings. Current selections unstated; indexed early-access overview says 'Federated connectors are enabled by default for a tenant.' | Fix: Keep defaultState unknown for the current initial-selection gap. Add after the default discussion: 'An indexed early-access preview version of the federated overview described connectors as enabled by default for a tenant; the current overview instead makes availability conditional on publisher-type selections and User access, without stating initial publisher-type selections.' Cite https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview#admin-experience-and-controls.
 -->

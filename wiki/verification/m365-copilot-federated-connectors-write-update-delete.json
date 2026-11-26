@@ -3,7 +3,7 @@
   "roadmapId": 570964,
   "title": "Microsoft 365 Copilot: federated connectors can create, update and delete in third-party systems",
   "status": "verified-with-gaps",
-  "date": "2026-11-24",
+  "date": "2026-11-26",
   "version": 5,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
@@ -14,32 +14,21 @@
   "notes": [],
   "hold": null,
   "counts": {
-    "claims": 79,
-    "confirmed": 78,
+    "claims": 92,
+    "confirmed": 91,
     "unconfirmed": 0,
     "contradicted": 1,
     "blocker": 0,
     "major": 0,
-    "minor": 4
+    "minor": 6
   },
-  "summary": "The briefing passes: its licensing, connector controls and approval model are supported by Microsoft documentation. Minor corrections should clarify reusable approval duration, acknowledge conflicting guidance about Word and PowerPoint availability, and remove tool-inventory checklist steps that have no controls-table row.",
+  "summary": "The briefing passes: the roadmap facts, licensing, approval behavior and documented controls are supported. Minor corrections should qualify persistent approvals and tool-blocking enforcement, acknowledge conflicting Word and PowerPoint availability guidance, and remove checklist instructions without a matching controls row.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing",
+      "where": "front matter: status",
       "type": "record",
-      "claim": "The update unblocks federated connector create, update and delete tools in Copilot Chat.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "With this update, the connector tools that create, update, and delete content in those services are unblocked in Copilot Chat, so users can complete work without leaving Copilot.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 2,
-      "where": "front matter: status; What's changing",
-      "type": "record",
-      "claim": "The roadmap status is Launched.",
+      "claim": "The roadmap item is Launched.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"Launched\"",
@@ -47,7 +36,7 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 2,
       "where": "front matter: targetDate",
       "type": "record",
       "claim": "The roadmap target is October CY2026.",
@@ -58,7 +47,40 @@
       "fix": null
     },
     {
+      "n": 3,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 4,
+      "where": "front matter: clouds; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms",
+      "type": "record",
+      "claim": "The roadmap lists Desktop and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
       "where": "front matter: previewDate",
       "type": "record",
       "claim": "The roadmap supplies no preview date.",
@@ -69,51 +91,183 @@
       "fix": null
     },
     {
-      "n": 5,
-      "where": "front matter: releasePhase",
-      "type": "record",
-      "claim": "The release phase is General Availability.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\n    \"General Availability\"\n  ]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "front matter: clouds; Scope",
-      "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\n    \"Worldwide (Standard Multi-Tenant)\"\n  ]",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 7,
-      "where": "front matter: platforms",
+      "where": "title; summary; What's changing",
       "type": "record",
-      "claim": "Desktop is a listed platform.",
+      "claim": "The update unblocks connector tools that create content in third-party services in Copilot Chat.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"platforms\": [\n    \"Desktop\",\n    \"Web\"\n  ]",
+      "quote": "With this update, the connector tools that create, update, and delete content in those services are unblocked in Copilot Chat",
       "severity": null,
       "fix": null
     },
     {
       "n": 8,
-      "where": "front matter: platforms",
+      "where": "title; summary; What's changing",
       "type": "record",
-      "claim": "Web is a listed platform.",
+      "claim": "The update unblocks connector tools that update content in third-party services in Copilot Chat.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"platforms\": [\n    \"Desktop\",\n    \"Web\"\n  ]",
+      "quote": "With this update, the connector tools that create, update, and delete content in those services are unblocked in Copilot Chat",
       "severity": null,
       "fix": null
     },
     {
       "n": 9,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "The update unblocks connector tools that delete content in third-party services in Copilot Chat.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "With this update, the connector tools that create, update, and delete content in those services are unblocked in Copilot Chat",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing; Risk assessment",
+      "type": "record",
+      "claim": "Copilot acts with the user's own account at the third-party service.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Copilot acts with the user's own account and permissions at the third-party service",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Risk assessment",
+      "type": "record",
+      "claim": "Copilot acts with the user's own permissions at the third-party service.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Copilot acts with the user's own account and permissions at the third-party service",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says every create, update or delete action requires explicit user confirmation before it runs.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "every create, update, or delete action requires the user's explicit confirmation before it runs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says administrators can view each connector's read and write/delete tools in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Admins can view each connector's read and write/delete tools in the Microsoft 365 admin center",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Governance guidance",
+      "type": "record",
+      "claim": "Administrators can disable connectors that do not meet organizational policy.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "disable connectors that don't meet their organization's policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: defaultState; Why it matters; Risk assessment; rationale: risk",
+      "type": "default",
+      "claim": "Write tools reach users of already enabled connectors without a separate admin enablement action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "Write, update, and delete tools are part of the connector and aren't enabled separately.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "Connector grounding is included in the qualifying Microsoft 365 Copilot entitlement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "If your organization has Microsoft 365 Copilot licenses, connector grounding in Copilot is included, and no extra charges apply.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "summary; front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Every user querying a federated source needs a Microsoft 365 Copilot add-on license unless covered by E7.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Federated Copilot connectors are available only to tenants and users with a Microsoft 365 Copilot add-on license (or Microsoft 365 E7).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "summary; front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Microsoft 365 E7 qualifies for federated connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Federated Copilot connectors are available only to tenants and users with a Microsoft 365 Copilot add-on license (or Microsoft 365 E7).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Copilot Chat access alone does not qualify a user for federated connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Federated Copilot connectors are available only to tenants and users with a Microsoft 365 Copilot add-on license (or Microsoft 365 E7).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Copilot pay-as-you-go does not qualify for federated connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "They aren't supported with Copilot Studio licenses or Microsoft 365 Copilot pay-as-you-go.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: cost; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Connector grounding adds no extra Microsoft charge for users who already hold the qualifying license.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "If your organization has Microsoft 365 Copilot licenses, connector grounding in Copilot is included, and no extra charges apply.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The organization is responsible for complying with third-party rights, licenses and obligations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/terms-of-use",
+      "quote": "you're solely and exclusively responsible for: a) the Connector Functionality; and b) using the Microsoft 365 Copilot connector in compliance with any third-party rights, licenses, and obligations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "Federated connectors use Model Context Protocol.",
@@ -124,7 +278,7 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 24,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "Federated connectors query external services in real time.",
@@ -135,7 +289,7 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 25,
       "where": "What's changing; Risk assessment",
       "type": "behaviour",
       "claim": "Federated connectors do not index external data into Microsoft 365.",
@@ -146,10 +300,10 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 26,
       "where": "What's changing",
       "type": "date",
-      "claim": "Federated connectors were read-only before the October 2026 write-action change.",
+      "claim": "Federated connectors were read-only until October 2026.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/overview",
       "quote": "Write actions will be available starting early October 2026.\n\n- Federated connectors are read-only; they can search and fetch content but can't write data back.",
@@ -157,21 +311,32 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 27,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "A supported connector can turn an escalation email into a ticket or issue without leaving Copilot.",
+      "claim": "The general connectors overview still says read-only alongside an early October 2026 write-actions note.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
-      "quote": "Users can complete work without leaving Copilot. For example, a user can turn an escalation email into an issue in a project-tracking tool",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/overview",
+      "quote": "Write actions will be available starting early October 2026.\n\n- Federated connectors are read-only; they can search and fetch content but can't write data back.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 14,
+      "n": 28,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "A supported connector can update a CRM record from Copilot.",
+      "claim": "A user can turn an escalation email into an issue or ticket through a connector's tools without leaving Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "a user can turn an escalation email into an issue in a project-tracking tool",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "A user can update a CRM record through the connector's tools.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
       "quote": "update a record in a customer relationship management (CRM) system",
@@ -179,40 +344,18 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 30,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "A supported connector can add a comment to a ticket or issue from Copilot Chat.",
+      "claim": "A user can add a comment to an issue or ticket directly from Copilot Chat.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
-      "quote": "or add a comment to a ticket directly from Copilot Chat.",
+      "quote": "add a comment to a ticket directly from Copilot Chat.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 16,
-      "where": "summary; What's changing; Risk assessment",
-      "type": "behaviour",
-      "claim": "Actions use the user's source-system identity and cannot exceed that user's permissions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
-      "quote": "Actions run in the third-party service on behalf of the user and are limited by that user's permissions. Copilot can change only what the user is already permitted to change in the source system.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The roadmap says every create, update or delete action requires explicit user confirmation.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "every create, update, or delete action requires the user's explicit confirmation before it runs.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
+      "n": 31,
       "where": "What's changing",
       "type": "default",
       "claim": "Write, update and delete tools default to Needs approval.",
@@ -223,10 +366,10 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 32,
       "where": "What's changing; Risk assessment",
       "type": "behaviour",
-      "claim": "The confirmation card lets users review the action parameters before approval.",
+      "claim": "The confirmation card lets the user review action parameters before approving.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
       "quote": "Users can expand the card to review the action parameters before approving it.",
@@ -234,10 +377,10 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 33,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Nothing is sent to the connected system while an action is awaiting confirmation.",
+      "claim": "While an action awaits confirmation, nothing is sent to the connected system until the user responds.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
       "quote": "While an action is awaiting confirmation, nothing is sent to the connected system until the user responds.",
@@ -245,10 +388,10 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 34,
       "where": "What's changing; Governance guidance",
       "type": "behaviour",
-      "claim": "Allow once runs the action but requires approval the next time the tool is used.",
+      "claim": "Allow once runs the action and asks again on the next use of the tool.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
       "quote": "Allow once | Runs the action now. Copilot asks again the next time it wants to use the tool.",
@@ -256,10 +399,10 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 35,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Allow for conversation suppresses further approval prompts for that tool in the current conversation.",
+      "claim": "Allow for conversation suppresses repeated approval requests for that tool for the current conversation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
       "quote": "Allow for conversation | Runs the action and doesn't ask again for this tool for the rest of the current conversation.",
@@ -267,10 +410,10 @@
       "fix": null
     },
     {
-      "n": 23,
+      "n": 36,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Always allow permits later calls to the same tool without another prompt, subject to resetting approval.",
+      "claim": "Always allow suppresses repeated approval requests for the chosen tool.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
       "quote": "Always allow | Runs the action and doesn't ask again for this tool until the user changes the setting or the publisher changes the tool.",
@@ -278,10 +421,10 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 37,
       "where": "What's changing; Risk assessment; Governance guidance",
       "type": "behaviour",
-      "claim": "Cancel declines the action without changing the connected system.",
+      "claim": "Cancel declines the action and leaves the connected system unchanged.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
       "quote": "Cancel | Declines the action. Nothing is changed in the connected system.",
@@ -289,7 +432,7 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 38,
       "where": "What's changing; Governance controls",
       "type": "behaviour",
       "claim": "Reusable approvals apply to an individual tool, not the whole connector.",
@@ -300,10 +443,21 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 39,
+      "where": "What's changing; Governance controls",
+      "type": "admin-path",
+      "claim": "Users review or reset approval settings at Copilot Settings > Sources > connector > Tools > Write/Delete tools.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "Users can review or reset tool permissions in Copilot by going to Settings > Sources and selecting the connector. The Tools section groups the connector's Write/Delete tools separately from its Read tools.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
       "where": "What's changing",
       "type": "default",
-      "claim": "New or changed write-capable tools are set to Needs approval.",
+      "claim": "A new or changed write-capable tool is set to Needs approval.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
       "quote": "If a connector publisher adds a new write-capable tool or changes an existing one, the tool is set to Needs approval by default.",
@@ -311,21 +465,10 @@
       "fix": null
     },
     {
-      "n": 27,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The roadmap says admins can inspect read and write/delete tools and disable connectors in the Microsoft 365 admin center.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Admins can view each connector's read and write/delete tools in the Microsoft 365 admin center and disable connectors that don't meet their organization's policies.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
+      "n": 41,
       "where": "summary; What's changing; Open questions",
       "type": "availability",
-      "claim": "Learn labels the admin-center connector tool view Coming soon.",
+      "claim": "Learn labels the admin-center connector tool list Coming soon.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
       "quote": "View a connector's tools in the admin center (Coming soon)",
@@ -333,10 +476,10 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 42,
       "where": "What's changing; Governance controls",
       "type": "availability",
-      "claim": "The admin-center tool list is not available for all connectors.",
+      "claim": "Viewing tools in the admin center is not available for all connectors.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
       "quote": "Viewing tools in the admin center isn't available for all connectors.",
@@ -344,21 +487,32 @@
       "fix": null
     },
     {
-      "n": 30,
-      "where": "What's changing; Governance controls",
+      "n": 43,
+      "where": "What's changing; Governance guidance",
       "type": "admin-path",
-      "claim": "On a supported connector's details page, admins go to Tools, sign in to the service, and select All tools.",
+      "claim": "For supported connectors an administrator opens the connector's Tools section and signs in to the third-party service.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
-      "quote": "On the connector's details page, go to the Tools section and sign in to the third-party service.\n\nSelect All tools, and then review the list to identify tools that can create, update, or delete data.",
+      "quote": "go to Copilot connectors > Your connections and select the federated connector.\nOn the connector's details page, go to the Tools section and sign in to the third-party service.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 31,
+      "n": 44,
+      "where": "What's changing",
+      "type": "admin-path",
+      "claim": "Select All tools in the connector's Tools section to review available write tools.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "Select All tools, and then review the list to identify tools that can create, update, or delete data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The admin tool list reflects the account used to sign in.",
+      "claim": "The admin-center tool list reflects the permissions of the account used to sign in.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
       "quote": "The tool list reflects the permissions of the account used to sign in.",
@@ -366,10 +520,10 @@
       "fix": null
     },
     {
-      "n": 32,
-      "where": "What's changing",
+      "n": 46,
+      "where": "What's changing; Governance controls",
       "type": "admin-path",
-      "claim": "Learn directs users to Copilot Settings > Sources > connector > Write/Delete tools when the admin tool view is unavailable.",
+      "claim": "Learn points to Copilot Settings > Sources > connector > Write/Delete tools when the admin tool list is unavailable.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
       "quote": "sign in to Microsoft 365 Copilot with your user account, go to Settings -> Sources, and select the connector. Then expand Write/Delete tools.",
@@ -377,21 +531,21 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 47,
       "where": "What's changing; Scope",
       "type": "availability",
-      "claim": "Federated connector actions are supported in Microsoft 365 Copilot Chat.",
+      "claim": "Federated connector write actions are supported in Microsoft 365 Copilot Chat.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
-      "quote": "Microsoft 365 Copilot supports federated Copilot connectors in the following experiences:\n\n- Microsoft 365 Copilot Chat",
+      "quote": "Microsoft 365 Copilot supports federated Copilot connectors in the following experiences:\n- Microsoft 365 Copilot Chat",
       "severity": null,
       "fix": null
     },
     {
-      "n": 34,
+      "n": 48,
       "where": "What's changing; Scope; Risk assessment",
       "type": "availability",
-      "claim": "Agents other than Researcher support write-capable federated connectors where the connector provides those tools.",
+      "claim": "Agents other than Researcher support federated connector write actions where the connector provides tools.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
       "quote": "- Agents\n- Cowork\n- Copilot in Word, Excel, PowerPoint, and Outlook\n- Researcher agent\n\nThe Researcher agent doesn't support write, update, or delete actions.",
@@ -399,18 +553,18 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 49,
       "where": "What's changing; Scope",
       "type": "availability",
       "claim": "Cowork supports federated connector actions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
-      "quote": "- Cowork",
+      "quote": "Microsoft 365 Copilot supports federated Copilot connectors in the following experiences:\n- Microsoft 365 Copilot Chat\n- Agents\n- Cowork",
       "severity": null,
       "fix": null
     },
     {
-      "n": 36,
+      "n": 50,
       "where": "What's changing; Scope",
       "type": "availability",
       "claim": "Copilot in Word supports federated connector actions.",
@@ -418,10 +572,10 @@
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
       "quote": "Copilot in Word, Excel, PowerPoint, and Outlook",
       "severity": "minor",
-      "fix": "Add: 'The federated connectors overview lists Word as supported, but the submission guide still says Word is coming soon.' Cite https://learn.microsoft.com/microsoft-365/copilot/connectors/submit-federated-connector, which states 'with Word and PowerPoint coming soon'."
+      "fix": "Add: 'The federated connectors overview lists Word and PowerPoint as supported, but the submission guide still says they are coming soon.' Cite https://learn.microsoft.com/microsoft-365/copilot/connectors/submit-federated-connector, which says 'with Word and PowerPoint coming soon'."
     },
     {
-      "n": 37,
+      "n": 51,
       "where": "What's changing; Scope",
       "type": "availability",
       "claim": "Copilot in Excel supports federated connector actions.",
@@ -432,7 +586,7 @@
       "fix": null
     },
     {
-      "n": 38,
+      "n": 52,
       "where": "What's changing; Scope",
       "type": "availability",
       "claim": "Copilot in PowerPoint supports federated connector actions.",
@@ -440,10 +594,10 @@
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
       "quote": "Copilot in Word, Excel, PowerPoint, and Outlook",
       "severity": "minor",
-      "fix": "Combine with the Word qualification: 'The federated connectors overview lists Word and PowerPoint as supported, but the submission guide still says they are coming soon.' Cite https://learn.microsoft.com/microsoft-365/copilot/connectors/submit-federated-connector."
+      "fix": "Use the same combined qualification as for Word: 'The federated connectors overview lists Word and PowerPoint as supported, but the submission guide still says they are coming soon.' Cite https://learn.microsoft.com/microsoft-365/copilot/connectors/submit-federated-connector."
     },
     {
-      "n": 39,
+      "n": 53,
       "where": "What's changing; Scope",
       "type": "availability",
       "claim": "Copilot in Outlook supports federated connector actions.",
@@ -454,9 +608,9 @@
       "fix": null
     },
     {
-      "n": 40,
-      "where": "What's changing; Risk assessment; Scope",
-      "type": "behaviour",
+      "n": 54,
+      "where": "What's changing; Scope; Risk assessment",
+      "type": "availability",
       "claim": "Researcher remains read-only for federated connectors.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
@@ -465,10 +619,10 @@
       "fix": null
     },
     {
-      "n": 41,
+      "n": 55,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Microsoft's default federated connectors appear as Ready in the admin-center connections list.",
+      "claim": "Microsoft's default federated connectors appear as Ready in the admin center connections list.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/overview",
       "quote": "Default federated connectors are provided by Microsoft and appear as Ready in your connections list in the Microsoft 365 admin center.",
@@ -476,32 +630,76 @@
       "fix": null
     },
     {
-      "n": 42,
+      "n": 56,
       "where": "What's changing; Scope",
       "type": "behaviour",
-      "claim": "Admin-published connectors can create, update and delete using provided tools, with user approval and source permissions.",
+      "claim": "Admin-published federated connectors can create data where the connector provides those tools.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/admin-published-federated-connectors",
-      "quote": "Admin-published FCCs can also create, update, or delete data where the connector provides those tools, with the user's approval and subject to their permissions in the source system.",
+      "quote": "Admin-published FCCs can also create, update, or delete data where the connector provides those tools",
       "severity": null,
       "fix": null
     },
     {
-      "n": 43,
+      "n": 57,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Admin-published federated connectors can update data where the connector provides those tools.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/admin-published-federated-connectors",
+      "quote": "Admin-published FCCs can also create, update, or delete data where the connector provides those tools",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Admin-published federated connectors can delete data where the connector provides those tools.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/admin-published-federated-connectors",
+      "quote": "Admin-published FCCs can also create, update, or delete data where the connector provides those tools",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Admin-published connector write actions require user approval.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/admin-published-federated-connectors",
+      "quote": "with the user's approval and subject to their permissions in the source system.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
       "where": "What's changing; Scope; Risk assessment",
       "type": "behaviour",
-      "claim": "Available actions vary by connector and publishers can add or change tools.",
+      "claim": "The source system enforces permissions, so users can change only what they are already allowed to change directly.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
-      "quote": "The actions available through a connector depend on the tools exposed by the connector publisher. Publishers can add or change tools over time.",
+      "quote": "The source system enforces all permissions. Users can only access content they're authorized to view and make changes they're authorized to make in the original data source.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 44,
+      "n": 61,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Supported admin-published connector actions vary by connector.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/admin-published-federated-connectors",
+      "quote": "Supported actions vary by connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
       "where": "Why it matters; Risk assessment; rationale: risk",
       "type": "behaviour",
-      "claim": "Write actions export Customer Data from Copilot to the connected system as action information.",
+      "claim": "Write actions export conversation content as Customer Data to the third-party system.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
       "quote": "These actions export Customer Data to the connected system to create, update, delete, or otherwise modify data.",
@@ -509,30 +707,19 @@
       "fix": null
     },
     {
-      "n": 45,
-      "where": "Risk assessment",
+      "n": 63,
+      "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Federated connectors use OAuth authentication for user-scoped access to authenticated services.",
+      "claim": "Federated connector access uses the user's OAuth connection to the service.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
-      "quote": "OAuth 2.0 and encrypted communication ensure secure access and authentication.",
-      "severity": null,
-      "fix": null
+      "quote": "OAuth 2.0 and encrypted communication ensure secure access and authentication.\nUser credentials, rather than admin credentials, are required to connect to any data source.",
+      "severity": "minor",
+      "fix": "Replace 'Actions run under the user's OAuth connection to the service' with 'Actions run with the user's own account and permissions at the third-party service.' The overview describes OAuth, but https://learn.microsoft.com/microsoft-365/copilot/connectors/set-up-custom-federated-connectors also lists Microsoft Entra SSO and No Auth."
     },
     {
-      "n": 46,
-      "where": "Risk assessment",
-      "type": "applicability",
-      "claim": "MCP servers restricting incoming traffic by source IP must allow Microsoft's static egress addresses.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
-      "quote": "If your MCP server restricts incoming traffic by source IP address, configure its firewall to allow the static egress IP addresses used by Microsoft 365 Copilot.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "Risk assessment",
+      "n": 64,
+      "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
       "claim": "Copilot dynamically selects relevant connector tools at runtime.",
       "status": "supported",
@@ -542,109 +729,32 @@
       "fix": null
     },
     {
-      "n": 48,
-      "where": "Risk assessment",
+      "n": 65,
+      "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Always allow removes repeated confirmation for a user's tool indefinitely.",
+      "claim": "Always allow removes confirmation for that user's tool indefinitely.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
       "quote": "Always allow | Runs the action and doesn't ask again for this tool until the user changes the setting or the publisher changes the tool.",
       "severity": "minor",
-      "fix": "Replace the sentence with: '\"Always allow\" removes repeated confirmation for that tool until the user changes the setting or the publisher changes the tool.' The earlier paragraph already documents publisher-triggered resets; repeat that qualification here instead of 'indefinitely'."
+      "fix": "Replace the sentence with: '\"Always allow\" removes repeated confirmation for that tool until the user changes the setting or the publisher changes the tool.' The reset is already described in What's changing; repeat that qualification instead of 'indefinitely'."
     },
     {
-      "n": 49,
-      "where": "Risk assessment; rationale: risk; Open questions",
+      "n": 66,
+      "where": "Risk assessment; Open questions; rationale: risk",
       "type": "absence",
       "claim": "No tenant-wide administrator override forcing Needs approval is documented as of November 2026.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: federated Copilot connectors write tools tenant administrator force Needs approval Always allow policy. Opened federated-connectors-overview, manage-federated-connectors, agent-settings and manage-plugins-skills-mcp-servers; found user approval settings, not an admin approval override.",
+      "quote": "Searched: federated connectors admin always approval policy; tenant admin force Needs approval Always allow write tools policy. Opened federated-connectors-overview, manage-federated-connectors, agent-settings and utcm-agent-resources; only user approval settings were documented.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 50,
-      "where": "front matter: defaultState; Why it matters; Risk assessment; rationale: risk",
-      "type": "default",
-      "claim": "The change is on for already-enabled connectors when their publisher provides write tools, without separate admin enablement of those tools.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
-      "quote": "Write, update, and delete tools are part of the connector and aren't enabled separately.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 51,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "Federated connectors are included within the qualifying Microsoft 365 Copilot or Microsoft 365 E7 entitlement.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
-      "quote": "Microsoft 365 + Microsoft 365 Copilot add-on | ✅ | ✅ | ✅ |\n| Microsoft 365 E7 | ✅ | ✅ | ✅",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
-      "where": "summary; front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "Each federated connector user needs a Microsoft 365 Copilot add-on licence or Microsoft 365 E7.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
-      "quote": "Federated Copilot connectors are available only to tenants and users with a Microsoft 365 Copilot add-on license (or Microsoft 365 E7).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "Copilot Chat access without a qualifying Copilot licence is insufficient for federated connectors.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
-      "quote": "Federated Copilot connectors are available only to tenants and users with a Microsoft 365 Copilot add-on license (or Microsoft 365 E7).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "Microsoft 365 Copilot pay-as-you-go does not qualify for federated connectors.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
-      "quote": "They aren't supported with Copilot Studio licenses or Microsoft 365 Copilot pay-as-you-go.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
-      "where": "front matter: cost; licensing.notes; Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "Connector grounding adds no extra Microsoft charge for users already holding qualifying Copilot licences.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
-      "quote": "If your organization has Microsoft 365 Copilot licenses, connector grounding in Copilot is included, and no extra charges apply.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "Connector customers are responsible for third-party rights, licences and obligations, with provider-specific service costs to check.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/terms-of-use",
-      "quote": "using the Microsoft 365 Copilot connector in compliance with any third-party rights, licenses, and obligations.\n\nAny concerns or questions about third-party terms or services should be directed to the third party.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
-      "where": "controls[0].ui",
+      "n": 67,
+      "where": "controls[0].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "Individual connector enable, disable and staged-rollout controls are under Microsoft 365 admin center > Copilot > Connectors > Your connections > connector.",
+      "claim": "Individual connector availability is managed at Microsoft 365 admin center > Copilot > Connectors > Your connections > connector > Enable / Disable / Staged rollout.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
       "quote": "Enable / Disable | Copilot > Connectors > Your connections | Turns an individual connector on or pauses it without removing configuration.\nStaged rollout | Copilot > Connectors > Your connections > Staged rollout",
@@ -652,21 +762,21 @@
       "fix": null
     },
     {
-      "n": 58,
+      "n": 68,
       "where": "controls[0].api; Governance controls",
       "type": "absence",
-      "claim": "No API equivalent for enabling, disabling or staging a federated connector is documented.",
+      "claim": "No API equivalent for enabling, disabling or staging an individual federated connector is documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: federated connector enable disable staged rollout Microsoft Graph API PowerShell. Opened manage-federated-connectors, set-up-custom-federated-connectors, staged-rollout and utcm-agent-resources; no equivalent connector-level operation was documented.",
+      "quote": "Searched: federated connectors Microsoft Graph staged rollout user groups connector enable disable API; federated connector Graph disable staged. Opened manage-federated-connectors, set-up-custom-federated-connectors and utcm-agent-resources; no equivalent operation found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 59,
-      "where": "controls[1].ui; Governance guidance",
+      "n": 69,
+      "where": "controls[1].ui; Governance controls table; Risk assessment",
       "type": "admin-path",
-      "claim": "Publisher-type access is configured in Microsoft 365 admin center > Agents > Settings > Agent and plugin access.",
+      "claim": "Publisher-type access is controlled at Microsoft 365 admin center > Agents > Settings > Agent and plugin access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview#admin-experience-and-controls",
       "quote": "Turn off connectors in bulk by publisher type in Agents > Settings > Agent and plugin access, then turn on specific connectors from Your connections.",
@@ -674,43 +784,32 @@
       "fix": null
     },
     {
-      "n": 60,
-      "where": "controls[1].api; Governance controls",
+      "n": 70,
+      "where": "controls[1].api; Governance controls table",
       "type": "command",
-      "claim": "POST /beta/admin/configurationManagement/configurationMonitors with an active applyOnce baseline can change publisher-type access.",
+      "claim": "POST /beta/admin/configurationManagement/configurationMonitors applies a publisher-access baseline using applyOnce.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
-      "quote": "POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors\n\nAn active applyOnce monitor runs in the background on behalf of the signed-in administrator and then becomes inactive.",
+      "quote": "POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors\nAn active applyOnce monitor runs in the background on behalf of the signed-in administrator and then becomes inactive.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 61,
+      "n": 71,
       "where": "controls[1].note; Governance guidance",
       "type": "applicability",
-      "claim": "Publisher-type access applies to future connectors of that type while allowing individual staged-rollout exceptions.",
+      "claim": "Publisher-type access applies to future connectors of that publisher type.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
-      "quote": "Connectors of that type released later aren't available to users. To make a specific connector available, open it in Your connections and set its staged rollout to the users or groups you want.",
+      "quote": "Apply that choice automatically to future connectors of that type.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 62,
-      "where": "controls[1].note; Governance controls",
-      "type": "command",
-      "claim": "The publisher baseline uses microsoft.agent.allowedagenttypes version 1 and properties.valueObject publisher allowance properties.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
-      "quote": "\"resourceType\": \"microsoft.agent.allowedagenttypes\",\n  \"resourceVersion\": 1,\n  \"properties\": {\n    \"valueObject\": {\n      \"areMicrosoftAppsAllowed\": true,\n      \"areTenantScopedAppsAllowed\": true,\n      \"areISVAppsAllowed\": false",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 63,
-      "where": "controls[2].ui",
+      "n": 72,
+      "where": "controls[2].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "Tenant user access is configured in Microsoft 365 admin center > Agents > Settings > User access.",
+      "claim": "User access is controlled at Microsoft 365 admin center > Agents > Settings > User access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
       "quote": "Select Agents > Settings > User access to manage your organization's agents and plugins.",
@@ -718,32 +817,175 @@
       "fix": null
     },
     {
-      "n": 64,
-      "where": "controls[2].api; controls[2].note; Governance controls",
+      "n": 73,
+      "where": "controls[2].api; Governance controls table",
       "type": "command",
-      "claim": "POST /beta/admin/configurationManagement/configurationMonitors can apply microsoft.agent.useraccess version 1 with valueObject.userAssignmentCategory everyone or noOne.",
+      "claim": "POST /beta/admin/configurationManagement/configurationMonitors applies an all-user or no-user access baseline using applyOnce.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
-      "quote": "\"resourceType\": \"microsoft.agent.useraccess\",\n  \"resourceVersion\": 1,\n  \"properties\": {\n    \"valueObject\": {\n      \"userAssignmentCategory\": \"everyone\"\n    }\n  }\n\nSpecifies whether all users or no users can access agents and plugins. | everyone, noOne",
+      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+      "quote": "POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors\nCreate a new configurationMonitor object ... applies a desired-state baseline once in applyOnce mode.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 65,
-      "where": "controls[2].note",
+      "n": 74,
+      "where": "controls[2].note; Governance controls",
       "type": "absence",
-      "claim": "The cited Graph useraccess baseline documents no specific-user or group assignment.",
+      "claim": "No specific-user or group assignment is documented for the preview useraccess baseline API.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Microsoft Graph agent useraccess userAssignmentCategory specific groups federated connectors government GCC DLP write payload. Opened utcm-agent-resources; the useraccess schema lists only userAssignmentCategory everyone or noOne. UI specific-user/group assignment is separately documented.",
+      "quote": "Searched: microsoft.agent.useraccess userAssignmentCategory groups. Opened graph/utcm-agent-resources and read its complete useraccess schema: userAssignmentCategory permits everyone or noOne, with no user or group assignment property.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 66,
+      "n": 75,
+      "where": "controls[3].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Individual supported MCP tools are toggled at Microsoft 365 admin center > Agents > Tools > Registry > MCP server > Tools > tool toggle > Save.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "Select Agents > Tools, and then select the Registry tab.\nSelect an MCP server ... Select the Tools tab ... an Enabled or Disabled toggle.\nTurn individual tools on or off as needed.\nSelect Save",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "controls[3].api; Governance controls",
+      "type": "absence",
+      "claim": "No documented API equivalent sets the listed individual MCP tool toggle.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Agent 365 MCP server individual tools Enabled Disabled toggle Microsoft Graph API block tool; MCP tool block graph API Agent 365. Opened manage-plugins-skills-mcp-servers; read AI Gateway/APIM and develop-mcp search excerpts. No equivalent call found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "controls[3].note; Governance guidance; Governance controls",
+      "type": "availability",
+      "claim": "Individual MCP tool control is still rolling out to tenants.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "Tool-level granular control is rolling out to tenants and supports only specific types of MCP servers registered on Agent 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "controls[3].note; Governance guidance; Governance controls; Open questions",
+      "type": "applicability",
+      "claim": "Tool blocking is limited to supported MCP servers registered on Agent 365 and must not be assumed to cover every federated connector.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "The Agent 365 Tooling Gateway enforces the policy at runtime for supported tools and experiences that use the gateway. Don't assume the policy applies across all products or connected components.",
+      "severity": "minor",
+      "fix": "Append to the tool-control note and its prose qualification: 'The Agent 365 Tooling Gateway enforces this policy only for supported tools and experiences that use the gateway.' The existing supported-server and not-every-connector caveats remain valid."
+    },
+    {
+      "n": 79,
+      "where": "controls[4].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Staged rollout membership is edited at Microsoft 365 admin center > Copilot > Connectors > Your Connections > connector > Staged Rollout > Edit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/staged-rollout#modify-staged-rollout",
+      "quote": "go to Copilot > Connectors > Your Connections.\nFind the connector that you want to modify.\nIn the Staged Rollout column, next to Staged, choose Edit.\nAdd or remove users and groups",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "controls[4].api; Governance controls",
+      "type": "absence",
+      "claim": "No documented API equivalent changes the connector's staged rollout membership.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: federated connectors Microsoft Graph staged rollout user groups connector enable disable API; federated connector Graph disable staged. Opened staged-rollout, set-up-custom-federated-connectors and utcm-agent-resources. No connector staging operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
+      "where": "Scope; Governance guidance; Risk assessment",
+      "type": "applicability",
+      "claim": "Connector staging limits access to selected users or groups within the population permitted by User access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+      "quote": "Only these users can use any connector. Connector staging can narrow but not widen this population.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 82,
+      "where": "Scope; Open questions",
+      "type": "absence",
+      "claim": "Government-cloud availability and timelines for this write-actions change are not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: federated connectors government GCC availability DLP Copilot write payload. Read roadmap, federated-connectors-overview, custom setup and plugins/overview-copilot-connector excerpts. Availability varies by connector; no write-actions government rollout stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 83,
+      "where": "Governance guidance: Before rollout; After rollout",
+      "type": "consistency",
+      "claim": "The checklist asks readers to inventory and periodically review connector tool lists without a matching controls-table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Inventory enabled federated connectors ... record which now expose Write/Delete tools ... Review connector tool lists monthly for newly added write tools. The table lists availability, publisher access, user access, tool blocking and staging, but not tool inventory.",
+      "severity": "minor",
+      "fix": "Remove 'and record which now expose Write/Delete tools, using the connector's Tools section where it is available' from the Before rollout inventory bullet. Remove the After rollout bullet 'Review connector tool lists monthly for newly added write tools.' Do not add a row."
+    },
+    {
+      "n": 84,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The Settings > Sources approval choices are user-side permissions rather than an administrator control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "Users can review or reset tool permissions in Copilot by going to Settings > Sources and selecting the connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 85,
+      "where": "controls[1].note; controls[2].note",
+      "type": "command",
+      "claim": "The configurationMonitor request supports mode applyOnce and status active.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+      "quote": "mode | monitorMode | ... monitorOnly, applyOnce, unknownFutureValue.\nstatus | monitorStatus | The status of the monitor. Set to active to enable execution.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 86,
+      "where": "controls[1].note; Governance controls",
+      "type": "command",
+      "claim": "The publisher-access baseline uses resourceType microsoft.agent.allowedagenttypes, resourceVersion 1 and properties.valueObject publisher booleans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
+      "quote": "\"resourceType\": \"microsoft.agent.allowedagenttypes\", \"resourceVersion\": 1, \"properties\": { \"valueObject\": { \"areMicrosoftAppsAllowed\": true, \"areTenantScopedAppsAllowed\": true, \"areISVAppsAllowed\": false",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 87,
+      "where": "controls[2].note; Governance controls",
+      "type": "command",
+      "claim": "The user-access baseline uses resourceType microsoft.agent.useraccess, resourceVersion 1 and properties.valueObject.userAssignmentCategory set to everyone or noOne.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
+      "quote": "\"resourceType\": \"microsoft.agent.useraccess\", \"resourceVersion\": 1 ... \"valueObject\": { \"userAssignmentCategory\": \"everyone\" }\nAllowed Values: everyone, noOne",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 88,
       "where": "controls[1].note; controls[2].note; Governance controls",
       "type": "availability",
-      "claim": "The Tenant Configuration Management applyOnce equivalents are preview and global-service only.",
+      "claim": "Agent resource remediation and applyOnce are preview capabilities available only in the global service.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources",
       "quote": "These capabilities are available in preview through Microsoft Graph beta. TCM is available only in the global service, not in national clouds.",
@@ -751,98 +993,21 @@
       "fix": null
     },
     {
-      "n": 67,
-      "where": "controls[3].ui",
-      "type": "admin-path",
-      "claim": "Individual supported MCP tools can be toggled through Microsoft 365 admin center > Agents > Tools > Registry > MCP server > Tools, then saved.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "Select Agents > Tools, and then select the Registry tab.\nSelect an MCP server from the list to open its overview pane.\nSelect the Tools tab.\nTurn individual tools on or off as needed.\nSelect Save to apply your changes",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 68,
-      "where": "controls[3].api; Governance controls",
-      "type": "absence",
-      "claim": "No documented automation equivalent sets the listed Agent 365 individual-tool toggle.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Agent 365 MCP individual tool blocking enabled disabled Microsoft Graph API. Opened manage-plugins-skills-mcp-servers and utcm-agent-resources; read Azure API Management and AI Gateway Agent 365 excerpts, which describe managed control-plane policies but give no call setting this toggle.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 69,
-      "where": "controls[3].note; Governance guidance; Governance controls",
-      "type": "applicability",
-      "claim": "Tool-level granular control is rolling out for specific Agent 365 MCP server types and must not be assumed to cover every federated connector.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "Tool-level granular control is rolling out to tenants and supports only specific types of MCP servers registered on Agent 365.\n\nDon't assume the policy applies across all products or connected components.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 70,
-      "where": "controls[4].ui",
-      "type": "admin-path",
-      "claim": "An existing connector's staging can be edited under Microsoft 365 admin center > Copilot > Connectors > Your Connections > connector > Staged Rollout > Edit.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/staged-rollout#modify-staged-rollout",
-      "quote": "go to Copilot > Connectors > Your Connections.\nFind the connector that you want to modify.\nIn the Staged Rollout column, next to Staged, choose Edit.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 71,
-      "where": "controls[4].api; Governance controls",
-      "type": "absence",
-      "claim": "No documented API equivalent manages the selected users or groups in a connector's staged rollout.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: federated connectors staged rollout update API Graph externalConnection enabled users groups. Opened staged-rollout, set-up-custom-federated-connectors, manage-federated-connectors and utcm-agent-resources; no connector staging assignment operation was documented.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 72,
-      "where": "Scope; controls[2]; controls[4]; Governance guidance; rationale: impact",
-      "type": "applicability",
-      "claim": "Staged rollout limits individual connector access within the tenant's User access population.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
-      "quote": "Specific users or groups | Only these users can use any connector. Connector staging can narrow but not widen this population.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 73,
-      "where": "Scope; Open questions",
-      "type": "absence",
-      "claim": "Government-cloud availability and timelines for this write-action update are not stated.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: federated connectors government GCC availability write delete actions. Opened federated-connectors-overview, set-up-custom-federated-connectors and submit-federated-connector; cloud-dependent gallery visibility is mentioned, but no government rollout date for this update is given.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 74,
-      "where": "What's changing; Governance controls",
-      "type": "admin-path",
-      "claim": "Users can revoke Always allow in Copilot Settings > Sources > connector > Tools > Write/Delete tools.",
+      "n": 89,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "MCP servers restricting incoming traffic by source IP must allow Microsoft's static egress IP addresses.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
-      "quote": "Users can review or reset tool permissions in Copilot by going to Settings > Sources and selecting the connector. The Tools section groups the connector's Write/Delete tools separately from its Read tools.",
+      "quote": "If your MCP server restricts incoming traffic by source IP address, configure its firewall to allow the static egress IP addresses used by Microsoft 365 Copilot.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 75,
+      "n": 90,
       "where": "Why it matters; Governance controls",
       "type": "applicability",
-      "claim": "Microsoft Purview can audit federated connector activity.",
+      "claim": "Microsoft Purview supports auditing federated connector activity.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
       "quote": "Can read data and, where a connector provides the tools, create, update, or delete data with the user's approval. Admins can audit activity in Microsoft Purview.",
@@ -850,52 +1015,30 @@
       "fix": null
     },
     {
-      "n": 76,
-      "where": "Governance guidance: Before rollout; After rollout",
-      "type": "consistency",
-      "claim": "The governance checklist asks readers to inventory and review connector tool lists, but the controls table has no tool-inventory row.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Inventory enabled federated connectors ... record which now expose Write/Delete tools ... Review connector tool lists monthly for newly added write tools. The table covers connector availability, publisher access, user access, MCP tool blocking and staged rollout, not tool inventory.",
-      "severity": "minor",
-      "fix": "Remove 'and record which now expose Write/Delete tools, using the connector's Tools section where it is available' from the Before rollout inventory bullet, and remove the After rollout bullet 'Review connector tool lists monthly for newly added write tools.' Do not add an unverified controls row."
-    },
-    {
-      "n": 77,
-      "where": "front matter: products",
+      "n": 91,
+      "where": "front matter: products; title",
       "type": "record",
-      "claim": "The roadmap product is Microsoft Copilot (Microsoft 365).",
+      "claim": "This roadmap change belongs to Microsoft Copilot (Microsoft 365).",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"products\": [\n    \"Microsoft Copilot (Microsoft 365)\"\n  ]",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\"]",
       "severity": null,
       "fix": null
     },
     {
-      "n": 78,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-10-30T22:08:34.",
+      "n": 92,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "Whether DLP policies at the Copilot location inspect connector write payloads remains undocumented.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-10-30T22:08:34\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 79,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The general connectors overview still describes federated connectors as read-only while noting write actions starting early October 2026.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/overview",
-      "quote": "Write actions will be available starting early October 2026.\n\n- Federated connectors are read-only; they can search and fetch content but can't write data back.",
+      "source": null,
+      "quote": "Searched: federated connectors DLP write payload policy; Purview DLP Copilot location federated connector write payload inspection. Opened federated-connectors-overview and purview/dlp-microsoft365-copilot-location-learn-about; no write-payload inspection documented.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-24T02:35:57.991Z",
+    "at": "2026-11-26T03:50:44.323Z",
     "summary": {
       "links": 16,
       "unreachable": 0,
@@ -1114,6 +1257,12 @@
       "date": "2026-11-24",
       "status": "held",
       "version": 4,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-24",
+      "status": "verified-with-gaps",
+      "version": 5,
       "model": "gpt-6.1-sol"
     }
   ]

@@ -91,18 +91,20 @@ changes:
     note: "First briefing: documents the user request and admin approve or reject flow for Microsoft-built agents, its controls and the open question on Frontier."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 50 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 77 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 1
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-23"
+  status: "held"
+  date: "2026-11-26"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 50
-  confirmed: 50
+  claims: 77
+  confirmed: 74
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 3
+  attempts: 1
   hash: "106153f15fa80f031efb5bc5163c5ec6"
 ---
 
@@ -204,10 +206,14 @@ cost: Low. The agent requests page names no licence or meter for the request flo
 impact: Low. Admins who review requests and users who find a blocked Microsoft-built agent notice it; nothing changes for other users.
 -->
 
-<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] rationale: impact; Why it matters; Data exposure / consistency: Nothing changes for users other than the request-reviewing admins and users finding a blocked Microsoft-built agent. | Found: Impact rationale: 'nothing changes for other users.' Why it matters: 'expect an unblock to reach every user the other settings allow, not only the requester.' | Fix: Remove 'nothing changes for other users' from the impact rationale. Keep 'Low. Admins who review requests and users who find a blocked Microsoft-built agent notice it.' The body correctly warns that an organisation-wide unblock can affect other users.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; summary; Governance controls; Governance guidance / admin-path: The Microsoft-built agent request workflow is reached through Microsoft 365 admin center > Agents > All agents > Requests. | Found: The request is submitted to your administrators and appears in the Microsoft 365 admin center under **Agents** > **All agents** > **Requests**. | Fix: The path stops on the correct list. Complete controls[0].ui.path and its rendered counterpart as 'Agents > All agents > Requests > agent > Requests > request > Approve', retaining the note that Reject is the alternative action. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-requests
-- [supported, minor] controls[2].ui; Governance controls / admin-path: Frontier enrolment is managed through Settings > Org settings > Organization profile > Release preferences > Turn on Frontier. | Found: Under the **Organization profile** tab, select **Release preferences**. To opt in to Frontier preview, toggle **Turn on Frontier** to **On**. Choose how Frontier access is assigned in your organization: | Fix: For the row about which users are enrolled, complete controls[2].ui.path and its rendered counterpart as 'Settings > Org settings > Organization profile > Release preferences > Turn on Frontier > All users or Specific users and groups'. The existing path reaches the correct panel but stops before audience selection. | Source: https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier
-- [supported, minor] front matter: licensing.model / licensing: The admin request-approval capability has an included licensing model. | Found: | Admin agent governance actions (publish, deploy, block, delete, approve, assign, reassign owner, pin, etc.) | Microsoft 365 admin center | Yes | Yes | Yes | | Fix: Keep licensing.model as 'included'. Add the Microsoft Agent 365 service description at https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365 to sources and add: 'The service description includes admin agent governance actions, including approval, with a Microsoft cloud subscription.' | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365
+- [supported, minor] controls[0].ui; summary; Governance guidance / admin-path: Microsoft-built agent requests are reached through Microsoft 365 admin center > Agents > All agents > Requests. | Found: The request is submitted to your administrators and appears in the Microsoft 365 admin center under **Agents** > **All agents** > **Requests**. | Fix: Complete controls[0].ui.path and its rendered table path as 'Agents > All agents > Requests > agent > Requests > request > Approve'. Keep Reject as the alternative action in the note. The current path stops on the correct list. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-requests
+- [supported, minor] controls[2].ui; Governance controls table / admin-path: Frontier enrolment is managed under Settings > Org settings > Organization profile > Release preferences > Turn on Frontier. | Found: Under the **Organization profile** tab, select **Release preferences**. To opt in to Frontier preview, toggle **Turn on Frontier** to **On**. Choose how Frontier access is assigned in your organization: | Fix: Complete controls[2].ui.path and the rendered table path as 'Settings > Org settings > Organization profile > Release preferences > Turn on Frontier > All users or Specific users and groups'. The existing path reaches the panel but stops before the audience selection. | Source: https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier
+- [supported, minor] front matter: licensing.model / licensing: The admin agent approval capability has an included licensing model. | Found: | Admin agent governance actions (publish, deploy, block, delete, approve, assign, reassign owner, pin, etc.) | Microsoft 365 admin center | Yes | Yes | Yes | | Fix: Keep licensing.model as 'included'. Add https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365 to sources and add to licensing.notes: 'The Microsoft Agent 365 service description includes admin agent governance actions, including approval, with a Microsoft cloud subscription.' | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365
+- [contradicted, minor] Governance controls; Open questions / consistency: The prose reports no separately documented admin switch for the request option, but the controls table has no row for that gap. | Found: 'the Learn page does not give a separate setting that turns the request option on or off'; the table contains only request approval, agent blocking and Frontier enrolment. | Fix: Remove the sentence 'Approve and Reject are actions in the agent's request pane in the admin center, and the Learn page does not give a separate setting that turns the request option on or off.' In Open questions, replace the third bullet with 'Is the request option on by default? Watch Message center and the agent requests page.' No new control row is required.
+- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist tells administrators to assign AI Administrator or Global Administrator, but role assignment has no controls-table row. | Found: 'Assign the AI Administrator or Global Administrator role to the people who will approve requests'; the controls table contains no role-assignment control. | Fix: Replace that checklist bullet with 'Name an owner for the Requests list.' The existing Scope and Security & identity sections already state which roles can approve requests; do not add a control row.
 -->

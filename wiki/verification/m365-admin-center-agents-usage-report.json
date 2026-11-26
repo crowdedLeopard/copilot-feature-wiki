@@ -3,7 +3,7 @@
   "roadmapId": 497999,
   "title": "Microsoft 365 admin center: Agents usage report",
   "status": "verified-with-gaps",
-  "date": "2026-11-22",
+  "date": "2026-11-26",
   "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
@@ -14,15 +14,15 @@
   "notes": [],
   "hold": null,
   "counts": {
-    "claims": 84,
-    "confirmed": 83,
+    "claims": 99,
+    "confirmed": 98,
     "unconfirmed": 0,
     "contradicted": 1,
     "blocker": 0,
     "major": 0,
     "minor": 3
   },
-  "summary": "The report description, licensing distinction and both governance controls are supported by Microsoft documentation. Minor corrections should acknowledge conflicting GCC documentation, complete the report navigation and reconcile the checklist with the controls table.",
+  "summary": "The report description, licensing distinction and both governance controls remain supported, including by the changed Agent 365 service description. Minor corrections should acknowledge conflicting GCC documentation, complete the report navigation and address the role-assignment decision missing from the controls table.",
   "claims": [
     {
       "n": 1,
@@ -50,7 +50,7 @@
       "n": 3,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
-      "claim": "The release phase is General Availability.",
+      "claim": "The roadmap release phase is General Availability.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\"]",
@@ -105,7 +105,7 @@
       "n": 8,
       "where": "front matter: products",
       "type": "record",
-      "claim": "The record names Microsoft 365 admin center and Microsoft Copilot (Microsoft 365) as products.",
+      "claim": "The roadmap products are Microsoft 365 admin center and Microsoft Copilot (Microsoft 365).",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"products\": [\"Microsoft 365 admin center\", \"Microsoft Copilot (Microsoft 365)\"]",
@@ -114,6 +114,17 @@
     },
     {
       "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap was modified on 2026-08-11T22:53:53.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-08-11T22:53:53\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
       "where": "What's changing",
       "type": "record",
       "claim": "The roadmap scopes the report to agents in Microsoft 365 Copilot and Copilot Chat.",
@@ -124,10 +135,10 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 11,
       "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap includes usage by both Microsoft 365 Copilot licensed and unlicensed users.",
+      "claim": "The roadmap includes usage by Microsoft 365 Copilot licensed and unlicensed users.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "with usage by both M365 Copilot licensed and unlicensed users.",
@@ -135,7 +146,7 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 12,
       "where": "What's changing",
       "type": "record",
       "claim": "The roadmap lists total active agent users.",
@@ -146,7 +157,7 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 13,
       "where": "What's changing",
       "type": "record",
       "claim": "The roadmap lists total active agents.",
@@ -157,10 +168,10 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 14,
       "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap segments active users by licensed and unlicensed users.",
+      "claim": "The roadmap lists active users segmented by licence.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "active users segmentation by licensed and unlicensed users",
@@ -168,29 +179,29 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The roadmap segments active users by publisher type.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "active users and active agents segmentation by publisher type",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 15,
       "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap segments active agents by publisher type.",
+      "claim": "The roadmap lists active users segmented by publisher type.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "active users and active agents segmentation by publisher type",
+      "quote": "active users and active agents segmentation by publisher type (i.e. user-created agents, agents built by your org, agents built by Microsoft, agents built by Microsoft partners)",
       "severity": null,
       "fix": null
     },
     {
       "n": 16,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap lists active agents segmented by publisher type.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "active users and active agents segmentation by publisher type",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
       "where": "What's changing",
       "type": "record",
       "claim": "The roadmap includes usage details per user.",
@@ -201,7 +212,7 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 18,
       "where": "What's changing",
       "type": "record",
       "claim": "The roadmap includes usage details per agent.",
@@ -212,7 +223,7 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 19,
       "where": "What's changing",
       "type": "record",
       "claim": "The roadmap includes usage details per user-agent pair.",
@@ -223,21 +234,10 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 20,
       "where": "summary; What's changing; Scope",
       "type": "behaviour",
-      "claim": "Learn documents agent usage in Copilot Chat and Word, Excel and PowerPoint.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new",
-      "quote": "The Microsoft Copilot Agent usage report helps you track how agents are used in Microsoft Copilot Chat and Microsoft 365 apps - Word, Excel, and PowerPoint.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The report covers Declarative, SharePoint and Custom engine agents.",
+      "claim": "Learn documents agent usage in Microsoft Copilot Chat for licensed and unlicensed users.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new",
       "quote": "You can see which agents both licensed and unlicensed Microsoft Copilot users use across Declarative, SharePoint, and Custom engine agents.",
@@ -246,6 +246,28 @@
     },
     {
       "n": 21,
+      "where": "summary; What's changing; Scope",
+      "type": "behaviour",
+      "claim": "The report tracks agents used in Word, Excel and PowerPoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new",
+      "quote": "The Microsoft Copilot Agent usage report helps you track how agents are used in Microsoft Copilot Chat and Microsoft 365 apps - Word, Excel, and PowerPoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The report covers Declarative, SharePoint and Custom engine agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new",
+      "quote": "across Declarative, SharePoint, and Custom engine agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
       "where": "What's changing; Why it matters; Scope",
       "type": "behaviour",
       "claim": "The report includes agents built by the organisation, Microsoft and third parties.",
@@ -256,21 +278,10 @@
       "fix": null
     },
     {
-      "n": 22,
-      "where": "summary; What's changing; Why it matters; Cost and licensing; Scope",
-      "type": "behaviour",
-      "claim": "The report covers both licensed and unlicensed Microsoft Copilot users.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new",
-      "quote": "You can see which agents both licensed and unlicensed Microsoft Copilot users use",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
+      "n": 24,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Usage can be viewed within an hour of users interacting with agents.",
+      "claim": "Learn says usage can be viewed within an hour of interaction.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new",
       "quote": "You can view usage within an hour from when users interact with agents.",
@@ -278,10 +289,10 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 25,
       "where": "What's changing; Scope; Governance guidance",
       "type": "behaviour",
-      "claim": "The current reporting periods are the last 7 and 30 days.",
+      "claim": "The report supports the last 7 days.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new",
       "quote": "You can view the agent report over the last 7 or 30 days.",
@@ -289,10 +300,21 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 26,
+      "where": "What's changing; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "The report supports the last 30 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new",
+      "quote": "You can view the agent report over the last 7 or 30 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
       "where": "What's changing; Governance guidance; Open questions",
       "type": "behaviour",
-      "claim": "Learn says 90-day and 180-day reporting will be added in a future update.",
+      "claim": "Learn says the currently absent 90-day period will be added in a future update.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new",
       "quote": "The agent report doesn't yet include the past 90 and 180 days but will add this capability in a future update.",
@@ -300,18 +322,29 @@
       "fix": null
     },
     {
-      "n": 26,
-      "where": "What's changing; Open questions",
-      "type": "absence",
-      "claim": "No date is given for the future 90-day and 180-day reporting periods.",
+      "n": 28,
+      "where": "What's changing; Governance guidance; Open questions",
+      "type": "behaviour",
+      "claim": "Learn says the currently absent 180-day period will be added in a future update.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Copilot Agents usage report default automatically available enable disable report admin switch Graph agent usage reports API; read microsoft-365-copilot-agents-new FAQ and returned excerpts. Only 'a future update' is given.",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new",
+      "quote": "The agent report doesn't yet include the past 90 and 180 days but will add this capability in a future update.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 27,
+      "n": 29,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "Microsoft gives no date for adding the 90-day and 180-day periods.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Copilot Agents usage report disable report enabled default admin action 90 180 days Graph API agent usage report. Read the new report FAQ, the deprecated report and the usage overview; the new report gives only 'a future update'.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "An active user asks an agent a question and receives a response.",
@@ -322,73 +355,29 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 31,
       "where": "summary; What's changing; Why it matters",
       "type": "behaviour",
-      "claim": "Creator type identifies who built an agent, including Your Users, Your org, Microsoft and Third-party.",
+      "claim": "Creator type segments usage into Your Users, Your org, Microsoft and Third-party.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new",
-      "quote": "The Creator type tells you who built the agent. ... Your Users ... Your org ... Microsoft ... Third-party ... Any",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "What's changing; Governance guidance: At rollout",
-      "type": "admin-path",
-      "claim": "The report is reached through Microsoft 365 admin center > Reports > Usage > Microsoft Copilot > Agents.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new",
-      "quote": "In the navigation menu, select Reports. ... Select Usage. ... On the Usage page, under Reports, select Microsoft Copilot, and then select Agents.",
-      "severity": "minor",
-      "fix": "Use 'Microsoft 365 admin center > Reports > Usage > Reports > Microsoft Copilot > Agents' in the rollout checklist, retaining the Reports heading that the What's changing prose already gives."
-    },
-    {
-      "n": 30,
-      "where": "What's changing; Risk assessment; Governance guidance",
-      "type": "behaviour",
-      "claim": "Cowork usage is excluded from the Agents usage report.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new",
-      "quote": "Cowork usage is not included in the Copilot agent usage report because the report is designed to show usage and adoption of agents in Copilot.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Cowork adoption is reported separately in the Cowork usage report.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new",
-      "quote": "You can track adoption of Cowork separately in the Cowork usage report in the Microsoft 365 admin center.",
+      "quote": "The Creator type tells you who built the agent. ... Any | The agent is any of the listed creator types, such as Your Users, Your org, Microsoft, or Third-party.",
       "severity": null,
       "fix": null
     },
     {
       "n": 32,
-      "where": "What's changing; Risk assessment; Governance guidance",
+      "where": "Why it matters",
       "type": "behaviour",
-      "claim": "SharePoint agents used in Teams are not currently included in this report.",
+      "claim": "Your Users agents are created by individuals in the organisation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new",
-      "quote": "SharePoint agents used in Teams aren't currently included in the usage metrics in the report.",
+      "quote": "Your Users | Agents created by individuals in your organization using tools like agent builder.",
       "severity": null,
       "fix": null
     },
     {
       "n": 33,
-      "where": "What's changing; Risk assessment; Governance guidance",
-      "type": "behaviour",
-      "claim": "The earlier Microsoft Copilot Agent usage report is deprecated and directs readers to the new report.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents",
-      "quote": "This report has been deprecated. Use the new agent report in the Microsoft 365 admin center.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
       "where": "Why it matters",
       "type": "behaviour",
       "claim": "Your Users agents are not listed in the organisation-wide catalogue.",
@@ -399,10 +388,10 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 34,
       "where": "Why it matters",
       "type": "behaviour",
-      "claim": "The creators of Your Users agents can use them themselves.",
+      "claim": "Creators can use Your Users agents themselves.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new",
       "quote": "users can use them for themselves",
@@ -410,10 +399,10 @@
       "fix": null
     },
     {
-      "n": 36,
+      "n": 35,
       "where": "Why it matters",
       "type": "behaviour",
-      "claim": "Your Users agents can be shared by link within the same organisation.",
+      "claim": "Your Users agents can be shared by link within the organisation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new",
       "quote": "or share them via a link with others in the same organization.",
@@ -421,18 +410,106 @@
       "fix": null
     },
     {
-      "n": 37,
-      "where": "Risk assessment: Change & support",
+      "n": 36,
+      "where": "Scope; Governance guidance",
       "type": "behaviour",
-      "claim": "Licence changes during the reporting period can make licensed plus unlicensed user counts exceed total active users.",
+      "claim": "Your org describes organisation-created agents approved by an admin for broader use.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new",
-      "quote": "The sum of active users without a license and active users with a license might exceed the total active users if you assigned or removed licenses during the selected timeframe.",
+      "quote": "Your org | Agents created by individuals in your organization using tools like Microsoft 365 Agents Toolkit or Microsoft Copilot Studio, and admin-approved for broader use across your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "The report includes organisation-created Copilot Studio agents approved by an admin.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new",
+      "quote": "Agents created in Microsoft Copilot Studio by users in your organization and approved by an admin.",
       "severity": null,
       "fix": null
     },
     {
       "n": 38,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "The report includes organisation-created Teams Toolkit agents approved by an admin.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new",
+      "quote": "Agents created in Teams Toolkit by users in your organization and approved by an admin.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "The report includes agent builder agents shared with other users in the organisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new",
+      "quote": "Agents created by users through agent builder for users that have this feature enabled and shared with other users in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The report is reached through Microsoft 365 admin center > Reports > Usage > Microsoft Copilot > Agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new",
+      "quote": "In the navigation menu, select Reports. ... Select Usage. ... On the Usage page, under Reports, select Microsoft Copilot, and then select Agents.",
+      "severity": "minor",
+      "fix": "In the rollout checklist, use 'Microsoft 365 admin center > Reports > Usage > Reports > Microsoft Copilot > Agents', including the Reports heading already named in the What's changing prose."
+    },
+    {
+      "n": 41,
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Cowork usage is excluded from this report.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new",
+      "quote": "Cowork usage is not included in the Copilot agent usage report because the report is designed to show usage and adoption of agents in Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Cowork adoption can be tracked in a separate Cowork usage report.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new",
+      "quote": "You can track adoption of Cowork separately in the Cowork usage report in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "SharePoint agents used in Teams are currently excluded.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new",
+      "quote": "No. SharePoint agents used in Teams aren't currently included in the usage metrics in the report.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Learn marks the earlier Agent usage report deprecated and directs readers to the new report.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents",
+      "quote": "This report has been deprecated. Use the new agent report in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
       "where": "Risk assessment: Data exposure; rationale: risk",
       "type": "default",
       "claim": "Usage reports hide usernames, display names, groups and sites by default.",
@@ -443,10 +520,10 @@
       "fix": null
     },
     {
-      "n": 39,
+      "n": 46,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The user details table lists username.",
+      "claim": "The user details table contains a username field.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new",
       "quote": "Username | The user's principal name.",
@@ -454,10 +531,10 @@
       "fix": null
     },
     {
-      "n": 40,
+      "n": 47,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The user details table lists display name.",
+      "claim": "The user details table contains a display name field.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new",
       "quote": "Display name | The full name of the user.",
@@ -465,10 +542,10 @@
       "fix": null
     },
     {
-      "n": 41,
+      "n": 48,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The user details table lists number of agents used.",
+      "claim": "The user details table contains the number of agents used.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new",
       "quote": "Number of agents used | The number of distinct agents the user used for the selected time period.",
@@ -476,10 +553,10 @@
       "fix": null
     },
     {
-      "n": 42,
+      "n": 49,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The user details table lists agent responses received.",
+      "claim": "The user details table contains agent responses received.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new",
       "quote": "Agent responses received | Total responses from all agents used during the selected time period.",
@@ -487,32 +564,32 @@
       "fix": null
     },
     {
-      "n": 43,
+      "n": 50,
       "where": "controls[0].note; Risk assessment; Governance controls; rationale: risk",
       "type": "role",
-      "claim": "Global administrators can reveal concealed usage-report names.",
+      "claim": "Global administrators can reveal or conceal names in usage reports.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
-      "quote": "Global administrators can update the settings to display concealed information if your organization's privacy practices allow it.",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new",
+      "quote": "By default, the usage report anonymizes the username and display name. Global administrators can change settings to reveal or conceal these values.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 44,
+      "n": 51,
       "where": "controls[0].note; Risk assessment; Governance guidance",
       "type": "applicability",
-      "claim": "The concealing setting applies to Microsoft Graph usage reports.",
+      "claim": "The tenant-wide conceal setting also applies to Microsoft Graph usage reports.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
-      "quote": "This setting also applies to the Microsoft 365 usage reports in Microsoft Graph",
+      "quote": "This setting also applies to the Microsoft 365 usage reports in Microsoft Graph and Power BI and to the usage reports in Microsoft Teams Admin center.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 45,
+      "n": 52,
       "where": "controls[0].note; Risk assessment; Governance guidance",
       "type": "applicability",
-      "claim": "The concealing setting applies to Power BI usage reports.",
+      "claim": "The tenant-wide conceal setting also applies to Power BI usage reports.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
       "quote": "This setting also applies to the Microsoft 365 usage reports in Microsoft Graph and Power BI",
@@ -520,10 +597,10 @@
       "fix": null
     },
     {
-      "n": 46,
+      "n": 53,
       "where": "controls[0].note; Risk assessment; Governance guidance",
       "type": "applicability",
-      "claim": "The concealing setting applies to usage reports in the Teams admin center.",
+      "claim": "The conceal setting also applies to usage reports in the Teams admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
       "quote": "and to the usage reports in Microsoft Teams Admin center.",
@@ -531,7 +608,7 @@
       "fix": null
     },
     {
-      "n": 47,
+      "n": 54,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "Showing identifiable user information is logged in the Microsoft Purview portal audit log.",
@@ -542,21 +619,43 @@
       "fix": null
     },
     {
-      "n": 48,
-      "where": "summary; Risk assessment: Security & identity; Scope; Governance guidance",
+      "n": 55,
+      "where": "Risk assessment: Security & identity; Scope",
       "type": "role",
-      "claim": "Usage-report viewing permissions include Global Administrator, Reports Reader and AI Administrator.",
+      "claim": "Global Administrator is a role permitted to view usage reports.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
-      "quote": "To view usage reports, you must have one of the following permissions: ... Global Administrator ... Reports Reader ... AI Administrator",
+      "quote": "To view usage reports, you must have one of the following permissions: ... Global Administrator",
       "severity": null,
       "fix": null
     },
     {
-      "n": 49,
+      "n": 56,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "role",
+      "claim": "Reports Reader is a role permitted to view usage reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "To view usage reports, you must have one of the following permissions: ... Reports Reader",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "role",
+      "claim": "AI Administrator is a role permitted to view usage reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "To view usage reports, you must have one of the following permissions: ... AI Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
       "where": "Risk assessment: Security & identity; Scope; Governance guidance",
       "type": "role",
-      "claim": "Usage Summary Reports Reader is listed with no user details.",
+      "claim": "Usage Summary Reports Reader can view reports without user details.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
       "quote": "Usage Summary Reports Reader (with no user details).",
@@ -564,10 +663,10 @@
       "fix": null
     },
     {
-      "n": 50,
+      "n": 59,
       "where": "Risk assessment: Security & identity; Scope; Governance guidance",
       "type": "role",
-      "claim": "User Experience Success Manager is listed with no user details.",
+      "claim": "User Experience Success Manager can view reports without user details.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
       "quote": "User Experience Success Manager (with no user details)",
@@ -575,10 +674,10 @@
       "fix": null
     },
     {
-      "n": 51,
-      "where": "controls[0].ui; rendered controls table",
+      "n": 60,
+      "where": "controls[0].ui; Governance controls",
       "type": "admin-path",
-      "claim": "The conceal-names control is at Microsoft 365 admin center > Settings > Org settings > Services > Reports > Conceal user, group, and site names in all reports.",
+      "claim": "The tenant-wide conceal control, including for the Agents report, is at Microsoft 365 admin center > Settings > Org settings > Services > Reports > Conceal user, group, and site names in all reports.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
       "quote": "select Settings. ... Select Org Settings. ... On the Services tab, select Reports. ... uncheck the checkbox next to Conceal user, group, and site names in all reports.",
@@ -586,10 +685,10 @@
       "fix": null
     },
     {
-      "n": 52,
-      "where": "controls[0].api; rendered controls table",
+      "n": 61,
+      "where": "controls[0].api; Governance controls",
       "type": "command",
-      "claim": "PATCH https://graph.microsoft.com/beta/admin/reportSettings updates the tenant-level report setting.",
+      "claim": "PATCH https://graph.microsoft.com/beta/admin/reportSettings updates the tenant-wide reporting conceal setting.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/api/adminreportsettings-update?view=graph-rest-beta",
       "quote": "Update tenant-level settings for Microsoft 365 reports. ... PATCH https://graph.microsoft.com/beta/admin/reportSettings",
@@ -597,10 +696,10 @@
       "fix": null
     },
     {
-      "n": 53,
-      "where": "controls[0].note; rendered controls table",
+      "n": 62,
+      "where": "controls[0].note; Governance controls",
       "type": "command",
-      "claim": "The request-body property displayConcealedNames set to true conceals names.",
+      "claim": "The request body uses displayConcealedNames, with true concealing user information.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/api/adminreportsettings-update?view=graph-rest-beta",
       "quote": "displayConcealedNames | Boolean | If set to true, all reports conceal user information such as usernames, groups, and sites. If false, all reports show identifiable information.",
@@ -608,10 +707,10 @@
       "fix": null
     },
     {
-      "n": 54,
-      "where": "controls[0].note; rendered controls table",
+      "n": 63,
+      "where": "controls[0].note; Governance controls",
       "type": "behaviour",
-      "claim": "The report-settings Graph call is beta and unsupported in production applications.",
+      "claim": "The report-settings Graph call is beta and unsupported for production applications.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/api/adminreportsettings-update?view=graph-rest-beta",
       "quote": "APIs under the /beta version in Microsoft Graph are subject to change. Use of these APIs in production applications is not supported.",
@@ -619,30 +718,19 @@
       "fix": null
     },
     {
-      "n": 55,
-      "where": "controls[0].governs; Governance guidance; Governance controls",
-      "type": "applicability",
-      "claim": "The tenant-wide concealing setting governs user identification in the Agents report.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new",
-      "quote": "By default, the usage report anonymizes the username and display name. Global administrators can change settings to reveal or conceal these values.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "controls[1].ui; rendered controls table",
+      "n": 64,
+      "where": "controls[1].ui; Governance controls",
       "type": "admin-path",
-      "claim": "The agent block action is at Microsoft 365 admin center > Agents > All agents > agent > Block.",
+      "claim": "An agent can be blocked at Microsoft 365 admin center > Agents > All agents > agent > Block.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
-      "quote": "Select Agents > All agents. ... select an agent from the list of agents. ... immediately under the agent's name, select Block or Unblock.",
+      "quote": "Select Agents > All agents. ... select an agent from the list of agents. ... In the agent details pane that opens, immediately under the agent's name, select Block or Unblock.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 57,
-      "where": "controls[1].api; rendered controls table",
+      "n": 65,
+      "where": "controls[1].api; Governance controls",
       "type": "command",
       "claim": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks a Copilot package to prevent use.",
       "status": "supported",
@@ -652,54 +740,10 @@
       "fix": null
     },
     {
-      "n": 58,
-      "where": "controls[1].note; Governance controls",
-      "type": "licensing",
-      "claim": "The Package Management API requires a Microsoft Agent 365 licence.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
-      "quote": "Access to the Package Management API requires a Microsoft Agent 365 license.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 59,
-      "where": "controls[1].note; rendered controls table",
-      "type": "behaviour",
-      "claim": "The package-block Graph API is beta.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
-      "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 60,
-      "where": "controls[1].note; Governance guidance: After rollout; Governance controls",
-      "type": "behaviour",
-      "claim": "Admin-center actions fail for agents behind Power Platform Firewall in active enforcement mode.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
-      "quote": "Active enforcement mode – Admin actions that you initiate from the Microsoft 365 admin center fail and aren't applied to the agent.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 61,
-      "where": "controls[1].note; Governance guidance: After rollout; Governance controls",
-      "type": "behaviour",
-      "claim": "Microsoft directs administrators to run the action directly against PPAPI in that firewall case.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
-      "quote": "To resolve this issue, run the action directly against the Power Platform API (PPAPI).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 62,
-      "where": "controls[1].governs; Risk assessment: Autonomy & actions; Governance controls",
+      "n": 66,
+      "where": "controls[1].governs; controls[1].note; Governance controls",
       "type": "applicability",
-      "claim": "Blocking acts on the agent's organisational availability rather than the usage report.",
+      "claim": "Blocking governs the selected agent's availability across the organisation, rather than the usage report.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
       "quote": "These actions apply to the selected agent. ... Block and unblock | Restrict access to an agent across the organization, preventing any user from using it.",
@@ -707,10 +751,54 @@
       "fix": null
     },
     {
-      "n": 63,
-      "where": "Governance controls",
+      "n": 67,
+      "where": "controls[1].note; Governance controls",
       "type": "behaviour",
-      "claim": "Blocking Agent Builder or Copilot Studio agents affects Copilot and other hosts such as Outlook and Teams.",
+      "claim": "The package-blocking Graph API is beta.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "controls[1].note; Governance controls",
+      "type": "licensing",
+      "claim": "Access to the Package Management API requires a Microsoft Agent 365 licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Access to the Package Management API requires a Microsoft Agent 365 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "controls[1].note; Governance guidance: After rollout; Governance controls",
+      "type": "applicability",
+      "claim": "Admin center actions fail for agents in environments with Power Platform Firewall in active enforcement mode.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Active enforcement mode – Admin actions that you initiate from the Microsoft 365 admin center fail and aren't applied to the agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "controls[1].note; Governance guidance: After rollout; Governance controls",
+      "type": "behaviour",
+      "claim": "Microsoft directs administrators to run the action directly against the Power Platform API when the firewall causes failure.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "To resolve this issue, run the action directly against the Power Platform API (PPAPI).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Blocking Agent Builder or Copilot Studio agents also affects their availability in host products such as Outlook and Teams.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
       "quote": "Blocking or unblocking an agent that you created by using Microsoft Copilot Agent Builder and Microsoft Copilot Studio affects its availability and functionality in Microsoft Copilot. It also affects availability and functionality in other host products",
@@ -718,10 +806,10 @@
       "fix": null
     },
     {
-      "n": 64,
+      "n": 72,
       "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Blocking SharePoint or Microsoft Foundry agents affects availability in Copilot Chat.",
+      "type": "applicability",
+      "claim": "Blocking SharePoint or Microsoft Foundry agents affects their availability in Copilot Chat.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
       "quote": "However, blocking an agent that you created by using SharePoint or Microsoft Foundry only impacts its availability in Microsoft Copilot Chat.",
@@ -729,10 +817,43 @@
       "fix": null
     },
     {
-      "n": 65,
-      "where": "front matter: licensing notes; Cost and licensing; rationale: cost",
+      "n": 73,
+      "where": "front matter: defaultState; Why it matters; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated whether the Agents report appears without admin action or a setting enables or disables it.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Agents usage report\" \"default\" \"enable\"; \"Agents usage report\" \"action\" disable report. Read new report, usage overview, Agent 365 service description and search results; no report availability default or enable/disable setting stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "summary; Risk assessment: Autonomy & actions; Governance controls; rationales",
+      "type": "absence",
+      "claim": "Learn describes the report as a usage view and documents no agent-changing action taken inside it.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Agents usage report\" \"action\" disable report. Read new report, deprecated report and agent-actions; the new report documents usage views and refers agent management to separate Copilot controls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "front matter: licensing.model; Cost and licensing",
       "type": "licensing",
-      "claim": "Basic active-user insights for Microsoft Services (1P) agents in the MAC report are core capability included with a Microsoft cloud subscription.",
+      "claim": "The licensing model is mixed because basic 1P insights are core capability while basic 3P insights are premium only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365",
+      "quote": "Core capability included with Microsoft cloud subscription | Premium capability ... Basic usage insights for Microsoft Services (1P) agents ... | Yes | Yes | Yes ... Basic usage insights for Non-Microsoft Services (3P) agents ... | No | Yes | Yes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Basic active-user insights for Microsoft Services (1P) agents in the MAC agent usage report are core capability included with a Microsoft cloud subscription.",
       "status": "supported",
       "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365",
       "quote": "Core capability included with Microsoft cloud subscription | Premium capability | GCC Availability ... Basic usage insights for Microsoft Services (1P) agents (active users) in MAC agent usage report | Microsoft 365 admin center | Yes | Yes | Yes",
@@ -740,10 +861,10 @@
       "fix": null
     },
     {
-      "n": 66,
-      "where": "front matter: licensing notes; Cost and licensing; rationale: cost",
+      "n": 77,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "Basic active-user insights for Non-Microsoft Services (3P) agents in the MAC report are premium capability only.",
+      "claim": "Basic active-user insights for Non-Microsoft Services (3P) agents in the MAC agent usage report are premium capability only.",
       "status": "supported",
       "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365",
       "quote": "Core capability included with Microsoft cloud subscription | Premium capability | GCC Availability ... Basic usage insights for Non-Microsoft Services (3P) agents (active users) in MAC agent usage report | Microsoft 365 admin center | No | Yes | Yes",
@@ -751,18 +872,7 @@
       "fix": null
     },
     {
-      "n": 67,
-      "where": "front matter: licensing.model; front matter: cost; rationale: cost",
-      "type": "licensing",
-      "claim": "The mixed licensing model and medium cost rating reflect included 1P insights and premium 3P insights.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365",
-      "quote": "Basic usage insights for Microsoft Services (1P) agents (active users) in MAC agent usage report ... Yes | Yes | Yes ... Basic usage insights for Non-Microsoft Services (3P) agents (active users) in MAC agent usage report ... No | Yes | Yes",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 68,
+      "n": 78,
       "where": "Cost and licensing",
       "type": "licensing",
       "claim": "Microsoft Agent 365 is available as a stand-alone subscription with eligible Microsoft 365 subscriptions.",
@@ -773,7 +883,7 @@
       "fix": null
     },
     {
-      "n": 69,
+      "n": 79,
       "where": "Cost and licensing",
       "type": "licensing",
       "claim": "Microsoft Agent 365 is included with Microsoft 365 E7.",
@@ -784,10 +894,10 @@
       "fix": null
     },
     {
-      "n": 70,
-      "where": "Cost and licensing",
+      "n": 80,
+      "where": "Cost and licensing: What the report segments by",
       "type": "licensing",
-      "claim": "Public-data agents are available for Copilot Chat (Basic) and Microsoft 365 Copilot (Basic) licences.",
+      "claim": "Agents using public data are available with Copilot Chat (Basic) and Microsoft 365 Copilot (Basic) licences.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat",
       "quote": "Agents that use public data are available for Copilot Chat (Basic) and Microsoft 365 Copilot (Basic) licenses.",
@@ -795,18 +905,18 @@
       "fix": null
     },
     {
-      "n": 71,
+      "n": 81,
       "where": "Why it matters; Cost and licensing",
       "type": "licensing",
-      "claim": "Access to shared-tenant-data agents is pay-as-you-go only for the Basic users described on the Copilot Chat page.",
+      "claim": "For Basic users, access to agents using shared tenant data is pay-as-you-go only.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat",
-      "quote": "Agents that use public data are available for Copilot Chat (Basic) and Microsoft 365 Copilot (Basic) licenses. Access to agents that use shared tenant data are pay-as-you-go only.",
+      "quote": "Access to agents that use shared tenant data are pay-as-you-go only. ... For Copilot Chat (Basic) and Microsoft 365 (Basic) licenses, agents that access shared tenant data, such as SharePoint or Graph Connector content, are billed based on metered consumption.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 72,
+      "n": 82,
       "where": "Cost and licensing",
       "type": "default",
       "claim": "Pay-as-you-go agents are off by default for Copilot Chat (Basic) and Microsoft 365 Copilot (Basic) users.",
@@ -817,7 +927,7 @@
       "fix": null
     },
     {
-      "n": 73,
+      "n": 83,
       "where": "Cost and licensing",
       "type": "licensing",
       "claim": "Agent use comes with a Microsoft 365 Copilot (Premium) licence.",
@@ -828,65 +938,109 @@
       "fix": null
     },
     {
-      "n": 74,
-      "where": "Cost and licensing: Spend; Governance guidance: After rollout",
+      "n": 84,
+      "where": "Cost and licensing: Spend",
       "type": "behaviour",
-      "claim": "Copilot Credits consumption for unlicensed users of metered agents is reported in a separate Copilot Credits report.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
-      "quote": "The Credits used metric shows the total credits used from interactions by users in your organization who don't have a Microsoft Copilot license and are interacting with agents in Copilot Chat that spin the Copilot Studio meter",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 75,
-      "where": "Scope: Who and where; Open questions",
-      "type": "availability",
-      "claim": "The overview lists Agent usage as Public Yes, GCC and GCC High N/A with future-release note 1, and DoD N/A with no-plan note 2.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
-      "quote": "Microsoft Copilot Agent usage ... Yes | N/A^1^ | N/A^1^ | N/A^2^ | N/A^2^ ... N/A^1^: The report will be released in the future. ... N/A^2^: The service isn't available in the environment; hence, there's no plan to release the report.",
-      "severity": "minor",
-      "fix": "Add: 'The Agent 365 service description separately marks GCC availability as Yes for basic 1P and 3P active-user insights in the MAC agent usage report, while the usage reports overview still lists GCC as a future release.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365. Retain the roadmap and overview statements as attributed facts."
-    },
-    {
-      "n": 76,
-      "where": "Scope: What it counts",
-      "type": "behaviour",
-      "claim": "The report includes admin-approved Copilot Studio and Teams Toolkit agents and enabled agent-builder agents shared within the organisation.",
+      "claim": "The Agents report measures users, agents and responses.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new",
-      "quote": "Agents created in Microsoft Copilot Studio by users in your organization and approved by an admin. ... Agents created in Teams Toolkit ... approved by an admin. ... agent builder ... for users that have this feature enabled and shared with other users in your organization.",
+      "quote": "Total active users and agents ... Agent responses received | Total responses from all agents used during the selected time period. ... Responses sent to users | The total agent responses sent to all users during the selected period.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 77,
-      "where": "summary; Risk assessment: Autonomy & actions; Governance controls; rationales: risk and impact",
+      "n": 85,
+      "where": "Why it matters; Cost and licensing: Spend; Governance guidance",
+      "type": "behaviour",
+      "claim": "The separate Microsoft Copilot Credits report shows metered consumption in credits for unlicensed users of metered agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "The Credits used metric shows the total credits used from interactions by users in your organization who don't have a Microsoft Copilot license and are interacting with agents in Copilot Chat that spin the Copilot Studio meter during the selected time period.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 86,
+      "where": "Cost and licensing; Open questions",
       "type": "absence",
-      "claim": "Learn describes a usage view and documents no agent-management action inside the new report.",
+      "claim": "Microsoft has not mapped the report's Creator type categories to the service description's Microsoft Services (1P) and Non-Microsoft Services (3P) categories.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Microsoft Copilot Agents usage report take actions block agents from report enable report tenant settings. Read microsoft-365-copilot-agents-new and agent-actions; report documentation directs management to Copilot controls, not an action in the report.",
+      "quote": "Searched: \"Microsoft Services (1P)\" \"Creator type\" \"agent\". Read Agent 365 service description and new report creator definitions; search results give service and creator categories separately, without a mapping.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 78,
-      "where": "front matter: defaultState; Why it matters; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not stated the new report's arrival default or documented a tenant switch to turn that report off.",
+      "n": 87,
+      "where": "Scope: Who and where",
+      "type": "availability",
+      "claim": "The usage overview lists Microsoft Copilot Agent usage as available in the public cloud.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Agents usage report' 'default' 'enable' 'disable'; Microsoft Copilot Agents usage report take actions block agents from report enable report tenant settings. Read new report, overview, Agent 365 description and excerpts; no report arrival default or switch stated.",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "Report | Public | GCC | GCC-High | DoD | Microsoft 365 operated by 21Vianet ... Microsoft Copilot Agent usage | Yes | N/A^1^ | N/A^1^ | N/A^2^ | N/A^2^",
       "severity": null,
       "fix": null
     },
     {
-      "n": 79,
-      "where": "Open questions: Microsoft Graph report method",
-      "type": "absence",
-      "claim": "The cited copilotReportRoot reference lists four methods and none returns the Agents usage report.",
+      "n": 88,
+      "where": "Scope: Who and where; Open questions",
+      "type": "availability",
+      "claim": "The usage overview lists Agent usage in GCC as a future release.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "Microsoft Copilot Agent usage | Yes | N/A^1^ | N/A^1^ | N/A^2^ | N/A^2^ ... N/A^1^: The report will be released in the future.",
+      "severity": "minor",
+      "fix": "Add: 'The Agent 365 service description separately marks GCC availability as Yes for basic 1P and 3P active-user insights in the MAC agent usage report, while the usage reports overview still lists GCC as a future release.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365; retain the attributed roadmap and overview statements."
+    },
+    {
+      "n": 89,
+      "where": "Scope: Who and where; Open questions",
+      "type": "availability",
+      "claim": "The usage overview lists Agent usage in GCC High as a future release.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "Report | Public | GCC | GCC-High | DoD ... Microsoft Copilot Agent usage | Yes | N/A^1^ | N/A^1^ | N/A^2^ ... N/A^1^: The report will be released in the future.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 90,
+      "where": "Scope: Who and where",
+      "type": "availability",
+      "claim": "The usage overview lists Agent usage in DoD as N/A with note 2.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "Report | Public | GCC | GCC-High | DoD ... Microsoft Copilot Agent usage | Yes | N/A^1^ | N/A^1^ | N/A^2^",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 91,
+      "where": "Scope: Who and where",
+      "type": "availability",
+      "claim": "The overview's N/A note 1 means the report will be released in the future.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "N/A^1^: The report will be released in the future. The Microsoft Copilot Roadmap will be updated before the release.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 92,
+      "where": "Scope: Who and where",
+      "type": "availability",
+      "claim": "The overview's N/A note 2 means the service is unavailable and there is no plan to release the report.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "N/A^2^: The service isn't available in the environment; hence, there's no plan to release the report.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 93,
+      "where": "Open questions",
+      "type": "behaviour",
+      "claim": "The cited Copilot usage report API reference lists four methods.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/reports/resources/copilotreportroot",
       "quote": "getMicrosoft365CopilotUserCountSummary ... getMicrosoft365CopilotUserCountTrend ... getMicrosoft365CopilotUsageUserDetail ... getMicrosoft365CopilotUsageUserDetailByDate",
@@ -894,63 +1048,74 @@
       "fix": null
     },
     {
-      "n": 80,
-      "where": "Governance guidance; Governance controls",
-      "type": "consistency",
-      "claim": "Every control the governance checklist asks readers to check or decide appears in the controls table.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Decide which of the roles Learn lists for usage reports will read this report ... Open Reports > Usage > Microsoft Copilot > Agents ... Compare unlicensed agent usage with the Microsoft Copilot credits report ... Table rows: conceal names; block agent.",
-      "severity": "minor",
-      "fix": "The role-assignment decision and the Agents and Copilot Credits report checks have no corresponding controls rows. Do not add rows during correction; remove those checklist bullets or retain the report comparisons as analytical advice outside the governance checklist. The two existing controls rows can remain unchanged."
+      "n": 94,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "None of the methods in the cited Copilot report API reference is for the Agents report at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"agent usage\" \"Graph\" report API. Read copilotReportRoot Methods and Graph search results; its four methods cover Copilot user counts and user activity, not the Agents report.",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 81,
-      "where": "Governance controls: role assignment",
+      "n": 95,
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "The report has medium cost because basic 3P usage insights require premium capability while 1P insights are core capability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365",
+      "quote": "Basic usage insights for Non-Microsoft Services (3P) agents (active users) in MAC agent usage report | Microsoft 365 admin center | No | Yes | Yes ... Microsoft Agent 365 is available as a stand-alone subscription",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 96,
+      "where": "Governance controls",
       "type": "role",
-      "claim": "The Microsoft 365 admin center can assign the Microsoft Entra roles used for report access.",
+      "claim": "Report-viewing administrator roles can be assigned through Microsoft Entra roles in the Microsoft 365 admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/add-users/assign-admin-roles",
-      "quote": "In the Microsoft 365 admin center, go to Roles > Role assignments. ... choose the Microsoft Entra ID, Exchange, Intune, or Billing tab. ... Select the administrator role ... On the Assigned tab, select Add users or Add groups.",
+      "quote": "go to Roles > Role assignments. ... To view the administrator roles available for your organization, choose the Microsoft Entra ID, Exchange, Intune, or Billing tab. ... Select the administrator role that you want to assign the user to.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 82,
-      "where": "Cost and licensing: Spend; Governance guidance: At rollout",
+      "n": 97,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "consistency",
+      "claim": "Every control the governance checklist asks the reader to decide appears in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Decide which of the roles Learn lists for usage reports will read this report ... Controls rows: Whether usage reports ... conceal user, group and site names; Whether an agent listed in the report is available to anyone in the organisation.",
+      "severity": "minor",
+      "fix": "Move the first Before rollout bullet, beginning 'Decide which of the roles Learn lists for usage reports', into the Scope: Who can read it paragraph as advice rather than a checklist control. Do not add a controls row."
+    },
+    {
+      "n": 98,
+      "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "The report provides total active users, with licensed and unlicensed user counts.",
+      "claim": "The total active user count can be lower than the sum of licensed and unlicensed counts when a user's licence changes during the reporting period.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new",
-      "quote": "Total active users shows how many unique users in your organization - whether they have a Microsoft Copilot license or not - used agents in Microsoft Copilot Chat during the selected time period. ... Active users (licensed) ... Active users (unlicensed)",
+      "quote": "The sum of active users without a license and active users with a license might exceed the total active users if you assigned or removed licenses during the selected timeframe.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 83,
-      "where": "Cost and licensing: Spend; Governance guidance: At rollout",
+      "n": 99,
+      "where": "summary; Why it matters; Cost and licensing; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "The report provides total active agents.",
+      "claim": "The report segments users by whether they hold a Microsoft Copilot licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new",
-      "quote": "Total active agents shows how many unique apps with an agent element in that app with at least one active user over the selected time period.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 84,
-      "where": "Cost and licensing: Spend; Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "The agent details table provides responses and unlicensed active-user counts per agent.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new",
-      "quote": "Active users (unlicensed) | The number of unique users in your organization without a Microsoft Copilot license who used the agent for the time period selected. ... Responses sent to users | The total agent responses sent to all users during the selected period.",
+      "quote": "Summary view shows how many users with a Microsoft Copilot license used agents compared with users who don't have a Microsoft Copilot license, over the selected time frame.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-22T06:41:15.141Z",
+    "at": "2026-11-26T03:50:48.284Z",
     "summary": {
       "links": 12,
       "unreachable": 0,
@@ -1077,6 +1242,12 @@
       "date": "2026-11-22",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-22",
+      "status": "verified-with-gaps",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

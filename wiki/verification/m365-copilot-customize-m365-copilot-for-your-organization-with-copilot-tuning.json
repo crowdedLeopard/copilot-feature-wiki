@@ -1,0 +1,960 @@
+{
+  "slug": "m365-copilot-customize-m365-copilot-for-your-organization-with-copilot-tuning",
+  "roadmapId": 552589,
+  "title": "Microsoft 365 Copilot: Copilot Tuning templates in Agent Builder for agents tuned on organisational data",
+  "status": "held",
+  "date": "2026-11-26",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-26",
+    "reasons": [
+      "1 blocking finding (claim 46)"
+    ]
+  },
+  "counts": {
+    "claims": 76,
+    "confirmed": 74,
+    "unconfirmed": 0,
+    "contradicted": 2,
+    "blocker": 1,
+    "major": 0,
+    "minor": 4
+  },
+  "summary": "Hold: limiting tuning does not block every new or in-flight tuning job; authorised users can continue tuning. The roadmap facts, preview licensing and agent-blocking controls are supported, but the briefing also needs to acknowledge conflicting Microsoft guidance about disabling tuning.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: products; title",
+      "type": "record",
+      "claim": "The roadmap feature belongs to Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Copilot Tuning introduces Agent Builder templates whose context, tools and models enabled users can customise with organisational data.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users with Copilot Tuning enabled can further customize the template-based agents by tuning the context, tools, and underlying models with their organization’s proprietary data, processes, and standards.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "General availability is targeted for June CY2026 on the roadmap.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "Preview is targeted for February CY2026 on the roadmap.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"February CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists only Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Desktop and Web platforms.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The roadmap release phases are General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The June CY2026 target has passed as of the run date while the record still says In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"June CY2026\"; \"status\": \"In development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The preview default is on with Enable for all users in eligible tenants.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide",
+      "quote": "This setting is the default setting for eligible tenants. [...] Copilot Tuning isn't enabled by default for tenants with Advanced Data Residency (ADR) commitments during public preview.",
+      "severity": "minor",
+      "fix": "Keep defaultState as on, but add 'except tenants with Advanced Data Residency commitments' to the default-on sentence in the summary and What's changing, as documented at https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide. The body already gives this exception."
+    },
+    {
+      "n": 11,
+      "where": "front matter: licensing.model and notes; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "Preview tuning entitlement is included for Microsoft Copilot-licensed users in eligible tenants.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide",
+      "quote": "Enable for all users: All Microsoft Copilot-licensed users in the tenant can tune agents, including context tuning, tool tuning, and model tuning.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "Public preview eligibility requires at least 5,000 Microsoft Copilot licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide",
+      "quote": "During public preview, only tenants with at least 5,000 Microsoft Copilot licenses are eligible.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "Cost and licensing",
+      "type": "availability",
+      "claim": "Tenants below the preview eligibility threshold do not have the Copilot Tuning settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide",
+      "quote": "If a tenant doesn't meet the threshold, Copilot Tuning settings aren't available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "Licensing at general availability is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Tuning price licensing general availability tuning jobs compute Copilot Credits Work IQ; \"Copilot Tuning\" \"billing\" \"licensing\". Read tuning admin guide, overview, FAQ, Copilot license options and usage-based billing overview; none states GA tuning licensing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "General availability eligibility is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Tuning price licensing general availability tuning jobs compute Copilot Credits Work IQ. Read tuning admin guide, overview, FAQ and Copilot license options; the tuning threshold is expressly for public preview, not GA.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The preview lists document writing, document summary, expert answers, document validation, style editing and optimisation templates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-faq",
+      "quote": "Document writing [...] Document summarization [...] Expert answers [...] Document validation [...] Style editing [...] Optimization scenarios",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Context tuning defines the goal, examples and evaluation rubrics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-overview",
+      "quote": "Context tuning defines the agent's goals and success criteria by specifying the primary task, domain, and representative examples. [...] the system proposes subgoals and evaluation rubrics",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Tool tuning integrates other agents or tools into the workflow.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-overview",
+      "quote": "Tool tuning extends agent capabilities by integrating additional agents or tools into the workflow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Custom orchestration instructions determine how the tools are used.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-overview",
+      "quote": "Custom orchestration instructions define how tools are applied",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Model tuning uses supervised fine-tuning and reinforcement learning on organisational examples.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-overview",
+      "quote": "Model tuning focuses on improving reasoning and output quality through supervised fine-tuning and reinforcement learning techniques. High-quality examples from organizational data are used as training input",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "summary; What's changing; Why it matters; Risk assessment; Scope; rationale: risk",
+      "type": "behaviour",
+      "claim": "Tuning creates a snapshot copy of the SharePoint content explicitly selected by the user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide",
+      "quote": "When a user performs Copilot Tuning, only the SharePoint content explicitly selected by the user is used as training data. For tuning purposes, the system creates a snapshot copy of that data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Why it matters; Scope",
+      "type": "behaviour",
+      "claim": "Document Writing model tuning selects example outputs as a folder.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-document-writing-template",
+      "quote": "Individual file selection isn't supported. You must select a folder.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Cost and licensing: Indirect costs",
+      "type": "behaviour",
+      "claim": "Document Writing model tuning requires at least 20 example output files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-document-writing-template",
+      "quote": "To tune the model, prepare a folder containing at least 20 example output files, each at least one page long, that represent ideal results.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Cost and licensing: Indirect costs",
+      "type": "behaviour",
+      "claim": "Each Document Writing model-tuning example must be at least one page long.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-document-writing-template",
+      "quote": "at least 20 example output files, each at least one page long",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Snapshot data is stored in a tenant-isolated Microsoft 365 environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide",
+      "quote": "Snapshot data is stored in a tenant-isolated Microsoft 365 environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[1].note; Why it matters; Risk assessment; Governance guidance; rationale: risk",
+      "type": "applicability",
+      "claim": "DLP policies on original SharePoint content do not apply to tuning snapshot data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide",
+      "quote": "Data loss prevention (DLP) and retention policies applied to the original SharePoint content don't apply to snapshot data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[1].note; Why it matters; Risk assessment; Governance guidance; rationale: risk",
+      "type": "applicability",
+      "claim": "Retention policies on original SharePoint content do not apply to tuning snapshot data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide",
+      "quote": "Data loss prevention (DLP) and retention policies applied to the original SharePoint content don't apply to snapshot data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Why it matters; Risk assessment: Data exposure; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Snapshot permissions capture source ACLs at tuning time.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide",
+      "quote": "Access is captured at tuning time. Snapshot permissions reflect the access control lists (ACLs) at the time tuning occurs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The snapshot does not automatically change when its SharePoint source changes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide",
+      "quote": "Snapshots aren't automatically updated. If the underlying SharePoint content changes, the snapshot doesn't change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Why it matters; Risk assessment: Data exposure; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Retraining is required to incorporate source updates into the tuned agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide",
+      "quote": "To incorporate updates, the agent must be retrained.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Public preview retains snapshot data while the tuned agent remains active.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide",
+      "quote": "During public preview, snapshot data is retained for as long as the tuned agent remains active.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Tuning data is subject to a maximum retention period of two years.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide",
+      "quote": "Data used for tuning is subject to a maximum retention period of two years.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[1].note; Why it matters; Governance controls: How the controls interact",
+      "type": "behaviour",
+      "claim": "The tuning admin guide says deleting a tuned agent deletes its snapshot data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide",
+      "quote": "When a tuned agent is deleted, its associated snapshot data is also deleted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Governance controls: How the controls interact",
+      "type": "behaviour",
+      "claim": "The tuning admin guide says deleting the tuned agent also deletes its fine-tuned model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide",
+      "quote": "Deleting a tuned agent also deletes the associated fine-tuned model and snapshot data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing; Risk assessment: Data exposure; rationale: impact",
+      "type": "behaviour",
+      "claim": "Tuned-agent sharing explicitly selects the users and groups who can use it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide",
+      "quote": "Tuned agents are available only to users and groups configured during tuning.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The agent owner can change sharing settings at any time.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide",
+      "quote": "The agent owner can update sharing settings at any time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Tuned agents can be used in the Microsoft Copilot app and Copilot Chat in Microsoft Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-overview",
+      "quote": "Users interact with tuned agents through supported Microsoft Copilot experiences, such as the Microsoft Copilot app or Copilot Chat in Microsoft Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What's changing; Scope: Rollout",
+      "type": "availability",
+      "claim": "The cited tuning documentation is early access preview and describes availability to a limited set of customers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide",
+      "quote": "Microsoft Copilot Tuning (early access preview) [...] Microsoft Copilot Tuning is currently available to a limited set of customers through early access programs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What's changing; Scope: Rollout",
+      "type": "date",
+      "claim": "Learn says Frontier access is planned for April 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide",
+      "quote": "Access through Frontier is planned for April 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "What's changing; Cost and licensing",
+      "type": "behaviour",
+      "claim": "Preview features and requirements are subject to change.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide",
+      "quote": "Features and requirements are subject to change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Security & identity; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Document Writing model tuning asks the creator to choose Entra security groups or restrict access to themselves.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-document-writing-template",
+      "quote": "Review access Choose one or more Microsoft Entra security groups or restrict access to yourself.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Security & identity; Governance guidance; Governance controls: Tenant tuning availability",
+      "type": "behaviour",
+      "claim": "The tenant availability setting can restrict tuning to specific individuals or Microsoft Entra security groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide",
+      "quote": "Enable for specific users or groups: Admins explicitly select individual users or Microsoft Entra security groups that are allowed to tune agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Governance guidance: Before rollout; Governance controls: Tenant tuning availability",
+      "type": "behaviour",
+      "claim": "Disable tuning is a tenant option that blocks new tuning activity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide",
+      "quote": "Disable tuning: Admins can disable Copilot Tuning entirely for the tenant. This setting blocks new tuning activity",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Change & support; Governance controls: How the controls interact",
+      "type": "behaviour",
+      "claim": "Restricting or disabling tuning leaves existing tuned agents usable for inference.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide",
+      "quote": "Inference is unaffected. Users can continue to use existing agents for inference, subject to the agent's sharing and permission settings. [...] This setting blocks new tuning activity and prevents the use of tuned agents until tuning is reenabled.",
+      "severity": "minor",
+      "fix": "Add after the inference statement: 'The same admin guide contradicts its transition table and lifecycle section: its Disable tuning option says it prevents use of tuned agents until tuning is reenabled. Confirm the actual behaviour before relying on this setting.' Cite https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide."
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Changing tuning access does not roll agents back to their previous state.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide",
+      "quote": "No rollback occurs. Copilot Tuning does not revert agents to a previous state when access is restricted or disabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance controls: How the controls interact",
+      "type": "behaviour",
+      "claim": "Disabling or limiting tuning blocks new and in-flight tuning.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide",
+      "quote": "Tuning enabled for specific users or groups [...] Allowed only for authorized users [...] Only for authorized users [...] Transition: enabled → limited [...] Blocked for non-authorized users",
+      "severity": "blocker",
+      "fix": "Replace the first sentence of How the controls interact with: 'Disabling tuning blocks new and in-flight tuning; limiting tuning blocks it for users who lose access, while authorised users can continue tuning.' The transition table at https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide gives these distinctions."
+    },
+    {
+      "n": 47,
+      "where": "Why it matters; Governance guidance: Before rollout; Governance controls: Tenant tuning availability",
+      "type": "behaviour",
+      "claim": "A dedicated admin control permits or blocks open-source or external base models.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide",
+      "quote": "Copilot Tuning includes a dedicated control that allows admins to enable or disable the use of open-source or external base models.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Governance guidance: At rollout; Governance controls: Tenant tuning availability",
+      "type": "behaviour",
+      "claim": "Users excluded by specific-user or group tuning access can request access in the product.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide",
+      "quote": "When tuning is enabled for specific users or groups, users without access can submit a request from within the product.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance guidance: At rollout; Governance controls: Tenant tuning availability",
+      "type": "behaviour",
+      "claim": "Tuning access requests require admin approval and appear in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide",
+      "quote": "Requests include a business justification and appear in the Microsoft 365 admin center for review. Admins can approve or deny requests",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Scope: Admins; Governance controls: Tenant tuning availability",
+      "type": "role",
+      "claim": "AI admins manage tuning through Copilot controls in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide",
+      "quote": "AI admins manage Copilot Tuning through Copilot controls in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance controls: Role",
+      "type": "role",
+      "claim": "AI Administrator is an appropriate role for managing Copilot settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center",
+      "quote": "To manage Copilot settings in the Microsoft 365 admin center, use an appropriate admin role, such as AI Administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance controls: Tenant tuning availability; Open questions",
+      "type": "absence",
+      "claim": "The tuning admin guide supplies no navigation path and the Copilot settings page does not list tuning.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Tuning Microsoft 365 admin center setting navigation Microsoft Graph copilotPolicySetting tuning. Read tuning admin guide and Configure Microsoft Copilot settings; the former names the centre without steps and the latter has no tuning entry.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance controls: Tenant tuning availability; Open questions",
+      "type": "command",
+      "claim": "The Copilot policy settings resource accepts five identifiers, none for tuning.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/resources/copilotpolicysetting",
+      "quote": "Only these values are accepted as the {id} path parameter. [...] microsoft.copilot.copilotchatpinning; microsoft.copilot.blockaccesstoopenfiles; microsoft.copilot.imagegeneration; microsoft.copilot.allowwebsearch; microsoft.copilot.allowinadmincenters",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Microsoft has no default access to customer tuning data or data at rest.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide",
+      "quote": "Microsoft doesn't have default access to customer data used for tuning or stored at rest.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Microsoft access to tuning data requires Customer Lockbox approval.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide",
+      "quote": "Any access requires explicit customer approval through Customer Lockbox and is limited to approved support scenarios.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Preview tuning data follows macro-region residency.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide",
+      "quote": "Training, inference, and snapshot data are stored in the macro region associated with the tenant. For tenants in local regions, data is stored in the nearest macro region.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Risk assessment: Change & support; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Multi-Geo commitments do not apply to Copilot Tuning in public preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide",
+      "quote": "Multi-Geo data residency commitments don't apply to Copilot Tuning during public preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Risk assessment: Change & support; Scope: Clouds",
+      "type": "default",
+      "claim": "ADR tenants are not enabled for tuning by default in public preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide",
+      "quote": "Copilot Tuning isn't enabled by default for tenants with Advanced Data Residency (ADR) commitments during public preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Risk assessment: Change & support; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "ADR tenants wanting tuning must formally waive ADR requirements through their Microsoft account team.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide",
+      "quote": "ADR tenants that want to use Copilot Tuning must formally waive ADR requirements through their Microsoft account team.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Cost and licensing: Indirect costs",
+      "type": "behaviour",
+      "claim": "The customer determines whether a DPIA is required.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide",
+      "quote": "Customers are responsible for determining whether a DPIA is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The Document Writing agent delivers completed drafts to the user's inbox.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-document-writing-template",
+      "quote": "The completed draft is delivered to your inbox after processing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The overview requires model retraining for a valid GDPR deletion request by a user whose data trained it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-overview",
+      "quote": "If a user whose data is used in training a model submits a valid deletion request under GDPR (or similar regulations), you're required to retrain the model.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The Agent 365 inventory lets admins view tuned agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide",
+      "quote": "Fine-tuned agents appear as tuned agents in the Agent 365 portal. This portal provides a centralized inventory of all tuned agents in the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[0].ui; Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "The organisation-wide block control is at Microsoft 365 admin center > Agents > All agents > agent > Block.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Select Agents > All agents. [...] select an agent from the list of agents. [...] immediately under the agent's name, select Block or Unblock.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks a Copilot package.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Block a Copilot package to prevent its usage. [...] POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block [...] Use of these APIs in production applications is not supported.",
+      "severity": "minor",
+      "fix": "Keep the call unchanged and append to controls[0].note: 'The Graph API is beta, subject to change, and not supported for production applications.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block."
+    },
+    {
+      "n": 66,
+      "where": "controls[0].note; Governance controls: How the controls interact",
+      "type": "applicability",
+      "claim": "Blocking an Agent Builder agent restricts organisation-wide use in Copilot and other host products.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Blocking or unblocking an agent that you created by using Microsoft Copilot Agent Builder and Microsoft Copilot Studio affects its availability and functionality in Microsoft Copilot. It also affects availability and functionality in other host products",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "controls[0].note; Governance controls: Role",
+      "type": "licensing",
+      "claim": "The Graph Package Management API requires a Microsoft Agent 365 licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Access to the Package Management API requires a Microsoft Agent 365 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Governance controls: Role",
+      "type": "command",
+      "claim": "The Graph block call requires CopilotPackages.ReadWrite.All delegated permission.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Delegated (work or school account) | CopilotPackages.ReadWrite.All | Not available. [...] Application | Not available. | Not available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Governance controls: How the controls interact; Open questions",
+      "type": "behaviour",
+      "claim": "Microsoft 365 admin center agent deletion is a soft delete with a 30-day recovery window.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "When you delete an agent in the Microsoft 365 admin center, the agent is soft deleted. [...] its properties and associated resources are retained for 30 days. [...] you can restore the agent or permanently delete it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "controls[1].ui and controls[1].api",
+      "type": "absence",
+      "claim": "Microsoft documents no admin UI or API for DLP and retention policies over tuning snapshot data.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Tuning snapshot data DLP retention policy configure Purview; \"Copilot Tuning\" \"snapshot\" \"retention\" \"API\". Read tuning admin guide and Purview search excerpts on retention and Copilot protections; no snapshot-policy UI or API was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Cost and licensing: Meter",
+      "type": "absence",
+      "claim": "The usage-based billing overview does not list Copilot Tuning among its managed services.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Tuning price licensing general availability tuning jobs compute Copilot Credits Work IQ. Read the complete Services managed by usage-based billing table in the Copilot Credits overview; no Copilot Tuning entry appears.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Cost and licensing: Meter; Open questions",
+      "type": "cost",
+      "claim": "The billing overview lists Copilot Agents with Work IQ.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits",
+      "quote": "Services managed by usage-based billing [...] Copilot Agents with Work IQ",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Cost and licensing: Meter; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated whether tuned agents fall under Copilot Agents with Work IQ billing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Tuning price licensing general availability tuning jobs compute Copilot Credits Work IQ; \"Copilot Tuning\" \"billing\" \"licensing\". Read tuning guides, billing overview, Agent Builder overview and Work IQ pricing search excerpts; none places tuned agents in that billing service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Cost and licensing: Meter; rationale: cost",
+      "type": "absence",
+      "claim": "No price, meter or compute charge for tuning jobs is published as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Tuning price licensing general availability tuning jobs compute Copilot Credits Work IQ; \"Copilot Tuning\" \"billing\" \"licensing\". Read tuning admin guide, overview, FAQ, Copilot license options and billing overview; no tuning-job price, meter or compute charge appears.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Governance guidance; controls",
+      "type": "consistency",
+      "claim": "The checklist tells readers to configure tuning availability and open-source models, but neither control appears in the table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Before rollout: 'set that in the Copilot Tuning controls'; 'using the open-source model option'. The controls table contains only agent blocking and DLP/retention snapshot-policy absence.",
+      "severity": "minor",
+      "fix": "The first two Before rollout steps name controls with no table row: tenant tuning availability and open-source model tuning. Do not add rows during correction; replace those steps with 'Decide whether broad tuning and open-source base models fit the organisation, using the admin guide linked below.'"
+    },
+    {
+      "n": 76,
+      "where": "rationale: impact; What's changing",
+      "type": "behaviour",
+      "claim": "Eligible Agent Builder creators see a tune agent option after creating an agent from a tunable template.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-tuning-overview",
+      "quote": "Eligible users would be able to view \"tune agent\" option after creating an agent from a tunable template.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-26T03:50:38.744Z",
+    "summary": {
+      "links": 10,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/copilot/manage/copilot-tuning-admin-guide",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/manage/copilot-tuning-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/manage/copilot-tuning-document-writing-template",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/manage/copilot-tuning-faq",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/resources/copilotpolicysetting",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=552589",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Blocking or unblocking an agent, including one built in Agent Builder, for the whole organisation",
+        "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "All agents",
+          "Block"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Blocking or unblocking an agent, including one built in Agent Builder, for the whole organisation",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "reachable": true,
+        "token": "/beta/copilot/admin",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

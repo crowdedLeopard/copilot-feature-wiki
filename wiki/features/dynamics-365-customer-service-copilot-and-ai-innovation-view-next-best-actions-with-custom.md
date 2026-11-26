@@ -52,6 +52,9 @@ sources:
   - title: "Set up your tools and infrastructure for using Copilot in your contact center"
     url: "https://learn.microsoft.com/dynamics365/guidance/resources/cs-contact-center-copilot-setup"
     kind: "learn"
+  - title: "Next best action for case"
+    url: "https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/suggest_next_action_for_case"
+    kind: "learn"
 videos: []
 related: ["copilot-credits","m365-copilot-service-agent-in-m365-your-dedicated-service-specialist","dynamics-365-customer-service-manage-intraday-operations-with-ai-agent"]
 controls:
@@ -79,7 +82,7 @@ controls:
     note: "For individual profile Copilot features, the request body sets msdyn_enabled; msdyn_copilotfeature identifies the feature and msdyn_appconfigurationid links the app profile. Needs App Profile Manager Administrator and Basic User roles."
 confidence: "medium"
 created: "2026-11-19"
-updated: "2026-11-19"
+updated: "2026-11-26"
 roadmapModified: "2026-10-22T23:45:45"
 changes:
   - date: "2026-11-19"
@@ -92,19 +95,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 55 statements not yet confirmed"
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 60 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-26"
+    note: "Corrected Cost and licensing: the Next best action for case tool reference requires Customer Intent Agent and a pay-as-you-go plan, so that open question is removed; the pilot-profile step now points to row 1."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 67 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-26"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 57
+  claims: 67
+  confirmed: 66
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "f6322dcf475fb977efb519ea57759e1b"
+  contradicted: 1
+  attempts: 0
+  hash: "4b9fe832efa1103e38a7449412aa7bcc"
 ---
 
 ## What's changing
@@ -141,7 +148,7 @@ The roadmap and Learn both describe an administrator turning it on. If nobody ac
 
 Learn's Copilot features page lists, as a prerequisite, meeting the licensing requirements for using the feature with production environments and points to the Dynamics 365 Licensing Guide. It names no specific licence for next best actions.
 
-The Customer Intent Agent page lists setting up a pay-as-you-go plan as a prerequisite, and the Customer Service billing page says selected Copilot and agent capabilities in Dynamics 365 use consumption-based billing with Copilot Credits. The next best actions page itself lists no plan. A Copilot Credits rate specific to next best actions is not yet published, so size the spend from your own case volume once the rate appears. The billing page also says that when the quota is depleted the AI capability is unavailable until more capacity is added.
+The Customer Intent Agent page lists setting up a pay-as-you-go plan as a prerequisite, and the Customer Service billing page says selected Copilot and agent capabilities in Dynamics 365 use consumption-based billing with Copilot Credits. The Next best action for case tool reference requires Customer Intent Agent to be enabled and a pay-as-you-go plan. The Enable intent-based suggestions page does not repeat the billing prerequisite. A Copilot Credits rate specific to next best actions is not yet published, so size the spend from your own case volume once the rate appears. The billing page also says that when the quota is depleted the AI capability is unavailable until more capacity is added.
 
 See /concepts/copilot-credits/ for how the meter works. Indirect cost is administrator time to configure profiles and to train representatives.
 
@@ -161,7 +168,7 @@ Prerequisites on the next best actions page: Intent or knowledge management is c
 
 ### At rollout
 - Turn on **Actions** on the **Intent-based suggestions** page (row 1).
-- Select a pilot experience profile before adding wider groups (row 2).
+- On the Intent-based suggestions page, select a pilot experience profile before adding wider groups (row 1).
 - Tell the pilot representatives that suggested responses need review before sending.
 
 ### After rollout
@@ -188,7 +195,6 @@ The experience profile row governs access to Copilot features in Copilot Service
 ## Open questions
 
 - Which next best actions write to case notes or knowledge articles, given that the roadmap lists them as one-click actions and Learn lists follow-up, review, copy and resolve? Watch the Customer Intent Agent page and the roadmap item.
-- Does turning on next best actions require the pay-as-you-go plan that the Customer Intent Agent page lists, given that the next best actions page lists no plan?
 - What Copilot Credits rate applies to next best actions? Watch the Customer Service billing page and the Power Platform Licensing Guide.
 - The roadmap says an administrator can enable the feature for the entire organisation, while Learn selects experience profiles; does the organisation-wide option exist as a separate setting?
 
@@ -198,12 +204,9 @@ cost: Variable. The Customer Intent Agent page lists a pay-as-you-go plan as a p
 impact: Low. Representatives in the experience profiles an administrator selects see the actions; other users and customers do not.
 -->
 
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Open questions: pay-as-you-go requirement / absence: Whether next best actions require the Customer Intent Agent pay-as-you-go plan remains an open licensing question. | Found: Next best action for case ... Prerequisites ... This tool requires the following: Customer Intent Agent must be enabled, and a pay-as-you-go plan is required. | Fix: Replace the pay-as-you-go open question with this qualified statement in Cost and licensing: 'The Next best action for case tool reference explicitly requires Customer Intent Agent to be enabled and a pay-as-you-go plan. The Enable intent-based suggestions page does not repeat the billing prerequisite.' Cite https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/suggest_next_action_for_case. Keep the separate question about the feature-specific credit rate. | Source: https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/suggest_next_action_for_case
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table; Governance guidance: At rollout / admin-path: The Copilot Service admin center path Support experience > Productivity > Intent-based suggestions > Manage > Turn on intent-based suggestions > Actions reaches next-best-action enablement. | Found: Select Productivity in Support experience. ... Select Manage for Intent-based suggestions. ... In the Turn on intent-based suggestions section ... Actions: Select to enable next best actions for cases | Fix: Keep the switch path. Add this sentence to controls[0].note for the profile assignment its governs field also names: 'On the Intent-based suggestions page, under Enable in experience profiles, select Select experience profiles and choose one or more experience profiles.' The existing docs URL supports this branch. | Source: https://learn.microsoft.com/dynamics365/contact-center/administer/enable-intent-for-service-reps
-- [contradicted, minor] Governance guidance: Before rollout and After rollout / consistency: All controls the governance checklist tells readers to check or monitor are represented in the controls table. | Found: Confirm that Intent or knowledge management is configured and that Ask a question is enabled ... Check with finance whether the pay-as-you-go plan ... Check that custom security roles ... Check the environment's geography ... Watch Copilot Credits consumption | Fix: The prerequisite, billing-plan, custom-role, data-movement and credit-monitoring checklist steps have no corresponding table rows. Move those checks into the existing Scope and Cost and licensing discussion, keeping their verified wording, instead of presenting them as table-covered checklist controls. Do not add control rows.
-- [contradicted, minor] Governance guidance: At rollout / consistency: Row 2 is the control for selecting experience profiles that receive next best actions. | Found: Select a pilot experience profile before adding wider groups (row 2). ... The experience profile row governs access to Copilot features ... in general; Learn says to add next best actions ... from the Intent-based suggestions page. | Fix: Replace the checklist item with 'On the Intent-based suggestions page, select a pilot experience profile before adding wider groups (row 1).' The route is documented at https://learn.microsoft.com/dynamics365/contact-center/administer/enable-intent-for-service-reps.
+- [supported, minor] controls[0].ui; Governance controls table; Governance guidance: At rollout / admin-path: Copilot Service admin center > Support experience > Productivity > Intent-based suggestions > Manage > Turn on intent-based suggestions > Actions enables next best actions. | Found: Select Productivity in Support experience. ... Select Manage for Intent-based suggestions. ... In the Turn on intent-based suggestions section ... Actions: Select to enable next best actions for cases | Fix: Keep the Actions path. Add to the row note: 'For profile assignment, use Support experience > Productivity > Intent-based suggestions > Manage > Enable in experience profiles > Select experience profiles > experience profiles.' The cited page gives this separate branch; the row currently names profile assignment without showing its route. | Source: https://learn.microsoft.com/dynamics365/contact-center/administer/enable-intent-for-service-reps
+- [contradicted, minor] Governance guidance: Before rollout and After rollout; Governance controls table / consistency: The governance checklist names controls that are absent from the controls table. | Found: Checklist: Ask a question, pay-as-you-go plan, custom security roles, data movement and Copilot Credits monitoring. Table: next-best-action enablement/profile assignment and general profile Copilot access only. | Fix: Acknowledge that the checklist steps for Ask a question, billing and credit monitoring, custom-role privileges and cross-region data movement have no corresponding controls-table row. Add this sentence after the table: 'The controls table does not cover the prerequisite, billing, security-role and data-movement checks in the governance checklist.' Do not add rows as part of this correction.
 -->

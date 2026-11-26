@@ -80,18 +80,20 @@ changes:
     note: "Corrected after the independent check: narrowed the Cleanup password row and automation statement, qualified the cleanup role and synchronised-account guidance, and updated portal paths and the panel licence sentence."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 98 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 99 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-24"
+  status: "held"
+  date: "2026-11-26"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 98
+  claims: 99
   confirmed: 97
   unconfirmed: 0
-  contradicted: 1
-  attempts: 0
+  contradicted: 2
+  attempts: 1
   hash: "697a160b3140d9301ea5d735104faa0e"
 ---
 
@@ -200,8 +202,10 @@ cost: Low. The Learn page names the device licences the resource account must al
 impact: Low. Teams device administrators do the work, and Microsoft's page says end users notice no changes to device functionality.
 -->
 
-<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Risk assessment: Data exposure / applicability: Marking an account as a resource during migration is sufficient to expect removal of access to shared files and recordings. | Found: To restrict file and recording access, the -RestrictResourceAccountAccess parameter must be configured as true in SharePoint Online. | Fix: Replace the second Data exposure bullet with: 'Marking an account as a resource is part of migration. Microsoft lists removal from meeting chats after the call ends as a benefit.' Remove the expectation that migration itself removes file and recording access; the cited Set as Resource page now says that restriction additionally requires -RestrictResourceAccountAccess configured as true in SharePoint Online. | Source: https://learn.microsoft.com/microsoftteams/rooms/set-as-resource-account-for-shared-teams-devices
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The checklist instructs manual password resets in source directories and identity providers, but those controls have no table row. | Found: Checklist: reset or scramble the password in the source directory ... change the password of federated accounts through the identity provider. Table: Schedule migration; built-in Cleanup password; Set as Resource. | Fix: Remove the two manual-password-reset sentences from the After rollout checklist bullet, leaving 'Run Cleanup password for migrated cloud-managed accounts.' Keep the qualified source-directory and federated-password guidance in Risk assessment; do not add control rows.
+- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The checklist instructs source-directory and identity-provider password resets but those controls have no table row. | Found: After rollout: reset or scramble the password in the source directory ... change the password of federated accounts through the identity provider. Table: Schedule migration; built-in Cleanup password; Set as Resource. | Fix: Remove the two manual-password-reset sentences from the After rollout checklist bullet, leaving 'Run Cleanup password for migrated cloud-managed accounts.' Keep the qualified source-directory and federated-password guidance in Risk assessment; do not add control rows.
 -->

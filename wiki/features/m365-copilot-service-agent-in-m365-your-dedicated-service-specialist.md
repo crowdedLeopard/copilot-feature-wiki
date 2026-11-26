@@ -79,15 +79,17 @@ changes:
     note: "Corrected after verification: the Block action is documented as applying to the selected agent, the agent's own mailbox, calendar and OneDrive access, the AI Administrator and Global Administrator roles, and Agent 365 tool-access control are now stated."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 78 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 75 statements not yet confirmed"
 version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-24"
+  date: "2026-11-26"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 78
-  confirmed: 78
+  claims: 75
+  confirmed: 75
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -194,9 +196,9 @@ cost: Variable. Public Preview uses Copilot Credits, including 100 Copilot Credi
 impact: Low. The roadmap describes a manager-run agent, so the people who notice are service managers and administrators, not most users. Microsoft has not said who gets it.
 -->
 
-<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] rationale: impact / absence: Microsoft has not said who gets this planned autonomous capability. | Found: Searched: "Service Agent" "Microsoft 365" default enabled rollout hiring manager roles; "Service Agent" "Microsoft 365" "hire" roles permissions. Read roadmap, Resources for Agents and agent-roles-perms; hiring audience is unspecified, but Frontier and tenant prerequisites are published. | Fix: Replace 'Microsoft has not said who gets it.' in the impact rationale with 'Who can hire this planned autonomous capability is not yet documented as of November 2026.' This preserves the narrow unresolved hiring question without obscuring the Public Preview prerequisites already stated in the page.
-- [supported, minor] controls[0].api: relationship to the agent-blocking control / applicability: The Package Management block API can govern a catalog package representing an agent. | Found: A package represents an agent or a tool, such as a plugin, MCP server, or skill, in the organization catalog. The Package Management API enables IT administrators to view and manage agents and tools across your organization. | Fix: Add 'Agent 365 Package Management API overview' at https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview to sources with kind 'learn'; it establishes the agent-to-package relationship supporting the API side of the existing control row. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview
+- [supported, minor] rationale: impact / absence: Microsoft has not said who gets this planned autonomous capability. | Found: Searched: "Service Agent" "hire" "manager" "permissions"; "Service Agent" "Microsoft 365" "default" "hire". Read Resources for Agents, agent-actions and agent-roles-perms; precise hiring roles are unspecified, but Frontier and tenant licensing prerequisites are published. | Fix: Replace 'Microsoft has not said who gets it.' in the impact rationale with 'Who can hire this planned autonomous capability is not yet documented as of November 2026.'
+- [supported, minor] controls[0].api: applicability / applicability: The catalog Package Management block API can govern a package representing an agent across the organization. | Found: A package represents an agent or a tool, such as a plugin, MCP server, or skill, in the organization catalog. Admin blocks a package to prevent its usage across the organization. | Fix: Add 'Agent 365 Package Management API overview' at https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview to sources with kind 'learn'; it supports the agent-to-package relationship for the existing API control. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview
 -->

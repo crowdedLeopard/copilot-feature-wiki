@@ -2,36 +2,52 @@
   "slug": "dynamics-365-customer-service-copilot-and-ai-innovation-view-next-best-actions-with-custom",
   "roadmapId": 577819,
   "title": "Dynamics 365 Customer Service: next best actions from Customer Intent Agent in the Copilot pane",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-26",
-  "version": 2,
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-26",
-    "reasons": [
-      "1 blocking finding (claim 57)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 60,
-    "confirmed": 57,
+    "claims": 67,
+    "confirmed": 66,
     "unconfirmed": 0,
-    "contradicted": 3,
-    "blocker": 1,
+    "contradicted": 1,
+    "blocker": 0,
     "major": 0,
-    "minor": 3
+    "minor": 2
   },
-  "summary": "Hold: the briefing leaves the pay-as-you-go requirement for next best actions open, but Microsoft's Next best action for case reference explicitly requires that plan. The roadmap facts and listed control operations are supported; the profile-selection instructions and checklist need small corrections.",
+  "summary": "The briefing passes: Microsoft's documentation supports administrator enablement, experience-profile access, the Dataverse update calls and the pay-as-you-go prerequisite. Minor corrections should make the profile-selection route explicit and acknowledge that several checklist controls have no corresponding table row.",
   "claims": [
     {
       "n": 1,
+      "where": "title; front matter: roadmapId",
+      "type": "record",
+      "claim": "Roadmap item 577819 concerns next best actions with Customer Intent Agent in Dynamics 365 Customer Service.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Dynamics 365 Customer Service: Copilot and AI innovation - View next best actions with Customer Intent Agent",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The record lists Microsoft Copilot (Microsoft 365) and Dynamics 365 Customer Service.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\", \"Dynamics 365 Customer Service\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is Launched.",
@@ -42,7 +58,7 @@
       "fix": null
     },
     {
-      "n": 2,
+      "n": 4,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target date is August CY2026.",
@@ -53,10 +69,10 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 5,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap supplies no preview date.",
+      "claim": "The roadmap record supplies no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -64,7 +80,7 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 6,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
       "claim": "The roadmap release phase is General Availability.",
@@ -75,10 +91,10 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 7,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The record lists Worldwide (Standard Multi-Tenant).",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -86,10 +102,10 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 8,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The record lists the Web platform.",
+      "claim": "The roadmap lists the Web platform.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -97,87 +113,21 @@
       "fix": null
     },
     {
-      "n": 7,
-      "where": "front matter: products",
-      "type": "record",
-      "claim": "The roadmap associates the feature with Microsoft Copilot (Microsoft 365) and Dynamics 365 Customer Service.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\", \"Dynamics 365 Customer Service\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "What's changing; Open questions",
-      "type": "record",
-      "claim": "The roadmap describes an administrator enabling the feature for the entire organisation.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "An administrator can enable this feature for the entire organization in the Customer Service admin center.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 9,
-      "where": "What's changing",
+      "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap describes consolidating important case attributes in one place.",
+      "claim": "The roadmap modification timestamp is 2026-10-22T23:45:45.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Important case attributes are consolidated in one place as the representative gathers information through back-and-forth exchanges with the customer.",
+      "quote": "\"modified\": \"2026-10-22T23:45:45\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 10,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The roadmap describes suggesting knowledge articles.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Knowledge articles are suggested so representatives can dig deeper and understand the reasoning behind the recommendations.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The roadmap lists drafting emails among one-click actions.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Next Best Action (NBA) allows service representatives to perform a suite of Copilot-powered actions in one click. These actions include, but aren't limited to, drafting emails, updating knowledge articles, updating case notes, and more.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "What's changing; Risk assessment: Autonomy & actions; Open questions",
-      "type": "record",
-      "claim": "The roadmap lists updating knowledge articles among one-click actions.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "These actions include, but aren't limited to, drafting emails, updating knowledge articles, updating case notes, and more.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "What's changing; Risk assessment: Autonomy & actions; Open questions",
-      "type": "record",
-      "claim": "The roadmap lists updating case notes among one-click actions.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "These actions include, but aren't limited to, drafting emails, updating knowledge articles, updating case notes, and more.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "title; summary; What's changing; Risk assessment: Change & support",
+      "where": "title; summary; What's changing; Risk assessment",
       "type": "behaviour",
-      "claim": "Customer Intent Agent shows recommended next best actions for a case in the Copilot pane.",
+      "claim": "Customer Service can show next best actions for a case in the Copilot pane.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-copilot-features",
       "quote": "Next best actions use Customer Intent Agent to recommend next steps for a case in the Copilot pane.",
@@ -185,87 +135,10 @@
       "fix": null
     },
     {
-      "n": 15,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The agent analyses the case after it is created or updated.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-copilot-features",
-      "quote": "After a case is created or updated, the agent analyzes the case context, such as emails and notes",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
-      "type": "behaviour",
-      "claim": "Next best actions analyse case emails as context.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/enable-intent-for-service-reps",
-      "quote": "For a case, the autonomous agent analyzes case data such as emails and notes and maps the customer's issue to the available intents.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
-      "type": "behaviour",
-      "claim": "Next best actions analyse case notes as context.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/enable-intent-for-service-reps",
-      "quote": "For a case, the autonomous agent analyzes case data such as emails and notes and maps the customer's issue to the available intents.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "What's changing; Open questions",
-      "type": "behaviour",
-      "claim": "Learn lists following up with the customer as a suggested action.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/contact-center/use/use-intent-suggestions",
-      "quote": "Follow up with the customer to gather or confirm additional details.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance; rationale: risk",
-      "type": "behaviour",
-      "claim": "Representatives can select and review the generated email response and refine it before sending.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/contact-center/use/use-intent-suggestions",
-      "quote": "You can view and select the following next actions that help you complete the next step in resolving the issue: ... Review the email response generated for the customer, and refine it before sending.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "What's changing; Open questions",
-      "type": "behaviour",
-      "claim": "Learn lists resolving the case as a suggested action.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/enable-intent-for-service-reps",
-      "quote": "Resolve the case after confirming that the return request is completed.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "What's changing; Open questions",
-      "type": "behaviour",
-      "claim": "Learn lists copying the generated response as a next action.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/contact-center/use/use-intent-suggestions",
-      "quote": "Copy the generated response.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationale: risk",
+      "n": 11,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
       "type": "default",
-      "claim": "Next best actions require administrator enablement and profile assignment before representatives can use them.",
+      "claim": "Next best actions are admin-opt-in and do not reach representatives until an administrator enables and assigns them.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-copilot-features",
       "quote": "To use next best actions, turn them on from the Intent-based suggestions page in Copilot Service admin center and add them to your representatives' experience profiles.",
@@ -273,76 +146,65 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "What's changing; Scope; Governance controls; rationale: impact",
-      "type": "applicability",
-      "claim": "Administrators select the experience profiles that receive next best actions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/enable-intent-for-service-reps",
-      "quote": "In Enable in experience profiles, select Select experience profiles. ... In Select experience profiles, select one or more experience profiles.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
+      "n": 12,
       "where": "controls[0].ui; Governance controls table; Governance guidance: At rollout",
       "type": "admin-path",
-      "claim": "The Copilot Service admin center path Support experience > Productivity > Intent-based suggestions > Manage > Turn on intent-based suggestions > Actions reaches next-best-action enablement.",
+      "claim": "Copilot Service admin center > Support experience > Productivity > Intent-based suggestions > Manage > Turn on intent-based suggestions > Actions enables next best actions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/enable-intent-for-service-reps",
       "quote": "Select Productivity in Support experience. ... Select Manage for Intent-based suggestions. ... In the Turn on intent-based suggestions section ... Actions: Select to enable next best actions for cases",
       "severity": "minor",
-      "fix": "Keep the switch path. Add this sentence to controls[0].note for the profile assignment its governs field also names: 'On the Intent-based suggestions page, under Enable in experience profiles, select Select experience profiles and choose one or more experience profiles.' The existing docs URL supports this branch."
+      "fix": "Keep the Actions path. Add to the row note: 'For profile assignment, use Support experience > Productivity > Intent-based suggestions > Manage > Enable in experience profiles > Select experience profiles > experience profiles.' The cited page gives this separate branch; the row currently names profile assignment without showing its route."
     },
     {
-      "n": 25,
+      "n": 13,
       "where": "controls[0].api; Governance controls table and prose",
       "type": "command",
       "claim": "PATCH /msdyn_nextbestactionsconfigs(msdyn_nextbestactionsconfigid) updates next-best-action configuration.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_nextbestactionsconfig",
-      "quote": "Update ... PATCH /msdyn_nextbestactionsconfigs(msdyn_nextbestactionsconfigid) ... Whether Next Best Actions is enabled for this target entity.",
+      "quote": "Update ... PATCH /msdyn_nextbestactionsconfigs(msdyn_nextbestactionsconfigid) ... See Update",
       "severity": null,
       "fix": null
     },
     {
-      "n": 26,
+      "n": 14,
       "where": "controls[0].note; Governance controls table",
       "type": "command",
-      "claim": "The request body uses msdyn_isenabled to set next-best-action enablement.",
+      "claim": "The update request uses msdyn_isenabled to set next-best-action enablement.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_nextbestactionsconfig",
-      "quote": "Writable columns/attributes ... msdyn_isenabled ... Description: Whether Next Best Actions is enabled for this target entity. ... Type: Boolean",
+      "quote": "Writable columns/attributes ... msdyn_isenabled ... Description: Whether Next Best Actions is enabled for this target entity.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 27,
+      "n": 15,
       "where": "controls[0].note; Governance controls table",
       "type": "command",
       "claim": "msdyn_targetentity identifies the target Dataverse entity, such as incident.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_nextbestactionsconfig",
-      "quote": "Logical name of the Dataverse entity Next Best Actions is scoped to (e.g. incident). ... LogicalName: msdyn_targetentity",
+      "quote": "Logical name of the Dataverse entity Next Best Actions is scoped to (e.g. incident).",
       "severity": null,
       "fix": null
     },
     {
-      "n": 28,
+      "n": 16,
       "where": "controls[0].note; Governance controls table",
-      "type": "applicability",
-      "claim": "The printed next-best-action API changes entity enablement, not experience-profile assignment.",
+      "type": "absence",
+      "claim": "The documented next-best-action configuration update does not provide experience-profile assignment.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_nextbestactionsconfig",
-      "quote": "Whether Next Best Actions is enabled for this target entity. ... Logical name of the Dataverse entity Next Best Actions is scoped to (e.g. incident).",
+      "source": null,
+      "quote": "Searched: 'msdyn_nextbestactionsconfig profile'; read its Messages and Writable columns/attributes. Enablement and target entity are documented, but no experience-profile assignment column is listed.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 29,
+      "n": 17,
       "where": "controls[1].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "Copilot Service admin center > Support experience > Workspaces > Experience profiles > profile > Productivity pane > Copilot reaches the profile's Copilot option.",
+      "claim": "Copilot Service admin center > Support experience > Workspaces > Experience profiles > profile > Productivity pane > Copilot reaches the profile Copilot control.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/create-agent-experience-profile",
       "quote": "go to Experience profiles in Support experience > Workspaces. ... Select the profile ... In the Productivity pane ... Copilot ... Turn on the toggle next to each option",
@@ -350,52 +212,52 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 18,
       "where": "controls[1].api; Governance controls table and prose",
       "type": "command",
-      "claim": "PATCH /msdyn_appcopilotconfigurations(msdyn_appcopilotconfigurationid) updates individual profile Copilot configurations.",
+      "claim": "PATCH /msdyn_appcopilotconfigurations(msdyn_appcopilotconfigurationid) updates individual profile Copilot configuration.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_appcopilotconfiguration",
-      "quote": "App Profile Copilot Configuration ... Update ... PATCH /msdyn_appcopilotconfigurations(msdyn_appcopilotconfigurationid) ... Writable columns/attributes ... msdyn_enabled",
+      "quote": "App Profile Copilot Configuration ... Update ... PATCH /msdyn_appcopilotconfigurations(msdyn_appcopilotconfigurationid) ... See Update",
       "severity": null,
       "fix": null
     },
     {
-      "n": 31,
+      "n": 19,
       "where": "controls[1].note; Governance controls table",
       "type": "command",
-      "claim": "msdyn_enabled is the writable Boolean that enables an individual profile Copilot feature.",
+      "claim": "msdyn_enabled sets whether the individual profile Copilot feature is enabled.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_appcopilotconfiguration",
-      "quote": "Writable columns/attributes ... msdyn_enabled ... DisplayName: Enabled ... LogicalName: msdyn_enabled ... Type: Boolean ... True Label: Yes ... False Label: No",
+      "quote": "Writable columns/attributes ... msdyn_enabled ... DisplayName: Enabled ... Type: Boolean ... True Label: Yes ... False Label: No",
       "severity": null,
       "fix": null
     },
     {
-      "n": 32,
+      "n": 20,
       "where": "controls[1].note; Governance controls table",
       "type": "command",
       "claim": "msdyn_copilotfeature identifies the individual Copilot feature.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_appcopilotconfiguration",
-      "quote": "DisplayName: Copilot Feature ... LogicalName: msdyn_copilotfeature ... Type: Picklist ... Choices/Options ... Ask a question ... Write an email ... Intent-based suggestions",
+      "quote": "msdyn_copilotfeature ... DisplayName: Copilot Feature ... Type: Picklist ... 829050010: Intent-based suggestions",
       "severity": null,
       "fix": null
     },
     {
-      "n": 33,
+      "n": 21,
       "where": "controls[1].note; Governance controls table",
       "type": "command",
-      "claim": "msdyn_appconfigurationid links a Copilot configuration to the app profile.",
+      "claim": "msdyn_appconfigurationid links the Copilot configuration to its app profile.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_appcopilotconfiguration",
-      "quote": "DisplayName: App profile ... LogicalName: msdyn_appconfigurationid ... Type: Lookup ... Targets: msdyn_appconfiguration",
+      "quote": "msdyn_appconfigurationid ... DisplayName: App profile ... Type: Lookup ... Targets: msdyn_appconfiguration",
       "severity": null,
       "fix": null
     },
     {
-      "n": 34,
-      "where": "controls[1].note; Governance controls",
+      "n": 22,
+      "where": "controls[1].note; Governance controls table and prose",
       "type": "role",
       "claim": "Creating experience profiles requires the App Profile Manager Administrator role.",
       "status": "supported",
@@ -405,10 +267,10 @@
       "fix": null
     },
     {
-      "n": 35,
-      "where": "controls[1].note; Governance controls",
+      "n": 23,
+      "where": "controls[1].note; Governance controls table and prose",
       "type": "role",
-      "claim": "Creating experience profiles in Copilot Service admin center also requires the Basic User role.",
+      "claim": "Creating profiles in Copilot Service admin center requires the Basic User role.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/create-agent-experience-profile",
       "quote": "The Basic User role, which is required to create profiles in Copilot Service admin center.",
@@ -416,10 +278,10 @@
       "fix": null
     },
     {
-      "n": 36,
-      "where": "controls[1].governs; Governance controls",
+      "n": 24,
+      "where": "controls[1].governs; Governance controls prose",
       "type": "applicability",
-      "claim": "The experience-profile control governs representatives' access to Copilot features in Copilot Service workspace generally.",
+      "claim": "The experience-profile row controls access to Copilot features in Copilot Service workspace in general.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-copilot-features",
       "quote": "To limit the Copilot features that specific representatives can use in Copilot Service workspace: ... Create a custom experience profile and turn on only the required Copilot features. ... Assign the custom experience profile to the representatives.",
@@ -427,18 +289,326 @@
       "fix": null
     },
     {
-      "n": 37,
-      "where": "Scope",
-      "type": "default",
-      "claim": "By default, representatives added to default experience profiles can use Copilot features.",
+      "n": 25,
+      "where": "front matter: licensing.model and notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The licensing model is mixed: production Copilot licensing requirements coexist with the next-best-action tool's required pay-as-you-go plan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/suggest_next_action_for_case",
+      "quote": "Customer Intent Agent must be enabled, and a pay-as-you-go plan is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The Copilot features page requires production-environment licensing compliance and points to the Dynamics 365 Licensing Guide.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-copilot-features",
-      "quote": "By default, representatives you add to the default experience profiles can use Copilot features.",
+      "quote": "Meet the licensing requirements for using the feature with production environments. Learn more in the Dynamics 365 Licensing Guide.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Cost and licensing: first paragraph",
+      "type": "absence",
+      "claim": "The Copilot features page names no specific licence for next best actions.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'next best actions license Dynamics' and 'next best actions licensing guide'; read configure-copilot-features, including Prerequisites and Enable next best actions. Its licensing text points to the guide without naming a next-best-actions SKU.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "front matter: licensing.notes; Why it matters; Cost and licensing; Governance guidance; rationale: cost",
+      "type": "licensing",
+      "claim": "The Customer Intent Agent page lists setting up a pay-as-you-go plan as a prerequisite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/manage-customer-intent-agent",
+      "quote": "Prerequisites ... Set up a pay-as-you-go plan.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Cost and licensing: tool prerequisite; writer evidence",
+      "type": "applicability",
+      "claim": "The Next best action for case tool requires Customer Intent Agent to be enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/suggest_next_action_for_case",
+      "quote": "This tool requires the following: Customer Intent Agent must be enabled, and a pay-as-you-go plan is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing: tool prerequisite; writer evidence",
+      "type": "licensing",
+      "claim": "The Next best action for case tool requires a pay-as-you-go plan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/suggest_next_action_for_case",
+      "quote": "This tool requires the following: Customer Intent Agent must be enabled, and a pay-as-you-go plan is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Cost and licensing: Enable intent-based suggestions prerequisite; writer evidence",
+      "type": "absence",
+      "claim": "The Enable intent-based suggestions page does not repeat the billing-plan prerequisite.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: the fetched enable-intent-for-service-reps page for billing, pay-as-you-go and plan. Its Prerequisites list Intent or knowledge management, Ask a question and optional connectors, with no billing-plan requirement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "A Copilot Credits rate specific to next best actions is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'next best actions credits rate', 'Customer Intent Agent billing rate'; opened setup-pay-as-you-go, manage-customer-intent-agent, suggest_next_action_for_case and requirements-messages-management. No feature-specific rate found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Selected Dynamics 365 Copilot and agent capabilities use consumption-based billing with Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go",
+      "quote": "Selected Copilot and agent capabilities in Dynamics 365 use consumption-based billing, charging per use. These capabilities use Copilot Credits for AI interactions and tasks",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "The variable cost rating reflects documented pay-as-you-go consumption rather than an included or zero-cost feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go",
+      "quote": "The pay-as-you-go model charges for the actual number of messages consumed by agents during the month.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Change & support; Cost and licensing",
+      "type": "behaviour",
+      "claim": "The Dynamics 365 billing page says quota depletion makes the AI capability unavailable until more capacity is added.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go",
+      "quote": "When the quota is depleted, the AI capability is unavailable until more capacity is added.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Dynamics 365 sends notifications when Copilot Credits quota is low or depleted.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go",
+      "quote": "If your organization's quota is low or depleted, users receive in-app notifications about the status and necessary actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing: first paragraph",
+      "type": "behaviour",
+      "claim": "The agent analyzes case context after a case is created or updated.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-copilot-features",
+      "quote": "After a case is created or updated, the agent analyzes the case context, such as emails and notes",
       "severity": null,
       "fix": null
     },
     {
       "n": 38,
+      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Next best actions analyze case emails as context.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/enable-intent-for-service-reps",
+      "quote": "For a case, the autonomous agent analyzes case data such as emails and notes and maps the customer's issue to the available intents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Next best actions analyze case notes as context.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/enable-intent-for-service-reps",
+      "quote": "For a case, the autonomous agent analyzes case data such as emails and notes and maps the customer's issue to the available intents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "title; What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Customer Intent Agent provides the next-best-action recommendations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-copilot-features",
+      "quote": "Next best actions use Customer Intent Agent to recommend next steps for a case in the Copilot pane.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "What's changing; Risk assessment; Open questions",
+      "type": "behaviour",
+      "claim": "Learn lists following up with the customer as a suggested next best action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/use/use-intent-suggestions",
+      "quote": "Follow up with the customer to gather or confirm additional details.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "What's changing; Risk assessment; Open questions",
+      "type": "behaviour",
+      "claim": "Learn lists reviewing a generated draft response as a suggested next best action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/enable-intent-for-service-reps",
+      "quote": "Review a draft response generated for the customer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "Learn lists resolving the case as a suggested next best action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/enable-intent-for-service-reps",
+      "quote": "Resolve the case after confirming that the return request is completed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "Learn lists copying the generated response as a next best action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/use/use-intent-suggestions",
+      "quote": "Copy the generated response.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Autonomy & actions and Change & support; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "Representatives view and select suggestions and can review and refine the generated email response before sending.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/use/use-intent-suggestions",
+      "quote": "You can view and select the following next actions ... Review the email response generated for the customer, and refine it before sending.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "summary; What's changing; Scope; Governance guidance; Governance controls; rationale: impact",
+      "type": "applicability",
+      "claim": "Administrators select the experience profiles whose representatives receive next best actions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/enable-intent-for-service-reps",
+      "quote": "Enable intent-based suggestions in experience profiles for service representatives to use them. ... In Enable in experience profiles, select Select experience profiles. ... select one or more experience profiles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap describes administrator enablement for the entire organisation.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "An administrator can enable this feature for the entire organization in the Customer Service admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "What's changing: second paragraph",
+      "type": "record",
+      "claim": "The roadmap describes consolidating important case attributes in one place.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Important case attributes are consolidated in one place as the representative gathers information through back-and-forth exchanges with the customer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "What's changing: second paragraph",
+      "type": "record",
+      "claim": "The roadmap describes suggesting knowledge articles.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Knowledge articles are suggested so representatives can dig deeper and understand the reasoning behind the recommendations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "What's changing: third paragraph",
+      "type": "record",
+      "claim": "The roadmap lists drafting emails among one-click Copilot-powered actions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "perform a suite of Copilot-powered actions in one click. These actions include, but aren't limited to, drafting emails",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists updating knowledge articles among one-click actions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "perform a suite of Copilot-powered actions in one click. These actions include, but aren't limited to, drafting emails, updating knowledge articles",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists updating case notes among one-click actions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "perform a suite of Copilot-powered actions in one click. These actions include, but aren't limited to, drafting emails, updating knowledge articles, updating case notes, and more.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "availability",
+      "claim": "The Copilot features page requires cross-region data movement to be allowed before opt-in where Copilot is not available in region by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-copilot-features",
+      "quote": "For Europe, data movement for Copilot features is turned on by default. For all other regions, you must allow data movement across regions in Power Platform admin center before you can opt in to use Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
       "where": "Risk assessment: Security & identity; Scope",
       "type": "role",
       "claim": "By default, only users with the Customer Service Representative role can use Copilot features.",
@@ -449,10 +619,10 @@
       "fix": null
     },
     {
-      "n": 39,
+      "n": 55,
       "where": "Risk assessment: Security & identity; Scope; Governance guidance: Before rollout",
       "type": "role",
-      "claim": "Custom security roles need the listed Copilot privileges for users to access Copilot.",
+      "claim": "Custom security roles need the privileges listed on the Copilot features page to provide Copilot access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-copilot-features",
       "quote": "If your users have custom security roles, ensure those roles include the following privileges.",
@@ -460,10 +630,10 @@
       "fix": null
     },
     {
-      "n": 40,
-      "where": "Risk assessment: Security & identity",
+      "n": 56,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
       "type": "role",
-      "claim": "Custom roles need Miscellaneous privileges > prvIntelligenceUsage.",
+      "claim": "Custom roles must include Miscellaneous privileges > prvIntelligenceUsage for users to access Copilot.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-copilot-features",
       "quote": "Ensure that your custom security roles include Miscellaneous privileges > prvIntelligenceUsage so that users can access Copilot.",
@@ -471,32 +641,32 @@
       "fix": null
     },
     {
-      "n": 41,
-      "where": "Scope",
-      "type": "role",
-      "claim": "The Copilot features page lists the System Administrator role as a setup prerequisite.",
+      "n": 57,
+      "where": "Scope: first paragraph",
+      "type": "default",
+      "claim": "Representatives added to default experience profiles can use Copilot features by default.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-copilot-features",
-      "quote": "Before you set up Copilot features, ensure that you: ... Have the System Administrator role.",
+      "quote": "By default, representatives you add to the default experience profiles can use Copilot features.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 42,
-      "where": "Scope; Governance guidance: Before rollout",
-      "type": "behaviour",
+      "n": 58,
+      "where": "Scope: prerequisites; Governance guidance: Before rollout",
+      "type": "applicability",
       "claim": "The next-best-actions setup page lists configured Intent or knowledge management as a prerequisite.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/enable-intent-for-service-reps",
-      "quote": "Before you set up the autonomous agent, make sure the following configurations are in place. ... Intent or knowledge management is configured.",
+      "quote": "Prerequisites ... Intent or knowledge management is configured. ... Knowledge management isn't set up automatically when the page is saved.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 43,
-      "where": "Scope; Governance guidance: Before rollout",
-      "type": "behaviour",
-      "claim": "The setup page requires Ask a question to be enabled in the Copilot help pane.",
+      "n": 59,
+      "where": "Scope: prerequisites; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Ask a question must be enabled in the Copilot help pane.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/enable-intent-for-service-reps",
       "quote": "Ask a question is enabled in the Copilot help pane.",
@@ -504,120 +674,21 @@
       "fix": null
     },
     {
-      "n": 44,
-      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
-      "type": "availability",
-      "claim": "Copilot regions without in-region availability require allowed cross-region data movement in Power Platform admin center before opting in.",
+      "n": 60,
+      "where": "Scope: second paragraph",
+      "type": "role",
+      "claim": "The Copilot features page lists the System Administrator role as a setup prerequisite.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-copilot-features",
-      "quote": "For Europe, data movement for Copilot features is turned on by default. For all other regions, you must allow data movement across regions in Power Platform admin center before you can opt in to use Copilot.",
+      "quote": "Before you set up Copilot features, ensure that you: Have the System Administrator role.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 45,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "The Copilot features page requires production licensing compliance and refers readers to the Dynamics 365 Licensing Guide.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-copilot-features",
-      "quote": "Meet the licensing requirements for using the feature with production environments. Learn more in the Dynamics 365 Licensing Guide.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "The Copilot features page itself names no licence specific to next best actions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-copilot-features",
-      "quote": "Meet the licensing requirements for using the feature with production environments. Learn more in the Dynamics 365 Licensing Guide.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "front matter: licensing.notes; Why it matters; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "Manage Customer Intent Agent lists setting up a pay-as-you-go plan as a prerequisite.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/manage-customer-intent-agent",
-      "quote": "Prerequisites ... Set up a pay-as-you-go plan.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "Selected Copilot and agent capabilities in Dynamics 365 use consumption-based billing with Copilot Credits.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go",
-      "quote": "Selected Copilot and agent capabilities in Dynamics 365 use consumption-based billing, charging per use. These capabilities use Copilot Credits for AI interactions and tasks, like retrieving information and responding to prompts.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "Cost and licensing; Open questions",
-      "type": "licensing",
-      "claim": "The Enable intent-based suggestions page itself lists no billing plan among its prerequisites.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/enable-intent-for-service-reps",
-      "quote": "Intent or knowledge management is configured. ... Ask a question is enabled in the Copilot help pane. ... Optionally, configure connectors for the agent to retrieve information from external knowledge sources.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
-      "type": "absence",
-      "claim": "A Copilot Credits rate specific to next best actions is not yet published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'next best actions credits Dynamics 365 rate' and 'Customer Intent Agent next best actions Copilot Credits rate licensing pay as you go'; read the enablement, use, Customer Intent Agent, billing, Next best action for case and Copilot Studio rates pages; no feature-specific rate.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 51,
-      "where": "Risk assessment: Change & support; Cost and licensing",
-      "type": "cost",
-      "claim": "The Customer Service billing page says AI capability is unavailable when the quota is depleted until more capacity is added.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go",
-      "quote": "When the quota is depleted, the AI capability is unavailable until more capacity is added.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
-      "where": "Governance guidance: After rollout",
-      "type": "cost",
-      "claim": "Dynamics 365 sends quota notifications when Copilot Credits capacity is low or depleted.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go",
-      "quote": "Dynamics 365 regularly checks the available capacity (quota) of Copilot Credits. If your organization's quota is low or depleted, users receive in-app notifications about the status and necessary actions.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Turning off intent-based suggestions or removing them from a profile does not revert Copilot or other shared settings.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/enable-intent-for-service-reps",
-      "quote": "If you turn off intent-based suggestion or remove it from an experience profile, it doesn't revert the Copilot or other shared settings.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
+      "n": 61,
       "where": "Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "Learn's validation steps instruct a test representative to open a case and check for next best actions in the Copilot pane.",
+      "claim": "Learn advises signing in as a test representative, opening a case and confirming that the Copilot pane shows next best actions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-copilot-features",
       "quote": "If next best actions are enabled, sign in to Copilot Service workspace as a test representative, open a case, and confirm that the Copilot pane shows recommended next best actions for the case.",
@@ -625,81 +696,81 @@
       "fix": null
     },
     {
-      "n": 55,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "The mixed licensing model reflects production licence requirements together with the Customer Intent Agent pay-as-you-go prerequisite.",
+      "n": 62,
+      "where": "Governance controls: first prose paragraph",
+      "type": "behaviour",
+      "claim": "Disabling intent-based suggestions or removing them from a profile does not revert Copilot or other shared settings.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-copilot-features",
-      "quote": "Meet the licensing requirements for using the feature with production environments. Learn more in the Dynamics 365 Licensing Guide.",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/enable-intent-for-service-reps",
+      "quote": "If you turn off intent-based suggestion or remove it from an experience profile, it doesn't revert the Copilot or other shared settings.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 56,
-      "where": "front matter: cost; rationale: cost",
-      "type": "cost",
-      "claim": "The variable cost field reflects Copilot Credits consumption billing rather than a claim that this capability is free.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go",
-      "quote": "Selected Copilot and agent capabilities in Dynamics 365 use consumption-based billing, charging per use. These capabilities use Copilot Credits for AI interactions and tasks",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
-      "where": "Open questions: pay-as-you-go requirement",
-      "type": "absence",
-      "claim": "Whether next best actions require the Customer Intent Agent pay-as-you-go plan remains an open licensing question.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/suggest_next_action_for_case",
-      "quote": "Next best action for case ... Prerequisites ... This tool requires the following: Customer Intent Agent must be enabled, and a pay-as-you-go plan is required.",
-      "severity": "blocker",
-      "fix": "Replace the pay-as-you-go open question with this qualified statement in Cost and licensing: 'The Next best action for case tool reference explicitly requires Customer Intent Agent to be enabled and a pay-as-you-go plan. The Enable intent-based suggestions page does not repeat the billing prerequisite.' Cite https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/suggest_next_action_for_case. Keep the separate question about the feature-specific credit rate."
-    },
-    {
-      "n": 58,
-      "where": "Governance guidance: Before rollout and After rollout",
-      "type": "consistency",
-      "claim": "All controls the governance checklist tells readers to check or monitor are represented in the controls table.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Confirm that Intent or knowledge management is configured and that Ask a question is enabled ... Check with finance whether the pay-as-you-go plan ... Check that custom security roles ... Check the environment's geography ... Watch Copilot Credits consumption",
-      "severity": "minor",
-      "fix": "The prerequisite, billing-plan, custom-role, data-movement and credit-monitoring checklist steps have no corresponding table rows. Move those checks into the existing Scope and Cost and licensing discussion, keeping their verified wording, instead of presenting them as table-covered checklist controls. Do not add control rows."
-    },
-    {
-      "n": 59,
-      "where": "Governance guidance: At rollout",
-      "type": "consistency",
-      "claim": "Row 2 is the control for selecting experience profiles that receive next best actions.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Select a pilot experience profile before adding wider groups (row 2). ... The experience profile row governs access to Copilot features ... in general; Learn says to add next best actions ... from the Intent-based suggestions page.",
-      "severity": "minor",
-      "fix": "Replace the checklist item with 'On the Intent-based suggestions page, select a pilot experience profile before adding wider groups (row 1).' The route is documented at https://learn.microsoft.com/dynamics365/contact-center/administer/enable-intent-for-service-reps."
-    },
-    {
-      "n": 60,
+      "n": 63,
       "where": "rationale: impact",
       "type": "applicability",
-      "claim": "The case Copilot pane experience is for representatives in enabled experience profiles, not a customer-facing display.",
+      "claim": "The representative-facing actions are visible through assigned experience profiles, not to other users or customers as a customer-facing interface.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-copilot-features",
-      "quote": "Next best actions use Customer Intent Agent to recommend next steps for a case in the Copilot pane. ... To use next best actions, turn them on ... and add them to your representatives' experience profiles.",
+      "quote": "By default, only users with the Customer Service Representative role can use Copilot features. ... To use next best actions ... add them to your representatives' experience profiles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Governance guidance: Before rollout and After rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The governance checklist names controls that are absent from the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: Ask a question, pay-as-you-go plan, custom security roles, data movement and Copilot Credits monitoring. Table: next-best-action enablement/profile assignment and general profile Copilot access only.",
+      "severity": "minor",
+      "fix": "Acknowledge that the checklist steps for Ask a question, billing and credit monitoring, custom-role privileges and cross-region data movement have no corresponding controls-table row. Add this sentence after the table: 'The controls table does not cover the prerequisite, billing, security-role and data-movement checks in the governance checklist.' Do not add rows as part of this correction."
+    },
+    {
+      "n": 65,
+      "where": "controls[0].scope; Governance controls table",
+      "type": "record",
+      "claim": "The first row represents the roadmap's organisation-wide administrator enablement scope.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "An administrator can enable this feature for the entire organization in the Customer Service admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[1].scope; Governance controls table",
+      "type": "applicability",
+      "claim": "Experience-profile Copilot controls govern groups of assigned representatives.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/create-agent-experience-profile",
+      "quote": "By using experience profiles, you can create targeted app experiences for service representatives and supervisors. Profiles control access to the features that your service representatives and supervisors can use",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Why it matters: second paragraph",
+      "type": "absence",
+      "claim": "No administrator enablement deadline is documented for this optional feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Dynamics 365 Customer Service next best actions Customer Intent Agent mandatory enablement deadline'; read the roadmap record, configure-copilot-features, enable-intent-for-service-reps and suggest_next_action_for_case. No mandatory enablement deadline found.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-26T02:11:19.845Z",
+    "at": "2026-11-26T03:50:27.034Z",
     "summary": {
-      "links": 10,
-      "unreachable": 9,
+      "links": 11,
+      "unreachable": 0,
       "uiPaths": 2,
-      "uiPathsWithMissingWords": 2,
+      "uiPathsWithMissingWords": 0,
       "apiCalls": 2,
-      "apiCallsNotOnPage": 2,
+      "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -710,48 +781,53 @@
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-copilot-features",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/contact-center/administer/enable-intent-for-service-reps",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/contact-center/use/use-intent-suggestions",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/contact-center/administer/manage-customer-intent-agent",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/customer-service/administer/create-agent-experience-profile",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_nextbestactionsconfig",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_appcopilotconfiguration",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/guidance/resources/cs-contact-center-copilot-setup",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/suggest_next_action_for_case",
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -760,7 +836,7 @@
         "side": "ui",
         "governs": "Whether next best actions are turned on, and which experience profiles get them",
         "docs": "https://learn.microsoft.com/dynamics365/contact-center/administer/enable-intent-for-service-reps",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Support experience",
           "Productivity",
@@ -769,30 +845,23 @@
           "Turn on intent-based suggestions",
           "Actions"
         ],
-        "missing": [
-          "Support experience",
-          "Productivity",
-          "Intent-based suggestions",
-          "Manage",
-          "Turn on intent-based suggestions",
-          "Actions"
-        ]
+        "missing": []
       },
       {
         "index": 0,
         "side": "api",
         "governs": "Whether next best actions are turned on, and which experience profiles get them",
         "docs": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_nextbestactionsconfig",
-        "reachable": false,
+        "reachable": true,
         "token": "PATCH /msdyn_nextbestactionsconfigs(msdyn_nextbestactionsconfigid)",
-        "found": false
+        "found": true
       },
       {
         "index": 1,
         "side": "ui",
         "governs": "Which representatives have Copilot features in Copilot Service workspace",
         "docs": "https://learn.microsoft.com/dynamics365/customer-service/administer/create-agent-experience-profile",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Support experience",
           "Workspaces",
@@ -801,23 +870,16 @@
           "Productivity pane",
           "Copilot"
         ],
-        "missing": [
-          "Support experience",
-          "Workspaces",
-          "Experience profiles",
-          "profile",
-          "Productivity pane",
-          "Copilot"
-        ]
+        "missing": []
       },
       {
         "index": 1,
         "side": "api",
         "governs": "Which representatives have Copilot features in Copilot Service workspace",
         "docs": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_appcopilotconfiguration",
-        "reachable": false,
+        "reachable": true,
         "token": "PATCH /msdyn_appcopilotconfigurations(msdyn_appcopilotconfigurationid)",
-        "found": false
+        "found": true
       }
     ],
     "roadmapDrift": []
@@ -832,6 +894,12 @@
     {
       "date": "2026-11-19",
       "status": "verified-with-gaps",
+      "version": 2,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-26",
+      "status": "held",
       "version": 2,
       "model": "gpt-6.1-sol"
     }

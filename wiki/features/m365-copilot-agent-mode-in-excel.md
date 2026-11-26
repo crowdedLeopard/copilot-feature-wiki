@@ -102,19 +102,23 @@ changes:
     note: "New briefing: Agent Mode in Excel on the web is launched as Edit with Copilot; covers the Microsoft 365 Copilot licence, Claude model access and DLP for labelled workbooks."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 57 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected Why it matters: removed the claim that Copilot previously only suggested changes; it now describes Edit with Copilot as multi-step workbook updates through chat, per the March 10, 2026 release notes."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 58 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-26"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 57
-  confirmed: 56
+  claims: 58
+  confirmed: 58
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "211a9bf8cde71a46c23cdbe369030f49"
+  contradicted: 0
+  attempts: 0
+  hash: "d6731741dc33b9ffc2a8bf715f8a90ba"
 ---
 
 ## What's changing
@@ -129,7 +133,7 @@ The roadmap record lists the item as Launched, General Availability, targeted fo
 
 ## Why it matters
 
-Licensed users already have this: Microsoft presents it as an option inside Copilot in Excel, with no admin step in the release notes. The change is that Copilot now writes into the workbook rather than only suggesting. Expect more Copilot-authored formulas, PivotTables and models in budgets and reports, and plan for owners to check them before results are relied on.
+Licensed users already have this: Microsoft presents it as an option inside Copilot in Excel, with no admin step in the release notes. Edit with Copilot lets users request multi-step workbook updates through chat. Expect more Copilot-authored formulas, PivotTables and models in budgets and reports, and plan for owners to check them before results are relied on.
 
 The decisions that matter are who holds the licence, whether Claude models may process workbook content, and whether labelled workbooks should be kept away from Copilot. For EU, EFTA and UK tenants, Microsoft says important changes to the Anthropic setting take effect on December 9, 2026, so that setting needs a look now.
 
@@ -209,13 +213,9 @@ cost: Medium. Microsoft's Copilot service description lists Edit with Copilot as
 impact: Medium. Licensed Excel users, typically finance and analyst roles, see a new way of working in the Copilot pane; unlicensed users are not in scope.
 -->
 
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters / behaviour: Before this change, Copilot only suggested changes rather than writing into the workbook. | Found: Copilot can now analyze text by identifying themes and sentiments, citing data examples, and inserting a column with labels | Fix: Replace 'The change is that Copilot now writes into the workbook rather than only suggesting.' with 'Edit with Copilot lets users request multi-step workbook updates through chat.' The March 10, 2026 release notes at https://learn.microsoft.com/microsoft-365/copilot/release-notes support this narrower description. | Source: https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes#july-22,-2025
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Scope: Claude models / default: Claude models are disabled by default for customers within the EU Data Boundary and in the UK. | Found: Customers within the EU Data Boundary and customers in the UK have Claude models disabled by default. | Fix: Add after this sentence: 'However, Microsoft's regional apps-only guidance says that setting is enabled by default for EU, EFTA and UK tenants created after March 25, 2026.' Cite https://learn.microsoft.com/copilot/implement/copilot-anthropic-apps, which states this exception; retain the general page's statement as attributed guidance. | Source: https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor
-- [supported, minor] controls[1].note; Governance controls / applicability: Anthropic access assignments operate at provider level across Microsoft Copilot and Copilot Studio, so narrowing access for Excel narrows it everywhere. | Found: These assignments are applied at the provider level and enforced across Microsoft Copilot and Copilot Studio experiences. | Fix: Replace 'so narrowing it for Excel narrows it everywhere' with 'although EU, EFTA and UK tenants currently also have an All users for Microsoft 365 apps only option, which Microsoft says will be removed on December 9, 2026'. Cite https://learn.microsoft.com/copilot/implement/copilot-anthropic-apps alongside the general provider guidance. | Source: https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor
-- [supported, minor] controls[2].ui; Governance controls table / admin-path: The printed Purview path reaches the Copilot DLP location used to exclude labelled workbooks. | Found: Go to Data Loss Prevention > Policies and select + Create policy. ... Select the Custom template, then Custom policy. ... On the Locations page, set the Microsoft Copilot, Copilot Chat, and Copilot Cowork location to on. | Fix: The path reaches the policy location but stops before the label-processing control. Append ' > rule > Content contains > Sensitivity labels > Prevent Copilot and Cowork from processing content' to controls[2].ui.path and its rendered table entry, using the condition and action documented at https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about. | Source: https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about
-- [supported, minor] Risk assessment: Data exposure / behaviour: Copilot skills are disabled when a workbook with a label excluded by DLP is open in Excel. | Found: When a file is open in Word, Excel, or PowerPoint and has a sensitivity label for which DLP policy is configured to prevent processing by Microsoft 365 Copilot and Copilot Chat, the skills in these apps are disabled. | Fix: Add Microsoft's qualification: 'Certain experiences that do not reference file content or do not use large language models are not currently blocked in the user experience.' The surrounding note at https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about states this exception. | Source: https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about
+- [supported, minor] Scope: Claude models / default: Claude models are disabled by default for customers within the EU Data Boundary and in the UK. | Found: Customers within the EU Data Boundary and customers in the UK have Claude models disabled by default. The linked apps-only page also states: This setting is enabled by default for tenants in the EU, EFTA, and UK that were created after March 25, 2026. | Fix: Keep the cited general default but add: 'Microsoft's apps-only guidance separately says the All users for Microsoft 365 apps only option is enabled by default for EU/EFTA and UK tenants created after March 25, 2026; administrators of older tenants should check their setting.' Cite https://learn.microsoft.com/copilot/implement/copilot-anthropic-apps. This reports both Microsoft descriptions rather than implying the general default settles every Excel tenant's setting. | Source: https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor
+- [supported, minor] controls[2].ui; rendered controls table / admin-path: The printed Purview route reaches the Microsoft Copilot, Copilot Chat, and Copilot Cowork location when creating a custom DLP policy. | Found: Go to Data Loss Prevention > Policies and select + Create policy. Select the Custom template, then Custom policy. On the Locations page, set the Microsoft Copilot, Copilot Chat, and Copilot Cowork location to on. | Fix: The path stops at selecting the location, before configuring the rule. Extend it to 'Data Loss Prevention > Policies > Create policy > Custom > Custom policy > Locations > Microsoft Copilot, Copilot Chat, and Copilot Cowork > rule > Content contains > Sensitivity labels'. Keep the note naming the rule action 'Prevent Copilot and Cowork from processing content', as documented at https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about. | Source: https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about
 -->
