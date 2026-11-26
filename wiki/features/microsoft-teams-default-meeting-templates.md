@@ -74,15 +74,17 @@ changes:
     note: "New briefing: default meeting templates in Teams meeting template policies, Teams Premium requirement and the two controls for setting and hiding templates."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 56 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 61 statements not yet confirmed"
 version: 1
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-19"
+  date: "2026-11-26"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 56
-  confirmed: 54
+  claims: 61
+  confirmed: 59
   unconfirmed: 1
   contradicted: 1
   attempts: 0
@@ -191,12 +193,12 @@ cost: Medium. Learn says organisers must have a Teams Premium licence to use def
 impact: Medium. Organisers assigned the policy see defaults applied to new meetings and may find options locked or hidden; attendees get any settings the template enforces.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: The feature takes no actions on its own. | Found: Searched: 'Teams default meeting templates actions automatically apply meeting options scheduling'; opened custom-meeting-templates-set-default and custom-meeting-templates-overview. They describe automatic application of settings, not this unrestricted negative. | Fix: Replace the bullet with: 'The feature automatically applies the configured meeting options when an organiser schedules a meeting.'
+- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: The feature takes no actions on its own. | Found: Searched: 'Teams default meeting templates automatically apply actions organizer unlicensed Teams Premium default template Outlook Mac web'; opened custom-meeting-templates-set-default and custom-meeting-templates-overview. Neither states this unrestricted negative. | Fix: Replace the bullet with: 'The feature automatically applies the configured meeting options when an organiser schedules a meeting.'
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance controls: Global policy / applicability: The Global (Org-wide default) policy is the starting point for users without another applicable policy. | Found: If a user isn't directly assigned a policy or isn't a member of any groups that are assigned a policy, the user gets the global (Org-wide default) policy for that policy type. | Fix: Add https://learn.microsoft.com/microsoftteams/policy-assignment-overview to sources for the statement about the Global policy applying to everyone else. | Source: https://learn.microsoft.com/microsoftteams/policy-assignment-overview
-- [supported, minor] Governance guidance: Before rollout and After rollout / behaviour: Admins can create and adjust custom templates with locked, hidden or editable options in the Teams admin center. | Found: Use this procedure to create a custom meeting template in the Teams admin center. To prevent the meeting organizer from changing an option, select the option and then select lock. To prevent the meeting organizer from seeing an option, select the option and then select Hide. | Fix: Add https://learn.microsoft.com/microsoftteams/create-custom-meeting-template to sources for creating and adjusting template options in the Teams admin center. | Source: https://learn.microsoft.com/microsoftteams/create-custom-meeting-template
-- [contradicted, minor] Governance guidance; Governance controls / consistency: The governance checklist names controls that have no corresponding table row. | Found: Checklist: 'Create the custom template', 'publish any sensitivity label', 'Check the Copilot setting', 'Assign the policy'. Table: 'Which custom meeting template is the default' and 'Which meeting templates users in a policy can see'. | Fix: The checklist steps for creating or adjusting template options, publishing sensitivity labels, checking the Copilot meeting policy and assigning the policy lack corresponding controls-table rows. Remove those checklist steps rather than adding unverified rows.
+- [supported, minor] Governance controls: Global policy / applicability: The Global (Org-wide default) policy applies to users without another applicable policy. | Found: If a user isn't directly assigned a policy or isn't a member of any groups that are assigned a policy, the user gets the global (Org-wide default) policy for that policy type. | Fix: Add https://learn.microsoft.com/microsoftteams/policy-assignment-overview to sources for the Global policy fallback statement. | Source: https://learn.microsoft.com/microsoftteams/policy-assignment-overview
+- [supported, minor] Governance guidance: Before rollout and After rollout / behaviour: Admins can configure custom templates with locked, hidden or editable options in the Teams admin center. | Found: Use this procedure to create a custom meeting template in the Teams admin center. To prevent the meeting organizer from changing an option, select the option and then select lock. To prevent the meeting organizer from seeing an option, select the option and then select Hide. | Fix: Add https://learn.microsoft.com/microsoftteams/create-custom-meeting-template to sources for configuring custom template options. | Source: https://learn.microsoft.com/microsoftteams/create-custom-meeting-template
+- [contradicted, minor] Governance guidance; Governance controls / consistency: The governance checklist names controls not represented in the controls table. | Found: Checklist: 'Create the custom template', 'publish any sensitivity label', 'Check the Copilot setting', 'Assign the policy'. Table: setting a default and hiding templates. | Fix: Remove checklist steps for creating or adjusting template options, publishing sensitivity labels, checking the Copilot meeting policy and assigning policies: these controls have no corresponding table row. Do not add rows.
 -->

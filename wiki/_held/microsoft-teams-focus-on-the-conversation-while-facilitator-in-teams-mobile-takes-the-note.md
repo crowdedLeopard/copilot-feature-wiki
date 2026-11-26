@@ -59,18 +59,20 @@ changes:
     note: "First briefing: roadmap-only for speaker attribution on mobile; Learn documents Facilitator licensing and availability controls but nothing mobile-specific."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 48 statements confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 62 statements contradicted, 1 unconfirmed; taken offline until corrected"
 version: 1
 verification:
-  status: "verified"
-  date: "2026-11-19"
+  status: "held"
+  date: "2026-11-26"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 48
-  confirmed: 48
-  unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  claims: 62
+  confirmed: 60
+  unconfirmed: 1
+  contradicted: 1
+  attempts: 1
   hash: "9bd1e09a133e7142dedbb96bf38dbf88"
 ---
 
@@ -159,4 +161,11 @@ Learn also documents that Loop experiences in Teams control AI-generated notes f
 risk: Medium. A phone can capture an in-person conversation and turn it into notes attributed to named speakers, and Microsoft has not yet documented where these notes are stored or a control specific to mobile capture.
 cost: Low. Facilitator is documented as included with a Microsoft Copilot licence, subject to available capacity; no separate price or meter for mobile speaker attribution is published, so the known cost is admin time.
 impact: Medium. Licensed users on Android and iOS who start note-taking notice it, and the people being recorded in a conversation are affected without using Teams themselves.
+-->
+
+<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [unsupported, major] Why it matters; Risk assessment: Data exposure; rationale: risk / behaviour: Mobile speaker attribution attaches people's names to their spoken words. | Found: Searched: "Facilitator" "mobile" "speaker" "names". Opened Facilitator setup, Teams Rooms and voice-and-face-recognition; names are documented for Rooms, not phone-started discussions. The roadmap says only 'helping distinguish who said what'. | Fix: In Why it matters replace 'with names attached' with 'with speaker attribution'. In Data exposure replace 'Speaker attribution links spoken words to named people' with 'The roadmap says speaker attribution helps distinguish who said what'. In the risk rationale replace 'notes attributed to named speakers' with 'notes with speaker attribution'. The record does not specify whether mobile uses names, numbered speakers or another identification method.
+- [contradicted, blocker] controls[0].api; Governance controls: availability row / absence: Automation for controlling Facilitator availability is not yet documented. | Found: This cmdlet allows administrators to modify app state, availability and installation status by adding or removing users and groups or changing assignment type or installation status. | Fix: Replace the blanket automation absence in controls[0] and its rendered table cell with the documented app-centric call: kind 'powershell', call 'Update-M365TeamsApp -Id <Facilitator-app-id> -AppAssignmentType Everyone', docs 'https://learn.microsoft.com/powershell/module/teams/update-m365teamsapp?view=teams-ps'. Add to the existing row note: 'The Facilitator setup page documents app-centric management; this command sets app-centric availability to Everyone. Microsoft does not state here whether this automation also covers the newer Built-in Teams agents route.' Cite https://learn.microsoft.com/microsoftteams/app-centric-management and the cmdlet reference. The setup page explicitly permits app-centric management, and its linked management page documents this cmdlet; do not imply that the new built-in route's automation was separately confirmed. | Source: https://learn.microsoft.com/powershell/module/teams/update-m365teamsapp?view=teams-ps
 -->

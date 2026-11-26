@@ -104,15 +104,17 @@ changes:
     note: "Corrected after the independent check: removed the advice to limit Global Administrator involvement to role assignment, as Learn says a global admin must provision the API connector the first time."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 92 statements confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 91 statements not yet confirmed"
 version: 3
 verification:
-  status: "verified"
-  date: "2026-11-19"
+  status: "verified-with-gaps"
+  date: "2026-11-26"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 92
-  confirmed: 92
+  claims: 91
+  confirmed: 91
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -214,4 +216,12 @@ The attribute access and staging paths follow the documented CSV import example 
 risk: Medium. Employee HR data (names, managers, hire dates, locations) moves into Viva Glint, and attributes Microsoft classes as public are shared with Profile; attribute access and data staging are the controls that cover it.
 cost: Low. The only cost the sources show is admin time and the Viva Glint licence the service already requires; the get-started page states no price or meter for the import itself.
 impact: Low. The people who act are the Organizational Data Source Administrator, Viva Glint administrators and the HRIS data owner; the roadmap item describes an admin import path.
+-->
+
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[2].ui; Governance controls / admin-path: The CSV attribute-access route starts under Settings > Viva > Data management and ends at Choose attribute access after selecting Viva Glint. | Found: Select Data connections, you may need to choose + New import. Select a connector type. The following example uses CSV import. Choose apps & services: Select the Viva Glint. Choose attribute access: Choose which attributes should be sent to each application or service. | Fix: The starting route is supported by the already-cited get-started page. Complete the intervening wizard headings: Settings > Viva > Data management > Microsoft 365 Organizational Data Service > Data connections > + New import > CSV import > Choose apps & services > Viva Glint > Prepare your data > File upload, import method, and data staging > Map reserved attributes to your imported data > Choose attribute access. Keep the existing docs URL. | Source: https://learn.microsoft.com/viva/glint/setup/modis-data-import
+- [supported, minor] controls[3].ui; Governance controls / admin-path: The CSV staging route starts under Settings > Viva > Data management and reaches Data staging under File upload, import method, and data staging. | Found: Prepare your data. File upload, import method, and data staging: When the data staging option is turned on, the uploaded file doesn't flow to Viva Glint until an Organizational Data Source Administrator explicitly approves it. | Fix: The starting route is supported by the already-cited get-started page. Add the omitted heading: Settings > Viva > Data management > Microsoft 365 Organizational Data Service > Data connections > + New import > CSV import > Choose apps & services > Viva Glint > Prepare your data > File upload, import method, and data staging > Data staging. Keep the existing docs URL. | Source: https://learn.microsoft.com/viva/glint/setup/modis-data-import
+- [supported, minor] Risk assessment: Autonomy & actions; Governance guidance / behaviour: Employees missing from a full import may become inactive in Viva Glint depending on configuration. | Found: Employees that previously existed in Viva Glint but aren't included in a full import may become inactive, depending on your configuration and import behavior. | Fix: Keep the conditional overview statement and add: 'The CSV service guide is more explicit: selecting Update the entire Viva Glint dataset marks users absent from that file Inactive, including active users supplied by other connectors.' Cite https://learn.microsoft.com/microsoft-365-apps/org-data-service/import/import-orgdata. | Source: https://learn.microsoft.com/viva/glint/setup/modis-data-import
 -->

@@ -1,0 +1,934 @@
+{
+  "slug": "microsoft-purview-data-security-investigations-introducing-new-custom-examination",
+  "roadmapId": 560598,
+  "title": "Microsoft Purview Data Security Investigations: custom examination prompts for AI analysis",
+  "status": "held",
+  "date": "2026-11-26",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-26",
+    "reasons": [
+      "1 blocking finding (claim 43)"
+    ]
+  },
+  "counts": {
+    "claims": 70,
+    "confirmed": 67,
+    "unconfirmed": 1,
+    "contradicted": 2,
+    "blocker": 1,
+    "major": 1,
+    "minor": 2
+  },
+  "summary": "Hold for an overly restrictive statement about who can access the Usage dashboard. Microsoft documents administrative access inherited through other role groups, not just the dedicated Data Security Investigations Admins group. The roadmap facts, examination workflow and consumption billing are supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "What's changing; title",
+      "type": "record",
+      "claim": "Roadmap item 560598 introduces custom examination focus areas in Microsoft Purview Data Security Investigations.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Data Security Investigations (DSI) is introducing the ability to create custom examination focus areas.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap item is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Web as the platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The general availability target is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The preview date is May CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"May CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-07-02T23:12:48.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-07-02T23:12:48\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "summary; What's changing; Why it matters; rationale: risk",
+      "type": "behaviour",
+      "claim": "Custom examination lets an investigator define the AI examination focus using a natural language prompt.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
+      "quote": "Custom examinations use a natural language prompt that you define to instruct the AI on what to look for.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "DSI uses AI content analysis to investigate data affected by security incidents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
+      "quote": "Use examination to run deep content analysis with AI on selected data items. This examination helps you find security risks buried within impacted data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The built-in examination focus areas are Credentials, Risks, Mitigation and Personal data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
+      "quote": "You can choose examination processing for the following focus areas: Credentials; Risks; Mitigation; Personal data; Custom.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing: custom examination steps",
+      "type": "admin-path",
+      "claim": "On an investigation scope page, select items, Examine, Custom, enter a prompt, Verify prompt and then start the examination.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
+      "quote": "On the investigation scope page, select one or more data items. Select Examine from the command bar. Select Custom as the examination type. Select Verify prompt. Select Examine to start the examination.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "A custom examination prompt can contain up to 2,000 characters.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
+      "quote": "Prompts can be up to 2,000 characters.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The documented custom examination workflow verifies the prompt's intent before starting the examination.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
+      "quote": "Select Verify prompt. Verify the prompt is understood with the same intent. Select Examine to start the examination.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Completed custom examination results appear in Probing history.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
+      "quote": "After the examination completes, results appear in Probing history with the same structured output as built-in focus areas",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Custom results have the same structured output as built-in focus areas, including findings, severity, surrounding snippets and thought process explanations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
+      "quote": "the same structured output as built-in focus areas, including findings, severity, surrounding snippets, and thought process explanations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "A previously created custom examination prompt can be edited and re-run.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
+      "quote": "To edit and re-run a custom examination prompt, select the previously created custom examination type and select Edit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Microsoft supplies an example custom prompt to identify Protected Health Information.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
+      "quote": "Identify any Protected Health Information (PHI) including patient names, medical record numbers, diagnosis codes, treatment information, and insurance identifiers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Microsoft supplies an example custom prompt concerning insider trading and financial details.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
+      "quote": "Identify references to specific stock tickers, trade volumes, non-public earnings data, or language suggesting intent to trade on insider information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Microsoft supplies an example custom prompt concerning intellectual property exfiltration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
+      "quote": "Identify references to project codenames, patent application numbers, unreleased product specifications, or proprietary algorithms.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[0].note; Risk assessment; Scope; Governance guidance; rationale: risk",
+      "type": "role",
+      "claim": "Data Security Investigations Admins, Investigators and Reviewers can all run examination activities, including the Custom type.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "Actions | Data Security Investigations Admins | Data Security Investigations Investigators | Data Security Investigations Reviewers; Run examination activities | Yes | Yes | Yes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Data Security Investigations Reviewers cannot manage investigation scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "Manage investigation scope | Yes | Yes | No",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Data Security Management and Insider Risk Management include the Data Security Investigation Contributor role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "Data Security Management | Data Security Investigation Contributor | Contributor access; Insider Risk Management | Data Security Investigation Contributor | Contributor access",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "The Data Security Investigation Contributor role does not include AI job execution.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "This role doesn't include access to data storage, AI job execution, or the Pay-as-you-go usage dashboard.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Scope: Users",
+      "type": "role",
+      "claim": "Compliance Administrator and Organization Management include the Data Security Investigation Admin role and confer administrative DSI access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "Compliance Administrator | Data Security Investigation Admin | Full administrative access; Organization Management | Data Security Investigation Admin, Data Security Investigation Contributor | Administrative and contributor access",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[0].note; Governance controls table",
+      "type": "role",
+      "claim": "Role group permissions can take up to 30 minutes to apply.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "After you configure your role groups, it might take up to 30 minutes for the role group permissions to apply to assigned users across your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Data exposure; controls[2].note; Why it matters",
+      "type": "applicability",
+      "claim": "DSI role group permissions govern access to its examination features and results.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "To enable users to access Data Security Investigations capabilities and features in the Microsoft Purview portal, assign users the appropriate permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Role group membership is managed in Microsoft Purview at Settings > Roles and groups > Role groups > role group > Edit > Choose users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "Select Settings in the upper-right corner of the page, select Roles and groups, then select Role groups in the left navigation. Select the Data Security Investigations Admins role group, then select Edit. Select Choose users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Add-RoleGroupMember -Identity \"<role-group>\" -Member \"<user-UPN>\" adds the identified user to the role group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+      "quote": "Use the Add-RoleGroupMember cmdlet to add members to a management role group. The Identity parameter specifies the role group to add a member to. User ID or user principal name (UPN)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[1].ui; Governance controls table; Governance guidance",
+      "type": "admin-path",
+      "claim": "AI capacity and its processing location are configured in Microsoft Purview at Data Security Investigations > Setup tasks > Set up AI capacity > AI analysis data processing location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Go to Data Security Investigations in the Microsoft Purview portal. Select Set up AI capacity in the Setup tasks section. On the Set up AI capacity pane, complete the following fields: AI analysis data processing location",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[1].note; Governance controls prose",
+      "type": "role",
+      "claim": "Configuring AI capacity requires membership of the Data Security Investigations Admins role group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "To configure the AI capacity for Data Security Investigations, you must be a member of the Data Security Investigations Admins role group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[1].note; Governance controls prose",
+      "type": "role",
+      "claim": "The billing configuration prerequisites include Global Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "To configure the storage meter and capacity for Data Security Investigations, you must have: The Global Administrator role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[1].note; Governance controls prose",
+      "type": "role",
+      "claim": "The billing configuration prerequisites include resource group Owner or Contributor.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "To configure the storage meter and capacity for Data Security Investigations, you must have: The resource group Owner or Contributor role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[1].api",
+      "type": "absence",
+      "claim": "No API or PowerShell operation for configuring DSI AI capacity and processing location is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Data Security Investigations configure AI capacity processing location PowerShell Microsoft Graph API'; Exchange PowerShell DSI capacity search. Opened billing; read Graph protection-scope results, which concern data protection, not DSI capacity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[2].ui and controls[2].api; Why it matters; Governance controls prose",
+      "type": "absence",
+      "claim": "Microsoft documents no separate UI or API switch for the Custom examination type.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Data Security Investigations custom examination disable enable switch policy PowerShell'; Exchange PowerShell DSI examination search. Opened AI analysis, billing and permissions; Custom is a selected examination type, with no separate switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: defaultState; Why it matters",
+      "type": "default",
+      "claim": "Custom examination is user-opt-in: an investigator chooses the type for a run, with no documented separate admin switch.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
+      "quote": "Select Custom as the examination type. Searched: 'Data Security Investigations custom examination disable enable switch policy PowerShell'; opened AI analysis, billing and permissions, finding no separate Custom switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Why it matters",
+      "type": "default",
+      "claim": "Tenants that have not set up DSI do not start using custom examinations through this change.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Before you can use Data Security Investigations in your organization, you must configure both billing models.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[3].ui and controls[3].api; Cost and licensing; Open questions; rationale: risk",
+      "type": "absence",
+      "claim": "No configurable compute unit consumption limit for an examination or investigation is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Data Security Investigations compute units limit cap examination investigation budget stop jobs'; Exchange PowerShell DSI capacity search. Opened billing and AI analysis; found estimation, budgets and monitoring, not a configurable compute unit ceiling.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[3].note; Cost and licensing; Governance controls prose",
+      "type": "cost",
+      "claim": "Azure budgets and threshold alerts do not themselves stop examination jobs or consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/cost-management-billing/costs/tutorial-acm-create-budgets",
+      "quote": "Notifications are triggered when the budget thresholds are exceeded. Resources aren't affected, and your consumption isn't stopped.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/azure/cost-management-billing/costs/tutorial-acm-create-budgets to sources and cite it for the statement that budgets do not stop consumption."
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing; Governance guidance: Before rollout",
+      "type": "cost",
+      "claim": "Microsoft recommends DSI resource group and meter budgets with spending threshold alerts, giving 50%, 75% and 90% as examples.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Create budgets for the Data Security Investigations resource group and meter level. Configure alerts when spending approaches defined thresholds (for example, 50%, 75%, or 90%).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[4].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The spend dashboard is reached in Microsoft Purview at Data Security Investigations > Usage dashboard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Go to Data Security Investigations in the Microsoft Purview portal. Select Usage dashboard in the left-navigation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[4].api",
+      "type": "absence",
+      "claim": "No documented API or PowerShell equivalent retrieves DSI Usage dashboard examination consumption per investigation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Data Security Investigations usage dashboard API export compute units PowerShell'; Exchange PowerShell DSI usage search. Opened billing; results documented its dashboard export, Security Copilot usage and eDiscovery export APIs, not a DSI dashboard API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[4].note; Governance controls table and prose",
+      "type": "role",
+      "claim": "Only members of the dedicated Data Security Investigations Admins role group can open the Usage dashboard.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "Members of these role groups have Data Security Investigations access without needing explicit assignment to a Data Security Investigations-specific role group. Compliance Administrator | Data Security Investigation Admin | Full administrative access",
+      "severity": "blocker",
+      "fix": "Replace 'Data Security Investigations Admins only' in controls[4].note and its table note with 'Users with the Data Security Investigation Admin role'. Replace 'Only Data Security Investigations Admins can open the Usage dashboard' in the prose with 'Users with the Data Security Investigation Admin role can open the Usage dashboard'. The permissions page documents inherited administrative access through Compliance Administrator and Organization Management; the billing page restricts dashboard access by Admin role, not exclusively by dedicated group membership."
+    },
+    {
+      "n": 44,
+      "where": "controls[4].note; Governance controls prose",
+      "type": "behaviour",
+      "claim": "Latest billing data can take up to 48 hours to appear in the Usage dashboard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "It might take up to 48 hours for the latest billing data to show up on the Pay-as-you-go usage dashboard for your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[4].note",
+      "type": "behaviour",
+      "claim": "The Usage dashboard supports exporting storage and compute data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "To export the data storage and compute information for all investigations, select Export.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[4].governs; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The Usage dashboard shows examination compute usage per investigation and process.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "The compute unit usage for each investigation and the total for each process. Examination: Storage and compute supporting examination processes for an investigation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[5].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Audit search is reached in Microsoft Purview at Audit > Search.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "Sign in to the Microsoft Purview portal. Select the Audit solution card. On the Search page, configure the following search criteria as applicable",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[5].api; Governance controls table",
+      "type": "command",
+      "claim": "Search-UnifiedAuditLog -StartDate <date> -EndDate <date> -Operations DSIProbeJobSubmitted searches examination-start events.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog",
+      "quote": "Search-UnifiedAuditLog -EndDate <ExDateTime> -StartDate <ExDateTime> [-Operations <String[]>]. The Operations parameter filters the log entries by operation. For a list of the available values for this parameter, see Audited activities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[5].note",
+      "type": "role",
+      "claim": "Searching audit logs requires Audit Logs or View-Only Audit Logs roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "You must be assigned the Audit Logs or View-Only Audit Logs roles in the Microsoft Purview portal to search the audit log. To access audit cmdlets, you must be assigned the Audit Logs or View-Only Audit Logs roles in the Exchange admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[5].note",
+      "type": "command",
+      "claim": "Search-UnifiedAuditLog must be run in Exchange Online PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "The underlying cmdlet used to search the audit log is an Exchange Online cmdlet, which is Search-UnifiedAuditLog. You have to run this cmdlet in Exchange Online PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[5].governs; Governance guidance; Governance controls prose",
+      "type": "behaviour",
+      "claim": "Starting an examination job is audited as DSIProbeJobSubmitted.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-activities",
+      "quote": "Started probing job | DSIProbeJobSubmitted | A user started an examination job.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance controls prose",
+      "type": "absence",
+      "claim": "The DSI audit activity list names no separate Custom examination operation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Data Security Investigations custom examination audit operation DSIProbeJobSubmitted'. Read the complete DSI activities table returned from Audit log activities; it lists DSIProbeJobSubmitted and DSIProbeJobResultsViewed, with no separate Custom operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "front matter: licensing.model; Cost and licensing",
+      "type": "licensing",
+      "claim": "The licensing model is consumption, using storage and AI compute billing rather than a dedicated enterprise licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Billing in Data Security Investigations is based solely on the combination of the amount of stored data and the associated computing capacity needed for AI analysis. It isn't based on a dedicated enterprise plan or license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "front matter: licensing.notes; Cost and licensing: Licence; rationale: cost",
+      "type": "licensing",
+      "claim": "DSI examination consumption is not covered by a dedicated enterprise plan or licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Billing in Data Security Investigations is based solely on the combination of the amount of stored data and the associated computing capacity needed for AI analysis. It isn't based on a dedicated enterprise plan or license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Cost and licensing: storage meter; front matter: licensing.notes",
+      "type": "cost",
+      "claim": "DSI storage is pay-as-you-go, billed per gigabyte per month for stored data across all investigations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "The storage meter for Data Security Investigations uses the pay-as-you-go billing model. You pay for storage on a gigabyte (GB) per month basis for stored data associated with all investigations in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "summary; front matter: cost and licensing.notes; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Examinations consume metered Data Security Investigations Compute Units under pay-as-you-go AI capacity billing, supporting a variable cost rating.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Data Security Investigations Compute Units (compute unit) measure the computational capacity needed to run the AI analysis within Data Security Investigations. Data Security Investigations uses the pay-as-you-go billing model for AI capacity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Why it matters; Cost and licensing; front matter: licensing.notes; rationale: cost",
+      "type": "cost",
+      "claim": "DSI pay-as-you-go charges use the Azure subscription and resource group linked during setup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Storage meter billing requires a link to an Azure subscription for pay-as-you-go billing. Azure subscription: The Azure subscription you want to assign to the storage meter. Resource group: The resource group in your Azure subscription you want to assign to the storage meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Why it matters; Cost and licensing; Governance guidance: At rollout; rationale: cost",
+      "type": "cost",
+      "claim": "Examination compute requirements are proportional to data size and each examination option selected, so repeated examinations incur compute consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
+      "quote": "The compute unit requirements are directly proportional to the size of the data categorized and each examination option you select.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Cost and licensing: Meters",
+      "type": "cost",
+      "claim": "The billing page lists number of files analyzed as an examination cost variable.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Process type example | Scale units or variables; Examination | Number of files analyzed",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Risk assessment: Change & support",
+      "type": "cost",
+      "claim": "Cancelling an examination still bills compute units consumed before cancellation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
+      "quote": "If you need to cancel an in-progress examination job, select Cancel on the Analysis tab. You still pay for any compute units consumed before the cancellation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "DSI requires both storage meter and AI capacity billing configuration before use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Before you can use Data Security Investigations in your organization, you must configure both billing models. Storage meter billing requires a link to an Azure subscription for pay-as-you-go billing. Capacity billing requires dedicated compute unit configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Scope: Processing location; Governance guidance",
+      "type": "behaviour",
+      "claim": "AI processing can use the primary location chosen during setup: Australia/New Zealand, Europe, United Kingdom or United States.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "You can choose where to use compute units from any of the following locations: Australia/New Zealand (ANZ); Europe (EU); United Kingdom (UK); United States (US). AI analysis data processing location: The primary country/region.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Scope: Processing location",
+      "type": "behaviour",
+      "claim": "A tenant can opt in to compute provisioning and AI analysis processing anywhere in the world.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "You can opt in to having compute units provisioned and AI analysis processing done anywhere in the world to mitigate potential disruptions in case your primary location experiences high activity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "front matter: licensing.notes; Cost and licensing: Not yet published",
+      "type": "absence",
+      "claim": "No compute unit figure or rate specific to Custom examination is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Data Security Investigations custom examination compute unit rate pricing' and '\"Data Security Investigations\" \"custom examination\" pricing rate compute'. Opened billing and AI analysis; read Purview billing-model search results; no Custom-specific figure or rate found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Governance guidance: At rollout; Open questions",
+      "type": "behaviour",
+      "claim": "DSI provides an in-product cost estimator for planned investigations and analyses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Before launching an investigation, use the in-product cost estimator to anticipate costs based on investigation size and the analyses you plan to conduct.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Probing history records the user principal name of the user who created each examination.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
+      "quote": "Created by: The user principal name (UPN) of the user that created the examination process.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "There is no change to examination initiation, and an examination starts only when a user selects Examine.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'Data Security Investigations examination jobs automatically scheduled API user selects Examine custom prompt'. Opened AI analysis and billing; read AI overview results. Found a user-started workflow, not an exhaustive or historical statement for 'only' or 'No change'.",
+      "severity": "major",
+      "fix": "Replace the Autonomy & actions bullet with 'Microsoft documents a user-started custom examination: select Verify prompt, confirm that the prompt is understood with the same intent, then select Examine to start the examination.' This workflow is stated at https://learn.microsoft.com/purview/data-security-investigations-ai-analysis#create-a-custom-examination."
+    },
+    {
+      "n": 68,
+      "where": "Governance guidance compared with Governance controls",
+      "type": "consistency",
+      "claim": "The governance checklist names monitoring and spending controls that have no corresponding controls-table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Create an Azure budget with alerts on the DSI resource group and meter. Review Probing history in sensitive investigations to see which prompts were run and by whom. The controls table has neither an Azure budget row nor a Probing history row.",
+      "severity": "minor",
+      "fix": "The 'Create an Azure budget with alerts' and 'Review Probing history' checklist steps have no corresponding controls-table row. Remove these two checklist bullets for this correction; do not add unverified control rows."
+    },
+    {
+      "n": 69,
+      "where": "Risk assessment: Data exposure; Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "Examination analyzes selected items already in an investigation scope rather than collecting additional data outside that scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
+      "quote": "On the investigation scope page, select one or more data items. Use examination to run deep content analysis with AI on selected data items.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Cost and licensing: Not yet published",
+      "type": "cost",
+      "claim": "The DSI billing page directs readers to Azure's Microsoft Purview pricing page for storage rates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "For more data storage rates and pricing, see Data Security Investigations storage meter pricing. https://azure.microsoft.com/pricing/details/purview/",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-26T20:14:44.669Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=560598",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-log-activities",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-search",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Who can run examinations, including custom ones (Data Security Investigations role-group membership)",
+        "docs": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Roles and groups",
+          "Role groups",
+          "role group",
+          "Edit",
+          "Choose users"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Who can run examinations, including custom ones (Data Security Investigations role-group membership)",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "reachable": true,
+        "token": "Add-RoleGroupMember",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether AI analysis can run, and the AI analysis data processing location",
+        "docs": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+        "reachable": true,
+        "segments": [
+          "Data Security Investigations",
+          "Setup tasks",
+          "Set up AI capacity",
+          "AI analysis data processing location"
+        ],
+        "missing": []
+      },
+      {
+        "index": 4,
+        "side": "ui",
+        "governs": "Compute unit spend on examination per investigation",
+        "docs": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+        "reachable": true,
+        "segments": [
+          "Data Security Investigations",
+          "Usage dashboard"
+        ],
+        "missing": []
+      },
+      {
+        "index": 5,
+        "side": "ui",
+        "governs": "Audit records of examination jobs started (DSIProbeJobSubmitted)",
+        "docs": "https://learn.microsoft.com/purview/audit-search",
+        "reachable": true,
+        "segments": [
+          "Audit",
+          "Search"
+        ],
+        "missing": []
+      },
+      {
+        "index": 5,
+        "side": "api",
+        "governs": "Audit records of examination jobs started (DSIProbeJobSubmitted)",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog",
+        "reachable": true,
+        "token": "Search-UnifiedAuditLog",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

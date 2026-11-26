@@ -71,7 +71,7 @@ controls:
       kind: "powershell"
       call: "Set-PlannerConfiguration -IsPlannerAllowed $false"
       docs: "https://learn.microsoft.com/planner/disable-planner"
-    note: "Coarse: blocks Planner across Teams, not only in these channels. The PowerShell switch turns off Planner for the organisation, beyond Teams."
+    note: "Coarse: blocks Planner across Teams, not only in these channels. The PowerShell switch covers basic plans in Teams and Web and all plans in other Planner endpoints, including mobile and connectors; premium plans need a different control."
   - governs: "Whether users can create private channels"
     scope: "user"
     ui:
@@ -118,19 +118,23 @@ changes:
     note: "Corrected: Microsoft Learn documents the Planner tab in shared and private channels as on by default with a PowerShell disable command; plan access follows channel membership; Teams policy paths now include Edit; action is act-now."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 65 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-26"
+    note: "Corrected: the Planner PowerShell switch's note now gives its plan-type scope (basic plans in Teams and Web, all plans in other endpoints); removed the premium-licence clause."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 66 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-26"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 65
-  confirmed: 64
+  claims: 66
+  confirmed: 66
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "820b28d6a2ec65253782e3e9571e4f47"
+  contradicted: 0
+  attempts: 0
+  hash: "1321c809ea8a343bae1d11d00eb8730f"
 ---
 
 ## What's changing
@@ -166,7 +170,7 @@ Microsoft Learn states that the Planner tab in shared and private channels is en
 
 ## Cost and licensing
 
-- **Licence:** the Planner admin page for Teams says "Users with a Microsoft 365 license are entitled to the Planner app"; premium capabilities need a Planner premium licence such as Planner Plan 1, Project Plan 3 or Project Plan 5. The Planner service description says Teams integration requires a Microsoft Teams licence.
+- **Licence:** the Planner admin page for Teams says "Users with a Microsoft 365 license are entitled to the Planner app". The Planner service description says Teams integration requires a Microsoft Teams licence.
 - **Meter:** Microsoft publishes no meter or separate price for the Planner channel tab.
 - **Indirect costs:** admin time to brief channel owners on visibility in shared and private channels.
 - **Not yet published:** any licence note specific to the government clouds for this tab.
@@ -201,7 +205,7 @@ Microsoft Learn states that the Planner tab in shared and private channels is en
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether the Planner app is available in Teams for the organisation</strong><br><small>Tenant</small><br><small class="controls__note">Coarse: blocks Planner across Teams, not only in these channels. The PowerShell switch turns off Planner for the organisation, beyond Teams.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › Planner › Block <a href="https://learn.microsoft.com/microsoftteams/manage-planner-app" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-PlannerConfiguration -IsPlannerAllowed $false</code> <a href="https://learn.microsoft.com/planner/disable-planner" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether the Planner app is available in Teams for the organisation</strong><br><small>Tenant</small><br><small class="controls__note">Coarse: blocks Planner across Teams, not only in these channels. The PowerShell switch covers basic plans in Teams and Web and all plans in other Planner endpoints, including mobile and connectors; premium plans need a different control.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › Planner › Block <a href="https://learn.microsoft.com/microsoftteams/manage-planner-app" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-PlannerConfiguration -IsPlannerAllowed $false</code> <a href="https://learn.microsoft.com/planner/disable-planner" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether users can create private channels</strong><br><small>User</small><br><small class="controls__note">Governs the channel type, not the Planner tab.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams › Teams policies › policy › Edit › Create private channels <a href="https://learn.microsoft.com/microsoftteams/teams-policies" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsChannelsPolicy -Identity &lt;policy name&gt; -AllowPrivateChannelCreation $false</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamschannelspolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether team owners can create shared channels</strong><br><small>User</small><br><small class="controls__note">Governs the channel type, not the Planner tab.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams › Teams policies › policy › Edit › Create shared channels <a href="https://learn.microsoft.com/microsoftteams/teams-policies" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsChannelsPolicy -Identity &lt;policy name&gt; -AllowSharedChannelCreation $false</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamschannelspolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether shared channel owners can invite people from outside the organisation</strong><br><small>User</small><br><small class="controls__note">External members or teams already added keep access even when set to FALSE, per the cmdlet reference.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams › Teams policies › policy › Edit › Invite external users to shared channels <a href="https://learn.microsoft.com/microsoftteams/teams-policies" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsChannelsPolicy -Identity &lt;policy name&gt; -AllowChannelSharingToExternalUser $false</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamschannelspolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
@@ -221,10 +225,8 @@ cost: None. Microsoft's Planner admin page says users with a Microsoft 365 licen
 impact: Medium. Owners and members of shared and private channels notice it; standard channels already take a Planner tab.
 -->
 
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].note; Governance controls table / applicability: The PowerShell switch turns off Planner for the organisation beyond Teams, with no plan-type qualification in the row. | Found: This article applies to: Basic plans in the Planner app in Teams and Web; All plans in other Planner endpoints (including Planner mobile, and Planner connectors). For premium plans, see Disable Project for the web or Roadmap from Microsoft 365. | Fix: Replace the second sentence of controls[0].note and its rendered copy with: 'The PowerShell switch applies to basic plans in Teams and Web, and to all plans in other Planner endpoints, including Planner mobile and connectors; premium plans in Teams and Web require a different control.' The scope is stated at https://learn.microsoft.com/planner/disable-planner. Keep the existing plan-type qualification in the governance prose. | Source: https://learn.microsoft.com/planner/disable-planner
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing: Licence / licensing: The cited Planner Teams admin page names Planner Plan 1, Project Plan 3 and Project Plan 5 as premium licences for premium capabilities. | Found: Users with a Planner premium license such as Planner Plan 1, Project Plan 3, or Project Plan 5, can use the premium capabilities in Planner. | Fix: Remove the premium-capabilities clause. The separately cited https://learn.microsoft.com/office365/servicedescriptions/microsoft-planner-service-description also lists Microsoft 365 Copilot entitlements, uses Planner and Project Plan 3, and says Plan 5 reached end of sale on May 1, 2026; the older admin-page wording is misleading as current purchasing guidance. | Source: https://learn.microsoft.com/microsoftteams/manage-planner-app
+- [supported, minor] front matter: clouds; summary; What's changing; Scope / record: The roadmap lists GCC, GCC High and DoD. | Found: "clouds": ["GCC", "GCC High", "DoD"] | Fix: Add to What's changing: 'The Teams service description still lists shared channels as unavailable in GCC High and DoD, whereas the Teams developer article states that tab apps in shared channels are available in GCC, GCC High and DoD; this roadmap item targets Planner tab support in those clouds.' Cite https://learn.microsoft.com/office365/servicedescriptions/teams-service-description and https://learn.microsoft.com/microsoftteams/platform/build-apps-for-shared-private-channels.
 -->

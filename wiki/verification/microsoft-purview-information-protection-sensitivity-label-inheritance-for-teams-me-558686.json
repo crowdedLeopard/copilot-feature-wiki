@@ -1,0 +1,759 @@
+{
+  "slug": "microsoft-purview-information-protection-sensitivity-label-inheritance-for-teams-me-558686",
+  "roadmapId": 558686,
+  "title": "Microsoft Purview: sensitivity label inheritance for Teams meeting artifacts (Worldwide)",
+  "status": "held",
+  "date": "2026-11-26",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-26",
+    "reasons": [
+      "2 blocking findings (claims 23, 26)"
+    ]
+  },
+  "counts": {
+    "claims": 58,
+    "confirmed": 53,
+    "unconfirmed": 4,
+    "contradicted": 1,
+    "blocker": 2,
+    "major": 2,
+    "minor": 3
+  },
+  "summary": "Hold: the page extends the documented download restriction for recordings and transcripts to meeting artifacts generally, without evidence for Loop notes. It also states unconfigured inheritance behaviour as fact although Microsoft's documentation does not state the setting's default. The roadmap details, portal route and MP4 PowerShell command are supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; front matter: products",
+      "type": "record",
+      "claim": "This is a Microsoft Purview sensitivity label inheritance feature for Teams meeting artifacts.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Purview: Information Protection - Sensitivity label inheritance for Teams meeting artifacts",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; front matter: status; What's changing",
+      "type": "record",
+      "claim": "Roadmap item 558686 is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "summary; front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The cloud listed for item 558686 is Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The platform listed for item 558686 is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The general availability target is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is May CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"May CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phases listed are General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-07-07T23:01:01.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-07-07T23:01:01\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; front matter: changes",
+      "type": "record",
+      "claim": "Microsoft lists the same artifact inheritance capability under a separate roadmap item, 581739.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"id\": 581739; \"title\": \"Microsoft Purview: Information Protection-Sensitivity label inheritance for Teams meeting artifacts\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Scope; front matter: changes",
+      "type": "record",
+      "claim": "Item 581739 lists GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Record 581739: \"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Item 581739 is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Record 581739: \"status\": \"In development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Item 581739 has a December CY2026 target.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Record 581739: \"targetDate\": \"December CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "Teams meeting artifacts can be configured to inherit the meeting's sensitivity label automatically without manual labelling.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Teams meeting artifacts, including recordings, transcripts, and Loop notes, can now be configured to automatically inherit the sensitivity label from the meeting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "summary; What's changing; Scope; controls[0].note",
+      "type": "behaviour",
+      "claim": "Learn documents Apply meeting label to artifacts as a publishing-policy setting in preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-meetings",
+      "quote": "Configure label policy settings that are specific just to calendar items, Teams meetings, and chat: ... Apply meeting label to artifacts ... This setting is in preview",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Scope; controls[0].governs",
+      "type": "behaviour",
+      "claim": "The setting automatically applies the meeting's sensitivity label to recordings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-meetings",
+      "quote": "For Teams meetings, automatically apply the meeting's sensitivity label to recordings and their transcripts (.mp4 files)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Scope; controls[0].governs",
+      "type": "behaviour",
+      "claim": "The setting automatically applies the meeting's sensitivity label to recordings' transcripts, documented with .mp4 files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-meetings",
+      "quote": "For Teams meetings, automatically apply the meeting's sensitivity label to recordings and their transcripts (.mp4 files)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Scope; controls[0].governs",
+      "type": "behaviour",
+      "claim": "The setting applies the meeting's sensitivity label to meeting notes in .loop files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-meetings",
+      "quote": "and to meeting notes (.loop files) at the time the artifact is saved to SharePoint or OneDrive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Why it matters; Risk assessment; Scope",
+      "type": "behaviour",
+      "claim": "Inheritance happens when the artifact is saved to SharePoint or OneDrive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-meetings",
+      "quote": "at the time the artifact is saved to SharePoint or OneDrive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "A later change to the meeting label does not automatically change the inherited artifact label.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-meetings",
+      "quote": "If the meeting label changes later, the inherited label doesn't automatically change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Scope; controls[1].governs",
+      "type": "applicability",
+      "claim": "MP4 artifact inheritance requires sensitivity labelling support for MP4 in SharePoint and OneDrive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-meetings",
+      "quote": "This setting is in preview and for MP4 files, requires you to enable sensitivity labeling support for MP4.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Risk assessment: Data exposure; controls[1].note; rationale: risk",
+      "type": "behaviour",
+      "claim": "Without MP4 support, the MP4 files are not labelled even when Apply meeting label to artifacts is selected.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-meetings",
+      "quote": "If MP4 support isn't enabled, these files aren't labeled when you select this option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: defaultState; Why it matters; Open questions; rationale: risk",
+      "type": "absence",
+      "claim": "Microsoft has not stated the artifact inheritance setting's default or what it does on arrival.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Apply meeting label to artifacts\" \"default\" enabled automatically. Read roadmap 558686, sensitivity-labels-meetings, create-sensitivity-labels and the Purview service description. General feature availability is stated, not this policy option's initial selection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Data exposure; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "Without configuring the policy setting, artifacts do not inherit the meeting label and a meeting label alone does not protect the resulting files.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Teams meeting sensitivity label artifacts inheritance only actions without policy label channel meetings; \"Apply meeting label to artifacts\" \"default\" enabled automatically. Read sensitivity-labels-meetings and create-sensitivity-labels; neither states unconfigured inheritance behaviour.",
+      "severity": "blocker",
+      "fix": "Replace the first Data exposure bullet with 'Microsoft has not stated this setting's default. Review Apply meeting label to artifacts in the label policy (first row below).' Replace the factual 'meeting label on its own ... not the files' clause in Why it matters with 'Learn documents artifact inheritance as a separate label policy setting.' In the risk rationale replace 'are not labelled from the meeting unless a label policy turns this on and MP4 support is enabled' with 'can inherit the meeting label through a label policy setting; MP4 files require MP4 support'. Keep the qualified planning advice based on no documented change to existing behaviour."
+    },
+    {
+      "n": 24,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "A meeting's sensitivity label protects the meeting itself.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-meetings",
+      "quote": "The sensitivity label from the meeting invite is automatically inherited by the meeting and protects it even before the meeting starts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Save-time inheritance guarantees the label is in place before anyone shares the file.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Apply meeting label to artifacts\" \"actions\" \"sharing\". Read sensitivity-labels-meetings and sensitivity-labels-sharepoint-onedrive-files; they describe save-time inheritance, not an ordering guarantee against every sharing operation.",
+      "severity": "major",
+      "fix": "Delete 'so the label is in place before anyone shares the file'. Retain the documented statement that inheritance occurs at save time."
+    },
+    {
+      "n": 26,
+      "where": "Why it matters; rationale: impact",
+      "type": "behaviour",
+      "claim": "An artifact whose label applies encryption can be played in the browser but cannot be downloaded.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Loop meeting notes sensitivity label encryption download file \"artifacts\". Read sensitivity-labels-meetings, sensitivity-labels-sharepoint-onedrive-files and sensitivity-labels-loop. Download and playback restrictions are stated for recordings/transcripts or MP4, not Loop notes.",
+      "severity": "blocker",
+      "fix": "In Why it matters replace 'an artifact whose label applies encryption can be played but not downloaded' with 'a recording whose label applies encryption can be played but not downloaded'. In the impact rationale replace 'an artifact whose label applies encryption plays in the browser but cannot be downloaded' with 'a recording whose label applies encryption plays in the browser but cannot be downloaded'. Source: https://learn.microsoft.com/purview/sensitivity-labels-meetings."
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Recordings respect access permissions and usage rights from the label's encryption settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-meetings",
+      "quote": "Recordings respect any access permissions and usage rights from label encryption settings",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Governance guidance: At rollout; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Labelled recordings can play directly in a browser and in SharePoint, Teams or Clipchamp.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-meetings",
+      "quote": "can be played directly in a web browser and supported experiences such as SharePoint, Teams, or Clipchamp.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Security & identity; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "A recording and transcript with an encrypting label cannot be downloaded.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-meetings",
+      "quote": "However, if a recording and transcript has a label that applies encryption, you can't download them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Recordings and transcripts can be downloaded when their label does not apply encryption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-meetings",
+      "quote": "You can download them if the label doesn't apply encryption",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The downloaded nonencrypted recording or transcript does not retain its labelling information.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-meetings",
+      "quote": "but a downloaded file in this case doesn't retain the labeling information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Encrypting labels used on MP4 files must use Assign permissions now rather than user-defined permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "Sensitivity labels that apply encryption must be configured with the Assign permissions now option, rather than user-defined permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The feature takes no action other than applying an existing label at save time.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Apply meeting label to artifacts\" \"actions\" \"sharing\"; Teams meeting sensitivity label artifacts inheritance only actions without policy label channel meetings. Read sensitivity-labels-meetings and sensitivity-labels-loop; neither states that there are no other actions or effects.",
+      "severity": "major",
+      "fix": "Replace 'No change: the feature applies an existing label to a file at save time and takes no other action' with 'The feature applies the meeting's label to an artifact at save time'. Do not claim an exhaustive absence of other actions."
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "Artifacts can be manually relabelled using the file's Details pane in SharePoint or OneDrive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-meetings",
+      "quote": "You can, if required, manually relabel these files in SharePoint or OneDrive, by using the file's Details pane.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "role",
+      "claim": "Changing an encrypting sensitivity label requires appropriate permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-meetings",
+      "quote": "As with all sensitivity labels, you must have the appropriate permissions to change a sensitivity label that applies encryption",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "role",
+      "claim": "The meeting owner always has the permissions to change the encrypting label.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-meetings",
+      "quote": "you must have the appropriate permissions to change a sensitivity label that applies encryption, which is always the case for the meeting owner.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The Purview service description includes manual sensitivity labelling for Teams online meetings with Microsoft 365 E5/A5/G5 plus Teams Premium and other listed suites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft 365 E5/A5/G5 + Teams Premium, Microsoft Purview Suite/EDU/GOV/FLW + Teams Premium ... Manual Sensitivity Labeling for Teams online meetings | Included | Included",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Teams Premium page limits assigning Purview meeting labels to Teams Premium users with Microsoft 365 E5, E5 Compliance, F5 Compliance or F5 Security + Compliance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
+      "quote": "This feature is only available to Teams Premium users with a Microsoft 365 E5, E5 Compliance, F5 Compliance, or F5 Security + Compliance subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.notes; Cost and licensing; Governance controls",
+      "type": "licensing",
+      "claim": "Some options on the meetings page cannot be configured when the tenant has no Teams Premium licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-meetings",
+      "quote": "You won't be able to configure all the options referenced on this page if a Teams Premium license isn't found for your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "A licence statement specific to Apply meeting label to artifacts, including its manual-versus-automatic classification, is not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Apply meeting label to artifacts\" licensing price meter automatic manual. Read sensitivity-labels-meetings, Purview service description, Teams Premium licensing and auto-labeling licensing excerpts. They give general entitlements but no explicit classification for this setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No meter is documented specifically for the artifact inheritance setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Apply meeting label to artifacts\" licensing price meter automatic manual. Read sensitivity-labels-meetings, Purview service description and Teams Premium licensing; no feature-specific meter was stated. The metering search result about Automation Kit concerns another product.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The mixed licensing model represents the documented combination of a qualifying Microsoft 365 subscription and Teams Premium, with artifact-specific entitlement not published.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
+      "quote": "This feature is only available to Teams Premium users with a Microsoft 365 E5, E5 Compliance, F5 Compliance, or F5 Security + Compliance subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[0].scope; controls[0].note; Scope; Governance controls",
+      "type": "applicability",
+      "claim": "Label policy settings apply to the users and groups selected for the policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+      "quote": "As part of the label policy, you select users and groups to have sensitivity labels and label policy settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Scope; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "The meeting label must be published to meeting organisers and participants.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-meetings",
+      "quote": "Make sure the label is published to meeting organizers and participants.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Scope: Labels",
+      "type": "applicability",
+      "claim": "The meeting label requires all three scopes: Files & other data assets, Emails and Meetings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-meetings",
+      "quote": "make sure the following label scopes are selected: Files & other data assets; Emails; Meetings ... All three options are needed because of their interdependency.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Purview portal route is Solutions > Information Protection > Publishing policies > Publish label > Apply meeting label to artifacts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-meetings#configure-a-corresponding-sensitivity-label-publishing-policy",
+      "quote": "create-sensitivity-labels: Solutions > Information Protection > Publishing policies; select Publish label to start the Create policy configuration. sensitivity-labels-meetings: Configure label policy settings ... Apply meeting label to artifacts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[0].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No PowerShell advanced setting or other API for artifact inheritance is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Apply meeting label to artifacts\" \"Set-LabelPolicy\" API PowerShell. Opened Set-LabelPolicy and searched its text for meeting, artifact, record, transcript and inherit; no artifact-setting operation or key. Meetings documentation gives the publishing-policy option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[0].note; Governance controls table",
+      "type": "admin-path",
+      "claim": "An existing label policy can be edited by selecting it and using Edit Policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+      "quote": "To edit an existing label policy, select it, and then select the Edit Policy button from the flyout pane",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[1].api; Governance guidance: Before rollout",
+      "type": "command",
+      "claim": "Set-SPOTenant -EnableSensitivityLabelForVideoFiles $true enables MP4 sensitivity label support through SharePoint Online PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "To turn on support for MP4 video files, use the Set-SPOTenant cmdlet with the EnableSensitivityLabelForVideoFiles parameter: Set-SPOTenant -EnableSensitivityLabelForVideoFiles $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "absence",
+      "claim": "No admin UI for enabling MP4 sensitivity label support is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"EnableSensitivityLabelForVideoFiles\" \"admin center\" portal enable. Read sensitivity-labels-sharepoint-onedrive-files, Set-SPOTenant and video-purview excerpt. The portal Turn on now setting is for general file integration, not EnableSensitivityLabelForVideoFiles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[1].scope; Governance controls",
+      "type": "applicability",
+      "claim": "The MP4 setting applies tenant-wide, or to the connected geo-location in a Multi-Geo organisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "The setting applies across the tenant, or the connected geo-location in a Multi-Geo organization",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[1].note; Scope; Governance guidance: Before rollout; Governance controls",
+      "type": "command",
+      "claim": "Multi-Geo tenants must connect to each geo-location and run the MP4 command separately.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "For Microsoft 365 Multi-Geo, you must connect to each of your geo-locations and run the command separately.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[1].note; Governance controls; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "EnableSensitivityLabelForVideoFiles also controls Clipchamp project labels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "The same setting also controls sensitivity label behavior for Clipchamp projects.",
+      "severity": "minor",
+      "fix": "Qualify this statement as 'Also controls Clipchamp project labels after the Clipchamp update reaches the tenant.' Add https://learn.microsoft.com/powershell/module/sharepoint-online/set-spotenant to sources: its parameter reference says that before the update reaches a tenant this setting does not control project labelling, and a rollout schedule does not confirm individual-tenant availability."
+    },
+    {
+      "n": 54,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Label policy order resolves conflicting settings when multiple policies apply to a user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels#what-label-policies-can-do",
+      "quote": "If there's a conflict in settings from multiple policies, the settings from the policy with the highest priority (highest order number) is applied.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/purview/sensitivity-labels#what-label-policies-can-do to sources for the policy-priority statement. The cited create-sensitivity-labels page links to this explanation."
+    },
+    {
+      "n": 55,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "Set-LabelPolicy documents an advanced setting for mandatory meeting labels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy",
+      "quote": "TeamworkMandatory: Outlook and Teams apps that support this setting can enable or disable mandatory labeling for meetings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "Set-LabelPolicy documents an advanced setting for default meeting labels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy",
+      "quote": "teamworkdefaultlabelid: Outlook and Teams apps that support this setting apply a default label, or no label for meetings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Open questions: channel meetings",
+      "type": "behaviour",
+      "claim": "Channel meetings inherit a meeting label associated with the channel's container label rather than an organiser-selected meeting label.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-meetings",
+      "quote": "the sensitivity label must be associated with a container label for the channel. Then, all channel meetings and chats inherit the associated label, which can't be changed by users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance guidance; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist instructs readers to check encryption configuration, publish labels and relabel files, but those controls have no rows in the table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'Check that encrypting meeting labels use Assign permissions now'; 'Confirm the meeting labels are published'; 'Relabel, from the file's Details pane'. Table: artifact inheritance policy setting and MP4 support only.",
+      "severity": "minor",
+      "fix": "The checklist steps for Assign permissions now, publishing meeting labels and relabelling artifacts have no corresponding table rows. Do not add rows as part of this correction; retain the verified advice without presenting the table as exhaustive."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-26T20:14:50.006Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 1,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=558686",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/sensitivity-labels-meetings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/sensitivity-labels-meetings#configure-a-corresponding-sensitivity-label-publishing-policy",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether a label policy applies the meeting's label to recordings, transcripts and Loop notes",
+        "docs": "https://learn.microsoft.com/purview/sensitivity-labels-meetings#configure-a-corresponding-sensitivity-label-publishing-policy",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "Information Protection",
+          "Publishing policies",
+          "Publish label",
+          "Apply meeting label to artifacts"
+        ],
+        "missing": [
+          "Solutions",
+          "Information Protection",
+          "Publishing policies",
+          "Publish label"
+        ]
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether .mp4 meeting recordings and transcripts can carry a sensitivity label",
+        "docs": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+        "reachable": true,
+        "token": "Set-SPOTenant",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

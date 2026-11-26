@@ -1,0 +1,681 @@
+{
+  "slug": "microsoft-teams-new-vdi-solution-for-omnissa-on-mac",
+  "roadmapId": 580870,
+  "title": "Microsoft Teams: new SlimCore-based VDI optimisation for Omnissa Horizon on Mac endpoints",
+  "status": "held",
+  "date": "2026-11-26",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-26",
+    "reasons": [
+      "3 blocking findings (claims 20, 22, 26)"
+    ]
+  },
+  "counts": {
+    "claims": 52,
+    "confirmed": 47,
+    "unconfirmed": 1,
+    "contradicted": 4,
+    "blocker": 3,
+    "major": 1,
+    "minor": 2
+  },
+  "summary": "Hold: the briefing incorrectly says there is no new data store and that the optimisation acts only during calls or meetings. Microsoft documents local logs and other endpoint data, and initialisation when Teams starts; the networking description also needs to retain the virtual-machine screen-sharing exception.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Scope: Users; rationale: impact",
+      "type": "record",
+      "claim": "Microsoft plans new SlimCore-based Teams VDI optimisation for Omnissa on Mac endpoints, with expanded features and quality, reliability and performance improvements.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This feature allows Mac endpoints to optimize Microsoft Teams in VDI environments with the new SlimCore-based media engine, providing an expanded feature set and multiple improvements in quality, reliability and performance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The release phases are General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "General availability is targeted for February CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"February CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: previewDate; What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "Preview is targeted for December CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"December CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope: Clouds",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and GCC.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope: Platforms",
+      "type": "record",
+      "claim": "The roadmap platform is Mac.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Mac\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-11-17T18:36:41.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-17T18:36:41\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Why it matters; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The new architecture runs the SlimCore media engine on the user's endpoint rather than running that engine in the virtual desktop.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/vdi-2",
+      "quote": "SlimCore media engine (on the client) and msteams.exe (on the virtual desktop) now have a bidirectional channel and can start processing multimedia requests.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "Learn currently documents Windows endpoints for AVD/W365, Citrix, Omnissa and Amazon, but Mac only for AVD/W365 and Citrix.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/vdi-2",
+      "quote": "The new optimization supports Windows endpoints for AVD/W365, Citrix, Omnissa and Amazon. Mac is only supported on AVD/W365 and Citrix.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "MsTeamsPluginOmnissa.dll is bundled with Horizon Client for Windows 8.17 (2512) or higher.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/vdi-2",
+      "quote": "For Omnissa Horizon, MsTeamsPluginOmnissa.dll is bundled with the Horizon Client for Windows 8.17 (2512) or higher.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Learn does not yet describe the new Omnissa-on-Mac combination; the briefing uses the roadmap and general SlimCore documentation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Omnissa Horizon Mac SlimCore new Teams optimization minimum client plugin installation default. Opened vdi-2 and teams-client-vdi-requirements-deploy; Mac coverage is AVD/W365 and Citrix, and Omnissa's new client requirements specify Windows.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: defaultState; Why it matters",
+      "type": "default",
+      "claim": "The new SlimCore optimisation is attempted by default once its minimum requirements are met.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/vdi-2",
+      "quote": "Once you meet all the minimum requirements, launching Teams for the first time will attempt to load in SlimCore optimized mode, by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[0].note; What's changing; Why it matters; Governance controls",
+      "type": "default",
+      "claim": "VDI2Optimization is Enabled by default at the Global org-wide level.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/vdi-2",
+      "quote": "Enable Teams policy if necessary for a specific user group (it's enabled by default at a Global org-wide level). VDI2Optimization: Enabled (default value)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Launching Teams with the minimum requirements satisfied attempts to load SlimCore optimisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/vdi-2",
+      "quote": "Once you meet all the minimum requirements, launching Teams for the first time will attempt to load in SlimCore optimized mode, by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The general new optimisation feature comparison lists 1080p as available, unlike WebRTC.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/vdi-2",
+      "quote": "| Feature | Available on the new optimization (Windows and MAC) | Available on WebRTC (Windows and MAC) | 1080p | Yes | No |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The general new optimisation feature comparison lists Gallery View 3x3 and 7x7 as available, unlike WebRTC.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/vdi-2",
+      "quote": "| Gallery View 3x3 and 7x7 | Yes | No |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The general new optimisation feature comparison lists Quality of Service as available, unlike WebRTC.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/vdi-2",
+      "quote": "| Quality of Service | Yes | No |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Why it matters: first sentence; rationale: risk",
+      "type": "behaviour",
+      "claim": "This change moves existing Horizon Mac call media processing from the virtual desktop to the Mac.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Omnissa Teams WebRTC optimization Mac endpoint media processing local device existing optimization; Omnissa media endpoint WebRTC optimization architecture. Read vdi-2 and teams-client-vdi-requirements-deploy; neither establishes this prior Horizon Mac processing location.",
+      "severity": "major",
+      "fix": "Replace the first sentence of Why it matters with 'This introduces the SlimCore media engine for Teams users connecting to Horizon desktops from Macs.' In the risk rationale replace 'Call media moves from the virtual desktop to a new media engine process on the Mac' with 'The planned optimisation uses a new SlimCore media engine on the Mac'. Do not claim where the previous optimisation processed calls."
+    },
+    {
+      "n": 20,
+      "where": "Why it matters: architecture paragraph",
+      "type": "behaviour",
+      "claim": "The endpoint media engine carries out all the network activity for the new architecture.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/vdi-2",
+      "quote": "For Omnissa, Amazon or for MAC (Citrix or AVD/W365), the sharing is done directly between the user's virtual machine -the presenter- and the other peer -viewer- or conference server",
+      "severity": "blocker",
+      "fix": "Replace the second sentence of Why it matters with 'Learn describes SlimCore media and signalling connections from the endpoint to peers or Teams servers; for Omnissa, outgoing screen sharing is sent from the virtual machine.' This retains the source's screen-sharing exception and avoids assigning its Windows executable name to an undocumented Horizon Mac implementation. Source: https://learn.microsoft.com/microsoftteams/vdi-2."
+    },
+    {
+      "n": 21,
+      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "In the documented SlimCore architecture, call media flows directly as SRTP between the endpoint media engine and peers or Teams servers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/vdi-2",
+      "quote": "Then, Secure Real-time Transport Protocol (SRTP) media flows directly between MsTeamsVdi.exe and the other peer (or Teams Transport Relays or Conference servers).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "There is no new data store.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/vdi-2",
+      "quote": "Logs are stored in the following directory on the user's device: ~/Library/Application Support/Microsoft/TeamsVDI",
+      "severity": "blocker",
+      "fix": "Remove 'No new data store: the change is about where audio, video and screen-sharing media is processed.' Retain the following SRTP sentence. Learn documents endpoint logs for supported Mac deployments, so an unqualified absence of a new data store is not justified."
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The new Mac optimisation uses a media engine package downloaded and installed on the Mac.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/vdi-2",
+      "quote": "Therefore, the SlimCore package that is fetched and installed on macOS is the Framework only ('Microsoft.Teams.SlimCoreVdiBndl.mac').",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "For the documented AVD/W365 and Citrix Mac deployments, the plugin installs the media engine automatically and silently.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/vdi-2",
+      "quote": "Mac is now rolled out 100% to General Availability for AVD/W365 and Citrix environments. The Plugin is in charge of virtual channel establishment and automatic and silent media engine installation on the Mac device.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Security & identity; Open questions: plugin delivery",
+      "type": "absence",
+      "claim": "Horizon Client for Mac plugin and media engine delivery is not yet documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Omnissa Horizon Mac SlimCore new Teams optimization minimum client plugin installation default. Opened vdi-2 and teams-client-vdi-requirements-deploy; the Mac installation section covers AVD/W365 and Citrix, and Omnissa plugin bundling specifies Windows.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The feature acts only when a user makes or joins a call or meeting.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/vdi-2",
+      "quote": "Once you meet all the minimum requirements, launching Teams for the first time will attempt to load in SlimCore optimized mode, by default.",
+      "severity": "blocker",
+      "fix": "Replace this bullet with 'The documented optimisation is initialised when Teams starts; call media is processed when users make or join calls or meetings.' Source: https://learn.microsoft.com/microsoftteams/vdi-2."
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Change & support; Governance guidance: Before rollout; Cost and licensing",
+      "type": "applicability",
+      "claim": "Omnissa outgoing screen sharing is sent from the virtual machine, whose network must allow Microsoft 365 endpoint IDs 11 and 12.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/vdi-2",
+      "quote": "For Omnissa, Amazon or for MAC (Citrix or AVD/W365), the sharing is done directly between the user's virtual machine ... therefore administrators must allow ID 11 and 12 on the VM's network",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[0].note; Risk assessment: Change & support; Governance controls",
+      "type": "applicability",
+      "claim": "VDI2Optimization controls eligibility for SlimCore optimisation, and the VDI partner's policy engines do not control this mode.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/vdi-2",
+      "quote": "This policy now has an additional argument as the only configuration point to control whether or not a user can get the new optimization mode based on SlimCore. In other words, the VDI Partner's policy engines don't control the new optimization mode",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Change & support; Open questions: cross-cloud collaboration",
+      "type": "availability",
+      "claim": "Learn currently lists Omnissa Horizon as unsupported for cross-cloud collaboration with the new optimisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/vdi-2",
+      "quote": "Cross Cloud Collaboration ... Known issues: Omnissa Horizon is currently not supported",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing: Licence; rationale: cost",
+      "type": "licensing",
+      "claim": "The licensing model is included in the Teams desktop client entitlement available under supported Teams subscription plans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/teams-service-description",
+      "quote": "All supported subscription plans are eligible for access to the Teams web client, desktop clients, and mobile apps. Teams is available as part of qualifying Microsoft 365 offerings and as a standalone SKU.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "front matter: licensing.notes; Cost and licensing: Premium features; rationale: cost",
+      "type": "licensing",
+      "claim": "The new optimisation's organisational custom backgrounds require Teams Premium.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/vdi-2",
+      "quote": "| Organizational custom backgrounds | Yes (Teams Premium license required) | No |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: licensing.notes; Cost and licensing: Licence",
+      "type": "absence",
+      "claim": "Microsoft publishes no separate licence specific to this optimisation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Teams VDI SlimCore optimization licensing price meter charge; Teams VDI optimization SlimCore Omnissa Mac license billing separate license pricing. Read Teams service description and vdi-2; no separate optimisation licence is listed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Cost and licensing: Meter",
+      "type": "absence",
+      "claim": "Microsoft publishes no meter or charge for this optimisation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Teams VDI SlimCore optimization licensing price meter charge; Teams VDI optimization SlimCore Omnissa Mac license billing separate license pricing. Read Teams service description and vdi-2; no optimisation meter or charge is published.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "Learn lists a general Mac-endpoint Teams minimum of 26072.521.4595.7966 or higher.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/vdi-2",
+      "quote": "MAC endpoints require 26072.521.4595.7966 or higher",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Scope: Prerequisites; Why it matters; Open questions: client version",
+      "type": "absence",
+      "claim": "A minimum Horizon Client for Mac version for the new optimisation is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Omnissa Horizon Mac SlimCore new Teams optimization minimum client plugin installation default. Opened vdi-2 system requirements and teams-client-vdi-requirements-deploy; the new Omnissa requirement is Client for Windows 8.17 or higher, with no Mac client minimum.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[0].api; rendered controls table; Scope: Configuration",
+      "type": "command",
+      "claim": "MicrosoftTeams PowerShell Set-CsTeamsVdiPolicy -Identity <policy name> -VDI2Optimization Disabled prevents assigned users from using VDI 2.0 optimisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsvdipolicy?view=teams-ps",
+      "quote": "Module: MicrosoftTeams PowerShell module. Set-CsTeamsVdiPolicy -Identity RestrictedUserPolicy -VDI2Optimization \"Disabled\". Disabled - disallow a user to be VDI 2.0 optimized.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[1].api; rendered controls table; Governance controls",
+      "type": "command",
+      "claim": "MicrosoftTeams PowerShell Grant-CsTeamsVdiPolicy -Identity <user> -PolicyName <policy name> assigns the named VDI policy to a user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/grant-csteamsvdipolicy?view=teams-ps",
+      "quote": "Module: MicrosoftTeams PowerShell module. Grant-CsTeamsVdiPolicy -identity \"Ken Myer\" -PolicyName RestrictedUserPolicy. In this example, a user with identity \"Ken Myer\" is being assigned the RestrictedUserPolicy",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[2].api; rendered controls table",
+      "type": "command",
+      "claim": "Set-CsTeamsVdiPolicy -Identity <policy name> -DisableCallsAndMeetings $true disables calls and joining meetings for non-optimised VDI users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsvdipolicy?view=teams-ps",
+      "quote": "Set-CsTeamsVdiPolicy [-DisableCallsAndMeetings <Boolean>] ... [-Identity] <String>. Set this to TRUE to disallow a non-optimized user to make calls, join meetings, and screen share from chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[0].ui; rendered controls table; Governance controls",
+      "type": "absence",
+      "claim": "No Teams admin center UI path is documented for configuring VDI2Optimization.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams VDI policy Teams admin center VDI2Optimization DisableCallsAndMeetings assign VDI policy UI. Opened vdi-2 and Set-CsTeamsVdiPolicy; results document PowerShell, not a Teams admin center path for VDI2Optimization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[1].ui; rendered controls table; Governance controls",
+      "type": "absence",
+      "claim": "No Teams admin center UI path is documented for assigning a Teams VDI policy.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Grant-CsTeamsVdiPolicy VDI policy assignment Teams admin center UI supported policies. Opened Grant-CsTeamsVdiPolicy and vdi-2; results show user, group and tenant PowerShell assignments, not a VDI policy UI path.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[2].ui; rendered controls table; Governance controls",
+      "type": "absence",
+      "claim": "No Teams admin center UI path is documented for the VDI policy's DisableCallsAndMeetings setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams VDI policy Teams admin center VDI2Optimization DisableCallsAndMeetings assign VDI policy UI. Opened Set-CsTeamsVdiPolicy and vdi-2; RDS search results describe different calling/meeting policies, not this non-optimised-VDI setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[1].note; rendered controls table; Governance controls",
+      "type": "command",
+      "claim": "Grant-CsTeamsVdiPolicy supports group assignment using -Group and -Rank.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/grant-csteamsvdipolicy?view=teams-ps",
+      "quote": "GrantToGroup: Grant-CsTeamsVdiPolicy [[-PolicyName] <String>] [-Group] <String> -Rank <Int32>",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[1].note; rendered controls table; Governance controls",
+      "type": "command",
+      "claim": "Grant-CsTeamsVdiPolicy supports tenant-wide assignment using -Global.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/grant-csteamsvdipolicy?view=teams-ps",
+      "quote": "GrantToTenant: Grant-CsTeamsVdiPolicy [[-PolicyName] <String>] [-Global] [-Force]. When you use this cmdlet without specifying a user identity, the policy applies to all users in your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[2].note; rendered controls table; Governance controls",
+      "type": "applicability",
+      "claim": "DisableCallsAndMeetings governs non-optimised VDI sessions, including a session where the new optimisation fails to load.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsvdipolicy?view=teams-ps",
+      "quote": "Determines whether a user on a non-optimized Vdi environment can make all types of calls. Set this to TRUE to disallow a non-optimized user to make calls, join meetings, and screen share from chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance controls; Governance guidance: Before rollout",
+      "type": "command",
+      "claim": "New-CsTeamsVdiPolicy creates VDI policies and can set VDI2Optimization to Disabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/vdi-2",
+      "quote": "New-CsTeamsVdiPolicy ... PS C:\\> New-CsTeamsVdiPolicy -Identity RestrictedUserPolicy -VDI2Optimization \"Disabled\" ... users with this policy can't be optimized with SlimCore.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The Teams VDI Status Indicator distinguishes the new optimisation from WebRTC.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/vdi-2",
+      "quote": "It also shows if they're using the WebRTC optimization or the new Slimcore-based one by hovering their cursor over the Optimized banner.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Microsoft's Troubleshooting the new optimization page lists connection error codes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/vdi-2-troubleshooting#connection-error",
+      "quote": "| Standard Error Code | loadErrc or deployErrc | Definition | Notes | 2000 | 16002 | No Plugin | ... | 2001 | 16008 | Virtual Channel Not Available |",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoftteams/vdi-2-troubleshooting to sources, titled 'Troubleshooting the new optimization', and link that title in the At rollout bullet."
+    },
+    {
+      "n": 48,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The general new optimisation supports Call Quality Dashboard and Teams admin center reporting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/vdi-2",
+      "quote": "| Call quality dashboard and Teams admin center | Yes | Limited |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Open questions: WebRTC end of support",
+      "type": "availability",
+      "claim": "Learn says Omnissa WebRTC timelines communicated through Message Center post 1465766 apply to Windows-based endpoints only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-client-vdi-requirements-deploy",
+      "quote": "Omnissa timelines for Windows-based endpoints only are communicated separately via Message Center post 1465766",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Open questions: Mac limitations",
+      "type": "availability",
+      "claim": "Learn's supported AVD/W365 and Citrix Mac deployments do not support town hall optimisation as an attendee.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/vdi-2",
+      "quote": "Unsupported Features in Mac: Townhall optimization as an attendee",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Open questions: Mac limitations",
+      "type": "availability",
+      "claim": "Learn's supported AVD/W365 and Citrix Mac deployments do not support sharing system audio.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/vdi-2",
+      "quote": "Unsupported Features in Mac: ... Share system audio",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance guidance: Before rollout, At rollout and After rollout",
+      "type": "consistency",
+      "claim": "The checklist's network-rule checks and call-quality reporting checks have corresponding controls-table rows.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'Confirm that the virtual machines' network allows IDs 11 and 12'; 'Check that firewall and proxy rules on the Mac network allow Teams media'; 'Review call quality ...'. The table contains only three Teams VDI policy rows.",
+      "severity": "minor",
+      "fix": "The Before rollout VM network check, At rollout Mac firewall/proxy check, and After rollout call-quality reporting check have no controls-table row. Remove those three checklist bullets to align the checklist with the existing table; retain the network and support discussion elsewhere. Do not add unverified control rows."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-26T20:14:45.602Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 0,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 3,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=580870",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/vdi-2",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/teams-client-vdi-requirements-deploy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/teams-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsvdipolicy?view=teams-ps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/grant-csteamsvdipolicy?view=teams-ps",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether users can be optimised with the new SlimCore-based VDI optimisation",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsvdipolicy?view=teams-ps",
+        "reachable": true,
+        "token": "Set-CsTeamsVdiPolicy",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which users a Teams VDI policy applies to",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/grant-csteamsvdipolicy?view=teams-ps",
+        "reachable": true,
+        "token": "Grant-CsTeamsVdiPolicy",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Whether users who are not optimised can make calls and join meetings",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsvdipolicy?view=teams-ps",
+        "reachable": true,
+        "token": "Set-CsTeamsVdiPolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

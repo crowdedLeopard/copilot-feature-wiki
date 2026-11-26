@@ -71,15 +71,17 @@ changes:
     note: "Corrected licensing: Teams is licensed with qualifying Microsoft 365 offerings or as a standalone SKU, and no feature-specific licensing requirement is published."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 35 statements confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 47 statements not yet confirmed"
 version: 3
 verification:
-  status: "verified"
-  date: "2026-11-19"
+  status: "verified-with-gaps"
+  date: "2026-11-26"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 35
-  confirmed: 35
+  claims: 47
+  confirmed: 47
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -167,4 +169,10 @@ Microsoft Learn does not describe a setting for the background option itself. Th
 risk: Low. It is a camera effect on a clip a user chooses to record and share in Teams chat or a channel, which the Video messages messaging policy setting already covers.
 cost: Low. The only cost the sources show is admin time to check the messaging policy and tell users; no licence or meter specific to this feature is published.
 impact: Low. Only users who record video clips in Teams on iOS notice it, and the record lists no other platform.
+-->
+
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].note; Governance controls table / applicability: The correctly documented video-message control is accompanied by a note asking readers to confirm that it covers clips on iOS. | Found: Record video messages directly from within a Teams chat using Video clips.: Video clip is a new feature in Microsoft Teams that enables the user to record, review, send, and view short-form video in Teams chat from desktop and mobile. | Fix: Replace controls[0].note and its rendered table note with: 'Video messages controls whether users can send video messages in chats and channels; the Government Channel release notes describe video clips as video messages on desktop and mobile.' Both supporting pages are already cited. | Source: https://learn.microsoft.com/officeupdates/governmentchannel
 -->

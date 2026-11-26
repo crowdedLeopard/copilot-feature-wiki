@@ -76,7 +76,7 @@ controls:
     note: "Name and describe the policy after choosing Custom policy, then select Next; on Assign admin units, select Next without assigning units. Learn: DLP actions apply only to workspaces on Fabric or Premium capacities."
 confidence: "high"
 created: "2026-11-18"
-updated: "2026-11-18"
+updated: "2026-11-26"
 roadmapModified: "2026-11-11T00:53:22"
 changes:
   - date: "2026-11-18"
@@ -99,26 +99,30 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 74 statements not yet confirmed"
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 86 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-26"
+    note: "Correction: removed the statement that the Learn overview labels restrict access as preview (it documents the action without one) and the checklist step and open question that depended on it."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 86 statements not yet confirmed"
+version: 5
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-26"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 86
-  confirmed: 85
+  confirmed: 86
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "69d000456444405d8d84ad0329b3c23e"
+  contradicted: 0
+  attempts: 0
+  hash: "66fa2380f1e5d16ab1c4b0b238ff710b"
 ---
 
 ## What's changing
 
 The roadmap item says Microsoft Purview Data Loss Prevention (DLP) policies for Fabric can now include a restrict access action for semantic models and lakehouses. A policy can block guest users or all users, depending on which sensitivity labels or sensitive information types match the item. This sits alongside the audit and Policy Tip (a notice shown on the item) actions that DLP policies already support for these items.
 
-Microsoft Learn describes the behaviour: when a policy with the restrict access action matches, it restricts access to the data owners or to members of the organisation, depending on the policy configuration, and all other users lose access to the item. Microsoft's troubleshooting page describes the all-users case as blocking everyone except workspace admins. For DLP, a member of the organisation is a user with UserType = Member, which includes people who sign in with an external account; UserType = Guest users are external, and the **Block only people outside your organization** setting applies to them. At the time of writing (November 2026) the Learn overview still labels the restrict access action "(preview)". The Fabric What’s new page instead lists DLP restrict access as generally available in September 2026.
+Microsoft Learn describes the behaviour: when a policy with the restrict access action matches, it restricts access to the data owners or to members of the organisation, depending on the policy configuration, and all other users lose access to the item. Microsoft's troubleshooting page describes the all-users case as blocking everyone except workspace admins. For DLP, a member of the organisation is a user with UserType = Member, which includes people who sign in with an external account; UserType = Guest users are external, and the **Block only people outside your organization** setting applies to them. The Learn overview documents restrict access without a preview label. The Fabric What’s new page lists DLP restrict access as generally available in September 2026.
 
 The roadmap record gives status Launched, a target of October CY2026, a preview date of April CY2024 and the release phases General Availability and Preview, for Worldwide (Standard Multi-Tenant) on the web. Microsoft's notice MC937920 (last updated 26 March 2026) says semantic-model restrict access has been in public preview since November 2024, lakehouse preview began rolling out in mid-April 2025 and was expected to finish in late April 2025, and general availability starts rolling out in late October 2026 and is expected to finish in late November 2026. The post's end date is 28 December 2026 and it sets no act-by date.
 
@@ -179,7 +183,6 @@ The account that creates the policy must be in the Compliance administrator, Com
 ### After rollout
 
 - Check for items that should have matched but did not, for example because they use DirectQuery, an advanced classifier condition or a service principal refresh.
-- Watch Message Center post MC937920 and the Learn overview for the end of the preview label on the restrict access action.
 
 ## Governance controls
 
@@ -199,7 +202,6 @@ User overrides are part of the rule: Learn says they are automatically allowed o
 
 ## Open questions
 
-- The Learn overview still marks restrict access as "(preview)" while the roadmap says Launched and MC937920 gives a general availability rollout through late November 2026. When does Learn drop the preview label, and are there differences in behaviour between the two phases? Watch the Learn overview and the Message Center post.
 - Does the restrict access action carry a charge of its own beyond the pay-as-you-go asset counting, and what rates apply to Fabric items? Watch the Purview billing models and pricing pages.
 - Which DLP PowerShell parameters set the restrict access action and its scope for the Fabric and Power BI workspaces location? The cmdlet pages do not name Fabric items.
 - Does restrict access apply to lakehouse changes made by service principals? Learn says semantic model evaluation is skipped for them and is silent on lakehouses.
@@ -210,11 +212,10 @@ cost: Variable. Microsoft documents that DLP evaluation for Fabric affects capac
 impact: Low. Security and compliance admins configure it; policy matches can remove user access or show owners policy tips.
 -->
 
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing; Governance guidance: After rollout; Open questions / availability: At the time of writing in November 2026, the Learn overview still labels restrict access as preview. | Found: Restrict access. When you configure a policy with the restrict access action and a policy match occurs, the policy restricts access to the data owners or to members of the organization, depending on the policy configuration. | Fix: Replace the preview-label sentence with 'The Learn overview documents restrict access without a preview label.' Remove the After rollout bullet about waiting for that label to disappear and the first Open questions bullet. Retain the separate roadmap, MC937920 and September 2026 What's new dates. | Source: https://learn.microsoft.com/fabric/governance/data-loss-prevention-overview
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls: first table row / admin-path: The printed Microsoft Purview portal path reaches the restrict access section through the Custom policy and advanced DLP rule choices. | Found: The Define policy settings page appears. Choose Create or customize advanced DLP rules ... On the Customize advanced DLP rules page ... Select Create rule. ... expand the Restrict access or encrypt the content in Microsoft 365 locations section | Fix: In both copies restore the pass-through pages: Data loss prevention > Policies > + Create policy > Custom > Custom policy > Assign admin units > Fabric and Power BI workspaces > Define policy settings > Create or customize advanced DLP rules > Customize advanced DLP rules > Create rule > Actions > Restrict access or encrypt the content in Microsoft 365 locations. Retain the note directing the reader to select Block users and choose everyone or outsiders. | Source: https://learn.microsoft.com/fabric/governance/data-loss-prevention-configure
-- [supported, minor] controls[1].api; Governance controls: second table row / command: New-DlpCompliancePolicy with PowerBIDlpLocation All, PowerBIDlpLocationException <workspaceID> and Mode Enable creates an enabled policy excluding the specified workspace. | Found: This example creates a DLP policy named PowerBIPolicy for all qualifying Power BI workspaces (that is, those hosted on Premium Gen2 capacities) except for the specified workspaces. The new policy has a descriptive comment and is enabled on creation. | Fix: Append to both copies of the workspace-scope row's note: 'The PowerShell reference limits -PowerBIDlpLocation and -PowerBIDlpLocationException to workspaces hosted in Premium Gen2 capacities; the Fabric configuration page instead says Fabric or Premium capacities.' Retain the call and the test-tenant caveat. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The printed Microsoft Purview portal creation route reaches the restrict access section of a Fabric DLP rule. | Found: The Define policy settings page appears. Choose Create or customize advanced DLP rules ... On the Customize advanced DLP rules page ... Select Create rule. | Fix: Use 'Data loss prevention > Policies > + Create policy > Custom > Custom policy > Assign admin units > Fabric and Power BI workspaces > Define policy settings > Create or customize advanced DLP rules > Customize advanced DLP rules > Create rule > Actions > Restrict access or encrypt the content in Microsoft 365 locations > Block users from receiving email, or accessing shared SharePoint, OneDrive, and Teams files, and Power BI items' from https://learn.microsoft.com/fabric/governance/data-loss-prevention-configure. Keep the existing note about naming the policy and passing admin units. Cite https://learn.microsoft.com/purview/dlp-use-policies-non-microsoft-cloud-apps for the opening 'Data loss prevention > Policies > + Create policy' navigation. | Source: https://learn.microsoft.com/fabric/governance/data-loss-prevention-configure
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: The printed Microsoft Purview portal path reaches Edit for Fabric workspace inclusions and exclusions. | Found: Select Fabric and Power BI workspaces as the location for the DLP policy. ... To specify specific workspaces for inclusion or exclusion, select Edit. | Fix: Keep the path and cite https://learn.microsoft.com/purview/dlp-use-policies-non-microsoft-cloud-apps, whose creation steps give 'Data loss prevention > Policies > + Create policy'; the cited Fabric configuration page supplies the subsequent Fabric-specific steps. | Source: https://learn.microsoft.com/fabric/governance/data-loss-prevention-configure
+- [supported, minor] controls[1].api; Governance controls table / command: New-DlpCompliancePolicy with PowerBIDlpLocation All, PowerBIDlpLocationException workspace IDs and Mode Enable creates an enabled policy excluding those workspaces. | Found: New-DlpCompliancePolicy -Name "PowerBIPolicy" -Comment "Primary policy" -PowerBIDlpLocation "All" -PowerBIDlpLocationException "workspaceID1","workspaceID2","workspaceID3" -Mode Enable | Fix: Append to controls[1].note: 'The PowerShell reference describes qualifying Power BI workspaces as hosted on Premium Gen2 capacities; the Fabric configuration page says Fabric or Premium capacities.' Keep both existing reference links and the test-tenant caveat. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy
 -->

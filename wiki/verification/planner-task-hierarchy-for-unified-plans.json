@@ -1,0 +1,841 @@
+{
+  "slug": "planner-task-hierarchy-for-unified-plans",
+  "roadmapId": 580879,
+  "title": "Planner: task hierarchy (nested tasks) in unified plans",
+  "status": "held",
+  "date": "2026-11-26",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-26",
+    "reasons": [
+      "2 blocking findings (claims 10, 62)"
+    ]
+  },
+  "counts": {
+    "claims": 63,
+    "confirmed": 58,
+    "unconfirmed": 2,
+    "contradicted": 3,
+    "blocker": 2,
+    "major": 2,
+    "minor": 8
+  },
+  "summary": "Hold: the cost rating assumes add-on licensing for unified-plan hierarchy even though the published entitlement table is expressly limited to premium plans. The briefing also says Learn does not describe hierarchy in unified plans, despite citing a beta Graph resource that does; its rollout and entitlement gaps should be stated more narrowly.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; rationale: risk",
+      "type": "record",
+      "claim": "Microsoft plans nested tasks to organise complex work in Planner unified plans.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Task Hierarchy for Unified Plans in Planner introduces nested tasks to organize complex work, making plan structure clearer and execution easier.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is March CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"March CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Web as the platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap was modified on 2026-11-17T18:36:41.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-17T18:36:41\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: defaultState; What's changing; Why it matters; rationale: impact",
+      "type": "absence",
+      "claim": "Microsoft has not stated what happens on arrival or whether hierarchy appears automatically for unified-plan users.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner unified plans task hierarchy nested tasks licensing default rollout data permissions autonomous; \"Planner\" \"task hierarchy\" \"unified\" \"default\". Read roadmap, Planner for admins, service description and beta task resource; none states this rollout default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn does not describe this feature in unified plans yet.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/graph/api/resources/task?view=graph-rest-beta",
+      "quote": "A task in the Planner Unified plans Graph API. ... parentTaskId | String | ID of the parent task, if this task is a subtask.",
+      "severity": "blocker",
+      "fix": "Replace the sentence with: 'Microsoft Learn describes parent and child tasks in the beta unified plans Graph API, but has not stated the rollout default or which licences will allow creating nested tasks in unified plans.'"
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Why it matters; Cost and licensing; Scope",
+      "type": "availability",
+      "claim": "The service description says task hierarchy is currently available only in premium plans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-planner-service-description",
+      "quote": "Task hierarchy^4^ ... ^4^Currently available only in premium plans.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Basic plans are now unified plans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/planner-for-admins",
+      "quote": "Basic plans are now unified plans.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "summary; What's changing; Why it matters; Risk assessment; Cost and licensing; Governance guidance",
+      "type": "licensing",
+      "claim": "Capabilities available to each user in unified plans depend on their assigned licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/planner-for-admins",
+      "quote": "Users can collaborate in the same plan, while the capabilities available to each user depend on their assigned license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "Scope: Users",
+      "type": "licensing",
+      "claim": "Users with Microsoft 365, Planner Plan 1, Planner and Project Plan 3 or Microsoft 365 Copilot can use unified plans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-planner-service-description",
+      "quote": "All users with Microsoft 365, Planner Plan 1, Planner and Project Plan 3, or Microsoft 365 Copilot can use unified plans.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "Why it matters",
+      "type": "licensing",
+      "claim": "A unified plan does not require every member to have the same licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/planner-for-admins",
+      "quote": "A unified plan doesn't require every member of the plan to have the same license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The beta unified plans task resource documents parentTaskId as the parent task ID for a subtask.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/task?view=graph-rest-beta",
+      "quote": "parentTaskId | String | ID of the parent task, if this task is a subtask.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "hasChildren is a read-only Boolean indicating whether the task has subtasks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/task?view=graph-rest-beta",
+      "quote": "hasChildren | Boolean | Indicates whether the task has subtasks. Read-only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Microsoft does not support beta Graph APIs in production applications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/task?view=graph-rest-beta",
+      "quote": "APIs under the /beta version in Microsoft Graph are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The unified plans task resource contrasts its API with the basic plans plannerTask and plannerTaskDetails split.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/task?view=graph-rest-beta",
+      "quote": "Unlike the plannerTask/plannerTaskDetails split in the Planner Basic plans Graph API, a task in the Planner Unified plans Graph API has no separate details object",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "Planner entitlement is based on per-user licences, with the unified-hierarchy entitlement split still unpublished.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/planner-for-admins",
+      "quote": "Premium capabilities are increasingly available in unified plans based on the licenses assigned to individual users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: licensing.notes; Cost and licensing; controls[0].note; rationale: cost",
+      "type": "licensing",
+      "claim": "The premium-plan task hierarchy row includes Planner Plan 1.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-planner-service-description",
+      "quote": "Microsoft Planner Included in Microsoft 365 | Planner Plan 1 | Planner and Project Plan 3 | Microsoft 365 Copilot ... Task hierarchy^4^ | No | Yes | Yes | View only",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: licensing.notes; Cost and licensing; controls[0].note; rationale: cost",
+      "type": "licensing",
+      "claim": "The premium-plan task hierarchy row includes Planner and Project Plan 3.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-planner-service-description",
+      "quote": "Microsoft Planner Included in Microsoft 365 | Planner Plan 1 | Planner and Project Plan 3 | Microsoft 365 Copilot ... Task hierarchy^4^ | No | Yes | Yes | View only",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The premium-plan task hierarchy row gives Microsoft 365 Copilot view-only access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-planner-service-description",
+      "quote": "Microsoft Planner Included in Microsoft 365 | Planner Plan 1 | Planner and Project Plan 3 | Microsoft 365 Copilot ... Task hierarchy^4^ | No | Yes | Yes | View only",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "front matter: licensing.notes; Why it matters; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The premium-plan task hierarchy row marks Microsoft 365 suites as not included.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-planner-service-description",
+      "quote": "Microsoft Planner Included in Microsoft 365 | Planner Plan 1 | Planner and Project Plan 3 | Microsoft 365 Copilot ... Task hierarchy^4^ | No | Yes | Yes | View only",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "front matter: licensing.notes; Why it matters; Cost and licensing; Scope; controls[0].note",
+      "type": "absence",
+      "claim": "Microsoft has not published which licences permit creating or only viewing nested tasks specifically in unified plans.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner task hierarchy unified plans pricing meter license subscription. Read service description, Planner for admins, Planner subscriptions excerpt, pricing page and beta task resource. The hierarchy entitlement row is explicitly premium-plan-only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Why it matters",
+      "type": "licensing",
+      "claim": "Microsoft 365 users have view-only access to premium capabilities beyond those included in their licence in premium plans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-planner-service-description",
+      "quote": "In premium plans, Microsoft 365 users can use the capabilities included with their license and have view-only access to all other premium capabilities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Why it matters; Governance guidance; controls[2].governs; Governance controls",
+      "type": "behaviour",
+      "claim": "A Planner premium-licensed user can obtain premium capabilities such as subtasks by converting an eligible basic plan to a premium plan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/allow-data-flow-to-dataverse",
+      "quote": "Premium users can now add advanced features (Timeline view, dependencies, subtasks, etc.) to their plans by converting basic plans into premium plans that support those features.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Every Microsoft 365 Planner user already works in unified plans.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Planner unified plans task hierarchy nested tasks licensing default rollout data permissions autonomous. Read Planner for admins and service description: they say users can use unified plans, not that every user already does; premium plans remain supported.",
+      "severity": "major",
+      "fix": "Replace 'the plan type that every Microsoft 365 Planner user already works in' with 'a plan type that users with an eligible Microsoft 365 licence can use'."
+    },
+    {
+      "n": 29,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "No source says this roadmap change modifies existing plans or tasks on arrival.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Planner\" \"task hierarchy\" \"unified\" \"default\"; \"Planner\" \"nested tasks\" \"automatic\". Read roadmap, Planner for admins, service description and beta task resource; none specifies migration or automatic modification of existing plans for this item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "applicability",
+      "claim": "Plan membership determines access to tasks within Planner plans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/planner-security-privacy-compliance",
+      "quote": "Within Planner, each Plan is inside a container, and access to the plan is defined by the container. For example, if the Plan is inside a Modern Group, then the members of the Group can see the contents of the Plan.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/planner/planner-security-privacy-compliance to sources for the plan-access statement."
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "absence",
+      "claim": "Microsoft has not described new data access or sharing introduced by this nested-task change.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner unified plans task hierarchy nested tasks licensing default rollout data permissions autonomous. Read roadmap, beta task resource and Planner security, privacy, and compliance; none describes additional data access or sharing introduced by hierarchy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "Microsoft has not described a new identity, permission or sharing model for nested tasks.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner unified plans permissions membership task access parentTaskId subtasks. Read beta task resource, Planner for admins and Planner security, privacy, and compliance; no hierarchy-specific identity, permission or sharing model is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The hierarchy feature does not act on its own.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Planner unified plans task hierarchy nested tasks licensing default rollout data permissions autonomous; \"Planner\" \"nested tasks\" \"automatic\". Read roadmap and beta task resource; neither states that hierarchy has no automatic actions.",
+      "severity": "major",
+      "fix": "Replace 'it does not act on its own' with 'Microsoft has not described autonomous actions introduced by task hierarchy'."
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "The Purview page supports eDiscovery content search for tasks in plans shared with groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/planner-in-purview",
+      "quote": "eDiscovery content search and legal hold. ... Supported Planner content: Tasks in Plans that are shared with groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "The Purview page supports legal hold for tasks in plans shared with groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/planner-in-purview",
+      "quote": "eDiscovery content search and legal hold. ... Supported Planner content: Tasks in Plans that are shared with groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "The Purview page lists premium plans as unsupported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/planner-in-purview",
+      "quote": "Unsupported: Personal (roster) plans, plans in Loop components, premium plans (formerly projects), Shared and Private channel Plans (LWG backed Plans).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "The cited Planner in Purview page does not explicitly name unified plans, nested tasks or preservation of their parent-child structure.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/planner-in-purview",
+      "quote": "Supported Planner content: Tasks in Plans that are shared with groups. Includes Tasks, comments, and attachments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing: Meter",
+      "type": "absence",
+      "claim": "Microsoft documents no meter specifically for this hierarchy feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner task hierarchy unified plans pricing meter license subscription. Read service description, Planner for admins, pricing page and beta task resource. The service description notes some Graph APIs are metered, but states no meter for task hierarchy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing: Indirect costs",
+      "type": "licensing",
+      "claim": "Users can start a 30-day Planner and Project Plan 3 trial from Planner.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/understand-planner-trial-and-license-assignments",
+      "quote": "When users follow the prompts in planner to enable a 30-day trial, they gain access to all the features and functionality available with a subscription license for Planner and Project Plan 3.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing: Indirect costs",
+      "type": "behaviour",
+      "claim": "At the end of the trial, users can request a Planner and Project Plan 3 licence from their administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/understand-planner-trial-and-license-assignments",
+      "quote": "At the end of the 30-day trial, they can request a Planner and Project Plan 3 license from their Microsoft 365 administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing: Not yet published",
+      "type": "absence",
+      "claim": "No separate per-user price for unified-plan hierarchy beyond the existing subscriptions is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner task hierarchy unified plans pricing meter license subscription. Read service description, Planner for admins and Planner plans and pricing. Prices describe existing subscriptions; no separate unified-hierarchy price is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[0].ui; Governance controls: row 1",
+      "type": "admin-path",
+      "claim": "Licence assignment is at Microsoft 365 admin center > Users > Active users > user > Licenses and Apps > Licenses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "go to the Users > Active users page. ... Select the row of the user ... In the right pane, select Licenses and Apps. ... Expand the Licenses section, select the boxes for the licenses that you want to assign",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[0].api; Governance controls: row 1",
+      "type": "command",
+      "claim": "Set-MgUserLicense with UserId, AddLicenses containing SkuId, and an empty RemoveLicenses array assigns a user licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+      "quote": "To assign a license to a user, use the following command in PowerShell. Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @()",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[0].note; Scope: Roles; Governance controls: row 1",
+      "type": "role",
+      "claim": "Assigning licences requires at least a License or User Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "You must be at least a License or User Administrator to assign licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[1]; summary; Governance controls",
+      "type": "absence",
+      "claim": "No separate admin UI switch or Set-PlannerConfiguration parameter for unified-plan task hierarchy is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner task hierarchy tenant admin switch Set-PlannerConfiguration parameters nested tasks; \"Planner\" \"Set-PlannerConfiguration\" \"task hierarchy\". Read Planner admin and tenant-setting excerpts, disable-planner and beta task resource; none documents a hierarchy switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[2].ui; Governance controls: row 3",
+      "type": "absence",
+      "claim": "No admin-centre UI for the basic-to-premium plan conversion tenant setting is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Planner\" \"AllowDataFlowToDataverse\" \"admin center\". Read Disable the conversion of basic plans by users into premium plans and search results. Only PowerShell is documented for this tenant setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[2].api; Governance controls: row 3",
+      "type": "command",
+      "claim": "Set-PlannerConfiguration -AllowDataFlowToDataverse $false disables basic-to-premium conversion by users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/allow-data-flow-to-dataverse",
+      "quote": "run the following command to disable the conversion of basic plans to premium plan by users (it's enabled by default): Set-PlannerConfiguration -AllowDataFlowToDataverse $false",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[2].note; Governance controls: row 3",
+      "type": "default",
+      "claim": "Basic-to-premium conversion by users is enabled by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/allow-data-flow-to-dataverse",
+      "quote": "disable the conversion of basic plans to premium plan by users (it's enabled by default)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[2].note; Governance controls",
+      "type": "applicability",
+      "claim": "AllowDataFlowToDataverse governs conversion to premium plans rather than task hierarchy within unified plans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/allow-data-flow-to-dataverse",
+      "quote": "The AllowDataFlowToDataverse value returned by this command indicates whether users can convert basic plans.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[3].ui; Governance controls: row 4",
+      "type": "absence",
+      "claim": "No admin UI equivalent to the organisation-level IsPlannerAllowed switch is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Planner\" \"IsPlannerAllowed\" \"admin center\". Read Turn off Planner for your organization and Teams Planner-management excerpts. Teams app blocking is documented, but is not an equivalent organisation-wide Planner service switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[3].api; Governance controls: row 4; rationale: risk",
+      "type": "command",
+      "claim": "Set-PlannerConfiguration -IsPlannerAllowed $false is documented under turning off Planner for the organisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/disable-planner",
+      "quote": "Turn off Planner for your organization using PowerShell ... Set-PlannerConfiguration -IsPlannerAllowed $false ... To turn on Planner back: Set-PlannerConfiguration -IsPlannerAllowed $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[3].note; Scope: Roles; Governance controls: row 4",
+      "type": "role",
+      "claim": "Turning off Planner with this PowerShell control is documented for a global admin.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/disable-planner",
+      "quote": "If you're a global admin and you want to turn off Microsoft Planner for your organization, you can use Windows PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[3].note; Governance controls",
+      "type": "applicability",
+      "claim": "The Planner off switch is broader than hierarchy, with premium plans referred to separate guidance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/disable-planner",
+      "quote": "Basic plans in the Planner app in Teams and Web ... All plans in other Planner endpoints (including Planner mobile, and Planner connectors). For ... premium plans, see Disable Project for the web or Roadmap from Microsoft 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "Planner tenant settings are changed using the Planner Tenant Admin PowerShell module.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/prerequisites-for-powershell",
+      "quote": "Load the Planner Tenant Admin PowerShell module ... Import-module \"<location of the plannertenantadmin.psm1 file you unzipped>\" ... Now you're ready to make changes to Planner at the organizational level using PowerShell.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/planner/prerequisites-for-powershell to sources for the module statement."
+    },
+    {
+      "n": 55,
+      "where": "Governance controls: documented parameter coverage",
+      "type": "command",
+      "claim": "Documented Set-PlannerConfiguration parameters cover calendar sync.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/turn-off-outlook-calendar-sync",
+      "quote": "Turn off or on Outlook calendar sync in Planner using PowerShell ... Set-PlannerConfiguration -AllowCalendarSharing $false",
+      "severity": "minor",
+      "fix": "Remove 'calendar sync' from the parameter-coverage list, or cite https://learn.microsoft.com/planner/turn-off-outlook-calendar-sync."
+    },
+    {
+      "n": 56,
+      "where": "Governance controls: documented parameter coverage",
+      "type": "command",
+      "claim": "Documented Set-PlannerConfiguration parameters cover roster containers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/disable-roster-containers",
+      "quote": "run the following command to disable the creation of Roster containers in your tenant (it's enabled by default): Set-PlannerConfiguration -AllowRosterCreation $false",
+      "severity": "minor",
+      "fix": "Remove 'roster containers' from the parameter-coverage list, or cite https://learn.microsoft.com/planner/disable-roster-containers."
+    },
+    {
+      "n": 57,
+      "where": "Governance controls: documented parameter coverage",
+      "type": "command",
+      "claim": "Documented Set-PlannerConfiguration parameters cover plan conversion.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/allow-data-flow-to-dataverse",
+      "quote": "Set-PlannerConfiguration -AllowDataFlowToDataverse $false",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance controls: documented parameter coverage",
+      "type": "command",
+      "claim": "Documented Set-PlannerConfiguration parameters cover channel tabs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/disable-planner-tab-shared-private-channels",
+      "quote": "run the following command to disable the Planner tab for shared and private channels in your tenant. ... Set-PlannerConfiguration -AllowTeamsChannelContainerAccess $false",
+      "severity": "minor",
+      "fix": "Remove 'channel tabs' from the parameter-coverage list, or cite https://learn.microsoft.com/planner/disable-planner-tab-shared-private-channels."
+    },
+    {
+      "n": 59,
+      "where": "Governance controls: documented parameter coverage",
+      "type": "command",
+      "claim": "Documented Set-PlannerConfiguration parameters cover mobile notifications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/disabling-direct-push-planner-mobile-notifications",
+      "quote": "Disable direct-push notifications ... Set-PlannerConfiguration -AllowPlannerMobilePushNotifications $false",
+      "severity": "minor",
+      "fix": "Remove 'mobile notifications' from the parameter-coverage list, or cite https://learn.microsoft.com/planner/disabling-direct-push-planner-mobile-notifications."
+    },
+    {
+      "n": 60,
+      "where": "Governance controls: documented parameter coverage",
+      "type": "command",
+      "claim": "Documented Set-PlannerConfiguration parameters cover Planner Agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
+      "quote": "To turn off Planner Agent and Planner Agent chat for all users: Set-PlannerConfiguration -AllowPlannerCopilot $false",
+      "severity": "minor",
+      "fix": "Remove 'Planner Agent' from the parameter-coverage list, or cite https://learn.microsoft.com/planner/turn-off-planner-agent."
+    },
+    {
+      "n": 61,
+      "where": "Governance controls: documented parameter coverage",
+      "type": "command",
+      "claim": "Documented Set-PlannerConfiguration parameters include a product-level Planner availability switch.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/disable-planner",
+      "quote": "Turn off Planner for your organization using PowerShell ... Set-PlannerConfiguration -IsPlannerAllowed $false",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "front matter: cost; rationale: cost",
+      "type": "consistency",
+      "claim": "The medium cost rating treats premium-plan hierarchy entitlements as evidence of add-on costs for the planned unified-plan feature.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "cost: \"medium\" ... teams that want to build hierarchies may need those per-user licences. ... That row currently refers to premium plans; licensing for task hierarchy in unified plans is not yet published.",
+      "severity": "blocker",
+      "fix": "Set cost to 'low'. Replace its rationale with: 'Low. Reviewing licences, handling requests and preparing guidance takes administrator time; licensing specific to task hierarchy in unified plans is not yet published.' The standard rates known costs, not an inferred future entitlement."
+    },
+    {
+      "n": 63,
+      "where": "Governance guidance: After rollout",
+      "type": "consistency",
+      "claim": "The checklist asks readers to test eDiscovery and legal-hold readiness, but the controls table has no corresponding row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Test whether eDiscovery searches of a group-shared unified plan return nested tasks with their structure, before relying on it for a legal hold. ... Controls: licence assignment; hierarchy switch; plan conversion; Planner availability.",
+      "severity": "minor",
+      "fix": "The After rollout eDiscovery/legal-hold checklist step has no controls-table row. Remove that checklist bullet; retain the existing risk-section advice to confirm preservation of parent-child structure."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-26T20:14:50.514Z",
+    "summary": {
+      "links": 11,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 3,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=580879",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-planner-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/planner/planner-for-admins",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/task?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/planner/plan-conversion",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/planner/understand-planner-trial-and-license-assignments",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/planner/planner-in-purview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/planner/allow-data-flow-to-dataverse",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/planner/disable-planner",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which users hold a Planner Plan 1 or Planner and Project Plan 3 licence",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+        "reachable": true,
+        "segments": [
+          "Users",
+          "Active users",
+          "Licenses and Apps",
+          "Licenses"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Which users hold a Planner Plan 1 or Planner and Project Plan 3 licence",
+        "docs": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+        "reachable": true,
+        "token": "Set-MgUserLicense",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Whether users can convert basic plans into premium plans (today's route to subtasks)",
+        "docs": "https://learn.microsoft.com/planner/allow-data-flow-to-dataverse",
+        "reachable": true,
+        "token": "Set-PlannerConfiguration",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Whether Planner is available to the organisation at all",
+        "docs": "https://learn.microsoft.com/planner/disable-planner",
+        "reachable": true,
+        "token": "Set-PlannerConfiguration",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

@@ -116,15 +116,17 @@ changes:
     note: "Corrected after the independent check: licensing model set to included, added the preview Graph operation for the Copilot web search policy, moved the retention call to New-RetentionComplianceRule, completed the app-availability path and dropped an unmatched checklist step."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 93 statements confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 102 statements not yet confirmed"
 version: 3
 verification:
-  status: "verified"
-  date: "2026-11-19"
+  status: "verified-with-gaps"
+  date: "2026-11-26"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 93
-  confirmed: 93
+  claims: 102
+  confirmed: 102
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -235,4 +237,12 @@ The notice says users can stop the behaviour by removing Facilitator from the me
 risk: Medium. Microsoft's notice MC1409304 says Facilitator monitors meeting conversation in real time and posts web-search answers unprompted, depending on the Copilot web search setting; Microsoft Learn lists data loss prevention as unsupported for Facilitator.
 cost: Low. The notice says a user with a Microsoft 365 Copilot (Premium) licence must enable Facilitator; no separate price or meter for this capability is published, so the known cost is admin and communication time.
 impact: Low. A licensed user has to add Facilitator to a meeting, so only those meetings see the answers, and the notice says responses typically occur less than once per meeting. Everyone in such a meeting sees them.
+-->
+
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].ui; Governance controls / admin-path: The Microsoft 365 Apps admin center path reaches Configure Settings for Cloud Policy. | Found: Under Customization, select Policy Management. On the Policy configurations page, select Create. ... On the Configure Settings page, select the policies that you want to include in the policy configuration. | Fix: Extend controls[0].ui.path and its rendered counterpart to 'Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings > Allow web search in Copilot'. The Cloud Policy page says to search policies by name, and the already cited https://learn.microsoft.com/copilot/plan/manage-public-web-access names this policy. | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy
+- [supported, minor] controls[2].ui; Governance controls / admin-path: Data Lifecycle Management > Policies > Retention Policies is the documented Purview route for Facilitator retention policies. | Found: In the Microsoft Purview portal, navigate to Data Lifecycle Management > Policies > Retention Policies and create a retention policy | Fix: Extend controls[2].ui.path and its rendered counterpart to 'Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy > Assign admin units > Choose the type of retention policy to create > Static > Choose locations to apply the policy > Teams chats > Decide if you want to retain content, delete it, or both'. This is the static-policy route documented at https://learn.microsoft.com/purview/create-retention-policies; add that URL to sources. Keep the existing Facilitator docs link, which supports the original route and applicability. | Source: https://learn.microsoft.com/purview/ai-teams-facilitator
+- [supported, minor] Governance controls / admin-path: For migrated tenants the app-centric route reaches Facilitator's Edit availability control. | Found: Select the Users and groups tab. Under Select to manage who this app is installed for or available to in your organization, select Availability. Select Edit availability. Select the required option from Available to menu. | Fix: Replace the prose route with 'Teams admin center > Teams apps > Manage apps > Facilitator > Users and groups > Select to manage who this app is installed for or available to in your organization > Availability > Edit availability > Available to', using the already cited https://learn.microsoft.com/microsoftteams/app-centric-management. The printed steps are correct, but omit the section heading and stop before the availability choice. | Source: https://learn.microsoft.com/microsoftteams/app-centric-management
 -->

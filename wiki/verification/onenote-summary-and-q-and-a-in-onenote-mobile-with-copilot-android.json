@@ -2,27 +2,30 @@
   "slug": "onenote-summary-and-q-and-a-in-onenote-mobile-with-copilot-android",
   "roadmapId": 422323,
   "title": "OneNote for Android: Copilot chat pane with page summaries and questions",
-  "status": "verified",
-  "date": "2026-11-19",
+  "status": "verified-with-gaps",
+  "date": "2026-11-26",
   "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
   "attempts": 0,
-  "standard": "cd5b21ff3a5b",
+  "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "pass",
-  "notes": [],
+  "verifierVerdict": "hold",
+  "notes": [
+    "claim 46: severity blocker on a rationale: risk rating lowered to minor; ratings are judgements and cannot hold a page",
+    "the verifier wrote \"hold\" but listed no blocker and fewer than three majors; the claims decide, so the page is not held"
+  ],
   "hold": null,
   "counts": {
     "claims": 46,
-    "confirmed": 46,
-    "unconfirmed": 0,
+    "confirmed": 45,
+    "unconfirmed": 1,
     "contradicted": 0,
     "blocker": 0,
     "major": 0,
-    "minor": 0
+    "minor": 2
   },
-  "summary": "The briefing matches Microsoft's notice and roadmap, including the late-November rollout window and Premium licence requirement. Microsoft's documentation supports the Android connected-experiences control, its administration path and the stated data-handling behaviour.",
+  "summary": "The notice supports automatic availability of the pane, not automatic analysis of notes. The risk rationale says generative AI will read note content by default, which Microsoft has not stated; it should describe availability separately from the summaries and answers users request.",
   "claims": [
     {
       "n": 1,
@@ -39,7 +42,7 @@
       "n": 2,
       "where": "summary; What's changing",
       "type": "record",
-      "claim": "The feature generates concise summaries of longer OneNote pages.",
+      "claim": "Users can generate a short summary of a longer OneNote page.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "With this new Summary feature in OneNote mobile, you can create a short and fluent summary of your longer pages",
@@ -48,7 +51,7 @@
     },
     {
       "n": 3,
-      "where": "summary; What's changing",
+      "where": "summary; What's changing; Governance guidance",
       "type": "record",
       "claim": "Users can ask questions about their notes directly within the OneNote mobile app.",
       "status": "supported",
@@ -59,31 +62,31 @@
     },
     {
       "n": 4,
-      "where": "summary; licensing.notes; What's changing; Scope; rationales",
+      "where": "summary; licensing.notes; What's changing; Cost and licensing; Scope; rationale: cost and impact",
       "type": "record",
-      "claim": "The pane is for OneNote Android users licensed with Microsoft 365 Copilot (Premium).",
+      "claim": "The pane requires a Microsoft 365 Copilot (Premium) licence for each user who should have access.",
       "status": "supported",
       "source": "Message Center post MC1309746",
-      "quote": "Users with a Microsoft 365 Copilot (Premium) license will see a Copilot chat pane in the OneNote mobile app on Android",
+      "quote": "Microsoft is introducing a new Copilot chat pane in OneNote Mobile (Android) for users licensed with Microsoft 365 Copilot (Premium).",
       "severity": null,
       "fix": null
     },
     {
       "n": 5,
-      "where": "Risk assessment: Security & identity; Scope; rationale: impact",
-      "type": "record",
-      "claim": "Users without a Microsoft 365 Copilot (Premium) licence are not impacted.",
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Microsoft 365 Copilot (Premium) is the full add-on licensed experience, supporting licensing.model add-on.",
       "status": "supported",
-      "source": "Message Center post MC1309746",
-      "quote": "Users without a Microsoft 365 Copilot (Premium) license are not impacted.",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Microsoft 365 Copilot (Premium) is the full add-on licensed experience",
       "severity": null,
       "fix": null
     },
     {
       "n": 6,
-      "where": "summary; What's changing; Why it matters; Risk assessment",
+      "where": "summary; What's changing; Why it matters; Risk assessment: Change & support",
       "type": "record",
-      "claim": "Microsoft says no admin action is required before rollout.",
+      "claim": "Microsoft's notice says no admin action is required before rollout.",
       "status": "supported",
       "source": "Message Center post MC1309746",
       "quote": "No admin action is required before rollout.",
@@ -92,7 +95,18 @@
     },
     {
       "n": 7,
-      "where": "What's changing; Governance controls; rationale: risk",
+      "where": "front matter: defaultState; What's changing; Risk assessment: Change & support",
+      "type": "default",
+      "claim": "The pane appears for licensed Android users without an admin enabling it, supporting defaultState on.",
+      "status": "supported",
+      "source": "Message Center post MC1309746",
+      "quote": "Users with a Microsoft 365 Copilot (Premium) license will see a Copilot chat pane in the OneNote mobile app on Android:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Risk assessment: Data exposure; Governance controls; rationale: risk",
       "type": "record",
       "claim": "Existing Microsoft 365 Copilot controls, permissions and policies continue to apply.",
       "status": "supported",
@@ -102,7 +116,7 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 9,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is In development.",
@@ -113,7 +127,7 @@
       "fix": null
     },
     {
-      "n": 9,
+      "n": 10,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap release phase is General Availability.",
@@ -124,7 +138,7 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 11,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
@@ -135,7 +149,7 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 12,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
       "claim": "Android is the only platform covered by this roadmap item.",
@@ -146,7 +160,7 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 13,
       "where": "front matter: targetDate; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap target is November CY2026.",
@@ -157,10 +171,10 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 14,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap provides no preview date.",
+      "claim": "The roadmap record supplies no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -168,41 +182,41 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 15,
       "where": "What's changing",
       "type": "record",
       "claim": "The supplied notice was updated on 6 November 2026.",
       "status": "supported",
       "source": "Message Center post MC1309746",
-      "quote": "Updated November 6, 2026: We have updated the timeline.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "What's changing; Scope",
-      "type": "record",
-      "claim": "The notice says rollout begins at the end of November 2026.",
-      "status": "supported",
-      "source": "Message Center post MC1309746",
-      "quote": "We will begin rolling out end of November 2026 (previously end of October)",
+      "quote": "Updated November 6, 2026: We have updated the timeline. Thank you for your patience.",
       "severity": null,
       "fix": null
     },
     {
       "n": 16,
-      "where": "What's changing; Why it matters; Scope; Open questions",
+      "where": "What's changing; Scope",
       "type": "record",
-      "claim": "The notice expects rollout to complete at the end of November 2026.",
+      "claim": "The notice says rollout begins at the end of November 2026.",
       "status": "supported",
       "source": "Message Center post MC1309746",
-      "quote": "expect to complete end of November 2026 (previously end of October).",
+      "quote": "General Availability (Worldwide): We will begin rolling out end of November 2026 (previously end of October)",
       "severity": null,
       "fix": null
     },
     {
       "n": 17,
-      "where": "What's changing; Governance guidance; Open questions",
+      "where": "What's changing; Why it matters; Scope; Open questions",
+      "type": "record",
+      "claim": "The notice expects rollout to complete at the end of November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1309746",
+      "quote": "and expect to complete end of November 2026 (previously end of October).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Governance guidance: At rollout; Open questions",
       "type": "record",
       "claim": "The notice moved the rollout window from the end of October to the end of November.",
       "status": "supported",
@@ -212,10 +226,10 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 19,
       "where": "What's changing",
       "type": "record",
-      "claim": "Microsoft has set no act-by date in the supplied notice.",
+      "claim": "The supplied notice sets no act-by date.",
       "status": "supported",
       "source": "Message Center post MC1309746",
       "quote": "Act by: none",
@@ -223,32 +237,43 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 20,
       "where": "What's changing",
       "type": "absence",
-      "claim": "Microsoft Learn has no dedicated page for this Android Summary and Q&A pane yet.",
+      "claim": "Microsoft Learn has no page describing this Android Summary and Q&A pane at the time of this check.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"OneNote\" \"Android\" \"Summary\" \"Copilot\" chat pane; read returned Copilot release-note excerpts and the cited Copilot overview. Results cover other platforms or other OneNote features, not this pane.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
-      "type": "record",
-      "claim": "The change alters processing of existing customer data by processing accessible OneNote content for summaries and answers.",
-      "status": "supported",
-      "source": "Message Center post MC1309746",
-      "quote": "Copilot chat processes OneNote content that users already have access to in order to generate summaries and answer questions, in accordance with existing Microsoft 365 Copilot data handling, permissions, and security controls.",
+      "quote": "Searched: OneNote Android Copilot chat pane Summary 422323 licensing price fair use limits feature documentation; \"OneNote\" \"Android\" \"422323\". Read Copilot overview and release-note excerpts; results described other OneNote features, not this pane.",
       "severity": null,
       "fix": null
     },
     {
       "n": 21,
+      "where": "Why it matters; Risk assessment: Data exposure and Security & identity; Governance guidance",
+      "type": "record",
+      "claim": "Copilot chat processes OneNote content the user already has permission to access for summaries and answers.",
+      "status": "supported",
+      "source": "Message Center post MC1309746",
+      "quote": "Copilot chat processes OneNote content that users already have access to in order to generate summaries and answer questions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
       "where": "Why it matters; rationale: risk",
       "type": "record",
-      "claim": "The update introduces generative AI that analyses note content the user has permission to access.",
+      "claim": "The notice says the change alters how existing customer data is processed.",
+      "status": "supported",
+      "source": "Message Center post MC1309746",
+      "quote": "Does the change alter how existing customer data is processed, stored, or accessed?Yes. Copilot chat processes OneNote content that users already have access to",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Why it matters",
+      "type": "record",
+      "claim": "The change introduces generative AI interacting with customer note content.",
       "status": "supported",
       "source": "Message Center post MC1309746",
       "quote": "This update introduces Copilot chat capabilities within OneNote Mobile, allowing generative AI to analyze note content that the user has permission to access.",
@@ -256,8 +281,8 @@
       "fix": null
     },
     {
-      "n": 22,
-      "where": "Risk assessment: Data exposure; Governance guidance",
+      "n": 24,
+      "where": "Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "Copilot only surfaces organisational data to which the user has at least view permissions.",
       "status": "supported",
@@ -267,21 +292,21 @@
       "fix": null
     },
     {
-      "n": 23,
+      "n": 25,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Interactions with Copilot in apps including OneNote store the user's prompt in Copilot activity history.",
+      "claim": "Prompts from interactions with Copilot in OneNote are stored as part of the user's Copilot activity history.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy",
-      "quote": "The stored data includes the user's prompt and Copilot's response, including citations to any information used to ground Copilot's response.",
+      "quote": "When a user interacts with Microsoft Copilot (using apps such as Word, PowerPoint, Excel, OneNote, Loop, or Whiteboard), we store data about these interactions. The stored data includes the user's prompt and Copilot's response",
       "severity": null,
       "fix": null
     },
     {
-      "n": 24,
+      "n": 26,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The stored Copilot activity history includes Copilot's response.",
+      "claim": "Copilot responses are stored in the user's Copilot activity history.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy",
       "quote": "We refer to the user's prompt and Copilot's response to that prompt as the \"content of interactions\" and the record of those interactions is the user's Copilot activity history.",
@@ -289,21 +314,32 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "controls[0].note; Risk assessment: Security & identity; Governance guidance; Governance controls",
-      "type": "applicability",
-      "claim": "Turning off connected experiences that analyse content makes Copilot features unavailable in OneNote on Android.",
+      "n": 27,
+      "where": "Risk assessment: Security & identity; Scope; Governance controls; rationale: impact",
+      "type": "record",
+      "claim": "Users without a Microsoft 365 Copilot (Premium) licence are not impacted by this pane rollout.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy",
-      "quote": "If you turn off connected experiences that analyze your content on devices in your organization, Microsoft Copilot features won't be available to your users in the following apps:\n\n- Excel\n- OneNote\n- Outlook\n- PowerPoint\n- Word",
+      "source": "Message Center post MC1309746",
+      "quote": "Users without a Microsoft 365 Copilot (Premium) license are not impacted.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 26,
+      "n": 28,
+      "where": "controls[0].note; Risk assessment: Security & identity; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "Disabling connected experiences that analyse content makes Copilot features unavailable in OneNote on Android.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy",
+      "quote": "If you turn off connected experiences that analyze your content on devices in your organization, Microsoft Copilot features won't be available to your users in the following apps:\n- Excel\n- OneNote\n- Outlook\n- PowerPoint\n- Word",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
       "where": "controls[0].note; Risk assessment: Security & identity; Governance controls",
       "type": "applicability",
-      "claim": "The connected-experiences control is broader than this pane and also affects Copilot on other platforms.",
+      "claim": "The connected-experiences switch is broader than this pane and affects Copilot in multiple apps and platforms.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy",
       "quote": "This applies to when you're running the most current version of these apps on Windows, Mac, iOS, or Android devices.",
@@ -311,32 +347,32 @@
       "fix": null
     },
     {
-      "n": 27,
-      "where": "Risk assessment: Security & identity",
+      "n": 30,
+      "where": "Risk assessment: Security & identity; Open questions",
       "type": "absence",
-      "claim": "No other documented feature-disabling setting for OneNote on Android was identified beyond the connected-experiences lever.",
+      "claim": "The connected-experiences content-analysis setting is the one documented switch that removes Copilot features in OneNote on Android, rather than a pane-specific switch.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"OneNote\" \"Android\" \"Copilot\" disable control policy chat; read Copilot privacy and Android privacy controls. Returned settings for harmful-content filtering and the separate Microsoft Copilot mobile app do not document another switch disabling this OneNote pane.",
+      "quote": "Searched: \"OneNote\" \"Android\" \"Copilot\" disable admin chat pane summary; \"OneNote\" \"Android\" \"optional connected experiences\" Copilot disable. Read Copilot privacy, Android privacy controls, Cloud Policy overview and search excerpts; no pane-specific switch found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 28,
+      "n": 31,
       "where": "Risk assessment: Autonomy & actions",
       "type": "record",
-      "claim": "The roadmap and notice describe summaries and question answering, not editing notes or taking actions.",
+      "claim": "The supplied roadmap and notice describe summaries and question answering, not note editing or autonomous actions.",
       "status": "supported",
       "source": "Message Center post MC1309746",
-      "quote": "The Copilot chat pane allows users to generate concise summaries of longer OneNote pages and ask questions about their notes",
+      "quote": "The Copilot chat pane allows users to generate concise summaries of longer OneNote pages and ask questions about their notes:",
       "severity": null,
       "fix": null
     },
     {
-      "n": 29,
-      "where": "Risk assessment: Change & support",
+      "n": 32,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Microsoft says generative AI responses are not guaranteed to be factual.",
+      "claim": "Copilot responses are not guaranteed to be factual.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy",
       "quote": "The responses that generative AI produces aren't guaranteed to be 100% factual.",
@@ -344,46 +380,13 @@
       "fix": null
     },
     {
-      "n": 30,
-      "where": "Risk assessment: Change & support; Governance guidance",
-      "type": "record",
-      "claim": "The notice suggests informing helpdesk staff about Copilot chat and Summary in OneNote mobile.",
-      "status": "supported",
-      "source": "Message Center post MC1309746",
-      "quote": "Consider informing helpdesk staff and users about the availability of Copilot chat and the Summary feature in OneNote mobile.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "Risk assessment: Change & support",
-      "type": "record",
-      "claim": "The notice also suggests informing users about the pane and Summary feature.",
-      "status": "supported",
-      "source": "Message Center post MC1309746",
-      "quote": "Consider informing helpdesk staff and users about the availability of Copilot chat and the Summary feature in OneNote mobile.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "The licensing model is add-on: Microsoft 365 Copilot (Premium) is the full add-on licensed experience.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
-      "quote": "Microsoft 365 Copilot (Premium) is the full add-on licensed experience",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 33,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "The Copilot overview notes that some Premium features are subject to fair use limits.",
+      "where": "Risk assessment: Change & support; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "The notice suggests informing helpdesk staff and users about the pane and Summary feature.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
-      "quote": "Microsoft 365 Copilot (Premium) is the full add-on licensed experience (some features are subject to fair use limits)",
+      "source": "Message Center post MC1309746",
+      "quote": "Consider informing helpdesk staff and users about the availability of Copilot chat and the Summary feature in OneNote mobile.",
       "severity": null,
       "fix": null
     },
@@ -391,7 +394,7 @@
       "n": 34,
       "where": "Cost and licensing",
       "type": "record",
-      "claim": "The notice asks administrators to ensure intended users are assigned a Microsoft 365 Copilot (Premium) licence.",
+      "claim": "Microsoft asks administrators to ensure intended users are assigned a Microsoft 365 Copilot (Premium) licence.",
       "status": "supported",
       "source": "Message Center post MC1309746",
       "quote": "Ensure that users who should access this feature are assigned a Microsoft 365 Copilot (Premium) license.",
@@ -400,23 +403,23 @@
     },
     {
       "n": 35,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "The notice names no separate meter for the pane.",
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Copilot overview says some Premium features are subject to fair-use limits.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: OneNote Android Copilot Summary feature price fair use limits; read supplied MC1309746 in full and the Copilot overview. The notice names the Premium licence but no separate meter.",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Microsoft 365 Copilot (Premium) is the full add-on licensed experience (some features are subject to fair use limits)",
       "severity": null,
       "fix": null
     },
     {
       "n": 36,
-      "where": "licensing.notes; Cost and licensing",
+      "where": "Cost and licensing; rationale: cost",
       "type": "absence",
-      "claim": "The notice states no separate charge or feature-specific price for the pane.",
+      "claim": "The supplied notice names no separate meter or charge for this pane.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: OneNote Android Copilot Summary feature price fair use limits; read supplied MC1309746 in full. Its preparation requirements name a Premium licence, with no separate charge or pane-specific price.",
+      "quote": "Searched: OneNote Android Copilot chat pane Summary 422323 licensing price fair use limits feature documentation. Read the full supplied MC1309746 notice, including preparation and compliance sections; it names the Premium licence but no separate meter or charge.",
       "severity": null,
       "fix": null
     },
@@ -424,21 +427,21 @@
       "n": 37,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "The Copilot overview's usage-based billing section lists Cowork, Code and Autopilot rather than OneNote.",
+      "claim": "The Copilot overview's usage-based billing section lists Cowork, Code and Autopilot, not OneNote.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
-      "quote": "Microsoft Copilot Cowork\nMicrosoft Copilot Code (Frontier)\nAutopilot (Frontier)",
+      "quote": "Microsoft Copilot Cowork ... Microsoft Copilot Code (Frontier) ... Autopilot (Frontier)",
       "severity": null,
       "fix": null
     },
     {
       "n": 38,
-      "where": "Cost and licensing; Open questions",
+      "where": "licensing.notes; Cost and licensing; Open questions",
       "type": "absence",
-      "claim": "A price specific to this Android pane is not stated.",
+      "claim": "No price specific to this Android pane is stated in the supplied notice or the Microsoft documentation found.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: OneNote Android Copilot chat pane Summary licensing price fair use limit connected experiences disable; OneNote Android Copilot Summary feature price fair use limits. Read MC1309746 and Copilot overview; neither states a pane-specific price.",
+      "quote": "Searched: OneNote Android Copilot chat pane Summary 422323 licensing price fair use limits feature documentation. Read MC1309746 and Microsoft Copilot overview, including usage-based billing; no pane-specific price found.",
       "severity": null,
       "fix": null
     },
@@ -446,40 +449,29 @@
       "n": 39,
       "where": "Cost and licensing; Open questions",
       "type": "absence",
-      "claim": "A fair-use limit specific to this Android pane is not stated.",
+      "claim": "No fair-use limit specific to this Android pane was published in the Microsoft material found.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: OneNote Android Copilot Summary feature price fair use limits. Read Copilot overview and linked Limits for features in Microsoft Copilot Chat; the latter applies to users without an add-on and supplies no pane-specific limit.",
+      "quote": "Searched: OneNote Android Summary chat pane feature specific fair use limit price \"limits-for-features-copilot-chat\". Read Copilot overview and November 2026 announcements excerpts; no limit specific to this Premium Android pane found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 40,
-      "where": "controls[0].ui; Governance controls table",
+      "where": "controls[0].ui; Governance controls: table",
       "type": "admin-path",
-      "claim": "In Microsoft 365 Apps admin center, the route is Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings.",
+      "claim": "The listed Microsoft 365 Apps admin center path reaches Configure Settings when creating a Cloud Policy configuration.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
-      "quote": "Under Customization, select Policy Management.\nOn the Policy configurations page, select Create.\nOn the Start with the basics page\nOn the Choose the scope page\nOn the Configure Settings page, select the policies that you want to include",
-      "severity": null,
-      "fix": null
+      "quote": "On the Configure Settings page, select the policies that you want to include in the policy configuration. You can search for the policy by name, or you can create a custom filter.",
+      "severity": "minor",
+      "fix": "Append ' > Allow the use of connected experiences in Office that analyze content' to controls[0].ui.path and its rendered table path. The existing route correctly reaches the settings page; the setting name is documented at https://learn.microsoft.com/microsoft-365-apps/privacy/android-privacy-controls."
     },
     {
       "n": 41,
-      "where": "controls[0].api; Governance controls",
-      "type": "absence",
-      "claim": "Microsoft Learn documents no API that sets this Cloud Policy setting at the time of writing.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Cloud Policy\" \"API\" \"Office\"; \"Cloud Policy\" \"Microsoft Graph\" \"settings\" API beta; \"Cloud Policy\" \"PowerShell\" configure Office privacy. Read Cloud Policy overview and the returned Management Activity API audit-schema excerpt; no operation to set this policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "controls[0].note; Governance controls table",
+      "where": "controls[0].note; Governance controls: table",
       "type": "admin-path",
-      "claim": "The Android setting is named Allow the use of connected experiences in Office that analyze content.",
+      "claim": "The Android policy is named Allow the use of connected experiences in Office that analyze content.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365-apps/privacy/android-privacy-controls",
       "quote": "Allow the use of connected experiences in Office that analyze content",
@@ -487,10 +479,10 @@
       "fix": null
     },
     {
-      "n": 43,
+      "n": 42,
       "where": "controls[0].scope; Governance controls",
       "type": "applicability",
-      "claim": "The policy is user-scoped, with its target users determined on Choose the scope.",
+      "claim": "Cloud Policy settings apply to users in the scope selected on Choose the scope.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
       "quote": "On the Choose the scope page, determine whether the policy configuration applies to all users, specific groups, or to users who anonymously access documents using Office for the web.",
@@ -498,10 +490,32 @@
       "fix": null
     },
     {
+      "n": 43,
+      "where": "controls[0].note; Governance controls",
+      "type": "role",
+      "claim": "Microsoft recommends the Office Apps Administrator role for Cloud Policy management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+      "quote": "Office Apps Administrator (Recommended)",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 44,
+      "where": "controls[0].api; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no API or automation operation that sets this Cloud Policy setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Cloud Policy service Office policy configurations Microsoft Graph API PowerShell configure connected experiences analyze content OneNote Android; \"Cloud Policy\" \"API\" policy configuration settings Graph PowerShell. Read Cloud Policy overview and Graph search excerpts; no setter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
       "where": "Governance controls",
-      "type": "admin-path",
-      "claim": "Cloud Policy is required to apply the documented privacy settings to Office on Android.",
+      "type": "applicability",
+      "claim": "Cloud Policy is how the documented privacy policy settings are applied to Office on Android.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365-apps/privacy/android-privacy-controls",
       "quote": "To apply any of these four policy settings for Office on Android devices, you need to use Cloud Policy.",
@@ -509,30 +523,19 @@
       "fix": null
     },
     {
-      "n": 45,
-      "where": "controls[0].note; Governance controls",
-      "type": "role",
-      "claim": "Microsoft recommends the Office Apps Administrator role for Cloud Policy administration.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
-      "quote": "Office Apps Administrator (Recommended) | This role can manage Office apps cloud services, including policy and settings management",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 46,
-      "where": "front matter: defaultState; Risk assessment: Change & support; rationale: risk",
+      "where": "rationale: risk",
       "type": "default",
-      "claim": "The default state is on: the pane reaches the licensed Android users it is aimed at without admin action.",
-      "status": "supported",
-      "source": "Message Center post MC1309746",
-      "quote": "Users with a Microsoft 365 Copilot (Premium) license will see a Copilot chat pane in the OneNote mobile app on Android\nNo admin action is required before rollout.",
-      "severity": null,
-      "fix": null
+      "claim": "Generative AI will read note content on Android phones for licensed users by default.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: OneNote Android Copilot chat pane Summary automatically processes reads notes by default user generates summary. Read MC1309746, roadmap record, Copilot privacy and Learn search excerpts; automatic pane availability is stated, automatic note analysis is not.",
+      "severity": "minor",
+      "fix": "Replace the risk rationale's first clause with 'Medium. The Copilot pane will appear for licensed Android users without admin action and lets them request summaries and answers about accessible note content'. Retain the existing clause about changed processing and existing permissions and policies. MC1309746 states availability and these capabilities, not automatic analysis."
     }
   ],
   "precheck": {
-    "at": "2026-11-19T04:10:01.224Z",
+    "at": "2026-11-26T20:14:57.222Z",
     "summary": {
       "links": 6,
       "unreachable": 0,
@@ -606,6 +609,12 @@
       "date": "2026-11-19",
       "status": "held",
       "version": 2,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-19",
+      "status": "verified",
+      "version": 3,
       "model": "gpt-6.1-sol"
     }
   ]

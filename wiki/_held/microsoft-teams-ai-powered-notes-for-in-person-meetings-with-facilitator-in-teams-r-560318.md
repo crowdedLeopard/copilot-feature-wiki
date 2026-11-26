@@ -107,18 +107,20 @@ changes:
     note: "First briefing for roadmap item 560318 (Teams Rooms on Windows), covering rollout, prerequisites, the Learn preview note and the controls table."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 68 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 81 statements contradicted, 1 unconfirmed; taken offline until corrected"
 version: 1
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-19"
+  status: "held"
+  date: "2026-11-26"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 68
-  confirmed: 67
+  claims: 81
+  confirmed: 78
   unconfirmed: 1
-  contradicted: 0
-  attempts: 0
+  contradicted: 2
+  attempts: 1
   hash: "1c9812fe6c408aaf4d25d55348414d07"
 ---
 
@@ -225,11 +227,13 @@ cost: Low. Learn says the feature is currently included with Teams Rooms Pro and
 impact: Medium. People who meet in rooms with Teams Rooms Pro devices see a Take notes button and an on-screen Facilitator; users elsewhere notice nothing.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters / behaviour: An in-person Facilitator note-taking session has no organiser. | Found: Searched: Facilitator in person Teams Rooms organizer unscheduled. Read rooms/facilitator-teams-rooms and the search excerpts; they say unscheduled discussions and console initiation, but do not say that the resulting session has no organiser. | Fix: Remove 'and no organiser' from the first sentence of Why it matters; retain 'with no meeting invite'.
+- [contradicted, blocker] What's changing: first paragraph / record: The Android roadmap item 560700 is In development. | Found: Item 560700: "status": "Rolling out", "modified": "2026-11-20T23:20:27" | Fix: Replace 'which the roadmap shows as In development with a target of November CY2026' with 'which the roadmap shows as Rolling out with a target of November CY2026'. Cite https://www.microsoft.com/microsoft-365/roadmap?id=560700.
+- [unsupported, major] Why it matters: first paragraph / behaviour: An in-person Facilitator session has no organiser. | Found: Searched: Facilitator Teams Rooms in-person notes organizer meeting policy room resource account. Read rooms/facilitator-teams-rooms, facilitator-teams and meeting-transcription-captions; they describe unscheduled discussions but do not state that the resulting session has no organiser. | Fix: Remove 'and no organiser' from the first sentence of Why it matters.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Scope / record: Roadmap item 560700 separately tracks Facilitator in-person notes on Teams Rooms on Android. | Found: "id": 560700; "title": "Microsoft Teams: AI-powered notes for in-person\nmeetings with Facilitator in Teams Rooms on Android" | Fix: Add https://www.microsoft.com/microsoft-365/roadmap?id=560700 to sources as a roadmap source for the separate Android item's identity, status and target.
-- [supported, minor] Scope: Who and where / availability: The feature's Learn page says Windows is available and Android is projected for a future release. | Found: Facilitator is available on Teams Rooms on Windows and is projected to release on Teams Rooms on Android in a future release. | Fix: After this sentence, add: 'Microsoft's Teams Rooms release notes separately list a preview of Facilitator note-taking for offline/ad hoc discussions under the May 2025 Android release.' Cite https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note#teams-rooms-on-android-feature-introduction-and-issue-resolution, which states 'Preview of Facilitator agent note taking in Rooms for offline/ad hoc discussions.' | Source: https://learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms
+- [supported, minor] What's changing; Scope / record: Microsoft separately tracks in-person Facilitator notes on Teams Rooms on Android as roadmap item 560700. | Found: "id": 560700; "title": "Microsoft Teams: AI-powered notes for in-person\nmeetings with Facilitator in Teams Rooms on Android" | Fix: Add https://www.microsoft.com/microsoft-365/roadmap?id=560700 to sources for the Android item's identity, status and target.
+- [supported, minor] Scope: Who and where / availability: The feature's Learn page says Windows is available and Android is projected for a future release. | Found: Facilitator is available on Teams Rooms on Windows and is projected to release on Teams Rooms on Android in a future release. | Fix: After that sentence add: 'The Teams Rooms release notes separately list AI-powered notes for in-person meetings with Facilitator in the November 2026 Android release, so these Microsoft pages differ.' Cite https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note#teams-rooms-on-android-feature-introduction-and-issue-resolution. | Source: https://learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms
+- [contradicted, minor] Governance guidance: Before rollout, first bullet / consistency: Every control the governance checklist asks administrators to check appears in the controls table. | Found: Checklist: 'Confirm a Teams Rooms Pro licence is assigned to each room resource account'. The table contains app availability, transcription, two Loop settings and the home-screen button, but no licence-assignment control. | Fix: The Before rollout licence-assignment check has no controls-table row. Remove that checklist bullet; retain the licence requirement in Cost and licensing and Scope. Do not add a control row.
 -->

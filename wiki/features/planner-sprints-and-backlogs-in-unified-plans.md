@@ -49,6 +49,9 @@ sources:
   - title: "plan resource type"
     url: "https://learn.microsoft.com/graph/api/resources/plan?view=graph-rest-beta"
     kind: "learn"
+  - title: "Compare Microsoft Planner plans and pricing"
+    url: "https://www.microsoft.com/microsoft-365/planner/microsoft-planner-business-plans-and-pricing"
+    kind: "docs"
   - title: "Which users hold Planner Plan 1 or Planner and Project Plan 3, the licences that include Sprints and Backlogs (Microsoft 365 admin center)"
     url: "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users"
     kind: "learn"
@@ -100,19 +103,23 @@ changes:
     note: "New briefing: sprints and backlogs planned for Planner unified plans, with the Planner Plan 1 and Plan 3 licensing and self-service trial controls."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 59 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected the cost rationale to keep the service description's premium-plan and view-only qualifications; removed an unsupported claim about unified plan adoption and an unbacked checklist step; added the Planner pricing page as a source."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 63 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-26"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 59
-  confirmed: 56
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "a6136aee1fd04aaefe5b4d0581edeeac"
+  claims: 63
+  confirmed: 63
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "1046f55db08955c012554a2cf94b653a"
 ---
 
 ## What's changing
@@ -125,7 +132,7 @@ Microsoft has not stated whether sprints appear for licensed users automatically
 
 ## Why it matters
 
-The decision this change brings is about licences rather than settings. According to the service description, Sprints and Backlogs come with Planner Plan 1 and Planner and Project Plan 3, not with Microsoft 365 or Microsoft 365 Copilot. Once sprints sit in the unified plans that most teams already use, expect teams that run agile work to ask for those licences, or to start the 30-day Planner and Project Plan 3 trial from inside Planner, which Microsoft says includes sprints. Licence requests are likely to rise in project-heavy business units from January 2027.
+The decision this change brings is about licences rather than settings. According to the service description, Sprints and Backlogs come with Planner Plan 1 and Planner and Project Plan 3, not with Microsoft 365 or Microsoft 365 Copilot. Once sprints sit in unified plans, expect teams that run agile work to ask for those licences, or to start the 30-day Planner and Project Plan 3 trial from inside Planner, which Microsoft says includes sprints. Licence requests are likely to rise in project-heavy business units from January 2027.
 
 Microsoft has not stated what happens on arrival, and no source says existing plans or buckets change; the roadmap says buckets stay available. Plan for questions from mixed-licence teams, because Microsoft says the capabilities available to each member of a unified plan depend on that member's licence.
 
@@ -174,7 +181,6 @@ Microsoft has not stated what happens on arrival, and no source says existing pl
 - Brief the service desk that sprints sit alongside buckets, which the roadmap says teams can keep using.
 
 ### After rollout
-- Review self-service trial subscriptions in the Microsoft 365 admin center under Billing > Your products > Self-service trials, and take over any that conflict with central licensing.
 - Assign licences centrally (row 1) to users who still need sprints when a trial ends.
 
 ## Governance controls
@@ -202,16 +208,6 @@ Microsoft Learn documents no setting that turns sprints and backlogs on or off s
 
 <!-- rationale
 risk: Low. Sprints and backlogs organise tasks inside plans whose access is already defined by the plan's container, and the roadmap describes no new data access or automation.
-cost: Medium. Microsoft's Planner service description lists Sprints and Backlogs for Planner Plan 1 and Planner and Project Plan 3, not for Microsoft 365 or Microsoft 365 Copilot, so teams that want sprints need one of those per-user subscriptions.
+cost: Medium. The service description lists Sprints and Backlogs for Planner Plan 1 and Planner and Project Plan 3, currently only in premium plans; Microsoft 365 users have view-only access to other premium capabilities. Unified-plan sprint entitlements are not yet published.
 impact: Medium. Project and delivery teams with Planner Plan 1 or Planner and Project Plan 3 licences notice it; the roadmap says teams can keep using buckets as they do today.
--->
-
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters / behaviour: Most teams already use unified plans. | Found: Searched: Planner unified plans most teams adoption usage. Read Planner for admins and service description, and search excerpts from Planner tasks and plans API overview and Manage the Planner app; none quantifies teams using unified plans. | Fix: Remove 'that most teams already use' from 'Once sprints sit in the unified plans that most teams already use'.
-- [contradicted, blocker] rationale: cost / licensing: Teams that want sprints need Planner Plan 1 or Planner and Project Plan 3 per-user subscriptions. | Found: In premium plans, Microsoft 365 users can use the capabilities included with their license and have view-only access to all other premium capabilities. | Fix: Replace the cost rationale with: 'Medium. The service description lists Sprints and Backlogs for Planner Plan 1 and Planner and Project Plan 3, currently only in premium plans; Microsoft 365 users have view-only access to other premium capabilities. Unified-plan sprint entitlements are not yet published.' This retains the source's viewing qualification without asserting a final licence requirement for the planned extension. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-planner-service-description
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model / licensing: Planner Plan 1 and Planner and Project Plan 3 use per-user subscriptions. | Found: Planner and Project Plan 3: $30.00 user/month, paid yearly. Planner Plan 1: $10.00 user/month, paid yearly. | Fix: Add https://www.microsoft.com/microsoft-365/planner/microsoft-planner-business-plans-and-pricing to sources to support the per-user subscription model; no price need be added. | Source: https://www.microsoft.com/microsoft-365/planner/microsoft-planner-business-plans-and-pricing
-- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The checklist tells readers to review and take over self-service subscriptions, but the controls table contains no corresponding row. | Found: Review self-service trial subscriptions ... and take over any that conflict with central licensing. Table rows cover user licence assignment, allowing self-service trials/purchases, and the absent sprint switch, not subscription review or takeover. | Fix: Remove the After rollout bullet 'Review self-service trial subscriptions in the Microsoft 365 admin center under Billing > Your products > Self-service trials, and take over any that conflict with central licensing.' No new control row is requested.
 -->

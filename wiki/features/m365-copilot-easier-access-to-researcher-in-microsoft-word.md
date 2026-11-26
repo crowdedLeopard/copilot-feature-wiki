@@ -81,8 +81,8 @@ controls:
     scope: "group"
     ui:
       surface: "Microsoft 365 Apps admin center"
-      path: "Customization > Policy Management > policy configuration > Choose the scope > Configure Settings > Allow web search in Copilot"
-      docs: "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy"
+      path: "Customization > Policy Management > Policy configurations > policy configuration > Choose the scope > Configure Settings > Allow web search in Copilot"
+      docs: "https://learn.microsoft.com/copilot/plan/manage-public-web-access"
     api: null
     note: "Applies to users or groups. The policy is available only in Cloud Policy service; Office Apps Administrator is the recommended role."
   - governs: "Separate switch for Researcher entry points in Word"
@@ -99,19 +99,23 @@ changes:
     note: "New briefing for the Word for Mac roadmap item: Researcher licensing and query limit, the tenant-wide block, licence assignment and the web search policy."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 64 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected the web search policy row: its Learn link now points to the page that documents Allow web search in Copilot, and its path now includes the Policy configurations page."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 70 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-26"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 64
-  confirmed: 63
-  unconfirmed: 1
+  claims: 70
+  confirmed: 70
+  unconfirmed: 0
   contradicted: 0
-  attempts: 1
-  hash: "e248315f93451b6e24908577d87db0d4"
+  attempts: 0
+  hash: "9852d9ee579df46926d3f3e10810dd11"
 ---
 
 ## What's changing
@@ -182,7 +186,7 @@ Neither page names a meter or a separate charge for Researcher, and nothing spec
 <tbody>
 <tr><td data-label="Control"><strong>Whether Researcher is available to anyone in the organisation</strong><br><small>Tenant</small><br><small class="controls__note">Tenant-wide only for Researcher: the Edit users panel is disabled. The Graph call is beta and requires a Microsoft Agent 365 licence.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which users hold the Microsoft 365 Copilot licence that brings Researcher</strong><br><small>User</small><br><small class="controls__note">At least License or User Administrator. Researcher is available to Microsoft 365 Copilot licence holders.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Users › Active users › user › Licenses and Apps › Licenses <a href="https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = &quot;&lt;SkuId&gt;&quot;} -RemoveLicenses @()</code> <a href="https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether Copilot, including Researcher, can use web search</strong><br><small>Group</small><br><small class="controls__note">Applies to users or groups. The policy is available only in Cloud Policy service; Office Apps Administrator is the recommended role.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › policy configuration › Choose the scope › Configure Settings › Allow web search in Copilot <a href="https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether Copilot, including Researcher, can use web search</strong><br><small>Group</small><br><small class="controls__note">Applies to users or groups. The policy is available only in Cloud Policy service; Office Apps Administrator is the recommended role.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › Policy configurations › policy configuration › Choose the scope › Configure Settings › Allow web search in Copilot <a href="https://learn.microsoft.com/copilot/plan/manage-public-web-access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Separate switch for Researcher entry points in Word</strong><br><small>Tenant</small><br><small class="controls__note">Microsoft Learn documents no Word-specific or per-app setting for Researcher at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -205,10 +209,9 @@ cost: None. Researcher is available to everyone with a Microsoft 365 Copilot lic
 impact: Medium. Noticed by Microsoft 365 Copilot licence holders who write in Word for Mac; other users and platforms are not covered by this item.
 -->
 
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] controls[2].ui.docs; Governance controls table: row 3 Learn link / admin-path: The linked Cloud Policy overview documents the Allow web search in Copilot control itself. | Found: Searched: 'Allow web search in Copilot' in overview-cloud-policy (absent); opened manage-public-web-access, which names the policy, its options and its Researcher applicability. | Fix: Set controls[2].ui.docs and row 3's Admin UI Learn link to https://learn.microsoft.com/copilot/plan/manage-public-web-access. Keep overview-cloud-policy in sources for the navigation steps; it does not show the control's own part of the path.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].ui; Governance controls table / admin-path: The web search policy can be reached through Customization > Policy Management > policy configuration > Choose the scope > Configure Settings > Allow web search in Copilot. | Found: Under Customization, select Policy Management. Open the configuration details of the policy configuration you want to change by selecting it. On the Configure Settings page, select the policies that you want to include in the policy configuration. | Fix: Include the Policy configurations heading: 'Customization > Policy Management > Policy configurations > policy configuration > Choose the scope > Configure Settings > Allow web search in Copilot'. The overview supplies navigation; https://learn.microsoft.com/copilot/plan/manage-public-web-access supplies the setting name. | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy
+- [supported, minor] What's changing; Scope; Open questions / record: Roadmap item 497913 describes the same Researcher entry-point feature. | Found: "id": 497913; "title": "Microsoft Copilot (Microsoft 365): Easier access to Researcher in Microsoft Word" | Fix: Add https://www.microsoft.com/microsoft-365/roadmap?id=497913 to sources as a roadmap source for the comparison with the web item.
+- [supported, minor] Risk assessment: Change & support; Governance guidance / behaviour: The FAQ states that Researcher session content is not directly accessible to admins or compliance tools by default. | Found: By default, no. The content of Researcher sessions isn't directly accessible to admins or compliance tools. Admins can see usage metrics (like how many times it's used) but not the actual conversation content. | Fix: After the FAQ statement add: 'The cited web search page also includes Researcher and says admins can search, audit and eDiscover prompts, responses and generated web queries; this differs from the FAQ's statement about session content.' Cite https://learn.microsoft.com/copilot/plan/manage-public-web-access#web-search-query-logging. | Source: https://learn.microsoft.com/copilot/manage/faq-researcher
 -->

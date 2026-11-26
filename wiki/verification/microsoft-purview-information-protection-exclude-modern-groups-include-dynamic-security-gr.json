@@ -1,0 +1,795 @@
+{
+  "slug": "microsoft-purview-information-protection-exclude-modern-groups-include-dynamic-security-gr",
+  "roadmapId": 558685,
+  "title": "Microsoft Purview: exclude Microsoft 365 groups and target dynamic and non-mail-enabled security groups in sensitivity label policies",
+  "status": "held",
+  "date": "2026-11-26",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [
+    "claim 55: severity blocker on a rationale: impact rating lowered to minor; ratings are judgements and cannot hold a page"
+  ],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-26",
+    "reasons": [
+      "2 blocking findings (claims 33, 41)"
+    ]
+  },
+  "counts": {
+    "claims": 57,
+    "confirmed": 53,
+    "unconfirmed": 0,
+    "contradicted": 4,
+    "blocker": 2,
+    "major": 0,
+    "minor": 8
+  },
+  "summary": "Hold: policy ordering resolves conflicting settings, rather than choosing a single policy that applies to a user. The claim that admin time is the only new cost overlooks the licensing requirement for dynamic group membership. Users can also lose a policy through membership changes without an administrator retargeting it.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Administrators can now exclude Microsoft 365 groups from sensitivity label policies.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "admins can now exclude modern Microsoft 365 groups",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "title; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap describes support for scoping sensitivity label policies to dynamic security groups.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "scope sensitivity label policies to dynamic and non-mail enabled security groups",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Sensitivity label policies can now target non-mail-enabled security groups.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "scope sensitivity label policies to dynamic and non-mail enabled security groups",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes expanded targeting beyond individual users and mail-enabled groups.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "expanding policy targeting beyond individual users and mail enabled groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is April CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"April CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target date is May CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"May CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: releasePhase; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists both General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [ \"General Availability\", \"Preview\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [ \"Worldwide (Standard Multi-Tenant)\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [ \"Web\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2026-07-07T23:01:01.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-07-07T23:01:01\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Why it matters; controls[0].note",
+      "type": "behaviour",
+      "claim": "Publishing label policies determines which users see labels and receive label policy settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+      "quote": "When you publish the label policy to your chosen users:\n- The labels become visible to these users in their apps that support sensitivity labels\n- The policy settings are applied to these users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Learn says labels can be published to include or exclude specific users and supported groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels",
+      "quote": "Labels can be published to include or exclude specific users and supported groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "Learn lists email-enabled and non-email-enabled security groups as supported publishing-policy targets.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels",
+      "quote": "Supported groups include security groups (email-enabled or non-email-enabled), distribution groups, and Microsoft 365 groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "Distribution groups are supported in label policy scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+      "quote": "Groups supported: Email-enabled security groups, non-mail enabled security groups, distribution groups, Microsoft 365 groups",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "Microsoft 365 groups with dynamic membership are supported in label policy scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+      "quote": "Microsoft 365 groups (that can have dynamic membership) in Microsoft Entra ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Scope; Open questions",
+      "type": "absence",
+      "claim": "Learn's publishing-policy documentation names dynamic membership for Microsoft 365 groups but does not explicitly name dynamic security groups.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'sensitivity label publishing policies dynamic security groups non mail enabled groups dynamic membership'; opened sensitivity-labels and create-sensitivity-labels. Results naming dynamic security group restrictions concern labeling groups themselves, not publishing-policy targeting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Removing a user from a targeted group automatically removes that group's label policy for the user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+      "quote": "However, if a user is removed from a group you specify, the label policy is automatically removed for that user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Changes depending on group membership might take 24-48 hours.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+      "quote": "But for configurations that depend on populating a new group and group membership changes, or network replication latency and bandwidth restrictions, these changes might take 24-48 hours.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: defaultState; What's changing; Why it matters",
+      "type": "default",
+      "claim": "Microsoft has not stated whether this change alters existing policy scopes automatically on arrival.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '558685 sensitivity label policies existing scopes default automatic group exclusions'; read roadmap, sensitivity-labels, create-sensitivity-labels and service-description default passages. Defaults for new policies and general feature availability do not state migration of existing scopes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Dynamic group membership can track directory attributes without manual membership changes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-create-rule",
+      "quote": "When an attribute changes for a user or device, all rules for dynamic membership groups in the organization are processed for changes. Users and devices are added or removed if they meet the conditions for a dynamic membership group.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/entra/identity/users/groups-create-rule to sources for the dynamic membership mechanism."
+    },
+    {
+      "n": 22,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Group membership can be managed outside the compliance team.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/manage-microsoft-365-groups?view=o365-worldwide",
+      "quote": "This allows the day-to-day control of group membership to be delegated to team, project, or business owners who understand the business use for the group and can manage its membership.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoft-365/enterprise/manage-microsoft-365-groups?view=o365-worldwide to sources for delegated group membership management."
+    },
+    {
+      "n": 23,
+      "where": "Why it matters; Scope; rationale: risk",
+      "type": "applicability",
+      "claim": "Azure Rights Management does not support non-email-enabled security groups for protection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels",
+      "quote": "Azure Rights Management doesn't support non-email-enabled security groups or exclusions for protection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Why it matters; controls[1].note; Scope; rationale: risk",
+      "type": "applicability",
+      "claim": "Azure Rights Management does not support exclusions for protection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels",
+      "quote": "Azure Rights Management doesn't support non-email-enabled security groups or exclusions for protection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Why it matters; Risk assessment; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "Publishing scope governs label visibility and application, separately from the encryption permissions governing access to protected content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-bi/guidance/powerbi-implementation-planning-info-protection",
+      "quote": "Authorized users and groups for a label are different from the users assigned to Azure RMS for a protected (encrypted) label.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/power-bi/guidance/powerbi-implementation-planning-info-protection to sources for the explicit distinction between publishing scope and encryption permissions."
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Changing a targeted group's membership or its dynamic membership rule can move users into or out of the policy's scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+      "quote": "As part of the label policy, you select users and groups to have sensitivity labels and label policy settings. ... if a user is removed from a group you specify, the label policy is automatically removed for that user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "Manual sensitivity labeling is included within existing product subscriptions rather than licensed as a separate scoping option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "| Manual Sensitivity Labeling | Included | Included | Included | Included | Included |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The manual sensitivity labeling table includes Microsoft 365 E5/A5/G5/E3/A3/G3/F1/F3/Business Premium, OneDrive Plan 2, EMS E3/E5, Office 365 E5/A5/E3/A3 and AIP Plans 1 and 2.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "| Feature | Microsoft 365 E5/A5/G5/E3/A3/G3/F1/F3/Business Premium | OneDrive for Business (Plan 2) | Enterprise Mobility + Security E3/E5 | Office 365 E5/A5/E3/A3 | AIP Plan 1, AIP Plan 2 |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Cost and licensing; Open questions",
+      "type": "licensing",
+      "claim": "The same service description also says sensitivity labeling, including automatic or policy-based labeling, requires Microsoft 365 E5 or IPG.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Sensitivity labeling, including automatic or policy-based labeling, requires a Microsoft 365 E5 license or Microsoft 365 Information Protection and Governance (IPG).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Administrators configuring Information Protection require appropriate licenses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "This means the administrator creating and managing Information Protection features must have the appropriate licenses for the following subscription plans to configure the functionality.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Cost and licensing; controls[3].note",
+      "type": "licensing",
+      "claim": "The Set-LabelPolicy reference says administrative units are available only in Microsoft Entra ID P1 or P2.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy",
+      "quote": "Administrative units are available only in Microsoft Entra ID P1 or P2.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No separate license specific to group exclusions or security-group targeting is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'sensitivity label policy group exclusions security group targeting licensing price charge'; read Purview service-description sensitivity-labeling section and get-started licensing section. Neither names a separate license, price or meter for this scoping option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "rationale: cost",
+      "type": "cost",
+      "claim": "Admin time to redesign policy scopes is the only new cost.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-create-rule",
+      "quote": "Using dynamic membership groups requires a Microsoft Entra ID P1 license or an Intune for Education license.",
+      "severity": "blocker",
+      "fix": "Replace 'the only new cost is admin time to redesign policy scopes' with 'the known indirect cost is admin time to redesign policy scopes; using dynamic membership groups requires Microsoft Entra ID P1 or Intune for Education'. Cite https://learn.microsoft.com/entra/identity/users/groups-create-rule. Keep cost low as a rating of known indirect effort, not a guarantee of no additional licensing."
+    },
+    {
+      "n": 34,
+      "where": "controls[0].ui; Governance guidance",
+      "type": "admin-path",
+      "claim": "Microsoft Purview portal > Solutions > Information Protection > Publishing policies > policy > Edit Policy reaches editing of a publishing policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+      "quote": "Solutions > Information Protection > Publishing policies. ... To edit an existing label policy, select it, and then select the Edit Policy button from the flyout pane",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "Set-LabelPolicy -Identity \"<policy name>\" -AddExchangeLocation \"<mailbox>\" adds an included mailbox.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy",
+      "quote": "The AddExchangeLocation parameter specifies the mailboxes to add to the list of included mailboxes when you aren't using the value All for the ExchangeLocation parameter. A valid value is a mailbox.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Microsoft Purview portal > Solutions > Information Protection > Publishing policies > policy > Edit Policy reaches the policy wizard used for exclusions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+      "quote": "To edit an existing label policy, select it, and then select the Edit Policy button from the flyout pane",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[1].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No supported automation parameter for Microsoft 365 group exclusions is documented in the cmdlet references.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Set-LabelPolicy New-LabelPolicy exclude Microsoft 365 groups ModernGroupLocationException PowerShell'; opened both references. AddModernGroupLocationException and ModernGroupLocationException are reserved for internal Microsoft use.",
+      "severity": "minor",
+      "fix": "Keep api null, but add to the existing note: 'Create and configure sensitivity labels says all admin-center settings can be scripted, while the Set-LabelPolicy reference reserves this exclusion parameter for internal Microsoft use.' Cite https://learn.microsoft.com/purview/create-sensitivity-labels for the conflicting general statement."
+    },
+    {
+      "n": 38,
+      "where": "controls[1].note; Governance controls",
+      "type": "command",
+      "claim": "AddModernGroupLocationException is reserved for internal Microsoft use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy",
+      "quote": "### -AddModernGroupLocationException\nApplicable: Security & Compliance\nThis parameter is reserved for internal Microsoft use.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "Microsoft Purview portal > Solutions > Information Protection > Publishing policies > policy > Actions reaches the reordering options.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+      "quote": "To change the order of a label policy, select ... for Actions, and then select one of the reordering options.",
+      "severity": "minor",
+      "fix": "Extend the path to 'Solutions > Information Protection > Publishing policies > policy > Actions > Move up' and change the note to 'Choose Move up or Move down to reorder the policy.' Both options are named at https://learn.microsoft.com/purview/sensitivity-labels#label-policy-priority-order-matters."
+    },
+    {
+      "n": 40,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "Set-LabelPolicy -Identity \"<policy name>\" -NextLabelPolicy \"<policy name>\" updates policy order.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy",
+      "quote": "The NextLabelPolicy parameter updates the policy order so the policy that's specified by this parameter is after the current policy that you're modifying.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[2].governs; Governance guidance: At rollout; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Policy order decides which label policy applies when several policies cover the same user.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels",
+      "quote": "You can include a user in multiple label policies, and the user gets all the sensitivity labels and settings from those policies. If there's a conflict in settings from multiple policies, the settings from the policy with the highest priority (highest order number) is applied.",
+      "severity": "blocker",
+      "fix": "Replace controls[2].governs with 'Which label policy settings win when assigned policies conflict'. Replace the At rollout ordering bullet with 'Review label policy order after adding exclusions: users receive labels from all assigned policies, and the highest-priority policy wins for each conflicting setting.' Replace 'which policy a user gets' in Risk assessment with 'which policy settings win when assigned policies conflict'. Cite https://learn.microsoft.com/purview/sensitivity-labels#label-policy-priority-order-matters."
+    },
+    {
+      "n": 42,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "Microsoft Purview portal > Solutions > Information Protection > Publishing policies > Publish label > Assign admin units reaches administrative-unit scoping.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+      "quote": "On the Label policies page, select Publish label ... On the Choose sensitivity labels to publish page, select the Choose sensitivity labels to publish link. ... For the Assign admin units",
+      "severity": "minor",
+      "fix": "Expand the path to 'Solutions > Information Protection > Publishing policies > Publish label > Choose sensitivity labels to publish > Choose sensitivity labels to publish > Assign admin units'. The omitted selection identifies the labels being published rather than a different policy type. Cite https://learn.microsoft.com/purview/create-sensitivity-labels."
+    },
+    {
+      "n": 43,
+      "where": "controls[3].api",
+      "type": "command",
+      "claim": "Set-LabelPolicy -Identity \"<policy name>\" -PolicyRBACScopes \"<administrative unit ObjectID>\" assigns administrative units to the policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy",
+      "quote": "The PolicyRBACScopes parameter specifies the administrative units to assign to the policy. A valid value is the Microsoft Entra ObjectID (GUID value) of the administrative unit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Scope: Who configures it",
+      "type": "role",
+      "claim": "Get started lists the Information Protection role groups for creating and configuring labels and label policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/get-started-with-sensitivity-labels",
+      "quote": "You can use the following role groups:\n- Information Protection\n- Information Protection Admins\n- Information Protection Analysts\n- Information Protection Investigators\n- Information Protection Readers",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The publishing steps do not name the wizard page for users, groups and exclusions.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'sensitivity label publishing policy Edit Policy users groups exclude wizard page' and the dynamic security group and ModernGroupLocationException queries; read create-sensitivity-labels and searched the full Set-LabelPolicy reference for dynamic and security group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance guidance: Before rollout",
+      "type": "consistency",
+      "claim": "The checklist asks administrators to check label encryption settings and group membership-editing rights, but neither has a controls-table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'confirm their encryption settings' and 'Confirm who can change the membership'. Table: publishing scope, group exclusions, policy order and administrative units only.",
+      "severity": "minor",
+      "fix": "Remove the two Before rollout bullets beginning 'Identify which labels' and 'Confirm who can change'. These checklist steps have no corresponding controls-table rows. Do not add control rows."
+    },
+    {
+      "n": 47,
+      "where": "Scope: Who configures it",
+      "type": "role",
+      "claim": "A custom role group containing Sensitivity Label Administrator can configure labels and label policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/get-started-with-sensitivity-labels",
+      "quote": "Alternatively to using the default role groups, you can create a new role group and add the Sensitivity Label Administrator role to this group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Scope: Who configures it",
+      "type": "role",
+      "claim": "Compliance Data Administrator, Compliance Administrator and Security Administrator are other documented role-group options.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/get-started-with-sensitivity-labels",
+      "quote": "Another option is to add users to the Compliance Data Administrator, Compliance Administrator, or Security Administrator role group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Set-LabelPolicy names no Exchange location value for non-mail-enabled or dynamic security groups.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Set-LabelPolicy Exchange location distribution groups mail enabled security groups AddExchangeLocation'; read full Set-LabelPolicy and searched New-LabelPolicy for dynamic and security group. AddExchangeLocation names mailboxes; RemoveExchangeLocation also names mail-enabled groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "Set-LabelPolicy runs in Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy",
+      "quote": "This cmdlet is functional only in Security & Compliance PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[0].note; Governance controls; Governance guidance: At rollout",
+      "type": "command",
+      "claim": "The reference documents scope changes for mailboxes, distribution groups and mail-enabled security groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy",
+      "quote": "The RemoveExchangeLocation parameter specifies the mailboxes to remove from the list of included mailboxes ... Valid values are:\n- A mailbox\n- A distribution group or mail-enabled security group (all mailboxes that are currently members of the group).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[3].governs",
+      "type": "applicability",
+      "claim": "Administrative units can restrict the users eligible for a sensitivity label policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+      "quote": "If your organization is using administrative units in Microsoft Entra ID, the label policy can be automatically restricted to specific users by selecting administrative units.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Security & identity; rationale: impact",
+      "type": "behaviour",
+      "claim": "Publishing label policies can specify default labels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels",
+      "quote": "Specify a default label for unlabeled documents and Loop components and pages, emails and meeting invites, new containers",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Publishing label policies can require mandatory labeling.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels",
+      "quote": "Require users to apply a label for the different types of items and the containers that support sensitivity labels. Also known as mandatory labeling",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "rationale: impact",
+      "type": "behaviour",
+      "claim": "Users only notice a change to their labels or default label if an administrator retargets a policy.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+      "quote": "However, if a user is removed from a group you specify, the label policy is automatically removed for that user.",
+      "severity": "minor",
+      "fix": "Replace the impact rationale's second sentence with 'Users may notice changes to available labels or policy settings when an admin retargets a policy or a targeted group membership changes.' The group-removal behavior is documented at https://learn.microsoft.com/purview/create-sensitivity-labels."
+    },
+    {
+      "n": 56,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The service description publishes no separate charge for group exclusions or security-group targeting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'sensitivity label policy group exclusions security group targeting licensing price charge'; read the service-description sensitivity-labeling section and get-started licensing section. Neither gives a separate price or meter for these publishing-policy options.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "No autonomous action workflow is documented for this policy-targeting option.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'sensitivity label publishing policy group exclusions targeting autonomous actions'; read roadmap, sensitivity-labels and create-sensitivity-labels. These describe scope selection and replication of policy settings, not an autonomous action workflow.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-26T20:14:46.417Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 3,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=558685",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/sensitivity-labels",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/get-started-with-sensitivity-labels",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which users and groups a sensitivity label policy is published to",
+        "docs": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "Information Protection",
+          "Publishing policies",
+          "Edit Policy"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Which users and groups a sensitivity label policy is published to",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy",
+        "reachable": true,
+        "token": "Set-LabelPolicy",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which Microsoft 365 groups are excluded from a label policy",
+        "docs": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "Information Protection",
+          "Publishing policies",
+          "Edit Policy"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Which label policy applies when several cover the same user",
+        "docs": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "Information Protection",
+          "Publishing policies",
+          "Actions"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Which label policy applies when several cover the same user",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy",
+        "reachable": true,
+        "token": "Set-LabelPolicy",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Which administrative units restrict a label policy",
+        "docs": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "Information Protection",
+          "Publishing policies",
+          "Publish label",
+          "Assign admin units"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Which administrative units restrict a label policy",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy",
+        "reachable": true,
+        "token": "Set-LabelPolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

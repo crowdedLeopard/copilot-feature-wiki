@@ -53,7 +53,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Solutions > Information Protection > Publishing policies > Publish label"
+      path: "Solutions > Information Protection > Publishing policies > Publish label > Choose sensitivity labels to publish > Choose sensitivity labels to publish > Add"
       docs: "https://learn.microsoft.com/purview/create-sensitivity-labels"
     api:
       kind: "powershell"
@@ -62,7 +62,7 @@ controls:
     note: "Existing control, not specific to macOS. Microsoft's notice says existing labelling policies continue to govern across platforms. Set-LabelPolicy works only in Security & Compliance PowerShell."
 confidence: "medium"
 created: "2026-11-18"
-updated: "2026-11-19"
+updated: "2026-11-26"
 roadmapModified: "2026-10-13T23:01:05"
 changes:
   - date: "2026-11-18"
@@ -75,19 +75,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 62 statements confirmed"
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 76 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-26"
+    note: "Corrected after the independent check: the sign-in bullet now gives the documented work or school account requirement and states only that the macOS client's sign-in method is not yet documented; the label publishing path now runs to Add."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 75 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-26"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 76
+  claims: 75
   confirmed: 75
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "b55308e8aa018ac5c8e330e1636d0af3"
+  contradicted: 0
+  attempts: 0
+  hash: "de5f32eb0c619453e086e27007f4bede"
 ---
 
 ## What's changing
@@ -114,7 +118,7 @@ Microsoft's notice says no immediate action is required. The client is not pre-i
 
 **Security & identity**
 - The client lets users remove or change labels as well as apply them. Microsoft's notice says existing sensitivity labeling policies continue to apply; test label changes and removal with representative Mac users before wider deployment.
-- Which account and sign-in method the macOS client uses is not described by Microsoft yet.
+- Microsoft's [sensitivity labels overview](https://learn.microsoft.com/purview/sensitivity-labels) says that to apply sensitivity labels, users must be signed in with their Microsoft 365 work or school account. The macOS client's specific sign-in method is not yet documented.
 
 **Autonomy & actions**
 - No change: the notice describes user-driven labelling of selected files, and no autonomous behaviour is described.
@@ -158,7 +162,7 @@ Rollout: the notice gives a public preview download on or around 29 May 2026 and
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which sensitivity labels are published to which users and groups</strong><br><small>Tenant</small><br><small class="controls__note">Existing control, not specific to macOS. Microsoft's notice says existing labelling policies continue to govern across platforms. Set-LabelPolicy works only in Security &amp; Compliance PowerShell.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Information Protection › Publishing policies › Publish label <a href="https://learn.microsoft.com/purview/create-sensitivity-labels" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-LabelPolicy -Identity &lt;policy name&gt; -AddLabels &lt;label names&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy?view=exchange-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which sensitivity labels are published to which users and groups</strong><br><small>Tenant</small><br><small class="controls__note">Existing control, not specific to macOS. Microsoft's notice says existing labelling policies continue to govern across platforms. Set-LabelPolicy works only in Security &amp; Compliance PowerShell.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Information Protection › Publishing policies › Publish label › Choose sensitivity labels to publish › Choose sensitivity labels to publish › Add <a href="https://learn.microsoft.com/purview/create-sensitivity-labels" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-LabelPolicy -Identity &lt;policy name&gt; -AddLabels &lt;label names&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy?view=exchange-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -178,12 +182,4 @@ The Set-LabelPolicy cmdlet works only in Security & Compliance PowerShell and ne
 risk: Medium. Mac users gain a client that can apply, change and remove sensitivity labels and open protected files, but Microsoft's notice MC1326509 says existing labelling policies continue to govern it.
 cost: Low. The only cost the sources show is admin time to tell Mac users and distribute the download; licensing conditions specific to the macOS clients are not yet published.
 impact: Medium. Mac users who work with labelled or protected files notice it, and so do the admins who manage Information Protection; the client is not pre-installed.
--->
-
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Security & identity / absence: Microsoft has not described which account the macOS client uses. | Found: To apply sensitivity labels, users must be signed in with their Microsoft 365 work or school account. | Fix: Replace the bullet 'Which account and sign-in method the macOS client uses is not described by Microsoft yet.' with 'The macOS client's specific sign-in method is not yet documented.' The cited sensitivity-label overview already states the general Microsoft 365 work or school account requirement for applying labels; retain only the narrower macOS sign-in-method gap. | Source: https://learn.microsoft.com/purview/sensitivity-labels
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: Microsoft Purview portal > Solutions > Information Protection > Publishing policies > Publish label is the documented entry route for publishing labels. | Found: Sign in to the Microsoft Purview portal > Solutions > Information Protection > Publishing policies. ... On the Label policies page, select Publish label to start the Create policy configuration. | Fix: The route correctly reaches the Create policy wizard but stops before label selection. Extend the printed path to 'Solutions > Information Protection > Publishing policies > Publish label > Choose sensitivity labels to publish > Choose sensitivity labels to publish > Add'. Add to the existing note: 'Select the labels before Add, then follow the wizard prompts to select users and groups and complete the policy configuration.' Mirror this in the rendered table. The steps and scope are given at https://learn.microsoft.com/purview/create-sensitivity-labels. | Source: https://learn.microsoft.com/purview/create-sensitivity-labels
 -->

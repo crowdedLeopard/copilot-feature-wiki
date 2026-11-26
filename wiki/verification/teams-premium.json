@@ -3,39 +3,33 @@
   "kind": "concept",
   "roadmapId": null,
   "title": "Teams Premium: who needs the add-on licence, and what does it unlock?",
-  "status": "held",
+  "status": "verified",
   "date": "2026-11-26",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-26",
-    "reasons": [
-      "8 blocking findings (claims 29, 41, 70, 77, 85, 86, 87, 88)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 91,
-    "confirmed": 82,
+    "claims": 105,
+    "confirmed": 105,
     "unconfirmed": 0,
-    "contradicted": 9,
-    "blocker": 8,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
-    "minor": 6
+    "minor": 0
   },
-  "summary": "Hold: the checklist tells administrators to license town hall organisers for Teams Premium even though Microsoft now documents event entitlements under other licences. The page also overstates Premium-only licensing and policy requirements, omits trial and partner-role qualifications, and treats documented licensing information as unanswered.",
+  "summary": "The page passes: Microsoft's documentation supports the licensing requirements, price, trial limits and governance controls. The flagged Graph calls and self-service setting labels are documented, and an independent search found no documented automation for approving Teams Premium licence requests.",
   "claims": [
     {
       "n": 1,
       "where": "summary; What it is",
       "type": "licensing",
-      "claim": "Teams Premium is an add-on licence that unlocks advanced Teams meeting, calling and administrative features.",
+      "claim": "Teams Premium is an add-on licence for Microsoft Teams.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
       "quote": "Microsoft Teams Premium is a Teams add-on license that allows organizations with Microsoft 365 subscriptions to enhance their Teams experience",
@@ -44,7 +38,7 @@
     },
     {
       "n": 2,
-      "where": "summary; What it is; Cost and licensing",
+      "where": "summary; What it is; Cost and licensing: Licence",
       "type": "licensing",
       "claim": "Teams Premium is licensed as a per-user subscription.",
       "status": "supported",
@@ -55,17 +49,61 @@
     },
     {
       "n": 3,
-      "where": "What it is",
-      "type": "licensing",
-      "claim": "Teams Premium does not replace Teams: users need both licences for Teams and Teams Premium features to work.",
+      "where": "summary; What it is",
+      "type": "behaviour",
+      "claim": "Teams Premium unlocks advanced meeting features.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
-      "quote": "Teams Premium licenses are not a replacement for Teams licenses. Users must have both a Teams license and a Teams Premium license for Teams and Teams Premium features to work properly.",
+      "quote": "More personalized and intelligent meetings.\n- Enhanced protection for meetings.",
       "severity": null,
       "fix": null
     },
     {
       "n": 4,
+      "where": "summary; What it is",
+      "type": "behaviour",
+      "claim": "Teams Premium unlocks advanced calling features.",
+      "status": "supported",
+      "source": "https://www.microsoft.com/en-us/microsoft-teams/premium",
+      "quote": "This add-on license enables features that help organizations reimagine flexible work and make Teams meetings and calls even more protected, engaging, and intelligent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "summary; What it is",
+      "type": "behaviour",
+      "claim": "Teams Premium unlocks advanced admin features.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
+      "quote": "Advanced management and reporting capabilities for IT.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What it is",
+      "type": "licensing",
+      "claim": "Teams Premium does not replace a user's Teams licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
+      "quote": "Teams Premium licenses are not a replacement for Teams licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What it is; Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "Users must hold both Teams and Teams Premium licences for their features to work.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
+      "quote": "Users must have both a Teams license and a Teams Premium license for Teams and Teams Premium features to work properly.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
       "where": "What it is: How the licence is checked",
       "type": "behaviour",
       "claim": "Teams checks each user's licence and meeting role feature by feature.",
@@ -76,10 +114,10 @@
       "fix": null
     },
     {
-      "n": 5,
-      "where": "What it is: feature table; Why it matters",
+      "n": 9,
+      "where": "What it is: feature table, organiser row; Why it matters; What to check",
       "type": "licensing",
-      "claim": "An organiser's Teams Premium licence shares organiser-based features with attendees during the meeting.",
+      "claim": "Organiser-based features follow the licensed organiser and are shared with attendees during the meeting.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
       "quote": "If an organizer has a Teams Premium license, the organizer-based features are shared and made accessible to the attendees only during the meeting.",
@@ -87,120 +125,10 @@
       "fix": null
     },
     {
-      "n": 6,
-      "where": "What it is: feature table, organiser-based row",
-      "type": "licensing",
-      "claim": "Meeting templates are organiser-based features.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
-      "quote": "Meeting templates (configured by IT admin)",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "What it is: feature table, organiser-based row",
-      "type": "licensing",
-      "claim": "Meeting themes are organiser-based features.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
-      "quote": "Meeting themes for custom meeting branding",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "What it is: feature table, organiser-based row",
-      "type": "licensing",
-      "claim": "Watermarking is an organiser-based feature.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
-      "quote": "Watermarking",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "What it is: feature table, organiser-based row",
-      "type": "licensing",
-      "claim": "Who can record and transcribe is an organiser-based feature.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
-      "quote": "Who can record and transcribe",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 10,
-      "where": "What it is: feature table, organiser-based row",
+      "where": "What it is: How the licence is checked",
       "type": "licensing",
-      "claim": "End-to-end encryption for meetings is an organiser-based feature.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
-      "quote": "End-to-end encryption for online meetings (up to 200)",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "What it is: feature table, attendee- or user-based row",
-      "type": "behaviour",
-      "claim": "AI-generated notes and tasks are accessed by individual users rather than shared through an organiser's Premium licence.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
-      "quote": "After the meeting or event ends, your users can access the following AI powered features for their meetings through the Recap tab in the Teams calendar and chat:\n\n- AI meeting notes\n- AI recommended tasks",
-      "severity": "minor",
-      "fix": "Add the additional Microsoft pages relied on in this check to sources: https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings ; https://learn.microsoft.com/microsoftteams/events-licensing ; https://learn.microsoft.com/microsoftteams/plan-events ; https://learn.microsoft.com/microsoftteams/enhanced-teams-experience ; https://techcommunity.microsoft.com/blog/microsoftteamsblog/licensing-updates-extend-access-to-advanced-capabilities-in-microsoft-teams-and-/4488312 ."
-    },
-    {
-      "n": 12,
-      "where": "What it is: feature table, attendee- or user-based row",
-      "type": "licensing",
-      "claim": "Custom organisation backgrounds are applied at the attendee/user level.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
-      "quote": "Custom organization backgrounds",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "What it is: feature table, attendee- or user-based row",
-      "type": "licensing",
-      "claim": "Queues app features are applied at the user level.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
-      "quote": "Call queue and Auto attendant management directly within Teams",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "What it is: feature table, admin-based row",
-      "type": "licensing",
-      "claim": "Admin-based Teams Premium features are accessible to Teams admins with a Teams Premium licence.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
-      "quote": "These features are only accessible to Teams admins with a Teams Premium license.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "What it is: feature table, admin-based row",
-      "type": "behaviour",
-      "claim": "Advanced collaboration analytics provides its primary value at the IT admin level.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
-      "quote": "Advanced collaboration analytics",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "What it is: delegate paragraph",
-      "type": "licensing",
-      "claim": "A delegate creating meetings for a Premium-licensed organiser does not need Premium for organiser-based features.",
+      "claim": "A delegate creating meetings for a licensed organiser does not need a Teams Premium licence for organiser-based features.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
       "quote": "If an organizer with a Teams Premium license appoints a delegate to create their meetings, the delegate doesn't need a Teams Premium license for organizer-based features to work.",
@@ -208,10 +136,142 @@
       "fix": null
     },
     {
+      "n": 11,
+      "where": "What it is: feature table, attendee row; Why it matters",
+      "type": "licensing",
+      "claim": "Attendee- or user-based features benefit the appropriately licensed user rather than other attendees.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
+      "quote": "These Teams Premium features aren't shared or made accessible to other attendees during the meeting and only benefit the Teams Premium licensed users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What it is: feature table, admin row",
+      "type": "licensing",
+      "claim": "Admin-based features are accessible to Teams admins with a Teams Premium licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
+      "quote": "These features are only accessible to Teams admins with a Teams Premium license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What it is: feature table, organiser row; What to check",
+      "type": "licensing",
+      "claim": "Meeting templates are an organiser-level feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
+      "quote": "Features Applied at Organizer Level\nMeeting templates (configured by IT admin)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What it is: feature table, organiser row",
+      "type": "licensing",
+      "claim": "Meeting themes are an organiser-level feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
+      "quote": "Features Applied at Organizer Level\nMeeting themes for custom meeting branding",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What it is: feature table, organiser row",
+      "type": "licensing",
+      "claim": "Watermarking is an organiser-level feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
+      "quote": "Features Applied at Organizer Level\nWatermarking",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What it is: feature table, organiser row",
+      "type": "licensing",
+      "claim": "Who can record and transcribe is an organiser-level feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
+      "quote": "Features Applied at Organizer Level\nWho can record and transcribe",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 17,
-      "where": "What it is: Licence and configuration are separate steps; Why it matters",
+      "where": "What it is: feature table, organiser row",
+      "type": "licensing",
+      "claim": "End-to-end encryption is an organiser-level feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
+      "quote": "Features Applied at Organizer Level\nEnd-to-end encryption for online meetings (up to 200)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What it is: feature table, attendee row",
+      "type": "licensing",
+      "claim": "AI-generated notes and tasks are attendee- or user-level features.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
+      "quote": "Features Applied at Attendee/User Level\nAI-generated notes and tasks",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What it is: feature table, attendee row",
+      "type": "licensing",
+      "claim": "Custom organisation backgrounds are an attendee- or user-level feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
+      "quote": "Features Applied at Attendee/User Level\nCustom organization backgrounds",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What it is: feature table, attendee row",
+      "type": "licensing",
+      "claim": "Queues app features are applied at the attendee or user level.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
+      "quote": "Features Applied at Attendee/User Level\nCall queue and Auto attendant management directly within Teams",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What it is: feature table, admin row",
+      "type": "licensing",
+      "claim": "Advanced collaboration analytics is an admin-level feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
+      "quote": "Features Applied at the IT Admin Level\nAdvanced collaboration analytics",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What it is: feature table, attendee row; Why it matters",
+      "type": "licensing",
+      "claim": "Intelligent recap, including AI-generated notes and tasks, accepts Teams Premium or Microsoft Copilot licensing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
+      "quote": "You must assign a Teams Premium license or Microsoft Copilot license to your users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What it is: Licence and configuration; Why it matters; Governance controls",
       "type": "behaviour",
-      "claim": "Many Premium features require admin configuration before licensed users can access them.",
+      "claim": "Many Teams Premium features require admin configuration before licensed users can access them.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
       "quote": "Many Teams Premium features require an IT admin to configure the feature before users can access the feature.",
@@ -219,21 +279,21 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "What it is: Licence and configuration are separate steps",
+      "n": 24,
+      "where": "What it is: Licence and configuration",
       "type": "applicability",
-      "claim": "Meeting end-to-end encryption requires Teams admin center configuration.",
+      "claim": "End-to-end encryption requires configuration in the Teams admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
-      "quote": "The following list indicates Teams Premium features that require admin configuration in the Teams admin center before users can access the feature:\n\n- Using end-to-end encryption on meetings up to 200 participants.",
+      "quote": "The following list indicates Teams Premium features that require admin configuration in the Teams admin center before users can access the feature:\n- Using end-to-end encryption on meetings up to 200 participants.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 19,
-      "where": "What it is: Licence and configuration are separate steps",
+      "n": 25,
+      "where": "What it is: Licence and configuration",
       "type": "applicability",
-      "claim": "Adding meeting watermarks requires Teams admin center configuration.",
+      "claim": "Meeting watermarks require configuration in the Teams admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
       "quote": "Adding watermarks to meetings.",
@@ -241,21 +301,10 @@
       "fix": null
     },
     {
-      "n": 20,
-      "where": "What it is: Licence and configuration are separate steps",
+      "n": 26,
+      "where": "What it is: Licence and configuration",
       "type": "applicability",
-      "claim": "Sensitivity labels are among the features Microsoft lists as requiring Teams admin center configuration.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
-      "quote": "Adding sensitivity labels.",
-      "severity": "minor",
-      "fix": "Remove 'sensitivity labels' from the list described as configured in the Teams admin center. The more specific overview at https://learn.microsoft.com/microsoftteams/enhanced-teams-experience#protection-and-advanced-management says 'Use the Microsoft Purview portal to turn labels on or off', unlike the licensing page's general list."
-    },
-    {
-      "n": 21,
-      "where": "What it is: Licence and configuration are separate steps",
-      "type": "applicability",
-      "claim": "Organisation-customised backgrounds require Teams admin center configuration.",
+      "claim": "Organisation-customised backgrounds require configuration in the Teams admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
       "quote": "Using organization customized backgrounds and meeting themes.",
@@ -263,10 +312,10 @@
       "fix": null
     },
     {
-      "n": 22,
-      "where": "What it is: Licence and configuration are separate steps",
+      "n": 27,
+      "where": "What it is: Licence and configuration",
       "type": "applicability",
-      "claim": "Organisation-customised meeting themes require Teams admin center configuration.",
+      "claim": "Organisation-customised meeting themes require configuration in the Teams admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
       "quote": "Using organization customized backgrounds and meeting themes.",
@@ -274,10 +323,10 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "What it is: Licence and configuration are separate steps",
+      "n": 28,
+      "where": "What it is: Licence and configuration",
       "type": "applicability",
-      "claim": "Organisation-customised meeting templates require Teams admin center configuration.",
+      "claim": "Organisation-customised meeting templates require configuration in the Teams admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
       "quote": "Using organization customized meeting templates.",
@@ -285,10 +334,21 @@
       "fix": null
     },
     {
-      "n": 24,
-      "where": "What it is: dashboard paragraph",
+      "n": 29,
+      "where": "What it is: Licence and configuration",
       "type": "behaviour",
-      "claim": "The Teams Premium dashboard brings together licences, licence requests, usage reports and a feature advisor.",
+      "claim": "The Teams Premium dashboard includes licence management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-premium-dashboard",
+      "quote": "Licenses- Manage and assign Teams Premium licenses and license requests for users in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What it is: Licence and configuration",
+      "type": "behaviour",
+      "claim": "The Teams Premium dashboard includes licence requests.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-premium-dashboard",
       "quote": "Overview- Overview for licenses, license requests, feature advisor, and Teams Premium feature usage.",
@@ -296,10 +356,32 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "What it is: dashboard paragraph; Governance controls",
+      "n": 31,
+      "where": "What it is: Licence and configuration",
       "type": "behaviour",
-      "claim": "The Feature advisor lists Premium features that administrators must configure.",
+      "claim": "The Teams Premium dashboard includes usage reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-premium-dashboard",
+      "quote": "Usage reports- View aggregated usage of Teams Premium features by users in your org.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What it is: Licence and configuration; Governance controls",
+      "type": "behaviour",
+      "claim": "The Teams Premium dashboard includes a Feature advisor tab.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-premium-dashboard",
+      "quote": "Feature advisor- Overview of all Teams Premium features that you must configure for your users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What it is: Licence and configuration; Governance controls",
+      "type": "behaviour",
+      "claim": "Feature advisor lists the Teams Premium features admins must configure.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-premium-dashboard",
       "quote": "The feature advisor dashboard shows all the Teams Premium features that you must configure for your users",
@@ -307,10 +389,10 @@
       "fix": null
     },
     {
-      "n": 26,
-      "where": "What it is: dashboard paragraph; Governance controls",
+      "n": 34,
+      "where": "What it is: Licence and configuration; Governance controls",
       "type": "behaviour",
-      "claim": "Feature advisor names the governing admin policy for each feature it lists.",
+      "claim": "Feature advisor identifies the governing admin policy for each feature.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-premium-dashboard",
       "quote": "Governing policy- The admin policy that controls the feature.",
@@ -318,10 +400,32 @@
       "fix": null
     },
     {
-      "n": 27,
-      "where": "What it is: April licensing change; Why it matters",
+      "n": 35,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Feature advisor marks features not configured or assigned to Premium users as Not enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-premium-dashboard",
+      "quote": "Not enabled- You haven’t configured this feature or assigned it to any Teams Premium users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Governance controls: Feature advisor",
+      "type": "behaviour",
+      "claim": "Feature advisor shows whether features are enabled for no, some or all Premium users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-premium-dashboard",
+      "quote": "Percentage of features that you haven’t enabled, enabled for some users, and enabled for all users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What it is: Licence and configuration; Why it matters",
       "type": "date",
-      "claim": "Some formerly Premium-only features became included with Teams Enterprise on 1 April 2026.",
+      "claim": "Since 1 April 2026 some previously Premium-only features are included with Teams Enterprise.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
       "quote": "As of April 1, 2026, some features that were previously only available with Teams Premium are now included with Teams Enterprise.",
@@ -329,8 +433,8 @@
       "fix": null
     },
     {
-      "n": 28,
-      "where": "What it is: April licensing change",
+      "n": 38,
+      "where": "What it is: Licence and configuration",
       "type": "licensing",
       "claim": "Teams Premium licences bought before 1 April 2026 retain their previously included features until expiry.",
       "status": "supported",
@@ -340,43 +444,10 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "What it is: attendee-based table row; Why it matters",
-      "type": "licensing",
-      "claim": "Each user wanting attendee-based features, including AI-generated notes and tasks, needs their own Teams Premium licence.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
-      "quote": "You must assign a Teams Premium license or Microsoft Copilot license to your users.",
-      "severity": "blocker",
-      "fix": "Qualify the attendee-based table's 'Each user' cell with 'AI-generated notes and tasks also accept a Microsoft Copilot licence'. Replace 'each user who wants them needs a licence' with 'each user needs an appropriate licence for the feature; intelligent recap accepts Teams Premium or Microsoft Copilot'. Cite https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings ."
-    },
-    {
-      "n": 30,
-      "where": "Why it matters",
-      "type": "licensing",
-      "claim": "Licensing an attendee does not supply an unlicensed organiser with organiser-based Premium features.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
-      "quote": "If an organizer has a Teams Premium license, the organizer-based features are shared and made accessible to the attendees only during the meeting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "Why it matters",
-      "type": "behaviour",
-      "claim": "Feature advisor marks a feature Not enabled when it has not been configured or assigned to Premium users.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/teams-premium-dashboard",
-      "quote": "Not enabled- You haven’t configured this feature or assigned it to any Teams Premium users.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
+      "n": 39,
       "where": "Cost and licensing: Licence",
       "type": "licensing",
-      "claim": "Users need an Office 365 or Microsoft 365 subscription and a Teams licence.",
+      "claim": "Users need an Office 365 or Microsoft 365 subscription as well as a Teams licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
       "quote": "An Office 365 or Microsoft 365 subscription and a Teams license.",
@@ -384,10 +455,10 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 40,
       "where": "Cost and licensing: Licence",
       "type": "licensing",
-      "claim": "New customers must buy Teams separately from Office 365/Microsoft 365 while retaining both prerequisites.",
+      "claim": "New customers must buy Teams separately from Office 365 or Microsoft 365, but both licences remain required.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
       "quote": "For new customers, Teams licenses must be purchased separately from Office 365/Microsoft 365 licenses, but both licenses are still required for Teams Premium.",
@@ -395,32 +466,32 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 41,
       "where": "Cost and licensing: Price",
       "type": "cost",
-      "claim": "The US product page lists Teams Premium at $10.00 per user/month, paid yearly.",
+      "claim": "Microsoft's US product page lists Teams Premium at $10.00 per user per month, paid yearly.",
       "status": "supported",
       "source": "https://www.microsoft.com/en-us/microsoft-teams/premium",
-      "quote": "$10.00\n\nuser/month, paid yearly",
+      "quote": "$10.00\n\nuser/month, paid yearly\n\n(Annual subscription—auto renews)",
       "severity": null,
       "fix": null
     },
     {
-      "n": 35,
+      "n": 42,
       "where": "Cost and licensing: Price",
       "type": "absence",
-      "claim": "The cited US product page does not list other-market or agreement-specific prices.",
+      "claim": "The cited US product page does not list prices for other markets or purchasing agreements.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams Premium US product page price other markets enterprise agreements; opened microsoft.com/en-us/microsoft-teams/premium and read pricing, FAQ and footnotes. It lists the US $10 annual-subscription price, not other-market or agreement prices.",
+      "quote": "Searched: site:microsoft.com/en-us/microsoft-teams/premium pricing other markets agreements. Read the complete US product page https://www.microsoft.com/en-us/microsoft-teams/premium; it lists $10.00 user/month, paid yearly, without other market or agreement prices.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 36,
+      "n": 43,
       "where": "Cost and licensing: Where it is sold",
       "type": "availability",
-      "claim": "Teams Premium is sold worldwide through EA, EAS, CSP, Web Direct, MCA Customer led and MCA Partner led.",
+      "claim": "Teams Premium is sold through all Microsoft purchasing channels, including EA, EAS, CSP, Web Direct and both MCA routes.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
       "quote": "Teams Premium is available to purchase worldwide through all Microsoft purchasing channels, including EA, EAS, CSP, Web Direct, MCA - Customer led, and MCA - Partner led.",
@@ -428,10 +499,10 @@
       "fix": null
     },
     {
-      "n": 37,
+      "n": 44,
       "where": "Cost and licensing: Where it is sold",
       "type": "availability",
-      "claim": "Commercial, worldwide public sector, EDU, GCC, GCC High, DoD and non-profit tenants meet the tenant purchase requirement.",
+      "claim": "Commercial tenants can purchase Teams Premium.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
       "quote": "Must be a commercial, worldwide public sector, EDU, GCC, GCC High, DoD, or non-profit tenant.",
@@ -439,21 +510,87 @@
       "fix": null
     },
     {
-      "n": 38,
-      "where": "Cost and licensing: Further prerequisites",
-      "type": "licensing",
-      "claim": "The Queues app additionally requires Teams Phone.",
+      "n": 45,
+      "where": "Cost and licensing: Where it is sold",
+      "type": "availability",
+      "claim": "Worldwide public sector tenants can purchase Teams Premium.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
-      "quote": "Requires a Teams Phone license.",
+      "quote": "Must be a commercial, worldwide public sector, EDU, GCC, GCC High, DoD, or non-profit tenant.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 39,
+      "n": 46,
+      "where": "Cost and licensing: Where it is sold",
+      "type": "availability",
+      "claim": "EDU tenants can purchase Teams Premium.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
+      "quote": "Must be a commercial, worldwide public sector, EDU, GCC, GCC High, DoD, or non-profit tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing: Where it is sold",
+      "type": "availability",
+      "claim": "GCC tenants can purchase Teams Premium.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
+      "quote": "Must be a commercial, worldwide public sector, EDU, GCC, GCC High, DoD, or non-profit tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing: Where it is sold",
+      "type": "availability",
+      "claim": "GCC High tenants can purchase Teams Premium.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
+      "quote": "Must be a commercial, worldwide public sector, EDU, GCC, GCC High, DoD, or non-profit tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing: Where it is sold",
+      "type": "availability",
+      "claim": "DoD tenants can purchase Teams Premium.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
+      "quote": "Must be a commercial, worldwide public sector, EDU, GCC, GCC High, DoD, or non-profit tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Cost and licensing: Where it is sold",
+      "type": "availability",
+      "claim": "Non-profit tenants can purchase Teams Premium.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
+      "quote": "Must be a commercial, worldwide public sector, EDU, GCC, GCC High, DoD, or non-profit tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
       "where": "Cost and licensing: Further prerequisites",
       "type": "licensing",
-      "claim": "Meeting sensitivity labels require Premium users to have Microsoft 365 E5, E5 Compliance, F5 Compliance or F5 Security + Compliance.",
+      "claim": "The Queues app also requires a Teams Phone licence.",
+      "status": "supported",
+      "source": "https://www.microsoft.com/en-us/microsoft-teams/premium",
+      "quote": "Queues app requires a Teams Phone license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Cost and licensing: Further prerequisites",
+      "type": "licensing",
+      "claim": "Meeting sensitivity labels require Teams Premium with Microsoft 365 E5, E5 Compliance, F5 Compliance or F5 Security + Compliance.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
       "quote": "This feature is only available to Teams Premium users with a Microsoft 365 E5, E5 Compliance, F5 Compliance, or F5 Security + Compliance subscription.",
@@ -461,10 +598,10 @@
       "fix": null
     },
     {
-      "n": 40,
+      "n": 53,
       "where": "Cost and licensing: Tenant-wide requirement; Risks and limits; What to check",
       "type": "licensing",
-      "claim": "Advanced collaboration analytics requires Premium licences acquired and assigned for every user in the tenant.",
+      "claim": "Using advanced collaboration analytics requires assigning Teams Premium licences to every user in the tenant.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
       "quote": "Customers must acquire and assign Teams Premium licenses to each user in their tenant for its use of Advanced collaboration analytics.",
@@ -472,21 +609,21 @@
       "fix": null
     },
     {
-      "n": 41,
+      "n": 54,
       "where": "Cost and licensing: Trials",
       "type": "licensing",
-      "claim": "Admins can start a 30-day discovery trial from the Teams Premium dashboard, without a stated prior-trial or paid-subscription restriction.",
-      "status": "contradicted",
+      "claim": "The discovery trial lasts 30 days.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-premium-dashboard",
-      "quote": "The Teams Premium discovery trial isn’t available if you have a paid Teams Premium subscription or already used the trial.",
-      "severity": "blocker",
-      "fix": "Add to the discovery-trial sentence: 'The discovery trial is unavailable if the organisation has a paid Teams Premium subscription or has already used the trial.'"
+      "quote": "The Teams Premium discovery trial gives you and your organization a 30-day free trial to explore Teams Premium features.",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 42,
+      "n": 55,
       "where": "Cost and licensing: Trials",
       "type": "licensing",
-      "claim": "The admin discovery trial provides 25 licences.",
+      "claim": "The discovery trial provides 25 assignable licences.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-premium-dashboard",
       "quote": "During your trial, you can assign 25 licenses to your users.",
@@ -494,10 +631,43 @@
       "fix": null
     },
     {
-      "n": 43,
+      "n": 56,
+      "where": "Cost and licensing: Trials",
+      "type": "admin-path",
+      "claim": "Admins can start the discovery trial from the Teams Premium dashboard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-premium-dashboard",
+      "quote": "Go to the Teams admin center.\n2. From the navigation pane, select Teams Premium.\n3. Select Try for free to start the 30-day free trial.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
       "where": "Cost and licensing: Trials",
       "type": "licensing",
-      "claim": "Users can acquire a 60-day Teams Premium self-service trial.",
+      "claim": "The discovery trial is unavailable to organisations with a paid Teams Premium subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-premium-dashboard",
+      "quote": "The Teams Premium discovery trial isn’t available if you have a paid Teams Premium subscription or already used the trial.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Cost and licensing: Trials",
+      "type": "licensing",
+      "claim": "The discovery trial is unavailable after the organisation has already used it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-premium-dashboard",
+      "quote": "The Teams Premium discovery trial isn’t available if you have a paid Teams Premium subscription or already used the trial.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Cost and licensing: Trials",
+      "type": "licensing",
+      "claim": "Users can acquire a 60-day self-service trial.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
       "quote": "Users can also acquire a Teams Premium self-service trial license that lasts for 60 days.",
@@ -505,10 +675,10 @@
       "fix": null
     },
     {
-      "n": 44,
+      "n": 60,
       "where": "Cost and licensing: Trials",
       "type": "behaviour",
-      "claim": "Users can start their self-service trial directly from Teams.",
+      "claim": "Individuals can start their self-service trial directly from Teams.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
       "quote": "Individuals can start the trial directly from Microsoft Teams (Desktop and Web).",
@@ -516,10 +686,10 @@
       "fix": null
     },
     {
-      "n": 45,
+      "n": 61,
       "where": "Cost and licensing: Trials",
       "type": "availability",
-      "claim": "Government and EDU customers cannot use these self-service trials.",
+      "claim": "Self-service trials are unavailable to Government customers.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
       "quote": "They aren't available for Government or EDU customers.",
@@ -527,21 +697,32 @@
       "fix": null
     },
     {
-      "n": 46,
-      "where": "Cost and licensing: Not Teams Rooms Pro",
-      "type": "licensing",
-      "claim": "Teams Rooms Pro licences are assigned to Teams Rooms devices rather than users.",
+      "n": 62,
+      "where": "Cost and licensing: Trials",
+      "type": "availability",
+      "claim": "Self-service trials are unavailable to EDU customers.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
-      "quote": "Teams Premium licenses are assigned to your organization's users, and Teams Rooms Pro licenses should only be assigned to Microsoft Teams Rooms devices.",
+      "quote": "They aren't available for Government or EDU customers.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 47,
+      "n": 63,
       "where": "Cost and licensing: Not Teams Rooms Pro",
       "type": "licensing",
-      "claim": "Microsoft says Teams Premium and Teams Rooms Pro do not overlap features.",
+      "claim": "Teams Rooms Pro licences are for Teams Rooms devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
+      "quote": "Teams Rooms Pro licenses should only be assigned to Microsoft Teams Rooms devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Cost and licensing: Not Teams Rooms Pro",
+      "type": "licensing",
+      "claim": "Microsoft states that Teams Premium and Teams Rooms Pro do not overlap features.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
       "quote": "These two licenses aren't dependent on one another, don't overlap features, and don't cause license enforcement conflicts.",
@@ -549,10 +730,10 @@
       "fix": null
     },
     {
-      "n": 48,
+      "n": 65,
       "where": "Risks and limits: Trial expiry",
       "type": "licensing",
-      "claim": "There is no grace period after Teams Premium trial expiry.",
+      "claim": "There is no grace period after trial expiry.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
       "quote": "There's no grace period between the expiration of the trial license and the loss of functionality.",
@@ -560,7 +741,7 @@
       "fix": null
     },
     {
-      "n": 49,
+      "n": 66,
       "where": "Risks and limits: Trial expiry",
       "type": "behaviour",
       "claim": "Users lose all Teams Premium functionality when their trial licences expire.",
@@ -571,10 +752,10 @@
       "fix": null
     },
     {
-      "n": 50,
+      "n": 67,
       "where": "Risks and limits: Trial expiry",
       "type": "behaviour",
-      "claim": "Uploaded custom templates and meeting backgrounds remain in the tenant but become greyed out and unusable after trial expiry.",
+      "claim": "Uploaded templates and meeting backgrounds remain in the tenant after trial expiry.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
       "quote": "When the trial licenses expire, the tenant's uploaded Teams Premium assets like custom templates and meeting backgrounds remain in the tenant but are grayed out and unusable.",
@@ -582,10 +763,21 @@
       "fix": null
     },
     {
-      "n": 51,
+      "n": 68,
+      "where": "Risks and limits: Trial expiry",
+      "type": "behaviour",
+      "claim": "Those retained assets are greyed out and unusable after trial expiry.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
+      "quote": "When the trial licenses expire, the tenant's uploaded Teams Premium assets like custom templates and meeting backgrounds remain in the tenant but are grayed out and unusable.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
       "where": "Risks and limits: Trial expiry",
       "type": "licensing",
-      "claim": "Keeping Premium features after the trial requires purchasing and reassigning paid Premium licences.",
+      "claim": "Keeping Teams Premium features after trial expiry requires buying and reassigning paid licences.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
       "quote": "If your organization wishes to keep Teams Premium features after the trial period, you need to purchase Teams Premium licenses and reassign the licenses to your users.",
@@ -593,21 +785,21 @@
       "fix": null
     },
     {
-      "n": 52,
+      "n": 70,
       "where": "Risks and limits: Users can buy or trial it themselves",
       "type": "default",
-      "claim": "New products allow self-service purchases by default.",
+      "claim": "Self-service purchase is allowed for new products by default.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/subscriptions/manage-self-service-purchases-admins",
       "quote": "By default, all new products are set to allow users to make a self-service purchase.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 53,
+      "n": 71,
       "where": "Risks and limits: Users can buy or trial it themselves",
       "type": "behaviour",
-      "claim": "Admins cannot assign or unassign licences for user-purchased self-service subscriptions until taking them over.",
+      "claim": "Admins cannot assign or unassign licences on a user's self-service purchase subscription until taking it over.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
       "quote": "As an admin, you can't assign or unassign licenses for a self-service purchase subscription bought by a user in your organization. You can take over a purchase or trial subscription, and then assign or unassign licenses.",
@@ -615,10 +807,10 @@
       "fix": null
     },
     {
-      "n": 54,
-      "where": "Risks and limits: Blocking; controls[2].note",
+      "n": 72,
+      "where": "controls[2].note; Risks and limits: Blocking is not retroactive",
       "type": "behaviour",
-      "claim": "Changing AllowSelfServicePurchase does not affect existing trials or purchases.",
+      "claim": "Changing the self-service setting does not affect existing trials or purchases.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell",
       "quote": "Existing trials or purchases for the specified product aren't affected.",
@@ -626,10 +818,10 @@
       "fix": null
     },
     {
-      "n": 55,
-      "where": "Risks and limits: Blocking; controls[2].note",
+      "n": 73,
+      "where": "controls[2].note; Risks and limits: Blocking is not retroactive",
       "type": "behaviour",
-      "claim": "Disabling the self-service policy and applying the change can take up to 72 hours.",
+      "claim": "Disabling the self-service policy can take up to 72 hours to apply.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/commerce/subscriptions/manage-self-service-purchases-admins",
       "quote": "It can take up to 72 hours for the policy to be disabled and changes to occur.",
@@ -637,8 +829,8 @@
       "fix": null
     },
     {
-      "n": 56,
-      "where": "Risks and limits: Assignment; controls[0].note",
+      "n": 74,
+      "where": "controls[0].note; Risks and limits: Assignment is not instant",
       "type": "behaviour",
       "claim": "A Teams Premium licence assignment can take up to 24 hours to take effect.",
       "status": "supported",
@@ -648,10 +840,10 @@
       "fix": null
     },
     {
-      "n": 57,
-      "where": "Risks and limits: Letting every licence lapse",
+      "n": 75,
+      "where": "Risks and limits: Letting every licence lapse removes admin management",
       "type": "licensing",
-      "claim": "Admins need at least one user with an active Premium licence in the tenant to manage Premium features.",
+      "claim": "Admin management of Teams Premium features requires at least one user in the tenant with an active Premium licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
       "quote": "For admins to be able to manage Teams Premium features, their tenant needs at least one user with an active Teams Premium license.",
@@ -659,10 +851,10 @@
       "fix": null
     },
     {
-      "n": 58,
-      "where": "Risks and limits: Usage reporting",
+      "n": 76,
+      "where": "Risks and limits: Usage reporting is limited",
       "type": "availability",
-      "claim": "The Teams Premium feature usage report is unavailable in GCC, GCC High and DoD.",
+      "claim": "The Teams Premium feature usage report is unavailable in GCC.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/teams-premium-usage-report",
       "quote": "This feature isn’t available for gov clouds (GCC, GCC-H and DoD).",
@@ -670,10 +862,32 @@
       "fix": null
     },
     {
-      "n": 59,
-      "where": "Risks and limits: Usage reporting",
+      "n": 77,
+      "where": "Risks and limits: Usage reporting is limited",
+      "type": "availability",
+      "claim": "The Teams Premium feature usage report is unavailable in GCC High.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/teams-premium-usage-report",
+      "quote": "This feature isn’t available for gov clouds (GCC, GCC-H and DoD).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "Risks and limits: Usage reporting is limited",
+      "type": "availability",
+      "claim": "The Teams Premium feature usage report is unavailable in DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/teams-premium-usage-report",
+      "quote": "This feature isn’t available for gov clouds (GCC, GCC-H and DoD).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "Risks and limits: Usage reporting is limited",
       "type": "behaviour",
-      "claim": "Latest feature usage data can take up to four days to appear.",
+      "claim": "The latest report usage data can take up to four days to appear.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/teams-premium-usage-report",
       "quote": "It might take up to four days for the latest usage data to be reflected in this report.",
@@ -681,10 +895,10 @@
       "fix": null
     },
     {
-      "n": 60,
+      "n": 80,
       "where": "controls[0].ui",
       "type": "admin-path",
-      "claim": "User licences are assigned in Microsoft 365 admin center > Users > Active users > user > Licenses and Apps > Licenses.",
+      "claim": "Individual licence assignment is at Microsoft 365 admin center > Users > Active users > user > Licenses and Apps > Licenses.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
       "quote": "go to the Users > Active users page.\n2. Select the row of the user that you want to assign a license to.\n3. In the right pane, select Licenses and Apps.\n4. Expand the Licenses section",
@@ -692,32 +906,21 @@
       "fix": null
     },
     {
-      "n": 61,
+      "n": 81,
       "where": "controls[0].api",
       "type": "command",
       "claim": "POST /v1.0/users/{id | userPrincipalName}/assignLicense assigns or removes user licences.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0",
-      "quote": "Add or remove licenses for the user to enable or disable their use of Microsoft cloud offerings that the company has licenses to.\n\nPOST /users/{id | userPrincipalName}/assignLicense",
+      "quote": "Add or remove licenses for the user to enable or disable their use of Microsoft cloud offerings that the company has licenses to.\nPOST /users/{id | userPrincipalName}/assignLicense\nPOST https://graph.microsoft.com/v1.0/me/assignLicense",
       "severity": null,
       "fix": null
     },
     {
-      "n": 62,
-      "where": "controls[0].note",
-      "type": "command",
-      "claim": "The user assignLicense request adds a licence through addLicenses with its skuId.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0",
-      "quote": "\"addLicenses\": [\n        {\n            \"disabledPlans\": [\n                \"8a256a2b-b617-496d-b51b-e76466e88db0\"\n            ],\n            \"skuId\": \"84a661c4-e949-4bd2-a560-ed7766fcaf2b\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 63,
-      "where": "controls[0].note; Governance controls",
+      "n": 82,
+      "where": "controls[0].note; Governance controls: roles",
       "type": "role",
-      "claim": "Microsoft 365 admin center licence assignment requires at least License Administrator or User Administrator.",
+      "claim": "Assigning licences in the Microsoft 365 admin center requires at least License Administrator or User Administrator.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
       "quote": "You must be at least a License or User Administrator to assign licenses.",
@@ -725,10 +928,21 @@
       "fix": null
     },
     {
-      "n": 64,
+      "n": 83,
+      "where": "controls[0].note",
+      "type": "command",
+      "claim": "The user assignLicense request selects the Premium SKU through skuId in addLicenses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0",
+      "quote": "\"addLicenses\": [\n        {\n            \"disabledPlans\": [\n                \"8a256a2b-b617-496d-b51b-e76466e88db0\"\n            ],\n            \"skuId\": \"84a661c4-e949-4bd2-a560-ed7766fcaf2b\"\n        }",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 84,
       "where": "controls[1].ui",
       "type": "admin-path",
-      "claim": "Product-level assignment to users or groups is under Microsoft 365 admin center > Billing > Licenses > product > Assign licenses.",
+      "claim": "Product-based user or group assignment is at Microsoft 365 admin center > Billing > Licenses > product > Assign licenses.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
       "quote": "go to the Billing > Licenses page.\n2. Select a product.\n3. On the product details page, select Assign licenses.\n4. In the Assign licenses panel, begin typing the name of a user or group",
@@ -736,21 +950,21 @@
       "fix": null
     },
     {
-      "n": 65,
+      "n": 85,
       "where": "controls[1].api",
       "type": "command",
-      "claim": "POST /v1.0/groups/{id}/assignLicense assigns licences to a group.",
+      "claim": "POST /v1.0/groups/{id}/assignLicense assigns or removes group licences.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/api/group-assignlicense?view=graph-rest-1.0",
-      "quote": "POST https://graph.microsoft.com/v1.0/groups/1132b215-826f-42a9-8cfe-1643d19d17fd/assignLicense",
-      "severity": "minor",
-      "fix": "Keep the call and add to controls[1].note, including the rendered table note: 'The request body sets addLicenses with the Teams Premium skuId.' The reference documents addLicenses and skuId in its assignment example."
+      "quote": "Add or remove licenses on a group.\nPOST /groups/{id}/assignLicense\nPOST https://graph.microsoft.com/v1.0/groups/1132b215-826f-42a9-8cfe-1643d19d17fd/assignLicense",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 66,
+      "n": 86,
       "where": "controls[1].note",
       "type": "behaviour",
-      "claim": "Licences assigned to a group are assigned to its users.",
+      "claim": "Licences assigned to a group are assigned to all its users.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/api/group-assignlicense?view=graph-rest-1.0",
       "quote": "Licenses assigned to the group will be assigned to all users in the group.",
@@ -758,32 +972,43 @@
       "fix": null
     },
     {
-      "n": 67,
-      "where": "controls[2].ui",
-      "type": "admin-path",
-      "claim": "The product's self-service setting is reached through Settings > Org settings > Services > Self-service trials and purchases > product in Microsoft 365 admin center.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/commerce/subscriptions/manage-self-service-purchases-admins",
-      "quote": "To manage the settings for a specific product, select the product name. A panel opens and shows the current setting for the product you selected.",
-      "severity": "minor",
-      "fix": "Extend controls[2].ui.path and its rendered path to 'Settings > Org settings > Services > Self-service trials and purchases > product > Allow / Allow for trials only / Do not allow'. The printed route reaches the right panel but stops before the setting."
-    },
-    {
-      "n": 68,
-      "where": "controls[2].api",
+      "n": 87,
+      "where": "controls[1].note",
       "type": "command",
-      "claim": "Update-MSCommerceProductPolicy -PolicyId AllowSelfServicePurchase -ProductId <ProductID> -Value \"Disabled\" blocks future purchases and trials for the product.",
+      "claim": "The group assignLicense request selects the Premium SKU through skuId in addLicenses.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell",
-      "quote": "Update-MSCommerceProductPolicy -PolicyId AllowSelfServicePurchase -ProductId <ProductID> -Value \"Disabled\"",
+      "source": "https://learn.microsoft.com/graph/api/group-assignlicense?view=graph-rest-1.0",
+      "quote": "\"addLicenses\": [\n    {\n      \"disabledPlans\": [\n        \"113feb6c-3fe4-4440-bddc-54d774bf0318\",\n        \"14ab5db5-e6c4-4b20-b4bc-13e36fd2227f\"\n      ],\n      \"skuId\": \"b05e124f-c7cc-45a0-a6aa-8cf78c946968\"\n    }",
       "severity": null,
       "fix": null
     },
     {
-      "n": 69,
-      "where": "controls[2].note; Governance controls",
+      "n": 88,
+      "where": "controls[2].ui; What to check: self-service setting",
+      "type": "admin-path",
+      "claim": "Self-service settings are at Microsoft 365 admin center > Settings > Org settings > Services > Self-service trials and purchases > product > Allow / Allow for trials only / Do not allow.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/subscriptions/manage-self-service-purchases-admins",
+      "quote": "Settings > Org settings\nOn the Services tab of the Org settings page, select Self-service trials and purchases.\nTo manage the settings for a specific product, select the product name.\nTo change the setting for the product, select Allow, Allow for trials only, or Do not allow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 89,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "MSCommerce's Update-MSCommerceProductPolicy -PolicyId AllowSelfServicePurchase -ProductId <ProductID> -Value \"Disabled\" blocks new purchases and trials for the specified product.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell",
+      "quote": "Disabled | Users can't make self-service purchases or acquire trials for the product.\nUpdate-MSCommerceProductPolicy -PolicyId AllowSelfServicePurchase -ProductId <ProductID> -Value \"Disabled\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 90,
+      "where": "controls[2].note; Governance controls: roles",
       "type": "role",
-      "claim": "Changing the self-service setting through Microsoft 365 admin center requires Global Administrator.",
+      "claim": "Changing the self-service setting in the admin center requires Global Administrator.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/commerce/subscriptions/manage-self-service-purchases-admins",
       "quote": "You must be a Global Administrator to do the following steps.",
@@ -791,120 +1016,109 @@
       "fix": null
     },
     {
-      "n": 70,
-      "where": "controls[2].note; Governance controls",
+      "n": 91,
+      "where": "controls[2].note; Governance controls: roles",
       "type": "role",
-      "claim": "Global or Billing Administrator suffices to change MSCommerce product policies, without a partner qualification.",
-      "status": "contradicted",
+      "claim": "Changing MSCommerce product policies through PowerShell requires Global or Billing Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell",
+      "quote": "The Global or Billing Administrator role for your tenant to change the MSCommerce product policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 92,
+      "where": "controls[2].note; Governance controls: roles",
+      "type": "role",
+      "claim": "AOBO partners require Global Administrator for both the self-service admin UI and PowerShell.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell",
       "quote": "Partners who are Admins On Behalf Of (AOBO) a customer must have a role that's set to Global Administrator in order to manage and disable self-service purchases in the Microsoft 365 admin center and via PowerShell.",
-      "severity": "blocker",
-      "fix": "Add to controls[2].note, its rendered note and the role paragraph: 'Partners acting as Admin On Behalf Of a customer require Global Administrator for PowerShell as well.'"
-    },
-    {
-      "n": 71,
-      "where": "controls[3].ui",
-      "type": "admin-path",
-      "claim": "Premium licence requests are reviewed in Teams admin center > Teams Premium > Licenses > License requests.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/teams-premium-dashboard",
-      "quote": "To access the Teams Premium dashboard, sign-in to the Teams admin center > select Teams Premium in the navigation pane.\n\nTo access licensing information, either select the Licenses tab\n\nLicense requests tab",
       "severity": null,
       "fix": null
     },
     {
-      "n": 72,
-      "where": "controls[3].note; What to check",
-      "type": "behaviour",
-      "claim": "Admins can approve or reject Premium licence requests on the dashboard's License requests tab.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/teams-premium-dashboard",
-      "quote": "You can approve or reject licenses in this tab.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 73,
-      "where": "controls[3].api; Open questions: approval automation",
-      "type": "absence",
-      "claim": "No documented Graph or PowerShell operation was found for approving the licence requests on the Teams Premium dashboard.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams Premium dashboard license requests approve reject Microsoft Graph PowerShell API; \"license requests\" \"Graph\" \"Teams Premium\"; \"Teams Premium\" \"approve\" \"PowerShell\" \"requests\". Read dashboard, user/group assignLicense and licence-request guidance; no approval operation found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 74,
+      "n": 93,
       "where": "Governance controls: MSCommerce product list",
-      "type": "licensing",
+      "type": "behaviour",
       "claim": "The MSCommerce product list names Teams Premium as Teams Premium Introductory Pricing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell",
-      "quote": "| Teams Premium Introductory Pricing | CFQ7TTC0RM8K | Yes |",
+      "quote": "Teams Premium Introductory Pricing | CFQ7TTC0RM8K | Yes",
       "severity": null,
       "fix": null
     },
     {
-      "n": 75,
+      "n": 94,
       "where": "Governance controls: MSCommerce product list",
       "type": "command",
-      "claim": "Teams Premium's MSCommerce ProductId is CFQ7TTC0RM8K.",
+      "claim": "The MSCommerce ProductId for Teams Premium Introductory Pricing is CFQ7TTC0RM8K.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell",
-      "quote": "| Teams Premium Introductory Pricing | CFQ7TTC0RM8K | Yes |",
+      "quote": "Teams Premium Introductory Pricing | CFQ7TTC0RM8K | Yes",
       "severity": null,
       "fix": null
     },
     {
-      "n": 76,
+      "n": 95,
       "where": "Governance controls: MSCommerce product list",
-      "type": "behaviour",
-      "claim": "The MSCommerce product table identifies Teams Premium as having a trial without a payment method.",
+      "type": "licensing",
+      "claim": "The MSCommerce product list marks Teams Premium trials without a payment method as enabled.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell",
-      "quote": "| Product | ProductId | Is trial without payment method enabled? |\n\n| Teams Premium Introductory Pricing | CFQ7TTC0RM8K | Yes |",
+      "quote": "Product | ProductId | Is trial without payment method enabled?\nTeams Premium Introductory Pricing | CFQ7TTC0RM8K | Yes",
       "severity": null,
       "fix": null
     },
     {
-      "n": 77,
-      "where": "Governance controls: Licence assignment decides eligibility only",
-      "type": "applicability",
-      "claim": "Each Teams Premium feature is switched on through its own admin policy.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoftteams/enhanced-teams-experience#protection-and-advanced-management",
-      "quote": "| Advanced collaboration analytics | No, contact support for assistance. |",
-      "severity": "blocker",
-      "fix": "Replace 'Each feature is switched on through its own admin policy' with 'Many Teams Premium features require admin configuration before users can access them'. Keep the following Feature advisor description limited to the features it lists. The overview documents features without an admin on/off control."
-    },
-    {
-      "n": 78,
-      "where": "Governance controls: Feature advisor",
-      "type": "behaviour",
-      "claim": "Feature advisor reports whether features are enabled for no, some or all Premium users.",
+      "n": 96,
+      "where": "controls[3].ui; What to check: pending requests",
+      "type": "admin-path",
+      "claim": "Teams Premium licence requests are at Teams admin center > Teams Premium > Licenses > License requests.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-premium-dashboard",
-      "quote": "Status of Teams Premium features- Percentage of features that you haven’t enabled, enabled for some users, and enabled for all users.",
+      "quote": "select Teams Premium in the navigation pane.\nTo access licensing information, either select the Licenses tab\nThe dashboard’s table has three tabs\nLicense requests tab",
       "severity": null,
       "fix": null
     },
     {
-      "n": 79,
-      "where": "Governance controls: Teams Premium feature usage report path",
-      "type": "admin-path",
-      "claim": "The Teams Premium feature usage report is under Teams admin center > Analytics & reports > Usage reports.",
+      "n": 97,
+      "where": "controls[3].api; Open questions: request approval automation",
+      "type": "absence",
+      "claim": "Microsoft has not documented an API or PowerShell operation for approving the requests shown on the Teams Premium dashboard.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/teams-premium-usage-report",
-      "quote": "select Analytics & reports > Usage reports. On the View reports tab, under Report, select Teams Premium feature usage.",
-      "severity": "minor",
-      "fix": "Extend the prose path to 'Teams admin center > Analytics & reports > Usage reports > View reports > Report > Teams Premium feature usage'. The current path stops on the correct report-selection page."
+      "source": null,
+      "quote": "Searched: Teams Premium dashboard License requests approve reject Microsoft Graph API PowerShell; graph/api license requests approve; powershell/module/teams license request approve. Read Teams module index, teams-premium-dashboard and commerce/licenses/manage-license-requests; no approval API found.",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 80,
-      "where": "Governance controls: Teams Premium feature usage report metrics",
+      "n": 98,
+      "where": "controls[3].note; What to check: pending requests",
       "type": "behaviour",
-      "claim": "The usage report counts users attending meetings or events that used a Premium feature.",
+      "claim": "Admins can approve or reject licence requests on the dashboard's License requests tab.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-premium-dashboard",
+      "quote": "License requests tab- Display names, usernames, request dates, business justifications, and locations of users in your organization who requested Teams Premium license. You can approve or reject licenses in this tab.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 99,
+      "where": "Governance controls: Teams Premium feature usage report",
+      "type": "admin-path",
+      "claim": "The report is at Teams admin center > Analytics & reports > Usage reports > View reports > Report > Teams Premium feature usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/teams-premium-usage-report",
+      "quote": "In the left navigation of the Microsoft Teams admin center, select Analytics & reports > Usage reports. On the View reports tab, under Report, select Teams Premium feature usage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 100,
+      "where": "Governance controls: Teams Premium feature usage report",
+      "type": "behaviour",
+      "claim": "The feature usage report counts users reached by meetings or events using a Teams Premium feature.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/teams-premium-usage-report",
       "quote": "Reached users across organization: Count of how many users attended meetings or events that used a Teams Premium feature.",
@@ -912,10 +1126,10 @@
       "fix": null
     },
     {
-      "n": 81,
-      "where": "Governance controls: Teams Premium feature usage report metrics",
+      "n": 101,
+      "where": "Governance controls: Teams Premium feature usage report",
       "type": "behaviour",
-      "claim": "The usage report counts meetings or events that used a Premium feature.",
+      "claim": "The report counts meetings that used a Teams Premium feature.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/teams-premium-usage-report",
       "quote": "Count of meetings across organization: Count of meetings or events that used a Teams Premium feature.",
@@ -923,8 +1137,8 @@
       "fix": null
     },
     {
-      "n": 82,
-      "where": "Governance controls: Teams Premium feature usage report roles",
+      "n": 102,
+      "where": "Governance controls: Teams Premium feature usage report",
       "type": "role",
       "claim": "Viewing the report requires global admin, global reader or Teams service admin.",
       "status": "supported",
@@ -934,112 +1148,46 @@
       "fix": null
     },
     {
-      "n": 83,
-      "where": "What to check: dashboard",
-      "type": "admin-path",
-      "claim": "The Teams Premium dashboard and its licensed-user and Feature advisor views are in the Teams admin center.",
+      "n": 103,
+      "where": "What to check: review licensed users",
+      "type": "behaviour",
+      "claim": "Admins can review licensed users on the Teams Premium dashboard in the Teams admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-premium-dashboard",
-      "quote": "To access the Teams Premium dashboard, sign-in to the Teams admin center > select Teams Premium in the navigation pane.",
+      "quote": "Licensed users tab- Display names, usernames, and locations of users in your organization with an active Teams Premium license.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 84,
-      "where": "What to check: self-service setting",
-      "type": "behaviour",
-      "claim": "The per-product self-service choices are Allow, Allow for trials only and Do not allow.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/commerce/subscriptions/manage-self-service-purchases-admins",
-      "quote": "To change the setting for the product, select Allow, Allow for trials only, or Do not allow.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 85,
-      "where": "What to check: Licenses page for self-service subscriptions and end dates",
+      "n": 104,
+      "where": "What to check: self-service trial licences",
       "type": "admin-path",
-      "claim": "The Microsoft 365 admin center Licenses page is the place to inspect users' self-service purchases and trials and their end dates.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoft-365/commerce/subscriptions/manage-self-service-purchases-admins",
-      "quote": "go to the Billing > Your products page.\n2. Select the Self-service trials tab.\n3. To view more details about a subscription, select one from the list.",
-      "severity": "blocker",
-      "fix": "Narrow the checklist bullet to 'Check the Licenses page in the Microsoft 365 admin center for Teams Premium self-service trial licences.' The licensing page supports that narrower check; the commerce page places subscription details, including expiration dates and purchases, under Billing > Your products."
+      "claim": "Admins can check Teams Premium self-service trial licences on the Microsoft 365 admin center Licenses page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
+      "quote": "If you're an admin, you can use subscription management capabilities to oversee and manage trial licenses on the Licenses page in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 86,
-      "where": "What to check: organisers of town halls",
+      "n": 105,
+      "where": "Why it matters: licensing attendees",
       "type": "licensing",
-      "claim": "Town hall organisers should hold Teams Premium because the relevant event features follow their Premium licence.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
-      "quote": "Teams Premium licenses purchased after April 2026 don't directly provide access to these capabilities. To access the full set of Teams events features, users must have a license from the Advanced event features category.",
-      "severity": "blocker",
-      "fix": "Remove 'town halls,' from the checklist bullet, leaving 'Confirm that organisers of templated meetings and sensitive meetings hold the licence, since organiser-based features follow the organiser.' Do not imply that a current Premium licence supplies town hall event entitlements."
-    },
-    {
-      "n": 87,
-      "where": "Open questions: which features moved on 1 April 2026",
-      "type": "absence",
-      "claim": "Which features moved from Teams Premium to Teams Enterprise on 1 April 2026 remains an open documentation question.",
-      "status": "contradicted",
-      "source": "https://techcommunity.microsoft.com/blog/microsoftteamsblog/licensing-updates-extend-access-to-advanced-capabilities-in-microsoft-teams-and-/4488312",
-      "quote": "we are bringing all town hall and webinar features that were previously only available with a Teams Premium license to Teams Enterprise",
-      "severity": "blocker",
-      "fix": "Remove the answered first half of the question. Retain only 'Does a tenant with pre-April Teams Premium licences see the transferred features listed under either licence in the admin centre?' Microsoft lists the transferred event features in its licensing-update blog and current event licensing tables."
-    },
-    {
-      "n": 88,
-      "where": "Open questions: MSCommerce and the 60-day Teams trial",
-      "type": "absence",
-      "claim": "Whether the Teams Premium MSCommerce product policy governs the self-service trial started in Teams is undocumented.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoft-365/commerce/subscriptions/manage-self-service-purchases-admins",
-      "quote": "When you use the AllowSelfServicePurchase policy, it controls both purchases and trials.\n\nFor self-serve trials in Microsoft Teams, we recommended that you close and restart the app to ensure the change is reflected.",
-      "severity": "blocker",
-      "fix": "Remove this question. The Premium licensing page directs admins to this self-service policy for its Teams-started trial, the commerce page explicitly includes Teams self-service trials, and the MSCommerce product list identifies Teams Premium."
-    },
-    {
-      "n": 89,
-      "where": "Open questions: policy setting after a user's licence lapses",
-      "type": "absence",
-      "claim": "The persistence or precise handling of a Premium-only policy setting assigned to a user after a paid Premium licence lapses remains undocumented in the pages checked.",
+      "claim": "Licensing attendees does not supply organiser-based features for meetings organised by an unlicensed colleague.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams Premium expired paid license watermark policy settings user licence lapse. Read Premium licensing, overview, and cannot-access-Premium troubleshooting excerpts. They describe trial feature loss and licence prerequisites, not persistence of an assigned policy after paid-licence lapse.",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
+      "quote": "Some Teams Premium features are applied at the organizer level. If an organizer has a Teams Premium license, the organizer-based features are shared and made accessible to the attendees only during the meeting.",
       "severity": null,
       "fix": null
-    },
-    {
-      "n": 90,
-      "where": "Open questions: licence under which transferred features appear in the admin centre",
-      "type": "absence",
-      "claim": "The checked documentation does not state under which licence transferred features appear in the admin centre for pre-April Premium customers.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams Premium legacy April 2026 features listed under Teams Enterprise Premium admin center licences. Read licensing, dashboard, event licensing, update blog and troubleshooting excerpts. They describe entitlements and Legacy SKUs, not the requested feature-list display.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 91,
-      "where": "What to check: Feature advisor versus Governance controls table",
-      "type": "consistency",
-      "claim": "The checklist asks readers to review Feature advisor status, but the controls table has no corresponding dashboard or feature-configuration row.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "compare licensed users with the Feature advisor status of each feature; controls table rows: user licensing, product/group licensing, self-service purchases/trials, licence-request approval",
-      "severity": "minor",
-      "fix": "Remove 'and compare licensed users with the Feature advisor status of each feature' from the first checklist bullet and replace it with 'and review licensed users'. This keeps the checklist within the existing licence-assignment controls; do not add a row."
     }
   ],
   "precheck": {
-    "at": "2026-11-26T14:10:50.745Z",
+    "at": "2026-11-26T20:14:46.049Z",
     "summary": {
-      "links": 9,
+      "links": 10,
       "unreachable": 0,
       "uiPaths": 4,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 1,
       "apiCalls": 3,
       "apiCallsNotOnPage": 2,
       "roadmapDrift": 0
@@ -1057,6 +1205,11 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/teams-premium-usage-report",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
         "ok": true,
         "status": 200
       },
@@ -1149,9 +1302,12 @@
           "Org settings",
           "Services",
           "Self-service trials and purchases",
-          "product"
+          "product",
+          "Allow / Allow for trials only / Do not allow"
         ],
-        "missing": []
+        "missing": [
+          "Allow / Allow for trials only / Do not allow"
+        ]
       },
       {
         "index": 2,
@@ -1178,5 +1334,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-26",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

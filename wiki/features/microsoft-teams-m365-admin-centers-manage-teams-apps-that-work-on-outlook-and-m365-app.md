@@ -128,15 +128,17 @@ changes:
     note: "Correction: licensing set to included, citing the Microsoft 365 admin center agent management requirements; the cost, licensing notes and licence open question now say only that a separate licence or meter for unification is not yet published."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 64 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 62 statements not yet confirmed"
 version: 4
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-19"
+  date: "2026-11-26"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 64
-  confirmed: 63
+  claims: 62
+  confirmed: 61
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -237,8 +239,9 @@ cost: Low. The only cost the sources show is admin time to align settings; a sep
 impact: Medium. Admins of both centres see the change first; users notice only if aligning settings changes which apps or agents are available to them in Teams, Outlook or the Microsoft 365 app.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout, setup-policy installation inventory / consistency: Every control the governance checklist asks the reader to take stock of is represented in the controls table. | Found: Checklist: 'List apps that users received through Teams app setup policies'. The table covers tenant unification, app blocking, app availability, Custom apps and MAC availability, but not setup-policy installation assignments. | Fix: Remove the Before rollout bullet beginning 'List apps that users received through Teams app setup policies'. Keep the supported setup-policy installation limitation in Risk assessment.
+- [supported, minor] controls[2].ui; Governance controls table / admin-path: The printed Teams app availability route reaches Edit availability through Users and groups and Availability. | Found: Select the Users and groups tab. ... select Availability. ... Select Edit availability. ... Select the required option from Available to menu. | Fix: Complete controls[2].ui.path and its rendered row as 'Teams apps > Manage apps > app > Users and groups > Select to manage who this app is installed for or available to in your organization > Availability > Edit availability > Available to > Specific users or groups'. This is the specific-user/group option documented at https://learn.microsoft.com/microsoftteams/app-centric-management. | Source: https://learn.microsoft.com/microsoftteams/app-centric-management
+- [contradicted, minor] Governance guidance: Before rollout, setup-policy installation inventory / consistency: Every control the governance checklist asks readers to take stock of appears in the controls table. | Found: Checklist: 'List apps that users received through Teams app setup policies'. Controls: tenant unification, app blocking, app availability, Custom apps and MAC availability; no setup-policy installation-assignment row. | Fix: Remove the Before rollout bullet beginning 'List apps that users received through Teams app setup policies'. Keep the supported setup-policy installation limitation in Risk assessment.
 -->

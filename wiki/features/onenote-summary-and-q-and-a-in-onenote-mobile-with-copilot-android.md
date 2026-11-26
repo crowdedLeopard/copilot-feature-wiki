@@ -68,16 +68,18 @@ changes:
     note: "Correction: cost rating raised from low to medium because the pane needs the Microsoft 365 Copilot (Premium) add-on licence; cost rationale reworded to match."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 46 statements confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 46 statements not yet confirmed"
 version: 3
 verification:
-  status: "verified"
-  date: "2026-11-19"
+  status: "verified-with-gaps"
+  date: "2026-11-26"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 46
-  confirmed: 46
-  unconfirmed: 0
+  confirmed: 45
+  unconfirmed: 1
   contradicted: 0
   attempts: 0
   hash: "f1aab5f51c85dbd8b4186760cab1f810"
@@ -177,4 +179,11 @@ Who sees the pane is also set by the Microsoft 365 Copilot (Premium) licence, as
 risk: Medium. Generative AI will read note content on Android phones for licensed users by default, and Microsoft's notice says it alters how existing customer data is processed, though existing Copilot permissions and policies still apply.
 cost: Medium. The pane requires the Microsoft 365 Copilot (Premium) add-on licence for Android users who should have access. The notice names no separate meter; licence assignment, helpdesk briefing and communication also take staff time.
 impact: Medium. Only users with a Microsoft 365 Copilot (Premium) licence who use OneNote on Android will see the pane; Microsoft's notice says users without the licence are not impacted.
+-->
+
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].ui; Governance controls: table / admin-path: The listed Microsoft 365 Apps admin center path reaches Configure Settings when creating a Cloud Policy configuration. | Found: On the Configure Settings page, select the policies that you want to include in the policy configuration. You can search for the policy by name, or you can create a custom filter. | Fix: Append ' > Allow the use of connected experiences in Office that analyze content' to controls[0].ui.path and its rendered table path. The existing route correctly reaches the settings page; the setting name is documented at https://learn.microsoft.com/microsoft-365-apps/privacy/android-privacy-controls. | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy
+- [unsupported, minor] rationale: risk / default: Generative AI will read note content on Android phones for licensed users by default. | Found: Searched: OneNote Android Copilot chat pane Summary automatically processes reads notes by default user generates summary. Read MC1309746, roadmap record, Copilot privacy and Learn search excerpts; automatic pane availability is stated, automatic note analysis is not. | Fix: Replace the risk rationale's first clause with 'Medium. The Copilot pane will appear for licensed Android users without admin action and lets them request summaries and answers about accessible note content'. Retain the existing clause about changed processing and existing permissions and policies. MC1309746 states availability and these capabilities, not automatic analysis.
 -->

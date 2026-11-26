@@ -34,6 +34,9 @@ sources:
   - title: "License options for Microsoft Copilot"
     url: "https://learn.microsoft.com/copilot/plan/copilot-license-options"
     kind: "learn"
+  - title: "Role-based security roles for Dataverse"
+    url: "https://learn.microsoft.com/power-platform/admin/database-security"
+    kind: "learn"
 videos: []
 related: ["microsoft-dataverse-enable-semantic-data-understanding-for-agentic-use","work-iq"]
 controls:
@@ -47,7 +50,7 @@ controls:
     note: "Controls /mention record search generally; no separate switch for the label format is documented."
 confidence: "medium"
 created: "2026-11-18"
-updated: "2026-11-19"
+updated: "2026-11-26"
 roadmapModified: "2026-10-16T19:09:06"
 changes:
   - date: "2026-11-18"
@@ -66,19 +69,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 58 statements not yet confirmed"
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 59 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-26"
+    note: "Corrected the Autonomy & actions risk: the /mention page shows Copilot drafting an email with business data and a request to send it; added the Dataverse security roles page as a source."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 61 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 4
 verification:
   status: "held"
   date: "2026-11-26"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 59
-  confirmed: 58
+  claims: 61
+  confirmed: 60
   unconfirmed: 0
   contradicted: 1
-  attempts: 1
-  hash: "db56b1baa6da9f7ad3aa26d91b4be693"
+  attempts: 2
+  hash: "ee982ec12433c46d62fb654d9a0a8abd"
 ---
 
 ## What's changing
@@ -109,7 +116,7 @@ The practical view is that this needs communication, not emergency action. Check
 
 **Autonomy & actions**
 
-- The page says Copilot uses a referenced record as context to ground its response and perform actions against the relevant business data. It does not list which actions, so confirm what Copilot can do with a referenced record before you rely on it.
+- The page says Copilot uses a referenced record as context to ground its response and perform actions against the relevant business data. The page shows Copilot drafting an email with business data and a request to send it; confirm what Copilot can do with a referenced record before you rely on it.
 
 **Change & support**
 
@@ -176,7 +183,5 @@ impact: Medium. Users of Dynamics 365 and model-driven Power Apps who reference 
 <!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Autonomy & actions / absence: The /mention page does not list which Copilot actions are possible. | Found: In Copilot, enter a prompt to create a new email with instructions to include business data, with **/account**. ... Copilot provides a draft email with business data. ... Ask Copilot to send the email. | Fix: Replace 'It does not list which actions, so confirm what Copilot can do with a referenced record before you rely on it.' with 'The page shows Copilot drafting an email with business data and a request to send it; confirm what Copilot can do with a referenced record before you rely on it.' Keep the existing citation to https://learn.microsoft.com/power-platform/admin/link-records-outlook-web. | Source: https://learn.microsoft.com/power-platform/admin/link-records-outlook-web
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance controls: final paragraph / applicability: Access to the underlying Dataverse records follows Dataverse security roles. | Found: A combination of access levels and permissions in a security role determines which apps and data users can view and how they can interact with those apps and data. | Fix: Add https://learn.microsoft.com/power-platform/admin/database-security to sources, titled 'Role-based security roles for Dataverse', for the general statement about users' access through Dataverse security roles. | Source: https://learn.microsoft.com/power-platform/admin/database-security
+- [contradicted, blocker] Risk assessment: Security & identity / absence: Microsoft Learn does not describe the authorization mechanism further than the stated access requirements. | Found: To be able to do a certain action with a table (Create, Read, Write, Delete, Append, Append to, Assign, Share), two major checks are done: privilege and access checks. | Fix: Replace 'Microsoft Learn does not describe the authorisation mechanism further, so test it with a user who lacks access.' with 'The /mention page does not describe how its record suggestions implement these access requirements, so test it with a user who lacks access.' The narrower absence is supported by https://learn.microsoft.com/power-platform/admin/link-records-outlook-web; general Dataverse authorization is documented at https://learn.microsoft.com/power-platform/admin/how-record-access-determined. | Source: https://learn.microsoft.com/power-platform/admin/how-record-access-determined
 -->

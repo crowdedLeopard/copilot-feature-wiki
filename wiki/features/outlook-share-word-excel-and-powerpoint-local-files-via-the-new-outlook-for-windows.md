@@ -72,15 +72,17 @@ changes:
     note: "Corrected after the independent check: the release-ring statement now cites Microsoft's documented Targeted Release then Standard Release sequence, and the OneWinNativeOutlookEnabled step now says it describes access permission, not usage."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 52 statements confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 55 statements not yet confirmed"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-19"
+  status: "verified-with-gaps"
+  date: "2026-11-26"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 52
-  confirmed: 52
+  claims: 55
+  confirmed: 55
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -178,4 +180,10 @@ The same Learn page documents `Set-OwaMailboxPolicy -Identity <PolicyIdentity> -
 risk: Low. Microsoft's notice says there is no change to existing admin controls and that all existing Outlook and Exchange policies continue to apply; no new data access is described.
 cost: Low. No licence, meter or price is published for this feature; the only cost the sources show is admin time for help desk briefing and updating documentation.
 impact: Medium. Users of the new Outlook for Windows who work with locally stored Office files will notice it, and Microsoft's notice says it is on by default.
+-->
+
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Scope: Prerequisites; Open questions / absence: Other prerequisites are not yet published. | Found: Searched: new Outlook local files prerequisites. Read deployment-new-outlook and licensing-options: product requirements are published, but no additional prerequisite for this sharing feature was found. | Fix: Replace 'Other prerequisites are not yet published.' in Scope with 'Prerequisites specific to sending local Office files are not yet published.' The new Outlook's general deployment prerequisites are documented at https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/deployment-new-outlook.
 -->

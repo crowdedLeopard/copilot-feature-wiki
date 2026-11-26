@@ -73,15 +73,17 @@ changes:
     note: "Corrected licensing (Teams for Education needs an Education license; Teams is in the free Microsoft 365 A1 for Students SKU), the Apply statement now notes later automatic education defaults, and removed the assignment-removal bullet from At rollout."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 48 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 51 statements not yet confirmed"
 version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-19"
+  date: "2026-11-26"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 48
-  confirmed: 47
+  claims: 51
+  confirmed: 50
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -177,8 +179,11 @@ cost: Low. The only cost the sources show is admin time to run the wizard and cl
 impact: Low. Admins see the new step; students and educators notice only if the chosen type changes their policy settings.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: Every control the governance checklist asks administrators to check is represented in the controls table. | Found: Check the educators and staff policies a few hours after applying; controls table: Institution type chosen on the first run of the wizard; Institution type changed after the wizard has run. | Fix: Remove the After rollout bullet 'Check the educators and staff policies a few hours after applying, as Learn says assignment can take that long.' It asks for a policy check not represented by either institution-type control row.
+- [supported, minor] controls[0].ui; Governance guidance: At rollout; Governance controls / admin-path: First-run institution type selection is reached in Microsoft Teams admin center through Home > Easy policy setup for a safe learning environment > Quick setup. | Found: go to Home, and then in the Easy policy setup for a safe learning environment tile, select Quick setup. | Fix: Complete controls[0].ui.path and its rendered path as 'Home > Easy policy setup for a safe learning environment > Quick setup > educational institution type'. The cited page next says to select the educational institution type. | Source: https://learn.microsoft.com/microsoftteams/easy-policy-setup-edu
+- [supported, minor] controls[1].ui; Governance guidance: After rollout; Governance controls / admin-path: Later institution type changes are reached in Microsoft Teams admin center through Home > Easy policy setup for a safe learning environment > Change. | Found: go to Home, and then in the Easy policy setup for a safe learning environment tile, select Change. ... You can change your institution type | Fix: Complete controls[1].ui.path and its rendered path as 'Home > Easy policy setup for a safe learning environment > Change > educational institution type', using the institution-type page documented in the same article. | Source: https://learn.microsoft.com/microsoftteams/easy-policy-setup-edu
+- [supported, minor] Why it matters; Risk assessment: Autonomy; rationale: risk / behaviour: Microsoft's wizard page says education defaults for new Teams features are added to Global policies automatically without administrator intervention. | Found: whenever a new feature is added to Teams, the appropriate EDU relevant default value of the policy for that feature will be automatically added to the Global (Org-wide default) without requiring any admin intervention. | Fix: After the automatic-defaults sentence in Why it matters, add: 'Microsoft's academic-year guidance also warns that webinars and town halls are controlled by a separate policy and need to be disabled for students.' Cite https://learn.microsoft.com/microsoft-365/education/guide/1-reference/teams-microsoft-365-groups#recent-changes-to-teams, which says 'as events (webinars and town halls) are now controlled by a separate policy, they need to be disabled for students as well'. | Source: https://learn.microsoft.com/microsoftteams/easy-policy-setup-edu
+- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: Every control the governance checklist tells administrators to check is represented in the controls table. | Found: Check the educators and staff policies a few hours after applying ... Controls: Institution type chosen on the first run of the wizard; Institution type changed after the wizard has run. | Fix: Remove the After rollout bullet 'Check the educators and staff policies a few hours after applying, as Learn says assignment can take that long.' It asks for a policy check not represented by either institution-type control row.
 -->

@@ -118,18 +118,20 @@ changes:
     note: "Roadmap target moved from December CY2026 to March CY2027, now matching the notice's late March 2027 rollout; removed a reference-page claim about a missing parameter."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 68 statements confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 75 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 6
 verification:
-  status: "verified"
-  date: "2026-11-19"
+  status: "held"
+  date: "2026-11-26"
   version: 6
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 68
-  confirmed: 68
+  claims: 75
+  confirmed: 74
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "7ab81e874226499d24cc53d3eca0d882"
 ---
 
@@ -237,4 +239,13 @@ Learn's events planning page lists "No control" for admins over event group chat
 risk: Medium. Federated external presenters will be able to read and post in the event group chat, including earlier messages if the thread shows history, and Learn lists no admin control for that chat itself.
 cost: Low. Teams events use the organiser's eligible Teams licence, and no licence, price or meter specific to this change is yet published; the known added cost is admin time to check settings and brief organisers.
 impact: Medium. Organisers, co-organisers and presenters in Teams events and structured meetings with the green room enabled will notice; attendees do not use this chat.
+-->
+
+<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Governance controls: prose / command: The Set-CsTenantFederationConfiguration -AllowedDomains parameter takes a domain list. | Found: Note that string values cannot be passed directly to the AllowedDomains parameter. Instead, you must create an object reference using the New-CsEdgeAllowList cmdlet or the New-CsEdgeAllowAllKnownDomains cmdlet and then use the object reference variable as the parameter value. | Fix: Replace 'the -AllowedDomains and -BlockedDomains parameters take domain lists and are set in their own commands' with 'The -AllowedDomains parameter takes a domain object created with New-CsEdgeAllowList or New-CsEdgeAllowAllKnownDomains; -BlockedDomains takes a list. These are set separately from -AllowFederatedUsers.' Keep the existing reference citation: https://learn.microsoft.com/powershell/module/microsoftteams/set-cstenantfederationconfiguration. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/set-cstenantfederationconfiguration
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].ui; Governance controls: table; Governance guidance: Before rollout / admin-path: Teams admin center > Users > External access reaches the page for managing external organizations. | Found: In the Teams admin center, go to Users > External access. Next to Teams and Skype for Business users in external organizations, choose Allow only specific external domains. | Fix: Complete controls[0].ui.path and the matching table path as 'Users > External access > Teams and Skype for Business users in external organizations > Allow only specific external domains > Add external domains', as documented at https://learn.microsoft.com/microsoftteams/manage-external-access. Keep the prose's shorter page reference. | Source: https://learn.microsoft.com/microsoftteams/manage-external-access
+- [supported, minor] controls[1].ui; Governance controls: table / admin-path: Teams admin center > Users > External access > Policies > policy reaches an external access policy. | Found: In the left navigation, select Users > External access. Select the Policies tab. Click to add a policy or modify an existing one. Turn on Manage external domains for this policy to allow federation in the policy. | Fix: Complete controls[1].ui.path and the matching table path as 'Users > External access > Policies > policy > Manage external domains for this policy', as documented at https://learn.microsoft.com/microsoftteams/manage-external-access. | Source: https://learn.microsoft.com/microsoftteams/manage-external-access
 -->

@@ -126,18 +126,20 @@ changes:
     note: "General Availability target moved to March CY2027 on the roadmap, matching MC1449180's mid-March 2027 start; open question on the gap before the 6 January 2027 file policy retirement updated."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 88 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 99 statements contradicted, 1 unconfirmed; taken offline until corrected"
 version: 5
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-19"
+  status: "held"
+  date: "2026-11-26"
   version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 88
-  confirmed: 88
-  unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  claims: 99
+  confirmed: 97
+  unconfirmed: 1
+  contradicted: 1
+  attempts: 1
   hash: "8854c106a1bcd10db473a9b9ca8f9040"
 ---
 
@@ -253,8 +255,14 @@ cost: Variable. Microsoft's notice MC1449180 says usage is billed through the Mi
 impact: Low. Administrators who create and run the policies notice it first; the roadmap and notice name no end-user experience, and Learn says policy tips and user overrides are not supported for these apps.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [unsupported, blocker] front matter: licensing.notes; Cost and licensing: Not yet published; Open questions / absence: The per-unit price per data asset is not yet published. | Found: Searched: Purview At Rest Protection price per data asset; At Rest Protection per asset; opened azure.microsoft.com/pricing/details/purview/ and Learn billing models. Pricing has an At Rest Protection table showing '$- per asset per day'; placeholders do not establish an unpublished rate. | Fix: Remove 'The per-unit price is not yet published' from licensing.notes and 'The price per data asset is not yet published' from the body. Rename the body's 'Not yet published' label to 'Pricing to confirm'. Replace the price declaration with 'Confirm the applicable At Rest Protection rate on the Microsoft Purview pricing page before enabling policies.' Cite https://azure.microsoft.com/pricing/details/purview/. Keep the open question about the applicable rate without asserting that no rate is published.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].ui; Governance guidance; Governance controls table / admin-path: App connectors are reached in Defender through Settings > Cloud Apps > Connected Apps > App Connectors > + Connect an app. | Found: In the Microsoft Defender Portal, select Settings. Then choose Cloud Apps. Under Connected Apps, select App Connectors. Select the +Connect an app to add an app and then select an app. | Fix: Keep the supported path. Add to controls[2].note: 'Microsoft also documents Cloud Apps > Connected apps > Connect an app (or Add a new connector) at https://learn.microsoft.com/defender-cloud-apps/enable-instant-visibility-protection-and-governance-actions-for-your-apps#enable-app-connectors.' Add that URL to sources. | Source: https://learn.microsoft.com/defender-cloud-apps/get-started
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The printed Purview DLP wizard path reaches Choose where to apply the policy. | Found: Go to Solutions > Data Loss Prevention > Policies > + Create policy. On What info do you want to protect?, choose the Enterprise applications & devices option. Select Custom > Custom policy. On Choose where to apply the policy, select one or more of the supported non-Microsoft apps | Fix: Use 'Solutions > Data Loss Prevention > Policies > + Create policy > What info do you want to protect? > Enterprise applications & devices > Custom > Custom policy > Assign admin units > Full directory > Choose where to apply the policy > app > Edit > Specific instances > + Include instance' in controls[0].ui.path and the rendered row. The original stops on the correct location-selection page but omits the wizard heading and instance-scoping steps documented at https://learn.microsoft.com/purview/dlp-non-microsoft-connected-applications. | Source: https://learn.microsoft.com/purview/dlp-non-microsoft-connected-applications
+- [supported, minor] controls[1].ui; controls[1].note; Governance controls table / admin-path: The printed auto-labeling wizard path is in the documented order, with the location-selection continuation in its note. | Found: Go to Solutions > Information protection > Policies > Auto-labeling policies > + Create auto-labeling policy. On What type of auto-labeling policy do you want to create?, choose Automatically apply labels only. On Choose a label to auto-apply, choose Choose a label. | Fix: Use 'Solutions > Information protection > Policies > Auto-labeling policies > + Create auto-labeling policy > What type of auto-labeling policy do you want to create? > Automatically apply labels only > Custom > Custom policy > Choose a label to auto-apply > Choose a label > Choose a sensitivity label > Assign admin units > Full directory > Choose locations where you want to apply the label' in controls[1].ui.path and its rendered row. Remove the duplicated 'Path continues' clause from the note. Source: https://learn.microsoft.com/purview/information-protection-non-microsoft-connected-apps. | Source: https://learn.microsoft.com/purview/information-protection-non-microsoft-connected-apps
+- [supported, minor] controls[2].ui; Governance guidance; Governance controls table / admin-path: The Defender connector route is Settings > Cloud Apps > Connected Apps > App Connectors > + Connect an app. | Found: In the Microsoft Defender Portal, select Settings. Then choose Cloud Apps. Under Connected Apps, select App Connectors. Select the +Connect an app to add an app and then select an app. | Fix: Keep the supported path; '+Connect an app' differs only in spacing. Add to controls[2].note: 'Microsoft also documents Cloud Apps > Connected apps > Connect an app (or Add a new connector).' Cite https://learn.microsoft.com/defender-cloud-apps/enable-instant-visibility-protection-and-governance-actions-for-your-apps#enable-app-connectors in sources, because that Microsoft page gives a different route. | Source: https://learn.microsoft.com/defender-cloud-apps/get-started
+- [supported, minor] controls[3].ui; Governance guidance; Governance controls table / admin-path: Cloud apps > Policies > Policy management > All policies opens the Defender policy list described by the migration page. | Found: In the Microsoft Defender portal, go to Cloud apps > Policies > Policy management. Select the All policies tab. ... Set the Type filter to File policy. | Fix: Keep the supported list-page path. Add to controls[3].note: 'Set the Type filter to File policy to review existing file policies.' This completes the review step documented at https://learn.microsoft.com/defender-cloud-apps/migrate-file-policies-to-purview#review-existing-file-policies without changing the row's scope. | Source: https://learn.microsoft.com/defender-cloud-apps/migrate-file-policies-to-purview
+- [contradicted, minor] Governance guidance: At rollout / consistency: The checklist tells administrators to publish sensitivity labels, but the controls table has no label-publication row. | Found: Create auto-labeling policies for Box or Google Workspace after publishing the labels they use. The five control rows cover DLP, auto-labeling, app connectors, file policies and the Instances location, not publishing labels. | Fix: Remove 'after publishing the labels they use' from the At rollout checklist bullet and retain label publication as the documented prerequisite in Scope and controls[1].note. The checklist's publication step has no corresponding control row; do not add a new row in this correction.
 -->

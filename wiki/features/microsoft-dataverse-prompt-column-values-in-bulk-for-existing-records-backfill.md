@@ -4,7 +4,7 @@ slug: "microsoft-dataverse-prompt-column-values-in-bulk-for-existing-records-bac
 roadmapId: 570865
 topic: "power-platform"
 products: ["Power Apps","Microsoft Dataverse","Microsoft Power Platform governance and administration"]
-summary: "Makers will be able to run a Dataverse prompt column over records that already exist. An environment setting, off by default, gates it, and each run consumes credits, so admins decide where to allow it."
+summary: "Makers will be able to run a Dataverse prompt column over records that already exist. An environment setting, on by default, gates it, and each run consumes credits, so admins decide where to allow it."
 status: "in-development"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)","GCC","GCC High"]
@@ -14,7 +14,7 @@ previewDate: null
 risk: "medium"
 cost: "variable"
 impact: "medium"
-defaultState: "admin-opt-in"
+defaultState: "user-opt-in"
 action: "review"
 licensing:
   model: "consumption"
@@ -59,7 +59,7 @@ controls:
       path: "Manage > Environments > environment > Settings > Product > Features > Allow bulk processing of existing records"
       docs: "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column"
     api: null
-    note: "Off by default per Learn. The setting label is read on the prompt column page; the route to the Features page is on the Manage feature settings page. Needs System Administrator or equivalent."
+    note: "On by default per Learn. The setting label is read on the prompt column page; the route to the Features page is on the Manage feature settings page. Needs System Administrator or equivalent."
   - governs: "Whether imported prompt column jobs pause for review before they run"
     scope: "environment"
     ui:
@@ -81,7 +81,7 @@ controls:
     note: "Not specific to backfill. The request body sets aipromptsenabled, a Boolean that enables or disables AI prompts. Administration page: enabled by default; Organization table reference: DefaultValue False for AiPromptsEnabled."
 confidence: "high"
 created: "2026-11-18"
-updated: "2026-11-18"
+updated: "2026-11-26"
 roadmapModified: "2026-10-15T22:47:30"
 changes:
   - date: "2026-11-18"
@@ -96,19 +96,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 77 statements not yet confirmed"
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 86 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-26"
+    note: "Corrected the default: Learn says Allow bulk processing of existing records is on by default, so the default state is now user-opt-in; reworded the credit-check advice to match Learn."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 89 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-26"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 86
-  confirmed: 84
+  claims: 89
+  confirmed: 89
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "77e8bdf6b5d04aa6da0f8ac65b462027"
+  contradicted: 0
+  attempts: 0
+  hash: "b8c3ac9ff6fb00529545571ae8f77d92"
 ---
 
 ## What's changing
@@ -123,9 +127,9 @@ Status: the roadmap item is In development with a target of November CY2026, rel
 
 ## Why it matters
 
-This is a spend and data-quality decision that lands on makers by default, so admins should decide where it is allowed. A backfill runs the prompt over history in one job, and each execution consumes credits. Microsoft tells admins to ensure sufficient AI credit capacity in the environment before enabling the setting.
+This is a spend and data-quality decision that lands on makers by default, so admins should decide where it is allowed. A backfill runs the prompt over history in one job, and each execution consumes credits. Microsoft advises confirming the environment's available credits before starting a bulk run.
 
-The gate is the environment setting **Allow bulk processing of existing records**, which Learn says is off by default. Until an admin turns it on in an environment, the bulk option is not available there. Where it is on, plan for makers to use it against production tables, and agree filters and test runs with them first.
+The gate is the environment setting **Allow bulk processing of existing records**, which Learn says is on by default; administrators can review whether to allow it in each environment. Where it is on, plan for makers to use it against production tables, and agree filters and test runs with them first.
 
 ## Risk assessment
 
@@ -158,13 +162,13 @@ The gate is the environment setting **Allow bulk processing of existing records*
 
 **Where it shows.** Microsoft says prompt column executions appear in Power Automate > Automation center > AI Builder activity, in the **Estimated consumption** column, and show whether each execution used AI Builder credits or Copilot Credits. Learn also says the credits consumed by the job can be viewed in System jobs. See [Copilot Credits](/concepts/copilot-credits/) for the shared meter.
 
-**Capacity.** Learn says to ensure sufficient AI credit capacity is available in the environment before enabling the bulk setting. A per-record rate for backfill is not given on the prompt column page; the estimate shown in the maker panel is the figure to use.
+**Capacity.** Microsoft advises confirming the environment's available credits before starting a bulk run. A per-record rate for backfill is not given on the prompt column page; the estimate shown in the maker panel is the figure to use.
 
 **Indirect cost.** Admin time to decide which environments allow the setting, and maker time to test prompts and filters before a run.
 
 ## Scope
 
-**Who and where.** The setting applies per environment, and makers use the option from a prompt column panel. The roadmap record lists Power Apps, Microsoft Dataverse and Microsoft Power Platform governance and administration, with the web platform and the Worldwide (Standard Multi-Tenant), GCC and GCC High clouds.
+**Who and where.** The setting applies per environment, admins decide where to allow bulk processing, and makers use the option from a prompt column panel. The roadmap record lists Power Apps, Microsoft Dataverse and Microsoft Power Platform governance and administration, with the web platform and the Worldwide (Standard Multi-Tenant), GCC and GCC High clouds.
 
 **Prerequisites.** Learn lists the Copilot and AI Prompts features turned On in the Features area of the environment settings, and the AI Builder prompts licensing model. A table can have up to five prompt columns. Input columns cannot be formula, file, image or other prompt columns; Microsoft says their input value is ignored.
 
@@ -176,13 +180,13 @@ The gate is the environment setting **Allow bulk processing of existing records*
 
 ### Before rollout
 
-- Identify the environments where makers build prompt columns and confirm that **Allow bulk processing of existing records** is still off in each (see the controls table).
+- Review **Allow bulk processing of existing records** in each environment and decide where it should remain on (see the controls table).
 - Confirm the AI prompts feature is on only where you intend prompt columns to run, since Learn lists it as a prerequisite.
 - Brief makers to apply filters and test a few records before a backfill.
 
 ### At rollout
 
-- Turn on **Allow bulk processing of existing records** one environment at a time, starting with a non-production environment.
+- Review bulk processing one environment at a time, starting with a non-production environment, and disable it where it should not be allowed.
 - Decide whether to leave **Require review before processing imported prompt columns** on; Microsoft documents it as on by default and it pauses imported jobs until reviewed.
 - Ask makers to review the record count and estimated credit consumption shown before they select **Run prompt**.
 
@@ -197,13 +201,13 @@ The gate is the environment setting **Allow bulk processing of existing records*
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether prompt columns can be run on existing records in bulk in an environment</strong><br><small>Environment</small><br><small class="controls__note">Off by default per Learn. The setting label is read on the prompt column page; the route to the Features page is on the Manage feature settings page. Needs System Administrator or equivalent.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Allow bulk processing of existing records <a href="https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether prompt columns can be run on existing records in bulk in an environment</strong><br><small>Environment</small><br><small class="controls__note">On by default per Learn. The setting label is read on the prompt column page; the route to the Features page is on the Manage feature settings page. Needs System Administrator or equivalent.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Allow bulk processing of existing records <a href="https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether imported prompt column jobs pause for review before they run</strong><br><small>Environment</small><br><small class="controls__note">On by default per Learn; an imported job pauses in System jobs and can be started manually after review. Specialized columns using code page still states importing and exporting solutions with prompt columns is not supported.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Require review before processing imported prompt columns <a href="https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether AI prompts, which prompt columns rely on, are available in an environment</strong><br><small>Environment</small><br><small class="controls__note">Not specific to backfill. The request body sets aipromptsenabled, a Boolean that enables or disables AI prompts. Administration page: enabled by default; Organization table reference: DefaultValue False for AiPromptsEnabled.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › AI Builder › AI prompts <a href="https://learn.microsoft.com/ai-builder/administer" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH /organizations(&lt;organizationid&gt;)</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-The environment settings are changed by someone with the System Administrator role or equivalent, per the Manage feature settings page. Learn says the **Allow bulk processing of existing records** setting is off by default and that **Require review before processing imported prompt columns** is on by default.
+The environment settings are changed by someone with the System Administrator role or equivalent, per the Manage feature settings page. Learn says the **Allow bulk processing of existing records** setting is on by default and that **Require review before processing imported prompt columns** is on by default.
 
 Maker-side, select **Also generate values for Existing records in bulk**, review the record count and credit estimate, save the column configuration, and select **Run prompt** to queue the job. Learn says the **Allow prompt column execution** checkbox on the Edit column pane is enabled by default and, when cleared, stops AI analysis for that column. Learn adds that for prompts to be executed, both tenant level and column level settings need to be enabled.
 
@@ -217,17 +221,13 @@ To monitor or stop a job, go to Power Platform admin center > Manage > Environme
 - Is a record-level audit of values changed by a backfill planned, given that prompt columns are documented as not audited?
 
 <!-- rationale
-risk: Medium. A backfill writes AI-generated values into many existing records at once, but the environment setting that allows it is off by default and Microsoft documents filters and a review step.
+risk: Medium. A backfill writes AI-generated values into many existing records at once; the environment setting that allows it is on by default, but a maker chooses the bulk option and Microsoft documents filters and a review step.
 cost: Variable. Prompt columns consume credits each time a prompt executes; the activity report shows whether an execution used AI Builder credits or Copilot Credits, so a bulk backfill can consume substantial credits.
-impact: Medium. Makers using prompt columns notice it first, and the generated values then appear for the app users who read those tables; admins decide where the setting is turned on.
+impact: Medium. Makers using prompt columns notice it first, and the generated values then appear for the app users who read those tables; admins decide where to allow bulk processing.
 -->
 
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: defaultState; Why it matters; Scope; rationale: impact / default: Backfill is admin-opt-in and cannot be used in an environment until an administrator enables it. | Found: Allow bulk processing of existing records: This is the main setting that controls running prompt on existing records in bulk in an environment. It is on by default. | Fix: Set defaultState to "user-opt-in": the environment gate is on by default, but a maker chooses the bulk option and selects Run prompt. Replace 'Until an admin turns it on in an environment, the bulk option is not available there' with 'The bulk-processing setting is on by default; administrators can review whether to allow it in each environment.' In Scope and the impact rationale, replace advice implying initial admin enablement with 'admins decide where to allow bulk processing'. Source: https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column. | Source: https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column
-- [contradicted, blocker] summary; controls[0].note; Why it matters; Governance guidance; Governance controls; rationale: risk / default: Allow bulk processing of existing records is off by default. | Found: Allow bulk processing of existing records: This is the main setting that controls running prompt on existing records in bulk in an environment. It is on by default. | Fix: Change 'off by default' to 'on by default' in the summary, controls[0].note and its rendered counterpart, Why it matters, Governance controls and risk rationale. Replace the Before rollout instruction with 'Review Allow bulk processing of existing records in each environment and decide where it should remain on.' Replace the At rollout instruction with 'Review bulk processing one environment at a time, starting with a non-production environment, and disable it where it should not be allowed.' Source: https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column. | Source: https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].ui; Governance controls / admin-path: AI prompts is at Power Platform admin center > Manage > Environments > environment > Settings > Product > Features > AI Builder > AI prompts. | Found: Select Environments > [select an environment] > Settings > Product > Features. ... On the Features settings page under AI Builder, enable or disable the AI prompts toggle. | Fix: Keep the path supported by Administer AI Builder and add to controls[2].note and its rendered counterpart: 'Manage feature settings lists a standalone AI prompts section with the setting Enable the AI prompts feature in Power Platform and Copilot Studio; the AI Builder administration page still places the toggle under AI Builder.' The differing page, already cited, is https://learn.microsoft.com/power-platform/admin/settings-features#ai-prompts. | Source: https://learn.microsoft.com/ai-builder/administer
-- [supported, minor] Why it matters; Cost and licensing: Capacity / cost: Microsoft advises ensuring sufficient environment AI credit capacity before enabling the bulk setting. | Found: Apply filters so the prompt runs only on the records you need, and test a few records initially to understand credit consumption for your data. Also, confirm your environment's available credits before you start. | Fix: In both places replace the attributed advice with 'Microsoft advises confirming the environment's available credits before starting a bulk run.' The current source gives that advice before running the job, not before enabling the setting: https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column. | Source: https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column
+- [supported, minor] Governance controls: To monitor or stop a job / admin-path: To monitor or stop a job, go to Power Platform admin center > Manage > Environments > environment > Settings > Audit and logs > System jobs. | Found: Select Settings > Audit and logs > System jobs to see a grid view of system jobs. ... Select a job and then select the Actions menu. | Fix: Keep the route for monitoring. Add: 'To stop or manage a job, select the job, open Actions, and choose Cancel, Postpone, Pause or Resume as appropriate.' The remaining steps are documented at https://learn.microsoft.com/power-platform/admin/monitor-system-jobs. | Source: https://learn.microsoft.com/power-platform/admin/monitor-system-jobs
 -->

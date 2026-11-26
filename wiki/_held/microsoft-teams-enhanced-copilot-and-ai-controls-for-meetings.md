@@ -115,18 +115,20 @@ changes:
     note: "Corrected after verification: licensing model is now included, citing the Teams service description; noted the Teams PowerShell module requirement for the Work IQ parameter; marked the MeetingAI checklist steps as documented only in the notes under the table."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 77 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 79 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 6
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-19"
+  status: "held"
+  date: "2026-11-26"
   version: 6
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 77
-  confirmed: 76
+  claims: 79
+  confirmed: 77
   unconfirmed: 0
-  contradicted: 1
-  attempts: 0
+  contradicted: 2
+  attempts: 1
   hash: "e07ffc2ebd3f9fd427a57b1ba580cd8b"
 ---
 
@@ -235,8 +237,11 @@ cost: Low. The only cost the sources show is admin time to update scripts and ru
 impact: Medium. Teams administrators see two settings where there was one, and organisers get new AI options in their meeting options; Microsoft says the one-time mapping preserves each policy's current effective behaviour.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] What's changing: rollout paragraph / date: MC1532253 carrying the quoted rollout schedule was updated on 3 November 2026. | Found: Updated November 19, 2026: We have updated the content. Thank you for your patience. | Fix: Replace 'MC1532253 (updated 3 November 2026)' with 'MC1532253 (updated 19 November 2026)'. Keep the rollout windows unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout, At rollout and After rollout / consistency: The checklist asks readers to decide, compare and test replacement-policy settings that do not appear in the controls table. | Found: Decide, per policy, whether organisers may override the AI and transcription settings ... not as table rows. ... Compare each policy's mapped MeetingAI and TranscriptionWithMeetingAI values ... Test a policy where Copilot is enforced off | Fix: Remove the Before rollout bullet beginning 'Decide, per policy', the At rollout bullet beginning 'Compare each policy', and the After rollout bullet beginning 'Test a policy'. The replacement-policy descriptions and migration recommendations can remain in the prose; noting missing table rows does not satisfy the checklist/table consistency rule.
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: The transcription UI path ends at Teams admin center > Meetings > Meeting policies > policy > Recording & transcription. | Found: You can use the Recording & Transcription section in the Teams admin center ... to manage your transcription policy. | Fix: Extend controls[1].ui.path and the rendered path to 'Meetings > Meeting policies > policy > Recording & transcription > Transcription'. The Transcription toggle is documented at https://learn.microsoft.com/microsoftteams/meeting-transcription-captions; cite that page. | Source: https://learn.microsoft.com/microsoftteams/copilot-teams-transcription
+- [contradicted, minor] Governance guidance: Before rollout, At rollout and After rollout / consistency: The checklist directs readers to decide, compare and test replacement-policy settings that have no controls-table rows. | Found: Decide, per policy, whether organisers may override the AI and transcription settings ... not as table rows. ... Compare each policy's mapped MeetingAI and TranscriptionWithMeetingAI values ... Test a policy where Copilot is enforced off | Fix: Remove the Before rollout bullet beginning 'Decide, per policy', the At rollout bullet beginning 'Compare each policy', and the After rollout bullet beginning 'Test a policy'. Keep the replacement-policy descriptions and migration recommendations in the prose; the notes about missing rows do not resolve the checklist/table inconsistency.
 -->

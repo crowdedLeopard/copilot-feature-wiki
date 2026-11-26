@@ -1,0 +1,970 @@
+{
+  "slug": "microsoft-viva-organizational-data-in-m365-is-now-available-in-gcc-moderate",
+  "roadmapId": 508518,
+  "title": "Microsoft Viva: Organizational Data in Microsoft 365 for GCC-Moderate tenants",
+  "status": "held",
+  "date": "2026-11-26",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-26",
+    "reasons": [
+      "1 blocking finding (claim 46)"
+    ]
+  },
+  "counts": {
+    "claims": 70,
+    "confirmed": 68,
+    "unconfirmed": 0,
+    "contradicted": 2,
+    "blocker": 1,
+    "major": 0,
+    "minor": 4
+  },
+  "summary": "Hold because the briefing incorrectly says uploading blank values deletes existing data. Microsoft's import instructions say blank values preserve existing values and require explicit deletion values instead. The roadmap facts and control routes are supported, with minor corrections to control details and qualifications.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "Organizational Data in Microsoft 365 is available in GCC-Moderate.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Organizational Data in Microsoft 365 is now available in the GCC-Moderate (GCC-M) environment!",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says government customers get ingestion capabilities previously available only commercially.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "With this release, government cloud customers can now leverage the same powerful data ingestion capabilities previously available only in commercial environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is May CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"May CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The record lists Microsoft 365 admin center and Microsoft Viva.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [ \"Microsoft 365 admin center\", \"Microsoft Viva\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists GCC.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [ \"GCC\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [ \"Web\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [ \"General Availability\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-07-02T23:12:48.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-07-02T23:12:48\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing; Scope",
+      "type": "behaviour",
+      "claim": "The service imports employee information from HR systems through the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-import",
+      "quote": "You can import this data into Microsoft applications and services through Microsoft 365 Organizational Data Service in the Microsoft 365 admin center",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The service accepts .csv file imports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+      "quote": "CSV Import | You upload a .csv file directly to Microsoft.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The Workday connector retrieves HR data using credentials supplied by the administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+      "quote": "Microsoft pulls data directly from Workday's Simple Object Access Protocol (SOAP) APIs using Workday credentials that you provide.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The SAP SuccessFactors connector retrieves HR data using credentials supplied by the administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+      "quote": "Microsoft pulls data directly from SAP SuccessFactors's public APIs using SAP SuccessFactors credentials that you provide.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "An Azure Blob Storage connector is an import option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+      "quote": "Azure Blob Storage Connector | Microsoft pulls your .csv file from Azure Blob using a Blob container URL you provide.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The API-based connector is in public preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+      "quote": "API-based Connector (Public Preview) | You send a .csv file from any HRIS source to the Microsoft API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Why it matters; Scope",
+      "type": "behaviour",
+      "claim": "Imported data can serve Microsoft 365 Profile, Copilot and Viva applications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/applications",
+      "quote": "Once you import organizational data into Microsoft 365 Organizational Data Service, it can be securely distributed to supported applications such as Microsoft 365 Profile, Microsoft Copilot, People Skills, Insights, Viva Glint, and other connected apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; rationale: risk; rationale: impact",
+      "type": "behaviour",
+      "claim": "Public attributes are automatically available to Profile and eligible downstream apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/import/import-orgdata",
+      "quote": "Public Microsoft 365 attributes are automatically shared with all eligible Microsoft 365 and Viva apps and services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Governance controls",
+      "type": "behaviour",
+      "claim": "Administrators choose the destinations for custom and app-specific attributes during attribute access configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/applications",
+      "quote": "For supported destinations such as Insights and Viva Glint, you can choose which custom and application-specific attributes are distributed to each app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The feature is admin-opt-in: provisioning and an administrator's import configuration are required before new HR data is ingested.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+      "quote": "Complete provisioning. ... Connect your data source: Upload a .csv file or configure a connector to your HRIS or data source. ... Review your configuration, mappings, and distribution settings before starting the import.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Scope; rationale: risk",
+      "type": "role",
+      "claim": "Only Global Administrators and Organizational Data Source Administrators can upload data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+      "quote": "Only Global Administrators and Organizational Data Source Administrators can upload data.",
+      "severity": "minor",
+      "fix": "Add: 'The Viva Insights transition page describes Global Administrator upload access as a temporary solution.' That cited page, https://learn.microsoft.com/viva/insights/advanced/admin/upload-org-data-admin-center, says: 'Only users with this role or the global admin role (as a temporary solution) can upload organizational data.'"
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Scope; Governance guidance: At rollout",
+      "type": "role",
+      "claim": "A Global Administrator completes service provisioning.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+      "quote": "Microsoft 365 Global Administrator | | Complete provisioning.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Provisioning is under Setup > Migration and imports > Organizational Data in Microsoft 365.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+      "quote": "In the Microsoft 365 admin center, go to Setup > Migration and imports > Organizational Data in Microsoft 365 and complete the provisioning process.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[0]; Risk assessment: Security & identity; Scope",
+      "type": "role",
+      "claim": "The Organizational Data Source Administrator can upload, update and delete organizational data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/permissions-reference",
+      "quote": "Upload, update, and delete the ingested organizational data in Microsoft 365 and Microsoft Viva applications",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[0]; Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "The Organizational Data Source Administrator can export organizational data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/permissions-reference",
+      "quote": "Export organizational data from the authorized applications",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[0].note",
+      "type": "role",
+      "claim": "Entra role-assignment instructions require at least Privileged Role Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
+      "quote": "Sign in to the Microsoft Entra admin center as at least a Privileged Role Administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "Assign the role in Microsoft Entra admin center under Identity > Roles & admins > role > Add assignments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
+      "quote": "Browse to Identity > Roles & admins. ... Select a role name to open the role. ... Select Add assignments",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "POST /v1.0/roleManagement/directory/roleAssignments assigns an Entra directory role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
+      "quote": "POST https://graph.microsoft.com/v1.0/roleManagement/directory/roleAssignments",
+      "severity": "minor",
+      "fix": "Append to controls[0].note: 'The request body sets roleDefinitionId to the Organizational Data Source Administrator role definition and principalId to the assignee; directoryScopeId is / for tenant scope.' These properties appear in the cited assignment example."
+    },
+    {
+      "n": 29,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Access policies are at Settings > Setup > Migration and Imports > Microsoft 365 Organizational Data Service > Settings > Edit access policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies",
+      "quote": "Under the tools to migrate or import data table, select Microsoft 365 Organizational Data Service. ... Under the Organization-wide access policy section, select Edit access policies.",
+      "severity": "minor",
+      "fix": "Use the full heading-inclusive path: 'Settings > Setup > Migration and Imports > tools to migrate or import data > Microsoft 365 Organizational Data Service > Settings > Organization-wide access policy > Edit access policies'. The omitted elements are headings, not additional choices."
+    },
+    {
+      "n": 30,
+      "where": "controls[1].api; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not documented an API for Organizational Data Service access policies.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Graph beta Organizational Data Service custom attribute access policies Staging PowerShell API; \"Organizational Data Service\" \"access policies\" \"API\". Read set-access-policies; found UI instructions and audit events, not a policy-setting API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "Global Administrator or Organizational Data Source Administrator manages access policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies",
+      "quote": "The Microsoft 365 Global Administrator or the Organizational Data Source Administrator create and manage these policies centrally in Microsoft 365 Organizational Data Service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[1].note; What's changing; Risk assessment; Governance guidance",
+      "type": "default",
+      "claim": "Custom attributes default to Staging, which grants no user access until configured, subject to the separately stated self-access rule.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies",
+      "quote": "The default access policy for custom attributes is Staging. Until the Staging policy is configured, no users can access data for custom attributes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Data exposure; Why it matters; Governance guidance",
+      "type": "applicability",
+      "claim": "Job title, hire date and level designation have Public (internal) access, visible to all tenant users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies",
+      "quote": "Visibility: Data is visible to all users in the tenant ... Microsoft_JobTitle | Public (internal) ... Microsoft_LevelDesignation | Public (internal) ... Microsoft_HireDate | Public (internal)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Data exposure; Governance controls",
+      "type": "behaviour",
+      "claim": "Reserved attribute access policies are fixed and cannot be edited.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies",
+      "quote": "Reserved attribute access policies are preset and aren't editable.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Access policies govern Microsoft 365, Copilot and People Skills user experiences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies",
+      "quote": "These policies impact user access to data in: Microsoft 365 Copilot and agents including Workforce Insights; Microsoft 365 People Skills services including People Search, People Card, and Org Explorer; Microsoft 365 apps",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Scope; Governance controls",
+      "type": "applicability",
+      "claim": "Insights and Viva Glint are not governed by these access policies and explicitly grant access to their own users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies",
+      "quote": "Insights and Viva Glint aren't subject to the same access policies configured for Microsoft 365 and Microsoft Copilot. ... Admins explicitly grant access to specific users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Users can see data describing themselves in addition to policy-granted access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies",
+      "quote": "In Microsoft 365, users have access to data that describes themselves, such as performance ratings. This access is available in addition to any permissions granted by a policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "Custom attribute access policies apply to attributes shared with Workforce Insights.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies",
+      "quote": "Access policies for custom attributes apply only to custom attributes that are shared with Workforce Insights.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "Data prioritization is at Settings > Viva > Data management > Microsoft 365 Organizational Data Service > Settings > Data prioritization > Edit data prioritization.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/manage/manage-data-precedence",
+      "quote": "In the Microsoft 365 admin center, navigate to Microsoft 365 Organizational Data Service. ... On the left, select Settings. ... Under Data prioritization, select Edit data prioritization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[2].api; controls[2].note",
+      "type": "command",
+      "claim": "PATCH /v1.0/admin/people/profilePropertySettings/{id} sets source precedence through prioritizedSourceUrls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/profilepriority-configure-profilepropertysetting",
+      "quote": "PATCH https://graph.microsoft.com/v1.0/admin/people/profilePropertySettings/00000000-0000-0000-0000-000000000001 ... \"prioritizedSourceUrls\": [",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[2].note; Scope",
+      "type": "role",
+      "claim": "The service's data precedence UI applies to Global Administrators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/manage/manage-data-precedence",
+      "quote": "Applies to: Microsoft 365 Global Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Change & support; Governance controls",
+      "type": "default",
+      "claim": "Microsoft Entra data has precedence over Organizational Data Service data by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/profilepriority-configure-profilepropertysetting",
+      "quote": "2. Microsoft Entra ID. The source ID is 4ce763dd-9214-4eff-af7c-da491cc3782d. 3. Microsoft 365 Organizational Data Service. The source ID is 7986c642-b494-4140-8df4-f5ed125e2c67.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Change & support; Why it matters; rationale: impact",
+      "type": "behaviour",
+      "claim": "Giving organizational data precedence changes profile-card values where sources provide different values.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/manage/manage-data-precedence",
+      "quote": "If you assign data precedence to organizational data, when an experience like Profile cards in Microsoft 365 queries the Microsoft 365 User Profile to get the jobTitle property for that end user, \"Senior Software Engineer\" is returned instead of \"Software Engineer.\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[2].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Graph orders Organizational Data Service against Entra and Copilot connectors, while the service separately orders its own connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/profilepriority-configure-profilepropertysetting",
+      "quote": "An administrator can change the order of the sources listed previously ... The priority of customer sources behind Microsoft 365 Organizational Data Service is managed separately in the Microsoft 365 Organizational Data Service platform.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Microsoft recommends regular refreshed uploads, for example weekly, to prevent stale profile data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/manage/manage-data-precedence",
+      "quote": "we recommend that you upload refreshed organizational data regularly (for example, weekly). This regular upload prevents the data in the user profile from becoming stale",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "An upload with blank values overwrites and effectively immediately deletes the user's existing data when processed.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/import/import-orgdata",
+      "quote": "If you include an attribute but leave the value blank or empty, the previously uploaded value will be used and the existing value won't be updated. New uploads merge with previous data and don't overwrite that data.",
+      "severity": "blocker",
+      "fix": "Replace the first sentence with: 'Microsoft's import instructions say blank or empty values preserve previously uploaded values; deleting values requires explicit deletion values rather than ordinary blank cells.' The cited data-usage page describes deletion using nulled values and links to these import instructions; it does not justify equating plain blank cells with deletion."
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Microsoft's CSV import page allows up to 24 hours for processing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/import/import-orgdata",
+      "quote": "Allow up to 24 hours to process (first upload can take up to 72 hours).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The first upload can take up to 72 hours.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/import/import-orgdata",
+      "quote": "first upload can take up to 72 hours",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance guidance: At rollout; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Data staging permits review and export of ingested data before sharing it downstream.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/import/import-orgdata",
+      "quote": "Turn on data staging to review the validation details before sharing the data with downstream apps. Export the ingested data file to confirm it looks right.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Staged sharing must be approved within 48 hours.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/import/import-orgdata",
+      "quote": "After reviewing, you need to approve data sharing within 48 hours, after which the ingestion is no longer available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Licensing requirements depend on the application consuming the organizational data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+      "quote": "Licensing requirements vary based on the Microsoft 365 or Viva app that will consume organizational data from Microsoft 365 Organizational Data Service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The service's entitlement is included with the licenses named for its consuming applications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+      "quote": "Review the licensing requirements for the Microsoft 365 and Viva services you plan to enable. ... Microsoft 365 Profile | At least one Exchange Online license in the tenant",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Microsoft 365 Profile requires at least one Exchange Online license in the tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+      "quote": "Microsoft 365 Profile | At least one Exchange Online license in the tenant",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Insights requires Viva Insights or a Microsoft 365 license that includes Insights.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+      "quote": "Insights | A Microsoft Viva Insights license, or a Microsoft 365 license that includes Insights",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Viva Glint requires Viva Glint or a Microsoft 365 license that includes Viva Glint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+      "quote": "Viva Glint | A Microsoft Viva Glint license, or a Microsoft 365 license that includes Viva Glint",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "People Skills requires Microsoft 365 Copilot or Viva.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+      "quote": "People Skills | Microsoft 365 Copilot or Viva.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Cost and licensing",
+      "type": "availability",
+      "claim": "The Viva Insights subscription is available in GCC Moderate.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-viva-service-description",
+      "quote": "The Viva Insights subscription is available in GCC Moderate but not in GCC High and DoD.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No separate price or meter for Organizational Data Service itself is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Organizational Data Service licensing pricing meter cost; \"Organizational Data Service\" \"price\" \"license\". Read get-started and Microsoft Viva service description; found consuming-app licenses, not a separate service price or meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "What's changing; Scope; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not published a GCC-M connector availability list specifically for Organizational Data Service.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Organizational Data Service GCC Moderate Workday SAP connectors availability. Read get-started, supported-environments and Glint consumption; searched Workday/SAP import pages for GCC/government/Moderate: no matches or service-specific connector list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "What's changing; Scope; Open questions",
+      "type": "availability",
+      "claim": "The Viva Insights environments table marks API-based organizational data import unsupported in GCC-M.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/supported-environments",
+      "quote": "Feature | WW | GCC-M | GCC-H ... API-based organizational data import | Public Preview | No | No",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "What's changing; Scope; Open questions",
+      "type": "availability",
+      "claim": "The Viva Insights environments table marks Azure blob-based organizational data import unsupported in GCC-M.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/supported-environments",
+      "quote": "Feature | WW | GCC-M | GCC-H ... Azure blob-based organizational data import | Public Preview | No | No",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "Viva Glint's Organizational Data Service integration is available to GCC-M customers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-consumption",
+      "quote": "The Viva Glint integration with Microsoft 365 Organizational Data Service is available to all customers, including customers with multiple Viva Glint instances, customers in GCC Moderate (GCC-M) environments",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Why it matters",
+      "type": "date",
+      "claim": "Microsoft's Viva Insights page says all tenants will move to admin-center data uploads by the middle of 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/upload-org-data-admin-center",
+      "quote": "By the middle of 2026, all tenants will be migrated to managing data uploads in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Why it matters; Governance guidance: After rollout; Open questions",
+      "type": "behaviour",
+      "claim": "The tenant admin receives advance notice of the scheduled Viva Insights upload transition through Message Center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/upload-org-data-admin-center",
+      "quote": "your tenant admin will receive a notification prior to your scheduled transition. ... The migration timing for your specific tenant is communicated in the Message Center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "After transition, organizational data uploads stop working in the Viva Insights web app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/upload-org-data-admin-center",
+      "quote": "After your tenant transitions to Microsoft 365 Organizational Data Service, you can no longer upload data through the Viva Insights web app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Scope",
+      "type": "role",
+      "claim": "Viva Glint Administrators complete Viva Glint attribute mapping.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+      "quote": "Viva Glint Administrator | HRIS data owner | Complete Viva Glint schema mapping. Ensure imported attributes are mapped to the correct Viva Glint attributes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Governance guidance: At rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist tells administrators to complete provisioning and turn on data staging, but neither control appears in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Complete provisioning as a Global Administrator ... Turn on data staging for the first upload ... Who can upload, update, delete and export organisational data ... Which users can see custom attribute data ... Whether organisational data or Microsoft Entra ID supplies values",
+      "severity": "minor",
+      "fix": "Remove the provisioning and data-staging checklist bullets, leaving the already documented factual discussion elsewhere intact; these checklist controls have no corresponding table row. Do not add new control rows in this correction."
+    },
+    {
+      "n": 68,
+      "where": "controls[2].note",
+      "type": "behaviour",
+      "claim": "The Organizational Data Service profile source ID is 7986c642-b494-4140-8df4-f5ed125e2c67.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/profilepriority-configure-profilepropertysetting",
+      "quote": "Microsoft 365 Organizational Data Service. The source ID is 7986c642-b494-4140-8df4-f5ed125e2c67.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "controls[0].note",
+      "type": "role",
+      "claim": "Organizational Data Service instructions say a Global Administrator assigns the Organizational Data Source Administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-import",
+      "quote": "The Organizational Data Source Administrator role is assigned by a Global Administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Uploaded organizational data can be used by non-Microsoft services with Microsoft Graph access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/manage/orgdata-data-usage",
+      "quote": "The organizational data you upload can be used by Viva, Microsoft 365 services, and non-Microsoft services that have access through the Microsoft Graph API.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-26T20:14:51.031Z",
+    "summary": {
+      "links": 16,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 1,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=508518",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/organizational-data",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/manage/manage-data-precedence",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/manage/orgdata-data-usage",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/import/import-orgdata",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/applications",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/profilepriority-configure-profilepropertysetting",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/supported-environments",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/glint/setup/modis-data-consumption",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/glint/setup/modis-data-import",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/insights/advanced/admin/upload-org-data-admin-center",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/role-based-access-control/permissions-reference",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-viva-service-description",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Who can upload, update, delete and export organisational data (Organizational Data Source Administrator role)",
+        "docs": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
+        "reachable": true,
+        "segments": [
+          "Identity",
+          "Roles & admins",
+          "role",
+          "Add assignments"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Who can upload, update, delete and export organisational data (Organizational Data Source Administrator role)",
+        "docs": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
+        "reachable": true,
+        "token": "/v1.0/roleManagement/directory",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which users can see custom attribute data, and for which population (access policies)",
+        "docs": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Setup",
+          "Migration and Imports",
+          "Microsoft 365 Organizational Data Service",
+          "Settings",
+          "Edit access policies"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether organisational data or Microsoft Entra ID supplies values in the Microsoft 365 User Profile (data precedence)",
+        "docs": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/manage/manage-data-precedence",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Viva",
+          "Data management",
+          "Microsoft 365 Organizational Data Service",
+          "Settings",
+          "Data prioritization",
+          "Edit data prioritization"
+        ],
+        "missing": [
+          "Viva",
+          "Data management"
+        ]
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Whether organisational data or Microsoft Entra ID supplies values in the Microsoft 365 User Profile (data precedence)",
+        "docs": "https://learn.microsoft.com/graph/profilepriority-configure-profilepropertysetting",
+        "reachable": true,
+        "token": "/v1.0/admin/people",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}
