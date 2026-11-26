@@ -2,61 +2,66 @@
   "slug": "microsoft-viva-manage-gdpr-requests-in-engage-admin-center",
   "roadmapId": 496147,
   "title": "Viva Engage: handle GDPR deletion requests in the Engage admin center",
-  "status": "held",
-  "date": "2026-11-25",
-  "version": 2,
+  "status": "verified-with-gaps",
+  "date": "2026-11-26",
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 2,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-25",
-    "reasons": [
-      "5 blocking findings (claims 15, 17, 18, 25, 72)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 79,
-    "confirmed": 73,
-    "unconfirmed": 2,
-    "contradicted": 4,
-    "blocker": 5,
+    "claims": 92,
+    "confirmed": 91,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 0,
     "major": 0,
-    "minor": 3
+    "minor": 1
   },
-  "summary": "Hold: Microsoft documents Graph automation for assigning Verified and Network administrator roles, but the briefing says neither role has documented automation. The default-on assertion and cost classification also need correction, and the REST permission note omits the reference's paid-network qualification.",
+  "summary": "The briefing passes: Microsoft's documentation supports the deletion options, administrator roles and automation calls, and the roadmap facts match the record. It appropriately reports the conflicting status and role guidance. Two checklist actions have no corresponding controls-table row, a minor completeness issue.",
   "claims": [
     {
       "n": 1,
       "where": "title; summary; What's changing",
       "type": "record",
-      "claim": "The roadmap describes managing GDPR deletion requests directly within the Engage admin center.",
+      "claim": "GDPR deletion requests can be managed directly in the Engage admin center.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "You can now manage GDPR deletion requests directly within the Engage admin center, streamlining the process and reducing reliance on the legacy Yammer admin center. This update centralizes compliance actions in one modern interface.",
+      "quote": "You can now manage GDPR deletion requests directly within the Engage admin center",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "front matter: products",
+      "where": "summary; What's changing",
       "type": "record",
-      "claim": "The roadmap product is Microsoft Viva.",
+      "claim": "The roadmap describes reducing reliance on the legacy Yammer admin center.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Viva\"]",
+      "quote": "streamlining the process and reducing reliance on the legacy Yammer admin center.",
       "severity": null,
       "fix": null
     },
     {
       "n": 3,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes centralising compliance actions in one interface.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This update centralizes compliance actions in one modern interface.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
       "where": "front matter: status; What's changing; Open questions",
       "type": "record",
-      "claim": "The roadmap record lists the item as In development.",
+      "claim": "The roadmap status is In development.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
@@ -64,7 +69,7 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 5,
       "where": "front matter: targetDate; What's changing; Open questions",
       "type": "record",
       "claim": "The roadmap target is June CY2025.",
@@ -75,10 +80,10 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 6,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap record gives no preview date.",
+      "claim": "The roadmap provides no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -86,7 +91,7 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 7,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
@@ -97,10 +102,10 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 8,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap platform is Web.",
+      "claim": "The roadmap lists Web as the platform.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -108,7 +113,7 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 9,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
       "claim": "The roadmap release phase is General Availability.",
@@ -119,10 +124,21 @@
       "fix": null
     },
     {
-      "n": 9,
+      "n": 10,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap product is Microsoft Viva.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Viva\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap record was modified at 2025-06-05T23:00:34.",
+      "claim": "The roadmap modification timestamp is 2025-06-05T23:00:34.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2025-06-05T23:00:34\"",
@@ -130,10 +146,10 @@
       "fix": null
     },
     {
-      "n": 10,
-      "where": "controls[0].ui; Governance controls; Governance guidance",
+      "n": 12,
+      "where": "controls[0].ui; What's changing; Governance guidance; Governance controls",
       "type": "admin-path",
-      "claim": "The GDPR removal options are at Viva Engage admin center > Governance and compliance > Data management > Manage GDPR data subject requests > removal option.",
+      "claim": "The Viva Engage admin center route is Governance and compliance > Data management > Manage GDPR data subject requests > removal option.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/manage-viva-engage-users/add-block-or-remove-users",
       "quote": "Select Governance and compliance > Data management. Check the options for Manage GDPR data subject requests. GDPR subject requests support three distinct options:",
@@ -141,219 +157,54 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 13,
       "where": "controls[0].api; Governance controls",
       "type": "command",
       "claim": "DELETE https://www.yammer.com/api/v1/users/:user_id.json?gdpr_delete=true submits a GDPR deletion request.",
       "status": "supported",
       "source": "https://learn.microsoft.com/rest/api/yammer/users_id_delete",
-      "quote": "https://www.yammer.com/api/v1/users/:user_id.json; gdpr_delete=true — submits a GDPR deletion request. Asynchronously erases the user’s PII across systems and anonymizes authored content (messages remain but are no longer attributable).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "controls[1].ui; Governance controls",
-      "type": "admin-path",
-      "claim": "A tenant role assignment can be made at Microsoft Entra admin center > Identity > Roles & admins > role > Add assignments.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
-      "quote": "Browse to Identity > Roles & admins. Select a role name to open the role. Don't add a check mark next to the role. Select Add assignments and then select the users, groups, or agent identities you want to assign to this role.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "controls[1].api; Governance controls",
-      "type": "command",
-      "claim": "POST /v1.0/roleManagement/directory/roleAssignments creates a Microsoft Entra directory role assignment.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments",
-      "quote": "Create a new unifiedRoleAssignment object. POST https://graph.microsoft.com/v1.0/roleManagement/directory/roleAssignments",
+      "quote": "# /users/[:id].json - Delete\nhttps://www.yammer.com/api/v1/users/:user_id.json\n`gdpr_delete=true` — submits a GDPR deletion request.",
       "severity": null,
       "fix": null
     },
     {
       "n": 14,
-      "where": "controls[2].ui; Governance controls",
-      "type": "admin-path",
-      "claim": "The Verified Admin assignment route is Yammer admin center > Admins > Current Admins > user > Grant Verified Admin.",
+      "where": "What's changing; Why it matters; Risk assessment; Scope; Governance controls; rationale: risk",
+      "type": "role",
+      "claim": "Network admins can use the Manage GDPR data subject requests module.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions",
-      "quote": "If the user is already an admin, find their name from the Current Admins list and select Grant Verified Admin.",
-      "severity": "minor",
-      "fix": "Keep the path, but add 'This Current Admins route is for a user who is already an admin' to controls[2].note and the rendered note. The cited roles page gives a different initial step for a non-admin."
+      "source": "https://learn.microsoft.com/viva/engage/manage-viva-engage-users/add-block-or-remove-users",
+      "quote": "Network admins, Verified admins & Engage admins can use the Manage GDPR data subject requests module in the Viva Engage admin center to process data subject requests for GDPR.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 15,
-      "where": "controls[2].api; Governance controls",
-      "type": "absence",
-      "claim": "Microsoft has not documented automation for assigning the Viva Engage Verified Admin role.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/graph/api/resources/engagement-api-overview?view=graph-rest-1.0",
-      "quote": "Viva Engage supports role-based access by enabling the assignment of predefined administrative roles (such as Network Administrator and Verified Administrator) ... Assign a Viva Engage role to a user: POST /employeeExperience/roles/{engagementRoleId}/members.",
-      "severity": "blocker",
-      "fix": "Set controls[2].api to kind 'graph', call 'POST /v1.0/employeeExperience/roles/{engagementRoleId}/members', docs 'https://learn.microsoft.com/graph/api/engagementrole-post-members?view=graph-rest-1.0'. Add to its note: 'For native-mode networks, use the Verified Administrator engagementRoleId; the request identifies the assignee through user@odata.bind. Requires EngagementRole.ReadWrite.All.' Update the rendered API cell and cite the operation reference and https://learn.microsoft.com/graph/api/resources/engagement-api-overview?view=graph-rest-1.0."
+      "where": "What's changing; Why it matters; Scope; Governance controls; rationale: risk",
+      "type": "role",
+      "claim": "Verified admins can use the Manage GDPR data subject requests module.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/manage-viva-engage-users/add-block-or-remove-users",
+      "quote": "Network admins, Verified admins & Engage admins can use the Manage GDPR data subject requests module in the Viva Engage admin center to process data subject requests for GDPR.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 16,
-      "where": "controls[3].ui; Governance controls",
-      "type": "admin-path",
-      "claim": "The Network Admin assignment route is Yammer admin center > Admins > Current Admins > user > Grant Network Admin.",
+      "where": "What's changing; Why it matters; Scope; Governance controls; rationale: risk",
+      "type": "role",
+      "claim": "Engage admins can use the Manage GDPR data subject requests module.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions",
-      "quote": "If the user is already an admin, find their name from the Current Admins list and select Grant Network Admin.",
-      "severity": "minor",
-      "fix": "Keep the path, but add 'This Current Admins route is for a user who is already an admin' to controls[3].note and the rendered note. The cited roles page gives a different initial step for a non-admin."
+      "source": "https://learn.microsoft.com/viva/engage/manage-viva-engage-users/add-block-or-remove-users",
+      "quote": "Network admins, Verified admins & Engage admins can use the Manage GDPR data subject requests module in the Viva Engage admin center to process data subject requests for GDPR.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 17,
-      "where": "controls[3].api; Governance controls",
-      "type": "absence",
-      "claim": "Microsoft has not documented automation for assigning the Viva Engage Network Admin role.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/graph/api/resources/engagement-api-overview?view=graph-rest-1.0",
-      "quote": "Viva Engage supports role-based access by enabling the assignment of predefined administrative roles (such as Network Administrator and Verified Administrator) ... Assign a Viva Engage role to a user: POST /employeeExperience/roles/{engagementRoleId}/members.",
-      "severity": "blocker",
-      "fix": "Set controls[3].api to kind 'graph', call 'POST /v1.0/employeeExperience/roles/{engagementRoleId}/members', docs 'https://learn.microsoft.com/graph/api/engagementrole-post-members?view=graph-rest-1.0'. Add to its note: 'For native-mode networks, use the Network Administrator engagementRoleId; the request identifies the assignee through user@odata.bind. Requires EngagementRole.ReadWrite.All.' Update the rendered API cell and cite the operation reference and https://learn.microsoft.com/graph/api/resources/engagement-api-overview?view=graph-rest-1.0."
-    },
-    {
-      "n": 18,
-      "where": "front matter: defaultState; Why it matters",
-      "type": "default",
-      "claim": "The module is on by default on arrival, without an administrator taking action.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: 'Viva Engage Manage GDPR data subject requests module enable disable license price meter'; read the roadmap, Manage GDPR data subject requests for Viva Engage users, and Overview of the Viva Engage admin center. Availability is stated, but automatic rollout/default state is not.",
-      "severity": "blocker",
-      "fix": "Set defaultState to 'unknown'. Replace 'If nobody acts, the module is there for those roles to use' with 'Microsoft documents access for these roles but does not state the module's default or rollout mechanics.' Do not infer the default from the absence of an enablement step."
-    },
-    {
-      "n": 19,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "Admin access to this Viva Engage compliance capability needs no additional Viva Engage licence, represented as included.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions",
-      "quote": "A Viva Engage license isn't required for an admin to configure Viva Engage (core or premium). Microsoft 365 Global administrators and Engage administrators don't require a Viva Engage Core or premium license to access ... the Engage Admin center.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "A Viva Engage licence is not required for an administrator to configure Viva Engage.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions",
-      "quote": "A Viva Engage license isn't required for an admin to configure Viva Engage (core or premium).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "Global administrators do not require a Viva Engage Core or premium licence to access the Engage admin center.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions",
-      "quote": "Microsoft 365 Global administrators and Engage administrators don't require a Viva Engage Core or premium license to access the Engage website, the Engage Admin center, or legacy network admin center.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "Engage administrators do not require a Viva Engage Core or premium licence to access the Engage admin center.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions",
-      "quote": "Microsoft 365 Global administrators and Engage administrators don't require a Viva Engage Core or premium license to access the Engage website, the Engage Admin center, or legacy network admin center.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "The module's own Learn page names admin roles but no licence or meter.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Viva Engage Manage GDPR data subject requests module enable disable license price meter'; read Manage GDPR data subject requests for Viva Engage users in full. It specifies roles and removal steps, not a licence or meter.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "absence",
-      "claim": "Nothing licence-specific to this GDPR module is published as of November 2026.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Viva Engage GDPR requests licensing meter' and 'Viva Engage Manage GDPR data subject requests module enable disable license price meter'; read the GDPR module, administrator roles and Viva Engage Core licensing pages. No module-specific licence was found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "front matter: cost; rationale: cost",
-      "type": "cost",
-      "claim": "The cost rating is none under the standard's requirement for documented inclusion in licences already held.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: 'Viva Engage GDPR requests licensing meter' and 'Viva Engage Manage GDPR data subject requests module enable disable license price meter'; read GDPR module, admin roles and Core licensing pages. Admin licence exemption is stated, not module inclusion or a no-charge assertion.",
-      "severity": "blocker",
-      "fix": "Set cost to 'low'. Replace the cost rationale with 'Low. The known indirect cost is administrator time to update DSR runbooks and perform exports. Microsoft's roles page says Global and Engage administrators need no Viva Engage Core or premium licence to access the Engage admin center.'"
-    },
-    {
-      "n": 26,
-      "where": "What's changing; Open questions",
-      "type": "availability",
-      "claim": "Learn documents the module as usable even though the roadmap still lists In development.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/engage/manage-viva-engage-users/add-block-or-remove-users",
-      "quote": "Network admins, Verified admins & Engage admins can use the Manage GDPR data subject requests module in the Viva Engage admin center to process data subject requests for GDPR.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "What's changing; Why it matters; Risk assessment; Scope; rationale: risk",
-      "type": "role",
-      "claim": "The module page permits Network admins to process GDPR data subject requests.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/engage/manage-viva-engage-users/add-block-or-remove-users",
-      "quote": "Network admins, Verified admins & Engage admins can use the Manage GDPR data subject requests module in the Viva Engage admin center to process data subject requests for GDPR.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "What's changing; Why it matters; Scope; rationale: risk",
-      "type": "role",
-      "claim": "Verified admins can process GDPR data subject requests through the module.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/engage/manage-viva-engage-users/add-block-or-remove-users",
-      "quote": "Network admins, Verified admins & Engage admins can use the Manage GDPR data subject requests module in the Viva Engage admin center to process data subject requests for GDPR.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "What's changing; Why it matters; Scope; rationale: risk",
-      "type": "role",
-      "claim": "Engage admins can process GDPR data subject requests through the module.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/engage/manage-viva-engage-users/add-block-or-remove-users",
-      "quote": "Network admins, Verified admins & Engage admins can use the Manage GDPR data subject requests module in the Viva Engage admin center to process data subject requests for GDPR.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
       "where": "What's changing; Governance guidance",
       "type": "behaviour",
-      "claim": "The module offers three GDPR deletion options.",
+      "claim": "The module offers three distinct deletion options.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/manage-viva-engage-users/add-block-or-remove-users",
       "quote": "GDPR subject requests support three distinct options:",
@@ -361,10 +212,10 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 18,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Permanently remove this user, but retain their messages removes the user while retaining their messages and content.",
+      "claim": "Permanently remove this user, but retain their messages removes the user while retaining posted messages and content.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/manage-viva-engage-users/add-block-or-remove-users",
       "quote": "Permanently remove this user, but retain their messages - Removes the user and retains their posted messages and content.",
@@ -372,10 +223,10 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 19,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Permanently remove this user, and remove their messages removes the user and their posted messages and content.",
+      "claim": "Permanently remove this user, and remove their messages removes the user and posted messages and content.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/manage-viva-engage-users/add-block-or-remove-users",
       "quote": "Permanently remove this user, and remove their messages - Removes the user and their posted messages and content.",
@@ -383,10 +234,10 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 20,
       "where": "What's changing; Risk assessment; Governance controls; rationale: risk",
       "type": "behaviour",
-      "claim": "Removing the user and their messages is irreversible.",
+      "claim": "Removing a user and their messages cannot be reversed.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/manage-viva-engage-users/add-block-or-remove-users",
       "quote": "Permanently remove this user, and remove their messages - Removes the user and their posted messages and content. You can't reverse this action.",
@@ -394,10 +245,10 @@
       "fix": null
     },
     {
-      "n": 34,
-      "where": "What's changing",
+      "n": 21,
+      "where": "What's changing; Risk assessment",
       "type": "behaviour",
-      "claim": "Erase this user wipes the user's personal information.",
+      "claim": "Erase this user wipes the user's name and personal information.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/manage-viva-engage-users/add-block-or-remove-users",
       "quote": "Erase this user. Wipe their name and personal information, but leave their messages (Can't be undone after 14 days)",
@@ -405,21 +256,21 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 22,
       "where": "What's changing; Risk assessment",
       "type": "behaviour",
-      "claim": "Erasing the user leaves their messages and files in place.",
+      "claim": "Erase this user leaves authored messages in place.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/viva/engage/manage-security-and-compliance/gdpr-requests-in-viva-engage-enterprise",
-      "quote": "When you erase a user, the action removes their personally identifying information, but their messages and files remain.",
+      "source": "https://learn.microsoft.com/viva/engage/manage-viva-engage-users/add-block-or-remove-users",
+      "quote": "Erase this user. Wipe their name and personal information, but leave their messages",
       "severity": null,
       "fix": null
     },
     {
-      "n": 36,
-      "where": "What's changing; Governance guidance",
+      "n": 23,
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "Erase this user deactivates the user for 14 days before permanent deletion so administrators can evaluate files and messages.",
+      "claim": "Erase this user deactivates the user for 14 days for evaluation of files and messages.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/manage-viva-engage-users/add-block-or-remove-users",
       "quote": "Deactivates the user for 14 days to give the admin time to evaluate files and messages before permanently deleting the user.",
@@ -427,7 +278,18 @@
       "fix": null
     },
     {
-      "n": 37,
+      "n": 24,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The Erase this user workflow permanently deletes the user after the evaluation period.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/manage-viva-engage-users/add-block-or-remove-users",
+      "quote": "Deactivates the user for 14 days to give the admin time to evaluate files and messages before permanently deleting the user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
       "where": "What's changing; Risk assessment; Governance controls; rationale: risk",
       "type": "behaviour",
       "claim": "Erase this user cannot be undone after 14 days.",
@@ -438,21 +300,10 @@
       "fix": null
     },
     {
-      "n": 38,
-      "where": "What's changing; Risk assessment",
-      "type": "behaviour",
-      "claim": "The administrator confirms the selected removal option with Remove user.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/engage/manage-viva-engage-users/add-block-or-remove-users",
-      "quote": "When finished, select Remove user.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
+      "n": 26,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "All three deletion options remove follows and follower connections.",
+      "claim": "All three deletion choices remove following relationships.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/manage-viva-engage-users/add-block-or-remove-users",
       "quote": "All choices for deletion remove the following data: Who the user follows, what conversations and articles they follow, and who follows them",
@@ -460,10 +311,10 @@
       "fix": null
     },
     {
-      "n": 40,
+      "n": 27,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "All three deletion options remove bookmarks.",
+      "claim": "All three deletion choices remove bookmarks.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/manage-viva-engage-users/add-block-or-remove-users",
       "quote": "All choices for deletion remove the following data: ... The user's bookmarks, language preferences, notification settings, and account activity",
@@ -471,10 +322,10 @@
       "fix": null
     },
     {
-      "n": 41,
+      "n": 28,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "All three deletion options remove the user's language and notification settings.",
+      "claim": "All three deletion choices remove user settings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/manage-viva-engage-users/add-block-or-remove-users",
       "quote": "All choices for deletion remove the following data: ... The user's bookmarks, language preferences, notification settings, and account activity",
@@ -482,10 +333,10 @@
       "fix": null
     },
     {
-      "n": 42,
+      "n": 29,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "All three deletion options remove account activity.",
+      "claim": "All three deletion choices remove account activity.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/manage-viva-engage-users/add-block-or-remove-users",
       "quote": "All choices for deletion remove the following data: ... The user's bookmarks, language preferences, notification settings, and account activity",
@@ -493,10 +344,10 @@
       "fix": null
     },
     {
-      "n": 43,
+      "n": 30,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "All three deletion options remove the user profile.",
+      "claim": "All three deletion choices remove the user profile.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/manage-viva-engage-users/add-block-or-remove-users",
       "quote": "All choices for deletion remove the following data: ... The user profile",
@@ -504,10 +355,10 @@
       "fix": null
     },
     {
-      "n": 44,
+      "n": 31,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "All three deletion options remove group memberships.",
+      "claim": "All three deletion choices remove group memberships.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/manage-viva-engage-users/add-block-or-remove-users",
       "quote": "All choices for deletion remove the following data: ... The user's group memberships",
@@ -515,10 +366,10 @@
       "fix": null
     },
     {
-      "n": 45,
+      "n": 32,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "All three deletion options remove the user's org chart data.",
+      "claim": "All three deletion choices remove org chart data.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/manage-viva-engage-users/add-block-or-remove-users",
       "quote": "All choices for deletion remove the following data: ... Org chart",
@@ -526,10 +377,10 @@
       "fix": null
     },
     {
-      "n": 46,
+      "n": 33,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "All three deletion options remove the user's network list.",
+      "claim": "All three deletion choices remove the user's network list.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/manage-viva-engage-users/add-block-or-remove-users",
       "quote": "All choices for deletion remove the following data: ... The list of networks for which they were a member.",
@@ -537,10 +388,10 @@
       "fix": null
     },
     {
-      "n": 47,
+      "n": 34,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The first two deletion options preserve the user's name in stored Viva Engage data.",
+      "claim": "The first two deletion options preserve the user's name in stored data.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/manage-viva-engage-users/add-block-or-remove-users",
       "quote": "The first two deletion options preserve the user's name in Viva Engage's stored data.",
@@ -548,10 +399,10 @@
       "fix": null
     },
     {
-      "n": 48,
+      "n": 35,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Erase this user additionally removes the user's name from stored Viva Engage data.",
+      "claim": "Erase this user also removes the user's name from stored data.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/manage-viva-engage-users/add-block-or-remove-users",
       "quote": "The Erase this user option also removes the user's name.",
@@ -559,29 +410,62 @@
       "fix": null
     },
     {
-      "n": 49,
+      "n": 36,
       "where": "What's changing",
       "type": "absence",
-      "claim": "The module's Learn page lists no step to switch the module on.",
+      "claim": "The module's Learn page lists no step to switch it on.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Viva Engage Manage GDPR data subject requests module enable disable license price meter'; read the module page in full. Its sequence is admin center, Governance and compliance > Data management, removal options, Remove user; no switch-on step is listed.",
+      "quote": "Searched: 'Viva Engage admin center Manage GDPR data subject requests default enabled rollout switch'. Read the full add-block-or-remove-users page: it lists roles and deletion steps, not a switch-on step.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 50,
+      "n": 37,
+      "where": "front matter: defaultState; Why it matters",
+      "type": "default",
+      "claim": "The module's default state is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Viva Engage admin center Manage GDPR data subject requests default enabled rollout switch'. Read the roadmap, module page, GDPR guidance and returned Learn excerpts; none specifies the module's arrival default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "Microsoft does not state the module's rollout mechanics.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Viva Engage admin center Manage GDPR data subject requests default enabled rollout switch'. Read the roadmap, module page, GDPR guidance and returned Learn excerpts; none states deployment mechanics.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What's changing; Open questions",
+      "type": "availability",
+      "claim": "Learn documents the module as usable although the roadmap still says In development.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/manage-viva-engage-users/add-block-or-remove-users",
+      "quote": "Network admins, Verified admins & Engage admins can use the Manage GDPR data subject requests module in the Viva Engage admin center to process data subject requests for GDPR.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
       "where": "Why it matters",
       "type": "date",
       "claim": "Data subject requests carry deadlines.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/compliance/regulatory/gdpr-dsr-dynamics365",
+      "source": "https://learn.microsoft.com/compliance/regulatory/gdpr-dsr-dynamics365#how-this-guide-can-help-you-meet-your-controller-responsibilities",
       "quote": "Record the date and time of the request. (You have one month to complete the request.)",
       "severity": null,
       "fix": null
     },
     {
-      "n": 51,
+      "n": 41,
       "where": "Why it matters",
       "type": "behaviour",
       "claim": "Closing a Microsoft Entra ID account does not delete the user's Engage information.",
@@ -592,21 +476,32 @@
       "fix": null
     },
     {
-      "n": 52,
-      "where": "Why it matters; Risk assessment; Governance guidance",
+      "n": 42,
+      "where": "Why it matters; Governance guidance",
       "type": "behaviour",
-      "claim": "After the 14-day erase window, administrators cannot associate the remaining content with the user for export, review and deletion.",
+      "claim": "The GDPR guidance warns that after erasing a user their data cannot be found for deletion.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/manage-security-and-compliance/gdpr-requests-in-viva-engage-enterprise",
-      "quote": "After the user account transitions from Deactivated to Removed, you can't associate user data with that user, which means you can't export and review their data.",
+      "quote": "Choose the approach that applies for your case, and follow the steps in the order listed. The order matters: after you erase a user, you can't find their data to delete it.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 53,
+      "n": 43,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "After 14 days, retained messages and files are marked as belonging to a former user.",
+      "claim": "Erasing a user leaves their files in place.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/manage-security-and-compliance/gdpr-requests-in-viva-engage-enterprise",
+      "quote": "When you erase a user, the action removes their personally identifying information, but their messages and files remain.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "After 14 days the remaining messages and files are marked as belonging to a former user.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/manage-security-and-compliance/gdpr-requests-in-viva-engage-enterprise",
       "quote": "After the 14-day window, files and messages remain, but are marked as belonging to a former user.",
@@ -614,10 +509,21 @@
       "fix": null
     },
     {
-      "n": 54,
+      "n": 45,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "After the 14-day window admins cannot associate remaining content with that user to export and review it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/compliance/regulatory/gdpr-dsr-office365",
+      "quote": "After the 14-day window, the admin can no longer associate the user with their files or messages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
       "where": "Risk assessment: Data exposure; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "SharePoint-stored Engage files must be deleted from Viva Engage to remove both the file and Viva Engage metadata.",
+      "claim": "SharePoint-stored Engage files must be deleted from Viva Engage to remove both the file and Engage metadata.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/manage-security-and-compliance/gdpr-requests-in-viva-engage-enterprise",
       "quote": "For Viva Engage files stored in SharePoint, delete the files from Viva Engage in order to remove the Viva Engage metadata and the file.",
@@ -625,10 +531,21 @@
       "fix": null
     },
     {
-      "n": 55,
-      "where": "Risk assessment: Security & identity; Governance guidance: At rollout",
+      "n": 47,
+      "where": "Risk assessment: Security & identity; Governance controls; Open questions",
+      "type": "role",
+      "claim": "The GDPR guidance page names Verified admins as able to erase users, unlike the module page's list of three roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/manage-security-and-compliance/gdpr-requests-in-viva-engage-enterprise",
+      "quote": "Verified admins can erase users from Engage to comply with General Data Protection Regulation (GDPR) data subject requests.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Erase User in Viva Engage does not delete the user's Office 365 or Microsoft Entra profile.",
+      "claim": "Erasing an Engage user does not delete their Office 365 profile.",
       "status": "supported",
       "source": "https://learn.microsoft.com/compliance/regulatory/gdpr-dsr-office365",
       "quote": "The Erase User option deletes the user's Viva Engage profile, but doesn't delete their Office 365 or Microsoft Entra profile.",
@@ -636,21 +553,21 @@
       "fix": null
     },
     {
-      "n": 56,
-      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "n": 49,
+      "where": "Risk assessment: Security & identity; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "The documented module procedure acts through an administrator selecting a removal option and Remove user.",
+      "claim": "Erasing an Engage user does not delete their Microsoft Entra profile, which must be handled separately.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/viva/engage/manage-viva-engage-users/add-block-or-remove-users",
-      "quote": "Check the options for Manage GDPR data subject requests. GDPR subject requests support three distinct options: ... When finished, select Remove user.",
+      "source": "https://learn.microsoft.com/compliance/regulatory/gdpr-dsr-office365",
+      "quote": "The Erase User option deletes the user's Viva Engage profile, but doesn't delete their Office 365 or Microsoft Entra profile.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 57,
+      "n": 50,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Removing a user from their home Viva Engage tenant removes them from all external tenants.",
+      "claim": "Removing a user from their home Engage tenant removes them from all external tenants.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/manage-security-and-compliance/gdpr-requests-in-viva-engage-enterprise",
       "quote": "Removing a user from their home Viva Engage tenant removes them from all external tenants.",
@@ -658,7 +575,7 @@
       "fix": null
     },
     {
-      "n": 58,
+      "n": 51,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
       "claim": "Guests must be removed separately from each external tenant.",
@@ -669,24 +586,101 @@
       "fix": null
     },
     {
+      "n": 52,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "A Viva Engage licence is not required for an admin to configure Viva Engage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions",
+      "quote": "A Viva Engage license isn't required for an admin to configure Viva Engage (core or premium).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Global administrators do not need a Viva Engage Core or premium licence to access the Engage admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions",
+      "quote": "Microsoft 365 Global administrators and Engage administrators don't require a Viva Engage Core or premium license to access the Engage website, the Engage Admin center, or legacy network admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Engage administrators do not need a Viva Engage Core or premium licence to access the Engage admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions",
+      "quote": "Microsoft 365 Global administrators and Engage administrators don't require a Viva Engage Core or premium license to access the Engage website, the Engage Admin center, or legacy network admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The module is an included administrative capability, with the licensing notes identifying the admin licensing exemption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions",
+      "quote": "A Viva Engage license isn't required for an admin to configure Viva Engage (core or premium).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The module's own Learn page names no licence requirement.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Viva Engage GDPR data subject requests module license licensing price meter admin center'. Opened the module page in full; it names Network, Verified and Engage admins and no licence prerequisite.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The module's own Learn page names no meter.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Viva Engage GDPR data subject requests module license licensing price meter admin center'. Opened the full module page, GDPR guidance, admin roles and Core licensing pages; the module page names no meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "No licensing requirement specific to this module is published at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Viva Engage GDPR data subject requests module license licensing price meter admin center'. Read the module, GDPR guidance, admin roles and Core licensing pages; no separate licence for the GDPR module was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 59,
-      "where": "Scope; Cost and licensing; Governance guidance: At rollout",
+      "where": "Scope; Cost and licensing; rationale: cost",
       "type": "behaviour",
-      "claim": "For reviewing which files and messages to keep or delete, Microsoft's guidance starts with a home-tenant per-user export before erasing.",
+      "claim": "The review approaches in Microsoft's GDPR guidance require a per-user home-tenant export before erasing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/manage-security-and-compliance/gdpr-requests-in-viva-engage-enterprise",
-      "quote": "Review files and messages created by the user and decide which to keep and which to delete: 1. Do one per-user export of the user's data for the home tenant ... 2. In the home tenant, use the Erase this user option.",
+      "quote": "1. Do one per-user export of the user's data for the home tenant, and one for each external tenant if any. 2. In the home tenant, use the Erase this user option.",
       "severity": null,
       "fix": null
     },
     {
       "n": 60,
-      "where": "Scope; Governance guidance: At rollout",
+      "where": "Scope; Cost and licensing; rationale: cost",
       "type": "behaviour",
-      "claim": "The review workflow also calls for a per-user export for each external tenant, if any.",
+      "claim": "The review approaches also require a per-user export for each external tenant before erasing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/manage-security-and-compliance/gdpr-requests-in-viva-engage-enterprise",
-      "quote": "Do one per-user export of the user's data for the home tenant, and one for each external tenant if any.",
+      "quote": "1. Do one per-user export of the user's data for the home tenant, and one for each external tenant if any. 2. In the home tenant, use the Erase this user option.",
       "severity": null,
       "fix": null
     },
@@ -694,7 +688,7 @@
       "n": 61,
       "where": "Why it matters; Governance guidance: Before rollout",
       "type": "behaviour",
-      "claim": "Microsoft's GDPR guidance instructs administrators to choose the approach for their case and follow its steps in order.",
+      "claim": "Microsoft's GDPR guidance prescribes an order of work for the different request approaches.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/manage-security-and-compliance/gdpr-requests-in-viva-engage-enterprise",
       "quote": "Choose the approach that applies for your case, and follow the steps in the order listed. The order matters: after you erase a user, you can't find their data to delete it.",
@@ -703,152 +697,9 @@
     },
     {
       "n": 62,
-      "where": "controls[1].note; Scope; Governance controls",
-      "type": "role",
-      "claim": "Engage Administrator is also called Yammer administrator in Microsoft Entra ID.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions",
-      "quote": "This role is also referred to as Yammer administrator in Microsoft Entra ID.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 63,
-      "where": "Governance controls; Governance guidance: Before rollout",
-      "type": "applicability",
-      "claim": "The Engage Administrator role is assigned in Microsoft Entra ID.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions",
-      "quote": "Assign the Engage admin role in Microsoft Entra ID or Privileged Identity Management (PIM).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 64,
-      "where": "controls[1].note; Governance controls",
-      "type": "role",
-      "claim": "At least Privileged Role Administrator is required to assign tenant roles as a signed-in administrator.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
-      "quote": "Sign in to the Microsoft Entra admin center as at least a Privileged Role Administrator.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 65,
-      "where": "controls[1].note; Governance controls",
-      "type": "command",
-      "claim": "The directory role assignment body sets roleDefinitionId to identify the assigned role.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments",
-      "quote": "roleDefinitionId: Identifier of the unifiedRoleDefinition the assignment is for. ... roleDefinitionId can be either the service-wide template Id or the directory-specific roleDefinitionId.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 66,
-      "where": "controls[1].note; Governance controls",
-      "type": "command",
-      "claim": "The directory role assignment body sets principalId to identify the assignee.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments",
-      "quote": "principalId | String | Required. Identifier of the principal to which the assignment is granted.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 67,
-      "where": "controls[1].note; Governance controls",
-      "type": "command",
-      "claim": "The directory role assignment body uses directoryScopeId with / for tenant-wide scope.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments",
-      "quote": "For the directory (Microsoft Entra ID) provider, this property supports the following formats: - / for tenant-wide scope",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 68,
-      "where": "controls[2].note; Governance controls",
-      "type": "role",
-      "claim": "An Engage admin or verified admin can assign Verified Administrator.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions",
-      "quote": "Verified Administrator: Who can assign | Engage admin or verified admin",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 69,
-      "where": "controls[3].note; Governance controls",
-      "type": "role",
-      "claim": "Engage admins, network admins and verified admins can assign Network Administrator.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions",
-      "quote": "Network Administrator: Who can assign | Engage admin or network admin and verified admin",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 70,
-      "where": "controls[2].note; Governance controls",
-      "type": "behaviour",
-      "claim": "The Yammer Data Export API reads the admin list rather than assigning administrator roles.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/m365-workload-docs",
-      "quote": "Yammer Data Export API can be used to export admins.csv to read the list of admins",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 71,
-      "where": "controls[0].note; Governance controls",
-      "type": "command",
-      "claim": "The gdpr_delete=true query parameter selects the GDPR deletion workflow.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/rest/api/yammer/users_id_delete",
-      "quote": "gdpr_delete | Query | No | boolean | If true, triggers the GDPR user deletion workflow.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 72,
-      "where": "controls[0].note; Governance controls",
-      "type": "role",
-      "claim": "The REST deletion caller must be an admin or verified admin, without a network qualification.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/rest/api/yammer/users_id_delete",
-      "quote": "403 Forbidden | The authenticated caller does not have permission to delete the user (must be an admin, or a verified admin in a paid network).",
-      "severity": "blocker",
-      "fix": "Replace the caller clause in controls[0].note and the rendered note with 'The reference's response table requires an admin, or a verified admin in a paid network; its introductory text says admin or verified admin in a Viva Engage network.' Use the same qualified wording in the Governance controls paragraph."
-    },
-    {
-      "n": 73,
-      "where": "controls[0].note; Governance controls",
-      "type": "behaviour",
-      "claim": "The REST GDPR deletion request is irreversible.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/rest/api/yammer/users_id_delete",
-      "quote": "Both delete=true and gdpr_delete=true are irreversible and cannot be undone by the user, an admin, or Microsoft Support.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 74,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Microsoft cautions against routine API-based lifecycle deletions because of unrecoverable data loss.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/rest/api/yammer/users_id_delete",
-      "quote": "User lifecycle management should generally be performed through the Microsoft 365 Admin Center or Microsoft Entra. API-based user deletions may lead to unrecoverable data loss and are therefore not recommended.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 75,
       "where": "Governance guidance: After rollout; Open questions",
       "type": "behaviour",
-      "claim": "Erase User sends a notification to the Viva Engage Inbox of network and verified admins.",
+      "claim": "Using Erase User sends a notification to the Viva Engage Inbox of network admins.",
       "status": "supported",
       "source": "https://learn.microsoft.com/compliance/regulatory/gdpr-dsr-office365",
       "quote": "When you delete a user by using the Erase User option, the Viva Engage Inbox of all network admins and verified admins receives a notification.",
@@ -856,58 +707,344 @@
       "fix": null
     },
     {
-      "n": 76,
-      "where": "Risk assessment: Security & identity; Governance controls; Open questions",
-      "type": "role",
-      "claim": "The GDPR guidance specifically says Verified admins can erase users, whereas the module page lists Network, Verified and Engage admins.",
+      "n": 63,
+      "where": "Governance guidance: After rollout; Open questions",
+      "type": "behaviour",
+      "claim": "Using Erase User sends a notification to the Viva Engage Inbox of verified admins.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/compliance/regulatory/gdpr-dsr-office365",
+      "quote": "When you delete a user by using the Erase User option, the Viva Engage Inbox of all network admins and verified admins receives a notification.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Governance guidance: After rollout",
+      "type": "date",
+      "claim": "The post-erase message and file deletion window is 14 days.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/manage-security-and-compliance/gdpr-requests-in-viva-engage-enterprise",
-      "quote": "Verified admins can erase users from Engage to comply with General Data Protection Regulation (GDPR) data subject requests.",
+      "quote": "Delete user messages and files within 14 days after selecting Erase this user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[1].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "The Microsoft Entra tenant-role assignment route is Identity > Roles & admins > role > Add assignments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
+      "quote": "Browse to Identity > Roles & admins. Select a role name to open the role. Don't add a check mark next to the role. Select Add assignments",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[1].api; Governance controls",
+      "type": "command",
+      "claim": "POST /v1.0/roleManagement/directory/roleAssignments assigns a Microsoft Entra directory role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments",
+      "quote": "Create a role assignment for the directory provider: POST /roleManagement/directory/roleAssignments\nPOST https://graph.microsoft.com/v1.0/roleManagement/directory/roleAssignments",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "Tenant role assignment requires at least Privileged Role Administrator for the signed-in administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
+      "quote": "Sign in to the Microsoft Entra admin center as at least a Privileged Role Administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "controls[1].note; Scope; Governance guidance; Governance controls",
+      "type": "role",
+      "claim": "The Engage Administrator role is called Yammer administrator in Microsoft Entra ID and is assigned there.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions",
+      "quote": "This role is also referred to as Yammer administrator in Microsoft Entra ID.\nAssign the Engage admin role in Microsoft Entra ID or Privileged Identity Management (PIM)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "controls[1].note; Governance controls",
+      "type": "command",
+      "claim": "The directory role assignment body specifies roleDefinitionId.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments",
+      "quote": "\"roleDefinitionId\": \"c2cf284d-6c41-4e6b-afac-4b80928c9034\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "controls[1].note; Governance controls",
+      "type": "command",
+      "claim": "The directory role assignment body specifies principalId.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments",
+      "quote": "principalId | String | Required. Identifier of the principal to which the assignment is granted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "controls[1].note; Governance controls",
+      "type": "command",
+      "claim": "The directory role assignment body specifies directoryScopeId.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments",
+      "quote": "\"directoryScopeId\": \"/\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "controls[1].note; Governance controls",
+      "type": "command",
+      "claim": "A directoryScopeId of / selects tenant-wide scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments",
+      "quote": "For the directory (Microsoft Entra ID) provider, this property supports the following formats: - `/` for tenant-wide scope",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "controls[2].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "For an existing admin, the Verified Admin assignment route in the Yammer admin center is Admins > Current Admins > user > Grant Verified Admin.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions",
+      "quote": "In the Yammer admin center, select Admins. ... If the user is already an admin, find their name from the Current Admins list and select Grant Verified Admin.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "controls[2].api; Governance controls",
+      "type": "command",
+      "claim": "POST /v1.0/employeeExperience/roles/{engagementRoleId}/members assigns the selected Viva Engage role to a user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/engagementrole-post-members?view=graph-rest-1.0",
+      "quote": "Create a new engagementRoleMember object that assigns a Viva Engage role to a user.\nPOST https://graph.microsoft.com/v1.0/employeeExperience/roles/a40473a5-0fb4-a250-e029-f6fe33d07733/members",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "controls[2].note; Governance controls",
+      "type": "role",
+      "claim": "An Engage admin can assign the Verified Admin role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions",
+      "quote": "Verified Administrator\nWho can assign | Engage admin or verified admin",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "controls[2].note; Governance controls",
+      "type": "role",
+      "claim": "A verified admin can assign the Verified Admin role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions",
+      "quote": "Verified Administrator\nWho can assign | Engage admin or verified admin",
       "severity": null,
       "fix": null
     },
     {
       "n": 77,
-      "where": "Governance guidance: At rollout; Governance controls",
-      "type": "consistency",
-      "claim": "The governance checklist's per-user export operation has no corresponding control row.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Run the per-user export for the home tenant and each external tenant before selecting any removal option. The controls table covers user removal and three administrator role assignments, not exports.",
-      "severity": "minor",
-      "fix": "The 'Run the per-user export for the home tenant and each external tenant' checklist step has no controls-table row. Remove that checklist bullet while retaining the already documented export prerequisite in Scope; this correction does not add a control row."
+      "where": "controls[3].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "For an existing admin, the Network Admin assignment route in the Yammer admin center is Admins > Current Admins > user > Grant Network Admin.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions",
+      "quote": "In the Yammer admin center, select Admins. ... If the user is already an admin, find their name from the Current Admins list and select Grant Network Admin.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 78,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The roadmap describes the change as reducing reliance on the legacy Yammer admin center.",
+      "where": "controls[3].api; Governance controls",
+      "type": "command",
+      "claim": "POST /v1.0/employeeExperience/roles/{engagementRoleId}/members can assign the selected Network Administrator role.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "streamlining the process and reducing reliance on the legacy Yammer admin center",
+      "source": "https://learn.microsoft.com/graph/api/engagementrole-post-members?view=graph-rest-1.0",
+      "quote": "Create a new engagementRoleMember object that assigns a Viva Engage role to a user.\nPOST https://graph.microsoft.com/v1.0/employeeExperience/roles/a40473a5-0fb4-a250-e029-f6fe33d07733/members",
       "severity": null,
       "fix": null
     },
     {
       "n": 79,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The roadmap describes the change as centralising compliance actions in one interface.",
+      "where": "controls[3].note; Governance controls",
+      "type": "role",
+      "claim": "An Engage admin can assign the Network Admin role.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "This update centralizes compliance actions in one modern interface.",
+      "source": "https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions",
+      "quote": "Network Administrator\nWho can assign | Engage admin or network admin and verified admin",
       "severity": null,
       "fix": null
+    },
+    {
+      "n": 80,
+      "where": "controls[3].note; Governance controls",
+      "type": "role",
+      "claim": "A network admin can assign another Network Admin.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions",
+      "quote": "Network Administrator | Other network admins, Corporate Communicators | Viva Engage admin center",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
+      "where": "controls[3].note; Governance controls",
+      "type": "role",
+      "claim": "A verified admin can assign the Network Admin role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions",
+      "quote": "Verified Administrator | Verified admins, Network admins, Corporate communicators | Admin center",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 82,
+      "where": "controls[2].note; controls[3].note; Governance controls",
+      "type": "applicability",
+      "claim": "The Viva Engage role-assignment Graph API is supported only for native-mode networks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/engagement-api-overview?view=graph-rest-1.0",
+      "quote": "The Viva Engage API in Microsoft Graph is only supported for Viva Engage networks in native mode. You can't use this API to manage legacy or external Viva Engage networks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 83,
+      "where": "controls[2].note; Governance controls",
+      "type": "applicability",
+      "claim": "Verified Administrator is among the predefined Viva Engage roles managed through the Graph role API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/engagement-api-overview?view=graph-rest-1.0",
+      "quote": "Viva Engage supports role-based access by enabling the assignment of predefined administrative roles (such as Network Administrator and Verified Administrator) and corporate communication roles within the platform.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 84,
+      "where": "controls[3].note; Governance controls",
+      "type": "applicability",
+      "claim": "Network Administrator is among the predefined Viva Engage roles managed through the Graph role API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/engagement-api-overview?view=graph-rest-1.0",
+      "quote": "Viva Engage supports role-based access by enabling the assignment of predefined administrative roles (such as Network Administrator and Verified Administrator) and corporate communication roles within the platform.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 85,
+      "where": "controls[2].note; controls[3].note; Governance controls",
+      "type": "command",
+      "claim": "The v1.0 engagement role assignment request identifies the assignee using user@odata.bind.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/engagementrole-post-members?view=graph-rest-1.0",
+      "quote": "\"user@odata.bind\": \"https://graph.microsoft.com/v1.0/users('e8d9f6a2-1c34-4b7a-9f11-2a4d8b7c9e01')\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 86,
+      "where": "controls[2].note; controls[3].note; Governance controls",
+      "type": "command",
+      "claim": "Creating an engagement role member requires EngagementRole.ReadWrite.All.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/engagementrole-post-members?view=graph-rest-1.0",
+      "quote": "Delegated (work or school account) | EngagementRole.ReadWrite.All | Not available.\nApplication | EngagementRole.ReadWrite.All | Not available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 87,
+      "where": "controls[0].note; Governance controls",
+      "type": "role",
+      "claim": "The REST deletion reference's introduction requires an admin or verified admin in a Viva Engage network.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/rest/api/yammer/users_id_delete",
+      "quote": "The current user must be an admin or a verified admin in a Viva Engage network to perform this action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 88,
+      "where": "controls[0].note; Governance controls",
+      "type": "role",
+      "claim": "The REST response table instead says an admin, or a verified admin in a paid network.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/rest/api/yammer/users_id_delete",
+      "quote": "The authenticated caller does not have permission to delete the user (must be an admin, or a verified admin in a paid network).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 89,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The gdpr_delete=true REST operation is irreversible.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/rest/api/yammer/users_id_delete",
+      "quote": "Both delete=true and gdpr_delete=true are irreversible and cannot be undone by the user, an admin, or Microsoft Support.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 90,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Microsoft cautions against API-based deletion for routine lifecycle management because it can cause unrecoverable data loss.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/rest/api/yammer/users_id_delete",
+      "quote": "User lifecycle management should generally be performed through the Microsoft 365 Admin Center or Microsoft Entra. API-based user deletions may lead to unrecoverable data loss and are therefore not recommended.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 91,
+      "where": "What's changing; Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "The documented module operation requires an administrator to choose a deletion option and select Remove user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/manage-viva-engage-users/add-block-or-remove-users",
+      "quote": "Check the options for Manage GDPR data subject requests. GDPR subject requests support three distinct options: ... When finished, select Remove user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 92,
+      "where": "Governance guidance: At rollout; Governance controls",
+      "type": "consistency",
+      "claim": "Every control the governance checklist instructs the reader to operate is represented in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Delete files stored in SharePoint from Viva Engage itself ... Delete the user's Microsoft Entra account as a separate step ... [The table covers only Engage user deletion and three administrator-role assignments.]",
+      "severity": "minor",
+      "fix": "The two At rollout checklist steps, deleting SharePoint-stored files from Viva Engage and deleting the Microsoft Entra account, have no corresponding controls-table row. This is a checklist/table coverage finding, not a request to add rows during correction."
     }
   ],
   "precheck": {
-    "at": "2026-11-25T23:07:20.003Z",
+    "at": "2026-11-26T02:11:16.991Z",
     "summary": {
-      "links": 10,
+      "links": 12,
       "unreachable": 0,
       "uiPaths": 4,
       "uiPathsWithMissingWords": 1,
-      "apiCalls": 2,
+      "apiCalls": 4,
       "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
     },
@@ -949,6 +1086,16 @@
       },
       {
         "url": "https://learn.microsoft.com/rest/api/yammer/users_id_delete",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/engagement-api-overview?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/engagementrole-post-members?view=graph-rest-1.0",
         "ok": true,
         "status": 200
       },
@@ -1026,6 +1173,15 @@
         "missing": []
       },
       {
+        "index": 2,
+        "side": "api",
+        "governs": "Who holds the Viva Engage Verified Admin role",
+        "docs": "https://learn.microsoft.com/graph/api/engagementrole-post-members?view=graph-rest-1.0",
+        "reachable": true,
+        "token": "/v1.0/employeeExperience/roles",
+        "found": true
+      },
+      {
         "index": 3,
         "side": "ui",
         "governs": "Who holds the Viva Engage Network Admin role",
@@ -1037,6 +1193,15 @@
           "Grant Network Admin"
         ],
         "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Who holds the Viva Engage Network Admin role",
+        "docs": "https://learn.microsoft.com/graph/api/engagementrole-post-members?view=graph-rest-1.0",
+        "reachable": true,
+        "token": "/v1.0/employeeExperience/roles",
+        "found": true
       }
     ],
     "roadmapDrift": []
@@ -1046,6 +1211,12 @@
       "date": "2026-11-25",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-25",
+      "status": "held",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

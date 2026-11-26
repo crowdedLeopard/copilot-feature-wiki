@@ -134,15 +134,17 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 75 statements confirmed"
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 80 statements confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 76 statements not yet confirmed"
 version: 5
 verification:
-  status: "verified"
-  date: "2026-11-20"
+  status: "verified-with-gaps"
+  date: "2026-11-26"
   version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 80
-  confirmed: 80
+  claims: 76
+  confirmed: 76
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -246,4 +248,11 @@ The plugin availability row applies only if the skill ships as a Cowork plugin, 
 risk: Medium. The roadmap says the skill creates a model-driven app and Dataverse artifacts after the user reviews a plan; Microsoft Learn does not yet say which environment or Dataverse connection mechanism the Cowork version uses.
 cost: Variable. Cowork activity, including skill calls, counts toward usage-based billing in Copilot Credits; what this skill consumes is not yet published.
 impact: Medium. The roadmap lists the feature scope as admins or makers, so makers are the people who will notice it first.
+-->
+
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].ui; Governance controls: row 1 / admin-path: The spending-policy wizard is reached through Copilot > Cost Management > Configuration > + Add spending policy > Identity > Specific groups > Select agents and services > Cowork > Set limits and alerts. | Found: Select the Configuration tab and then select + Add spending policy. ... Policy scope ... choose Identity as the scope. ... switch to Specific groups ... Select agents and services ... Set limits and alerts | Fix: Include the Policy scope heading: 'Copilot > Cost Management > Configuration > + Add spending policy > Policy scope > Identity > Specific groups > Select agents and services > Cowork > Set limits and alerts'. The Cowork service selection is also confirmed by the cited cowork-admin-governance page. | Source: https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-manage-copilot-credits
+- [supported, minor] controls[0].note; Cost and licensing; Governance guidance: Before rollout / behaviour: A low credit limit does not block Cowork access for an in-scope user. | Found: Any user in the scope of a spending policy that selects Cowork can use Cowork, regardless of how small the credit limit is. A policy with a limit of one credit still grants access. | Fix: Keep the access statement, but add: 'The spending-policy authoring page now requires at least 2,000 credits per user per month for new policies, although the Cowork access page still describes a one-credit policy as granting access.' Cite https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-manage-copilot-credits#set-limits-and-alerts. | Source: https://learn.microsoft.com/copilot/cowork/cowork-access
 -->

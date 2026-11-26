@@ -3,7 +3,7 @@
   "roadmapId": 568366,
   "title": "Microsoft Edge: automatically unsubscribe users from notifications sent by scam and malicious sites",
   "status": "verified-with-gaps",
-  "date": "2026-11-21",
+  "date": "2026-11-26",
   "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
@@ -14,65 +14,65 @@
   "notes": [],
   "hold": null,
   "counts": {
-    "claims": 51,
-    "confirmed": 50,
+    "claims": 47,
+    "confirmed": 46,
     "unconfirmed": 0,
     "contradicted": 1,
     "blocker": 0,
     "major": 0,
     "minor": 1
   },
-  "summary": "The briefing's behaviour, rollout details and notification controls are supported by the roadmap and Microsoft documentation. The registry references are correct despite the automated warnings; the low impact rating should be revised because this changes default user behaviour.",
+  "summary": "The briefing passes: the current Microsoft release notes and roadmap support the automatic protection, restoration route and existing notification controls. All cited Learn pages opened successfully despite the pre-check's throttling errors; the November 25 update does not change this feature. The impact rating needs a minor correction because this protection changes notification behaviour automatically.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing; rationale: risk",
-      "type": "behaviour",
-      "claim": "Edge automatically stops further notifications from a source when its notification leads to a SmartScreen-blocked scam, phishing or malware page.",
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "The feature belongs to Microsoft Edge version 158.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-stable-channel",
-      "quote": "When a notification leads users to a site that Microsoft Defender SmartScreen blocks as a scam, phishing, or malware page, Edge automatically stops that source from sending further notifications.",
+      "source": "roadmap record",
+      "quote": "Microsoft Edge: v.158 - Automatically unsubscribe users from notifications sent by scam and malicious sites",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance",
-      "type": "behaviour",
-      "claim": "Edge informs users when it stops the notification source.",
+      "where": "summary; What's changing; Risk assessment; Scope; rationale: risk and impact",
+      "type": "record",
+      "claim": "The described trigger is a notification leading users to a site SmartScreen blocks as a scam, phishing or malware page.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-stable-channel",
-      "quote": "Edge also informs users.",
+      "source": "roadmap record",
+      "quote": "When a notification leads users to a site that Microsoft Defender SmartScreen blocks as a scam, phishing, or malware page",
       "severity": null,
       "fix": null
     },
     {
       "n": 3,
-      "where": "What's changing; Governance controls",
+      "where": "summary; What's changing; Why it matters; Risk assessment; Governance guidance; rationale: risk",
       "type": "record",
-      "claim": "The roadmap says users can review affected sites at any time.",
+      "claim": "Edge automatically stops the notification source from sending further notifications.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Users can review and restore any of these sites anytime under edge://settings/privacy/sitePermissions/allPermissions/notifications.",
+      "quote": "Edge automatically stops that source from sending users further notifications and lets users know.",
       "severity": null,
       "fix": null
     },
     {
       "n": 4,
-      "where": "summary; What's changing; controls[0].note; Risk assessment: Security & identity",
+      "where": "What's changing; Risk assessment; Governance guidance",
       "type": "record",
-      "claim": "Users can restore sites from which Edge automatically unsubscribed them.",
+      "claim": "Edge informs users when it stops the notification source.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Users can review and restore any of these sites anytime under edge://settings/privacy/sitePermissions/allPermissions/notifications.",
+      "quote": "Edge automatically stops that source from sending users further notifications and lets users know.",
       "severity": null,
       "fix": null
     },
     {
       "n": 5,
-      "where": "What's changing; controls[0].note; Governance guidance; Governance controls",
+      "where": "What's changing; Governance controls",
       "type": "record",
-      "claim": "The user-facing review and restore route is edge://settings/privacy/sitePermissions/allPermissions/notifications.",
+      "claim": "Users can review the affected sites at any time.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Users can review and restore any of these sites anytime under edge://settings/privacy/sitePermissions/allPermissions/notifications.",
@@ -81,6 +81,28 @@
     },
     {
       "n": 6,
+      "where": "summary; What's changing; Risk assessment; controls[0].note",
+      "type": "record",
+      "claim": "Users can restore sites whose notifications Edge stopped, reversing the unsubscribe decision.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users can review and restore any of these sites anytime under edge://settings/privacy/sitePermissions/allPermissions/notifications.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing; Risk assessment; Governance guidance; Governance controls; controls[0].note",
+      "type": "record",
+      "claim": "The review and restoration route is edge://settings/privacy/sitePermissions/allPermissions/notifications.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users can review and restore any of these sites anytime under edge://settings/privacy/sitePermissions/allPermissions/notifications.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
       "where": "front matter: status; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap status is Launched.",
@@ -91,7 +113,7 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 9,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target is November CY2026.",
@@ -102,10 +124,10 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 10,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap publishes no preview date.",
+      "claim": "The roadmap record gives no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -113,7 +135,7 @@
       "fix": null
     },
     {
-      "n": 9,
+      "n": 11,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
       "claim": "The release phase is General Availability.",
@@ -124,7 +146,7 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 12,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
@@ -135,10 +157,10 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 13,
       "where": "front matter: platforms; What's changing; Scope; Open questions",
       "type": "record",
-      "claim": "The roadmap lists the Web platform.",
+      "claim": "The roadmap platform is Web.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -146,7 +168,7 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 14,
       "where": "Scope",
       "type": "record",
       "claim": "The roadmap does not list US Government clouds.",
@@ -157,35 +179,13 @@
       "fix": null
     },
     {
-      "n": 13,
-      "where": "front matter: defaultState; Why it matters; Risk assessment: Autonomy & actions",
-      "type": "default",
-      "claim": "The feature is on and acts automatically without an administrator enabling it.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "When a notification leads users to a site that Microsoft Defender SmartScreen blocks as a scam, phishing, or malware page, Edge automatically stops that source from sending users further notifications and lets users know.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "What's changing; Scope; Why it matters",
-      "type": "availability",
-      "claim": "The Stable release notes list this feature under Feature Updates for version 158.0.4370.33.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-stable-channel",
-      "quote": "Version 158.0.4370.33: November 19, 2026 (Stable) - Main Release",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 15,
-      "where": "What's changing; Scope",
-      "type": "date",
-      "claim": "The Stable version 158.0.4370.33 release-note date is 19 November 2026.",
+      "where": "front matter: defaultState; Why it matters; Risk assessment",
+      "type": "default",
+      "claim": "The protection acts automatically without an administrator enabling it.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-stable-channel",
-      "quote": "Version 158.0.4370.33: November 19, 2026 (Stable) - Main Release",
+      "quote": "Edge automatically stops that source from sending further notifications. Edge also informs users.",
       "severity": null,
       "fix": null
     },
@@ -193,10 +193,10 @@
       "n": 16,
       "where": "What's changing; Scope",
       "type": "availability",
-      "claim": "The same feature also appears in the earlier Edge 152 Stable release notes.",
+      "claim": "The feature appears under Feature Updates in the Stable release notes for version 158.0.4370.33.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-archive-stable-channel",
-      "quote": "Version 152.0.4191.53: August 27, 2026 (Stable) - Main Release\nAutomatically unsubscribe users from notifications sent by scam and malicious sites",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-stable-channel",
+      "quote": "Version 158.0.4370.33: November 19, 2026 (Stable) - Main Release; Feature Updates; Automatically unsubscribe users from notifications sent by scam and malicious sites",
       "severity": null,
       "fix": null
     },
@@ -204,7 +204,29 @@
       "n": 17,
       "where": "What's changing; Scope",
       "type": "date",
-      "claim": "The Edge 152 Stable entry is dated 27 August 2026.",
+      "claim": "The release notes date version 158.0.4370.33 to 19 November 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-stable-channel",
+      "quote": "Version 158.0.4370.33: November 19, 2026 (Stable) - Main Release",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "The same feature is documented in the earlier Edge 152 Stable release notes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-archive-stable-channel",
+      "quote": "Version 152.0.4191.53: August 27, 2026 (Stable) - Main Release; Automatically unsubscribe users from notifications sent by scam and malicious sites",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Scope",
+      "type": "date",
+      "claim": "The earlier Edge 152 Stable entry is dated 27 August 2026.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-archive-stable-channel",
       "quote": "Version 152.0.4191.53: August 27, 2026 (Stable) - Main Release",
@@ -212,10 +234,10 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 20,
       "where": "What's changing; Scope",
-      "type": "behaviour",
-      "claim": "Microsoft marks the Edge 152 feature as a controlled feature rollout.",
+      "type": "availability",
+      "claim": "The Edge 152 entry marks this feature as a controlled feature rollout.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-archive-stable-channel",
       "quote": "Note: This is a controlled feature rollout. If you don't see this change, check back as we continue the rollout.",
@@ -223,35 +245,13 @@
       "fix": null
     },
     {
-      "n": 19,
-      "where": "controls[0].ui; controls[0].api; summary; Why it matters; Governance controls",
-      "type": "absence",
-      "claim": "No administrator UI or policy/automation switch specific to automatic unsubscribe is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Edge automatically unsubscribe malicious scam notifications policy administrator disable licensing price. Read Stable/archived notes, both notification-policy references and policy index; searched index for unsubscribe, notification and SmartScreen.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "controls[0].note; Governance guidance: After rollout",
-      "type": "absence",
-      "claim": "The Edge 158 release notes list no policy specific to this feature.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Edge automatically unsubscribe malicious scam notifications policy administrator disable. Opened and read the Edge 158 Feature Updates and all Policy Updates; none names an automatic-unsubscribe policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 21,
       "where": "What's changing",
       "type": "absence",
-      "claim": "The roadmap and release notes do not describe how Edge records the unsubscribe decision.",
+      "claim": "The roadmap and release notes do not describe how Edge records its unsubscribe decision.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Microsoft Edge automatic unsubscribe notifications restore managed profiles SmartScreen policy data stored approval. Read roadmap and Stable/archived feature entries; they describe the trigger, stopping notifications, informing users and restoration, not decision storage.",
+      "quote": "Searched: Microsoft Edge automatic unsubscribe notification restore managed profiles approval data stored platform channels. Read the roadmap, Stable 158 and archived Stable 152 feature entries; none explains decision recording.",
       "severity": null,
       "fix": null
     },
@@ -259,10 +259,10 @@
       "n": 22,
       "where": "What's changing",
       "type": "absence",
-      "claim": "The roadmap and release notes do not describe what the user notice looks like.",
+      "claim": "The roadmap and release notes do not describe the appearance of the user notice.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Microsoft Edge automatic unsubscribe notifications restore managed profiles SmartScreen policy data stored approval. Read roadmap and Stable/archived entries; they say Edge informs users but supply no notice wording or appearance.",
+      "quote": "Searched: Microsoft Edge automatic unsubscribe notification restore managed profiles approval data stored platform channels. Read the roadmap and Stable 158/152 entries: they say Edge informs users but give no notice appearance.",
       "severity": null,
       "fix": null
     },
@@ -270,183 +270,161 @@
       "n": 23,
       "where": "Why it matters",
       "type": "behaviour",
-      "claim": "Web notification permissions allow a site to reach a user after the user has left its app.",
+      "claim": "Web notification permissions can let a site reach users after they have left the site.",
       "status": "supported",
       "source": "https://learn.microsoft.com/aspnet/core/blazor/progressive-web-app/push-notifications?view=aspnetcore-11.0#display-notifications",
-      "quote": "When using the app in either Google Chrome or Microsoft Edge, the notification appears even if the user isn't actively using the Blazing Pizza app. However, the browser must be running, or the notification appears the next time that the browser is opened.",
+      "quote": "When using the app in either Google Chrome or Microsoft Edge, the notification appears even if the user isn't actively using the Blazing Pizza app.",
       "severity": null,
       "fix": null
     },
     {
       "n": 24,
-      "where": "Risk assessment: Data exposure; rationale: risk; Open questions",
+      "where": "controls[0]; summary; Why it matters; Governance controls",
       "type": "absence",
-      "claim": "The feature's release-note entries do not describe what Edge sends to Microsoft or stores for automatic unsubscribe.",
+      "claim": "No administrator UI or policy automation specifically enabling or disabling this automatic unsubscribe feature is documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Microsoft Edge automatic unsubscribe notifications restore managed profiles SmartScreen policy data stored approval. Read Stable/archived feature entries and privacy/SmartScreen search excerpts; general reputation-check data is described, not unsubscribe-specific data handling.",
+      "quote": "Searched: Microsoft Edge automatic unsubscribe scam malicious notifications policy disable; automatic unsubscribe notifications policy Edge management service. Read Stable 158/152 and searched the Edge policy index for unsubscribe, notification, scam and SmartScreen; no feature-specific switch.",
       "severity": null,
       "fix": null
     },
     {
       "n": 25,
-      "where": "Risk assessment: Security & identity; Scope; rationale: impact",
-      "type": "behaviour",
-      "claim": "The described trigger concerns a notification-led visit to a SmartScreen-blocked destination, not a malicious destination SmartScreen has not blocked.",
+      "where": "controls[0].note; Governance guidance: After rollout",
+      "type": "absence",
+      "claim": "The Edge 158 release notes list no policy update for this feature.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-stable-channel",
-      "quote": "When a notification leads users to a site that Microsoft Defender SmartScreen blocks as a scam, phishing, or malware page, Edge automatically stops that source from sending further notifications.",
+      "source": null,
+      "quote": "Searched: automatic unsubscribe notifications policy Edge management service. Read the complete Stable 158 Feature Updates and Policy Updates sections, including the November 25 update; no automatic-unsubscribe policy is listed.",
       "severity": null,
       "fix": null
     },
     {
       "n": 26,
-      "where": "Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "Restoring an automatically unsubscribed site allows its notifications again.",
+      "where": "front matter: licensing.model; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "A licence entitlement for this feature is not yet published, so the licensing model is unknown.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-stable-channel",
-      "quote": "Edge automatically stops that source from sending further notifications. Edge also informs users. Users can review and restore these sites anytime under `edge://settings/privacy/sitePermissions/allPermissions/notifications`.",
+      "source": null,
+      "quote": "Searched: Microsoft Edge browser licensing automatic unsubscribe notifications price meter licence prerequisites; Edge for Business browser free no additional license licensing requirements. Read Stable 158 and Edge for Business; neither names an entitlement covering this feature.",
       "severity": null,
       "fix": null
     },
     {
       "n": 27,
-      "where": "Risk assessment: Security & identity",
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
       "type": "absence",
-      "claim": "The release notes do not state whether restoring sites is allowed for managed profiles.",
+      "claim": "The Edge 158 feature entry and roadmap item name no licence.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Microsoft Edge automatic unsubscribe notifications restore managed profiles SmartScreen policy data stored approval. Read Stable/archived entries and restoration search results; no managed-profile qualification appears.",
+      "quote": "Searched: Microsoft Edge browser licensing automatic unsubscribe notifications price meter licence prerequisites. Read the complete Stable 158 automatic-unsubscribe entry and supplied roadmap description; neither names a licence.",
       "severity": null,
       "fix": null
     },
     {
       "n": 28,
-      "where": "Risk assessment: Autonomy & actions",
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "absence",
-      "claim": "The release notes describe no user or administrator approval step before automatic unsubscribe.",
+      "claim": "The Edge 158 feature entry and roadmap item name no meter.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Microsoft Edge automatic unsubscribe notifications restore managed profiles SmartScreen policy data stored approval. Read Stable/archived feature entries: Edge acts automatically, informs users, and permits later restoration; no approval step is described.",
+      "quote": "Searched: Microsoft Edge browser licensing automatic unsubscribe notifications price meter licence prerequisites. Read Stable 158 and the roadmap description; neither publishes a meter for this feature.",
       "severity": null,
       "fix": null
     },
     {
       "n": 29,
-      "where": "front matter: licensing.model; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "A licence entitlement statement for this feature is not yet published, so the licensing model is unknown.",
+      "where": "front matter: licensing.notes; Cost and licensing; Scope",
+      "type": "absence",
+      "claim": "The release notes and roadmap name no prerequisite for the automatic unsubscribe feature.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Microsoft Edge licensing browser free automatic notification unsubscribe licence meter pricing; Microsoft Edge browser license installation use rights free product licensing requirements. Read release notes, Edge FAQ and licensing results; no feature entitlement stated.",
+      "quote": "Searched: Microsoft Edge browser licensing automatic unsubscribe notifications price meter licence prerequisites. Read Stable 158/152 feature entries and the roadmap; no prerequisite list is provided for automatic unsubscribe.",
       "severity": null,
       "fix": null
     },
     {
       "n": 30,
-      "where": "front matter: licensing.notes; Cost and licensing; Scope",
-      "type": "absence",
-      "claim": "The Edge 158 feature entry names no licence.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Edge automatically unsubscribe notifications supported platforms channels Windows macOS Android prerequisites role license. Read the entire Edge 158 automatic-unsubscribe entry; it names no licence.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "record",
-      "claim": "The roadmap item names no licence.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Microsoft Edge now helps further protect users from malicious web notifications.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "The Edge 158 feature entry names no meter.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Edge licensing browser free automatic notification unsubscribe licence meter pricing. Read the Edge 158 feature entry and returned release-note and licensing excerpts; no automatic-unsubscribe billing meter is named.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "front matter: licensing.notes; Cost and licensing; Scope",
-      "type": "absence",
-      "claim": "The Edge 158 feature entry names no prerequisite.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Edge automatically unsubscribe notifications supported platforms channels Windows macOS Android prerequisites role license. Read the Edge 158 feature entry; it describes a SmartScreen-blocked destination as the trigger but supplies no prerequisites list.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
       "where": "Scope",
       "type": "absence",
       "claim": "The release notes name no administrative role for this feature.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Microsoft Edge automatically unsubscribe notifications supported platforms channels Windows macOS Android prerequisites role license. Read Stable/archived feature entries; neither names an administrative role.",
+      "quote": "Searched: Microsoft Edge automatic unsubscribe scam malicious notifications policy disable SmartScreen managed profiles data restore. Read Stable 158/152 and searched the Edge policy index; no feature-specific configuration role is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "absence",
+      "claim": "The release notes do not describe data sent to Microsoft for this feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Edge automatic unsubscribe notification restore managed profiles approval data stored platform channels. Read Stable 158/152 entries and Learn privacy SmartScreen excerpts; the feature entries give no feature-specific data transmission description.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "absence",
+      "claim": "The release notes do not describe data stored for this feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Edge automatic unsubscribe notification restore managed profiles approval data stored platform channels. Read Stable 158/152 entries and Learn privacy SmartScreen excerpts; none describes storage specific to the unsubscribe action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "The release notes do not separately say whether managed profiles may restore unsubscribed sites.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Edge automatic unsubscribe notification restore managed profiles approval data stored platform channels. Read Stable 158/152: restoration is stated without a managed-profile breakdown.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The release notes describe no user or administrator approval step before automatic unsubscribe.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Edge automatic unsubscribe notification restore managed profiles approval data stored platform channels. Read Stable 158/152: Edge acts automatically and informs users; no approval step is described.",
       "severity": null,
       "fix": null
     },
     {
       "n": 35,
-      "where": "controls[1].ui",
+      "where": "controls[1].ui; Governance controls table",
       "type": "admin-path",
       "claim": "The Group Policy route is Administrative Templates > Microsoft Edge > Content settings > Default notification setting.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/defaultnotificationssetting",
-      "quote": "Group Policy (ADMX) info\nGP name: Default notification setting\nGP path (Mandatory): Administrative Templates/Microsoft Edge/Content settings",
+      "quote": "GP name: Default notification setting; GP path (Mandatory): Administrative Templates/Microsoft Edge/Content settings",
       "severity": null,
       "fix": null
     },
     {
       "n": 36,
-      "where": "controls[1].api",
+      "where": "controls[1].api; Governance controls table",
       "type": "command",
-      "claim": "DefaultNotificationsSetting is configured through the REG_DWORD value DefaultNotificationsSetting at SOFTWARE\\Policies\\Microsoft\\Edge.",
+      "claim": "The registry setting is SOFTWARE\\Policies\\Microsoft\\Edge, value DefaultNotificationsSetting, type REG_DWORD.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/defaultnotificationssetting",
-      "quote": "Registry settings\nPath (Mandatory): SOFTWARE\\Policies\\Microsoft\\Edge\nValue name: DefaultNotificationsSetting\nValue type: REG_DWORD",
+      "quote": "Path (Mandatory): SOFTWARE\\Policies\\Microsoft\\Edge; Value name: DefaultNotificationsSetting; Value type: REG_DWORD",
       "severity": null,
       "fix": null
     },
     {
       "n": 37,
-      "where": "controls[2].ui",
-      "type": "admin-path",
-      "claim": "The Group Policy route is Administrative Templates > Microsoft Edge > Content settings > Block notifications on specific sites.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/notificationsblockedforurls",
-      "quote": "Group Policy (ADMX) info\nGP name: Block notifications on specific sites\nGP path (Mandatory): Administrative Templates/Microsoft Edge/Content settings",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "controls[2].api",
-      "type": "command",
-      "claim": "NotificationsBlockedForUrls is configured using numbered REG_SZ values at SOFTWARE\\Policies\\Microsoft\\Edge\\NotificationsBlockedForUrls.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/notificationsblockedforurls",
-      "quote": "Registry settings\nPath (Mandatory): SOFTWARE\\Policies\\Microsoft\\Edge\\NotificationsBlockedForUrls\nValue name: 1, 2, 3, ...\nValue type: List of REG_SZ",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "controls[1].governs; controls[1].note; Governance guidance; Governance controls",
+      "where": "controls[1].governs and note; Governance guidance; Governance controls",
       "type": "applicability",
-      "claim": "DefaultNotificationsSetting is an existing general control deciding whether websites can display notifications by default.",
+      "claim": "DefaultNotificationsSetting controls whether websites can display notifications by default.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/defaultnotificationssetting",
       "quote": "Set whether websites can display desktop notifications. You can allow them by default ('AllowNotifications'), deny them by default ('BlockNotifications'), or have the user be asked each time a website wants to show a notification ('AskNotifications').",
@@ -454,10 +432,32 @@
       "fix": null
     },
     {
+      "n": 38,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Group Policy route is Administrative Templates > Microsoft Edge > Content settings > Block notifications on specific sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/notificationsblockedforurls",
+      "quote": "GP name: Block notifications on specific sites; GP path (Mandatory): Administrative Templates/Microsoft Edge/Content settings",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "The registry setting uses SOFTWARE\\Policies\\Microsoft\\Edge\\NotificationsBlockedForUrls with numbered string values 1, 2, 3.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/notificationsblockedforurls",
+      "quote": "Path (Mandatory): SOFTWARE\\Policies\\Microsoft\\Edge\\NotificationsBlockedForUrls; Value name: 1, 2, 3, ...; Value type: List of REG_SZ",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 40,
-      "where": "controls[2].governs; controls[2].note; Governance guidance; Governance controls",
+      "where": "controls[2].governs and note; Governance guidance; Governance controls",
       "type": "applicability",
-      "claim": "NotificationsBlockedForUrls is an existing general control specifying sites that cannot display notifications.",
+      "claim": "NotificationsBlockedForUrls specifies sites that are not allowed to display notifications.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/notificationsblockedforurls",
       "quote": "Allows you to create a list of url patterns to specify sites that aren't allowed to display notifications.",
@@ -466,12 +466,12 @@
     },
     {
       "n": 41,
-      "where": "controls[1].note; controls[2].note; Governance controls",
+      "where": "controls[1].note; controls[2].note",
       "type": "absence",
-      "claim": "The DefaultNotificationsSetting reference does not mention automatic unsubscribe.",
+      "claim": "Neither of the two notification-policy reference pages mentions automatic unsubscribe.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Microsoft Edge automatically unsubscribe malicious scam notifications policy administrator disable. Read DefaultNotificationsSetting, NotificationsBlockedForUrls and Stable/archived feature entries; they document general permissions and automatic unsubscribe separately, not their interaction.",
+      "quote": "Searched: automatic unsubscribe notifications policy Edge management service. Read the complete DefaultNotificationsSetting and NotificationsBlockedForUrls references; neither mentions automatic unsubscribe.",
       "severity": null,
       "fix": null
     },
@@ -479,10 +479,10 @@
       "n": 42,
       "where": "Governance controls",
       "type": "availability",
-      "claim": "DefaultNotificationsSetting has a macOS preference key.",
+      "claim": "Both notification policies have Windows Group Policy and registry settings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/defaultnotificationssetting",
-      "quote": "macOS: ≥ 77\nAndroid: ≥ 147\nMac information and settings\nPreference Key name: DefaultNotificationsSetting",
+      "quote": "Both fetched references contain: Windows: >= 77; Windows information and settings; Group Policy (ADMX) info; Registry settings.",
       "severity": null,
       "fix": null
     },
@@ -490,109 +490,65 @@
       "n": 43,
       "where": "Governance controls",
       "type": "availability",
-      "claim": "NotificationsBlockedForUrls has a macOS preference key.",
+      "claim": "Both notification policies have macOS preference keys.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/notificationsblockedforurls",
-      "quote": "macOS: ≥ 77\nAndroid: ≥ 147\nMac information and settings\nPreference Key name: NotificationsBlockedForUrls",
+      "quote": "Mac information and settings; Preference Key name: NotificationsBlockedForUrls. The DefaultNotificationsSetting reference also states: Mac information and settings; Preference Key name: DefaultNotificationsSetting.",
       "severity": null,
       "fix": null
     },
     {
       "n": 44,
-      "where": "Governance controls; Open questions",
-      "type": "absence",
-      "claim": "The release notes do not give a complete platform/channel breakdown or say automatic unsubscribe applies on every platform supported by the notification policies.",
+      "where": "Governance controls",
+      "type": "availability",
+      "claim": "Both notification policies support Android from version 147.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Edge automatically unsubscribe notifications supported platforms channels Windows macOS Android prerequisites role license. Read Stable/archived entries and Beta excerpts; they identify release channels but provide no feature-specific operating-system matrix.",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/notificationsblockedforurls",
+      "quote": "Android: >= 147. The fetched DefaultNotificationsSetting reference gives the same supported-version entry: Android: >= 147.",
       "severity": null,
       "fix": null
     },
     {
       "n": 45,
-      "where": "front matter: impact; rationale: impact",
-      "type": "consistency",
-      "claim": "The low impact rating fits an automatic change to existing notification behaviour.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "impact: \"low\"; defaultState: \"on\". Standard: low means \"admins only, or a small opt-in group\"; high means \"most users, or a change to default behaviour\".",
-      "severity": "minor",
-      "fix": "Set impact to high and replace its rationale with: \"High. Edge changes notification behaviour automatically when a notification leads to a SmartScreen-blocked scam, phishing or malware page; affected users do not opt in to this protection.\""
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The release notes do not break down automatic-unsubscribe availability by operating-system platform.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Edge automatic unsubscribe notification restore managed profiles approval data stored platform channels. Read Stable 158/152 and Beta 158/152 excerpts; no operating-system scope is given for this feature.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 46,
       "where": "Governance controls",
-      "type": "availability",
-      "claim": "DefaultNotificationsSetting supports Android from Edge version 147.",
+      "type": "absence",
+      "claim": "The release notes do not describe interactions between the existing notification policies and automatic unsubscribe.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/defaultnotificationssetting",
-      "quote": "Supported versions\nAndroid: ≥ 147",
+      "source": null,
+      "quote": "Searched: automatic unsubscribe notifications policy Edge management service; Microsoft Edge automatic unsubscribe scam malicious notifications policy disable. Read Stable 158/152 and both notification-policy references; no interaction with automatic unsubscribe is described.",
       "severity": null,
       "fix": null
     },
     {
       "n": 47,
-      "where": "Governance controls",
-      "type": "availability",
-      "claim": "NotificationsBlockedForUrls supports Android from Edge version 147.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/notificationsblockedforurls",
-      "quote": "Supported versions\nAndroid: ≥ 147",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "record",
-      "claim": "The roadmap item names no meter.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Microsoft Edge now helps further protect users from malicious web notifications.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "record",
-      "claim": "The roadmap item names no prerequisite.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "When a notification leads users to a site that Microsoft Defender SmartScreen blocks as a scam, phishing, or malware page, Edge automatically stops that source from sending users further notifications and lets users know.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
-      "where": "controls[2].note",
-      "type": "absence",
-      "claim": "The NotificationsBlockedForUrls reference does not mention automatic unsubscribe.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Edge automatically unsubscribe malicious scam notifications policy administrator disable. Read the entire NotificationsBlockedForUrls reference; it describes URL-pattern notification restrictions and contains no automatic-unsubscribe statement.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 51,
-      "where": "Governance controls",
-      "type": "absence",
-      "claim": "The release notes do not describe how the general notification policies interact with automatic unsubscribe.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Edge automatically unsubscribe malicious scam notifications policy administrator disable. Read Stable/archived feature entries and notification-policy references; no entry describes their interaction.",
-      "severity": null,
-      "fix": null
+      "where": "front matter: impact; rationale: impact",
+      "type": "consistency",
+      "claim": "A low impact rating fits this automatic change to existing notification behaviour.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "impact: low; defaultState: on. The standard defines low as admins only or a small opt-in group, and high as most users or a change to default behaviour.",
+      "severity": "minor",
+      "fix": "Set impact to high. Replace the impact rationale with: \"High. Edge changes notification behaviour automatically when a notification leads to a SmartScreen-blocked scam, phishing or malware page; affected users do not opt in to this protection.\""
     }
   ],
   "precheck": {
-    "at": "2026-11-21T20:54:37.045Z",
+    "at": "2026-11-26T02:11:19.529Z",
     "summary": {
       "links": 6,
-      "unreachable": 0,
+      "unreachable": 5,
       "uiPaths": 2,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 2,
       "apiCalls": 2,
       "apiCallsNotOnPage": 2,
       "roadmapDrift": 0
@@ -605,28 +561,28 @@
       },
       {
         "url": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-stable-channel",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-archive-stable-channel",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/defaultnotificationssetting",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/notificationsblockedforurls",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/aspnet/core/blazor/progressive-web-app/push-notifications?view=aspnetcore-11.0#display-notifications",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -635,21 +591,26 @@
         "side": "ui",
         "governs": "Whether websites can display notifications by default",
         "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/defaultnotificationssetting",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Administrative Templates",
           "Microsoft Edge",
           "Content settings",
           "Default notification setting"
         ],
-        "missing": []
+        "missing": [
+          "Administrative Templates",
+          "Microsoft Edge",
+          "Content settings",
+          "Default notification setting"
+        ]
       },
       {
         "index": 1,
         "side": "api",
         "governs": "Whether websites can display notifications by default",
         "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/defaultnotificationssetting",
-        "reachable": true,
+        "reachable": false,
         "token": "Registry: SOFTWARE\\Policies\\Microsoft\\Edge,",
         "found": false
       },
@@ -658,21 +619,26 @@
         "side": "ui",
         "governs": "Sites that are not allowed to display notifications",
         "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/notificationsblockedforurls",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Administrative Templates",
           "Microsoft Edge",
           "Content settings",
           "Block notifications on specific sites"
         ],
-        "missing": []
+        "missing": [
+          "Administrative Templates",
+          "Microsoft Edge",
+          "Content settings",
+          "Block notifications on specific sites"
+        ]
       },
       {
         "index": 2,
         "side": "api",
         "governs": "Sites that are not allowed to display notifications",
         "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/notificationsblockedforurls",
-        "reachable": true,
+        "reachable": false,
         "token": "Registry: SOFTWARE\\Policies\\Microsoft\\Edge\\NotificationsBlockedForUrls,",
         "found": false
       }
@@ -684,6 +650,12 @@
       "date": "2026-11-21",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-21",
+      "status": "verified-with-gaps",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

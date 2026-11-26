@@ -5,7 +5,7 @@ roadmapId: 557673
 topic: "m365-copilot"
 products: ["Word","Microsoft Copilot (Microsoft 365)"]
 summary: "Copilot chat in Word can now edit the document directly, without users toggling editing on; users can turn it off. No tenant-wide admin switch is documented, so plan communication and licence review."
-status: "in-development"
+status: "launched"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
 platforms: ["Desktop","Mac","Web"]
@@ -15,7 +15,7 @@ risk: "medium"
 cost: "low"
 impact: "high"
 defaultState: "on"
-action: "prepare"
+action: "act-now"
 licensing:
   model: "add-on"
   notes: "The Microsoft Copilot service description identifies Edit with Copilot in Word as a Premium feature requiring a Microsoft 365 Copilot licence. The release note does not separately describe licence-specific rollout of the new chat default."
@@ -73,8 +73,8 @@ controls:
     note: "Microsoft Learn documents no such setting at the time of writing (November 2026). Users can turn the experience off themselves, per the release notes."
 confidence: "medium"
 created: "2026-11-22"
-updated: "2026-11-22"
-roadmapModified: "2026-02-25T00:15:23"
+updated: "2026-11-26"
+roadmapModified: "2026-11-26T00:16:54"
 changes:
   - date: "2026-11-22"
     note: "First briefing: Copilot chat in Word edits documents directly by default; roadmap says In development while the release notes list it; no admin switch documented."
@@ -84,19 +84,23 @@ changes:
     note: "Corrected licensing: the service description requires a Microsoft 365 Copilot licence for Edit with Copilot in Word (add-on); narrowed the Basic-user statement; removed an unsupported 'until now' claim."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 50 statements not yet confirmed"
-version: 2
+  - date: "2026-11-26"
+    note: "Action raised to act-now: the release notes already describe the Web default as available and the roadmap record now lists the item as Launched; removed the In development caveats and kept the Desktop and Mac caveat."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 54 statements not yet confirmed"
+version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-22"
-  version: 2
+  date: "2026-11-26"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 50
-  confirmed: 49
+  claims: 54
+  confirmed: 54
   unconfirmed: 0
-  contradicted: 1
+  contradicted: 0
   attempts: 0
-  hash: "1b10b31c2a3826121b6cce49c7f32863"
+  hash: "9c66c1fa681fd04e11808ad1c0758d20"
 ---
 
 ## What's changing
@@ -105,7 +109,7 @@ The default chat experience with Copilot in Word now allows Copilot to directly 
 
 The Microsoft 365 Copilot release notes list the same item under an entry dated June 2, 2026, marked [Web]. They say Copilot can make direct edits without users toggling editing on, and that users can still turn the experience off if they prefer. Their "Try this" steps include asking Copilot to rewrite a paragraph, change formatting, or insert new content and then review the tracked changes. The release notes do not say where a user turns the experience off.
 
-The roadmap record lists the item as In development with a target of March CY2026, for Desktop, Mac and Web in the Worldwide (Standard Multi-Tenant) cloud, at General Availability. The release notes show Web only, and the record has not moved from In development, so the two sources differ on status and platforms. Microsoft Learn has no page for this feature beyond the release note, so the behaviour described here is the roadmap's and the release note's description.
+The roadmap record lists the item as Launched with a target of March CY2026, for Desktop, Mac and Web in the Worldwide (Standard Multi-Tenant) cloud, at General Availability. The release notes show Web only, so the two sources differ on platforms. Microsoft Learn has no page for this feature beyond the release note, so the behaviour described here is the roadmap's and the release note's description.
 
 ## Why it matters
 
@@ -126,7 +130,7 @@ For a service owner the exposure is document integrity: shared contracts, polici
 - No admin setting for this behaviour is documented, so the user's own off switch is the documented opt-out. The release notes do not say where it is.
 
 **Change & support**
-- Expect questions from users who see Copilot edit text instead of suggesting it, and from those who cannot find the off switch. The roadmap target (March CY2026) has passed and the status is still In development, so confirm what your users see before communicating a date.
+- Expect questions from users who see Copilot edit text instead of suggesting it, and from those who cannot find the off switch. The roadmap record lists the item as Launched (target March CY2026), but the release notes show Web only, so confirm what your users see on Desktop and Mac before communicating a date.
 
 ## Cost and licensing
 
@@ -145,7 +149,7 @@ The roadmap description says the default chat experience in Word allows direct e
 ## Governance guidance
 
 ### Before rollout
-- Check the roadmap item and the Microsoft 365 Copilot release notes for status changes, because the record says In development while the release notes already list the change.
+- Check the Microsoft 365 Copilot release notes for Desktop and Mac availability, because the roadmap record lists those platforms while the release notes entry is marked [Web].
 - Identify which users hold the Microsoft 365 Copilot add-on licence, using the licence assignment row in the controls table, so you know who is likely to see full Copilot in Word.
 - Write a short user note that says Copilot in Word can edit the document directly, that changes can be reviewed and undone, and that users can turn the experience off.
 
@@ -177,7 +181,7 @@ Microsoft Learn lists Copilot settings in the Microsoft 365 admin center under C
 
 - Where in Word does a user turn off direct editing, and can an administrator set that choice for the tenant or for groups? Watch the Microsoft 365 Copilot release notes and Message center.
 - Does the new default have any licence-specific rollout qualifications beyond the published Edit with Copilot requirement?
-- Does the rollout cover Desktop and Mac as the roadmap record lists, or only Web as the release notes show, and when does the status move from In development?
+- Does the rollout cover Desktop and Mac as the roadmap record lists, or only Web as the release notes show?
 - Does direct editing honour sensitivity label restrictions and read-only documents in the same way as other Copilot actions in Word?
 
 <!-- rationale
@@ -186,8 +190,8 @@ cost: Low. The cost known is admin and communication time plus the Copilot licen
 impact: High. It changes the default chat behaviour in Word for the people who use Copilot there, so users notice on first use without an admin acting.
 -->
 
-<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] front matter: action; Governance guidance / consistency: The action is prepare despite a documented on-by-default Web release, medium risk and a communication decision. | Found: action: "prepare"; risk: "medium"; defaultState: "on"; "The Microsoft 365 Copilot release notes list the same item under an entry dated June 2, 2026, marked [Web]." | Fix: Set action to 'act-now': the June 2, 2026 release notes already describe the Web default as available. Keep the explicit caveat that the roadmap remains In development and that Desktop and Mac rollout is not resolved.
+- [supported, minor] Scope / record: Microsoft publishes a separate roadmap item for Edit with Copilot in Word in GCC. | Found: "id": 570277, "title": "Word: Copilot edit mode is available to users in Office 365 GCC" | Fix: Add https://www.microsoft.com/microsoft-365/roadmap?id=570277 to sources for the sentence about the separate GCC item.
 -->

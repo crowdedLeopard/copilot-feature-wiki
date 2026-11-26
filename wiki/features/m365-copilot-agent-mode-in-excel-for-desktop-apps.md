@@ -109,26 +109,30 @@ controls:
     note: "No setting specific to this feature is documented at the time of writing (November 2026)."
 confidence: "medium"
 created: "2026-11-25"
-updated: "2026-11-25"
+updated: "2026-11-26"
 roadmapModified: "2026-02-13T23:15:55"
 changes:
   - date: "2026-11-25"
     note: "New briefing: Agent Mode in Excel desktop is launched as Edit with Copilot; covers the Microsoft 365 Copilot licence, Claude model access and the December 9, 2026 Anthropic setting change."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 57 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected: the Product Terms and DPA statement now carries Microsoft's exception for Anthropic models with Data Retention; the Anthropic setting path includes View all; removed an unsupported claim about earlier Copilot behaviour; reworded the Show Changes checklist step."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 58 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
-  date: "2026-11-25"
-  version: 1
+  status: "verified-with-gaps"
+  date: "2026-11-26"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 57
-  confirmed: 53
-  unconfirmed: 1
-  contradicted: 3
-  attempts: 1
-  hash: "9ef1a5e8078c504e446bfef8306ecb6b"
+  claims: 58
+  confirmed: 58
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "f3e697d0c2237479a20e900c3c4ca0d3"
 ---
 
 ## What's changing
@@ -143,9 +147,9 @@ The roadmap record lists the item as Launched, General Availability, targeted fo
 
 ## Why it matters
 
-For licensed users, Copilot in Excel stops being a helper that suggests and becomes one that edits. Microsoft describes Edit with Copilot as a new option available in Copilot in Excel and the workbook-editing capabilities as part of the regular Copilot in Excel experience, so expect licensed users to have it already. Expect more Copilot-authored formulas, PivotTables and Python output in finance and reporting workbooks, and plan for users to check them.
+For licensed users, Edit with Copilot can build and change workbooks through chat. Microsoft describes Edit with Copilot as a new option available in Copilot in Excel and the workbook-editing capabilities as part of the regular Copilot in Excel experience, so expect licensed users to have it already. Expect more Copilot-authored formulas, PivotTables and Python output in finance and reporting workbooks, and plan for users to check them.
 
-The model choice is the governance decision. Where Anthropic is allowed, Excel content a user works on can be processed by Claude models, which Microsoft runs with Anthropic as a subprocessor under the Product Terms and Data Protection Addendum. For EU, EFTA and UK tenants, Microsoft is changing the Anthropic setting on December 9, 2026: a tenant that chose **All users for Microsoft 365 apps only**, or never chose, moves to **All users**.
+The model choice is the governance decision. Where Anthropic is allowed, Excel content a user works on can be processed by Claude models. Microsoft's Product Terms and Data Protection Addendum apply unless the models are labelled "Anthropic models with Data Retention". For EU, EFTA and UK tenants, Microsoft is changing the Anthropic setting on December 9, 2026: a tenant that chose **All users for Microsoft 365 apps only**, or never chose, moves to **All users**.
 
 ## Risk assessment
 
@@ -181,7 +185,7 @@ The model choice is the governance decision. Where Anthropic is allowed, Excel c
 ## Governance guidance
 
 ### Before rollout
-- Check the Anthropic setting under Copilot > Settings > AI providers operating as Microsoft subprocessors, and decide which users or groups may use Claude models in Excel.
+- Check the Anthropic setting under Microsoft 365 admin center > Copilot > Settings > View all > AI providers operating as Microsoft subprocessors, and decide which users or groups may use Claude models in Excel.
 - Confirm, for EU, EFTA and UK tenants, what the setting will become on December 9, 2026, and set **No users** or **Specific users and groups** before then if **All users** is not wanted.
 - Review which users hold Microsoft 365 Copilot licences, since the licence decides who gets Edit with Copilot.
 
@@ -190,7 +194,7 @@ The model choice is the governance decision. Where Anthropic is allowed, Excel c
 - Apply the `BlockContentAnalysisServices` label setting to labels whose workbooks must stay out of Copilot in Office apps, noting Microsoft's warning that some services, such as automatic and recommended labelling, won't work as designed.
 
 ### After rollout
-- Ask owners of critical workbooks to use the Show Changes pane to review Copilot-attributed edits.
+- Ask owners of critical workbooks to review Copilot's edits before using the results.
 - Recheck the Anthropic user scope after the December 2026 EU Data Boundary change and after any Message center notice on Claude models.
 
 ## Governance controls
@@ -223,14 +227,10 @@ cost: Medium. Microsoft's service description lists Edit with Copilot in Excel a
 impact: Medium. Users who hold a Microsoft 365 Copilot licence and work in Excel on Windows or Mac see a new editing mode in the Copilot pane.
 -->
 
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters: second paragraph / behaviour: Claude processing is covered by Microsoft's Product Terms and Data Protection Addendum without a stated model exception. | Found: Unless models are labeled "Anthropic models with Data Retention," the Microsoft Product Terms and Microsoft Data Protection Addendum (DPA) apply to the use of Claude models from Anthropic through Microsoft's enterprise Online Services. | Fix: Replace the second sentence of the paragraph with: 'Where Anthropic is allowed, Excel content a user works on can be processed by Claude models. Microsoft's Product Terms and Data Protection Addendum apply unless the models are labelled "Anthropic models with Data Retention".' Keep the existing subprocessor-page citation. | Source: https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor
-- [unsupported, major] Why it matters: first sentence / behaviour: Before this change Copilot in Excel only suggested, rather than edited workbooks. | Found: Searched: Copilot Excel previously could edit workbook Agent Mode suggestions before; "Excel" "Copilot" "previously" "edit" "Agent Mode". Read release notes and Business Central Copilot section; neither states that earlier Copilot only suggested. | Fix: Replace 'For licensed users, Copilot in Excel stops being a helper that suggests and becomes one that edits.' with 'For licensed users, Edit with Copilot can build and change workbooks through chat.'
-- [contradicted, blocker] Governance guidance: Before rollout, first bullet / admin-path: The Anthropic setting is reached directly through Copilot > Settings > AI providers operating as Microsoft subprocessors. | Found: Go to the Microsoft 365 admin center and select Copilot > Settings > View all. Select AI providers operating as Microsoft subprocessors. | Fix: Replace the path in this bullet with 'Microsoft 365 admin center > Copilot > Settings > View all > AI providers operating as Microsoft subprocessors'. The omitted View all is a required selection, not a heading. | Source: https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Scope / default: The default Claude setting in the EU, EFTA and UK is No users. | Found: For these regions, the AI providers operating as Microsoft subprocessors setting for Claude models appears but the default is set to No users. | Fix: After the regional-default statement, add: 'Microsoft's apps-only guidance gives a different default for tenants in the EU, EFTA and UK created after March 25, 2026: the apps-only setting is enabled by default. Check the tenant's actual setting.' Cite https://learn.microsoft.com/copilot/implement/copilot-anthropic-apps. | Source: https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor
-- [supported, minor] Risk assessment; Governance guidance; controls[3].governs / applicability: BlockContentAnalysisServices on a sensitivity label excludes labelled workbook content from Microsoft 365 Copilot in the named Office apps. | Found: Although content with the configured sensitivity label will be excluded from Microsoft 365 Copilot in the named Office apps, the content remains available to Microsoft 365 Copilot for other scenarios. | Fix: Add to controls[3].note: 'Support differs by client and app; check the minimum Office versions in the Prevent some connected experiences that analyze content and Prevent all connected experiences that analyze content rows of Microsoft's capabilities tables.' Cite https://learn.microsoft.com/purview/sensitivity-labels-office-apps. | Source: https://learn.microsoft.com/purview/sensitivity-labels-office-apps
-- [contradicted, minor] Governance guidance: After rollout, first bullet; Governance controls table / consistency: The checklist asks owners to review Copilot-attributed edits in Show Changes, but the controls table has no row for this review surface. | Found: Ask owners of critical workbooks to use the Show Changes pane to review Copilot-attributed edits. ... The table lists licence assignment, Anthropic access, connected experiences, labels and the standalone-switch absence, but not Show Changes. | Fix: Change the first After rollout bullet to 'Ask owners of critical workbooks to review Copilot's edits before using the results.' This removes the checklist's instruction to use a control that has no table row without adding a row.
+- [supported, minor] What's changing; Scope / default: Microsoft's general Anthropic page says the EU, EFTA and UK default is No users. | Found: the default is set to **No users**. These regions include the European Union (EU), the European Free Trade Association (EFTA), and the United Kingdom (UK). | Fix: After the regional-default statement, add: 'However, Microsoft's apps-specific guidance says the apps-only setting is enabled by default for EU, EFTA and UK tenants created after March 25, 2026; check the actual tenant setting.' Cite https://learn.microsoft.com/copilot/implement/copilot-anthropic-apps, which states: 'This setting is enabled by default for tenants in the EU, EFTA, and UK that were created after March 25, 2026.' | Source: https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor
+- [supported, minor] front matter: defaultState; Why it matters; rationale: impact / default: Editing is part of the regular Copilot in Excel experience for eligible users, supporting defaultState on. | Found: Copilot in Excel offers three modes: edit, plan, or chat. By default, Copilot in Excel opens in edit mode. | Fix: Add https://support.microsoft.com/topic/a2fd6fe4-97ac-416b-b89a-22f4d1357c7a to sources as 'Get started with Copilot in Excel'; it explicitly confirms the editing default. Keep defaultState as on. | Source: https://support.microsoft.com/topic/a2fd6fe4-97ac-416b-b89a-22f4d1357c7a
+- [supported, minor] Governance guidance: Before rollout, first bullet / admin-path: The shortened Anthropic route reaches the AI providers operating as Microsoft subprocessors page. | Found: Go to the Microsoft 365 admin center and select **Copilot** > **Settings** > **View all**. Select **AI providers operating as Microsoft subprocessors**. | Fix: Complete the first governance bullet's route as 'Microsoft 365 admin center > Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Available subprocessors for your organization > Anthropic > Choose who can access Anthropic models for Copilot and generative AI experiences', matching controls[1].ui. | Source: https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor
 -->

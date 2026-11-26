@@ -67,15 +67,17 @@ changes:
     note: "Corrected after verification: storage and sync statement, personal Microsoft account exclusion for AutofillSettings, URL-pattern wording and the AutofillAddressEnabled replacement settings."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 51 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 55 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-22"
+  date: "2026-11-26"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 51
-  confirmed: 50
+  claims: 55
+  confirmed: 54
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -175,8 +177,8 @@ cost: Low. The Learn release note names no licence or meter, so the only cost th
 impact: Medium. The roadmap item aims the change at desktop Edge users who fill in web forms; Microsoft has not stated whether it is on by default.
 -->
 
-<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: Every control the governance checklist asks administrators to review appears in the controls table. | Found: Checklist: "Review any existing use of the deprecated AutofillAddressEnabled policy". The controls table has one row, for AutofillSettings, and none for AutofillAddressEnabled. | Fix: Remove the Before rollout checklist bullet beginning 'Review any existing use of the deprecated AutofillAddressEnabled policy'. Keep the verified deprecation and replacement information in Risk assessment and Governance controls; do not add a control row.
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: Every control the governance checklist asks administrators to review is represented in the controls table. | Found: Checklist: "Review any existing use of the deprecated AutofillAddressEnabled policy and plan its replacement with AutofillSettings". The controls table contains only AutofillSettings, with no row for AutofillAddressEnabled. | Fix: Remove the Before rollout checklist bullet beginning 'Review any existing use of the deprecated AutofillAddressEnabled policy'. Keep the supported deprecation and replacement information in Risk assessment and Governance controls; do not add a control row.
 -->

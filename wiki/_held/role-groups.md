@@ -4,8 +4,8 @@ title: "Microsoft Purview role groups: who can run which compliance and data gov
 slug: "role-groups"
 summary: "Role groups are the sets of Microsoft Purview roles that administrators assign users and security groups to. They decide who can configure, investigate and view each Purview solution, for how long, and over which administrative units."
 created: "2026-11-25"
-updated: "2026-11-25"
-version: 1
+updated: "2026-11-26"
+version: 2
 tags: ["role-groups","purview","admin-controls","least-privilege","administrative-units","powershell","insider-risk-management","governance"]
 covers: []
 sources:
@@ -20,6 +20,12 @@ sources:
     kind: "learn"
   - title: "New-RoleGroup"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-rolegroup"
+    kind: "learn"
+  - title: "Set-RoleGroup"
+    url: "https://learn.microsoft.com/powershell/module/exchangepowershell/set-rolegroup"
+    kind: "learn"
+  - title: "Roles and role groups in Microsoft Defender for Office 365 and Microsoft Purview"
+    url: "https://learn.microsoft.com/defender-office-365/scc-permissions"
     kind: "learn"
   - title: "Microsoft Purview service description"
     url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description"
@@ -37,9 +43,9 @@ controls:
       docs: "https://learn.microsoft.com/purview/purview-permissions"
     api:
       kind: "powershell"
-      call: "Add-RoleGroupMember -Identity \"<role-group>\" -Member <user-or-group>"
+      call: "Add-RoleGroupMember -Identity \"<role-group>\" -Member <mailbox-user-mail-user-or-mail-enabled-security-group>"
       docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember"
-    note: "Needs the Role Management role. Security groups are supported only in Microsoft 365 commercial cloud organisations."
+    note: "Needs Role Management. Portal security groups: Microsoft 365 commercial cloud only. In the cloud, -Member takes mailbox users, mail users and mail-enabled security groups; plain security groups are on-premises Exchange only."
   - governs: "Who can view, create and change role groups (Organization Management, which holds Role Management)"
     scope: "tenant"
     ui:
@@ -61,7 +67,7 @@ controls:
       kind: "powershell"
       call: "New-RoleGroup -Name \"<role-group-name>\" -Roles \"<role>\""
       docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-rolegroup"
-    note: "The role group's name cannot be changed after creation."
+    note: "The Purview portal does not let you change a custom role group's name after creation."
   - governs: "Expiry date on a user's or security group's role group assignment"
     scope: "user"
     ui:
@@ -84,24 +90,28 @@ controls:
     api: null
     note: "Just-in-time access works through security groups under PIM for Groups assigned to the role group."
 confidence: "high"
-dependents: 10
+dependents: 11
 changes:
   - date: "2026-11-25"
     note: "New concept page explaining Microsoft Purview role groups, their expiry and administrative-unit scoping, and where they are managed."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 70 statements contradicted, 1 unconfirmed; taken offline until corrected"
+  - date: "2026-11-26"
+    note: "Corrected: the Add-RoleGroupMember member types, administrative-unit support (now includes audit-log search), the Role Management assignment and custom role group renaming; removed an unsupported claim and two checklist items with no control row."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 89 statements contradicted, 0 unconfirmed; taken offline until corrected"
 verification:
   status: "held"
-  date: "2026-11-25"
-  version: 1
+  date: "2026-11-26"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 70
-  confirmed: 65
-  unconfirmed: 1
-  contradicted: 4
-  attempts: 1
-  hash: "eb5dc3c52f2518ea9eede885b6727712"
+  claims: 89
+  confirmed: 88
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 2
+  hash: "3e41413554bdcef58dfa42358c34295a"
 ---
 
 ## What it is
@@ -111,10 +121,10 @@ A Microsoft Purview role group is a named set of roles; anyone added to the grou
 ### How it works
 
 - **Built-in role groups.** The portal includes default role groups for the tasks and functions of each compliance and governance solution, such as *Insider Risk Management*. Microsoft's general advice is to add individual users to these as needed. The full list of default groups and their roles is on [Roles and role groups in Microsoft Defender for Office 365 and Microsoft Purview](https://learn.microsoft.com/defender-office-365/scc-permissions).
-- **Custom role groups.** An administrator can create a role group, choose its roles and members, and later change its description, roles and members. Its name cannot be changed after creation.
+- **Custom role groups.** An administrator can create a role group, choose its roles and members, and later change its description, roles and members. The Purview portal does not let you change a custom role group's name after creation. The [Set-RoleGroup](https://learn.microsoft.com/powershell/module/exchangepowershell/set-rolegroup) reference separately documents a -Name parameter for Security & Compliance PowerShell.
 - **Members.** Users or security groups. Security groups are supported only in Microsoft 365 commercial cloud organisations.
 - **Assignment options.** Each assignment can carry an expiry date, and can be limited to one or more administrative units (subsets of the directory defined in Microsoft Entra ID).
-- **Who manages them.** Viewing, creating and changing role groups needs the *Role Management* role, which is assigned only to the *Organization Management* role group, or the Global Administrator role.
+- **Who manages them.** Viewing, creating and changing role groups needs the *Role Management* role or the Global Administrator role. The permissions overview says Role Management is assigned only to Organization Management; the [roles reference](https://learn.microsoft.com/defender-office-365/scc-permissions) also lists Purview Administrators as a default assignment.
 
 Role groups sit beside Microsoft Entra roles. The **Roles and scopes** area also shows Entra roles such as Compliance Administrator and Security Reader, each mapped to Purview role groups, and they are managed in Microsoft Entra rather than in Purview. Role groups cover only features in the Purview portal: some service-specific permissions, such as Exchange mail flow rules, are still granted in the Exchange admin center.
 
@@ -122,7 +132,7 @@ Role groups sit beside Microsoft Entra roles. The **Roles and scopes** area also
 
 Role groups decide who can read alerts, preview content, run investigations and change policies across Purview solutions, so their membership is the access review for most of the data security work described on pages such as [Insider Risk Management](/concepts/insider-risk-management/) and [eDiscovery](/concepts/ediscovery/). Microsoft recommends roles with the fewest permissions, and role groups are how that is done in Purview: a narrow built-in or custom group, scoped to administrative units and given an expiry, in place of a broad Entra role.
 
-The scoping can be undone without anyone noticing. Where a user holds both an Entra role and a role group assignment scoped to an administrative unit, the Entra role takes precedence and the user's effective access is unscoped. Expiry and scoping are optional per-assignment settings, so an assignment made without them is organisation-wide and permanent until someone removes it. New features often reach existing role groups, as in [Diagnostics opening to more roles](/features/microsoft-purview-compliance-portal-expanding-access-to-diagnostics-to-compliance-administ/), so membership chosen for one task can grant the next.
+The scoping can be undone without anyone noticing. Where a user holds both an Entra role and a role group assignment scoped to an administrative unit, the Entra role takes precedence and the user's effective access is unscoped. Expiry and scoping are optional per-assignment settings, so an assignment made without them is organisation-wide and permanent until someone removes it.
 
 ## Cost and licensing
 
@@ -133,7 +143,7 @@ Scoping role groups to administrative units has its own prerequisites: Microsoft
 ## Risks and limits
 
 - **Entra roles override scoping.** A user who also holds an overlapping Entra role, such as Compliance Administrator or Global Reader, gets unscoped access however their role group assignment is scoped.
-- **Administrative-unit scoping is partial.** Only listed solutions support it (Data lifecycle management, DLP, Communication Compliance, Insider Risk Management, Records management and Sensitivity labeling), and Microsoft Defender XDR supports administrative units for DLP alerts but not for Insider Risk Management alerts.
+- **Administrative-unit scoping is partial.** Support is solution-specific; the administrative-units page lists Data lifecycle management, DLP, Communication Compliance, Insider Risk Management, Records management and Sensitivity labeling, and also documents scoped audit-log search access. Microsoft Defender XDR supports administrative units for DLP alerts but not for Insider Risk Management alerts.
 - **Expiry does not cover every group.** eDiscovery Administrator and eDiscovery Manager do not support automatic expiry. Expiry ranges from one day to two years.
 - **Expiry is silent.** No notification is sent before permissions expire, and no audit record is generated when they do. Work already in progress at expiry is not affected.
 - **Overlapping assignments keep access.** An individual and a security group assignment of the same role group each keep their own expiry, and access lasts while either is valid.
@@ -147,9 +157,9 @@ Scoping role groups to administrative units has its own prerequisites: Microsoft
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Who is a member of a built-in or custom Purview role group</strong><br><small>Group</small><br><small class="controls__note">Needs the Role Management role. Security groups are supported only in Microsoft 365 commercial cloud organisations.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and scopes › Role groups › Role groups for Microsoft Purview solutions › role group › Edit › Edit members of the role group › Choose users or Choose groups <a href="https://learn.microsoft.com/purview/purview-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember -Identity &quot;&lt;role-group&gt;&quot; -Member &lt;user-or-group&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Who is a member of a built-in or custom Purview role group</strong><br><small>Group</small><br><small class="controls__note">Needs Role Management. Portal security groups: Microsoft 365 commercial cloud only. In the cloud, -Member takes mailbox users, mail users and mail-enabled security groups; plain security groups are on-premises Exchange only.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and scopes › Role groups › Role groups for Microsoft Purview solutions › role group › Edit › Edit members of the role group › Choose users or Choose groups <a href="https://learn.microsoft.com/purview/purview-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember -Identity &quot;&lt;role-group&gt;&quot; -Member &lt;mailbox-user-mail-user-or-mail-enabled-security-group&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Who can view, create and change role groups (Organization Management, which holds Role Management)</strong><br><small>Tenant</small><br><small class="controls__note">Global administrators can also view role groups.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and scopes › Role groups › Role groups for Microsoft Purview solutions › Organization Management › Edit › Edit members of the role group › Choose users <a href="https://learn.microsoft.com/purview/purview-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember -Identity &quot;Organization Management&quot; -Member &lt;user&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which roles a custom role group holds</strong><br><small>Group</small><br><small class="controls__note">The role group's name cannot be changed after creation.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and scopes › Role groups › Role groups for Microsoft Purview solutions › Create role group › Add roles to the role group › Choose roles <a href="https://learn.microsoft.com/purview/purview-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-RoleGroup -Name &quot;&lt;role-group-name&gt;&quot; -Roles &quot;&lt;role&gt;&quot;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-rolegroup" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which roles a custom role group holds</strong><br><small>Group</small><br><small class="controls__note">The Purview portal does not let you change a custom role group's name after creation.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and scopes › Role groups › Role groups for Microsoft Purview solutions › Create role group › Add roles to the role group › Choose roles <a href="https://learn.microsoft.com/purview/purview-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-RoleGroup -Name &quot;&lt;role-group-name&gt;&quot; -Roles &quot;&lt;role&gt;&quot;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-rolegroup" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Expiry date on a user's or security group's role group assignment</strong><br><small>User</small><br><small class="controls__note">One day to two years. Not supported for eDiscovery Administrator or eDiscovery Manager.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and scopes › Role groups › Role groups for Microsoft Purview solutions › role group › Edit › Edit members of the role group › user or group › Edit expiration <a href="https://learn.microsoft.com/purview/purview-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which administrative units limit a role group member's access</strong><br><small>User</small><br><small class="controls__note">Applies only in solutions that support administrative units. An overlapping Entra role makes access unscoped.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and scopes › Role groups › Role groups for Microsoft Purview solutions › role group › Edit › Edit members of the role group › user or group › Assign admin units <a href="https://learn.microsoft.com/purview/purview-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Just-in-time activation for direct user assignments to a role group</strong><br><small>User</small><br><small class="controls__note">Just-in-time access works through security groups under PIM for Groups assigned to the role group.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
@@ -168,8 +178,6 @@ The unified audit log records role group definitions being created, updated and 
 - List users who hold both an Entra role and a scoped Purview role group assignment, and decide which access is intended.
 - Check that scoped assignments are in solutions that support administrative units.
 - Add expiry dates to temporary or project assignments, except in the eDiscovery groups that do not support them.
-- Use security groups under PIM for Groups where people need just-in-time access.
-- Search the audit log for GrantPermissionsAsync and UpdatePermission to see recent assignment changes.
 
 ## Open questions
 
@@ -177,15 +185,11 @@ The unified audit log records role group definitions being created, updated and 
 - Will automatic expiry be extended to the eDiscovery Administrator and eDiscovery Manager role groups?
 - When security groups will be supported as members outside Microsoft 365 commercial cloud organisations is not published.
 
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters: final sentence / behaviour: New features often reach existing role groups, with diagnostics opening to additional roles as an example. | Found: Searched: Purview diagnostics Compliance Administrator role groups diagnostics access; site:learn.microsoft.com/purview/whats-new diagnostics roles. Opened Self-help diagnostics for Microsoft Purview and the roles reference; they state current access, not this history or frequency. | Fix: Remove 'New features often reach existing role groups, as in [Diagnostics opening to more roles](/features/microsoft-purview-compliance-portal-expanding-access-to-diagnostics-to-compliance-administ/), so membership chosen for one task can grant the next.'
-- [contradicted, blocker] Risks and limits: Administrative-unit scoping is partial / applicability: Only Data lifecycle management, DLP, Communication Compliance, Insider Risk Management, Records management and Sensitivity labeling support administrative units. | Found: The configuration for administrative units automatically flows down to the following features: Audit log: Search access. | Fix: Replace 'Only listed solutions support it (Data lifecycle management, DLP, Communication Compliance, Insider Risk Management, Records management and Sensitivity labeling)' with 'Support is solution-specific; the administrative-units page lists Data lifecycle management, DLP, Communication Compliance, Insider Risk Management, Records management and Sensitivity labeling, and also documents scoped audit-log search access'. | Source: https://learn.microsoft.com/purview/purview-admin-units
-- [contradicted, blocker] controls[0].api; Governance controls: membership row / command: Add-RoleGroupMember -Identity "<role-group>" -Member <user-or-group> scripts the portal's user or security group membership control without a group-type qualification. | Found: You can specify the following types of users or groups (security principals) for this parameter: Mailbox users Mail users Mail-enabled security groups Security groups (on-premises Exchange only) | Fix: Change controls[0].api.call and its rendered copy to 'Add-RoleGroupMember -Identity "<role-group>" -Member <mailbox-user-mail-user-or-mail-enabled-security-group>'. Add to that row's note: 'The PowerShell reference supports mailbox users, mail users and mail-enabled security groups in the cloud; its unqualified security-group support is on-premises Exchange only.' Keep the existing reference URL. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember
+- [contradicted, blocker] Governance controls: administrative units are populated in Entra, not Purview / behaviour: Administrative units are populated in Microsoft Entra ID, not in Purview. | Found: Microsoft Purview now supports adding SharePoint sites to administrative units. ... Within Administrative units, select an administrative unit and edit it to associate SharePoint sites to the administrative unit. | Fix: Replace the sentence with: 'Administrative units themselves are created in Microsoft Entra ID, and their user and group membership is managed there rather than in Purview; see the administrative units page.' This preserves the supported directory-resource guidance without incorrectly excluding the documented Purview SharePoint-site association control at https://learn.microsoft.com/purview/purview-admin-units. | Source: https://learn.microsoft.com/purview/purview-admin-units
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What it is: Custom role groups; controls[2].note / behaviour: A custom role group's name cannot be changed after creation. | Found: You can't change the name of the role group after you create it. | Fix: Narrow both statements to 'The Purview portal does not let you change a custom role group's name after creation.' Add: 'The Set-RoleGroup reference separately documents a -Name parameter for Security & Compliance PowerShell.' Cite https://learn.microsoft.com/powershell/module/exchangepowershell/set-rolegroup for that qualification. | Source: https://learn.microsoft.com/purview/purview-permissions
-- [supported, minor] What it is: Who manages them / role: Role Management is assigned only to Organization Management. | Found: users need to be a global administrator or need to be assigned the Role Management role (assigned only to the Organization Management role group). | Fix: Replace the exclusivity clause with: 'The permissions overview says Role Management is assigned only to Organization Management; the roles reference also lists Purview Administrators as a default assignment.' Cite https://learn.microsoft.com/defender-office-365/scc-permissions alongside the existing permissions source. | Source: https://learn.microsoft.com/purview/purview-permissions
-- [contradicted, minor] What to check: audit-log search; Governance controls table / consistency: The checklist's instruction to search assignment audit events has no corresponding control row. | Found: Search the audit log for GrantPermissionsAsync and UpdatePermission to see recent assignment changes. The six control rows cover membership, management permissions, custom roles, expiry, administrative units and direct-assignment JIT, not audit search. | Fix: The audit-search checklist step has no row in the controls table. Remove that checklist bullet; retain the verified event information in the Governance controls prose.
-- [contradicted, minor] What to check: PIM for Groups; controls[5] / consistency: The checklist's instruction to use PIM for Groups has no row documenting that control; the JIT row instead describes absent direct-user activation. | Found: Use security groups under PIM for Groups where people need just-in-time access. The table's JIT row governs 'Just-in-time activation for direct user assignments to a role group' and has both surfaces null. | Fix: The PIM-for-Groups checklist step has no corresponding control row. Remove that checklist bullet; retain the verified PIM-for-Groups explanation in Risks and limits and the existing row note.
+- [supported, minor] controls[2].ui / admin-path: Custom roles are chosen at Settings > Roles and scopes > Role groups > Role groups for Microsoft Purview solutions > Create role group > Add roles to the role group > Choose roles. | Found: On Role groups for Microsoft Purview solutions, select Create role group. ... On Name the role group, enter a name for the custom role group in the Name field. ... On Add roles to the role group, select Choose roles. | Fix: Include the intervening wizard page: 'Settings > Roles and scopes > Role groups > Role groups for Microsoft Purview solutions > Create role group > Name the role group > Add roles to the role group > Choose roles', as documented at https://learn.microsoft.com/purview/purview-permissions. | Source: https://learn.microsoft.com/purview/purview-permissions
+- [supported, minor] controls[0].note / command: The cloud -Member types are mailbox users, mail users and mail-enabled security groups, with plain security groups listed only for on-premises Exchange. | Found: Mailbox users; Mail users; Mail-enabled security groups; Security groups (on-premises Exchange only). | Fix: Keep the reference-based restriction but add: 'Microsoft's PIM walkthrough separately documents Add-RoleGroupMember in Security & Compliance PowerShell with a Microsoft Entra security group, so these Microsoft pages disagree on plain security-group support.' Cite https://learn.microsoft.com/defender-office-365/pim-in-mdo-configure, which documents creating the Entra security group and then Add-RoleGroupMember "<Role Group Name>" -Member "<Azure Security Group>". | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember
 -->

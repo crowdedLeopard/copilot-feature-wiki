@@ -98,15 +98,17 @@ changes:
     note: "Corrected after verification: fixed the Ask the end user before running and data policy paths, replaced New-DlpPolicy with Add-ConnectorsToPolicy, stated the general Copilot Studio licence entitlement, and removed 'no new data access' from the risk rationale."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 60 statements confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 67 statements confirmed"
 version: 5
 verification:
   status: "verified"
-  date: "2026-11-19"
+  date: "2026-11-26"
   version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 60
+  claims: 67
+  confirmed: 67
   unconfirmed: 0
   contradicted: 0
   attempts: 0

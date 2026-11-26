@@ -3,7 +3,7 @@
   "roadmapId": 568786,
   "title": "Microsoft Edge: switch between Workspaces inside one window",
   "status": "verified-with-gaps",
-  "date": "2026-11-21",
+  "date": "2026-11-26",
   "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
@@ -14,32 +14,21 @@
   "notes": [],
   "hold": null,
   "counts": {
-    "claims": 58,
-    "confirmed": 58,
+    "claims": 52,
+    "confirmed": 52,
     "unconfirmed": 0,
     "contradicted": 0,
     "blocker": 0,
     "major": 0,
     "minor": 1
   },
-  "summary": "The briefing passes: the roadmap facts, release versions and dates, Group Policy paths and registry settings are supported. One minor clarification should acknowledge that Microsoft Support still describes the switching updates as coming soon for some users, whereas the Stable release notes list them as available.",
+  "summary": "The roadmap facts, release details and both policy controls are supported. The November 25 Stable update does not change the Workspaces announcement. One minor qualification remains: Microsoft Support still describes same-window switching as coming soon for some users and documents an option to open a separate window.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing; rationale: risk",
-      "type": "record",
-      "claim": "Edge 158 supports switching between multiple Workspaces within one window.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Microsoft Edge: v.158 - Inline Switching for Workspaces; Workspaces Inline Switching manages multiple Workspaces in a single window.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 2,
-      "where": "What's changing; summary; Governance guidance: Before rollout",
+      "where": "summary; What's changing; Governance guidance: Before rollout; rationale: impact",
       "type": "behaviour",
-      "claim": "Users can now switch Workspaces in their current browser window instead of opening a separate window for each Workspace.",
+      "claim": "Edge 158 lets users switch Workspaces in their current window instead of opening a separate window for each.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-stable-channel",
       "quote": "Users can now switch between workspaces directly within their current browser window instead of opening a separate window for each workspace.",
@@ -47,10 +36,21 @@
       "fix": "After the Stable release-note paragraph, add: \"The linked Microsoft Support page still calls these updates 'coming soon' and says some users may encounter them; it also documents an 'Open in a new window' option.\" Source: https://support.microsoft.com/en-us/edge/getting-started-with-microsoft-edge-workspaces."
     },
     {
+      "n": 2,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says selecting a Workspace swaps in its tabs.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Selecting a Workspace swaps in its tabs, theme, and context, with an easy return to the default space.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 3,
       "where": "What's changing",
       "type": "record",
-      "claim": "Selecting a Workspace swaps in its tabs.",
+      "claim": "The roadmap says selecting a Workspace swaps in its theme.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Selecting a Workspace swaps in its tabs, theme, and context, with an easy return to the default space.",
@@ -61,7 +61,7 @@
       "n": 4,
       "where": "What's changing",
       "type": "record",
-      "claim": "Selecting a Workspace swaps in its theme.",
+      "claim": "The roadmap says selecting a Workspace swaps in its context.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Selecting a Workspace swaps in its tabs, theme, and context, with an easy return to the default space.",
@@ -70,9 +70,9 @@
     },
     {
       "n": 5,
-      "where": "What's changing",
+      "where": "What's changing; Why it matters; Governance guidance: Before rollout",
       "type": "record",
-      "claim": "Selecting a Workspace swaps in its context.",
+      "claim": "The roadmap describes an easy return to the default space.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Selecting a Workspace swaps in its tabs, theme, and context, with an easy return to the default space.",
@@ -81,17 +81,6 @@
     },
     {
       "n": 6,
-      "where": "What's changing; Why it matters; Governance guidance: Before rollout",
-      "type": "record",
-      "claim": "Users can return to the default space.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Selecting a Workspace swaps in its tabs, theme, and context, with an easy return to the default space.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
       "where": "front matter: status; summary; What's changing",
       "type": "record",
       "claim": "The roadmap status is Launched.",
@@ -102,7 +91,7 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 7,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target is November CY2026.",
@@ -113,21 +102,10 @@
       "fix": null
     },
     {
-      "n": 9,
-      "where": "front matter: previewDate",
-      "type": "record",
-      "claim": "The roadmap specifies no preview date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": null",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
+      "n": 8,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
-      "claim": "The release phase is General Availability.",
+      "claim": "The roadmap release phase is General Availability.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\"]",
@@ -135,10 +113,10 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 9,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed, with no US Government cloud listed.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -146,18 +124,7 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "Scope",
-      "type": "record",
-      "claim": "The roadmap record lists no US Government cloud.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
+      "n": 10,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap platform is Web.",
@@ -168,7 +135,18 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 11,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
       "where": "What's changing",
       "type": "record",
       "claim": "The roadmap item has no more-info link.",
@@ -179,32 +157,21 @@
       "fix": null
     },
     {
-      "n": 15,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap record was modified at 2026-11-20T23:20:27.",
+      "n": 13,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn has no dedicated page for inline Workspaces switching beyond its release-note coverage.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-11-20T23:20:27\"",
+      "source": null,
+      "quote": "Searched: Microsoft Edge in-window workspace switching policy disable default enabled; Workspaces inline switching policy. Read Stable and Beta notes, Workspaces overview and policy pages; no standalone Learn feature article found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 16,
+      "n": 14,
       "where": "What's changing; Scope; Governance guidance: At rollout; changes",
-      "type": "availability",
-      "claim": "In-window workspace switching is listed in the main Stable release 158.0.4370.33.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-stable-channel",
-      "quote": "Version 158.0.4370.33: November 19, 2026 (Stable) - Main Release; In-window workspace switching.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "What's changing; Scope; changes",
-      "type": "date",
-      "claim": "Stable version 158.0.4370.33 was released on 19 November 2026.",
+      "type": "behaviour",
+      "claim": "In-window switching is included in the Stable 158.0.4370.33 main release.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-stable-channel",
       "quote": "Version 158.0.4370.33: November 19, 2026 (Stable) - Main Release",
@@ -212,43 +179,54 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "What's changing; Risk assessment: Change & support; Governance guidance: Before rollout",
-      "type": "behaviour",
-      "claim": "The same Stable release lets users pin frequently used Workspaces.",
+      "n": 15,
+      "where": "What's changing; Scope; changes",
+      "type": "date",
+      "claim": "Stable 158.0.4370.33 was released on 19 November 2026.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-stable-channel",
-      "quote": "Workspace pinning. Users can pin workspaces they use frequently so they stay persistently accessible in the UI.",
+      "quote": "Version 158.0.4370.33: November 19, 2026 (Stable) - Main Release",
       "severity": null,
       "fix": null
     },
     {
-      "n": 19,
+      "n": 16,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "The same Stable release lets users pin frequently used Workspaces.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-stable-channel",
+      "quote": "Users can pin workspaces they use frequently so they stay persistently accessible in the UI.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
       "where": "What's changing; Risk assessment: Change & support",
       "type": "behaviour",
       "claim": "The same Stable release lets users assign an emoji to a pinned Workspace.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-stable-channel",
-      "quote": "Emoji assignment for pinned workspaces. Users can assign a custom emoji to a pinned workspace to identify it at a glance.",
+      "quote": "Users can assign a custom emoji to a pinned workspace to identify it at a glance.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 20,
+      "n": 18,
       "where": "What's changing",
-      "type": "availability",
-      "claim": "The earlier Beta notes for 158.0.4370.1 listed in-window switching.",
+      "type": "behaviour",
+      "claim": "The Beta channel notes listed in-window switching in version 158.0.4370.1 before the Stable release.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-beta-channel",
-      "quote": "Version 158.0.4370.1: November 4, 2026; In-window workspace switching. Users can now switch between workspaces directly within their current browser window instead of opening a separate window for each workspace.",
+      "quote": "In-window workspace switching. Users can now switch between workspaces directly within their current browser window instead of opening a separate window for each workspace.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 21,
+      "n": 19,
       "where": "What's changing",
       "type": "date",
-      "claim": "Beta version 158.0.4370.1 is dated 4 November 2026.",
+      "claim": "The Beta notes date version 158.0.4370.1 to 4 November 2026.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-beta-channel",
       "quote": "Version 158.0.4370.1: November 4, 2026",
@@ -256,32 +234,10 @@
       "fix": null
     },
     {
-      "n": 22,
-      "where": "What's changing",
-      "type": "absence",
-      "claim": "Microsoft Learn has no standalone page for in-window switching beyond the release-note coverage.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Edge in-window workspace switching default enabled policy inline switching 158. Read Stable and Beta release notes, Learn Workspaces and the Microsoft Support Workspaces page; switching instructions are on Support, not a standalone Learn page.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
+      "n": 20,
       "where": "What's changing",
       "type": "default",
-      "claim": "The Beta notes say Workspaces V1 will be disabled by default in Edge 158.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-beta-channel",
-      "quote": "Microsoft Edge Workspaces V1 will be disabled by default in Edge 158 and fully removed in Edge 159.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "What's changing; Risk assessment: Change & support; Governance guidance: After rollout",
-      "type": "availability",
-      "claim": "Workspaces V1 is being fully removed in Edge 159.",
+      "claim": "Workspaces V1 is disabled by default in Edge 158.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-stable-channel",
       "quote": "Microsoft Edge Workspaces V1 is disabled by default in Edge 158 and fully removed in Edge 159.",
@@ -289,10 +245,21 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 21,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "date",
+      "claim": "Workspaces V1 is fully removed in Edge 159.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-stable-channel",
+      "quote": "Microsoft Edge Workspaces V1 is disabled by default in Edge 158 and fully removed in Edge 159.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Users who have not migrated lose access to their V1 Workspaces when V1 is removed.",
+      "claim": "Users who do not migrate before V1 removal lose access to their V1 Workspaces.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-stable-channel",
       "quote": "Users who don't complete migration before V1 is removed can no longer access their V1 Workspaces.",
@@ -300,10 +267,10 @@
       "fix": null
     },
     {
-      "n": 26,
-      "where": "What's changing; Risk assessment: Data exposure; Cost and licensing; Open questions",
+      "n": 23,
+      "where": "What's changing; Risk assessment: Data exposure; Cost and licensing",
       "type": "behaviour",
-      "claim": "Earlier release notes describe migration of saved Workspaces data from OneDrive/SharePoint to the Edge Sync service.",
+      "claim": "Earlier release notes describe saved Workspaces data moving from OneDrive/SharePoint to Edge Sync.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-beta-channel",
       "quote": "Migrating data for saved Workspaces from OneDrive/SharePoint to Edge Sync service",
@@ -311,10 +278,10 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 24,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Earlier release notes describe removal of Workspaces collaboration and sharing.",
+      "claim": "The Workspaces V2 migration removes collaboration and sharing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-beta-channel",
       "quote": "Removing the collaboration/share functionality of this feature",
@@ -322,142 +289,65 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 25,
+      "where": "controls[1].note; Risk assessment: Data exposure; Governance controls",
+      "type": "behaviour",
+      "claim": "New V2 Workspaces remain local to each device when an organisation has disabled Sync through policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-beta-channel",
+      "quote": "For organizations who have disabled Sync through policy, the existing v1 Workspace data will still be migrated to the new architecture. New v2 Workspaces created after migration won't sync across devices and will remain local to each device.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
       "where": "front matter: defaultState; Why it matters; Open questions",
       "type": "default",
-      "claim": "Microsoft has not stated the arrival default for in-window switching, so its default state is unknown.",
+      "claim": "Microsoft has not stated whether in-window switching is on by default on arrival.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Microsoft Edge in-window workspace switching default enabled policy inline switching 158; Workspaces switching default enabled. Read roadmap, Stable/Beta notes, EdgeWorkspacesEnabled and Support's 'Some users may encounter' switching section; no arrival default is stated.",
+      "quote": "Searched: Microsoft Edge in-window workspace switching policy disable default enabled. Read roadmap, Stable 158, Beta 158, Workspaces overview, EdgeWorkspacesEnabled and Support's coming-soon section; no explicit default for this change found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "summary; controls[0].note; Why it matters; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No separate policy for in-window switching is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Edge in-window workspace switching policy disable default enabled; Workspaces inline switching policy. Read EdgeWorkspacesEnabled, Stable/Beta policy updates and Workspaces navigation coverage; found no switching-specific policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "front matter: licensing.model and notes; summary; Cost and licensing; Open questions; rationale: cost",
+      "type": "licensing",
+      "claim": "The licence for in-window switching is not yet published, so its licensing model is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Edge Workspaces inline in-window switching license pricing OneDrive V2. Read Workspaces prerequisites, Stable/Beta release notes, EdgeWorkspacesEnabled and Support's new-Workspaces prerequisites; no licence specific to switching found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 29,
-      "where": "summary; controls[0].note; Why it matters; Governance controls; Open questions; changes",
+      "where": "Cost and licensing; rationale: cost",
       "type": "absence",
-      "claim": "Microsoft documents no separate policy or switch for in-window Workspaces switching.",
+      "claim": "Microsoft documents no meter or charge specific to in-window switching; the briefing identifies communication and admin time.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Microsoft Edge Workspaces switching policy; in-window workspace switching default enabled policy. Read and searched Edge policy reference for Workspace, inline, in-window and switch; read EdgeWorkspacesEnabled, Stable/Beta notes and Support; no separate switching policy.",
+      "quote": "Searched: Microsoft Edge Workspaces inline in-window switching license pricing OneDrive V2. Read Stable/Beta release notes, Workspaces prerequisites, EdgeWorkspacesEnabled and Microsoft Support; no switching-specific price or meter found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 30,
-      "where": "Why it matters; rationale: impact",
-      "type": "absence",
-      "claim": "The sources do not describe changed behaviour for people who do not use Workspaces.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Edge in-window workspace switching default enabled policy inline switching 158. Read roadmap, Stable/Beta switching entries and Microsoft Support Workspaces instructions; their described actions concern opening or switching Workspaces, not nonusers.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "Risk assessment: Data exposure; rationale: risk",
-      "type": "absence",
-      "claim": "Microsoft's switching notes describe no new data access.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Edge Workspaces in-window switching identity sign-in context same window; Workspaces in-window identity cookies. Read roadmap, Stable/Beta switching entries and Support's same-window instructions; none describes added data access.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "Risk assessment: Security & identity; Governance guidance: At rollout; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not described identity handling specifically when Workspaces are swapped inside one window.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Edge Workspaces in-window switching identity sign-in context same window; Workspaces in-window identity cookies. Read Support, Learn Workspaces and Edge identity/SSO search excerpts; shared-workspace identity and profile SSO do not explain in-window swaps.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "In-window switching is a user-initiated action.",
-      "status": "supported",
-      "source": "https://support.microsoft.com/en-us/edge/getting-started-with-microsoft-edge-workspaces",
-      "quote": "Select the workspace you want to open. The workspace will open in the same window.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "absence",
-      "claim": "The in-window switching release note describes no automated action.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Edge in-window workspace switching default enabled policy inline switching 158. Read the complete Stable and Beta in-window switching entries and Support's opening/switching instructions; no autonomous action is described.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "front matter: licensing.model; Cost and licensing; Open questions",
-      "type": "licensing",
-      "claim": "A licence covering the new in-window switching feature is not yet published, so the licensing model is unknown.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Edge Workspaces V2 licensing OneDrive license Edge Sync in-window switching; Microsoft Edge Workspaces license pricing. Read Stable/Beta notes, Learn Workspaces, EdgeWorkspacesEnabled and Support's new-design prerequisites; no licence is named for switching.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "summary; front matter: licensing.notes; Cost and licensing; changes",
-      "type": "absence",
-      "claim": "The Edge release notes and EdgeWorkspacesEnabled page name no licence specifically for in-window switching.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Edge Workspaces V2 licensing OneDrive license Edge Sync in-window switching; Microsoft Edge Workspaces license pricing. Read Stable/Beta switching entries and the complete EdgeWorkspacesEnabled page; no switching-specific licence is listed.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "No meter specific to in-window switching is published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Edge Workspaces V2 licensing OneDrive license Edge Sync in-window switching; Microsoft Edge Workspaces license pricing. Read Stable/Beta notes, Learn Workspaces, EdgeWorkspacesEnabled and Support; no switching meter or metered unit is named.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "The release notes and EdgeWorkspacesEnabled policy page name no charge for in-window switching.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Edge Workspaces license pricing; Microsoft Edge Workspaces V2 licensing OneDrive license Edge Sync in-window switching. Read Stable/Beta switching entries and EdgeWorkspacesEnabled; no switching charge is listed, and neither says the feature is free.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "front matter: cost; Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "The known cost is indirect admin time and communication rather than a documented switching licence or meter.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Edge Workspaces license pricing; Microsoft Edge Workspaces V2 licensing OneDrive license Edge Sync in-window switching. Read release notes, policy and both Workspaces pages; no new switching charge is named. Admin time and communication are the wiki's assessment.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "The Learn Workspaces prerequisites include access to a OneDrive for Business licence to create an Edge Workspace.",
+      "claim": "The Learn Workspaces prerequisites name access to a OneDrive for Business licence to create a Workspace.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-workspaces",
       "quote": "Users must have access to a OneDrive for Business license to create an Edge Workspace.",
@@ -465,7 +355,7 @@
       "fix": null
     },
     {
-      "n": 41,
+      "n": 31,
       "where": "Cost and licensing",
       "type": "behaviour",
       "claim": "The Learn Workspaces page describes the earlier OneDrive-based design.",
@@ -476,98 +366,76 @@
       "fix": null
     },
     {
-      "n": 42,
+      "n": 32,
       "where": "Cost and licensing; Open questions",
       "type": "absence",
-      "claim": "Whether the older OneDrive for Business licence prerequisite applies to the new switching design is not stated.",
+      "claim": "Microsoft has not explicitly stated whether the earlier OneDrive for Business licence prerequisite still applies to V2 switching.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Microsoft Edge Workspaces V2 licensing OneDrive license Edge Sync in-window switching; Microsoft Edge Workspaces license pricing. Read Learn's older licence prerequisite and Support's new prerequisites: no OneDrive storage is required, but licence applicability is not stated.",
+      "quote": "Searched: Microsoft Edge Workspaces inline in-window switching license pricing OneDrive V2. Read Learn's legacy prerequisite and Support's V2 requirements: OneDrive storage is not required, but continued licence applicability is not explicitly addressed.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 43,
-      "where": "Scope",
-      "type": "availability",
-      "claim": "The Learn Workspaces page says Workspaces are enabled for users signed in with a Microsoft Entra account.",
+      "n": 33,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "absence",
+      "claim": "Microsoft's switching notes describe no new data access.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-workspaces",
-      "quote": "Edge Workspaces is enabled for users signed in with a Microsoft Entra account on Edge version 114 or later.",
+      "source": null,
+      "quote": "Searched: Microsoft Edge in-window workspace switching data access security automated actions users not using Workspaces. Read switching passages in Stable/Beta and Microsoft Support; no new data-access mechanism described.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 44,
-      "where": "Scope",
-      "type": "availability",
-      "claim": "The EdgeWorkspacesEnabled policy page lists Windows as supported.",
+      "n": 34,
+      "where": "Risk assessment: Security & identity; Governance guidance: At rollout; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not described identity handling specifically when Workspaces are swapped in one window.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeworkspacesenabled",
-      "quote": "Supported versions: Windows: ≥ 106",
+      "source": null,
+      "quote": "Searched: Edge Workspaces in-window inline switching default enabled policy licence price identity sign-in context; Workspaces in-window identity. Read Workspaces identity caveat, Stable/Beta and Support; no switching-specific identity handling found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 45,
-      "where": "Scope",
-      "type": "availability",
-      "claim": "The EdgeWorkspacesEnabled policy page lists macOS as supported.",
+      "n": 35,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "In-window switching is user initiated.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeworkspacesenabled",
-      "quote": "macOS: ≥ 106",
+      "source": "https://support.microsoft.com/en-us/edge/getting-started-with-microsoft-edge-workspaces",
+      "quote": "Select the workspace you want to open.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 46,
-      "where": "Scope",
-      "type": "availability",
-      "claim": "The EdgeWorkspacesEnabled policy page lists Android as not supported.",
+      "n": 36,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The switching release note describes no automated action.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeworkspacesenabled",
-      "quote": "Android: Not supported",
+      "source": null,
+      "quote": "Searched: Microsoft Edge in-window workspace switching data access security automated actions users not using Workspaces. Read Stable/Beta switching passages and Support's selection steps; no autonomous switching action described.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 47,
-      "where": "Scope",
-      "type": "availability",
-      "claim": "The EdgeWorkspacesEnabled policy page lists iOS as not supported.",
+      "n": 37,
+      "where": "Why it matters; rationale: impact",
+      "type": "absence",
+      "claim": "No source says the switching change alters behaviour for people who do not use Workspaces.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeworkspacesenabled",
-      "quote": "iOS: Not supported",
+      "source": null,
+      "quote": "Searched: Microsoft Edge in-window workspace switching data access security automated actions users not using Workspaces. Read roadmap, Stable/Beta switching text and Support; no change for non-Workspaces users stated.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 48,
-      "where": "controls[0].ui",
-      "type": "admin-path",
-      "claim": "The Workspaces Group Policy path is Administrative Templates > Microsoft Edge > Edge Workspaces settings > Enable Workspaces.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeworkspacesenabled",
-      "quote": "Group Policy (ADMX) info; GP name: Enable Workspaces; GP path (Mandatory): Administrative Templates/Microsoft Edge/Edge Workspaces settings",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "controls[0].api",
-      "type": "command",
-      "claim": "The Workspaces policy registry setting is SOFTWARE\\Policies\\Microsoft\\Edge, value EdgeWorkspacesEnabled of type REG_DWORD.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeworkspacesenabled",
-      "quote": "Registry settings; Path (Mandatory): SOFTWARE\\Policies\\Microsoft\\Edge; Value name: EdgeWorkspacesEnabled; Value type: REG_DWORD",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
-      "where": "controls[0].governs; controls[0].note; Governance controls; rationale: risk",
+      "n": 38,
+      "where": "controls[0].governs and note; Governance controls; rationale: risk",
       "type": "applicability",
-      "claim": "EdgeWorkspacesEnabled governs access to Workspaces as a whole, and disabling it prevents access.",
+      "claim": "EdgeWorkspacesEnabled governs access to Workspaces as a whole.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeworkspacesenabled",
       "quote": "If you enable or don't configure this policy, users can access the Microsoft Edge Workspaces feature. If you disable this policy, users won't be able to access the Microsoft Edge Workspaces feature.",
@@ -575,18 +443,18 @@
       "fix": null
     },
     {
-      "n": 51,
-      "where": "controls[0].scope; controls[0].note; Risk assessment: Security & identity; Governance controls",
+      "n": 39,
+      "where": "controls[0].scope and note; Risk assessment: Security & identity; Governance controls",
       "type": "applicability",
-      "claim": "EdgeWorkspacesEnabled is a per-profile policy.",
+      "claim": "EdgeWorkspacesEnabled is a per-profile policy, matching the briefing's user scope.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeworkspacesenabled",
-      "quote": "Per Profile: Yes; Applies to a profile that is signed in with a Microsoft account: No",
+      "quote": "Per Profile: Yes",
       "severity": null,
       "fix": null
     },
     {
-      "n": 52,
+      "n": 40,
       "where": "controls[0].note; Governance controls",
       "type": "behaviour",
       "claim": "EdgeWorkspacesEnabled requires a browser restart.",
@@ -597,79 +465,145 @@
       "fix": null
     },
     {
-      "n": 53,
-      "where": "controls[1].ui",
+      "n": 41,
+      "where": "controls[0].ui",
       "type": "admin-path",
-      "claim": "The sync Group Policy path is Administrative Templates > Microsoft Edge > Disable synchronization of data using Microsoft sync services.",
+      "claim": "Group Policy exposes Enable Workspaces at Administrative Templates > Microsoft Edge > Edge Workspaces settings > Enable Workspaces.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/syncdisabled",
-      "quote": "Group Policy (ADMX) info; GP name: Disable synchronization of data using Microsoft sync services; GP path (Mandatory): Administrative Templates/Microsoft Edge",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeworkspacesenabled",
+      "quote": "Group Policy (ADMX) info\n- GP unique name: EdgeWorkspacesEnabled\n- GP name: Enable Workspaces\n- GP path (Mandatory): Administrative Templates/Microsoft Edge/Edge Workspaces settings",
       "severity": null,
       "fix": null
     },
     {
-      "n": 54,
-      "where": "controls[1].api",
+      "n": 42,
+      "where": "controls[0].api",
       "type": "command",
-      "claim": "The mandatory sync policy registry setting is SOFTWARE\\Policies\\Microsoft\\Edge, value SyncDisabled of type REG_DWORD.",
+      "claim": "The Windows registry control is SOFTWARE\\Policies\\Microsoft\\Edge, value EdgeWorkspacesEnabled, type REG_DWORD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeworkspacesenabled",
+      "quote": "Path (Mandatory): SOFTWARE\\Policies\\Microsoft\\Edge\n- Path (Recommended): N/A\n- Value name: EdgeWorkspacesEnabled\n- Value type: REG\\_DWORD",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[1].governs and note; Risk assessment: Data exposure; Governance controls",
+      "type": "applicability",
+      "claim": "SyncDisabled governs cloud synchronisation of Edge data, including the Sync service used by saved Workspaces.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/syncdisabled",
-      "quote": "Registry settings; Path (Mandatory): SOFTWARE\\Policies\\Microsoft\\Edge; Value name: SyncDisabled; Value type: REG_DWORD",
+      "quote": "Disables data synchronization in Microsoft Edge. This policy also prevents the sync consent prompt from appearing.\n\nThis policy disables cloud synchronization only",
       "severity": null,
       "fix": null
     },
     {
-      "n": 55,
-      "where": "controls[1].scope; controls[1].governs; Governance controls",
-      "type": "applicability",
-      "claim": "SyncDisabled is a per-profile policy governing cloud synchronisation of Edge data.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/syncdisabled",
-      "quote": "Disables data synchronization in Microsoft Edge. This policy disables cloud synchronization only; Per Profile: Yes",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "controls[1].governs; Risk assessment: Data exposure; Governance guidance: Before rollout",
-      "type": "applicability",
-      "claim": "The sync control affects saved V2 Workspaces data.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-beta-channel",
-      "quote": "For organizations who have disabled Sync through policy, the existing v1 Workspace data will still be migrated to the new architecture. New v2 Workspaces created after migration won't sync across devices and will remain local to each device.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
-      "where": "controls[1].note; Risk assessment: Data exposure; Governance controls",
-      "type": "behaviour",
-      "claim": "New V2 Workspaces stay local to each device when Sync is disabled through policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-beta-channel",
-      "quote": "For organizations who have disabled Sync through policy, the existing v1 Workspace data will still be migrated to the new architecture. New v2 Workspaces created after migration won't sync across devices and will remain local to each device.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 58,
+      "n": 44,
       "where": "controls[1].note; Governance controls",
       "type": "applicability",
-      "claim": "SyncDisabled controls cloud synchronisation, not the in-window switching experience.",
+      "claim": "SyncDisabled is a sync control, not a control to turn off in-window switching.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/syncdisabled",
-      "quote": "This policy disables cloud synchronization only and has no impact on the RoamingProfileSupportEnabled policy.",
+      "quote": "This policy disables cloud synchronization only",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Group Policy exposes SyncDisabled at Administrative Templates > Microsoft Edge > Disable synchronization of data using Microsoft sync services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/syncdisabled",
+      "quote": "Group Policy (ADMX) info\n- GP unique name: SyncDisabled\n- GP name: Disable synchronization of data using Microsoft sync services\n- GP path (Mandatory): Administrative Templates/Microsoft Edge",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "The mandatory Windows registry control is SOFTWARE\\Policies\\Microsoft\\Edge, value SyncDisabled, type REG_DWORD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/syncdisabled",
+      "quote": "Path (Mandatory): SOFTWARE\\Policies\\Microsoft\\Edge\n- Path (Recommended): SOFTWARE\\Policies\\Microsoft\\Edge\\Recommended\n- Value name: SyncDisabled\n- Value type: REG\\_DWORD",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "The EdgeWorkspacesEnabled policy page lists Windows as supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeworkspacesenabled",
+      "quote": "Windows: ≥ 106",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "The EdgeWorkspacesEnabled policy page lists macOS as supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeworkspacesenabled",
+      "quote": "macOS: ≥ 106",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "The EdgeWorkspacesEnabled policy page lists Android as not supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeworkspacesenabled",
+      "quote": "Android: Not supported",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "The EdgeWorkspacesEnabled policy page lists iOS as not supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeworkspacesenabled",
+      "quote": "iOS: Not supported",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Scope; controls[0].scope; Risk assessment: Security & identity",
+      "type": "availability",
+      "claim": "The Learn Workspaces page says Workspaces are enabled for users signed in with a Microsoft Entra account.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-workspaces",
+      "quote": "Edge Workspaces is enabled for users signed in with a Microsoft Entra account on Edge version 114 or later.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[1].scope",
+      "type": "applicability",
+      "claim": "SyncDisabled is a per-profile policy, matching the briefing's user scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/syncdisabled",
+      "quote": "Per Profile: Yes",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-21T20:54:38.744Z",
+    "at": "2026-11-26T02:11:19.663Z",
     "summary": {
       "links": 7,
-      "unreachable": 0,
+      "unreachable": 5,
       "uiPaths": 2,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 2,
       "apiCalls": 2,
       "apiCallsNotOnPage": 2,
       "roadmapDrift": 0
@@ -682,28 +616,28 @@
       },
       {
         "url": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-stable-channel",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-beta-channel",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/deployedge/microsoft-edge-workspaces",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeworkspacesenabled",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/syncdisabled",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://support.microsoft.com/en-us/edge/getting-started-with-microsoft-edge-workspaces",
@@ -717,21 +651,26 @@
         "side": "ui",
         "governs": "Whether users can access Edge Workspaces",
         "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeworkspacesenabled",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Administrative Templates",
           "Microsoft Edge",
           "Edge Workspaces settings",
           "Enable Workspaces"
         ],
-        "missing": []
+        "missing": [
+          "Administrative Templates",
+          "Microsoft Edge",
+          "Edge Workspaces settings",
+          "Enable Workspaces"
+        ]
       },
       {
         "index": 0,
         "side": "api",
         "governs": "Whether users can access Edge Workspaces",
         "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeworkspacesenabled",
-        "reachable": true,
+        "reachable": false,
         "token": "Registry: SOFTWARE\\Policies\\Microsoft\\Edge,",
         "found": false
       },
@@ -740,20 +679,24 @@
         "side": "ui",
         "governs": "Whether Edge syncs data, including saved Workspaces",
         "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/syncdisabled",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Administrative Templates",
           "Microsoft Edge",
           "Disable synchronization of data using Microsoft sync services"
         ],
-        "missing": []
+        "missing": [
+          "Administrative Templates",
+          "Microsoft Edge",
+          "Disable synchronization of data using Microsoft sync services"
+        ]
       },
       {
         "index": 1,
         "side": "api",
         "governs": "Whether Edge syncs data, including saved Workspaces",
         "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/syncdisabled",
-        "reachable": true,
+        "reachable": false,
         "token": "Registry: SOFTWARE\\Policies\\Microsoft\\Edge,",
         "found": false
       }
@@ -765,6 +708,12 @@
       "date": "2026-11-21",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-21",
+      "status": "verified-with-gaps",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

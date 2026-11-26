@@ -4,8 +4,8 @@ slug: "m365-copilot-copilot-chat-agent-mode-in-word-enables-conversational-suppo
 roadmapId: 543241
 topic: "m365-copilot"
 products: ["Word","Microsoft Copilot (Microsoft 365)"]
-summary: "Microsoft plans an Edit mode in Copilot Chat in Word on the web that writes and edits document content for users without a Microsoft 365 Copilot licence. Default state and any admin switch are not stated."
-status: "in-development"
+summary: "The roadmap lists as Launched an Edit mode in Copilot Chat in Word on the web that writes and edits document content for users without a Microsoft 365 Copilot licence. Default state and any admin switch are not stated."
+status: "launched"
 releasePhase: ["Current Channel","General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
 platforms: ["Web"]
@@ -64,8 +64,8 @@ controls:
     note: "Microsoft Learn documents no such setting at the time of writing (November 2026)."
 confidence: "medium"
 created: "2026-11-22"
-updated: "2026-11-22"
-roadmapModified: "2025-12-19T23:00:49"
+updated: "2026-11-26"
+roadmapModified: "2026-11-26T00:16:54"
 changes:
   - date: "2026-11-22"
     note: "New briefing: Copilot Chat Edit mode in Word for users without a Microsoft 365 Copilot licence; default, admin switch and feature-specific licensing are not yet published."
@@ -75,19 +75,23 @@ changes:
     note: "Corrected after the independent check: Copilot Chat (Basic) data wording, the Integrated Apps block scope and the preview Copilot Chat side-pane policy, and a roadmap-only opening for Why it matters."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 58 statements not yet confirmed"
-version: 2
+  - date: "2026-11-26"
+    note: "Corrected after the independent check: the document-canvas review controls are now attributed to the roadmap's description, the rollout step no longer relies on them, and the status reads Launched as the roadmap record now shows."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 61 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 3
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-22"
-  version: 2
+  status: "held"
+  date: "2026-11-26"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 58
-  confirmed: 56
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 0
-  hash: "ffb9a2e937a8cbe1fa6ecfdb1bdc9a0e"
+  claims: 61
+  confirmed: 58
+  unconfirmed: 0
+  contradicted: 3
+  attempts: 1
+  hash: "02e44a0271b8f87653f3b7924344b5fe"
 ---
 
 ## What's changing
@@ -96,13 +100,13 @@ The roadmap item describes an Edit mode for Copilot Chat in Word, so that users 
 
 The roadmap states that the capability is available to Microsoft 365 users without a Microsoft 365 Copilot licence, and lists Web as the only platform, Current Channel and General Availability as release phases, and Worldwide (Standard Multi-Tenant) as the only cloud. The record does not say whether Edit mode is on by default or whether users or administrators switch it on.
 
-The roadmap shows the status as In development with a target of February CY2026. At the time of writing (November 2026) that target month has passed and the record, last modified on 19 December 2025, still shows In development, so treat the date as a plan. Microsoft Learn has no page for this feature. Learn's release notes for 2 June 2026 list a separate Word item, "Copilot can edit your document by default in Word" (Roadmap ID 557673, Web), which says users can turn the experience off; the release notes do not say whether it is the same change as this roadmap item.
+The roadmap shows the status as Launched with a target of February CY2026. Microsoft Learn has no page for this feature. Learn's release notes for 2 June 2026 list a separate Word item, "Copilot can edit your document by default in Word" (Roadmap ID 557673, Web), which says users can turn the experience off; the release notes do not say whether it is the same change as this roadmap item.
 
 ## Why it matters
 
-Microsoft plans chat-based document creation and editing in Word for users without a Microsoft 365 Copilot licence. For a service owner that raises two questions at once: who in the organisation will be editing documents with AI, and how that is reviewed before content is shared. Microsoft has not stated what happens on arrival, so base planning on the roadmap's description and re-check Message center and the roadmap item as the target date has already passed.
+The roadmap describes chat-based document creation and editing in Word for users without a Microsoft 365 Copilot licence. For a service owner that raises two questions at once: who in the organisation will be editing documents with AI, and how that is reviewed before content is shared. Microsoft has not stated what happens on arrival, so base planning on the roadmap's description and check Message center and the roadmap item, which now lists the item as Launched.
 
-The wiki's view is that the control that matters most is the one users already have, the review controls in the document canvas, together with whatever tenant-level switch Microsoft documents for Copilot Chat. Microsoft Learn documents no switch specific to this feature at the time of writing (November 2026).
+The wiki's view is that the control that matters most is the review controls in the document canvas described by the roadmap, together with whatever tenant-level switch Microsoft documents for Copilot Chat. Microsoft Learn documents no switch specific to this feature at the time of writing (November 2026).
 
 ## Risk assessment
 
@@ -131,18 +135,18 @@ No meter, price or credit rate for this feature is published at the time of writ
 - **Users:** the roadmap says Microsoft 365 users without a Microsoft 365 Copilot licence. Which licences and plans qualify is not stated for this feature.
 - **Platform:** Web only, as the roadmap lists it.
 - **Cloud:** Worldwide (Standard Multi-Tenant) only, as the roadmap lists it. The roadmap lists no US Government clouds for this item.
-- **Release phase:** Current Channel and General Availability, as the roadmap lists them. Status is In development with a target of February CY2026.
+- **Release phase:** Current Channel and General Availability, as the roadmap lists them. Status is Launched with a target of February CY2026.
 - **Prerequisites:** not documented for this feature.
 
 ## Governance guidance
 
 ### Before rollout
-- Ask the service owner for Word to confirm with Microsoft's roadmap and Message center whether and when this item ships, since its February CY2026 target has passed.
+- Ask the service owner for Word to confirm in Message center whether this item, which the roadmap lists as Launched, has reached your tenant.
 - Decide which users without a Microsoft 365 Copilot licence should get chat-based editing, and who communicates the change to them.
 - Read Learn's Manage Copilot Chat page and note the controls it documents, including the Integrated Apps block of the Copilot app (see the controls table).
 
 ### At rollout
-- Tell affected users to use the review controls in the document canvas to check changes Copilot makes before they save or share.
+- Tell affected users to check Copilot's edits before they save or share.
 - Watch for Message center posts that state the default and any admin action; the record has none.
 
 ### After rollout
@@ -181,10 +185,10 @@ cost: Low. The roadmap says it is for users without a Microsoft 365 Copilot lice
 impact: Medium. It is aimed at users who have no Microsoft 365 Copilot licence, which can be a large share of a tenant, and it changes how they work in Word on the web.
 -->
 
-<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters / behaviour: Users already have the review controls described for this planned Edit-mode feature. | Found: Searched: Word Edit mode Copilot Chat pricing fair use limits prerequisites review changes; 543241. Read roadmap and June 2 release notes. The roadmap describes planned controls; the release note identifies another item and does not establish these controls already exist for this audience. | Fix: Replace 'the one users already have, the review controls in the document canvas' with 'the review controls in the document canvas described by the roadmap'.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: At rollout; Governance controls table / consistency: The checklist tells readers to use document-canvas review controls, but those controls have no table row. | Found: Tell affected users to use the review controls in the document canvas ... Table rows: Whether the Copilot app and Copilot Chat are available in the tenant; Switch for Edit mode in Copilot Chat in Word. | Fix: Replace the checklist bullet with 'Tell affected users to check Copilot's edits before they save or share.' Do not add a control row.
+- [contradicted, blocker] front matter: defaultState / default: The default state of Edit mode is unknown because Microsoft has not stated whether it is on by default. | Found: Copilot opens in the chat pane with Edit mode turned on. Type a prompt, choose a suggested action, or ask a question about your file. | Fix: Set defaultState to on and replace the blanket default-state gaps with: 'Microsoft Support says Copilot opens in Word's chat pane with Edit mode turned on; availability depends on subscription, licence, organisation settings and platform. The roadmap does not state tenant rollout mechanics.' Cite https://support.microsoft.com/office/welcome-to-copilot-in-word-2135e85f-a467-463b-b2f0-c51a46d625d1 and align the risk rationale and first Open question with this distinction. | Source: https://support.microsoft.com/office/welcome-to-copilot-in-word-2135e85f-a467-463b-b2f0-c51a46d625d1
+- [contradicted, blocker] Scope: Prerequisites / absence: Prerequisites for Edit mode are not documented. | Found: Copilot opens in the chat pane with Edit mode turned on. ... To use this feature, an eligible Microsoft 365 subscription and/or Microsoft Copilot license is required. | Fix: Replace the Prerequisites bullet with: '**Prerequisites:** Microsoft Support says an eligible Microsoft 365 subscription and/or Microsoft Copilot licence is required to use the Word chat-pane feature; availability depends on subscription, licence, organisation settings and platform.' Cite https://support.microsoft.com/office/welcome-to-copilot-in-word-2135e85f-a467-463b-b2f0-c51a46d625d1. Keep the roadmap's statement that this item serves users without the Copilot add-on. | Source: https://support.microsoft.com/office/welcome-to-copilot-in-word-2135e85f-a467-463b-b2f0-c51a46d625d1
+- [contradicted, blocker] Cost and licensing; Open questions / absence: It is unstated which of Copilot Chat (Basic) and Microsoft 365 Copilot (Basic) carries the in-Word editing experience. | Found: Microsoft 365 Copilot (Basic) refers to users without the Copilot add-on license, but who have access to Copilot capabilities inside apps (for example, Word or Excel). ... Word: Draft, rewrite, and summarize documents | Fix: Replace 'Which of those experiences carries Edit mode is not stated' with: 'The overview places in-app Word capabilities for users without the Copilot add-on under Microsoft 365 Copilot (Basic); Copilot Chat (Basic) does not include in-app Word access.' Narrow the fourth Open question to: 'Does a feature-specific fair use limit apply to Edit mode?' Retain licensing.model as included and cite https://learn.microsoft.com/copilot/plan/copilot-overview. | Source: https://learn.microsoft.com/copilot/plan/copilot-overview
 -->

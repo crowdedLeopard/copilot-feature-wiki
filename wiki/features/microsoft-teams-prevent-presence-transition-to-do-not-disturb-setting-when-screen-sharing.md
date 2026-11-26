@@ -61,15 +61,17 @@ changes:
     note: "Corrected after the independent check: narrowed the Learn absence statement and added the Q&A user setting path, removed unsupported claims about agent actions and new data, and set licensing to included (Teams licence)."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 36 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 41 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-23"
+  date: "2026-11-26"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 36
-  confirmed: 36
+  claims: 41
+  confirmed: 41
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -168,8 +170,8 @@ cost: Low. The roadmap names no licence or meter, so the only known cost is admi
 impact: Medium. People who present or share their screen and take calls in the same session are the ones who notice, on the Desktop and Mac clients named in the roadmap.
 -->
 
-<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance guidance: Before rollout, third bullet / absence: Learn documents no presence control in meeting policies for this presenting opt-out. | Found: Searched: Teams presenting screen sharing Do Not Disturb opt out admin control Set-CsTeamsMeetingPolicy Set-CsTeamsClientConfiguration Graph. Read both cmdlet references and settings-policies-reference; no opt-out control appears. Presence-admins does document a separate presence privacy control. | Fix: Replace the third Before rollout bullet with: 'Check the Teams admin centre meeting policies and the Teams PowerShell reference for an admin control over this presenting opt-out; Learn documents none at the time of writing, so plan on user communication instead.' This avoids suggesting that no presence controls of any kind are documented.
+- [supported, minor] Governance guidance: Before rollout, third bullet / absence: Learn documents no meeting-policy presence control for the presenting opt-out. | Found: Searched: Teams admin center meeting policies presence control privacy Do not disturb presenting opt out. Read settings-policies-reference and both cmdlet references; no presenting opt-out control. Presence-admins separately documents presence privacy mode. | Fix: Replace the third Before rollout bullet with: 'Check the Teams admin centre meeting policies and the Teams PowerShell reference for an admin control over this presenting opt-out; Learn documents none at the time of writing, so plan on user communication instead.' This avoids implying no presence controls of any kind exist.
 -->

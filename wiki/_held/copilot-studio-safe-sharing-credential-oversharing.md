@@ -100,18 +100,20 @@ changes:
     note: "Corrected after verification: licensing model is now included, citing the Copilot Studio licensing page, and the impact rationale no longer says end users are not asked to do anything."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 71 statements confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 77 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 5
 verification:
-  status: "verified"
-  date: "2026-11-19"
+  status: "held"
+  date: "2026-11-26"
   version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 71
-  confirmed: 71
+  claims: 77
+  confirmed: 76
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "e5c319adc1f7c50c3492ba4fb0f6bd66"
 ---
 
@@ -207,4 +209,12 @@ The two admin centre routes to this setting are documented in different articles
 risk: Medium. The Learn settings reference lists blocking as On by default, but the control does not unshare agents that are already shared, and the Learn pages describe it as preview.
 cost: Low. The only cost the sources show is admin and maker time; no feature-specific licence or Copilot Credit charge is published, and environment groups can only hold Managed Environments.
 impact: Medium. Makers meet blocked Share and Publish actions and must rework connections.
+-->
+
+<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[2].governs; controls[2].note; Governance controls; Governance guidance: At rollout / applicability: Managed Environments sharing limits govern who an agent can be shared with, without stating the authentication requirement. | Found: Sharing limits only apply to agents that require authentication. | Fix: Add 'Sharing limits only apply to agents that require authentication.' to controls[2].note, its rendered table note and the paragraph describing row 3. Qualify the At rollout sharing-limits checklist bullet with 'for agents that require authentication'. This qualification comes from https://learn.microsoft.com/microsoft-copilot-studio/admin-sharing-controls-limits and applies to the existing sharing-limits control, not the credential-safe-sharing setting. | Source: https://learn.microsoft.com/microsoft-copilot-studio/admin-sharing-controls-limits
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[1].ui; Governance controls: row 2; Governance guidance / admin-path: The group route is Power Platform admin center > Security > Threat detection > Sharing agent with embedded maker credentials > Environment groups > environment group > Set up. | Found: select **Security**, and then select **Threat detection**. 3. Select **Sharing agent with embedded maker credentials**. In the **Environment groups** tab, select the environment group 5. Select **Set up**. 6. Select the following options to allow or block sharing | Fix: Extend controls[1].ui.path and the rendered row to 'Security > Threat detection > Sharing agent with embedded maker credentials > Environment groups > environment group > Set up > Don't let makers share agents with their own credentials embedded (recommended)'. Keep the existing note naming the alternative allow option. The cited article gives the option after Set up. | Source: https://learn.microsoft.com/power-platform/admin/security/control-sharing-agents-with-embedded-maker-credentials
 -->

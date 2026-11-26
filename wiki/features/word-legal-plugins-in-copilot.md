@@ -101,15 +101,17 @@ changes:
     note: "Corrected: added the beta Graph block and availability operations for the Cowork plugin, licensing now mixed with Cowork usage-based billing (cost variable), softened rollout wording and removed the audit checklist step."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 76 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 80 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-23"
+  date: "2026-11-26"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 76
-  confirmed: 74
+  claims: 80
+  confirmed: 78
   unconfirmed: 0
   contradicted: 2
   attempts: 0
@@ -225,10 +227,10 @@ cost: Variable. Cowork consumes Copilot Credits, including for skill calls; lega
 impact: Medium. Legal teams are the intended users, but the Word plugin is enabled for all Microsoft 365 Copilot commercial subscribers in Word desktop, so any licensed user can meet it.
 -->
 
-<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: At rollout, deployment bullet; controls / consistency: The governance checklist's instruction to deploy the Cowork plugin has a corresponding control row. | Found: Tell legal-team users to add the legal plugin in Cowork, or deploy it to them from the same page. The table covers Word availability, Cowork blocking and Cowork availability, not deployment. | Fix: Remove ', or deploy it to them from the same page' from that checklist bullet; the deployment step has no control row.
-- [contradicted, minor] Governance guidance: Before rollout, licence bullet; controls / consistency: The governance checklist's instruction to check users' licence assignments has a corresponding control row. | Found: Confirm which legal-team users hold Microsoft 365 Copilot licences, as MC1509799 asks and Learn requires for Cowork plugins. No licence-assignment control appears in the table. | Fix: Remove the 'Confirm which legal-team users hold Microsoft 365 Copilot licences' checklist bullet, which has no control row; retain the documented licence requirement in Cost and licensing.
 - [supported, minor] What's changing; Scope: Clouds and platforms / record: A separate roadmap item covers the GCC Word legal plugin. | Found: Roadmap item 571885: "title": "Word: legal plugin", "clouds": ["GCC"], "platforms": ["Desktop"] | Fix: Add https://www.microsoft.com/microsoft-365/roadmap?id=571885 to sources for the separate GCC roadmap claim.
+- [contradicted, minor] Governance guidance: At rollout, deployment bullet; Governance controls / consistency: The checklist's instruction to deploy the Cowork plugin has a corresponding control row. | Found: Tell legal-team users to add the legal plugin in Cowork, or deploy it to them from the same page. The table contains Word availability, Cowork blocking and Cowork availability, not deployment. | Fix: Remove ', or deploy it to them from the same page' from the At rollout checklist bullet; this deployment instruction has no control row.
+- [contradicted, minor] Governance guidance: Before rollout, licence bullet; Governance controls / consistency: The checklist's instruction to check users' license assignments has a corresponding control row. | Found: Confirm which legal-team users hold Microsoft 365 Copilot licences, as MC1509799 asks and Learn requires for Cowork plugins. The controls table has no license-assignment row. | Fix: Remove the 'Confirm which legal-team users hold Microsoft 365 Copilot licences, as MC1509799 asks and Learn requires for Cowork plugins' checklist bullet; retain the license requirement in Cost and licensing.
 -->

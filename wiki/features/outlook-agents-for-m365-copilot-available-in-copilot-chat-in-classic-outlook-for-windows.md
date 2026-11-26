@@ -46,6 +46,9 @@ sources:
   - title: "Use app centric management to manage access to apps"
     url: "https://learn.microsoft.com/microsoftteams/app-centric-management"
     kind: "learn"
+  - title: "Compare declarative and custom engine agents"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/agents-overview"
+    kind: "learn"
 videos: []
 related: ["declarative-agents","outlook-agents-for-m365-copilot-available-in-copilot-chat-in-outlook-for-mac","app-management","outlook-new-copilot-entry-point-in-classic-outlook","microsoft-teams-unified-agent-and-app-availability-management-across-m365-and-teams-admin"]
 controls:
@@ -70,29 +73,33 @@ controls:
       kind: "graph"
       call: "PATCH /beta/copilot/admin/catalog/packages/{id}"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update"
-    note: "The request body sets availableTo and allowedUsersAndGroups. Beta API; needs a Microsoft Agent 365 licence. Changes take up to 24 hours to apply."
+    note: "UI path requires app-centric management; tenants on app permission policies keep them or migrate. Body sets availableTo and allowedUsersAndGroups. Beta API; needs a Microsoft Agent 365 licence."
 confidence: "medium"
 created: "2026-11-25"
-updated: "2026-11-25"
+updated: "2026-11-26"
 roadmapModified: "2026-02-24T00:15:57"
 changes:
   - date: "2026-11-25"
     note: "First briefing for the classic Outlook for Windows item: launched on the roadmap and in the September 23, 2026 release notes, with the agent block, availability and pay-as-you-go rules Learn documents for Copilot Chat."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 54 statements contradicted, 3 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected: the Teams admin center availability path now notes it requires app-centric management; reworded the mailbox-client sentence in Why it matters; removed the unsupported mail-flow claim from the impact rationale; added the declarative agents overview source."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 58 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
-  date: "2026-11-25"
-  version: 1
+  status: "verified-with-gaps"
+  date: "2026-11-26"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 54
-  confirmed: 50
-  unconfirmed: 3
+  claims: 58
+  confirmed: 57
+  unconfirmed: 0
   contradicted: 1
-  attempts: 1
-  hash: "9744f59adb1904548f45141d54afc099"
+  attempts: 0
+  hash: "0718b8441352b91861a04cc2dad86bc9"
 ---
 
 ## What's changing
@@ -105,7 +112,7 @@ The roadmap record gives the status as Launched, the target as January CY2026, t
 
 ## Why it matters
 
-Classic Outlook is where many Windows users spend the working day, so every agent your catalogue offers to Copilot Chat users is now one click from their mail and calendar. Agents with mail and calendar actions or enterprise connectors act on data from inside the mailbox client, and agents that read shared tenant data can create metered charges for Basic-licence users once pay-as-you-go is set up.
+Classic Outlook is where many Windows users spend the working day, so the declarative agent experience is now available within their mailbox client. Agents with mail and calendar actions or enterprise connectors act on data from inside the mailbox client, and agents that read shared tenant data can create metered charges for Basic-licence users once pay-as-you-go is set up.
 
 If nobody acts, the agents your existing store and availability settings already allow appear for Copilot Chat users in classic Outlook. Treat the block and availability settings you hold today as the decision about what these users see, and review them now rather than after the first support call.
 
@@ -164,13 +171,13 @@ If nobody acts, the agents your existing store and availability settings already
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether an agent is blocked for the whole organisation, including in Outlook</strong><br><small>Tenant</small><br><small class="controls__note">Beta API; needs a Microsoft Agent 365 licence. Blocking a SharePoint or Foundry agent only impacts Copilot Chat.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which users and groups each agent is available to</strong><br><small>Group</small><br><small class="controls__note">The request body sets availableTo and allowedUsersAndGroups. Beta API; needs a Microsoft Agent 365 licence. Changes take up to 24 hours to apply.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › app › Users and groups › Select to manage who this app is installed for or available to in your organization › Availability › Edit availability › Available to <a href="https://learn.microsoft.com/microsoftteams/app-centric-management" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/copilot/admin/catalog/packages/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users and groups each agent is available to</strong><br><small>Group</small><br><small class="controls__note">UI path requires app-centric management; tenants on app permission policies keep them or migrate. Body sets availableTo and allowedUsersAndGroups. Beta API; needs a Microsoft Agent 365 licence.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › app › Users and groups › Select to manage who this app is installed for or available to in your organization › Availability › Edit availability › Available to <a href="https://learn.microsoft.com/microsoftteams/app-centric-management" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/copilot/admin/catalog/packages/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 Blocking an agent created with Copilot Agent Builder or Copilot Studio affects it in Microsoft Outlook and other host products; blocking one created with SharePoint or Microsoft Foundry only impacts its availability in Microsoft Copilot Chat. Both Graph operations are beta APIs, which Microsoft says are not supported in production, and the Package Management API requires a Microsoft Agent 365 licence. In the update call, availableTo is required when allowedUsersAndGroups is updated.
 
-The Teams admin center path applies to every app and Copilot agent. Organisations not yet migrated to unified app management must also allow agents under Integrated apps in the Microsoft 365 admin center.
+The Teams admin center path requires app-centric management; tenants still using app permission policies must continue using those policies or migrate to app-centric management ([Use app centric management to manage access to apps](https://learn.microsoft.com/microsoftteams/app-centric-management)). The Teams admin center path applies to every app and Copilot agent. Organisations not yet migrated to unified app management must also allow agents under Integrated apps in the Microsoft 365 admin center.
 
 ## Open questions
 
@@ -182,16 +189,11 @@ The Teams admin center path applies to every app and Copilot agent. Organisation
 <!-- rationale
 risk: Medium. Agents can bring plugins, mail and calendar actions and enterprise connectors into the mailbox client, and included agents are available by default; the block and availability controls cover them but need setting.
 cost: Variable. Agents grounded in instructions and public websites are included with Copilot Chat (Basic) and Microsoft 365 Copilot (Basic) and (Premium); on Basic licences, agents that access shared tenant data are billed by metered pay-as-you-go consumption.
-impact: Medium. Users of Copilot Chat in classic Outlook for Windows notice agents in the chat pane; mail flow and the rest of Outlook are not changed by this item.
+impact: Medium. Users of Copilot Chat in classic Outlook for Windows notice agents in the chat pane.
 -->
 
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].ui; Governance controls table / admin-path: The printed Teams admin center availability path is presented without requiring migration to app-centric management. | Found: All organizations don't have the app centric management feature available. If you see policies on the permission policies page, continue to use app permission policies or migrate to this feature on your own. | Fix: Keep the path, but prepend this sentence to controls[1].note and add it before the Teams path guidance: 'The Teams admin center path requires app-centric management; tenants still using app permission policies must continue using those policies or migrate to app-centric management.' Cite https://learn.microsoft.com/microsoftteams/app-centric-management. This prerequisite is distinct from unified app management. | Source: https://learn.microsoft.com/microsoftteams/app-centric-management
-- [unsupported, major] Why it matters: first paragraph / behaviour: Every agent the catalogue offers to Copilot Chat users is now one click from their mail and calendar in classic Outlook. | Found: Searched: 'classic Outlook Copilot Chat agents all agents'. Opened release-notes and agents-overview. The release note documents declarative agents and interaction with available agents, not every catalogue agent or a universal one-click experience. | Fix: Replace 'so every agent your catalogue offers to Copilot Chat users is now one click from their mail and calendar' with 'so the declarative agent experience is now available within their mailbox client'.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing: definition of declarative agents / behaviour: Declarative agents configure Copilot with custom instructions, knowledge and actions. | Found: Declarative agents enable you to configure Copilot for specific scenarios by adding custom instructions, additional knowledge, and actions to automate business processes. | Fix: Add https://learn.microsoft.com/microsoft-365/copilot/extensibility/agents-overview to sources for the definition of declarative agents. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/agents-overview
-- [unsupported, minor] rationale: impact / behaviour: Mail flow is not changed by this item. | Found: Searched: '481559 mail flow' and 'classic Outlook declarative agents build mail flow'. Read release-notes and the roadmap record. Neither states that mail flow is unchanged; results about Exchange mail flow do not establish this feature's effects. | Fix: Remove 'mail flow and the rest of Outlook are not changed by this item' from the impact rationale.
-- [unsupported, minor] rationale: impact / behaviour: The rest of Outlook is not changed by this item. | Found: Searched: 'classic Outlook declarative agents build mail flow'. Read release-notes and the roadmap record. They describe the added agent experience but do not state that all other Outlook behaviour is unchanged. | Fix: Remove 'mail flow and the rest of Outlook are not changed by this item' from the impact rationale.
+- [contradicted, minor] Governance guidance: Before rollout, second bullet / consistency: The checklist's Integrated apps availability check is represented in the controls table. | Found: Checklist: "and under Integrated apps in the Microsoft 365 admin center if your tenant is not yet migrated". Controls table: Microsoft 365 admin center Agents > All agents > agent > Block; Teams admin center app availability. No Integrated apps availability row. | Fix: Remove 'and under Integrated apps in the Microsoft 365 admin center if your tenant is not yet migrated to unified app management' from the Before rollout checklist bullet: that check has no controls-table row. Retain the existing dual-admin-center requirement in Scope.
 -->

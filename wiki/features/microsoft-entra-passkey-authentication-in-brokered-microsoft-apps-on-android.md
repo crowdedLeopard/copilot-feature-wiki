@@ -37,6 +37,9 @@ sources:
   - title: "Passkey and security key browser authentication for third-party federated identity providers on Android, iOS, and macOS"
     url: "https://learn.microsoft.com/entra/identity/authentication/concept-passkey-browser-authentication-federated-identity-provider"
     kind: "learn"
+  - title: "Microsoft Entra authentication strengths API overview"
+    url: "https://learn.microsoft.com/graph/api/resources/authenticationstrengths-overview?view=graph-rest-1.0"
+    kind: "learn"
   - title: "Microsoft 365 Roadmap item 409529"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=409529"
     kind: "roadmap"
@@ -81,7 +84,7 @@ controls:
       kind: "graph"
       call: "POST /v1.0/policies/authenticationStrengthPolicies"
       docs: "https://learn.microsoft.com/graph/api/authenticationstrengthroot-post-policies?view=graph-rest-1.0"
-    note: "At least Conditional Access Administrator. Enforced only when a Conditional Access policy uses the strength."
+    note: "At least Conditional Access Administrator. Enforced only when a Conditional Access policy uses the strength. The request body sets allowedCombinations to [\"fido2\"] to permit passkeys (FIDO2)."
   - governs: "Separate switch for passkey sign-in in brokered Microsoft apps on Android"
     scope: "tenant"
     ui: null
@@ -89,26 +92,30 @@ controls:
     note: "Microsoft Learn documents no setting specific to brokered Android apps at the time of writing (November 2026); the Passkey (FIDO2) policy applies."
 confidence: "high"
 created: "2026-11-25"
-updated: "2026-11-25"
+updated: "2026-11-26"
 roadmapModified: "2024-08-21T23:45:23"
 changes:
   - date: "2026-11-25"
     note: "New briefing: passkey sign-in to Microsoft apps on Android through a broker, governed by the Passkey (FIDO2) policy."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 52 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected: removed the claim that older Android devices fall back to other methods, reworded two Why it matters statements on the broker and on who may use passkeys, and noted the allowedCombinations body property."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 2 of 59 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
-  date: "2026-11-25"
-  version: 1
+  status: "verified-with-gaps"
+  date: "2026-11-26"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 52
-  confirmed: 49
+  claims: 59
+  confirmed: 57
   unconfirmed: 2
-  contradicted: 1
-  attempts: 1
-  hash: "616a828525bdbbba3cedf3b77b4cc1f3"
+  contradicted: 0
+  attempts: 0
+  hash: "59b8ef3aee2aaddc66647aead86b8b53"
 ---
 
 ## What's changing
@@ -123,9 +130,9 @@ The roadmap item is **In development**, with a preview target of August CY2024 a
 
 ## Why it matters
 
-This removes a gap that pushed Android users of Outlook, Teams and OneDrive back to weaker methods: with a broker installed, the same passkey that works in the browser works in the apps. For tenants moving users to phishing-resistant sign-in, or enforcing passkeys through a Conditional Access authentication strength, the broker is now part of the deployment: users who do not have Authenticator, Company Portal or Link to Windows on their phone do not get passkey sign-in in those three apps.
+A supported broker enables passkey sign-in in Outlook, Teams and OneDrive on Android. For tenants moving users to phishing-resistant sign-in, or enforcing passkeys through a Conditional Access authentication strength, the broker is now part of the deployment: users who do not have Authenticator, Company Portal or Link to Windows on their phone do not get passkey sign-in in those three apps.
 
-Nothing about who may use passkeys changes. Users see the option only if the Passkey (FIDO2) policy allows them a passkey, and each user chooses whether to use it. Expect help-desk questions about Android version requirements and which app to install.
+Nothing about who may use passkeys changes. Users must be allowed by the Passkey (FIDO2) policy to register and sign in with a passkey; eligible users can choose passkey sign-in. Expect help-desk questions about Android version requirements and which app to install.
 
 ## Risk assessment
 
@@ -141,7 +148,7 @@ Nothing about who may use passkeys changes. Users see the option only if the Pas
 - No change: the feature takes no action on its own.
 
 **Change & support**
-- Sign-in with a passkey in Authenticator to native apps requires Android 14 or later; sign-in with a FIDO2 security key to native apps requires Android 13 or later. Older devices fall back to other methods.
+- Sign-in with a passkey in Authenticator to native apps requires Android 14 or later; sign-in with a FIDO2 security key to native apps requires Android 13 or later.
 - Users must install a supported broker for OneDrive, Outlook and Teams on Android.
 
 ## Cost and licensing
@@ -185,7 +192,7 @@ Nothing about who may use passkeys changes. Users see the option only if the Pas
 <tbody>
 <tr><td data-label="Control"><strong>Which users and groups can register and use passkeys (FIDO2), and under which passkey profile</strong><br><small>Group</small><br><small class="controls__note">At least Authentication Policy Administrator. The request body sets state, includeTargets, excludeTargets and passkeyProfiles.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › Security › Authentication methods › Policies › Passkey (FIDO2) › Enable and Target › Add target › target › passkey profiles <a href="https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /v1.0/policies/authenticationMethodsPolicy/authenticationMethodConfigurations/fido2</code> <a href="https://learn.microsoft.com/graph/api/fido2authenticationmethodconfiguration-update?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which passkey types and providers (for example Authenticator for Android) a passkey profile allows</strong><br><small>Group</small><br><small class="controls__note">Passkey types, Enforce attestation and Enforce key restrictions (AAGUIDs) are set in the profile. The request body sets passkeyProfiles, including passkeyTypes and keyRestrictions.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › Security › Authentication methods › Policies › Passkey (FIDO2) › Configure › + Add passkey profile <a href="https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /v1.0/policies/authenticationMethodsPolicy/authenticationMethodConfigurations/fido2</code> <a href="https://learn.microsoft.com/graph/api/fido2authenticationmethodconfiguration-update?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which authentication methods a custom authentication strength permits, for requiring passkeys</strong><br><small>Tenant</small><br><small class="controls__note">At least Conditional Access Administrator. Enforced only when a Conditional Access policy uses the strength.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › Authentication methods › Authentication strengths › New authentication strength › Passkeys (FIDO2) <a href="https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/policies/authenticationStrengthPolicies</code> <a href="https://learn.microsoft.com/graph/api/authenticationstrengthroot-post-policies?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which authentication methods a custom authentication strength permits, for requiring passkeys</strong><br><small>Tenant</small><br><small class="controls__note">At least Conditional Access Administrator. Enforced only when a Conditional Access policy uses the strength. The request body sets allowedCombinations to [&quot;fido2&quot;] to permit passkeys (FIDO2).</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › Authentication methods › Authentication strengths › New authentication strength › Passkeys (FIDO2) <a href="https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/policies/authenticationStrengthPolicies</code> <a href="https://learn.microsoft.com/graph/api/authenticationstrengthroot-post-policies?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Separate switch for passkey sign-in in brokered Microsoft apps on Android</strong><br><small>Tenant</small><br><small class="controls__note">Microsoft Learn documents no setting specific to brokered Android apps at the time of writing (November 2026); the Passkey (FIDO2) policy applies.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -205,13 +212,13 @@ cost: None. Microsoft states passkeys (FIDO2) are available in all Microsoft Ent
 impact: Low. Only Android users who already have a passkey allowed by policy and a broker app installed notice a new sign-in option in Microsoft apps.
 -->
 
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Change & support / behaviour: Older devices fall back to other authentication methods. | Found: If the authentication strength doesn't include a method that the user can register and use, Microsoft Entra ID blocks the user from signing in to the resource. | Fix: Remove 'Older devices fall back to other methods.' Alternatively replace it with 'Another sign-in method must satisfy the applicable authentication strength; if no included method can be registered and used, Microsoft Entra ID blocks access.' Cite https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strength-how-it-works for that replacement. | Source: https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strength-how-it-works
-- [unsupported, major] Why it matters: first sentence / behaviour: The previous passkey gap pushed Android users of Outlook, Teams and OneDrive back to weaker methods. | Found: Searched: 'Android Outlook Teams OneDrive passkeys previously weaker methods broker support'; read the matrix, Authenticator sign-in guide and October 2024 Entra release-archive excerpt. They establish passkey support, not this historical fallback to weaker methods. | Fix: Replace the first sentence of Why it matters with 'A supported broker enables passkey sign-in in Outlook, Teams and OneDrive on Android.'
-- [unsupported, major] Why it matters: second paragraph / behaviour: Users see the passkey sign-in option only if the Passkey (FIDO2) policy allows them a passkey. | Found: Searched: 'Microsoft Entra passkey sign in option visible users not enabled authentication methods policy'; read passkey enablement and Authenticator sign-in. These establish permission to register or authenticate, not that the sign-in option is hidden from every ineligible user. | Fix: Replace 'Users see the option only if the Passkey (FIDO2) policy allows them a passkey, and each user chooses whether to use it' with 'Users must be allowed by the Passkey (FIDO2) policy to register and sign in with a passkey; eligible users can choose passkey sign-in.'
+- [unsupported, major] Why it matters / behaviour: Nothing about who may use passkeys changes. | Found: Searched: Microsoft Entra Android passkey broker authentication no changes authentication method policy user eligibility. Read the compatibility matrix, passkey enablement page and October 2024 release excerpt; they document current eligibility, not an unchanged historical population. | Fix: Remove 'Nothing about who may use passkeys changes.' Keep the following sentence about users needing to be allowed by the Passkey (FIDO2) policy.
+- [unsupported, major] Risk assessment: Data exposure / behaviour: The change does not change what the apps can read. | Found: Searched: Microsoft Entra passkey authentication does not change application permissions data access autonomous actions; Microsoft Entra Android broker passkey authentication changes who can use passkeys app permissions actions. Read matrix and Authenticator overview; neither states unchanged app ac | Fix: Replace the bullet with 'The documented change is a passkey sign-in route to Microsoft apps on Android.' The compatibility matrix supports that narrower statement: https://learn.microsoft.com/entra/identity/authentication/concept-fido2-compatibility.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].api; controls[2].note; Governance controls table / command: POST /v1.0/policies/authenticationStrengthPolicies creates a custom strength specifying permitted authentication methods. | Found: POST https://graph.microsoft.com/v1.0/policies/authenticationStrengthPolicies "allowedCombinations": [ "fido2" ] | Fix: Keep the call unchanged. Append to controls[2].note and the rendered row note: 'The request body sets allowedCombinations to ["fido2"] to permit passkeys (FIDO2).' | Source: https://learn.microsoft.com/graph/api/authenticationstrengthroot-post-policies?view=graph-rest-1.0
-- [supported, minor] controls[2].note; Why it matters; Governance guidance; Governance controls / applicability: A custom strength is enforced for protected resources by using it in a Conditional Access policy, rather than merely creating it. | Found: After defining the authentication strength policy, you apply and enforce it for the protected resource using Microsoft Entra conditional access policies. | Fix: Add https://learn.microsoft.com/graph/api/resources/authenticationstrengths-overview?view=graph-rest-1.0 to sources for the distinction between defining a strength and applying it through Conditional Access. | Source: https://learn.microsoft.com/graph/api/resources/authenticationstrengths-overview?view=graph-rest-1.0
+- [supported, minor] Cost and licensing: Indirect costs / applicability: Using Company Portal as the Android broker ties into an Intune deployment. | Found: On Android, Microsoft Intune establishes the managed context that passwordless and brokered authentication flows depend on. This context is especially relevant when Microsoft Authenticator or related app experiences are part of your mobile access design. | Fix: Remove 'Using Company Portal as the broker ties into an Intune deployment, but' and retain 'Microsoft publishes no licence requirement specific to this broker scenario.' This avoids implying that using the broker necessarily requires an Intune deployment, and avoids relying on an uncited background page. | Source: https://learn.microsoft.com/intune/solutions/passwordless#platform-considerations
+- [supported, minor] controls[1].ui / admin-path: The Entra admin center route through Security, Authentication methods, Policies, Passkey (FIDO2), Configure and + Add passkey profile reaches the profile configuration form. | Found: Browse to Entra ID > Security > Authentication methods > Policies. Select Passkey (FIDO2). On the Configure tab, select + Add passkey profile. Fill in the profile details. | Fix: For the passkey-type control, extend the UI path to 'Entra ID > Security > Authentication methods > Policies > Passkey (FIDO2) > Configure > + Add passkey profile > Passkey types'. Keep the note naming Enforce attestation and Enforce key restrictions as other settings in that form. | Source: https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2
+- [supported, minor] controls[3].ui and api; controls[3].note; Governance controls; Open questions / absence: No separate UI or API switch is documented for Entra-issued passkey sign-in in brokered Microsoft apps on Android. | Found: Searched: Microsoft Entra brokered Android passkey authentication separate setting authentication methods policy enable disable. Read matrix, passkey enablement, FIDO2 Graph update and federated-browser page; systemBrowserEnabledOn concerns external IdP browser handoff, not Entra-issued passkeys. | Fix: Replace 'There is no separate switch for passkey sign-in in brokered Android apps' with 'Microsoft Learn documents no separate switch for Entra-issued passkey sign-in in brokered Android apps at the time of writing (November 2026)'. Keep the following statement that the Passkey (FIDO2) policy governs Entra passkeys.
 -->

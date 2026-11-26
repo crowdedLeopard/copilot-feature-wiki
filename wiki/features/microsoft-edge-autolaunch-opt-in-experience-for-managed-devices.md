@@ -69,15 +69,17 @@ changes:
     note: "Corrected after the independent check: the Group Policy control row now links the LaunchEdgeOnWindowsStartupEnabled policy page, which gives the setting's final label."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 44 statements confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 39 statements confirmed"
 version: 4
 verification:
   status: "verified"
-  date: "2026-11-21"
+  date: "2026-11-26"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 44
-  confirmed: 44
+  claims: 39
+  confirmed: 39
   unconfirmed: 0
   contradicted: 0
   attempts: 0

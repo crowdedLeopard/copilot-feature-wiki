@@ -1,0 +1,964 @@
+{
+  "slug": "microsoft-power-platform-governance-and-administration-create-and-manage-filter-based-secu",
+  "roadmapId": 581895,
+  "title": "Power Platform: create and manage Dataverse filter-based security filters in the Power Apps maker portal",
+  "status": "held",
+  "date": "2026-11-26",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-26",
+    "reasons": [
+      "2 blocking findings (claims 38, 56)"
+    ]
+  },
+  "counts": {
+    "claims": 66,
+    "confirmed": 62,
+    "unconfirmed": 2,
+    "contradicted": 2,
+    "blocker": 2,
+    "major": 2,
+    "minor": 2
+  },
+  "summary": "Hold: the rollout checklist gives an incomplete route to Security roles, and the restricted-table licensing statement omits Microsoft's create, update or delete qualification. The main controls and roadmap targets are supported, but immediate enforcement of filter edits and the categorical statement about autonomous actions are not documented.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "Microsoft plans a simpler maker-portal experience for admins and makers to create and manage filter-based security filters.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Admins and makers can create and manage filters for Filter-based Security through a simplified management experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate; What's changing; Scope",
+      "type": "record",
+      "claim": "Preview is targeted for December CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"December CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "General availability is targeted for March CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"March CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap cloud list is GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-11-26T00:16:54.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-26T00:16:54\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "summary; What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Filter-based security grants access to Dataverse records whose data satisfies filter conditions, such as City being Redmond.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/filter-based-security",
+      "quote": "Filter-based security grants access through record data that satisfies filter criteria. For example, you can grant access to records whose City column contains Redmond, Seattle, or Bellevue.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing; Scope; controls[0].note; controls[1].note",
+      "type": "availability",
+      "claim": "The underlying filter-based security feature is documented as preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/filter-based-security",
+      "quote": "This feature is in preview. Preview features aren't meant for production use and may have restricted functionality.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "A Record Filter stores the FetchXML filter definition.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/filter-based-security",
+      "quote": "Record Filter: Uses FetchXML to identify records that qualify for access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Governance controls",
+      "type": "behaviour",
+      "claim": "An Entity Record Filter associates a Record Filter with a Dataverse table.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/filter-based-security",
+      "quote": "Entity Record Filter: Associates a Record Filter with a Dataverse table.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Associating a filter with a table creates filter privileges.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/filter-based-security",
+      "quote": "When you associate a filter with a table, Dataverse creates filter privileges.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Filter privileges support Create, Read, Write, Delete, Append and Append To.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/filter-based-security",
+      "quote": "Filter privileges support these data access operations: Create. Read. Write. Delete. Append. Append To.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Scope; Governance controls",
+      "type": "applicability",
+      "claim": "Administrators grant filter privileges through security roles assigned to users or teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/filtered-view-record-ownership",
+      "quote": "All activated entity record filter security predicates for a table can be granted by an admin to a security role. Then assign the role to users or teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing: FetchXML parenthesis",
+      "type": "behaviour",
+      "claim": "FetchXML is Dataverse's XML query language.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/fetchxml/overview",
+      "quote": "FetchXML is a proprietary XML-based query language used to retrieve data from Dataverse.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/power-apps/developer/data-platform/fetchxml/overview to sources for the FetchXML definition."
+    },
+    {
+      "n": 17,
+      "where": "What's changing: current Learn steps",
+      "type": "behaviour",
+      "claim": "Current Learn instructions build a filter in a model-driven app, download FetchXML and paste it into a solution's Record Filter.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/filtered-view-record-ownership",
+      "quote": "Open your model-driven app for editing. Select Download FetchXML when you're done with selecting all the fields and operators. Copy the FetchXML and paste it in the FetchXML box.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe the planned new maker-portal filter-management screen.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps maker portal new filter-based security filter management screen enable default rollout privileges license pricing; \"filter-based security\" \"maker\" \"manage\" \"filters\". Opened admin/filter-based-security and maker/data-platform/filtered-view-record-ownership; only existing steps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: defaultState; What's changing; Why it matters",
+      "type": "absence",
+      "claim": "Microsoft has not stated whether the new screen appears automatically or requires admin enablement, so its default state is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Platform \"filter-based security\" \"maker portal\" rollout automatically privileges. Read roadmap description and opened admin/filter-based-security and maker/data-platform/filtered-view-record-ownership. None states the new screen's rollout default or enablement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Risk assessment: Security & identity; Governance guidance; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated which privileges makers need to create or edit Record Filters in the new screen.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Platform \"filter-based security\" \"maker portal\" rollout automatically privileges. Opened filtered-view-record-ownership and filtered-record-ownership. Existing prerequisites name System Administrator; no new-screen maker privilege requirement was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Why it matters: arrival",
+      "type": "absence",
+      "claim": "No source found says existing security roles or filters change when the new screen ships.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Platform \"filter-based security\" \"maker portal\" rollout automatically privileges. Read roadmap and opened filter-based-security, filtered-view-record-ownership and filtered-record-ownership. No statement of changes to existing roles or filters on screen rollout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Why it matters; rationale: risk; rationale: impact",
+      "type": "behaviour",
+      "claim": "Changing a filter already granted through roles can change the record access of those role holders without changing role assignments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/filtered-record-ownership",
+      "quote": "Before changing or removing a filter, review every role that grants it to avoid unintended changes in data access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Data exposure, second bullet",
+      "type": "behaviour",
+      "claim": "Editing a granted Record Filter changes access at once for role holders.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Dataverse \"record filter\" \"immediately\" \"changes\"; Dataverse Record Filter fetchxml editing changes immediate approval security role filter privileges AddPrivilegesRole. Opened filtered-record-ownership, filter-based-security and recordfilter reference; no enforcement timing statement.",
+      "severity": "major",
+      "fix": "Replace 'changes access at once for those role holders' with 'can change access for those role holders'. The developer guidance warns of changes in data access but publishes no propagation timing."
+    },
+    {
+      "n": 24,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "On user- or team-owned tables, filter privileges supplement and do not reduce access from ownership, sharing or role privileges.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/filter-based-security",
+      "quote": "For user or team record ownership tables, filter privileges add row-level access to ownership-based security. They don't replace or reduce access granted through ownership, sharing, or security role privileges.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Why it matters; Risk assessment: Data exposure; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "On organisation-owned tables, filter privileges do not reduce broader access already granted by roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/filter-based-security",
+      "quote": "They don't reduce broader access that a security role already grants. Ensure their other security role privileges don't grant broader access to the same table.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Filter privileges can add record access across business unit boundaries.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/add-filtered-view-security-ownership-tables",
+      "quote": "Filtered view permissions supplement these existing access mechanisms by granting additional access to records that match configured filter conditions, including records across business unit boundaries, without changing the table's ownership type.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity; Governance guidance: At rollout",
+      "type": "role",
+      "claim": "Creating a filtered ownership table gives System Administrators a system-created All records filter privilege.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/filter-based-security",
+      "quote": "When you create a filtered record ownership table, Dataverse creates a global All records filter privilege and grants it to the System Administrator security role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Security & identity; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Microsoft advises testing with a non-administrator account because System Administrators have All records access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/filtered-record-ownership",
+      "quote": "Test with a nonadministrator account because system administrators receive the All records filter and don't experience the same row restrictions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "role",
+      "claim": "The feature's maker documentation requires the System Administrator security role to create and assign its security roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/filtered-view-record-ownership",
+      "quote": "To create and assign the security roles required for this feature you need the system administrator security role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Autonomy & actions; Change & support",
+      "type": "behaviour",
+      "claim": "Dataverse evaluates filter permissions on every query.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/filtered-view-record-ownership",
+      "quote": "Yes. Every query applies filter permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "There is no change in autonomy or actions because filters take no action of their own.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Dataverse filter-based security filters autonomous actions automatically execute operations. Opened filter-based-security and filtered-record-ownership. They describe query authorization, not a categorical absence of actions or historical change in autonomy.",
+      "severity": "major",
+      "fix": "Replace the bullet with 'Dataverse evaluates filter permissions on each query.' Remove 'No change' and 'take no action of their own'."
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Change & support; Cost and licensing; rationale: cost",
+      "type": "behaviour",
+      "claim": "Filter permissions can affect query performance, and efficient data modelling and filter design should mitigate this.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/filtered-view-record-ownership",
+      "quote": "Does filter permissions affect query performance? Yes. Every query applies filter permissions. An efficient data model and filter design should mitigate performance problems.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Dataverse Search returns only primary-table results for filter queries involving a link-entity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/filtered-view-record-ownership",
+      "quote": "For filter queries that involve a link-entity relationship, such as Account linked to Contact, Dataverse Search returns results from the primary table only and doesn't include values from the linked table.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[1].note; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Deleting a Record Filter also deletes its associated Entity Record Filters.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/filtered-record-ownership",
+      "quote": "Deleting a record filter also deletes its associated entity record filters.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Why it matters; Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Removing a granted filter changes the access it supplies, so Microsoft advises reviewing every role granting it before changing or deleting it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/filtered-record-ownership",
+      "quote": "Before changing or removing a filter, review every role that grants it to avoid unintended changes in data access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.model; rationale: cost",
+      "type": "licensing",
+      "claim": "The new Dataverse configuration experience is included within the licensing the product already requires.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-entity-licenses",
+      "quote": "App makers can use most of the tables available within Microsoft Dataverse (including custom tables and tables that are part of the Common Data Model) to create apps and flows for users who have a Power Apps or Power Automate license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft's table licensing page allows makers to build apps and flows using custom and Common Data Model tables for users with Power Apps or Power Automate licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-entity-licenses",
+      "quote": "App makers can use most of the tables available within Microsoft Dataverse (including custom tables and tables that are part of the Common Data Model) to create apps and flows for users who have a Power Apps or Power Automate license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "Restricted tables tied to Dynamics 365 apps require the matching Dynamics 365 licence without qualification by operation.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-entity-licenses",
+      "quote": "tables that are tied to the functionality of Dynamics 365 apps (such as Dynamics 365 Sales or Dynamics 365 Customer Service) require app users to have the corresponding license for that application if they want to create, update, or delete rows within the tables.",
+      "severity": "blocker",
+      "fix": "Replace 'restricted tables tied to Dynamics 365 apps need the matching Dynamics 365 licence' with 'restricted tables tied to Dynamics 365 apps require app users to have the corresponding application's licence if they want to create, update or delete rows within those tables'."
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The cited filter-based security and filtered record ownership pages name no feature-specific licence.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps \"filter-based security\" \"license\"; \"filter-based security\" licensing pricing meter. Opened filter-based-security, filtered-view-record-ownership, filtered-record-ownership and data-platform-entity-licenses; only general product licensing was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing: Meter; rationale: cost",
+      "type": "absence",
+      "claim": "The filter-based security pages publish no separate feature meter or charge.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"filter-based security\" licensing pricing meter. Opened filter-based-security, filtered-view-record-ownership, filtered-record-ownership and pricing-billing-skus. No separate filter-security meter or charge found; product-level billing options exist.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "front matter: licensing.notes; Cost and licensing: Not yet published",
+      "type": "absence",
+      "claim": "Licensing specific to the new maker-portal screen is not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps maker portal new filter-based security filter management screen enable default rollout privileges license pricing; Power Apps \"filter-based security\" \"license\". Opened feature pages, data-platform-entity-licenses and pricing-billing-skus; no new-screen licence found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing: Not yet published",
+      "type": "absence",
+      "claim": "Pricing specific to the new maker-portal screen is not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps maker portal new filter-based security filter management screen enable default rollout privileges license pricing; \"filter-based security\" licensing pricing meter. Opened feature pages and pricing-billing-skus; no screen-specific price found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[0].ui; Governance controls row 1",
+      "type": "admin-path",
+      "claim": "A Record Filter is created in Power Apps through environment > Solutions > solution > + New > More > Other > Record Filter.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/filtered-view-record-ownership#create-a-record-filter",
+      "quote": "Go to Power Apps. Select your environment. Go to Solutions and create a new solution or open an existing solution. Select + New. Select More and Other. Select Record Filter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[0].api; Governance controls row 1",
+      "type": "command",
+      "claim": "POST [Organization URI]/api/data/v9.2/recordfilters creates a Record Filter with its fetchxml condition.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/filtered-record-ownership",
+      "quote": "POST [Organization URI]/api/data/v9.2/recordfilters HTTP/1.1\n\"fetchxml\": \"<fetch><entity name=\\\"new_store\\\"><filter type=\\\"and\\\"><condition attribute=\\\"new_city\\\" operator=\\\"eq\\\" value=\\\"Redmond\\\" /></filter></entity></fetch>\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[0].note; Governance controls row 1",
+      "type": "command",
+      "claim": "Record Filters can be updated through PATCH on the recordfilter table.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/recordfilter",
+      "quote": "Update Event: True | PATCH /recordfilters(recordfilterid)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[1].ui; Governance controls row 2",
+      "type": "admin-path",
+      "claim": "An Entity Record Filter is created in Power Apps through environment > Solutions > solution > + New > More > Other > EntityRecordFilter.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/filtered-view-record-ownership#create-an-entity-record-filter",
+      "quote": "Return to your Solution. Select + New. Select More and Other. Select EntityRecordFilter. Select the Record Filter, such as City of Redmond. Enter the Related Entity, the logical name of the table, such as account.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[1].api; Governance controls row 2",
+      "type": "command",
+      "claim": "POST [Organization URI]/api/data/v9.2/entityrecordfilters associates a Record Filter with a table.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/filtered-record-ownership",
+      "quote": "Create an entity record filter to associate the record filter with the table.\nPOST [Organization URI]/api/data/v9.2/entityrecordfilters HTTP/1.1",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[2].ui; Governance controls row 3",
+      "type": "admin-path",
+      "claim": "Filter privileges are granted through Manage > Environments > environment > Settings > Users + permissions > Security roles > security role > table > filter privilege in the Power Platform admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/filter-based-security#grant-filter-privileges-in-security-roles",
+      "quote": "Open a security role. Select the target table. Select the filter privilege. Grant the privilege to the role. Assign the role to users or teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[2].api; Governance controls row 3",
+      "type": "command",
+      "claim": "POST [Organization Uri]/api/data/v9.2/roles(<roleid>)/Microsoft.Dynamics.CRM.AddPrivilegesRole grants privileges to a role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/web-api-functions-actions-sample",
+      "quote": "POST [Organization Uri]/api/data/v9.2/roles(44ee44ee-ff55-aa66-bb77-88cc88cc88cc)/Microsoft.Dynamics.CRM.AddPrivilegesRole HTTP/1.1",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[2].note; Governance controls",
+      "type": "command",
+      "claim": "RolePrivilege entries carry a RecordFilterId property identifying the filter for a privilege.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/roleprivilege",
+      "quote": "RecordFilterId | Edm.Guid | The Record Filter of the privilege.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[2].note; Governance controls",
+      "type": "role",
+      "claim": "The System Administrator security role cannot be edited; Microsoft advises copying it and editing the copy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/create-edit-security-role",
+      "quote": "You can't edit the System Administrator security role. Instead, copy the System Administrator security role and make changes to the new role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[3].ui; Governance controls row 4",
+      "type": "admin-path",
+      "claim": "Direct user role assignments are managed through Manage > Environments > environment > Settings > Users + permissions > Users > user > Manage security roles > security role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/assign-security-roles",
+      "quote": "Select Manage. Select Environments, and then select an environment from the list. Select Settings. Select Users + permissions, and then select Users. On the Users page select a user, and then select Manage security roles. Select or deselect security roles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[3].api; Governance controls row 4",
+      "type": "command",
+      "claim": "POST [Organization URI]/api/data/v9.0/systemusers(azureactivedirectoryobjectid=<user object ID>)/systemuserroles_association/$ref assigns a security role to a user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/aad-group-team#assign-a-security-role-to-a-user",
+      "quote": "POST [Organization URI]/api/data/v9.0/systemusers(azureactivedirectoryobjectid=<user object ID>)/systemuserroles_association/$ref\n{ \"@odata.id\":\"[Organization URI]/api/data/v9.0/roles(<role ID>)\" }",
+      "severity": "minor",
+      "fix": "Add to controls[3].note: 'The request body sets @odata.id to [Organization URI]/api/data/v9.0/roles(<role ID>).' Repeat the note in the rendered row; leave the method and path unchanged."
+    },
+    {
+      "n": 54,
+      "where": "controls[3].note; Governance controls",
+      "type": "role",
+      "claim": "Assigning security roles requires at least Read and Assign privileges on the Security Role table.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/assign-security-roles",
+      "quote": "To assign security roles to a user, you need to have the appropriate privileges (minimum privileges are Read and Assign on the Security Role table).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[3].note; Governance controls",
+      "type": "role",
+      "claim": "An assigner cannot assign a security role containing more privileges than the assigner holds.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/assign-security-roles",
+      "quote": "the person who is assigning the security role can't assign someone else to a security role that has more privileges than the assigner.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance guidance: Before rollout, first bullet",
+      "type": "admin-path",
+      "claim": "Security roles can be reached directly through Power Platform admin center > Security roles.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-platform/admin/create-edit-security-role",
+      "quote": "Select Manage on the navigation pane. On the Manage pane, select Environments and then select an environment. On the command bar, select Settings. Expand Users + permissions and select Security roles.",
+      "severity": "blocker",
+      "fix": "Replace '(Power Platform admin center > Security roles)' with '(Power Platform admin center > Manage > Environments > environment > Settings > Users + permissions > Security roles)'. The full route is already supported in controls[2].ui."
+    },
+    {
+      "n": 57,
+      "where": "Governance controls: closing paragraph",
+      "type": "absence",
+      "claim": "The feature-specific filter-based security pages describe granting filter privileges only through the security role editor.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Dataverse Record Filter fetchxml editing changes immediate approval security role filter privileges AddPrivilegesRole. Opened filter-based-security, filtered-view-record-ownership and filtered-record-ownership; granting instructions use the role editor, while general action references cover APIs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[0].note; Governance controls row 1",
+      "type": "command",
+      "claim": "The Record Filter create request sets uniquename.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/filtered-record-ownership",
+      "quote": "\"uniquename\": \"new_storesinredmond\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[0].note; Governance controls row 1",
+      "type": "command",
+      "claim": "The Record Filter create request sets displayname.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/filtered-record-ownership",
+      "quote": "\"displayname\": \"Stores in Redmond\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[1].note; Governance controls row 2",
+      "type": "command",
+      "claim": "The Entity Record Filter create request sets objecttypecode to the target table's logical name.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/filtered-record-ownership",
+      "quote": "Set objecttypecode to the table logical name and recordfilterid to the record filter you created in the previous step.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[1].note; Governance controls row 2",
+      "type": "command",
+      "claim": "The Entity Record Filter Web API request uses the RecordFilterId navigation property to associate the filter.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/filtered-record-ownership",
+      "quote": "Use the RecordFilterId single-valued navigation property to associate the record filter.\n\"RecordFilterId@odata.bind\": \"/recordfilters(00000000-0000-0000-0000-000000000001)\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[2].note; Governance controls",
+      "type": "command",
+      "claim": "AddPrivilegesRole accepts a Privileges parameter containing RolePrivilege entries.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/addprivilegesrole",
+      "quote": "Privileges | Collection(RolePrivilege) | False | True | The privileges for an existing role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Risk assessment: Data exposure, second bullet",
+      "type": "absence",
+      "claim": "Microsoft documents no approval step specifically for editing Record Filters.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"record filter\" \"approval\" \"update\"; Dataverse \"record filters\" \"approval\" security edit. Opened filtered-record-ownership, filtered-view-record-ownership and recordfilter reference. These describe updates and role review, but no filter-edit approval step.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Scope: Tables",
+      "type": "availability",
+      "claim": "Filter permissions are not currently available for external virtual tables.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/filtered-view-record-ownership",
+      "quote": "Can I use filter permissions to external virtual tables? Not currently.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "What's changing: roadmap description",
+      "type": "record",
+      "claim": "The roadmap describes a centralised experience supporting condition-based Dataverse record access without individually sharing records.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Filters define which Dataverse records users can access based on configurable conditions, helping organizations implement scalable, policy-driven record access without individually sharing records.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Scope: Tables",
+      "type": "availability",
+      "claim": "Filter-based security supports filtered, user or team, and organisation record ownership tables.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/filter-based-security",
+      "quote": "You can use filter-based security with: Filtered record ownership tables. User or team record ownership tables. Organization record ownership tables.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-26T02:11:11.934Z",
+    "summary": {
+      "links": 16,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 1,
+      "apiCalls": 4,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=581895",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/filter-based-security",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/maker/data-platform/filtered-view-record-ownership",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/maker/data-platform/add-filtered-view-security-ownership-tables",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/data-platform/filtered-record-ownership",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/recordfilter",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/create-edit-security-role",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/addprivilegesrole",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/roleprivilege",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-entity-licenses",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/maker/data-platform/filtered-view-record-ownership#create-a-record-filter",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/maker/data-platform/filtered-view-record-ownership#create-an-entity-record-filter",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/filter-based-security#grant-filter-privileges-in-security-roles",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/web-api-functions-actions-sample",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/assign-security-roles",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/data-platform/aad-group-team#assign-a-security-role-to-a-user",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which records a record filter selects (its FetchXML condition)",
+        "docs": "https://learn.microsoft.com/power-apps/maker/data-platform/filtered-view-record-ownership#create-a-record-filter",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "solution",
+          "+ New",
+          "More",
+          "Other",
+          "Record Filter"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Which records a record filter selects (its FetchXML condition)",
+        "docs": "https://learn.microsoft.com/power-apps/developer/data-platform/filtered-record-ownership",
+        "reachable": true,
+        "token": "POST [Organization",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which table a record filter is attached to (entity record filter)",
+        "docs": "https://learn.microsoft.com/power-apps/maker/data-platform/filtered-view-record-ownership#create-an-entity-record-filter",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "solution",
+          "+ New",
+          "More",
+          "Other",
+          "EntityRecordFilter"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which table a record filter is attached to (entity record filter)",
+        "docs": "https://learn.microsoft.com/power-apps/developer/data-platform/filtered-record-ownership",
+        "reachable": true,
+        "token": "POST [Organization",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Which security roles grant each filter privilege",
+        "docs": "https://learn.microsoft.com/power-platform/admin/filter-based-security#grant-filter-privileges-in-security-roles",
+        "reachable": true,
+        "segments": [
+          "Manage",
+          "Environments",
+          "Settings",
+          "Users + permissions",
+          "Security roles",
+          "security role",
+          "filter privilege"
+        ],
+        "missing": [
+          "Environments",
+          "Settings",
+          "Users + permissions"
+        ]
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Which security roles grant each filter privilege",
+        "docs": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/web-api-functions-actions-sample",
+        "reachable": true,
+        "token": "POST [Organization",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Which users hold a security role that carries filter privileges",
+        "docs": "https://learn.microsoft.com/power-platform/admin/assign-security-roles",
+        "reachable": true,
+        "segments": [
+          "Manage",
+          "Environments",
+          "Settings",
+          "Users + permissions",
+          "Users",
+          "Manage security roles",
+          "security role"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Which users hold a security role that carries filter privileges",
+        "docs": "https://learn.microsoft.com/power-apps/developer/data-platform/aad-group-team#assign-a-security-role-to-a-user",
+        "reachable": true,
+        "token": "POST [Organization",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

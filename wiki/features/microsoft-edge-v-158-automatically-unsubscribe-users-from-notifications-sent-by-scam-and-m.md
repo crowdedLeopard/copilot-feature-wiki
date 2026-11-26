@@ -83,15 +83,17 @@ changes:
     note: "Corrected after verification: the Edge behaviour is now worded as the release notes give it, and the unsupported statements about restoring sites, data access and side effects were removed."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 51 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 47 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-26"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 51
-  confirmed: 50
+  claims: 47
+  confirmed: 46
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -192,8 +194,8 @@ cost: Low. The release notes name no licence or meter, so the only cost the sour
 impact: Low. Only users who receive a notification that leads to a site SmartScreen blocks as a scam, phishing or malware page see the behaviour.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] front matter: impact; rationale: impact / consistency: The low impact rating fits an automatic change to existing notification behaviour. | Found: impact: "low"; defaultState: "on". Standard: low means "admins only, or a small opt-in group"; high means "most users, or a change to default behaviour". | Fix: Set impact to high and replace its rationale with: "High. Edge changes notification behaviour automatically when a notification leads to a SmartScreen-blocked scam, phishing or malware page; affected users do not opt in to this protection."
+- [contradicted, minor] front matter: impact; rationale: impact / consistency: A low impact rating fits this automatic change to existing notification behaviour. | Found: impact: low; defaultState: on. The standard defines low as admins only or a small opt-in group, and high as most users or a change to default behaviour. | Fix: Set impact to high. Replace the impact rationale with: "High. Edge changes notification behaviour automatically when a notification leads to a SmartScreen-blocked scam, phishing or malware page; affected users do not opt in to this protection."
 -->

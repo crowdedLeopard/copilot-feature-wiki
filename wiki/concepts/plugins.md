@@ -133,14 +133,16 @@ changes:
     note: "Corrected after verification: added the Tenant Configuration Management preview call for publisher categories and User access, pointed the Word legal setting to its documenting page, and aligned the checklist and notes with the controls."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 113 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 123 statements not yet confirmed"
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-23"
+  date: "2026-11-26"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 113
-  confirmed: 113
+  claims: 123
+  confirmed: 123
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -227,9 +229,10 @@ Administrator-installed plugins can't be removed by target users, who can only t
 - The Cowork page words availability as available to all users, specific users or groups, or Block, while the Agent 365 page words it as All users, No users or Specific users and groups. Which labels does the current portal show?
 - When will the Package Management block and update calls leave beta and gain application permissions?
 
-<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui / admin-path: Publisher-category access is configured in Microsoft 365 admin center at Agents > Settings > Agent and plugin access > installation settings. | Found: Select Agents > Settings > Agent and plugin access. ... Under the installation settings, choose which publisher categories users can access ... Select a category | Fix: Extend controls[0].ui.path and its rendered path to 'Agents > Settings > Agent and plugin access > installation settings > publisher category'. The cited procedure finishes by selecting Microsoft, your organization or certified external publishers. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers
-- [supported, minor] controls[2].ui / admin-path: Individual plugin user availability is configured in Microsoft 365 admin center at Agents > Tools > Plugins > plugin > Users. | Found: Select Agents > Tools > Plugins. ... Select the plugin that you want to manage. ... Open Users, and then choose one of the following availability options: | Fix: Extend controls[2].ui.path and its rendered path to 'Agents > Tools > Plugins > plugin > Users > availability option'. The cited page gives All users, No users or Specific users and groups as the final selection. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers
+- [supported, minor] controls[0].ui / admin-path: Publisher-category access is configured in Microsoft 365 admin center at Agents > Settings > Agent and plugin access > installation settings. | Found: Select **Agents** > **Settings** > **Agent and plugin access**. ... Under the installation settings, choose which publisher categories users can access ... Select a category | Fix: Extend the front-matter and rendered path to 'Agents > Settings > Agent and plugin access > installation settings > publisher category'; the documented final selection is Microsoft, your organization or certified external publishers. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers
+- [supported, minor] controls[2].ui / admin-path: Individual plugin availability is configured in Microsoft 365 admin center at Agents > Tools > Plugins > plugin > Users. | Found: Select **Agents** > **Tools** > **Plugins**. ... Select the plugin that you want to manage. ... Open **Users**, and then choose one of the following availability options: | Fix: Extend the front-matter and rendered path to 'Agents > Tools > Plugins > plugin > Users > availability option'; the documented final choices are All users, No users or Specific users and groups. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers
+- [supported, minor] Cost and licensing / cost: Audit Standard provides Cowork and plugin Copilot activities logs at no extra cost. | Found: Microsoft Purview audit logs capture Copilot activities for your organization, including interactions with Cowork and its plugins. ... Audit Standard provides these logs at no extra cost. | Fix: Qualify the cost sentence and the audit sentence under Governance controls with 'For worldwide tenants'. The cited cowork-admin-governance page states 'In GCC, Cowork runs within the GCC boundary, and Purview features are not yet supported'; retain that qualification rather than implying GCC coverage. | Source: https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins
 -->

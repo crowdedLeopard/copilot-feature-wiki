@@ -12,9 +12,9 @@ platforms: ["Web"]
 targetDate: "June CY2025"
 previewDate: null
 risk: "low"
-cost: "none"
+cost: "low"
 impact: "low"
-defaultState: "on"
+defaultState: "unknown"
 action: "review"
 licensing:
   model: "included"
@@ -46,6 +46,12 @@ sources:
   - title: "/users/[:id].json - Delete"
     url: "https://learn.microsoft.com/rest/api/yammer/users_id_delete"
     kind: "docs"
+  - title: "Use the Microsoft Graph API to work with Viva Engage"
+    url: "https://learn.microsoft.com/graph/api/resources/engagement-api-overview?view=graph-rest-1.0"
+    kind: "learn"
+  - title: "Create engagementRoleMember"
+    url: "https://learn.microsoft.com/graph/api/engagementrole-post-members?view=graph-rest-1.0"
+    kind: "learn"
   - title: "Who holds the Engage Administrator (Yammer administrator) role (Microsoft Entra admin center)"
     url: "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal"
     kind: "learn"
@@ -65,7 +71,7 @@ controls:
       kind: "rest"
       call: "DELETE https://www.yammer.com/api/v1/users/:user_id.json?gdpr_delete=true"
       docs: "https://learn.microsoft.com/rest/api/yammer/users_id_delete"
-    note: "The gdpr_delete=true query parameter submits a GDPR deletion request; caller must be an admin or a verified admin. Irreversible."
+    note: "gdpr_delete=true submits a GDPR deletion request. The response table requires an admin, or a verified admin in a paid network; the intro says admin or verified admin in a Viva Engage network. Irreversible."
   - governs: "Who holds the Engage Administrator (Yammer administrator) role"
     scope: "tenant"
     ui:
@@ -83,19 +89,25 @@ controls:
       surface: "Yammer admin center"
       path: "Admins > Current Admins > user > Grant Verified Admin"
       docs: "https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions"
-    api: null
-    note: "Assigned by an Engage admin or verified admin. The Yammer Data Export API reads the admin list but does not assign the role."
+    api:
+      kind: "graph"
+      call: "POST /v1.0/employeeExperience/roles/{engagementRoleId}/members"
+      docs: "https://learn.microsoft.com/graph/api/engagementrole-post-members?view=graph-rest-1.0"
+    note: "Assigned by an Engage or verified admin. UI path is for an existing admin. Graph: native-mode networks, Verified Administrator engagementRoleId, assignee via user@odata.bind; needs EngagementRole.ReadWrite.All."
   - governs: "Who holds the Viva Engage Network Admin role"
     scope: "tenant"
     ui:
       surface: "Yammer admin center"
       path: "Admins > Current Admins > user > Grant Network Admin"
       docs: "https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions"
-    api: null
-    note: "Assigned by an Engage admin, network admin or verified admin."
+    api:
+      kind: "graph"
+      call: "POST /v1.0/employeeExperience/roles/{engagementRoleId}/members"
+      docs: "https://learn.microsoft.com/graph/api/engagementrole-post-members?view=graph-rest-1.0"
+    note: "Assigned by an Engage, network or verified admin. UI path is for an existing admin. Graph: native-mode networks, Network Administrator engagementRoleId, assignee via user@odata.bind; needs EngagementRole.ReadWrite.All."
 confidence: "high"
 created: "2026-11-25"
-updated: "2026-11-25"
+updated: "2026-11-26"
 roadmapModified: "2025-06-05T23:00:34"
 changes:
   - date: "2026-11-25"
@@ -106,19 +118,23 @@ changes:
     note: "Corrected: the REST row now gives the gdpr_delete=true call; irreversibility narrowed to the two options Learn names; removed the unsupported 'no user-facing change'; cited a source for request deadlines."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 79 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-26"
+    note: "Corrected: Verified and Network admin rows now give the Microsoft Graph role assignment call; default state set to Not stated; cost rated low; REST caller role qualified; removed the export checklist step."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 92 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
-  date: "2026-11-25"
-  version: 2
+  status: "verified-with-gaps"
+  date: "2026-11-26"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 79
-  confirmed: 73
-  unconfirmed: 2
-  contradicted: 4
-  attempts: 2
-  hash: "b9ba75b0792c077021621fa3c712cb0b"
+  claims: 92
+  confirmed: 91
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "32a0578d7e9965cd3cf429e32d26f35d"
 ---
 
 ## What's changing
@@ -139,7 +155,7 @@ The roadmap record lists the item as In development, targeted for June CY2025, f
 
 Data subject requests carry [deadlines](https://learn.microsoft.com/compliance/regulatory/gdpr-dsr-dynamics365#how-this-guide-can-help-you-meet-your-controller-responsibilities), and the Engage part of them is easy to get wrong: Learn warns that closing a Microsoft Entra ID account doesn't delete the user's Engage information, and that once a user is erased you can't find their data to delete it. Moving the step into the Engage admin center changes where the runbook points, not the order of work, so DSR procedures written against the Yammer admin center need updating.
 
-The module puts irreversible, organisation-wide deletions one screen away from anyone holding the Network admin, Verified admin or Engage admin role. If nobody acts, the module is there for those roles to use, and the real control is who holds them.
+The module puts irreversible, organisation-wide deletions one screen away from anyone holding the Network admin, Verified admin or Engage admin role. Microsoft documents access for these roles but does not state the module's default or rollout mechanics; the real control is who holds them.
 
 ## Risk assessment
 
@@ -176,7 +192,6 @@ The [Viva Engage roles page](https://learn.microsoft.com/viva/engage/eac-key-adm
 - Record in the runbook which of the three options applies to which kind of request, following the order Microsoft's GDPR guidance page sets.
 
 ### At rollout
-- Run the per-user export for the home tenant and each external tenant before selecting any removal option.
 - Delete files stored in SharePoint from Viva Engage itself, so the Viva Engage metadata goes with them.
 - Delete the user's Microsoft Entra account as a separate step, since erasing in Viva Engage leaves it in place.
 
@@ -191,14 +206,14 @@ The [Viva Engage roles page](https://learn.microsoft.com/viva/engage/eac-key-adm
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Removing or erasing a Viva Engage user for a GDPR data subject request</strong><br><small>User</small><br><small class="controls__note">The gdpr_delete=true query parameter submits a GDPR deletion request; caller must be an admin or a verified admin. Irreversible.</small></td><td data-label="Admin UI"><strong>Viva Engage admin center</strong><br>Governance and compliance › Data management › Manage GDPR data subject requests › removal option <a href="https://learn.microsoft.com/viva/engage/manage-viva-engage-users/add-block-or-remove-users" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>DELETE https://www.yammer.com/api/v1/users/:user_id.json?gdpr_delete=true</code> <a href="https://learn.microsoft.com/rest/api/yammer/users_id_delete" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Removing or erasing a Viva Engage user for a GDPR data subject request</strong><br><small>User</small><br><small class="controls__note">gdpr_delete=true submits a GDPR deletion request. The response table requires an admin, or a verified admin in a paid network; the intro says admin or verified admin in a Viva Engage network. Irreversible.</small></td><td data-label="Admin UI"><strong>Viva Engage admin center</strong><br>Governance and compliance › Data management › Manage GDPR data subject requests › removal option <a href="https://learn.microsoft.com/viva/engage/manage-viva-engage-users/add-block-or-remove-users" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>DELETE https://www.yammer.com/api/v1/users/:user_id.json?gdpr_delete=true</code> <a href="https://learn.microsoft.com/rest/api/yammer/users_id_delete" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Who holds the Engage Administrator (Yammer administrator) role</strong><br><small>Tenant</small><br><small class="controls__note">Assign at least as Privileged Role Administrator. The role is listed as Yammer administrator in Microsoft Entra ID. The request body sets roleDefinitionId, principalId and directoryScopeId (/ for tenant-wide scope).</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Identity › Roles &amp; admins › role › Add assignments <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/roleManagement/directory/roleAssignments</code> <a href="https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Who holds the Viva Engage Verified Admin role</strong><br><small>Tenant</small><br><small class="controls__note">Assigned by an Engage admin or verified admin. The Yammer Data Export API reads the admin list but does not assign the role.</small></td><td data-label="Admin UI"><strong>Yammer admin center</strong><br>Admins › Current Admins › user › Grant Verified Admin <a href="https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Who holds the Viva Engage Network Admin role</strong><br><small>Tenant</small><br><small class="controls__note">Assigned by an Engage admin, network admin or verified admin.</small></td><td data-label="Admin UI"><strong>Yammer admin center</strong><br>Admins › Current Admins › user › Grant Network Admin <a href="https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Who holds the Viva Engage Verified Admin role</strong><br><small>Tenant</small><br><small class="controls__note">Assigned by an Engage or verified admin. UI path is for an existing admin. Graph: native-mode networks, Verified Administrator engagementRoleId, assignee via user@odata.bind; needs EngagementRole.ReadWrite.All.</small></td><td data-label="Admin UI"><strong>Yammer admin center</strong><br>Admins › Current Admins › user › Grant Verified Admin <a href="https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/employeeExperience/roles/{engagementRoleId}/members</code> <a href="https://learn.microsoft.com/graph/api/engagementrole-post-members?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Who holds the Viva Engage Network Admin role</strong><br><small>Tenant</small><br><small class="controls__note">Assigned by an Engage, network or verified admin. UI path is for an existing admin. Graph: native-mode networks, Network Administrator engagementRoleId, assignee via user@odata.bind; needs EngagementRole.ReadWrite.All.</small></td><td data-label="Admin UI"><strong>Yammer admin center</strong><br>Admins › Current Admins › user › Grant Network Admin <a href="https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/employeeExperience/roles/{engagementRoleId}/members</code> <a href="https://learn.microsoft.com/graph/api/engagementrole-post-members?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-Removing a user and their messages cannot be reversed, and Erase this user cannot be undone after 14 days, so who holds the Engage Administrator, Verified admin and Network admin roles is the main control. Learn's pages differ on which of these roles may erase users: the module page names all three, the GDPR guidance page names Verified admins, and the REST reference requires an admin or a verified admin. The Engage Administrator role is assigned in Microsoft Entra ID; Verified and Network admin roles are assigned in the Yammer admin center. The REST deletion call is an alternative to the admin center module that Microsoft cautions against for routine lifecycle work, as it can cause unrecoverable data loss.
+Removing a user and their messages cannot be reversed, and Erase this user cannot be undone after 14 days, so who holds the Engage Administrator, Verified admin and Network admin roles is the main control. Learn's pages differ on which of these roles may erase users: the module page names all three, the GDPR guidance page names Verified admins, and the REST reference's response table requires an admin, or a verified admin in a paid network; its introductory text says admin or verified admin in a Viva Engage network. The Engage Administrator role is assigned in Microsoft Entra ID; Verified and Network admin roles are assigned in the Yammer admin center. The REST deletion call is an alternative to the admin center module that Microsoft cautions against for routine lifecycle work, as it can cause unrecoverable data loss.
 
 ## Open questions
 
@@ -209,20 +224,12 @@ Removing a user and their messages cannot be reversed, and Erase this user canno
 
 <!-- rationale
 risk: Low. The module does nothing until an Engage, Verified or Network admin selects a removal option, but removing a user and their messages cannot be reversed, and Erase this user cannot be undone after 14 days, so the exposure is who holds those roles.
-cost: None. Microsoft's Viva Engage roles page says Global and Engage administrators need no Viva Engage Core or premium licence to use the Engage admin center.
+cost: Low. The known indirect cost is administrator time to update DSR runbooks and perform exports. Microsoft's roles page says Global and Engage administrators need no Viva Engage Core or premium licence to access the Engage admin center.
 impact: Low. The change is to an admin centre module used by Viva Engage administrators who handle data subject requests.
 -->
 
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[2].api; Governance controls / absence: Microsoft has not documented automation for assigning the Viva Engage Verified Admin role. | Found: Viva Engage supports role-based access by enabling the assignment of predefined administrative roles (such as Network Administrator and Verified Administrator) ... Assign a Viva Engage role to a user: POST /employeeExperience/roles/{engagementRoleId}/members. | Fix: Set controls[2].api to kind 'graph', call 'POST /v1.0/employeeExperience/roles/{engagementRoleId}/members', docs 'https://learn.microsoft.com/graph/api/engagementrole-post-members?view=graph-rest-1.0'. Add to its note: 'For native-mode networks, use the Verified Administrator engagementRoleId; the request identifies the assignee through user@odata.bind. Requires EngagementRole.ReadWrite.All.' Update the rendered API cell and cite the operation reference and https://learn.microsoft.com/graph/api/resources/engagement-api-overview?view=graph-rest-1.0. | Source: https://learn.microsoft.com/graph/api/resources/engagement-api-overview?view=graph-rest-1.0
-- [contradicted, blocker] controls[3].api; Governance controls / absence: Microsoft has not documented automation for assigning the Viva Engage Network Admin role. | Found: Viva Engage supports role-based access by enabling the assignment of predefined administrative roles (such as Network Administrator and Verified Administrator) ... Assign a Viva Engage role to a user: POST /employeeExperience/roles/{engagementRoleId}/members. | Fix: Set controls[3].api to kind 'graph', call 'POST /v1.0/employeeExperience/roles/{engagementRoleId}/members', docs 'https://learn.microsoft.com/graph/api/engagementrole-post-members?view=graph-rest-1.0'. Add to its note: 'For native-mode networks, use the Network Administrator engagementRoleId; the request identifies the assignee through user@odata.bind. Requires EngagementRole.ReadWrite.All.' Update the rendered API cell and cite the operation reference and https://learn.microsoft.com/graph/api/resources/engagement-api-overview?view=graph-rest-1.0. | Source: https://learn.microsoft.com/graph/api/resources/engagement-api-overview?view=graph-rest-1.0
-- [unsupported, blocker] front matter: defaultState; Why it matters / default: The module is on by default on arrival, without an administrator taking action. | Found: Searched: 'Viva Engage Manage GDPR data subject requests module enable disable license price meter'; read the roadmap, Manage GDPR data subject requests for Viva Engage users, and Overview of the Viva Engage admin center. Availability is stated, but automatic rollout/default state is not. | Fix: Set defaultState to 'unknown'. Replace 'If nobody acts, the module is there for those roles to use' with 'Microsoft documents access for these roles but does not state the module's default or rollout mechanics.' Do not infer the default from the absence of an enablement step.
-- [unsupported, blocker] front matter: cost; rationale: cost / cost: The cost rating is none under the standard's requirement for documented inclusion in licences already held. | Found: Searched: 'Viva Engage GDPR requests licensing meter' and 'Viva Engage Manage GDPR data subject requests module enable disable license price meter'; read GDPR module, admin roles and Core licensing pages. Admin licence exemption is stated, not module inclusion or a no-charge assertion. | Fix: Set cost to 'low'. Replace the cost rationale with 'Low. The known indirect cost is administrator time to update DSR runbooks and perform exports. Microsoft's roles page says Global and Engage administrators need no Viva Engage Core or premium licence to access the Engage admin center.'
-- [contradicted, blocker] controls[0].note; Governance controls / role: The REST deletion caller must be an admin or verified admin, without a network qualification. | Found: 403 Forbidden | The authenticated caller does not have permission to delete the user (must be an admin, or a verified admin in a paid network). | Fix: Replace the caller clause in controls[0].note and the rendered note with 'The reference's response table requires an admin, or a verified admin in a paid network; its introductory text says admin or verified admin in a Viva Engage network.' Use the same qualified wording in the Governance controls paragraph. | Source: https://learn.microsoft.com/rest/api/yammer/users_id_delete
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].ui; Governance controls / admin-path: The Verified Admin assignment route is Yammer admin center > Admins > Current Admins > user > Grant Verified Admin. | Found: If the user is already an admin, find their name from the Current Admins list and select Grant Verified Admin. | Fix: Keep the path, but add 'This Current Admins route is for a user who is already an admin' to controls[2].note and the rendered note. The cited roles page gives a different initial step for a non-admin. | Source: https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions
-- [supported, minor] controls[3].ui; Governance controls / admin-path: The Network Admin assignment route is Yammer admin center > Admins > Current Admins > user > Grant Network Admin. | Found: If the user is already an admin, find their name from the Current Admins list and select Grant Network Admin. | Fix: Keep the path, but add 'This Current Admins route is for a user who is already an admin' to controls[3].note and the rendered note. The cited roles page gives a different initial step for a non-admin. | Source: https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions
-- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: The governance checklist's per-user export operation has no corresponding control row. | Found: Run the per-user export for the home tenant and each external tenant before selecting any removal option. The controls table covers user removal and three administrator role assignments, not exports. | Fix: The 'Run the per-user export for the home tenant and each external tenant' checklist step has no controls-table row. Remove that checklist bullet while retaining the already documented export prerequisite in Scope; this correction does not add a control row.
+- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: Every control the governance checklist instructs the reader to operate is represented in the controls table. | Found: Delete files stored in SharePoint from Viva Engage itself ... Delete the user's Microsoft Entra account as a separate step ... [The table covers only Engage user deletion and three administrator-role assignments.] | Fix: The two At rollout checklist steps, deleting SharePoint-stored files from Viva Engage and deleting the Microsoft Entra account, have no corresponding controls-table row. This is a checklist/table coverage finding, not a request to add rows during correction.
 -->

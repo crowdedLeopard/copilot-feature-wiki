@@ -94,15 +94,17 @@ changes:
     note: "Corrected after verification: risk rationale no longer says progress moves only on approval; added the Delayed update timing and the Time and Material versus Fixed Price unbilled-sales qualification; removed the Approvals view checklist step."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 70 statements confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 68 statements not yet confirmed"
 version: 3
 verification:
-  status: "verified"
-  date: "2026-11-23"
+  status: "verified-with-gaps"
+  date: "2026-11-26"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 70
-  confirmed: 70
+  claims: 68
+  confirmed: 68
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -196,4 +198,10 @@ The install command is documented for Dataverse applications from Microsoft Mark
 risk: Low. The roadmap says no new execution logic or formulas are added, and Field Service time contributes actual effort only after approval.
 cost: Low. The Learn page for this behaviour names no separate licence or meter; the integration needs a Project Operations licence for project task management, so the cost is mainly approval time.
 impact: Medium. Project managers and time approvers on projects that use the integration see task progress and project actual hours change as field time is approved.
+-->
+
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Risk assessment: Data exposure; Governance guidance: After rollout; Open questions / behaviour: Learn says time entries currently do not appear in work order-level financial summaries. | Found: Currently, time entries don't appear in work order-level financial summaries or work order financial totals. | Fix: Retain the attribution but qualify it everywhere with: 'However, the Cost Summary page now says it brings together estimated and actual costs including time, and that Actual Effort (Completed Hours) reflects approved time entries recorded against the work.' Cite https://learn.microsoft.com/dynamics365/field-service/project-operations-integration-cost-summary. Reword the open question to: 'How should the task integration page's statement about time being absent from work order summaries be reconciled with the Cost Summary page's approved-time totals?' | Source: https://learn.microsoft.com/dynamics365/project-operations/field-service-integration/project-operations-integration-project-task
 -->

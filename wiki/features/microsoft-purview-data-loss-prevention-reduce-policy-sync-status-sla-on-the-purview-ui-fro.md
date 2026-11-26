@@ -5,7 +5,7 @@ roadmapId: 558682
 topic: "governance"
 products: ["Microsoft Purview"]
 summary: "Microsoft plans to cut the Purview DLP policy sync SLA from up to 2 hours to 30 minutes in the Worldwide cloud. It is on by default and needs no action; tell security teams that policy changes will take effect sooner."
-status: "in-development"
+status: "rolling-out"
 releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
 platforms: ["Web"]
@@ -17,13 +17,16 @@ impact: "low"
 defaultState: "on"
 action: "prepare"
 licensing:
-  model: "unknown"
-  notes: "Not yet published for this change. The Endpoint DLP pages point to Microsoft 365 Enterprise Plans and the Microsoft 365 service descriptions for licensing and name no licence for this feature."
+  model: "included"
+  notes: "Endpoint DLP is included in Microsoft 365 E5, among other eligible plans listed in the Microsoft Purview service description. A licence statement specific to the faster sync change is not yet published."
 audiences: ["security","compliance","m365-admin"]
 tags: ["dlp","endpoint-dlp","purview","device-onboarding"]
 sources:
   - title: "Microsoft 365 Roadmap 558682"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=558682"
+    kind: "roadmap"
+  - title: "Microsoft 365 Roadmap 562994"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=562994"
     kind: "roadmap"
   - title: "MC1317834: (Updated) Microsoft Purview | Data Loss Prevention: Faster policy sync (2 hours to 30 minutes)"
     url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1317834"
@@ -36,6 +39,15 @@ sources:
     kind: "learn"
   - title: "Learn about Endpoint data loss prevention"
     url: "https://learn.microsoft.com/purview/endpoint-dlp-learn-about"
+    kind: "learn"
+  - title: "Get started with endpoint data loss prevention"
+    url: "https://learn.microsoft.com/purview/endpoint-dlp-getting-started"
+    kind: "learn"
+  - title: "Microsoft Purview service description"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description"
+    kind: "learn"
+  - title: "Test data loss prevention policies"
+    url: "https://learn.microsoft.com/purview/dlp-test-dlp-policies"
     kind: "learn"
   - title: "security: runHuntingQuery"
     url: "https://learn.microsoft.com/graph/api/security-security-runhuntingquery"
@@ -61,8 +73,8 @@ controls:
     note: "MC1317834 says the improvement is enabled by default; Microsoft Learn documents no setting for it at the time of writing (November 2026)."
 confidence: "medium"
 created: "2026-11-19"
-updated: "2026-11-19"
-roadmapModified: "2026-08-12T22:47:48"
+updated: "2026-11-26"
+roadmapModified: "2026-11-26T00:16:54"
 changes:
   - date: "2026-11-19"
     note: "New briefing: Microsoft plans to cut the DLP policy sync SLA from 2 hours to 30 minutes in the Worldwide cloud; on by default."
@@ -70,19 +82,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 57 statements not yet confirmed"
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 58 statements not yet confirmed"
-version: 1
+  - date: "2026-11-26"
+    note: "Status now Rolling out; licensing set to included, citing the Microsoft Purview service description for Endpoint DLP; added sources for roadmap item 562994, Endpoint DLP getting started and DLP policy testing."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 62 statements not yet confirmed"
+version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
-  version: 1
+  date: "2026-11-26"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 58
-  confirmed: 58
+  claims: 62
+  confirmed: 61
   unconfirmed: 0
-  contradicted: 0
+  contradicted: 1
   attempts: 0
-  hash: "5113b6e98c7ce070eb89f0dd383b3c54"
+  hash: "3a804529db51678a664890fb61264123"
 ---
 
 ## What's changing
@@ -91,7 +107,7 @@ Microsoft plans to shorten the time it takes for Data Loss Prevention (DLP) poli
 
 Microsoft's notice MC1317834 (published 2026-05-21, last updated 2026-08-12) describes the same change more broadly: DLP policy updates will sync within 30 minutes instead of up to 2 hours, policy enforcement across supported services will occur more quickly, the improvement is enabled by default and no changes to existing admin workflows are required. The notice states that the change improves the timing of enforcement but does not change policy behaviour, data processing or data storage.
 
-The roadmap item is In development. It lists a preview target of October CY2026 and a general availability target of November CY2026, for the Worldwide (Standard Multi-Tenant) cloud on the web. MC1317834 gives the rollout window: public preview from late October 2026, completing by mid-November 2026, and general availability (Worldwide) from late November 2026 (previously end of August), completing by late December 2026. Microsoft lists the same feature under a separate roadmap item, 562994, for GCC, GCC High and DoD, with a December CY2026 target; this page covers item 558682 only.
+The roadmap item is Rolling out. It lists a preview target of October CY2026 and a general availability target of November CY2026, for the Worldwide (Standard Multi-Tenant) cloud on the web. MC1317834 gives the rollout window: public preview from late October 2026, completing by mid-November 2026, and general availability (Worldwide) from late November 2026 (previously end of August), completing by late December 2026. Microsoft lists the same feature under a separate roadmap item, 562994, for GCC, GCC High and DoD, with a December CY2026 target; this page covers item 558682 only.
 
 Microsoft Learn does not yet describe the 30-minute target. Today, the Endpoint DLP troubleshooting page says that a device's policy sync status in the devices list can take up to 2 hours to update, and the Endpoint DLP overview says that updates generally take about an hour to synchronise across the service. Both pages are quoted as they read at the time of writing (November 2026).
 
@@ -120,7 +136,7 @@ The practical effect is on change handling: a tightened Endpoint DLP policy is p
 
 ## Cost and licensing
 
-Microsoft's notice describes no charge, meter or new licence for this change, and asks for no action. The Endpoint DLP getting-started and device onboarding pages direct readers to Microsoft 365 Enterprise Plans and the Microsoft 365 service descriptions for licensing and name no licence for this feature. A licence statement specific to the faster sync is not yet published.
+Endpoint DLP is included in Microsoft 365 E5, among other eligible plans listed in the Microsoft Purview service description. Microsoft's notice describes no charge, meter or new licence for this change, and asks for no action. The Endpoint DLP getting-started and device onboarding pages direct readers to Microsoft 365 Enterprise Plans and the Microsoft 365 service descriptions for licensing. A licence statement specific to the faster sync change is not yet published.
 
 The indirect cost is admin time to brief security and compliance teams and to update runbooks.
 
@@ -176,11 +192,9 @@ cost: Low. The only cost the sources show is admin time to brief teams; no meter
 impact: Low. Administrators who watch DLP sync status notice it first; Microsoft's notice says existing admin workflows do not change, though enforcement across supported services is planned to happen sooner.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Scope / record: Separate roadmap item 562994 covers the faster DLP sync change for GCC, GCC High and DoD. | Found: "id": 562994; "title": "Microsoft Purview: Data Loss Prevention - Reduce policy sync status SLA on the Purview UI from 2 hours to 30 mins"; "clouds": ["GCC", "GCC High", "DoD"] | Fix: Add https://www.microsoft.com/microsoft-365/roadmap?id=562994 to sources for the government-cloud item and its December CY2026 target.
-- [supported, minor] front matter: licensing.model and notes; Cost and licensing / licensing: Licensing is unknown because no licence specific to the faster-sync change has been published. | Found: Feature | Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, Microsoft 365 E5/A5/F5/G5 Information Protection & Governance Endpoint Data Loss Prevention (DLP) | Included | Fix: Set licensing.model to 'included'. Replace licensing.notes with 'Endpoint DLP is included in Microsoft 365 E5, among other eligible plans listed in the Microsoft Purview service description. A licence statement specific to the faster sync change is not yet published.' Make Cost and licensing agree and add https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description to sources. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
-- [supported, minor] Cost and licensing / licensing: The Endpoint DLP getting-started page directs licensing readers to Enterprise Plans and service descriptions without naming a faster-sync licence. | Found: SKU/subscriptions licensing For information on licensing, see Microsoft 365 Enterprise Plans Microsoft 365 Service Descriptions | Fix: Add https://learn.microsoft.com/purview/endpoint-dlp-getting-started to sources for the getting-started page explicitly discussed in Cost and licensing. | Source: https://learn.microsoft.com/purview/endpoint-dlp-getting-started
-- [supported, minor] Risk assessment: Data exposure / behaviour: DLP policy changes can be tested in simulation or audit mode before enforcement. | Found: When you deploy a new policy or need to modify an existing one, you should run it in simulation mode, and then review the alerts to assess its accuracy. | Fix: Add https://learn.microsoft.com/purview/dlp-test-dlp-policies to sources for the advice to test policy changes before enforcement. | Source: https://learn.microsoft.com/purview/dlp-test-dlp-policies
+- [contradicted, minor] Governance guidance: At rollout / consistency: The checklist instructs the reader to change an Endpoint DLP policy in a pilot scope, but the controls table has no policy-editing control. | Found: Change one Endpoint DLP policy in a pilot scope and note how long Policy sync status takes to show Updated for a test device. Table rows: Per-device policy sync status for Endpoint DLP; Switch to opt out of the faster policy sync. | Fix: Replace the At rollout policy-change bullet with 'Observe Policy sync status for an onboarded test device after a planned policy change and note how long it takes to show Updated.' This keeps the instruction on the documented status row without adding a control.
+- [supported, minor] Risk assessment: Data exposure / behaviour: Endpoint DLP supports audit-only testing of policy behaviour. | Found: This scenario shows how to create a Microsoft Purview DLP policy using the U.S. PII Data Enhanced template to monitor sensitive data on endpoint devices. The policy runs in audit-only (simulation) mode | Fix: Add https://learn.microsoft.com/purview/endpoint-dlp-create-policy-audit-activities to sources for the audit-mode advice. | Source: https://learn.microsoft.com/purview/endpoint-dlp-create-policy-audit-activities
 -->

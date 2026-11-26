@@ -43,6 +43,21 @@ sources:
   - title: "Enable Microsoft Purview pay-as-you-go features for new customers"
     url: "https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement"
     kind: "learn"
+  - title: "Consent to use use pay-as-you-go capabilities"
+    url: "https://learn.microsoft.com/purview/purview-payg-consent-based-enablement"
+    kind: "learn"
+  - title: "Assign permissions in eDiscovery"
+    url: "https://learn.microsoft.com/purview/edisc-permissions"
+    kind: "learn"
+  - title: "Permissions for Data Security Posture Management for AI - (classic)"
+    url: "https://learn.microsoft.com/purview/ai-microsoft-purview-permissions"
+    kind: "learn"
+  - title: "Manage data sources in Microsoft Purview"
+    url: "https://learn.microsoft.com/purview/data-map-data-sources-register-manage"
+    kind: "learn"
+  - title: "Data Sources - Create Or Replace"
+    url: "https://learn.microsoft.com/rest/api/purview/scanningdataplane/data-sources/create-or-replace"
+    kind: "docs"
   - title: "New-FeatureConfiguration"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-featureconfiguration"
     kind: "docs"
@@ -56,7 +71,7 @@ controls:
       path: "Data Map > Data source > Register data source > ChatGPT Enterprise"
       docs: "https://learn.microsoft.com/purview/archive-chatgpt-interactions"
     api: null
-    note: "Preview. Needs Data Source Administrator and Data Reader classic permissions. Scans are then created from Sources > workspace > New scan."
+    note: "Preview. Needs Data Source Administrator and Data Reader classic permissions. Scans are then created from Sources > workspace > New scan. The general Data Map guide labels the classic route Data Map > Sources > Register."
   - governs: "Which users' enterprise AI prompts and responses are collected, and whether full text is captured"
     scope: "tenant"
     ui:
@@ -75,29 +90,33 @@ controls:
       path: "Settings > Account details"
       docs: "https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement"
     api: null
-    note: "Starts the flow that links the tenant to an Azure subscription and resource group."
+    note: "Route for new customers; starts linking the tenant to an Azure subscription and resource group. Existing classic Azure Purview customers use Settings > Account overview > Review Consent. Global Administrator only."
 confidence: "high"
 created: "2026-11-25"
-updated: "2026-11-25"
+updated: "2026-11-26"
 roadmapModified: "2025-01-29T00:15:46"
 changes:
   - date: "2026-11-25"
     note: "New briefing: preview Purview Data Map connector for ChatGPT Enterprise prompts and responses, its pay-as-you-go meters and the collection policy it needs."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 78 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected eDiscovery search access and DSPM for AI viewer roles, qualified the billing path for new versus classic customers, narrowed the Data Map API note and checklist."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 86 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
-  date: "2026-11-25"
-  version: 1
+  status: "verified-with-gaps"
+  date: "2026-11-26"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 78
-  confirmed: 73
-  unconfirmed: 1
-  contradicted: 4
-  attempts: 1
-  hash: "1637cf349e7be2569ed319752b74cc07"
+  claims: 86
+  confirmed: 86
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "3fe1f8a80a2ed98e90dc1614d6ffcd87"
 ---
 
 ## What's changing
@@ -119,8 +138,8 @@ If nobody acts, nothing is collected: Learn states the connector scan must run b
 ## Risk assessment
 
 **Data exposure**
-- Captured prompts and responses land in users' mailboxes and become searchable in eDiscovery. Anyone holding eDiscovery roles can then search ChatGPT conversations as well as Microsoft 365 content.
-- In DSPM for AI, the prompt and response text is shown only to members of the Content Explorer Content Viewer role group. Check that membership before content capture is switched on.
+- Captured prompts and responses land in users' mailboxes and become searchable in eDiscovery. Searching captured ChatGPT conversations requires the appropriate eDiscovery search permissions; holding an eDiscovery role alone does not guarantee search access ([Assign permissions in eDiscovery](https://learn.microsoft.com/purview/edisc-permissions)).
+- Viewing prompt and response text in DSPM for AI (classic) requires Content Explorer Content Viewer or Microsoft Purview Data Security AI Content Viewer permissions ([Permissions for Data Security Posture Management for AI](https://learn.microsoft.com/purview/ai-microsoft-purview-permissions)). Check those memberships before content capture is switched on.
 - Without content capture in the collection policy, Learn says only sensitive information detected in prompts and responses is kept, not the full text.
 
 **Security & identity**
@@ -163,8 +182,8 @@ Charges appear on a monthly Azure bill, and the Usage center in the Purview port
 
 ### Before rollout
 - Confirm the tenant has an active Enterprise Microsoft Purview account, given that new data governance accounts can no longer be created.
-- Link pay-as-you-go billing to an Azure subscription in the Purview portal under Settings > Account details, and agree a budget owner for the Azure charges.
-- Request only the read scope for the OpenAI API key from OpenAI support, and restrict who can read the Key Vault secret.
+- Enable pay-as-you-go billing with a Global Administrator account: new customers use Settings > Account details, while existing classic Azure Purview customers use Settings > Account overview > Review Consent. Agree a budget owner for the Azure charges.
+- Request only the read scope for the OpenAI API key from OpenAI support.
 - Decide whether the collection policy captures full prompt and response text or only sensitive information matches.
 
 ### At rollout
@@ -173,8 +192,8 @@ Charges appear on a monthly Azure bill, and the Usage center in the Purview port
 - Use incremental scans afterwards rather than new scans, to avoid duplicate ingestion.
 
 ### After rollout
-- Check DSPM for AI reports and Activity explorer, filtered to the ChatGPT Enterprise app, after at least a day.
-- Watch the Usage center and the Azure bill for the AI-interaction meters during the first month.
+- Allow at least a day for ingestion before assessing the pilot.
+- Review the first monthly Azure bill with the agreed budget owner.
 - Re-check the connector page for changes as the classic data governance retirement proceeds.
 
 ## Governance controls
@@ -184,17 +203,17 @@ Charges appear on a monthly Azure bill, and the Usage center in the Purview port
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether a ChatGPT Enterprise workspace is connected to Purview as a data source</strong><br><small>App</small><br><small class="controls__note">Preview. Needs Data Source Administrator and Data Reader classic permissions. Scans are then created from Sources &gt; workspace &gt; New scan.</small></td><td data-label="Admin UI"><strong>Microsoft Purview governance portal</strong><br>Data Map › Data source › Register data source › ChatGPT Enterprise <a href="https://learn.microsoft.com/purview/archive-chatgpt-interactions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether a ChatGPT Enterprise workspace is connected to Purview as a data source</strong><br><small>App</small><br><small class="controls__note">Preview. Needs Data Source Administrator and Data Reader classic permissions. Scans are then created from Sources &gt; workspace &gt; New scan. The general Data Map guide labels the classic route Data Map &gt; Sources &gt; Register.</small></td><td data-label="Admin UI"><strong>Microsoft Purview governance portal</strong><br>Data Map › Data source › Register data source › ChatGPT Enterprise <a href="https://learn.microsoft.com/purview/archive-chatgpt-interactions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which users' enterprise AI prompts and responses are collected, and whether full text is captured</strong><br><small>Tenant</small><br><small class="controls__note">Choose the Enterprise AI data source in the wizard. Cmdlet is in Public Preview; IsIngestionEnabled in -ScenarioConfig governs content capture. Enterprise AI is a pay-as-you-go data source.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Classifiers › Collection policies › + Create policy <a href="https://learn.microsoft.com/purview/collection-policies-create-deploy-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-FeatureConfiguration -Name &quot;&lt;policy name&gt;&quot; -FeatureScenario KnowYourData -Mode Enable -ScenarioConfig '&lt;JSON&gt;'</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-featureconfiguration" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether pay-as-you-go billing, required by the connector, is linked to an Azure subscription</strong><br><small>Tenant</small><br><small class="controls__note">Starts the flow that links the tenant to an Azure subscription and resource group.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Account details <a href="https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether pay-as-you-go billing, required by the connector, is linked to an Azure subscription</strong><br><small>Tenant</small><br><small class="controls__note">Route for new customers; starts linking the tenant to an Azure subscription and resource group. Existing classic Azure Purview customers use Settings &gt; Account overview &gt; Review Consent. Global Administrator only.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Account details <a href="https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
 The collection policy decides what is kept, and the connector decides whether anything arrives: both are needed. In the policy, Learn says content capture needs the **Content contains classifiers** condition set to All; without it only sensitive information is kept. DSPM for AI offers a one-click alternative: Solutions > DSPM for AI (classic) > Recommendations > **Secure interactions from enterprise apps** creates a policy that captures prompts and responses from enterprise AI apps.
 
-Once data is in Purview, the existing retention (location **Enterprise AI apps**), eDiscovery, Communication Compliance and Insider Risk Management policies govern it, each on its own meter. Viewing captured text in DSPM for AI requires the Content Explorer Content Viewer role group.
+Once data is in Purview, the existing retention (location **Enterprise AI apps**), eDiscovery, Communication Compliance and Insider Risk Management policies govern it, each on its own meter. Viewing prompt and response text in DSPM for AI (classic) requires Content Explorer Content Viewer or Microsoft Purview Data Security AI Content Viewer permissions.
 
-The Data Map scanning API documents data sources and scans in general, but its documented data source types do not include ChatGPT Enterprise at the time of writing (November 2026), so the connector row has no API side.
+The [Data Sources - Create Or Replace](https://learn.microsoft.com/rest/api/purview/scanningdataplane/data-sources/create-or-replace) reference for API version 2023-09-01 does not list ChatGPT Enterprise among its data source types at the time of writing (November 2026), so the connector row has no API side.
 
 ## Open questions
 
@@ -206,19 +225,12 @@ The Data Map scanning API documents data sources and scans in general, but its d
 <!-- rationale
 risk: Low. Nothing is collected until an administrator registers the workspace, runs a scan and has a collection policy in place; once set up, it copies users' ChatGPT Enterprise conversations into Purview, so plan who can read them.
 cost: Variable. Microsoft requires pay-as-you-go billing on an Azure subscription, and the Purview meters for non-Microsoft AI interactions (audit records, retention, eDiscovery storage, communication compliance text records) bill on use.
-impact: Low. Compliance and security administrators set it up and work with the data; ChatGPT Enterprise users see no change in the app.
+impact: Low. Compliance and security administrators set it up and work with the data.
 -->
 
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure, first bullet / role: Anyone holding eDiscovery roles can search ChatGPT conversations as well as Microsoft 365 content. | Found: For example, you might need to allow a user to manage data sources, but without access to search features. | Fix: Replace the second sentence with 'Searching captured ChatGPT conversations requires the appropriate eDiscovery search permissions; holding an eDiscovery role alone does not guarantee search access.' Cite https://learn.microsoft.com/purview/edisc-permissions. | Source: https://learn.microsoft.com/purview/edisc-permissions
-- [contradicted, blocker] Risk assessment: Data exposure, second bullet; Governance controls / role: Only members of the Content Explorer Content Viewer role group can view prompt and response text in DSPM for AI. | Found: | View the prompts and responses within AI Interaction events from activity explorer | ... | Content Explorer Content Viewer  Microsoft Purview Data Security AI Content Viewer | | Fix: Replace the exclusivity statement and the repeated requirement with 'Viewing prompt and response text in DSPM for AI (classic) requires Content Explorer Content Viewer or Microsoft Purview Data Security AI Content Viewer permissions.' Cite https://learn.microsoft.com/purview/ai-microsoft-purview-permissions. | Source: https://learn.microsoft.com/purview/ai-microsoft-purview-permissions
-- [contradicted, blocker] controls[2].ui; Governance guidance: Before rollout; Governance controls table / admin-path: Settings > Account details is the unqualified billing setup route for tenants using this connector. | Found: Applies to: Existing Azure Purview customers who are using the classic data governance pricing model. ... Open the Microsoft Purview portal > Settings > Account overview ... Select Review Consent | Fix: Qualify the existing Settings > Account details path as the new-customer route. Add to controls[2].note and replace the checklist sentence with: 'A Global Administrator enables billing; new customers use Settings > Account details, while existing classic Azure Purview customers use Settings > Account overview > Review Consent.' Cite https://learn.microsoft.com/purview/purview-payg-consent-based-enablement alongside the existing new-customer source; do not add another control row. | Source: https://learn.microsoft.com/purview/purview-payg-consent-based-enablement
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The governance portal registration route is Data Map > Data source > Register data source > ChatGPT Enterprise. | Found: Select Data Map in left navigation and select the Data source. Select Register data source. On register sources, select ChatGPT Enterprise and select Continue. | Fix: Keep the connector-specific documented route, but add to the row note: 'The general Data Map registration guide instead labels the classic route Data Map > Sources > Register.' Cite https://learn.microsoft.com/purview/data-map-data-sources-register-manage, whose Register a new source section gives the differing classic labels. | Source: https://learn.microsoft.com/purview/archive-chatgpt-interactions
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: Collection policy creation starts at Data loss prevention > Classifiers > Collection policies > + Create policy. | Found: Open the Data loss prevention solution and navigate to Classifiers > Collection policies. Select + Create policy. | Fix: Keep this verified entry path and clarify controls[1].note: 'This path opens the collection policy wizard; it does not reach the user-scope or content-capture settings. Select the Enterprise AI data source and configure scope and content capture using the collection policy reference.' Retain https://learn.microsoft.com/purview/collection-policies-policy-reference. | Source: https://learn.microsoft.com/purview/collection-policies-create-deploy-policy
-- [supported, minor] Governance controls: Data Map scanning API paragraph / absence: The documented Data Map scanning API data source types do not include ChatGPT Enterprise at the time of writing. | Found: Searched: 'Microsoft Purview ChatGPT Enterprise register scan REST API data source types ChatGPT'; searched the full REST Data Sources - Create Or Replace reference, API version 2023-09-01, for ChatGPT and read its DataSourceType enumeration; ChatGPT is absent. | Fix: Cite https://learn.microsoft.com/rest/api/purview/scanningdataplane/data-sources/create-or-replace for the reference surveyed, and narrow the sentence to 'The Data Sources - Create Or Replace reference for API version 2023-09-01 does not list ChatGPT Enterprise among its data source types at the time of writing (November 2026).'
-- [unsupported, minor] rationale: impact / behaviour: ChatGPT Enterprise users see no change in the app. | Found: Searched: 'ChatGPT Enterprise Purview connector users no change app prompts responses'; read archive-chatgpt-interactions and ai-chatgpt-enterprise. They describe extraction, setup and governance, but do not state that users see no app change. | Fix: Remove 'ChatGPT Enterprise users see no change in the app' from the impact rationale; retain the sentence about compliance and security administrators setting up and working with the data.
-- [contradicted, minor] Governance guidance: Before rollout and After rollout / consistency: The checklist names Key Vault access restrictions and usage/report monitoring without corresponding control rows. | Found: 'restrict who can read the Key Vault secret'; 'Check DSPM for AI reports and Activity explorer'; 'Watch the Usage center'. The table covers workspace connection, collection policy configuration and billing linkage only. | Fix: Narrow the existing checklist without adding rows: remove 'and restrict who can read the Key Vault secret'; replace the report-check bullet with 'Allow at least a day for ingestion before assessing the pilot'; replace the Usage center bullet with 'Review the first monthly Azure bill with the agreed budget owner.'
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: The collection-policy wizard is reached through Microsoft Purview portal > Data loss prevention > Classifiers > Collection policies > + Create policy. | Found: Open the Data loss prevention solution and navigate to Classifiers > Collection policies. Select + Create policy. | Fix: Keep the documented route into the wizard. Append to controls[1].note: 'Configure user/group scope and content capture in the wizard; content capture requires Content contains classifiers set to All.' The current route stops before those settings. | Source: https://learn.microsoft.com/purview/collection-policies-create-deploy-policy
+- [supported, minor] controls[1].note / availability: New-FeatureConfiguration is in Public Preview. | Found: This cmdlet is currently available in Public Preview, isn't available in all organizations, and is subject to change. | Fix: Replace 'Cmdlet is in Public Preview' in controls[1].note with 'Cmdlet is available only in Security & Compliance PowerShell, is in Public Preview, and is not available in all organizations.' | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/new-featureconfiguration
 -->

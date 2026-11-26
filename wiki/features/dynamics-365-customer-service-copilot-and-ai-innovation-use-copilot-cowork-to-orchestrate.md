@@ -107,10 +107,12 @@ changes:
     note: "Correction: the Service app availability row now covers installing or using the app only, the spending-policy path is complete, the controls note no longer denies other Cowork plugin settings, and checklist steps without a table row were removed."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 84 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 84 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-23"
+  date: "2026-11-26"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
@@ -225,8 +227,9 @@ cost: Variable. Cowork is billed by usage in Copilot Credits, and the plugin als
 impact: Medium. Service representatives and their supervisors notice it; other users are unaffected unless the Service app is also assigned to them.
 -->
 
-<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout; controls / consistency: The checklist asks administrators to confirm Customer Service MCP configuration, but no control row covers that configuration. | Found: confirm ... the Customer Service MCP configuration the Learn page says must be in place. / Controls: Cowork spending policies; Service app availability; Service app blocking. | Fix: Replace that checklist bullet with: 'Ask the Dynamics 365 administrator to confirm the Customer Service licensing for the pilot representatives.' Do not add a control row.
+- [supported, minor] controls[0].ui; rendered controls table / admin-path: The spending-policy UI route is Copilot > Cost Management > Configuration > + Add spending policy > Scope user and group > Specific groups > Select agents and services. | Found: go to Copilot > Cost Management > Configuration and select + Add spending policy. ... On the Scope user and group step, choose Specific groups ... On the Select agents and services step, select Cowork. | Fix: Append ' > Cowork' to controls[0].ui.path and the corresponding rendered path. The cited page explicitly ends the selection step at Cowork; the current note already names that selection. | Source: https://learn.microsoft.com/copilot/cowork/cowork-admin-governance
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist tells administrators to confirm Customer Service MCP configuration, but the controls table has no row for that configuration. | Found: confirm ... the Customer Service MCP configuration the Learn page says must be in place. / Controls: Cowork spending policies; Service app availability; Service app blocking. | Fix: Replace that checklist bullet with 'Ask the Dynamics 365 administrator to confirm the Customer Service licensing for the pilot representatives.' Do not add a controls-table row.
 -->

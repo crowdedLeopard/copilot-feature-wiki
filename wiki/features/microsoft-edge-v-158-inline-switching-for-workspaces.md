@@ -81,15 +81,17 @@ changes:
     note: "Corrected the pilot step and an open question so they no longer say tab behaviour is undocumented, and narrowed the summary to 'no separate switching policy or feature-specific licence'."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 58 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 52 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-26"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 58
-  confirmed: 58
+  claims: 52
+  confirmed: 52
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -183,8 +185,8 @@ cost: Low. The only cost the sources show is admin time and user communication; 
 impact: Medium. Users who work in Edge Workspaces will see the window behave differently; people who do not use Workspaces are not the audience the release note describes.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; summary; Governance guidance: Before rollout / behaviour: Users can now switch Workspaces in their current browser window instead of opening a separate window for each Workspace. | Found: Users can now switch between workspaces directly within their current browser window instead of opening a separate window for each workspace. | Fix: After the Stable release-note paragraph, add: "The linked Microsoft Support page still calls these updates 'coming soon' and says some users may encounter them; it also documents an 'Open in a new window' option." Source: https://support.microsoft.com/en-us/edge/getting-started-with-microsoft-edge-workspaces. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-relnote-stable-channel
+- [supported, minor] summary; What's changing; Governance guidance: Before rollout; rationale: impact / behaviour: Edge 158 lets users switch Workspaces in their current window instead of opening a separate window for each. | Found: Users can now switch between workspaces directly within their current browser window instead of opening a separate window for each workspace. | Fix: After the Stable release-note paragraph, add: "The linked Microsoft Support page still calls these updates 'coming soon' and says some users may encounter them; it also documents an 'Open in a new window' option." Source: https://support.microsoft.com/en-us/edge/getting-started-with-microsoft-edge-workspaces. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-relnote-stable-channel
 -->

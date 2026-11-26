@@ -90,18 +90,20 @@ changes:
     note: "Corrected the controls table: both settings now list their Dataverse update operations, replacing the incorrect statement that no API is documented; removed the checklist's row reference for Ask a question."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 55 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 60 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-19"
+  status: "held"
+  date: "2026-11-26"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 55
-  confirmed: 53
+  claims: 60
+  confirmed: 57
   unconfirmed: 0
-  contradicted: 2
-  attempts: 0
+  contradicted: 3
+  attempts: 1
   hash: "f6322dcf475fb977efb519ea57759e1b"
 ---
 
@@ -196,10 +198,12 @@ cost: Variable. The Customer Intent Agent page lists a pay-as-you-go plan as a p
 impact: Low. Representatives in the experience profiles an administrator selects see the actions; other users and customers do not.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Open questions: pay-as-you-go requirement / absence: Whether next best actions require the Customer Intent Agent pay-as-you-go plan remains an open licensing question. | Found: Next best action for case ... Prerequisites ... This tool requires the following: Customer Intent Agent must be enabled, and a pay-as-you-go plan is required. | Fix: Replace the pay-as-you-go open question with this qualified statement in Cost and licensing: 'The Next best action for case tool reference explicitly requires Customer Intent Agent to be enabled and a pay-as-you-go plan. The Enable intent-based suggestions page does not repeat the billing prerequisite.' Cite https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/suggest_next_action_for_case. Keep the separate question about the feature-specific credit rate. | Source: https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/suggest_next_action_for_case
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The printed Copilot Service admin center path reaches Actions on the Intent-based suggestions page. | Found: Select Productivity in Support experience. ... Select Manage for Intent-based suggestions. ... In the Turn on intent-based suggestions section ... Actions: Select to enable next best actions for cases | Fix: Keep the switch path. For the same row's experience-profile assignment, add to its note: 'On the Intent-based suggestions page, under Enable in experience profiles, select Select experience profiles and choose one or more profiles.' The cited page documents this additional branch. | Source: https://learn.microsoft.com/dynamics365/contact-center/administer/enable-intent-for-service-reps
-- [contradicted, minor] Governance guidance: Before rollout and After rollout / consistency: Every control the governance checklist asks readers to check or monitor has a corresponding controls-table row. | Found: Confirm that Intent or knowledge management is configured and that Ask a question is enabled ... Check that custom security roles carry the Copilot privileges ... Check the environment's geography ... Watch Copilot Credits consumption | Fix: The prerequisite, billing-plan, custom-role, data-movement and credit-monitoring checks have no corresponding controls-table rows. Move those checks into the existing Scope and Cost and licensing discussion rather than presenting them as covered by the two-row governance checklist; do not add unverified control rows.
-- [contradicted, minor] Governance guidance: At rollout / consistency: Row 2 is the referenced control for selecting the pilot experience profile for next best actions. | Found: Select a pilot experience profile before adding wider groups (row 2). ... The experience profile row governs access to Copilot features ... in general; Learn says to add next best actions ... from the Intent-based suggestions page. | Fix: Change the checklist item to 'On the Intent-based suggestions page, select a pilot experience profile before adding wider groups (row 1).'
+- [supported, minor] controls[0].ui; Governance controls table; Governance guidance: At rollout / admin-path: The Copilot Service admin center path Support experience > Productivity > Intent-based suggestions > Manage > Turn on intent-based suggestions > Actions reaches next-best-action enablement. | Found: Select Productivity in Support experience. ... Select Manage for Intent-based suggestions. ... In the Turn on intent-based suggestions section ... Actions: Select to enable next best actions for cases | Fix: Keep the switch path. Add this sentence to controls[0].note for the profile assignment its governs field also names: 'On the Intent-based suggestions page, under Enable in experience profiles, select Select experience profiles and choose one or more experience profiles.' The existing docs URL supports this branch. | Source: https://learn.microsoft.com/dynamics365/contact-center/administer/enable-intent-for-service-reps
+- [contradicted, minor] Governance guidance: Before rollout and After rollout / consistency: All controls the governance checklist tells readers to check or monitor are represented in the controls table. | Found: Confirm that Intent or knowledge management is configured and that Ask a question is enabled ... Check with finance whether the pay-as-you-go plan ... Check that custom security roles ... Check the environment's geography ... Watch Copilot Credits consumption | Fix: The prerequisite, billing-plan, custom-role, data-movement and credit-monitoring checklist steps have no corresponding table rows. Move those checks into the existing Scope and Cost and licensing discussion, keeping their verified wording, instead of presenting them as table-covered checklist controls. Do not add control rows.
+- [contradicted, minor] Governance guidance: At rollout / consistency: Row 2 is the control for selecting experience profiles that receive next best actions. | Found: Select a pilot experience profile before adding wider groups (row 2). ... The experience profile row governs access to Copilot features ... in general; Learn says to add next best actions ... from the Intent-based suggestions page. | Fix: Replace the checklist item with 'On the Intent-based suggestions page, select a pilot experience profile before adding wider groups (row 1).' The route is documented at https://learn.microsoft.com/dynamics365/contact-center/administer/enable-intent-for-service-reps.
 -->

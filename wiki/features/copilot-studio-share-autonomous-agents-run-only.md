@@ -152,15 +152,17 @@ changes:
     note: "Corrected after verification: the share-link step now reads Copy sharing link > Copy link to set up, and the data policy row gains the Add-ConnectorsToPolicy PowerShell call."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 86 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 97 statements not yet confirmed"
 version: 7
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-19"
+  date: "2026-11-26"
   version: 7
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 86
-  confirmed: 86
+  claims: 97
+  confirmed: 97
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -271,9 +273,10 @@ cost: Variable. Copilot Credits are the meter: each end user's autonomous agent 
 impact: Medium. Makers and the users they share with notice it; nothing reaches anyone until a maker shares an agent and the recipient activates it.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].ui; Governance controls table / admin-path: The printed data-policy path reaches Microsoft Copilot Studio > Block in Assign connectors. | Found: The Assign connectors page appears. Use the search box to find the connector you want. Select the three dots (⋮) next to the connector, and then: To prevent agent makers from using the features associated with the connector, select Block. | Fix: Include the omitted unlabelled menu: Power Platform admin center > Security > Data and privacy > Data policy > New Policy > Add an environment > Available > environment > Add to policy > Assign connectors > Microsoft Copilot Studio > three dots > Block. | Source: https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention
-- [supported, minor] controls[4].ui; Governance controls table / admin-path: The cited page places Sharing agents with embedded maker credentials at Manage > Environments > environment > Settings > Features. | Found: Go to Manage > Environments, and then select the environment that you want to configure. Select Settings, and then select Features. Find Sharing agents with embedded maker credentials. | Fix: Keep the cited path, but add: 'Microsoft also documents this control as preview under Security > Threat detection > Sharing agent with embedded maker credentials > Environments > environment > Set up, with options to let or not let makers share embedded credentials.' Cite https://learn.microsoft.com/power-platform/admin/security/control-sharing-agents-with-embedded-maker-credentials. | Source: https://learn.microsoft.com/microsoft-copilot-studio/configure-sharing-agents-embedded-maker-credentials
+- [supported, minor] controls[2].ui; Governance controls table / admin-path: The printed data-policy path reaches Microsoft Copilot Studio > Block in Assign connectors. | Found: The Assign connectors page appears. Use the search box to find the connector you want. Select the three dots ... next to the connector, and then: To prevent agent makers from using the features associated with the connector, select Block. | Fix: Include the omitted unlabelled menu in both copies of the path: Power Platform admin center > Security > Data and privacy > Data policy > New Policy > Add an environment > Available > environment > Add to policy > Assign connectors > Microsoft Copilot Studio > three dots > Block. | Source: https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention
+- [supported, minor] controls[4].ui; Governance controls table / admin-path: The cited page places Sharing agents with embedded maker credentials at Power Platform admin center > Manage > Environments > environment > Settings > Features. | Found: Go to Manage > Environments, and then select the environment that you want to configure. Select Settings, and then select Features. Find Sharing agents with embedded maker credentials. | Fix: Keep the cited path, but add: 'Microsoft also documents this control as preview under Security > Threat detection > Sharing agent with embedded maker credentials > Environments > environment > Set up, with options to let or not let makers share agents with their own credentials embedded.' Cite https://learn.microsoft.com/power-platform/admin/security/control-sharing-agents-with-embedded-maker-credentials. | Source: https://learn.microsoft.com/microsoft-copilot-studio/configure-sharing-agents-embedded-maker-credentials
+- [supported, minor] controls[5].ui; Governance controls table / admin-path: The spending-policy path is Microsoft 365 admin center > Copilot > Cost Management > Configuration > Add spending policy > Resources > Specific environments > environment. | Found: Enter a name for the policy, then select Resources as its scope. ... Specific environments ... Select one or more environments ... Choose No limit or set a monthly spending limit for the policy. You can also set a per-agent limit | Fix: The path reaches the correct wizard but stops at resource selection. Extend both copies to: Microsoft 365 admin center > Copilot > Cost Management > Configuration > Add spending policy > Resources > Specific environments > environment > monthly spending limit. Keep the note that a per-agent limit can also be set. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs
 -->

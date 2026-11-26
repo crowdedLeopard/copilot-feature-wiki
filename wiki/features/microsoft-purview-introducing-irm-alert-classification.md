@@ -14,7 +14,7 @@ previewDate: "December CY2026"
 risk: "low"
 cost: "low"
 impact: "medium"
-defaultState: "unknown"
+defaultState: "on"
 action: "prepare"
 licensing:
   model: "included"
@@ -40,6 +40,9 @@ sources:
   - title: "Microsoft Purview service description"
     url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description"
     kind: "learn"
+  - title: "MC1568697: Microsoft Purview: Insider Risk Management-Introducing IRM Alert classification"
+    url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1568697"
+    kind: "message-center"
   - title: "Microsoft Purview: Introducing IRM Alert classification"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=576710"
     kind: "roadmap"
@@ -50,7 +53,7 @@ controls:
     scope: "user"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Settings > Roles and groups > Roles groups > role group"
+      path: "Settings > Roles and groups > Roles groups > role group > Edit > Choose users"
       docs: "https://learn.microsoft.com/purview/insider-risk-management-permissions"
     api:
       kind: "powershell"
@@ -59,26 +62,30 @@ controls:
     note: "Covers today's alert access and dismissal. Classification permissions are not yet documented. Requires one of the roles that can assign Insider Risk Management role groups."
 confidence: "medium"
 created: "2026-11-20"
-updated: "2026-11-20"
+updated: "2026-11-26"
 roadmapModified: "2026-11-19T00:53:06"
 changes:
   - date: "2026-11-20"
     note: "First briefing for this roadmap item: classification of insider risk alerts replaces dismissal reasons; Learn does not yet describe it."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 45 statements not yet confirmed"
-version: 1
+  - date: "2026-11-26"
+    note: "Extended the role-group path to Edit > Choose users and reworded the risk rationale; added Microsoft's notice MC1568697: rollout window, no configuration required, and classification managed separately from alert status."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 65 statements not yet confirmed"
+version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
-  version: 1
+  date: "2026-11-26"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 45
-  confirmed: 44
+  claims: 65
+  confirmed: 63
   unconfirmed: 1
-  contradicted: 0
+  contradicted: 1
   attempts: 0
-  hash: "67142c78103e3f1f58dd8cd207098a0b"
+  hash: "3bea2b07b3f6fa882020edaf386a0801"
 ---
 
 ## What's changing
@@ -87,15 +94,15 @@ Microsoft plans to let Insider Risk Management analysts classify alerts as True 
 
 Today, an analyst triages an alert into one of four statuses: Confirmed, Dismissed, Needs review or Resolved. A dismissed alert is treated as benign, and the analyst can give a dismissal reason: *Activity is expected for this user*, *Activity is impactful enough for me to investigate further*, or *Alerts for this user contain too much activity*. The Alerts dashboard can also be filtered by **Alert dismissal reason**. Those are the behaviours the roadmap says classification will replace.
 
-Microsoft Learn does not yet describe alert classification, so what follows about its behaviour is the roadmap's description. The list of predefined reasons, how classification relates to the Dismissed, Confirmed and Resolved statuses, and what happens to reasons already recorded on past alerts are not yet documented.
+Microsoft Learn does not yet describe alert classification, so what follows about its behaviour comes from the roadmap item and Microsoft's notice MC1568697. The notice says classification will be managed independently from the alert's workflow status (Needs review, Confirmed, Dismissed or Resolved): changing the classification will not change the status, and changing the status will not overwrite the classification. It also says the existing Confirm and Dismiss actions will be consolidated under a **Manage** action, with a separate **Classify** action, and a new Classification column in the Alerts queue. The notice's steps name the choices True positive, False positive and Benign Positive, where the roadmap says Benign (operational). The list of predefined reasons and what happens to dismissal reasons already recorded on past alerts are not yet documented.
 
-The roadmap item is In development, targets a preview in December CY2026 and general availability in January CY2027, and lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD on the Web. These are Microsoft's targets, not commitments.
+The roadmap item is In development, targets a preview in December CY2026 and general availability in January CY2027, and lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD on the Web. Microsoft's notice MC1568697 says the public preview will begin rolling out early December 2026 and complete by mid-December 2026, and global rollout will begin mid-January 2027 and complete by late January 2027. The notice sets no act-by date. It says no configuration changes are required before the update rolls out, and that admins should notify Insider Risk Management analysts and investigators about the new Classification field and the updated alert actions. These dates are Microsoft's targets, not commitments.
 
 ## Why it matters
 
 Anyone who measures or tunes Insider Risk Management by dismissal reason will need to move to the new classifications. Dismissal reasons are a filter on the Alerts dashboard, and Microsoft describes the new classification as supporting reporting and tuning, so saved views, analyst guidance and any reporting built on dismissal reasons are the places to look first.
 
-Microsoft has not stated what happens on arrival, so the wiki does not assume that existing alerts are reclassified or that analysts are prompted. No source says the change alters what is detected or who sees which alerts. The effect is on how analysts record their decisions and how that record is used. Brief analysts before the preview so that the first classifications are made consistently.
+Microsoft's notice says no configuration changes are required before the update rolls out, so analysts will meet the Classify and Manage actions without an administrator turning anything on. The notice does not say whether existing alerts are reclassified, so the wiki does not assume they are. No source says the change alters what is detected or who sees which alerts. The effect is on how analysts record their decisions and how that record is used. Brief analysts before the preview so that the first classifications are made consistently.
 
 ## Risk assessment
 
@@ -126,7 +133,7 @@ A licence or meter specific to alert classification is not yet published, and th
 
 The roadmap item lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD, on the Web, with General Availability and Preview release phases. It says classification will be available on all alerts, for authorised analysts with the appropriate permissions.
 
-The roles that can classify are not yet documented. Today, dismissing an alert requires membership of the *Insider Risk Management*, *Insider Risk Management Analysts* or *Insider Risk Management Investigators* role group. Rollout mechanics and prerequisites are not stated.
+The roles that can classify are not yet documented. Today, dismissing an alert requires membership of the *Insider Risk Management*, *Insider Risk Management Analysts* or *Insider Risk Management Investigators* role group. Microsoft's notice MC1568697 gives the rollout window (see What's changing) and says no configuration changes are required before the update rolls out; prerequisites are not stated.
 
 ## Governance guidance
 
@@ -138,7 +145,7 @@ The roles that can classify are not yet documented. Today, dismissing an alert r
 
 ### At rollout
 
-- Brief analysts and investigators on the change when the preview arrives, using the Microsoft Purview portal wording once it is documented.
+- Brief analysts and investigators on the Classification column and the Classify and Manage actions when the preview arrives, as Microsoft's notice MC1568697 asks.
 - Test the new classification on a small set of alerts before wider use, and check which role groups can classify.
 
 ### After rollout
@@ -153,31 +160,30 @@ The roles that can classify are not yet documented. Today, dismissing an alert r
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which users can triage alerts, through Insider Risk Management role group membership</strong><br><small>User</small><br><small class="controls__note">Covers today's alert access and dismissal. Classification permissions are not yet documented. Requires one of the roles that can assign Insider Risk Management role groups.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and groups › Roles groups › role group <a href="https://learn.microsoft.com/purview/insider-risk-management-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember -Identity &quot;Insider Risk Management Analysts&quot; -Member &lt;user-UPN&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember?view=exchange-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users can triage alerts, through Insider Risk Management role group membership</strong><br><small>User</small><br><small class="controls__note">Covers today's alert access and dismissal. Classification permissions are not yet documented. Requires one of the roles that can assign Insider Risk Management role groups.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and groups › Roles groups › role group › Edit › Choose users <a href="https://learn.microsoft.com/purview/insider-risk-management-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember -Identity &quot;Insider Risk Management Analysts&quot; -Member &lt;user-UPN&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember?view=exchange-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 Role group membership is the control Learn documents for who can triage alerts. Members of the Insider Risk Management, Insider Risk Management Admins, Compliance Administrator and Organization Management groups, and the Entra ID Global Administrator and Compliance Administrator roles, can assign users to Insider Risk Management role groups. Role group changes can take up to 30 minutes to apply.
 
-Whether classification uses the same role groups as dismissal is not yet documented, so the row below describes today's alert access, not a documented classification permission. Microsoft Learn documents no setting for classification itself at the time of writing (November 2026).
+Whether classification uses the same role groups as dismissal is not yet documented, so the row above describes today's alert access, not a documented classification permission. Microsoft Learn documents no setting for classification itself at the time of writing (November 2026).
 
 ## Open questions
 
 - Which role groups will be able to classify alerts, and will classification need a permission beyond those that allow dismissal today? Watch the Insider Risk Management permissions page.
-- What are the predefined classification reasons, and how do they map to the Confirmed, Dismissed and Resolved statuses?
+- What are the predefined classification reasons, and will the third classification appear as Benign (operational), as the roadmap says, or Benign Positive, as the notice's steps say?
 - What happens to dismissal reasons already recorded on past alerts, and to filters and reports that use them?
-- Does the change arrive for every tenant automatically, or is there an administrator setting? Microsoft has not stated the default; watch Message center and the roadmap item.
-- Will classification appear on insider risk alerts in the Microsoft Defender portal as well as in the Microsoft Purview portal?
+- How will classification appear on insider risk alerts in the Microsoft Defender portal? Microsoft's notice says classification stays consistent for alerts shared between Microsoft Purview and Microsoft Defender, but does not describe the Defender experience.
 
 <!-- rationale
-risk: Low. The change adds a classification step to alerts analysts already triage and reads no new data; the default state is not stated, so this is rated on today's triage behaviour continuing.
+risk: Low. The roadmap describes classification of alerts analysts already triage and describes no new data source; Microsoft's notice MC1568697 says no configuration changes are required before it rolls out, and it changes how decisions are recorded, not what is detected.
 cost: Low. Insider Risk Management is listed as included in Microsoft 365 E5-level plans; the only known cost is analyst and admin time, and no licence or meter specific to alert classification is published.
 impact: Medium. Analysts and investigators who triage alerts will see new classification choices in place of dismissal reasons; other users do not notice.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The Microsoft Purview portal route Settings > Roles and groups > Roles groups > role group reaches the role-group page used to manage membership. | Found: Select the Insider Risk Management role group, then select Edit. Select Choose users, then select the checkboxes for all the users you want to add to the role group. | Fix: Extend controls[0].ui.path and the rendered route to 'Settings > Roles and groups > Roles groups > role group > Edit > Choose users', as documented at https://learn.microsoft.com/purview/insider-risk-management-permissions. The existing route stops on the right page but before the membership controls. | Source: https://learn.microsoft.com/purview/insider-risk-management-permissions
-- [unsupported, minor] rationale: risk / behaviour: The new classification feature reads no new data. | Found: Searched: "Purview" "alert classification" "data" "rollout"; read roadmap and opened insider-risk-management-activities. They do not state what data classification reads; lack of a described new source does not establish that it reads none. | Fix: Replace the risk rationale with: "Low. The roadmap describes classification of alerts analysts already triage and describes no new data source; the default state is not stated, so this is rated on today's triage behaviour continuing."
+- [unsupported, minor] rationale: risk / behaviour: The update changes how decisions are recorded, not what is detected. | Found: Searched: Insider Risk Management new alert classification detection changes data sources automated actions reclassify existing alerts. Opened activities and Defender IRM investigation; read roadmap and MC1568697. They describe recording outcomes but do not guarantee unchanged detection. | Fix: Replace 'and it changes how decisions are recorded, not what is detected' with 'and no change to detection is described'.
+- [contradicted, minor] Governance guidance: Before rollout and After rollout / consistency: The checklist's instructions to inventory and update Alerts dashboard filters have a corresponding control row. | Found: List the saved filters ... including the Alert dismissal reason filter on the Alerts dashboard. ... Compare alert filters and reporting ... The controls table contains only role-group membership. | Fix: The Alerts dashboard filter steps have no table row. Replace the Before rollout bullet with 'List reports and written procedures that use dismissal reasons.' Replace the After rollout bullet with 'Compare reporting with the new classifications, and update any that relied on dismissal reasons.' Do not add a control row.
 -->

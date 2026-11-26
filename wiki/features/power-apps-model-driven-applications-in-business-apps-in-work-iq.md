@@ -5,7 +5,7 @@ roadmapId: 571888
 topic: "power-platform"
 products: ["Power Apps"]
 summary: "Users can list, read, create, update and delete model-driven app records by chat through Work IQ, with confirmation before changes. Admins decide per tenant, environment and app; billing follows the experience used."
-status: "in-development"
+status: "launched"
 releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
 platforms: ["Web"]
@@ -70,6 +70,12 @@ sources:
   - title: "application EntityType"
     url: "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/application"
     kind: "learn"
+  - title: "Update and delete table rows by using the Web API"
+    url: "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/update-delete-table-rows"
+    kind: "learn"
+  - title: "Use Web API actions"
+    url: "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/use-web-api-actions"
+    kind: "learn"
 videos: []
 related: ["work-iq","copilot-credits"]
 controls:
@@ -107,7 +113,7 @@ controls:
       kind: "rest"
       call: "PATCH <organization-url>/api/data/v9.2/applications(<application-id>)"
       docs: "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/application"
-    note: "Power Platform Administrator. Work IQ participation settings do not prevent agentic access. Enable App Access in the UI first. The request body sets access to 1 (Blocked), or 0 (Allowed)."
+    note: "Power Platform Administrator. The request body sets access to 1 (Blocked), or 0 (Allowed). After Save, return to the environment and select the applications you want to block from accessing the environment."
   - governs: "Whether a model-driven app shares its data with Work IQ"
     scope: "app"
     ui:
@@ -129,8 +135,8 @@ controls:
     note: "Per-agent maker setting; also clear Business apps (preview) under Sources on the Work IQ tool to drop the workload."
 confidence: "high"
 created: "2026-11-18"
-updated: "2026-11-21"
-roadmapModified: "2026-10-12T23:01:05"
+updated: "2026-11-26"
+roadmapModified: "2026-11-26T00:16:54"
 changes:
   - date: "2026-11-18"
     note: "First briefing for this item: Learn documents behaviour, defaults and admin controls, while the roadmap item is still In development."
@@ -160,19 +166,23 @@ changes:
     note: "Correction: licensing model changed from consumption to mixed, and the note now says Microsoft 365 Copilot Chat's entitlement includes business-data grounding at no extra Work IQ API charge."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 110 statements not yet confirmed"
-version: 6
+  - date: "2026-11-26"
+    note: "Correction: the App Access row's note now says to return to the environment and select the applications to block after saving, two Dataverse Web API pages back the REST call syntax, and the status now reads Launched, as on the roadmap."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 102 statements not yet confirmed"
+version: 7
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
-  version: 6
+  date: "2026-11-26"
+  version: 7
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 110
-  confirmed: 110
+  claims: 102
+  confirmed: 102
   unconfirmed: 0
   contradicted: 0
   attempts: 0
-  hash: "5d9ce8c0850c844d9de9014c3b1c0370"
+  hash: "5da909896f90fc2f9dde91649de68f42"
 ---
 
 ## What's changing
@@ -181,7 +191,7 @@ Power Apps model-driven apps become Business Applications in Work IQ, so users c
 
 The Learn page for users describes the behaviour in more detail. The user selects an environment and a model-driven app, and Work IQ uses the app's views, forms and tables. Records come from the table's default system view unless the prompt names another; create and update use the default main form, and the fields on its first tab. Learn says form-scoped and table-scoped business rules are enforced, delete operations also need explicit confirmation, and table security decides what the user can read or change. Create and update are not available where the form has JavaScript `OnLoad`, `OnChange` or `OnSave` event handlers, and custom controls and subgrids are not supported.
 
-The sources differ on status. The roadmap item is In development, with a preview target of September CY2026 and a target of November CY2026 (both Microsoft's targets), release phases General Availability and Preview, worldwide cloud and web only. Learn already says access through Work IQ MCP and Copilot Studio is generally available and access through Cowork is in public preview, while the Copilot Studio page still labels the workload **Business apps (preview)** and asks you to turn on preview workloads in the agent's settings.
+The sources differ on release phase. The roadmap item's status is Launched, with a preview date of September CY2026 and a target date of November CY2026, release phases General Availability and Preview, worldwide cloud and web only. Learn says access through Work IQ MCP and Copilot Studio is generally available and access through Cowork is in public preview, while the Copilot Studio page still labels the workload **Business apps (preview)** and asks you to turn on preview workloads in the agent's settings.
 
 On defaults, Learn says Business Applications in Work IQ is on by default for new public production environments, except European Union and EFTA environments, government-related environments and nonproduction environments (trial, sandbox, developer). Learn also says the plan to turn it on for existing environments has been deferred from the previously documented November 2026 schedule. No replacement date is given. The general Manage feature settings page still lists Turn on Dataverse intelligence (Work IQ) for agents and AI experiences as Off; this briefing follows the feature-specific default-settings page.
 
@@ -263,7 +273,7 @@ The cost page says one request can involve several tool calls and reasoning step
 <tr><td data-label="Control"><strong>Whether Work IQ features are on in an environment</strong><br><small>Environment</small><br><small class="controls__note">Environment administrator. Separate from allowing Work IQ to reason over the environment's data.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › environment › Settings › Product › Features › Work IQ <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Who in the tenant can use Business Applications data through Copilot</strong><br><small>Tenant</small><br><small class="controls__note">Options: All users (default), Specific groups, No users. Tenant administrator. Learn describes it for Microsoft 365 Copilot; whether it governs the Copilot Studio tool is not stated.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › View all › Business Applications data in Work IQ available to Copilot <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Availability of the Work IQ MCP server</strong><br><small>Tenant</small><br><small class="controls__note">AI Administrator. Applies to the whole server. The Copilot Studio Work IQ page says allowing or disallowing MCP servers might not yet be available in your region.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Work IQ MCP › Block <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which applications can access an environment's data</strong><br><small>Environment</small><br><small class="controls__note">Power Platform Administrator. Work IQ participation settings do not prevent agentic access. Enable App Access in the UI first. The request body sets access to 1 (Blocked), or 0 (Allowed).</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Identity &amp; access › App Access Control › environment › Enable › Save <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH &lt;organization-url&gt;/api/data/v9.2/applications(&lt;application-id&gt;)</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/application" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which applications can access an environment's data</strong><br><small>Environment</small><br><small class="controls__note">Power Platform Administrator. The request body sets access to 1 (Blocked), or 0 (Allowed). After Save, return to the environment and select the applications you want to block from accessing the environment.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Identity &amp; access › App Access Control › environment › Enable › Save <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH &lt;organization-url&gt;/api/data/v9.2/applications(&lt;application-id&gt;)</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/application" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether a model-driven app shares its data with Work IQ</strong><br><small>App</small><br><small class="controls__note">Maker setting; save and publish after changing. User page requires Default or On. Maker article labels it Microsoft Copilot in model-driven apps. Request body sets AppUniqueName, SettingName (m365copilotmodelappenabled), Value.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>Apps › app › Edit › Settings › Features › Enable Microsoft 365 Copilot in model-driven apps <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST &lt;organization-url&gt;/api/data/v9.2/SaveSettingValue</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/savesettingvalue" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether a Copilot Studio agent can use the Business apps (preview) workload</strong><br><small>Agent</small><br><small class="controls__note">Per-agent maker setting; also clear Business apps (preview) under Sources on the Work IQ tool to drop the workload.</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>agent › ellipsis (...) › Settings › Work IQ › Preview workloads › Enable preview workloads <a href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
@@ -292,10 +302,8 @@ cost: Variable. Learn says charges follow the experience used: Copilot Credits f
 impact: Medium. Users of model-driven apps in environments where Work IQ is on notice it first. Learn says it is on by default only in new public production environments, and has deferred switching on existing ones.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[3].ui; Governance controls table / admin-path: App Access is enabled at Power Platform admin center > Security > Identity & access > App Access Control > environment > Enable > Save. | Found: Select **Security** > **Identity & access**. ... Select **App Access Control**. ... Select **Enable**, and then select **Save**. ... Return to the environment and select the applications you want to block | Fix: The row stops on the App Access setup rather than selecting blocked applications. Keep the supported path and append to controls[3].note: 'After Save, return to the environment and select the applications you want to block from accessing the environment.' This is the continuation at https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access
-- [supported, minor] controls[3].api; Governance controls table; Governance controls closing paragraph / command: PATCH <organization-url>/api/data/v9.2/applications(<application-id>) updates an application access record. | Found: Entity set path: [organization URI]/api/data/v9.2/applications; Primary key: applicationid; Operations supported: POSTGETPATCHDELETE | Fix: Keep the call and its application reference docs link. Add https://learn.microsoft.com/power-apps/developer/data-platform/webapi/update-delete-table-rows to sources: its Basic update section establishes PATCH to a record URI, completing verification of the printed syntax. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/application
-- [supported, minor] controls[4].api; controls[4].note; Governance controls closing paragraph / command: POST <organization-url>/api/data/v9.2/SaveSettingValue sets an app override using AppUniqueName, SettingName and Value. | Found: Creates or updates app/organization level override. ... AppUniqueName ... Model-driven app unique name (Optional). ... SettingName ... Setting definition unique name (Required). ... Value ... Overridden value that needs to be set (Required). | Fix: Keep the call, reference docs link and request-property note. Add https://learn.microsoft.com/power-apps/developer/data-platform/webapi/use-web-api-actions to sources: it establishes POST to /api/data/v9.2/<action-name> for unbound actions, completing verification of the printed syntax. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/savesettingvalue
+- [supported, minor] controls[3].ui; Governance controls table / admin-path: App Access is configured through Power Platform admin center > Security > Identity & access > App Access Control > environment > Enable > Save. | Found: Select **Security** > **Identity & access**. 3. Select **App Access Control**. 4. Select the environment in which you want to enable app access. 5. Select **Enable**, and then select **Save**. | Fix: The printed route is correct but stops at enabling App Access. To give a complete blocking route, use the already-cited general article: set controls[3].ui.path to 'Security > Identity and access > App access control > environment > Set up app access control > Access control > Enabled > application > Block' and controls[3].ui.docs to https://learn.microsoft.com/power-platform/admin/control-app-access-environment. Retain the prose explaining that the feature-specific article gives a different setup sequence. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access
 -->

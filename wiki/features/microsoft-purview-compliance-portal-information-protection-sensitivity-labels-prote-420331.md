@@ -4,7 +4,7 @@ slug: "microsoft-purview-compliance-portal-information-protection-sensitivity-la
 roadmapId: 420331
 topic: "governance"
 products: ["Microsoft Purview"]
-summary: "Purview protection policies block access to labelled Fabric items for everyone not on the policy's allowed list. Nothing is restricted until an Information Protection Admin creates a policy; it can add pay-as-you-go charges."
+summary: "Purview protection policies restrict access to labelled Fabric items using an allowed list, with exceptions for label issuers and, for automatically labelled native Fabric items with no issuer, item creators. Nothing is restricted until an admin acts."
 status: "in-development"
 releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -59,7 +59,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Information Protection > Policies > Protection policies > + New protection policy > Choose data sources to apply the policy > Microsoft Fabric > Define access control settings"
+      path: "Information Protection > Policies > Protection policies > + New protection policy > + Add sensitivity label > Choose data sources to apply the policy > Microsoft Fabric > Define access control settings > Add users and groups"
       docs: "https://learn.microsoft.com/fabric/governance/protection-policies-create"
     api: null
     note: "Preview. Needs at least Information Protection Admin. The next wizard page sets whether the policy is on; Edit policy changes it later."
@@ -95,31 +95,35 @@ controls:
     note: "Usage center is in preview. Needs Global Reader, Security Reader or Global Admin. Information Protection is listed as pausable."
 confidence: "high"
 created: "2026-11-25"
-updated: "2026-11-25"
+updated: "2026-11-26"
 roadmapModified: "2024-10-04T23:15:50"
 changes:
   - date: "2026-11-25"
     note: "New briefing: Purview protection policies for Fabric items, with licensing disagreement between pages, the pay-as-you-go meter and four controls."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 68 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected who a policy blocks: label issuers, and creators of automatically labelled native Fabric items with no issuer, keep access; reworded the autonomy bullet and completed the Purview wizard path."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 71 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
-  date: "2026-11-25"
-  version: 1
+  status: "verified-with-gaps"
+  date: "2026-11-26"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 68
-  confirmed: 65
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "52a70039b6daff02e68bdf0a2a62b87a"
+  claims: 71
+  confirmed: 70
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "f11cf9e77250cd15fc570515818a458f"
 ---
 
 ## What's changing
 
-Microsoft Purview protection policies let an organisation restrict access to Microsoft Fabric items by sensitivity label. Each policy is tied to one label: users and groups named in the policy keep the permissions they already have on an item carrying that label, and everyone else is blocked. The roadmap item describes users labelling Fabric items manually and administrators setting the protection policies that then apply access controls.
+Microsoft Purview protection policies let an organisation restrict access to Microsoft Fabric items by sensitivity label. Each policy is tied to one label: users and groups named in the policy keep the permissions they already have on an item carrying that label, and other users are blocked, subject to the label-issuer and native-item creator exceptions described below. The roadmap item describes users labelling Fabric items manually and administrators setting the protection policies that then apply access controls.
 
 Policies are created by an Information Protection Admin in the Microsoft Purview portal and apply to supported item types in all workspaces. Supported items are native Fabric item types (lakehouses, notebooks, pipelines and other core Fabric assets) and Power BI semantic models; Power BI reports and dashboards are not currently supported. The user who last applied the label to an item is not denied access, even if the policy does not name them. A new policy can take up to 24 hours to start protecting labelled items.
 
@@ -127,14 +131,14 @@ The roadmap record lists this item as **In development**, with preview targeted 
 
 ## Why it matters
 
-A protection policy takes access away from people who already have Fabric permissions on a labelled item, unless the policy names them. For a security team that has labelled Fabric data as Confidential, it turns the label from a marker into an access boundary. Microsoft documents it as something an administrator creates, so a tenant that does nothing sees no change in who can open Fabric items.
+A protection policy takes access away from people who already have Fabric permissions on a labelled item, unless the policy names them or a documented label-issuer or native-item creator exception applies. For a security team that has labelled Fabric data as Confidential, it turns the label from a marker into an access boundary. Microsoft documents it as something an administrator creates, so a tenant that does nothing sees no change in who can open Fabric items.
 
 The cost and breakage sit with whoever switches it on. Applications that read semantic models through a service principal are denied unless the service principal is in a security group added to the policy, and each labelled item in scope is a billable asset on the Purview pay-as-you-go meter. Plan the allowed list and the Azure billing owner before the first policy is turned on.
 
 ## Risk assessment
 
 **Data exposure**
-- The policy narrows access but has documented gaps: the user who last applied the label keeps access whether or not the policy names them, and where a label is applied automatically (for example by downstream inheritance) with no label issuer, the item's creator is not restricted.
+- The policy narrows access but has documented gaps: the user who last applied the label keeps access whether or not the policy names them, and for native Fabric item types, where a label is applied automatically (for example by downstream inheritance) with no label issuer, the item's creator is not restricted.
 - Power BI reports and dashboards are not supported item types, so a policy covers the semantic model and not those items.
 - Protection policies for Fabric do not support guest or external users; how such users are treated on a labelled item is an open question.
 
@@ -143,7 +147,7 @@ The cost and breakage sit with whoever switches it on. Applications that read se
 - Who can apply labels in Fabric is set by the Fabric tenant setting **Allow users to apply sensitivity labels for content**, and labelling is what brings an item under a policy (see the controls table).
 
 **Autonomy & actions**
-- No change: the feature acts only on items carrying the policy's label and takes no other action. Enforcement can lag a new policy by up to 24 hours.
+- The documented protection policy controls access to items carrying its associated sensitivity label. Enforcement can lag a new policy by up to 24 hours.
 
 **Change & support**
 - Deployment pipelines and Git integration use only workspace permissions, not the item-level permissions a policy sets, so release processes will not reflect the restriction.
@@ -196,7 +200,7 @@ The cost and breakage sit with whoever switches it on. Applications that read se
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which users and groups keep access to Fabric items carrying a policy's label</strong><br><small>Tenant</small><br><small class="controls__note">Preview. Needs at least Information Protection Admin. The next wizard page sets whether the policy is on; Edit policy changes it later.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Information Protection › Policies › Protection policies › + New protection policy › Choose data sources to apply the policy › Microsoft Fabric › Define access control settings <a href="https://learn.microsoft.com/fabric/governance/protection-policies-create" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which users and groups keep access to Fabric items carrying a policy's label</strong><br><small>Tenant</small><br><small class="controls__note">Preview. Needs at least Information Protection Admin. The next wizard page sets whether the policy is on; Edit policy changes it later.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Information Protection › Policies › Protection policies › + New protection policy › + Add sensitivity label › Choose data sources to apply the policy › Microsoft Fabric › Define access control settings › Add users and groups <a href="https://learn.microsoft.com/fabric/governance/protection-policies-create" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether sensitivity labels can be applied and enforced on Fabric items, and by whom</strong><br><small>Tenant</small><br><small class="controls__note">Required for protection policy enforcement in Fabric. The request body sets enabled and enabledSecurityGroups. Caller must be a Fabric administrator or a service principal.</small></td><td data-label="Admin UI"><strong>Fabric admin portal</strong><br>Tenant settings › Information protection › Allow users to apply sensitivity labels for content <a href="https://learn.microsoft.com/fabric/enterprise/powerbi/service-security-enable-data-sensitivity-labels" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST https://api.fabric.microsoft.com/v1/admin/tenantsettings/{tenantSettingName}/update</code> <a href="https://learn.microsoft.com/rest/api/fabric/admin/tenants/update-tenant-setting" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Who holds the Information Protection Admin role needed to create protection policies</strong><br><small>Tenant</small><br><small class="controls__note">Information Protection Admin is assigned by default under the Compliance Administrator role group.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and scopes › Role groups › Role groups for Microsoft Purview solutions › role group › Edit › Edit members of the role group › Choose users <a href="https://learn.microsoft.com/purview/purview-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember -Identity &quot;&lt;role-group&gt;&quot; -Member &quot;&lt;user-UPN&gt;&quot;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Pay-as-you-go usage of the Information Protection meter, and pausing it</strong><br><small>Tenant</small><br><small class="controls__note">Usage center is in preview. Needs Global Reader, Security Reader or Global Admin. Information Protection is listed as pausable.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Usage center › Pay-as-you-go <a href="https://learn.microsoft.com/purview/purview-billing-usage" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
@@ -218,15 +222,14 @@ Microsoft Learn documents no PowerShell cmdlet or API for creating or editing pr
 <!-- rationale
 risk: Low. Access changes only once an administrator creates and turns on a policy; the main hazard after that is service principals and users left off the allowed list losing access to labelled items.
 cost: Variable. Microsoft's billing page lists Fabric items under the Information Protection pay-as-you-go meter, charged per asset in scope of a protection policy per day, billed through Azure, on top of per-user licences.
-impact: Medium. Fabric users, analysts and service principals that are not on a policy's allowed list lose access to labelled lakehouses, notebooks, pipelines and semantic models once the policy is on.
+impact: Medium. Fabric users, analysts and service principals that are not on a policy's allowed list lose access to labelled lakehouses, notebooks, pipelines and semantic models once the policy is on, unless a documented label-issuer or native-item creator exception applies.
 -->
 
-<!-- verifier-findings (2026-11-25, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] summary; What's changing; Why it matters; rationale: impact / behaviour: Everyone not on the policy's allowed list is blocked from the labeled item. | Found: A protection policy doesn't apply to a label issuer. That is, the user that last applied a label associated with a protection policy to an item won't be denied access to that item, even if they aren't specified in the policy. | Fix: Replace the summary's first sentence with 'Purview protection policies restrict access to labelled Fabric items using an allowed list, with exceptions for label issuers and, for automatically labelled native Fabric items with no issuer, item creators.' In What's changing, replace 'and everyone else is blocked' with 'and other users are blocked, subject to the label-issuer and native-item creator exceptions described below'. In Why it matters and the impact rationale, qualify users left off the list with 'unless a documented label-issuer or native-item creator exception applies'. | Source: https://learn.microsoft.com/fabric/governance/protection-policies-overview
-- [contradicted, blocker] Risk assessment: Data exposure / behaviour: Whenever a label is applied automatically with no issuer, the item's creator is unrestricted, without an item-type qualification. | Found: For native Fabric item types, if the label is applied automatically by the system—such as in the case of downstream inheritance—and there is no designated label issuer, the user who created the artifact will not be restricted by protection policies. | Fix: Replace the automatic-label clause with 'and for native Fabric item types, where a label is applied automatically (for example by downstream inheritance) with no label issuer, the item's creator is not restricted'. The cited documentation limits this exception to native Fabric item types; do not extend it to Power BI semantic models. | Source: https://learn.microsoft.com/fabric/governance/protection-policies-overview
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: The feature takes no other action beyond acting on items carrying the policy's label. | Found: Searched: Microsoft Fabric protection policies automatic actions only restrict access sensitivity label. Read protection-policies-overview, protection-policies-create and data-gov-protection-policy; these describe access control, but do not state that no other action occurs. | Fix: Replace 'No change: the feature acts only on items carrying the policy's label and takes no other action' with 'The documented protection policy controls access to items carrying its associated sensitivity label'. Keep the separately supported 24-hour enforcement statement.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui / admin-path: The Purview path through Information Protection, Policies, Protection policies, new policy and Microsoft Fabric reaches Define access control settings. | Found: On the Define access control settings page, specify which users and groups should retain their access to items labeled with the sensitivity label you selected in step 4. | Fix: Use 'Information Protection > Policies > Protection policies > + New protection policy > Choose the sensitivity label used to detect sensitive items > + Add sensitivity label > sensitivity label > Choose data sources to apply the policy > Microsoft Fabric > Define access control settings > Add users and groups'. The omitted label selection chooses the policy's target and the printed route stops on the correct control page. The opening navigation and '+ New protection policy' are also supported by the already-cited https://learn.microsoft.com/purview/data-gov-protection-policy; the automatic missing-word finding is not a contradiction. | Source: https://learn.microsoft.com/fabric/governance/protection-policies-create
+- [supported, minor] What's changing: first paragraph; Why it matters; controls[0] / behaviour: Users and groups specified in a policy retain the permissions they already have on items carrying its label. | Found: The policy controls access to an item that has the associated label by allowing users and groups specified in the policy to retain permissions they have on the item, while blocking access for everyone else. | Fix: Keep the statement attributed to the Fabric overview, but add: 'The separate SQL database guidance distinguishes retained read access from retained full control: the read-access option removes other item permissions, and users not specified in the full-control option lose the Write item permission.' Cite https://learn.microsoft.com/fabric/database/sql/protect-databases-with-protection-policies. That page says 'Any other permissions the specified users have on the item get removed' for the read-access option, unlike the general overview's wording. | Source: https://learn.microsoft.com/fabric/governance/protection-policies-overview
+- [supported, minor] controls[0].ui; Governance controls: first table row / admin-path: The printed Purview path reaches the Fabric protection policy wizard's Add users and groups control. | Found: On the Choose the sensitivity label used to detect sensitive items page, select + Add sensitivity label ... On the Define access control settings page ... Select Add users and groups | Fix: Use 'Information Protection > Policies > Protection policies > + New protection policy > Name and describe your protection policy > Choose the sensitivity label used to detect sensitive items > + Add sensitivity label > label > Choose data sources to apply the policy > Microsoft Fabric > Define access control settings > Add users and groups'. The omitted wizard headings and label selection are non-blocking. The navigation and + New protection policy are also documented at https://learn.microsoft.com/purview/data-gov-protection-policy, which is already cited. | Source: https://learn.microsoft.com/fabric/governance/protection-policies-create
+- [supported, minor] controls[3].ui; Governance guidance: After rollout; Governance controls: fourth table row / admin-path: Microsoft Purview portal > Usage center > Pay-as-you-go reaches the page for Information Protection usage and pausing. | Found: The Usage center in the Microsoft Purview portal ... Usage center > Pay-as-you-go ... The pay-as-you-go usage page also lets you toggle the features listed between paused and active states. | Information Protection | Yes | Yes | | Fix: Extend controls[3].ui.path to 'Usage center > Pay-as-you-go > Information Protection'. Keep the note that Information Protection is pausable; the documented control toggles it between paused and active states. The current path stops early on the correct page, not at a wrong location. | Source: https://learn.microsoft.com/purview/purview-billing-usage
+- [contradicted, minor] Governance guidance: Before rollout, first bullet / consistency: Every control that the governance checklist asks readers to check has a corresponding controls-table row. | Found: Choose the label each policy will enforce, confirming it is scoped to Files & other data assets and includes Control access; each policy takes one label. The table covers policy access, Fabric labelling enablement, role membership and Usage center, not label scope or protection configuration. | Fix: The instruction to check the label's scope and Control access configuration has no corresponding table row. Replace that checklist bullet with 'Choose the label each policy will enforce; each policy takes one label.' Keep the existing documented label prerequisites in Scope; do not add a new control row.
 -->

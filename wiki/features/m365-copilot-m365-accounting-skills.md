@@ -76,15 +76,17 @@ changes:
     note: "Corrected licensing to mixed and cost to variable: Cowork skill calls use Copilot Credits; Excel apps are covered by the Microsoft 365 Copilot licence. Narrowed the Excel risk bullet and removed the Purview checklist step."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 70 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 79 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-19"
+  date: "2026-11-26"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 70
-  confirmed: 69
+  claims: 79
+  confirmed: 78
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -190,8 +192,8 @@ cost: Variable. Cowork skill calls consume Copilot Credits under usage-based bil
 impact: Medium. Finance and accounting staff notice it, with roadmap figures of more than 8,000 Insiders users in seven days; most other users do not.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: At rollout, audit-trail bullet; Governance controls / consistency: The rollout checklist asks pilot users to switch on the audit trail without a corresponding controls-table row. | Found: Checklist: 'ask them to switch it on for entries and reconciliations.' The sole table row governs 'Whether the Accounting for Cowork plugin is blocked or available to users or groups', not the audit trail. | Fix: Remove 'and ask them to switch it on for entries and reconciliations' from the At rollout bullet, leaving: 'Tell pilot users that the audit trail is a choice they make when invoking a capability.'
+- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: The checklist asks users to enable the audit trail without a corresponding controls-table row. | Found: Checklist: 'ask them to switch it on for entries and reconciliations.' The sole controls-table row governs 'Whether the Accounting for Cowork plugin is blocked or available to users or groups', not the audit trail. | Fix: Remove 'and ask them to switch it on for entries and reconciliations' from the At rollout audit-trail bullet, leaving: 'Tell pilot users that the audit trail is a choice they make when invoking a capability.'
 -->

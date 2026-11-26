@@ -107,15 +107,17 @@ changes:
     note: "Correction: cost rating changed to variable because Cowork tasks use usage-based billing in Copilot Credits; plugin path, package API wording and sources updated; two checklist steps without matching controls removed."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 77 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 73 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-22"
+  date: "2026-11-26"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 77
-  confirmed: 77
+  claims: 73
+  confirmed: 73
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -232,9 +234,11 @@ cost: Variable. The Copilot pane requires a Microsoft Copilot licence; Cowork ta
 impact: Medium. Licensed Copilot users who open Viva Engage on the web or desktop see the Copilot pane change; users without a Copilot licence and admins configuring Engage are not affected.
 -->
 
-<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance guidance: Before rollout, first bullet / admin-path: Billing > Licenses in the Microsoft 365 admin center is the location for reviewing licence holders. | Found: In the admin center, go to the Billing > Licenses page. ... Select a product. ... Direct user assignments: If a license is assigned directly to a user, the user appears individually in the list of assignments for that product. | Fix: Expand the checklist route to 'Billing > Licenses > product'. Add 'For group-based assignments, view the assigned group's members under Teams & groups > Active teams & groups' as documented at https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users. | Source: https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users
-- [supported, minor] Governance guidance: Before rollout and At rollout; Risk assessment: Autonomy & actions / admin-path: Agents > Tools in the Microsoft 365 admin center is the location for restricting or blocking the Engage Cowork plugin. | Found: select Agents > Tools. ... Find the plugin you want to manage and go to the Users tab. ... Available to specific users or groups ... Select Block | Fix: Expand the abbreviated restriction route to 'Agents > Tools > plugin > Users > Available to specific users or groups', and the blocking route to 'Agents > Tools > plugin > Users > Block', matching https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins and the existing control row. | Source: https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins
+- [supported, minor] controls[1].ui; controls[1].api; Why it matters; Governance controls; Open questions / absence: There is no separate documented Engage-specific UI or API switch for the enhanced Copilot pane. | Found: Searched: Viva Engage enhanced Copilot disable separate setting admin feature access management PowerShell Graph license. Opened Learn's enhanced Engage Copilot setup, Engage setup and feature-access-management. Setup says 'There is no separate Engage setting'; VFAM lists AI Summarization. | Fix: Keep the null row and the feature setup page's statement. Add: 'The feature-access-management table still lists Engage AI Summarization and links to this setup page, although the enhanced Copilot setup page says there is no separate Engage setting.' Cite https://learn.microsoft.com/viva/feature-access-management.
+- [supported, minor] controls[2].note; Governance guidance: At rollout; Governance controls / applicability: Block on the plugin's Users tab is an alternative to restricting availability when Cowork actions in Engage are not wanted. | Found: Select Block: No users in your tenant can access the plugin. Blocking takes effect for new conversations. Conversations already in progress that use the plugin continue until they end. | Fix: Add to controls[2].note and the At rollout blocking advice: 'Blocking takes effect for new conversations. Conversations already in progress that use the plugin continue until they end.' This qualifies the existing control without changing the documented path. | Source: https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins
+- [supported, minor] Governance guidance: Before rollout, licence-holder checklist / admin-path: Billing > Licenses is where administrators review Microsoft Copilot licence holders. | Found: In the admin center, go to the Billing > Licenses page. Select a product. Group-based assignments: If a license is assigned to a group, the group name appears in the list instead of individual users. | Fix: Use 'Billing > Licenses > product' in the checklist. Add: 'For group-based assignments, view the assigned group's members under Teams & groups > Active teams & groups.' Both routes are documented at https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users. | Source: https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users
+- [supported, minor] Governance guidance: Before rollout and At rollout; Risk assessment: Autonomy & actions / admin-path: Agents > Tools is the location for making the Engage Cowork plugin available, restricting it or blocking it. | Found: select Agents > Tools. Find the plugin you want to manage and go to the Users tab. Available to specific users or groups Select Block | Fix: Expand the checklist and risk-section routes to 'Agents > Tools > plugin > Users > Available to specific users or groups' for restriction and 'Agents > Tools > plugin > Users > Block' for blocking, matching https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins. | Source: https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins
 -->
