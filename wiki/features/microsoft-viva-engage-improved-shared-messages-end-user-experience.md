@@ -64,16 +64,18 @@ changes:
     note: "Corrected after the independent check: removed an unsupported assurance about autonomy, aligned the summary with Microsoft's recommendation, added a source, and updated status to Launched per the roadmap record."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 56 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 2 of 57 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-24"
+  date: "2026-11-26"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 56
+  claims: 57
   confirmed: 55
-  unconfirmed: 1
+  unconfirmed: 2
   contradicted: 0
   attempts: 0
   hash: "5545d82285162365752387e755810ae1"
@@ -171,8 +173,9 @@ cost: Low. The only cost the sources show is admin time to inform users and upda
 impact: Medium. Anyone who views shared messages in Viva Engage sees different previews and a new dialog, though the notice says sharing workflows stay as they are.
 -->
 
-<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [unsupported, minor] rationale: risk / behaviour: The change introduces no new data source. | Found: Searched: "Viva Engage" "shared messages" "preview"; Viva Engage improved shared message previews conversation dialog admin user setting default automatic rollout licensing price. Read MC1539003 and Learn results; none states that data sources remain unchanged. | Fix: Remove 'with no new data source or action' from the risk rationale. Use: 'Low. Microsoft's notice describes a display change to messages users already share; it does not say how previews treat recipients who cannot view the original post.'
+- [unsupported, minor] rationale: risk / behaviour: The change introduces no new data source. | Found: Searched: "Viva Engage" "shared message" "new data" "actions"; Viva Engage shared messages preview original post private community permissions data sources actions. Read MC1539003, roadmap and returned Learn excerpts; none assures that data sources remain unchanged. | Fix: Remove 'with no new data source or action' from the risk rationale. Use: 'Low. Microsoft's notice describes a display change to messages users already share; it does not say how previews treat recipients who cannot view the original post.'
+- [unsupported, minor] rationale: risk / behaviour: The change introduces no new action. | Found: Searched: "Viva Engage" "shared message" "new data" "actions". Read MC1539003, roadmap and returned Learn excerpts; the notice describes react, reply and share but gives no exhaustive assurance that the change introduces no other action. | Fix: Remove 'with no new data source or action' from the risk rationale. Use: 'Low. Microsoft's notice describes a display change to messages users already share; it does not say how previews treat recipients who cannot view the original post.'
 -->

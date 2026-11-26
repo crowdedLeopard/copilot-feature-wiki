@@ -69,15 +69,17 @@ changes:
     note: "Corrected the Specify storyline creators path to include Edit, replaced the storyline-creator caveat with the page's description, added the Engage Core Service Plan licensing qualification, and trimmed checklist steps that have no controls-table row."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 75 statements confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 79 statements confirmed"
 version: 2
 verification:
   status: "verified"
-  date: "2026-11-21"
+  date: "2026-11-26"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 75
-  confirmed: 75
+  claims: 79
+  confirmed: 79
   unconfirmed: 0
   contradicted: 0
   attempts: 0

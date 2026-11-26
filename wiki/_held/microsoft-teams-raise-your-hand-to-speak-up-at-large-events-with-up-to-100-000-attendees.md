@@ -37,6 +37,12 @@ sources:
   - title: "Manage Attendee Capacity Pack add-on licenses for Teams events"
     url: "https://learn.microsoft.com/microsoftteams/attendee-capacity-pack-manage"
     kind: "learn"
+  - title: "Assign Teams add-on licenses to users"
+    url: "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/assign-teams-add-on-licenses"
+    kind: "learn"
+  - title: "user: assignLicense"
+    url: "https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0"
+    kind: "learn"
   - title: "Manage who can schedule and attend events in Microsoft Teams"
     url: "https://learn.microsoft.com/microsoftteams/set-up-events"
     kind: "learn"
@@ -94,8 +100,11 @@ controls:
       surface: "Teams admin center"
       path: "Add-on Licenses > Teams Events > Licenses > Attendee pack"
       docs: "https://learn.microsoft.com/microsoftteams/attendee-capacity-pack-manage"
-    api: null
-    note: "Requires Global Administrator; Teams Administrator is read-only. One pack per organiser."
+    api:
+      kind: "graph"
+      call: "POST /v1.0/users/{id}/assignLicense"
+      docs: "https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0"
+    note: "UI needs Global Administrator; Teams Administrator is read-only. One pack per organiser. Graph call is general user-licence assignment: addLicenses specifies the licences to add; removeLicenses the skuIds to remove."
   - governs: "Default value of Reactions in organisers' Meeting options"
     scope: "user"
     ui:
@@ -116,19 +125,23 @@ changes:
     note: "New briefing: planned raise hand at events of up to 100,000 attendees, with today's 20,000 limit, attendee pack licensing and the events policy controls."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 56 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected: removed the claim that recordings show attendees brought on screen, added the Microsoft Graph licence-assignment call for attendee packs, and narrowed the note on pack capacity updates."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 67 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-26"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 56
-  confirmed: 54
+  claims: 67
+  confirmed: 66
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "340f2af54898cc1582f13b2ded420d77"
+  contradicted: 1
+  attempts: 2
+  hash: "ccb16d2e7abfde6f497710e9805ffddc"
 ---
 
 ## What's changing
@@ -150,7 +163,7 @@ Microsoft has not stated what happens on arrival: whether raise hand appears in 
 ## Risk assessment
 
 **Data exposure**
-- An attendee brought on mic and camera is heard and seen by the whole audience, and by anyone who later watches the recording. The events policy setting **Record events optimized for a large audience** defaults to On. Nothing documented filters what the speaker says or shows; the organiser's choice of whom to bring on is the control.
+- An attendee brought on mic and camera is heard and seen by the whole audience. The events policy setting **Record events optimized for a large audience** defaults to On. Nothing documented filters what the speaker says or shows; the organiser's choice of whom to bring on is the control.
 
 **Security & identity**
 - **Who can attend events optimized for a large audience** defaults to **Everyone**, so any user can attend large events by organisers with that policy. Restricting it to people in the organisation and guests narrows who can raise a hand. Microsoft has not said whether external or anonymous attendees can be brought on mic and camera.
@@ -194,7 +207,7 @@ Microsoft has not stated what happens on arrival: whether raise hand appears in 
 
 ### After rollout
 - Check the Meetings and events feature and capacity comparison for the updated raise hand limit and any new events policy setting.
-- Review pack assignments when large-event organisers change, since each organiser holds one pack and capacity is not updated automatically on events already scheduled.
+- Review pack assignments when large-event organisers change, since each organiser holds one pack and event capacity is not updated automatically when a larger pack is assigned to an organiser after scheduling.
 
 ## Governance controls
 
@@ -206,7 +219,7 @@ Microsoft has not stated what happens on arrival: whether raise hand appears in 
 <tr><td data-label="Control"><strong>Admin setting to allow or block raise hand and bringing attendees on screen in large events</strong><br><small>User</small><br><small class="controls__note">The Events policies settings and the Set-CsTeamsEventsPolicy syntax list no such setting at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether users can create events optimised for a large audience (town halls)</strong><br><small>User</small><br><small class="controls__note">Blunt fallback: removes large events for organisers with the policy, not raise hand alone.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Events policies › policy › Events optimized for a large audience <a href="https://learn.microsoft.com/microsoftteams/set-up-events" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsEventsPolicy -Identity &lt;policy name&gt; -AllowTownhalls Disabled</code> <a href="https://learn.microsoft.com/microsoftteams/set-up-events" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Who can attend events optimised for a large audience</strong><br><small>User</small><br><small class="controls__note">Default is Everyone. Applies to large events created by organisers with this policy.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Events policies › policy › Who can attend events optimized for a large audience <a href="https://learn.microsoft.com/microsoftteams/set-up-events" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsEventsPolicy -Identity &lt;policy name&gt; -TownhallEventAttendeeAccess EveryoneInOrganizationAndGuests</code> <a href="https://learn.microsoft.com/microsoftteams/set-up-events" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which organisers can host events above 3,000 attendees, and up to what size (Attendee Capacity Pack)</strong><br><small>User</small><br><small class="controls__note">Requires Global Administrator; Teams Administrator is read-only. One pack per organiser.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Add-on Licenses › Teams Events › Licenses › Attendee pack <a href="https://learn.microsoft.com/microsoftteams/attendee-capacity-pack-manage" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which organisers can host events above 3,000 attendees, and up to what size (Attendee Capacity Pack)</strong><br><small>User</small><br><small class="controls__note">UI needs Global Administrator; Teams Administrator is read-only. One pack per organiser. Graph call is general user-licence assignment: addLicenses specifies the licences to add; removeLicenses the skuIds to remove.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Add-on Licenses › Teams Events › Licenses › Attendee pack <a href="https://learn.microsoft.com/microsoftteams/attendee-capacity-pack-manage" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/users/{id}/assignLicense</code> <a href="https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Default value of Reactions in organisers' Meeting options</strong><br><small>User</small><br><small class="controls__note">Sets a default only; organisers can change it for each meeting and event. Learn notes that turning reactions off disables hand raise.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Meeting engagement › Reactions <a href="https://learn.microsoft.com/microsoftteams/manage-reactions-meetings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy name&gt; -AllowMeetingReactions Disabled</code> <a href="https://learn.microsoft.com/microsoftteams/manage-reactions-meetings" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
@@ -215,7 +228,7 @@ Microsoft Learn documents no admin setting for raise hand or for bringing attend
 
 Turning **Events optimized for a large audience** off is blunt: it stops affected organisers creating large events, and if it is turned off after an event is scheduled, the organiser can't run or start it.
 
-The Manage Attendee Capacity Pack page documents assignment in the Teams admin center and gives no PowerShell or Graph method. Assigning packs needs Global Administrator; Teams Administrator has read-only access to that section.
+The Manage Attendee Capacity Pack page describes the Teams admin center workflow; general Teams add-on licence assignment is also documented through Microsoft Graph ([Assign Teams add-on licenses to users](https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/assign-teams-add-on-licenses)). Assigning packs needs Global Administrator; Teams Administrator has read-only access to that section.
 
 The meeting policy **Reactions** setting only sets the default in organisers' **Meeting options**; organisers can change it for each meeting and event.
 
@@ -236,10 +249,9 @@ impact: Medium. Noticed by the organisers, producers and audiences of events abo
 <!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure / behaviour: Anyone watching the recording will hear and see the attendee brought on mic and camera. | Found: Meeting recordings don't capture: ... Attendee video streams in events optimized for large audiences and in live events | Fix: Remove 'and by anyone who later watches the recording' from the Data exposure bullet. Microsoft excludes attendee video streams from large-audience event recordings at https://learn.microsoft.com/microsoftteams/teams-recording-policy; no source read states an exception for the planned on-screen capability. | Source: https://learn.microsoft.com/microsoftteams/teams-recording-policy
-- [contradicted, blocker] controls[3].api; Governance controls table and prose / absence: No API or automation is documented for assigning attendee pack add-on licenses to organisers. | Found: Add or remove licenses for the user to enable or disable their use of Microsoft cloud offerings that the company has licenses to. ... POST /users/{id | userPrincipalName}/assignLicense | Fix: Replace controls[3].api with kind 'graph', call 'POST /v1.0/users/{id}/assignLicense', docs 'https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0'. Add the note 'General user-license assignment: addLicenses specifies the purchased license skuId; removeLicenses identifies licenses to remove.' Cite https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/assign-teams-add-on-licenses, which documents PowerShell assignment of Teams add-on licenses. Narrow the prose to 'The Manage Attendee Capacity Pack page describes the Teams admin center workflow; general Teams add-on license assignment is also documented through Microsoft Graph.' Do not invent a pack-specific SKU identifier. | Source: https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0
+- [contradicted, blocker] Risk assessment: Change & support / consistency: Whether the feature is used rests with organisers, not with an admin policy. | Found: so whether the feature is used rests with organisers, not with an admin policy. ... Turning Events optimized for a large audience off is blunt: it stops affected organisers creating large events | Fix: In Risk assessment > Change & support, remove ', so whether the feature is used rests with organisers, not with an admin policy'. End the sentence after '(November 2026)'. This preserves the confirmed absence of a feature-specific setting without denying the documented coarse admin controls.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Open questions / behaviour: The November 13, 2025 admin release notes describe organisers and presenters bringing raised-hand attendees on screen. | Found: town halls organized by users with Teams Premium can allow attendees to raise their hand. Organizers and presenters can then bring attendees on screen to allow them to share their camera and microphone. | Fix: Qualify the historical sentence as 'Microsoft's admin release notes for November 13, 2025 describe a related capability for town halls organised by users with Teams Premium: attendees raise their hand, and organisers and presenters bring them on screen to share camera and microphone.' | Source: https://learn.microsoft.com/officeupdates/teams-admin
-- [supported, minor] controls[1].api; Governance controls table / command: Set-CsTeamsEventsPolicy -Identity <policy name> -AllowTownhalls Disabled prevents large-event creation. | Found: To prevent organizers with this policy from creating events optimized for large audiences, run the following command: Set-CsTeamsEventsPolicy -Identity <policy name> -AllowTownhalls Disabled | Fix: Add 'The Set-CsTeamsEventsPolicy reference marks the policy as preview' to the notes for controls[1] and controls[2]. The reference at https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy says 'Note that this policy is currently still in preview.' Keep the roadmap's General Availability release phase unchanged. | Source: https://learn.microsoft.com/microsoftteams/set-up-events
-- [supported, minor] Governance guidance: After rollout / behaviour: Capacity is not updated automatically on events already scheduled when pack assignments change. | Found: Event capacity isn't automatically updated when a larger capacity attendee pack is assigned. The organizer must manually update the event capacity in the event scheduling form. | Fix: Narrow the final checklist clause to 'event capacity is not updated automatically when a larger pack is assigned to an organiser after scheduling'. The documentation explicitly describes larger-pack assignment, not every kind of assignment change. | Source: https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/attendee-capacity-pack
+- [supported, minor] controls[1].api / command: Set-CsTeamsEventsPolicy -Identity <policy name> -AllowTownhalls Disabled prevents large-event creation. | Found: To prevent organizers with this policy from creating events optimized for large audiences, run the following command: Set-CsTeamsEventsPolicy -Identity <policy name> -AllowTownhalls Disabled | Fix: Add to the events-policy control notes: 'The Set-CsTeamsEventsPolicy reference still labels this policy preview, although the scheduling and attendance admin guide documents these controls without that label.' Reference: https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy. | Source: https://learn.microsoft.com/microsoftteams/set-up-events
+- [supported, minor] controls[4].note; Governance controls / applicability: The general Reactions policy sets an organiser Meeting options default that organisers can change for each meeting and event. | Found: As an admin, you can use the Teams admin center or PowerShell to set the default value for reactions in your organizers' Meeting options. Organizers can change the setting for each meeting and event they create. | Fix: Append to controls[4].note: 'However, Plan for Teams events lists No control for admins for Attendee reactions in events optimized for large audiences; the published guidance differs on this scope.' Cite https://learn.microsoft.com/microsoftteams/plan-events#reference. Keep this row as a general default control, not a confirmed control for the planned expansion. | Source: https://learn.microsoft.com/microsoftteams/manage-reactions-meetings
+- [supported, minor] Why it matters / behaviour: Q&A can provide a moderated text-question queue rather than a live microphone. | Found: They can also turn on moderation to review and approve questions before they appear in the Q&A feed. | Fix: Change 'from a moderated text queue to a live microphone' to 'from a text queue that organisers can moderate to a live microphone', and cite https://learn.microsoft.com/microsoftteams/manage-qna-for-teams. | Source: https://learn.microsoft.com/microsoftteams/manage-qna-for-teams
 -->

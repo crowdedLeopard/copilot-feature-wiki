@@ -2,66 +2,50 @@
   "slug": "microsoft-copilot-studio-discover-and-add-skills-from-the-skill-catalog",
   "roadmapId": 571880,
   "title": "Copilot Studio: discover and add skills from the skills catalog",
-  "status": "verified-with-gaps",
-  "date": "2026-11-19",
+  "status": "held",
+  "date": "2026-11-26",
   "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 0,
-  "standard": "cd5b21ff3a5b",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "pass",
+  "verifierVerdict": "hold",
   "notes": [],
-  "hold": null,
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-26",
+    "reasons": [
+      "1 blocking finding (claim 31)"
+    ]
+  },
   "counts": {
-    "claims": 63,
-    "confirmed": 63,
-    "unconfirmed": 0,
+    "claims": 61,
+    "confirmed": 60,
+    "unconfirmed": 1,
     "contradicted": 0,
-    "blocker": 0,
+    "blocker": 1,
     "major": 0,
     "minor": 2
   },
-  "summary": "The briefing's roadmap facts, package controls, Graph operations and harness billing are supported. The maker sharing path omits a section heading, and Microsoft's release notes describe a broader sharing audience than the detailed instructions; neither prevents publication.",
+  "summary": "Hold: the advice to treat the capability as arriving without an administrator switch goes beyond the evidence. Microsoft documents environment-level skills controls, but their coverage of the preview browsing and sharing flow is not established; the briefing must preserve that uncertainty rather than assume no switch.",
   "claims": [
     {
       "n": 1,
-      "where": "title; front matter: products",
+      "where": "summary; What's changing",
       "type": "record",
-      "claim": "This roadmap change concerns discovering and adding skills in Microsoft Copilot Studio.",
+      "claim": "Microsoft plans a Copilot Studio catalog for makers to discover, reuse and selectively share approved organisational skills.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Microsoft Copilot Studio: Discover & Add Skills from the skill catalog",
+      "quote": "makers can discover, reuse and selectively share approved organizational skills instead of recreating the same instructions and workflows for every agent",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "summary; What's changing; Why it matters",
-      "type": "record",
-      "claim": "The planned catalog lets makers discover and reuse approved organisational skills rather than recreate instructions and workflows for each agent.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "makers can discover, reuse and selectively share approved organizational skills instead of recreating the same instructions and workflows for every agent.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
       "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap plans selective sharing of organisational skills.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "makers can discover, reuse and selectively share approved organizational skills",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The roadmap describes a shared catalog powered by Microsoft 365 App Store.",
+      "claim": "The planned shared catalog is powered by Microsoft 365 App Store.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "The shared catalog powered by Microsoft 365 App Store",
@@ -69,18 +53,29 @@
       "fix": null
     },
     {
-      "n": 5,
-      "where": "What's changing; Why it matters; Open questions",
+      "n": 3,
+      "where": "What's changing; Why it matters",
       "type": "record",
-      "claim": "The roadmap plans shared skills across Copilot Studio, Microsoft 365 Copilot and Cowork with centralised governance.",
+      "claim": "The roadmap says shared skills can extend across Copilot Studio, Microsoft 365 Copilot and Cowork.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "enables shared skills to extend across experiences such as Copilot Studio M365 copilot, and Cowork, helping organizations standardize proven ways of working while maintaining centralized governance.",
+      "quote": "enables shared skills to extend across experiences such as Copilot Studio M365 copilot, and Cowork",
       "severity": null,
       "fix": null
     },
     {
-      "n": 6,
+      "n": 4,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes maintaining centralised governance.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "helping organizations standardize proven ways of working while maintaining centralized governance",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
       "where": "front matter: status; summary; What's changing; Open questions",
       "type": "record",
       "claim": "The roadmap status remains In development.",
@@ -91,18 +86,7 @@
       "fix": null
     },
     {
-      "n": 7,
-      "where": "front matter: targetDate; What's changing; Open questions",
-      "type": "record",
-      "claim": "The general availability target is October CY2026, not a confirmed release date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"targetDate\": \"October CY2026\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
+      "n": 6,
       "where": "front matter: previewDate; What's changing; Open questions",
       "type": "record",
       "claim": "The preview target is September CY2026.",
@@ -113,10 +97,21 @@
       "fix": null
     },
     {
-      "n": 9,
+      "n": 7,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The general availability target is October CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The record lists Worldwide (Standard Multi-Tenant) and no US Government cloud.",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed, with no US Government cloud listed.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -124,10 +119,10 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 9,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap platform is Web.",
+      "claim": "The listed platform is Web.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -135,7 +130,7 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 10,
       "where": "front matter: releasePhase; Scope",
       "type": "record",
       "claim": "The record lists General Availability and Preview as release phases.",
@@ -146,43 +141,32 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 11,
       "where": "What's changing; Open questions",
-      "type": "record",
-      "claim": "Both roadmap target months have passed by 18 November 2026 while the supplied record remains In development.",
+      "type": "date",
+      "claim": "Both roadmap target months had passed by 18 November 2026.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"status\": \"In development\", \"targetDate\": \"October CY2026\", \"previewDate\": \"September CY2026\"",
+      "quote": "\"targetDate\": \"October CY2026\", \"previewDate\": \"September CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Learn does not describe the catalog by its roadmap name.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"skills catalog\" \"Copilot Studio\"; Copilot Studio skills catalog browse add share skill Copilot Credits rate license prerequisites. Read skills-overview, skills-manage, skills-add-existing and whats-new; the latter calls the flow marketplace-shared skills, not the named catalog.",
       "severity": null,
       "fix": null
     },
     {
       "n": 13,
       "where": "What's changing",
-      "type": "absence",
-      "claim": "Learn does not identify a catalog by the roadmap's name or explicitly equate it with Browse skills.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot Studio \"skills catalog\" admin enable disable roles approval Browse skills; \"Copilot Studio\" \"skills catalog\" licensing roles. Opened skills-manage, skills-overview and skills-add-existing; read What's new excerpts. None explicitly identifies the two catalogs as the same.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "What's changing; Risk assessment: Change & support; Scope; controls[3].note",
-      "type": "behaviour",
-      "claim": "The Browse skills and skill sharing instructions are preview documentation subject to change.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-manage",
-      "quote": "Browse and add shared skills (preview) ... Share a skill (preview) ... This article contains Microsoft Copilot Studio preview documentation and is subject to change.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "What's changing; Why it matters; Governance guidance: At rollout",
       "type": "admin-path",
-      "claim": "A maker adds a shared skill from an agent's Build tab using the plus icon next to Skills, Browse skills (preview), the skill and Add.",
+      "claim": "A maker opens an agent, selects Build, the plus beside Skills, Browse skills (preview), a shared skill, and Add.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-manage",
       "quote": "Select the Build tab. ... Select the + icon next to Skills, and then select Browse skills (preview). ... Select the skill you want to add. ... On the skill details page, select Add.",
@@ -190,21 +174,43 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 14,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Available shared skills are those shared with the maker by administrators or skill owners.",
+      "claim": "The available shared skills are those shared by administrators or skill owners.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-manage",
-      "quote": "You can browse and add skills that other people shared with you to your agent. The skills available to you are the ones shared by admins or skill owners.",
+      "quote": "The skills available to you are the ones shared by admins or skill owners.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment: Change & support; Scope; controls[3].note",
+      "type": "behaviour",
+      "claim": "The browse and share flows are preview documentation subject to change.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-manage",
+      "quote": "Browse and add shared skills (preview) ... Share a skill (preview) ... This article contains Microsoft Copilot Studio preview documentation and is subject to change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Learn does not explicitly equate Browse skills with the catalog described in the roadmap.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"skills catalog\" \"Copilot Studio\" and Copilot Studio \"skills catalog\" \"Browse skills\" admin disable sharing API skill table licensing. Read skills-manage, skills-overview and whats-new; none explicitly identifies roadmap item 571880 or equates its named catalog with Browse skills.",
       "severity": null,
       "fix": null
     },
     {
       "n": 17,
-      "where": "What's changing; Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "where": "What's changing; Why it matters; rationale: risk",
       "type": "behaviour",
-      "claim": "A skill is defined by a name, description and instructions for particular tasks or scenarios.",
+      "claim": "A skill has a name, description and instructions that guide the agent's handling of a task.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-overview",
       "quote": "A skill is a capability defined by a name, a description, and instructions that tell the agent how to handle specific types of tasks or scenarios.",
@@ -215,10 +221,10 @@
       "n": 18,
       "where": "What's changing; Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Adding a shared skill gives the agent a snapshot.",
+      "claim": "Adding a shared skill gives the agent a snapshot with a reference to the original.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-manage",
-      "quote": "When you add a shared skill, the agent gets a snapshot of the skill",
+      "quote": "When you add a shared skill, the agent gets a snapshot of the skill while maintaining a reference to the original shared skill.",
       "severity": null,
       "fix": null
     },
@@ -226,18 +232,7 @@
       "n": 19,
       "where": "What's changing; Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "The added snapshot maintains a reference to the original shared skill.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-manage",
-      "quote": "while maintaining a reference to the original shared skill.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "What's changing; Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "A maker receives an update notification when opening an agent that uses an older shared-skill version.",
+      "claim": "Opening an agent that uses an older shared skill version produces an update notification.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-manage",
       "quote": "You receive a skill update notification when you open an agent that uses an older version of a shared skill.",
@@ -245,10 +240,10 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 20,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "A maker can choose whether to update an older shared skill.",
+      "claim": "Makers can choose to update to the new shared skill version.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-manage",
       "quote": "You can choose to update to the new version by selecting the update button for the skill.",
@@ -256,43 +251,32 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 21,
       "where": "What's changing; Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "A maker can share a skill they created for use in other organisational Copilot Studio agents.",
+      "claim": "A maker chooses the audience when sharing a skill they created.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-manage",
-      "quote": "When you share a skill you created, you and other people in your organization can use it in their Copilot Studio agents.",
+      "quote": "When you share a skill you created, you and other people in your organization can use it in their Copilot Studio agents. You can keep the skill private or share it with specific people or groups in your organization.",
       "severity": null,
       "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Risk assessment: Security & identity; controls[3].note",
+      "type": "behaviour",
+      "claim": "The detailed preview sharing instructions offer Only you or Specific users or groups in your organization.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-manage",
+      "quote": "Only you: Keeps the skill private to your account. ... Specific users or groups in your organization: Lets you add people or groups by name or email address.",
+      "severity": "minor",
+      "fix": "Add: \"The What's new page also describes sharing with your whole organisation, whereas the detailed sharing instructions list Only you and specific users or groups.\" Cite https://learn.microsoft.com/microsoft-copilot-studio/whats-new#notable-changes, which says \"share your own skills with specific people or your whole organization\"."
     },
     {
       "n": 23,
-      "where": "What's changing; Risk assessment: Security & identity; controls[3].note",
-      "type": "behaviour",
-      "claim": "The sharing dialog offers Only you to keep a skill private.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-manage",
-      "quote": "Only you: Keeps the skill private to your account.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "What's changing; Risk assessment: Security & identity; controls[3].note",
-      "type": "behaviour",
-      "claim": "The detailed preview instructions offer sharing with specific users or groups in the organisation.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-manage",
-      "quote": "Specific users or groups in your organization: Lets you add people or groups by name or email address. People and groups you add can use the skill.",
-      "severity": "minor",
-      "fix": "After the sharing-options sentence add: \"The What's new page also describes sharing with your whole organisation, whereas the detailed sharing instructions list Only you and specific users or groups.\" Cite https://learn.microsoft.com/microsoft-copilot-studio/whats-new#notable-changes, which says \"share your own skills with specific people or your whole organization\"."
-    },
-    {
-      "n": 25,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "People and groups a skill is shared with can add it to their agents.",
+      "claim": "Recipients of a shared skill can add it to their agents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-manage",
       "quote": "The people and groups you share with can then add the skill to their agents.",
@@ -300,10 +284,21 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 24,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "An owner must share an edited shared skill again to make the latest version available.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-manage",
+      "quote": "When you edit and change a skill that you already shared, share the skill again to make the latest version available to those you previously shared it with.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Skill packages can contain supporting scripts, templates and reference documents.",
+      "claim": "A skill package can include supporting scripts, templates and reference documents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-add-existing",
       "quote": "The package can optionally include supporting files, such as scripts, templates, and reference documents.",
@@ -311,10 +306,21 @@
       "fix": null
     },
     {
+      "n": 26,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "The Learn skills documentation does not specify the data-access boundaries of a catalog skill.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Copilot Studio\" \"shared skill\" \"data access\". Read skills-manage, skills-overview and skills-add-existing; results discuss apps and connected agents, but do not define catalog-skill data-access boundaries.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 27,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "The orchestration runtime activates skills based on the user's message and skill description rather than requiring the skill's name.",
+      "claim": "The runtime decides when to activate a skill from the user's message and skill description, without requiring the user to name it.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-overview",
       "quote": "The orchestration runtime decides when to activate a skill based on the user's message and the skill's description.",
@@ -323,17 +329,6 @@
     },
     {
       "n": 28,
-      "where": "Why it matters; Risk assessment: Autonomy & actions; rationale: risk",
-      "type": "behaviour",
-      "claim": "An activated skill's instructions guide agent behaviour.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-overview",
-      "quote": "When the runtime activates a skill, the skill's instructions guide your agent's behavior for that specific task.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
       "claim": "A skill can instruct an agent to use a specific tool.",
@@ -344,151 +339,107 @@
       "fix": null
     },
     {
+      "n": 29,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: Before rollout",
+      "type": "absence",
+      "claim": "Microsoft does not document a catalog approval step beyond the maker selecting Add to add a shared skill.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Browse skills\" \"approval\" \"Copilot Studio\"; \"Copilot Studio\" \"skills\" \"catalog\" administrator role approval data access. Read skills-manage and manage-plugins-skills-mcp-servers; the shared-skill flow ends at Add and no catalog-specific approval procedure is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 30,
-      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "An edited shared skill must be shared again to make the latest version available to its previous recipients.",
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "The documented maker capability is user-opt-in.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-manage",
-      "quote": "When you edit and change a skill that you already shared, share the skill again to make the latest version available to those you previously shared it with.",
+      "quote": "Select the + icon next to Skills, and then select Browse skills (preview). ... On the skill details page, select Add. Searched: \"Copilot Studio\" \"Browse skills\" \"disable\"; no enablement prerequisite for this specific flow was stated.",
       "severity": null,
       "fix": null
     },
     {
       "n": 31,
-      "where": "Risk assessment: Data exposure",
+      "where": "Why it matters",
       "type": "absence",
-      "claim": "The Learn skill pages do not state the data-access boundaries of a catalog skill.",
-      "status": "supported",
+      "claim": "Administrators should treat the capability as arriving without an administrator switch until Microsoft documents one.",
+      "status": "unsupported",
       "source": null,
-      "quote": "Searched: Copilot Studio \"Browse skills\" tenant sharing controls harness data access. Opened skills-manage, skills-overview and skills-add-existing. These describe instructions, tools and sharing, not catalog-specific data permissions.",
-      "severity": null,
-      "fix": null
+      "quote": "Searched: \"Copilot Studio\" \"Browse skills\" \"disable\"; \"Copilot Studio\" \"skill sharing\" \"tenant\". Read skills-manage and power-platform/admin/skills-copilot-studio-rule: the latter documents environment skills controls but does not resolve their coverage of Browse skills.",
+      "severity": "blocker",
+      "fix": "Replace the sentence with: \"The wiki's view: no source says existing agent behaviour changes; confirm which controls apply to Browse skills before relying on package controls.\" Do not turn the lack of a catalog-specific procedure into an assumption that no administrator switch governs the capability."
     },
     {
       "n": 32,
-      "where": "Risk assessment: Autonomy & actions; Governance guidance: Before rollout",
+      "where": "summary; Why it matters",
       "type": "absence",
-      "claim": "Microsoft does not document a further approval step when a maker adds an already shared skill.",
+      "claim": "Microsoft has not specified a catalog-specific administrator action or what happens on the catalog's arrival.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Copilot Studio \"skills catalog\" admin enable disable roles approval Browse skills. Opened skills-manage and manage-plugins-skills-mcp-servers. Browse instructions end with Add; plugin access and MCP registration approvals are distinct flows.",
+      "quote": "Searched: \"skills catalog\" \"Copilot Studio\"; Copilot Studio \"skills catalog\" \"Browse skills\" admin disable sharing API skill table licensing. Read the roadmap, skills-manage, whats-new and skills-copilot-studio-rule; no catalog rollout notice or required catalog-specific administrator action is stated.",
       "severity": null,
       "fix": null
     },
     {
       "n": 33,
-      "where": "summary; Why it matters; Open questions",
+      "where": "Risk assessment: Security & identity; Open questions",
       "type": "absence",
-      "claim": "No catalog-specific arrival requirement or administrative switch for Browse skills is documented.",
+      "claim": "Learn documents no tenant-level switch specifically for sharing a maker-created skill.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Copilot Studio \"skills catalog\" admin enable disable roles approval Browse skills. Opened skills-manage, skills-copilot-studio-rule and advanced-connector-policies. The latter rules replace legacy virtual connectors and do not identify Browse skills or its catalog.",
+      "quote": "Searched: \"Copilot Studio\" \"skill sharing\" \"tenant\" and \"Copilot Studio\" \"skill\" \"sharing\" \"API\" Power Platform pac admin. Read skills-manage and skills-copilot-studio-rule; the latter governs skill types, not a tenant-wide maker-skill sharing switch.",
       "severity": null,
       "fix": null
     },
     {
       "n": 34,
-      "where": "Scope",
+      "where": "controls[3].api; controls[3].note; Governance controls table",
       "type": "absence",
-      "claim": "Roles specifically administering the planned skills catalog are not documented.",
+      "claim": "No API for the maker's Share a skill control is documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Copilot Studio\" \"skills catalog\" licensing roles; Copilot Studio \"skills catalog\" admin enable disable roles approval Browse skills. Opened skills-manage and manage-plugins-skills-mcp-servers; no catalog-specific administrator role is stated.",
+      "quote": "Searched: Copilot Studio shared skills sharing skill Dataverse table entity reference API tenant controls; \"Copilot Studio\" \"skill\" \"sharing\" \"API\" Power Platform pac admin. Read skills-manage and package API overview; Dynamics skill tables returned by search do not identify this sharing control.",
       "severity": null,
       "fix": null
     },
     {
       "n": 35,
-      "where": "Scope",
-      "type": "absence",
-      "claim": "The shared-skill instructions do not explicitly enumerate which harnesses support Browse skills.",
+      "where": "controls[0].ui; Governance controls table; Governance guidance",
+      "type": "admin-path",
+      "claim": "User availability for a plugin or skill package is at Microsoft 365 admin center > Agents > Tools > Plugins > plugin or skill > Users.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot Studio \"Browse skills\" tenant sharing controls harness data access. Opened skills-manage and skills-overview. The browse section has a billing note but no explicit supported-harness list.",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "Select Agents > Tools > Plugins. ... Select the plugin that you want to manage. ... Open Users ... Managing a skill uses the same actions and steps as managing a plugin.",
       "severity": null,
       "fix": null
     },
     {
       "n": 36,
-      "where": "Scope",
-      "type": "behaviour",
-      "claim": "The skills overview describes Generative and Topic skills for the Customer Conversation harness.",
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id} updates package user availability.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-overview",
-      "quote": "Agents powered by the Customer Conversation harness support two types of skills: Generative skills ... and Topic skills, which are deterministic, authored flows of steps and conditions",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update",
+      "quote": "PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id} ... allowedUsersAndGroups ... Users/groups for whom the package is available.",
       "severity": null,
       "fix": null
     },
     {
       "n": 37,
-      "where": "front matter: defaultState",
-      "type": "default",
-      "claim": "The capability is user-opt-in: a maker chooses to browse and add a skill, with no documented catalog enablement switch.",
+      "where": "controls[0].note; controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The package update and block APIs are preview.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-manage",
-      "quote": "To add a shared skill to your agent: ... Select the + icon next to Skills, and then select Browse skills (preview). ... On the skill details page, select Add.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview",
+      "quote": "Update package (preview) ... PATCH /copilot/admin/catalog/packages/{id} ... Block (preview) ... POST /copilot/admin/catalog/packages/{id}/block",
       "severity": null,
       "fix": null
     },
     {
       "n": 38,
-      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "Consumption is the documented billing model for agents powered by the Microsoft Copilot harness.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
-      "quote": "Agents, workflows, and apps powered by the Microsoft Copilot harness ... use a usage-based billing structure. ... Usage is billed based on consumption and measured in Copilot Credits.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "cost",
-      "claim": "The shared-skill page warns that using, building, testing and evaluating agents might consume Copilot Credits.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-manage",
-      "quote": "The harness used to build this agent uses usage-based billing. Using, building, testing, and evaluating agents might consume Copilot Credits.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "Microsoft Copilot harness billing starts when the maker starts building.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
-      "quote": "the Microsoft Copilot harness charges credits from the moment you start building.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
-      "type": "absence",
-      "claim": "No separate licence specific to the skills catalog is published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot Studio skills catalog licensing browsing adding sharing Copilot Credits rate; \"Copilot Studio\" \"skills catalog\" licensing roles. Opened skills-manage, billing-credit-overview and requirements-licensing-subscriptions; no catalog-specific licence is named.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
-      "type": "absence",
-      "claim": "No separate browsing, adding, sharing or catalog-specific credit rate is published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot Studio skills catalog licensing browsing adding sharing Copilot Credits rate. Opened skills-manage and billing-credit-overview; read Billing rates and management and billing-licensing search excerpts. No catalog-specific operation or rate is listed.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "Cost and licensing; controls[0].note; controls[2].note; rationale: cost",
+      "where": "controls[0].note; controls[2].note; Cost and licensing; rationale: cost",
       "type": "licensing",
       "claim": "Access to the Package Management API requires a Microsoft Agent 365 licence.",
       "status": "supported",
@@ -498,32 +449,32 @@
       "fix": null
     },
     {
-      "n": 44,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Package user availability is managed in Microsoft 365 admin center at Agents > Tools > Plugins > plugin or skill > Users.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "Select Agents > Tools > Plugins. ... Select the plugin that you want to manage. ... Open Users ... Managing a skill uses the same actions and steps as managing a plugin",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "controls[0].api; controls[0].note; Governance controls table",
+      "n": 39,
+      "where": "controls[0].note; Governance controls table",
       "type": "command",
-      "claim": "PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id} sets package availability through availableTo and allowedUsersAndGroups.",
+      "claim": "The update request body uses availableTo and allowedUsersAndGroups to set user availability.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update",
-      "quote": "PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id} ... allowedUsersAndGroups ... Users/groups for whom the package is available. ... availableTo ... Required if updating allowedUsersAndGroups.",
+      "quote": "allowedUsersAndGroups ... Users/groups for whom the package is available. ... availableTo ... Enum value specifying which users or groups within the tenant can access this package. Required if updating allowedUsersAndGroups.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 46,
-      "where": "controls[1].ui; Governance controls table",
+      "n": 40,
+      "where": "controls[0].note; controls[1].note; Governance controls; rationale: risk",
+      "type": "absence",
+      "claim": "Microsoft does not explicitly confirm that these package controls govern the named Copilot Studio skills catalog.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"skills catalog\" \"Copilot Studio\"; \"Copilot Studio\" \"skills\" \"catalog\" administrator role approval data access. Read manage-plugins-skills-mcp-servers, administrator-guide, package overview and skills-manage; package scope is documented, but the catalog's identity is not explicitly established.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[1].ui; Governance controls table; Governance guidance",
       "type": "admin-path",
-      "claim": "A skill package can be blocked in Microsoft 365 admin center at Agents > Tools > Plugins > skill > Block > Block.",
+      "claim": "Blocking a skill package follows Microsoft 365 admin center > Agents > Tools > Plugins > skill > Block > Block.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
       "quote": "Select Agents > Tools > Plugins. ... From the list, select the plugin or skill that you want to block. ... Select Block, and then select Block again to confirm.",
@@ -531,7 +482,7 @@
       "fix": null
     },
     {
-      "n": 47,
+      "n": 42,
       "where": "controls[1].api; Governance controls table",
       "type": "command",
       "claim": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block prevents package usage.",
@@ -542,87 +493,10 @@
       "fix": null
     },
     {
-      "n": 48,
-      "where": "controls[2].ui; Governance controls table; Governance guidance: Before rollout",
-      "type": "admin-path",
-      "claim": "Microsoft 365 admin center Agents > Tools > Registry lists plugin and separately packaged skill records.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/plugins/administrator-guide",
-      "quote": "Use Agents > Tools > Registry to review plugin and separately packaged skill records in the Microsoft 365 admin center.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "controls[2].api; Governance controls table",
-      "type": "command",
-      "claim": "GET https://graph.microsoft.com/v1.0/copilot/admin/catalog/packages?$filter=elementTypes/any(e:e eq 'AgentSkills') lists tenant packages containing skills.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackages-list",
-      "quote": "GET https://graph.microsoft.com/v1.0/copilot/admin/catalog/packages ... use the any lambda operator on the elementTypes collection ... AgentSkills | Titles that contain skills.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
-      "where": "controls[3].ui; Governance controls table; Governance guidance: Before rollout",
-      "type": "admin-path",
-      "claim": "The maker sharing route is Agents > agent > Build > skill > more options > Share > Share.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-manage",
-      "quote": "Select the Build tab. ... the Skills section shows the skills ... Select the skill you want to share ... Select the three dots (...) and then select Share. ... On the details page, select Share in the upper-right corner.",
-      "severity": "minor",
-      "fix": "Include the omitted Skills section heading in both representations of controls[3].ui.path: 'Agents > agent > Build > Skills > skill > … > Share > Share'. The cited skills-manage page supplies the section and sharing steps; the already-cited authoring-share-agent page says 'Open the agent from the Agents page'."
-    },
-    {
-      "n": 51,
-      "where": "controls[3].api; controls[3].note; Governance controls table",
-      "type": "absence",
-      "claim": "No API for the maker's shared-skill audience control is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot Studio shared skill sharing API Dataverse skill table entity reference permissions; \"Copilot Studio\" \"skill\" \"sharing\" \"pac\" API. Read skills-manage, pac copilot and Dataverse table excerpts; none maps an operation to this preview skill-sharing audience.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
-      "where": "controls[0].note; Governance controls",
-      "type": "availability",
-      "claim": "The Package Management update operation is preview.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview",
-      "quote": "Update package (preview) | PATCH /copilot/admin/catalog/packages/{id} | Update package metadata.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "controls[1].note; Governance controls",
-      "type": "availability",
-      "claim": "The Package Management block operation is preview.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview",
-      "quote": "Block (preview) | POST /copilot/admin/catalog/packages/{id}/block | Block a package to prevent its usage.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "controls[1].note; Risk assessment: Security & identity; Governance guidance: At rollout",
-      "type": "applicability",
-      "claim": "Package-level blocking and user availability controls cover standalone skill packages.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "Manage user availability | Selected plugin or standalone skill package. ... Block | Selected plugin package and its included agents, or selected standalone skill package.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
+      "n": 43,
       "where": "controls[1].note; Risk assessment: Security & identity; Governance controls",
       "type": "applicability",
-      "claim": "A bundled skill has no individual blocking control; its containing package is the blocking boundary.",
+      "claim": "Package controls cover standalone skill packages; a bundled skill has no separate blocking control.",
       "status": "supported",
       "source": "https://learn.microsoft.com/plugins/administrator-guide",
       "quote": "For a bundled skill, apply the plugin's controls. You can't block an individual skill inside a package today.",
@@ -630,21 +504,54 @@
       "fix": null
     },
     {
-      "n": 56,
-      "where": "controls[0..2].note; Governance controls; Open questions; rationale: risk",
-      "type": "absence",
-      "claim": "Microsoft does not explicitly establish that the package registry and its controls govern the planned Copilot Studio skills catalog.",
+      "n": 44,
+      "where": "controls[2].ui; Governance controls table; Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "Package inventory is at Microsoft 365 admin center > Agents > Tools > Registry.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot Studio \"skills catalog\" admin enable disable roles approval Browse skills. Opened skills-manage, skills-overview, administrator-guide, manage-plugins-skills-mcp-servers and package API overview; none explicitly maps the planned catalog to registry packages.",
+      "source": "https://learn.microsoft.com/plugins/administrator-guide",
+      "quote": "Use Agents > Tools > Registry to review plugin and separately packaged skill records in the Microsoft 365 admin center.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 57,
+      "n": 45,
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "GET https://graph.microsoft.com/v1.0/copilot/admin/catalog/packages?$filter=elementTypes/any(e:e eq 'AgentSkills') lists packages containing skills.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackages-list",
+      "quote": "GET https://graph.microsoft.com/v1.0/copilot/admin/catalog/packages ... use the any lambda operator on the elementTypes collection ... AgentSkills | Titles that contain skills.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[2].note; Open questions",
+      "type": "absence",
+      "claim": "It is not explicitly confirmed that the inventory lists the named Copilot Studio catalog's skills.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"skills catalog\" \"Copilot Studio\" and Copilot Studio skills catalog browse add share skill Copilot Credits rate license prerequisites. Read package overview, copilotpackages-list, administrator-guide and skills-manage; no explicit mapping of this catalog to package inventory was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[3].ui; Governance controls table; Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "The maker sharing route is Agents > agent > Build > skill > more options > Share > Share.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-manage",
+      "quote": "Select the Build tab. ... the Skills section shows the skills ... Select the skill you want to share ... Select the three dots (...) and then select Share. ... On the details page, select Share in the upper-right corner.",
+      "severity": "minor",
+      "fix": "Include the omitted Skills section heading in both representations: \"Agents > agent > Build > Skills > skill > … > Share > Share\". The already-cited https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent supplies the starting step: \"Open the agent from the Agents page\"."
+    },
+    {
+      "n": 48,
       "where": "Governance controls",
       "type": "applicability",
-      "claim": "Copilot Studio and Power Platform can have separate component and connection controls.",
+      "claim": "Copilot Studio and Power Platform can have separate controls for components and connections.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
       "quote": "Copilot Studio and Power Platform can have separate controls for their components and connections.",
@@ -652,10 +559,10 @@
       "fix": null
     },
     {
-      "n": 58,
+      "n": 49,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Skills used in Word, Excel and PowerPoint are stored in OneDrive rather than necessarily in the plugin registry.",
+      "claim": "Some skills used in Word, Excel and PowerPoint are stored in OneDrive rather than the plugin registry.",
       "status": "supported",
       "source": "https://learn.microsoft.com/plugins/administrator-guide",
       "quote": "Don't assume every skill is stored in the plugin registry. Skills used in Word, Excel, and PowerPoint are stored in OneDrive today.",
@@ -663,70 +570,147 @@
       "fix": null
     },
     {
-      "n": 59,
+      "n": 50,
       "where": "Governance controls",
       "type": "admin-path",
-      "claim": "Organisation-level publisher access is configured at Agents > Settings > Agent and plugin access.",
+      "claim": "Agents > Settings > Agent and plugin access sets publisher categories for plugin access in the Microsoft 365 admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "Select Agents > Settings > Agent and plugin access.",
+      "quote": "Select Agents > Settings > Agent and plugin access. ... choose which publisher categories users can access: Microsoft, your organization, or certified external publishers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "Consumption is the documented billing model for the supporting Microsoft Copilot harness experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
+      "quote": "Agents, workflows, and apps powered by the Microsoft Copilot harness ... use a usage-based billing structure. ... Usage is billed based on consumption and measured in Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "cost",
+      "claim": "Using, building, testing and evaluating agents in this harness might consume Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-manage",
+      "quote": "The harness used to build this agent uses usage-based billing. Using, building, testing, and evaluating agents might consume Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The Microsoft Copilot harness charges credits from the moment a maker starts building.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
+      "quote": "Unlike the standard harness, which starts billing after publish, the Microsoft Copilot harness charges credits from the moment you start building.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "No licence specific to the skills catalog is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio skills catalog browse add share skill Copilot Credits rate license prerequisites. Read skills-manage, skills-add-existing, billing-credit-overview and licensing search excerpts; these give harness or product requirements, not a separate catalog licence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost; Open questions",
+      "type": "absence",
+      "claim": "No catalog-specific rate for browsing, adding or sharing a skill is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio skills catalog browse add share skill Copilot Credits rate license prerequisites. Read skills-manage, skills-add-existing and billing-credit-overview; they state harness consumption but no separate browsing, adding or sharing skill rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "applicability",
+      "claim": "Agents using shared skills remain subject to the documented harness billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-manage",
+      "quote": "Browse and add shared skills (preview) ... The harness used to build this agent uses usage-based billing. Using, building, testing, and evaluating agents might consume Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Catalog-specific administrator roles are not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Copilot Studio\" \"skills\" \"catalog\" administrator role approval data access. Read skills-manage, skills-overview and manage-plugins-skills-mcp-servers; search gives general authoring roles but no role requirement for the named catalog.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Scope",
+      "type": "role",
+      "claim": "The cited plugin-management page names AI Administrator and Global Administrator for approving MCP server requests, not as skill-specific roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "To complete the review and approval process ... access to the Tools page ... grant tenant-wide consent. Two roles meet both requirements: AI Administrator. Global Administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "The Customer Conversation harness has Generative and Topic skill types.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-overview",
+      "quote": "Agents powered by the Customer Conversation harness support two types of skills: Generative skills ... and Topic skills, which are deterministic, authored flows of steps and conditions.",
       "severity": null,
       "fix": null
     },
     {
       "n": 60,
-      "where": "Governance controls",
-      "type": "applicability",
-      "claim": "Agent and plugin access controls plugin access by Microsoft, organisational and certified external publisher categories.",
+      "where": "Scope",
+      "type": "absence",
+      "claim": "The shared-skill section does not explicitly enumerate the harnesses covered by Browse skills.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "Under the installation settings, choose which publisher categories users can access: Microsoft, your organization, or certified external publishers.",
+      "source": null,
+      "quote": "Searched: Copilot Studio \"skills catalog\" \"Browse skills\" admin disable sharing API skill table licensing. Read skills-manage and skills-overview; the shared-skill instructions do not enumerate supported harnesses, while the overview enumerates harness-specific creation methods separately.",
       "severity": null,
       "fix": null
     },
     {
       "n": 61,
-      "where": "Scope",
-      "type": "role",
-      "claim": "The cited management page identifies AI Administrator for MCP request approval, not as a catalog-skill role.",
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "Variable cost reflects the published Copilot Credits meter for the supporting harness experience, rather than a separate catalog charge.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "Review and approve MCP requests ... You must have access to the Tools page ... You must be able to grant tenant-wide consent. Two roles meet both requirements: AI Administrator.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 62,
-      "where": "Scope",
-      "type": "role",
-      "claim": "The cited management page identifies Global Administrator for MCP request approval, not as a catalog-skill role.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "Review and approve MCP requests ... Two roles meet both requirements: ... Global Administrator.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 63,
-      "where": "Risk assessment: Security & identity; Open questions",
-      "type": "absence",
-      "claim": "No tenant-level switch specifically restricting maker skill sharing is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot Studio \"Browse skills\" tenant sharing controls harness data access; Copilot Studio \"skills catalog\" admin enable disable roles approval Browse skills. Read skills-manage and skills-copilot-studio-rule; agent-sharing controls do not explicitly govern shared-skill audiences.",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
+      "quote": "Usage is billed based on consumption and measured in Copilot Credits. Creating and using agents, workflows, and apps consumes credits based on usage and rate of consumption.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-19T03:09:24.449Z",
+    "at": "2026-11-26T06:54:04.286Z",
     "summary": {
       "links": 12,
-      "unreachable": 0,
+      "unreachable": 9,
       "uiPaths": 4,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 2,
       "apiCalls": 3,
-      "apiCallsNotOnPage": 0,
+      "apiCallsNotOnPage": 2,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -737,28 +721,28 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-manage",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-overview",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-add-existing",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
@@ -767,18 +751,18 @@
       },
       {
         "url": "https://learn.microsoft.com/plugins/administrator-guide",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
@@ -787,8 +771,8 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackages-list",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -812,9 +796,9 @@
         "side": "api",
         "governs": "Which users and groups can use a skill package",
         "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update",
-        "reachable": true,
+        "reachable": false,
         "token": "/beta/copilot/admin",
-        "found": true
+        "found": false
       },
       {
         "index": 1,
@@ -846,29 +830,33 @@
         "side": "ui",
         "governs": "Inventory of skill packages in the tenant",
         "docs": "https://learn.microsoft.com/plugins/administrator-guide",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Agents",
           "Tools",
           "Registry"
         ],
-        "missing": []
+        "missing": [
+          "Agents",
+          "Tools",
+          "Registry"
+        ]
       },
       {
         "index": 2,
         "side": "api",
         "governs": "Inventory of skill packages in the tenant",
         "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackages-list",
-        "reachable": true,
+        "reachable": false,
         "token": "/v1.0/copilot/admin",
-        "found": true
+        "found": false
       },
       {
         "index": 3,
         "side": "ui",
         "governs": "Who a maker shares a skill with",
         "docs": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-manage",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Agents",
           "Build",
@@ -876,7 +864,13 @@
           "Share",
           "Share"
         ],
-        "missing": []
+        "missing": [
+          "Agents",
+          "Build",
+          "skill",
+          "Share",
+          "Share"
+        ]
       }
     ],
     "roadmapDrift": []
@@ -898,6 +892,12 @@
       "date": "2026-11-19",
       "status": "held",
       "version": 2,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-19",
+      "status": "verified-with-gaps",
+      "version": 3,
       "model": "gpt-6.1-sol"
     }
   ]

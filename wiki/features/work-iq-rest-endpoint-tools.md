@@ -119,15 +119,17 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 70 statements not yet confirmed"
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 74 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 75 statements not yet confirmed"
 version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-26"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 74
-  confirmed: 74
+  claims: 75
+  confirmed: 75
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -232,10 +234,12 @@ cost: Low. The only established cost of this roadmap change is administrative re
 impact: Low. The roadmap lists the Developer platform, so developers and the admins who govern agent tools notice first; Microsoft has not said whether end users see any change.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model; licensing.notes; Cost and licensing: Licence; rationale: cost / licensing: Licensing is unknown because Microsoft has not published a licence specific to REST endpoint tools. | Found: Work IQ API is licensed under your agreement governing use of Microsoft Online Services, including the Microsoft Product Terms. You pay for use of the Work IQ API through a usage-based model that uses Copilot Credits. | Fix: Set licensing.model to 'consumption' to reflect the published product-level model. Keep the existing Work IQ billing notes and the narrower caveat that Microsoft has not published a licence or rate specific to REST endpoint tools; do not infer a per-call rate for this roadmap item. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview
-- [supported, minor] controls[2].ui; Governance controls / admin-path: Agents > Tools > Work IQ MCP > Policy opens Work IQ MCP policy settings in the Microsoft 365 admin center. | Found: In the left navigation, select Agents > Tools. ... In the tools registry, select Work IQ MCP. ... On the Work IQ MCP details pane, select the Policy tab when it's available. | Fix: Replace controls[2].ui.path and its rendered path with 'Agents > Tools > Registry > Work IQ MCP > Policy'. The Registry tab is documented at https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers; the cited policy page supplies the remaining steps. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp
-- [supported, minor] Governance guidance: Before rollout / admin-path: Agents > Tools opens the Tools registry for reviewing available MCP servers and tools. | Found: Select Agents > Tools, and then select the Registry tab. ... Select an MCP server from the list to open its overview pane. ... Select the Tools tab. | Fix: Change the first Before rollout bullet to 'Open the Tools registry (Agents > Tools > Registry) and note which MCP servers and tools are available today, so a new REST endpoint tool can be compared with them.' | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers
+- [supported, minor] front matter: licensing.model / licensing: The licensing model is unknown because no licence specific to REST endpoint tools is published. | Found: Work IQ API is licensed under your agreement governing use of Microsoft Online Services, including the Microsoft Product Terms. You pay for use of the Work IQ API through a usage-based model that uses Copilot Credits. | Fix: Set licensing.model to 'consumption' for the documented product-level model. Keep the existing billing notes and the narrower caveat about unpublished licensing and rates specific to REST endpoint tools; do not infer a feature-specific rate. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview
+- [supported, minor] controls[0].governs; controls[0].scope; Governance controls / applicability: Server blocking governs tenant availability of a registered MCP server and all its exposed tools to agents. | Found: Blocking an MCP server (including WorkIQ MCP) blocks usage through governed Agent 365 and Microsoft 365 admin center (MAC) pathways. It doesn't automatically disable the underlying API or service endpoint outside that governed path unless separately controlled by service and API policy. | Fix: Add to controls[0].note and its rendered note: 'Blocking applies through governed Agent 365 and Microsoft 365 admin center pathways; it does not automatically disable the underlying API or service endpoint outside those pathways.' Keep the feature-specific registry caveat. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers
+- [supported, minor] controls[1].governs; Risk assessment: Autonomy & actions; Governance controls / applicability: The registry lets administrators enable or disable individual tools on supported registered MCP servers. | Found: Each toggle applies to the selected tool within the supported MCP server, not to the whole server or plugin package. The Agent 365 Tooling Gateway enforces the policy at runtime for supported tools and experiences that use the gateway. | Fix: Add to controls[1].note and its rendered note: 'The Agent 365 Tooling Gateway enforces these toggles for supported tools and experiences that use the gateway; do not assume enforcement across other products or connected components.' Keep the rollout and feature-specific caveats. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers
+- [supported, minor] controls[2].ui; Governance controls / admin-path: Agents > Tools > Work IQ MCP > Policy opens Work IQ MCP policy settings. | Found: In the left navigation, select Agents > Tools. ... In the tools registry, select Work IQ MCP. ... On the Work IQ MCP details pane, select the Policy tab when it's available. | Fix: Replace controls[2].ui.path and its rendered path with 'Agents > Tools > Registry > Work IQ MCP > Policy'. The already-cited MCP server administration page documents selecting Registry; the policy page gives the remaining steps. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp
+- [supported, minor] Governance guidance: Before rollout / admin-path: Agents > Tools opens the Tools registry for taking stock of MCP servers and tools. | Found: Select Agents > Tools, and then select the Registry tab. | Fix: Replace the first Before rollout bullet with: 'Open the Tools registry (Agents > Tools > Registry) and note which MCP servers and tools are available today, so a new REST endpoint tool can be compared with them.' | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers
 -->

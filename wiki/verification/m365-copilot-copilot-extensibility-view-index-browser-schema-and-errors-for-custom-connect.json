@@ -1,0 +1,896 @@
+{
+  "slug": "m365-copilot-copilot-extensibility-view-index-browser-schema-and-errors-for-custom-connect",
+  "roadmapId": 498898,
+  "title": "Microsoft 365 Copilot connectors: index browser, schema and errors for custom connectors in the admin centre",
+  "status": "held",
+  "date": "2026-11-26",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-26",
+    "reasons": [
+      "2 blocking findings (claims 37, 62)"
+    ]
+  },
+  "counts": {
+    "claims": 63,
+    "confirmed": 60,
+    "unconfirmed": 1,
+    "contradicted": 2,
+    "blocker": 2,
+    "major": 0,
+    "minor": 3
+  },
+  "summary": "Hold: the checklist tells administrators to use Copilot Visibility to contain exposure from custom connectors, although the documentation establishes that control only for partner connectors. The Graph role-assignment guidance also omits the delegated-access qualification on its administrator-role requirement. The roadmap facts and the documented diagnostic views are supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary; What's changing; title",
+      "type": "record",
+      "claim": "Microsoft plans index browser, schema and error views for custom connectors in the Microsoft 365 admin center for troubleshooting.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "View index browser, schema, and the errors for custom connectors from the M365 Admin center for better troubleshooting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap product is Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap still gives the status as In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is August CY2025, which has passed by the run date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"August CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The release phases are General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platforms are Developer and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Developer\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap publishes no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2025-08-18T23:00:53.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2025-08-18T23:00:53\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Developers build custom Copilot connectors using the Copilot connectors REST API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/connecting-external-content-connectors-api-overview",
+      "quote": "To build custom connectors, you use the Copilot connectors REST API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Synced custom connectors bring external content into the Microsoft Graph index for Copilot and Microsoft Search.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/overview",
+      "quote": "Synced connectors crawl and index content from external sources into Microsoft Graph. You can discover this indexed data in Copilot and Microsoft Search experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "The index browser takes an item's unique identifier, and the input for a custom connector is its item ID.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/indexed-content",
+      "quote": "To search for indexed content, enter the unique identifier of the item in the index browser. | Custom connector | Item ID | Admin configured details. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment",
+      "type": "behaviour",
+      "claim": "For an indexed item, the index browser shows its name.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/indexed-content",
+      "quote": "Name of the Content - The name of the indexed item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "The index browser shows an item's indexing status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/indexed-content",
+      "quote": "When you enter an item ID to check its index status, you can view the following details if the item is indexed:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The index browser shows the item's last refresh time.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/indexed-content",
+      "quote": "Status - The current status of the item and its last refresh time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Why it matters; Risk assessment",
+      "type": "behaviour",
+      "claim": "The index browser shows the status of the item's configured properties.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/indexed-content",
+      "quote": "Properties - Indicates the status of all properties defined during configuration for the item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "The Permissions display lists the item's individual users and groups and their access status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/indexed-content",
+      "quote": "Permissions - Lists all groups and individual users associated with the item. If the status is allow, all users in those groups can view the item. If the status is deny, users in those groups can't access the item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Risk assessment; Governance guidance; Open questions",
+      "type": "behaviour",
+      "claim": "Check user access accepts a user's name or email address and displays the groups that user belongs to.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/indexed-content",
+      "quote": "Check user access - Search for a specific user to verify their access to the item. Enter the user name or email address to display a list of groups to which the user belongs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Why it matters; Risk assessment",
+      "type": "applicability",
+      "claim": "With Allow everyone instead of Only people with access, everyone can see all items in the connection's index.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/indexed-content",
+      "quote": "If you configure access permissions as Allow everyone instead of Only people with access for the connection, everyone can see all items in the index, and no specific permissions are enforced.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Scope; Open questions",
+      "type": "behaviour",
+      "claim": "Microsoft Learn documents schema recommendations in the admin center for published custom connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "To help you get started, the Microsoft 365 admin center provides schema recommendations for published custom connectors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "Schema recommendations check four missing semantic labels: title, url, lastModifiedBy and lastModifiedDateTime.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "Schema recommendations currently check for four missing semantic labels: title ... url ... lastModifiedBy ... lastModifiedDateTime",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "The Error tab lists error codes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/error-responses",
+      "quote": "Error codes - Lists the error codes for errors that occurred.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "The Error tab gives the occurrence count for each error code.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/error-responses",
+      "quote": "Counts - Displays the number of occurrences for each error code.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The Error tab offers Download log to download a file listing errors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/error-responses",
+      "quote": "Download log - An option to download a file that lists the errors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[1].note; What's changing; Risk assessment; Open questions",
+      "type": "behaviour",
+      "claim": "The admin center UI shows a limited set of connector errors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/error-responses",
+      "quote": "You can view a limited set of Microsoft 365 Copilot connector errors in the Microsoft 365 admin center UI.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[1].api; What's changing; Risk assessment; Governance guidance",
+      "type": "command",
+      "claim": "DownloadErrorScript.ps1 is the documented PowerShell script call for a comprehensive connection-error list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/error-responses",
+      "quote": "To view a comprehensive list of connection errors, use the following steps to run a PowerShell script. ... Run the script. DownloadErrorScript.ps1",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[1].note",
+      "type": "behaviour",
+      "claim": "The error script prompts for the connection ID.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/error-responses",
+      "quote": "Provide the connection ID of the connection for which you want to download the error report.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[1].note",
+      "type": "behaviour",
+      "claim": "The error script asks the administrator to define a download batch size.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/error-responses",
+      "quote": "Define the batch size for downloading errors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[1].note",
+      "type": "behaviour",
+      "claim": "The error script's maximum batch size is 5,000 errors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/error-responses",
+      "quote": "The maximum batch size is 5,000 errors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "summary; Risk assessment; Scope; Governance controls; controls[0].governs",
+      "type": "role",
+      "claim": "Microsoft's connector pages require AI administrator to access and manage connector pages.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/view-details",
+      "quote": "To access and manage your Microsoft 365 Copilot connectors, you must be an AI administrator for your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "AI Administrator is a privileged Microsoft Entra role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/permissions-reference#ai-administrator",
+      "quote": "This is a privileged role. Assign the AI Administrator role to users who need to do the following tasks:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "AI Administrator manages all aspects of Microsoft Copilot, beyond connector troubleshooting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/permissions-reference#ai-administrator",
+      "quote": "Manage all aspects of Microsoft Copilot",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[0].ui; Governance guidance",
+      "type": "admin-path",
+      "claim": "AI Administrator assignments can be managed in Microsoft 365 admin center through Roles > Role assignments > Microsoft Entra ID > AI Administrator > Assigned > Add users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/add-users/assign-admin-roles",
+      "quote": "go to Roles > Role assignments. ... choose the Microsoft Entra ID ... tab. ... Select the administrator role that you want to assign the user to. ... On the Assigned tab, select Add users or Add groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "POST /v1.0/roleManagement/directory/roleAssignments creates a Microsoft Entra directory role assignment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0",
+      "quote": "Create a role assignment for the directory provider: POST /roleManagement/directory/roleAssignments ... POST https://graph.microsoft.com/v1.0/roleManagement/directory/roleAssignments",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[0].note",
+      "type": "command",
+      "claim": "The role-assignment request body sets roleDefinitionId.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0",
+      "quote": "The following example shows a request. Note the use of the roleTemplateId for roleDefinitionId. roleDefinitionId can be either the service-wide template Id or the directory-specific roleDefinitionId.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[0].note",
+      "type": "command",
+      "claim": "The role-assignment request body sets principalId.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0",
+      "quote": "principalId | String | Required. Identifier of the principal to which the assignment is granted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[0].note; Governance controls",
+      "type": "role",
+      "claim": "Creating a role assignment through Microsoft Graph needs Privileged Role Administrator as the least privileged role, without an access-mode qualification.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0",
+      "quote": "Application | RoleManagement.ReadWrite.Directory ... For delegated access using work or school accounts, the signed-in user must be assigned a supported Microsoft Entra role ... Privileged Role Administrator is the least privileged role supported for this operation.",
+      "severity": "blocker",
+      "fix": "In the row note and Governance controls, replace the role sentence with: 'For delegated access using a work or school account, Privileged Role Administrator is the least privileged supported built-in role for this operation.' Keep the Graph call unchanged. Reference: https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0."
+    },
+    {
+      "n": 38,
+      "where": "controls[1].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "The error-monitoring path is Microsoft 365 admin center > Connectors > Your connections > connection > Error.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/error-responses",
+      "quote": "To monitor errors, go to Connectors > Your connections in the Microsoft 365 admin center, select the connection, and choose Error in the connection details pane.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[2].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "For the documented partner-connector control, the path is Copilot > Connectors > Your Connections > connection > Copilot Visibility in Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "Go to Copilot > Connectors > Your Connections. Select the connection that you want to modify. Under Copilot Visibility, select the toggle to turn the connector on or off, and choose Save.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[2].api",
+      "type": "absence",
+      "claim": "No automation operation is documented for the Copilot Visibility toggle.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Copilot connectors Copilot Visibility toggle Microsoft Graph API externalConnection enabledContentExperiences'. Read manage-connector, externalConnection beta, Update connection beta and manage-connections; no operation documents this toggle's agent-exempt semantics.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[2].note; Governance controls; Open questions",
+      "type": "applicability",
+      "claim": "Microsoft describes Copilot Visibility for partner connectors, without establishing its availability for API-built custom synced connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "Manage visibility of partner data sources in Copilot ... Admins can control the visibility of partner connectors in Copilot and Copilot Search via a simple toggle.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[2].governs; Risk assessment; Governance controls",
+      "type": "behaviour",
+      "claim": "For documented partner connectors, switching visibility off excludes the connector from Copilot Search and Copilot Chat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "When the visibility is off, the connector is excluded from all Copilot Search and Copilot Chat results and responses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[2].note",
+      "type": "default",
+      "claim": "The documented partner-connector visibility control is visible by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "The default behavior is visible by default",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[2].note; Risk assessment",
+      "type": "applicability",
+      "claim": "Copilot Visibility does not affect declarative agents and their data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "with changes syncing automatically with search, without affecting declarative agents and their data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[2].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Turning visibility off does not stop the connection from crawling its data source.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "If the connection is off, it can still crawl the data source, but the data isn't used for search results.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Visibility changes can take up to 30 minutes to propagate across Copilot experiences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "After you update the visibility settings at the connection level, allow up to 30 minutes for the changes to propagate across all Copilot experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Why it matters; Governance controls",
+      "type": "behaviour",
+      "claim": "Microsoft says updating a connection's configured access permissions after creation is not currently supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions",
+      "quote": "Updating access permissions after you create the connection isn't currently supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Microsoft's documented correction for unintended connection access permissions is to delete and recreate the connection with the intended permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions",
+      "quote": "In the connector pane, choose Delete to delete the existing connection. Recreate the connection using the Custom setup flow and explicitly configure access permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Changes to user or group ACL permissions can take up to 24 hours to appear in Microsoft Search and Microsoft 365 Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/indexed-content",
+      "quote": "Changes to user or group permissions (ACLs) might take up to 24 hours to reflect in Microsoft Search and Microsoft 365 Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Permission updates occur during a full crawl rather than an incremental crawl, so a check immediately after a source change can show old permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/indexed-content",
+      "quote": "Permissions updates occur during a full crawl, not an incremental crawl. If your data source permissions change after the last full crawl, you must trigger a new full crawl on-demand or schedule it to update the index.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The connector prerequisites require Microsoft 365 licences in the tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Your tenant must have Microsoft 365 licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "cost",
+      "claim": "The prerequisites page says indexing synced connector data incurs no extra cost for tenants with Microsoft 365 licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Indexing of synced connector data incurs no extra cost for tenants with Microsoft 365 licenses.",
+      "severity": "minor",
+      "fix": "Keep the prerequisite-page attribution and add: 'Microsoft's Copilot Search FAQ gives different connector-cost guidance: connectors may incur additional costs and may require Microsoft 365 E5, Microsoft Viva or additional capacity units depending on indexed volume and data type.' Cite https://learn.microsoft.com/copilot/manage/copilot-search-faq#is-there-an-additional-cost-for-microsoft-copilot-search."
+    },
+    {
+      "n": 53,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The diagnostic views are treated as included options inside the licensed Microsoft 365 connector product, with view-specific terms left unpublished.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Your tenant must have Microsoft 365 licenses. ... Indexing of synced connector data incurs no extra cost for tenants with Microsoft 365 licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 with the Microsoft 365 Copilot add-on supports synced-connector Copilot grounding and agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "| License | Synced connectors - Microsoft Search | Synced connectors - Copilot grounding and agents | Federated connectors | ... | Microsoft 365 + Microsoft 365 Copilot add-on | ✅ | ✅ | ✅ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 E7 supports synced-connector Copilot grounding and agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "| License | Synced connectors - Microsoft Search | Synced connectors - Copilot grounding and agents | Federated connectors | ... | Microsoft 365 E7 | ✅ | ✅ | ✅ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "A Microsoft 365 plan alone supports Microsoft Search with synced connectors, but not connector Copilot grounding and agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "| License | Synced connectors - Microsoft Search | Synced connectors - Copilot grounding and agents | Federated connectors | ... | Microsoft 365 (any plan) | ✅ | ❌ | ❌ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Scope: Indexed content",
+      "type": "behaviour",
+      "claim": "Federated connectors do not index content, so indexed-item lookup concerns synced connections.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Unlike synced connectors, federated connectors don't require admin access to the data source for ingestion, and they don't index content. Content stays in the source system and is queried at runtime.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "A licence, price or meter specific to the index browser, schema and error views is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'index browser licensing Copilot'; 'schema recommendations errors connectors licensing'. Read prerequisites, indexed-content, manage-connector, error-responses and Copilot Search FAQ; none publishes terms specific to these views.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "front matter: defaultState; What's changing; Why it matters",
+      "type": "absence",
+      "claim": "Microsoft has not stated the arrival default for these custom-connector diagnostic views.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'index browser enable admin Copilot connectors'; 'Copilot connectors index browser schema errors views default enable rollout administrator switch licensing price meter'. Read roadmap and connector diagnostic pages; no arrival default or enabling switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Why it matters; rationale: risk",
+      "type": "absence",
+      "claim": "No source establishes that adding these diagnostic views changes what users see through existing connections.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Copilot connectors index browser schema errors views default enable rollout administrator switch licensing price meter'. Read roadmap, indexed-content, error-responses, manage-connector, view-details; no diagnostic-arrival change to end-user results.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Governance controls: AI Reader",
+      "type": "role",
+      "claim": "AI Reader can view features and settings in admin centers that AI Administrator can view, without editing settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/add-users/about-admin-roles?view=o365-worldwide#commonly-used-microsoft-365-admin-center-roles",
+      "quote": "Assign the AI Reader role to users who need to view the features and settings in the admin centers that the AI Administrator can view. The AI Reader can't edit any settings.",
+      "severity": "minor",
+      "fix": "Replace the unrelated 'Roles and responsibilities' source at https://learn.microsoft.com/microsoft-365/admin/manage/apps/roles-responsibilities with 'About administrator roles in the Microsoft 365 admin center' at https://learn.microsoft.com/microsoft-365/admin/add-users/about-admin-roles?view=o365-worldwide. Keep the AI Reader sentence unchanged."
+    },
+    {
+      "n": 62,
+      "where": "Governance guidance: At rollout, Copilot Visibility; Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Administrators can turn off Copilot Visibility to contain an overshared custom synced connector while deleting and recreating it.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'Copilot Visibility custom connectors'; 'Copilot connectors Copilot Visibility toggle Microsoft Graph API externalConnection enabledContentExperiences'. Read manage-connector, overview, manage-access-permissions, Graph connection references; only partner-toggle applicability is documented.",
+      "severity": "blocker",
+      "fix": "Remove the At rollout instruction 'Turn off Copilot Visibility (row 3) for a connection found open to everyone that should not be, while it is deleted and recreated with the intended access permissions.' In Risk assessment, replace the sentence beginning 'Meanwhile' with: 'For partner connectors, the Copilot Visibility toggle (row 3) excludes a connection from Copilot Search and Copilot Chat, but does not affect declarative agents and their data; its availability for API-built custom synced connectors is not established.' Retain the documented delete-and-recreate advice."
+    },
+    {
+      "n": 63,
+      "where": "Governance guidance; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist asks readers to review item permissions and use Check user access, but the controls table has no row for that diagnostic control.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Look up a sample item from each custom connection in the index browser and compare its Permissions list with the source system. ... Use Check user access ... Table rows: role assignments, error monitoring and Copilot Visibility.",
+      "severity": "minor",
+      "fix": "The At rollout index-browser Permissions check and After rollout Check user access instruction have no corresponding controls row. Remove those two checklist instructions; retain the explanatory index-browser prose. Do not add a new control row in this correction."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-26T06:53:59.349Z",
+    "summary": {
+      "links": 15,
+      "unreachable": 11,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 3,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 1,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/indexed-content",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/error-responses",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/view-details",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/connecting-external-content-connectors-api-overview",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/overview",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/externalconnectors-externalconnection?view=graph-rest-beta",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/role-based-access-control/permissions-reference#ai-administrator",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/manage/apps/roles-responsibilities",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=498898",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/add-users/assign-admin-roles",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector#view-schema-recommendations-for-custom-copilot-connectors",
+        "ok": false,
+        "status": 429
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Who can open Copilot connector pages, including the index browser, schema and errors",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/add-users/assign-admin-roles",
+        "reachable": true,
+        "segments": [
+          "Roles",
+          "Role assignments",
+          "Microsoft Entra ID",
+          "AI Administrator",
+          "Assigned",
+          "Add users"
+        ],
+        "missing": [
+          "AI Administrator"
+        ]
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Who can open Copilot connector pages, including the index browser, schema and errors",
+        "docs": "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0",
+        "reachable": true,
+        "token": "/v1.0/roleManagement/directory",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Where a connection's error codes and counts are reviewed and downloaded",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/connectors/error-responses",
+        "reachable": false,
+        "segments": [
+          "Connectors",
+          "Your connections",
+          "connection",
+          "Error"
+        ],
+        "missing": [
+          "Connectors",
+          "Your connections",
+          "connection",
+          "Error"
+        ]
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Where a connection's error codes and counts are reviewed and downloaded",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/connectors/error-responses",
+        "reachable": false,
+        "token": "DownloadErrorScript.ps1",
+        "found": false
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether a connection's indexed content is used in Copilot Search and Copilot Chat",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+        "reachable": false,
+        "segments": [
+          "Copilot",
+          "Connectors",
+          "Your Connections",
+          "connection",
+          "Copilot Visibility"
+        ],
+        "missing": [
+          "Copilot",
+          "Connectors",
+          "Your Connections",
+          "connection",
+          "Copilot Visibility"
+        ]
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

@@ -1,0 +1,813 @@
+{
+  "slug": "m365-copilot-copilot-extensibility-connector-metadata-enrichment-for-custom-copilot-connec",
+  "roadmapId": 498918,
+  "title": "Microsoft 365 Copilot connectors: descriptive metadata for custom connectors and their schema properties",
+  "status": "held",
+  "date": "2026-11-26",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-26",
+    "reasons": [
+      "5 major findings"
+    ]
+  },
+  "counts": {
+    "claims": 63,
+    "confirmed": 57,
+    "unconfirmed": 5,
+    "contradicted": 1,
+    "blocker": 0,
+    "major": 5,
+    "minor": 5
+  },
+  "summary": "Hold: the briefing makes unsupported assurances about unchanged indexing, access and actions, and assumes custom Graph schema updates can trigger automatic full crawls. The roadmap facts, licensing and both Graph calls are supported, but those behaviour claims need narrowing.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "What's changing; title; summary; Scope",
+      "type": "record",
+      "claim": "Microsoft plans descriptive metadata enrichment for custom Copilot connectors by admins and developers.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "We’re introducing new options that allow admins and developers to enrich their custom Copilot connectors and its schema properties with descriptive metadata.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing; summary",
+      "type": "record",
+      "claim": "The planned metadata gives Copilot's model richer context to improve response relevance and accuracy.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Provide richer context about the connection and its schema properties to Copilot’s LLM, enabling more accurate and relevant responses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap lists alternate names for connectors.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Add alternate names, data source categories, common actions to your connector and description for schema properties.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap lists data source categories for connectors.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Add alternate names, data source categories, common actions to your connector and description for schema properties.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap lists common actions for connectors.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Add alternate names, data source categories, common actions to your connector and description for schema properties.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap lists descriptions for schema properties.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Add alternate names, data source categories, common actions to your connector and description for schema properties.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status remains In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is September CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"September CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The record lists General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists Developer and Web platforms.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Developer\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2025-07-25T22:15:54.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2025-07-25T22:15:54\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "externalConnection.contentCategory specifies the content's domain category and helps relevance and semantic understanding.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/externalconnectors-externalconnection?view=graph-rest-1.0",
+      "quote": "Specifies the domain category of the content associated with the external connection. This property helps Microsoft Graph optimize relevance, ranking, and semantic understanding by signaling the nature of the ingested content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "contentCategory accepts knowledgeBase, wikis, crm, qna and taskManagement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/externalconnectors-externalconnection?view=graph-rest-1.0",
+      "quote": "Possible values are: uncategorized, knowledgeBase, wikis, fileRepository, qna, crm, dashboard, people, media, email, messaging, meetingTranscripts, taskManagement, learningManagement, unknownFutureValue.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "contentCategory is optional.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/externalconnectors-externalconnection?view=graph-rest-1.0",
+      "quote": "Optional. The default value is uncategorized.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Why it matters",
+      "type": "default",
+      "claim": "A connection without a configured contentCategory defaults to uncategorized.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/externalconnectors-externalconnection?view=graph-rest-1.0",
+      "quote": "Optional. The default value is uncategorized.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Schema property descriptions help Copilot interpret queries and map them to properties.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/externalconnectors-property?view=graph-rest-1.0",
+      "quote": "This property enhances semantic understanding by helping Copilot interpret queries and accurately map them to properties that results in more relevant and precise responses.",
+      "severity": "minor",
+      "fix": "Add the qualification: 'For people-data connectors, descriptions on properties with person* labels are ignored.' Microsoft states this at https://learn.microsoft.com/plugins/build-connectors-with-people-data#recommendations-for-people-connectors; cite that page."
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "A schema property's description is optional.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/externalconnectors-property?view=graph-rest-1.0",
+      "quote": "Optional but we recommend that you use this property for queryable properties.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; controls[1].note; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The maximum supported schema property description length is 200 characters.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/externalconnectors-property?view=graph-rest-1.0",
+      "quote": "The maximum supported length is 200 characters.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Microsoft recommends descriptions for queryable schema properties.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/externalconnectors-property?view=graph-rest-1.0",
+      "quote": "Optional but we recommend that you use this property for queryable properties.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Open questions; changes",
+      "type": "absence",
+      "claim": "Learn documents no dedicated connector-level alternate-names property at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: externalConnection alternateNames commonActions alternate names common actions metadata connector; \"externalConnection\" \"alternate\" \"actions\". Read v1.0 and beta externalConnection property tables and enhance-copilot-discovery; neither resource lists alternate names.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Open questions; changes",
+      "type": "absence",
+      "claim": "Learn does not document the roadmap's connector-level common-actions metadata.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: externalConnection alternateNames commonActions alternate names common actions metadata connector; \"externalConnection\" \"alternate\" \"actions\"; \"connector\" \"property descriptions\" \"actions\". Read v1.0/beta externalConnection and property resources; no common-actions field.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Microsoft advises putting alternative names in the connection description.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/enhance-copilot-discovery",
+      "quote": "Alternative names for the connection that users might be familiar with.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Microsoft's description guidance includes content type, scope and keywords.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/enhance-copilot-discovery",
+      "quote": "A brief overview of the content type. The scope of the content available within the connection. Keywords that users might use to find the content (for example, tickets, wiki, knowledge base, How to).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "The Graph change log records contentCategory under February 2026: New and generally available.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/whats-new-earlier#february-2026-new-and-generally-available",
+      "quote": "February 2026: New and generally available ... Added the contentCategory property to the externalConnection to specify the domain category of the content associated with the external connection for improved relevance and ranking.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "front matter: defaultState; summary; Why it matters",
+      "type": "default",
+      "claim": "The documented enrichment is an optional developer-chosen capability, classified as user-opt-in, with no required tenant enablement.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"connector\" \"metadata\" \"tenant\" \"enrichment\" and the custom-connector metadata enable/disable query. Read optional contentCategory/description fields, manage-connector and Graph update APIs; no tenant enrichment enablement documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Connections whose descriptions are not updated keep their existing descriptions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-update?view=graph-rest-1.0",
+      "quote": "Existing properties that aren't included in the request body maintain their previous values or are recalculated based on changes to other property values.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Copilot answers will not benefit until a developer sets both the category and property descriptions.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Copilot connectors metadata category schema descriptions optional benefit existing connections uncategorized. Read externalConnection, property, enhance-copilot-discovery and connector-experiences search excerpt; no source makes both fields necessary for a benefit.",
+      "severity": "major",
+      "fix": "Replace the sentence with: 'Microsoft documents contentCategory and property descriptions as relevance aids.' The externalConnection and property resource pages support this narrower statement."
+    },
+    {
+      "n": 29,
+      "where": "Why it matters; controls[0].governs; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Connection descriptions help Copilot match connector content to user requests.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/enhance-copilot-discovery",
+      "quote": "Choose a meaningful connection name and description to help Copilot better match the connector content to the user's request.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Why it matters; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Connectors containing people data must set contentCategory to people.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/build-connectors-with-people-data",
+      "quote": "Copilot connectors that contain people data must have the value people in the contentCategory property of the externalConnections API.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/plugins/build-connectors-with-people-data to sources for this requirement. The cited connectors API overview does not contain it."
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Data exposure; Why it matters; rationale: risk",
+      "type": "behaviour",
+      "claim": "The enrichment makes no change to what is indexed and introduces no new data path.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"connector\" \"metadata enrichment\" \"access\" and the contentCategory/property-description permissions and unchanged-access query. Read resources, API overview, schema guidance and connectors overview excerpt; no unchanged-indexing assurance.",
+      "severity": "major",
+      "fix": "Replace 'No change to what is indexed or who can see it: the metadata describes items that the connector already ingests under its existing access lists' with 'The documented metadata describes the connection and its schema properties.' Remove 'rather than a new data path' and 'content a connector already indexes' from the corresponding prose and risk rationale."
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "The enrichment makes no change to who can see the data and grants no new data access.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Copilot connector contentCategory property description metadata enrichment permissions access control unchanged actions source system. Read API overview, externalConnection/property and people-data guidance; ACL documentation does not state an unchanged-access guarantee for this change.",
+      "severity": "major",
+      "fix": "Remove the assurance 'or who can see it' and 'it grants no new data access'. Retain the narrower statement that the documented metadata describes the connection and schema properties."
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated whether schema property descriptions can appear to users in Copilot answers or citations.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot connectors schema property description visible users answers citations; \"schema\" \"description\" \"Copilot\" \"appear\". Read property resource, schema guidance and people-data connector guidance; none states whether schema-definition descriptions appear in answers or citations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[0].note; Risk assessment: Security & identity; Scope; Governance guidance",
+      "type": "role",
+      "claim": "Updating a connection requires ExternalConnection.ReadWrite.OwnedBy or the higher-privileged ExternalConnection.ReadWrite.All.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-update?view=graph-rest-1.0",
+      "quote": "Application | ExternalConnection.ReadWrite.OwnedBy | ExternalConnection.ReadWrite.All",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The documented metadata does not let Copilot act in the source system.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"connector\" \"property descriptions\" \"actions\" and the contentCategory/property-description permissions and source-system-actions query. Read externalConnection, property and API overview; no explicit no-source-actions statement for enrichment.",
+      "severity": "major",
+      "fix": "Replace 'No change: the documented metadata describes content and does not let Copilot act in the source system' with 'The documented contentCategory and property description fields provide context for relevance and query interpretation.' Retain the separately verified gap about common-actions metadata."
+    },
+    {
+      "n": 36,
+      "where": "controls[1].note; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The schema operation can take between 5 and 15 minutes for the schema to be created.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-patch-schema?view=graph-rest-1.0",
+      "quote": "It can take between 5 and 15 minutes for the schema to be created.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Change & support; Cost and licensing: Indirect cost",
+      "type": "behaviour",
+      "claim": "Editing a published connection in the documented admin-center management flow might trigger a full crawl.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "Editing a connection might trigger a full crawl, where applicable. However, during the initial full crawl, editing the connection doesn't trigger another full crawl.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Governance guidance: At rollout; Risk assessment: Change & support; Cost and licensing: Indirect cost",
+      "type": "behaviour",
+      "claim": "Updating custom connector schema descriptions through Graph can result in an automatically triggered full crawl.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: custom Copilot connector Graph PATCH schema property description update automatically trigger full crawl reindex. Read Graph schema update, manage-schema, manage-connector and API overview; no automatic-full-crawl statement for this Graph update.",
+      "severity": "major",
+      "fix": "Remove 'Schedule schema updates so that a resulting full crawl does not collide with scheduled crawls' and the implied automatic-full-crawl cost and risk for custom Graph schema-description updates. Do not generalize the admin-center connection-edit crawl statement to Graph schema-description updates."
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.model, licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The enrichment uses the existing connector entitlement, classified as included, and Copilot connector grounding is included with Microsoft 365 Copilot licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "If your organization has Microsoft 365 Copilot licenses, connector grounding in Copilot is included, and no extra charges apply.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "Synced connector Copilot grounding requires Microsoft 365 plus the Microsoft 365 Copilot add-on, or Microsoft 365 E7.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Microsoft 365 + Microsoft 365 Copilot add-on | ✅ | ✅ | ✅\nMicrosoft 365 E7 | ✅ | ✅ | ✅",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "Microsoft 365 plus a Copilot Studio licence supports synced connector agents but not Copilot grounding.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Microsoft 365 + Copilot Studio license | ✅ | Agents only (no Copilot grounding) | ❌",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "Microsoft 365 Copilot pay-as-you-go supports synced connector agents but not Copilot grounding.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Microsoft 365 Copilot pay-as-you-go | ✅ | Agents only (no Copilot grounding) | ❌",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "front matter: licensing.notes; Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "Indexing synced connector data incurs no extra cost for tenants with Microsoft 365 licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Indexing of synced connector data incurs no extra cost for tenants with Microsoft 365 licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "front matter: licensing.notes; Cost and licensing: Not yet published; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft publishes no metadata-specific licence, including for alternate names or common actions.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot connector metadata schema property description contentCategory licensing pricing charge; \"connector\" \"metadata\" \"licensing\". Read prerequisites Licensing, Graph resources and schema guidance; no metadata-specific licence. The microsoftsearch/licensing URL returns prerequisites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "front matter: licensing.notes; Cost and licensing: Meter, Not yet published; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft publishes no meter or charge specific to connector metadata, alternate names or common actions.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot connector metadata schema property description contentCategory licensing pricing charge; \"connector\" \"metadata\" \"licensing\". Read prerequisites and its indexing/cost statements, Graph resources and API overview; no metadata-specific price or meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope: Roles; rationale: impact",
+      "type": "role",
+      "claim": "Managing Copilot connectors in the Microsoft 365 admin center requires the AI administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "To access and manage your Microsoft 365 Copilot connectors, you must be an AI administrator for your organization.",
+      "severity": "minor",
+      "fix": "Add a source note: 'The connector management and prerequisites pages require AI administrator; the Graph connection-management guide instead says a search admin can view and manage all tenant connections.' Cite https://learn.microsoft.com/graph/connecting-external-content-manage-connections for that differing statement."
+    },
+    {
+      "n": 47,
+      "where": "Scope: Prerequisite",
+      "type": "behaviour",
+      "claim": "A custom connection needs a registered schema before items are ingested.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/connecting-external-content-connectors-api-overview",
+      "quote": "You must register the schema before ingesting items into Microsoft Graph.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Scope: Prerequisite",
+      "type": "behaviour",
+      "claim": "A connection schema can contain up to 128 properties.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-patch-schema?view=graph-rest-1.0",
+      "quote": "The properties object must contain at least one property, up to a maximum of 128.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[0].ui; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No admin-center path is documented for editing the description of an existing custom Graph connection.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"custom\" \"connector\" \"Edit description\" Microsoft 365; \"custom connectors\" \"description\" \"admin center\" synced. Read manage-connector, enhance-copilot-discovery and custom-connector-sdk-sample-publish. SDK publishing takes an initial description, not an existing-description edit.",
+      "severity": "minor",
+      "fix": "Narrow controls[0].governs to 'Editing an existing custom connection's description through Microsoft Graph' and the corresponding UI question to editing existing custom Graph connections. Do not imply that no custom-connector description can be entered in the admin center: https://learn.microsoft.com/graph/custom-connector-sdk-sample-publish documents an optional description during SDK connector publishing."
+    },
+    {
+      "n": 50,
+      "where": "controls[0].api; controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "PATCH /v1.0/external/connections/{connectionsId} updates a connection's description through the description request-body field.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-update?view=graph-rest-1.0",
+      "quote": "PATCH /external/connections/{connectionsId}\nThe following properties can be updated.\ndescription | String | Description of the connection displayed in the Microsoft 365 admin center.\nPATCH https://graph.microsoft.com/v1.0/external/connections/contosohr",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[1].ui",
+      "type": "absence",
+      "claim": "No admin-center UI is documented for setting custom connector schema property descriptions.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"property descriptions\" \"admin\" \"connector\" and the custom-connector metadata admin-center-edit query. Read manage-connector, deployment-overview and SDK publishing; none shows a custom schema property-description UI.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[1].api; controls[1].note; Governance guidance: At rollout",
+      "type": "command",
+      "claim": "PATCH /v1.0/external/connections/{id}/schema creates or updates a schema whose property objects can set description.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-patch-schema?view=graph-rest-1.0",
+      "quote": "Create a new or update an existing schema ... PATCH /external/connections/{id}/schema ... In the request body, supply a JSON representation of a schema object. ... PATCH https://graph.microsoft.com/v1.0/external/connections/contosohr/schema",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[2]; controls[2].note; Governance controls; front matter: defaultState",
+      "type": "absence",
+      "claim": "No tenant-wide UI or API switch for connector metadata enrichment is documented; documented writes target individual connections.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"connector\" \"metadata\" \"tenant\" \"enrichment\" and the custom-connector metadata enable/disable query. Read manage-connector, deployment-overview and Graph resources/update APIs; no tenant metadata-enrichment UI or API switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "Connections can be listed at Microsoft 365 admin center > Copilot > Connectors > Your Connections.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "You can view the connection state for your deployed connectors on the Your Connections tab in the admin center. ... Go to Copilot > Connectors > Your Connections.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The admin center provides schema recommendations highlighting missing semantic labels for published custom connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "The Microsoft 365 admin center provides schema recommendations for published custom connectors. Schema recommendations analyze your connector schema and highlight missing semantic labels for key properties that Copilot relies on to understand, rank, and cite content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Scope: Who",
+      "type": "behaviour",
+      "claim": "The admin-center operation table documents name and description editing for Microsoft and partner connectors, without a separate custom-connector column.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "Operation | Connectors by Microsoft | Connectors by partners\nEdit a published connection | ✔️ Name and description ... | ✔️ Name ✔️ Description",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The Edit description option is documented for Microsoft-built connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/enhance-copilot-discovery",
+      "quote": "You can modify the connection name and description for Microsoft-built connectors in the admin portal at any time ... On the connector details, select Edit description and enter the updated description.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Microsoft directs on-premises connector description updates to the Copilot connectors API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/enhance-copilot-discovery",
+      "quote": "To update descriptions for on-premises connectors, use the Copilot connectors API. For more information, see Update externalConnection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance controls; Open questions",
+      "type": "behaviour",
+      "claim": "The v1.0 connection update reference lists configuration, description and name as updatable.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-update?view=graph-rest-1.0",
+      "quote": "The following properties can be updated.\nconfiguration | microsoft.graph.externalConnectors.configuration\ndescription | String\nname | String",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The connection update reference does not list contentCategory as an updatable request-body field.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"contentCategory\" \"PATCH\" \"connections\". Read v1.0 Update externalConnection, externalConnection resource and connection-management guidance; the update reference's request-body table lists configuration, description and name, not contentCategory.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Governance guidance; Governance controls",
+      "type": "consistency",
+      "claim": "Every control the governance checklist asks readers to set or review appears in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: list custom connections; set contentCategory; check schema recommendations; confirm app permissions; schedule crawls. Table: connection description, schema property descriptions, tenant metadata switch.",
+      "severity": "minor",
+      "fix": "The checklist's connection inventory, contentCategory, app-permission review, crawl scheduling and schema-recommendation checks have no corresponding control rows. Remove those unmatched checklist steps; do not add rows as part of this correction. Retain the existing connection-description and schema-description guidance."
+    },
+    {
+      "n": 62,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap record gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "role",
+      "claim": "Updating a schema requires ExternalConnection.ReadWrite.OwnedBy or the higher-privileged ExternalConnection.ReadWrite.All.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-patch-schema?view=graph-rest-1.0",
+      "quote": "Application | ExternalConnection.ReadWrite.OwnedBy | ExternalConnection.ReadWrite.All",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-26T06:53:58.666Z",
+    "summary": {
+      "links": 10,
+      "unreachable": 8,
+      "uiPaths": 0,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 2,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=498918",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/externalconnectors-externalconnection?view=graph-rest-1.0",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/externalconnectors-property?view=graph-rest-1.0",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/enhance-copilot-discovery",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/whats-new-earlier",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/connecting-external-content-connectors-api-overview",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-update?view=graph-rest-1.0",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-patch-schema?view=graph-rest-1.0",
+        "ok": false,
+        "status": 429
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Description of a custom connection that Copilot uses to match content to requests",
+        "docs": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-update?view=graph-rest-1.0",
+        "reachable": false,
+        "token": "/v1.0/external/connections",
+        "found": false
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Descriptions of a custom connection's schema properties",
+        "docs": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-patch-schema?view=graph-rest-1.0",
+        "reachable": false,
+        "token": "/v1.0/external/connections",
+        "found": false
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

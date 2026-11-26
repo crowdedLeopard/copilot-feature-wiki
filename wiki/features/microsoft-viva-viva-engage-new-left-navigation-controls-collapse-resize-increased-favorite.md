@@ -72,10 +72,12 @@ changes:
     note: "Correction: licensing is now stated from the Viva Engage setup requirements page (Core comes with Microsoft 365; Core Service Plan needed where licensing is enforced); the rest is unchanged."
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 58 statements confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 58 statements confirmed"
 version: 4
 verification:
   status: "verified"
-  date: "2026-11-25"
+  date: "2026-11-26"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"

@@ -3,7 +3,7 @@
   "roadmapId": 578870,
   "title": "Viva Engage: richer shared message previews and a full conversation dialog",
   "status": "verified-with-gaps",
-  "date": "2026-11-24",
+  "date": "2026-11-26",
   "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
@@ -12,209 +12,34 @@
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "pass",
   "notes": [
-    "claim 47: severity major on a rationale: risk rating lowered to minor; ratings are judgements and cannot hold a page"
+    "claim 56: severity major on a rationale: risk rating lowered to minor; ratings are judgements and cannot hold a page",
+    "claim 57: severity major on a rationale: risk rating lowered to minor; ratings are judgements and cannot hold a page"
   ],
   "hold": null,
   "counts": {
-    "claims": 56,
+    "claims": 57,
     "confirmed": 55,
-    "unconfirmed": 1,
+    "unconfirmed": 2,
     "contradicted": 0,
     "blocker": 0,
     "major": 0,
-    "minor": 1
+    "minor": 2
   },
-  "summary": "The briefing passes: its rollout facts, licensing background and gaps in feature-specific controls are supported. The risk rationale should drop its assurance that the change introduces no new data source, which Microsoft's notice does not establish.",
+  "summary": "The briefing passes: its rollout details, licensing background and documented control gaps are supported. The risk rationale should not assert that the change introduces no new data source or action; Microsoft describes the user experience but does not give those assurances.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing",
+      "where": "title; front matter: products; What's changing",
       "type": "record",
-      "claim": "Microsoft is improving the recipient experience of shared messages in Viva Engage.",
+      "claim": "The change concerns the shared conversation experience in Microsoft Viva Engage.",
       "status": "supported",
-      "source": "Message Center post MC1539003",
-      "quote": "We are improving the shared message experience in Microsoft Viva Engage to make it easier for users to discover, read, and participate in conversations shared by their colleagues.",
+      "source": "roadmap record",
+      "quote": "Microsoft Viva: Engage - Improved shared messages end-user experience",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "summary; front matter: defaultState; Why it matters",
-      "type": "default",
-      "claim": "The changed shared-message experience reaches its intended users without administrator configuration.",
-      "status": "supported",
-      "source": "Message Center post MC1539003",
-      "quote": "Shared messages will display more of the original content, including formatted text, images, videos, and attachments. ... No changes to existing sharing workflows are required.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
-      "where": "What's changing; Risk assessment: Data exposure; Governance guidance",
-      "type": "record",
-      "claim": "Shared-message previews will show formatted text from the original post.",
-      "status": "supported",
-      "source": "Message Center post MC1539003",
-      "quote": "Shared messages will display richer previews of the original post, including formatted text, images, videos, and attachments.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "What's changing; Risk assessment: Data exposure",
-      "type": "record",
-      "claim": "Shared-message previews will show images from the original post.",
-      "status": "supported",
-      "source": "Message Center post MC1539003",
-      "quote": "Shared messages will display richer previews of the original post, including formatted text, images, videos, and attachments.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "What's changing; Risk assessment: Data exposure",
-      "type": "record",
-      "claim": "Shared-message previews will show videos from the original post.",
-      "status": "supported",
-      "source": "Message Center post MC1539003",
-      "quote": "Shared messages will display richer previews of the original post, including formatted text, images, videos, and attachments.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "What's changing; Risk assessment: Data exposure",
-      "type": "record",
-      "claim": "Shared-message previews will show attachments from the original post.",
-      "status": "supported",
-      "source": "Message Center post MC1539003",
-      "quote": "Shared messages will display richer previews of the original post, including formatted text, images, videos, and attachments.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "What's changing; Why it matters; Risk assessment; Open questions",
-      "type": "record",
-      "claim": "Shared-message previews will reflect later changes to the original post, including edits.",
-      "status": "supported",
-      "source": "Message Center post MC1539003",
-      "quote": "Shared message previews will reflect changes to the original post, including edits.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "summary; What's changing; Scope; Open questions",
-      "type": "record",
-      "claim": "The conversation dialog is available on Viva Engage web surfaces.",
-      "status": "supported",
-      "source": "Message Center post MC1539003",
-      "quote": "Microsoft Viva Engage, with the conversation dialog experience available on web surfaces.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "Selecting a shared message opens the original conversation in a dialog.",
-      "status": "supported",
-      "source": "Message Center post MC1539003",
-      "quote": "Users can select a shared message or View full conversation to open the original conversation in a dialog, including replies and reactions.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "What's changing; Governance guidance",
-      "type": "record",
-      "claim": "Selecting View full conversation opens the original conversation in a dialog.",
-      "status": "supported",
-      "source": "Message Center post MC1539003",
-      "quote": "Users can select a shared message or View full conversation to open the original conversation in a dialog, including replies and reactions.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The dialog includes replies to the original conversation.",
-      "status": "supported",
-      "source": "Message Center post MC1539003",
-      "quote": "Users can select a shared message or View full conversation to open the original conversation in a dialog, including replies and reactions.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The dialog includes reactions to the original conversation.",
-      "status": "supported",
-      "source": "Message Center post MC1539003",
-      "quote": "Users can select a shared message or View full conversation to open the original conversation in a dialog, including replies and reactions.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "Users can react from the conversation dialog.",
-      "status": "supported",
-      "source": "Message Center post MC1539003",
-      "quote": "Users can react, reply, and share from the conversation dialog without losing their place in the feed.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "Users can reply from the conversation dialog.",
-      "status": "supported",
-      "source": "Message Center post MC1539003",
-      "quote": "Users can react, reply, and share from the conversation dialog without losing their place in the feed.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "Users can share from the conversation dialog.",
-      "status": "supported",
-      "source": "Message Center post MC1539003",
-      "quote": "Users can react, reply, and share from the conversation dialog without losing their place in the feed.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "What's changing; Risk assessment: Change & support; rationale: impact",
-      "type": "record",
-      "claim": "Users can interact with the dialog without losing their place in the feed.",
-      "status": "supported",
-      "source": "Message Center post MC1539003",
-      "quote": "Users can react, reply, and share from the conversation dialog without losing their place in the feed.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "What's changing; Why it matters; rationale: impact",
-      "type": "record",
-      "claim": "Existing discovery and sharing workflows continue unchanged.",
-      "status": "supported",
-      "source": "Message Center post MC1539003",
-      "quote": "Users will continue to discover and share messages as they do today. This update focuses on improving how recipients experience shared content.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is Launched.",
@@ -225,7 +50,7 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 3,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target is November CY2026.",
@@ -236,10 +61,10 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 4,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap gives no preview date.",
+      "claim": "The roadmap supplies no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -247,7 +72,7 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 5,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
       "claim": "The release phase is General Availability.",
@@ -258,10 +83,10 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 6,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
+      "claim": "The roadmap lists only Worldwide (Standard Multi-Tenant).",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -269,10 +94,10 @@
       "fix": null
     },
     {
-      "n": 23,
+      "n": 7,
       "where": "front matter: platforms; What's changing; Scope; Open questions",
       "type": "record",
-      "claim": "The roadmap lists Desktop.",
+      "claim": "The roadmap lists Desktop and Web platforms.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Desktop\", \"Web\"]",
@@ -280,18 +105,7 @@
       "fix": null
     },
     {
-      "n": 24,
-      "where": "front matter: platforms; What's changing; Scope; Open questions",
-      "type": "record",
-      "claim": "The roadmap lists Web.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Desktop\", \"Web\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
+      "n": 8,
       "where": "What's changing",
       "type": "record",
       "claim": "The roadmap describes the aim as making shared conversations easier to discover, read and participate in.",
@@ -302,21 +116,285 @@
       "fix": null
     },
     {
+      "n": 9,
+      "where": "front matter: defaultState; summary; Why it matters",
+      "type": "default",
+      "claim": "The experience reaches affected users on rollout without administrator configuration.",
+      "status": "supported",
+      "source": "Message Center post MC1539003",
+      "quote": "Shared messages will display more of the original content, including formatted text, images, videos, and attachments. No changes to existing sharing workflows are required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: licensing.model; Cost and licensing",
+      "type": "licensing",
+      "claim": "The licensing model is included, based on existing Viva Engage feed entitlement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/viva-engage-service-description/viva-engage-service-description",
+      "quote": "| Feature | Small Business | Enterprise | Education | ... | Viva Engage feeds | Yes | Yes | Yes |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Viva Engage feeds are available in Small Business plans in the service description.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/viva-engage-service-description/viva-engage-service-description",
+      "quote": "| Feature | Small Business | Enterprise | Education | ... | Viva Engage feeds | Yes | Yes | Yes |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Viva Engage feeds are available in Enterprise plans in the service description.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/viva-engage-service-description/viva-engage-service-description",
+      "quote": "| Feature | Small Business | Enterprise | Education | ... | Viva Engage feeds | Yes | Yes | Yes |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Viva Engage feeds are available in Education plans in the service description.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/viva-engage-service-description/viva-engage-service-description",
+      "quote": "| Feature | Small Business | Enterprise | Education | ... | Viva Engage feeds | Yes | Yes | Yes |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No licence specific to the improved shared message experience is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Engage shared message experience previews licence licensing price meter. Read Engage service description and setup licensing search excerpt; neither identifies separate entitlement for this display change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No price or charge specific to the improved shared message experience is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Engage shared message experience previews licence licensing price meter. Read Engage service description, setup licensing excerpt, roadmap and MC1539003; none names a price for this change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No meter specific to this change is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Engage shared message experience previews licence licensing price meter. Read Engage service description and licensing search results, roadmap and MC1539003; no meter for shared message previews is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "Shared message previews will include formatted text from the original post.",
+      "status": "supported",
+      "source": "Message Center post MC1539003",
+      "quote": "Shared messages will display richer previews of the original post, including formatted text, images, videos, and attachments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "Shared message previews will include images from the original post.",
+      "status": "supported",
+      "source": "Message Center post MC1539003",
+      "quote": "Shared messages will display richer previews of the original post, including formatted text, images, videos, and attachments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "Shared message previews will include videos from the original post.",
+      "status": "supported",
+      "source": "Message Center post MC1539003",
+      "quote": "Shared messages will display richer previews of the original post, including formatted text, images, videos, and attachments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "Shared message previews will include attachments from the original post.",
+      "status": "supported",
+      "source": "Message Center post MC1539003",
+      "quote": "Shared messages will display richer previews of the original post, including formatted text, images, videos, and attachments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Why it matters; Risk assessment; Open questions",
+      "type": "record",
+      "claim": "Shared message previews will reflect changes to the original post, including edits.",
+      "status": "supported",
+      "source": "Message Center post MC1539003",
+      "quote": "Shared message previews will reflect changes to the original post, including edits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "summary; What's changing; Scope; Governance guidance; Open questions",
+      "type": "record",
+      "claim": "The conversation dialog is available on Viva Engage web surfaces.",
+      "status": "supported",
+      "source": "Message Center post MC1539003",
+      "quote": "Microsoft Viva Engage, with the conversation dialog experience available on web surfaces.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Selecting a shared message opens the conversation dialog.",
+      "status": "supported",
+      "source": "Message Center post MC1539003",
+      "quote": "Users can select a shared message or View full conversation to open the original conversation in a dialog, including replies and reactions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Selecting View full conversation opens the conversation dialog.",
+      "status": "supported",
+      "source": "Message Center post MC1539003",
+      "quote": "Users can select a shared message or View full conversation to open the original conversation in a dialog, including replies and reactions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "The dialog opens the original full conversation.",
+      "status": "supported",
+      "source": "Message Center post MC1539003",
+      "quote": "On Viva Engage web surfaces, users will be able to open and interact with the full conversation without losing their place in the feed.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 26,
       "where": "What's changing",
       "type": "record",
-      "claim": "MC1539003 was published on 2026-11-05.",
+      "claim": "The dialog includes replies.",
       "status": "supported",
       "source": "Message Center post MC1539003",
-      "quote": "Published 2026-11-05; last updated 2026-11-05; Microsoft's end date 2027-01-01",
+      "quote": "Users can select a shared message or View full conversation to open the original conversation in a dialog, including replies and reactions.",
       "severity": null,
       "fix": null
     },
     {
       "n": 27,
-      "where": "What's changing; Scope; Governance guidance",
+      "where": "What's changing",
       "type": "record",
-      "claim": "The notice schedules Worldwide rollout to begin in mid-November 2026.",
+      "claim": "The dialog includes reactions.",
+      "status": "supported",
+      "source": "Message Center post MC1539003",
+      "quote": "Users can select a shared message or View full conversation to open the original conversation in a dialog, including replies and reactions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Users can react from the dialog.",
+      "status": "supported",
+      "source": "Message Center post MC1539003",
+      "quote": "Users can react, reply, and share from the conversation dialog without losing their place in the feed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Users can reply from the dialog.",
+      "status": "supported",
+      "source": "Message Center post MC1539003",
+      "quote": "Users can react, reply, and share from the conversation dialog without losing their place in the feed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Users can share from the dialog.",
+      "status": "supported",
+      "source": "Message Center post MC1539003",
+      "quote": "Users can react, reply, and share from the conversation dialog without losing their place in the feed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "record",
+      "claim": "Interacting through the dialog retains the user's place in the feed.",
+      "status": "supported",
+      "source": "Message Center post MC1539003",
+      "quote": "Users can react, reply, and share from the conversation dialog without losing their place in the feed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing; Risk assessment: Autonomy & actions; rationale: impact",
+      "type": "record",
+      "claim": "Users continue discovering and sharing messages as they do today.",
+      "status": "supported",
+      "source": "Message Center post MC1539003",
+      "quote": "Users will continue to discover and share messages as they do today. This update focuses on improving how recipients experience shared content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1539003 was published on 2026-11-05.",
+      "status": "supported",
+      "source": "Message Center post MC1539003",
+      "quote": "Published 2026-11-05; last updated 2026-11-05",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing; Scope; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "The notice gives a Worldwide General Availability rollout starting mid-November 2026.",
       "status": "supported",
       "source": "Message Center post MC1539003",
       "quote": "General Availability (Worldwide): Rollout will begin in mid-November 2026 and is expected to complete by late November 2026.",
@@ -324,8 +402,8 @@
       "fix": null
     },
     {
-      "n": 28,
-      "where": "What's changing; Scope; Governance guidance",
+      "n": 35,
+      "where": "What's changing; Scope; Governance guidance: At rollout",
       "type": "record",
       "claim": "The notice expects rollout to complete by late November 2026.",
       "status": "supported",
@@ -335,18 +413,18 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 36,
       "where": "What's changing",
       "type": "record",
-      "claim": "Microsoft's end date for the notice is 2027-01-01.",
+      "claim": "Microsoft's notice end date is 2027-01-01.",
       "status": "supported",
       "source": "Message Center post MC1539003",
-      "quote": "Published 2026-11-05; last updated 2026-11-05; Microsoft's end date 2027-01-01",
+      "quote": "Microsoft's end date 2027-01-01",
       "severity": null,
       "fix": null
     },
     {
-      "n": 30,
+      "n": 37,
       "where": "What's changing",
       "type": "record",
       "claim": "The notice sets no act-by date.",
@@ -357,76 +435,65 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 38,
       "where": "What's changing",
       "type": "absence",
-      "claim": "Microsoft Learn has no page describing this improved shared-message feature at the time of writing.",
+      "claim": "Microsoft Learn has no page describing this feature as of November 2026.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Viva Engage improved shared message previews conversation dialog admin user setting default automatic rollout licensing price; \"Viva Engage\" \"shared messages\" \"preview\". Read service description, setup, conversation settings and returned excerpts; no feature page.",
+      "quote": "Searched: Viva Engage improved shared message previews full conversation dialog admin switch user settings default rollout; \"Viva Engage\" \"shared messages\" \"preview\" \"dialog\". Read returned excerpts and cited Engage pages; none describes this specific update.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 32,
-      "where": "summary; Why it matters; Risk assessment: Change & support",
+      "n": 39,
+      "where": "Why it matters; rationale: impact",
       "type": "record",
-      "claim": "Microsoft recommends informing users about the changed shared-message experience.",
+      "claim": "Microsoft requires no changes to existing sharing workflows.",
       "status": "supported",
       "source": "Message Center post MC1539003",
-      "quote": "We recommend informing users about the improved shared message experience and updating any existing training or support materials that demonstrate how shared messages appear in Viva Engage.",
+      "quote": "No changes to existing sharing workflows are required.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 33,
-      "where": "summary; Why it matters; Risk assessment: Change & support",
+      "n": 40,
+      "where": "summary; Why it matters; Governance guidance",
       "type": "record",
-      "claim": "Microsoft recommends updating existing training or support materials demonstrating shared messages.",
+      "claim": "Microsoft recommends informing users about the improved experience.",
       "status": "supported",
       "source": "Message Center post MC1539003",
-      "quote": "We recommend informing users about the improved shared message experience and updating any existing training or support materials that demonstrate how shared messages appear in Viva Engage.",
+      "quote": "We recommend informing users about the improved shared message experience",
       "severity": null,
       "fix": null
     },
     {
-      "n": 34,
-      "where": "Risk assessment: Data exposure; Governance guidance; rationale: risk; Open questions",
-      "type": "absence",
-      "claim": "The supplied notice does not explain previews for recipients who cannot view the original post.",
+      "n": 41,
+      "where": "summary; Why it matters; Risk assessment: Change & support; Cost and licensing",
+      "type": "record",
+      "claim": "Microsoft recommends updating training or support materials that demonstrate how shared messages appear.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: read MC1539003 in full for recipient access and private-community preview handling. It describes original-content previews, dialogs and edits, but gives no recipient-access qualification.",
+      "source": "Message Center post MC1539003",
+      "quote": "updating any existing training or support materials that demonstrate how shared messages appear in Viva Engage.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 35,
+      "n": 42,
+      "where": "Risk assessment: Data exposure; Governance guidance: At rollout; rationale: risk",
+      "type": "record",
+      "claim": "The notice does not explain preview behaviour for recipients unable to view the original post.",
+      "status": "supported",
+      "source": "Message Center post MC1539003",
+      "quote": "Shared message previews will reflect changes to the original post, including edits. ... No compliance considerations identified. Review as appropriate for your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
       "where": "Risk assessment: Security & identity",
-      "type": "absence",
-      "claim": "The notice identifies no new sign-in, role or permission for this display and navigation change.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: read MC1539003 in full for sign-in, roles and permissions. Its What will happen section describes richer original-post previews, conversation dialogs and existing sharing workflows, with no new identity requirement.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "Risk assessment: Autonomy & actions; rationale: risk",
-      "type": "behaviour",
-      "claim": "Reacting is an existing user action in Viva Engage feeds rather than a new kind of action introduced by the dialog.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/engage/eac-storyline",
-      "quote": "After you enable storyline, all network members with access to Viva Engage see the Storyline tab, and a storyline feed on their profile page. They can also react and respond to others’ storyline posts.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "Risk assessment: Autonomy & actions; rationale: risk",
       "type": "record",
-      "claim": "Sharing messages is an existing user action that the update preserves.",
+      "claim": "The notice describes no new sign-in requirement.",
       "status": "supported",
       "source": "Message Center post MC1539003",
       "quote": "Users will continue to discover and share messages as they do today. This update focuses on improving how recipients experience shared content.",
@@ -434,7 +501,29 @@
       "fix": null
     },
     {
-      "n": 38,
+      "n": 44,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "record",
+      "claim": "The notice names no new role or administrator role requirement.",
+      "status": "supported",
+      "source": "Message Center post MC1539003",
+      "quote": "Who is affected - Users who view and interact with shared messages in Microsoft Viva Engage. ... No changes to existing sharing workflows are required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The notice describes no new permission requirement.",
+      "status": "supported",
+      "source": "Message Center post MC1539003",
+      "quote": "Users will continue to discover and share messages as they do today. This update focuses on improving how recipients experience shared content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
       "where": "Risk assessment: Change & support; Scope",
       "type": "behaviour",
       "claim": "Viva Engage users are subject to A/B feature testing or flighting.",
@@ -445,10 +534,10 @@
       "fix": null
     },
     {
-      "n": 39,
+      "n": 47,
       "where": "Risk assessment: Change & support; Scope",
       "type": "behaviour",
-      "claim": "Users in the same network can have varying experiences because of feature testing.",
+      "claim": "Users in the same network may have varying experiences due to testing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/office365/servicedescriptions/viva-engage-service-description/viva-engage-service-description",
       "quote": "Users within the same network may have varying experiences due to testing.",
@@ -456,7 +545,7 @@
       "fix": null
     },
     {
-      "n": 40,
+      "n": 48,
       "where": "Scope",
       "type": "behaviour",
       "claim": "Customers cannot opt out of Viva Engage A/B testing.",
@@ -467,145 +556,57 @@
       "fix": null
     },
     {
-      "n": 41,
-      "where": "front matter: licensing; Cost and licensing",
-      "type": "licensing",
-      "claim": "The shared-message display update is classified as included within the plans covering the Viva Engage feed experience.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/viva-engage-service-description/viva-engage-service-description",
-      "quote": "| Feature | Small Business | Enterprise | Education | ... | Viva Engage feeds | Yes | Yes | Yes |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "A licence specific to this shared-message update has not been published in the checked sources.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Viva Engage\" \"shared message\" \"license\" \"price\"; Viva Engage improved shared message previews conversation dialog licensing price. Read MC1539003, roadmap, service description, setup and search excerpts; no change-specific licence, price or meter.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
+      "n": 49,
       "where": "Scope; rationale: impact",
       "type": "record",
       "claim": "Users who view and interact with shared messages in Viva Engage are affected.",
       "status": "supported",
       "source": "Message Center post MC1539003",
-      "quote": "Users who view and interact with shared messages in Microsoft Viva Engage.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "controls[0]; Governance controls; Why it matters; Open questions",
-      "type": "absence",
-      "claim": "No tenant-level or per-user UI or automation switch for the improved shared-message previews or dialog is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Viva Engage Yammer shared message preview conversation dialog display settings API PowerShell disable; \"Viva Engage\" \"conversation dialog\" \"settings\" Microsoft Graph beta. Read conversation settings, feature-access management, Core APIs and Graph overview.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "controls[0].note; Governance controls",
-      "type": "absence",
-      "claim": "The existing conversation settings are not described as controlling shared-message previews or the conversation dialog.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: read conversation settings (File uploads, GIFs, URL metadata, Private messages), feature-access management (Engage: AI Summarization), and the full legacy Core API table (message CRUD, feeds, likes). None describes a shared-message-preview or conversation-dialog display switch.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "Scope",
-      "type": "absence",
-      "claim": "The notice names no prerequisite for this original-post display update.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: read MC1539003 in full for prerequisites, administrator roles, controls and data sources. It describes richer previews of the original post and user interaction with its conversation, and requires no changes to existing sharing workflows.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "rationale: risk",
-      "type": "behaviour",
-      "claim": "The change introduces no new data source.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: \"Viva Engage\" \"shared messages\" \"preview\"; Viva Engage improved shared message previews conversation dialog admin user setting default automatic rollout licensing price. Read MC1539003 and Learn results; none states that data sources remain unchanged.",
-      "severity": "minor",
-      "fix": "Remove 'with no new data source or action' from the risk rationale. Use: 'Low. Microsoft's notice describes a display change to messages users already share; it does not say how previews treat recipients who cannot view the original post.'"
-    },
-    {
-      "n": 48,
-      "where": "Scope",
-      "type": "absence",
-      "claim": "The notice names no administrator role required for this update.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: read MC1539003 in full for administrator roles. It identifies affected users and recommends communication and updated materials, without naming an administrator role.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "controls[0].note; Governance controls",
-      "type": "absence",
-      "claim": "The notice names no administrator control for this update.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: read MC1539003 in full for administrator controls. It says no changes to existing sharing workflows are required and recommends informing users, without naming a switch or setting.",
+      "quote": "Who is affected - Users who view and interact with shared messages in Microsoft Viva Engage.",
       "severity": null,
       "fix": null
     },
     {
       "n": 50,
-      "where": "Risk assessment: Autonomy & actions; rationale: risk",
-      "type": "behaviour",
-      "claim": "Replying is an existing user action in Viva Engage feeds rather than a new kind of action introduced by the dialog.",
+      "where": "Scope",
+      "type": "record",
+      "claim": "The notice names no prerequisites.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/viva/engage/eac-storyline",
-      "quote": "After you enable storyline, all network members with access to Viva Engage see the Storyline tab, and a storyline feed on their profile page. They can also react and respond to others’ storyline posts.",
+      "source": "Message Center post MC1539003",
+      "quote": "No changes to existing sharing workflows are required.",
       "severity": null,
       "fix": null
     },
     {
       "n": 51,
-      "where": "Cost and licensing",
+      "where": "controls[0].ui and controls[0].api; Governance controls; Open questions",
       "type": "absence",
-      "claim": "A price specific to this shared-message update has not been published.",
+      "claim": "No tenant switch for the improved shared message experience is documented on either the UI or automation surface.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Viva Engage\" \"shared message\" \"license\" \"price\"; Viva Engage improved shared message previews conversation dialog licensing price. Read MC1539003, roadmap, service description, setup and returned excerpts; no change-specific price.",
+      "quote": "Searched: Viva Engage shared messages preview settings PowerShell Graph Yammer API disable conversation dialog; improved shared message previews admin switch. Read conversation settings, feature access management, Core APIs, Graph engagement overview and storyline; no switch.",
       "severity": null,
       "fix": null
     },
     {
       "n": 52,
-      "where": "front matter: licensing.notes; Cost and licensing",
+      "where": "Governance controls; Open questions",
       "type": "absence",
-      "claim": "A charge specific to this shared-message update has not been published.",
+      "claim": "No per-user switch for the improved shared message experience is documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Viva Engage\" \"shared message\" \"license\" \"price\"; Viva Engage improved shared message previews conversation dialog licensing price. Read MC1539003, roadmap, service description, setup and returned excerpts; no change-specific charge.",
+      "quote": "Searched: Viva Engage improved shared message previews full conversation dialog admin switch user settings default rollout. Read conversation settings, feature access management and storyline, plus returned user notification settings excerpt; no shared-message user switch.",
       "severity": null,
       "fix": null
     },
     {
       "n": 53,
-      "where": "Cost and licensing; rationale: cost",
+      "where": "controls[0].note; Governance controls",
       "type": "absence",
-      "claim": "No meter specific to this shared-message update is published in the checked sources.",
+      "claim": "Existing conversation settings, including File uploads, GIFs, URL metadata and Private messages, are not described as governing shared message previews or the dialog.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Viva Engage improved shared message previews conversation dialog admin user setting default automatic rollout licensing price. Read MC1539003, roadmap, service description, setup and returned excerpts; no change-specific meter.",
+      "quote": "Searched: Viva Engage improved shared message previews full conversation dialog admin switch user settings default rollout. Read the full Configure conversation settings for the Viva Engage network page; its named settings do not describe shared-post previews or the dialog.",
       "severity": null,
       "fix": null
     },
@@ -613,7 +614,7 @@
       "n": 54,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "The feature-access-management list names AI Summarization as its Viva Engage feature.",
+      "claim": "The feature access management table lists AI Summarization for Viva Engage, not the shared message change.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/feature-access-management",
       "quote": "| AI Summarization | Yes | Engage admin | Viva Engage |",
@@ -623,31 +624,42 @@
     {
       "n": 55,
       "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "The legacy Viva Engage Core API page lists message operations.",
+      "type": "absence",
+      "claim": "The legacy Core API page lists message operations but no operation to configure these display settings.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/rest/api/yammer/yammer-core-apis",
-      "quote": "| GET messages/my_feed.json | Retrieve the current user's feed messages | ... | POST messages-json-post | Post a new message |",
+      "source": null,
+      "quote": "Searched: Viva Engage shared messages preview settings PowerShell Graph Yammer API disable conversation dialog. Read Legacy Viva Engage (Yammer) Core APIs in full; listed message operations retrieve, post, like, unlike or delete messages, not configure shared-message display.",
       "severity": null,
       "fix": null
     },
     {
       "n": 56,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "The service description lists Viva Engage feeds as available in Small Business, Enterprise and Education plans.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/viva-engage-service-description/viva-engage-service-description",
-      "quote": "| Feature | Small Business | Enterprise | Education | ... | Viva Engage feeds | Yes | Yes | Yes |",
-      "severity": null,
-      "fix": null
+      "where": "rationale: risk",
+      "type": "behaviour",
+      "claim": "The change introduces no new data source.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Viva Engage\" \"shared message\" \"new data\" \"actions\"; Viva Engage shared messages preview original post private community permissions data sources actions. Read MC1539003, roadmap and returned Learn excerpts; none assures that data sources remain unchanged.",
+      "severity": "minor",
+      "fix": "Remove 'with no new data source or action' from the risk rationale. Use: 'Low. Microsoft's notice describes a display change to messages users already share; it does not say how previews treat recipients who cannot view the original post.'"
+    },
+    {
+      "n": 57,
+      "where": "rationale: risk",
+      "type": "behaviour",
+      "claim": "The change introduces no new action.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Viva Engage\" \"shared message\" \"new data\" \"actions\". Read MC1539003, roadmap and returned Learn excerpts; the notice describes react, reply and share but gives no exhaustive assurance that the change introduces no other action.",
+      "severity": "minor",
+      "fix": "Remove 'with no new data source or action' from the risk rationale. Use: 'Low. Microsoft's notice describes a display change to messages users already share; it does not say how previews treat recipients who cannot view the original post.'"
     }
   ],
   "precheck": {
-    "at": "2026-11-24T02:36:00.852Z",
+    "at": "2026-11-26T06:54:02.750Z",
     "summary": {
       "links": 7,
-      "unreachable": 0,
+      "unreachable": 5,
       "uiPaths": 0,
       "uiPathsWithMissingWords": 0,
       "apiCalls": 0,
@@ -667,28 +679,28 @@
       },
       {
         "url": "https://learn.microsoft.com/office365/servicedescriptions/viva-engage-service-description/viva-engage-service-description",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/viva/engage/configure-your-viva-engage-network/engage-conversation-settings",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/viva/feature-access-management",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/rest/api/yammer/yammer-core-apis",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/viva/engage/eac-storyline",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [],
@@ -699,6 +711,12 @@
       "date": "2026-11-21",
       "status": "verified-with-gaps",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-24",
+      "status": "verified-with-gaps",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

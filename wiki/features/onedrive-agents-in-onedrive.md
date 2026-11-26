@@ -121,19 +121,23 @@ changes:
     note: "Corrected the blocking statement: SharePoint-created agents are blocked in Copilot Chat only, while blocking Agent Builder agents also affects other host products; removed an unsupported claim about the roadmap record."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 73 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-26"
+    note: "Removed an unsupported claim that OneDrive .agent files have no site owner to notice them, and narrowed the inventory open question to the agent registry."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 78 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-26"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 73
-  confirmed: 71
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 2
-  hash: "cbb94a3827137d5a378be5ce1fb4cc96"
+  claims: 78
+  confirmed: 78
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "2f5f2f61eebec944587f6a6d685c7dc8"
 ---
 
 ## What's changing
@@ -148,7 +152,7 @@ The roadmap record lists the item as Launched and in General Availability, with 
 
 ## Why it matters
 
-For most tenants the decision now is not whether to allow OneDrive agents but what happens to the ones people already built. Each .agent file sits in one person's OneDrive, so there is no site owner to notice it, and Microsoft's guidance leaves the upgrade to the agent's owner. Agents that colleagues rely on will stop answering after March 2027 unless their owner upgrades them, and sharing does not carry over except where the file was shared with everyone in the organisation.
+For most tenants the decision now is not whether to allow OneDrive agents but what happens to the ones people already built. Each .agent file sits in one person's OneDrive, and Microsoft's guidance leaves the upgrade to the agent's owner. Agents that colleagues rely on will stop answering after March 2027 unless their owner upgrades them, and sharing does not carry over except where the file was shared with everyone in the organisation.
 
 If nobody acts, Copilot-licensed users can keep building agents from their OneDrive files, now through Agent Builder, where the Microsoft 365 admin center's agent settings apply, and any .agent files they made stop responding after March 2027. Expect support requests from users who meet the upgrade-required message and from people who lose access to an agent that was re-created as private.
 
@@ -223,7 +227,7 @@ The Graph calls for User access and Sharing are Tenant Configuration Management 
 ## Open questions
 
 - Does the SharePoint agents pay-as-you-go service cover .agent files stored in OneDrive, so that unlicensed users can use them until March 2027? Watch the SharePoint pay-as-you-go pages on Microsoft Learn.
-- Do the inventory routes Microsoft lists for SharePoint agents (SharePoint Advanced Management agent reports, the agent registry) list .agent files stored in users' OneDrive accounts? Watch the upgrade page.
+- Does the agent registry list .agent files stored in users' OneDrive accounts? Watch the upgrade page.
 - Does the **User access** setting in Agents > Settings govern existing .agent files in OneDrive, or only agents in the catalogue? Watch the agent settings page.
 - Will agents in OneDrive be offered in US Government clouds, given that the roadmap lists Worldwide only while the upgrade page says the .agent changes apply to Microsoft Government Cloud? Watch the roadmap item and Message center.
 
@@ -233,13 +237,11 @@ cost: Low. The roadmap ties the feature to the Microsoft Copilot for Microsoft 3
 impact: Medium. Copilot-licensed users who built or rely on OneDrive agents notice: creation has moved to Agent Builder, and their .agent files stop answering after March 2027.
 -->
 
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters / behaviour: Because a OneDrive .agent file sits in one person's OneDrive, there is no site owner to notice it. | Found: Searched: OneDrive agents .agent files site owner upgrade owner responsibility. Read upgrade-sharepoint-agents and manage-access-agents-in-sharepoint; neither establishes that OneDrive agent files have no site-owner oversight. | Fix: Remove ', so there is no site owner to notice it' from Why it matters. Retain the documented owner-led upgrade guidance.
-- [contradicted, blocker] Open questions: inventory routes / absence: Whether SharePoint Advanced Management agent reports cover .agent files in users' OneDrive accounts remains an open documentation question. | Found: The Agent Insights report gives SharePoint admins detailed visibility into newly created agents across all SharePoint and OneDrive sites within their organization. | Fix: Replace the inventory bullet with: 'Does the agent registry list .agent files stored in users' OneDrive accounts? Watch the upgrade page.' Remove SharePoint Advanced Management agent reports from that open question; their OneDrive coverage is documented at https://learn.microsoft.com/sharepoint/monitor-agent-usage and https://learn.microsoft.com/sharepoint/insights-on-sharepoint-agents. | Source: https://learn.microsoft.com/sharepoint/monitor-agent-usage
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].api / command: POST /beta/admin/configurationManagement/configurationMonitors applies User access through an applyOnce baseline containing microsoft.agent.useraccess. | Found: applies a desired-state baseline once in applyOnce mode. POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors | Fix: Keep the call. Append to controls[1].note: 'The request body sets mode to applyOnce and baseline.resources to a microsoft.agent.useraccess resource, with properties.valueObject.userAssignmentCategory set to everyone or noOne.' The property is documented at https://learn.microsoft.com/graph/utcm-agent-resources. | Source: https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta
-- [supported, minor] controls[2].api / command: POST /beta/admin/configurationManagement/configurationMonitors applies Sharing through an applyOnce baseline containing microsoft.agent.sharing. | Found: applies a desired-state baseline once in applyOnce mode. POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors | Fix: Keep the call. Append to controls[2].note: 'The request body sets mode to applyOnce and baseline.resources to a microsoft.agent.sharing resource, with properties.valueObject.organizationWideSharingAssignment.userAssignmentCategory set to everyone or noOne.' The property is documented at https://learn.microsoft.com/graph/utcm-agent-resources. | Source: https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta
-- [supported, minor] controls[3].api / command: POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks the selected Copilot package. | Found: Block a Copilot package to prevent its usage. POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block | Fix: Keep the call and licence note. Append to controls[3].note: 'This is a beta API; Microsoft does not support its use in production applications.' | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block
+- [supported, minor] front matter: defaultState / default: Agents in OneDrive are an available capability that users choose to build or use, rather than a separate administrator opt-in. | Found: Creating agents in Agent Builder is a core Copilot capability when agents are enabled. Admins can't disable agent creation in Agent Builder separately while keeping agents enabled. | Fix: Keep user-opt-in and add https://learn.microsoft.com/plugins/agent-builder-share-manage-agents to sources. It documents the creation capability and its relationship to the existing agent-access control. | Source: https://learn.microsoft.com/plugins/agent-builder-share-manage-agents
+- [supported, minor] controls[1].api; Governance controls / command: POST /beta/admin/configurationManagement/configurationMonitors can apply the microsoft.agent.useraccess baseline once. | Found: POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors; An active applyOnce monitor runs in the background on behalf of the signed-in administrator and then becomes inactive. | Fix: Keep the call. Expand controls[1].note to say: 'API: set mode to applyOnce and baseline.resources[].resourceType to microsoft.agent.useraccess; set properties.valueObject.userAssignmentCategory to everyone or noOne (preview, beta); AI Administrator.' Resource properties are documented at https://learn.microsoft.com/graph/utcm-agent-resources. | Source: https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta
+- [supported, minor] controls[2].ui; Governance guidance: Before rollout / admin-path: Microsoft 365 admin center > Agents > Settings > Sharing controls who can share Agent Builder agents organization-wide. | Found: Org-wide sharing: In Agents > Settings > Sharing, control who can share agents built in Agent Builder with the organization. | Fix: Keep the path and add https://learn.microsoft.com/plugins/agent-builder-share-manage-agents to sources; it supplies the complete route. The existing docs link describes the Sharing control itself. | Source: https://learn.microsoft.com/plugins/agent-builder-share-manage-agents
+- [supported, minor] controls[2].api; Governance controls / command: POST /beta/admin/configurationManagement/configurationMonitors can apply the microsoft.agent.sharing baseline once. | Found: Create a new configurationMonitor object that ... applies a desired-state baseline once in applyOnce mode. | Fix: Keep the call. Expand controls[2].note to say: 'API: set mode to applyOnce and baseline.resources[].resourceType to microsoft.agent.sharing; set properties.valueObject.organizationWideSharingAssignment.userAssignmentCategory to everyone or noOne (preview, beta).' Resource properties are documented at https://learn.microsoft.com/graph/utcm-agent-resources. | Source: https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta
 -->

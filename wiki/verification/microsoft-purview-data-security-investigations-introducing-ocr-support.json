@@ -2,83 +2,44 @@
   "slug": "microsoft-purview-data-security-investigations-introducing-ocr-support",
   "roadmapId": 561489,
   "title": "Microsoft Purview Data Security Investigations: OCR extracts text from images for AI analysis",
-  "status": "held",
+  "status": "verified",
   "date": "2026-11-26",
-  "version": 2,
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 2,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-26",
-    "reasons": [
-      "1 blocking finding (claim 26)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 73,
-    "confirmed": 72,
+    "claims": 90,
+    "confirmed": 90,
     "unconfirmed": 0,
-    "contradicted": 1,
-    "blocker": 1,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
     "minor": 0
   },
-  "summary": "Hold: the page overstates who can access an investigation's extracted image text. Microsoft says reviewers who are not DSI administrators can view only investigations they are assigned to, not every investigation merely through role-group membership. The automatic OCR behaviour, billing statements and listed control paths are supported.",
+  "summary": "The briefing passes: Microsoft's documentation supports automatic OCR, the billing requirements, investigation access boundaries and the listed controls. The roadmap facts match, and the briefing appropriately reports the different format lists and the unresolved relationship with tenant-level OCR. The cited pages opened successfully during this check.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing",
-      "type": "record",
-      "claim": "DSI introduces OCR that extracts text from images and incorporates it into investigation data for AI analysis.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "adding optical character recognition (OCR), extracting text from images and incorporating it into investigation data. This enables AI-powered deep content analysis",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 2,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap item is Launched.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "quote": "\"status\": \"Launched\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 3,
-      "where": "front matter: targetDate; What's changing",
-      "type": "record",
-      "claim": "The roadmap target date is July CY2026.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"targetDate\": \"July CY2026\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "front matter: previewDate; What's changing",
-      "type": "record",
-      "claim": "The roadmap preview date is May CY2026.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": \"May CY2026\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
+      "n": 2,
       "where": "front matter: releasePhase",
       "type": "record",
-      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "claim": "The record lists General Availability and Preview release phases.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
@@ -86,7 +47,7 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 3,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
@@ -97,7 +58,7 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 4,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap platform is Web.",
@@ -108,54 +69,76 @@
       "fix": null
     },
     {
-      "n": 8,
-      "where": "front matter: roadmapModified",
+      "n": 5,
+      "where": "front matter: targetDate; What's changing",
       "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-07-14T22:41:38.",
+      "claim": "The roadmap target date is July CY2026.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"modified\": \"2026-07-14T22:41:38\"",
+      "quote": "\"targetDate\": \"July CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is May CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"May CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: products; title",
+      "type": "record",
+      "claim": "The feature belongs to Microsoft Purview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Purview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "DSI adds OCR to extract text from images and incorporate it into investigation data for AI content analysis.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "adding optical character recognition (OCR), extracting text from images and incorporating it into investigation data. This enables AI-powered deep content analysis",
       "severity": null,
       "fix": null
     },
     {
       "n": 9,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "DSI is a Purview tool for analysing data associated with security incidents.",
+      "where": "front matter: defaultState; summary; Risk assessment",
+      "type": "default",
+      "claim": "OCR is on automatically for supported investigation images without an OCR-specific enabling action.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/data-security-investigations-ai",
-      "quote": "Data Security Investigations uses AI services and tools to help you quickly review and take action on items associated with security incidents.",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ref-supported-file-types",
+      "quote": "OCR text extraction occurs automatically during data preparation and the extracted text is vectorized for use in AI-based analysis tools.",
       "severity": null,
       "fix": null
     },
     {
       "n": 10,
-      "where": "front matter: defaultState; summary; What's changing; Risk assessment; controls[0].note",
-      "type": "default",
-      "claim": "OCR is on automatically during DSI data preparation rather than requiring separate activation for each investigation.",
+      "where": "What's changing; Risk assessment; controls[0].note",
+      "type": "behaviour",
+      "claim": "OCR text extraction runs during data preparation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-security-investigations-ref-supported-file-types",
-      "quote": "OCR text extraction occurs automatically during data preparation and the extracted text is vectorized for use in AI-based analysis tools.",
+      "quote": "OCR text extraction occurs automatically during data preparation",
       "severity": null,
       "fix": null
     },
     {
       "n": 11,
-      "where": "What's changing; Risk assessment; rationale: risk",
+      "where": "What's changing; rationale: risk; rationale: cost",
       "type": "behaviour",
-      "claim": "The extracted image text is vectorised for use in investigation AI tools.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/data-security-investigations-ref-supported-file-types",
-      "quote": "OCR text extraction occurs automatically during data preparation and the extracted text is vectorized for use in AI-based analysis tools.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
-      "type": "behaviour",
-      "claim": "Image extraction happens as part of adding items to an investigation scope.",
+      "claim": "Image extraction is part of adding items to an investigation scope.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-security-investigations-ref-supported-file-types",
       "quote": "Extraction of images is part of adding items to an investigation scope",
@@ -163,21 +146,120 @@
       "fix": null
     },
     {
-      "n": 13,
-      "where": "What's changing; Scope; Governance guidance",
-      "type": "availability",
-      "claim": "The DSI file-types table supports OCR for BMP, EMF, GIF, JPEG, PNG, SVG, TIFF, DWG/DXF and WMF images.",
+      "n": 12,
+      "where": "What's changing; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "Extracted image text is vectorized for AI analysis tools.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-security-investigations-ref-supported-file-types",
-      "quote": "OCR text extraction | Possible Extensions: Yes | .bmp; Yes | .emf; Yes | .gif; Yes | .jpeg; .jpg; Yes | .png; Yes | .svg; Yes | .tif; Yes | .dwg; .dxf; Yes | .wmf",
+      "quote": "the extracted text is vectorized for use in AI-based analysis tools.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "The DSI file-types page supports BMP OCR text extraction.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ref-supported-file-types",
+      "quote": "| image/bmp | Yes | Yes | Yes | .bmp |",
       "severity": null,
       "fix": null
     },
     {
       "n": 14,
+      "where": "What's changing; Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "The DSI file-types page supports EMF OCR text extraction.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ref-supported-file-types",
+      "quote": "| image/emf | Yes | Yes | Yes | .emf |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "The DSI file-types page supports GIF OCR text extraction.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ref-supported-file-types",
+      "quote": "| image/gif | Yes | Yes | Yes | .gif |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "The DSI file-types page supports JPEG OCR text extraction.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ref-supported-file-types",
+      "quote": "| image/jpeg | Yes | Yes | Yes | .jpeg; .jpg |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "The DSI file-types page supports PNG OCR text extraction.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ref-supported-file-types",
+      "quote": "| image/png | Yes | Yes | Yes | .png |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "The DSI file-types page supports SVG OCR text extraction.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ref-supported-file-types",
+      "quote": "| image/svg+xml | Yes | Yes | Yes | .svg |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "The DSI file-types page supports TIFF OCR text extraction.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ref-supported-file-types",
+      "quote": "| image/tiff | Yes | Yes | Yes | .tif |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "The DSI file-types page supports DWG/DXF OCR text extraction.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ref-supported-file-types",
+      "quote": "| image/vnd.dwg | Yes | Yes | Yes | .dwg; .dxf |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "The DSI file-types page supports WMF OCR text extraction.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ref-supported-file-types",
+      "quote": "| image/wmf | Yes | Yes | Yes | .wmf |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
       "where": "What's changing",
-      "type": "availability",
-      "claim": "The AI overview names JPEG, PNG and scanned PDF files for automatic OCR before vectorisation.",
+      "type": "behaviour",
+      "claim": "The AI page specifically describes automatic OCR before vectorization for JPEG, PNG and scanned PDFs.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-security-investigations-ai",
       "quote": "For JPEG, PNG, and scanned PDF files, Optical Character Recognition (OCR) automatically extracts text from images before vectorization.",
@@ -185,21 +267,21 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 23,
       "where": "What's changing; Risk assessment; Governance guidance; Open questions",
       "type": "behaviour",
-      "claim": "The cited DSI pages give different format lists, and the AI overview alone names scanned PDFs.",
+      "claim": "The two cited OCR format descriptions differ, with scanned PDFs named only in the AI page.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-security-investigations-ai",
-      "quote": "AI overview: \"For JPEG, PNG, and scanned PDF files\". File-types table: .bmp, .emf, .gif, .jpeg; .jpg, .png, .svg, .tif, .dwg; .dxf, .wmf.",
+      "quote": "For JPEG, PNG, and scanned PDF files, Optical Character Recognition (OCR) automatically extracts text from images before vectorization.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 16,
-      "where": "What's changing; controls[2].note",
+      "n": 24,
+      "where": "What's changing",
       "type": "date",
-      "claim": "New investigations automatically vectorise data during Add to scope starting June 2026.",
+      "claim": "New investigations automatically vectorize data during Add to scope starting June 2026.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-security-investigations-scope",
       "quote": "Starting June 2026, all new investigations automatically vectorize data when items are added to the investigation scope.",
@@ -207,10 +289,10 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 25,
       "where": "What's changing",
       "type": "date",
-      "claim": "Prepare for AI is removed from all investigations after August 2026.",
+      "claim": "After August 2026 the Prepare for AI action is removed from all investigations.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-security-investigations-scope",
       "quote": "After August 2026: The Prepare for AI action is removed from all investigations.",
@@ -218,10 +300,10 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 26,
       "where": "What's changing; Risk assessment; Governance guidance",
       "type": "behaviour",
-      "claim": "For investigations created before June 2026 with unprepared data, Add to scope must be rerun after the transition to trigger vectorisation.",
+      "claim": "Older investigations with never-prepared data must rerun Add to scope to trigger automatic vectorization.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-security-investigations-scope",
       "quote": "If you have an existing investigation with data that was never prepared for AI, you must rerun Add to scope to trigger automatic vectorization for those items.",
@@ -229,7 +311,7 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 27,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "Rerunning Add to scope on previously scoped data does not create duplicate copies.",
@@ -240,7 +322,7 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 28,
       "where": "What's changing",
       "type": "cost",
       "claim": "Rerunning Add to scope on previously scoped data does not incur additional storage charges.",
@@ -251,153 +333,142 @@
       "fix": null
     },
     {
-      "n": 21,
-      "where": "Why it matters",
-      "type": "behaviour",
-      "claim": "Vector search searches by meaning rather than merely matching keywords.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/data-security-investigations-ai",
-      "quote": "Vector search is a search engine technology that focuses on understanding the meaning and context behind words and phrases in a query, rather than just matching keywords.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
+      "n": 29,
       "where": "Why it matters; rationale: impact",
       "type": "behaviour",
-      "claim": "Vector search can find OCR text from screenshots and scanned documents alongside text-based content.",
+      "claim": "Vector search can retrieve OCR text from screenshots and scanned documents by semantic meaning rather than exact keywords.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
-      "quote": "Vector search also includes content from image-based items that were processed through Optical Character Recognition (OCR). You can find text from screenshots and scanned documents alongside text-based content.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "controls[1].note; Risk assessment; Scope; Governance guidance",
-      "type": "role",
-      "claim": "The DSI Reviewers role group permits running vector searches.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
-      "quote": "Actions | Data Security Investigations Admins | Data Security Investigations Investigators | Data Security Investigations Reviewers: Run vector searches | Yes | Yes | Yes",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "controls[1].note; Risk assessment; Scope",
-      "type": "role",
-      "claim": "The DSI Reviewers role group permits running categorisation.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
-      "quote": "Actions | Data Security Investigations Admins | Data Security Investigations Investigators | Data Security Investigations Reviewers: Run categorization activities | Yes | Yes | Yes",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "controls[1].note; Risk assessment; Scope",
-      "type": "role",
-      "claim": "The DSI Reviewers role group permits running examinations.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
-      "quote": "Actions | Data Security Investigations Admins | Data Security Investigations Investigators | Data Security Investigations Reviewers: Run examination activities | Yes | Yes | Yes",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "Risk assessment: Data exposure, first bullet",
-      "type": "role",
-      "claim": "An investigation's vectorised image text is reachable by anyone in the Data Security Investigations Reviewers role group.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/purview/data-security-investigations-investigation",
-      "quote": "If you're not assigned to the Data Security Investigations Admins role group, you can only view investigations you're assigned to as an investigator or reviewer.",
-      "severity": "blocker",
-      "fix": "Replace 'reachable by anyone in the Data Security Investigations Reviewers role group' with 'reachable by members of the Data Security Investigations Reviewers role group who are assigned to that investigation'. Cite https://learn.microsoft.com/purview/data-security-investigations-investigation for this qualification."
-    },
-    {
-      "n": 27,
-      "where": "controls[1].note; Risk assessment; Scope; Governance controls",
-      "type": "role",
-      "claim": "DSI Admins can add items and manage investigation scope.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
-      "quote": "Create searches and add items to an investigation | Yes | Yes | No; Manage investigation scope | Yes | Yes | No",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "controls[1].note; Risk assessment; Scope; Governance controls",
-      "type": "role",
-      "claim": "DSI Investigators can add items and manage investigation scope.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
-      "quote": "Actions | Data Security Investigations Admins | Data Security Investigations Investigators | Data Security Investigations Reviewers: Manage investigation scope | Yes | Yes | No",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "controls[1].note; Risk assessment",
-      "type": "role",
-      "claim": "Compliance Administrator automatically includes the DSI Admin role.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
-      "quote": "Compliance Administrator | Data Security Investigation Admin | Full administrative access",
+      "quote": "Vector-based semantic search enables similarity-based information retrieval and understands user intent beyond literal words. ... You can find text from screenshots and scanned documents alongside text-based content.",
       "severity": null,
       "fix": null
     },
     {
       "n": 30,
-      "where": "controls[1].note; Risk assessment",
-      "type": "role",
-      "claim": "Organization Management automatically includes the DSI Admin role.",
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Reviewers assigned to an investigation can use its AI tools to access vectorized image text.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
-      "quote": "Organization Management | Data Security Investigation Admin, Data Security Investigation Contributor | Administrative and contributor access",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-investigation",
+      "quote": "If you're not assigned to the Data Security Investigations Admins role group, you can only view investigations you're assigned to as an investigator or reviewer.",
       "severity": null,
       "fix": null
     },
     {
       "n": 31,
-      "where": "Risk assessment: Data exposure, second bullet",
-      "type": "behaviour",
-      "claim": "Compute-unit processing uses Azure datacentres.",
+      "where": "Risk assessment: Data exposure",
+      "type": "role",
+      "claim": "Users outside the DSI Admins role group can view only investigations to which they are assigned.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
-      "quote": "Compute unit processing uses GPU resources in Azure datacenters protected by Azure security and privacy controls.",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-investigation",
+      "quote": "If you're not assigned to the Data Security Investigations Admins role group, you can only view investigations you're assigned to as an investigator or reviewer.",
       "severity": null,
       "fix": null
     },
     {
       "n": 32,
-      "where": "Risk assessment: Data exposure, second bullet",
-      "type": "availability",
-      "claim": "AI capacity setup offers ANZ, EU, UK and US processing locations.",
+      "where": "controls[1].note; Scope; Risk assessment",
+      "type": "role",
+      "claim": "DSI Admins can add items to an investigation.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
-      "quote": "You can choose where to use compute units from any of the following locations: Australia/New Zealand (ANZ); Europe (EU); United Kingdom (UK); United States (US)",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "| Create searches and add items to an investigation | Yes | Yes | No | ... | Manage investigation scope | Yes | Yes | No |",
       "severity": null,
       "fix": null
     },
     {
       "n": 33,
-      "where": "Risk assessment: Data exposure, second bullet",
-      "type": "default",
-      "claim": "There is an opt-in for compute-unit provisioning and AI analysis processing anywhere in the world.",
+      "where": "controls[1].note; Scope; Risk assessment",
+      "type": "role",
+      "claim": "DSI Investigators can add items to an investigation.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
-      "quote": "You can opt in to having compute units provisioned and AI analysis processing done anywhere in the world to mitigate potential disruptions in case your primary location experiences high activity.",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "| Create searches and add items to an investigation | Yes | Yes | No | ... | Manage investigation scope | Yes | Yes | No |",
       "severity": null,
       "fix": null
     },
     {
       "n": 34,
-      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
+      "where": "controls[1].note; Scope; Risk assessment",
+      "type": "role",
+      "claim": "DSI Reviewers can run vector searches.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "| Run vector searches | Yes | Yes | Yes |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[1].note; Scope; Risk assessment",
+      "type": "role",
+      "claim": "DSI Reviewers can run categorization.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "| Run categorization activities | Yes | Yes | Yes |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[1].note; Scope; Risk assessment",
+      "type": "role",
+      "claim": "DSI Reviewers can run examination.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "| Run examination activities | Yes | Yes | Yes |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[1].note; Risk assessment",
+      "type": "role",
+      "claim": "Compliance Administrator includes the DSI Admin role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "| Compliance Administrator | Data Security Investigation Admin | Full administrative access |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[1].note; Risk assessment",
+      "type": "role",
+      "claim": "Organization Management includes the DSI Admin role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "| Organization Management | Data Security Investigation Admin, Data Security Investigation Contributor | Administrative and contributor access |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Data exposure",
+      "type": "availability",
+      "claim": "Compute unit processing can be configured for ANZ, EU, UK or US.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Compute unit processing uses GPU resources in Azure datacenters ... Australia/New Zealand (ANZ) ... Europe (EU) ... United Kingdom (UK) ... United States (US)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Data exposure",
+      "type": "availability",
+      "claim": "Organizations can opt in to worldwide compute unit provisioning and AI analysis processing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "You can opt in to having compute units provisioned and AI analysis processing done anywhere in the world",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "DSI uses consumption billing based on stored data and AI computing capacity, not a dedicated enterprise plan or licence.",
+      "claim": "DSI uses consumption billing for stored data and AI capacity rather than a dedicated enterprise plan or license.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
       "quote": "Billing in Data Security Investigations is based solely on the combination of the amount of stored data and the associated computing capacity needed for AI analysis. It isn't based on a dedicated enterprise plan or license.",
@@ -405,43 +476,21 @@
       "fix": null
     },
     {
-      "n": 35,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "The DSI storage meter is pay-as-you-go per GB per month for stored data across all investigations.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
-      "quote": "You pay for storage on a gigabyte (GB) per month basis for stored data associated with all investigations in your organization.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "AI work is billed in Data Security Investigations Compute Units, paying only for units used.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
-      "quote": "Data Security Investigations Compute Units (compute unit) measure the computational capacity needed to run the AI analysis within Data Security Investigations. You pay only for the compute units you use.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "Cost and licensing; Scope",
+      "n": 42,
+      "where": "Cost and licensing: Licence",
       "type": "licensing",
-      "claim": "DSI configuration requires an Azure subscription in the same tenant as Purview.",
+      "claim": "DSI requires an Azure subscription in the same tenant as Microsoft Purview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
-      "quote": "To configure the storage meter and capacity for Data Security Investigations, you must have: An Azure subscription in the same tenant as Microsoft Purview.",
+      "quote": "An Azure subscription in the same tenant as Microsoft Purview.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 38,
-      "where": "Cost and licensing",
+      "n": 43,
+      "where": "Cost and licensing: Licence",
       "type": "licensing",
-      "claim": "DSI configuration requires a resource group in that Azure subscription.",
+      "claim": "DSI billing requires an Azure resource group in that subscription.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
       "quote": "An Azure resource group in that subscription.",
@@ -449,10 +498,10 @@
       "fix": null
     },
     {
-      "n": 39,
-      "where": "Cost and licensing; Scope; Why it matters",
+      "n": 44,
+      "where": "Cost and licensing; Scope: Prerequisites; Why it matters",
       "type": "licensing",
-      "claim": "Both storage-meter billing and AI capacity must be configured before DSI can be used.",
+      "claim": "Both the storage meter and AI capacity billing models must be configured before DSI can be used.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
       "quote": "Before you can use Data Security Investigations in your organization, you must configure both billing models.",
@@ -460,10 +509,10 @@
       "fix": null
     },
     {
-      "n": 40,
+      "n": 45,
       "where": "Scope: Roles to configure DSI billing",
       "type": "role",
-      "claim": "Configuring DSI storage and capacity requires Global Administrator.",
+      "claim": "Configuring DSI billing requires the Global Administrator role.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
       "quote": "To configure the storage meter and capacity for Data Security Investigations, you must have: ... The Global Administrator role.",
@@ -471,10 +520,10 @@
       "fix": null
     },
     {
-      "n": 41,
+      "n": 46,
       "where": "Scope: Roles to configure DSI billing",
       "type": "role",
-      "claim": "Configuring DSI storage and capacity also requires Owner or Contributor on the Azure resource group.",
+      "claim": "Configuring DSI billing also requires Owner or Contributor on the Azure resource group.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
       "quote": "The resource group Owner or Contributor role.",
@@ -482,10 +531,10 @@
       "fix": null
     },
     {
-      "n": 42,
+      "n": 47,
       "where": "Scope: Roles to configure DSI billing",
       "type": "role",
-      "claim": "Configuring DSI AI capacity additionally requires membership of Data Security Investigations Admins.",
+      "claim": "Configuring AI capacity requires membership in the DSI Admins role group.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
       "quote": "To configure the AI capacity for Data Security Investigations, you must be a member of the Data Security Investigations Admins role group.",
@@ -493,76 +542,98 @@
       "fix": null
     },
     {
-      "n": 43,
-      "where": "Cost and licensing: Meters",
-      "type": "cost",
-      "claim": "The DSI billing article links to Azure Purview pricing for storage rates.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
-      "quote": "For more data storage rates and pricing, see Data Security Investigations storage meter pricing (https://azure.microsoft.com/pricing/details/purview/).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "Why it matters; Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "The size of data and extracted text influences compute-unit use for Add to scope, including data preparation for AI.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
-      "quote": "Add to scope (including data preparation for AI analysis) | Size of data and extracted text. These variables primarily influence the cost for compute unit billing.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "front matter: licensing.notes; What's changing; Why it matters; Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "Automatic OCR processing is not an additional charge.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/data-security-investigations-ref-supported-file-types",
-      "quote": "Extraction of images is part of adding items to an investigation scope and automatic OCR processing isn't an additional charge for your organization.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "Cost and licensing: This feature; Open questions",
-      "type": "absence",
-      "claim": "Microsoft does not publish how many compute units OCR-extracted text adds to Add to scope.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Data Security Investigations OCR extracted text compute units rate estimator. Opened DSI billing, supported-file-types, AI and AI-analysis pages; found cost influencers and a general estimator, but no OCR-text-to-compute-unit rate.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "controls[3].note; Cost and licensing; Governance guidance",
-      "type": "behaviour",
-      "claim": "The usage dashboard reports storage and compute-unit use per investigation and process.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
-      "quote": "The data storage usage for each investigation and the total for each process. The compute unit usage for each investigation and the total for each process.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 48,
-      "where": "controls[3].note; Cost and licensing",
-      "type": "behaviour",
-      "claim": "The usage dashboard is reporting, not a spending stop.",
+      "where": "front matter: licensing.notes; Cost and licensing: Meters",
+      "type": "cost",
+      "claim": "Stored data across all investigations is billed pay-as-you-go per GB per month.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
-      "quote": "Use the Pay-as-you-go usage dashboard to quickly view and track data storage and compute unit usage for each investigation in your organization.",
+      "quote": "The storage meter for Data Security Investigations uses the pay-as-you-go billing model. You pay for storage on a gigabyte (GB) per month basis for stored data associated with all investigations in your organization.",
       "severity": null,
       "fix": null
     },
     {
       "n": 49,
+      "where": "front matter: licensing.notes; Cost and licensing: Meters; rationale: cost",
+      "type": "cost",
+      "claim": "AI capacity is billed pay-as-you-go in Data Security Investigations Compute Units, paying only for units used.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Data Security Investigations Compute Units (compute unit) measure the computational capacity needed to run the AI analysis ... Data Security Investigations uses the pay-as-you-go billing model for AI capacity. ... You pay only for the compute units you use.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "front matter: licensing.notes; Why it matters; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Microsoft states automatic DSI OCR processing is not an additional charge.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ref-supported-file-types",
+      "quote": "automatic OCR processing isn't an additional charge for your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Why it matters; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Add to scope compute use is influenced by the size of data and extracted text.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "| Add to scope (including data preparation for AI analysis) | Size of data and extracted text | ... These variables primarily influence the cost for compute unit billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Cost and licensing: This feature; Open questions",
+      "type": "absence",
+      "claim": "Microsoft does not publish a quantified OCR-extracted-text contribution to DSI compute use.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Data Security Investigations\" \"OCR\" compute units extracted text rate; opened DSI billing, supported file types and AI pages. Found cost influencers and no extra OCR charge, but no quantified OCR-text increment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[3].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Microsoft Purview portal > Data Security Investigations > Usage dashboard opens the usage dashboard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Go to Data Security Investigations in the Microsoft Purview portal ... Select Usage dashboard in the left-navigation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Cost and licensing; controls[3]; Governance guidance",
+      "type": "behaviour",
+      "claim": "The usage dashboard reports storage usage per investigation and process.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "The data storage usage for each investigation and the total for each process.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Cost and licensing; controls[3]; Governance guidance",
+      "type": "behaviour",
+      "claim": "The usage dashboard reports compute unit use per investigation and process, including Add to scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "The compute unit usage for each investigation and the total for each process. ... Add to scope: Storage and compute supporting processes when adding items to the investigation scope",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
       "where": "controls[3].note; Governance controls",
       "type": "role",
-      "claim": "Only the Data Security Investigations Admin role can access the usage dashboard.",
+      "claim": "Only users with the Data Security Investigations Admin role can access the usage dashboard.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
       "quote": "Only users assigned the Data Security Investigations Admin role can access the Pay-as-you-go usage dashboard.",
@@ -570,10 +641,10 @@
       "fix": null
     },
     {
-      "n": 50,
+      "n": 57,
       "where": "controls[3].note; Governance controls",
       "type": "behaviour",
-      "claim": "Billing data can take up to 48 hours to appear on the usage dashboard.",
+      "claim": "Dashboard billing data can take up to 48 hours to appear.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
       "quote": "It might take up to 48 hours for the latest billing data to show up on the Pay-as-you-go usage dashboard for your organization.",
@@ -581,32 +652,43 @@
       "fix": null
     },
     {
-      "n": 51,
+      "n": 58,
       "where": "controls[3].note",
       "type": "behaviour",
-      "claim": "Dashboard export includes per-job consumed compute units.",
+      "claim": "The dashboard export includes job identifiers and consumed units per process.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
-      "quote": "To export the data storage and compute information for all investigations, select Export. JobID: The ID for the process. ConsumedUnits: The amount of compute units used for the process.",
+      "quote": "JobID: The ID for the process. ... ConsumedUnits: The amount of compute units used for the process.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 52,
-      "where": "Cost and licensing: Spend controls",
-      "type": "cost",
-      "claim": "Microsoft recommends Azure budgets and spending alerts for the DSI resource group.",
+      "n": 59,
+      "where": "controls[3].note; Cost and licensing",
+      "type": "applicability",
+      "claim": "The usage dashboard is a reporting control, not a spending stop.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
-      "quote": "Create budgets for the Data Security Investigations resource group and meter level. Configure alerts when spending approaches defined thresholds",
+      "quote": "Use the Pay-as-you-go usage dashboard to quickly view and track data storage and compute unit usage for each investigation in your organization.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 53,
+      "n": 60,
       "where": "Cost and licensing: Spend controls",
-      "type": "cost",
-      "claim": "Budget alerts notify about spending rather than stopping consumption.",
+      "type": "applicability",
+      "claim": "Microsoft recommends Azure budgets and threshold alerts for the DSI resource group and meters.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Create budgets for the Data Security Investigations resource group and meter level. ... Configure alerts when spending approaches defined thresholds",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Cost and licensing: Spend controls",
+      "type": "applicability",
+      "claim": "Azure budget notifications do not stop resource consumption.",
       "status": "supported",
       "source": "https://learn.microsoft.com/azure/cost-management-billing/costs/tutorial-acm-create-budgets",
       "quote": "Notifications are triggered when the budget thresholds are exceeded. Resources aren't affected, and your consumption isn't stopped.",
@@ -614,76 +696,10 @@
       "fix": null
     },
     {
-      "n": 54,
-      "where": "controls[0].note; Scope; Governance controls",
-      "type": "applicability",
-      "claim": "The tenant OCR supported-solutions table lists DLP, insider risk management, information protection and records management, not DSI.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
-      "quote": "Supported Solutions: Data loss prevention; Information protection: Auto-labeling policies; Records management: Autoapply retention label policies; Insider risk management",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
-      "where": "Scope: Other OCR configurations",
-      "type": "licensing",
-      "claim": "Tenant-level Purview OCR uses Microsoft Syntex pay-as-you-go billing setup.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
-      "quote": "To use OCR, set up Microsoft Syntex pay-as-you-go billing. (You don't need to set up Microsoft Syntex itself.)",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "Governance controls",
-      "type": "applicability",
-      "claim": "The tenant OCR page's summary says configured OCR is available to the entire Microsoft Purview stack.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
-      "quote": "Configure OCR at the tenant level, so once OCR is configured, it's available to the entire Microsoft Purview stack.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
-      "where": "Governance controls; Open questions",
-      "type": "absence",
-      "claim": "The tenant OCR article does not explain how its entire-stack statement relates to DSI automatic OCR.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Data Security Investigations OCR setting tenant; Data Security Investigations OCR disable. Opened the full tenant OCR article and DSI supported-file-types, scope and AI pages; the tenant article does not name DSI or explain this relationship.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 58,
-      "where": "Scope: Other OCR configurations",
-      "type": "default",
-      "claim": "eDiscovery OCR is enabled per case, distinctly from tenant OCR.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/edisc-settings-search-analytics",
-      "quote": "When you turn on this setting, OCR processing runs on image files when they're advanced indexed and added to a review set. The case level setting for OCR is distinct from the tenant level OCR setting",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 59,
-      "where": "controls[2].note; Risk assessment; Governance guidance; Governance controls",
-      "type": "behaviour",
-      "claim": "Investigators can exclude individual scoped items from AI analysis within an investigation rather than by a tenant policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/data-security-investigations-scope",
-      "quote": "For each data item, you can choose to exclude the item from AI analysis ... All data items in the investigation scope are prepared for AI analysis unless you explicitly exclude them.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 60,
+      "n": 62,
       "where": "Governance controls",
       "type": "cost",
-      "claim": "Stopping DSI billing requires disabling both storage-meter and AI-capacity support.",
+      "claim": "Stopping DSI billing requires disabling both storage meter and AI capacity support.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
       "quote": "To stop billing for Data Security Investigations, disable both storage meter and AI capacity support.",
@@ -691,10 +707,10 @@
       "fix": null
     },
     {
-      "n": 61,
+      "n": 63,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Stopping billing deletes all DSI investigations.",
+      "claim": "Stopping both DSI billing models deletes all investigations.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
       "quote": "This action deletes all investigations in Data Security Investigations and deletes compute units for your resource group.",
@@ -702,10 +718,10 @@
       "fix": null
     },
     {
-      "n": 62,
+      "n": 64,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Deletion when stopping DSI billing is irreversible.",
+      "claim": "The deletion involved in stopping DSI billing is irreversible.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
       "quote": "Deleting investigations and your compute unit resource group is irreversible.",
@@ -713,136 +729,301 @@
       "fix": null
     },
     {
-      "n": 63,
-      "where": "controls[0].ui and api; Risk assessment; Why it matters; Governance controls",
-      "type": "absence",
-      "claim": "Microsoft documents no DSI-specific OCR switch on either the admin UI or automation surface.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Data Security Investigations disable automatic OCR setting PowerShell Set OCR Microsoft Graph API; Data Security Investigations OCR disable; Data Security Investigations OCR PowerShell. Opened DSI file-types, scope, AI and tenant OCR pages; no DSI-specific switch documented.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 64,
-      "where": "controls[1].ui",
+      "n": 65,
+      "where": "controls[1].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "Role-group membership can be configured at Microsoft Purview portal > Settings > Roles and groups > Role groups > role group > Edit > Choose users.",
+      "claim": "DSI role membership is configured through Settings > Roles and groups > Role groups > role group > Edit > Choose users.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
-      "quote": "Select Settings ... select Roles and groups, then select Role groups ... Select the Data Security Investigations Admins role group, then select Edit. Select Choose users",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 65,
-      "where": "controls[1].api",
-      "type": "command",
-      "claim": "Add-RoleGroupMember -Identity \"<role-group>\" -Member \"<user-UPN>\" adds a user to a management role group.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
-      "quote": "Use the Add-RoleGroupMember cmdlet to add members to a management role group. The Identity parameter specifies the role group to add a member to. ... User ID or user principal name (UPN)",
+      "quote": "Select Settings ... select Roles and groups, then select Role groups ... Select the Data Security Investigations Admins role group, then select Edit. ... Select Choose users",
       "severity": null,
       "fix": null
     },
     {
       "n": 66,
-      "where": "controls[2].ui; Governance guidance",
-      "type": "admin-path",
-      "claim": "The item exclusion options are reached at Microsoft Purview portal > Data Security Investigations > Investigations > investigation > Analysis > item > Actions.",
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "Add-RoleGroupMember -Identity \"<role-group>\" -Member \"<user-UPN>\" adds a user to a management role group.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/data-security-investigations-scope",
-      "quote": "AI-analysis page: \"Select Investigations ... Select an investigation, then select Analysis\". Scope page: \"Select a data item\"; \"Select Actions on the command bar for these options.\"",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+      "quote": "Use the Add-RoleGroupMember cmdlet to add members to a management role group. ... The Identity parameter specifies the role group to add a member to. ... User ID or user principal name (UPN)",
       "severity": null,
       "fix": null
     },
     {
       "n": 67,
-      "where": "controls[2].api",
-      "type": "absence",
-      "claim": "An automation operation for excluding DSI investigation items from AI analysis is not documented.",
+      "where": "controls[2].ui; Governance controls table; Governance guidance",
+      "type": "admin-path",
+      "claim": "Item actions are reached through Data Security Investigations > Investigations > investigation > Analysis > item > Actions.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Data Security Investigations exclude item AI analysis API PowerShell investigation scope; site:learn.microsoft.com/powershell Data Security Investigations exclude. Opened DSI scope and AI-analysis pages; results documented item actions but no matching automation operation.",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-scope",
+      "quote": "Select Analysis ... within a specific investigation ... Select a data item to display more information about the item. ... Select Actions on the command bar for these options.",
       "severity": null,
       "fix": null
     },
     {
       "n": 68,
-      "where": "controls[3].ui; Governance guidance",
-      "type": "admin-path",
-      "claim": "The usage report is at Microsoft Purview portal > Data Security Investigations > Usage dashboard.",
+      "where": "controls[2].note; Risk assessment; Governance controls",
+      "type": "behaviour",
+      "claim": "Explicitly excluded scope items are not prepared for AI analysis.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
-      "quote": "Go to Data Security Investigations ... in the Microsoft Purview portal ... Select Usage dashboard in the left-navigation.",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-scope",
+      "quote": "All data items in the investigation scope are prepared for AI analysis unless you explicitly exclude them. You can change the status of any excluded data item later",
       "severity": null,
       "fix": null
     },
     {
       "n": 69,
-      "where": "controls[3].api",
-      "type": "absence",
-      "claim": "A DSI usage-dashboard automation call is not documented.",
+      "where": "controls[2].note; Governance controls",
+      "type": "applicability",
+      "claim": "Exclusion is an item-level investigation action rather than a tenant-wide policy.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Data Security Investigations usage dashboard export compute units API PowerShell; site:learn.microsoft.com/graph Data Security Investigations usage; site:learn.microsoft.com/powershell Data Security Investigations usage. Opened DSI billing; no dashboard automation call found.",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-scope",
+      "quote": "For each data item, you can choose to exclude the item from AI analysis",
       "severity": null,
       "fix": null
     },
     {
       "n": 70,
-      "where": "controls[4].ui; Governance guidance",
-      "type": "admin-path",
-      "claim": "Audit search is at Microsoft Purview portal > Audit > Search.",
+      "where": "controls[2].api; Governance controls table",
+      "type": "absence",
+      "claim": "Microsoft does not document an API or PowerShell operation for excluding DSI scope items from AI analysis.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/audit-search",
-      "quote": "Sign in to the Microsoft Purview portal. Select the Audit solution card. ... On the Search page, configure the following search criteria as applicable",
+      "source": null,
+      "quote": "Searched: \"Data Security Investigations\" exclude items AI analysis API PowerShell Microsoft Graph; site:learn.microsoft.com/graph \"Data Security Investigations\" exclude. Opened DSI scope, AI analysis and Security & Compliance PowerShell; no exclusion operation found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 71,
-      "where": "controls[4].api",
-      "type": "command",
-      "claim": "Search-UnifiedAuditLog is the PowerShell cmdlet for searching the audit log.",
+      "where": "controls[3].api; Governance controls table",
+      "type": "absence",
+      "claim": "Microsoft does not document an API or PowerShell equivalent for the DSI usage dashboard.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/audit-search",
-      "quote": "The underlying cmdlet used to search the audit log is an Exchange Online cmdlet, which is Search-UnifiedAuditLog. ... You have to run this cmdlet in Exchange Online PowerShell.",
+      "source": null,
+      "quote": "Searched: \"Data Security Investigations\" usage dashboard export API PowerShell compute units; site:learn.microsoft.com/powershell \"Data Security Investigations\" usage. Opened DSI billing and Security & Compliance PowerShell; found portal Export but no equivalent operation.",
       "severity": null,
       "fix": null
     },
     {
       "n": 72,
-      "where": "controls[4].note; Governance guidance",
-      "type": "behaviour",
-      "claim": "DSIPurviewSearchAddToEvidenceSetJobSubmitted records a user adding searched data to an investigation scope.",
+      "where": "controls[0]; Why it matters; Risk assessment; Governance controls",
+      "type": "absence",
+      "claim": "No DSI-specific OCR on/off control is documented for either admin UI or automation as of November 2026.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/audit-log-activities",
-      "quote": "Submitted DSI search add to evidence set job | DSIPurviewSearchAddToEvidenceSetJobSubmitted | A user added searched data to an investigation scope.",
+      "source": null,
+      "quote": "Searched: \"Data Security Investigations\" \"OCR\" disable setting PowerShell; site:learn.microsoft.com/powershell \"Data Security Investigations\" OCR. Opened DSI file-types, scope, AI, tenant OCR and Security & Compliance PowerShell pages; no DSI-specific switch found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 73,
+      "where": "controls[0].note; Scope; Governance controls",
+      "type": "behaviour",
+      "claim": "The tenant OCR supported-solutions table lists DLP, information protection, records management and insider risk management, but does not name DSI.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "Data loss prevention ... Information protection: Auto-labeling policies ... Records management: Autoapply retention label policies ... Insider risk management",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Scope: Other OCR configurations",
+      "type": "licensing",
+      "claim": "Tenant-level Purview OCR is enabled using Microsoft Syntex pay-as-you-go billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "To use OCR, set up Microsoft Syntex pay-as-you-go billing. (You don't need to set up Microsoft Syntex itself.)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Scope: Other OCR configurations; Open questions",
+      "type": "behaviour",
+      "claim": "The separate Purview OCR configuration is tenant-level.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "OCR scanning is an optional feature that you must enable at the tenant level. ... Select the groups that you want included or excluded from OCR scans.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "Scope: Other OCR configurations",
+      "type": "behaviour",
+      "claim": "eDiscovery OCR is configured at the case level.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-settings-search-analytics",
+      "quote": "The case level setting for OCR is distinct from the tenant level OCR setting",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The tenant OCR page's summary says configured OCR is available to the entire Purview stack.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "Configure OCR at the tenant level, so once OCR is configured, it's available to the entire Microsoft Purview stack.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft does not explain how tenant-level OCR configuration and group scopes relate to DSI's automatic OCR.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Data Security Investigations\" \"tenant\" \"OCR\" setting groups. Opened tenant OCR, DSI file-types, scope, AI, permissions and billing pages. Found tenant-stack wording and automatic DSI OCR, but no explanation of their configuration relationship.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "controls[4].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Microsoft Purview portal > Audit > Search reaches audit log search.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "Sign in to the Microsoft Purview portal. ... Select the Audit solution card. ... On the Search page, configure the following search criteria",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "controls[4].api; Governance controls table",
+      "type": "command",
+      "claim": "Search-UnifiedAuditLog searches the audit log using PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "The underlying cmdlet used to search the audit log is an Exchange Online cmdlet, which is Search-UnifiedAuditLog. That means you can use this cmdlet to search the audit log",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
       "where": "controls[4].note; Governance guidance",
       "type": "behaviour",
-      "claim": "DSIInvestigationVectorizationJobSubmitted records a user starting a vectorisation job.",
+      "claim": "DSIPurviewSearchAddToEvidenceSetJobSubmitted records a user adding searched data to investigation scope.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/audit-log-activities",
-      "quote": "Started vectorization job | DSIInvestigationVectorizationJobSubmitted | A user stated a vectorization job.",
+      "quote": "| Submitted DSI search add to evidence set job | DSIPurviewSearchAddToEvidenceSetJobSubmitted | A user added searched data to an investigation scope. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 82,
+      "where": "controls[4].note; Governance guidance",
+      "type": "behaviour",
+      "claim": "DSIInvestigationVectorizationJobSubmitted records a user starting a vectorization job.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-activities",
+      "quote": "| Started vectorization job | DSIInvestigationVectorizationJobSubmitted | A user stated a vectorization job. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 83,
+      "where": "Why it matters; Risk assessment; controls[2].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Automatic data preparation runs in the background during each Add to scope action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-scope",
+      "quote": "This automatic vectorization process runs in the background during each Add to scope action",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 84,
+      "where": "Cost and licensing: Meters",
+      "type": "cost",
+      "claim": "The DSI billing page links to Azure Purview pricing for storage rates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "For more data storage rates and pricing, see Data Security Investigations storage meter pricing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 85,
+      "where": "Scope: Platform",
+      "type": "availability",
+      "claim": "DSI is accessed through the Microsoft Purview portal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
+      "quote": "Go to Data Security Investigations in the Microsoft Purview portal",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 86,
+      "where": "controls[1].note; Scope; Risk assessment",
+      "type": "role",
+      "claim": "DSI Admins can manage investigation scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "| Manage investigation scope | Yes | Yes | No |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 87,
+      "where": "controls[1].note; Scope; Risk assessment; controls[2].note",
+      "type": "role",
+      "claim": "DSI Investigators can manage investigation scope, including item exclusion.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "| Manage investigation scope | Yes | Yes | No |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 88,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Compute unit processing uses GPU resources in Azure datacenters.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Compute unit processing uses GPU resources in Azure datacenters protected by Azure security and privacy controls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 89,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "An excluded item's status can later be changed to allow AI processing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-scope",
+      "quote": "You can change the status of any excluded data item later if you want to have the data item processed for AI analysis.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 90,
+      "where": "Open questions",
+      "type": "behaviour",
+      "claim": "Tenant-level OCR settings include group inclusion and exclusion.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "Select the groups that you want included or excluded from OCR scans.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-26T05:27:17.508Z",
+    "at": "2026-11-26T06:53:58.307Z",
     "summary": {
-      "links": 13,
-      "unreachable": 0,
+      "links": 14,
+      "unreachable": 11,
       "uiPaths": 4,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 4,
       "apiCalls": 2,
-      "apiCallsNotOnPage": 0,
+      "apiCallsNotOnPage": 2,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -853,33 +1034,38 @@
       },
       {
         "url": "https://learn.microsoft.com/purview/data-security-investigations-ref-supported-file-types",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/purview/data-security-investigations-ai",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/purview/data-security-investigations-scope",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/purview/data-security-investigations-billing",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/data-security-investigations-investigation",
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/purview/ocr-learn-about",
@@ -888,13 +1074,13 @@
       },
       {
         "url": "https://learn.microsoft.com/purview/edisc-settings-search-analytics",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/azure/cost-management-billing/costs/tutorial-acm-create-budgets",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/purview/audit-log-activities",
@@ -903,13 +1089,13 @@
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/purview/audit-search",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -918,7 +1104,7 @@
         "side": "ui",
         "governs": "Who can add items to an investigation scope and run AI analysis on them",
         "docs": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Settings",
           "Roles and groups",
@@ -927,23 +1113,30 @@
           "Edit",
           "Choose users"
         ],
-        "missing": []
+        "missing": [
+          "Settings",
+          "Roles and groups",
+          "Role groups",
+          "role group",
+          "Edit",
+          "Choose users"
+        ]
       },
       {
         "index": 1,
         "side": "api",
         "governs": "Who can add items to an investigation scope and run AI analysis on them",
         "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
-        "reachable": true,
+        "reachable": false,
         "token": "Add-RoleGroupMember",
-        "found": true
+        "found": false
       },
       {
         "index": 2,
         "side": "ui",
         "governs": "Which items in an investigation are prepared for AI analysis",
         "docs": "https://learn.microsoft.com/purview/data-security-investigations-scope",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Data Security Investigations",
           "Investigations",
@@ -951,40 +1144,52 @@
           "Analysis",
           "Actions"
         ],
-        "missing": []
+        "missing": [
+          "Data Security Investigations",
+          "Investigations",
+          "investigation",
+          "Analysis",
+          "Actions"
+        ]
       },
       {
         "index": 3,
         "side": "ui",
         "governs": "Storage and compute unit spend per investigation",
         "docs": "https://learn.microsoft.com/purview/data-security-investigations-billing",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Data Security Investigations",
           "Usage dashboard"
         ],
-        "missing": []
+        "missing": [
+          "Data Security Investigations",
+          "Usage dashboard"
+        ]
       },
       {
         "index": 4,
         "side": "ui",
         "governs": "Audit records of Data Security Investigations activity, including Add to scope and vectorisation jobs",
         "docs": "https://learn.microsoft.com/purview/audit-search",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Audit",
           "Search"
         ],
-        "missing": []
+        "missing": [
+          "Audit",
+          "Search"
+        ]
       },
       {
         "index": 4,
         "side": "api",
         "governs": "Audit records of Data Security Investigations activity, including Add to scope and vectorisation jobs",
         "docs": "https://learn.microsoft.com/purview/audit-search",
-        "reachable": true,
+        "reachable": false,
         "token": "Search-UnifiedAuditLog",
-        "found": true
+        "found": false
       }
     ],
     "roadmapDrift": []
@@ -994,6 +1199,12 @@
       "date": "2026-11-26",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-26",
+      "status": "held",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

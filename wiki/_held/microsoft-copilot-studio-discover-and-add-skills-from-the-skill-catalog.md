@@ -121,18 +121,20 @@ changes:
     note: "Corrected after the independent check: the maker Share path now starts from the Agents page, and the user-availability Graph call shows the endpoint only, with the body properties named in the note."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 63 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 61 statements contradicted, 1 unconfirmed; taken offline until corrected"
 version: 3
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-19"
+  status: "held"
+  date: "2026-11-26"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 63
-  confirmed: 63
-  unconfirmed: 0
+  claims: 61
+  confirmed: 60
+  unconfirmed: 1
   contradicted: 0
-  attempts: 0
+  attempts: 1
   hash: "42c0b254030d5affa4709d3b5a07a1f2"
 ---
 
@@ -241,9 +243,11 @@ cost: Variable. Agents on the Microsoft Copilot harness are billed in Copilot Cr
 impact: Medium. Makers who build agents in Copilot Studio see the catalog and the people they share skills with are affected; end users notice only through changed agent behaviour.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [unsupported, blocker] Why it matters / absence: Administrators should treat the capability as arriving without an administrator switch until Microsoft documents one. | Found: Searched: "Copilot Studio" "Browse skills" "disable"; "Copilot Studio" "skill sharing" "tenant". Read skills-manage and power-platform/admin/skills-copilot-studio-rule: the latter documents environment skills controls but does not resolve their coverage of Browse skills. | Fix: Replace the sentence with: "The wiki's view: no source says existing agent behaviour changes; confirm which controls apply to Browse skills before relying on package controls." Do not turn the lack of a catalog-specific procedure into an assumption that no administrator switch governs the capability.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Risk assessment: Security & identity; controls[3].note / behaviour: The detailed preview instructions offer sharing with specific users or groups in the organisation. | Found: Specific users or groups in your organization: Lets you add people or groups by name or email address. People and groups you add can use the skill. | Fix: After the sharing-options sentence add: "The What's new page also describes sharing with your whole organisation, whereas the detailed sharing instructions list Only you and specific users or groups." Cite https://learn.microsoft.com/microsoft-copilot-studio/whats-new#notable-changes, which says "share your own skills with specific people or your whole organization". | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-manage
-- [supported, minor] controls[3].ui; Governance controls table; Governance guidance: Before rollout / admin-path: The maker sharing route is Agents > agent > Build > skill > more options > Share > Share. | Found: Select the Build tab. ... the Skills section shows the skills ... Select the skill you want to share ... Select the three dots (...) and then select Share. ... On the details page, select Share in the upper-right corner. | Fix: Include the omitted Skills section heading in both representations of controls[3].ui.path: 'Agents > agent > Build > Skills > skill > … > Share > Share'. The cited skills-manage page supplies the section and sharing steps; the already-cited authoring-share-agent page says 'Open the agent from the Agents page'. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-manage
+- [supported, minor] What's changing; Risk assessment: Security & identity; controls[3].note / behaviour: The detailed preview sharing instructions offer Only you or Specific users or groups in your organization. | Found: Only you: Keeps the skill private to your account. ... Specific users or groups in your organization: Lets you add people or groups by name or email address. | Fix: Add: "The What's new page also describes sharing with your whole organisation, whereas the detailed sharing instructions list Only you and specific users or groups." Cite https://learn.microsoft.com/microsoft-copilot-studio/whats-new#notable-changes, which says "share your own skills with specific people or your whole organization". | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-manage
+- [supported, minor] controls[3].ui; Governance controls table; Governance guidance: Before rollout / admin-path: The maker sharing route is Agents > agent > Build > skill > more options > Share > Share. | Found: Select the Build tab. ... the Skills section shows the skills ... Select the skill you want to share ... Select the three dots (...) and then select Share. ... On the details page, select Share in the upper-right corner. | Fix: Include the omitted Skills section heading in both representations: "Agents > agent > Build > Skills > skill > … > Share > Share". The already-cited https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent supplies the starting step: "Open the agent from the Agents page". | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-manage
 -->

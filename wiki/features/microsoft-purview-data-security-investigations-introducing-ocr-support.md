@@ -43,6 +43,9 @@ sources:
   - title: "Assign permissions in Data Security Investigations"
     url: "https://learn.microsoft.com/purview/data-security-investigations-permissions"
     kind: "learn"
+  - title: "Create an investigation in Data Security Investigations"
+    url: "https://learn.microsoft.com/purview/data-security-investigations-investigation"
+    kind: "learn"
   - title: "Learn about optical character recognition in Microsoft Purview"
     url: "https://learn.microsoft.com/purview/ocr-learn-about"
     kind: "learn"
@@ -120,19 +123,23 @@ changes:
     note: "Corrected: removed the unsupported 'no new sign-in, connection or permission' line, added the DSI Admins requirement for AI capacity, completed the item-exclusion path, and narrowed the tenant OCR note."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 73 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-26"
+    note: "Corrected: image text is reachable by Data Security Investigations Reviewers assigned to the investigation, not by every member of the Reviewers role group."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 90 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-26"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 73
-  confirmed: 72
+  claims: 90
+  confirmed: 90
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "cca175c0ec9d40d9d9df1e165eb57abc"
+  contradicted: 0
+  attempts: 0
+  hash: "b53464ea1fe2d6603c042c93e2242241"
 ---
 
 ## What's changing
@@ -154,7 +161,7 @@ The cost side needs watching rather than a decision. Microsoft says OCR itself i
 ## Risk assessment
 
 **Data exposure**
-- Text in images becomes vectorised data in the investigation, reachable by anyone in the Data Security Investigations Reviewers role group through vector search, categorisation and examination. Membership of the DSI role groups is the control (see the controls table).
+- Text in images becomes vectorised data in the investigation, reachable by members of the Data Security Investigations Reviewers role group who are assigned to that investigation, through vector search, categorisation and examination. Microsoft's [investigation page](https://learn.microsoft.com/purview/data-security-investigations-investigation) says that users outside the Data Security Investigations Admins role group can only view investigations they're assigned to as an investigator or reviewer. Membership of the DSI role groups is the control (see the controls table).
 - Compute units are processed in Azure datacentres in the location chosen when AI capacity is set up (ANZ, EU, UK or US), with an opt-in to process anywhere; OCR runs within this same data preparation step.
 
 **Security & identity**
@@ -228,10 +235,4 @@ Item exclusion is an investigator action inside each investigation, not a tenant
 risk: Low. OCR works only on items an investigator has already added to an investigation scope, and the extracted text is used by the investigation's AI tools, which the Data Security Investigations role groups already govern.
 cost: Variable. Microsoft says automatic OCR processing is not an additional charge, but it runs inside Add to scope, which is billed on the pay-as-you-go storage meter and Data Security Investigations Compute Units.
 impact: Low. Only investigators and reviewers working in Data Security Investigations notice: image text now appears in vector search, categorisation and examination results.
--->
-
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure, first bullet / role: An investigation's vectorised image text is reachable by anyone in the Data Security Investigations Reviewers role group. | Found: If you're not assigned to the Data Security Investigations Admins role group, you can only view investigations you're assigned to as an investigator or reviewer. | Fix: Replace 'reachable by anyone in the Data Security Investigations Reviewers role group' with 'reachable by members of the Data Security Investigations Reviewers role group who are assigned to that investigation'. Cite https://learn.microsoft.com/purview/data-security-investigations-investigation for this qualification. | Source: https://learn.microsoft.com/purview/data-security-investigations-investigation
 -->

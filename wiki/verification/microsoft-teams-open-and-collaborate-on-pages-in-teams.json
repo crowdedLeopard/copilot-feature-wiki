@@ -2,47 +2,74 @@
   "slug": "microsoft-teams-open-and-collaborate-on-pages-in-teams",
   "roadmapId": 580886,
   "title": "Microsoft Teams: open, edit and discuss shared pages inside Teams",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-26",
-  "version": 2,
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 2,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-26",
-    "reasons": [
-      "1 blocking finding (claim 36)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 67,
-    "confirmed": 65,
-    "unconfirmed": 1,
-    "contradicted": 1,
-    "blocker": 1,
+    "claims": 56,
+    "confirmed": 56,
+    "unconfirmed": 0,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
-    "minor": 4
+    "minor": 3
   },
-  "summary": "Hold: the assurance that nothing happens until a user opens and edits a page is not supported by Microsoft's published description, which leaves arrival behaviour unstated. The roadmap facts and existing Loop control paths check out; conflicting Microsoft licensing guidance also needs to be acknowledged.",
+  "summary": "The briefing passes: its roadmap facts and existing Loop controls are supported, and it does not infer a default or a new feature-specific switch. Minor corrections should acknowledge differences between Microsoft's permissions and Cloud Policy pages and cite the Copilot Pages policy reference.",
   "claims": [
     {
       "n": 1,
-      "where": "front matter: products; title",
+      "where": "title; summary; What's changing; Risk assessment; rationale: risk",
       "type": "record",
-      "claim": "The change is a Microsoft Teams feature.",
+      "claim": "Microsoft plans to let users open pages already shared in a Teams chat or channel inside Teams.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Teams\"]",
+      "quote": "When someone shares a page in chat or a channel, you can open it in Teams, edit, and discuss with teammates.",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
+      "where": "title; summary; What's changing; Risk assessment",
+      "type": "record",
+      "claim": "The planned experience lets users edit the shared page in Teams.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "When someone shares a page in chat or a channel, you can open it in Teams, edit, and discuss with teammates.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "The planned experience lets users discuss shared pages with teammates.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "When someone shares a page in chat or a channel, you can open it in Teams, edit, and discuss with teammates.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "summary; What's changing; Risk assessment; Governance guidance",
+      "type": "record",
+      "claim": "Users can choose the main Teams window or a new window for the planned page experience.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Open a page in your main Teams window or a new window, whichever works best for you.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is In development.",
@@ -53,7 +80,7 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 6,
       "where": "front matter: targetDate; What's changing; Scope",
       "type": "record",
       "claim": "General availability is targeted for January CY2027.",
@@ -64,7 +91,7 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 7,
       "where": "front matter: previewDate; What's changing; Scope",
       "type": "record",
       "claim": "Preview is targeted for January CY2027.",
@@ -75,7 +102,7 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 8,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
       "claim": "The record lists General Availability, Preview and Targeted Release.",
@@ -86,10 +113,10 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 9,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The listed platforms are Desktop, Mac and Web.",
+      "claim": "The listed platforms are Desktop, Mac and Web; Mobile is not listed.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Desktop\", \"Mac\", \"Web\"]",
@@ -97,21 +124,10 @@
       "fix": null
     },
     {
-      "n": 7,
-      "where": "Scope: Platforms",
+      "n": 10,
+      "where": "front matter: clouds; What's changing; Risk assessment; Scope",
       "type": "record",
-      "claim": "Mobile is not listed in this roadmap record.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Desktop\", \"Mac\", \"Web\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "front matter: clouds; What's changing; Scope; Risk assessment",
-      "type": "record",
-      "claim": "The record lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "claim": "The listed clouds are Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
@@ -119,65 +135,10 @@
       "fix": null
     },
     {
-      "n": 9,
-      "where": "title; summary; What's changing; Scope; rationale: impact",
-      "type": "record",
-      "claim": "Microsoft plans to let recipients open a page shared in a Teams chat or channel inside Teams.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "When someone shares a page in chat or a channel, you can open it in Teams, edit, and discuss with teammates.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "title; summary; What's changing; Governance guidance",
-      "type": "record",
-      "claim": "The planned experience allows editing the shared page in Teams.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "When someone shares a page in chat or a channel, you can open it in Teams, edit, and discuss with teammates.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 11,
-      "where": "title; summary; What's changing",
+      "where": "What's changing",
       "type": "record",
-      "claim": "The planned experience allows discussing the page with teammates.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "When someone shares a page in chat or a channel, you can open it in Teams, edit, and discuss with teammates.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "summary; What's changing; Risk assessment; Governance guidance",
-      "type": "record",
-      "claim": "The user can choose to open the page in the main Teams window.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Open a page in your main Teams window or a new window, whichever works best for you.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "summary; What's changing; Risk assessment; Governance guidance",
-      "type": "record",
-      "claim": "The user can instead choose a new Teams window.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Open a page in your main Teams window or a new window, whichever works best for you.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "What's changing: more-information link",
-      "type": "record",
-      "claim": "The roadmap links to the support article on managing pages and Loop components in channels.",
+      "claim": "The roadmap's more-information link is the support article on managing pages and Loop components in channels.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"moreInfoLink\": \"https://support.microsoft.com/en-us/teams/teams-channels/manage-pages-and-loop-components-in-channels\"",
@@ -185,21 +146,10 @@
       "fix": null
     },
     {
-      "n": 15,
-      "where": "What's changing: first paragraph",
-      "type": "absence",
-      "claim": "Microsoft Learn does not yet describe this specific new page-opening experience.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams Open and collaborate on Pages; Teams open pages 580886 default license admin policy. Read Loop admin configuration, requirements and components overview; none describes this roadmap experience.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "What's changing; Open questions: Copilot Pages",
+      "n": 12,
+      "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap does not say whether Copilot Pages are included.",
+      "claim": "The roadmap does not specify whether Copilot Pages are included.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "When someone shares a page in chat or a channel, you can open it in Teams, edit, and discuss with teammates.",
@@ -207,186 +157,10 @@
       "fix": null
     },
     {
-      "n": 17,
-      "where": "front matter: defaultState; What's changing; Why it matters; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not stated the default or what this feature does on arrival.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams open pages 580886 default license admin policy; opening shared pages Teams license meter default setting; Teams pages automatically opening Loop. Read roadmap, support channel-pages article, Loop admin policies and requirements; no feature-specific default stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "What's changing; Open questions: browser or Loop app",
-      "type": "absence",
-      "claim": "Microsoft has not explained whether the new experience replaces today's handling of shared-page links.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams pages automatically opening Loop; Teams Open and collaborate on Pages. Read roadmap, channel-pages support article and Loop components overview; none explains replacement behaviour for this new experience.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "What's changing: channel pages",
-      "type": "behaviour",
-      "claim": "The channel-pages support article describes the pages as Loop pages.",
-      "status": "supported",
-      "source": "https://support.microsoft.com/en-us/teams/teams-channels/manage-pages-and-loop-components-in-channels",
-      "quote": "In the Loop page you want to copy, select Share > Page link.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "What's changing; Governance guidance: At rollout",
-      "type": "admin-path",
-      "claim": "A channel page is created using Add a tab > New page in the channel.",
-      "status": "supported",
-      "source": "https://support.microsoft.com/en-us/teams/teams-channels/manage-pages-and-loop-components-in-channels",
-      "quote": "Find the channel you want to work in and select Add a tab in the channel header. Select New page.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "What's changing: channel Shared tab",
-      "type": "behaviour",
-      "claim": "Pages created through a channel are listed in that channel's Shared tab.",
-      "status": "supported",
-      "source": "https://support.microsoft.com/en-us/teams/teams-channels/manage-pages-and-loop-components-in-channels",
-      "quote": "You can find all pages created through a channel in that channel's Shared tab.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "What's changing; Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "The support article says all users with channel access can see and contribute to a created channel page.",
-      "status": "supported",
-      "source": "https://support.microsoft.com/en-us/teams/teams-channels/manage-pages-and-loop-components-in-channels",
-      "quote": "Once a page is created or a Loop component is sent, all users who have access to the channel will be able to see and contribute to it.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "n": 13,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
       "type": "record",
-      "claim": "The roadmap describes working on pages already shared into chats or channels, rather than describing new data reach or a new sharing mechanism.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "When someone shares a page in chat or a channel, you can open it in Teams, edit, and discuss with teammates.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "Why it matters: Loop components",
-      "type": "behaviour",
-      "claim": "The Loop admin page says Loop components are always shared as editable by others.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration",
-      "quote": "Because Loop components are designed for collaboration, the components are always shared as editable by others",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "Why it matters: view-only default",
-      "type": "behaviour",
-      "claim": "The editable-component rule applies even when the organisation's default shareable links for other file types are view-only.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration",
-      "quote": "even if your organization is set to create shareable links that have view-only permissions as the default value for other file types.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "Why it matters: people with edit access",
-      "type": "behaviour",
-      "claim": "A shared page can have recipients with edit access rather than all recipients necessarily being editors.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-permission",
-      "quote": "Page and Component Sharing: Grants access to a specific page (not the whole workspace) with options for edit or read-only access.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "Why it matters; rationale: risk",
-      "type": "absence",
-      "claim": "The sources do not describe changed permissions or sharing boundaries for this new experience.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams Open and collaborate on Pages; Teams open pages 580886 default license admin policy. Read roadmap, support channel-pages article, Loop admin configuration and permissions; none states changed permissions for this feature.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "Why it matters; rationale: risk",
-      "type": "absence",
-      "claim": "The sources do not describe a storage change for this new experience.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams Open and collaborate on Pages; Teams pages automatically opening Loop. Read roadmap, support channel-pages article, Loop storage and components overview; none describes a storage change for this roadmap feature.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Loop files can be stored in OneDrive, SharePoint or SharePoint Embedded.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-storage",
-      "quote": "Loop content is stored in SharePoint, OneDrive, and SharePoint Embedded.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "Risk assessment: channel pages",
-      "type": "behaviour",
-      "claim": "The support article directs users to locate and delete channel-page content in SharePoint.",
-      "status": "supported",
-      "source": "https://support.microsoft.com/en-us/teams/teams-channels/manage-pages-and-loop-components-in-channels",
-      "quote": "To delete the content: 1. Locate the Loop page in SharePoint. 2. Hover over the item and select More options > Delete",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "Risk assessment: SharePoint retention",
-      "type": "applicability",
-      "claim": "Standard SharePoint policy applies to Loop content stored in SharePoint.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-storage",
-      "quote": "When content is stored in SharePoint, the standard SharePoint IT policy is applied. Learn more about OneDrive and SharePoint Retention and Deletion.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "Risk assessment: sharing settings",
-      "type": "applicability",
-      "claim": "Loop page sharing follows organisational sharing settings.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-permission",
-      "quote": "The user can choose to use a company share link or people-specific share link, based on your organizational sharing settings.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "Risk assessment: Security & identity",
-      "type": "record",
-      "claim": "The roadmap describes no security or identity change.",
+      "claim": "The roadmap describes user actions, not autonomous actions.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "When someone shares a page in chat or a channel, you can open it in Teams, edit, and discuss with teammates. Open a page in your main Teams window or a new window, whichever works best for you.",
@@ -394,10 +168,153 @@
       "fix": null
     },
     {
-      "n": 34,
-      "where": "controls[1].note; Risk assessment; Governance controls",
+      "n": 14,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe the specific planned shared-page opening experience.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams shared pages open 580886; Pages in Teams opening shared pages license price default admin policy. Read Loop admin configuration, requirements and channel pages support; results describe existing integrations, not this roadmap experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: defaultState; What's changing; Why it matters; Open questions",
+      "type": "default",
+      "claim": "The default is unknown: Microsoft has not stated what this feature does on arrival.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams shared page open default Loop; Pages in Teams opening shared pages default admin policy. Read roadmap, channel pages support and Loop admin configuration. Existing Loop defaults are stated, but the new opening experience's default is not.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated whether the new experience replaces today's browser or Loop app opening behaviour.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams shared page open default Loop; Teams opening pages policy. Read roadmap and channel pages support; Loop components ecosystem search excerpt describes browser links, but no text describes replacement by this planned experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The support article describes the channel pages as Loop pages.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/en-us/teams/teams-channels/manage-pages-and-loop-components-in-channels",
+      "quote": "In the Loop page you want to copy, select Share > Page link. ... Paste your Loop page link into the text box, and select Add page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "A user creates a channel page through the channel header's Add a tab > New page.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/en-us/teams/teams-channels/manage-pages-and-loop-components-in-channels",
+      "quote": "Find the channel you want to work in and select Add a tab in the channel header. Select New page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Pages created through a channel are found in that channel's Shared tab.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/en-us/teams/teams-channels/manage-pages-and-loop-components-in-channels",
+      "quote": "You can find all pages created through a channel in that channel's Shared tab.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The support article says users with channel access can see and contribute to a created channel page.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/en-us/teams/teams-channels/manage-pages-and-loop-components-in-channels",
+      "quote": "Once a page is created or a Loop component is sent, all users who have access to the channel will be able to see and contribute to it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "The Loop admin page says components are always shared as editable, even when other files' default share links are view-only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration",
+      "quote": "the components are always shared as editable by others, even if your organization is set to create shareable links that have view-only permissions as the default value for other file types.",
+      "severity": "minor",
+      "fix": "After that sentence add: 'Microsoft's Loop permissions page also documents page and component sharing with edit or read-only access; the admin page's statement should not be read as granting every recipient edit access.' Cite https://learn.microsoft.com/microsoft-365/loop/loop-permission."
+    },
+    {
+      "n": 22,
+      "where": "Why it matters; rationale: risk",
+      "type": "absence",
+      "claim": "No source describes a change to existing sharing, permissions or storage for this feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams shared page open default Loop; Pages in Teams opening shared pages license price default admin policy. Read roadmap, channel pages support, Loop storage and permissions; no description of a new sharing, permission or storage mechanism was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Loop content is stored in OneDrive, SharePoint or SharePoint Embedded.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-storage",
+      "quote": "Loop content is stored in SharePoint, OneDrive, and SharePoint Embedded.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The channel support article locates channel pages in SharePoint for deletion.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/en-us/teams/teams-channels/manage-pages-and-loop-components-in-channels",
+      "quote": "To delete the content: 1. Locate the Loop page in SharePoint. 2. Hover over the item and select More options > Delete",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Data exposure",
       "type": "applicability",
-      "claim": "The Loop creation controls do not restrict access to existing Loop files or workspaces.",
+      "claim": "Existing SharePoint retention rules govern Loop content stored in SharePoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-storage",
+      "quote": "When content is stored in SharePoint, the standard SharePoint IT policy is applied. Learn more about OneDrive and SharePoint Retention and Deletion.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Organizational sharing settings govern Loop page and component sharing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-permission",
+      "quote": "Page and Component Sharing: Grants access to a specific page (not the whole workspace) with options for edit or read-only access. The user can choose to use a company share link or people-specific share link, based on your organizational sharing settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity; controls[1].note; Governance controls",
+      "type": "applicability",
+      "claim": "Loop creation controls do not restrict access to existing files or workspaces.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration",
       "quote": "However, these admin controls don't restrict access to existing Loop files or workspaces.",
@@ -405,10 +322,10 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 28,
       "where": "Risk assessment: Security & identity; Governance controls",
       "type": "applicability",
-      "claim": "The Loop admin page points to Conditional Access policies to block access to existing Loop content.",
+      "claim": "The Loop admin page points to Conditional Access to block access to existing Loop content.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration",
       "quote": "To block access to existing Loop content or the Loop application, use Conditional Access policies.",
@@ -416,164 +333,87 @@
       "fix": null
     },
     {
-      "n": 36,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "default",
-      "claim": "Nothing happens until a user opens and edits a page.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Teams pages automatically opening Loop; opening shared pages Teams license meter default setting; Teams Open and collaborate on Pages. Read roadmap, channel-pages support article and Loop admin policies; none guarantees no behaviour changes before opening and editing.",
-      "severity": "blocker",
-      "fix": "Replace 'No change: nothing happens until a user opens and edits a page.' with 'The roadmap describes users opening and editing shared pages; it does not describe autonomous actions or state what happens on arrival.' Keep defaultState as unknown."
+      "n": 29,
+      "where": "controls[0].api; Governance controls; Open questions",
+      "type": "command",
+      "claim": "Set-SPOTenant -IsLoopEnabled $false is a SharePoint Online PowerShell call disabling Loop components in Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant",
+      "quote": "Module: Microsoft.Online.SharePoint.PowerShell Module. ... -IsLoopEnabled ... Controls whether Loop components are available in Microsoft Teams. PARAMVALUE: True | False",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 37,
+      "n": 30,
       "where": "controls[0].note; Why it matters; Risk assessment; Governance controls",
       "type": "applicability",
-      "claim": "IsLoopEnabled applies to the entire tenant.",
+      "claim": "IsLoopEnabled controls Teams Loop creation and integration tenant-wide.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration",
-      "quote": "It applies to the entire tenant and can't be configured at the user level.",
+      "quote": "This property controls Loop component creation and integration in Microsoft Teams. It applies to the entire tenant and can't be configured at the user level.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 38,
-      "where": "controls[0].note; Risk assessment; Governance controls",
+      "n": 31,
+      "where": "controls[0].note; Risk assessment: Change & support",
       "type": "applicability",
-      "claim": "IsLoopEnabled cannot be configured per user.",
+      "claim": "Teams Loop settings cannot be configured per user or scoped to a group for a pilot.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration",
-      "quote": "It applies to the entire tenant and can't be configured at the user level.",
+      "quote": "Admin controls can be applied to specific groups or the entire tenant, except for Teams-related settings, which always apply tenant-wide.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 39,
-      "where": "Risk assessment: per-group pilot",
-      "type": "absence",
-      "claim": "There is no documented per-group pilot using the Teams Loop switch.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: IsLoopEnabled admin center UI; Set-SPOTenant IsLoopEnabled Get-SPOTenant SharePoint administrator. Read Loop admin configuration and Set-SPOTenant reference; Teams settings apply tenant-wide, with no per-group scope documented.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "Risk assessment; Scope; Open questions: government clouds",
-      "type": "availability",
-      "claim": "The Loop requirements page lists Loop workspaces as not available in GCC, GCC High and DoD.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-requirements",
-      "quote": "US government cloud environments (GCC, GCC High, DoD) ... Loop workspaces ... ❌ Not available",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "Risk assessment; Scope: Clouds",
-      "type": "availability",
-      "claim": "The requirements page lists Loop components in Teams chats, channels, chat notes and meeting notes as available in US government clouds.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-requirements",
-      "quote": "Loop components in Teams (chat, channels, chat notes, meeting notes) | ✅ Available | ✅ Available",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
-      "type": "licensing",
-      "claim": "The Loop requirements page lists a OneDrive or SharePoint license for Loop components.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-requirements",
-      "quote": "Loop components license | OneDrive or SharePoint license",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
-      "type": "licensing",
-      "claim": "The Loop requirements page lists the Loop with workspaces service plan for Loop workspaces.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-requirements",
-      "quote": "Loop workspaces license | Loop with workspaces service plan (see eligible licenses)",
-      "severity": "minor",
-      "fix": "Keep the attribution to the requirements page, but add: 'Its linked subscription article instead says that, as of February 2026, anyone with access to the Loop app who meets its storage requirements can create workspaces; the Microsoft pages differ.' Cite https://support.microsoft.com/office/loop-access-via-microsoft-365-subscriptions-92915461-4b14-49a4-9cd4-d1c259292afa."
-    },
-    {
-      "n": 44,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "Microsoft has not published a license requirement specific to this new page-opening feature.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: opening shared pages Teams license meter default setting; Teams shared Loop pages opening editing license Microsoft Teams license requirements. Read Loop requirements and Loop access via Microsoft 365 subscriptions; no requirement specific to this new opening experience stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
-      "type": "absence",
-      "claim": "The license mapping for opening shared pages through this new Teams experience is not yet published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams shared Loop pages opening editing license Microsoft Teams license requirements; opening shared pages Teams license meter default setting. Read Loop requirements and linked subscription article; neither maps this roadmap experience to a particular service plan.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "The licensing model is included, with existing Loop product licensing rather than a documented separate entitlement for this new option.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-requirements",
-      "quote": "Loop components license | OneDrive or SharePoint license ... Loop workspaces license | Loop with workspaces service plan",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "Cost and licensing: Meter; rationale: cost",
-      "type": "absence",
-      "claim": "No meter specific to this feature is documented at the time of writing.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: opening shared pages Teams license meter default setting; Teams shared pages pricing meter. Read Loop requirements, subscription article and Loop storage; no feature-specific meter stated. Storage distinguishes developer per-use billing from Loop quota management.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
-      "where": "Cost and licensing: Indirect costs; rationale: cost",
-      "type": "cost",
-      "claim": "Loop file storage counts against the organisation's SharePoint quota.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration",
-      "quote": "Storage counts against your organization's SharePoint quota.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
+      "n": 32,
       "where": "controls[0].note; Scope: Roles",
       "type": "role",
       "claim": "Set-SPOTenant requires a SharePoint Online administrator.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant?view=sharepoint-ps",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant",
       "quote": "You must be a SharePoint Online administrator to run the cmdlet.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 50,
+      "n": 33,
+      "where": "controls[0].ui",
+      "type": "absence",
+      "claim": "No admin UI is documented for the Teams IsLoopEnabled control.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Loop IsLoopEnabled admin UI settings Teams creation SharePoint. Read Loop admin configuration and Set-SPOTenant; the Teams creation control is documented through SharePoint PowerShell, not an admin UI.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[0].note; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated whether IsLoopEnabled specifically governs the new shared-page opening experience.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Pages in Teams opening shared pages admin policy; Loop IsLoopEnabled admin UI settings Teams creation SharePoint. Read roadmap, channel support and Loop admin configuration; existing component integration is documented, not this new opening operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[1].ui; Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "Loop workspace creation is configured in Microsoft 365 admin center > Home > Org settings > Services > Loop > Loop workspaces.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration",
+      "quote": "Navigate to Home > Org settings > Services > Loop. Choose your desired state for Loop workspaces via the checkbox.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
       "where": "controls[1].note; Scope: Roles",
       "type": "role",
-      "claim": "The Loop admin-center setting can be changed as Office Apps Administrator, Security Administrator or Global Administrator.",
+      "claim": "Office Apps Administrator, Security Administrator or Global Administrator can change the admin center Loop setting.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration",
       "quote": "Sign in to the Microsoft 365 admin center as Office Apps Administrator, Security Administrator, or Global Administrator.",
@@ -581,128 +421,18 @@
       "fix": null
     },
     {
-      "n": 51,
-      "where": "Scope: Prerequisites; Governance guidance: Before rollout",
-      "type": "behaviour",
-      "claim": "Real-time Loop collaboration requires allowing WebSocket traffic to *.svc.ms and *.office.com.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-requirements",
-      "quote": "Allow WebSocket traffic to *.svc.ms and *.office.com endpoints. WebSocket connections enable real-time collaboration features including live editing, presence indicators, and shared cursors.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
-      "where": "Scope: Prerequisites",
-      "type": "behaviour",
-      "claim": "An Exchange Online mailbox is required for full Loop functionality including @mentions and workspace sharing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-requirements",
-      "quote": "For full functionality including @mentions and workspace sharing, users need an Exchange Online mailbox.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "Governance guidance: Before rollout",
-      "type": "command",
-      "claim": "A SharePoint administrator can check Teams Loop state using Get-SPOTenant and reading IsLoopEnabled.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration",
-      "quote": "To check if Loop components are enabled, run Get-SPOTenant without any arguments. Verify the value of IsLoopEnabled is true.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "Governance guidance: After rollout",
+      "n": 37,
+      "where": "controls[1].note; Governance controls",
       "type": "applicability",
-      "claim": "Microsoft says tenants with multiple regions must disable Loop components in every region for consistent results.",
+      "claim": "The admin center checkbox configures Create Loop workspaces in Loop for all users.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration",
-      "quote": "If your organization has multiple regions (that is, organization URLs), you need to disable loop components for all the regions to have consistent results across the organization.",
+      "quote": "The Microsoft Admin Center configures the Cloud Policy setting Create Loop workspaces in Loop, described in the next section, targeted at All users (your full tenant).",
       "severity": null,
       "fix": null
     },
     {
-      "n": 55,
-      "where": "controls[0].ui",
-      "type": "absence",
-      "claim": "No admin UI for the tenant's Teams Loop component creation and integration switch is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: IsLoopEnabled admin center UI; Set-SPOTenant IsLoopEnabled Get-SPOTenant SharePoint administrator. Read Loop admin configuration, Cloud Policy overview and Set-SPOTenant reference; the documented Teams switch is SharePoint PowerShell, not an admin UI.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "controls[0].api; Governance controls; Open questions",
-      "type": "command",
-      "claim": "Set-SPOTenant -IsLoopEnabled $false in SharePoint Online PowerShell disables Loop components in Teams.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant?view=sharepoint-ps",
-      "quote": "Module: Microsoft.Online.SharePoint.PowerShell Module. Sets properties on the SharePoint Online organization. -IsLoopEnabled ... Type: System.Boolean",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
-      "where": "controls[0].note; Open questions: Set-SPOTenant",
-      "type": "absence",
-      "claim": "Microsoft has not stated whether IsLoopEnabled governs opening shared pages through this specific new Teams experience.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams open pages 580886 default license admin policy; opening shared pages Teams license meter default setting. Read Loop admin policies and Copilot Pages policy excerpts; they cover component integration, not whether this new page-opening experience is disabled.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 58,
-      "where": "controls[1].ui; controls[1].note; Governance guidance; Governance controls",
-      "type": "admin-path",
-      "claim": "The Loop workspace-creation checkbox is at Microsoft 365 admin center > Home > Org settings > Services > Loop > Loop workspaces.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration",
-      "quote": "Navigate to Home > Org settings > Services > Loop. Choose your desired state for Loop workspaces via the checkbox. ... configures the Cloud Policy setting Create Loop workspaces in Loop ... targeted at All users",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 59,
-      "where": "controls[1].api",
-      "type": "absence",
-      "claim": "No documented automation operation sets the Create Loop workspaces in Loop policy that the admin-center checkbox configures.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Loop workspaces Cloud Policy Create Loop workspaces in Loop Microsoft Graph PowerShell API configure policy; Cloud Policy Loop API Graph configure; Loop Create Loop workspaces in Loop PowerShell API. Read Loop admin policies and Cloud Policy overview; no setter found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 60,
-      "where": "controls[2].ui; controls[2].api; summary; Governance controls; rationale: impact",
-      "type": "absence",
-      "claim": "No feature-specific UI or API switch for opening shared pages inside Teams is documented in November 2026.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams Open and collaborate on Pages; Teams open pages 580886 default license admin policy; opening shared pages Teams license meter default setting. Read channel-pages support article, Loop admin configuration and Cloud Policy overview; no feature-specific switch found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 61,
-      "where": "Governance controls: Cloud Policy path; Open questions: Copilot policy",
-      "type": "admin-path",
-      "claim": "Cloud Policy at config.office.com under Customization > Policy Management can scope Loop workspace creation to groups.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration",
-      "quote": "Select Customization from the left pane. Select Policy Management. Create a new policy configuration or edit an existing one. ... select the group for which you want to apply the policy.",
-      "severity": "minor",
-      "fix": "Complete the group-scoping route as 'config.office.com > Customization > Policy Management > policy configuration > Choose the scope > group > Configure Settings > Create Loop workspaces in Loop', following https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration."
-    },
-    {
-      "n": 62,
+      "n": 38,
       "where": "controls[1].governs; Governance controls",
       "type": "applicability",
       "claim": "Create Loop workspaces in Loop governs workspace creation including Teams channel workspaces.",
@@ -713,43 +443,76 @@
       "fix": null
     },
     {
-      "n": 63,
-      "where": "controls[1].note; Governance controls",
-      "type": "applicability",
-      "claim": "The Microsoft 365 admin-center checkbox targets Create Loop workspaces in Loop at all users in the tenant.",
+      "n": 39,
+      "where": "controls[1].api",
+      "type": "absence",
+      "claim": "No API or PowerShell equivalent is documented for setting Create Loop workspaces in Loop.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration",
-      "quote": "The Microsoft Admin Center configures the Cloud Policy setting Create Loop workspaces in Loop, described in the next section, targeted at All users (your full tenant).",
+      "source": null,
+      "quote": "Searched: Create Loop workspaces in Loop Graph API PowerShell Cloud Policy; Cloud Policy Graph Loop configure policy API. Read Loop admin configuration, Cloud Policy overview and Set-SPOTenant reference; no operation setting this Cloud Policy was found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 64,
-      "where": "Open questions: Copilot Pages",
-      "type": "applicability",
-      "claim": "Copilot Pages have their own Cloud Policy setting named Create and view Copilot Pages and Copilot Notebooks.",
+      "n": 40,
+      "where": "controls[2]; summary; Governance controls; rationale: impact",
+      "type": "absence",
+      "claim": "No feature-specific switch for opening shared pages inside Teams is documented on either UI or automation surfaces.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration",
-      "quote": "Copilot Pages or Copilot Notebooks | Cloud Policy: Create and view Copilot Pages and Copilot Notebooks",
+      "source": null,
+      "quote": "Searched: Pages in Teams opening shared pages default admin policy; Teams opening pages policy; Loop IsLoopEnabled admin UI settings. Read roadmap, channel support, Loop admin configuration and Teams policies search excerpts; no feature-specific switch was found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 65,
+      "n": 41,
+      "where": "Governance guidance: Before rollout",
+      "type": "command",
+      "claim": "Get-SPOTenant without arguments retrieves the tenant state, including IsLoopEnabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration",
+      "quote": "To check if Loop components are enabled, run Get-SPOTenant without any arguments. Verify the value of IsLoopEnabled is true.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
       "where": "Governance guidance: Before rollout",
       "type": "role",
-      "claim": "Get-SPOTenant is run as a SharePoint administrator.",
+      "claim": "Get-SPOTenant requires a SharePoint Online administrator.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/get-spotenant",
       "quote": "You must be a SharePoint Online administrator to run the cmdlet.",
-      "severity": "minor",
-      "fix": "Cite https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/get-spotenant for the Get-SPOTenant role requirement."
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 66,
-      "where": "Governance controls: Teams creation and integration",
+      "n": 43,
+      "where": "Governance guidance: After rollout",
       "type": "applicability",
-      "claim": "The Loop policy reference says Teams creation and integration checks the SharePoint settings in its Teams row.",
+      "claim": "Microsoft says Loop components must be disabled in all tenant regions for consistent results.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration",
+      "quote": "If your organization has multiple regions (that is, organization URLs), you need to disable loop components for all the regions to have consistent results across the organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Governance controls",
+      "type": "admin-path",
+      "claim": "The Loop admin page gives config.office.com > Customization > Policy Management > policy configuration > Choose the scope > group > Configure Settings > Create Loop workspaces in Loop for group scoping.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration",
+      "quote": "Select Customization from the left pane. Select Policy Management. Create a new policy configuration or edit an existing one. From the Choose the scope dropdown list, choose either All users or select the group for which you want to apply the policy.",
+      "severity": "minor",
+      "fix": "After the path add: 'The Cloud Policy overview describes selecting Add Groups on Choose the scope before Configure Settings: https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy.' This acknowledges the different group-selection steps without invalidating the cited Loop route."
+    },
+    {
+      "n": 45,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "The Loop admin page says Teams creation and integration checks SharePoint properties, whereas channel workspace creation uses Cloud Policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration",
       "quote": "Teams creation and integration | SharePoint property | See Settings management for Loop components in Teams | Teams only checks the settings in this row.",
@@ -757,26 +520,136 @@
       "fix": null
     },
     {
-      "n": 67,
-      "where": "Governance guidance: Before rollout; Governance controls",
-      "type": "consistency",
-      "claim": "The checklist tells administrators to confirm firewall and proxy WebSocket allowances, but the controls table has no corresponding network-control row.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Checklist: 'Confirm that firewalls and proxies allow WebSocket traffic'. Table rows: Loop component creation and integration; Loop workspace creation; switch for opening shared pages.",
+      "n": 46,
+      "where": "front matter: licensing; Cost and licensing; Open questions",
+      "type": "licensing",
+      "claim": "The included licensing model rests on the product's existing Loop entitlements rather than a published feature-specific add-on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-requirements",
+      "quote": "Loop components license | OneDrive or SharePoint license. Loop workspaces license | Loop with workspaces service plan",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost; Open questions",
+      "type": "absence",
+      "claim": "No licensing requirement specific to this planned opening experience is published, including which general Loop entitlement applies.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams pages Loop license pricing; Pages in Teams opening shared pages license price default admin policy. Read Loop requirements, storage and admin configuration, channel support, and Teams licensing excerpts; no entitlement or meter specific to this roadmap option was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "The Loop admin page states that Loop storage counts against the organization's SharePoint quota.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration",
+      "quote": "Storage counts against your organization's SharePoint quota.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Change & support; Scope; Open questions",
+      "type": "availability",
+      "claim": "The Loop requirements page lists workspaces as unavailable in GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-requirements",
+      "quote": "US government cloud environments (GCC, GCC High, DoD) ... Loop workspaces ... ❌ Not available",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Open questions",
+      "type": "applicability",
+      "claim": "Copilot Pages have the separate Cloud Policy setting Create and view Copilot Pages and Copilot Notebooks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "Copilot Pages and Copilot Notebooks creation | Cloud Policy: Create and view Copilot Pages and Copilot Notebooks | Enabled",
       "severity": "minor",
-      "fix": "Remove the standalone firewall/proxy bullet from Before rollout; retain the verified WebSocket requirements in Scope. This avoids a checklist control without a table row and does not add an unverified control."
+      "fix": "Add https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration to sources, titled 'Admin policies for Copilot Pages and Copilot Notebooks', and cite it on the existing sentence naming that policy."
+    },
+    {
+      "n": 51,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "licensing",
+      "claim": "The Loop requirements page lists a OneDrive or SharePoint license for Loop components.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-requirements",
+      "quote": "Loop components license | OneDrive or SharePoint license",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "licensing",
+      "claim": "The Loop requirements page lists the Loop with workspaces service plan for Loop workspaces.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-requirements",
+      "quote": "Loop workspaces license | Loop with workspaces service plan",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "Loop real-time collaboration requires allowing WebSocket traffic to *.svc.ms and *.office.com.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-requirements",
+      "quote": "Allow WebSocket traffic to *.svc.ms and *.office.com endpoints. WebSocket connections enable real-time collaboration features including live editing, presence indicators, and shared cursors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "Loop requires an Exchange Online mailbox for full functionality including @mentions and workspace sharing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-requirements",
+      "quote": "For full functionality including @mentions and workspace sharing, users need an Exchange Online mailbox.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risk assessment: Change & support; Scope: Clouds",
+      "type": "availability",
+      "claim": "The Loop requirements page lists Loop components in Teams chats, channels, chat notes and meeting notes as available in GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-requirements",
+      "quote": "US government cloud environments (GCC, GCC High, DoD) ... Loop components in Teams (chat, channels, chat notes, meeting notes) ... ✅ Available",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Cost and licensing: Meter; rationale: cost",
+      "type": "absence",
+      "claim": "No meter specific to this planned opening experience is documented as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams pages Loop license pricing; Pages in Teams opening shared pages license price default admin policy. Read Loop requirements, storage and admin configuration, channel support, and Teams licensing excerpts; no feature-specific meter was found.",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-26T05:27:18.715Z",
+    "at": "2026-11-26T06:53:59.639Z",
     "summary": {
-      "links": 9,
-      "unreachable": 0,
+      "links": 10,
+      "unreachable": 7,
       "uiPaths": 1,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 1,
       "apiCalls": 1,
-      "apiCallsNotOnPage": 0,
+      "apiCallsNotOnPage": 1,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -792,18 +665,23 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/loop/loop-requirements",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/get-spotenant",
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
@@ -812,18 +690,18 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/loop/loop-storage",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/loop/loop-permission",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/sharepoint/control-access-from-unmanaged-devices",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -832,16 +710,16 @@
         "side": "api",
         "governs": "Loop component creation and integration in Teams chats and channels",
         "docs": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant",
-        "reachable": true,
+        "reachable": false,
         "token": "Set-SPOTenant",
-        "found": true
+        "found": false
       },
       {
         "index": 1,
         "side": "ui",
         "governs": "Whether users can create Loop workspaces, including Teams channel workspaces",
         "docs": "https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Home",
           "Org settings",
@@ -849,7 +727,13 @@
           "Loop",
           "Loop workspaces"
         ],
-        "missing": []
+        "missing": [
+          "Home",
+          "Org settings",
+          "Services",
+          "Loop",
+          "Loop workspaces"
+        ]
       }
     ],
     "roadmapDrift": []
@@ -859,6 +743,12 @@
       "date": "2026-11-26",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-26",
+      "status": "held",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

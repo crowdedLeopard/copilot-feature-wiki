@@ -103,15 +103,17 @@ changes:
     note: "Corrected the claim about controls: the storyline creator setting does restrict who can post, and the gap is a separate control for My Team or publish-time targeting."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 77 statements confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 78 statements confirmed"
 version: 5
 verification:
   status: "verified"
-  date: "2026-11-23"
+  date: "2026-11-26"
   version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 77
-  confirmed: 77
+  claims: 78
+  confirmed: 78
   unconfirmed: 0
   contradicted: 0
   attempts: 0

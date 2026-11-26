@@ -1,0 +1,931 @@
+{
+  "slug": "microsoft-purview-compliance-portal-data-loss-prevention-for-endpoints-optical-character-r",
+  "roadmapId": 381750,
+  "title": "Microsoft Purview Endpoint DLP: OCR scanning of images embedded in Office, archive and PDF files on devices",
+  "status": "held",
+  "date": "2026-11-26",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-26",
+    "reasons": [
+      "2 blocking findings (claims 14, 65)"
+    ]
+  },
+  "counts": {
+    "claims": 70,
+    "confirmed": 66,
+    "unconfirmed": 2,
+    "contradicted": 2,
+    "blocker": 2,
+    "major": 1,
+    "minor": 6
+  },
+  "summary": "Hold: the recommended cost estimator does not support embedded-image estimation on endpoints, and the extension's arrival behaviour is not documented well enough to label it admin-opt-in. The roadmap dates, paused rollout, OCR price and printed configuration paths and command are otherwise supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Microsoft plans to extend endpoint OCR from standalone images to embedded images.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This release will extend OCR support from standalone images (JPEG, JPG, PNG, BMP, TIFF, and PDF) to images embedded inside the following files and file types",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The planned Office formats are XLSX, DOCX and PPTX.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Office files (XLSX, DOCX, PPTX)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The planned containers include zip, rar, 7z and additional unspecified formats.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "container files (zip, rar, 7z, and more)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The extension covers hybrid PDFs containing images and searchable text.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "this release will support hybrid PDF files containing images and searchable text.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Image-only PDFs are already supported.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Image-only PDF files are already supported",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The General Availability target is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The preview date is April CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"April CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [ \"General Availability\", \"Preview\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: clouds; Scope",
+      "type": "record",
+      "claim": "The listed cloud is Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [ \"Worldwide (Standard Multi-Tenant)\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [ \"Web\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "summary; What's changing; Scope; Risk assessment",
+      "type": "record",
+      "claim": "The description's update dated 20 May 2026 says rollout is paused.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Updated May 20, 2026: We have paused rollout and will resume soon.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "Risk assessment: Change & support; Open questions",
+      "type": "record",
+      "claim": "The pause notice supplies no new resumption date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "We have paused rollout and will resume soon. Thank you for your patience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "The embedded-image extension is admin-opt-in on arrival.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Purview endpoint OCR embedded images rollout automatically enable separate setting billing transaction limit 381750. Read ocr-learn-about and roadmap record; neither states the extension's default for tenants already scanning devices.",
+      "severity": "blocker",
+      "fix": "Set defaultState to \"unknown\". Keep the existing distinction in What's changing: OCR generally must be configured, but Microsoft has not stated whether existing device OCR tenants receive embedded-image scanning automatically."
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Why it matters; rationale: impact",
+      "type": "default",
+      "claim": "OCR generally is optional and does not scan a chosen location until an administrator enables and configures it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "OCR scanning is an optional feature that you must enable at the tenant level. After you enable it, select the locations where you want to scan images.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[0].ui; Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "OCR locations and group scope are configured in Microsoft Purview portal > Settings > Optical character recognition (OCR).",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "Sign in to the Microsoft Purview portal. 2. Select Settings. 3. Select Optical character recognition (OCR) to enter your OCR configuration settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[0].api",
+      "type": "absence",
+      "claim": "No automation operation for configuring Purview OCR locations and groups is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview OCR settings PowerShell Graph API Set-FeatureConfiguration. Read OCR configuration steps and Set-FeatureConfiguration search excerpts; the latter document collection policies and advanced label based protection, not OCR configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[0].note; What's changing",
+      "type": "behaviour",
+      "claim": "The OCR configuration page selects scan locations and included or excluded groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "Select the locations where you want to scan images. 5. Select the groups that you want included or excluded from OCR scans.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[0].note; Risk assessment: Security & identity; Scope",
+      "type": "role",
+      "claim": "The compliance admin configures tenant OCR settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "The Compliance admin for your organization configures the OCR settings for your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[0].note; Scope",
+      "type": "behaviour",
+      "claim": "OCR settings generally take effect about an hour after enabling them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "In general, OCR settings take effect about an hour after you turn them on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "OCR uses consumption-based document processing pay-as-you-go billing through a linked Azure subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/syntex/syntex-azure-billing",
+      "quote": "Document processing services are billed on a pay-as-you-go basis. These services use an Azure subscription for billing and track usage and cost with a meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "licensing.notes; Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "The Purview OCR page says OCR can be configured without extra licensing requirements once billing information is entered.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "After you enter billing information in Microsoft Syntex, your Compliance admin can configure OCR in Microsoft Purview without any extra setup or licensing requirements.",
+      "severity": "minor",
+      "fix": "Retain this attributed statement and add: \"The document processing licensing page also requires users of its services to have a Microsoft 365 license.\" Cite https://learn.microsoft.com/microsoft-365/documentprocessing/syntex-licensing."
+    },
+    {
+      "n": 23,
+      "where": "Cost and licensing: Licence",
+      "type": "role",
+      "claim": "The OCR page says a Global admin must set up billing to enable OCR.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "Because it's an optional feature, your Global admin must set up pay-as-you-go billing to enable OCR.",
+      "severity": "minor",
+      "fix": "Replace the role sentence with: \"The OCR page's billing paragraph names Global admin, but its workflow and the billing setup page permit a Global or SharePoint admin to set up billing.\" Keep the existing citations to ocr-learn-about and syntex-azure-billing."
+    },
+    {
+      "n": 24,
+      "where": "front matter: cost; licensing.notes; Cost and licensing: Meter; rationale: cost",
+      "type": "cost",
+      "claim": "The published OCR price is USD $0.001 per transaction, supporting the variable cost rating.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/documentprocessing/syntex-pay-as-you-go-services",
+      "quote": "Optical character recognition ... $0.001/transaction",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "summary; Cost and licensing: Meter; rationale: cost",
+      "type": "cost",
+      "claim": "The OCR page counts each scanned image as one transaction.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "Each image scanned counts as one transaction.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "Each PDF page is charged separately.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "It also means that each page in a PDF file is charged separately.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "licensing.notes; Cost and licensing: Meter; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not published counting rules specifically for embedded images in files on devices.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview endpoint OCR embedded images rollout automatically enable separate setting billing transaction limit 381750. Read OCR page, pricing page and OCR overview search excerpts; none gives counting rules specifically for embedded images in endpoint files.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Cost and licensing: Meter; Open questions",
+      "type": "absence",
+      "claim": "A per-file embedded-image scan limit for devices is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview endpoint OCR embedded image scanning separate toggle file types Windows macOS billing per file limit. Read ocr-learn-about and OCR overview search excerpts; the 20-image limit is stated for Exchange, not devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Cost and licensing: Meter; Open questions",
+      "type": "behaviour",
+      "claim": "Exchange scans at most 20 embedded images per file.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "For Exchange, the feature supports embedded images ... with a limit of 20 embedded images scanned per file.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "The Microsoft 365 admin center setup route reaches document processing billing and the Azure subscription selector.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/syntex/syntex-azure-billing",
+      "quote": "On the Pay-as-you-go services page, on the Billing tab, select Document processing services. 5. On the Set up billing and turn on services panel, in the Set up billing section, under Azure subscription, select the dropdown",
+      "severity": "minor",
+      "fix": "Use the full route: \"Setup > Billing and licenses > Activate pay-as-you-go services > Get started > Pay-as-you-go services > Billing > Document processing services > Set up billing and turn on services > Set up billing > Azure subscription\". The missing page and panel are pass-through headings."
+    },
+    {
+      "n": 31,
+      "where": "controls[1].api",
+      "type": "absence",
+      "claim": "No automation operation for connecting document processing billing to an Azure subscription is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Syntex document processing connect Azure subscription billing PowerShell API. Read syntex-azure-billing and returned setup and licensing excerpts; these document the admin center connection, not an equivalent API or cmdlet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[1].note; Risk assessment: Security & identity; Scope",
+      "type": "role",
+      "claim": "Billing setup requires SharePoint Administrator or Global Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/syntex/syntex-azure-billing",
+      "quote": "You must be a SharePoint Administrator or Global Administrator to be able to access the Microsoft 365 admin center and set up the service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[1].note; Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Billing setup also requires owner or contributor rights to the selected Azure subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/syntex/syntex-azure-billing",
+      "quote": "You must have owner or contributor rights to the Azure subscription that you want to use for pay-as-you-go billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing: Meter; Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "Charges can be reviewed in Microsoft Cost Management for Azure under Cost analysis, filtered by Product.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/syntex/syntex-azure-billing",
+      "quote": "Under Cost Management, select Cost analysis. 3. Select Add filter, choose Product from the list, and then choose the product that you want to filter on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "Advanced classification settings are at Purview portal > Data loss prevention > Overview > Data loss prevention settings > Endpoint settings > Advanced classification scanning and protection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+      "quote": "To access these settings, from the Microsoft Purview portal, go to Data loss prevention > Overview > Data loss prevention settings > Endpoint settings. ... Advanced classification scanning and protection",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[2].api",
+      "type": "absence",
+      "claim": "An automation operation for setting the advanced classification bandwidth limit is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Set-PolicyConfig EndpointDlpGlobalSettings advanced classification bandwidth limit PowerShell. Read endpoint settings and searched Set-PolicyConfig reference for bandwidth and its global-settings syntax; no bandwidth setting is documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[2].note; Cost and licensing: Limits",
+      "type": "default",
+      "claim": "The OCR bandwidth limit defaults to 1,024 MB per device per day.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "The default bandwidth limit is 1,024 MB of data per device per day.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[2].note; Risk assessment: Change & support; Cost and licensing: Limits",
+      "type": "behaviour",
+      "claim": "OCR stops scanning images on a device once its bandwidth limit is reached.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "OCR stops scanning images once this daily limit is reached. If you want to continue scanning images, you can increase the bandwidth limit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[2].governs; Cost and licensing: Limits; Governance controls",
+      "type": "applicability",
+      "claim": "The advanced classification bandwidth limit applies per device, including cloud scanning used by OCR, rather than as a tenant spending cap.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+      "quote": "set a limit on how much bandwidth can be used in a rolling 24-hour period. You configure the limit in Endpoint DLP settings and it applies per device.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing: Limits",
+      "type": "behaviour",
+      "claim": "Administrators may select Do not limit bandwidth. Unlimited.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+      "quote": "If bandwidth usage isn't a concern, select Do not limit bandwidth. Unlimited to allow unlimited bandwidth use.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing: Limits",
+      "type": "behaviour",
+      "claim": "The endpoint OCR cache is maintained for 30 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "For Endpoint, the cache is maintained for 30 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing: Limits",
+      "type": "behaviour",
+      "claim": "OCR caching is local to each endpoint device.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "Caching is local to each endpoint device",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The endpoint cache stores only identified classifiers and the image hash.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "only classifiers identified on the image and image hash are stored.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The endpoint OCR cache does not store customer data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "Caching is local to each endpoint device and only classifiers identified on the image and image hash are stored. Customer data isn't stored.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing: Limits",
+      "type": "cost",
+      "claim": "Each scanned image may be used in any number of policies at no additional charge.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "you can use each scanned image in any number of policies across data loss prevention, insider risk management, auto-labeling, and records management at no extra charge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "Windows path exclusions are configured at Purview portal > Data loss prevention > Overview > Data loss prevention settings > Endpoint settings > File path exclusions for Windows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+      "quote": "go to Microsoft Purview portal > Data loss prevention > Overview > Data loss prevention settings > Endpoint settings > File path exclusions for Windows.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[3].api",
+      "type": "command",
+      "claim": "Security & Compliance PowerShell supports Set-PolicyConfig -EndpointDlpGlobalSettings with Setting=PathExclusion and Value set to the folder path.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig",
+      "quote": "This cmdlet is available only in Security & Compliance PowerShell. ... This parameter uses the following syntax: @(@{\"Setting\"=\"<Setting>\"; \"Value\"=\"<Value>\"},...) ... @{\"Setting\"=\"PathExclusion\"; \"Value\"=\"C:\\Windows\";}",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[3].governs; Risk assessment: Data exposure; Governance controls",
+      "type": "applicability",
+      "claim": "OCR does not scan images in paths excluded by Endpoint DLP settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "If you exclude a path in the endpoint data loss prevention settings, OCR doesn't scan images in those folders.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[3].note",
+      "type": "behaviour",
+      "claim": "Files in excluded locations are not audited.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+      "quote": "Files in excluded locations aren't audited.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[3].note",
+      "type": "behaviour",
+      "claim": "Files in excluded paths are not subject to DLP enforcement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+      "quote": "Any files that you create or modify in those locations aren't subject to DLP policy enforcement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "Device OCR requires network settings permitting blob.core.windows.net endpoints.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "For Endpoint Device, ensure that any network settings aren't obstructing the OCR, and a wildcard should be present allowing blob.core.windows.net endpoints.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "The endpoint OCR image file size limit is 50 MB.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "File size (SharePoint, OneDrive, Windows, and macOS endpoints) | 50 MB max",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "What's changing",
+      "type": "applicability",
+      "claim": "Configured Purview OCR applies existing DLP, records management and insider risk management policies to image content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "When you configure the OCR settings, Microsoft Purview applies your existing policies for data loss prevention (DLP), records management, and insider risk management (IRM) to images and text-based content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Why it matters; Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "applicability",
+      "claim": "Existing device DLP sensitive-information conditions can act on OCR results; the planned extension brings embedded images into that scanning.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "if you configure the DLP condition content contains sensitive information and include a data classifier such as the Credit Card sensitive information type (SIT), Microsoft Purview scans for credit card numbers in both text and images at all of the chosen locations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Why it matters",
+      "type": "applicability",
+      "claim": "Device DLP policies can audit or restrict sensitive-file copying, uploading and printing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "Copy to USB removable device ... block, warn, or audit ... Print ... block, warn, or audit the printing of protected files from an endpoint device.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/purview/endpoint-dlp-learn-about to sources for the existing copy, upload and print enforcement statement."
+    },
+    {
+      "n": 56,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "applicability",
+      "claim": "Insider risk management considers sensitive information types found in device images for risk scoring.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "Devices | Data loss prevention Insider risk management ... Considers sensitive information types and trainable classifiers present in images for risk scoring.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "What's changing; Scope: Locations",
+      "type": "availability",
+      "claim": "The OCR page currently lists JPEG, JPG, PNG, BMP, TIFF and image-only PDF for Teams, Windows and macOS endpoints.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "Teams, Windows, and macOS endpoint | JPEG, JPG, PNG, BMP, TIFF, and PDF (image only)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "The OCR page already lists embedded-image support for Exchange, SharePoint and OneDrive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "Exchange ... Embedded images in DOCX, PPTX, XLSX, RAR, TAR, ZIP, 7z, and hybrid PDFs ... SharePoint and OneDrive ... Embedded images in DOCX, PPTX, XLSX",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "What's changing; Why it matters; Open questions",
+      "type": "absence",
+      "claim": "Learn does not yet describe the device embedded-image extension or state whether existing device OCR tenants receive it automatically.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview endpoint OCR embedded images rollout automatically enable separate setting billing transaction limit 381750. Read ocr-learn-about, roadmap and endpoint/OCR overview search excerpts; no device-extension rollout rule or detailed feature documentation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Enabling OCR on Windows and macOS devices sends content to the cloud for scanning.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "When OCR is turned on for Windows and macOS devices, the devices start sending messages to the cloud for scanning.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Scope: Roles",
+      "type": "role",
+      "claim": "Creating and deploying policies requires membership in one of the five named role groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "To create and deploy policies, your account must be a member of one of these role groups: Compliance administrator; Compliance data administrator; Global administrator; Information Protection; Information Protection Admin",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[1].note; Governance controls",
+      "type": "applicability",
+      "claim": "The document processing billing subscription covers its services collectively, and disconnecting it is not an OCR-only control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/syntex/syntex-azure-billing",
+      "quote": "on the Billing tab, select Document processing services. ... Under Manage billing, select Disconnect Azure subscription. ... The following pay-as-you-go services are currently available: ... Optical character recognition",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "No device setting separately toggling embedded-image OCR is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview endpoint OCR embedded image scanning separate toggle file types Windows macOS billing per file limit. Read OCR configuration and endpoint settings sections plus returned OCR overview excerpts; no separate embedded-image device toggle is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Governance controls; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The Purview device list reports whether advanced classification bandwidth usage exceeded its limit in the past 24 hours.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "Advanced classification bandwidth usage exceeded | This attribute shows if the bandwidth usage limit for Advanced Classification has been exceeded in the past 24 hours.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Governance guidance: Before rollout; Cost and licensing: Indirect costs",
+      "type": "behaviour",
+      "claim": "The OCR cost estimator can estimate this extension's added transactions from Office, archive and PDF files with embedded images on endpoints.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/ocr-cost-estimator",
+      "quote": "Estimation for embedded and standalone image is only supported for the Exchange workload. ... For Endpoint, each pdf file is estimated to have an image count of 4. ... OCR and OCR cost estimator can't run at the same time.",
+      "severity": "blocker",
+      "fix": "Replace the estimator checklist bullet with: \"Do not use the OCR cost estimator to estimate this endpoint extension: Microsoft documents embedded-image estimation only for Exchange and assumes four images per endpoint PDF.\" Replace the indirect-cost sentence with \"Admin time to review DLP matches and actual OCR charges before rollout resumes.\""
+    },
+    {
+      "n": 66,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Sensitive image data in slides, spreadsheets and archives is currently invisible to device DLP unless it is a standalone image.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Endpoint DLP OCR embedded images Office archives sensitive information not scanned. Read OCR supported-file table, roadmap and Endpoint DLP monitored-file excerpts. These describe scan support, but do not establish the blanket claim that such data is invisible to device DLP.",
+      "severity": "major",
+      "fix": "Replace the sentence with: \"The OCR page currently lists standalone image formats and image-only PDFs for endpoints, but not embedded images in Office or archive files.\" Keep the citation to https://learn.microsoft.com/purview/ocr-learn-about."
+    },
+    {
+      "n": 67,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "OCR supplies scanning results rather than independently enforcing an action; the existing policies act on its findings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-learn-about",
+      "quote": "For the full list of locations where OCR scans images and the solutions that act on the results, see Supported locations and solutions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Cost and licensing: Indirect costs; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Microsoft provides an OCR cost estimator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ocr-cost-estimator",
+      "quote": "You can use the OCR cost estimator tool (preview) to estimate your optical character recognition (OCR) scanning costs.",
+      "severity": "minor",
+      "fix": "If a reference to the tool remains after correcting the endpoint-estimation instruction, call it \"OCR cost estimator (preview)\"."
+    },
+    {
+      "n": 69,
+      "where": "Governance guidance; Governance controls",
+      "type": "consistency",
+      "claim": "Several checklist controls have no corresponding controls-table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Review device DLP policies in audit or simulation ... Review OCR charges in Microsoft Cost Management ... Check devices that report the advanced classification bandwidth limit as exceeded. Table: OCR scope, billing subscription, bandwidth setting, Windows path exclusions.",
+      "severity": "minor",
+      "fix": "The checklist steps for reviewing DLP policies in audit or simulation, reviewing charges in Cost analysis, and checking the device bandwidth-exceeded attribute have no table rows. Remove these checklist steps to resolve the mismatch without adding unverified rows; their existing explanatory prose can remain."
+    },
+    {
+      "n": 70,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "The extension's Windows/macOS parity and archive formats beyond the roadmap's examples are not specified.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview endpoint OCR embedded image scanning separate toggle file types Windows macOS billing per file limit. Read roadmap and OCR page plus returned OCR overview excerpts; device extension parity and additional archive formats are not stated.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-26T06:53:56.931Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/purview/ocr-learn-about",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/documentprocessing/syntex-pay-as-you-go-services",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/syntex/syntex-azure-billing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=381750",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/ocr-cost-estimator",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether OCR scans images on devices, and for which groups",
+        "docs": "https://learn.microsoft.com/purview/ocr-learn-about",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Optical character recognition"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which Azure subscription is billed for OCR transactions",
+        "docs": "https://learn.microsoft.com/microsoft-365/syntex/syntex-azure-billing",
+        "reachable": true,
+        "segments": [
+          "Setup",
+          "Billing and licenses",
+          "Activate pay-as-you-go services",
+          "Get started",
+          "Billing",
+          "Document processing services",
+          "Set up billing",
+          "Azure subscription"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Daily bandwidth each device may use for cloud classification, including OCR",
+        "docs": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+        "reachable": true,
+        "segments": [
+          "Data loss prevention",
+          "Overview",
+          "Data loss prevention settings",
+          "Endpoint settings",
+          "Advanced classification scanning and protection"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Folders on Windows devices that Endpoint DLP, and so OCR, does not scan",
+        "docs": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+        "reachable": true,
+        "segments": [
+          "Data loss prevention",
+          "Overview",
+          "Data loss prevention settings",
+          "Endpoint settings",
+          "File path exclusions for Windows"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Folders on Windows devices that Endpoint DLP, and so OCR, does not scan",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig",
+        "reachable": true,
+        "token": "Set-PolicyConfig",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

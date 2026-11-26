@@ -3,7 +3,7 @@
   "roadmapId": 537280,
   "title": "Viva Engage: broadcast, meeting-based and custom events with moderated questions and anonymous posting",
   "status": "verified-with-gaps",
-  "date": "2026-11-24",
+  "date": "2026-11-26",
   "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
@@ -14,15 +14,15 @@
   "notes": [],
   "hold": null,
   "counts": {
-    "claims": 66,
-    "confirmed": 66,
+    "claims": 79,
+    "confirmed": 79,
     "unconfirmed": 0,
     "contradicted": 0,
     "blocker": 0,
     "major": 0,
     "minor": 1
   },
-  "summary": "The briefing correctly reports the legacy event creation deadline and the documented Teams controls, while distinguishing Engage-specific uncertainties. One minor qualification is needed: the Teams events PowerShell reference still labels the policy as preview.",
+  "summary": "The briefing correctly reports the December 7 legacy event creation deadline and the documented Teams controls, without presenting them as confirmed Engage controls. The updated setup requirements still support its Core licensing statements. One minor qualification remains: the Teams events PowerShell reference labels the policy as preview.",
   "claims": [
     {
       "n": 1,
@@ -31,7 +31,7 @@
       "claim": "The roadmap item is Launched.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "quote": "\"status\": \"Launched\"",
       "severity": null,
       "fix": null
     },
@@ -50,7 +50,7 @@
       "n": 3,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap provides no preview date.",
+      "claim": "The record gives no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -64,7 +64,7 @@
       "claim": "The release phase is General Availability.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "quote": "\"releasePhase\": [\n    \"General Availability\"\n  ]",
       "severity": null,
       "fix": null
     },
@@ -72,10 +72,10 @@
       "n": 5,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and no other cloud.",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the record.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "quote": "\"clouds\": [\n    \"Worldwide (Standard Multi-Tenant)\"\n  ]",
       "severity": null,
       "fix": null
     },
@@ -83,15 +83,48 @@
       "n": 6,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The listed platforms are Android, iOS and Web.",
+      "claim": "Android is a listed platform.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"platforms\": [\"Android\", \"iOS\", \"Web\"]",
+      "quote": "\"platforms\": [\n    \"Android\",\n    \"iOS\",\n    \"Web\"\n  ]",
       "severity": null,
       "fix": null
     },
     {
       "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "iOS is a listed platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\n    \"Android\",\n    \"iOS\",\n    \"Web\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "Web is a listed platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\n    \"Android\",\n    \"iOS\",\n    \"Web\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap lists Microsoft Viva as the product.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\n    \"Microsoft Viva\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
       "where": "front matter: roadmapModified",
       "type": "record",
       "claim": "The roadmap modification timestamp is 2026-05-18T22:30:51.",
@@ -102,21 +135,10 @@
       "fix": null
     },
     {
-      "n": 8,
-      "where": "front matter: products",
-      "type": "record",
-      "claim": "The roadmap product is Microsoft Viva.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Viva\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
+      "n": 11,
       "where": "title; summary; What's changing; rationale: risk",
       "type": "record",
-      "claim": "The roadmap adds Broadcast for large-scale produced Engage events.",
+      "claim": "The roadmap adds Broadcast for large-scale produced events.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Enhancing the Engage Events experience with additional capabilities such as Broadcast for large scale produced events",
@@ -124,10 +146,10 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 12,
       "where": "title; summary; What's changing",
       "type": "record",
-      "claim": "The roadmap adds meeting-based Engage events.",
+      "claim": "The roadmap adds meeting-based events.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Meetings based Events.",
@@ -135,10 +157,10 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 13,
       "where": "title; summary; What's changing",
       "type": "record",
-      "claim": "The roadmap names custom events.",
+      "claim": "The roadmap includes custom events.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Microsoft Viva: Engage Event Broadcast, Meetings and custom events with moderated feed, annoynmous posting on web & mobile",
@@ -146,10 +168,10 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "title; summary; What's changing; Scope; rationale: impact",
+      "n": 14,
+      "where": "title; summary; What's changing; rationale: impact",
       "type": "record",
-      "claim": "Organisers gain support for moderating posted questions and conversations.",
+      "claim": "Organisers receive support for moderating posted questions.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Organizers will have additional support for moderating the posted questions and conversations",
@@ -157,7 +179,18 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 15,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Organisers receive support for moderating posted conversations.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Organizers will have additional support for moderating the posted questions and conversations",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
       "where": "title; summary; What's changing; Why it matters; rationales",
       "type": "record",
       "claim": "Attendees can post questions anonymously.",
@@ -168,10 +201,10 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 17,
       "where": "What's changing",
       "type": "record",
-      "claim": "An Events landing page brings the before, during and after experience into one place for attendees and organisers.",
+      "claim": "An Events landing page gives attendees and organisers one place for the Before, During and After experience.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "An Events Landing page allows for attendees and organizers to have one place for the contiguous events experience of \"Before\", \"During\" and \"After\"",
@@ -179,21 +212,21 @@
       "fix": null
     },
     {
-      "n": 15,
-      "where": "What's changing",
+      "n": 18,
+      "where": "What's changing / documentation gap",
       "type": "absence",
-      "claim": "Microsoft Learn has no overview describing the new broadcast, meeting-based and custom event capabilities together.",
+      "claim": "Learn has no page describing the new broadcast, meeting-based and custom event capabilities together at the time of writing.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Viva Engage events broadcast meeting custom anonymous moderation; \"Engage events\" \"Broadcast\" \"moderation\". Opened engage/setup, engage/organize-live-event, engage/send-calendar-invites and Viva Engage service description; results describe adjacent or legacy features.",
+      "quote": "Searched: \"Engage events\" \"Broadcast\" \"moderation\". Read setup, service description, organize-live-event and send-calendar-invites; none describes this new capability set.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 16,
-      "where": "What's changing",
+      "n": 19,
+      "where": "What's changing / service description",
       "type": "date",
-      "claim": "The Viva Engage service description gives April 15, 2026 as the retirement date for events powered by Teams Live Events.",
+      "claim": "The Viva Engage service description says live events powered by Teams Live Events retire effective April 15, 2026.",
       "status": "supported",
       "source": "https://learn.microsoft.com/office365/servicedescriptions/viva-engage-service-description/viva-engage-service-description",
       "quote": "Engage will retire live events powered by Teams Live Events effective April 15, 2026.",
@@ -201,8 +234,8 @@
       "fix": null
     },
     {
-      "n": 17,
-      "where": "What's changing",
+      "n": 20,
+      "where": "What's changing / service description",
       "type": "date",
       "claim": "That service description says already scheduled live events remain supported through February 28, 2027.",
       "status": "supported",
@@ -212,10 +245,10 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "What's changing",
+      "n": 21,
+      "where": "What's changing / service description",
       "type": "behaviour",
-      "claim": "The service description encourages transitioning to Engage events powered by Teams town hall.",
+      "claim": "The service description encourages transition to Engage events powered by Teams town hall.",
       "status": "supported",
       "source": "https://learn.microsoft.com/office365/servicedescriptions/viva-engage-service-description/viva-engage-service-description",
       "quote": "We encourage customers to transition to events in Engage powered by Teams town hall, which offer an improved experience for large-scale digital and hybrid events.",
@@ -223,19 +256,19 @@
       "fix": null
     },
     {
-      "n": 19,
-      "where": "What's changing",
+      "n": 22,
+      "where": "What's changing / MC1552394",
       "type": "record",
       "claim": "MC1552394 was published on 13 November 2026.",
       "status": "supported",
       "source": "Message Center post MC1552394",
-      "quote": "Published 2026-11-13",
+      "quote": "Published 2026-11-13; last updated 2026-11-23",
       "severity": null,
       "fix": null
     },
     {
-      "n": 20,
-      "where": "What's changing",
+      "n": 23,
+      "where": "What's changing / MC1552394",
       "type": "record",
       "claim": "MC1552394 was updated on 23 November 2026.",
       "status": "supported",
@@ -245,10 +278,10 @@
       "fix": null
     },
     {
-      "n": 21,
-      "where": "summary; What's changing; Why it matters; Risk assessment; Governance guidance; rationales",
+      "n": 24,
+      "where": "summary; What's changing; Why it matters; Risk assessment; rationales",
       "type": "record",
-      "claim": "The legacy live event creation option is removed from Viva Engage on December 7, 2026.",
+      "claim": "The legacy live event creation option in Viva Engage is removed on December 7, 2026.",
       "status": "supported",
       "source": "Message Center post MC1552394",
       "quote": "December 7, 2026: The legacy live event creation option is removed from Engage.",
@@ -256,21 +289,21 @@
       "fix": null
     },
     {
-      "n": 22,
-      "where": "What's changing",
+      "n": 25,
+      "where": "What's changing / legacy link",
       "type": "record",
-      "claim": "The legacy option appears as the link 'Want to schedule an event with the legacy live event feature? Click here.'",
+      "claim": "The retired option appears as the link 'Want to schedule an event with the legacy live event feature? Click here.'",
       "status": "supported",
       "source": "Message Center post MC1552394",
-      "quote": "which appears as the link \"Want to schedule an event with the legacy live event feature? Click here.\"",
+      "quote": "the legacy option, which appears as the link \"Want to schedule an event with the legacy live event feature? Click here.\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 23,
-      "where": "What's changing; Governance guidance: Before rollout",
+      "n": 26,
+      "where": "What's changing; Governance guidance / Before rollout",
       "type": "record",
-      "claim": "Previously scheduled legacy events will run as planned.",
+      "claim": "Previously scheduled legacy events run as planned.",
       "status": "supported",
       "source": "Message Center post MC1552394",
       "quote": "Previously scheduled legacy events will run as planned.",
@@ -278,10 +311,10 @@
       "fix": null
     },
     {
-      "n": 24,
-      "where": "What's changing; Governance guidance: Before rollout",
+      "n": 27,
+      "where": "What's changing; Governance guidance / Before rollout",
       "type": "record",
-      "claim": "Engage events remain available to create from communities and storylines.",
+      "claim": "Organisers can still create Engage events from communities and storylines.",
       "status": "supported",
       "source": "Message Center post MC1552394",
       "quote": "Organizers can still create all Engage event types from communities and storylines",
@@ -289,8 +322,8 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "What's changing",
+      "n": 28,
+      "where": "What's changing / Engage event types",
       "type": "record",
       "claim": "Engage Broadcast events are powered by Teams town hall.",
       "status": "supported",
@@ -300,8 +333,8 @@
       "fix": null
     },
     {
-      "n": 26,
-      "where": "What's changing",
+      "n": 29,
+      "where": "What's changing / Engage event types",
       "type": "record",
       "claim": "Engage Meeting events are powered by Teams webinar.",
       "status": "supported",
@@ -311,21 +344,21 @@
       "fix": null
     },
     {
-      "n": 27,
-      "where": "What's changing",
+      "n": 30,
+      "where": "What's changing / Engage event types",
       "type": "record",
-      "claim": "Async is one of the Engage event types named in the notice.",
+      "claim": "Async is an available Engage event type.",
       "status": "supported",
       "source": "Message Center post MC1552394",
-      "quote": "Engage events (Broadcast, Meeting and Async) will stay available",
+      "quote": "Engage events (Broadcast, Meeting and Async) will stay available from communities and storylines",
       "severity": null,
       "fix": null
     },
     {
-      "n": 28,
-      "where": "What's changing",
+      "n": 31,
+      "where": "What's changing / MC1552394",
       "type": "record",
-      "claim": "The legacy retirement does not change how existing Engage events work.",
+      "claim": "The legacy-option retirement does not change how Engage events work.",
       "status": "supported",
       "source": "Message Center post MC1552394",
       "quote": "Engage events (Broadcast, Meeting and Async) will stay available from communities and storylines, with no change to how they work.",
@@ -333,30 +366,30 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "What's changing; Governance guidance: Before rollout; front matter: action",
+      "n": 32,
+      "where": "What's changing; Governance guidance / Before rollout; front matter: action",
       "type": "record",
-      "claim": "MC1552394 sets an act-by date of 2026-12-07, within 90 days of this run.",
+      "claim": "MC1552394 gives an act-by date of 2026-12-07.",
       "status": "supported",
       "source": "Message Center post MC1552394",
-      "quote": "Act by: 2026-12-07 (13 days from today)",
+      "quote": "Act by: 2026-12-07 (11 days from today)",
       "severity": null,
       "fix": null
     },
     {
-      "n": 30,
-      "where": "Scope; Why it matters; rationale: impact",
+      "n": 33,
+      "where": "Scope / affected group",
       "type": "record",
-      "claim": "The affected group is organisers who still use the legacy live event creation option in Microsoft Viva Engage.",
+      "claim": "MC1552394 affects organisers still using the legacy live event option in Microsoft Viva Engage.",
       "status": "supported",
       "source": "Message Center post MC1552394",
-      "quote": "Event organizers who still create events with the legacy live event option in Engage.",
+      "quote": "Event organizers who still create events with the legacy live event option in Engage. - Organizers who already use Engage events won't see any change.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 31,
-      "where": "Governance guidance: Before rollout",
+      "n": 34,
+      "where": "Governance guidance / Before rollout",
       "type": "record",
       "claim": "Microsoft recommends telling legacy-option organisers about the change before December 7, 2026.",
       "status": "supported",
@@ -366,10 +399,10 @@
       "fix": null
     },
     {
-      "n": 32,
-      "where": "Governance guidance: Before rollout; summary",
+      "n": 35,
+      "where": "summary; Governance guidance / Before rollout",
       "type": "record",
-      "claim": "Microsoft recommends pointing organisers to Engage events for new and upcoming events.",
+      "claim": "Microsoft recommends pointing organisers to Engage events for new events.",
       "status": "supported",
       "source": "Message Center post MC1552394",
       "quote": "Point organizers to Engage events for new and upcoming events.",
@@ -377,10 +410,10 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "Governance guidance: At rollout",
+      "n": 36,
+      "where": "Governance guidance / At rollout",
       "type": "record",
-      "claim": "Microsoft recommends updating documentation, training and guidance mentioning the legacy live event option.",
+      "claim": "MC1552394 recommends updating documentation and training mentioning the legacy option.",
       "status": "supported",
       "source": "Message Center post MC1552394",
       "quote": "Update any internal documentation, training materials or guidance that mentions the legacy live event option.",
@@ -388,32 +421,32 @@
       "fix": null
     },
     {
-      "n": 34,
-      "where": "What's changing; Governance controls",
+      "n": 37,
+      "where": "What's changing / Teams Q&A; Governance controls",
       "type": "role",
-      "claim": "Teams event organisers and co-organisers can turn on Q&A moderation.",
+      "claim": "Teams event organisers can turn on Q&A moderation to review and approve questions before publication.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-qna-for-teams",
-      "quote": "In Teams events, organizers and co-organizers can allow presenters to manage the Q&A sessions. They can also turn on moderation",
+      "quote": "In Teams events, organizers and co-organizers can allow presenters to manage the Q&A sessions. They can also turn on moderation to review and approve questions before they appear in the Q&A feed.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 35,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Teams Q&A moderation permits reviewing and approving questions before they appear in the feed.",
+      "n": 38,
+      "where": "What's changing / Teams Q&A",
+      "type": "role",
+      "claim": "Teams event co-organisers can turn on Q&A moderation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-qna-for-teams",
-      "quote": "They can also turn on moderation to review and approve questions before they appear in the Q&A feed.",
+      "quote": "In Teams events, organizers and co-organizers can allow presenters to manage the Q&A sessions. They can also turn on moderation to review and approve questions before they appear in the Q&A feed.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 36,
-      "where": "Why it matters; Risk assessment: Data exposure; Governance controls",
+      "n": 39,
+      "where": "What's changing / Teams Q&A; Governance controls",
       "type": "behaviour",
-      "claim": "When a Teams meeting organiser enables anonymous Q&A posting, attendees' questions are ingested into the organiser's mailbox for eDiscovery.",
+      "claim": "Anonymous posting in Teams Q&A is an organiser choice.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-qna-for-teams",
       "quote": "If the meeting organizer enables anonymous posting, the questions attendees post are ingested into the organizer’s mailbox for eDiscovery.",
@@ -421,32 +454,32 @@
       "fix": null
     },
     {
-      "n": 37,
-      "where": "What's changing; controls[1].note; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "Learn does not establish how Teams Q&A moderation or its meeting policy maps to the Engage event moderated feed.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Engage events\" \"policy\" \"Q&A\"; Viva Engage events enable disable admin moderated feed. Opened microsoftteams/manage-qna-for-teams and engage/organize-live-event; neither identifies the new Engage moderated feed as Teams Q&A.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "Risk assessment: Data exposure; Why it matters; Open questions",
-      "type": "absence",
-      "claim": "The same organiser-mailbox handling and identity visibility for anonymous Engage event questions is not stated.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Engage events\" \"anonymous\" \"mailbox\"; Viva Engage events anonymous posting eDiscovery. Opened microsoftteams/manage-qna-for-teams and engage/organize-live-event; Teams anonymous Q&A is documented, but the Engage event mapping is not.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "Risk assessment: Data exposure",
+      "n": 40,
+      "where": "Why it matters; Risk assessment / Anonymous questions",
       "type": "behaviour",
-      "claim": "Engage calendar invitations can reach subscribed internal and external community members subject to preferences and organisational policies.",
+      "claim": "Anonymous Teams Q&A questions are ingested into the organiser's mailbox for eDiscovery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-qna-for-teams",
+      "quote": "If the meeting organizer enables anonymous posting, the questions attendees post are ingested into the organizer’s mailbox for eDiscovery.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment / Anonymous questions; Open questions",
+      "type": "absence",
+      "claim": "The same organiser-mailbox ingestion behaviour is not stated for anonymous Engage event questions.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Viva Engage\" \"anonymous\" \"events\" identity questions. Read manage-qna-for-teams and retention-policies-viva-engage excerpts; no Engage-event anonymous mailbox mapping found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment / Calendar invitations",
+      "type": "behaviour",
+      "claim": "Engage invitations can reach subscribed internal and external community members, subject to preferences and policies.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/send-calendar-invites",
       "quote": "Invitations can be delivered to subscribed internal and external community members, subject to their preferences and applicable organizational policies.",
@@ -454,32 +487,32 @@
       "fix": null
     },
     {
-      "n": 40,
-      "where": "Risk assessment: Data exposure",
+      "n": 43,
+      "where": "Risk assessment / Calendar invitations",
       "type": "default",
       "claim": "Send calendar invitations is off by default.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/send-calendar-invites",
-      "quote": "Send calendar invitations is off by default.",
+      "quote": "Send calendar invitations is off by default. You can create the event without sending attendee invitations and turn the setting on later by editing the event.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 41,
-      "where": "Risk assessment: Data exposure; Governance controls",
+      "n": 44,
+      "where": "Risk assessment / Calendar invitations; Governance controls",
       "type": "role",
-      "claim": "The organiser manages calendar invitations separately for each event.",
+      "claim": "The organiser manages calendar invitations on each individual event.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/send-calendar-invites",
-      "quote": "An event organizer must still turn on “Send calendar invitations” for the individual event.",
+      "quote": "You must be an event organizer to manage event invitations. ... An event organizer must still turn on “Send calendar invitations” for the individual event.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 42,
-      "where": "Risk assessment: Change & support",
+      "n": 45,
+      "where": "Risk assessment / Groups above 5,000 members",
       "type": "behaviour",
-      "claim": "For Microsoft 365 groups with more than 5,000 members, an administrator must update delivery restrictions in Microsoft Entra for invitation delivery.",
+      "claim": "An administrator must update delivery restrictions in Microsoft Entra for invitation delivery to Microsoft 365 groups with more than 5,000 members.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/send-calendar-invites",
       "quote": "For Microsoft 365 groups with more than 5,000 members, an administrator must update the group's delivery restrictions in Microsoft Entra to allow invitation delivery.",
@@ -487,54 +520,76 @@
       "fix": null
     },
     {
-      "n": 43,
-      "where": "Risk assessment: Security & identity",
+      "n": 46,
+      "where": "Risk assessment / Attendee access",
       "type": "default",
-      "claim": "Both Teams events policy attendee settings default to Everyone, permitting any user to attend.",
+      "claim": "Both attendee access settings in Teams events policies default to Everyone.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
-      "quote": "By default, both settings are set to Everyone. When users with this policy create events with up to 1,000 attendees or events optimized for large audiences, any user can attend.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "Risk assessment: Security & identity",
-      "type": "absence",
-      "claim": "Learn does not establish that Teams event attendee policies govern events created in Engage.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Viva Engage events broadcast meeting async licensing policies; \"Engage events\" \"AllowTownhalls\". Opened microsoftteams/set-up-events and engage/organize-live-event; attendee policy reach is described for Teams events, not the new Engage creation experience.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "front matter: licensing.model; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "Viva Engage Core is included with Microsoft 365, supporting the included product-level licensing model.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/engage/setup",
-      "quote": "| Viva Engage Core or Yammer enterprise | Engage core experiences and the Answers in Viva core experiences Example: Communities, storyline | Microsoft 365 |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
-      "type": "licensing",
-      "claim": "When Viva Engage licensing is enforced, each user needs a Microsoft 365 license.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/engage/setup",
-      "quote": "If you do enforce Viva Engage licensing, users access the Viva Engage Core experience, but each user must have the following: - a Microsoft 365 license.",
+      "quote": "By default, both settings are set to Everyone.",
       "severity": null,
       "fix": null
     },
     {
       "n": 47,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "where": "Risk assessment / Attendee access",
+      "type": "availability",
+      "claim": "With those default Teams policy values, any user can attend the corresponding Teams events.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
+      "quote": "When users with this policy create events with up to 1,000 attendees or events optimized for large audiences, any user can attend.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment / Attendee access",
+      "type": "absence",
+      "claim": "Learn does not state whether the Teams event attendee policy governs events created in Engage.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Viva Engage\" \"events\" \"QnAEngagementMode\" \"AllowTownhalls\". Read set-up-events and organize-live-event; no new Engage attendee-policy mapping found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment / Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes human moderation and posting, and describes no automated actions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Organizers will have additional support for moderating the posted questions and conversations, and attendees can post questions anonymously.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "front matter: licensing.model",
       "type": "licensing",
-      "claim": "When Viva Engage licensing is enforced, each user also needs a Viva Engage Core Service Plan.",
+      "claim": "The included model represents the published Microsoft 365 entitlement for the surrounding Viva Engage Core product.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/setup",
+      "quote": "Viva Engage Core or Yammer enterprise | Engage core experiences and the Answers in Viva core experiences Examples: Communities, storyline | Microsoft 365",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Viva Engage Core comes with Microsoft 365.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/setup",
+      "quote": "Viva Engage Core or Yammer enterprise | Engage core experiences and the Answers in Viva core experiences Examples: Communities, storyline | Microsoft 365",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "When Viva Engage licensing is enforced, each Core user needs a Microsoft 365 license.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/setup",
       "quote": "If you do enforce Viva Engage licensing, users access the Viva Engage Core experience, but each user must have the following: - a Microsoft 365 license. - a Viva Engage Core Service Plan.",
@@ -542,21 +597,32 @@
       "fix": null
     },
     {
-      "n": 48,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
-      "type": "absence",
-      "claim": "Feature-specific licensing for the new broadcast, meeting-based and custom Engage event capabilities is not yet published.",
+      "n": 53,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "When Viva Engage licensing is enforced, each Core user needs a Viva Engage Core Service Plan.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Engage events\" \"licens\"; Viva Engage broadcast meeting custom events pricing meter charge license. Opened engage/setup, Viva Engage service description, microsoftteams/events-licensing and engage/organize-live-event; no new Engage event-specific entitlement was found.",
+      "source": "https://learn.microsoft.com/viva/engage/setup",
+      "quote": "If you do enforce Viva Engage licensing, users access the Viva Engage Core experience, but each user must have the following: - a Microsoft 365 license. - a Viva Engage Core Service Plan.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 49,
-      "where": "Cost and licensing",
+      "n": 54,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "Feature-specific licensing for the new Engage broadcast, meeting-based and custom capabilities is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Engage events\" \"license\"; Viva Engage Engage events licensing pricing broadcast webinar town hall license required. Read setup, Viva Engage service description, events-licensing and organize-live-event; only general Core, Teams events and legacy-event requirements found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Cost and licensing / plan comparisons",
       "type": "licensing",
-      "claim": "The Viva Engage service description directs readers to Microsoft 365 plan comparisons for subscriptions enabling Viva Engage.",
+      "claim": "The Viva Engage service description refers readers to Microsoft 365 business and enterprise plan comparisons for enabling subscriptions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/office365/servicedescriptions/viva-engage-service-description/viva-engage-service-description",
       "quote": "For detailed plan information on subscriptions that enable users for Microsoft Viva Engage, see the Microsoft 365 business plan comparison and Microsoft 365 Enterprise plan comparison.",
@@ -564,10 +630,10 @@
       "fix": null
     },
     {
-      "n": 50,
-      "where": "Cost and licensing",
+      "n": 56,
+      "where": "Cost and licensing / Product Terms",
       "type": "licensing",
-      "claim": "The Viva Engage service description points to Product Terms for licensing terms.",
+      "claim": "The service description refers readers to the Product Terms site for licensing terms.",
       "status": "supported",
       "source": "https://learn.microsoft.com/office365/servicedescriptions/viva-engage-service-description/viva-engage-service-description",
       "quote": "For licensing terms and conditions for products and services purchased through Microsoft Commercial Volume Licensing Programs, see the Product Terms site.",
@@ -575,10 +641,21 @@
       "fix": null
     },
     {
-      "n": 51,
-      "where": "Cost and licensing",
+      "n": 57,
+      "where": "Cost and licensing / service description",
+      "type": "absence",
+      "claim": "The Viva Engage service description itself names no licence for the new event types.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Engage events\" \"license\". Read the complete Viva Engage service description, including Available plans, Feature availability and Licensing terms; no broadcast, meeting-based or custom-event licence is named.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Cost and licensing / Teams events licensing",
       "type": "licensing",
-      "claim": "Teams event capabilities and attendee capacity vary with the organiser's license.",
+      "claim": "Teams event capabilities and attendee capacity vary with the organiser's licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
       "quote": "Event capabilities and attendee capacity vary based on the organizer's license.",
@@ -586,98 +663,76 @@
       "fix": null
     },
     {
-      "n": 52,
+      "n": 59,
       "where": "Cost and licensing; Open questions; rationale: cost",
       "type": "absence",
-      "claim": "The Teams events licensing overview does not explicitly state how its rules apply to events created in Viva Engage.",
+      "claim": "The Teams events licensing overview does not state that its licensing applies to events created in Viva Engage.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Engage events\" \"licens\"; Viva Engage broadcast meeting custom events pricing meter charge license. Opened microsoftteams/events-licensing in full; it describes Microsoft Teams events and does not mention Viva Engage creation or licensing.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "No meter or charge specific to these new Engage event types is published in the sources examined.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Viva Engage broadcast meeting custom events pricing meter charge license. Opened engage/setup, Viva Engage service description and microsoftteams/events-licensing; no separate meter or charge for the new Engage event types was found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "front matter: defaultState; Why it matters",
-      "type": "default",
-      "claim": "The arrival default for the added Engage event capabilities is not stated.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Engage events\" \"default\" \"moderation\"; \"Engage events\" \"default\" \"enabled\". Read roadmap and supplied posts; opened engage/setup, engage/send-calendar-invites and Teams controls. Calendar defaults and legacy retirement do not state the new capabilities' arrival default.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
-      "where": "Scope",
-      "type": "applicability",
-      "claim": "Teams Q&A requires sign-ins for the Office 365 Viva Engage service to be enabled in Microsoft Entra ID.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-qna-for-teams",
-      "quote": "To allow users in your organization to add Q&A to Teams meetings and events, you must confirm that sign-ins for the Office 365 Viva Engage service are enabled in Microsoft Entra ID.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "Scope",
-      "type": "absence",
-      "claim": "The Teams Q&A prerequisites page does not establish that the new Engage event feed shares that prerequisite.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Viva Engage events enable disable admin moderated feed anonymous posting eDiscovery prerequisites; \"Engage events\" \"policy\" \"Q&A\". Opened microsoftteams/manage-qna-for-teams and engage/setup; no mapping of the new Engage event feed to Teams Q&A prerequisites was found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
-      "where": "controls[0].ui; Governance controls",
-      "type": "admin-path",
-      "claim": "Teams admin center > Meetings > Events policies > policy > Events optimized for a large audience reaches the scheduling control.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
-      "quote": "In the left navigation of the Teams admin center, go to Meetings > Events policies. Select an existing policy or create a new one. For events optimized for large audiences, such as town halls, turn the Events optimized for a large audience toggle On or Off.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 58,
-      "where": "controls[0].api; Governance controls",
-      "type": "command",
-      "claim": "Set-CsTeamsEventsPolicy -Identity <policy name> -AllowTownhalls Disabled prevents organisers with the policy from creating large-audience Teams events.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
-      "quote": "To prevent organizers with this policy from creating events optimized for large audiences, run the following command: Set-CsTeamsEventsPolicy -Identity <policy name> -AllowTownhalls Disabled",
-      "severity": "minor",
-      "fix": "Keep the command. Add to controls[0].note: 'The PowerShell reference still labels this policy as preview.' Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps, which states 'Note that this policy is currently still in preview.'"
-    },
-    {
-      "n": 59,
-      "where": "controls[0].governs and scope; Governance guidance: Before rollout; Governance controls",
-      "type": "applicability",
-      "claim": "The Teams events scheduling policy controls which users can create large-audience events such as town halls.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
-      "quote": "Controls whether users with this policy can create events optimized for large audiences, such as town halls.",
+      "quote": "Searched: \"Engage events\" \"license\"; Viva Engage Engage events licensing pricing broadcast webinar town hall license required. Read the complete events-licensing page and setup; neither maps the new Engage event types to Teams licence categories.",
       "severity": null,
       "fix": null
     },
     {
       "n": 60,
-      "where": "controls[0].note; Governance controls",
+      "where": "Cost and licensing / meter or charge",
+      "type": "absence",
+      "claim": "No meter or charge is published for these new Engage event types at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Engage Engage events licensing pricing broadcast webinar town hall license required. Read setup, service description and events-licensing; no new Engage event meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[0].ui; Governance controls / first row",
+      "type": "admin-path",
+      "claim": "The Teams admin center path is Meetings > Events policies > policy > Events optimized for a large audience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
+      "quote": "go to Meetings > Events policies. ... Select an existing policy or create a new one. ... turn the Events optimized for a large audience toggle On or Off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[0].api; Governance controls / first row",
+      "type": "command",
+      "claim": "Set-CsTeamsEventsPolicy -Identity <policy name> -AllowTownhalls Disabled prevents large-audience Teams event creation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
+      "quote": "To prevent organizers with this policy from creating events optimized for large audiences, run the following command: Set-CsTeamsEventsPolicy -Identity <policy name> -AllowTownhalls Disabled",
+      "severity": "minor",
+      "fix": "Keep the command. Add to controls[0].note: 'The PowerShell reference still labels this policy as preview.' Add https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps to sources; it states 'Note that this policy is currently still in preview.'"
+    },
+    {
+      "n": 63,
+      "where": "controls[0].governs; Governance guidance / Before rollout; Governance controls",
+      "type": "applicability",
+      "claim": "The large-audience Teams event policy controls who can create events such as town halls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
+      "quote": "Events optimized for a large audience (On,Off) | -AllowTownhalls (Enabled,Disabled) | Controls whether users with this policy can create events optimized for large audiences, such as town halls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[0].scope; Governance controls / first row",
+      "type": "applicability",
+      "claim": "The Teams events policy is user-level.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps",
+      "quote": "User-level policy for tenant admin to configure options for customizing Teams events experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[0].note; Governance controls / first row",
       "type": "behaviour",
-      "claim": "Turning the Teams event scheduling setting Off after an event is scheduled prevents the user from running or starting it.",
+      "claim": "Switching the Teams event creation setting Off after scheduling prevents the organiser from running the event.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
       "quote": "If you change the value to Off after a user schedules an event, they can't run or start the event.",
@@ -685,21 +740,32 @@
       "fix": null
     },
     {
-      "n": 61,
-      "where": "controls[1].ui; Governance controls",
-      "type": "admin-path",
-      "claim": "Teams admin center > Meetings > Meeting policies > policy > Meeting Engagement > Q&A reaches the Q&A policy control.",
+      "n": 66,
+      "where": "controls[0].note; Governance controls; rationale: risk",
+      "type": "absence",
+      "claim": "Learn does not state whether the large-audience Teams event creation control governs events created in Viva Engage.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-qna-for-teams",
-      "quote": "Open the Teams admin center. Expand Meetings from the navigation pane. Under Meetings, select Meeting policies. Either select an existing policy or create a new one. Navigate to the Meeting Engagement section and toggle the Q&A setting On or Off.",
+      "source": null,
+      "quote": "Searched: \"Viva Engage\" \"events\" \"QnAEngagementMode\" \"AllowTownhalls\". Read set-up-events, setup and organize-live-event; no new Engage creation-policy mapping found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 62,
-      "where": "controls[1].api; Governance controls",
+      "n": 67,
+      "where": "controls[1].ui; Governance controls / second row",
+      "type": "admin-path",
+      "claim": "The Teams admin center path is Meetings > Meeting policies > policy > Meeting Engagement > Q&A.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-qna-for-teams",
+      "quote": "Under Meetings, select Meeting policies. ... Either select an existing policy or create a new one. ... Navigate to the Meeting Engagement section and toggle the Q&A setting On or Off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "controls[1].api; Governance controls / second row",
       "type": "command",
-      "claim": "Set-CsTeamsMeetingPolicy -Identity Global -QnAEngagementMode Disabled prevents organisers with that policy from using Q&A in their meetings and events.",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity Global -QnAEngagementMode Disabled prevents organisers using Q&A.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-qna-for-teams",
       "quote": "To prevent organizers with this policy from using Q&A in meetings and events they create, use the following script: Set-CsTeamsMeetingPolicy -Identity Global -QnAEngagementMode Disabled",
@@ -707,10 +773,10 @@
       "fix": null
     },
     {
-      "n": 63,
-      "where": "controls[1].governs and scope; Governance guidance: Before rollout; Governance controls",
+      "n": 69,
+      "where": "controls[1].governs; Governance guidance / Before rollout; Governance controls",
       "type": "applicability",
-      "claim": "The Teams meeting policy determines which organisers can use Q&A in meetings and events.",
+      "claim": "The Teams meeting policy Q&A setting controls whether organisers can use Q&A in their meetings and events.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-qna-for-teams",
       "quote": "As an admin, you can control whether an organizer can use Q&A in their meetings and events.",
@@ -718,48 +784,125 @@
       "fix": null
     },
     {
-      "n": 64,
-      "where": "controls[0].note; Governance controls; Open questions; rationale: risk",
-      "type": "absence",
-      "claim": "Learn does not establish whether the large-audience Teams scheduling control governs the new Viva Engage event creation experience.",
+      "n": 70,
+      "where": "controls[1].scope; Governance controls / second row",
+      "type": "applicability",
+      "claim": "The Q&A meeting policy control is user-scoped.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Engage events\" \"AllowTownhalls\"; Viva Engage events enable disable admin AllowTownhalls. Opened microsoftteams/set-up-events, Set-CsTeamsEventsPolicy reference and engage/organize-live-event; no new Engage creation-policy mapping was found.",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-qna-for-teams",
+      "quote": "Assign the policy to specific groups, users, or subscriptions that you want to allow or prevent from setting up Q&A.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 65,
-      "where": "Governance controls",
+      "n": 71,
+      "where": "controls[1].note; Governance controls; Open questions",
       "type": "absence",
-      "claim": "The Teams pages examined do not document separate admin settings for Q&A moderation and anonymous posting.",
+      "claim": "Learn does not state whether the Teams meeting policy Q&A setting governs the moderated Engage event feed.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Engage events\" \"policy\" \"Q&A\"; Viva Engage events moderated feed anonymous posting admin. Opened microsoftteams/manage-qna-for-teams and microsoftteams/set-up-events; they document a Q&A policy and organiser choices, not separate moderation or anonymous-posting admin settings.",
+      "quote": "Searched: \"Viva Engage\" \"events\" \"QnAEngagementMode\" \"AllowTownhalls\". Read manage-qna-for-teams and the Set-CsTeamsMeetingPolicy syntax; no Engage-feed policy mapping found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 66,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "The roadmap describes human organisers moderating and attendees posting, and describes no automated actions.",
+      "n": 72,
+      "where": "Scope / Q&A prerequisite",
+      "type": "behaviour",
+      "claim": "Teams Q&A requires Office 365 Viva Engage service sign-ins to be enabled in Microsoft Entra ID.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "Organizers will have additional support for moderating the posted questions and conversations, and attendees can post questions anonymously.",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-qna-for-teams",
+      "quote": "To allow users in your organization to add Q&A to Teams meetings and events, you must confirm that sign-ins for the Office 365 Viva Engage service are enabled in Microsoft Entra ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Scope / Engage prerequisite gap",
+      "type": "absence",
+      "claim": "The Teams Q&A prerequisite is not explicitly mapped to the new Engage event feed.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Viva Engage\" \"events\" \"QnAEngagementMode\" \"AllowTownhalls\". Read manage-qna-for-teams prerequisites, setup and teams-viva-experiences excerpts; none describes the new Engage event feed's Q&A prerequisites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Governance controls / organiser choices",
+      "type": "absence",
+      "claim": "The pages read document no separate admin setting for Teams Q&A question moderation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Q&A anonymous posting moderation administrator separate setting QnAEngagementMode. Read manage-qna-for-teams, settings-policies-reference meeting engagement excerpt and Set-CsTeamsMeetingPolicy syntax; no separate Q&A moderation policy setting found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Governance controls / organiser choices",
+      "type": "absence",
+      "claim": "The pages read document no separate admin setting for anonymous posting in Teams Q&A.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Q&A anonymous posting moderation administrator separate setting QnAEngagementMode. Read manage-qna-for-teams, settings-policies-reference meeting engagement excerpt and Set-CsTeamsMeetingPolicy syntax; no separate anonymous-Q&A-posting policy setting found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "What's changing / Teams Q&A mapping gap",
+      "type": "absence",
+      "claim": "Learn does not explain how Teams Q&A moderation maps to the moderated feed in Engage events.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Engage events\" \"Broadcast\" \"moderation\"; \"Viva Engage\" \"events\" \"QnAEngagementMode\" \"AllowTownhalls\". Read manage-qna-for-teams, organize-live-event and advanced-moderation excerpts; none describes the new Engage event feed's moderation mapping.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "The default state of the new Engage capabilities is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Viva Engage\" \"events\" \"default\" \"broadcast\". Read roadmap, both supplied Message Center posts, setup and send-calendar-invites; none states the new event capabilities' arrival default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "Why it matters / arrival behaviour",
+      "type": "absence",
+      "claim": "No source states that arrival of the new broadcast, meeting-based and custom capabilities changes existing behaviour, separately from legacy-option retirement.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Viva Engage\" \"events\" \"default\" \"broadcast\". Read roadmap, MC1552394, MC1480869, setup and send-calendar-invites. The legacy removal and community subscription defaults are stated separately; no automatic behaviour change for this capability set is described.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "Open questions / Engage availability control",
+      "type": "absence",
+      "claim": "An admin switch specifically enabling, disabling or limiting creation of the new Engage event types remains undocumented in the searched Learn material.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Engage events enabled default admin turn off switch broadcast meeting events. Read setup, set-up-events, organize-live-event and admin-center excerpts; only legacy-event and general Teams controls found.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-24T03:56:45.555Z",
+    "at": "2026-11-26T06:54:02.574Z",
     "summary": {
       "links": 9,
-      "unreachable": 0,
+      "unreachable": 7,
       "uiPaths": 2,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 2,
       "apiCalls": 2,
-      "apiCallsNotOnPage": 0,
+      "apiCallsNotOnPage": 2,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -775,38 +918,38 @@
       },
       {
         "url": "https://learn.microsoft.com/viva/engage/setup",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/office365/servicedescriptions/viva-engage-service-description/viva-engage-service-description",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/manage-qna-for-teams",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/set-up-events",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/viva/engage/send-calendar-invites",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/events-licensing",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/viva/engage/organize-live-event",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -815,45 +958,54 @@
         "side": "ui",
         "governs": "Who can create Teams events optimised for a large audience, such as town halls",
         "docs": "https://learn.microsoft.com/microsoftteams/set-up-events",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Meetings",
           "Events policies",
           "Events optimized for a large audience"
         ],
-        "missing": []
+        "missing": [
+          "Meetings",
+          "Events policies",
+          "Events optimized for a large audience"
+        ]
       },
       {
         "index": 0,
         "side": "api",
         "governs": "Who can create Teams events optimised for a large audience, such as town halls",
         "docs": "https://learn.microsoft.com/microsoftteams/set-up-events",
-        "reachable": true,
+        "reachable": false,
         "token": "Set-CsTeamsEventsPolicy",
-        "found": true
+        "found": false
       },
       {
         "index": 1,
         "side": "ui",
         "governs": "Whether organisers can use Q&A, including moderated questions, in meetings and events",
         "docs": "https://learn.microsoft.com/microsoftteams/manage-qna-for-teams",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Meetings",
           "Meeting policies",
           "Meeting Engagement",
           "Q&A"
         ],
-        "missing": []
+        "missing": [
+          "Meetings",
+          "Meeting policies",
+          "Meeting Engagement",
+          "Q&A"
+        ]
       },
       {
         "index": 1,
         "side": "api",
         "governs": "Whether organisers can use Q&A, including moderated questions, in meetings and events",
         "docs": "https://learn.microsoft.com/microsoftteams/manage-qna-for-teams",
-        "reachable": true,
+        "reachable": false,
         "token": "Set-CsTeamsMeetingPolicy",
-        "found": true
+        "found": false
       }
     ],
     "roadmapDrift": []
@@ -863,6 +1015,12 @@
       "date": "2026-11-21",
       "status": "verified-with-gaps",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-24",
+      "status": "verified-with-gaps",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

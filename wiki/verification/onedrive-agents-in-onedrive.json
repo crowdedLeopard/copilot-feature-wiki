@@ -2,69 +2,41 @@
   "slug": "onedrive-agents-in-onedrive",
   "roadmapId": 469503,
   "title": "OneDrive: build and share agents from OneDrive files, with .agent files retiring after March 2027",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-26",
-  "version": 2,
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 2,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-26",
-    "reasons": [
-      "1 blocking finding (claim 68)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 73,
-    "confirmed": 71,
-    "unconfirmed": 1,
-    "contradicted": 1,
-    "blocker": 1,
-    "major": 1,
-    "minor": 3
+    "claims": 78,
+    "confirmed": 78,
+    "unconfirmed": 0,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 0,
+    "minor": 4
   },
-  "summary": "Hold: the inventory question treats OneDrive coverage in SharePoint Advanced Management agent reports as unknown, although Microsoft documents that coverage. The corrected blocking distinction, retirement dates and control endpoints are supported; the statement that no site owner can notice a OneDrive agent is unconfirmed.",
+  "summary": "The briefing passes: Microsoft's guidance supports the March 2027 retirement, owner-led upgrades, licensing requirement and blocking limitations. The automation notes should name the request-body settings, and the sharing path needs an additional supporting citation.",
   "claims": [
     {
       "n": 1,
-      "where": "What's changing; summary; Why it matters",
+      "where": "front matter: status; What's changing",
       "type": "record",
-      "claim": "Agents in OneDrive let users build, use and share their own agents using files and content stored in their OneDrive.",
+      "claim": "The roadmap item is Launched.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "allowing you to build, use, and share your own agents using files and content stored in your OneDrive.",
+      "quote": "\"status\": \"Launched\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "front matter: licensing.notes; What's changing; Cost and licensing; Scope; controls[0].note",
-      "type": "record",
-      "claim": "The roadmap states that this feature requires a Microsoft Copilot for Microsoft 365 licence.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "This feature requires a Microsoft Copilot for Microsoft 365 license",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
-      "where": "front matter: status; What's changing",
-      "type": "record",
-      "claim": "The roadmap status is Launched.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
       "claim": "The roadmap release phase is General Availability.",
@@ -75,7 +47,18 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is November CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"November CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
       "claim": "The roadmap preview date is September CY2025.",
@@ -86,21 +69,10 @@
       "fix": null
     },
     {
-      "n": 6,
-      "where": "front matter: targetDate; What's changing",
-      "type": "record",
-      "claim": "The roadmap target date is November CY2025.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"targetDate\": \"November CY2025\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
+      "n": 5,
       "where": "front matter: clouds; What's changing; Scope; Open questions",
       "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) only.",
+      "claim": "The roadmap lists only Worldwide (Standard Multi-Tenant).",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -108,18 +80,29 @@
       "fix": null
     },
     {
-      "n": 8,
-      "where": "front matter: platforms; What's changing; Scope; summary",
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap identifies OneDrive Web as the platform.",
+      "claim": "The roadmap platform is Web, specifically OneDrive Web.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "will be available to customers on OneDrive Web. \"platforms\": [\"Web\"]",
+      "quote": "\"platforms\": [\"Web\"]; \"will be available to customers on OneDrive Web.\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 9,
+      "n": 7,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap products are Microsoft Copilot (Microsoft 365) and OneDrive.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\", \"OneDrive\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
       "where": "front matter: roadmapModified",
       "type": "record",
       "claim": "The roadmap record was modified at 2026-02-05T00:15:27.",
@@ -130,10 +113,76 @@
       "fix": null
     },
     {
+      "n": 9,
+      "where": "front matter: licensing.notes; What's changing; Cost and licensing; Scope; controls[0].note; rationale: cost",
+      "type": "record",
+      "claim": "The roadmap says agents in OneDrive require a Microsoft Copilot for Microsoft 365 licence.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This feature requires a Microsoft Copilot for Microsoft 365 license",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 10,
-      "where": "What's changing; Why it matters; rationale: risk",
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap describes building an agent using files and content in the user's own OneDrive.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "allowing you to build, use, and share your own agents using files and content stored in your OneDrive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The original roadmap capability includes using the agents in OneDrive.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "allowing you to build, use, and share your own agents using files and content stored in your OneDrive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "title; What's changing",
+      "type": "record",
+      "claim": "The original roadmap capability includes sharing agents built from OneDrive content.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "allowing you to build, use, and share your own agents using files and content stored in your OneDrive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "Agents in OneDrive are an available capability that users choose to build or use, rather than a separate administrator opt-in.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/agent-builder-share-manage-agents",
+      "quote": "Creating agents in Agent Builder is a core Copilot capability when agents are enabled. Admins can't disable agent creation in Agent Builder separately while keeping agents enabled.",
+      "severity": "minor",
+      "fix": "Keep user-opt-in and add https://learn.microsoft.com/plugins/agent-builder-share-manage-agents to sources. It documents the creation capability and its relationship to the existing agent-access control."
+    },
+    {
+      "n": 14,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The original OneDrive capability is included with the Microsoft Copilot for Microsoft 365 licence named by the roadmap.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This feature requires a Microsoft Copilot for Microsoft 365 license and will be available to customers on OneDrive Web.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Why it matters",
       "type": "behaviour",
-      "claim": "Legacy OneDrive agents were stored as .agent files in OneDrive.",
+      "claim": "Legacy agents in OneDrive were stored as .agent files.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
       "quote": "This change applies to agents stored as .agent files in SharePoint or OneDrive.",
@@ -141,10 +190,10 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 16,
       "where": "What's changing",
-      "type": "behaviour",
-      "claim": "OneDrive users can find their agents through filters on Home, Shared or Favorites.",
+      "type": "admin-path",
+      "claim": "OneDrive users can find their agent files through the filters on Home, Shared or Favorites.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
       "quote": "In OneDrive, you can find your agents through the filters on Home, Shared, or Favorites folders",
@@ -152,10 +201,10 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 17,
       "where": "What's changing; Governance guidance: At rollout",
       "type": "admin-path",
-      "claim": "The OneDrive agent save location is My Files > Documents > Agents.",
+      "claim": "The documented OneDrive agent save location is My Files > Documents > Agents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
       "quote": "the save location My Files > Documents > Agents.",
@@ -163,10 +212,10 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 18,
       "where": "summary; What's changing; Scope; rationale: impact",
       "type": "date",
-      "claim": "The Agent Builder creation experience starts changing in mid-November 2026.",
+      "claim": "The OneDrive creation experience starts changing in mid-November 2026.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
       "quote": "Starting in mid-November 2026, you'll use Microsoft Copilot Agent Builder to create agents for SharePoint and OneDrive.",
@@ -174,21 +223,21 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "What's changing; Why it matters; Governance guidance: At rollout; rationale: impact",
+      "n": 19,
+      "where": "summary; What's changing; Why it matters; Governance guidance: At rollout; rationale: impact",
       "type": "behaviour",
-      "claim": "Creating new agents from OneDrive now uses Microsoft Copilot Agent Builder.",
+      "claim": "New agents created from OneDrive use Microsoft Copilot Agent Builder.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
-      "quote": "When you create an agent from SharePoint or OneDrive, you use Microsoft Copilot Agent Builder",
+      "quote": "When you create an agent from SharePoint or OneDrive, you use Microsoft Copilot Agent Builder, and no longer create .agent files.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 15,
+      "n": 20,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The new creation experience no longer saves a .agent file.",
+      "claim": "Creating an agent in the new experience no longer saves a .agent file.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
       "quote": "However, creating an agent no longer saves a .agent file in SharePoint or OneDrive.",
@@ -196,10 +245,10 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 21,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "New agents can be edited through the Copilot app.",
+      "claim": "Agents in the new experience can be edited through the Copilot app.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
       "quote": "You can edit, share, and monitor your agents through the Copilot app",
@@ -207,10 +256,10 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 22,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "New agents can be shared through the Copilot app.",
+      "claim": "Agents in the new experience can be shared through the Copilot app.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
       "quote": "You can edit, share, and monitor your agents through the Copilot app",
@@ -218,10 +267,10 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 23,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "New agents can be monitored through the Copilot app.",
+      "claim": "Agents in the new experience can be monitored through the Copilot app.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
       "quote": "You can edit, share, and monitor your agents through the Copilot app",
@@ -229,10 +278,10 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 24,
       "where": "What's changing; Why it matters; Governance guidance: After rollout",
       "type": "applicability",
-      "claim": "Agent 365 and Microsoft 365 admin center agent governance apply to new and upgraded Agent Builder agents.",
+      "claim": "New and upgraded Agent Builder agents can be governed and managed through Agent 365.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
       "quote": "administrators can govern, analyze, and manage agents through Microsoft Agent 365.",
@@ -240,7 +289,7 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 25,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "Microsoft tells OneDrive users to use the Copilot app to use their agents.",
@@ -251,7 +300,7 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 26,
       "where": "What's changing",
       "type": "date",
       "claim": "Existing .agent files continue working across SharePoint, Teams and the Copilot app until the end of March 2027.",
@@ -262,10 +311,10 @@
       "fix": null
     },
     {
-      "n": 22,
-      "where": "title; summary; What's changing; Why it matters; Risk assessment; Scope; rationale: cost and impact",
+      "n": 27,
+      "where": "title; summary; What's changing; Why it matters; Risk assessment; Scope; rationale",
       "type": "date",
-      "claim": ".agent files stop responding after March 2027 and need an upgrade to continue the experience.",
+      "claim": ".agent files stop responding after March 2027 and must be upgraded for continued use.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
       "quote": "After March 2027, .agent files will stop responding and you will have to upgrade to continue using them.",
@@ -273,7 +322,7 @@
       "fix": null
     },
     {
-      "n": 23,
+      "n": 28,
       "where": "What's changing; Why it matters",
       "type": "behaviour",
       "claim": "Opening a .agent file in OneDrive after retirement displays an upgrade-required message.",
@@ -284,10 +333,10 @@
       "fix": null
     },
     {
-      "n": 24,
-      "where": "What's changing; Risk assessment: Change & support",
+      "n": 29,
+      "where": "What's changing; Why it matters; Risk assessment",
       "type": "behaviour",
-      "claim": "Microsoft does not automatically upgrade .agent files.",
+      "claim": "Microsoft will not automatically upgrade .agent files.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
       "quote": "No. There's no automatic upgrade.",
@@ -295,10 +344,10 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "What's changing; Why it matters",
-      "type": "behaviour",
-      "claim": "Microsoft asks agent owners to review their .agent files and choose an upgrade path.",
+      "n": 30,
+      "where": "What's changing; Why it matters; Governance guidance: At rollout",
+      "type": "role",
+      "claim": "Microsoft's guidance makes the agent's owner responsible for reviewing it and choosing its upgrade path.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
       "quote": "An agent owner or site owner should review .agent files and choose the appropriate upgrade paths.",
@@ -306,10 +355,10 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 31,
       "where": "What's changing; Governance guidance: At rollout",
       "type": "admin-path",
-      "claim": "Editing the .agent file in its builder exposes Upgrade to Microsoft 365 agent.",
+      "claim": "The existing agent's builder provides an Upgrade to Microsoft 365 agent action.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
       "quote": "Edit the .agent file. Select Upgrade to Microsoft 365 agent. A confirmation dialog appears.",
@@ -317,10 +366,21 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 32,
+      "where": "What's changing; Scope",
+      "type": "date",
+      "claim": "The upgrade action begins rolling out in mid-November 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
+      "quote": "The upgrade experience described here begins rolling out mid-November 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Re-creating the experience is an alternative to upgrading it.",
+      "claim": "Re-creating the experience is a documented alternative during the transition.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
       "quote": "Upgrade or re-create the experience, then configure sharing and placement.",
@@ -328,10 +388,10 @@
       "fix": null
     },
     {
-      "n": 28,
-      "where": "What's changing; Governance guidance: After rollout; rationale: cost",
+      "n": 34,
+      "where": "What's changing; Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "Owners may delete unused .agent files instead of upgrading them.",
+      "claim": "Deleting an unused .agent file is a documented alternative to upgrading it.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
       "quote": "In some cases, the best thing to do is delete the .agent file because it's no longer used.",
@@ -339,21 +399,21 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "Why it matters; Risk assessment: Security & identity",
+      "n": 35,
+      "where": "Why it matters",
       "type": "behaviour",
-      "claim": "Existing sharing does not transfer except for organization-wide sharing.",
+      "claim": "The legacy OneDrive agents discussed here reside in users' OneDrive storage.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
-      "quote": "If you shared the original agent with everyone in the organization, this access continues in the upgraded agent. Otherwise, the agent is private to you",
+      "quote": "In OneDrive, you can find your agents through the filters on Home, Shared, or Favorites folders and the save location My Files > Documents > Agents.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 30,
+      "n": 36,
       "where": "Why it matters; Risk assessment: Security & identity",
-      "type": "default",
-      "claim": "An upgraded agent is private unless the original was shared with everyone in the organization.",
+      "type": "behaviour",
+      "claim": "Existing sharing does not transfer on upgrade except for access shared with everyone in the organization.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
       "quote": "If you shared the .agent file with everyone in the organization, that organization-wide access can carry over during the upgrade. Otherwise, the upgraded agent is private until the owner shares it.",
@@ -361,18 +421,95 @@
       "fix": null
     },
     {
-      "n": 31,
-      "where": "Risk assessment: Security & identity; Governance controls",
-      "type": "applicability",
-      "claim": "Upgraded agent sharing is configured in Microsoft Copilot Agent Builder rather than through file permissions.",
+      "n": 37,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "The agent can answer using the SharePoint and OneDrive content selected as knowledge sources.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
-      "quote": "You don't manage Microsoft 365 agent permissions through SharePoint site permissions. Set share access through Microsoft Copilot Agent Builder.",
+      "quote": "You can still select SharePoint and OneDrive content as knowledge sources and use a provided prompt to start building a conversational agent.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 32,
+      "n": 38,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "applicability",
+      "claim": "Access to the agent does not itself grant access to its underlying SharePoint or OneDrive content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
+      "quote": "Access to an agent doesn't grant access to its underlying SharePoint or OneDrive content. Users must have permission to both the agent and the knowledge sources it uses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "The SharePoint agent guidance documents Purview DLP for excluding selected files from agent processing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
+      "quote": "To prevent selected files from being used by agents, use sensitivity labels along with Microsoft Purview Data Loss Prevention (DLP).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Microsoft instructs administrators to govern .agent files through extension-based DLP conditions rather than sensitivity-label conditions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
+      "quote": "If you want to govern your .agent file by using DLP, use conditions based on the .agent extension instead of using sensitivity labels as the condition.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Security & identity; Governance controls; rationale: risk",
+      "type": "applicability",
+      "claim": "Permissions on a legacy .agent file determine who can access or edit the agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
+      "quote": "The permissions on the .agent file determine who can access or edit the agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Security & identity; Governance controls",
+      "type": "applicability",
+      "claim": "After upgrade, sharing is configured at agent level in Microsoft Copilot Agent Builder.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
+      "quote": "After the upgrade, the Microsoft Copilot Agent Builder agent uses agent-level sharing to share with people, groups, and email addresses, but not to SharePoint groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Security & identity; Why it matters",
+      "type": "default",
+      "claim": "An upgraded agent is private unless the original .agent file was shared with everyone in the organization.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
+      "quote": "If you shared the original agent with everyone in the organization, this access continues in the upgraded agent. Otherwise, the agent is private to you",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The upgrade guidance describes the content-grounded Agent Builder experience as customized Q&A, retrieval or analysis.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
+      "quote": "The agent is a customized Q&A, retrieval, or analysis experience with an identity, description, starter prompts, and instructions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
       "where": "Risk assessment: Change & support; Governance guidance: At rollout",
       "type": "behaviour",
       "claim": "Existing .agent usage history does not transfer to the replacement.",
@@ -383,87 +520,10 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "Risk assessment: Data exposure; rationale: risk",
-      "type": "behaviour",
-      "claim": "Agents can be grounded in selected SharePoint and OneDrive content.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
-      "quote": "You can still select SharePoint and OneDrive content as knowledge sources",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "Risk assessment: Data exposure; rationale: risk",
+      "n": 46,
+      "where": "Risk assessment: Change & support; controls[3].note; Governance controls; rationale: risk",
       "type": "applicability",
-      "claim": "Access to an agent does not grant access to its underlying content; users need permission to both.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
-      "quote": "Access to an agent doesn't grant access to its underlying SharePoint or OneDrive content. Users must have permission to both the agent and the knowledge sources it uses.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "Risk assessment: Security & identity; Governance controls; rationale: risk",
-      "type": "applicability",
-      "claim": ".agent file permissions govern who can open or edit a legacy agent.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
-      "quote": "The permissions on the .agent file determine who can access or edit the agent.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "Risk assessment: Data exposure",
-      "type": "applicability",
-      "claim": "Microsoft's SharePoint agent guidance documents Purview DLP for excluding selected files from agent responses.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
-      "quote": "To prevent selected files from being used by agents, use sensitivity labels along with Microsoft Purview Data Loss Prevention (DLP).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "Risk assessment: Data exposure",
-      "type": "applicability",
-      "claim": "Microsoft says to govern .agent files with DLP conditions based on their extension rather than sensitivity labels.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
-      "quote": "If you want to govern your .agent file by using DLP, use conditions based on the .agent extension instead of using sensitivity labels as the condition.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "The upgrade guidance describes SharePoint and OneDrive content-grounded agent experiences for Q&A, retrieval and analysis.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
-      "quote": "The agent is a customized Q&A, retrieval, or analysis experience with an identity, description, starter prompts, and instructions.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "Risk assessment: Change & support; Governance guidance; Governance controls; controls[3].note",
-      "type": "applicability",
-      "claim": "Blocking an agent created using SharePoint affects only its availability in Copilot Chat.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
-      "quote": "However, blocking an agent that you created by using SharePoint or Microsoft Foundry only impacts its availability in Microsoft Copilot Chat.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "Risk assessment: Change & support; controls[3].note; rationale: risk",
-      "type": "applicability",
-      "claim": "Blocking a legacy SharePoint agent does not yet apply to OneDrive, SharePoint or Teams.",
+      "claim": "Blocking a SharePoint-created agent affects Copilot Chat only, not OneDrive, SharePoint or Teams.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
       "quote": "Currently, blocking an agent only affects its availability in Copilot Chat. It doesn't yet apply to OneDrive, SharePoint, or Teams.",
@@ -471,10 +531,10 @@
       "fix": null
     },
     {
-      "n": 41,
+      "n": 47,
       "where": "Risk assessment: Change & support",
       "type": "applicability",
-      "claim": "Blocking Agent Builder agents also affects other host products.",
+      "claim": "Blocking Agent Builder agents also affects their availability and functionality in other host products.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
       "quote": "It also affects availability and functionality in other host products, such as Microsoft Outlook, Microsoft Teams, or other Microsoft 365 applications.",
@@ -482,10 +542,10 @@
       "fix": null
     },
     {
-      "n": 42,
+      "n": 48,
       "where": "Cost and licensing: Licence",
       "type": "licensing",
-      "claim": "Microsoft's SharePoint agent page says users with a Microsoft Copilot licence can use those agents.",
+      "claim": "The SharePoint agent access page says Microsoft Copilot-licensed users can use the agents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
       "quote": "Currently, users with a Microsoft Copilot license can use the agents.",
@@ -493,7 +553,7 @@
       "fix": null
     },
     {
-      "n": 43,
+      "n": 49,
       "where": "front matter: licensing.notes; Cost and licensing: After the upgrade",
       "type": "licensing",
       "claim": "Upgraded agents follow the capabilities and licensing model for agents in the Microsoft Copilot app.",
@@ -504,7 +564,7 @@
       "fix": null
     },
     {
-      "n": 44,
+      "n": 50,
       "where": "Cost and licensing: After the upgrade",
       "type": "licensing",
       "claim": "SharePoint Agents pay-as-you-go applies only to .agent files.",
@@ -515,10 +575,10 @@
       "fix": null
     },
     {
-      "n": 45,
+      "n": 51,
       "where": "Cost and licensing: Pay-as-you-go",
       "type": "behaviour",
-      "claim": "Microsoft's pay-as-you-go service description describes SharePoint agents in terms of SharePoint sites and document libraries.",
+      "claim": "The pay-as-you-go services page describes SharePoint agents in terms of SharePoint sites and document libraries.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-services",
       "quote": "AI-powered SharePoint agents help users interact with SharePoint sites and document libraries.",
@@ -526,21 +586,21 @@
       "fix": null
     },
     {
-      "n": 46,
+      "n": 52,
       "where": "Cost and licensing: Pay-as-you-go; Open questions",
       "type": "absence",
-      "claim": "Whether SharePoint agents pay-as-you-go covers legacy .agent files stored in OneDrive is not yet published.",
+      "claim": "Whether SharePoint agents pay-as-you-go covers legacy .agent files stored in OneDrive is not explicitly published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: OneDrive agents .agent files pay-as-you-go unlicensed users OneDrive; \"OneDrive\" \"agent\" \"pay-as-you-go\" \"license\". Read upgrade-sharepoint-agents, sharepoint-agents-azure-billing and pay-as-you-go-services; legacy OneDrive-file billing coverage is not explicit.",
+      "quote": "Searched: OneDrive agents pay-as-you-go license; OneDrive agents pay-as-you-go stored. Read pay-as-you-go-services, sharepoint-agents-azure-billing, manage-access-agents-in-sharepoint and upgrade-sharepoint-agents; none explicitly establishes coverage of OneDrive-stored legacy files.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 47,
-      "where": "Cost and licensing: Automation; Governance controls; controls[3].note",
+      "n": 53,
+      "where": "Cost and licensing: Automation; controls[3].note; Governance controls",
       "type": "licensing",
-      "claim": "The Graph package block API requires a Microsoft Agent 365 licence.",
+      "claim": "Access to the Graph package block API requires a Microsoft Agent 365 licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
       "quote": "Access to the Package Management API requires a Microsoft Agent 365 license.",
@@ -548,10 +608,10 @@
       "fix": null
     },
     {
-      "n": 48,
+      "n": 54,
       "where": "Scope: Users",
       "type": "role",
-      "claim": "Upgrading an agent requires edit permission on the .agent file.",
+      "claim": "An agent upgrade requires edit permission on the .agent file.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
       "quote": "To upgrade the agent, you need: Edit permissions to the .agent file",
@@ -559,10 +619,10 @@
       "fix": null
     },
     {
-      "n": 49,
-      "where": "Scope: Users; Governance guidance: Before rollout; controls[1].note",
+      "n": 55,
+      "where": "Scope: Users; controls[1].note; Governance guidance: Before rollout",
       "type": "applicability",
-      "claim": "User access to agents and plugins is a documented upgrade prerequisite.",
+      "claim": "User access to agents and plugins is a documented prerequisite for upgrading.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
       "quote": "To upgrade the agent, you need: Edit permissions to the .agent file; User access to agents and plugins",
@@ -570,21 +630,21 @@
       "fix": null
     },
     {
-      "n": 50,
+      "n": 56,
       "where": "Scope: Users; Governance guidance: Before rollout",
       "type": "applicability",
       "claim": "The ability to share the agent is a documented upgrade prerequisite.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
-      "quote": "To upgrade the agent, you need: ... Ability to share that agent",
+      "quote": "Ability to share that agent",
       "severity": null,
       "fix": null
     },
     {
-      "n": 51,
+      "n": 57,
       "where": "Scope: Clouds; Open questions",
       "type": "availability",
-      "claim": "Microsoft's upgrade page says the upcoming .agent changes apply to Microsoft Government Cloud.",
+      "claim": "The upgrade page says the upcoming .agent changes apply to Microsoft Government Cloud.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
       "quote": "All these upcoming changes apply to Microsoft Government Cloud.",
@@ -592,10 +652,10 @@
       "fix": null
     },
     {
-      "n": 52,
+      "n": 58,
       "where": "Scope: Roles; controls[1].note",
       "type": "role",
-      "claim": "AI Administrator is the least-privileged signed-in user role for applyOnce on the Agent TCM resources.",
+      "claim": "AI Administrator is the least-privileged signed-in-user role for applyOnce on the Agent TCM resources.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
       "quote": "AI Administrator is the least-privileged role for the signed-in user for remediation and applyOnce; don't assign that user-role requirement to the service principal.",
@@ -603,54 +663,21 @@
       "fix": null
     },
     {
-      "n": 53,
-      "where": "Scope: Rollout",
-      "type": "date",
-      "claim": "The upgrade-button experience begins rolling out in mid-November 2026.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
-      "quote": "The upgrade experience described here begins rolling out mid-November 2026.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "Governance guidance: Before rollout; controls[1].note",
-      "type": "default",
-      "claim": "User access defaults to All users.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
-      "quote": "All users - This option is the default. It means that all users in the organization can access agents and plugins, subject to the existing app policies and user assignments.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
-      "where": "Governance controls",
-      "type": "absence",
-      "claim": "Microsoft Learn documents no OneDrive-specific agent switch at the time of writing.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: OneDrive agents admin disable creation switch Set-SPOTenant Copilot agents. Read manage-access-agents-in-sharepoint, agent-settings and upgrade-sharepoint-agents. Found shared Copilot service-plan and agent settings, not a separate OneDrive-specific agent switch.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "controls[0].ui",
+      "n": 59,
+      "where": "controls[0].ui; Governance guidance: Before rollout",
       "type": "admin-path",
-      "claim": "Microsoft 365 admin center > Users > Active users > user > Licenses and Apps > Licenses reaches user licence assignment.",
+      "claim": "Microsoft 365 admin center > Users > Active users > user > Licenses and Apps > Licenses manages user licence assignments.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
-      "quote": "go to the Users > Active users page. Select the row of the user ... In the right pane, select Licenses and Apps. Expand the Licenses section",
+      "quote": "go to the Users > Active users page. Select the row of the user ... select Licenses and Apps. Expand the Licenses section, select the boxes for the licenses that you want to assign",
       "severity": null,
       "fix": null
     },
     {
-      "n": 57,
+      "n": 60,
       "where": "controls[0].api",
       "type": "command",
-      "claim": "Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @() assigns the selected licence with Microsoft Graph PowerShell.",
+      "claim": "Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @() assigns a licence through Microsoft Graph PowerShell.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
       "quote": "To assign a license to a user, use the following command in PowerShell. Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @()",
@@ -658,164 +685,109 @@
       "fix": null
     },
     {
-      "n": 58,
-      "where": "controls[1].ui",
-      "type": "admin-path",
-      "claim": "Microsoft 365 admin center > Agents > Settings > User access controls which users or groups access and install agents and plugins.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
-      "quote": "Select Agents > Settings > User access to manage your organization's agents and plugins. Select who can access agents and plugins within your organization.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 59,
-      "where": "controls[1].api",
-      "type": "command",
-      "claim": "POST /beta/admin/configurationManagement/configurationMonitors applies User access through an applyOnce baseline containing microsoft.agent.useraccess.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
-      "quote": "applies a desired-state baseline once in applyOnce mode. POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors",
-      "severity": "minor",
-      "fix": "Keep the call. Append to controls[1].note: 'The request body sets mode to applyOnce and baseline.resources to a microsoft.agent.useraccess resource, with properties.valueObject.userAssignmentCategory set to everyone or noOne.' The property is documented at https://learn.microsoft.com/graph/utcm-agent-resources."
-    },
-    {
-      "n": 60,
-      "where": "controls[2].ui",
-      "type": "admin-path",
-      "claim": "Microsoft 365 admin center > Agents > Settings > Sharing controls organization-wide sharing for Agent Builder agents only.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
-      "quote": "Sharing - Manage who can share AI agents within your organization ... Sharing control only applies to agents built with Microsoft Copilot Agent Builder.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 61,
-      "where": "controls[2].api",
-      "type": "command",
-      "claim": "POST /beta/admin/configurationManagement/configurationMonitors applies Sharing through an applyOnce baseline containing microsoft.agent.sharing.",
+      "where": "controls[1].ui; Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "Microsoft 365 admin center > Agents > Settings > User access controls who can access and install agents and plugins.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
-      "quote": "applies a desired-state baseline once in applyOnce mode. POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors",
-      "severity": "minor",
-      "fix": "Keep the call. Append to controls[2].note: 'The request body sets mode to applyOnce and baseline.resources to a microsoft.agent.sharing resource, with properties.valueObject.organizationWideSharingAssignment.userAssignmentCategory set to everyone or noOne.' The property is documented at https://learn.microsoft.com/graph/utcm-agent-resources."
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "Select Agents > Settings > User access to manage your organization's agents and plugins.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 62,
-      "where": "controls[3].ui",
-      "type": "admin-path",
-      "claim": "Microsoft 365 admin center > Agents > All agents > agent > Block reaches organization-wide agent blocking.",
+      "where": "controls[1].api; Governance controls",
+      "type": "command",
+      "claim": "POST /beta/admin/configurationManagement/configurationMonitors can apply the microsoft.agent.useraccess baseline once.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
-      "quote": "Select Agents > All agents. In the All agents page, select an agent from the list of agents. In the agent details pane that opens, immediately under the agent's name, select Block or Unblock.",
-      "severity": null,
-      "fix": null
+      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+      "quote": "POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors; An active applyOnce monitor runs in the background on behalf of the signed-in administrator and then becomes inactive.",
+      "severity": "minor",
+      "fix": "Keep the call. Expand controls[1].note to say: 'API: set mode to applyOnce and baseline.resources[].resourceType to microsoft.agent.useraccess; set properties.valueObject.userAssignmentCategory to everyone or noOne (preview, beta); AI Administrator.' Resource properties are documented at https://learn.microsoft.com/graph/utcm-agent-resources."
     },
     {
       "n": 63,
-      "where": "controls[3].api",
-      "type": "command",
-      "claim": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks the selected Copilot package.",
+      "where": "controls[1].note; Governance guidance: Before rollout",
+      "type": "default",
+      "claim": "All users is the default User access setting, subject to existing app policies and assignments.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
-      "quote": "Block a Copilot package to prevent its usage. POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
-      "severity": "minor",
-      "fix": "Keep the call and licence note. Append to controls[3].note: 'This is a beta API; Microsoft does not support its use in production applications.'"
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "All users - This option is the default. It means that all users in the organization can access agents and plugins, subject to the existing app policies and user assignments.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 64,
-      "where": "front matter: defaultState; Why it matters",
-      "type": "default",
-      "claim": "The agent-creation capability is user-opt-in rather than requiring a separate OneDrive-specific administrator enablement.",
+      "where": "controls[2].ui; Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "Microsoft 365 admin center > Agents > Settings > Sharing controls who can share Agent Builder agents organization-wide.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: OneDrive agents admin disable creation switch Set-SPOTenant Copilot agents. Read roadmap record, upgrade-sharepoint-agents and agent-settings: users choose to create agents; no separate OneDrive-specific switch found. User access defaults to All users.",
-      "severity": null,
-      "fix": null
+      "source": "https://learn.microsoft.com/plugins/agent-builder-share-manage-agents",
+      "quote": "Org-wide sharing: In Agents > Settings > Sharing, control who can share agents built in Agent Builder with the organization.",
+      "severity": "minor",
+      "fix": "Keep the path and add https://learn.microsoft.com/plugins/agent-builder-share-manage-agents to sources; it supplies the complete route. The existing docs link describes the Sharing control itself."
     },
     {
       "n": 65,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "Agents in OneDrive are included within the Microsoft Copilot for Microsoft 365 licence named by the roadmap.",
+      "where": "controls[2].api; Governance controls",
+      "type": "command",
+      "claim": "POST /beta/admin/configurationManagement/configurationMonitors can apply the microsoft.agent.sharing baseline once.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "This feature requires a Microsoft Copilot for Microsoft 365 license",
-      "severity": null,
-      "fix": null
+      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+      "quote": "Create a new configurationMonitor object that ... applies a desired-state baseline once in applyOnce mode.",
+      "severity": "minor",
+      "fix": "Keep the call. Expand controls[2].note to say: 'API: set mode to applyOnce and baseline.resources[].resourceType to microsoft.agent.sharing; set properties.valueObject.organizationWideSharingAssignment.userAssignmentCategory to everyone or noOne (preview, beta).' Resource properties are documented at https://learn.microsoft.com/graph/utcm-agent-resources."
     },
     {
       "n": 66,
-      "where": "front matter: cost; rationale: cost",
-      "type": "cost",
-      "claim": "For the described Copilot-licensed interactive use, the known transition cost is indirect owner and administrator effort.",
+      "where": "controls[2].note; Governance controls",
+      "type": "applicability",
+      "claim": "The Sharing setting applies only to Agent Builder agents, not legacy .agent file sharing.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing",
-      "quote": "Interactive use of generative answers, tenant graph grounding and agent actions by authenticated Microsoft Copilot users, in Microsoft 365 apps and services, are included at no extra cost.",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "Sharing control only applies to agents built with Microsoft Copilot Agent Builder.",
       "severity": null,
       "fix": null
     },
     {
       "n": 67,
-      "where": "Why it matters",
-      "type": "behaviour",
-      "claim": "Because a OneDrive .agent file sits in one person's OneDrive, there is no site owner to notice it.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: OneDrive agents .agent files site owner upgrade owner responsibility. Read upgrade-sharepoint-agents and manage-access-agents-in-sharepoint; neither establishes that OneDrive agent files have no site-owner oversight.",
-      "severity": "major",
-      "fix": "Remove ', so there is no site owner to notice it' from Why it matters. Retain the documented owner-led upgrade guidance."
+      "where": "controls[3].ui; Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "Microsoft 365 admin center > Agents > All agents > agent > Block blocks an agent for the organization.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Select Agents > All agents. ... select an agent from the list of agents. ... immediately under the agent's name, select Block or Unblock.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 68,
-      "where": "Open questions: inventory routes",
-      "type": "absence",
-      "claim": "Whether SharePoint Advanced Management agent reports cover .agent files in users' OneDrive accounts remains an open documentation question.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/sharepoint/monitor-agent-usage",
-      "quote": "The Agent Insights report gives SharePoint admins detailed visibility into newly created agents across all SharePoint and OneDrive sites within their organization.",
-      "severity": "blocker",
-      "fix": "Replace the inventory bullet with: 'Does the agent registry list .agent files stored in users' OneDrive accounts? Watch the upgrade page.' Remove SharePoint Advanced Management agent reports from that open question; their OneDrive coverage is documented at https://learn.microsoft.com/sharepoint/monitor-agent-usage and https://learn.microsoft.com/sharepoint/insights-on-sharepoint-agents."
+      "where": "controls[3].api",
+      "type": "command",
+      "claim": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks a Copilot package.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Block a Copilot package to prevent its usage. POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 69,
-      "where": "Open questions: User access",
+      "where": "Governance controls",
       "type": "absence",
-      "claim": "The specific effect of User access on existing legacy .agent files in OneDrive, as distinct from upgrade prerequisites and catalog access, is not expressly documented.",
+      "claim": "Microsoft has not documented a separate OneDrive-specific agent switch as of November 2026.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: User access agents settings applies existing .agent files OneDrive. Read agent-settings, utcm-agent-resources and upgrade-sharepoint-agents. They document general agent access and upgrade prerequisites, not explicit enforcement on opening legacy OneDrive .agent files.",
+      "quote": "Searched: OneDrive agents admin disable switch Set-SPOTenant agents OneDrive Copilot; OneDrive agents disable switch. Read agent-settings, manage-access-agents-in-sharepoint and agent-builder-share-manage-agents; documented controls are broader agent access and the shared Copilot service plan.",
       "severity": null,
       "fix": null
     },
     {
       "n": 70,
-      "where": "Open questions: inventory routes",
-      "type": "behaviour",
-      "claim": "The upgrade page lists SharePoint Advanced Management agent reports and the agent registry as inventory routes for SharePoint agents.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
-      "quote": "Use the agent reports on SharePoint Advanced Management to inventory agents. Use the agent registry to see \"SharePoint\" agents.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 71,
-      "where": "Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "Deleted .agent files go to the recycle bin.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
-      "quote": "Deleted files appear in the recycle bin.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 72,
       "where": "Governance controls",
       "type": "admin-path",
-      "claim": "The Microsoft Copilot licence details page in the Microsoft 365 admin center has a per-user Microsoft Copilot for SharePoint service-plan toggle.",
+      "claim": "The Microsoft Copilot licence details page provides a per-user Microsoft Copilot for SharePoint service-plan switch.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
       "quote": "Under the license details page for Microsoft Copilot on the Microsoft 365 admin center, admins can turn 'Microsoft Copilot for SharePoint' on or off on a per-user basis.",
@@ -823,26 +795,103 @@
       "fix": null
     },
     {
-      "n": 73,
+      "n": 71,
       "where": "Governance controls",
       "type": "applicability",
-      "claim": "Turning off Microsoft Copilot for SharePoint for a user also disables Copilot in OneDrive for that user.",
+      "claim": "Disabling the Microsoft Copilot for SharePoint service plan also disables Copilot in OneDrive for that user.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
       "quote": "However, this change also disables Copilot in OneDrive and on the SharePoint page authoring Copilot for that user.",
       "severity": null,
       "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Open questions: agent registry",
+      "type": "absence",
+      "claim": "Microsoft does not explicitly establish whether the agent registry inventories legacy .agent files stored in users' OneDrive accounts.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: OneDrive .agent files agent registry listed user access existing agents; OneDrive .agent registry. Read upgrade-sharepoint-agents, agent-registry-overview and manage-copilot-agents-integrated-apps; none explicitly establishes registry coverage of OneDrive-stored legacy files.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Open questions: User access",
+      "type": "absence",
+      "claim": "The documentation does not explicitly establish how User access governs existing legacy .agent files used in OneDrive.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: OneDrive User access .agent; OneDrive agent user access existing. Read agent-settings, utcm-agent-resources, upgrade-sharepoint-agents and manage-access-agents-in-sharepoint; User access is an upgrade prerequisite, but legacy file use in OneDrive is not explicitly mapped to that setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Deleted .agent files appear in the recycle bin.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents",
+      "quote": "Deleted files appear in the recycle bin.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "controls[1].note; controls[2].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The beta TCM applyOnce operation applies a desired-state baseline once and is documented as preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+      "quote": "APIs under the /beta version in Microsoft Graph are subject to change. ... applies a desired-state baseline once in applyOnce mode.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "controls[1].note; Governance controls",
+      "type": "command",
+      "claim": "microsoft.agent.useraccess is a supported Agent TCM baseline resource for configuring user access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
+      "quote": "\"resourceType\": \"microsoft.agent.useraccess\"; valueObject: Configures who can access agents and plugins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "controls[2].note; Governance controls",
+      "type": "command",
+      "claim": "microsoft.agent.sharing is a supported Agent TCM baseline resource for configuring organization-wide Agent Builder sharing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
+      "quote": "\"resourceType\": \"microsoft.agent.sharing\"; valueObject: Configures who can share Agent Builder agents with anyone in the organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "front matter: cost; Cost and licensing: Indirect costs; rationale: cost",
+      "type": "cost",
+      "claim": "For the licensed interactive use described here, the known transition cost is indirect owner and administrator work, consistent with low.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing",
+      "quote": "Interactive use of generative answers, tenant graph grounding and agent actions by authenticated Microsoft Copilot users, in Microsoft 365 apps and services, are included at no extra cost.",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-26T05:27:20.809Z",
+    "at": "2026-11-26T06:54:01.134Z",
     "summary": {
       "links": 13,
-      "unreachable": 5,
+      "unreachable": 8,
       "uiPaths": 4,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 2,
       "apiCalls": 4,
-      "apiCallsNotOnPage": 0,
+      "apiCallsNotOnPage": 2,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -873,8 +922,8 @@
       },
       {
         "url": "https://learn.microsoft.com/graph/utcm-agent-resources",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-copilot-agents-integrated-apps",
@@ -898,13 +947,13 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
@@ -941,44 +990,52 @@
         "side": "ui",
         "governs": "Which users or groups can access and install agents and plugins",
         "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Agents",
           "Settings",
           "User access"
         ],
-        "missing": []
+        "missing": [
+          "Agents",
+          "Settings",
+          "User access"
+        ]
       },
       {
         "index": 1,
         "side": "api",
         "governs": "Which users or groups can access and install agents and plugins",
         "docs": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
-        "reachable": true,
+        "reachable": false,
         "token": "/beta/admin/configurationManagement",
-        "found": true
+        "found": false
       },
       {
         "index": 2,
         "side": "ui",
         "governs": "Who can share Agent Builder agents with everyone in the organisation",
         "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Agents",
           "Settings",
           "Sharing"
         ],
-        "missing": []
+        "missing": [
+          "Agents",
+          "Settings",
+          "Sharing"
+        ]
       },
       {
         "index": 2,
         "side": "api",
         "governs": "Who can share Agent Builder agents with everyone in the organisation",
         "docs": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
-        "reachable": true,
+        "reachable": false,
         "token": "/beta/admin/configurationManagement",
-        "found": true
+        "found": false
       },
       {
         "index": 3,
@@ -1010,6 +1067,12 @@
       "date": "2026-11-26",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-26",
+      "status": "held",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

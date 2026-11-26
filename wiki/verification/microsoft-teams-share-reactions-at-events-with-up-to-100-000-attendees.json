@@ -2,50 +2,55 @@
   "slug": "microsoft-teams-share-reactions-at-events-with-up-to-100-000-attendees",
   "roadmapId": 581719,
   "title": "Microsoft Teams: reactions in events with up to 100,000 attendees",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-26",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-26",
-    "reasons": [
-      "1 blocking finding (claim 26)"
-    ]
-  },
+  "hold": null,
   "counts": {
     "claims": 55,
-    "confirmed": 53,
+    "confirmed": 55,
     "unconfirmed": 0,
-    "contradicted": 2,
-    "blocker": 1,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
-    "minor": 4
+    "minor": 3
   },
-  "summary": "Hold: the page incorrectly reports license-assignment automation as undocumented, although Microsoft documents assigning Teams add-on licenses through PowerShell and Microsoft Graph. The roadmap facts, current reactions ceiling, licensing requirements and printed policy controls are supported.",
+  "summary": "The briefing matches the roadmap and correctly distinguishes the planned reactions expansion from the current 20,000-attendee ceiling. Its licensing and control paths are supported; minor corrections should cite the emoji description and flag the PowerShell reference's preview qualification.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing",
+      "where": "front matter: title, products; What's changing",
       "type": "record",
-      "claim": "Microsoft plans reactions in Teams events with up to 100,000 attendees.",
+      "claim": "The feature belongs to Microsoft Teams.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Teams now supports reactions in events at this scale.",
+      "quote": "\"products\": [\"Microsoft Teams\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "summary; What's changing",
+      "where": "summary; What's changing; rationale: impact",
       "type": "record",
-      "claim": "Attendees will be able to send reactions and see reactions others send.",
+      "claim": "Microsoft plans to support sending reactions during Teams events with up to 100,000 attendees.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Teams now supports reactions in events at this scale. You can send reactions during the event",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "summary; What's changing; Why it matters",
+      "type": "record",
+      "claim": "Attendees will be able to see reactions other attendees send at that scale.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "You can send reactions during the event and see the reactions others send, so everyone can share the moment together.",
@@ -53,21 +58,21 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 4,
       "where": "front matter: status; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap status is In development.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"status\": \"In development\"",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 4,
+      "n": 5,
       "where": "front matter: targetDate; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap target is December CY2026, not a committed release date.",
+      "claim": "The roadmap target is December CY2026, not a committed rollout date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"December CY2026\"",
@@ -75,7 +80,7 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 6,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
       "claim": "The roadmap release phase is General Availability.",
@@ -86,7 +91,7 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 7,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Android, Desktop, iOS, Mac and Web.",
@@ -97,10 +102,10 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 8,
       "where": "front matter: clouds; What's changing; Scope; Open questions",
       "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed; GCC, GCC High and DoD are not listed.",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -108,10 +113,10 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 9,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap gives no preview date.",
+      "claim": "The record gives no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -119,7 +124,7 @@
       "fix": null
     },
     {
-      "n": 9,
+      "n": 10,
       "where": "front matter: roadmapModified",
       "type": "record",
       "claim": "The roadmap record was modified at 2026-11-25T00:10:31.",
@@ -130,21 +135,21 @@
       "fix": null
     },
     {
-      "n": 10,
-      "where": "summary; What's changing; Scope; changes; rationale: impact",
+      "n": 11,
+      "where": "summary; What's changing; Scope; Governance guidance",
       "type": "availability",
-      "claim": "Current documentation limits event reactions to events with up to 20,000 attendees.",
+      "claim": "Current Learn documentation limits reactions in events optimised for large audiences to 20,000 attendees.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/meetings-events-feature-comparison",
-      "quote": "Available only for events with up to 20,000 attendees and can't be enabled for a subset of participants (for example, only the first 20,000 attendees) in larger events.",
+      "quote": "[Reactions](manage-reactions-meetings)^2^ | Up to 20,000 attendees",
       "severity": null,
       "fix": null
     },
     {
-      "n": 11,
-      "where": "What's changing",
+      "n": 12,
+      "where": "What's changing; Risk assessment: Change & support; rationale: impact",
       "type": "behaviour",
-      "claim": "For events with 20,001 to 100,000 attendees, reactions are off in the scheduling form and organisers cannot turn them on today.",
+      "claim": "For events with 20,001 to 100,000 attendees, reactions are currently turned off in the scheduling form and organisers cannot turn them on.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/meetings-events-feature-comparison",
       "quote": "For events with 20,001 to 100,000 attendees, this feature is turned off in the scheduling form and can't be turned on by organizers.",
@@ -152,43 +157,10 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "What's changing",
-      "type": "absence",
-      "claim": "Microsoft Learn does not yet describe the new 100,000-attendee reactions behaviour.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams 100000 town hall reactions tenant events policy default AllowMeetingReactions. Opened manage-reactions-meetings and meetings-events-feature-comparison; the latter still limits reactions to 20,000.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 13,
-      "where": "controls[0].ui; Governance guidance; rendered table",
-      "type": "admin-path",
-      "claim": "The reactions default is at Teams admin center > Meetings > Meeting policies > policy > Meeting engagement > Reactions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-reactions-meetings",
-      "quote": "go to Meetings > Meeting policies. ... Select the policy that you want to edit. ... Under Meeting engagement, turn the Reactions toggle On or Off.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "controls[0].api; rendered table",
-      "type": "command",
-      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowMeetingReactions $false sets reactions off using MicrosoftTeams PowerShell.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps",
-      "quote": "[-Identity] <XdsIdentity> ... [-AllowMeetingReactions <Boolean>] ... Set to false to disable Meeting Reactions.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
       "where": "controls[0].note; What's changing; Governance controls",
       "type": "default",
-      "claim": "The existing meeting reactions setting defaults to On in organisers' Meeting options.",
+      "claim": "The existing meeting-policy reactions default in organisers' Meeting options is On.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-reactions-meetings",
       "quote": "By default, meeting reactions are set to On in your organizers' Meeting options.",
@@ -196,10 +168,10 @@
       "fix": null
     },
     {
-      "n": 16,
-      "where": "controls[0].note; What's changing; Governance controls; rationale: risk",
+      "n": 14,
+      "where": "controls[0].note; What's changing; Risk assessment; Governance controls; rationale: risk",
       "type": "applicability",
-      "claim": "The meeting policy sets a default for meetings and events, and organisers can change reactions per meeting or event rather than being subject to an enforced block.",
+      "claim": "Today's meeting policy sets a reactions default rather than an enforced block, and organisers can change it for each meeting and event.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-reactions-meetings",
       "quote": "As an admin, you can use the Teams admin center or PowerShell to set the default value for reactions in your organizers' Meeting options. Organizers can change the setting for each meeting and event they create.",
@@ -207,395 +179,54 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 15,
       "where": "front matter: defaultState; What's changing; Why it matters; Open questions",
-      "type": "default",
-      "claim": "Microsoft has not stated the arrival default specifically for the new reactions capability above 20,000 attendees.",
+      "type": "absence",
+      "claim": "Microsoft has not stated the arrival default for the planned reactions expansion above 20,000 attendees.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams 100000 town hall reactions tenant events policy default AllowMeetingReactions. Read roadmap, manage-reactions-meetings, meetings-events-feature-comparison and events-licensing; none specifies the future above-20,000 arrival default.",
+      "quote": "Searched: Teams reactions events above 20000 100000 default tenant events policy AllowMeetingReactions. Read roadmap, manage-reactions-meetings, meetings-events-feature-comparison and set-up-events; they give the current default and ceiling, not the expansion's arrival default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Why it matters",
+      "type": "absence",
+      "claim": "Learn does not yet describe the planned 100,000-attendee reactions behaviour.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams reactions events 100000 20000 manage reactions meetings attendee capacity pack licensing; Teams reactions events above 20000 100000 default tenant events policy AllowMeetingReactions. Opened comparison, reactions, licensing and pack pages; current reactions ceiling remains 20,000.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The reactions default is at Teams admin center > Meetings > Meeting policies > policy > Meeting engagement > Reactions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-reactions-meetings",
+      "quote": "In the left navigation of the Teams admin center, go to Meetings > Meeting policies. Select the policy that you want to edit. Under Meeting engagement, turn the Reactions toggle On or Off.",
       "severity": null,
       "fix": null
     },
     {
       "n": 18,
-      "where": "controls[1]; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "No separate tenant-wide or events-policy reactions switch for events above 20,000 attendees is documented in November 2026.",
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowMeetingReactions $false is the MicrosoftTeams PowerShell call for the reactions control.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams 100000 town hall reactions tenant events policy default AllowMeetingReactions. Opened manage-reactions-meetings and Set-CsTeamsEventsPolicy syntax; no separate large-event reactions parameter appears.",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps",
+      "quote": "Module: MicrosoftTeams PowerShell module. -AllowMeetingReactions: Set to false to disable Meeting Reactions. Type: Boolean. Default value: True. -Identity: Specify the name of the policy being created.",
       "severity": null,
       "fix": null
     },
     {
       "n": 19,
-      "where": "controls[2].ui; rendered table",
-      "type": "admin-path",
-      "claim": "Town hall creation is controlled at Teams admin center > Meetings > Events policies > policy > Events optimized for a large audience.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
-      "quote": "go to Meetings > Events policies. ... Select an existing policy or create a new one. ... turn the Events optimized for a large audience toggle On or Off.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "controls[2].api; rendered table",
+      "where": "Governance controls: PowerShell discrepancy",
       "type": "command",
-      "claim": "Set-CsTeamsEventsPolicy -Identity <policy name> -AllowTownhalls Disabled prevents organisers with the policy from creating town halls.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
-      "quote": "To prevent organizers with this policy from creating events optimized for large audiences, run the following command: Set-CsTeamsEventsPolicy -Identity <policy name> -AllowTownhalls Disabled",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "controls[3].ui; rendered table; Governance guidance",
-      "type": "admin-path",
-      "claim": "Attendee access is at Teams admin center > Meetings > Events policies > policy > Who can attend events optimized for a large audience.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
-      "quote": "go to Meetings > Events policies. ... Select an existing policy or create a new one. ... in the Who can attend events optimized for a large audience dropdown list, select one of the following",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "controls[3].api; rendered table",
-      "type": "command",
-      "claim": "Set-CsTeamsEventsPolicy -Identity <policy name> -TownhallEventAttendeeAccess EveryoneInOrganizationAndGuests restricts town hall access to the organisation and guests.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
-      "quote": "To only allow users in your organization and guests to attend events optimized for large audiences created by organizers with this policy ... Set-CsTeamsEventsPolicy -Identity <policy name> -TownhallEventAttendeeAccess EveryoneInOrganizationAndGuests",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "controls[3].note; Risk assessment: Data exposure",
-      "type": "default",
-      "claim": "Who can attend events optimized for a large audience defaults to Everyone.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
-      "quote": "By default, both settings are set to Everyone.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "controls[3].note; Risk assessment: Data exposure",
-      "type": "applicability",
-      "claim": "The attendee-access policy applies to large-audience events created by organisers assigned that policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
-      "quote": "Controls who can attend events optimized for large audiences (such as town halls) created by organizers with this policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "controls[4].ui; rendered table",
-      "type": "admin-path",
-      "claim": "Assign attendee packs at Teams admin center > Add-on Licenses > Teams Events > Licenses > Assign to new users > Attendee pack.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/attendee-capacity-pack-manage",
-      "quote": "On the Licenses tab, select Assign to new users to get started. ... In the Assign Add-on licenses pane ... For each individual user, select the pack size that you want to assign in the Attendee pack column.",
-      "severity": "minor",
-      "fix": "Use 'Add-on Licenses > Teams Events > Licenses > Assign to new users > Assign Add-on licenses > Attendee pack'; the omitted pane heading is not a navigation choice."
-    },
-    {
-      "n": 26,
-      "where": "controls[4].api; rendered table",
-      "type": "absence",
-      "claim": "Automation for assigning Attendee Capacity Pack add-on licenses to organisers is not yet documented.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0",
-      "quote": "Add or remove licenses for the user to enable or disable their use of Microsoft cloud offerings that the company has licenses to. ... POST /users/{id | userPrincipalName}/assignLicense",
-      "severity": "blocker",
-      "fix": "Replace controls[4].api null with kind 'graph', call 'POST /v1.0/users/{id}/assignLicense', docs 'https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0'. Add to the note: 'The request body uses addLicenses with the purchased pack skuId; removeLicenses is required and can be empty. This is the general user-license assignment API.' Cite https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/assign-teams-add-on-licenses, which documents PowerShell assignment for Teams add-on licenses; its SKU table explicitly says it is partial."
-    },
-    {
-      "n": 27,
-      "where": "controls[4].note; Scope; Governance controls",
-      "type": "role",
-      "claim": "Managing attendee-pack assignments in the Teams admin center requires Global Administrator.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/attendee-capacity-pack-manage",
-      "quote": "You must be assigned the Global Administrator role to access the License Management section and manage all licensing capabilities in the Teams admin center.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "controls[4].note; Scope",
-      "type": "role",
-      "claim": "Teams Administrator has read-only access to attendee-pack License Management in the Teams admin center.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/attendee-capacity-pack-manage",
-      "quote": "Users assigned the Teams Administrator role can access the License Management section in read-only mode and cannot create, modify, or remove license assignments or settings.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "front matter: licensing.model and notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "Large-event capacity is licensed through Attendee Capacity Pack add-ons for Teams Enterprise.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/attendee-capacity-pack",
-      "quote": "Teams Attendee Capacity Packs are add-on licenses for Teams Enterprise that let event organizers host events for up to 100,000 attendees.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "front matter: licensing.notes; controls[4].governs; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "Events above 3,000 attendees with engagement capabilities require purchased Attendee Capacity Pack licenses, subject to the stated legacy Premium exception.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
-      "quote": "To host events with more than 3,000 attendees with engagement capabilities (chat, reactions, raise hand, polls, Q&A), organizations must purchase Attendee Capacity Pack add-on licenses and assign them to organizers.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "front matter: licensing.notes; Cost and licensing; controls[4]",
-      "type": "licensing",
-      "claim": "Attendee packs are assigned to the event organiser, not every attendee.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
-      "quote": "organizations must purchase Attendee Capacity Pack add-on licenses and assign them to organizers.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "Attendee packs enable event capacity up to 100,000 attendees.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
-      "quote": "Attendee packs enable events with up to 100,000 attendees.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "The available pack sizes are 5,000, 10,000, 20,000, 35,000, 50,000, 75,000 and 100,000 attendees.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/attendee-capacity-pack",
-      "quote": "They can be purchased to support 5,000, 10,000, 20,000, 35,000, 50,000, 75,000, and 100,000 event attendees.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "controls[4].note; Cost and licensing",
-      "type": "licensing",
-      "claim": "An organiser can hold only one attendee pack at a time.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/attendee-capacity-pack",
-      "quote": "While your organization can purchase multiple packs, each organizer can only be assigned one pack.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "Attendee packs increase capacity but do not unlock other feature capabilities.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/attendee-capacity-pack",
-      "quote": "Attendee packs increase capacity for Teams events. They don't unlock any other feature capabilities.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "front matter: licensing.notes; Why it matters; Cost and licensing; Scope",
-      "type": "licensing",
-      "claim": "An active Teams Premium license bought before 1 April 2026 retains event capacity of up to 100,000 until its current term ends.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/attendee-capacity-pack",
-      "quote": "Organizers with an active Teams Premium license purchased before April 1, 2026, can continue to host events for up to 100,000 attendees until their current Teams Premium term ends.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "Why it matters; Scope; Governance guidance",
-      "type": "licensing",
-      "claim": "An event above 20,000 attendees needs at least the 35,000 pack or the active legacy Premium entitlement described on the page.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/attendee-capacity-pack",
-      "quote": "They can be purchased to support 5,000, 10,000, 20,000, 35,000, 50,000, 75,000, and 100,000 event attendees. ... The attendee capacities included with Teams Enterprise and an attendee pack aren't combined.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "Cost and licensing: Meter",
-      "type": "absence",
-      "claim": "No meter is described for the new high-capacity reactions feature.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: reactions 100,000 latency default billing; Teams reactions 100000 attendees names sender emoji stream latency price meter. Opened events-licensing, attendee-capacity-pack and manage-reactions-meetings; none names a reactions meter.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "Cost and licensing: Not yet published",
-      "type": "absence",
-      "claim": "The Attendee Capacity Pack Learn pages list sizes but no prices.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Attendee Capacity Pack price. Opened attendee-capacity-pack and attendee-capacity-pack-manage in full; neither publishes pack prices.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "No separate license specific to the reactions capacity increase is published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: reactions 100,000 latency default billing; Attendee Capacity Pack price. Read events-licensing, attendee-capacity-pack and manage-reactions-meetings; they name general event entitlement, not a separate reactions-expansion license.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "Risk assessment: Data exposure; rationale: risk",
-      "type": "behaviour",
-      "claim": "Reactions are emoji feedback shown during the meeting or event.",
-      "status": "supported",
-      "source": "https://support.microsoft.com/office/express-yourself-in-microsoft-teams-meetings-with-live-reactions-a8323a40-3d07-4129-934b-305370a36e21",
-      "quote": "Choose from a range of live reactions, including: Like ... Love ... Applause ... Laugh ... Surprise ... Your reaction pops up momentarily at the bottom of your meeting",
-      "severity": "minor",
-      "fix": "Cite https://support.microsoft.com/office/express-yourself-in-microsoft-teams-meetings-with-live-reactions-a8323a40-3d07-4129-934b-305370a36e21 for the general emoji-reactions description."
-    },
-    {
-      "n": 42,
-      "where": "Risk assessment: Data exposure; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not specified sender-name visibility for reactions in the newly planned events above 20,000 attendees.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: town hall reactions names; Teams reactions 100000 attendees names sender emoji stream latency price meter. Read manage-reactions-meetings, comparison and linked live-reactions support page; meeting profile-picture behaviour does not specify the new large-event experience.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "Risk assessment: Data exposure",
-      "type": "absence",
-      "claim": "The sources describe no new data access for this reactions capacity change.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams reactions 100000 attendees names sender emoji stream latency price meter. Read roadmap and manage-reactions-meetings; both describe attendee feedback, not new data access.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "Risk assessment: Security & identity",
-      "type": "absence",
-      "claim": "No new sign-in, permission or app is described specifically for this capacity change.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams 100000 town hall reactions tenant events policy default AllowMeetingReactions. Read roadmap, manage-reactions-meetings and events-licensing; no new reactions-specific sign-in, permission or app is stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "The described reactions are sent by attendees, not autonomous actions.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "You can send reactions during the event and see the reactions others send",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "Risk assessment: Change & support",
-      "type": "absence",
-      "claim": "Microsoft has not described the effect of this reactions expansion on stream quality or latency at 100,000 attendees.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: reactions 100,000 latency default billing. Read roadmap, comparison, manage-reactions-meetings and ULL FAQ excerpt; ULL's separate scaling limit is stated, but no effect of the reactions expansion on stream quality or latency is stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "Risk assessment: Change & support",
-      "type": "availability",
-      "claim": "Ultra-Low Latency currently supports events only up to 20,000 attendees.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meetings-events-feature-comparison",
-      "quote": "| Ultra-Low Latency | Up to 20,000 attendees |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
-      "where": "controls[2].note; Governance controls",
-      "type": "applicability",
-      "claim": "Turning off Events optimized for a large audience is a blunt town-hall control, not a reactions-only control.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
-      "quote": "Controls whether users with this policy can create events optimized for large audiences, such as town halls. ... If you change the value to Off after a user schedules an event, they can't run or start the event.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "Governance guidance: Before rollout",
-      "type": "admin-path",
-      "claim": "Teams admin center > Add-on Licenses > Teams Events shows which organisers hold packs and their assigned sizes.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/attendee-capacity-pack-manage",
-      "quote": "go to Add-on Licenses > Teams Events. ... Assigned pack | Size of the attendee pack assigned to the organizer.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
-      "where": "Scope: Who configures",
-      "type": "role",
-      "claim": "Teams administrators can edit meeting and events policies.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/using-admin-roles",
-      "quote": "Teams Administrator ... Everything in the Microsoft Teams admin center and associated PowerShell controls, including: ... Manage meetings, including meeting policies, configurations, and conference bridges.",
-      "severity": "minor",
-      "fix": "Cite https://learn.microsoft.com/microsoftteams/using-admin-roles for the Teams Administrator policy-management role."
-    },
-    {
-      "n": 51,
-      "where": "Governance guidance: At rollout; controls",
-      "type": "consistency",
-      "claim": "The checklist tells readers to show producers the per-event reactions option, but the table contains no organiser-option row.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "show them the per-event reactions option in Meeting options. ... Default for reactions in organisers' Meeting options",
-      "severity": "minor",
-      "fix": "Replace the checklist bullet with 'Tell town hall producers that reactions may become available above 20,000 attendees.' This removes the checklist control that has no corresponding row without adding an unchecked row."
-    },
-    {
-      "n": 52,
-      "where": "Governance controls",
-      "type": "command",
-      "claim": "The Manage reactions how-to prints -AllowMeetingReactions Disabled.",
+      "claim": "The reactions guidance prints -AllowMeetingReactions Disabled.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-reactions-meetings",
       "quote": "Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowMeetingReactions Disabled",
@@ -603,48 +234,411 @@
       "fix": null
     },
     {
-      "n": 53,
-      "where": "Governance controls",
-      "type": "command",
-      "claim": "The Set-CsTeamsMeetingPolicy reference instead declares AllowMeetingReactions Boolean with a default of True.",
+      "n": 20,
+      "where": "controls[1]; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No separate tenant-wide UI or API, or events-policy setting, is documented for reactions above 20,000 attendees.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps",
-      "quote": "### -AllowMeetingReactions ... | Type: | Boolean | ... | Default value: | True |",
+      "source": null,
+      "quote": "Searched: Teams reactions events above 20000 100000 default tenant events policy AllowMeetingReactions. Read manage-reactions-meetings, set-up-events, Set-CsTeamsEventsPolicy, comparison and settings-policies-reference search excerpt; no distinct large-event reactions switch appears.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Town hall creation is controlled at Teams admin center > Meetings > Events policies > policy > Events optimized for a large audience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
+      "quote": "In the left navigation of the Teams admin center, go to Meetings > Events policies. Select an existing policy or create a new one. For events optimized for large audiences, such as town halls, turn the Events optimized for a large audience toggle On or Off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-CsTeamsEventsPolicy -Identity <policy name> -AllowTownhalls Disabled prevents organisers with the policy from creating town halls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
+      "quote": "To prevent organizers with this policy from creating events optimized for large audiences, run the following command: Set-CsTeamsEventsPolicy -Identity <policy name> -AllowTownhalls Disabled",
+      "severity": "minor",
+      "fix": "Add to controls[2].note: 'The Set-CsTeamsEventsPolicy reference marks the policy as still in preview.' Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps, whose introduction says 'Note that this policy is currently still in preview.'"
+    },
+    {
+      "n": 23,
+      "where": "controls[2].note; Governance controls",
+      "type": "applicability",
+      "claim": "Disabling Events optimized for a large audience blocks town halls rather than reactions alone.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
+      "quote": "Events optimized for a large audience (On,Off) | -AllowTownhalls (Enabled,Disabled) | Controls whether users with this policy can create events optimized for large audiences, such as town halls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[3].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Town hall audience access is at Teams admin center > Meetings > Events policies > policy > Who can attend events optimized for a large audience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
+      "quote": "Go to Meetings > Events policies. Select an existing policy or create a new one. For events optimized for large audiences, such as town halls, in the Who can attend events optimized for a large audience dropdown list, select one of the following",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[3].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-CsTeamsEventsPolicy -Identity <policy name> -TownhallEventAttendeeAccess EveryoneInOrganizationAndGuests is documented for restricting town hall access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
+      "quote": "To only allow users in your organization and guests to attend events optimized for large audiences created by organizers with this policy, run the following command: Set-CsTeamsEventsPolicy -Identity <policy name> -TownhallEventAttendeeAccess EveryoneInOrganizationAndGuests",
+      "severity": "minor",
+      "fix": "Add to controls[3].note: 'The Set-CsTeamsEventsPolicy reference marks the policy as still in preview.' Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps, whose introduction says 'Note that this policy is currently still in preview.'"
+    },
+    {
+      "n": 26,
+      "where": "controls[3].note; Risk assessment: Data exposure",
+      "type": "default",
+      "claim": "Who can attend events optimized for a large audience defaults to Everyone.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
+      "quote": "By default, both settings are set to Everyone. When users with this policy create events with up to 1,000 attendees or events optimized for large audiences, any user can attend.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[3].note; Risk assessment: Data exposure; Governance guidance",
+      "type": "applicability",
+      "claim": "The events-policy audience setting governs who can attend town halls created by organisers assigned that policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
+      "quote": "Controls who can attend events optimized for large audiences (such as town halls) created by organizers with this policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "front matter: licensing.model, licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Attendee Capacity Packs use an add-on licensing model for Teams Enterprise.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/attendee-capacity-pack",
+      "quote": "Teams Attendee Capacity Packs are add-on licenses for Teams Enterprise that let event organizers host events for up to 100,000 attendees.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Hosting events above 3,000 attendees with engagement capabilities requires purchased Attendee Capacity Packs, subject to the stated legacy Teams Premium exception.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
+      "quote": "To host events with more than 3,000 attendees with engagement capabilities (chat, reactions, raise hand, polls, Q&A), organizations must purchase Attendee Capacity Pack add-on licenses and assign them to organizers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "front matter: licensing.notes; controls[4]; Cost and licensing",
+      "type": "licensing",
+      "claim": "The capacity-pack licence is assigned to the organiser.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
+      "quote": "organizations must purchase Attendee Capacity Pack add-on licenses and assign them to organizers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Attendee Capacity Packs enable event capacities up to 100,000 attendees.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/attendee-capacity-pack",
+      "quote": "Teams Attendee Capacity Packs are add-on licenses for Teams Enterprise that let event organizers host events for up to 100,000 attendees.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "Pack sizes are 5,000, 10,000, 20,000, 35,000, 50,000, 75,000 and 100,000 attendees.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/attendee-capacity-pack",
+      "quote": "They can be purchased to support 5,000, 10,000, 20,000, 35,000, 50,000, 75,000, and 100,000 event attendees.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[4].note; Cost and licensing",
+      "type": "licensing",
+      "claim": "Each organiser can be assigned only one attendee pack.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/attendee-capacity-pack",
+      "quote": "While your organization can purchase multiple packs, each organizer can only be assigned one pack.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "Attendee packs increase event capacity and unlock no other feature capabilities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/attendee-capacity-pack",
+      "quote": "Attendee packs increase capacity for Teams events. They don't unlock any other feature capabilities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.notes; Why it matters; Cost and licensing; Scope",
+      "type": "licensing",
+      "claim": "An active Teams Premium licence purchased before 1 April 2026 retains event capacity up to 100,000 until its current term ends.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/attendee-capacity-pack",
+      "quote": "Organizers with an active Teams Premium license purchased before April 1, 2026, can continue to host events for up to 100,000 attendees until their current Teams Premium term ends.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Why it matters; Scope; Governance guidance; rationale: impact",
+      "type": "licensing",
+      "claim": "An engaged event above 20,000 attendees needs a pack of 35,000 or more, or the described legacy Teams Premium entitlement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/attendee-capacity-pack-manage",
+      "quote": "20K | 20,000; 35K | 35,000; 50K | 50,000; 75K | 75,000; 100K | 100,000. Organizers with an active Teams Premium license purchased before April 1, 2026, can continue to host events for up to 100,000 attendees until their current Teams Premium term ends.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing: Meter",
+      "type": "absence",
+      "claim": "No meter is described specifically for the reactions expansion.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams reactions 100000 attendee capacity pack price metered licensing. Opened events-licensing, attendee-capacity-pack and attendee-capacity-pack-manage; search also returned eCDN purchasing and pricing FAQ excerpts. No reactions-expansion meter was described.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing: Not yet published",
+      "type": "absence",
+      "claim": "The Attendee Capacity Pack Learn pages give pack sizes but do not give prices.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams reactions 100000 attendee capacity pack price metered licensing. Read attendee-capacity-pack and attendee-capacity-pack-manage in full, plus events-licensing; those pages specify capacities and assignment, not pack prices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing: Licence; rationale: cost",
+      "type": "absence",
+      "claim": "No licence specifically for the reactions expansion is published, beyond the documented event-capacity licensing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams reactions 100000 attendee capacity pack price metered licensing. Read events-licensing, attendee-capacity-pack and manage-reactions-meetings; they give general event entitlements and capacity packs, not a separate expansion licence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[4].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Pack assignment is at Teams admin center > Add-on Licenses > Teams Events > Licenses > Assign to new users > Assign Add-on licenses > Attendee pack.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/attendee-capacity-pack-manage",
+      "quote": "Go to Add-on Licenses > Teams Events. On the Licenses tab, select Assign to new users to get started. In the Assign Add-on licenses pane: For each individual user, select the pack size that you want to assign in the Attendee pack column.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[4].api; Governance controls table",
+      "type": "command",
+      "claim": "POST /v1.0/users/{id}/assignLicense is a documented general licence-assignment operation usable for purchased Teams add-on licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0",
+      "quote": "Add or remove licenses for the user to enable or disable their use of Microsoft cloud offerings that the company has licenses to. POST /users/{id | userPrincipalName}/assignLicense. POST https://graph.microsoft.com/v1.0/me/assignLicense",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[4].note; Governance controls table",
+      "type": "command",
+      "claim": "The assignLicense request uses addLicenses objects carrying the licence skuId.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0",
+      "quote": "addLicenses | assignedLicense collection | A collection of assignedLicense objects that specify the licenses to add. \"addLicenses\": [{ \"disabledPlans\": [], \"skuId\": \"f30db892-07e9-47e9-837c-80727f46fd3d\" }]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[4].note; Governance controls table",
+      "type": "command",
+      "claim": "The assignLicense request requires removeLicenses, which can be empty.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0",
+      "quote": "removeLicenses | Guid collection | A collection of skuIds that identify the licenses to remove. Required. Can be an empty collection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[4].note; Scope; Governance controls",
+      "type": "role",
+      "claim": "Managing attendee-pack assignment in the Teams admin center requires Global Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/attendee-capacity-pack-manage",
+      "quote": "You must be assigned the Global Administrator role to access the License Management section and manage all licensing capabilities in the Teams admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[4].note; Scope",
+      "type": "role",
+      "claim": "Teams Administrator has read-only access to the Teams admin center License Management section.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/attendee-capacity-pack-manage",
+      "quote": "Users assigned the Teams Administrator role can access the License Management section in read-only mode and cannot create, modify, or remove license assignments or settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope: Who configures",
+      "type": "role",
+      "claim": "Teams administrators can edit meeting and events policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/using-admin-roles",
+      "quote": "Teams Administrator | Manage the Teams service, and manage and create Microsoft 365 Groups. | Everything in the Microsoft Teams admin center and associated PowerShell controls, including: Manage meetings, including meeting policies, configurations, and conference bridges.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "Teams admin center > Add-on Licenses > Teams Events shows which organisers have attendee packs and their assigned pack sizes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/attendee-capacity-pack-manage",
+      "quote": "To see which organizers have attendee packs assigned to them: In the Teams admin center, go to Add-on Licenses > Teams Events. Assigned pack | Size of the attendee pack assigned to the organizer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Live reactions are emoji feedback displayed during a meeting or event.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/office/express-yourself-in-microsoft-teams-meetings-with-live-reactions-a8323a40-3d07-4129-934b-305370a36e21",
+      "quote": "Choose from a range of live reactions, including: Like [Image of the 3D emoji like reaction]. Your reaction pops up momentarily at the bottom of your meeting and over your profile picture or video feed.",
+      "severity": "minor",
+      "fix": "Add https://support.microsoft.com/office/express-yourself-in-microsoft-teams-meetings-with-live-reactions-a8323a40-3d07-4129-934b-305370a36e21 to sources, titled 'Express yourself in Microsoft Teams meetings with live reactions'. The cited Manage reactions page links to this description."
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "No new data access is described for the reactions expansion.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams 100000 attendees reactions names emoji stream latency attendance engagement report; Teams reactions 100000 attendees sign in permissions app autonomous. Read roadmap, reactions, comparison and licensing pages; no new data-access mechanism is described for the expansion.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "No new sign-in requirement, permission or app is described specifically for the reactions expansion.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams reactions 100000 attendees sign in permissions app autonomous. Read roadmap, manage-reactions-meetings, comparison and events-licensing; the expansion names no new identity or app requirement. General events service-protection eOTP is not a new reactions requirement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The described capability consists of attendees sending reactions, not autonomous actions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "You can send reactions during the event and see the reactions others send, so everyone can share the moment together.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Change & support",
+      "type": "absence",
+      "claim": "Microsoft has not described how the reactions expansion affects stream quality or latency at 100,000 attendees.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams 100000 attendees reactions names emoji stream latency attendance engagement report; \"reactions\" \"100,000\" latency stream. Read roadmap, comparison and Ultra-Low Latency FAQ excerpt; no quality or latency effect attributable to the reactions expansion is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Change & support",
+      "type": "availability",
+      "claim": "Ultra-Low Latency is currently documented for events up to 20,000 attendees.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meetings-events-feature-comparison",
+      "quote": "[Ultra-Low Latency](ultra-low-latency-streaming-events) | Up to 20,000 attendees",
       "severity": null,
       "fix": null
     },
     {
       "n": 54,
-      "where": "Why it matters",
+      "where": "Risk assessment: Data exposure; Open questions",
       "type": "absence",
-      "claim": "No source says existing reactions behaviour changes before the roadmap target.",
+      "claim": "Microsoft has not described whether attendees of the planned events above 20,000 see the identities of reaction senders.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams 100000 town hall reactions tenant events policy default AllowMeetingReactions. Read roadmap, manage-reactions-meetings and meetings-events-feature-comparison; no earlier change date is stated.",
+      "quote": "Searched: \"reactions\" \"town hall\" \"names\" \"100,000\"; Teams 100000 attendees reactions names emoji stream latency attendance engagement report. Read comparison, reactions and live-reactions support page; meeting profile-picture behaviour is stated, not identity display for this planned larger-event case.",
       "severity": null,
       "fix": null
     },
     {
       "n": 55,
-      "where": "Scope: Event type",
-      "type": "availability",
-      "claim": "The comparison page lists reactions for events optimised for large audiences, subject to its current 20,000-attendee limit.",
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "No source says existing reactions behaviour changes before the roadmap target.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meetings-events-feature-comparison",
-      "quote": "Events optimized for large audiences ... Reactions ... checkmark for yes ... Available only for events with up to 20,000 attendees",
+      "source": null,
+      "quote": "Searched: Teams reactions events above 20000 100000 default tenant events policy AllowMeetingReactions. Read roadmap, manage-reactions-meetings, comparison and set-up-events; none states a pre-target change to the existing reactions behaviour.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-26T05:27:20.231Z",
+    "at": "2026-11-26T06:54:01.317Z",
     "summary": {
-      "links": 8,
-      "unreachable": 0,
+      "links": 11,
+      "unreachable": 10,
       "uiPaths": 4,
-      "uiPathsWithMissingWords": 0,
-      "apiCalls": 3,
-      "apiCallsNotOnPage": 0,
+      "uiPathsWithMissingWords": 4,
+      "apiCalls": 4,
+      "apiCallsNotOnPage": 4,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -655,38 +649,53 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/meetings-events-feature-comparison",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/manage-reactions-meetings",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/events-licensing",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/attendee-capacity-pack",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/attendee-capacity-pack-manage",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/set-up-events",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/assign-teams-add-on-licenses",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/using-admin-roles",
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -695,85 +704,122 @@
         "side": "ui",
         "governs": "Default for reactions in organisers' Meeting options",
         "docs": "https://learn.microsoft.com/microsoftteams/manage-reactions-meetings",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Meetings",
           "Meeting policies",
           "Meeting engagement",
           "Reactions"
         ],
-        "missing": []
+        "missing": [
+          "Meetings",
+          "Meeting policies",
+          "Meeting engagement",
+          "Reactions"
+        ]
       },
       {
         "index": 0,
         "side": "api",
         "governs": "Default for reactions in organisers' Meeting options",
         "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps",
-        "reachable": true,
+        "reachable": false,
         "token": "Set-CsTeamsMeetingPolicy",
-        "found": true
+        "found": false
       },
       {
         "index": 2,
         "side": "ui",
         "governs": "Whether users can create events optimised for a large audience (town halls)",
         "docs": "https://learn.microsoft.com/microsoftteams/set-up-events",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Meetings",
           "Events policies",
           "Events optimized for a large audience"
         ],
-        "missing": []
+        "missing": [
+          "Meetings",
+          "Events policies",
+          "Events optimized for a large audience"
+        ]
       },
       {
         "index": 2,
         "side": "api",
         "governs": "Whether users can create events optimised for a large audience (town halls)",
         "docs": "https://learn.microsoft.com/microsoftteams/set-up-events",
-        "reachable": true,
+        "reachable": false,
         "token": "Set-CsTeamsEventsPolicy",
-        "found": true
+        "found": false
       },
       {
         "index": 3,
         "side": "ui",
         "governs": "Who can attend events optimised for a large audience",
         "docs": "https://learn.microsoft.com/microsoftteams/set-up-events",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Meetings",
           "Events policies",
           "Who can attend events optimized for a large audience"
         ],
-        "missing": []
+        "missing": [
+          "Meetings",
+          "Events policies",
+          "Who can attend events optimized for a large audience"
+        ]
       },
       {
         "index": 3,
         "side": "api",
         "governs": "Who can attend events optimised for a large audience",
         "docs": "https://learn.microsoft.com/microsoftteams/set-up-events",
-        "reachable": true,
+        "reachable": false,
         "token": "Set-CsTeamsEventsPolicy",
-        "found": true
+        "found": false
       },
       {
         "index": 4,
         "side": "ui",
         "governs": "Which organisers can host events above 3,000 engaged attendees (Attendee Capacity Pack assignment)",
         "docs": "https://learn.microsoft.com/microsoftteams/attendee-capacity-pack-manage",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Add-on Licenses",
           "Teams Events",
           "Licenses",
           "Assign to new users",
+          "Assign Add-on licenses",
           "Attendee pack"
         ],
-        "missing": []
+        "missing": [
+          "Add-on Licenses",
+          "Teams Events",
+          "Licenses",
+          "Assign to new users",
+          "Assign Add-on licenses",
+          "Attendee pack"
+        ]
+      },
+      {
+        "index": 4,
+        "side": "api",
+        "governs": "Which organisers can host events above 3,000 engaged attendees (Attendee Capacity Pack assignment)",
+        "docs": "https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0",
+        "reachable": false,
+        "token": "/v1.0/users/assignLicense",
+        "found": false
       }
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-26",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

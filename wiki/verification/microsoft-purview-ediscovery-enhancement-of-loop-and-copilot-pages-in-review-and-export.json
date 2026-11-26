@@ -2,36 +2,120 @@
   "slug": "microsoft-purview-ediscovery-enhancement-of-loop-and-copilot-pages-in-review-and-export",
   "roadmapId": 561492,
   "title": "Microsoft Purview eDiscovery: HTML conversion and keyword search for Loop and Copilot Pages files",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-26",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
-  "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-26",
-    "reasons": [
-      "1 blocking finding (claim 40)"
-    ]
-  },
+  "verifierVerdict": "pass",
+  "notes": [
+    "claim 57: severity major on a rationale: impact rating lowered to minor; ratings are judgements and cannot hold a page"
+  ],
+  "hold": null,
   "counts": {
-    "claims": 54,
-    "confirmed": 51,
-    "unconfirmed": 1,
-    "contradicted": 2,
-    "blocker": 1,
+    "claims": 59,
+    "confirmed": 57,
+    "unconfirmed": 2,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 1,
     "minor": 3
   },
-  "summary": "Hold: the statement that conversion runs only when a person selects it overlooks the documented application-permission Graph collection operation. The conversion controls, defaults and premium licensing are otherwise supported, but the claim that exported HTML opens anywhere needs narrowing.",
+  "summary": "The conversion controls, defaults, licensing and roadmap facts are supported. Two descriptive statements need narrowing: Microsoft does not explicitly say that skipping conversion produces no keyword hits or that end users see nothing change. The Customer Key discussion should acknowledge conflicting Learn guidance.",
   "claims": [
     {
       "n": 1,
+      "where": "summary; What's changing; controls[0]",
+      "type": "behaviour",
+      "claim": "eDiscovery can convert .loop and .page files to HTML when adding them to a review set.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-add-to-review-set",
+      "quote": "Select this option to convert supported cloud-native file formats, such as `.loop` and `.page` files (used by Copilot Notebook and Page content), to HTML when adding items to the review set.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; Why it matters; Risk assessment",
+      "type": "behaviour",
+      "claim": "Converted content is indexed and available for keyword search in the review set.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-add-to-review-set",
+      "quote": "Converted content is indexed and available for keyword search in the review set, making it easier to review and analyze.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "summary; What's changing; controls[1]",
+      "type": "behaviour",
+      "claim": "Review-set exports can convert supported .loop and .page files to HTML in the export package.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-review-set-export",
+      "quote": "Convert supported file formats to HTML: This option converts supported cloud-native file formats, such as `.loop` and `.page` files (used by Copilot Notebook and Page content), to HTML during export.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "summary; What's changing; controls[0].note; rationale: risk",
+      "type": "default",
+      "claim": "The add-to-review-set HTML conversion option is not selected by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-add-to-review-set",
+      "quote": "Converted content is indexed and available for keyword search in the review set, making it easier to review and analyze. This option isn't selected by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "summary; What's changing; controls[1].note; rationale: risk",
+      "type": "default",
+      "claim": "The review-set export HTML conversion option is not selected by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-review-set-export",
+      "quote": "This option is useful when your organization's post-export workflows support HTML but lack tooling for native cloud file formats. This option isn't selected by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: defaultState; Governance controls; Autonomy & actions",
+      "type": "default",
+      "claim": "HTML conversion is user-opt-in, chosen for an add-to-review-set process or review-set export.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-review-set-export",
+      "quote": "The Export flyout page appears with the settings to configure the export. Some options are selected by default, but you can change these options.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "summary; Why it matters",
+      "type": "absence",
+      "claim": "No administrator action is required to enable this enhancement.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: eDiscovery Loop page HTML conversion admin enable default; \"Loop\" \"eDiscovery\" \"HTML\" \"enable\" \"tenant\". Read add-to-review-set, review-set export and Copilot Pages eDiscovery pages; both options are unselected and no feature-specific admin enablement is documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; controls[2].note",
+      "type": "record",
+      "claim": "The roadmap describes HTML format support for export from search.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Improves eDiscovery workflows for Loop and Copilot pages by enabling full indexing of page content for keyword search within review sets and adding HTML format support for export from search.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is Launched.",
@@ -42,7 +126,7 @@
       "fix": null
     },
     {
-      "n": 2,
+      "n": 10,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target date is June CY2026.",
@@ -53,7 +137,18 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 11,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap publishes no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
       "claim": "The release phase is General Availability.",
@@ -64,7 +159,7 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 13,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
@@ -75,10 +170,10 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 14,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "Web is the platform listed on the roadmap.",
+      "claim": "The roadmap platform is Web.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -86,222 +181,123 @@
       "fix": null
     },
     {
-      "n": 6,
-      "where": "front matter: previewDate",
-      "type": "record",
-      "claim": "The roadmap supplies no preview date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": null",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "title; What's changing",
-      "type": "record",
-      "claim": "The roadmap describes full indexing of Loop and Copilot Pages content for keyword search within review sets.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Improves eDiscovery workflows for Loop and Copilot pages by enabling full indexing of page content for keyword search within review sets",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "What's changing; controls[2].note; Open questions",
-      "type": "record",
-      "claim": "The roadmap describes HTML format support for export from search.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "adding HTML format support for export from search.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The printed Microsoft Purview portal path reaches the add-to-review-set HTML conversion control.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/edisc-search-add-to-review-set",
-      "quote": "Select a search on the Searches tab, and then select Add to review set. On the Add items to review set flyout, select Add to a new review set or Add to an existing review set.",
-      "severity": "minor",
-      "fix": "The route's entry is confirmed by the already-cited edisc-search-export page. Include the omitted target-selection step, for example: 'eDiscovery > Cases > case > Searches > search > Add to review set > Add to an existing review set > review set > What to include for files from ODSP sites? > Convert supported file formats to HTML'. This is the existing-review-set route on https://learn.microsoft.com/purview/edisc-search-add-to-review-set."
-    },
-    {
-      "n": 10,
-      "where": "controls[0].api; Scope; Governance guidance: At rollout",
-      "type": "command",
-      "claim": "POST /v1.0/security/cases/ediscoveryCases/{eDiscoveryCaseId}/reviewSets/{eDiscoveryReviewSetId}/addToReviewSet uses additionalDataOptions to control collection, including cloudNativeHtmlConversion.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/security-ediscoveryreviewset-addtoreviewset?view=graph-rest-1.0",
-      "quote": "additionalDataOptions | microsoft.graph.security.additionalDataOptions | The options to add items to the review set.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "controls[1].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The printed Microsoft Purview portal path through Review sets, All items, Action > Export and Export items with item report reaches HTML conversion.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/edisc-review-set-export",
-      "quote": "Select the review set that you want to export and select the All items tab. ... Select Action > Export on the command bar. ... Export items with item report ... Convert supported file formats to HTML",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "controls[1].api; controls[1].note; Governance controls",
-      "type": "absence",
-      "claim": "No automation option for HTML conversion in a review-set export is documented at the time of writing.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: eDiscovery review set export HTML cloudNativeHtmlConversion exportOptions PowerShell Graph beta. Read ediscoveryExportOperation v1.0 and reviewSet export beta; exportOptions has no cloud-native HTML value. Graph PowerShell search excerpts likewise expose exportOptions, not HTML conversion.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "controls[2].ui; controls[2].api; What's changing; Open questions",
-      "type": "absence",
-      "claim": "Learn documents no UI or API option for exporting .loop and .page files as HTML directly from a search in November 2026.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: eDiscovery search export Loop page HTML conversion additionalOptions. Read edisc-search-export, exportResult v1.0 and ediscoverySearchExportOperation beta. The UI file options and API additionalOptions omit cloud-native HTML; htmlTranscripts applies to contextual chat messages.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "controls[3].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Settings > Role groups > Role groups for Microsoft Purview solutions > eDiscovery Manager > Edit > Manage eDiscovery Manager > Choose users is the membership-assignment path.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/edisc-permissions",
-      "quote": "Go to Settings > Role groups. On Role groups for Microsoft Purview solutions, select eDiscovery Manager. ... Select Edit. On Manage eDiscovery Manager, select Choose users or Choose groups.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 15,
-      "where": "controls[3].api; controls[3].note; Governance controls table",
-      "type": "command",
-      "claim": "Add-RoleGroupMember \"eDiscoveryManager\" -Member <name of security group> adds a mail-enabled security group to the eDiscovery Managers subgroup through Security & Compliance PowerShell.",
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-07-13T23:07:14.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/edisc-permissions",
-      "quote": "You can add a mail-enabled security group as a member of the eDiscovery Managers subgroup ... by using the Add-RoleGroupMember cmdlet in Security & Compliance PowerShell.",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-07-13T23:07:14\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 16,
-      "where": "front matter: defaultState; summary; rationale: risk",
-      "type": "default",
-      "claim": "The conversion capability is user-opt-in, with the case user choosing conversion for a collection or review-set export.",
+      "where": "title; front matter: products",
+      "type": "record",
+      "claim": "This enhancement belongs to Microsoft Purview eDiscovery.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/edisc-search-add-to-review-set",
-      "quote": "Convert supported file formats to HTML: Select this option to convert supported cloud-native file formats ... to HTML when adding items to the review set.",
+      "source": "roadmap record",
+      "quote": "\"title\": \"Microsoft Purview: eDiscovery – Enhancement of Loop and Copilot Pages in Review and Export\", \"products\": [\"Microsoft Purview\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 17,
-      "where": "controls[0].note; What's changing; Governance controls; Why it matters",
-      "type": "default",
-      "claim": "The add-to-review-set HTML conversion option is not selected by default.",
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "The stated Purview route through Cases, Searches, Add to review set, an existing review set and the ODSP section reaches Convert supported file formats to HTML.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/edisc-search-add-to-review-set",
-      "quote": "Converted content is indexed and available for keyword search in the review set, making it easier to review and analyze. This option isn't selected by default.",
+      "quote": "Select a search on the Searches tab, and then select Add to review set. On the Add items to review set flyout, select Add to a new review set or Add to an existing review set.",
       "severity": null,
       "fix": null
     },
     {
       "n": 18,
-      "where": "controls[1].note; What's changing; Governance controls; Why it matters",
-      "type": "default",
-      "claim": "The review-set export HTML conversion option is not selected by default.",
+      "where": "controls[0].api; Scope: Automation",
+      "type": "command",
+      "claim": "POST /v1.0/security/cases/ediscoveryCases/{eDiscoveryCaseId}/reviewSets/{eDiscoveryReviewSetId}/addToReviewSet adds search content to a review set and accepts additionalDataOptions.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/edisc-review-set-export",
-      "quote": "This option is useful when your organization's post-export workflows support HTML but lack tooling for native cloud file formats. This option isn't selected by default.",
+      "source": "https://learn.microsoft.com/graph/api/security-ediscoveryreviewset-addtoreviewset?view=graph-rest-1.0",
+      "quote": "POST https://graph.microsoft.com/v1.0/security/cases/ediscoveryCases/58399dff-cebe-478f-b1af-d3227f1fd645/reviewSets/63ef0fd7-0db2-45eb-a9d7-7d75c8239873/addToReviewSet",
       "severity": null,
       "fix": null
     },
     {
       "n": 19,
-      "where": "summary",
-      "type": "absence",
-      "claim": "No administrator action is documented as necessary to enable this conversion enhancement separately.",
+      "where": "controls[0].note; Governance guidance: At rollout; Governance controls",
+      "type": "command",
+      "claim": "The additionalDataOptions enum has a cloudNativeHtmlConversion value for HTML conversion during review-set collection.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: eDiscovery Convert supported file formats to HTML tenant admin switch default Loop Pages. Read Copilot Pages eDiscovery prerequisites, add-to-review-set and review-set export instructions. They document case-level process choices, not a separate tenant enablement switch.",
+      "source": "https://learn.microsoft.com/graph/api/resources/security-ediscoveryaddtoreviewsetoperation?view=graph-rest-1.0",
+      "quote": "cloudNativeHtmlConversion | Convert items to cloud-native HTML format during review set collection.",
       "severity": null,
       "fix": null
     },
     {
       "n": 20,
-      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; Scope",
-      "type": "licensing",
-      "claim": "The enhancement is included in premium eDiscovery entitlement available with Office 365 E5, Microsoft 365 E5 or related E5 add-on subscriptions.",
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The addToReviewSet action's parameter table does not list cloudNativeHtmlConversion, although its linked resource reference does.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/edisc",
-      "quote": "If your organization has an Office 365 E5 or Microsoft 365 E5 subscription (or related E5 add-on subscriptions), you can further manage cases and analyze content by using premium eDiscovery features.",
+      "source": null,
+      "quote": "Searched: cloudNativeHtmlConversion in the opened v1.0 addToReviewSet action and ediscoveryAddToReviewSetOperation resource. The action lists nine additionalDataOptions values without it; the linked resource explicitly lists it.",
       "severity": null,
       "fix": null
     },
     {
       "n": 21,
-      "where": "licensing.notes; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "Review of Loop content requires a Premium licence.",
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The resource documents cloudNativeHtmlConversion as an evolvable enum member returned with Prefer: include-unknown-enum-members.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-compliance-summary",
-      "quote": "Supported for search/collection, review (Premium license required), and export as HTML (Premium license required) or original format.",
+      "source": "https://learn.microsoft.com/graph/api/resources/security-ediscoveryaddtoreviewsetoperation?view=graph-rest-1.0",
+      "quote": "Use the Prefer: include-unknown-enum-members request header to get the following values from this evolvable enum: advancedIndexing, listAttachments, htmlTranscripts, messageConversationExpansion, locationsWithoutHits, allItemsInFolder, cloudNativeHtmlConversion.",
       "severity": null,
       "fix": null
     },
     {
       "n": 22,
-      "where": "licensing.notes; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "HTML export of Loop content requires a Premium licence.",
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "The stated route through Cases, Review sets, All items, Action, Export and Export items with item report reaches the HTML conversion option.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-compliance-summary",
-      "quote": "export as HTML (Premium license required) or original format.",
-      "severity": null,
-      "fix": null
+      "source": "https://learn.microsoft.com/purview/edisc-review-set-export",
+      "quote": "Select the review set that you want to export and select the All items tab. In the review set, select the items to export. Select Action > Export on the command bar.",
+      "severity": "minor",
+      "fix": "Include the omitted item-selection step: 'eDiscovery > Cases > case > Review sets > review set > All items > items > Action > Export > Export type > Export items with item report > Convert supported file formats to HTML', as documented at https://learn.microsoft.com/purview/edisc-review-set-export."
     },
     {
       "n": 23,
-      "where": "Cost and licensing: Licence",
-      "type": "licensing",
-      "claim": "Both administrators and users working with eDiscovery cases require a Microsoft 365 Enterprise E3 or E5 licence.",
+      "where": "controls[1].api; controls[1].note; Governance controls",
+      "type": "absence",
+      "claim": "No automation option for HTML conversion during a review-set export is documented, and Graph exportOptions lists no such value.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/edisc-get-started",
-      "quote": "Both admins and users working with eDiscovery cases require a Microsoft 365 Enterprise E3 or E5 license.",
+      "source": null,
+      "quote": "Searched: eDiscovery review set export HTML conversion Graph exportOptions cloudNativeHtmlConversion PowerShell. Read reviewSet export v1.0, export-operation v1.0 and beta, and Graph PowerShell search excerpts; no HTML-conversion export option was documented.",
       "severity": null,
       "fix": null
     },
     {
       "n": 24,
-      "where": "Why it matters; Scope: Content; Cost and licensing",
-      "type": "behaviour",
-      "claim": "A Copilot Page is a .page file stored in SharePoint, OneDrive or SharePoint Embedded.",
+      "where": "controls[2].ui and api; What's changing; Open questions",
+      "type": "absence",
+      "claim": "Learn documents no .loop or .page HTML conversion control for exports from search in either the portal instructions or Graph exportResult options.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/copilot-pages-ediscovery",
-      "quote": "A Copilot Page is a shareable .page file. ... A file stored in SharePoint, OneDrive, or SharePoint Embedded, similar to how a Word document is stored.",
+      "source": null,
+      "quote": "Searched: eDiscovery export search results loop page Convert supported file formats HTML exportResult. Read the full search-export page and exportResult parameter table; neither documents this control. Search results describe conversion for review sets, not search exports.",
       "severity": null,
       "fix": null
     },
     {
       "n": 25,
-      "where": "Why it matters",
+      "where": "Why it matters; Scope; Cost and licensing",
       "type": "behaviour",
-      "claim": "eDiscovery treats a Copilot Page as a document rather than a message.",
+      "claim": "A Copilot Page is a .page file stored in SharePoint, OneDrive or SharePoint Embedded.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/loop/copilot-pages-ediscovery",
-      "quote": "A collaborative document, not a form of electronic communication such as an email or Teams message.",
+      "quote": "A Copilot Page is a shareable `.page` file. ... A file stored in SharePoint, OneDrive, or SharePoint Embedded, similar to how a Word document is stored.",
       "severity": null,
       "fix": null
     },
@@ -309,40 +305,51 @@
       "n": 26,
       "where": "Why it matters",
       "type": "behaviour",
-      "claim": "Downloaded .page files do not open directly in the native Copilot Pages experience.",
+      "claim": "eDiscovery treats a Copilot Page as a collaborative document rather than an email or Teams message.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/loop/copilot-pages-ediscovery",
-      "quote": "Downloaded .page files don't open directly in the native Copilot Pages experience.",
+      "quote": "A collaborative document, not a form of electronic communication such as an email or Teams message.",
       "severity": null,
       "fix": null
     },
     {
       "n": 27,
-      "where": "Why it matters; Risk assessment: Data exposure",
+      "where": "Why it matters",
       "type": "behaviour",
-      "claim": "Exported HTML opens anywhere, outside Microsoft 365 without the Loop or Copilot Pages apps.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: eDiscovery Loop Pages exported HTML view browser outside Microsoft 365; Loop HTML eDiscovery browser; Copilot Pages HTML anywhere. Read Copilot Pages eDiscovery and review-set export. Microsoft states suitability for workflows supporting HTML, not universal compatibility.",
-      "severity": "major",
-      "fix": "Replace 'They can also give outside parties HTML that opens anywhere' with 'They can export HTML for post-export workflows that support HTML but lack tooling for native cloud file formats.' Replace the corresponding Data exposure sentence with 'HTML conversion supports post-export workflows that support HTML but lack tooling for native cloud file formats.' Source: https://learn.microsoft.com/purview/edisc-review-set-export."
+      "claim": "Copilot Pages can be collected and exported in their original .page format without HTML conversion.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/copilot-pages-ediscovery",
+      "quote": "Microsoft Purview eDiscovery supports collecting and exporting Copilot Pages in their original format.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 28,
-      "where": "summary; What's changing; Why it matters; Risk assessment: Data exposure",
+      "where": "Why it matters",
       "type": "behaviour",
-      "claim": "Selecting conversion converts .loop and .page files to HTML and makes the converted content indexed and keyword-searchable in the review set.",
+      "claim": "Downloaded .page files do not open directly in the native Copilot Pages experience.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/edisc-search-add-to-review-set",
-      "quote": "Select this option to convert supported cloud-native file formats, such as .loop and .page files ... to HTML when adding items to the review set. Converted content is indexed and available for keyword search in the review set",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/copilot-pages-ediscovery",
+      "quote": "Downloaded `.page` files don't open directly in the native Copilot Pages experience. To view a supported file in its native experience, upload it to OneDrive, and then open it from there.",
       "severity": null,
       "fix": null
     },
     {
       "n": 29,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Adding Pages to a review set without conversion produces no keyword hits in those files.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: eDiscovery Loop page HTML conversion keyword search without conversion; \"eDiscovery\" \"Loop\" \"keyword\" \"conversion\". Read Copilot Pages, add-to-review-set and supported-file-type excerpts; none explicitly states that unconverted Pages produce no keyword hits.",
+      "severity": "major",
+      "fix": "Replace 'a team that doesn't know about the option may add Pages to a review set without conversion and get no keyword hits in them' with 'a team that does not know about the option may miss the documented conversion workflow that indexes Page content for keyword search'."
+    },
+    {
+      "n": 30,
       "where": "Risk assessment: Data exposure; Governance controls",
       "type": "role",
-      "claim": "Reviewer provides read-only access to review sets in cases where the user is a member.",
+      "claim": "Reviewer provides read-only review-set access in cases where the user is a member.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/api/security-ediscoveryreviewset-addtoreviewset?view=graph-rest-1.0",
       "quote": "Reviewer. Provides read-only access to review sets within eDiscovery cases where the user is a member. Reviewers can view and tag documents but cannot perform other case management tasks.",
@@ -350,32 +357,43 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 31,
       "where": "Risk assessment: Data exposure; rationale: risk",
       "type": "applicability",
-      "claim": "Case membership and eDiscovery permissions govern access to converted review-set content.",
+      "claim": "Case membership and eDiscovery roles govern access to converted content in review sets.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/edisc-permissions",
-      "quote": "Users who are assigned this role can see and open the list of cases that they're members of. After the user accesses an eDiscovery case, they can select Review sets to access case data.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "Risk assessment: Data exposure",
-      "type": "date",
-      "claim": "Review-set export content must be downloaded within 30 days after the export process completes.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/edisc-review-set-export",
-      "quote": "you must download the content from an export process within 30 days after the export process completes.",
+      "quote": "This role lets users access review sets in eDiscovery. Users who are assigned this role can see and open the list of cases that they're members of. After the user accesses an eDiscovery case, they can select Review sets to access case data.",
       "severity": null,
       "fix": null
     },
     {
       "n": 32,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "HTML conversion is useful for post-export workflows that support HTML but lack tooling for native cloud file formats.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-review-set-export",
+      "quote": "This option is useful when your organization's post-export workflows support HTML but lack tooling for native cloud file formats.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Data exposure",
+      "type": "date",
+      "claim": "Review-set export content must be downloaded within 30 days after the export process completes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-review-set-export",
+      "quote": "However, you must download the content from an export process within 30 days after the export process completes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Review-set items and metadata are copied into Microsoft-managed Azure Storage dedicated to the case.",
+      "claim": "Review-set content is copied to Microsoft-managed Azure Storage dedicated to the case.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/edisc-search-add-to-review-set",
       "quote": "When you add content to a review set, the items and their metadata are copied to a Microsoft-managed Azure Storage location dedicated to the case.",
@@ -383,18 +401,18 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 35,
       "where": "Risk assessment: Data exposure",
       "type": "applicability",
       "claim": "Customer Key encrypts review-set content at rest when the tenant is configured with Customer Key.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/edisc-search-add-to-review-set",
-      "quote": "Yes. If your tenant is configured with Customer Key, review set content at rest is encrypted with the customer-managed key.",
+      "quote": "Does Customer Key apply to review set content? | Yes. If your tenant is configured with Customer Key, review set content at rest is encrypted with the customer-managed key.",
       "severity": "minor",
-      "fix": "Keep the cited statement, then add: 'The search-export page's CMK direct-export preview section says data at rest in a review set is not included at this time; the two Learn pages disagree.' Cite https://learn.microsoft.com/purview/edisc-search-export#enable-cmk-customer-managed-key-for-direct-exports-preview."
+      "fix": "Append: 'The Learn search-export page's CMK direct-export preview section differs: it says, \"Data at rest in an eDiscovery review set isn't included at this time.\" Confirm the applicable protection before relying on it.' Cite https://learn.microsoft.com/purview/edisc-search-export#enable-cmk-customer-managed-key-for-direct-exports-preview."
     },
     {
-      "n": 34,
+      "n": 36,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
       "claim": "eDiscovery supports decrypting Pages protected by supported Microsoft encryption technologies.",
@@ -405,10 +423,10 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 37,
       "where": "Risk assessment: Security & identity",
       "type": "role",
-      "claim": "The reviewer needs the RMS Decrypt role for decryption.",
+      "claim": "The reviewer must have the RMS Decrypt role for that decryption.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/loop/copilot-pages-ediscovery",
       "quote": "The reviewer must have the RMS Decrypt role.",
@@ -416,7 +434,7 @@
       "fix": null
     },
     {
-      "n": 36,
+      "n": 38,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
       "claim": "Decryption support varies by eDiscovery tier.",
@@ -427,32 +445,21 @@
       "fix": null
     },
     {
-      "n": 37,
-      "where": "Risk assessment: Change & support; Governance guidance: Before rollout",
-      "type": "behaviour",
-      "claim": "Selecting a user's OneDrive as a data source does not include their Copilot Pages or Copilot Notebooks.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/copilot-pages-ediscovery",
-      "quote": "Selecting a user's OneDrive as a data source doesn't include their Copilot Pages or Copilot Notebooks.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "Risk assessment: Change & support; Scope; Governance guidance: Before rollout",
-      "type": "behaviour",
-      "claim": "The user's SharePoint Embedded container must be included as a separate data source when collecting their Pages.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/copilot-pages-ediscovery",
-      "quote": "Include the user's SharePoint Embedded container as a separate data source.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 39,
+      "where": "Risk assessment: Change & support; Scope",
+      "type": "applicability",
+      "claim": "Selecting a user's OneDrive does not include their Copilot Pages or Notebooks; their SharePoint Embedded container must be included separately.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/copilot-pages-ediscovery",
+      "quote": "Selecting a user's OneDrive as a data source doesn't include their Copilot Pages or Copilot Notebooks. Include the user's SharePoint Embedded container as a separate data source.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Adding SharePoint items to a review set or exporting them can record a FileAccessed audit event.",
+      "claim": "Adding SharePoint items to a review set or exporting them might record a FileAccessed audit event.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/edisc-search-export",
       "quote": "When you add SharePoint items to a review set or export them from eDiscovery, a FileAccessed audit event might be recorded in the Microsoft 365 audit log.",
@@ -460,54 +467,65 @@
       "fix": null
     },
     {
-      "n": 40,
-      "where": "Risk assessment: Autonomy & actions; rationale: risk",
-      "type": "behaviour",
-      "claim": "Conversion runs only when a person selects the option in an add-to-review-set or export process.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/purview/edisc",
-      "quote": "Graph API app-only authentication: Graph API calls are made by the application itself, without a user context.",
-      "severity": "blocker",
-      "fix": "Replace the Autonomy & actions sentence with 'In the portal, conversion is an option selected for an add-to-review-set or review-set export process; both options are unselected by default.' Replace the first sentence of the risk rationale with 'Low. Both portal conversion options are unselected by default.' Do not imply that the Graph collection operation requires a person to select the option for each execution: its v1.0 reference supports application permissions, and its additionalDataOptions enum documents cloudNativeHtmlConversion."
-    },
-    {
       "n": 41,
-      "where": "Scope: Who uses it",
-      "type": "role",
-      "claim": "Users require Preview and Export roles to preview and export content with premium eDiscovery features enabled.",
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The enhancement is included within licensed premium eDiscovery functionality.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/edisc-permissions",
-      "quote": "Users must be assigned the Preview and Export roles to preview and export content when premium eDiscovery features are enabled.",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-compliance-summary",
+      "quote": "Purview eDiscovery: Supported for search/collection, review (Premium license required), and export as HTML (Premium license required) or original format.",
       "severity": null,
       "fix": null
     },
     {
       "n": 42,
-      "where": "Scope: Who uses it; controls[3].governs; Governance guidance: Before rollout",
-      "type": "role",
-      "claim": "eDiscovery Managers can prepare content for analysis and export search results.",
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "Organisations with Office 365 E5, Microsoft 365 E5 or related E5 add-on subscriptions can use premium eDiscovery features.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/edisc-permissions",
-      "quote": "An eDiscovery Manager can ... perform various search-related actions such as preview and export search results in eDiscovery. ... This role ... also lets them prepare search results for analysis when premium eDiscovery features are enabled.",
+      "source": "https://learn.microsoft.com/purview/edisc",
+      "quote": "If your organization has an Office 365 E5 or Microsoft 365 E5 subscription (or related E5 add-on subscriptions), you can further manage cases and analyze content by using premium eDiscovery features.",
       "severity": null,
       "fix": null
     },
     {
       "n": 43,
-      "where": "Governance controls",
-      "type": "role",
-      "claim": "Members of the eDiscovery Manager subgroup can only access and manage cases they create.",
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The Loop governance summary requires premium eDiscovery licensing for review.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/edisc-permissions",
-      "quote": "eDiscovery Managers can only access and manage the cases they create. They can't access or manage cases created by other eDiscovery Managers.",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-compliance-summary",
+      "quote": "Purview eDiscovery: Supported for search/collection, review (Premium license required), and export as HTML (Premium license required) or original format.",
       "severity": null,
       "fix": null
     },
     {
       "n": 44,
-      "where": "Cost and licensing: Meter; rationale: cost",
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The Loop governance summary requires premium eDiscovery licensing for export as HTML.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-compliance-summary",
+      "quote": "export as HTML (Premium license required) or original format",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Get started page says both admins and users working with cases require Microsoft 365 Enterprise E3 or E5.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-get-started",
+      "quote": "Both admins and users working with eDiscovery cases require a Microsoft 365 Enterprise E3 or E5 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing; rationale: cost",
       "type": "cost",
-      "claim": "Storage of Microsoft 365 data in eDiscovery is included in the enterprise subscription and is not subject to pay-as-you-go billing.",
+      "claim": "Microsoft 365 data storage is included in the enterprise subscription and is not subject to pay-as-you-go billing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/edisc-billing",
       "quote": "Microsoft 365 data: Non-AI data from Microsoft 365 services and applications. ... This data storage is included in your enterprise subscription and isn't subject to pay-as-you-go billing.",
@@ -515,10 +533,10 @@
       "fix": null
     },
     {
-      "n": 45,
-      "where": "Cost and licensing: Meter",
+      "n": 47,
+      "where": "Cost and licensing",
       "type": "cost",
-      "claim": "Storage of Microsoft 365 AI data is included in the enterprise subscription and is not subject to pay-as-you-go billing.",
+      "claim": "Microsoft 365 AI data storage is also included and is not subject to pay-as-you-go billing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/edisc-billing",
       "quote": "Microsoft 365 AI data: AI data from Microsoft 365 services and applications. ... This data storage is included in your enterprise subscription and isn't subject to pay-as-you-go billing.",
@@ -526,176 +544,209 @@
       "fix": null
     },
     {
-      "n": 46,
-      "where": "Cost and licensing: Meter",
-      "type": "cost",
-      "claim": "Non-Microsoft 365 AI data, including Copilot in Fabric and Security Copilot item classes, is subject to pay-as-you-go storage billing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/edisc-billing",
-      "quote": "This data type includes Copilot in Microsoft Fabric, Microsoft Security Copilot, and any connected or cloud AI application. This data storage isn't included in your enterprise subscription and is subject to pay-as-you-go billing.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "Cost and licensing: Meter",
-      "type": "applicability",
-      "claim": "Loop and Page files stored in Microsoft 365 file services are not the non-Microsoft 365 AI message item classes listed for storage billing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/edisc-billing",
-      "quote": "Microsoft 365 data ... includes data from Microsoft services like Exchange, SharePoint, OneDrive, and others. ... IPM.SkypeTeams.Message.Copilot.Fabric.* ... IPM.SkypeTeams.Message.Copilot.Security.SecurityCopilot",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 48,
-      "where": "Cost and licensing: Meter",
-      "type": "absence",
-      "claim": "The billing page documents no separate HTML conversion charge in November 2026.",
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Non-Microsoft 365 AI data storage is subject to pay-as-you-go billing, including data identified by Copilot in Fabric and Security Copilot item classes.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: eDiscovery HTML conversion Loop Pages separate price billing. Read edisc-billing in full: subscription storage, non-Microsoft 365 AI storage and E3 Graph export billing are documented; no separate HTML conversion charge is named.",
+      "source": "https://learn.microsoft.com/purview/edisc-billing",
+      "quote": "This data storage isn't included in your enterprise subscription and is subject to pay-as-you-go billing. Data for non-Microsoft 365 services and applications is identified by ItemClass.",
       "severity": null,
       "fix": null
     },
     {
       "n": 49,
-      "where": "Governance controls; Open questions",
-      "type": "absence",
-      "claim": "The v1.0 addToReviewSet action parameter table omits cloudNativeHtmlConversion from its additionalDataOptions values.",
+      "where": "Cost and licensing",
+      "type": "applicability",
+      "claim": "Loop and Page files in Microsoft 365 storage are not the non-Microsoft 365 AI message item classes listed by the billing page.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: cloudNativeHtmlConversion in the fetched v1.0 addToReviewSet parameter table. Its additionalDataOptions list ends with allItemsInFolder; the linked operation resource, separately read, includes cloudNativeHtmlConversion.",
+      "source": "https://learn.microsoft.com/purview/edisc-billing",
+      "quote": "Microsoft 365 data: Non-AI data from Microsoft 365 services and applications. This data type includes data from Microsoft services like Exchange, SharePoint, OneDrive, and others.",
       "severity": null,
       "fix": null
     },
     {
       "n": 50,
-      "where": "controls[0].note; Governance controls; Governance guidance: At rollout",
-      "type": "command",
-      "claim": "The v1.0 additionalDataOptions enum documents cloudNativeHtmlConversion as converting items during review-set collection.",
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The billing page describes no separate charge for HTML conversion at the time of writing.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/resources/security-ediscoveryaddtoreviewsetoperation?view=graph-rest-1.0",
-      "quote": "cloudNativeHtmlConversion | Convert items to cloud-native HTML format during review set collection.",
+      "source": null,
+      "quote": "Searched: eDiscovery HTML conversion Loop Pages billing charge. Read the full eDiscovery billing page and conversion instructions; billing describes data storage and E3 Graph export usage, not a separate HTML-conversion charge.",
       "severity": null,
       "fix": null
     },
     {
       "n": 51,
-      "where": "Governance controls",
-      "type": "command",
-      "claim": "The resource page lists cloudNativeHtmlConversion among evolvable enum values returned using Prefer: include-unknown-enum-members.",
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "Settings > Role groups > Role groups for Microsoft Purview solutions > eDiscovery Manager > Edit > Manage eDiscovery Manager > Choose users is the documented membership route.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/resources/security-ediscoveryaddtoreviewsetoperation?view=graph-rest-1.0",
-      "quote": "Use the Prefer: include-unknown-enum-members request header to get ... advancedIndexing, listAttachments, htmlTranscripts, messageConversationExpansion, locationsWithoutHits, allItemsInFolder, cloudNativeHtmlConversion.",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "Go to Settings > Role groups. On Role groups for Microsoft Purview solutions, select eDiscovery Manager. ... Select Edit. On Manage eDiscovery Manager, select Choose users or Choose groups.",
       "severity": null,
       "fix": null
     },
     {
       "n": 52,
-      "where": "Governance controls",
-      "type": "role",
-      "claim": "The delegated Graph review-set access documentation lists eDiscovery Manager, eDiscovery Administrator and Reviewer as supported Purview roles.",
+      "where": "controls[3].api; controls[3].note",
+      "type": "command",
+      "claim": "Add-RoleGroupMember \"eDiscoveryManager\" -Member <name of security group> in Security & Compliance PowerShell adds a mail-enabled security group to the eDiscovery Managers subgroup.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/security-ediscoveryreviewset-addtoreviewset?view=graph-rest-1.0",
-      "quote": "For delegated access using work or school accounts, the signed-in user must be assigned a supported Microsoft Purview role ... eDiscovery Manager ... eDiscovery Administrator ... Reviewer.",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "You can add a mail-enabled security group as a member of the eDiscovery Managers subgroup ... by using the Add-RoleGroupMember cmdlet in Security & Compliance PowerShell. ... Add-RoleGroupMember \"eDiscoveryManager\" -Member <name of security group>",
       "severity": null,
       "fix": null
     },
     {
       "n": 53,
-      "where": "Governance guidance: Before rollout, second bullet",
-      "type": "consistency",
-      "claim": "The checklist directs readers to configure container data-source scope, but the controls table has no corresponding row.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Add each relevant user's SharePoint Embedded container as a data source ... The table covers collection conversion, export conversion, search-export HTML and eDiscovery Manager membership, not data-source scope.",
-      "severity": "minor",
-      "fix": "Remove the checklist bullet 'Add each relevant user's SharePoint Embedded container as a data source in cases that cover Copilot Pages, because Learn says selecting their OneDrive doesn't include them.' The factual data-source prerequisite can remain in Scope and Risk assessment; do not add a control row as part of this correction."
+      "where": "Scope; Governance guidance: Before rollout; controls[3].governs",
+      "type": "role",
+      "claim": "eDiscovery Manager members can export search results and prepare search results for premium review-set analysis.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "Export | ... eDiscovery Manager & Administrator ... This role lets users export search results to a local computer. It also lets them prepare search results for analysis when premium eDiscovery features are enabled.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 54,
-      "where": "summary; What's changing; Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "Review-set export offers the same-named HTML conversion option for supported .loop and .page files.",
+      "where": "Scope",
+      "type": "role",
+      "claim": "Users need Preview and Export roles to preview and export content when premium features are enabled.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/edisc-review-set-export",
-      "quote": "Convert supported file formats to HTML: This option converts supported cloud-native file formats, such as .loop and .page files (used by Copilot Notebook and Page content), to HTML during export.",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "Users must be assigned the Preview and Export roles to preview and export content when premium eDiscovery features are enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Delegated Graph access requires a supported Purview role, with eDiscovery Manager or Administrator for management and Reviewer for read-only review-set access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/security-ediscoveryreviewset-addtoreviewset?view=graph-rest-1.0",
+      "quote": "For delegated access using work or school accounts, the signed-in user must be assigned a supported Microsoft Purview role through one of the following options: ... eDiscovery Manager ... eDiscovery Administrator ... Reviewer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "The eDiscovery Manager subgroup can only access and manage cases its members create.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "eDiscovery Managers can only access and manage the cases they create. They can't access or manage cases created by other eDiscovery Managers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "rationale: impact",
+      "type": "behaviour",
+      "claim": "End users see nothing change in Loop or Copilot Pages.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Loop\" \"eDiscovery\" \"HTML\" \"enable\" \"tenant\"; read Copilot Pages eDiscovery, Loop compliance summary and both conversion instructions. They describe case workflows, but do not explicitly state an exhaustive audience or unchanged native end-user experience.",
+      "severity": "minor",
+      "fix": "Replace the impact rationale with 'Low. The documented conversion options are in eDiscovery add-to-review-set and review-set export workflows.'"
+    },
+    {
+      "n": 58,
+      "where": "Open questions: .loop coverage",
+      "type": "absence",
+      "claim": "Whether HTML conversion covers every .loop file, including components shared in Teams and Outlook, is not explicitly documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"eDiscovery\" \"Loop\" \"keyword\" \"conversion\"; eDiscovery export search results loop page Convert supported file formats HTML. Read conversion instructions and Loop compliance summary; conversion names supported formats such as .loop and .page, not exhaustive component coverage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Open questions: conversion metadata",
+      "type": "absence",
+      "claim": "Preservation of version and authorship metadata within the converted HTML copy is not explicitly documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"eDiscovery\" \"HTML\" \"metadata\" \"page\". Read Copilot Pages version history, conversion instructions, search-export metadata guidance and document-metadata search excerpts; report metadata is described, but preservation inside converted HTML is not.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-26T05:27:19.100Z",
+    "at": "2026-11-26T06:53:59.167Z",
     "summary": {
       "links": 14,
-      "unreachable": 0,
+      "unreachable": 13,
       "uiPaths": 3,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 3,
       "apiCalls": 2,
-      "apiCallsNotOnPage": 0,
+      "apiCallsNotOnPage": 2,
       "roadmapDrift": 0
     },
     "linkChecks": [
       {
         "url": "https://learn.microsoft.com/microsoft-365/loop/copilot-pages-ediscovery",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/loop/loop-compliance-summary",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/purview/edisc-search-add-to-review-set",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/purview/edisc-review-set-export",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/purview/edisc-search-export",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/purview/edisc",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/purview/edisc-get-started",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/purview/edisc-billing",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/purview/edisc-permissions",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/graph/api/resources/security-ediscoveryaddtoreviewsetoperation?view=graph-rest-1.0",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/graph/api/resources/security-ediscoveryexportoperation?view=graph-rest-1.0",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/graph/api/security-ediscoverysearch-exportresult?view=graph-rest-1.0",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://www.microsoft.com/microsoft-365/roadmap?id=561492",
@@ -704,8 +755,8 @@
       },
       {
         "url": "https://learn.microsoft.com/graph/api/security-ediscoveryreviewset-addtoreviewset?view=graph-rest-1.0",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -714,7 +765,7 @@
         "side": "ui",
         "governs": "Whether .loop and .page files are converted to HTML and indexed when added to a review set",
         "docs": "https://learn.microsoft.com/purview/edisc-search-add-to-review-set",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "eDiscovery",
           "Cases",
@@ -722,26 +773,39 @@
           "Searches",
           "search",
           "Add to review set",
+          "Add to an existing review set",
+          "review set",
           "What to include for files from ODSP sites?",
           "Convert supported file formats to HTML"
         ],
-        "missing": []
+        "missing": [
+          "eDiscovery",
+          "Cases",
+          "case",
+          "Searches",
+          "search",
+          "Add to review set",
+          "Add to an existing review set",
+          "review set",
+          "What to include for files from ODSP sites?",
+          "Convert supported file formats to HTML"
+        ]
       },
       {
         "index": 0,
         "side": "api",
         "governs": "Whether .loop and .page files are converted to HTML and indexed when added to a review set",
         "docs": "https://learn.microsoft.com/graph/api/security-ediscoveryreviewset-addtoreviewset?view=graph-rest-1.0",
-        "reachable": true,
+        "reachable": false,
         "token": "/v1.0/security/cases",
-        "found": true
+        "found": false
       },
       {
         "index": 1,
         "side": "ui",
         "governs": "Whether .loop and .page files are converted to HTML in a review-set export",
         "docs": "https://learn.microsoft.com/purview/edisc-review-set-export",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "eDiscovery",
           "Cases",
@@ -755,14 +819,26 @@
           "Export items with item report",
           "Convert supported file formats to HTML"
         ],
-        "missing": []
+        "missing": [
+          "eDiscovery",
+          "Cases",
+          "case",
+          "Review sets",
+          "review set",
+          "All items",
+          "Action",
+          "Export",
+          "Export type",
+          "Export items with item report",
+          "Convert supported file formats to HTML"
+        ]
       },
       {
         "index": 3,
         "side": "ui",
         "governs": "Who can add content to review sets and export it (eDiscovery Manager role group)",
         "docs": "https://learn.microsoft.com/purview/edisc-permissions",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Settings",
           "Role groups",
@@ -772,19 +848,34 @@
           "Manage eDiscovery Manager",
           "Choose users"
         ],
-        "missing": []
+        "missing": [
+          "Settings",
+          "Role groups",
+          "Role groups for Microsoft Purview solutions",
+          "eDiscovery Manager",
+          "Edit",
+          "Manage eDiscovery Manager",
+          "Choose users"
+        ]
       },
       {
         "index": 3,
         "side": "api",
         "governs": "Who can add content to review sets and export it (eDiscovery Manager role group)",
         "docs": "https://learn.microsoft.com/purview/edisc-permissions",
-        "reachable": true,
+        "reachable": false,
         "token": "Add-RoleGroupMember",
-        "found": true
+        "found": false
       }
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-26",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

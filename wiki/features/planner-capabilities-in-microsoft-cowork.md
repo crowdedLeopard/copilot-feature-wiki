@@ -43,6 +43,12 @@ sources:
   - title: "MC1540339: Microsoft Planner: Planner capabilities in Copilot Cowork through the Planner Plugin"
     url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1540339"
     kind: "message-center"
+  - title: "Managing AI experiences enabled by usage-based billing"
+    url: "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits"
+    kind: "learn"
+  - title: "Understand usage-based billing and cost management for Copilot Credits"
+    url: "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits"
+    kind: "learn"
   - title: "Whether the Planner Plugin is installed for, available to or blocked for users (Microsoft Graph)"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
     kind: "learn"
@@ -56,7 +62,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Agents > Tools > Planner Plugin > Users"
+      path: "Agents > Tools > Planner Plugin > Users > Available to specific users or groups"
       docs: "https://learn.microsoft.com/planner/manage-planner-plugin-cowork"
     api:
       kind: "graph"
@@ -67,7 +73,7 @@ controls:
     scope: "user"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Copilot > Cost Management > Configuration > + Add spending policy > Select agents and services"
+      path: "Copilot > Cost Management > Configuration > + Add spending policy > Identity > Specific groups > group > Select agents and services > Cowork"
       docs: "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance"
     api:
       kind: "graph"
@@ -76,7 +82,7 @@ controls:
     note: "Select Cowork on the Select agents and services step. A low limit does not remove access. The API call updates displayName, periodLimit, perUserLimit and billingMethods (beta)."
 confidence: "high"
 created: "2026-11-20"
-updated: "2026-11-20"
+updated: "2026-11-26"
 roadmapModified: "2026-11-03T00:14:11"
 changes:
   - date: "2026-11-20"
@@ -85,19 +91,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 99 statements not yet confirmed"
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 107 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected the Cowork spending-policy path to include the Identity scope and group selection, extended the plugin availability path, added the usage-based billing pages as sources, and removed the audit-log checklist step."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 118 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-26"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 107
-  confirmed: 105
+  claims: 118
+  confirmed: 117
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "34bdca31ba0957116505c3fa65c3d53a"
+  contradicted: 1
+  attempts: 0
+  hash: "5d651afb322208f6671cc59058cf5546"
 ---
 
 ## What's changing
@@ -173,7 +183,6 @@ Learn states that Audit (Standard) provides the Copilot activity logs at no addi
 
 ### After rollout
 
-- Search the Microsoft Purview audit log under Copilot activities for Cowork and plugin activity.
 - Watch Cowork credit consumption in Copilot > Cost Management against the spending policy limits.
 - Block the plugin from the Users tab if a problem appears (first row of the controls table), remembering that conversations already in progress continue.
 
@@ -184,8 +193,8 @@ Learn states that Audit (Standard) provides the Copilot activity logs at no addi
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether the Planner Plugin is installed for, available to or blocked for users</strong><br><small>Tenant</small><br><small class="controls__note">Admin role: Global Administrator or Copilot Administrator. Users tab offers Available to all users, Available to specific users or groups, and Block. The Graph call blocks only (beta, preview; needs a Microsoft Agent 365 licence).</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Planner Plugin › Users <a href="https://learn.microsoft.com/planner/manage-planner-plugin-cowork" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which users have access to Cowork and the credit limits on that access</strong><br><small>User</small><br><small class="controls__note">Select Cowork on the Select agents and services step. A low limit does not remove access. The API call updates displayName, periodLimit, perUserLimit and billingMethods (beta).</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › + Add spending policy › Select agents and services <a href="https://learn.microsoft.com/copilot/cowork/cowork-admin-governance" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/copilot/costManagement/spendingPolicies/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether the Planner Plugin is installed for, available to or blocked for users</strong><br><small>Tenant</small><br><small class="controls__note">Admin role: Global Administrator or Copilot Administrator. Users tab offers Available to all users, Available to specific users or groups, and Block. The Graph call blocks only (beta, preview; needs a Microsoft Agent 365 licence).</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Planner Plugin › Users › Available to specific users or groups <a href="https://learn.microsoft.com/planner/manage-planner-plugin-cowork" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users have access to Cowork and the credit limits on that access</strong><br><small>User</small><br><small class="controls__note">Select Cowork on the Select agents and services step. A low limit does not remove access. The API call updates displayName, periodLimit, perUserLimit and billingMethods (beta).</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › + Add spending policy › Identity › Specific groups › group › Select agents and services › Cowork <a href="https://learn.microsoft.com/copilot/cowork/cowork-admin-governance" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/copilot/costManagement/spendingPolicies/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -208,12 +217,8 @@ cost: Variable. Users need a Microsoft 365 Copilot licence, and Cowork activity,
 impact: Medium. Licensed Copilot users who work in Planner and Cowork notice it once an admin installs it or makes it available; users outside that group see nothing.
 -->
 
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].ui; Governance controls table / admin-path: The Cowork spending-policy route is Copilot > Cost Management > Configuration > + Add spending policy > Select agents and services. | Found: Create and name the policy and then choose Identity as the scope. Use this option when you need to manage usage by users or groups for a supported service. | Fix: Replace controls[1].ui.path and its rendered table path with 'Copilot > Cost Management > Configuration > + Add spending policy > Identity > Specific groups > group > Select agents and services > Cowork'. Add https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits to sources, titled 'Managing AI experiences enabled by usage-based billing'. Keep the existing governance docs link, which documents the Cowork selection. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table; Governance guidance: After rollout / admin-path: Planner Plugin availability is managed in Microsoft 365 admin center under Agents > Tools > Planner Plugin > Users. | Found: To block the plugin, go to Agents > Tools, select Planner Plugin, open the Users tab, and select Block. | Fix: Extend controls[0].ui.path and its rendered table path to 'Agents > Tools > Planner Plugin > Users > Available to specific users or groups'. Retain the alternative availability and Block options in the note and the separate installation route in the prose. | Source: https://learn.microsoft.com/planner/manage-planner-plugin-cowork
-- [supported, minor] front matter: licensing.model and licensing.notes; rationale: cost / licensing: The mixed licensing model combines a Microsoft 365 Copilot license requirement with Cowork usage billed in Copilot Credits. | Found: Microsoft's usage-based billing model charges customers based on actual usage, measured in Copilot Credits. Cowork (Copilot license required) | Fix: Add https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits to sources, titled 'Understand usage-based billing and cost management for Copilot Credits'. It explicitly documents Cowork's Copilot Credit billing and the consumption-monitoring path used in the checklist. | Source: https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits
-- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: Every control the governance checklist tells administrators to check is represented in the controls table. | Found: Checklist: 'Search the Microsoft Purview audit log under Copilot activities for Cowork and plugin activity.' The controls table contains only plugin availability and Cowork access/credit-limit rows. | Fix: Remove the After rollout checklist bullet 'Search the Microsoft Purview audit log under Copilot activities for Cowork and plugin activity.' Retain the supported audit descriptions in Risk assessment and Cost and licensing; do not add a control row.
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: Every control the governance checklist asks readers to review has a corresponding controls-table row. | Found: Check whether Microsoft Purview Information Barriers are in use in the tenant / Review who can reach sensitive Planner plans / The table has only plugin availability and Cowork access and credit-limit rows. | Fix: Remove the two Before rollout checklist bullets beginning 'Check whether Microsoft Purview Information Barriers are in use' and 'Review who can reach sensitive Planner plans'. Keep the supported Information Barriers and existing-permissions facts in Risk assessment; do not add control rows.
 -->

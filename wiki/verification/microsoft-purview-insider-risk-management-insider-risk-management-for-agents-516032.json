@@ -1,0 +1,917 @@
+{
+  "slug": "microsoft-purview-insider-risk-management-insider-risk-management-for-agents-516032",
+  "roadmapId": 516032,
+  "title": "Microsoft Purview Insider Risk Management: monitor agents (Worldwide)",
+  "status": "held",
+  "date": "2026-11-26",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-26",
+    "reasons": [
+      "3 blocking findings (claims 33, 38, 55)"
+    ]
+  },
+  "counts": {
+    "claims": 67,
+    "confirmed": 64,
+    "unconfirmed": 0,
+    "contradicted": 3,
+    "blocker": 3,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "Hold: the briefing omits the licence prerequisite for viewing agent risk in the Microsoft 365 admin center and unnecessarily restricts who can configure policies. It also assigns containment to agent owners even though Microsoft documents administrator actions for stopping Foundry agents. The roadmap facts, default policy behaviour and listed commands are supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "Roadmap item 516032 has status Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The release phases are General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target date is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is December CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"December CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "title; summary; front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "This Microsoft Purview item lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Purview\"], \"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-07-13T23:07:14.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-07-13T23:07:14\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing: first paragraph",
+      "type": "record",
+      "claim": "The roadmap describes indicators specific to agents.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Purview Insider Risk Management is being expanded to agents, with specific indicators and insider risk score built for agents based on agentic activities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing: first paragraph",
+      "type": "record",
+      "claim": "The roadmap describes an insider risk score built for agents based on agentic activity.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "with specific indicators and insider risk score built for agents based on agentic activities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing: first paragraph",
+      "type": "record",
+      "claim": "The roadmap says users are pseudonymised by default.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Built with privacy by design, users are pseudonymized by default",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing: final paragraph",
+      "type": "record",
+      "claim": "The description retains a 30 January update mentioning a planned April 2026 release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Updated January 30: This feature is still in development with a planned release of April 2026. We apologize for the inconvenience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing: first paragraph",
+      "type": "record",
+      "claim": "A separate roadmap item, 545063, describes Insider Risk Management for agents and lists GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"id\": 545063, \"title\": \"Microsoft Purview: Insider Risk Management- Insider risk management for agents\", \"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "title; summary; What's changing: first paragraph",
+      "type": "behaviour",
+      "claim": "Insider Risk Management monitors AI agents as well as users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-monitoring-agents",
+      "quote": "Microsoft Purview Insider Risk Management enables organizations to identify, investigate, and respond to potential insider risks across users and agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing: second and final paragraphs; Governance guidance",
+      "type": "behaviour",
+      "claim": "Learn labels the Risky Agents policy preview, despite the roadmap's launched status and GA phase.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-monitoring-agents",
+      "quote": "The Risky Agents (preview) policy provides out-of-the-box coverage for common risk scenarios associated with AI agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing: second paragraph; Risk assessment",
+      "type": "behaviour",
+      "claim": "The default Risky Agents policy detects risky prompts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-monitoring-agents",
+      "quote": "By default, the policy detects: - Risky prompts",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing: second paragraph; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "The policy detects agents generating sensitive responses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-monitoring-agents",
+      "quote": "By default, the policy detects: ... Agents generating sensitive responses",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing: second paragraph",
+      "type": "behaviour",
+      "claim": "The policy detects agents accessing sensitive data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-monitoring-agents",
+      "quote": "Agents accessing sensitive data",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing: second paragraph; Why it matters",
+      "type": "behaviour",
+      "claim": "The policy detects access to risky websites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-monitoring-agents",
+      "quote": "Accessing risky websites",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing: second paragraph; Why it matters; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "The template detects agents accessing sensitive or priority SharePoint files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-policy-templates",
+      "quote": "This policy detects risky prompts, agents generating sensitive responses, agents accessing sensitive or priority SharePoint files",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing: second paragraph",
+      "type": "behaviour",
+      "claim": "The template detects agents sharing SharePoint files outside the organisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-policy-templates",
+      "quote": "agents sharing SharePoint files with people outside of the organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing: second paragraph",
+      "type": "behaviour",
+      "claim": "The template tracks activity above the agent's baseline.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-policy-templates",
+      "quote": "It also tracks activity above the agent's baseline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing: second paragraph; Scope; controls[0].note",
+      "type": "applicability",
+      "claim": "Copilot Studio agents are supported by Risky Agents monitoring.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-monitoring-agents",
+      "quote": "The Risky Agents (preview) policy supports the following agent types: - Copilot Studio agents",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing: second paragraph; Scope; controls[0].note",
+      "type": "applicability",
+      "claim": "Microsoft Foundry agents are supported by Risky Agents monitoring.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-monitoring-agents",
+      "quote": "The Risky Agents (preview) policy supports the following agent types: ... Microsoft Foundry agents",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing: second paragraph; Scope",
+      "type": "applicability",
+      "claim": "Agents built using the P4AI SDK are supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-monitoring-agents",
+      "quote": "Agents built using the P4AI SDK",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The policy is on by default for organisations with supported licences once the service is set up.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-monitoring-agents",
+      "quote": "The Risky Agents (preview) policy is available by default to all organizations with supported licenses. When the service is set up, this policy is automatically present and ready to generate alerts based on observed agent activity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing: third paragraph",
+      "type": "default",
+      "claim": "The policy templates page says the Risky Agents template is applied by default for all organisations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-policy-templates",
+      "quote": "This policy template is applied by default for all organizations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Why it matters; Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Microsoft offers creation of a custom Insider Risk Management policy when the default policy does not meet requirements.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-monitoring-agents",
+      "quote": "If the default policy doesn't meet your organizational requirements, you can create a custom Insider Risk Management policy to better align with your risk posture or investigation needs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Relevant detections generate Insider Risk Management alerts that use the standard investigation workflow.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-monitoring-agents",
+      "quote": "When the Risky Agents (preview) policy detects relevant activity, alerts are generated within Insider Risk Management. These alerts can be reviewed and investigated using the standard alert investigation workflow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Analysts investigating alerts can review details of the detected agent activity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-monitoring-agents",
+      "quote": "Through alert investigation, analysts can: - Review details of the detected activity. - Understand the context of agent behavior. - Determine whether further action is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Why it matters; Risk assessment; controls[1].note; Scope; Governance guidance; Governance controls",
+      "type": "role",
+      "claim": "Administrative units are not supported for agent alerts and scoped analysts cannot see those alerts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-monitoring-agents",
+      "quote": "Admins units are currently not supported for agent alerts. If a scoped analyst is signing in, then they can't see agent related alerts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing; Why it matters; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Agent risk calculated in Insider Risk Management is shared with Data Security Posture Management for AI.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-monitoring-agents",
+      "quote": "Agent risk calculated in Microsoft Purview Insider Risk Management is shared with the following solutions: - Data Security Posture Management for AI",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing; Why it matters; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Agent risk calculated in Insider Risk Management is shared with the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-monitoring-agents",
+      "quote": "Agent risk calculated in Microsoft Purview Insider Risk Management is shared with the following solutions: ... Microsoft 365 admin center",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Why it matters: second paragraph",
+      "type": "availability",
+      "claim": "Sharing risk with the agent registry means more administrators see an agent's risk, without a stated additional licence prerequisite.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview",
+      "quote": "Prerequisites for viewing risk signals: Your tenant must have an E7 or A365 license.",
+      "severity": "blocker",
+      "fix": "Add to the sentence about wider visibility: 'Viewing risk signals in the Microsoft 365 admin center requires the tenant to have an E7 or A365 licence.' The prerequisite is at https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview#prerequisites-for-viewing-risk-signals."
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Opening Purview IRM alert deep links from agent registry risk details requires IRM Analyst or IRM Investigator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview",
+      "quote": "Microsoft Purview — IRM alerts | IRM Analyst or IRM Investigator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Global Administrator alone is insufficient to open those IRM alert links.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview",
+      "quote": "Global Administrator alone is insufficient; a Global Administrator can assign themselves the additional IRM role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What's changing: final paragraph; Open questions",
+      "type": "absence",
+      "claim": "Learn's agent monitoring pages do not explain how the agent insider risk score is calculated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Insider Risk Management agents risk score calculation. Opened monitoring-agents, policy-templates, policy-indicators, ai-agents and ai-agent-365; they describe indicators, a baseline and shared risk, not an agent score formula.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The monitoring-agents page describes investigation but no action to block or change an agent.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Risky Agents policy disable edit delete agent risk score calculation block containment. Read the complete monitoring-agents page: detections, customization, investigation and sharing are documented, but no block or agent-change action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "applicability",
+      "claim": "Containment therefore rests with the owner of the Copilot Studio or Microsoft Foundry agent.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "The Microsoft 365 admin center provides governance and lifecycle management capabilities for agents ... Start and stop | Start or stop the underlying Azure infrastructure to govern Foundry agents.",
+      "severity": "blocker",
+      "fix": "Replace 'so containment rests with the owner of the Copilot Studio or Microsoft Foundry agent' with the advice 'agree containment responsibilities with the agent owner and administrators'. The absence of a block action on the IRM monitoring page does not establish exclusive owner responsibility."
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.notes; Cost and licensing: Licence; Scope",
+      "type": "licensing",
+      "claim": "Using Insider Risk Management requires a supported subscription and appropriate licences assigned to users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "To access and use Insider Risk Management, administrators need to verify their organization has a supported subscription and assign the appropriate licenses to users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "The setup page suggests a Microsoft 365 Enterprise E5 trial for organisations wanting to try Insider Risk Management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "If you don't have an existing Microsoft 365 Enterprise E5 plan and want to try Insider Risk Management, you can add Microsoft 365 to your existing subscription or sign up for a trial of Microsoft 365 Enterprise E5.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing: Meter; rationale: cost",
+      "type": "licensing",
+      "claim": "Some Insider Risk Management indicators require enabling pay-as-you-go billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "Some indicators included in Insider Risk Management are only available if you enable the pay-as-you-go billing model for your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "front matter: licensing.model and notes; Cost and licensing: Meter",
+      "type": "licensing",
+      "claim": "The mixed model describes Insider Risk Management's use of pay-as-you-go billing or per-user licensing or both, not a confirmed agent-specific meter.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "This feature uses pay-as-you-go billing or per-user licensing for Microsoft Purview capabilities or both.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "The documented IRM meter covers detecting risky behaviour in non-Microsoft 365 locations using Cloud and generative AI policy indicators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "Insider Risk Management | Detect risky behavior for non-Microsoft 365 locations when using Cloud and generative AI policy indicators",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "That meter is measured in Data Security processing units on a daily basis.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "Data Security processing unit as measured on a daily basis",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "Purview pay-as-you-go charges are billed through Azure.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "The billing mechanisms are Azure based, so you must associate your Microsoft 365 tenant with an active Azure subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "front matter: licensing.notes; rationale: cost",
+      "type": "absence",
+      "claim": "A licence or rate specific to the Risky Agents monitoring policy is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Insider Risk Management agents Risky Agents licensing price pay as you go meter; Risky Agents license pricing; Purview agent monitoring licensing billing Risky. Read monitoring-agents, configure, billing-models, billing-usage and policy-indicators; no policy-specific licence or rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing: Meter; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "Whether Risky Agents detections use the documented IRM pay-as-you-go meter is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Insider Risk Management agents Risky Agents licensing price pay as you go meter. Read billing-models, billing-usage, configure and policy-indicators: general AI indicators have billing rules, but Risky Agents indicators have no explicit meter mapping.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing: Caps",
+      "type": "behaviour",
+      "claim": "The Usage center is in preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-usage",
+      "quote": "The Microsoft Purview Usage center feature is in preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing: Caps",
+      "type": "behaviour",
+      "claim": "The Usage center shows both pay-as-you-go and per-user licensing usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-usage",
+      "quote": "You can view your pay-as-you-go billing usage and your per-user licensing usage for Microsoft Purview capabilities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Cost and licensing: Caps",
+      "type": "cost",
+      "claim": "The Usage center table lists Insider Risk Management as not pausable.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-usage",
+      "quote": "Feature name | Pausable | Detailed report available ... Insider Risk Management | No | Yes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Scope: Clouds",
+      "type": "availability",
+      "claim": "Learn states that Insider Risk Management is available in tenants hosted in regions and countries supported by Azure service dependencies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "Insider Risk Management is currently available in tenants hosted in geographical regions and countries supported by Azure service dependencies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Scope: Prerequisites; Cost and licensing: Licence",
+      "type": "applicability",
+      "claim": "Monitoring agents requires completing the Insider Risk Management setup steps, with licensing and permissions linked from the agent page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-monitoring-agents",
+      "quote": "Before you begin monitoring agents in your organization, you must complete the steps provided in Get started with Insider Risk Management. For information about subscriptions, licensing, and permissions, see Subscriptions and licensing and Permissions in Insider Risk Management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[2].note; Scope; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "The Microsoft 365 audit log is an Insider Risk Management prerequisite used by policies to detect risk activity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "Step 2 (required): Enable the Microsoft 365 audit log. Insider Risk Management uses Microsoft 365 audit logs for user insights and risk management activities identified in policies and analytics insights.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Scope: Prerequisites",
+      "type": "default",
+      "claim": "Learn says auditing is enabled by default for Microsoft 365 organisations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "Auditing is enabled for Microsoft 365 organizations by default.",
+      "severity": "minor",
+      "fix": "Qualify the sentence: 'Auditing is enabled by default for Microsoft 365 organisations, except SMB licences (Business Basic, Business Standard and Business Premium) and unmanaged tenants using free trials of enterprise licences, according to https://learn.microsoft.com/purview/audit-log-enable-disable.' The setup page supports the current sentence, but the cited audit page gives these exceptions."
+    },
+    {
+      "n": 55,
+      "where": "Scope: Roles",
+      "type": "role",
+      "claim": "Configuring policies and settings needs the Insider Risk Management or Insider Risk Management Admins role group.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "Members of the following roles can assign users to Insider Risk Management role groups and have the same solution permissions included with the Insider Risk Management Admins role group: ... Global Administrator ... Compliance Administrator ... Organization Management",
+      "severity": "blocker",
+      "fix": "Replace 'configuring policies and settings needs the Insider Risk Management or Insider Risk Management Admins role group' with 'members of the Insider Risk Management or Insider Risk Management Admins role group can configure policies and settings'. This removes the exclusive requirement; the permissions page also grants Admins-equivalent solution permissions to the administrative roles already named under Governance controls."
+    },
+    {
+      "n": 56,
+      "where": "Scope: Roles; controls[1].note; Governance guidance",
+      "type": "role",
+      "claim": "Insider Risk Management, Analysts and Investigators can investigate alerts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "Actions | Insider Risk Management | Insider Risk Management Admins | Insider Risk Management Analysts | Insider Risk Management Investigators ... Access & investigate alerts | Yes | No | Yes | Yes ... Configure policies and settings | Yes | Yes | No | No",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance controls: final paragraph",
+      "type": "role",
+      "claim": "Global Administrator, Compliance Administrator in Entra or Purview, and Purview Organization Management can assign IRM role group members.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "Members of the following roles can assign users to Insider Risk Management role groups ... Microsoft Entra ID Global Administrator ... Microsoft Entra ID Compliance Administrator ... Microsoft Purview Organization Management ... Microsoft Purview Compliance Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[0].ui; Governance guidance: At rollout; Governance controls",
+      "type": "admin-path",
+      "claim": "Microsoft Purview portal > Insider Risk Management > Policies > Agent policy reaches the agent-policy dashboard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-policies",
+      "quote": "Go to the Insider Risk Management solution. Select Policies in the left navigation. ... Your policies are separated into two categories: User policy and Agent policy. Switch between the two to locate relevant policy details.",
+      "severity": "minor",
+      "fix": "Extend controls[0].ui.path to 'Insider Risk Management > Policies > Agent policy > policy' and retain the note that selecting a policy shows its details. The existing path stops early on the correct dashboard; the page documents selecting the policy to see health status details."
+    },
+    {
+      "n": 59,
+      "where": "controls[0].api; Governance controls: first paragraph",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no PowerShell cmdlet or API for managing Insider Risk Management policies at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Insider Risk Management policies PowerShell cmdlet Microsoft Graph API create update policy Security Compliance; Insider Risk Management PowerShell policy API -copilot. Read policies and configure; results describe portal policy workflows, not a policy-management cmdlet or endpoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "The Purview path Settings > Roles and groups > Roles groups > Insider Risk Management > Edit > Choose users adds role group members.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "Select Settings in the upper-right corner of the page, select Roles and groups, then select Roles groups in the left navigation pane. Select the Insider Risk Management role group, then select Edit. Select Choose users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "Add-RoleGroupMember -Identity \"Insider Risk Management\" -Member \"<user-UPN>\" assigns role group membership.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+      "quote": "Use the Add-RoleGroupMember cmdlet to add members to a management role group. ... The Identity parameter specifies the role group to add a member to. ... The Member parameter specifies who you want to add to the role group. ... User ID or user principal name (UPN)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "Purview portal > Audit > Start recording user and admin activity turns on auditing when it is disabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "Select the Audit solution card. ... If auditing isn't turned on for your organization, a banner is displayed prompting you to start recording user and admin activity. Select the Start recording user and admin activity banner.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "Set-AdminAuditLogConfig -UnifiedAuditLogIngestionEnabled $true turns on auditing in Exchange Online PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "Complete the following steps to turn on auditing by using Exchange Online PowerShell: ... Set-AdminAuditLogConfig -UnifiedAuditLogIngestionEnabled $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[2].note; Governance controls: final paragraph",
+      "type": "role",
+      "claim": "Turning auditing on or off requires the Audit Logs role in Exchange Online.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "You must be assigned the Audit Logs role in Exchange Online to turn auditing on or off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Governance controls: first paragraph; Open questions",
+      "type": "absence",
+      "claim": "The agent monitoring page does not state whether the default Risky Agents policy can be edited or removed.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Risky Agents policy disable edit delete agent risk score calculation block containment. Read monitoring-agents and policies: the agent page offers a custom policy, not default-policy edit/removal; the policies page gives general edit/delete steps, not explicit default-policy rules.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "For guest users interacting with agents, investigators see sensitive-information indicators instead of full prompt and response content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-monitoring-agents",
+      "quote": "When guest users are interacting with agents, the full prompt and response content isn't available for investigation. Instead, only indicators of sensitive information detected in those prompts and responses are shown.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "controls[1].note",
+      "type": "role",
+      "claim": "The Insider Risk Management Analysts and Investigators role groups cannot configure policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "Actions | Insider Risk Management | Insider Risk Management Admins | Insider Risk Management Analysts | Insider Risk Management Investigators ... Configure policies and settings | Yes | Yes | No | No",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-26T06:54:00.936Z",
+    "summary": {
+      "links": 11,
+      "unreachable": 9,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 3,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 2,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=516032",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-monitoring-agents",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-policy-templates",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/purview-billing-models",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/purview-billing-usage",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-policies",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+        "ok": false,
+        "status": 429
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Agent policies, including the default Risky Agents policy and any custom agent policy",
+        "docs": "https://learn.microsoft.com/purview/insider-risk-management-policies",
+        "reachable": false,
+        "segments": [
+          "Insider Risk Management",
+          "Policies",
+          "Agent policy"
+        ],
+        "missing": [
+          "Insider Risk Management",
+          "Policies",
+          "Agent policy"
+        ]
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Who can configure Insider Risk Management policies and investigate agent alerts",
+        "docs": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+        "reachable": false,
+        "segments": [
+          "Settings",
+          "Roles and groups",
+          "Roles groups",
+          "Insider Risk Management",
+          "Edit",
+          "Choose users"
+        ],
+        "missing": [
+          "Settings",
+          "Roles and groups",
+          "Roles groups",
+          "Insider Risk Management",
+          "Edit",
+          "Choose users"
+        ]
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Who can configure Insider Risk Management policies and investigate agent alerts",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "reachable": false,
+        "token": "Add-RoleGroupMember",
+        "found": false
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether the unified audit log records activity that Insider Risk Management policies read",
+        "docs": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+        "reachable": false,
+        "segments": [
+          "Audit",
+          "Start recording user and admin activity"
+        ],
+        "missing": [
+          "Audit",
+          "Start recording user and admin activity"
+        ]
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Whether the unified audit log records activity that Insider Risk Management policies read",
+        "docs": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+        "reachable": false,
+        "token": "Set-AdminAuditLogConfig",
+        "found": false
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

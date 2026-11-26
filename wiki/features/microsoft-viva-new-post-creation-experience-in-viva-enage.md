@@ -60,10 +60,12 @@ changes:
     note: "First briefing: default-on redesign of the Viva Engage post publisher, no admin setting documented, communication and training are the actions."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 52 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 52 statements not yet confirmed"
 version: 1
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-22"
+  date: "2026-11-26"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
@@ -165,9 +167,10 @@ cost: Low. The only cost the sources show is admin time to brief users, help des
 impact: Medium. Everyone who creates posts in Viva Engage sees a new layout by default, so training and support material that shows the old publisher goes out of date; readers of posts see no change described.
 -->
 
-<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Scope; Open questions / date: The notice gives mid-October 2026 as completion, qualified as expected in What's changing but not in Scope. | Found: is expected to complete by mid-October 2026 (previously mid-August). | Fix: Replace Scope's second paragraph's first sentence with 'The notice gives a rollout start of mid-July 2026 and expected completion by mid-October 2026, while the roadmap target is May CY2026.' Replace the date question with 'The roadmap target is May CY2026, while the notice gives a rollout start of mid-July 2026 and expected completion by mid-October 2026. Which date should support teams plan around for their tenant?'
-- [supported, minor] Risk assessment: Data exposure / behaviour: The destination selected for a post determines its audience. | Found: By using public groups, anyone in the network can view content and participate in the group activity. ... By using private groups, you can limit membership and participation to invitation or approval only from group administrators. | Fix: Add https://learn.microsoft.com/sharepoint/administration/viva-engage-networks-groups-and-users-overview to sources for community visibility; the already cited https://learn.microsoft.com/viva/engage/eac-storyline states that storyline content is visible to any internal user with access to Viva Engage. | Source: https://learn.microsoft.com/sharepoint/administration/viva-engage-networks-groups-and-users-overview
+- [supported, minor] What's changing; Scope; Open questions / date: The notice gives mid-July 2026 as the rollout start, reported in What's changing as having begun. | Found: General Availability (Worldwide): Rollout will begin in mid-July 2026 | Fix: In What's changing, replace 'it began in mid-July 2026 and is expected to complete by mid-October 2026 (previously mid-August)' with 'it gives a rollout start of mid-July 2026 and expected completion by mid-October 2026 (previously mid-August)'. This reports the announced schedule without asserting that delivery started.
+- [supported, minor] What's changing; Scope; Open questions / date: The notice gives mid-October 2026 as expected completion, although Scope and Open questions omit that qualification. | Found: is expected to complete by mid-October 2026 (previously mid-August). | Fix: Replace Scope's second paragraph's first sentence with 'The notice gives a rollout start of mid-July 2026 and expected completion by mid-October 2026, while the roadmap target is May CY2026.' Replace the date question with 'The roadmap target is May CY2026, while the notice gives a rollout start of mid-July 2026 and expected completion by mid-October 2026. Which date should support teams plan around for their tenant?'
+- [supported, minor] Risk assessment: Data exposure / behaviour: The chosen storyline or community destination determines the audience of a post. | Found: By using public groups, anyone in the network can view content and participate in the group activity. ... By using private groups, you can limit membership and participation to invitation or approval only from group administrators. | Fix: Add https://learn.microsoft.com/sharepoint/administration/viva-engage-networks-groups-and-users-overview to sources for community visibility. The already cited https://learn.microsoft.com/viva/engage/eac-storyline supports storyline visibility: 'Storyline content is visible to any internal user who has access to Viva Engage. Guests can't see storyline content.' | Source: https://learn.microsoft.com/sharepoint/administration/viva-engage-networks-groups-and-users-overview
 -->

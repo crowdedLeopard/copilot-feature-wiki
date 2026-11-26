@@ -2,39 +2,99 @@
   "slug": "microsoft-purview-endpoint-data-loss-prevention-add-support-of-hyperlinks-in-warn-and-bloc",
   "roadmapId": 560398,
   "title": "Microsoft Purview Endpoint DLP: hyperlinks in Edge warn and block notifications (GCC, GCC High, DoD)",
-  "status": "held",
+  "status": "verified",
   "date": "2026-11-26",
-  "version": 2,
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 2,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-26",
-    "reasons": [
-      "2 blocking findings (claims 15, 37)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 40,
-    "confirmed": 38,
+    "claims": 41,
+    "confirmed": 41,
     "unconfirmed": 0,
-    "contradicted": 2,
-    "blocker": 2,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
-    "minor": 1
+    "minor": 0
   },
-  "summary": "The notification customisation guidance omits Microsoft's requirement to select the Devices location only. The statement that PowerShell documents no Endpoint DLP notification-content parameter is also too broad: Microsoft documents custom policy-tip localisation through PowerShell.",
+  "summary": "The briefing matches the roadmap and the documented notification options, policy controls and licensing statements. It correctly distinguishes Windows notification documentation from the roadmap's Edge-specific change and reports the conflicting licensing sources. No blocking factual errors were found.",
   "claims": [
     {
       "n": 1,
+      "where": "title; front matter: products",
+      "type": "record",
+      "claim": "This is a Microsoft Purview Endpoint Data Loss Prevention change.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Purview: Endpoint Data Loss Prevention - Add support of hyperlinks in warn & block toast messages for Edge browser",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "Edge warn and block notifications can contain a hyperlink when the Endpoint DLP rule is triggered.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Add support of hyperlinks in warn & block toast messages for Edge browser",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The triggered notification has a customised title.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "When this rule is triggered, the end user will see a toast with a customized title and message with a hyperlink.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The triggered notification has a customised message.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "When this rule is triggered, the end user will see a toast with a customized title and message with a hyperlink.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap gives an internal policy SharePoint site as an example hyperlink destination.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This feature is useful when organizations need to direct users to a specific resource or a repository for more specific instruction (e.g. internal policy SharePoint site).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "title; front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The item lists GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
       "where": "front matter: status; What's changing",
       "type": "record",
-      "claim": "The roadmap item is Launched.",
+      "claim": "The roadmap status is Launched.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
@@ -42,7 +102,7 @@
       "fix": null
     },
     {
-      "n": 2,
+      "n": 8,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
       "claim": "The release phase is General Availability.",
@@ -53,8 +113,8 @@
       "fix": null
     },
     {
-      "n": 3,
-      "where": "front matter: targetDate; What's changing; changes",
+      "n": 9,
+      "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target is May CY2026.",
       "status": "supported",
@@ -64,10 +124,10 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 10,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The record gives no preview date.",
+      "claim": "The record publishes no preview date for this item.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -75,87 +135,21 @@
       "fix": null
     },
     {
-      "n": 5,
-      "where": "title; summary; front matter: clouds; What's changing; Scope",
-      "type": "record",
-      "claim": "This item covers GCC, GCC High and DoD.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
+      "n": 11,
       "where": "front matter: platforms; Scope",
       "type": "record",
-      "claim": "The record lists Web, and describes Microsoft Edge.",
+      "claim": "The record lists Web as the platform.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"platforms\": [\"Web\"]; \"title\": \"Microsoft Purview: Endpoint Data Loss Prevention - Add support of hyperlinks in warn & block toast messages for Edge browser\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap record was modified on 2026-07-14T22:41:38.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-07-14T22:41:38\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "title; summary; What's changing; Scope: Users; rationale: impact",
-      "type": "record",
-      "claim": "Endpoint DLP warn and block notifications in Edge can show a hyperlink when the rule triggers.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Add support of hyperlinks in warn & block toast messages for Edge browser; When this rule is triggered, the end user will see a toast with a customized title and message with a hyperlink.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The notification can have a customised title.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "the end user will see a toast with a customized title and message with a hyperlink.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The notification can have a customised message.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "the end user will see a toast with a customized title and message with a hyperlink.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "summary; What's changing",
-      "type": "record",
-      "claim": "Microsoft gives an internal policy SharePoint site as an example hyperlink destination.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "direct users to a specific resource or a repository for more specific instruction (e.g. internal policy SharePoint site).",
+      "quote": "\"platforms\": [\"Web\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 12,
-      "where": "What's changing; Scope: Clouds",
+      "where": "What's changing; Scope",
       "type": "record",
-      "claim": "Roadmap item 558688 lists the same feature for Worldwide.",
+      "claim": "Roadmap item 558688 lists the same Edge notification hyperlink feature for Worldwide.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "558688: \"title\": \"Microsoft Purview: Endpoint Data Loss Prevention - Add support of hyperlinks in warn & block toast messages for Edge browser\"; \"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -164,12 +158,12 @@
     },
     {
       "n": 13,
-      "where": "What's changing: Endpoint DLP definition",
+      "where": "What's changing; Scope: Users and Prerequisites",
       "type": "behaviour",
-      "claim": "Endpoint DLP extends Microsoft Purview DLP protection to onboarded devices.",
+      "claim": "Endpoint DLP detects sensitive-item activity and enforces protection on onboarded devices.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/endpoint-dlp-getting-started",
-      "quote": "Microsoft Endpoint DLP allows you to monitor onboarded Windows 10, and Windows 11 and onboarded macOS devices running any of the three latest released versions. Once a device is onboarded, DLP detects when sensitive items are used and shared.",
+      "quote": "Once a device is onboarded, DLP detects when sensitive items are used and shared. This gives you the visibility and control you need to ensure that they're used and protected properly",
       "severity": null,
       "fix": null
     },
@@ -177,40 +171,62 @@
       "n": 14,
       "where": "front matter: defaultState; summary; Why it matters",
       "type": "absence",
-      "claim": "Microsoft has not stated what happens to existing notifications when this feature arrives.",
+      "claim": "Microsoft has not stated the hyperlink feature's arrival default or what happens to existing notifications.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Endpoint DLP Edge notification hyperlink default existing notifications Get Support Chrome Firefox; \"Endpoint DLP\" \"notification\" \"default\" hyperlink. Read roadmap, DLP policy reference and Edge DLP documentation; none states this feature's arrival behaviour.",
+      "quote": "Searched: Endpoint DLP notification hyperlink default existing notifications automatically; \"Endpoint DLP\" \"hyperlink\" \"default\". Read roadmap, DLP policy reference, Endpoint DLP getting started and Edge DLP documentation; no arrival default stated.",
       "severity": null,
       "fix": null
     },
     {
       "n": 15,
-      "where": "What's changing: Devices notification options; controls[1].note; Scope: Prerequisites",
+      "where": "What's changing; controls[1].note; Scope: Prerequisites",
       "type": "applicability",
-      "claim": "A policy scoped to the Devices location offers custom notification title, content and a Get Support hyperlink.",
-      "status": "contradicted",
+      "claim": "The documented custom notification options are offered when Devices only is selected.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
-      "quote": "If you selected Devices only, you get all the same options ... plus the option to customize the notification title, content, and add a hyperlink in the form of a Get Support button that appears on the Windows 10/11 device.",
-      "severity": "blocker",
-      "fix": "Change the introductory clause in What's changing to 'The DLP policy reference documents that when Devices only is selected, rules offer'. Change Scope's prerequisite to 'devices onboarded to Endpoint DLP and a DLP policy scoped to the Devices location only'. Add 'when Devices only is selected' to controls[1].note and its rendered table note. Source: https://learn.microsoft.com/purview/dlp-policy-reference."
+      "quote": "If you selected Devices only, you get all the same options that are available for Exchange, SharePoint, OneDrive, Teams Chat and Channel, and Instances, plus the option to customize the notification title, content, and add a hyperlink",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 16,
-      "where": "What's changing; Risk assessment: Data exposure",
+      "where": "What's changing; controls[1].note",
       "type": "behaviour",
-      "claim": "The notification hyperlink must be a resolvable URL.",
+      "claim": "The DLP policy reference documents custom notification titles.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
-      "quote": "The hyperlink must be a resolvable URL, and it's abstracted behind a selectable control.",
+      "quote": "plus the option to customize the notification title, content, and add a hyperlink",
       "severity": null,
       "fix": null
     },
     {
       "n": 17,
-      "where": "What's changing",
+      "where": "What's changing; controls[1].note",
       "type": "behaviour",
-      "claim": "The hyperlink sits behind a selectable control.",
+      "claim": "The DLP policy reference documents custom notification content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
+      "quote": "plus the option to customize the notification title, content, and add a hyperlink",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Risk assessment; controls[1].note",
+      "type": "behaviour",
+      "claim": "The documented hyperlink appears as a Get Support button on Windows 10/11 devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
+      "quote": "add a hyperlink in the form of a Get Support button that appears on the Windows 10/11 device.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The hyperlink must be a resolvable URL.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
       "quote": "The hyperlink must be a resolvable URL, and it's abstracted behind a selectable control.",
@@ -218,10 +234,21 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 20,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The hyperlink is abstracted behind a selectable control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
+      "quote": "The hyperlink must be a resolvable URL, and it's abstracted behind a selectable control.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
       "where": "What's changing; Why it matters",
       "type": "behaviour",
-      "claim": "Under Block with override, users can proceed using the Ok button on the Microsoft Edge notification.",
+      "claim": "Block with override permits users to proceed using the Ok button on the Microsoft Edge notification.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
       "quote": "Block with override: This option acts as a standard block but permits users to bypass it. By clicking the 'Allow' button on the toast notification or the 'Ok' button on the Microsoft Edge notification, users can proceed.",
@@ -229,54 +256,43 @@
       "fix": null
     },
     {
-      "n": 19,
-      "where": "What's changing; Risk assessment: Change & support; Open questions",
+      "n": 22,
+      "where": "What's changing; Open questions",
       "type": "absence",
-      "claim": "Learn does not yet specify how this notification hyperlink renders in Edge.",
+      "claim": "Learn does not yet specifically describe the hyperlink's rendering in Edge notifications.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Endpoint DLP\" \"hyperlink\" \"Edge\"; Endpoint DLP Edge notification hyperlink default existing notifications Get Support Chrome Firefox. Read DLP policy reference, Edge security and Edge DLP pages; Windows Get Support is described, but Edge-specific hyperlink rendering is not.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "controls[0].governs; Risk assessment: Autonomy & actions",
-      "type": "applicability",
-      "claim": "Rule actions determine whether service-domain and browser activities are audited, blocked with override or blocked.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
-      "quote": "When you configure the Allow/Block cloud service domains and the Unallowed browsers list ... you can configure the policy action to Audit only, Block with override, or Block the activity.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "Custom policy tips show for the most restrictive rule.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
-      "quote": "Custom Policy Tips show for the most restrictive rule, not necessarily the rule that's performing the restriction.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "The custom notification may come from a rule other than the rule performing the restriction.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
-      "quote": "Custom Policy Tips show for the most restrictive rule, not necessarily the rule that's performing the restriction.",
+      "quote": "Searched: Endpoint DLP notification hyperlink Get Support Devices only policy tips Set-DlpComplianceRule; Endpoint DLP Edge notification hyperlink default existing notifications automatically Chrome Firefox pricing meter PowerShell hyperlink. Read policy reference and both cited Edge pages.",
       "severity": null,
       "fix": null
     },
     {
       "n": 23,
+      "where": "Risk assessment: Autonomy & actions; controls[0].governs",
+      "type": "applicability",
+      "claim": "Endpoint DLP rule actions decide whether relevant Edge activity is audited, warned or blocked.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
+      "quote": "You can tell DLP to Allow, Audit only, Block with override, or Block (the actions) these user activities for onboarded Windows devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Custom policy tips come from the most restrictive rule, which need not be the rule performing the restriction.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
+      "quote": "Custom Policy Tips show for the most restrictive rule, not necessarily the rule that's performing the restriction.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
       "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "The cited Edge security page states Endpoint DLP requires Microsoft 365 E5, Microsoft 365 E5 Compliance or Microsoft 365 Business Premium.",
+      "claim": "The cited Edge documentation requires Microsoft 365 E5, Microsoft 365 E5 Compliance or Microsoft 365 Business Premium for Endpoint DLP.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/ms-edge-security-for-business",
       "quote": "Microsoft Endpoint data loss prevention requires a Microsoft 365 E5, a Microsoft 365 E5 Compliance, or a Microsoft 365 Business Premium subscription.",
@@ -284,90 +300,68 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 26,
       "where": "front matter: licensing.model; Cost and licensing",
       "type": "licensing",
-      "claim": "Endpoint DLP, within which the hyperlink is an option, is included in Microsoft 365 E5/A5/G5 and the other suites listed by the Purview service description.",
+      "claim": "Endpoint DLP, including its rule notification options, is included in Microsoft 365 E5/A5/G5 and the other suites listed in the Purview service description.",
       "status": "supported",
       "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "| Feature | Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, Microsoft 365 E5/A5/F5/G5 Information Protection & Governance | ... | Endpoint Data Loss Prevention (DLP) | Included |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "The Endpoint DLP table in the Purview service description does not list Business Premium.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "| Feature | Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, Microsoft 365 E5/A5/F5/G5 Information Protection & Governance |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "absence",
-      "claim": "No licence specific to notification hyperlinks is published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Endpoint DLP notification hyperlink licensing price meter. Read Edge security, Endpoint DLP getting started, DLP policy reference and Purview service description; they give Endpoint DLP licensing but no hyperlink-specific entitlement.",
+      "quote": "| Feature | Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, Microsoft 365 E5/A5/F5/G5 Information Protection & Governance |\n| Endpoint Data Loss Prevention (DLP) | Included |",
       "severity": null,
       "fix": null
     },
     {
       "n": 27,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "No separate notification-hyperlink price, charge or meter is published.",
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The service description's Endpoint DLP table does not list Business Premium.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Endpoint DLP notification hyperlink licensing price meter. Read Purview service description, Edge security and DLP policy reference; none publishes a notification-hyperlink price, charge or meter.",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "| Feature | Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, Microsoft 365 E5/A5/F5/G5 Information Protection & Governance |\n| Endpoint Data Loss Prevention (DLP) | Included |",
       "severity": null,
       "fix": null
     },
     {
       "n": 28,
-      "where": "Scope: Roles; Governance guidance: Before rollout",
-      "type": "role",
-      "claim": "The DLP deployment guide requires membership in one of the five listed role groups to create and deploy policies.",
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft publishes no separate hyperlink-specific licence.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
-      "quote": "The account you use to create and deploy policies must be a member of one of these role groups: Compliance administrator; Compliance data administrator; Information Protection; Information Protection Admin; Security administrator.",
+      "source": null,
+      "quote": "Searched: Endpoint DLP notification hyperlinks separate licence price meter. Read Edge security licensing, Endpoint DLP prerequisites, Purview service description Endpoint DLP table and policy reference; results document product licensing, not a separate hyperlink entitlement or billing mechanism.",
       "severity": null,
       "fix": null
     },
     {
       "n": 29,
-      "where": "Scope: Prerequisites; Scope: Users",
-      "type": "applicability",
-      "claim": "Endpoint DLP requires device onboarding for the described device protection.",
+      "where": "Scope: Roles; Governance guidance",
+      "type": "role",
+      "claim": "The deployment guide lists Compliance administrator, Compliance data administrator, Information Protection, Information Protection Admin or Security administrator for creating and deploying policies.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/endpoint-dlp-getting-started",
-      "quote": "Once a device is onboarded, DLP detects when sensitive items are used and shared.",
+      "source": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
+      "quote": "The account you use to create and deploy policies must be a member of one of these role groups:\n- Compliance administrator\n- Compliance data administrator\n- Information Protection\n- Information Protection Admin\n- Security administrator",
       "severity": null,
       "fix": null
     },
     {
       "n": 30,
-      "where": "controls[0].ui; rendered controls table",
+      "where": "controls[0].ui",
       "type": "admin-path",
-      "claim": "The printed Microsoft Purview portal path reaches the Service domain and browser activities Block with override control.",
+      "claim": "The printed Purview path through Policies, Edit policy, Customize advanced DLP rules and rule Actions reaches Service domain and browser activities > Block with override.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/endpoint-dlp-create-policy-unauthorized-data-sharing",
-      "quote": "Microsoft Purview portal > Data loss prevention > Policies ... Edit policy ... Customize advanced DLP rules ... Actions > Audit or restrict activities on Windows device ... Service domain and browser activities to Block with override.",
+      "quote": "Go to the Customize advanced DLP rules page and edit the Low volume of content detected scenarios U.S. PII Data Enhanced. Scroll down to the Actions > Audit or restrict activities on Windows device section and set both options under the Service domain and browser activities to Block with override.",
       "severity": null,
       "fix": null
     },
     {
       "n": 31,
-      "where": "controls[0].api; rendered controls table",
+      "where": "controls[0].api",
       "type": "command",
-      "claim": "Set-DlpComplianceRule -Identity <rule> -EndpointDlpRestrictions @(@{\"Setting\"=\"<Setting>\"; \"Value\"=\"Warn\"}) configures an Endpoint DLP restriction.",
+      "claim": "Set-DlpComplianceRule -Identity <rule> -EndpointDlpRestrictions @(@{\"Setting\"=\"<Setting>\"; \"Value\"=\"Warn\"}) modifies an Endpoint DLP rule's restriction.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule",
-      "quote": "The EndpointDlpRestrictions parameter specifies the restricted endpoints for Endpoint DLP ... @(@{\"Setting\"=\"<Setting>\"; \"Value\"=\"<Value>}\", ...). The available values for <Value> are: Audit, Block, Ignore, or Warn.",
+      "quote": "The EndpointDlpRestrictions parameter specifies the restricted endpoints for Endpoint DLP. This parameter uses the following syntax: @(@{\"Setting\"=\"<Setting>\"; \"Value\"=\"<Value>}\",@{\"Setting\"=\"<Setting>\"; \"Value\"=\"<Value>\"},...).",
       "severity": null,
       "fix": null
     },
@@ -378,7 +372,7 @@
       "claim": "EndpointDlpRestrictions requires Compliance Administrator or Compliance Data Administrator in Microsoft Entra ID.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule",
-      "quote": "Note: This parameter requires membership in the Compliance Administrator or Compliance Data Administrator roles in Microsoft Entra ID.",
+      "quote": "This parameter requires membership in the Compliance Administrator or Compliance Data Administrator roles in Microsoft Entra ID.",
       "severity": null,
       "fix": null
     },
@@ -386,62 +380,40 @@
       "n": 33,
       "where": "controls[0].note; Governance controls",
       "type": "command",
-      "claim": "Block and Warn values for EndpointDlpRestrictions also require NotifyUser.",
+      "claim": "Block and Warn values require NotifyUser as well.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule",
-      "quote": "When you use the values Block or Warn in this parameter, also need to use the NotifyUser parameter.",
+      "quote": "The available values for <Value> are: Audit, Block, Ignore, or Warn. When you use the values Block or Warn in this parameter, also need to use the NotifyUser parameter.",
       "severity": null,
       "fix": null
     },
     {
       "n": 34,
-      "where": "controls[1].ui; rendered controls table; Governance guidance: At rollout",
+      "where": "controls[1].ui; Governance guidance; Governance controls",
       "type": "admin-path",
-      "claim": "Data loss prevention > Policies > policy > Edit policy > Customize advanced DLP rules > rule reaches the rule containing notification customisation.",
+      "claim": "Purview > Data loss prevention > Policies > policy > Edit policy > Customize advanced DLP rules > rule reaches the rule containing the documented custom notification options; the cited reference supplies no further UI step labels.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-policy-reference#policy-tips-and-user-notifications-configuration-options",
-      "quote": "If you selected Devices only ... the option to customize the notification title, content, and add a hyperlink ...; the cited unauthorized-data-sharing procedure gives Policies > policy > Edit policy > Customize advanced DLP rules > rule.",
-      "severity": "minor",
-      "fix": "Keep the path: its entry steps are documented on the already-cited https://learn.microsoft.com/purview/endpoint-dlp-create-policy-unauthorized-data-sharing. Amend controls[1].note and its rendered note to 'Route ends at the rule. When Devices only is selected, the DLP policy reference documents custom notification title, content and a Get Support hyperlink, but gives no further UI step labels.' Do not invent labels for the remaining route."
+      "quote": "If you selected Devices only, you get all the same options that are available for Exchange, SharePoint, OneDrive, Teams Chat and Channel, and Instances, plus the option to customize the notification title, content, and add a hyperlink",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 35,
-      "where": "controls[1].api; rendered controls table; Open questions",
+      "where": "controls[1].api; Governance controls; Open questions",
       "type": "absence",
-      "claim": "No documented automation operation configures the Endpoint DLP notification hyperlink.",
+      "claim": "No documented automation operation or Set-DlpComplianceRule parameter specifically configures the Endpoint DLP notification hyperlink.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Set-DlpComplianceRule Endpoint DLP custom notification title content hyperlink PowerShell NotifyPolicyTipUrl; \"Endpoint DLP\" \"notification\" \"hyperlink\" API PowerShell title content. Read Set-DlpComplianceRule and DLP policy reference; URL parameter is Exchange-only.",
+      "quote": "Searched: Endpoint DLP notification hyperlink PowerShell NotifyPolicyTipUrl Get Support. Read Set-DlpComplianceRule syntax and notification parameter descriptions; searched its text for hyperlink and NotifyPolicyTip names. NotifyPolicyTipUrl is documented for Exchange, not Endpoint DLP hyperlinks.",
       "severity": null,
       "fix": null
     },
     {
       "n": 36,
-      "where": "controls[1].note; rendered controls table",
-      "type": "absence",
-      "claim": "Learn supplies no UI step label for the notification customisation control inside the rule.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched the fetched DLP policy reference for custom notification, title, content, hyperlink and Get Support; read Policy tips and user notifications configuration options and the cited rule-edit procedure. Neither supplies a further Endpoint notification setting label.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "Governance controls: PowerShell notification parameters",
-      "type": "absence",
-      "claim": "Set-DlpComplianceRule documents no parameter for Endpoint DLP notification title, content or hyperlink.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
-      "quote": "You can localize your custom policy tips by using the Set-DlpComplianceRule -NotifyPolicyTipCustomTextTranslations cmdlet.",
-      "severity": "blocker",
-      "fix": "Replace the sentence with 'In Security & Compliance PowerShell, the Set-DlpComplianceRule reference documents no parameter specifically for the Endpoint DLP notification hyperlink; its NotifyPolicyTipUrl parameter is described for the popup dialog in Exchange workloads.' The Devices notification section documents policy-tip localisation with NotifyPolicyTipCustomTextTranslations, so remove the broader title/content absence. Sources: https://learn.microsoft.com/purview/dlp-policy-reference and https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule."
-    },
-    {
-      "n": 38,
-      "where": "Governance controls: NotifyPolicyTipUrl",
+      "where": "Governance controls",
       "type": "command",
-      "claim": "NotifyPolicyTipUrl is documented for the popup dialog in Exchange workloads.",
+      "claim": "Set-DlpComplianceRule documents NotifyPolicyTipUrl for Exchange popup dialogs.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule",
       "quote": "The NotifyPolicyTipUrl parameter specifies the URL in the popup dialog for Exchange workloads.",
@@ -449,37 +421,70 @@
       "fix": null
     },
     {
-      "n": 39,
-      "where": "Open questions: Chrome and Firefox",
+      "n": 37,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "Custom policy tips can be localised using Set-DlpComplianceRule -NotifyPolicyTipCustomTextTranslations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
+      "quote": "You can localize your custom policy tips by using the Set-DlpComplianceRule -NotifyPolicyTipCustomTextTranslations cmdlet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Open questions",
       "type": "absence",
-      "claim": "The roadmap and Learn do not specify whether this Edge notification-hyperlink change applies to Chrome and Firefox extensions.",
+      "claim": "Neither the roadmap nor Learn specifically confirms that the Edge notification hyperlink also applies to Chrome and Firefox with the Purview extension.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Endpoint DLP\" \"hyperlink\" \"Chrome\" \"Firefox\". Read roadmap, DLP policy reference and search passages from Chrome/Firefox extension and endpoint settings pages; browser protection is described, but this Edge hyperlink change is not extended to those browsers.",
+      "quote": "Searched: \"Endpoint DLP\" \"hyperlink\" \"Chrome\" \"Firefox\". Read roadmap, policy reference and search excerpts for Chrome notifications, Firefox extension and browser restrictions; they document browser protection and notifications, not this Edge hyperlink's applicability to other browsers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Governance controls; rationale: risk",
+      "type": "behaviour",
+      "claim": "The custom notification hyperlink is an option configured within a DLP rule.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
+      "quote": "Rules: If you selected Devices only, you get all the same options that are available for Exchange, SharePoint, OneDrive, Teams Chat and Channel, and Instances, plus the option to customize the notification title, content, and add a hyperlink",
       "severity": null,
       "fix": null
     },
     {
       "n": 40,
-      "where": "controls notes; Governance controls; rationale: risk",
-      "type": "behaviour",
-      "claim": "Notification hyperlink customisation and restrictions are configured at rule level.",
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft publishes no separate price for notification hyperlinks.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
-      "quote": "Rules ... Policy tips and user notifications configuration options ... If you selected Devices only ... the option to customize the notification title, content, and add a hyperlink in the form of a Get Support button.",
+      "source": null,
+      "quote": "Searched: Endpoint DLP notification hyperlinks separate licence price meter. Read Purview service description Endpoint DLP licensing table, Edge security subscription requirement and policy reference; no hyperlink-specific price stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft publishes no separate meter for notification hyperlinks.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Endpoint DLP notification hyperlinks separate licence price meter. Read Purview service description, Endpoint DLP prerequisites, Edge security licensing and policy reference; no hyperlink-specific billing meter stated.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-26T05:27:19.961Z",
+    "at": "2026-11-26T06:54:00.133Z",
     "summary": {
       "links": 11,
-      "unreachable": 0,
+      "unreachable": 9,
       "uiPaths": 2,
-      "uiPathsWithMissingWords": 1,
+      "uiPathsWithMissingWords": 2,
       "apiCalls": 1,
-      "apiCallsNotOnPage": 0,
+      "apiCallsNotOnPage": 1,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -495,48 +500,48 @@
       },
       {
         "url": "https://learn.microsoft.com/purview/dlp-policy-reference",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/purview/endpoint-dlp-create-policy-unauthorized-data-sharing",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/purview/endpoint-dlp-getting-started",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/deployedge/ms-edge-security-for-business",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/deployedge/microsoft-edge-security-dlp",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/purview/dlp-policy-reference#policy-tips-and-user-notifications-configuration-options",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -545,7 +550,7 @@
         "side": "ui",
         "governs": "Whether Edge activities on sensitive content are audited, warned (Block with override) or blocked",
         "docs": "https://learn.microsoft.com/purview/endpoint-dlp-create-policy-unauthorized-data-sharing",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Data loss prevention",
           "Policies",
@@ -556,23 +561,32 @@
           "Service domain and browser activities",
           "Block with override"
         ],
-        "missing": []
+        "missing": [
+          "Data loss prevention",
+          "Policies",
+          "Edit policy",
+          "Customize advanced DLP rules",
+          "Actions",
+          "Audit or restrict activities on Windows device",
+          "Service domain and browser activities",
+          "Block with override"
+        ]
       },
       {
         "index": 0,
         "side": "api",
         "governs": "Whether Edge activities on sensitive content are audited, warned (Block with override) or blocked",
         "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule",
-        "reachable": true,
+        "reachable": false,
         "token": "Set-DlpComplianceRule",
-        "found": true
+        "found": false
       },
       {
         "index": 1,
         "side": "ui",
         "governs": "Custom notification title, content and hyperlink for an Endpoint DLP rule",
         "docs": "https://learn.microsoft.com/purview/dlp-policy-reference#policy-tips-and-user-notifications-configuration-options",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Data loss prevention",
           "Policies",
@@ -580,6 +594,8 @@
           "Customize advanced DLP rules"
         ],
         "missing": [
+          "Data loss prevention",
+          "Policies",
           "Edit policy",
           "Customize advanced DLP rules"
         ]
@@ -592,6 +608,12 @@
       "date": "2026-11-26",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-26",
+      "status": "held",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

@@ -4,10 +4,10 @@
   "title": "Microsoft Teams: raise hand and speak on mic and camera in events with up to 100,000 attendees",
   "status": "held",
   "date": "2026-11-26",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "hold",
@@ -16,36 +16,36 @@
     "reason": "failed",
     "since": "2026-11-26",
     "reasons": [
-      "2 blocking findings (claims 23, 37)"
+      "1 blocking finding (claim 31)"
     ]
   },
   "counts": {
-    "claims": 56,
-    "confirmed": 54,
+    "claims": 67,
+    "confirmed": 66,
     "unconfirmed": 0,
-    "contradicted": 2,
-    "blocker": 2,
+    "contradicted": 1,
+    "blocker": 1,
     "major": 0,
     "minor": 3
   },
-  "summary": "Hold: the briefing promises that an attendee's camera appears in the recording, but Microsoft excludes attendee video streams from recordings of large-audience events and has not documented an exception for this change. It also reports license-assignment automation as undocumented despite Microsoft's general Teams add-on licensing and Graph assignment documentation.",
+  "summary": "The briefing's roadmap facts, licensing and control routes are supported, but its claim that use rests with organisers rather than admin policy is too broad: it also documents a policy that prevents those organisers from running large events. Remove that claim of exclusive organiser control; the narrower absence of a feature-specific switch is supported.",
   "claims": [
     {
       "n": 1,
       "where": "title; summary; What's changing; rationale: risk",
       "type": "record",
-      "claim": "Microsoft plans raise hand in Teams events with up to 100,000 attendees.",
+      "claim": "Microsoft plans attendee raise hand in Teams events with up to 100,000 attendees.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "In events this size, attendees can now raise their hand in Teams when they have a question.",
+      "quote": "Ask your questions live and take part in the conversation, even at events with up to 100,000 attendees. In events this size, attendees can now raise their hand in Teams when they have a question.",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "summary; What's changing; Why it matters; Risk assessment",
+      "where": "summary; What's changing; Why it matters",
       "type": "record",
-      "claim": "Organisers decide whether people with raised hands may turn on mic and camera to speak.",
+      "claim": "Organisers can allow people with raised hands to turn on their microphone and camera to speak or ask a question.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Organizers can then let people with a raised hand turn on their mic and camera to ask their question or speak during the event.",
@@ -67,7 +67,7 @@
       "n": 4,
       "where": "front matter: targetDate; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap target is December CY2026.",
+      "claim": "The roadmap targets December CY2026.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"December CY2026\"",
@@ -78,7 +78,7 @@
       "n": 5,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
-      "claim": "The release phase is General Availability.",
+      "claim": "The listed release phase is General Availability.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\"]",
@@ -100,7 +100,7 @@
       "n": 7,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap lists Android, Desktop, iOS, Mac and Web.",
+      "claim": "The listed platforms are Android, Desktop, iOS, Mac and Web.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\", \"Web\"]",
@@ -120,20 +120,53 @@
     },
     {
       "n": 9,
-      "where": "What's changing; Cost and licensing; changes",
-      "type": "availability",
-      "claim": "Learn currently limits raise hand to events with up to 20,000 attendees.",
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on November 25, 2026 at 00:10:31.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meetings-events-feature-comparison",
-      "quote": "Available only for events with up to 20,000 attendees and can't be enabled for a subset of participants (for example, only the first 20,000 attendees) in larger events.",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-25T00:10:31\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 10,
+      "where": "front matter: defaultState; What's changing; Open questions",
+      "type": "default",
+      "claim": "Microsoft has not stated the arrival default for the planned raise-hand expansion above 20,000 attendees.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams events raise hand 100000 attendees default policy licensing; \"raise hand\" \"100,000\" default scheduling policy external anonymous. Read roadmap, feature comparison, Plan for Teams events and reactions guidance; none specifies the planned expansion's default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
       "where": "What's changing",
-      "type": "availability",
-      "claim": "Learn lists attendee mic for events with up to 1,000 attendees.",
+      "type": "absence",
+      "claim": "Learn does not yet describe the new 100,000-attendee raise-hand behaviour.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams events raise hand 100000 attendees default policy licensing; Teams raise hand 100000 events scheduling default existing events external anonymous attendees bring on screen admin policy Set-CsTeamsEventsPolicy. Read feature comparison, Plan for Teams events and admin release notes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Cost and licensing; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Today's feature comparison lists raise hand up to 20,000 attendees.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meetings-events-feature-comparison",
+      "quote": "| [Raise hand](https://support.microsoft.com/office/raise-your-hand-in-microsoft-teams-meetings-bb2dd8e1-e6bd-43a6-85cf-30822667b372)^2^ | Up to 20,000 attendees |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Today's feature comparison lists attendee microphone availability up to 1,000 attendees.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/meetings-events-feature-comparison",
       "quote": "| [Attendee mic](meeting-policies-audio-and-video)^1^ | Up to 1,000 attendees |",
@@ -141,10 +174,10 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 14,
       "where": "What's changing",
-      "type": "availability",
-      "claim": "Learn lists attendee camera for events with up to 1,000 attendees.",
+      "type": "behaviour",
+      "claim": "Today's feature comparison lists attendee camera availability up to 1,000 attendees.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/meetings-events-feature-comparison",
       "quote": "| [Attendee camera](meeting-policies-audio-and-video)^1^ | Up to 1,000 attendees |",
@@ -152,10 +185,10 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 15,
       "where": "What's changing",
-      "type": "default",
-      "claim": "Current Learn documentation says raise hand is off and cannot be enabled for events with 20,001 to 100,000 attendees.",
+      "type": "behaviour",
+      "claim": "For events with 20,001 to 100,000 attendees, today's raise-hand feature is disabled in scheduling and organisers cannot enable it.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/meetings-events-feature-comparison",
       "quote": "For events with 20,001 to 100,000 attendees, this feature is turned off in the scheduling form and can't be turned on by organizers.",
@@ -163,10 +196,10 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 16,
       "where": "What's changing; Why it matters",
-      "type": "availability",
-      "claim": "Learn lists Q&A for events with up to 100,000 attendees.",
+      "type": "behaviour",
+      "claim": "Q&A is documented for events with up to 100,000 attendees.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/meetings-events-feature-comparison",
       "quote": "| [Q&A](manage-qna-for-teams) | Up to 100,000 attendees |",
@@ -174,9 +207,9 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "What's changing; Scope",
-      "type": "default",
+      "n": 17,
+      "where": "What's changing; Scope: Event type",
+      "type": "behaviour",
       "claim": "Events with more than 1,000 attendees have Optimize for large audience on.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/plan-events",
@@ -185,8 +218,8 @@
       "fix": null
     },
     {
-      "n": 15,
-      "where": "What's changing; Scope",
+      "n": 18,
+      "where": "What's changing; Scope: Event type",
       "type": "applicability",
       "claim": "Events optimised for large audiences use town hall policy settings.",
       "status": "supported",
@@ -196,92 +229,59 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 19,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Attendees of events optimised for large audiences cannot turn on mic and camera on demand.",
+      "claim": "Today's large-audience experience does not allow attendees to turn on their microphones and cameras on demand.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/plan-events",
-      "quote": "For example, attendees can't turn on their microphones and cameras on demand",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "What's changing; Open questions",
-      "type": "behaviour",
-      "claim": "The November 13, 2025 admin release notes describe organisers and presenters bringing raised-hand attendees on screen.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/officeupdates/teams-admin",
-      "quote": "town halls organized by users with Teams Premium can allow attendees to raise their hand. Organizers and presenters can then bring attendees on screen to allow them to share their camera and microphone.",
-      "severity": "minor",
-      "fix": "Qualify the historical sentence as 'Microsoft's admin release notes for November 13, 2025 describe a related capability for town halls organised by users with Teams Premium: attendees raise their hand, and organisers and presenters bring them on screen to share camera and microphone.'"
-    },
-    {
-      "n": 18,
-      "where": "What's changing",
-      "type": "absence",
-      "claim": "Learn does not yet describe the planned expansion of raise hand above 20,000 attendees.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: '581720 Teams raise hand'; '100,000 raise hand default'; 'Teams events 100000 raise hand bring attendees on screen default external anonymous admin policy filter speech'. Opened feature comparison, plan-events, events-licensing and teams-admin; no expansion documentation found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "What's changing; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not stated whether the 100,000-attendee change uses the mechanism in the November 2025 notes.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: '581720 Teams raise hand'; 'Teams events 100000 raise hand bring attendees on screen default external anonymous admin policy filter speech'. Opened teams-admin, plan-events and feature comparison; the roadmap does not identify the 2025 mechanism.",
+      "quote": "For example, attendees can't turn on their microphones and cameras on demand, and attendees view the event at a slight delay and can pause and rewind the live video.",
       "severity": null,
       "fix": null
     },
     {
       "n": 20,
-      "where": "front matter: defaultState; What's changing; Why it matters; Open questions",
-      "type": "default",
-      "claim": "The default state of the planned change is unknown.",
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "The November 13, 2025 admin release notes describe town hall attendees raising hands and organisers or presenters bringing them on screen for camera and microphone.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: '100,000 raise hand default'; 'Teams events 100000 raise hand bring attendees on screen default external anonymous admin policy filter speech'. Read roadmap, feature comparison, plan-events and teams-admin; current limits are stated, but no future default is stated.",
+      "source": "https://learn.microsoft.com/officeupdates/teams-admin",
+      "quote": "With this new update, town halls organized by users with Teams Premium can allow attendees to raise their hand. Organizers and presenters can then bring attendees on screen to allow them to share their camera and microphone.",
       "severity": null,
       "fix": null
     },
     {
       "n": 21,
-      "where": "Why it matters",
+      "where": "What's changing; Open questions",
       "type": "absence",
-      "claim": "No source states that the planned change modifies existing events automatically.",
+      "claim": "Microsoft has not stated whether the planned 100,000-attendee expansion uses the same bring-on-screen mechanism.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: '100,000 raise hand default'; '581720 Teams raise hand'. Read roadmap, plan-events, feature comparison and teams-admin; no statement about automatic changes to already scheduled events found.",
+      "quote": "Searched: Teams raise hand 100000 events scheduling default existing events external anonymous attendees bring on screen admin policy Set-CsTeamsEventsPolicy. Read roadmap, November 13, 2025 admin notes, feature comparison and Plan for Teams events; no explicit equivalence is stated.",
       "severity": null,
       "fix": null
     },
     {
       "n": 22,
-      "where": "Risk assessment: Data exposure; Why it matters",
-      "type": "record",
-      "claim": "The planned feature lets an audience member speak on mic and camera during an event of up to 100,000 attendees.",
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "Microsoft has not stated whether existing large events gain raise hand automatically or whether organisers must choose it during scheduling.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "Ask your questions live and take part in the conversation, even at events with up to 100,000 attendees. Organizers can then let people with a raised hand turn on their mic and camera to ask their question or speak during the event.",
+      "source": null,
+      "quote": "Searched: Teams raise hand 100000 events scheduling default existing events external anonymous attendees bring on screen admin policy Set-CsTeamsEventsPolicy. Read roadmap, feature comparison, Plan for Teams events and admin release notes; no existing-event rollout behaviour is specified.",
       "severity": null,
       "fix": null
     },
     {
       "n": 23,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Anyone watching the recording will hear and see the attendee brought on mic and camera.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoftteams/teams-recording-policy",
-      "quote": "Meeting recordings don't capture: ... Attendee video streams in events optimized for large audiences and in live events",
-      "severity": "blocker",
-      "fix": "Remove 'and by anyone who later watches the recording' from the Data exposure bullet. Microsoft excludes attendee video streams from large-audience event recordings at https://learn.microsoft.com/microsoftteams/teams-recording-policy; no source read states an exception for the planned on-screen capability."
+      "where": "Risk assessment: Data exposure; Why it matters",
+      "type": "record",
+      "claim": "The planned change allows an audience member to speak on microphone and camera during the large event.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Organizers can then let people with a raised hand turn on their mic and camera to ask their question or speak during the event.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 24,
@@ -298,18 +298,18 @@
       "n": 25,
       "where": "Risk assessment: Data exposure",
       "type": "absence",
-      "claim": "No documented filter checks what an attendee says or shows through the planned mic and camera capability.",
+      "claim": "No filtering of what the live speaker says or shows is documented for this planned capability.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Teams raise hand filter speech'; 'Teams town hall recording attendee brought on screen microphone camera recording filters speech'. Opened plan-events, settings-policies-reference and manage-meeting-presentation-experience; no attendee speech/camera content filter found.",
+      "quote": "Searched: Teams large event live attendee mic camera speech filter content moderation; Teams reactions off disables hand raise live microphone camera content filter large town hall events. Read Plan for Teams events and sensitive meeting presentation guidance; no live speaker-content filter is stated.",
       "severity": null,
       "fix": null
     },
     {
       "n": 26,
-      "where": "controls[2].note; Risk assessment: Security & identity; rationale: risk",
+      "where": "Risk assessment: Security & identity; controls[2].note; rationale: risk",
       "type": "default",
-      "claim": "Who can attend events optimized for a large audience defaults to Everyone, allowing any user to attend.",
+      "claim": "Who can attend events optimized for a large audience defaults to Everyone, allowing any user to attend organisers' events under that policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
       "quote": "By default, both settings are set to Everyone. When users with this policy create events with up to 1,000 attendees or events optimized for large audiences, any user can attend.",
@@ -318,12 +318,12 @@
     },
     {
       "n": 27,
-      "where": "controls[2].note; Risk assessment: Security & identity",
+      "where": "Risk assessment: Security & identity; Governance guidance",
       "type": "applicability",
-      "claim": "The attendance policy restricts who may attend large events created by organisers assigned that policy.",
+      "claim": "Restricting event attendance to the organisation and guests narrows the audience eligible to participate.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
-      "quote": "Controls who can attend events optimized for large audiences (such as town halls) created by organizers with this policy.",
+      "quote": "To only allow users in your organization and guests to attend events optimized for large audiences created by organizers with this policy, run the following command:",
       "severity": null,
       "fix": null
     },
@@ -331,216 +331,84 @@
       "n": 28,
       "where": "Risk assessment: Security & identity; Open questions",
       "type": "absence",
-      "claim": "Microsoft has not stated whether external or anonymous attendees can be brought on mic and camera in this planned expansion.",
+      "claim": "Microsoft has not stated whether external or anonymous attendees can be brought onto microphone and camera in the planned 100,000-attendee version.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Teams events 100000 raise hand bring attendees on screen default external anonymous admin policy filter speech'. Read roadmap, feature comparison, plan-events and teams-admin; no eligibility statement for external or anonymous speakers in this expansion found.",
+      "quote": "Searched: \"town hall\" \"raise hand\" \"anonymous\"; \"raise hand\" \"100,000\" default scheduling policy external anonymous. Read roadmap, Plan for Teams events, release notes and anonymous-access search excerpts; none states speaker eligibility for this planned expansion.",
       "severity": null,
       "fix": null
     },
     {
       "n": 29,
-      "where": "controls[0]; summary; Risk assessment: Change & support; Governance controls; rationale: risk",
-      "type": "absence",
-      "claim": "No dedicated admin UI or API switch is documented to allow or block raise hand and bringing attendees on screen in large events.",
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The described speaking action requires an organiser's decision rather than autonomous activation.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Teams town hall raise hand bring on screen admin setting policy Set-CsTeamsEventsPolicy Set-CsTeamsMeetingPolicy'; 'town hall raise hand policy'. Read Events policies table, Set-CsTeamsEventsPolicy syntax, plan-events and manage-reactions-meetings; no dedicated enforcing switch found.",
+      "source": "roadmap record",
+      "quote": "Organizers can then let people with a raised hand turn on their mic and camera to ask their question or speak during the event.",
       "severity": null,
       "fix": null
     },
     {
       "n": 30,
-      "where": "controls[1].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The large-event creation control is at Teams admin center > Meetings > Events policies > policy > Events optimized for a large audience.",
+      "where": "controls[0]; summary; Risk assessment: Change & support; Governance controls",
+      "type": "absence",
+      "claim": "No feature-specific admin UI or API switch to allow or block raise hand and bringing attendees on screen in large events is documented.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
-      "quote": "go to Meetings > Events policies. Select an existing policy or create a new one. ... turn the Events optimized for a large audience toggle On or Off.",
+      "source": null,
+      "quote": "Searched: Teams raise hand 100000 events scheduling default existing events external anonymous attendees bring on screen admin policy Set-CsTeamsEventsPolicy. Read events-policy tables, Set-CsTeamsEventsPolicy syntax, Plan for Teams events and reactions guidance; no dedicated switch is documented.",
       "severity": null,
       "fix": null
     },
     {
       "n": 31,
-      "where": "controls[1].api; Governance controls table",
-      "type": "command",
-      "claim": "Set-CsTeamsEventsPolicy -Identity <policy name> -AllowTownhalls Disabled prevents large-event creation.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
-      "quote": "To prevent organizers with this policy from creating events optimized for large audiences, run the following command: Set-CsTeamsEventsPolicy -Identity <policy name> -AllowTownhalls Disabled",
-      "severity": "minor",
-      "fix": "Add 'The Set-CsTeamsEventsPolicy reference marks the policy as preview' to the notes for controls[1] and controls[2]. The reference at https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy says 'Note that this policy is currently still in preview.' Keep the roadmap's General Availability release phase unchanged."
+      "where": "Risk assessment: Change & support",
+      "type": "consistency",
+      "claim": "Whether the feature is used rests with organisers, not with an admin policy.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "so whether the feature is used rests with organisers, not with an admin policy. ... Turning Events optimized for a large audience off is blunt: it stops affected organisers creating large events",
+      "severity": "blocker",
+      "fix": "In Risk assessment > Change & support, remove ', so whether the feature is used rests with organisers, not with an admin policy'. End the sentence after '(November 2026)'. This preserves the confirmed absence of a feature-specific setting without denying the documented coarse admin controls."
     },
     {
       "n": 32,
-      "where": "controls[1].note; Governance controls",
-      "type": "applicability",
-      "claim": "Disabling large-event creation is a broad fallback rather than a raise-hand-only restriction.",
+      "where": "Risk assessment: Change & support; rationale: impact",
+      "type": "behaviour",
+      "claim": "The planned expansion extends raised-hand participation beyond the documented 20,000-attendee scale.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
-      "quote": "Controls whether users with this policy can create events optimized for large audiences, such as town halls.",
+      "source": "https://learn.microsoft.com/microsoftteams/meetings-events-feature-comparison",
+      "quote": "Available only for events with up to 20,000 attendees and can't be enabled for a subset of participants (for example, only the first 20,000 attendees) in larger events.",
       "severity": null,
       "fix": null
     },
     {
       "n": 33,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Turning the creation setting Off after scheduling prevents the organiser running or starting the event.",
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The Advanced event features category includes attendee reactions, raise hand and polls.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
-      "quote": "If you change the value to Off after a user schedules an event, they can't run or start the event.",
+      "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
+      "quote": "Attendee reactions, raise hand, and polls | Organizers can allow attendees to engage and provide feedback during an event with live reactions and raise their hands to speak.",
       "severity": null,
       "fix": null
     },
     {
       "n": 34,
-      "where": "controls[2].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The attendance control is at Teams admin center > Meetings > Events policies > policy > Who can attend events optimized for a large audience.",
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The Advanced event features licence list includes Office 365 E1, E3, E5 and Microsoft 365 E3, E5, E7.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
-      "quote": "go to Meetings > Events policies. Select an existing policy or create a new one. ... in the Who can attend events optimized for a large audience dropdown list, select one of the following",
+      "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
+      "quote": "| Enterprise | Not applicable | Office 365 E1, E3, E5Microsoft 365 E3, E5, E7 |",
       "severity": null,
       "fix": null
     },
     {
       "n": 35,
-      "where": "controls[2].api; Governance controls table",
-      "type": "command",
-      "claim": "Set-CsTeamsEventsPolicy -Identity <policy name> -TownhallEventAttendeeAccess EveryoneInOrganizationAndGuests restricts large-event attendance to the organisation and guests.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
-      "quote": "To only allow users in your organization and guests to attend events optimized for large audiences ... Set-CsTeamsEventsPolicy -Identity <policy name> -TownhallEventAttendeeAccess EveryoneInOrganizationAndGuests",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "controls[3].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "An organiser's attendee pack can be changed at Teams admin center > Add-on Licenses > Teams Events > Licenses > Attendee pack.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/attendee-capacity-pack-manage",
-      "quote": "In the Teams admin center, go to Add-on Licenses > Teams Events. On the Licenses tab, in the Attendee pack column of the table, select the drop-down in the user's row, and then choose the pack size that you want.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "controls[3].api; Governance controls table and prose",
-      "type": "absence",
-      "claim": "No API or automation is documented for assigning attendee pack add-on licenses to organisers.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0",
-      "quote": "Add or remove licenses for the user to enable or disable their use of Microsoft cloud offerings that the company has licenses to. ... POST /users/{id | userPrincipalName}/assignLicense",
-      "severity": "blocker",
-      "fix": "Replace controls[3].api with kind 'graph', call 'POST /v1.0/users/{id}/assignLicense', docs 'https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0'. Add the note 'General user-license assignment: addLicenses specifies the purchased license skuId; removeLicenses identifies licenses to remove.' Cite https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/assign-teams-add-on-licenses, which documents PowerShell assignment of Teams add-on licenses. Narrow the prose to 'The Manage Attendee Capacity Pack page describes the Teams admin center workflow; general Teams add-on license assignment is also documented through Microsoft Graph.' Do not invent a pack-specific SKU identifier."
-    },
-    {
-      "n": 38,
-      "where": "controls[3].note; Scope: Admin roles; Governance controls",
-      "type": "role",
-      "claim": "Managing attendee packs in the Teams admin center License Management section requires Global Administrator.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/attendee-capacity-pack-manage",
-      "quote": "You must be assigned the Global Administrator role to access the License Management section and manage all licensing capabilities in the Teams admin center.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "controls[3].note; Scope: Admin roles; Governance controls",
-      "type": "role",
-      "claim": "Teams Administrator has read-only access to the License Management section.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/attendee-capacity-pack-manage",
-      "quote": "Users assigned the Teams Administrator role can access the License Management section in read-only mode and cannot create, modify, or remove license assignments or settings.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "controls[3].note; Cost and licensing; Governance guidance",
-      "type": "licensing",
-      "claim": "Each organiser can be assigned only one attendee pack.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/attendee-capacity-pack",
-      "quote": "While your organization can purchase multiple packs, each organizer can only be assigned one pack.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "controls[4].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The Reactions default is at Teams admin center > Meetings > Meeting policies > policy > Meeting engagement > Reactions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-reactions-meetings",
-      "quote": "go to Meetings > Meeting policies. Select the policy that you want to edit. Under Meeting engagement, turn the Reactions toggle On or Off.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "controls[4].api; Governance controls table",
-      "type": "command",
-      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowMeetingReactions Disabled sets the Reactions default to Off.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-reactions-meetings",
-      "quote": "To set the default value for meeting reactions to Off for organizers with the policy, run the following command: Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowMeetingReactions Disabled",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "controls[4].note; Governance controls",
-      "type": "applicability",
-      "claim": "Reactions sets a Meeting options default that organisers may change for each meeting and event.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-reactions-meetings",
-      "quote": "As an admin, you can use the Teams admin center or PowerShell to set the default value for reactions in your organizers' Meeting options. Organizers can change the setting for each meeting and event they create.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "controls[4].note; Governance controls table",
-      "type": "behaviour",
-      "claim": "Learn says turning reactions off disables hand raise.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-meeting-presentation-experience",
-      "quote": "If you choose to turn off reactions, remember that this option disables the hand-raise feature.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "The licensing model is mixed: base event features plus a capacity add-on for larger engaged events.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
-      "quote": "Organizers with a license in the Advanced event features category have all foundational event capabilities plus the following advanced event features. ... With an Attendee Capacity Pack, organizers can scale events up to 100,000 attendees.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "front matter: licensing.notes; Cost and licensing: Licence",
-      "type": "licensing",
-      "claim": "Advanced event features, including raise hand, are listed for Office 365 E1, E3, E5 and Microsoft 365 E3, E5, E7.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
-      "quote": "| Enterprise | Not applicable | Office 365 E1, E3, E5Microsoft 365 E3, E5, E7 | ... Attendee reactions, raise hand, and polls",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
       "where": "Cost and licensing: Licence",
       "type": "licensing",
-      "claim": "Advanced event licences support engagement features for up to 3,000 attendees.",
+      "claim": "Advanced event licences support engagement events up to 3,000 attendees without a capacity pack.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
       "quote": "Organizers can host events with capabilities to engage with audiences (like reactions, raise hand, polls, and Q&A) for up to 3,000 attendees",
@@ -548,10 +416,10 @@
       "fix": null
     },
     {
-      "n": 48,
-      "where": "front matter: licensing.notes; Cost and licensing: Add-on; controls[3]; rationale: cost",
+      "n": 36,
+      "where": "front matter: licensing.notes; Cost and licensing: Add-on; rationale: cost",
       "type": "licensing",
-      "claim": "Engaged events above 3,000 attendees require an Attendee Capacity Pack assigned to the organiser, subject to the stated legacy Teams Premium exception.",
+      "claim": "Engagement events above 3,000 attendees require an Attendee Capacity Pack assigned to the organiser, subject to the stated legacy Teams Premium exception.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
       "quote": "To host events with more than 3,000 attendees with engagement capabilities (chat, reactions, raise hand, polls, Q&A), organizations must purchase Attendee Capacity Pack add-on licenses and assign them to organizers.",
@@ -559,10 +427,10 @@
       "fix": null
     },
     {
-      "n": 49,
-      "where": "Cost and licensing: Add-on; Governance guidance: Before rollout",
+      "n": 37,
+      "where": "Cost and licensing: Add-on",
       "type": "licensing",
-      "claim": "Attendee packs come in 5,000, 10,000, 20,000, 35,000, 50,000, 75,000 and 100,000 attendee sizes.",
+      "claim": "Pack sizes are 5,000, 10,000, 20,000, 35,000, 50,000, 75,000 and 100,000 attendees.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/attendee-capacity-pack",
       "quote": "They can be purchased to support 5,000, 10,000, 20,000, 35,000, 50,000, 75,000, and 100,000 event attendees.",
@@ -570,7 +438,18 @@
       "fix": null
     },
     {
-      "n": 50,
+      "n": 38,
+      "where": "Cost and licensing; controls[3].note; Governance guidance",
+      "type": "licensing",
+      "claim": "Each organiser can be assigned only one attendee pack at a time.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/attendee-capacity-pack-manage",
+      "quote": "Each organizer can only be assigned one attendee pack at a time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
       "where": "Cost and licensing: Add-on",
       "type": "licensing",
       "claim": "Teams Enterprise capacity and attendee pack capacity are not combined.",
@@ -581,10 +460,10 @@
       "fix": null
     },
     {
-      "n": 51,
+      "n": 40,
       "where": "Cost and licensing: Add-on",
       "type": "licensing",
-      "claim": "Attendee packs increase capacity without unlocking other feature capabilities.",
+      "claim": "Capacity packs do not unlock other feature capabilities.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/attendee-capacity-pack",
       "quote": "Attendee packs increase capacity for Teams events. They don't unlock any other feature capabilities.",
@@ -592,9 +471,9 @@
       "fix": null
     },
     {
-      "n": 52,
+      "n": 41,
       "where": "Cost and licensing: Add-on",
-      "type": "availability",
+      "type": "behaviour",
       "claim": "An organisation can host up to 50 concurrent events across all organisers.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/attendee-capacity-pack",
@@ -603,8 +482,8 @@
       "fix": null
     },
     {
-      "n": 53,
-      "where": "Cost and licensing: Teams Premium; Scope: Who",
+      "n": 42,
+      "where": "Cost and licensing: Teams Premium; Scope",
       "type": "licensing",
       "claim": "An active Teams Premium licence purchased before April 1, 2026 retains hosting capacity up to 100,000 attendees until its current term ends.",
       "status": "supported",
@@ -614,21 +493,65 @@
       "fix": null
     },
     {
-      "n": 54,
-      "where": "Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "Capacity is not updated automatically on events already scheduled when pack assignments change.",
+      "n": 43,
+      "where": "Cost and licensing: Indirect costs; rationale: cost",
+      "type": "record",
+      "claim": "The roadmap names no licence specific to this change.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/attendee-capacity-pack",
-      "quote": "Event capacity isn't automatically updated when a larger capacity attendee pack is assigned. The organizer must manually update the event capacity in the event scheduling form.",
-      "severity": "minor",
-      "fix": "Narrow the final checklist clause to 'event capacity is not updated automatically when a larger pack is assigned to an organiser after scheduling'. The documentation explicitly describes larger-pack assignment, not every kind of assignment change."
+      "source": "roadmap record",
+      "quote": "Organizers can then let people with a raised hand turn on their mic and camera to ask their question or speak during the event.",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 55,
+      "n": 44,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "Mixed licensing reflects underlying event-feature entitlement plus capacity add-ons, with the legacy Premium exception described in the body.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
+      "quote": "Organizers with a license in the Advanced event features category have all foundational event capabilities plus the following advanced event features. ... With an Attendee Capacity Pack, organizers can scale events up to 100,000 attendees.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Scope: Who; Cost and licensing: Add-on; Governance guidance",
+      "type": "licensing",
+      "claim": "Events above 20,000 attendees require a suitably sized pack or an active pre-April 2026 Teams Premium entitlement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/attendee-capacity-pack-manage",
+      "quote": "After April 1, 2026, when your Teams Premium term expires, events with capabilities to engage with audiences that have more than 3,000 attendees require an attendee pack sized to the desired attendee capacity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope: Admin roles; controls[3].note; Governance controls",
+      "type": "role",
+      "claim": "Managing attendee pack licences in the Teams admin center's License Management section requires Global Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/attendee-capacity-pack-manage",
+      "quote": "You must be assigned the Global Administrator role to access the License Management section and manage all licensing capabilities in the Teams admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Scope: Admin roles; controls[3].note; Governance controls",
+      "type": "role",
+      "claim": "Teams Administrator has read-only access to the License Management section.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/attendee-capacity-pack-manage",
+      "quote": "Users assigned the Teams Administrator role can access the License Management section in read-only mode and cannot create, modify, or remove license assignments or settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
       "where": "Scope: Rollout",
       "type": "behaviour",
-      "claim": "Microsoft recommends Teams Events Services for events with more than 20,000 attendees.",
+      "claim": "Microsoft recommends Teams Events Services for events above 20,000 attendees.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/plan-events",
       "quote": "We recommend using Teams Events Services for events with more than 20,000 attendees.",
@@ -636,83 +559,291 @@
       "fix": null
     },
     {
-      "n": 56,
-      "where": "Cost and licensing: Indirect costs; rationale: cost",
-      "type": "record",
-      "claim": "The roadmap item names no licence specific to this change.",
+      "n": 49,
+      "where": "Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "Teams admin center > Add-on Licenses > Teams Events lists pack assignments.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "Ask your questions live and take part in the conversation, even at events with up to 100,000 attendees. ... Organizers can then let people with a raised hand turn on their mic and camera to ask their question or speak during the event.",
+      "source": "https://learn.microsoft.com/microsoftteams/attendee-capacity-pack-manage",
+      "quote": "In the Teams admin center, go to Add-on Licenses > Teams Events. If one or more organizers are assigned an attendee pack, you see a table that shows the following information.",
       "severity": null,
       "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Assigning a larger pack after scheduling does not automatically update event capacity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/attendee-capacity-pack",
+      "quote": "No. Event capacity isn't automatically updated when a larger capacity attendee pack is assigned. The organizer must manually update the event capacity in the event scheduling form.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Meetings > Events policies > policy > Events optimized for a large audience controls large-event creation in Teams admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
+      "quote": "go to Meetings > Events policies. ... Select an existing policy or create a new one. ... turn the Events optimized for a large audience toggle On or Off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "Set-CsTeamsEventsPolicy -Identity <policy name> -AllowTownhalls Disabled prevents large-event creation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
+      "quote": "To prevent organizers with this policy from creating events optimized for large audiences, run the following command: Set-CsTeamsEventsPolicy -Identity <policy name> -AllowTownhalls Disabled",
+      "severity": "minor",
+      "fix": "Add to the events-policy control notes: 'The Set-CsTeamsEventsPolicy reference still labels this policy preview, although the scheduling and attendance admin guide documents these controls without that label.' Reference: https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy."
+    },
+    {
+      "n": 53,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "Meetings > Events policies > policy > Who can attend events optimized for a large audience controls attendance in Teams admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
+      "quote": "go to Meetings > Events policies. ... Select an existing policy or create a new one. ... in the Who can attend events optimized for a large audience dropdown list, select one of the following:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "Set-CsTeamsEventsPolicy -Identity <policy name> -TownhallEventAttendeeAccess EveryoneInOrganizationAndGuests restricts large-event attendance to organisation users and guests.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
+      "quote": "To only allow users in your organization and guests to attend events optimized for large audiences created by organizers with this policy ... Set-CsTeamsEventsPolicy -Identity <policy name> -TownhallEventAttendeeAccess EveryoneInOrganizationAndGuests",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "Add-on Licenses > Teams Events > Licenses > Attendee pack reaches the pack-size control for existing assigned organisers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/attendee-capacity-pack-manage",
+      "quote": "In the Teams admin center, go to Add-on Licenses > Teams Events. On the Licenses tab, in the Attendee pack column of the table, select the drop-down in the user's row, and then choose the pack size that you want.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[3].api",
+      "type": "command",
+      "claim": "POST /v1.0/users/{id}/assignLicense is the general Microsoft Graph user-licence assignment operation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0",
+      "quote": "Add or remove licenses for the user to enable or disable their use of Microsoft cloud offerings that the company has licenses to. ... POST /users/{id | userPrincipalName}/assignLicense",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[3].note",
+      "type": "command",
+      "claim": "The assignLicense request's addLicenses property specifies licences to add.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0",
+      "quote": "addLicenses | assignedLicense collection | A collection of assignedLicense objects that specify the licenses to add.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[3].note",
+      "type": "command",
+      "claim": "The assignLicense request's removeLicenses property contains skuIds identifying licences to remove.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0",
+      "quote": "removeLicenses | Guid collection | A collection of skuIds that identify the licenses to remove. Required. Can be an empty collection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "General Teams add-on licence assignment is documented using Microsoft Graph.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/assign-teams-add-on-licenses",
+      "quote": "Import-Module Microsoft.Graph.Users.Actions ... Set-MgUserLicense -UserId $user -AddLicenses $addLicenses -RemoveLicenses @()",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[4].ui",
+      "type": "admin-path",
+      "claim": "Meetings > Meeting policies > policy > Meeting engagement > Reactions reaches the general reactions-default setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-reactions-meetings",
+      "quote": "go to Meetings > Meeting policies. Select the policy that you want to edit. Under Meeting engagement, turn the Reactions toggle On or Off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[4].api",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowMeetingReactions Disabled sets the general reactions default to Off.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-reactions-meetings",
+      "quote": "To set the default value for meeting reactions to Off for organizers with the policy, run the following command: Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowMeetingReactions Disabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[4].note; Governance controls",
+      "type": "applicability",
+      "claim": "The general Reactions policy sets an organiser Meeting options default that organisers can change for each meeting and event.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-reactions-meetings",
+      "quote": "As an admin, you can use the Teams admin center or PowerShell to set the default value for reactions in your organizers' Meeting options. Organizers can change the setting for each meeting and event they create.",
+      "severity": "minor",
+      "fix": "Append to controls[4].note: 'However, Plan for Teams events lists No control for admins for Attendee reactions in events optimized for large audiences; the published guidance differs on this scope.' Cite https://learn.microsoft.com/microsoftteams/plan-events#reference. Keep this row as a general default control, not a confirmed control for the planned expansion."
+    },
+    {
+      "n": 63,
+      "where": "controls[4].note",
+      "type": "behaviour",
+      "claim": "Learn notes that turning off reactions disables hand raise.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-meeting-presentation-experience",
+      "quote": "If you choose to turn off reactions, remember that this option disables the hand-raise feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[1].note; Governance controls",
+      "type": "applicability",
+      "claim": "Disabling large-event creation is a coarse fallback affecting organisers with the policy rather than raise hand alone.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
+      "quote": "Events optimized for a large audience (On,Off) | -AllowTownhalls (Enabled,Disabled) | Controls whether users with this policy can create events optimized for large audiences, such as town halls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Turning Events optimized for a large audience off prevents affected organisers from creating large events.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
+      "quote": "To prevent organizers with this policy from creating events optimized for large audiences, run the following command:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Turning the event-creation setting off after scheduling prevents the organiser from running or starting the event.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
+      "quote": "If you change the value to Off after a user schedules an event, they can't run or start the event.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Q&A can provide a moderated text-question queue rather than a live microphone.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-qna-for-teams",
+      "quote": "They can also turn on moderation to review and approve questions before they appear in the Q&A feed.",
+      "severity": "minor",
+      "fix": "Change 'from a moderated text queue to a live microphone' to 'from a text queue that organisers can moderate to a live microphone', and cite https://learn.microsoft.com/microsoftteams/manage-qna-for-teams."
     }
   ],
   "precheck": {
-    "at": "2026-11-26T05:27:19.742Z",
+    "at": "2026-11-26T06:54:00.594Z",
     "summary": {
-      "links": 12,
-      "unreachable": 0,
+      "links": 14,
+      "unreachable": 13,
       "uiPaths": 4,
-      "uiPathsWithMissingWords": 0,
-      "apiCalls": 3,
-      "apiCallsNotOnPage": 0,
+      "uiPathsWithMissingWords": 4,
+      "apiCalls": 4,
+      "apiCallsNotOnPage": 4,
       "roadmapDrift": 0
     },
     "linkChecks": [
       {
         "url": "https://learn.microsoft.com/microsoftteams/meetings-events-feature-comparison",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/plan-events",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/events-licensing",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/attendee-capacity-pack",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/attendee-capacity-pack-manage",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/assign-teams-add-on-licenses",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0",
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/set-up-events",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/settings-policies-reference",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/manage-reactions-meetings",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/manage-meeting-presentation-experience",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/officeupdates/teams-admin",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://www.microsoft.com/microsoft-365/roadmap?id=581720",
@@ -726,84 +857,118 @@
         "side": "ui",
         "governs": "Whether users can create events optimised for a large audience (town halls)",
         "docs": "https://learn.microsoft.com/microsoftteams/set-up-events",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Meetings",
           "Events policies",
           "Events optimized for a large audience"
         ],
-        "missing": []
+        "missing": [
+          "Meetings",
+          "Events policies",
+          "Events optimized for a large audience"
+        ]
       },
       {
         "index": 1,
         "side": "api",
         "governs": "Whether users can create events optimised for a large audience (town halls)",
         "docs": "https://learn.microsoft.com/microsoftteams/set-up-events",
-        "reachable": true,
+        "reachable": false,
         "token": "Set-CsTeamsEventsPolicy",
-        "found": true
+        "found": false
       },
       {
         "index": 2,
         "side": "ui",
         "governs": "Who can attend events optimised for a large audience",
         "docs": "https://learn.microsoft.com/microsoftteams/set-up-events",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Meetings",
           "Events policies",
           "Who can attend events optimized for a large audience"
         ],
-        "missing": []
+        "missing": [
+          "Meetings",
+          "Events policies",
+          "Who can attend events optimized for a large audience"
+        ]
       },
       {
         "index": 2,
         "side": "api",
         "governs": "Who can attend events optimised for a large audience",
         "docs": "https://learn.microsoft.com/microsoftteams/set-up-events",
-        "reachable": true,
+        "reachable": false,
         "token": "Set-CsTeamsEventsPolicy",
-        "found": true
+        "found": false
       },
       {
         "index": 3,
         "side": "ui",
         "governs": "Which organisers can host events above 3,000 attendees, and up to what size (Attendee Capacity Pack)",
         "docs": "https://learn.microsoft.com/microsoftteams/attendee-capacity-pack-manage",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Add-on Licenses",
           "Teams Events",
           "Licenses",
           "Attendee pack"
         ],
-        "missing": []
+        "missing": [
+          "Add-on Licenses",
+          "Teams Events",
+          "Licenses",
+          "Attendee pack"
+        ]
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Which organisers can host events above 3,000 attendees, and up to what size (Attendee Capacity Pack)",
+        "docs": "https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0",
+        "reachable": false,
+        "token": "/v1.0/users/assignLicense",
+        "found": false
       },
       {
         "index": 4,
         "side": "ui",
         "governs": "Default value of Reactions in organisers' Meeting options",
         "docs": "https://learn.microsoft.com/microsoftteams/manage-reactions-meetings",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Meetings",
           "Meeting policies",
           "Meeting engagement",
           "Reactions"
         ],
-        "missing": []
+        "missing": [
+          "Meetings",
+          "Meeting policies",
+          "Meeting engagement",
+          "Reactions"
+        ]
       },
       {
         "index": 4,
         "side": "api",
         "governs": "Default value of Reactions in organisers' Meeting options",
         "docs": "https://learn.microsoft.com/microsoftteams/manage-reactions-meetings",
-        "reachable": true,
+        "reachable": false,
         "token": "Set-CsTeamsMeetingPolicy",
-        "found": true
+        "found": false
       }
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-26",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

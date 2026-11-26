@@ -119,15 +119,17 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 74 statements confirmed"
   - date: "2026-11-25"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 83 statements not yet confirmed"
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 82 statements not yet confirmed"
 version: 4
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-25"
+  date: "2026-11-26"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 83
-  confirmed: 83
+  claims: 82
+  confirmed: 82
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -227,8 +229,8 @@ cost: Low. The only incremental cost the sources show for registry discovery is 
 impact: Medium. Makers in Copilot Studio are the people who would notice, because the roadmap says discovery of plugins and connectors becomes easier for them; end users are not named.
 -->
 
-<!-- verifier-findings (2026-11-25, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Change & support / behaviour: A plugin blocked by organisational settings stays discoverable. | Found: If a plugin is restricted by organization-level availability settings or by its user availability configuration, users can still discover the plugin in the Copilot channel. | Fix: Replace the sentence's discoverability clause with: 'A plugin restricted by organization-level availability settings or its user availability configuration remains discoverable in the Copilot channel.' Keep this as background, not a claim about the Copilot Studio registry view. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers
+- [supported, minor] Risk assessment: Change & support / behaviour: A plugin blocked by organisational settings stays discoverable. | Found: If a plugin is restricted by organization-level availability settings or by its user availability configuration, users can still discover the plugin in the Copilot channel. | Fix: Replace the discoverability clause with: 'A plugin restricted by organization-level availability settings or its user availability configuration remains discoverable in the Copilot channel.' Keep this as background, not a statement about the Copilot Studio registry view. The same source also says Cowork tenant settings can prevent visibility, so do not generalise across experiences. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers
 -->

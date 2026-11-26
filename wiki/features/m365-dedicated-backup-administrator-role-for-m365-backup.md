@@ -113,26 +113,30 @@ changes:
     note: "Corrected: group assignment needs a role-assignable group (Microsoft Entra ID P1 or P2); Privileged Role Administrator qualified to delegated Graph access; routine-event opt-in for policy-change emails; two checklist items without table rows removed."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 63 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-26"
+    note: "Corrected: the SharePoint Backup Administrator role covers SharePoint and OneDrive, and the Exchange Backup Administrator role covers Exchange Online, rather than one workload each."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 77 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-26"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 63
-  confirmed: 62
+  claims: 77
+  confirmed: 76
   unconfirmed: 0
   contradicted: 1
-  attempts: 2
-  hash: "2af4fe6b49c0682bcbd31174140bdb45"
+  attempts: 0
+  hash: "29e3163d143125eb679b379d9da93779"
 ---
 
 ## What's changing
 
 Microsoft 365 Backup gets its own administrator role, so the people who run backups no longer need a broader workload or Global Administrator role. The Microsoft Entra built-in roles page describes the **Microsoft 365 Backup Administrator** role (template ID 1707125e-0aa2-4d4d-8655-a7c786c76a25) as the role for users who need to "manage all aspects of Microsoft 365 Backup", create, edit and manage backup policies for SharePoint, OneDrive and Exchange Online, and restore backed-up SharePoint sites, OneDrive accounts and Exchange mailboxes.
 
-The Microsoft 365 Backup setup page calls it "a new dedicated role for this tool" that "can control the entire tool", and its role table gives it OneDrive, SharePoint and Exchange, but not Entra. Microsoft's What's new page states that the Microsoft 365 Backup Administrator role alone doesn't grant management of Microsoft Entra backup; that stays with Global Administrators and Microsoft Entra Backup Administrators. Microsoft Learn also documents narrower **SharePoint Backup Administrator** and **Exchange Backup Administrator** roles for one workload each.
+The Microsoft 365 Backup setup page calls it "a new dedicated role for this tool" that "can control the entire tool", and its role table gives it OneDrive, SharePoint and Exchange, but not Entra. Microsoft's What's new page states that the Microsoft 365 Backup Administrator role alone doesn't grant management of Microsoft Entra backup; that stays with Global Administrators and Microsoft Entra Backup Administrators. Microsoft Learn also documents narrower **SharePoint Backup Administrator** and **Exchange Backup Administrator** roles: the former covers SharePoint and OneDrive, and the latter covers Exchange Online.
 
 The roadmap item lists the change as In development, with a preview target of January CY2025 and a general availability target of March CY2025, for Worldwide (Standard Multi-Tenant) on the web. Microsoft Learn already documents the role as introduced, so the roadmap status and the documentation disagree.
 
@@ -217,8 +221,9 @@ cost: Low. Microsoft publishes no separate charge for the role; backups its hold
 impact: Low. Only administrators notice: the role changes who can manage backup and restore, not what end users see.
 -->
 
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing: narrower roles / role: SharePoint Backup Administrator is a narrower role for one workload. | Found: Assign the SharePoint Backup Administrator role to users who need to do the following tasks: 1. Manage all aspects of Microsoft 365 Backup for SharePoint and OneDrive | Fix: Replace 'Microsoft Learn also documents narrower SharePoint Backup Administrator and Exchange Backup Administrator roles for one workload each' with 'Microsoft Learn also documents narrower SharePoint Backup Administrator and Exchange Backup Administrator roles: the former covers SharePoint and OneDrive, and the latter covers Exchange Online.' The scopes are documented at https://learn.microsoft.com/entra/identity/role-based-access-control/permissions-reference. | Source: https://learn.microsoft.com/entra/identity/role-based-access-control/permissions-reference
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: licensing.notes; Cost and licensing; rationale: cost / cost: The Backup pricing page gives a list price of $0.15/GiB/month of protected content. | Found: The list price is $0.15/GiB/month of protected content. | Fix: Keep the pricing-page rate and add: 'The overview page still labels its billing unit GB rather than GiB; this briefing uses the pricing page's GiB unit.' Cite https://learn.microsoft.com/microsoft-365/backup/backup-overview alongside https://learn.microsoft.com/microsoft-365/backup/backup-pricing. | Source: https://learn.microsoft.com/microsoft-365/backup/backup-pricing
+- [contradicted, minor] Governance guidance: Before rollout, second bullet / consistency: The checklist tells readers to take stock of existing SharePoint, Exchange and Global Administrator assignments, but the controls table covers only assignment of the dedicated Backup role. | Found: List current SharePoint, Exchange and Global Administrators who run backups today ... Who holds the Microsoft 365 Backup Administrator role | Fix: Remove the Before rollout bullet beginning 'List current SharePoint, Exchange and Global Administrators who run backups today'. The body can retain its supported explanation that wider roles retain Backup rights; do not add a control row.
 -->

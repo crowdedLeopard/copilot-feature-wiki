@@ -1,0 +1,1027 @@
+{
+  "slug": "m365-app-microsoft-places-support-to-gcc-high",
+  "roadmapId": 497998,
+  "title": "Microsoft Places: workplace app for hybrid work comes to GCC High",
+  "status": "held",
+  "date": "2026-11-26",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-26",
+    "reasons": [
+      "3 blocking findings (claims 10, 49, 51)"
+    ]
+  },
+  "counts": {
+    "claims": 76,
+    "confirmed": 72,
+    "unconfirmed": 0,
+    "contradicted": 4,
+    "blocker": 3,
+    "major": 0,
+    "minor": 3
+  },
+  "summary": "Hold for licensing and location-sharing qualifications. The licensing notes do not distinguish room licences from individual-desk licences or preserve the Teams Premium transition entitlement, and the data-exposure statement omits users' choice over sharing their location. The roadmap facts and listed control paths and calls are supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Microsoft plans to bring Microsoft Places to GCC High.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft 365 app: Microsoft Places Support to GCC High",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap item is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap targets December CY2026 and supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"December CY2026\", \"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Desktop and Web platforms.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "GCC High is the only cloud listed on this roadmap item.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC High\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Places is a flexible-work workplace app with features embedded directly in Teams and Outlook.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/what-is-places/what-is-places",
+      "quote": "Microsoft Places is an AI-powered workplace app that supports flexible work. Places features are embedded directly in Microsoft Teams and Outlook so users can access them within their normal workflow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "Places includes work plans, workplace presence, in-person events, room and workspace booking, desk booking, Places finder and analytics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/what-is-places/license-requirements",
+      "quote": "Work plans and workplace presence; In-person events and hybrid RSVP; Book room and workspaces (also known as desk pools); Places finder; Places analytics",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Why it matters; rationale: risk",
+      "type": "behaviour",
+      "claim": "Work plans let users schedule when they intend to be in the office so coworkers can coordinate.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/what-is-places/license-requirements",
+      "quote": "Set your work location schedule in advance so coworkers know when you plan to be in the office or work remotely.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "Risk assessment: Data exposure; Why it matters; rationale: risk",
+      "type": "behaviour",
+      "claim": "Work plans and workplace presence publish each user's planned and actual office days to colleagues.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/places/frequently-asked-questions",
+      "quote": "Users choose whether to share their work location with coworkers in Teams and Outlook calendar settings. When sharing is enabled, coworkers can see work-location signals (in the office, in a specific building, or remote), whether the location was set manually or automatically.",
+      "severity": "blocker",
+      "fix": "Replace the first Data exposure sentence with 'Users choose whether to share their work location with coworkers in Teams and Outlook calendar settings; when sharing is enabled, coworkers can see manually or automatically set work-location signals.' Cite https://learn.microsoft.com/microsoft-365/places/frequently-asked-questions. Retain the narrower work-plan scheduling description elsewhere."
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Scope; Cost and licensing",
+      "type": "behaviour",
+      "claim": "Most Places features depend on a hierarchy of buildings, floors, rooms, workspaces and desks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/what-is-places/what-is-places",
+      "quote": "Most Places features depend on a fully established hierarchy of buildings, floors, rooms, workspaces, and desks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: defaultState; summary; What's changing; controls[0].note; Why it matters",
+      "type": "default",
+      "claim": "The documented Places app setting is on for all tenant users by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings",
+      "quote": "This parameter controls whether users can access the Places app, on the web or inside Outlook, Teams and in Microsoft 365 app. By default, this is ON for all users in your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "default",
+      "claim": "Microsoft says Places may be automatically available through a Microsoft 365 subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/powershell/turn-off-places",
+      "quote": "Microsoft Places may be automatically available through your Microsoft 365 subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; controls[1].note; rationale: impact",
+      "type": "default",
+      "claim": "Building experiences and Places finder are not automatically enabled for newly onboarded tenants.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings",
+      "quote": "Places Finder and building experiences are not automatically enabled for newly onboarded tenants.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; controls[3].note; Risk assessment; rationale: impact",
+      "type": "default",
+      "claim": "SpaceAnalyticsEnabled is off for all tenant users by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings",
+      "quote": "This parameter controls whether users have access to Analytics. By default, this is OFF for all users in your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "GCC High-specific Places behaviour and its arrival default are not documented as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Places GCC High availability licensing EnablePlacesWebApp; Microsoft Places GCC High government license availability Copilot room booking default rollout; \"Microsoft Places\" \"GCC High\". Read Places overview, licensing and Set-PlacesSettings; no GCC High-specific statement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[0].api; Governance guidance: At rollout; Governance controls",
+      "type": "command",
+      "claim": "Set-PlacesSettings -EnablePlacesWebApp 'Default:false' disables access to the Places app tenant-wide.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/powershell/turn-off-places",
+      "quote": "Disable core features for all user. Set-PlacesSettings -EnablePlacesWebApp 'Default:false'",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[1].api; Governance guidance: At rollout",
+      "type": "command",
+      "claim": "Set-PlacesSettings -EnableBuildings 'Default:true' enables building visibility tenant-wide.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings",
+      "quote": "This parameter controls whether users can see buildings in Work plans, Workplace presence, Places finder, and other parts of the Microsoft Places experience. To enable a feature for everyone in your tenant, set the Default value to True.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[2].api; Governance guidance: At rollout",
+      "type": "command",
+      "claim": "Set-PlacesSettings -PlacesFinderEnabled 'Default:false,OID:[OID]@[TID]:true' enables Places finder and individual desk booking for the specified group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings",
+      "quote": "This parameter controls whether users can access Places finder and book individual desks. Set-PlacesSettings -PlacesFinderEnabled 'Default:false,OID:53612aff-a481-41c1-970b-2ca512e6ae53@ef2a97524-022c7-4bab7-8a8c-bc2c4756201c:true'",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[3].api",
+      "type": "command",
+      "claim": "Set-PlacesSettings -SpaceAnalyticsEnabled 'Default:false' disables tenant-wide access to Places analytics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings",
+      "quote": "This parameter controls whether users have access to Analytics. To disable a feature for everyone in your tenant, set the Default value to False.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[0].ui; Why it matters; Governance controls; rationale: risk",
+      "type": "absence",
+      "claim": "No admin UI for the EnablePlacesWebApp feature switch is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Places admin UI turn on off EnablePlacesWebApp EnableBuildings PlacesFinderEnabled SpaceAnalyticsEnabled. Read Set-PlacesSettings, turn-off instructions and search excerpts for Administration Portal and Places Administration Web App; no UI feature switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[1].ui; Why it matters; Governance controls; rationale: risk",
+      "type": "absence",
+      "claim": "No admin UI for the EnableBuildings feature switch is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Places admin UI turn on off EnablePlacesWebApp EnableBuildings PlacesFinderEnabled SpaceAnalyticsEnabled. Read Set-PlacesSettings, turn-off instructions and portal search excerpts; building visibility is documented through PowerShell, not an admin UI switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[2].ui; Why it matters; Governance controls; rationale: risk",
+      "type": "absence",
+      "claim": "No admin UI for the PlacesFinderEnabled feature switch is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Places admin UI turn on off EnablePlacesWebApp EnableBuildings PlacesFinderEnabled SpaceAnalyticsEnabled. Read Set-PlacesSettings and Enable Places finder search excerpt; they document PowerShell enablement, not an admin UI feature switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[3].ui; Why it matters; Governance controls; rationale: risk",
+      "type": "absence",
+      "claim": "No admin UI for the SpaceAnalyticsEnabled access switch is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Places admin UI turn on off EnablePlacesWebApp EnableBuildings PlacesFinderEnabled SpaceAnalyticsEnabled. Read Enable Places analytics, Set-PlacesSettings and Administration Portal search excerpt; no UI user-access switch is given.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[0].note; Scope; Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "Running Set-PlacesSettings requires both Exchange MailRecipients and Places TenantPlacesManagement roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings",
+      "quote": "You must have both the Exchange MailRecipients role and the Places TenantPlacesManagement role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[0].note; Why it matters; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Places settings changes can take up to 12 hours to take effect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings",
+      "quote": "It can take up to 12 hours for settings changes to propagate and take effect across your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[1].note; Why it matters; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "EnableBuildings only has an effect after buildings and floors are configured.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings",
+      "quote": "When this setting is on, it only has an effect if you've configured buildings and floors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[2].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The Set-PlacesSettings reference documents OID scoping only for PlacesFinderEnabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings",
+      "quote": "OID-based scoping is currently supported only for the -PlacesFinderEnabled setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[2].note; Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Group scoping requires a mail-enabled security group; a standard security group may not work as expected.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings",
+      "quote": "If you plan to use a standard security group, your configuration may not work as expected. To ensure proper functionality, the security group must be set as a mail-enabled security group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[2].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Feature access scoping accepts at most 20 OIDs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings",
+      "quote": "A maximum of 20 OIDs can be used when limiting feature access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[3].note",
+      "type": "behaviour",
+      "claim": "Buildings must be enabled for analytics separately from enabling users' analytics access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/enable-places-analytics/enable-places-analytics",
+      "quote": "Setting up Places analytics consists of two steps: 1. Give users access to analytics. 2. Enable buildings for analytics.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[4].ui",
+      "type": "admin-path",
+      "claim": "The Places Enhanced plan can be unchecked at Microsoft 365 admin center > Users > Active users > user > Licenses and apps > Apps > Places Enhanced.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/powershell/turn-off-places",
+      "quote": "Select Active users under the Users tab. Click on the user you wish to disable Places for. Go to Licenses and apps and expand the Apps section. Look for the Places Enhanced service plan and uncheck it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[4].api",
+      "type": "command",
+      "claim": "Set-MgUserLicense -UserId $userUPN -AddLicenses $addLicenses -RemoveLicenses @() disables Places Enhanced when $addLicenses includes its DisabledPlans entry.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/powershell/turn-off-places",
+      "quote": "$addLicenses = @(@{ SkuId = $skuId DisabledPlans = $allDisabledPlans }) Set-MgUserLicense -UserId $userUPN -AddLicenses $addLicenses -RemoveLicenses @()",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[4].note",
+      "type": "licensing",
+      "claim": "The Places Enhanced service plan ID is f8566154-2a62-48cb-a0ab-d4d25be26e51.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/powershell/turn-off-places",
+      "quote": "Places Enhanced relies on the \"f8566154-2a62-48cb-a0ab-d4d25be26e51\" service plan.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[4].note; Governance controls",
+      "type": "licensing",
+      "claim": "Places Enhanced is added automatically with Teams Premium and must be disabled again after new Teams Premium assignments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/powershell/turn-off-places",
+      "quote": "The Places Enhanced service plan is automatically added when you assign Teams Premium to a user. You'll need to run through these steps again to disable the service plan, each time you assign new Teams Premium licenses to users in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[5].ui",
+      "type": "admin-path",
+      "claim": "Places Administrator assignments are reached at Microsoft 365 admin center > Roles > Role assignments > Exchange > Places Administrator > Assigned.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/day-to-day-admin/enable-others-as-places-admins",
+      "quote": "Go to Roles > Role assignments. Under the Exchange tab, select Places Administrator, then go to the Assigned tab. Add users to the role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[5].api",
+      "type": "command",
+      "claim": "POST /v1.0/roleManagement/directory/roleAssignments creates an Entra directory role assignment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0",
+      "quote": "Create a role assignment for the directory provider: POST /roleManagement/directory/roleAssignments. POST https://graph.microsoft.com/v1.0/roleManagement/directory/roleAssignments",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[5].note",
+      "type": "command",
+      "claim": "The role assignment request identifies the principal with principalId and the role with roleDefinitionId.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0",
+      "quote": "principalId: Required. Identifier of the principal to which the assignment is granted. roleDefinitionId can be either the service-wide template Id or the directory-specific roleDefinitionId.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[5].governs; Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Places Administrator can enable or disable Places features and manage the full Places directory.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/day-to-day-admin/enable-others-as-places-admins",
+      "quote": "Enable and disable Microsoft Places features; Create, read, update, and delete buildings, floors, sections, rooms, desk pools (workspaces), and desks in the Places directory",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[5].note; Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Global Administrator and Exchange Administrator can manage all aspects of Places.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/day-to-day-admin/enable-others-as-places-admins",
+      "quote": "Global Administrator and Exchange Administrator are existing roles and can manage all aspects of Places.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "Microsoft recommends assigning the least privileged Places administration role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/day-to-day-admin/enable-others-as-places-admins",
+      "quote": "We recommend assigning the least privileged role necessary to improve organizational security. Use the Global Administrator or Exchange Administrator roles only in exceptional cases.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Scope: Admin roles",
+      "type": "role",
+      "claim": "Places Administrator is managed through Entra ID and can be assigned in the Microsoft 365 or Microsoft Entra admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/day-to-day-admin/enable-others-as-places-admins",
+      "quote": "The Places Administrator role is assigned and managed through Microsoft Entra ID. You can assign the Places Administrator role using the Microsoft 365 admin center, the Microsoft Entra admin center, or the Microsoft Graph API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Scope: Admin roles",
+      "type": "role",
+      "claim": "Places Building Administrator and Places Desk Administrator are assigned and managed through Exchange Online.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/day-to-day-admin/enable-others-as-places-admins",
+      "quote": "The Places Building Administrator and Places Desk Administrator roles are assigned and managed through Exchange Online.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "Places has a mixed licensing model comprising core user-plan entitlement, space licences and Copilot licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/what-is-places/license-requirements",
+      "quote": "These features are available to all users with one of these plans. As of April 1st, 2026, these features have shifted to a per-space licensing model. AI-driven features such as Copilot room booking require a Microsoft Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing: User licence; Scope: Users",
+      "type": "licensing",
+      "claim": "The licensing page lists Business Basic, Standard and Premium; Microsoft 365 or Office 365 E1/E3/E5 and Education A1/A3/A5; frontline F1/F3; and Teams Enterprise, Essentials and standalone.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/what-is-places/license-requirements",
+      "quote": "Microsoft 365 Business Basic, Standard, Premium; Microsoft 365 or Office 365 (E1, E3, E5); Microsoft 365 or Office 365 for Education (A1, A3, A5); Microsoft 365 for frontline workers (F1, F3); Microsoft Teams Enterprise; Microsoft Teams Essentials; Microsoft Teams standalone",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Work plans, workplace presence, room/workspace booking, Places finder, explorer and analytics with limitations are core features available with the listed user plans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/what-is-places/license-requirements",
+      "quote": "These features are available to all users with one of these plans. Work plans and workplace presence; Book room and workspaces (also known as desk pools); Places explorer; Places finder; Places analytics (with some limitations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "The Places licensing page does not name government plans.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Microsoft Places\" \"GCC High\" \"license\". Read the full Places License requirements page; Supported user licenses lists business, enterprise, education, frontline and Teams plans without a government-plan entry.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "Which GCC High plans carry Places is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Places GCC High government license availability; \"Microsoft Places\" \"GCC High\" \"license\". Read Places licensing and government-plan search excerpts; no source names a GCC High entitlement for Places.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing: Space licences; front matter: licensing.notes; rationale: cost",
+      "type": "licensing",
+      "claim": "Individual desk booking, autorelease and occupancy reports moved to per-space licensing on April 1, 2026, without an exception for continuing Teams Premium subscriptions.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/places/what-is-places/license-requirements",
+      "quote": "Individual desk booking shifts from a per-user to a per-space licensing model. To ensure a smooth transition, customers with active Teams Premium subscriptions continue to enjoy premium features until renewal.",
+      "severity": "blocker",
+      "fix": "Add to the April 1, 2026 licensing statement: 'Customers with active Teams Premium subscriptions continue to enjoy premium features until renewal.' Add the same transition qualification to licensing.notes and the cost rationale where they state a space licence is required. Source: https://learn.microsoft.com/microsoft-365/places/what-is-places/license-requirements."
+    },
+    {
+      "n": 50,
+      "where": "Cost and licensing: Space licences",
+      "type": "licensing",
+      "claim": "Rooms use MTR, MTSS or MTSS-SS licences for autorelease and occupancy reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/what-is-places/license-requirements",
+      "quote": "Room | Autorelease, Occupancy reports | MTR, MTSS or MTSS-SS",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "front matter: licensing.notes; Cost and licensing: Space licences",
+      "type": "licensing",
+      "claim": "The licensing notes list MTR, MTSS or MTSS-SS as alternatives for individual desk booking as well as autorelease and occupancy reports.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/places/what-is-places/license-requirements",
+      "quote": "Room | Autorelease, Occupancy reports | MTR, MTSS or MTSS-SS; Individual desk | Booking, Autorelease, Occupancy reports | MTSS or MTSS-SS",
+      "severity": "blocker",
+      "fix": "Replace the per-space clause in licensing.notes with 'Individual desk booking, autorelease and occupancy reports use MTSS or MTSS-SS for individual desks; room autorelease and occupancy reports use MTR, MTSS or MTSS-SS.' Preserve the transition qualification specified for the April 2026 statement. The body already distinguishes the permitted licences correctly. Source: https://learn.microsoft.com/microsoft-365/places/what-is-places/license-requirements."
+    },
+    {
+      "n": 52,
+      "where": "Cost and licensing: Space licences",
+      "type": "licensing",
+      "claim": "Three free MTSS-SS licences can be acquired with each purchased MTSS licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/what-is-places/license-requirements",
+      "quote": "You can acquire 3 free MTSS-SS licenses for each purchased MTSS license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Cost and licensing: Space licences",
+      "type": "licensing",
+      "claim": "An MTSS licence used for a common area phone does not permit using its three free MTSS-SS licences for rooms or desks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/what-is-places/license-requirements",
+      "quote": "If you use an MTSS license for a Teams common area phone, you can't use the 3 free MTSS-SS licenses for rooms or desks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "front matter: licensing.notes; Risk assessment: Autonomy & actions; Cost and licensing",
+      "type": "licensing",
+      "claim": "Copilot room booking requires a Microsoft Copilot licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/what-is-places/license-requirements",
+      "quote": "AI-driven features such as Copilot room booking require a Microsoft Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Cost and licensing: AI features",
+      "type": "licensing",
+      "claim": "Quick book requires a Microsoft Copilot licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/what-is-places/license-requirements",
+      "quote": "Quick book | Get room recommendations and quickly add rooms to meetings that don't yet have one. | Calendar in new Outlook; Calendar in Teams; Places app | Teams Premium | Microsoft Copilot license",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Autorelease automatically frees reserved rooms and desks when unoccupied.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/what-is-places/license-requirements",
+      "quote": "Automatically release reserved rooms and desks when they're unoccupied.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Copilot room booking can rebook rooms when meetings change.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/what-is-places/license-requirements",
+      "quote": "Use Copilot to recommend rooms based on multiple factors and rebook rooms when meetings change or conflicts arise.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Risk assessment: Autonomy & actions; Open questions",
+      "type": "absence",
+      "claim": "Whether Copilot room booking is included in the GCC High Places release is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Places GCC High government license availability Copilot room booking default rollout. Read Places licensing and search excerpt for Configure Automatic Room Rebooking with Copilot; neither ties room booking to this GCC High release.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Risk assessment: Change & support; Scope: Users; Governance guidance: At rollout",
+      "type": "availability",
+      "claim": "Places features require an Exchange Online mailbox and are unavailable to users with on-premises mailboxes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/what-is-places/license-requirements",
+      "quote": "In Exchange hybrid environments, Places features are only available for users with a mailbox managed in Exchange Online. Users with an on-premises mailbox can't access the Places app, Places finder, or other Places features such as work plans.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Work-location changes made in Teams by users with on-premises mailboxes are visible only to those users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/what-is-places/license-requirements",
+      "quote": "While the option to update work location is visible in Microsoft Teams, any changes made are only visible to the individual user and aren't shared with colleagues or reflected across the organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Microsoft says it is evaluating Room finder deprecation and recommends adopting Places finder.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings",
+      "quote": "Because we are evaluating deprecation of the Room finder experiences, we highly recommend adopting Places finder to reduce future migration costs.",
+      "severity": "minor",
+      "fix": "Add: 'The Places FAQ also says Room finder remains available and continues to be the default experience in the Outlook and Teams calendar.' Cite https://learn.microsoft.com/microsoft-365/places/frequently-asked-questions, whose answer to 'Is Room finder going away?' begins 'No.'"
+    },
+    {
+      "n": 62,
+      "where": "Scope: Platforms; rationale: impact; controls[0].governs",
+      "type": "availability",
+      "claim": "The Places app is on the web and on desktop and mobile as a connected app in Outlook, Teams and the Microsoft 365 app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/what-is-places/license-requirements",
+      "quote": "The Microsoft Places app is available on the web, and on desktop and mobile as a connected app inside Outlook, Teams, and the Microsoft 365 app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Scope: Platforms",
+      "type": "availability",
+      "claim": "Work plans and Places finder are available in the calendar in new Outlook and Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/what-is-places/license-requirements",
+      "quote": "Work plans | Calendar in New Outlook; Calendar in Teams; Places app. Places finder | Calendar in new Outlook; Calendar in Teams",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Scope: Prerequisites; Governance guidance: Before rollout; Why it matters",
+      "type": "behaviour",
+      "claim": "Places administration uses PowerShell 7 and the MicrosoftPlaces module.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/powershell/get-placessettings",
+      "quote": "Make sure that you're using PowerShell 7.4.0 or later and the latest version of the MicrosoftPlaces PowerShell module. Then connect to Microsoft Places by running Connect-MicrosoftPlaces.",
+      "severity": "minor",
+      "fix": "Change 'PowerShell 7 and the MicrosoftPlaces module' in prerequisites and setup advice to 'PowerShell 7.4.0 or later and the latest MicrosoftPlaces module', preserving Microsoft's published minimum version. Source: https://learn.microsoft.com/microsoft-365/places/powershell/get-placessettings."
+    },
+    {
+      "n": 65,
+      "where": "Governance guidance: At rollout",
+      "type": "command",
+      "claim": "Get-PlacesSettings -ReadFromPrimary returns the tenant's up-to-date Places settings rather than cached settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/powershell/get-placessettings",
+      "quote": "This example returns the up-to-date Places features configured on your tenant. Get-PlacesSettings -ReadFromPrimary",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Risk assessment: Data exposure; controls[3].governs",
+      "type": "behaviour",
+      "claim": "Places analytics shows planned versus actual occupancy of buildings, rooms and desk pools.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/enable-places-analytics/enable-places-analytics",
+      "quote": "Microsoft Places analytics provide a comprehensive view of planned versus actual occupancy for buildings, rooms, and desk pools.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Risk assessment: Data exposure; Governance guidance: After rollout",
+      "type": "applicability",
+      "claim": "Microsoft recommends granting analytics access only to users who need building and workspace occupancy information.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/enable-places-analytics/enable-places-analytics",
+      "quote": "We recommend enabling analytics only for users who require access to building and workspace occupancy information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The turn-off page describes user-specific EnablePlacesWebApp and EnableBuildings scoping, contrary to the reference's finder-only OID qualification.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/powershell/turn-off-places",
+      "quote": "Follow the instructions in Set-PlacesSettings to turn off EnablePlacesWebApp and EnableBuildings for specific users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Governance controls; Governance guidance: Before rollout and After rollout",
+      "type": "behaviour",
+      "claim": "The analytics page gives a group-scoped SpaceAnalyticsEnabled example despite the reference's finder-only OID qualification.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/enable-places-analytics/enable-places-analytics",
+      "quote": "For example, to enable analytics for users in a specific mail-enabled security group: Set-PlacesSettings -SpaceAnalyticsEnabled 'Default:false,OID:507121fd-a361-40a1-907b-2ca512e6ce50@1a2a08524-022b7-4bab7-8a8c-bc2c4006201c:true'",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "Microsoft's organization-wide turn-off procedure disables EnablePlacesWebApp and EnableBuildings with Default:false, then disables Places Enhanced.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/powershell/turn-off-places",
+      "quote": "Turn off Places Core features using tenant settings, then disable the Places Enhanced service plan for all users in your organization. Set-PlacesSettings -EnablePlacesWebApp 'Default:false' Set-PlacesSettings -EnableBuildings 'Default:false'",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Risk assessment: Data exposure; Governance controls",
+      "type": "applicability",
+      "claim": "Whether users can make work location visible to others is a separate mailbox calendar configuration setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings",
+      "quote": "There's a different setting to control whether users can make their work location visible to other users. To learn more, please review the documentation for mailbox calendar configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Governance controls; Governance guidance: After rollout",
+      "type": "applicability",
+      "claim": "The Microsoft 365 audit log records Places Directory administrator activities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-activities",
+      "quote": "The following table lists the admin activities in Microsoft Places Directory that the Microsoft 365 audit log records.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Created a place is a recorded Places Directory audit activity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-activities",
+      "quote": "Created a place | CreatedPlace | An admin performed an operation for creating places.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Updated a place is a recorded Places Directory audit activity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-activities",
+      "quote": "Updated a place | UpdatedPlace | An admin performed an operation for updating places.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Deleted a place is a recorded Places Directory audit activity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-activities",
+      "quote": "Deleted a place | DeletedPlace | An admin performed an operation for deleting places.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "Governance guidance: After rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist instructs readers to search Places directory audit activities, but the controls table has no audit-search row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Search the audit log for Places directory activities (Created a place, Updated a place, Deleted a place) to review admin changes. The six table rows cover app access, buildings, finder, analytics, Places Enhanced and Places Administrator assignments.",
+      "severity": "minor",
+      "fix": "The After rollout audit-search step has no corresponding controls row. Remove that checklist step; retain the sourced statement about recorded Places Directory activities in Governance controls. Do not add a new control row as part of this correction."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-26T06:53:55.864Z",
+    "summary": {
+      "links": 11,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 6,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=497998",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/places/what-is-places/what-is-places",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/places/what-is-places/license-requirements",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/places/powershell/turn-off-places",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/places/day-to-day-admin/enable-others-as-places-admins",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/places/enable-places-analytics/enable-places-analytics",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/places/powershell/get-placessettings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-log-activities",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchange/set-mailboxcalendarconfiguration",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether users can open the Places app on the web and inside Outlook, Teams and the Microsoft 365 app",
+        "docs": "https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings",
+        "reachable": true,
+        "token": "Set-PlacesSettings",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether users see buildings in work plans, workplace presence and Places finder",
+        "docs": "https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings",
+        "reachable": true,
+        "token": "Set-PlacesSettings",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Which users can use Places finder and book individual desks",
+        "docs": "https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings",
+        "reachable": true,
+        "token": "Set-PlacesSettings",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Which users can see Places analytics occupancy data",
+        "docs": "https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings",
+        "reachable": true,
+        "token": "Set-PlacesSettings",
+        "found": true
+      },
+      {
+        "index": 4,
+        "side": "ui",
+        "governs": "Whether a user keeps the Places Enhanced service plan",
+        "docs": "https://learn.microsoft.com/microsoft-365/places/powershell/turn-off-places",
+        "reachable": true,
+        "segments": [
+          "Users",
+          "Active users",
+          "Licenses and apps",
+          "Apps",
+          "Places Enhanced"
+        ],
+        "missing": []
+      },
+      {
+        "index": 4,
+        "side": "api",
+        "governs": "Whether a user keeps the Places Enhanced service plan",
+        "docs": "https://learn.microsoft.com/microsoft-365/places/powershell/turn-off-places",
+        "reachable": true,
+        "token": "Set-MgUserLicense",
+        "found": true
+      },
+      {
+        "index": 5,
+        "side": "ui",
+        "governs": "Who holds the Places Administrator role that enables and disables Places features",
+        "docs": "https://learn.microsoft.com/microsoft-365/places/day-to-day-admin/enable-others-as-places-admins",
+        "reachable": true,
+        "segments": [
+          "Roles",
+          "Role assignments",
+          "Exchange",
+          "Places Administrator",
+          "Assigned"
+        ],
+        "missing": []
+      },
+      {
+        "index": 5,
+        "side": "api",
+        "governs": "Who holds the Places Administrator role that enables and disables Places features",
+        "docs": "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0",
+        "reachable": true,
+        "token": "/v1.0/roleManagement/directory",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

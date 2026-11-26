@@ -34,6 +34,9 @@ sources:
   - title: "Control access to features in Microsoft 365"
     url: "https://learn.microsoft.com/viva/feature-access-management"
     kind: "learn"
+  - title: "Control who can access features in Microsoft Viva using the Microsoft 365 admin center"
+    url: "https://learn.microsoft.com/viva/control-access-admin-center"
+    kind: "learn"
   - title: "Add-VivaModuleFeaturePolicy"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/add-vivamodulefeaturepolicy"
     kind: "learn"
@@ -82,12 +85,15 @@ controls:
     note: "Turning the web app off disables the whole app, not only the Agent Dashboard. The AI Administrator does not get automatic access."
   - governs: "Whether the Agent 365 view includes non-public agents or only public agents"
     scope: "tenant"
-    ui: null
+    ui:
+      surface: "Microsoft 365 admin center"
+      path: "Settings > Viva > Settings > Manage feature access > Create a policy > app > feature > Access setting"
+      docs: "https://learn.microsoft.com/viva/control-access-admin-center"
     api:
       kind: "powershell"
       call: "Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId Agent365DashboardNonPublicAgentsVisibility -Name <policy name> -IsFeatureEnabled $false -Everyone"
       docs: "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard"
-    note: "Learn says it can be set at tenant, group or user level. Non-public means creator type Your org or user; public means Microsoft and third parties."
+    note: "Settable at tenant, group or user level. Non-public means creator type Your org or user; public means Microsoft and third parties. Select the Viva Insights non-public-agent reporting feature; choose Off to exclude non-public agents."
   - governs: "Switch for third-party platform agents in the Agent 365 Dashboard"
     scope: "tenant"
     ui: null
@@ -95,7 +101,7 @@ controls:
     note: "No control specific to third-party coverage is documented at the time of writing (November 2026)."
 confidence: "medium"
 created: "2026-11-20"
-updated: "2026-11-21"
+updated: "2026-11-26"
 roadmapModified: "2026-10-08T23:04:12"
 changes:
   - date: "2026-11-20"
@@ -108,19 +114,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 88 statements not yet confirmed"
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 93 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-26"
+    note: "Corrected after the independent check: added the Microsoft 365 admin center path for the non-public agents reporting control, and removed an unsupported remark about dashboard use from the impact rationale."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 81 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-26"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 93
-  confirmed: 91
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 1
-  hash: "2bd0e9c8e5f8cb36c87872812370faa4"
+  claims: 81
+  confirmed: 81
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "f3b7d0be671774d216aff91ababde48c"
 ---
 
 ## What's changing
@@ -196,7 +206,7 @@ Prerequisites and data: the Viva Insights web app and the Agent Dashboard contro
 <tbody>
 <tr><td data-label="Control"><strong>Whether the Agent Dashboard is available, for the tenant, groups or users</strong><br><small>Tenant</small><br><small class="controls__note">Preview. Learn lists the AI Administrator; Global Administrators can manage all settings. The Viva Insights web app control must also be on.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Microsoft Viva › Viva Insights › Set up and management › Access Management › Turn Advanced Insights on or off › Feature access management › Agent Dashboard › Add policy <a href="https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId AgentDashboard -Name DisableFeatureForAll -IsFeatureEnabled $false -Everyone</code> <a href="https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether the Viva Insights web app that hosts the dashboard is available</strong><br><small>Tenant</small><br><small class="controls__note">Turning the web app off disables the whole app, not only the Agent Dashboard. The AI Administrator does not get automatic access.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Microsoft Viva › Viva Insights › Set up and management › Microsoft Copilot Dashboard › Manage access settings for Microsoft Copilot Dashboard › Users › Add <a href="https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId &quot;Viva Insights web app&quot; -Name DisableFeatureForAll -IsFeatureEnabled $false -Everyone</code> <a href="https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether the Agent 365 view includes non-public agents or only public agents</strong><br><small>Tenant</small><br><small class="controls__note">Learn says it can be set at tenant, group or user level. Non-public means creator type Your org or user; public means Microsoft and third parties.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId Agent365DashboardNonPublicAgentsVisibility -Name &lt;policy name&gt; -IsFeatureEnabled $false -Everyone</code> <a href="https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether the Agent 365 view includes non-public agents or only public agents</strong><br><small>Tenant</small><br><small class="controls__note">Settable at tenant, group or user level. Non-public means creator type Your org or user; public means Microsoft and third parties. Select the Viva Insights non-public-agent reporting feature; choose Off to exclude non-public agents.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Viva › Settings › Manage feature access › Create a policy › app › feature › Access setting <a href="https://learn.microsoft.com/viva/control-access-admin-center" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId Agent365DashboardNonPublicAgentsVisibility -Name &lt;policy name&gt; -IsFeatureEnabled $false -Everyone</code> <a href="https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Switch for third-party platform agents in the Agent 365 Dashboard</strong><br><small>Tenant</small><br><small class="controls__note">No control specific to third-party coverage is documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -218,13 +228,12 @@ Connections to third-party platforms are managed separately in the Microsoft 365
 <!-- rationale
 risk: Low. This is reporting inside an existing dashboard, but it widens whose agent activity is counted, and no source states what the expansion does on arrival.
 cost: Medium. The Agent 365 view needs Agent 365 licensing, licensed per user, on top of at least 50 Microsoft Copilot licences; no price or licence specific to this expansion is yet published.
-impact: Medium. Leaders, analysts and admins with Agent Dashboard access would see third-party agent figures; most employees do not use the dashboard.
+impact: Medium. Leaders, analysts and admins with Agent Dashboard access would see third-party agent figures.
 -->
 
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[2].ui; Governance controls: row 3 / absence: No admin UI control is documented for whether Agent 365 reporting includes non-public agents. | Found: You can also use VFAM to set whether reporting in the Agent 365 Dashboard view includes non-public agents, or only agents available to all users in the organization. | Fix: Replace controls[2].ui null with surface 'Microsoft 365 admin center', path 'Settings > Viva > Settings > Manage feature access > Create a policy > app > feature > Access setting', and docs https://learn.microsoft.com/viva/control-access-admin-center. The linked VFAM UI guide documents selecting the app and feature, then On or Off under Access setting. Add to the existing row note: 'Select the Viva Insights non-public-agent reporting feature (FeatureId Agent365DashboardNonPublicAgentsVisibility); choose Off to exclude non-public agents.' Cite the UI guide in sources. Do not invent a feature display label: the feature-specific page supplies its identifier, while the general guide supplies the UI route. | Source: https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [unsupported, minor] rationale: impact / behaviour: Most employees do not use the dashboard. | Found: Searched: "Agent Dashboard" "most employees" usage adoption. Read Agent Dashboard automatic and assigned access criteria and Business Analytics Agents; limited automatic eligibility is documented, not actual dashboard usage by most employees. | Fix: Remove '; most employees do not use the dashboard' from the impact rationale. Keep 'Medium. Leaders, analysts and admins with Agent Dashboard access would see third-party agent figures.'
+- [supported, minor] Risk assessment: Change & support; Open questions / behaviour: Registry observability user counts are unavailable for third-party agents when the source platform does not provide Microsoft Entra user identities. | Found: This is a preview feature. ... Users | Not available for third-party agents when the source platform doesn't provide Microsoft Entra user identities. | Fix: Prefix the registry user-count statement in Risk assessment and Open questions with 'In Frontier preview,': 'In Frontier preview, registry observability user counts are unavailable for third-party agents when the source platform does not provide Microsoft Entra user identities.' Keep the dashboard-specific question. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/third-party-agent-observability
+- [supported, minor] Scope; Governance controls; controls[0].note / role: The settings page lists AI Administrator for dashboard and Viva Insights web app access settings. | Found: Manage access to the Viva Insights web app for individual users and groups ... Applies to: AI Administrator; Enable or disable the Viva Insights web app ... Applies to: AI Administrator | Fix: Add to the Governance controls role sentence: 'The settings page lists AI Administrator for the web app, while the feature-access-management table lists Global admin for the Viva Insights web app.' Cite https://learn.microsoft.com/viva/feature-access-management for that conflicting entry; retain the settings page's AI Administrator guidance. | Source: https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard
 -->

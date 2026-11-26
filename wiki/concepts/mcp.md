@@ -4,8 +4,8 @@ title: "MCP (Model Context Protocol): how agents reach tools, and where you can 
 slug: "mcp"
 summary: "MCP is a protocol that lets agents call external tools and read external data. Administrators use Microsoft's separate connector, registry and environment controls to decide which MCP servers and tools agents can reach."
 created: "2026-11-16"
-updated: "2026-11-21"
-version: 7
+updated: "2026-11-26"
+version: 8
 tags: ["mcp","connectors","federated-connectors","data-policies","agent-governance","copilot-studio","m365-copilot","dataverse-mcp","work-iq"]
 covers: ["mcp-server"]
 sources:
@@ -89,22 +89,22 @@ sources:
     kind: "learn"
 related: ["data-policies","copilot-credits","managed-environments","work-iq"]
 controls:
-  - governs: "Whether an MCP server, and every tool it exposes, is available across the organisation"
+  - governs: "Whether an MCP server and its tools are available through governed Agent 365 and Microsoft 365 admin center pathways"
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
       path: "Agents > Tools > Registry > MCP server > Block"
       docs: "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers"
     api: null
-    note: "Unblock restores access. The service description lists tenant-wide tool control as a core capability included with a Microsoft cloud subscription."
-  - governs: "Which individual tools on an MCP server are enabled"
+    note: "Unblock restores access. Blocking does not automatically disable direct access to the underlying API or service endpoint; that requires separate service or API policy."
+  - governs: "Which individual MCP tools are enabled in supported experiences using the Agent 365 Tooling Gateway"
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
       path: "Agents > Tools > Registry > MCP server > Tools > Enabled / Disabled toggle > Save"
       docs: "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers"
     api: null
-    note: "Rolling out; supported server types only."
+    note: "Rolling out; supported server types only. Runtime enforcement applies to supported tools and experiences that use the gateway, not automatically across all products or connected components."
   - governs: "Approval of requested MCP servers before agents can use them"
     scope: "tenant"
     ui:
@@ -155,7 +155,7 @@ controls:
     scope: "environment-group"
     ui:
       surface: "Power Platform admin center"
-      path: "Security > Data and privacy > Advanced connector policies > connector > Remove connector"
+      path: "Manage > Environment groups > group > Rules > Advanced connector policies > connector > Remove connector"
       docs: "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies"
     api:
       kind: "power-platform-api"
@@ -185,7 +185,7 @@ controls:
       docs: "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/allowedmcpclient?view=dataverse-latest"
     note: "The request body sets isenabled to false to disable the selected client, or true to enable it. The API changes individual clients. The environment-wide switch on the Features page is Allow MCP clients to interact with Dataverse MCP server."
 confidence: "medium"
-dependents: 41
+dependents: 59
 changes:
   - date: "2026-11-16"
     note: "First version of the MCP concept page: what the protocol is, where Microsoft governs it, and what it costs."
@@ -219,18 +219,22 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 140 statements confirmed"
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 124 statements contradicted, 0 unconfirmed; taken offline until corrected"
+  - date: "2026-11-26"
+    note: "Corrected after the independent check: registry blocking and tool toggles are now limited to governed Agent 365 and Microsoft 365 admin center pathways and gateway-supported experiences, and the environment-group connector policy path starts at Manage > Environment groups."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 130 statements confirmed"
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-26"
-  version: 7
+  version: 8
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 124
-  confirmed: 121
+  claims: 130
+  confirmed: 130
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "aabd9837cd49d94fbbbb39015394276f"
+  contradicted: 0
+  attempts: 0
+  hash: "5461fe4d475a8a7154de18e84376d261"
 ---
 
 ## What it is
@@ -270,7 +274,7 @@ No licence or meter for the protocol itself is documented at the time of writing
 
 - **Server-level blocking only in advanced connector policies.** Granular control over individual MCP tools is not available there, so you cannot allow a server's read tools and block its write tools in that policy type.
 - **An advanced connector policy is a strict allowlist.** Once saved or published, every connector not explicitly allowed is blocked, so curate the list first. Custom and HTTP connectors are not yet supported by it.
-- **Tool-level control in the registry is limited.** It is rolling out and supports only specific types of MCP servers; where a server does not support tool discovery, only blocking the whole server is possible.
+- **Tool-level control in the registry is limited.** It is rolling out and supports only specific types of MCP servers; where a server does not support tool discovery, only blocking the whole server is possible. The Agent 365 Tooling Gateway enforces it at runtime for supported tools and experiences that use the gateway, not automatically across all products or connected components.
 - **Blocking at the wrong level.** Blocking an MCP server is a separate component-level action: Microsoft says its effects on dependent plugins and linked connectors depend on the applicable management route.
 - **Third-party servers.** Copilot Studio states that you are responsible for the tools and resources you access from a non-Microsoft MCP server, and data processed by non-Microsoft services is not subject to Microsoft agreements.
 - **Disabling the Dataverse MCP server stops every tool and agent that relies on it.** Its client allow list applies only to the /api/mcp entrypoint; MCP-named custom APIs are regular Dataverse APIs and are not restricted by it.
@@ -283,22 +287,20 @@ No licence or meter for the protocol itself is documented at the time of writing
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether an MCP server, and every tool it exposes, is available across the organisation</strong><br><small>Tenant</small><br><small class="controls__note">Unblock restores access. The service description lists tenant-wide tool control as a core capability included with a Microsoft cloud subscription.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Registry › MCP server › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which individual tools on an MCP server are enabled</strong><br><small>Tenant</small><br><small class="controls__note">Rolling out; supported server types only.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Registry › MCP server › Tools › Enabled / Disabled toggle › Save <a href="https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether an MCP server and its tools are available through governed Agent 365 and Microsoft 365 admin center pathways</strong><br><small>Tenant</small><br><small class="controls__note">Unblock restores access. Blocking does not automatically disable direct access to the underlying API or service endpoint; that requires separate service or API policy.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Registry › MCP server › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which individual MCP tools are enabled in supported experiences using the Agent 365 Tooling Gateway</strong><br><small>Tenant</small><br><small class="controls__note">Rolling out; supported server types only. Runtime enforcement applies to supported tools and experiences that use the gateway, not automatically across all products or connected components.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Registry › MCP server › Tools › Enabled / Disabled toggle › Save <a href="https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Approval of requested MCP servers before agents can use them</strong><br><small>Tenant</small><br><small class="controls__note">Bring-your-own MCP server registration is in preview. The Agent 365 CLI reference mentions both Requested Agents and Requested Tools for pending requests.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Requests (preview) › MCP server request › Approve <a href="https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which publisher types of agents, plugins and connectors, including MCP servers, are allowed</strong><br><small>Tenant</small><br><small class="controls__note">Preview, global service only. Mode applyOnce; resource microsoft.agent.allowedagenttypes sets areMicrosoftAppsAllowed, areTenantScopedAppsAllowed, areISVAppsAllowed. Federated connectors: Global Administrator or Search Administrator.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › Agent and plugin access <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which users can use any agent or plugin, including connectors and MCP servers</strong><br><small>Tenant</small><br><small class="controls__note">UI options: All users (the default), No users, Specific users or groups. Preview, global service only. Mode applyOnce; resource microsoft.agent.useraccess sets userAssignmentCategory to everyone or noOne; no user list documented.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › User access <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether a federated Copilot connector is on, and for which users or groups</strong><br><small>Tenant</small><br><small class="controls__note">Staging cannot extend beyond User access.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Connectors › Your connections › connector › Enable / Disable; Staged rollout › Add staging <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Work IQ MCP tenant policy, including whether mutation operations are allowed</strong><br><small>Tenant</small><br><small class="controls__note">Tenant-level on or off in the initial release; up to 24 hours to apply. The Policy tab is used when it's available.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Registry › Work IQ MCP › Policy <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which connectors and MCP servers makers' agents may use in an environment or environment group</strong><br><small>Environment group</small><br><small class="controls__note">Host api.powerplatform.com. Create the policy, then assign it to the group with an empty request body ({}). Create body: name and ruleSets with id ConnectorManagement, version and inputs.AllowedConnectorList.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Advanced connector policies › connector › Remove connector <a href="https://learn.microsoft.com/power-platform/admin/advanced-connector-policies" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>POST /governance/ruleBasedPolicies?api-version=2024-10-01 ; POST /governance/ruleBasedPolicies/&lt;policyId&gt;/environmentGroups/&lt;environmentGroupId&gt;/assignments?api-version=2024-10-01</code> <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-advanced-connector-policies" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which connectors and MCP servers makers' agents may use in an environment or environment group</strong><br><small>Environment group</small><br><small class="controls__note">Host api.powerplatform.com. Create the policy, then assign it to the group with an empty request body ({}). Create body: name and ruleSets with id ConnectorManagement, version and inputs.AllowedConnectorList.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environment groups › group › Rules › Advanced connector policies › connector › Remove connector <a href="https://learn.microsoft.com/power-platform/admin/advanced-connector-policies" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>POST /governance/ruleBasedPolicies?api-version=2024-10-01 ; POST /governance/ruleBasedPolicies/&lt;policyId&gt;/environmentGroups/&lt;environmentGroupId&gt;/assignments?api-version=2024-10-01</code> <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-advanced-connector-policies" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which Power Platform connectors, and so the MCP tools that rely on them, agents may use</strong><br><small>Environment</small><br><small class="controls__note">Blocking a connector also blocks tools in connected MCP servers that rely on it. For an existing policy, this classifies the specified connectors as Blocked; each connector object needs id, type and name.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Settings › Data and privacy › Data policy › + New Policy › Pre-built connectors › Assign connectors › connector › Block <a href="https://learn.microsoft.com/power-platform/admin/prevent-data-loss" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-ConnectorsToPolicy -PolicyName &lt;policy-guid&gt; -Classification Blocked -Connectors &lt;connector-objects&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy?view=pa-ps-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether MCP clients can use the Dataverse MCP server in an environment, and which clients</strong><br><small>Environment</small><br><small class="controls__note">The request body sets isenabled to false to disable the selected client, or true to enable it. The API changes individual clients. The environment-wide switch on the Features page is Allow MCP clients to interact with Dataverse MCP server.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Dataverse Model Context Protocol › Advanced Settings › client › Is Enabled <a href="https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH &lt;organization URI&gt;/api/data/v9.2/allowedmcpclients(&lt;allowedmcpclientid&gt;)</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/allowedmcpclient?view=dataverse-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 **Roles.** Microsoft's Dataverse MCP configuration page requires the Power Platform administrator role to open the Dataverse MCP server environment settings, enable allowed MCP clients, create or edit an environment group and change connector policies. For classic data policies, tenant-level policies need the Power Platform Administrator role; environment-level policies need Environment Admin, or System Administrator for environments with a Dataverse database. Managing federated connectors needs Global Administrator or Search Administrator. The Dataverse MCP configuration page requires a Managed Environment for advanced connector policy management; the advanced connector policies page says single-environment policies work on non-managed environments too, where nonblockable connectors stay nonblockable (see [Managed Environments](/concepts/managed-environments/)).
-
-**Environment groups.** The group's advanced connector policy is under Manage > Environment groups > group > Rules > Advanced connector policies > connector > Remove connector for blocking a connector.
 
 **Graph calls for Agent and plugin access and User access.** The calling app needs delegated ConfigurationMonitoring.ReadWrite.All, the TCM service principal delegated CopilotPolicySettings.ReadWrite, and the signed-in user AI Administrator.
 
@@ -321,11 +323,3 @@ No licence or meter for the protocol itself is documented at the time of writing
 - Is there a PowerShell, Microsoft Graph or REST call for blocking an MCP server or a tool in the Microsoft 365 admin center? Not yet documented.
 - Are write operations through Work IQ MCP on or off by default? The Work IQ MCP policy page says mutation operations aren't allowed by default; the Copilot Studio what's-new page says Work IQ write operations are enabled by default for new agents powered by the Microsoft Copilot harness, subject to the organisation's permissions and policies.
 - When will tool-level control cover bring-your-own MCP servers? Microsoft calls it a planned future release.
-
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[7].ui / admin-path: The environment-group control uses Security > Data and privacy > Advanced connector policies > connector > Remove connector. | Found: ### Single environment configuration ... In the navigation pane, select **Security**. ... In the **Security** pane, select **Data and privacy**. ... Select **Advanced connector policies**. | Fix: Replace controls[7].ui.path and its rendered table path with 'Manage > Environment groups > group > Rules > Advanced connector policies > connector > Remove connector', the environment-group route documented at https://learn.microsoft.com/power-platform/admin/advanced-connector-policies. Keep the environment-group scope and API. | Source: https://learn.microsoft.com/power-platform/admin/advanced-connector-policies
-- [contradicted, blocker] controls[0].governs / applicability: Registry blocking determines whether an MCP server and every tool it exposes are available across the organisation, without qualifying the invocation pathway. | Found: Blocking an MCP server (including WorkIQ MCP) blocks usage through governed Agent 365 and Microsoft 365 admin center (MAC) pathways. It doesn't automatically disable the underlying API or service endpoint outside that governed path | Fix: Change the row's governs text to 'Whether an MCP server and its tools are available through governed Agent 365 and Microsoft 365 admin center pathways'. Add to its note: 'Blocking does not automatically disable direct access to the underlying API or service endpoint; that requires separate service or API policy.' Make the same changes in the rendered table, using https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers
-- [contradicted, blocker] controls[1].governs / applicability: Registry tool toggles determine which individual tools are enabled, without limiting enforcement to gateway-mediated experiences. | Found: The Agent 365 Tooling Gateway enforces the policy at runtime for supported tools and experiences that use the gateway. Don't assume the policy applies across all products or connected components. | Fix: Change the row's governs text to 'Which individual MCP tools are enabled in supported experiences using the Agent 365 Tooling Gateway'. Add to its note: 'Runtime enforcement applies to supported tools and experiences that use the gateway, not automatically across all products or connected components.' Apply the same qualification to the registry tool-control risk bullet and rendered row, using https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers
--->

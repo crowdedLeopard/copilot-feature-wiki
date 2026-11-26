@@ -46,6 +46,15 @@ sources:
   - title: "Default for reactions in organisers' Meeting options (PowerShell)"
     url: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps"
     kind: "learn"
+  - title: "user: assignLicense"
+    url: "https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0"
+    kind: "learn"
+  - title: "Assign Teams add-on licenses to users"
+    url: "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/assign-teams-add-on-licenses"
+    kind: "learn"
+  - title: "Use Microsoft Teams administrator roles to manage Teams"
+    url: "https://learn.microsoft.com/microsoftteams/using-admin-roles"
+    kind: "learn"
 videos: []
 related: ["meeting-policy","microsoft-teams-events-now-support-up-to-20-000-registrations-making-it-easier-to-reach-an","microsoft-teams-teams-events-attendance-and-engagement-report-policy","microsoft-teams-new-layout-when-sharing-content-for-teams-events"]
 controls:
@@ -91,10 +100,13 @@ controls:
     scope: "user"
     ui:
       surface: "Teams admin center"
-      path: "Add-on Licenses > Teams Events > Licenses > Assign to new users > Attendee pack"
+      path: "Add-on Licenses > Teams Events > Licenses > Assign to new users > Assign Add-on licenses > Attendee pack"
       docs: "https://learn.microsoft.com/microsoftteams/attendee-capacity-pack-manage"
-    api: null
-    note: "Needs the Global Administrator role; Teams Administrator has read-only access. One pack per organiser."
+    api:
+      kind: "graph"
+      call: "POST /v1.0/users/{id}/assignLicense"
+      docs: "https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0"
+    note: "Admin centre: Global Administrator; Teams Administrator is read-only. One pack per organiser. Graph: general licence API; addLicenses takes the pack skuId; removeLicenses is required, can be empty."
 confidence: "medium"
 created: "2026-11-26"
 updated: "2026-11-26"
@@ -104,19 +116,23 @@ changes:
     note: "New briefing: reactions planned for Teams events up to 100,000 attendees, with today's 20,000 ceiling, attendee pack licensing and the controls."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 55 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-26"
+    note: "Corrected: attendee pack assignment now shows the Microsoft Graph assignLicense call instead of 'Not yet documented'; added the pane step to its admin path; removed the per-event option from the At rollout checklist."
+  - date: "2026-11-26"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 55 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-26"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 55
-  confirmed: 53
+  confirmed: 55
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "ad5449caecc7d3420b36314b0704a2c0"
+  contradicted: 0
+  attempts: 0
+  hash: "30c7618d96ae5250a68ed972f04783f0"
 ---
 
 ## What's changing
@@ -178,7 +194,7 @@ Microsoft has not stated whether reactions will be on in those events without an
 - Confirm **Who can attend events optimized for a large audience** in their events policy, since everyone admitted can react once the feature arrives.
 
 ### At rollout
-- Tell town hall producers that reactions may become available above 20,000 attendees and show them the per-event reactions option in **Meeting options**.
+- Tell town hall producers that reactions may become available above 20,000 attendees.
 - Run a test event at scale before the first live all-company broadcast that uses reactions.
 
 ### After rollout
@@ -196,7 +212,7 @@ Microsoft has not stated whether reactions will be on in those events without an
 <tr><td data-label="Control"><strong>Tenant-wide switch for reactions in events above 20,000 attendees</strong><br><small>Tenant</small><br><small class="controls__note">Not documented at the time of writing (November 2026); the meeting policy default and the organiser's option are today's controls.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether users can create events optimised for a large audience (town halls)</strong><br><small>User</small><br><small class="controls__note">Blunt fallback: stops town halls altogether, not reactions alone.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Events policies › policy › Events optimized for a large audience <a href="https://learn.microsoft.com/microsoftteams/set-up-events" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsEventsPolicy -Identity &lt;policy name&gt; -AllowTownhalls Disabled</code> <a href="https://learn.microsoft.com/microsoftteams/set-up-events" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Who can attend events optimised for a large audience</strong><br><small>User</small><br><small class="controls__note">Default is Everyone. Applies to town halls created by organisers with the policy.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Events policies › policy › Who can attend events optimized for a large audience <a href="https://learn.microsoft.com/microsoftteams/set-up-events" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsEventsPolicy -Identity &lt;policy name&gt; -TownhallEventAttendeeAccess EveryoneInOrganizationAndGuests</code> <a href="https://learn.microsoft.com/microsoftteams/set-up-events" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which organisers can host events above 3,000 engaged attendees (Attendee Capacity Pack assignment)</strong><br><small>User</small><br><small class="controls__note">Needs the Global Administrator role; Teams Administrator has read-only access. One pack per organiser.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Add-on Licenses › Teams Events › Licenses › Assign to new users › Attendee pack <a href="https://learn.microsoft.com/microsoftteams/attendee-capacity-pack-manage" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which organisers can host events above 3,000 engaged attendees (Attendee Capacity Pack assignment)</strong><br><small>User</small><br><small class="controls__note">Admin centre: Global Administrator; Teams Administrator is read-only. One pack per organiser. Graph: general licence API; addLicenses takes the pack skuId; removeLicenses is required, can be empty.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Add-on Licenses › Teams Events › Licenses › Assign to new users › Assign Add-on licenses › Attendee pack <a href="https://learn.microsoft.com/microsoftteams/attendee-capacity-pack-manage" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/users/{id}/assignLicense</code> <a href="https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -218,13 +234,10 @@ cost: Low. No licence specific to this change is published; events above 3,000 a
 impact: Medium. Only organisers able to run events above 20,000 attendees are affected, but their audiences, often the whole organisation, will see reactions they did not have before.
 -->
 
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[4].api; rendered table / absence: Automation for assigning Attendee Capacity Pack add-on licenses to organisers is not yet documented. | Found: Add or remove licenses for the user to enable or disable their use of Microsoft cloud offerings that the company has licenses to. ... POST /users/{id | userPrincipalName}/assignLicense | Fix: Replace controls[4].api null with kind 'graph', call 'POST /v1.0/users/{id}/assignLicense', docs 'https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0'. Add to the note: 'The request body uses addLicenses with the purchased pack skuId; removeLicenses is required and can be empty. This is the general user-license assignment API.' Cite https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/assign-teams-add-on-licenses, which documents PowerShell assignment for Teams add-on licenses; its SKU table explicitly says it is partial. | Source: https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[4].ui; rendered table / admin-path: Assign attendee packs at Teams admin center > Add-on Licenses > Teams Events > Licenses > Assign to new users > Attendee pack. | Found: On the Licenses tab, select Assign to new users to get started. ... In the Assign Add-on licenses pane ... For each individual user, select the pack size that you want to assign in the Attendee pack column. | Fix: Use 'Add-on Licenses > Teams Events > Licenses > Assign to new users > Assign Add-on licenses > Attendee pack'; the omitted pane heading is not a navigation choice. | Source: https://learn.microsoft.com/microsoftteams/attendee-capacity-pack-manage
-- [supported, minor] Risk assessment: Data exposure; rationale: risk / behaviour: Reactions are emoji feedback shown during the meeting or event. | Found: Choose from a range of live reactions, including: Like ... Love ... Applause ... Laugh ... Surprise ... Your reaction pops up momentarily at the bottom of your meeting | Fix: Cite https://support.microsoft.com/office/express-yourself-in-microsoft-teams-meetings-with-live-reactions-a8323a40-3d07-4129-934b-305370a36e21 for the general emoji-reactions description. | Source: https://support.microsoft.com/office/express-yourself-in-microsoft-teams-meetings-with-live-reactions-a8323a40-3d07-4129-934b-305370a36e21
-- [supported, minor] Scope: Who configures / role: Teams administrators can edit meeting and events policies. | Found: Teams Administrator ... Everything in the Microsoft Teams admin center and associated PowerShell controls, including: ... Manage meetings, including meeting policies, configurations, and conference bridges. | Fix: Cite https://learn.microsoft.com/microsoftteams/using-admin-roles for the Teams Administrator policy-management role. | Source: https://learn.microsoft.com/microsoftteams/using-admin-roles
-- [contradicted, minor] Governance guidance: At rollout; controls / consistency: The checklist tells readers to show producers the per-event reactions option, but the table contains no organiser-option row. | Found: show them the per-event reactions option in Meeting options. ... Default for reactions in organisers' Meeting options | Fix: Replace the checklist bullet with 'Tell town hall producers that reactions may become available above 20,000 attendees.' This removes the checklist control that has no corresponding row without adding an unchecked row.
+- [supported, minor] controls[2].api; Governance controls table / command: Set-CsTeamsEventsPolicy -Identity <policy name> -AllowTownhalls Disabled prevents organisers with the policy from creating town halls. | Found: To prevent organizers with this policy from creating events optimized for large audiences, run the following command: Set-CsTeamsEventsPolicy -Identity <policy name> -AllowTownhalls Disabled | Fix: Add to controls[2].note: 'The Set-CsTeamsEventsPolicy reference marks the policy as still in preview.' Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps, whose introduction says 'Note that this policy is currently still in preview.' | Source: https://learn.microsoft.com/microsoftteams/set-up-events
+- [supported, minor] controls[3].api; Governance controls table / command: Set-CsTeamsEventsPolicy -Identity <policy name> -TownhallEventAttendeeAccess EveryoneInOrganizationAndGuests is documented for restricting town hall access. | Found: To only allow users in your organization and guests to attend events optimized for large audiences created by organizers with this policy, run the following command: Set-CsTeamsEventsPolicy -Identity <policy name> -TownhallEventAttendeeAccess EveryoneInOrganizationAndGuests | Fix: Add to controls[3].note: 'The Set-CsTeamsEventsPolicy reference marks the policy as still in preview.' Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps, whose introduction says 'Note that this policy is currently still in preview.' | Source: https://learn.microsoft.com/microsoftteams/set-up-events
+- [supported, minor] Risk assessment: Data exposure; rationale: risk / behaviour: Live reactions are emoji feedback displayed during a meeting or event. | Found: Choose from a range of live reactions, including: Like [Image of the 3D emoji like reaction]. Your reaction pops up momentarily at the bottom of your meeting and over your profile picture or video feed. | Fix: Add https://support.microsoft.com/office/express-yourself-in-microsoft-teams-meetings-with-live-reactions-a8323a40-3d07-4129-934b-305370a36e21 to sources, titled 'Express yourself in Microsoft Teams meetings with live reactions'. The cited Manage reactions page links to this description. | Source: https://support.microsoft.com/office/express-yourself-in-microsoft-teams-meetings-with-live-reactions-a8323a40-3d07-4129-934b-305370a36e21
 -->
