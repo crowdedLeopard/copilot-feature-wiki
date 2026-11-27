@@ -43,12 +43,21 @@ sources:
   - title: "Learn about retention for Microsoft Teams"
     url: "https://learn.microsoft.com/purview/retention-policies-teams"
     kind: "learn"
+  - title: "Finding content in Microsoft Teams in eDiscovery"
+    url: "https://learn.microsoft.com/purview/edisc-search-teams"
+    kind: "learn"
   - title: "Set-CsTeamsEventsPolicy"
     url: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps"
     kind: "docs"
   - title: "Set-CsTeamsMeetingPolicy"
     url: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps"
     kind: "docs"
+  - title: "Microsoft 365 Roadmap 573706"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=573706"
+    kind: "roadmap"
+  - title: "Teams administration for Teams interoperability"
+    url: "https://learn.microsoft.com/azure/communication-services/concepts/interop/guest/teams-administration"
+    kind: "learn"
 videos: []
 related: ["microsoft-teams-chat-for-organizers-and-presenters-in-structured-meetings-and-webinars-in","microsoft-teams-chat-for-organizers-and-presenters-in-structured-meetings-and-webin-557165","microsoft-teams-chat-for-organizers-and-presenters-in-structured-meetings-and-webinars-on","microsoft-teams-external-presenter-support-for-event-group-chat","meeting-policy"]
 controls:
@@ -76,9 +85,9 @@ controls:
       docs: "https://learn.microsoft.com/microsoftteams/manage-event-chat"
     api:
       kind: "powershell"
-      call: "Set-CsTeamsEventsPolicy -Identity <policy name> -TownhallChatExperience None"
+      call: "Set-CsTeamsEventsPolicy -Identity <policy name> -TownhallChatExperience null"
       docs: "https://learn.microsoft.com/microsoftteams/manage-event-chat"
-    note: "Optimized is the default value. Governs attendee chat only, which Learn describes as a separate experience from the event group chat."
+    note: "Manage chat for Teams events gives Optimized as the default; the Set-CsTeamsEventsPolicy reference lists null as the parameter default and marks the events policy as preview. Governs attendee chat only."
 confidence: "medium"
 created: "2026-11-27"
 updated: "2026-11-27"
@@ -88,19 +97,23 @@ changes:
     note: "New briefing: private organiser and presenter chat for Teams webinars and structured meetings, and town hall backroom chat on by default, rolling out to Worldwide and GCC."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 54 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-27"
+    note: "Corrected the event group chat storage statement to cite Microsoft's Teams eDiscovery page; noted the events policy cmdlet is preview with a differing default; removed the eDiscovery checklist step."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 56 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-27"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 54
-  confirmed: 52
+  claims: 56
+  confirmed: 54
   unconfirmed: 0
   contradicted: 2
-  attempts: 1
-  hash: "c5a91031871529360a175cc972350e00"
+  attempts: 2
+  hash: "d2611096b1c653838b90c388394fd36b"
 ---
 
 ## What's changing
@@ -115,14 +128,14 @@ The roadmap status is Rolling out, targeted for October CY2026, for General Avai
 
 ## Why it matters
 
-This moves the back-channel event teams already improvise (a side Teams chat, a call, email) into the event itself, and keeps attendees out of it. Because the town hall default becomes on for every licence type, organisers of town halls without Teams Premium will find a chat they did not have before, and helpdesk should expect questions about which chat attendees can see. Records teams have a narrower question: Learn excludes the event group chat from the rule that keeps town hall attendee chat in the organiser's mailbox for up to 30 days, and does not say where the event group chat is stored instead.
+This moves the back-channel event teams already improvise (a side Teams chat, a call, email) into the event itself, and keeps attendees out of it. Because the town hall default becomes on for every licence type, organisers of town halls without Teams Premium will find a chat they did not have before, and helpdesk should expect questions about which chat attendees can see. Records teams have a narrower question. The [Manage chat for Teams events](https://learn.microsoft.com/microsoftteams/manage-event-chat) article excludes event group chat from its attendee-chat storage rule. Microsoft's general Teams group-chat documentation places compliance copies in participants' Exchange Online mailboxes ([Finding content in Microsoft Teams in eDiscovery](https://learn.microsoft.com/purview/edisc-search-teams)).
 
 If nobody acts, the notice says town hall backroom chat will be on by default once meeting options are updated, and the chat for webinars and structured meetings arrives with the rollout. The one decision is whether any group of town hall organisers should not have backroom chat; the notice says that is a Teams admin center policy, but Learn does not yet document where it sits.
 
 ## Risk assessment
 
 **Data exposure**
-- Event planning content (running orders, speaker notes, last-minute changes) now lives in the event group chat. Learn excludes it from the 30-day organiser-mailbox rule for town hall attendee chat and does not say where it is stored; Microsoft documents that Teams chat data is kept in a hidden folder in the mailbox of each user included in the chat, so test with an eDiscovery search before relying on it.
+- Event planning content (running orders, speaker notes, last-minute changes) now lives in the event group chat. The Manage chat for Teams events article excludes event group chat from its attendee-chat storage rule. Microsoft's general Teams group-chat documentation places compliance copies in participants' Exchange Online mailboxes ([Finding content in Microsoft Teams in eDiscovery](https://learn.microsoft.com/purview/edisc-search-teams)), so test with an eDiscovery search before relying on it.
 - Presenters who post in the wrong chat could show backstage messages to attendees; the two chats are separate, which limits but does not remove this.
 
 **Security & identity**
@@ -161,7 +174,6 @@ Indirect costs are admin and communications time: briefing organisers, presenter
 - Decide whether any town hall organisers should not have backroom chat before turning the policy off, since the notice says scheduled town halls then lose it on their next options update.
 
 ### After rollout
-- Run an eDiscovery content search for a test event group chat to confirm where its messages are kept and who can find them.
 - Watch the Manage chat for Teams events page for webinar coverage of the separate chat and a documented backroom chat setting.
 
 ## Governance controls
@@ -173,7 +185,7 @@ Indirect costs are admin and communications time: briefing organisers, presenter
 <tbody>
 <tr><td data-label="Control"><strong>Whether town hall organisers, co-organisers and presenters get backroom (event group) chat</strong><br><small>User</small><br><small class="controls__note">MC1188222 says this policy can be turned off in the Teams admin center but gives no path; Learn's Plan for Teams events lists &quot;No control.&quot; for admins on the event group chat.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether participants in meetings and events with up to 1,000 attendees can read and send chat (Meeting chat policy)</strong><br><small>User</small><br><small class="controls__note">Covers webinar chat for organisers, presenters, co-organisers and attendees; Learn does not say whether the new separate chat follows it. The cmdlet reference says Disabled also needs LobbyChat set to disabled.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Meeting engagement › Meeting chat <a href="https://learn.microsoft.com/microsoftteams/manage-meeting-chat" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy name&gt; -MeetingChatEnabledType Disabled</code> <a href="https://learn.microsoft.com/microsoftteams/manage-meeting-chat" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether town hall organisers can turn on attendee chat (not the event group chat)</strong><br><small>User</small><br><small class="controls__note">Optimized is the default value. Governs attendee chat only, which Learn describes as a separate experience from the event group chat.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Events policies › policy › Events optimized for a large audience chat experience <a href="https://learn.microsoft.com/microsoftteams/manage-event-chat" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsEventsPolicy -Identity &lt;policy name&gt; -TownhallChatExperience None</code> <a href="https://learn.microsoft.com/microsoftteams/manage-event-chat" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether town hall organisers can turn on attendee chat (not the event group chat)</strong><br><small>User</small><br><small class="controls__note">Manage chat for Teams events gives Optimized as the default; the Set-CsTeamsEventsPolicy reference lists null as the parameter default and marks the events policy as preview. Governs attendee chat only.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Events policies › policy › Events optimized for a large audience chat experience <a href="https://learn.microsoft.com/microsoftteams/manage-event-chat" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsEventsPolicy -Identity &lt;policy name&gt; -TownhallChatExperience null</code> <a href="https://learn.microsoft.com/microsoftteams/manage-event-chat" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -185,7 +197,7 @@ For events with up to 1,000 attendees, the same reference table says administrat
 
 - Where in the Teams admin center is the backroom chat policy that MC1188222 says administrators can turn off, and is there a PowerShell parameter for it? Watch the Manage chat for Teams events page.
 - Does the Meeting chat policy (Off, or In-meeting only) also govern the new separate chat in webinars and structured meetings?
-- Where are event group chat messages stored, and are they found by an eDiscovery search of each participant's mailbox?
+- Can our compliance staff retrieve a test event group chat from its participants' mailboxes?
 - Does the separate chat for webinars appear for every webinar automatically, or does the organiser choose it? Watch Message center for updates to MC1188222.
 
 <!-- rationale
@@ -197,11 +209,6 @@ impact: Medium. Organisers, co-organisers and presenters of webinars, structured
 <!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters; Risk assessment: Data exposure; Open questions / absence: Microsoft Learn does not say where event group chat messages are stored instead. | Found: All Microsoft Teams 1:1 or group chats are journaled through to the respective users' mailboxes. | Fix: Replace the repeated storage-absence wording with: "The Manage chat for Teams events article excludes event group chat from its attendee-chat storage rule. Microsoft's general Teams group-chat documentation places compliance copies in participants' Exchange Online mailboxes." Cite https://learn.microsoft.com/purview/edisc-search-teams. Replace the storage open question with "Can our compliance staff retrieve a test event group chat from its participants' mailboxes?" Keep the proposed tenant test. | Source: https://learn.microsoft.com/purview/edisc-search-teams
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Security & identity / record: External presenter support for event group chat is covered by a separate roadmap item. | Found: "id": 573706; "title": "Microsoft Teams: External presenter support for event group chat"; "description": "Event group chat, the private chat for organizers, co-organizers, and presenters in an event or structured meeting, will support external presenters." | Fix: Add Microsoft 365 Roadmap 573706 to sources at https://www.microsoft.com/microsoft-365/roadmap?id=573706; the linked wiki briefing is not evidence for this record fact.
-- [supported, minor] controls[2].api; controls[2].governs; Governance controls / command: Set-CsTeamsEventsPolicy -Identity <policy name> -TownhallChatExperience None prevents organisers from enabling attendee chat. | Found: To turn off chat for attendees in events optimized for large audiences, run the following command: Set-CsTeamsEventsPolicy -Identity <policy name> -TownhallChatExperience None | Fix: Keep the call. Add to controls[2].note: "The Set-CsTeamsEventsPolicy reference marks the events policy as preview." Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps. | Source: https://learn.microsoft.com/microsoftteams/manage-event-chat
-- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist asks for an eDiscovery content search, but the controls table has no eDiscovery search row. | Found: Checklist: "Run an eDiscovery content search". Table: "Whether town hall organisers, co-organisers and presenters get backroom (event group) chat"; "Meeting chat policy"; "Whether town hall organisers can turn on attendee chat (not the event group chat)". | Fix: Remove the After rollout checklist bullet beginning "Run an eDiscovery content search"; it names a control absent from the table. Retain the existing eDiscovery test advice in Risk assessment rather than adding a control row.
-- [supported, minor] controls[2].note / default: Optimized is the town hall attendee chat policy's default value. | Found: Optimized | This is the default value. Organizers with this policy can turn on chat for their attendees. | Fix: Replace "Optimized is the default value" in the note with "Manage chat for Teams events gives Optimized as the default; the Set-CsTeamsEventsPolicy reference lists None as the parameter default." Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps. | Source: https://learn.microsoft.com/microsoftteams/manage-event-chat
-- [supported, minor] controls[0].scope / applicability: The town hall backroom chat admin policy is user-scoped. | Found: Tenant policies are configurations that can be assigned to specific users or groups of users. A policy consists of properties with one of the following scopes: per-organizer, per-user, or both. | Fix: Cite https://learn.microsoft.com/azure/communication-services/concepts/interop/guest/teams-administration for the general user-assigned Teams policy model; keep the existing note that the backroom policy itself is not named or located by Learn. | Source: https://learn.microsoft.com/azure/communication-services/concepts/interop/guest/teams-administration
+- [contradicted, blocker] controls[2].api; Governance controls table / command: Set-CsTeamsEventsPolicy -Identity <policy name> -TownhallChatExperience null turns off attendee chat in town halls. | Found: To turn off chat for attendees in events optimized for large audiences, run the following command: Set-CsTeamsEventsPolicy -Identity <policy name> -TownhallChatExperience None | Fix: Replace controls[2].api.call and the rendered call with 'Set-CsTeamsEventsPolicy -Identity <policy name> -TownhallChatExperience None', as documented at https://learn.microsoft.com/microsoftteams/manage-event-chat. The reference permits Optimized and None, not null. | Source: https://learn.microsoft.com/microsoftteams/manage-event-chat
+- [contradicted, blocker] controls[2].note; Governance controls table / default: The Set-CsTeamsEventsPolicy reference lists null as the default of TownhallChatExperience. | Found: Possible values are: Optimized, None. Default value: None | Fix: Replace controls[2].note and its rendered copy with: 'Manage chat for Teams events gives Optimized as the default; the Set-CsTeamsEventsPolicy reference lists None as the parameter default and marks the events policy as preview. Governs attendee chat only.' Keep both sources: https://learn.microsoft.com/microsoftteams/manage-event-chat and https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps
 -->

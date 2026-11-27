@@ -2,10 +2,10 @@
 kind: "concept"
 title: "Administrative units: which users can a delegated administrator manage?"
 slug: "administrative-units"
-summary: "Administrative units are Microsoft Entra ID containers of users, groups or devices. Roles scoped to a unit, in Entra and in Microsoft Purview role groups, reach only its members, so regional or departmental admins need no tenant-wide rights."
+summary: "Administrative units are Microsoft Entra ID containers of users, groups or devices. Unit-scoped roles delegate regional or departmental administration without tenant-wide rights."
 created: "2026-11-27"
 updated: "2026-11-27"
-version: 2
+version: 3
 tags: ["administrative-units","entra-id","purview","role-groups","delegation","least-privilege","dlp","adaptive-scopes","microsoft-graph"]
 covers: []
 sources:
@@ -129,18 +129,22 @@ changes:
     note: "Corrected restricted management units: they block direct changes to members' Entra properties by unassigned administrators, while related Microsoft 365 operations, licence assignment and usage location updates stay allowed. Bulk adding narrowed to users; Graph request body noted."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 95 statements contradicted, 0 unconfirmed; taken offline until corrected"
+  - date: "2026-11-27"
+    note: "Corrected Purview scoping: for overlapping capabilities, an Entra role takes precedence over a unit-scoped Purview role-group assignment and gives unscoped access. Summary reworded accordingly."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 111 statements confirmed"
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-27"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 95
-  confirmed: 94
+  claims: 111
+  confirmed: 111
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "c3a914acc50061788bcc8fc4ea1536bb"
+  contradicted: 0
+  attempts: 0
+  hash: "1fc92fd43a0efe17b89db82f9f909ef2"
 ---
 
 ## What it is
@@ -156,11 +160,11 @@ An **administrative unit** is a Microsoft Entra ID container that can hold only 
 
 ### In Microsoft Purview
 
-Purview reuses the same Entra units. A member of a Purview role group who is assigned one or more units becomes a *restricted administrator*: in the solutions that support units (data lifecycle management, DLP, Communication Compliance, Insider Risk Management, records management and sensitivity labelling) they create and manage policies, and see alerts and activity, only for users in their units. Members with no units assigned are *unrestricted administrators*. Purview can also add SharePoint sites to a unit by query, for auto-labelling and DLP policies that apply to sites. The role groups themselves are explained in [Purview role groups](/concepts/role-groups/).
+Purview reuses the same Entra units. A member of a Purview role group who is assigned one or more units becomes a *restricted administrator*: in the solutions that support units (data lifecycle management, DLP, Communication Compliance, Insider Risk Management, records management and sensitivity labelling) they create and manage policies, and see alerts and activity, only for users in their units. For overlapping capabilities, an Entra role takes precedence over a scoped Purview role-group assignment and gives unscoped access. Members with no units assigned are *unrestricted administrators*. Purview can also add SharePoint sites to a unit by query, for auto-labelling and DLP policies that apply to sites. The role groups themselves are explained in [Purview role groups](/concepts/role-groups/).
 
 ## Why it matters
 
-Administrative units are how an organisation divides administration by region, subsidiary or department. In Entra they narrow which users a Helpdesk or User Administrator can change. In Purview they decide which users a regional compliance team can write policies for and whose alerts it can see; for a DLP policy on Microsoft 365 Copilot, Copilot Chat and Cowork, the unit is matched on the user who submits the prompt, not on the owner of the content ([example](/features/microsoft-purview-data-loss-prevention-admin-units-support-for-copilot-and-cowork-dlp/)).
+Administrative units are how an organisation divides administration by region, subsidiary or department. In Entra they narrow which users a Helpdesk or User Administrator can change. In Purview they decide which users a regional compliance team can write policies for and whose alerts it can see; for overlapping capabilities, an Entra role takes precedence over a scoped Purview role-group assignment and gives unscoped access. For a DLP policy on Microsoft 365 Copilot, Copilot Chat and Cowork, the unit is matched on the user who submits the prompt, not on the owner of the content ([example](/features/microsoft-purview-data-loss-prevention-admin-units-support-for-copilot-and-cowork-dlp/)).
 
 The scope covers management, not sight of the directory: Microsoft states that units don't prevent members or administrators from using their default user permissions to browse users, groups and resources outside the unit. The first assignment of units in Purview also changes what people see at once: restricted administrators can no longer see or edit existing policies, or historical alerts and activity explorer data, which stay with unrestricted administrators. Decide who stays unrestricted before assigning any units.
 
@@ -218,9 +222,3 @@ Creation of restricted management units, member changes and scoped role changes 
 - Does a Purview restricted administrator who holds no Entra directory role over the unit need a Microsoft Entra ID P1 licence? The Entra page ties P1 to administrators with directory roles over the unit; the Purview page lists P1 or P2 without saying for whom.
 - Will Microsoft document a PowerShell or Graph operation for assigning units to Purview role-group members, or for SharePoint site queries? Not yet documented at the time of writing (November 2026).
 - When does administrative unit support for the Microsoft Copilot, Copilot Chat, and Copilot Cowork DLP location leave preview?
-
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] summary; What it is: In Microsoft Purview; Why it matters / applicability: Assigning units to a Purview role-group member limits their policy management and visibility to users in those units without qualification. | Found: If you assign both an Entra role and a scoped Microsoft Purview role group assignment to a user or group (for example, a role group scoped to an Administrative Unit), the Entra role takes precedence at runtime. | Fix: Replace the summary's second sentence with 'Unit-scoped roles delegate regional or departmental administration without tenant-wide rights.' Qualify the Purview scoping statement in What it is with: 'For overlapping capabilities, an Entra role takes precedence over a scoped Purview role-group assignment and gives unscoped access.' Apply that qualification to the corresponding statement in Why it matters. The qualification is documented under Role precedence and scope behavior at https://learn.microsoft.com/purview/purview-permissions. | Source: https://learn.microsoft.com/purview/purview-permissions
--->

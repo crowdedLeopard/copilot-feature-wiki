@@ -139,14 +139,16 @@ changes:
     note: "Corrected group membership for the eDiscovery Manager role, narrowed the hold control to creating a policy, and added the -Action parameter, request-body notes and conflicting limits between Microsoft pages."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 120 statements confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 144 statements confirmed"
 verification:
   status: "verified"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 120
-  confirmed: 120
+  claims: 144
+  confirmed: 144
   unconfirmed: 0
   contradicted: 0
   attempts: 0

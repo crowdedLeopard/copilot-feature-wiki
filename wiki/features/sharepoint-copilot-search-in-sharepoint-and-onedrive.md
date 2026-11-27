@@ -78,15 +78,17 @@ changes:
     note: "Correction: licensing model is now not yet published for the SharePoint and OneDrive surface (the Copilot licence statement is scoped to the Microsoft Copilot app); Restricted SharePoint Search noted as retiring; differing Restricted Content Discovery descriptions noted."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 65 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 64 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 65
-  confirmed: 64
+  claims: 64
+  confirmed: 63
   unconfirmed: 1
   contradicted: 0
   attempts: 0
@@ -189,7 +191,7 @@ cost: Low. Learn says Copilot Search in the Microsoft Copilot app has no additio
 impact: High. Microsoft's notice says users who search in SharePoint Online and OneDrive on the web will see a changed search interface, so most staff who use search in those products will notice it.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
 - [unsupported, major] Why it matters / behaviour: Search is the way most people find files in SharePoint and OneDrive. | Found: Searched: SharePoint OneDrive search most people find files primary way users find content. Read excerpts from overview-microsoft-search, overview-of-search and make-sure-content-can-be-found; none establishes how most people find files. | Fix: Replace 'Search is the way most people find files in SharePoint and OneDrive' with 'Microsoft's notice says the change affects users who search for content in SharePoint Online and OneDrive on the web'.

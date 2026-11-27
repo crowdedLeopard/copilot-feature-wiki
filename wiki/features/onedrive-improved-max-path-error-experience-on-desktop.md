@@ -75,10 +75,12 @@ changes:
     note: "Corrected after verification: the 520-character sync limit is now explained from Microsoft Support (400-character local path plus 120-character root folder), and the custom folder name policy is described as an existing path-length control."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 65 statements confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 65 statements confirmed"
 version: 2
 verification:
   status: "verified"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"

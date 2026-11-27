@@ -101,16 +101,18 @@ changes:
     note: "Corrected after verification: the report's reach is now qualified (Microsoft 365 and Entra security groups only, no nested-group access) and cost is rated medium to match the documented add-on routes."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 65 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 3 of 73 statements not yet confirmed"
 version: 4
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 65
-  confirmed: 64
-  unconfirmed: 1
+  claims: 73
+  confirmed: 70
+  unconfirmed: 3
   contradicted: 0
   attempts: 0
   hash: "d918a68c6785edbe21e798bb4a4c205a"
@@ -219,8 +221,11 @@ cost: Medium. Tenants without an existing qualifying entitlement may need a Micr
 impact: Low. Microsoft's notice names SharePoint administrators as the people affected; site owners and group members see no change.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [unsupported, major] Risk assessment: Security & identity / behaviour: The report finds exposure but does not fix it. | Found: Searched: "site permissions for users or groups" "remediation" "permissions"; "group permission state report" "read-only" "permissions". Read the users/groups report, DAG overview and PowerShell guide; they describe reporting, not an explicit no-remediation guarantee. | Fix: Replace 'The report finds exposure; it does not fix it.' with 'The report lists sites accessible to the selected group and the extent of that access.' The report page at https://learn.microsoft.com/sharepoint/data-access-governance-site-permissions-users-report states this narrower behavior.
+- [unsupported, major] Risk assessment: Security & identity; Governance controls: remedial options / behaviour: Restricted access control, the Change history report and Site access review are not part of, or controls over, this report. | Found: Searched: "site permissions for users or groups" "Restricted access control" "Change history" "Site access review". Read DAG overview, users/groups report and PowerShell guide; they name follow-up actions but do not explicitly state this exclusion. | Fix: Delete ', and none is part of this report' from Risk assessment: Security & identity and '; none is a control over this report' from Governance controls. Keep the preceding statements naming Microsoft's documented remedial options.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [unsupported, minor] rationale: impact / default: Site owners and group members see no change. | Found: Searched: SharePoint group permissions report default automatic permissions changes Data access governance snapshot report; "data access governance" "group" "no impact" "users". Read MC1540348, roadmap, report page and overview; none explicitly promises no change for these people. | Fix: Replace the impact rationale with: "Low. Microsoft's notice names SharePoint administrators as the people affected; no source says existing site permissions change on arrival." This preserves the documented audience without asserting an arrival default.
+- [unsupported, minor] rationale: impact / default: Site owners and group members see no change from the feature's arrival. | Found: Searched: "data access governance" "group" "no impact" "users"; SharePoint site permissions users groups snapshot report enabled default automatically permissions changes site owners group members. Read MC1540348, roadmap, users/groups report and DAG overview; no no-change guarantee. | Fix: Replace the impact rationale with: "Low. Microsoft's notice names SharePoint administrators as the people affected; no source says existing site permissions change on arrival." This removes the unsupported arrival guarantee and agrees with defaultState: unknown.
 -->

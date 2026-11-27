@@ -105,15 +105,17 @@ changes:
     note: "Correction: agent Memory path and retention now cite the memory management and privacy page, rollout wording updated, and the Graph call printed without its body."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 58 statements confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 60 statements confirmed"
 version: 5
 verification:
   status: "verified"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 58
-  confirmed: 58
+  claims: 60
+  confirmed: 60
   unconfirmed: 0
   contradicted: 0
   attempts: 0

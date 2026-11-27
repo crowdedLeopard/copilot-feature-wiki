@@ -132,17 +132,19 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 97 statements confirmed"
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 113 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 131 statements contradicted, 0 unconfirmed; taken offline until corrected"
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-20"
+  status: "held"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 113
-  confirmed: 113
+  claims: 131
+  confirmed: 130
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "6384069e4bb72d68988f5c9e73f9f0b9"
 ---
 
@@ -229,10 +231,13 @@ Label activities are listed in Audit log activities; see [Microsoft Purview Audi
 
 - Which licence applies to labelling for Microsoft 365 E3 customers? The service description's introduction and its manual-labelling table row disagree, as described under Cost and licensing.
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[4].note; Governance controls: auto-labeling row / licensing: Service-side auto-labeling needs an E5 or P2-tier licence without distinguishing client-only P2 entitlement. | Found: Service-side auto-labeling (SharePoint, OneDrive, Exchange) ... Check the Client and service-side automatic sensitivity labeling entry in the feature matrix linked below. Client-only entitlements don't establish service-side entitlement. | Fix: Replace 'Needs an E5 or P2-tier licence.' in controls[4].note and its rendered row with 'Service-side auto-labeling requires a licence listed for Client and service-side automatic sensitivity labeling in the Microsoft Purview service description; client-only entitlements do not establish service-side entitlement.' The existing cited service description contains that matrix. | Source: https://learn.microsoft.com/purview/apply-sensitivity-label-automatically
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[5].ui / admin-path: The printed Copilot DLP route reaches the Copilot location in the Custom policy wizard. | Found: Go to Data Loss Prevention > Policies and select + Create policy. ... Select the Custom template, then Custom policy. ... On the Locations page, set the Microsoft Copilot, Copilot Chat, and Copilot Cowork location to on. | Fix: The route stops at the location selection rather than the label-based restriction. Extend the route in controls[5].ui and the matching rendered cell to 'Data Loss Prevention > Policies > + Create policy > Custom > Custom policy > Locations > Microsoft Copilot, Copilot Chat, and Copilot Cowork > rule > Content contains > Sensitivity labels'; retain the existing note naming the action 'Prevent Copilot and Cowork from processing content'. | Source: https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about
-- [supported, minor] What it is: Copilot and labels; Governance controls: reports / behaviour: Retention is the separate mechanism for retaining or deleting content. | Found: Although the main purpose of retention labels is to retain or delete content, you can also use retention labels without turning on any retention or other actions. | Fix: Add https://learn.microsoft.com/purview/retention and https://learn.microsoft.com/purview/purview-reports to sources. These support the retention distinction and the Information Protection > Reports path respectively; the latter path is confirmed in the Reports page's Posture reports section. This is the grouped finding for supporting Microsoft pages not currently cited. | Source: https://learn.microsoft.com/purview/retention
-- [supported, minor] Risks and limits: Container labels / behaviour: Edits to a published label's group settings are not automatically applied to already labeled groups. | Found: When you make changes to group settings for a published label ... those policy changes aren't automatically applied on the labeled groups. | Fix: After this statement, add: 'Microsoft's Purview container-label guide gives different guidance: it says to wait at least 24 hours for changed site and group settings to replicate to containers that already have the label applied.' The conflicting passage is under 'Modifying published labels that are configured for sites and groups' at https://learn.microsoft.com/purview/sensitivity-labels-teams-groups-sites. Keep both statements attributed to their respective guides. | Source: https://learn.microsoft.com/entra/identity/users/groups-assign-sensitivity-labels
+- [supported, minor] controls[5].ui / admin-path: The printed Copilot DLP route reaches the Microsoft Copilot, Copilot Chat, and Copilot Cowork location in the Custom policy wizard. | Found: Go to Data Loss Prevention > Policies and select + Create policy. ... Select the Custom template, then Custom policy. ... On the Locations page, set the Microsoft Copilot, Copilot Chat, and Copilot Cowork location to on. | Fix: Extend controls[5].ui.path and the matching rendered cell to 'Data Loss Prevention > Policies > + Create policy > Custom > Custom policy > Locations > Microsoft Copilot, Copilot Chat, and Copilot Cowork > rule > Content contains > Sensitivity labels'; keep the note naming 'Prevent Copilot and Cowork from processing content'. | Source: https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about
+- [supported, minor] What it is: Copilot and labels / behaviour: Retention is the separate mechanism for keeping or deleting content. | Found: Although the main purpose of retention labels is to retain or delete content, you can also use retention labels without turning on any retention or other actions. | Fix: Add https://learn.microsoft.com/purview/retention and https://learn.microsoft.com/purview/purview-reports to sources. These support the retention distinction and the Information Protection > Reports path respectively. This is the grouped finding for supporting Microsoft pages missing from the citations. | Source: https://learn.microsoft.com/purview/retention
+- [supported, minor] Risks and limits: Container labels / behaviour: The Entra guide says changes to published label group settings are not automatically applied to already labeled groups. | Found: When you make changes to group settings for a published label ... those policy changes aren't automatically applied on the labeled groups. | Fix: After the existing group-update statement, add: 'The Entra guide says this; Microsoft's Purview container-label guide instead says to wait at least 24 hours for changed site and group settings to replicate to all containers that have the label applied.' The conflicting guidance is under 'Modifying published labels that are configured for sites and groups' at https://learn.microsoft.com/purview/sensitivity-labels-teams-groups-sites. | Source: https://learn.microsoft.com/entra/identity/users/groups-assign-sensitivity-labels
+- [supported, minor] Governance controls: reports / admin-path: Information Protection reports are in the Microsoft Purview portal under Information Protection > Reports. | Found: You find Posture Reports in the Microsoft Purview portal: Information Protection > Reports ... Information Protection posture reports ... These reports are in preview. | Fix: Replace the reports sentence with 'Information Protection posture reports are in preview and are in the Microsoft Purview portal under Information Protection > Reports.' The source addition is covered by the grouped missing-citations finding. | Source: https://learn.microsoft.com/purview/purview-reports
 -->

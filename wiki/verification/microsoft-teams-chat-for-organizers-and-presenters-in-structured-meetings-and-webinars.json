@@ -4,10 +4,10 @@
   "title": "Microsoft Teams: private chat for organisers and presenters in webinars, structured meetings and town halls",
   "status": "held",
   "date": "2026-11-27",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "hold",
@@ -16,25 +16,36 @@
     "reason": "failed",
     "since": "2026-11-27",
     "reasons": [
-      "1 blocking finding (claim 28)"
+      "2 blocking findings (claims 52, 54)"
     ]
   },
   "counts": {
-    "claims": 54,
-    "confirmed": 52,
+    "claims": 56,
+    "confirmed": 54,
     "unconfirmed": 0,
     "contradicted": 2,
-    "blocker": 1,
+    "blocker": 2,
     "major": 0,
-    "minor": 5
+    "minor": 0
   },
-  "summary": "Hold: the statement that Microsoft Learn does not explain where event group chat is stored overlooks Microsoft's published storage rules for Teams group chats. The rollout facts and the documented meeting and attendee-chat controls are supported; the backroom policy path remains undocumented.",
+  "summary": "Hold: the command for disabling town hall attendee chat uses null, but Microsoft's current documentation requires None. The briefing also incorrectly says the command reference gives null as its default; the reference gives None. The rollout details and the distinction between attendee chat and event group chat are supported.",
   "claims": [
     {
       "n": 1,
       "where": "title; summary; What's changing; Scope; rationale: impact",
       "type": "record",
-      "claim": "Organisers, co-organisers and presenters in structured meetings and webinars get a private chat separate from attendees.",
+      "claim": "The new private chat is for organisers, co-organisers and presenters in structured meetings and webinars.",
+      "status": "supported",
+      "source": "Message Center post MC1188222",
+      "quote": "We’re introducing a private chat feature for organizers, co-organizers, and presenters in structured meetings and webinars in Microsoft Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; Why it matters; Risk assessment; Scope; Governance guidance; rationale: risk",
+      "type": "record",
+      "claim": "The private chat is separate from attendee chat and does not involve attendees.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Organizers, co-organizers, and presenters can chat privately in a separate chat from attendees.",
@@ -42,10 +53,10 @@
       "fix": null
     },
     {
-      "n": 2,
-      "where": "summary; What's changing; Scope",
+      "n": 3,
+      "where": "summary; What's changing",
       "type": "record",
-      "claim": "The private chat is available before, during and after the event.",
+      "claim": "The new private chat is accessible before, during and after the event.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "This chat is available to access before, during, and after the event.",
@@ -53,10 +64,10 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 4,
       "where": "What's changing",
       "type": "record",
-      "claim": "MC1188222 adds unified town hall backroom chat behaviour under this roadmap item.",
+      "claim": "The same roadmap item also unifies town hall backroom chat behaviour across structured meetings.",
       "status": "supported",
       "source": "Message Center post MC1188222",
       "quote": "Additionally, we are unifying backroom chat behavior in town halls to ensure consistent functionality across all structured meetings.",
@@ -64,10 +75,10 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 5,
       "where": "What's changing",
       "type": "record",
-      "claim": "Existing town hall backroom chat behaviour varies with streaming chat and the organiser's Teams Premium licence.",
+      "claim": "Before this update, town hall backroom chat behaviour varies depending on whether streaming chat is enabled.",
       "status": "supported",
       "source": "Message Center post MC1188222",
       "quote": "Currently, backroom chat behavior varies depending on whether streaming chat is enabled for town halls and whether the organizer has a Teams Premium license.",
@@ -75,24 +86,13 @@
       "fix": null
     },
     {
-      "n": 5,
-      "where": "What's changing; rationale: risk",
-      "type": "behaviour",
-      "claim": "Learn documents town hall organiser, co-organiser and presenter chat as the event group chat.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
-      "quote": "In events optimized for large audiences, such as town halls, the chat experience differs depending on the event role. Organizers, co-organizers, and presenters can chat with each other in the event group chat.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 6,
-      "where": "What's changing; Risk assessment; Scope",
-      "type": "behaviour",
-      "claim": "The documented town hall event group chat is separate from attendee chat.",
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Before this update, town hall backroom chat behaviour varies depending on the organiser's Teams Premium licence.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
-      "quote": "The event group chat is available before, during, and after an event, and is a separate experience from the chat with attendees.",
+      "source": "Message Center post MC1188222",
+      "quote": "Currently, backroom chat behavior varies depending on whether streaming chat is enabled for town halls and whether the organizer has a Teams Premium license.",
       "severity": null,
       "fix": null
     },
@@ -100,7 +100,29 @@
       "n": 7,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The documented town hall event group chat is available before, during and after an event.",
+      "claim": "Learn calls the private chat in events optimised for large audiences, such as town halls, event group chat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
+      "quote": "In events optimized for large audiences, such as town halls, the chat experience differs depending on the event role. Organizers, co-organizers, and presenters can chat with each other in the event group chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Scope; controls[0].governs",
+      "type": "role",
+      "claim": "Organisers, co-organisers and presenters chat with each other in the town hall event group chat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
+      "quote": "Organizers, co-organizers, and presenters can chat with each other in the event group chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The documented town hall event group chat is available before, during and after the event.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
       "quote": "The event group chat is available before, during, and after an event, and is a separate experience from the chat with attendees.",
@@ -108,21 +130,32 @@
       "fix": null
     },
     {
-      "n": 8,
-      "where": "What's changing; Open questions",
-      "type": "absence",
-      "claim": "Learn does not yet describe the new separate organiser and presenter chat for webinars and structured meetings.",
+      "n": 10,
+      "where": "What's changing; Risk assessment; Governance controls; controls[2].note",
+      "type": "behaviour",
+      "claim": "The documented town hall event group chat is separate from the attendee chat.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams webinar structured meeting private organizer presenter chat meeting chat policy default enabled; organizers presenters private chat webinars structured meetings. Read manage-event-chat, manage-meeting-chat, plan-events and the returned Learn excerpts; no description of that separate chat.",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
+      "quote": "The event group chat is available before, during, and after an event, and is a separate experience from the chat with attendees.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 9,
+      "n": 11,
+      "where": "What's changing; Governance guidance: After rollout",
+      "type": "absence",
+      "claim": "Learn does not yet describe the new separate private chat for webinars and structured meetings.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams webinar structured meetings separate private organizers presenters chat default MeetingChatEnabledType; organizers presenters private chat webinars. Read manage-event-chat, manage-meeting-chat and plan-events; they describe event group chat for large-audience events, not this new case.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
       "where": "front matter: defaultState; summary; What's changing; Why it matters; rationale: risk",
       "type": "default",
-      "claim": "The unified town hall backroom chat default is on.",
+      "claim": "The town hall backroom chat default becomes on for all town halls.",
       "status": "supported",
       "source": "Message Center post MC1188222",
       "quote": "Unified backroom chat policy for town halls: The default setting will be ON for all town halls, regardless of streaming chat availability or license type.",
@@ -130,10 +163,10 @@
       "fix": null
     },
     {
-      "n": 10,
-      "where": "licensing.notes; What's changing; Cost and licensing; rationale: cost",
+      "n": 13,
+      "where": "What's changing; Cost and licensing",
       "type": "record",
-      "claim": "The town hall backroom chat default applies regardless of streaming chat availability.",
+      "claim": "The new town hall backroom chat default applies regardless of streaming chat availability.",
       "status": "supported",
       "source": "Message Center post MC1188222",
       "quote": "The default setting will be ON for all town halls, regardless of streaming chat availability or license type.",
@@ -141,10 +174,10 @@
       "fix": null
     },
     {
-      "n": 11,
-      "where": "licensing.notes; What's changing; Cost and licensing; rationale: cost",
-      "type": "record",
-      "claim": "The town hall backroom chat default applies regardless of licence type.",
+      "n": 14,
+      "where": "front matter: licensing.notes; What's changing; Why it matters; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The unified town hall backroom chat default applies regardless of licence type.",
       "status": "supported",
       "source": "Message Center post MC1188222",
       "quote": "The default setting will be ON for all town halls, regardless of streaming chat availability or license type.",
@@ -152,10 +185,10 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 15,
       "where": "What's changing; Why it matters",
       "type": "record",
-      "claim": "Existing town halls adopt the new policy once meeting options are updated.",
+      "claim": "Existing town halls adopt the new policy when their meeting options are updated.",
       "status": "supported",
       "source": "Message Center post MC1188222",
       "quote": "Existing town halls will adopt the new policy once meeting options are updated.",
@@ -163,7 +196,7 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 16,
       "where": "What's changing; Why it matters; Risk assessment; Governance guidance; rationale: impact",
       "type": "record",
       "claim": "Town halls without Teams Premium where backroom chat was off switch it on after rollout and a meeting options update.",
@@ -174,10 +207,10 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "What's changing; Risk assessment; Governance guidance",
+      "n": 17,
+      "where": "What's changing; Risk assessment; Governance guidance: At rollout",
       "type": "record",
-      "claim": "Disabling the new backroom policy removes access from already scheduled town halls that had it on once meeting options are updated.",
+      "claim": "Turning the new backroom chat policy off removes access from previously enabled scheduled town halls when their options are updated.",
       "status": "supported",
       "source": "Message Center post MC1188222",
       "quote": "If an admin explicitly turns the new backroom chat policy OFF, any already-scheduled town hall that previously had backroom chat ON will lose access once the meeting options are updated.",
@@ -185,8 +218,8 @@
       "fix": null
     },
     {
-      "n": 15,
-      "where": "front matter: status; What's changing; Scope",
+      "n": 18,
+      "where": "front matter: status; What's changing; Scope; changes",
       "type": "record",
       "claim": "The roadmap status is Rolling out.",
       "status": "supported",
@@ -196,7 +229,7 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 19,
       "where": "front matter: targetDate; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap target is October CY2026.",
@@ -207,18 +240,7 @@
       "fix": null
     },
     {
-      "n": 17,
-      "where": "front matter: previewDate",
-      "type": "record",
-      "claim": "The roadmap publishes no preview date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": null",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
+      "n": 20,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap release phases are General Availability and Targeted Release.",
@@ -229,8 +251,19 @@
       "fix": null
     },
     {
-      "n": 19,
-      "where": "front matter: clouds; What's changing; Scope",
+      "n": 21,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap publishes no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: clouds; Scope; changes",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and GCC.",
       "status": "supported",
@@ -240,7 +273,7 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 23,
       "where": "front matter: platforms; Scope",
       "type": "record",
       "claim": "The roadmap lists Desktop and Mac.",
@@ -251,9 +284,9 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 24,
       "where": "What's changing",
-      "type": "record",
+      "type": "date",
       "claim": "MC1188222 was updated on 1 September 2026.",
       "status": "supported",
       "source": "Message Center post MC1188222",
@@ -262,29 +295,51 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 25,
       "where": "What's changing",
       "type": "record",
-      "claim": "MC1188222 targets Targeted Release from mid-October 2026 to late October 2026.",
+      "claim": "The notice gives a Targeted Release rollout start in mid-October 2026.",
       "status": "supported",
       "source": "Message Center post MC1188222",
-      "quote": "Targeted Release: Rollout begins in mid-October 2026 (previously late September) and is expected to complete by late October 2026 (previously late August).",
+      "quote": "Targeted Release: Rollout begins in mid-October 2026 (previously late September)",
       "severity": null,
       "fix": null
     },
     {
-      "n": 23,
+      "n": 26,
       "where": "What's changing",
       "type": "record",
-      "claim": "MC1188222 targets General Availability for Worldwide and GCC from late October 2026, expected to complete by late November 2026.",
+      "claim": "The notice expects Targeted Release to complete by late October 2026.",
       "status": "supported",
       "source": "Message Center post MC1188222",
-      "quote": "General Availability (Worldwide and GCC): Rollout begins in late October 2026 (previously mid-September) and is expected to complete by late November 2026 (previously early November).",
+      "quote": "is expected to complete by late October 2026 (previously late August).",
       "severity": null,
       "fix": null
     },
     {
-      "n": 24,
+      "n": 27,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice gives a General Availability rollout start in late October 2026 for Worldwide and GCC.",
+      "status": "supported",
+      "source": "Message Center post MC1188222",
+      "quote": "General Availability (Worldwide and GCC): Rollout begins in late October 2026 (previously mid-September)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice expects General Availability rollout to complete by late November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1188222",
+      "quote": "is expected to complete by late November 2026 (previously early November).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
       "where": "summary; What's changing",
       "type": "record",
       "claim": "The supplied notice sets no act-by date.",
@@ -295,10 +350,10 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 30,
       "where": "Scope",
       "type": "record",
-      "claim": "MC1188222 applies to Windows desktop, Mac desktop, web, iOS/Android, MTR-W and MTR-A.",
+      "claim": "The notice lists Windows desktop, Mac desktop, web, iOS/Android, MTR-W and MTR-A devices.",
       "status": "supported",
       "source": "Message Center post MC1188222",
       "quote": "This message is associated with Roadmap ID 392328 and applies to Teams for Windows desktop, Teams for Mac desktop, Teams for the web, Teams for iOS/Android, MTR-W and MTR-A devices.",
@@ -306,10 +361,10 @@
       "fix": null
     },
     {
-      "n": 26,
-      "where": "controls[0].note; Scope; Governance controls",
+      "n": 31,
+      "where": "controls[0].note; Why it matters; Scope; Governance controls",
       "type": "record",
-      "claim": "The notice says administrators can disable backroom chat through a Teams admin center policy, without naming a policy or path.",
+      "claim": "MC1188222 says to disable backroom chat through a Teams admin center policy but does not name the policy or navigation path.",
       "status": "supported",
       "source": "Message Center post MC1188222",
       "quote": "If you want to disable backroom chat, adjust the policy in the Teams admin center.",
@@ -317,10 +372,10 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 32,
       "where": "Why it matters; Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The event chat storage rule excludes event group chat from organiser-mailbox storage for up to 30 days.",
+      "claim": "Manage chat for Teams events excludes event group chat from its attendee-chat storage rule.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
       "quote": "Meeting chat messages in events optimized for large audiences, excluding the event group chat, are stored only in an organizer's mailbox for up to 30 days.",
@@ -328,65 +383,43 @@
       "fix": null
     },
     {
-      "n": 28,
-      "where": "Why it matters; Risk assessment: Data exposure; Open questions",
-      "type": "absence",
-      "claim": "Microsoft Learn does not say where event group chat messages are stored instead.",
-      "status": "contradicted",
+      "n": 33,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Microsoft's general Teams group-chat documentation places compliance copies in participants' Exchange Online mailboxes.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/purview/edisc-search-teams",
-      "quote": "All Microsoft Teams 1:1 or group chats are journaled through to the respective users' mailboxes.",
-      "severity": "blocker",
-      "fix": "Replace the repeated storage-absence wording with: \"The Manage chat for Teams events article excludes event group chat from its attendee-chat storage rule. Microsoft's general Teams group-chat documentation places compliance copies in participants' Exchange Online mailboxes.\" Cite https://learn.microsoft.com/purview/edisc-search-teams. Replace the storage open question with \"Can our compliance staff retrieve a test event group chat from its participants' mailboxes?\" Keep the proposed tenant test."
-    },
-    {
-      "n": 29,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Teams chat data is kept in a hidden folder in each included user's mailbox.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/retention-policies-teams",
-      "quote": "Data from Teams chats is stored in a hidden folder in the mailbox of each user included in the chat, and a similar hidden folder in a group mailbox is used for Teams channel messages.",
+      "quote": "Exchange Online stores Teams compliance records that the substrate captures, and eDiscovery can access these records. Messages in group chats are stored in the Exchange Online mailbox of all chat participants.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 30,
-      "where": "Risk assessment: Data exposure; Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "Compliance administrators can search the hidden Teams message data with eDiscovery tools.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/retention-policies-teams",
-      "quote": "These hidden folders aren't designed to be directly accessible to users or administrators, but instead, store data that compliance administrators can search with eDiscovery tools.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
+      "n": 34,
       "where": "Risk assessment: Security & identity",
       "type": "record",
       "claim": "External presenter support for event group chat is covered by a separate roadmap item.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"id\": 573706; \"title\": \"Microsoft Teams: External presenter support for event group chat\"; \"description\": \"Event group chat, the private chat for organizers, co-organizers, and presenters in an event or structured meeting, will support external presenters.\"",
-      "severity": "minor",
-      "fix": "Add Microsoft 365 Roadmap 573706 to sources at https://www.microsoft.com/microsoft-365/roadmap?id=573706; the linked wiki briefing is not evidence for this record fact."
-    },
-    {
-      "n": 32,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "The described feature is person-to-person chat rather than an autonomous action mechanism.",
-      "status": "supported",
-      "source": "Message Center post MC1188222",
-      "quote": "This separate chat enhances collaboration by allowing key participants to communicate privately before, during, and after the event, without involving attendees.",
+      "quote": "573706: Microsoft Teams: External presenter support for event group chat. Event group chat, the private chat for organizers, co-organizers, and presenters in an event or structured meeting, will support external presenters.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 33,
-      "where": "front matter: licensing.model; licensing.notes; Cost and licensing",
+      "n": 35,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The described capability is person-to-person chat rather than an autonomous action mechanism.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
+      "quote": "Organizers, co-organizers, and presenters can chat with each other in the event group chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "The licensing model is included within eligible Teams licences.",
+      "claim": "All eligible Teams licences include the foundational capabilities needed to create and run events.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
       "quote": "All eligible Teams licenses include the foundational capabilities needed to create and run events, engage attendees, review attendance reports, and publish event recordings.",
@@ -394,52 +427,85 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 37,
       "where": "Cost and licensing",
       "type": "absence",
       "claim": "The Teams events licensing overview does not list event group chat by name.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams private organizers presenters webinar backroom event group chat licensing price meter. Read the complete Teams events licensing overview: its foundational and advanced tables list Chat for attendees, not event group chat.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "licensing.notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "No licence specific to this chat is published as of November 2026.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams private organizers presenters webinar backroom event group chat licensing price meter. Read events-licensing and manage-event-chat and licensing search excerpts; these document general Teams event entitlement, not a separate chat licence, price or meter.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "controls[0].ui; controls[0].api; Why it matters; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "Microsoft Learn documents no town hall backroom chat policy path or automation operation.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: backroom chat Teams admin center; event group chat Set-CsTeamsEventsPolicy Graph. Read plan-events, manage-event-chat, both Teams policy references, onlineMeeting beta, virtualEventTownhall beta and virtualEventSettings beta; no documented backroom control.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "controls[0].note; Governance controls",
-      "type": "behaviour",
-      "claim": "Plan for Teams events lists no admin control for event group chat, unlike MC1188222.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/plan-events",
-      "quote": "Event group chat (organizers, co-organizers, and presenters) | No control. | Can chat with presenters and co-organizers. Attendees don't use this chat during events.",
+      "quote": "Searched: Teams event group backroom chat licensing price meter private organizer presenter. Read events-licensing in full, including both feature tables; it lists Chat for attendees, not event group chat.",
       "severity": null,
       "fix": null
     },
     {
       "n": 38,
-      "where": "controls[1].ui; Governance guidance: Before rollout",
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No licence specific to the new private chat is published as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams event group backroom chat licensing price meter private organizer presenter. Read events-licensing, plan-events, manage-event-chat and MC1188222; no feature-specific licence was stated, and the notice says regardless of license type.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No price specific to this private chat is published as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams event group backroom chat licensing price meter private organizer presenter. Read events-licensing, plan-events and manage-event-chat; results did not publish a separate chat price.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No meter specific to this private chat is published as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams event group backroom chat licensing price meter private organizer presenter. Read events-licensing, plan-events and manage-event-chat; results did not document a chat-specific meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is included within eligible Teams licensing rather than a separately published chat entitlement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
+      "quote": "All eligible Teams licenses include the foundational capabilities needed to create and run events, engage attendees, review attendance reports, and publish event recordings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[0].ui; controls[0].api; Why it matters; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Learn documents neither an admin UI path nor an automation parameter for the town hall backroom chat switch.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams backroom event group chat admin center policy PowerShell disable Townhall private organizer presenter chat. Read plan-events, manage-event-chat and both Set-Cs policy references; searched meeting-policy text for backroom/private chat. No backroom switch path or parameter was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Plan for Teams events lists No control for administrators over event group chat in events optimised for large audiences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/plan-events",
+      "quote": "Event group chat (organizers, co-organizers, and presenters) | No control. | Can chat with presenters and co-organizers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[1].ui; Governance controls table; Governance guidance: Before rollout",
       "type": "admin-path",
       "claim": "Meeting chat is at Teams admin center > Meetings > Meeting policies > policy > Meeting engagement > Meeting chat.",
       "status": "supported",
@@ -449,10 +515,10 @@
       "fix": null
     },
     {
-      "n": 39,
-      "where": "controls[1].api",
+      "n": 45,
+      "where": "controls[1].api; Governance controls table",
       "type": "command",
-      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -MeetingChatEnabledType Disabled is the documented call to turn meeting chat off.",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -MeetingChatEnabledType Disabled turns off meeting chat, with the LobbyChat prerequisite stated in the note.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-meeting-chat",
       "quote": "To turn off meeting chat for users with this assigned policy, run the following command: Set-CsTeamsMeetingPolicy -Identity <policy name> -MeetingChatEnabledType Disabled",
@@ -460,79 +526,13 @@
       "fix": null
     },
     {
-      "n": 40,
+      "n": 46,
       "where": "controls[1].governs; controls[1].note; Governance controls",
       "type": "applicability",
-      "claim": "Meeting chat manages reading and sending in meetings and events up to 1,000 attendees, including webinar organisers, presenters, co-organisers and attendees.",
+      "claim": "The Meeting chat policy controls reading and sending chat for organisers, presenters, co-organisers and attendees in meetings and events with up to 1,000 attendees.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-meeting-chat",
-      "quote": "Whether participants in your users' meetings and events with up to 1,000 attendees can read and send chat messages.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "controls[1].note; Governance guidance; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "Learn does not state whether the new separate webinar organiser and presenter chat follows the Meeting chat policy.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams webinar structured meeting private organizer presenter chat meeting chat policy default enabled. Read manage-meeting-chat, manage-event-chat and plan-events: general chat scope is stated, but the new separate chat is not described.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "controls[2].ui",
-      "type": "admin-path",
-      "claim": "Town hall attendee chat is controlled at Teams admin center > Meetings > Events policies > policy > Events optimized for a large audience chat experience.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
-      "quote": "In the left navigation of the Teams admin center, go to Meetings > Events policies. Select the policy you want to edit or create a new one. In the Events optimized for a large audience chat experience dropdown list, select Optimized (the default value) or None.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "controls[2].api; controls[2].governs; Governance controls",
-      "type": "command",
-      "claim": "Set-CsTeamsEventsPolicy -Identity <policy name> -TownhallChatExperience None prevents organisers from enabling attendee chat.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
-      "quote": "To turn off chat for attendees in events optimized for large audiences, run the following command: Set-CsTeamsEventsPolicy -Identity <policy name> -TownhallChatExperience None",
-      "severity": "minor",
-      "fix": "Keep the call. Add to controls[2].note: \"The Set-CsTeamsEventsPolicy reference marks the events policy as preview.\" Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps."
-    },
-    {
-      "n": 44,
-      "where": "Governance guidance: After rollout",
-      "type": "consistency",
-      "claim": "The checklist asks for an eDiscovery content search, but the controls table has no eDiscovery search row.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Checklist: \"Run an eDiscovery content search\". Table: \"Whether town hall organisers, co-organisers and presenters get backroom (event group) chat\"; \"Meeting chat policy\"; \"Whether town hall organisers can turn on attendee chat (not the event group chat)\".",
-      "severity": "minor",
-      "fix": "Remove the After rollout checklist bullet beginning \"Run an eDiscovery content search\"; it names a control absent from the table. Retain the existing eDiscovery test advice in Risk assessment rather than adding a control row."
-    },
-    {
-      "n": 45,
-      "where": "licensing.notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "No price specific to this chat is published as of November 2026.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams private organizers presenters webinar backroom event group chat licensing price meter. Read events-licensing, manage-event-chat and licensing search excerpts; no separate chat price is stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "No meter specific to this chat is published as of November 2026.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams private organizers presenters webinar backroom event group chat licensing price meter. Read events-licensing, manage-event-chat and licensing search excerpts; no separate chat meter is stated.",
+      "source": "https://learn.microsoft.com/microsoftteams/plan-events",
+      "quote": "Events up to 1,000 attendees: Chat | Can manage whether organizers, presenters, co-organizers, and attendees can read and write chat messages.",
       "severity": null,
       "fix": null
     },
@@ -540,7 +540,7 @@
       "n": 47,
       "where": "controls[1].scope; Governance controls",
       "type": "applicability",
-      "claim": "Meeting chat is a per-user policy.",
+      "claim": "The Meeting chat setting is a per-user and per-organiser policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-meeting-chat",
       "quote": "This setting doesn't apply to channel meetings and is a per-user and per-organizer policy.",
@@ -551,17 +551,6 @@
       "n": 48,
       "where": "Governance controls",
       "type": "applicability",
-      "claim": "Meeting chat is a per-organiser policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-meeting-chat",
-      "quote": "This setting doesn't apply to channel meetings and is a per-user and per-organizer policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "Governance controls",
-      "type": "applicability",
       "claim": "The Meeting chat policy does not apply to channel meetings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-meeting-chat",
@@ -570,10 +559,21 @@
       "fix": null
     },
     {
+      "n": 49,
+      "where": "controls[1].note; Governance guidance; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Learn does not explicitly describe whether the new separate webinar and structured-meeting chat follows the Meeting chat policy.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams webinar structured meetings separate private organizers presenters chat default MeetingChatEnabledType. Read manage-meeting-chat, manage-event-chat, plan-events and the cmdlet parameter text; they describe general meeting/webinar chat controls but not the new separate webinar chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 50,
-      "where": "controls[1].note",
+      "where": "controls[1].note; Governance controls table",
       "type": "command",
-      "claim": "The cmdlet reference requires LobbyChat to be disabled when setting MeetingChatEnabledType to Disabled.",
+      "claim": "The Set-CsTeamsMeetingPolicy reference says disabling MeetingChatEnabledType also requires LobbyChat to be disabled.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps",
       "quote": "Due to a new feature rollout, in order to set the value of MeetingChatEnabledType to Disabled, you will need to also set the value of LobbyChat to disabled.",
@@ -582,53 +582,75 @@
     },
     {
       "n": 51,
-      "where": "controls[2].note",
-      "type": "default",
-      "claim": "Optimized is the town hall attendee chat policy's default value.",
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The town hall attendee chat setting is at Teams admin center > Meetings > Events policies > policy > Events optimized for a large audience chat experience.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
-      "quote": "Optimized | This is the default value. Organizers with this policy can turn on chat for their attendees.",
-      "severity": "minor",
-      "fix": "Replace \"Optimized is the default value\" in the note with \"Manage chat for Teams events gives Optimized as the default; the Set-CsTeamsEventsPolicy reference lists None as the parameter default.\" Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps."
-    },
-    {
-      "n": 52,
-      "where": "controls[2].governs; controls[2].note; Governance controls",
-      "type": "applicability",
-      "claim": "The TownhallChatExperience control governs attendee chat, not the separate event group chat.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
-      "quote": "The event group chat is available before, during, and after an event, and is a separate experience from the chat with attendees. To manage whether organizers can turn on chat for their attendees, use the -TownhallChatExperience parameter",
+      "quote": "In the left navigation of the Teams admin center, go to Meetings > Events policies. Select the policy you want to edit or create a new one. In the Events optimized for a large audience chat experience dropdown list, select Optimized (the default value) or None.",
       "severity": null,
       "fix": null
     },
     {
+      "n": 52,
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-CsTeamsEventsPolicy -Identity <policy name> -TownhallChatExperience null turns off attendee chat in town halls.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
+      "quote": "To turn off chat for attendees in events optimized for large audiences, run the following command: Set-CsTeamsEventsPolicy -Identity <policy name> -TownhallChatExperience None",
+      "severity": "blocker",
+      "fix": "Replace controls[2].api.call and the rendered call with 'Set-CsTeamsEventsPolicy -Identity <policy name> -TownhallChatExperience None', as documented at https://learn.microsoft.com/microsoftteams/manage-event-chat. The reference permits Optimized and None, not null."
+    },
+    {
       "n": 53,
-      "where": "controls[2].scope",
-      "type": "applicability",
-      "claim": "The Teams events policy for town hall attendee chat is user-scoped.",
+      "where": "controls[2].note; Governance controls table",
+      "type": "default",
+      "claim": "Manage chat for Teams events gives Optimized as the default value of the town hall attendee chat policy.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps",
-      "quote": "User-level policy for tenant admin to configure options for customizing Teams events experiences. Use this cmdlet to update an existing policy.",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
+      "quote": "Optimized | This is the default value. Organizers with this policy can turn on chat for their attendees.",
       "severity": null,
       "fix": null
     },
     {
       "n": 54,
-      "where": "controls[0].scope",
-      "type": "applicability",
-      "claim": "The town hall backroom chat admin policy is user-scoped.",
+      "where": "controls[2].note; Governance controls table",
+      "type": "default",
+      "claim": "The Set-CsTeamsEventsPolicy reference lists null as the default of TownhallChatExperience.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps",
+      "quote": "Possible values are: Optimized, None. Default value: None",
+      "severity": "blocker",
+      "fix": "Replace controls[2].note and its rendered copy with: 'Manage chat for Teams events gives Optimized as the default; the Set-CsTeamsEventsPolicy reference lists None as the parameter default and marks the events policy as preview. Governs attendee chat only.' Keep both sources: https://learn.microsoft.com/microsoftteams/manage-event-chat and https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps."
+    },
+    {
+      "n": 55,
+      "where": "controls[2].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "The Set-CsTeamsEventsPolicy reference marks the events policy as preview.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/azure/communication-services/concepts/interop/guest/teams-administration",
-      "quote": "Tenant policies are configurations that can be assigned to specific users or groups of users. A policy consists of properties with one of the following scopes: per-organizer, per-user, or both.",
-      "severity": "minor",
-      "fix": "Cite https://learn.microsoft.com/azure/communication-services/concepts/interop/guest/teams-administration for the general user-assigned Teams policy model; keep the existing note that the backroom policy itself is not named or located by Learn."
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps",
+      "quote": "This cmdlet allows you to configure options for customizing Teams events experiences. Note that this policy is currently still in preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[2].governs; controls[2].scope; controls[2].note; Governance controls",
+      "type": "applicability",
+      "claim": "The user-level TownhallChatExperience policy governs whether organisers can enable attendee chat, not the separate event group chat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
+      "quote": "You can use the Teams admin center or PowerShell to manage whether organizers can turn on chat for their attendees in events optimized for large audiences.",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-27T20:12:56.726Z",
+    "at": "2026-11-27T22:41:18.021Z",
     "summary": {
-      "links": 9,
+      "links": 12,
       "unreachable": 0,
       "uiPaths": 2,
       "uiPathsWithMissingWords": 0,
@@ -673,12 +695,27 @@
         "status": 200
       },
       {
+        "url": "https://learn.microsoft.com/purview/edisc-search-teams",
+        "ok": true,
+        "status": 200
+      },
+      {
         "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps",
         "ok": true,
         "status": 200
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=573706",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/azure/communication-services/concepts/interop/guest/teams-administration",
         "ok": true,
         "status": 200
       }
@@ -732,5 +769,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-27",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

@@ -113,14 +113,16 @@ changes:
     note: "Corrected after the independent check: classification wording and platform qualifications, offline-device behaviour limited to Windows, JIT blocking conditions, and two control paths."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 87 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 98 statements not yet confirmed"
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 87
-  confirmed: 87
+  claims: 98
+  confirmed: 98
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -199,10 +201,10 @@ The Activity explorer interface requires E5/A5/G5 licensing; the underlying data
 - Does Microsoft document an API or PowerShell route for turning on device onboarding or configuring JIT protection? None was found at the time of writing (November 2026).
 - Which setting names does the `-EndpointDlpGlobalSettings` parameter of `Set-PolicyConfig` accept for each Endpoint settings option?
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What it is / availability: Microsoft describes Endpoint DLP support for the three latest released major macOS versions. | Found: macOS (the three latest released major versions) | Fix: After the platform-support sentence, add: 'The Purview service description instead lists macOS Catalina 10.15 and higher.' That conflicting wording appears at https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-data-loss-prevention-endpoint-data-loss-protection-dlp. | Source: https://learn.microsoft.com/purview/endpoint-dlp-learn-about
-- [supported, minor] What it is / behaviour: Endpoint DLP is distinct from Power Platform data policies. | Found: Power Platform admin center data policies allow administrators to control access to these connectors in various ways to help reduce risk in your organization. | Fix: Add https://learn.microsoft.com/power-platform/admin/wp-data-loss-prevention to sources for the comparison with Power Platform data policies; retain the existing Endpoint DLP overview citation for device-file protection. | Source: https://learn.microsoft.com/power-platform/admin/wp-data-loss-prevention
-- [supported, minor] controls[0].ui / admin-path: The printed Purview policy-creation path reaches Specific devices and device groups. | Found: Select the Custom from the Categories then Custom policy template from Regulations. Select Next. | Fix: Restore the omitted headings: 'Data loss prevention > Policies > Create policy > Enterprise applications & devices > Categories > Custom > Regulations > Custom policy > Admin units > Full directory > Devices > Edit > Specific devices and device groups'. The existing printed choices are correct and in order. | Source: https://learn.microsoft.com/purview/endpoint-dlp-create-policy-device-scoping
+- [supported, minor] summary; What it is / availability: The Endpoint DLP overview describes macOS support as the three latest released major versions. | Found: macOS (the three latest released major versions) | Fix: After the platform-support sentence, add: 'The Purview service description instead lists macOS Catalina 10.15 and higher.' The conflicting wording is at https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-data-loss-prevention-endpoint-data-loss-protection-dlp. | Source: https://learn.microsoft.com/purview/endpoint-dlp-learn-about
+- [supported, minor] What it is / behaviour: Endpoint DLP is a different mechanism from Power Platform data policies. | Found: Power Platform admin center data policies allow administrators to control access to these connectors in various ways to help reduce risk in your organization. | Fix: Add https://learn.microsoft.com/power-platform/admin/wp-data-loss-prevention to sources for the comparison with connector-governing Power Platform data policies. Retain the cited Endpoint DLP overview for device-file protection. | Source: https://learn.microsoft.com/power-platform/admin/wp-data-loss-prevention
+- [supported, minor] controls[0].ui; Governance controls: policy scoping row / admin-path: The printed Purview policy-creation path reaches Specific devices and device groups. | Found: Select the Custom from the Categories then Custom policy template from Regulations. ... Accept the default Full directory under Admin units. ... Select Edit on the Devices location. ... Select Specific devices and device groups | Fix: In controls[0].ui.path and the rendered table, restore the omitted headings: 'Data loss prevention > Policies > Create policy > Enterprise applications & devices > Categories > Custom > Regulations > Custom policy > Admin units > Full directory > Devices > Edit > Specific devices and device groups'. The printed choices are correct and ordered. | Source: https://learn.microsoft.com/purview/endpoint-dlp-create-policy-device-scoping
 -->

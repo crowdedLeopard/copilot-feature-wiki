@@ -17,8 +17,8 @@ impact: "medium"
 defaultState: "on"
 action: "prepare"
 licensing:
-  model: "add-on"
-  notes: "Listed in the Microsoft 365 Copilot release notes. Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible plans. Whether users without that licence (Copilot Chat only) get this search is not stated."
+  model: "included"
+  notes: "Listed in the Microsoft 365 Copilot release notes. Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible plans. Copilot Search is included as part of the Microsoft Copilot license. Microsoft Copilot Search requires an eligible Microsoft Copilot licence and is not included with Microsoft Copilot Chat; users without that licence retain Microsoft Search."
 audiences: ["m365-admin","service-owner","change-adoption","compliance"]
 tags: ["m365-copilot","meeting-transcripts","meeting-policy","teams","oversharing"]
 sources:
@@ -27,6 +27,12 @@ sources:
     kind: "roadmap"
   - title: "Microsoft 365 Copilot release notes"
     url: "https://learn.microsoft.com/microsoft-365/copilot/release-notes"
+    kind: "learn"
+  - title: "Microsoft Copilot Search frequently asked questions"
+    url: "https://learn.microsoft.com/copilot/manage/copilot-search-faq"
+    kind: "learn"
+  - title: "Microsoft Copilot Search"
+    url: "https://learn.microsoft.com/copilot/manage/copilot-search-overview"
     kind: "learn"
   - title: "Data, Privacy, and Security for Microsoft Copilot"
     url: "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy"
@@ -40,6 +46,9 @@ sources:
   - title: "Update copilotPolicySetting"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/copilotpolicysetting-update"
     kind: "docs"
+  - title: "Teams meeting recording and transcript storage and permissions in OneDrive and SharePoint"
+    url: "https://learn.microsoft.com/microsoftteams/tmr-meeting-recording-change"
+    kind: "learn"
   - title: "Whether users can transcribe meetings, which transcript matches depend on (Teams admin center)"
     url: "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions"
     kind: "learn"
@@ -88,26 +97,30 @@ changes:
     note: "New briefing: launched Copilot meeting search by topic and keyword across meeting body, chat and transcripts."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 47 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-27"
+    note: "Corrected licensing: Copilot Search is included with the Microsoft Copilot licence and not with Copilot Chat; narrowed the undocumented-sources statement and reworded who governs transcript access."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 57 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-27"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 47
-  confirmed: 43
+  claims: 57
+  confirmed: 57
   unconfirmed: 0
-  contradicted: 4
-  attempts: 1
-  hash: "edc944075d24d5d722f0db14d3c2ae87"
+  contradicted: 0
+  attempts: 0
+  hash: "dcb365dc33d4acc7c75a95ea677f362b"
 ---
 
 ## What's changing
 
 Copilot can find meetings from a topic or keyword. According to the Microsoft 365 Copilot release notes, Copilot now searches meetings using topics or keywords found in the meeting body, chat messages and transcription text, and the search on transcript text covers meetings in the last two months. The release notes say that previously meeting searches were limited and did not include chat or transcript content.
 
-The user enters a topic or keyword, reviews the list of meetings that include it in the body, chat or transcript, and selects a meeting to see its details and related content. Microsoft Learn describes the feature only in its release note, so how results are ranked, which mailbox and chat sources are read, and whether events and calls are included are not described.
+The user enters a topic or keyword, reviews the list of meetings that include it in the body, chat or transcript, and selects a meeting to see its details and related content. Microsoft Learn describes the feature only in its release note, so how results are ranked, how this feature selects meeting-body, chat and transcript sources for an individual result, and whether events and calls are included are not described.
 
 The roadmap item is **Launched**, with a target of June CY2026, in General Availability, for the Worldwide (Standard Multi-Tenant) cloud on Android, Desktop, iOS and Mac. The release notes list it in the September 23, 2026 entry (updates released between August 26, 2026 and September 22, 2026), on Android, Windows, iOS and Mac. The release notes page says Copilot features roll out gradually to a subset of users in a tenant before expanding across the organisation.
 
@@ -115,7 +128,7 @@ The roadmap item is **Launched**, with a target of June CY2026, in General Avail
 
 Meeting chat and transcripts hold the unplanned part of a meeting: side remarks, figures read aloud, names of customers and staff. A keyword typed into Copilot can now lead straight to the meeting where something was said. Nothing is newly reachable, because Copilot works within the user's existing permissions, but content that was effectively buried becomes easy to find. Expect questions from users who see a meeting turn up because of something said in it, and from compliance teams about how long transcripts are kept.
 
-Microsoft describes the change as already live for Copilot users, with no admin step. If nobody acts, users with Copilot get the search as it rolls out to them. The levers that matter are the ones that decide whether transcripts exist and who can read them, set in Teams meeting policies.
+Microsoft describes the change as already live for Copilot users, with no admin step. If nobody acts, users with Copilot get the search as it rolls out to them. Teams meeting policies govern whether users can transcribe meetings; sharing and file permissions govern access to stored transcripts ([Teams meeting recording and transcript storage and permissions in OneDrive and SharePoint](https://learn.microsoft.com/microsoftteams/tmr-meeting-recording-change)).
 
 ## Risk assessment
 
@@ -135,13 +148,13 @@ Microsoft describes the change as already live for Copilot users, with no admin 
 
 ## Cost and licensing
 
-The feature appears in the Microsoft 365 Copilot release notes, which give no licence or charge for it. The [License options for Microsoft Copilot](https://learn.microsoft.com/copilot/plan/copilot-license-options) page states that Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible commercial, US Government and education subscription plans. Whether users with Copilot Chat but no Microsoft Copilot licence get this meeting search is not stated.
+The feature appears in the Microsoft 365 Copilot release notes, which give no licence or charge for it. The [License options for Microsoft Copilot](https://learn.microsoft.com/copilot/plan/copilot-license-options) page states that Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible commercial, US Government and education subscription plans. The [Microsoft Copilot Search FAQ](https://learn.microsoft.com/copilot/manage/copilot-search-faq) states that there's no additional cost for Microsoft Copilot Search itself and that it's included as part of the Microsoft Copilot license. Microsoft Copilot Search requires an eligible Microsoft Copilot licence and is not included with Microsoft Copilot Chat; users without that licence retain Microsoft Search.
 
 No meter is documented for this feature at the time of writing. The indirect cost is communication to Copilot users and service-desk time.
 
 ## Scope
 
-- **Users:** Copilot users in the tenant; the release note does not say whether users without a Microsoft Copilot licence are included.
+- **Users:** users with an eligible Microsoft Copilot licence; Microsoft Copilot Search is not included with Microsoft Copilot Chat, and users without that licence retain Microsoft Search.
 - **Data:** meeting body, meeting chat and transcription text; transcript search covers meetings in the last two months.
 - **Clouds:** Worldwide (Standard Multi-Tenant), as the roadmap record lists.
 - **Platforms:** Android, Desktop, iOS and Mac on the roadmap; Android, Windows, iOS and Mac in the release notes.
@@ -179,7 +192,6 @@ Microsoft Learn documents no setting that turns this meeting search on or off on
 
 ## Open questions
 
-- Do users with Copilot Chat but no Microsoft Copilot licence get meeting search by topic and keyword? Watch the Microsoft 365 Copilot release notes.
 - Will Microsoft add a Copilot setting or Graph policy setting to turn this search off separately? Watch Message center.
 - Does the search include Teams calls, webinars and town halls, or meetings only?
 - Why did the roadmap target June CY2026 while the release notes list the feature in the September 23, 2026 entry, and did some tenants receive it earlier?
@@ -190,14 +202,9 @@ cost: Low. The feature is listed in the Microsoft 365 Copilot release notes with
 impact: Medium. Copilot users notice that meeting searches now match chat and transcript text; administrators and other users see no change.
 -->
 
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model / consistency: The licensing model for this new search capability is add-on. | Found: Page: model: "add-on". Microsoft: "No, there's no additional cost for Microsoft Copilot Search itself. It's included as part of the Microsoft Copilot license." | Fix: Set licensing.model to included. Add 'Copilot Search is included as part of the Microsoft Copilot license' to licensing.notes and cite https://learn.microsoft.com/copilot/manage/copilot-search-faq. Retain the existing explanation of how the underlying Copilot licence is purchased. | Source: https://learn.microsoft.com/copilot/manage/copilot-search-faq
-- [contradicted, blocker] front matter: licensing.notes; Cost and licensing; Scope; Open questions / absence: Whether Copilot Chat users without a Microsoft Copilot licence receive this search is not stated. | Found: No, Microsoft Copilot Search is not included with Microsoft Copilot Chat. While both are part of the broader Microsoft Copilot ecosystem, they are licensed and delivered differently. | Fix: Replace the licensing uncertainty with 'Microsoft Copilot Search requires an eligible Microsoft Copilot licence and is not included with Microsoft Copilot Chat; users without that licence retain Microsoft Search.' Cite https://learn.microsoft.com/copilot/manage/copilot-search-faq and remove the corresponding Open questions bullet. | Source: https://learn.microsoft.com/copilot/manage/copilot-search-faq
-- [contradicted, blocker] What's changing / absence: Which mailbox sources are read is not described. | Found: Microsoft Copilot supports primary mailboxes hosted in Exchange Online. Copilot can also use content that a user is permitted to access in archive, shared, and delegate mailboxes. | Fix: Narrow 'which mailbox and chat sources are read' to 'how this feature selects meeting-body, chat and transcript sources for an individual result'. The product's mailbox scope is documented; the feature-specific source-selection mechanism is not. | Source: https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements#licensing-requirements
-- [contradicted, blocker] Why it matters / applicability: The levers deciding who can read transcripts are set in Teams meeting policies. | Found: | Who has access to the recording and transcript **(Teams Premium/Copilot license)** | No | No | Yes | Yes | | Fix: Replace 'The levers that matter are the ones that decide whether transcripts exist and who can read them, set in Teams meeting policies' with 'Teams meeting policies govern whether users can transcribe meetings; sharing and file permissions govern access to stored transcripts.' Cite https://learn.microsoft.com/microsoftteams/tmr-meeting-recording-change. | Source: https://learn.microsoft.com/microsoftteams/manage-meeting-recording-options
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: defaultState; Why it matters / default: The search is on for eligible Copilot users without an administrator setting it up. | Found: Admins and users don't need to take any action to set up Copilot Search. If a user has an eligible Microsoft Copilot license, Copilot Search appears as a tab in the Microsoft Copilot app. | Fix: Keep defaultState on and add https://learn.microsoft.com/copilot/manage/copilot-search-overview to sources; cite its Access and eligibility section for the no-setup statement. | Source: https://learn.microsoft.com/copilot/manage/copilot-search-overview
-- [supported, minor] Risk assessment: Data exposure; Governance guidance: After rollout / applicability: Sharing and file permissions govern access to stored meeting recordings and transcripts. | Found: All meeting invitees, except for external participants, automatically get a personally shared link. The meeting organizer must add external participants to the shared list. | Fix: Add https://learn.microsoft.com/microsoftteams/tmr-meeting-recording-change to sources for the stored-file permissions statement. | Source: https://learn.microsoft.com/microsoftteams/tmr-meeting-recording-change
+- [supported, minor] Governance guidance: Before rollout, transcription checklist / admin-path: The transcription-policy checklist sends administrators to Teams admin center > Meetings > Meeting policies. | Found: In the left navigation of the Teams admin center, go to Meetings > Meeting policies. Select the policy that you want to edit or create a new one. Toggle Transcription On or Off. | Fix: Complete the parenthetical checklist route as 'Teams admin center > Meetings > Meeting policies > policy > Transcription', matching controls[1].ui and https://learn.microsoft.com/microsoftteams/meeting-transcription-captions. | Source: https://learn.microsoft.com/microsoftteams/meeting-transcription-captions
+- [supported, minor] Governance guidance: Before rollout, licence checklist / admin-path: The licence-assignment checklist sends administrators to Microsoft 365 admin center > Billing > Licenses. | Found: In the admin center, go to the Billing > Licenses page. Select a product. On the product details page, select Assign licenses. | Fix: Complete the licence-inspection checklist route as 'Microsoft 365 admin center > Billing > Licenses > product', reaching the product's assignments as documented at https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users. | Source: https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users
 -->

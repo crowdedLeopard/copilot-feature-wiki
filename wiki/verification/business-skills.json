@@ -1,0 +1,1274 @@
+{
+  "slug": "business-skills",
+  "kind": "concept",
+  "roadmapId": null,
+  "title": "Business skills: which written processes do agents follow, and who controls them?",
+  "status": "held",
+  "date": "2026-11-27",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-27",
+    "reasons": [
+      "1 blocking finding (claim 56)",
+      "3 major findings"
+    ]
+  },
+  "counts": {
+    "claims": 96,
+    "confirmed": 92,
+    "unconfirmed": 3,
+    "contradicted": 1,
+    "blocker": 1,
+    "major": 3,
+    "minor": 1
+  },
+  "summary": "Hold: the Skill Sharing Role requirement is overstated as preventing all access, although Microsoft also documents general and direct sharing. The controls and REST operations are documented, but the page also confuses feature availability with record existence and generalizes Sales agent session guidance to all routes.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary; What it is",
+      "type": "behaviour",
+      "claim": "Business skills are natural-language instructions describing the steps, required information and business rules for a type of work.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skill-overview",
+      "quote": "Each skill describes how to complete a specific type of work—the steps involved, the information required, and the business rules that apply.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What it is",
+      "type": "behaviour",
+      "claim": "Business skills are stored as records in Dataverse.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/skill",
+      "quote": "Records of instructions, scripts, and resources that agents can discover and use to do things more accurately and efficiently.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "Business skills are not executable code and guide agents like a written employee procedure.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skill-overview",
+      "quote": "Business skills are not executable code. They contain natural-language instructions that guide agent behavior, similar to how you might document a process for a new employee.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What it is: How it works",
+      "type": "behaviour",
+      "claim": "Frontmatter contains the name, description and optional key-value metadata.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skill-overview",
+      "quote": "Frontmatter | Name, description, and optional key-value metadata",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What it is: How it works",
+      "type": "behaviour",
+      "claim": "The instructions layer contains the full skill body.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skill-overview",
+      "quote": "Instructions | Full skill body | Contains the complete process definition",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What it is: How it works",
+      "type": "behaviour",
+      "claim": "Resources are attached reference files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skill-overview",
+      "quote": "Resources | Attached reference files",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What it is: How it works",
+      "type": "behaviour",
+      "claim": "An agent searches the connected environment for skills accessible to its current identity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skill-overview",
+      "quote": "The agent searches the connected environment for skills that the current identity can access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What it is: How it works",
+      "type": "behaviour",
+      "claim": "An agent compares the skill name and description with the user's request.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skill-overview",
+      "quote": "The agent compares skill frontmatter, especially the name and description, with the user's request.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What it is: How it works",
+      "type": "behaviour",
+      "claim": "An agent retrieves a relevant skill's complete instructions and resources.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skill-overview",
+      "quote": "The agent retrieves the complete instructions and resources for a relevant skill.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What it is: How it works; Why it matters",
+      "type": "behaviour",
+      "claim": "The agent carries out the process with its connected tools.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skill-overview",
+      "quote": "The agent uses its connected tools to carry out the process.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What it is: How it works; Risks and limits",
+      "type": "behaviour",
+      "claim": "Agent selection of skills is probabilistic.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skill-overview",
+      "quote": "Agent selection is probabilistic, so test representative requests before you share a skill broadly.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What it is: routes table",
+      "type": "availability",
+      "claim": "Copilot Chat, Copilot Cowork and connected agents can use business skills through Business Applications in Work IQ.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills",
+      "quote": "After you create and activate business skills in your environment, Copilot Chat, Copilot Cowork, and connected agents can discover and use the skills you have access to and follow your organization's processes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What it is: routes table",
+      "type": "behaviour",
+      "claim": "Work IQ MCP can discover business application paths across environments available to the user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills",
+      "quote": "Can discover business applications paths across environments available to the user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What it is: routes table",
+      "type": "behaviour",
+      "claim": "A direct Dataverse MCP connection targets one Dataverse environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills",
+      "quote": "Connects directly to one Dataverse environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What it is: How it works",
+      "type": "admin-path",
+      "claim": "The Business skills page is reached in Power Apps through More > Business skills.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills",
+      "quote": "Go to Power Apps and select your environment. In the left navigation pane, select More, and then select Business skills.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What it is: How it works",
+      "type": "behaviour",
+      "claim": "Makers can write skills themselves.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills",
+      "quote": "You can also write the skill yourself in the same editor without using Skill Builder.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What it is: How it works",
+      "type": "behaviour",
+      "claim": "Skill Builder is an agent that helps create business skills.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills",
+      "quote": "Skill Builder is a specialized agent that helps you create business skills through natural-language conversation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What it is: How it works",
+      "type": "behaviour",
+      "claim": "Skills can be uploaded as Skill.md or .zip files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills",
+      "quote": "If you already have a skill in a Skill.md (markdown) or .zip file, upload it instead of creating the content from scratch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What it is: How it works",
+      "type": "behaviour",
+      "claim": "Copilot or an agent connected to Work IQ or Dataverse MCP can create and update skills.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills",
+      "quote": "You can also create and update skills through Copilot or an agent connected to Work IQ or the Dataverse MCP server:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What it is: How it works",
+      "type": "command",
+      "claim": "The Dataverse MCP upsert_skill tool creates or updates a business skill.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills",
+      "quote": "upsert_skill | Creates a new business skill or updates an existing one.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What it is: How it works",
+      "type": "command",
+      "claim": "The Dataverse MCP delete_skill tool deletes a business skill.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills",
+      "quote": "delete_skill | Deletes an existing business skill from the environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What it is: How it works",
+      "type": "behaviour",
+      "claim": "A skill has only one active version.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills",
+      "quote": "A skill can have only one active version.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What it is: How it works",
+      "type": "behaviour",
+      "claim": "Save retains a working copy without changing the version agents use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills",
+      "quote": "Saves your working copy without changing the version agents use.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What it is: How it works; Why it matters",
+      "type": "behaviour",
+      "claim": "Save and activate makes the edited skill the active version available to agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills",
+      "quote": "Save and activate | Makes your changes the active version, including its associated resources.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What it is: How it works; Governance controls: Watching",
+      "type": "behaviour",
+      "claim": "Version history records who changed or activated a version.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills",
+      "quote": "It identifies the active version, shows saved changes that aren't active, and records who changed or activated a version and when.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What it is: How it works",
+      "type": "behaviour",
+      "claim": "Business skills are solution-aware.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills",
+      "quote": "Business skills are solution-aware, which means you can package them into solutions for application lifecycle management (ALM).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What it is: How it works",
+      "type": "behaviour",
+      "claim": "Solution exports include only the active version of each skill.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills",
+      "quote": "Managed and unmanaged solution exports include only the active version of each skill, along with its metadata and associated resources.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "Skills are user-owned records in the Business Skill table with logical name skill.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/skill",
+      "quote": "DisplayName | Business Skill\nLogicalName | skill\nOwnershipType | UserOwned",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "Owners can provide general access to everyone in the environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skill-overview",
+      "quote": "Owners can provide general access to everyone in the environment, share with selected Dataverse security roles, or provide direct access to specific users or groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "General access is view-only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills",
+      "quote": "For general access, choose Anyone can view to allow everyone in the organization to use this skill. This option provides view-only access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "Owners can share with security roles or directly with users or groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skill-overview",
+      "quote": "Owners can provide general access to everyone in the environment, share with selected Dataverse security roles, or provide direct access to specific users or groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "Security-role and direct access can grant view or edit permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skill-overview",
+      "quote": "Security role access and direct access can provide view or edit permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What it is; Open questions",
+      "type": "availability",
+      "claim": "The Work IQ overview lists business skills with Dataverse intelligence as preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq#skills-and-tools",
+      "quote": "Business skills with Dataverse intelligence (preview) are natural-language instructions that encode your organization's processes, policies, and domain knowledge in a format agents can interpret and execute.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What it is: final paragraph",
+      "type": "behaviour",
+      "claim": "Work IQ also uses skills in the broader sense of task-specific instructions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq#skills-and-tools",
+      "quote": "Skills provide task-specific instructions that help Copilot and agents complete specialized work with higher speed and precision.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "The agent acts under the identity it runs as.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq",
+      "quote": "Actions are user scoped, meaning every request runs in the context of a specific user and only accesses what that user is allowed to see or do.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Why it matters; controls[0]; Governance controls",
+      "type": "applicability",
+      "claim": "Turning off the environment Work IQ setting makes business skills unavailable in that environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "The Work IQ setting turns on business skills, semantic modeling, and access to Dataverse data through Microsoft 365 Copilot Chat, Research, and Agent Builder. If you turn off this setting, these features aren't available in the environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Why it matters",
+      "type": "default",
+      "claim": "Business Applications in Work IQ is on by default for new public production environments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "Business Applications in Work IQ is on by default for new public production environments created for new or existing tenants.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Why it matters",
+      "type": "default",
+      "claim": "EU and EFTA environments are exceptions to default enablement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "European Union (EU) and European Free Trade Association (EFTA) environments: This exception applies to environments provisioned in the EU and EFTA macro region geography.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Why it matters",
+      "type": "default",
+      "claim": "Government-related environments are exceptions to default enablement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "Government-related environments: This exception applies to environments provisioned by customers with current or previous government cloud deployments that are likely to depend on FedRAMP security controls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Why it matters",
+      "type": "default",
+      "claim": "Nonproduction environments are exceptions to default enablement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "Nonproduction environments: This exception applies to trial, sandbox, and developer environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Why it matters",
+      "type": "date",
+      "claim": "Microsoft deferred the plan to turn on Business Applications in Work IQ for existing environments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "The plan to turn on Business Applications in Work IQ for existing environments that aren't listed as exceptions has been deferred from the previously documented November 2026 schedule.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Why it matters; Open questions",
+      "type": "default",
+      "claim": "Manage feature settings still lists the earlier Dataverse intelligence (Work IQ) setting as Off by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/settings-features",
+      "quote": "Turn on Dataverse intelligence (Work IQ) for agents and AI experiences | When On, allows reusable business context business skills to be used by your agents. | Off",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The business skills pages name no licence specific to skills.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills",
+      "quote": "To use skills through Business Applications in Work IQ, you need access to a supported Copilot experience or connected agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing",
+      "type": "applicability",
+      "claim": "Creating skills requires a Dataverse environment with Work IQ enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills",
+      "quote": "A Dataverse environment with Work IQ enabled by a Power Platform administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing",
+      "type": "role",
+      "claim": "Creating skills requires permissions to create business skills in the environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills",
+      "quote": "Permissions to create or use business skills in the environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Work IQ skill use requires access to a supported Copilot experience or connected agent, and the creation page links Work IQ licensing requirements.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills",
+      "quote": "To use skills through Business Applications in Work IQ, you need access to a supported Copilot experience or connected agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Work IQ API use is paid for through usage-based Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+      "quote": "You pay for use of the Work IQ API through a usage-based model that uses Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Business Applications in Work IQ cost is tracked by consuming experience rather than a dedicated business applications category.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/understand-costs",
+      "quote": "For Business Applications in Work IQ, you track cost by the experiences people use rather than by a dedicated business applications category.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Work IQ consumption supporting a Cowork task is attributed to Cowork.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/understand-costs",
+      "quote": "Work IQ consumption that supports a Cowork task is attributed to Cowork.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Direct Work IQ calls from coding agents or custom integrations appear under Work IQ API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/understand-costs",
+      "quote": "Coding agents or custom integrations that call Work IQ directly: Consumption through that connection appears under Work IQ API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The applicable Microsoft 365 Copilot Chat entitlement includes business-data grounding.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/understand-costs",
+      "quote": "Microsoft 365 Copilot Chat: The applicable entitlement includes business-data grounding in the licensed chat scenario.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Cost and licensing",
+      "type": "applicability",
+      "claim": "Spending policies set consumption limits for the consuming experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/understand-costs",
+      "quote": "Spending policies let you choose the users and services covered, set a shared monthly limit, add a per-user limit, and receive alerts as consumption approaches a threshold.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "A request can involve multiple tool calls and reasoning steps, so task cost varies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/understand-costs",
+      "quote": "One user request can involve multiple tool calls and reasoning steps. Work IQ includes deterministic operations and variable-cost contextual reasoning, so a prompt isn't necessarily a single fixed-price operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "A credit rate specific to following Dataverse business skills is not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"business skills\" \"credit\" \"rate\"; \"business skills\" \"Copilot Credits\" rate pricing audit events sharing admin. Read understand-costs, Work IQ overview/API overview and Copilot Studio billing-rate search excerpts; no Dataverse skill-specific rate found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risks and limits: Two-role trap; Governance controls",
+      "type": "role",
+      "claim": "Access through a shared security role requires both that role and Skill Sharing Role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skill-overview",
+      "quote": "Users who access a skill through a Dataverse security role must have both the selected role and the Skill Sharing Role security role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Risks and limits: Two-role trap",
+      "type": "role",
+      "claim": "A user missing Skill Sharing Role never gets a skill shared with a security role.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skill-overview",
+      "quote": "Owners can provide general access to everyone in the environment, share with selected Dataverse security roles, or provide direct access to specific users or groups.",
+      "severity": "blocker",
+      "fix": "Replace the Two-role trap bullet with: 'Access through a Dataverse security role requires both the selected role and Skill Sharing Role; either alone is not enough for that route.' The requirement does not rule out general or direct access. Source: https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skill-overview."
+    },
+    {
+      "n": 57,
+      "where": "Risks and limits: Participation is not access control",
+      "type": "applicability",
+      "claim": "Work IQ participation settings do not prevent agentic access to environment data; App Access manages that access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation",
+      "quote": "These participation settings don't prevent agentic access to environment data. Use App Access controls to manage that access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Risks and limits: Copilot Studio reads little of a resource",
+      "type": "availability",
+      "claim": "Copilot Studio agents support only text-based business skill resource files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills",
+      "quote": "When using business skills with an agent in Microsoft Copilot Studio, only text-based resource files are supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Risks and limits: Copilot Studio reads little of a resource",
+      "type": "behaviour",
+      "claim": "A Copilot Studio agent reads only the first 20 KB of a text-based resource file.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills",
+      "quote": "The agent can only read the first 20 KB of data from a text-based resource file.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Risks and limits: Copilot Studio reads little of a resource",
+      "type": "behaviour",
+      "claim": "Resource attachments have a 20 MB limit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills",
+      "quote": "Optional: In Resources, select Add Files to attach reference materials that agents need when following the skill, such as policy documents, standard operating procedures, templates, forms, or calculations (20 MB limit).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Risks and limits: Copilot Studio reads little of a resource",
+      "type": "behaviour",
+      "claim": "Skill file uploads have a 30 MB limit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills",
+      "quote": "Upload your skill file (30 MB limit).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Risks and limits: Deletion is permanent; controls[1].note",
+      "type": "behaviour",
+      "claim": "Deactivation preserves skill content and version history.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills",
+      "quote": "Deactivating a skill preserves its content and version history.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Risks and limits: Deletion is permanent",
+      "type": "behaviour",
+      "claim": "Deleting a skill is irreversible and referencing agents can no longer use it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills",
+      "quote": "Deleting a skill is permanent and can't be undone. Any agents that reference the deleted skill can no longer use it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Risks and limits: No usage view; Governance controls: Watching",
+      "type": "behaviour",
+      "claim": "The Business skills page does not show per-skill runtime usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills",
+      "quote": "The Business skills page doesn't currently show per-skill runtime usage or feedback.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Risks and limits: Cloud reach",
+      "type": "availability",
+      "claim": "Business Applications in Work IQ is unavailable in sovereign or government clouds, including DoD, GCC and GCC High.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "Business Applications in Work IQ isn't currently available in sovereign or government cloud environments, including Department of Defense (DoD), Government Community Cloud (GCC), and GCC High.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "Environment Work IQ availability is configured in Power Platform admin center at Manage > environment > Settings > Product > Features > Work IQ.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "In the left navigation pane, select Manage. Select the environment that you want to manage. On the command bar, select Settings. Select Product > Features. Find Work IQ, and then turn the setting on or off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Power Apps More > Business skills > skill > Deactivate stops discovery and use of an active skill.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills",
+      "quote": "In the left navigation pane, select More, and then select Business skills. To stop agents from discovering or using an active skill: Select a skill, and then select Deactivate from the command bar or the three-dot menu.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "PATCH [organization URI]/api/data/v9.2/skills(<skillid>) can update statecode, with 0 Active and 1 Inactive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/skill",
+      "quote": "Entity set path: [organization URI]/api/data/v9.2/skills\nPrimary key: skillid\nOperations supported: POSTGETPATCHDELETE\nstatecode | Edm.Int32 | Status of the Business Skill\n0 | Active\n1 | Inactive",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "The Microsoft 365 Copilot audience control is at Copilot > Settings > View all > Business Applications data in Work IQ available to Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "In the left navigation pane, select Copilot > Settings. In Copilot settings, select View all > Business Applications data in Work IQ available to Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "The entire Work IQ MCP server can be blocked in Microsoft 365 admin center at Agents > Tools > Work IQ MCP > Block.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access",
+      "quote": "Sign in to the Microsoft 365 admin center. Select Agents > Tools. Select Work IQ MCP. Review its current availability. To block access to the server, select Block.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "controls[4].ui",
+      "type": "admin-path",
+      "claim": "Dataverse MCP clients are enabled through Manage > Environments > environment > Settings > Product > Features > Dataverse Model Context Protocol > Advanced Settings > client > Is Enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable",
+      "quote": "Select Manage > Environments. Under Settings, select Product > Features. Scroll down to locate Dataverse Model Context Protocol. Select Advanced Settings. Open the client record you want. On the MCP client record, set Is Enabled to Yes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "controls[4].api",
+      "type": "command",
+      "claim": "PATCH [organization URI]/api/data/v9.2/allowedmcpclients(<allowedmcpclientid>) can set isenabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/allowedmcpclient",
+      "quote": "Entity set path: [organization URI]/api/data/v9.2/allowedmcpclients\nPrimary key: allowedmcpclientid\nOperations supported: POSTGETPATCHDELETE\nisenabled | Edm.Boolean | Display name: Is Enabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Governance controls: How the controls stack",
+      "type": "behaviour",
+      "claim": "The Work IQ setting decides whether skills exist in an environment.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Power Platform API environment Work IQ setting PowerShell organization intelligence business skills enable. Read default-settings, manage-participation, business skills overview/create and Sales agent setup; they state availability, not record existence.",
+      "severity": "major",
+      "fix": "Replace 'The Work IQ setting decides whether skills exist in an environment' with 'The Work IQ setting decides whether business skills are available in an environment.' Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings."
+    },
+    {
+      "n": 74,
+      "where": "controls[0].note",
+      "type": "role",
+      "claim": "Managing the environment Work IQ setting requires an environment administrator account.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "Use the environment-level setting to manage business skills, semantic modeling, and access to Dataverse data through Microsoft 365 Copilot Chat, Research, and Agent Builder. You need an environment administrator account.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Governance controls: Roles",
+      "type": "role",
+      "claim": "Power Platform Administrator manages environment Work IQ settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation",
+      "quote": "Power Platform Administrator role to manage settings and assign other roles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "controls[4].note; Governance controls: Roles",
+      "type": "role",
+      "claim": "Power Platform administrator is required to manage Dataverse MCP environment settings and enable allowed clients.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable",
+      "quote": "Power Platform administrator role in order to access Dataverse MCP server environment settings, enable allowed MCP clients, create or edit an environment group, and change connector policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "controls[3].note; Governance controls: Roles",
+      "type": "role",
+      "claim": "AI Administrator manages the described Microsoft 365 admin center connection controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access",
+      "quote": "AI Administrator role to work with settings in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "Governance controls: Roles",
+      "type": "role",
+      "claim": "Basic User can create skills they own.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skill-overview",
+      "quote": "Basic User | Can create skills that they own.Can use skills they have access to.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "Why it matters; Governance controls: Roles",
+      "type": "role",
+      "claim": "Environment Maker can create and share skills they own.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skill-overview",
+      "quote": "Environment Maker | Can create and share skills that they own.Can manage solution deployment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "Governance controls: Roles",
+      "type": "role",
+      "claim": "System Administrator or System Customizer can create and share skills.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skill-overview",
+      "quote": "System Administrator or System Customizer | Can create and share skills.Can manage solution deployment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
+      "where": "Governance controls: Roles",
+      "type": "role",
+      "claim": "Administrators can share a skill with any security role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills",
+      "quote": "Admins can share with any role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 82,
+      "where": "Governance controls: Roles",
+      "type": "role",
+      "claim": "Other owners can share skills with roles assigned to them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills",
+      "quote": "You can share a skill with roles assigned to you. Admins can share with any role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 83,
+      "where": "Governance controls: Sharing has no admin-centre switch",
+      "type": "admin-path",
+      "claim": "Owners share a skill using Share on the Power Apps Business skills page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills",
+      "quote": "Select a skill, and then select Share from the command bar or the three-dot menu.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 84,
+      "where": "Governance controls: Sharing has no admin-centre switch",
+      "type": "role",
+      "claim": "An administrator must assign Skill Sharing Role for security-role-based access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills",
+      "quote": "Security role access requires users to have two roles. An administrator must assign users the Skill Sharing Role, either directly or through a team.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 85,
+      "where": "controls[2].note",
+      "type": "behaviour",
+      "claim": "The Copilot audience setting offers No users, All users and Specific groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "To turn off access for everyone, select No users. To turn on access for everyone, select All users. This option is the default. To provide access to a limited audience, select Specific groups, and then add or remove groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 86,
+      "where": "controls[2].note",
+      "type": "default",
+      "claim": "All users is the default Copilot audience selection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "To turn on access for everyone, select All users. This option is the default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 87,
+      "where": "controls[2].note; Governance controls: How the controls stack",
+      "type": "applicability",
+      "claim": "The Copilot audience setting governs the Microsoft 365 Copilot connection, not direct Dataverse MCP agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access",
+      "quote": "The Microsoft 365 admin center provides a setting that determines who can access business applications through Microsoft 365 Copilot. The audience setting determines who can use the connection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 88,
+      "where": "controls[3].note; Governance controls: How the controls stack",
+      "type": "applicability",
+      "claim": "The Work IQ MCP availability control applies to the entire server, separately from the Copilot audience setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access",
+      "quote": "This control applies to the entire Work IQ MCP server, separate from Copilot audience settings or App Access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 89,
+      "where": "controls[4].note; Governance controls: How the controls stack",
+      "type": "default",
+      "claim": "The Microsoft Copilot Studio client for Dataverse MCP is enabled for all environments by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable",
+      "quote": "By default, the Microsoft Copilot Studio client for Dataverse MCP is enabled for all environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 90,
+      "where": "controls[0].api; Open questions",
+      "type": "absence",
+      "claim": "An automation operation for the environment Work IQ setting is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"Power Platform API\" settings environment; \"Work IQ\" \"Set-TenantSettings\" \"Get-TenantSettings\". Read default-settings/manage-participation and PowerShell reference excerpts; no operation or request property for environment Work IQ found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 91,
+      "where": "controls[2].api",
+      "type": "absence",
+      "claim": "An API equivalent of the Business Applications data in Work IQ available to Copilot audience setting is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Business Applications data in Work IQ available to Copilot\" API PowerShell; \"Business Applications\" \"Copilot\" \"Graph\" \"settings\" audience API. Read default-settings, manage-ai-experience-access and Graph cost-management overview excerpts; no matching API found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 92,
+      "where": "controls[3].api",
+      "type": "absence",
+      "claim": "An API equivalent of the entire Work IQ MCP server Block control is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ MCP\" block server Graph API PowerShell administration; \"Work IQ MCP\" \"Block\" \"API\" \"admin\". Read manage-ai-experience-access and MCP policy-governance/tool-reference excerpts; no whole-server availability API found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 93,
+      "where": "Governance controls: Sharing has no admin-centre switch",
+      "type": "absence",
+      "claim": "Sharing has no admin-centre switch.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"business skills\" admin sharing restriction switch Power Platform. Read business skills overview/create, connection/participation controls and Managed Environments sharing-limit excerpts; no admin-centre switch for sharing Dataverse skills found.",
+      "severity": "minor",
+      "fix": "Change the heading to 'No admin-centre sharing switch is documented.' The search establishes an absence of documentation, not that no switch can exist."
+    },
+    {
+      "n": 94,
+      "where": "Governance controls: How the controls stack",
+      "type": "behaviour",
+      "claim": "Changes to all the listed controls apply to new agent interactions.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"business skills\" \"new agent interactions\" \"Work IQ\". Read Sales agent setup, default-settings, manage-ai-experience-access and business skills overview/create; only Sales agent guidance states this timing, not every listed control and route.",
+      "severity": "major",
+      "fix": "Replace 'Changes apply to new agent interactions' with 'For Sales agent, Microsoft states that these changes apply to new agent interactions.' Source: https://learn.microsoft.com/microsoft-sales-copilot/business-skills-dataverse#disable-business-skills-or-mcp-access."
+    },
+    {
+      "n": 95,
+      "where": "Governance controls: How the controls stack",
+      "type": "behaviour",
+      "claim": "Users across the listed routes might need to refresh a session after control changes.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"business skills\" \"new agent interactions\" \"Work IQ\". Read Sales agent setup, default-settings, manage-ai-experience-access and business skills overview/create; session refresh is stated for Sales agent, not all listed routes.",
+      "severity": "major",
+      "fix": "Replace 'users might need to refresh a session' with 'Sales agent users might need to refresh an existing session.' Source: https://learn.microsoft.com/microsoft-sales-copilot/business-skills-dataverse#disable-business-skills-or-mcp-access."
+    },
+    {
+      "n": 96,
+      "where": "Open questions: audit events",
+      "type": "absence",
+      "claim": "Microsoft has not identified specific audit events that record an agent retrieving and following a Dataverse business skill.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"business skills\" \"audit\" \"events\". Read Work IQ overview, business skills overview/create, skill table messages and Dataverse auditing search excerpts; general logging is documented, but no named skill retrieval/following audit event was found.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-27T22:41:09.978Z",
+    "summary": {
+      "links": 14,
+      "unreachable": 0,
+      "uiPaths": 5,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 2,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skill-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/skill",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/skill",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/settings-features",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/allowedmcpclient",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-sales-copilot/business-skills-dataverse",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/understand-costs",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether business skills are available in an environment (Work IQ)",
+        "docs": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+        "reachable": true,
+        "segments": [
+          "Manage",
+          "Settings",
+          "Product",
+          "Features",
+          "Work IQ"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether a skill is active for agents to use",
+        "docs": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills",
+        "reachable": true,
+        "segments": [
+          "More",
+          "Business skills",
+          "skill",
+          "Deactivate"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether a skill is active for agents to use",
+        "docs": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/skill",
+        "reachable": true,
+        "token": "PATCH [organization",
+        "found": false
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Which users can use business applications through Microsoft 365 Copilot",
+        "docs": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Settings",
+          "View all",
+          "Business Applications data in Work IQ available to Copilot"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Whether the Work IQ MCP server is available to connected AI experiences and coding agents",
+        "docs": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "Tools",
+          "Work IQ MCP",
+          "Block"
+        ],
+        "missing": []
+      },
+      {
+        "index": 4,
+        "side": "ui",
+        "governs": "Which MCP clients can reach the Dataverse MCP server, and so skills, directly",
+        "docs": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable",
+        "reachable": true,
+        "segments": [
+          "Manage",
+          "Environments",
+          "Settings",
+          "Product",
+          "Features",
+          "Dataverse Model Context Protocol",
+          "Advanced Settings",
+          "client",
+          "Is Enabled"
+        ],
+        "missing": []
+      },
+      {
+        "index": 4,
+        "side": "api",
+        "governs": "Which MCP clients can reach the Dataverse MCP server, and so skills, directly",
+        "docs": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/allowedmcpclient",
+        "reachable": true,
+        "token": "PATCH [organization",
+        "found": false
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

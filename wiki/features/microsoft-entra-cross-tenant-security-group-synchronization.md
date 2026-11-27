@@ -46,6 +46,18 @@ sources:
   - title: "Update crossTenantIdentitySyncPolicyPartner (v1.0)"
     url: "https://learn.microsoft.com/graph/api/crosstenantidentitysyncpolicypartner-update?view=graph-rest-1.0"
     kind: "docs"
+  - title: "Set-MgBetaPolicyCrossTenantAccessPolicyPartnerIdentitySynchronization"
+    url: "https://learn.microsoft.com/powershell/module/microsoft.graph.beta.identity.signins/set-mgbetapolicycrosstenantaccesspolicypartneridentitysynchronization?view=graph-powershell-beta"
+    kind: "docs"
+  - title: "Microsoft Entra External ID pricing and billing overview"
+    url: "https://learn.microsoft.com/entra/external-id/external-identities-pricing"
+    kind: "learn"
+  - title: "Compare types of groups in Microsoft 365"
+    url: "https://learn.microsoft.com/microsoft-365/admin/create-groups/compare-groups?view=o365-worldwide"
+    kind: "learn"
+  - title: "Secure external access with groups in Microsoft Entra ID and Microsoft 365"
+    url: "https://learn.microsoft.com/entra/architecture/4-secure-access-groups"
+    kind: "learn"
   - title: "Whether the target tenant accepts security groups from a partner tenant (Microsoft Graph)"
     url: "https://learn.microsoft.com/graph/api/crosstenantidentitysyncpolicypartner-update?view=graph-rest-beta"
     kind: "learn"
@@ -65,7 +77,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Entra admin center"
-      path: "Entra ID > External Identities > Cross-tenant access settings > Organization settings > organization > Inbound access > Cross-tenant sync > Allow group synchronization into this tenant"
+      path: "Entra ID > External Identities > Cross-tenant access settings > Organization settings > organization > Inbound access > Inherited from default > Cross-tenant sync > Allow group synchronization into this tenant"
       docs: "https://learn.microsoft.com/entra/identity/multi-tenant-organizations/cross-tenant-synchronization-configure"
     api:
       kind: "graph"
@@ -76,15 +88,18 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Entra admin center"
-      path: "Entra ID > External Identities > Cross-tenant access settings > Organization settings > organization > Inbound access > Cross-tenant sync > Allow role-enabled group synchronization into this tenant"
+      path: "Entra ID > External Identities > Cross-tenant access settings > Organization settings > organization > Inbound access > Inherited from default > Cross-tenant sync > Allow role-enabled group synchronization into this tenant"
       docs: "https://learn.microsoft.com/entra/identity/multi-tenant-organizations/cross-tenant-synchronization-configure"
-    api: null
-    note: "Preview. Selected together with Allow group synchronization into this tenant. Synchronises role-assignability, not role assignments."
+    api:
+      kind: "powershell"
+      call: "Set-MgBetaPolicyCrossTenantAccessPolicyPartnerIdentitySynchronization -CrossTenantAccessPolicyConfigurationPartnerTenantId <source-tenant-id> -GroupSyncInbound @{IsSyncAllowed=$true} -RoleEnabledGroupSyncInbound @{IsSyncAllowed=$true}"
+      docs: "https://learn.microsoft.com/powershell/module/microsoft.graph.beta.identity.signins/set-mgbetapolicycrosstenantaccesspolicypartneridentitysynchronization?view=graph-powershell-beta"
+    note: "Preview. Selected together with Allow group synchronization into this tenant. Synchronises role-assignability, not role assignments. Module Microsoft.Graph.Beta.Identity.SignIns."
   - governs: "Whether the source configuration provisions groups at all"
     scope: "app"
     ui:
       surface: "Microsoft Entra admin center"
-      path: "Entra ID > Cross-tenant synchronization > Configurations > configuration > Provisioning > Mappings > Provision Microsoft Entra ID Groups > Enabled"
+      path: "Entra ID > Cross-tenant synchronization > Configurations > configuration > Provisioning > Mappings > Provision Microsoft Entra ID Groups > Attribute Mapping > Enabled"
       docs: "https://learn.microsoft.com/entra/identity/multi-tenant-organizations/cross-tenant-synchronization-configure"
     api:
       kind: "graph"
@@ -122,19 +137,23 @@ changes:
     note: "New briefing: cross-tenant security group synchronisation, its Entra ID Governance licensing and the source and target tenant controls."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 6 of 67 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-27"
+    note: "Corrected the inbound admin paths (Inherited from default step), added the Graph PowerShell cmdlet for role-enabled group sync, narrowed the External ID billing note and removed checklist steps with no control row."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 74 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-27"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 67
-  confirmed: 61
+  claims: 74
+  confirmed: 73
   unconfirmed: 0
-  contradicted: 6
-  attempts: 1
-  hash: "f650048165178d84bf6533dfc37b3062"
+  contradicted: 1
+  attempts: 0
+  hash: "72983bbaf4245775baa4884ee64f8701"
 ---
 
 ## What's changing
@@ -176,7 +195,7 @@ Nothing crosses tenants until a source administrator enables group provisioning 
 
 **Target tenant.** The overview says licences aren't required for cross-tenant synchronization in the target tenant, but that tenants which enabled External ID billing and provision external guests might be charged under the Microsoft Entra External ID billing model. The Microsoft Entra licensing page adds that the target tenant needs at least one Microsoft Entra ID P1 licence to enable automatic redemption.
 
-**Meter and caps.** Microsoft publishes no meter specific to group sync; the External ID billing model applies only where the target tenant has enabled it and provisions guests.
+**Meter and caps.** Microsoft publishes no meter specific to group sync. For B2B collaboration in workforce tenants, External ID MAU (monthly active users) billing applies to external users with UserType Guest, not users originating within the organisation with UserType Member; billing requires an Azure subscription ([Microsoft Entra External ID pricing and billing overview](https://learn.microsoft.com/entra/external-id/external-identities-pricing)).
 
 **Indirect costs.** Admin time in both tenants to agree scope, configure the inbound settings and monitor provisioning logs.
 
@@ -198,12 +217,10 @@ Nothing crosses tenants until a source administrator enables group provisioning 
 
 ### At rollout
 - Assign only the agreed groups to the configuration under **Users and groups**, after confirming the scope is **Sync only assigned users and groups**.
-- Add the direct `isAssignableToRole` mapping, applied only during object creation, before assigning any role-assignable group, if role-enabled sync is wanted.
-- Set the **Enabled** toggle on **Provision Microsoft Entra ID Groups** to **Yes** and test with **Provision on demand** for one group.
+- Set the **Enabled** toggle on **Provision Microsoft Entra ID Groups** to **Yes**.
 
 ### After rollout
 - Review the configuration's **Provisioning logs** for skipped or failed groups, including EntityTypeNotSupported.
-- Check the target tenant's audit logs for changes by "Microsoft.Azure.SyncFabric" against the agreed group list.
 - Tell target administrators to request membership changes in the source tenant, since direct edits to a synchronised group persist only until the next source change.
 
 ## Governance controls
@@ -213,9 +230,9 @@ Nothing crosses tenants until a source administrator enables group provisioning 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether the target tenant accepts security groups from a partner tenant</strong><br><small>Tenant</small><br><small class="controls__note">Set in the target tenant by a Security Administrator. The request body sets groupSyncInbound (isSyncAllowed); beta only at the time of writing.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › External Identities › Cross-tenant access settings › Organization settings › organization › Inbound access › Cross-tenant sync › Allow group synchronization into this tenant <a href="https://learn.microsoft.com/entra/identity/multi-tenant-organizations/cross-tenant-synchronization-configure" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/policies/crossTenantAccessPolicy/partners/{id}/identitySynchronization</code> <a href="https://learn.microsoft.com/graph/api/crosstenantidentitysyncpolicypartner-update?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether synchronised groups may be created as role-assignable in the target tenant</strong><br><small>Tenant</small><br><small class="controls__note">Preview. Selected together with Allow group synchronization into this tenant. Synchronises role-assignability, not role assignments.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › External Identities › Cross-tenant access settings › Organization settings › organization › Inbound access › Cross-tenant sync › Allow role-enabled group synchronization into this tenant <a href="https://learn.microsoft.com/entra/identity/multi-tenant-organizations/cross-tenant-synchronization-configure" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether the source configuration provisions groups at all</strong><br><small>App</small><br><small class="controls__note">Default No. Newer interface: Attribute mapping &gt; Groups. The request replaces the whole schema; the group objectMapping's enabled property decides whether it is processed.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › Cross-tenant synchronization › Configurations › configuration › Provisioning › Mappings › Provision Microsoft Entra ID Groups › Enabled <a href="https://learn.microsoft.com/entra/identity/multi-tenant-organizations/cross-tenant-synchronization-configure" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PUT /v1.0/servicePrincipals/{id}/synchronization/jobs/{jobId}/schema</code> <a href="https://learn.microsoft.com/graph/api/synchronization-synchronizationschema-update?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether the target tenant accepts security groups from a partner tenant</strong><br><small>Tenant</small><br><small class="controls__note">Set in the target tenant by a Security Administrator. The request body sets groupSyncInbound (isSyncAllowed); beta only at the time of writing.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › External Identities › Cross-tenant access settings › Organization settings › organization › Inbound access › Inherited from default › Cross-tenant sync › Allow group synchronization into this tenant <a href="https://learn.microsoft.com/entra/identity/multi-tenant-organizations/cross-tenant-synchronization-configure" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/policies/crossTenantAccessPolicy/partners/{id}/identitySynchronization</code> <a href="https://learn.microsoft.com/graph/api/crosstenantidentitysyncpolicypartner-update?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether synchronised groups may be created as role-assignable in the target tenant</strong><br><small>Tenant</small><br><small class="controls__note">Preview. Selected together with Allow group synchronization into this tenant. Synchronises role-assignability, not role assignments. Module Microsoft.Graph.Beta.Identity.SignIns.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › External Identities › Cross-tenant access settings › Organization settings › organization › Inbound access › Inherited from default › Cross-tenant sync › Allow role-enabled group synchronization into this tenant <a href="https://learn.microsoft.com/entra/identity/multi-tenant-organizations/cross-tenant-synchronization-configure" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-MgBetaPolicyCrossTenantAccessPolicyPartnerIdentitySynchronization -CrossTenantAccessPolicyConfigurationPartnerTenantId &lt;source-tenant-id&gt; -GroupSyncInbound @{IsSyncAllowed=$true} -RoleEnabledGroupSyncInbound @{IsSyncAllowed=$true}</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.graph.beta.identity.signins/set-mgbetapolicycrosstenantaccesspolicypartneridentitysynchronization?view=graph-powershell-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether the source configuration provisions groups at all</strong><br><small>App</small><br><small class="controls__note">Default No. Newer interface: Attribute mapping &gt; Groups. The request replaces the whole schema; the group objectMapping's enabled property decides whether it is processed.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › Cross-tenant synchronization › Configurations › configuration › Provisioning › Mappings › Provision Microsoft Entra ID Groups › Attribute Mapping › Enabled <a href="https://learn.microsoft.com/entra/identity/multi-tenant-organizations/cross-tenant-synchronization-configure" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PUT /v1.0/servicePrincipals/{id}/synchronization/jobs/{jobId}/schema</code> <a href="https://learn.microsoft.com/graph/api/synchronization-synchronizationschema-update?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which source security groups are in scope for synchronisation</strong><br><small>Group</small><br><small class="controls__note">Cloud Application Administrator or Application Administrator. The request body's principalId is the group. Group sync needs scope Sync only assigned users and groups.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › Cross-tenant synchronization › Configurations › configuration › Users and groups › Add user/group <a href="https://learn.microsoft.com/entra/identity/multi-tenant-organizations/cross-tenant-synchronization-configure" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/servicePrincipals/{id}/appRoleAssignedTo</code> <a href="https://learn.microsoft.com/graph/api/serviceprincipal-post-approleassignedto?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Record of groups and members provisioned, skipped or failed</strong><br><small>App</small><br><small class="controls__note">Read access for monitoring only. Target tenant audit logs show the sync's changes with Microsoft.Azure.SyncFabric as the actor.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › Cross-tenant synchronization › Configurations › configuration › Provisioning logs <a href="https://learn.microsoft.com/entra/identity/multi-tenant-organizations/cross-tenant-synchronization-configure" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET /v1.0/auditLogs/provisioning</code> <a href="https://learn.microsoft.com/graph/api/provisioningobjectsummary-list?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
@@ -226,9 +243,9 @@ Two tenants hold the controls. The target tenant's inbound checkboxes decide whe
 ## Open questions
 
 - When will the inbound group synchronisation setting (`groupSyncInbound`) reach the Microsoft Graph v1.0 endpoint? Watch the crossTenantIdentitySyncPolicyPartner reference.
-- Will role-enabled group sync leave preview, and will a Graph property for **Allow role-enabled group synchronization into this tenant** be documented?
+- Will role-enabled group sync leave preview?
 - Will nested groups be supported, so that existing nested security groups can be synchronised without flattening them?
-- Will group sync across cloud environments (commercial to US Government) be supported, as cross-cloud user sync is in preview?
+- Will group sync across cloud environments (commercial to US Government) be supported?
 
 <!-- rationale
 risk: Low. Group provisioning in a sync configuration is set to No by default, so no group crosses tenants until a source admin enables it and the target tenant allows inbound group sync.
@@ -236,20 +253,10 @@ cost: Medium. Synchronising a group and its members needs a Microsoft Entra ID G
 impact: Low. Identity administrators in the paired tenants configure it; users notice only through the access the synchronised groups grant in the target tenant.
 -->
 
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].ui; Governance controls: table / admin-path: The inbound group checkbox is reached through Organization settings > organization > Inbound access > Cross-tenant sync. | Found: Under Inbound access of the added organization, select Inherited from default. Select the Cross-tenant sync tab. | Fix: Replace controls[0].ui.path and its table rendering with 'Entra ID > External Identities > Cross-tenant access settings > Organization settings > organization > Inbound access > Inherited from default > Cross-tenant sync > Allow group synchronization into this tenant'. The cited configure page explicitly requires selecting Inherited from default before the tab. | Source: https://learn.microsoft.com/entra/identity/multi-tenant-organizations/cross-tenant-synchronization-configure
-- [contradicted, blocker] controls[1].ui; Governance controls: table / admin-path: The inbound role-enabled group checkbox is reached through Organization settings > organization > Inbound access > Cross-tenant sync. | Found: Under Inbound access of the added organization, select Inherited from default. Select the Cross-tenant sync tab. | Fix: Replace controls[1].ui.path and its table rendering with 'Entra ID > External Identities > Cross-tenant access settings > Organization settings > organization > Inbound access > Inherited from default > Cross-tenant sync > Allow role-enabled group synchronization into this tenant', following the cited configure page. | Source: https://learn.microsoft.com/entra/identity/multi-tenant-organizations/cross-tenant-synchronization-configure
-- [contradicted, blocker] controls[1].api; Governance controls: table; Open questions: role-enabled automation / absence: Microsoft has not documented automation or a Graph property for allowing inbound role-enabled group synchronization. | Found: -RoleEnabledGroupSyncInbound crossTenantRoleEnabledGroupSyncInbound To construct, see NOTES section for ROLEENABLEDGROUPSYNCINBOUND properties and create a hash table. [IsSyncAllowed <Boolean?>] | Fix: Replace controls[1].api with kind 'powershell', call 'Set-MgBetaPolicyCrossTenantAccessPolicyPartnerIdentitySynchronization -CrossTenantAccessPolicyConfigurationPartnerTenantId <source-tenant-id> -GroupSyncInbound @{IsSyncAllowed=$true} -RoleEnabledGroupSyncInbound @{IsSyncAllowed=$true}', and docs 'https://learn.microsoft.com/powershell/module/microsoft.graph.beta.identity.signins/set-mgbetapolicycrosstenantaccesspolicypartneridentitysynchronization?view=graph-powershell-beta'. Name module Microsoft.Graph.Beta.Identity.SignIns in the note and cite the reference. Remove the clause asking whether a Graph property will be documented; keep only the question about leaving preview. | Source: https://learn.microsoft.com/powershell/module/microsoft.graph.beta.identity.signins/set-mgbetapolicycrosstenantaccesspolicypartneridentitysynchronization?view=graph-powershell-beta
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].ui; Governance controls: table / admin-path: The source Enabled toggle is at Entra ID > Cross-tenant synchronization > Configurations > configuration > Provisioning > Mappings > Provision Microsoft Entra ID Groups > Enabled. | Found: On the Provisioning page, under the Mappings section, select Provision Microsoft Entra ID Groups to open the Attribute Mapping page. If you want to synchronize groups, set the Enabled toggle to Yes. | Fix: Add the page heading before the toggle: 'Entra ID > Cross-tenant synchronization > Configurations > configuration > Provisioning > Mappings > Provision Microsoft Entra ID Groups > Attribute Mapping > Enabled'. The cited configure page opens Attribute Mapping after selecting the group mapping. | Source: https://learn.microsoft.com/entra/identity/multi-tenant-organizations/cross-tenant-synchronization-configure
-- [supported, minor] controls[3].ui; Governance controls: table; Governance guidance: At rollout / admin-path: Groups are assigned through Entra ID > Cross-tenant synchronization > Configurations > configuration > Users and groups > Add user/group. | Found: On the configuration page, select Users and groups. Select Add user/group. On the Add Assignment page, under Users and groups, select None Selected. | Fix: Complete the early-stopping path as 'Entra ID > Cross-tenant synchronization > Configurations > configuration > Users and groups > Add user/group > Add Assignment > Users and groups > None Selected > Users and groups > user or group > Select > Assign', using step 7 of the cited configure page. | Source: https://learn.microsoft.com/entra/identity/multi-tenant-organizations/cross-tenant-synchronization-configure
-- [supported, minor] Why it matters; Risk assessment: Data exposure / applicability: A target security group can be granted access to SharePoint sites. | Found: Security groups are used for granting access to Microsoft 365 resources, such as SharePoint sites. They can make administration easier because you need only administer the group rather than adding users to each resource individually. | Fix: Add 'Compare types of groups in Microsoft 365' at https://learn.microsoft.com/microsoft-365/admin/create-groups/compare-groups?view=o365-worldwide to sources for the SharePoint access example. | Source: https://learn.microsoft.com/microsoft-365/admin/create-groups/compare-groups?view=o365-worldwide
-- [supported, minor] Why it matters; Risk assessment: Data exposure and Security & identity / behaviour: Members inherit permissions assigned to a group, so synchronizing membership transfers source membership decisions to target resource access. | Found: You can use Microsoft Entra security groups and Microsoft 365 Groups as the basis for securing access to resources. Group owners – manage group settings and its membership Members – inherit permissions and access assigned to the group | Fix: Add 'Secure external access with groups in Microsoft Entra ID and Microsoft 365' at https://learn.microsoft.com/entra/architecture/4-secure-access-groups to sources for group-based permission inheritance. | Source: https://learn.microsoft.com/entra/architecture/4-secure-access-groups
-- [supported, minor] Cost and licensing: Meter and caps / cost: For workforce B2B synchronization, External ID billing concerns guests rather than organizational members and requires billing subscription linkage. | Found: For B2B collaboration, the MAU billing model applies only to external users who have a UserType value of Guest. It doesn't apply to users who originate from within the organization and have a UserType value of Member. External ID requires an Azure subscription for billing. | Fix: Cite https://learn.microsoft.com/entra/external-id/external-identities-pricing and narrow the meter sentence to 'For B2B collaboration in workforce tenants, External ID MAU billing applies to external users with UserType Guest, not users originating within the organisation with UserType Member; billing requires an Azure subscription.' | Source: https://learn.microsoft.com/entra/external-id/external-identities-pricing
-- [supported, minor] Open questions: cross-cloud users / availability: Cross-cloud user synchronization is in preview. | Found: As of 2025 August, the Cross-tenant synchronization feature is now in public preview stage for Cross-cloud scenarios, which means tenant admins can sync users across different clouds | Fix: Remove 'as cross-cloud user sync is in preview' from the open question. The supporting page is not cited and dates that preview statement to August 2025; removing the incidental clause preserves the verified question about unsupported cross-cloud group sync. | Source: https://learn.microsoft.com/microsoft-365/enterprise/cross-cloud-collaboration?view=o365-worldwide
-- [contradicted, minor] Governance guidance: At rollout, isAssignableToRole mapping / consistency: The checklist's source isAssignableToRole attribute-mapping control is represented in the controls table. | Found: Checklist: 'Add the direct isAssignableToRole mapping, applied only during object creation'. Table: inbound groups, inbound role-enabled groups, group provisioning Enabled, group assignments and provisioning logs; no source role-assignability attribute-mapping row. | Fix: Remove the standalone checklist bullet 'Add the direct isAssignableToRole mapping, applied only during object creation, before assigning any role-assignable group, if role-enabled sync is wanted.' The table has no row for that source attribute-mapping control; do not add a row in this correction.
-- [contradicted, minor] Governance guidance: At rollout, Provision on demand / consistency: The checklist's Provision on demand control is represented in the controls table. | Found: Checklist: 'test with Provision on demand for one group'. The table contains no Provision on demand row. | Fix: Remove 'and test with Provision on demand for one group' from the Enabled-toggle checklist bullet. The table has no corresponding on-demand provisioning row; do not add a row in this correction.
-- [contradicted, minor] Governance guidance: After rollout, target audit logs / consistency: The checklist's target-tenant audit-log control is represented in the controls table. | Found: Checklist: 'Check the target tenant's audit logs'. The monitoring row's UI is source-configuration Provisioning logs and its API is GET /v1.0/auditLogs/provisioning; the target audit log is mentioned only in its note. | Fix: Remove the standalone checklist bullet 'Check the target tenant's audit logs for changes by "Microsoft.Azure.SyncFabric" against the agreed group list.' A note about the actor does not provide the target audit-log control row; do not add a row in this correction.
+- [supported, minor] controls[3].ui; Governance controls table; Governance guidance / admin-path: Entra ID > Cross-tenant synchronization > Configurations > configuration > Users and groups > Add user/group reaches the group assignment interface. | Found: On the configuration page, select Users and groups. ... Select Add user/group. On the Add Assignment page, under Users and groups, select None Selected. | Fix: Complete controls[3].ui.path as 'Entra ID > Cross-tenant synchronization > Configurations > configuration > Users and groups > Add user/group > Add Assignment > Users and groups > None Selected > Users and groups > group > Select > Assign', following https://learn.microsoft.com/entra/identity/multi-tenant-organizations/cross-tenant-synchronization-configure step 7. The existing path stops early at the correct assignment interface. | Source: https://learn.microsoft.com/entra/identity/multi-tenant-organizations/cross-tenant-synchronization-configure
+- [supported, minor] controls[4].ui; Governance controls table; Governance guidance / admin-path: Entra ID > Cross-tenant synchronization > Configurations > configuration > Provisioning logs reaches the configuration's monitoring logs. | Found: In the source tenant, on the Overview page ... Select Provisioning logs to determine which objects have been provisioned successfully or unsuccessfully. By default, the logs are filtered by the service principal ID of the configuration. | Fix: Set controls[4].ui.path to 'Entra ID > Cross-tenant synchronization > Configurations > configuration > Overview > Provisioning logs' to include the page heading named in step 13 of https://learn.microsoft.com/entra/identity/multi-tenant-organizations/cross-tenant-synchronization-configure. | Source: https://learn.microsoft.com/entra/identity/multi-tenant-organizations/cross-tenant-synchronization-configure
+- [contradicted, minor] Governance guidance: At rollout / consistency: The checklist tells administrators to confirm the synchronization Scope setting, but the controls table contains no row for changing that setting. | Found: after confirming the scope is Sync only assigned users and groups; controls table: inbound group permission, role-enabled group permission, group mapping Enabled, group assignments, provisioning logs. | Fix: Remove ', after confirming the scope is **Sync only assigned users and groups**' from the At rollout assignment bullet. Keep the documented scope prerequisite in Scope and the restriction in Risk assessment; do not add a control row.
 -->

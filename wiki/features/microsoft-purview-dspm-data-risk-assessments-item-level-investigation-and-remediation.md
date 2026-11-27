@@ -40,6 +40,9 @@ sources:
   - title: "Configure app permissions for a web API"
     url: "https://learn.microsoft.com/entra/identity-platform/quickstart-configure-app-access-web-apis"
     kind: "learn"
+  - title: "Grant tenant-wide admin consent to an application"
+    url: "https://learn.microsoft.com/entra/identity/enterprise-apps/grant-admin-consent"
+    kind: "learn"
   - title: "Microsoft 365 Roadmap item 523202 (Worldwide)"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=523202"
     kind: "roadmap"
@@ -59,13 +62,13 @@ controls:
     scope: "app"
     ui:
       surface: "Microsoft Entra admin center"
-      path: "Entra ID > App registrations > app > API permissions > Add a permission > Microsoft Graph > Application permissions"
+      path: "Entra ID > App registrations > app > API permissions > Add a permission > Microsoft Graph > Application permissions > Select permissions > permission"
       docs: "https://learn.microsoft.com/entra/identity-platform/quickstart-configure-app-access-web-apis"
     api:
       kind: "graph"
       call: "POST /v1.0/servicePrincipals/{id}/appRoleAssignedTo"
       docs: "https://learn.microsoft.com/graph/api/serviceprincipal-post-approleassignedto"
-    note: "Needs Cloud Application Administrator, Application Administrator or Privileged Role Administrator. The Graph request body is an appRoleAssignment with principalId, resourceId and appRoleId."
+    note: "App registration needs Cloud Application Administrator, Application Administrator or Privileged Role Administrator; granting Graph application permissions needs Privileged Role Administrator or an authorised custom role."
   - governs: "Running an item-level scan in a custom data risk assessment"
     scope: "tenant"
     ui:
@@ -114,19 +117,23 @@ changes:
     note: "Corrected the Entra admin center path for the DSPM app's Graph application permissions to include Add a permission, and removed an unsupported claim that DSPM was previously a reporting-only tool."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 75 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-27"
+    note: "Corrected the roles for the DSPM app: granting Microsoft Graph application permissions needs Privileged Role Administrator or an authorised custom role. Removed the unsupported claim that the scan shows item names, extended the Entra path and narrowed the after-rollout review step."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 74 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-27"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 75
-  confirmed: 72
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 2
-  hash: "9b3970a875811375ce038ab88a69bd08"
+  claims: 74
+  confirmed: 73
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "00113f3c955d1d47847024229fafed9d"
 ---
 
 ## What's changing
@@ -146,7 +153,7 @@ If nobody acts, nothing changes: item-level scanning is not available until an a
 ## Risk assessment
 
 **Data exposure**
-- The scan surfaces item names, owners, labels and sharing-link details for up to 10 SharePoint sites to whoever can view the assessment. File details need the Content Explorer Content Viewer or Content Explorer List Viewer role group, so control membership of those groups.
+- The scan surfaces owners, labels and sharing-link details for up to 10 SharePoint sites to whoever can view the assessment. File details need the Content Explorer Content Viewer or Content Explorer List Viewer role group, so control membership of those groups.
 - Exported results (Excel, CSV, JSON or TSV) leave the portal's access controls; treat exports as sensitive.
 
 **Security & identity**
@@ -171,7 +178,7 @@ If nobody acts, nothing changes: item-level scanning is not available until an a
 ## Scope
 
 - **Content.** SharePoint sites only: item-level scanning applies to Microsoft 365 and is "currently restricted to SharePoint sites"; OneDrive is not currently supported.
-- **Limits.** A current maximum of 10 SharePoint sites for item-level scanning, and a maximum of 200,000 items per location. Results expire after 30 days; duplicate the assessment to rerun it.
+- **Limits.** A current maximum of 10 SharePoint sites for item-level scanning, and a maximum of 200,000 items per location. The reported file count might not be accurate above 100,000 files per location. Results expire after 30 days; duplicate the assessment to rerun it.
 - **Roles.** Microsoft Entra Compliance Administrator, Microsoft Entra Global Administrator and the Microsoft Purview Compliance Administrator role group can create data risk assessments. Viewing file details needs Content Explorer Content Viewer or Content Explorer List Viewer.
 - **Prerequisite.** An Entra app registered for accounts in this organisational directory only, with Graph application permissions Application.Read.All, Directory.Read.All, Files.ReadWrite.All, SensitivityLabels.Read.All, Sites.ReadWrite.All and User.Read.All, admin consent and a client secret.
 - **Clouds and platform.** The roadmap record lists GCC, GCC High and DoD, on the web. Worldwide is covered by roadmap item 523202.
@@ -180,7 +187,7 @@ If nobody acts, nothing changes: item-level scanning is not available until an a
 
 ### Before rollout
 - Decide whether the tenant will run item-level assessments at all, since the prerequisite is an app with Files.ReadWrite.All and Sites.ReadWrite.All.
-- Register the Entra app with the six documented Graph application permissions, using a Cloud Application Administrator, Application Administrator or Privileged Role Administrator, and grant admin consent.
+- Register the Entra app with the six documented Graph application permissions, using a Cloud Application Administrator, Application Administrator or Privileged Role Administrator, then have a Privileged Role Administrator, or a custom role authorised to grant those permissions, grant admin consent.
 - Record who holds the client secret and where it is kept; it is shown only once.
 - Limit membership of the Compliance Administrator and Content Explorer role groups to the people who will run and review assessments.
 - Tell the owners of the sites you plan to scan that they may receive a Purview email about overshared items.
@@ -192,7 +199,7 @@ If nobody acts, nothing changes: item-level scanning is not available until an a
 
 ### After rollout
 - Duplicate the assessment to rerun it after 30 days and check whether flagged links have been closed.
-- Review the app's Graph permissions and its secret on a schedule, and remove the app registration if item-level assessments are no longer run.
+- Review the app's Graph permissions on a schedule.
 - Follow up with item owners whose links were removed so that authorised users get a less permissive link.
 
 ## Governance controls
@@ -202,7 +209,7 @@ If nobody acts, nothing changes: item-level scanning is not available until an a
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether item-level scanning and remediation can run: the Graph application permissions of the DSPM app</strong><br><small>App</small><br><small class="controls__note">Needs Cloud Application Administrator, Application Administrator or Privileged Role Administrator. The Graph request body is an appRoleAssignment with principalId, resourceId and appRoleId.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › App registrations › app › API permissions › Add a permission › Microsoft Graph › Application permissions <a href="https://learn.microsoft.com/entra/identity-platform/quickstart-configure-app-access-web-apis" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/servicePrincipals/{id}/appRoleAssignedTo</code> <a href="https://learn.microsoft.com/graph/api/serviceprincipal-post-approleassignedto" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether item-level scanning and remediation can run: the Graph application permissions of the DSPM app</strong><br><small>App</small><br><small class="controls__note">App registration needs Cloud Application Administrator, Application Administrator or Privileged Role Administrator; granting Graph application permissions needs Privileged Role Administrator or an authorised custom role.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › App registrations › app › API permissions › Add a permission › Microsoft Graph › Application permissions › Select permissions › permission <a href="https://learn.microsoft.com/entra/identity-platform/quickstart-configure-app-access-web-apis" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/servicePrincipals/{id}/appRoleAssignedTo</code> <a href="https://learn.microsoft.com/graph/api/serviceprincipal-post-approleassignedto" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Running an item-level scan in a custom data risk assessment</strong><br><small>Tenant</small><br><small class="controls__note">Then select Authenticate to give the Entra app details. SharePoint sites only, up to 10 sites.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>DSPM › Discover › Data risk assessments › Create custom assessment › Scan level › Item-level <a href="https://learn.microsoft.com/purview/data-security-posture-management-oversharing" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Who can create data risk assessments (Compliance Administrator role group membership)</strong><br><small>User</small><br><small class="controls__note">The DSPM permissions page also lists the Entra Compliance Administrator and Global Administrator roles as able to create assessments.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and scopes › Role groups › Role groups for Microsoft Purview solutions › role group › Edit › Edit members of the role group › Choose users <a href="https://learn.microsoft.com/purview/purview-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember -Identity &quot;&lt;role-group&gt;&quot; -Member &quot;&lt;user-UPN&gt;&quot;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Who can view file details in data risk assessments (Content Explorer role groups)</strong><br><small>User</small><br><small class="controls__note">Role groups named on the DSPM permissions page: Content Explorer Content Viewer and Content Explorer List Viewer.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and scopes › Role groups › Role groups for Microsoft Purview solutions › role group › Edit › Edit members of the role group › Choose users <a href="https://learn.microsoft.com/purview/purview-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember -Identity &quot;&lt;role-group&gt;&quot; -Member &quot;&lt;user-UPN&gt;&quot;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember" rel="noopener" class="controls__docs">Learn</a></td></tr>
@@ -228,13 +235,9 @@ cost: Low. DSPM needs Microsoft 365 E5 or Microsoft Purview Suite; no separate m
 impact: Low. Compliance administrators use it; site owners of up to 10 scanned sites may get a notification email, and people relying on a removed sharing link lose that route to the item.
 -->
 
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].note; Governance guidance: Before rollout, register app and grant consent / role: Cloud Application Administrator, Application Administrator or Privileged Role Administrator can perform the Graph application-permission grant described in the control. | Found: Privileged Role Administrator - the least privileged role supported for Microsoft Graph and Azure AD Graph app roles | Fix: Replace the role sentence in controls[0].note with 'App registration and permission selection need Cloud Application Administrator, Application Administrator or Privileged Role Administrator; granting Microsoft Graph application permissions needs Privileged Role Administrator or a custom role authorized for those permissions.' Make the same distinction in the Before rollout bullet. The DSPM prerequisite page lists app-configuration roles, but the cited Graph reference qualifies grants of Microsoft Graph app roles; https://learn.microsoft.com/entra/identity/enterprise-apps/grant-admin-consent explicitly excludes Microsoft Graph application permissions from Cloud Application Administrator and Application Administrator consent authority. | Source: https://learn.microsoft.com/graph/api/serviceprincipal-post-approleassignedto
-- [unsupported, major] Risk assessment: Data exposure, item names / behaviour: The scan surfaces item names. | Found: Searched: "data risk assessments" "item names" "view" permissions; Purview DSPM data risk assessments item-level investigation item names sharing-link details GCC GCC High DoD cloud documentation. Read oversharing and DSPM permissions; neither states that item names are shown. | Fix: Remove 'item names' from the Data exposure bullet; retain the documented owners, labels and sharing-link information.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Scope: Limits / behaviour: Assessments have a maximum of 200,000 items per location. | Found: A maximum of 200,000 items per location, which applies to both a custom data risk assessment and a default data risk assessment. The count of files reported might not be accurate when there are more than 100,000 files per location. | Fix: Append to the limits bullet: 'The reported file count might not be accurate above 100,000 files per location.' The qualification appears at https://learn.microsoft.com/purview/data-security-posture-management-oversharing. | Source: https://learn.microsoft.com/purview/data-security-posture-management-oversharing
-- [supported, minor] controls[0].ui / admin-path: Graph application permissions are configured in Microsoft Entra admin center through Entra ID > App registrations > app > API permissions > Add a permission > Microsoft Graph > Application permissions. | Found: Browse to Entra ID > App registrations, and then select your client application. Select API permissions > Add a permission > Microsoft Graph > Application permissions. | Fix: The path is correct but stops at the permissions-selection pane. Extend it to 'Entra ID > App registrations > app > API permissions > Add a permission > Microsoft Graph > Application permissions > Select permissions > permission'. | Source: https://learn.microsoft.com/entra/identity-platform/quickstart-configure-app-access-web-apis
-- [contradicted, minor] Governance guidance: After rollout; controls table / consistency: Every control the governance checklist tells administrators to review is represented in the controls table. | Found: Review the app's Graph permissions and its secret on a schedule, and remove the app registration if item-level assessments are no longer run. / The controls table covers Graph permissions, scans, role membership and the per-action disable gap, but not secret management. | Fix: The app-secret review instruction has no corresponding control row. Narrow that After rollout bullet to 'Review the app's Graph permissions on a schedule.' Do not add a control row as part of this correction.
+- [supported, minor] controls[0].api; Governance controls table / command: POST /v1.0/servicePrincipals/{id}/appRoleAssignedTo grants an application permission to a client service principal. | Found: POST /servicePrincipals/{id}/appRoleAssignedTo; App roles that are assigned to service principals are also known as application permissions. Application permissions can be granted directly with app role assignments. | Fix: Keep the call. Append to controls[0].note: 'The request body sets appRoleId to the permission's app-role ID, principalId to the DSPM client service principal's object ID and resourceId to Microsoft Graph's service principal object ID; {id} is that resource service principal's object ID.' | Source: https://learn.microsoft.com/graph/api/serviceprincipal-post-approleassignedto
+- [contradicted, minor] Governance guidance: At rollout, remediation checklist; Governance controls / consistency: The checklist directs administrators to use Resolve, Notify, Apply sensitivity label and Remove sharing link, but the controls table contains no row for selecting these remediation actions. | Found: Checklist: Work through Potentially overshared items using Resolve, Notify or Apply sensitivity label first, and keep Remove sharing link for links that must go now. Table: app permissions, running a scan, two role memberships, and absence of an action-disabling setting. | Fix: The At rollout remediation step has no corresponding controls row. Remove that checklist bullet; retain the verified descriptions and cautions about those actions in What's changing and Risk assessment. Do not add a row during this correction.
 -->

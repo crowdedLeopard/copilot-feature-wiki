@@ -46,6 +46,9 @@ sources:
   - title: "Searching audit records of access requests created, accepted and denied (PowerShell)"
     url: "https://learn.microsoft.com/powershell/module/exchange/search-unifiedauditlog"
     kind: "learn"
+  - title: "Use sensitivity labels to protect collaborative workspaces (groups and sites)"
+    url: "https://learn.microsoft.com/purview/sensitivity-labels-teams-groups-sites"
+    kind: "learn"
 videos: []
 related: ["m365-the-next-generation-of-file-and-folder-sharing","m365-expiration-for-access-on-sharing-main-links","sharepoint-entra-b2b-integration-for-external-sharing-in-onedrive-and-sharepoint","auditing","guest-access"]
 controls:
@@ -55,8 +58,11 @@ controls:
       surface: "SharePoint site settings"
       path: "gear icon > Site permissions > Sharing settings > Change how members can share > Only site owners can share files, folders, and the site"
       docs: "https://learn.microsoft.com/microsoft-365/solutions/microsoft-365-limit-sharing"
-    api: null
-    note: "Not confirmed to govern the new dialog."
+    api:
+      kind: "powershell"
+      call: "Set-Label -Identity <label> -AdvancedSettings @{MembersCanShare=\"MemberShareNone\"}"
+      docs: "https://learn.microsoft.com/purview/sensitivity-labels-teams-groups-sites"
+    note: "This automation configures a sensitivity label; site settings take effect when that label is applied to a container that supports sensitivity labels."
   - governs: "Whether people without access can request access to a site"
     scope: "site"
     ui:
@@ -94,19 +100,23 @@ changes:
     note: "Corrected: removed the Set-SPOSite call offered as the owners-only file and folder sharing equivalent, added AccessRequestCreated to the audit search command, and narrowed the guest request gap."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 51 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-27"
+    note: "Corrected: added the Set-Label MembersCanShare sensitivity label automation for owners-only sharing, added the Owners group Full Control requirement for processing access requests, and narrowed the note on where site sharing is configured."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 53 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-27"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 51
-  confirmed: 49
+  claims: 53
+  confirmed: 52
   unconfirmed: 0
-  contradicted: 2
-  attempts: 2
-  hash: "f233d583653b0ca7c4744df4c1a2eaae"
+  contradicted: 1
+  attempts: 0
+  hash: "450200a1f5d6efb68dedebb34a01985e"
 ---
 
 ## What's changing
@@ -119,7 +129,7 @@ The roadmap item is **In development**, with a General Availability target of **
 
 ## Why it matters
 
-Today, Microsoft's troubleshooting guidance says that only site admins and members of a site's Owners group can process requests in a site's **Access Requests** list. The roadmap's wording, "anyone who can share it", suggests the people who see and act on requests could become everyone with sharing rights on the item, with a bulk-approve option. Where members can share, that moves grant decisions closer to the content and away from owners. Whether that is a gain or a risk depends on how each site's sharing settings are set.
+Today, Microsoft's troubleshooting guidance says that only site admins and members of a site's Owners group can process requests in its **Access Requests** list; the Owners group must also have Full Control permissions to that list. The roadmap's wording, "anyone who can share it", suggests the people who see and act on requests could become everyone with sharing rights on the item, with a bulk-approve option. Where members can share, that moves grant decisions closer to the content and away from owners. Whether that is a gain or a risk depends on how each site's sharing settings are set.
 
 Microsoft has not stated what happens on arrival. No source says existing access request settings change, so sites that have **Allow access requests** turned off should be expected to stay that way; plan on the dialog being the new place users answer requests, and tell owners and members before January 2027.
 
@@ -176,14 +186,14 @@ Indirect costs are admin time to review site sharing settings and communication 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether site members can share files and folders, or only site owners</strong><br><small>Site</small><br><small class="controls__note">Not confirmed to govern the new dialog.</small></td><td data-label="Admin UI"><strong>SharePoint site settings</strong><br>gear icon › Site permissions › Sharing settings › Change how members can share › Only site owners can share files, folders, and the site <a href="https://learn.microsoft.com/microsoft-365/solutions/microsoft-365-limit-sharing" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether site members can share files and folders, or only site owners</strong><br><small>Site</small><br><small class="controls__note">This automation configures a sensitivity label; site settings take effect when that label is applied to a container that supports sensitivity labels.</small></td><td data-label="Admin UI"><strong>SharePoint site settings</strong><br>gear icon › Site permissions › Sharing settings › Change how members can share › Only site owners can share files, folders, and the site <a href="https://learn.microsoft.com/microsoft-365/solutions/microsoft-365-limit-sharing" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-Label -Identity &lt;label&gt; -AdvancedSettings @{MembersCanShare=&quot;MemberShareNone&quot;}</code> <a href="https://learn.microsoft.com/purview/sensitivity-labels-teams-groups-sites" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether people without access can request access to a site</strong><br><small>Site</small><br><small class="controls__note">Turning it off prevents non-members from requesting access. Microsoft's troubleshooting page says a site collection administrator must turn it on.</small></td><td data-label="Admin UI"><strong>SharePoint site settings</strong><br>gear icon › Site permissions › Sharing settings › Change how members can share › Allow access requests <a href="https://learn.microsoft.com/microsoft-365/solutions/microsoft-365-limit-sharing" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Tenant-wide switch for showing access requests in the Share dialog</strong><br><small>Tenant</small><br><small class="controls__note">Microsoft Learn documents no setting for this feature at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Searching audit records of access requests created, accepted and denied</strong><br><small>Tenant</small><br><small class="controls__note">Requires the Audit Logs or View-Only Audit Logs role. Run the cmdlet in Exchange Online PowerShell.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Audit › Search <a href="https://learn.microsoft.com/purview/audit-search" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Search-UnifiedAuditLog -StartDate &lt;ExDateTime&gt; -EndDate &lt;ExDateTime&gt; -Operations AccessRequestCreated,AccessRequestAccepted,AccessRequestDenied</code> <a href="https://learn.microsoft.com/powershell/module/exchange/search-unifiedauditlog" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-The site sharing settings are set inside each site, not in the SharePoint admin center. Microsoft's troubleshooting page says a site collection administrator must turn access requests on.
+The site sharing paths in the controls table configure the sharing settings inside each site. Microsoft's troubleshooting page says a site collection administrator must turn access requests on.
 
 With owners-only sharing on, the Limit sharing page says direct access and Specific people link sharing by site members goes to the site owner for approval. How the new dialog presents those approvals is not described.
 
@@ -198,17 +208,14 @@ Searching the audit log requires the Audit Logs or View-Only Audit Logs role.
 - Will messages sent to requesters from the dialog, and bulk approvals, be recorded as distinct audit events?
 
 <!-- rationale
-risk: Medium. The roadmap says anyone who can share an item will see its requests and can approve them in bulk, which may put grant decisions with more people than the site owners who process requests today; existing site sharing settings narrow who can share.
+risk: Medium. The roadmap says anyone who can share an item will see its requests and can approve them in bulk, which may put grant decisions with more people than the site admins and Owners group members (whose group needs Full Control on the Access Requests list) who process requests today; existing site sharing settings narrow who can share.
 cost: Low. OneDrive sharing and collaboration features are listed for every plan in the OneDrive service description; the known cost is admin time and user communication. No licence specific to this feature is published.
 impact: Medium. People who own or can share files, folders and libraries and receive access requests notice the new place to respond; requesters see faster answers. Others are unaffected.
 -->
 
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; rendered controls table / absence: Microsoft has not documented automation for owners-only file, folder and site sharing. | Found: Only site owners can share files, folders, and the site. | MemberShareNone ... Set-Label -Identity 8faca7b8-8d20-48a3-8ea2-0f96310a848e -AdvancedSettings @{MembersCanShare="MemberShareNone"} | Fix: Replace controls[0].api with kind powershell, call 'Set-Label -Identity <label> -AdvancedSettings @{MembersCanShare="MemberShareNone"}', and docs https://learn.microsoft.com/purview/sensitivity-labels-teams-groups-sites. Qualify the row note: 'This automation configures a sensitivity label; site settings take effect when that label is applied to a container that supports sensitivity labels.' Cite that page and make the rendered automation cell match. Do not restore Set-SPOSite -DisableSharingForNonOwners as a file-and-folder equivalent. | Source: https://learn.microsoft.com/purview/sensitivity-labels-teams-groups-sites
-- [contradicted, blocker] Why it matters; rationale: risk / role: Only site admins and members of a site's Owners group can process requests in the existing Access Requests list. | Found: For users who are members of the Owners group for the site, an another requirement is that the Owners group must have Full Control permissions to access the Access Requests list. | Fix: Replace the first sentence of Why it matters with 'Today, Microsoft's troubleshooting guidance says that only site admins and members of a site's Owners group can process requests in its Access Requests list; the Owners group must also have Full Control permissions to that list.' Preserve this qualification wherever current approver permissions are described. | Source: https://learn.microsoft.com/troubleshoot/sharepoint/sharing-and-permissions/request-approval-failed
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].note; rendered controls table / applicability: The owners-only sharing control is not confirmed to govern the new dialog. | Found: Site permissions can be restricted so that only site owners can share files and folders. In this case, direct access and Specific people link sharing by site members goes to site owner for approval. | Fix: Replace 'Not confirmed to govern the new dialog.' with 'Site permissions can be restricted so that only site owners can share files and folders; direct access and Specific people link sharing by site members goes to the site owner for approval.' Keep the separate open question about how the new dialog presents approvals. | Source: https://learn.microsoft.com/microsoft-365/solutions/microsoft-365-limit-sharing
-- [supported, minor] Governance controls / admin-path: The sharing controls are configured inside each site, not in the SharePoint admin center. | Found: In the site, select the gear icon, and then select Site permissions. Under Sharing settings, select Change how members can share. | Fix: Narrow the sentence to 'The paths in the controls table configure the sharing settings inside each site.' Cite https://learn.microsoft.com/purview/sensitivity-labels-teams-groups-sites, which also describes equivalent sharing configuration using SharePoint admin center > Site permissions > Site Sharing > Change how members can share > Sharing permissions. | Source: https://learn.microsoft.com/microsoft-365/solutions/microsoft-365-limit-sharing
+- [supported, minor] controls[0].ui; Governance controls table; Governance guidance / admin-path: Owners-only file, folder and site sharing is configured inside a site through gear icon > Site permissions > Sharing settings > Change how members can share > Only site owners can share files, folders, and the site. | Found: In the site, select the gear icon, and then select Site permissions. Under Sharing settings, select Change how members can share. Select Only site owners can share files, folders, and the site. | Fix: Keep the documented site path. Add to Governance controls: 'Limit sharing documents this route inside the site; the sensitivity-label guidance instead describes the equivalent option under SharePoint admin center > Site permissions > Site Sharing > Change how members can share > Sharing permissions.' Both pages are already cited. | Source: https://learn.microsoft.com/microsoft-365/solutions/microsoft-365-limit-sharing
+- [contradicted, minor] front matter: action / consistency: The prepare action rating fits a medium-risk redesign targeted for January CY2027 on the November 27, 2026 run. | Found: action: "prepare"; risk: "medium"; targetDate: "January CY2027". The briefing says requests will appear in a new place and advises reviewing sharing settings before rollout; January 1 is 35 days after the run date. | Fix: Change front matter action from "prepare" to "act-now": the standard counts the month-only January CY2027 target from January 1, within 60 days of November 27, and the medium-risk redesign requires a sharing decision and communication before it lands.
 -->

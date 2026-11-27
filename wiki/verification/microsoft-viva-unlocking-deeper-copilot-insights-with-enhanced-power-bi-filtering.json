@@ -1,0 +1,557 @@
+{
+  "slug": "microsoft-viva-unlocking-deeper-copilot-insights-with-enhanced-power-bi-filtering",
+  "roadmapId": 559995,
+  "title": "Viva Insights: admins choose which organisational attributes appear as filters in Copilot Power BI reports",
+  "status": "held",
+  "date": "2026-11-27",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-27",
+    "reasons": [
+      "2 blocking findings (claims 26, 28)"
+    ]
+  },
+  "counts": {
+    "claims": 41,
+    "confirmed": 36,
+    "unconfirmed": 2,
+    "contradicted": 3,
+    "blocker": 2,
+    "major": 2,
+    "minor": 6
+  },
+  "summary": "Hold: Microsoft documents privacy-threshold suppression for report filters, contrary to the briefing's statement that this is undocumented. The briefing also overstates filter availability: attributes depend on the report, and existing role, delegation and partition boundaries still apply.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap names Global and Insights admins as able to enable additional Power BI report filters.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enable Global and Insights admins to turn on additional attributes as filters in Power BI reports",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The additional filters include reserved and custom organisational attributes.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "including reserved attributes and your organization’s custom attributes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "Users with access to the Power BI reports can use newly enabled filters to tailor reports.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users who have access to Power BI reports can then use these newly enabled filters to tailor reports to their business needs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Web as the platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The listed products are Microsoft Viva and Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Viva\", \"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-06-26T22:01:51.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-06-26T22:01:51\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The setting is in Viva Insights web app > Analysis setup > Attribute filters > Data field quality > Enable filter.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/enable-filters-for-reports",
+      "quote": "In the Viva Insights web app, under Analysis setup on the left, select Attribute filters. Under Data field quality, select Enable filter for the filtered attributes you'd like analysts to access in their reports.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "Additional attribute filters are admin-opt-in and do not appear until an administrator enables them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/enable-filters-for-reports",
+      "quote": "Once enabled, these filters can be found under Filter by in prebuilt reports in the Reports tab.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[0].note; What's changing; Why it matters; Scope",
+      "type": "default",
+      "claim": "Organization, CountryOrRegion and FunctionType are enabled by default for Power BI reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/enable-filters-for-reports",
+      "quote": "Organization, CountryOrRegion, and FunctionType are enabled by default for Power BI reports.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[0].note; What's changing; Governance controls",
+      "type": "behaviour",
+      "claim": "Organization is a mandatory filter in prebuilt Power BI reports and cannot be turned off.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/enable-filters-for-reports",
+      "quote": "Organization is a mandatory filter in prebuilt Power BI reports that you can't turn off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Enabled filters appear under Filter by in prebuilt reports on the Reports tab.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/enable-filters-for-reports",
+      "quote": "Once enabled, these filters can be found under Filter by in prebuilt reports in the Reports tab.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[0].note; Risk assessment; Scope; Governance guidance; Governance controls",
+      "type": "role",
+      "claim": "A Viva Insights Administrator configures attribute filters for advanced analysis reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/enable-filters-for-reports",
+      "quote": "As a Viva Insights Administrator, you can configure some of the filters analysts can use when they create or access reports using advanced analysis.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Scope; Governance controls",
+      "type": "behaviour",
+      "claim": "Organisational attributes used for filtering come from the organisation's Viva Insights organisational data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/prepare-org-data",
+      "quote": "Additionally, you can supply up to 100 optional attributes to group and filter data in interesting and custom ways.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "LevelDesignation, FunctionType and Location are reserved column names used to calculate, filter and group data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/prepare-org-data",
+      "quote": "The following attributes are reserved column headers for attributes that are currently used to calculate, filter, and group data. ... LevelDesignation ... FunctionType ... Location",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Custom attributes are attributes the organisation defines in its data upload.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/prepare-org-data",
+      "quote": "Custom attributes are any other attributes you want to define to use in filtering and grouping data. When you upload these attributes, analysts can use them when building queries.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Risk assessment: Change & support; Open questions",
+      "type": "behaviour",
+      "claim": "The cited Copilot Analytics reports page still says out-of-the-box reports cannot be customised with unique filters or attributes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/copilot-analytics-reports",
+      "quote": "Unlike custom Power BI queries, these reports can't be customized with unique filters or attributes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Why it matters; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Missing or sparse organisational attributes can produce misleading filtered views.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/org-data-overview#organizational-data-in-the-viva-insights-web-app",
+      "quote": "If quality scores are low, it's difficult to determine how people collaborate across different characteristics. Also, low quality scores on required data fields may give skewed (under-reported) metric calculations for metrics that rely on those attributes.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/viva/insights/advanced/admin/org-data-overview for the data-quality statement."
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Microsoft names ManagerId and PersonId among the available filter attributes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/enable-filters-for-reports",
+      "quote": "These filters are available for several different organizational attributes in Viva Insights, such as FunctionType, Organization, ManagerId, and PersonId.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Data exposure; Governance controls",
+      "type": "behaviour",
+      "claim": "The minimum group size must be set to at least five.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/privacy-settings",
+      "quote": "You'll need to set this number to at least five.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Data exposure; Governance controls; rationale: risk",
+      "type": "applicability",
+      "claim": "The minimum group size applies to data visualisations in advanced analysis Power BI templates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/privacy-settings",
+      "quote": "The minimum group size applies to data visualizations in advanced analysis Power BI templates as well as group comparisons in organization insights for leaders and managers in Outlook and Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "How minimum group size applies to newly enabled filters in prebuilt reports is not documented.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/analyst/reports-page",
+      "quote": "Results can be blank or suppressed when a filter produces a group below the applicable privacy threshold.",
+      "severity": "blocker",
+      "fix": "Replace the undocumented-application clause with: 'Microsoft says report-filter results can be blank or suppressed when a filter produces a group below the applicable privacy threshold.' Cite https://learn.microsoft.com/viva/insights/advanced/analyst/reports-page. Remove the first Open questions bullet, which asks whether combined filters suppress results."
+    },
+    {
+      "n": 27,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Descriptive HR attributes can reveal sensitive information or enable inference about individuals.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/privacy/privacy#protecting-sensitive-data",
+      "quote": "depending on the kinds of descriptive employee attributes that the Insights Administrator has chosen to make available to Viva Insights, these attributes might provide enough context or be combined with other information such that an analyst can infer individual identity.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/viva/insights/advanced/privacy/privacy for the privacy risk from descriptive employee attributes."
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Data exposure; Why it matters",
+      "type": "behaviour",
+      "claim": "Whatever custom HR attribute is uploaded and enabled becomes a filter for everyone who can open the reports.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/analyst/reports-page",
+      "quote": "Available attributes depend on the report and on the organizational data configured by your organization. ... Filters narrow data; they don't grant access to people or groups outside your role, delegation, or analyst partition.",
+      "severity": "blocker",
+      "fix": "Replace 'Whatever is uploaded and then enabled becomes a filter for the people who can open the reports' with 'Available attributes depend on the report and the organisational data configured; filters do not grant access outside a user's role, delegation or analyst partition.' In Why it matters, replace 'or any custom HR attribute the organisation has uploaded' with 'or enabled custom HR attributes available in the report'. Cite https://learn.microsoft.com/viva/insights/advanced/analyst/reports-page."
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The feature makes no change to identities or sign-in.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Viva Insights attribute filters enabling authentication identity sign-in autonomous actions. Opened Enable filters for out-of-the-box reports and Reports page; neither states that identities or sign-in are unchanged.",
+      "severity": "major",
+      "fix": "Remove 'No change to identities or sign-in.' Retain the separately supported administrator-role statement."
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The feature takes no actions.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Viva Insights attribute filters enabling authentication identity sign-in autonomous actions. Opened Enable filters for out-of-the-box reports and Reports page; they describe filters, not an explicit guarantee that the feature takes no actions.",
+      "severity": "major",
+      "fix": "Replace 'No change: the feature adds filters to reports and takes no actions' with 'The documented capability adds organisational attribute filters to reports.'"
+    },
+    {
+      "n": 31,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Advanced analysis, which contains the filter setting, is included in Microsoft Copilot plans for employees with assigned Copilot licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/environment-requirements",
+      "quote": "Microsoft Copilot plans also include manager, leader, and advanced analysis for all employees who have an assigned Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The environment requirements page requires at least 50 assigned Viva Insights licences for advanced analysis and the Copilot Dashboard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/environment-requirements",
+      "quote": "At least 50 assigned Viva Insights licenses are required to access advanced analysis and the Microsoft Copilot Dashboard.",
+      "severity": "minor",
+      "fix": "Keep the attributed 50-licence statement and add: 'Microsoft's Viva service description gives a different requirement: the Copilot Dashboard and Advanced Copilot Reporting come with Microsoft 365 Copilot or 10 Insights licences.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-viva-service-description."
+    },
+    {
+      "n": 33,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The 50-licence threshold can combine Viva Insights licences and Copilot licences that include the Viva Insights service plan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/environment-requirements",
+      "quote": "For example, 30 assigned Microsoft Copilot licenses (which include the Viva Insights service plan) + 20 assigned Viva Insights licenses = 50 assigned Viva Insights licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "front matter: licensing.notes",
+      "type": "absence",
+      "claim": "No licence specific to attribute filters is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Insights attribute filters pricing licensing meter separate charge. Opened Enable filters for out-of-the-box reports, Environment requirements and Microsoft Viva service description; they state product licensing, not a filter-specific licence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing: Meter",
+      "type": "absence",
+      "claim": "Microsoft publishes no meter or separate charge for attribute filters at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Insights attribute filters pricing licensing meter separate charge. Opened Enable filters for out-of-the-box reports, Environment requirements and Microsoft Viva service description; none publishes a filter-specific charge or meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "role",
+      "claim": "A Microsoft 365 Global Administrator assigns the Insights Administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-admin-reports",
+      "quote": "Microsoft 365 Global Administrator: Assigns the Insights Analyst and Insights Administrator roles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Scope",
+      "type": "role",
+      "claim": "A Microsoft 365 Global Administrator assigns the Insights Analyst role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-admin-reports",
+      "quote": "Microsoft 365 Global Administrator: Assigns the Insights Analyst and Insights Administrator roles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[0].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no PowerShell or Microsoft Graph equivalent for enabling individual attribute filters.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Insights attribute filters PowerShell Microsoft Graph API; 'attribute filters' Graph Viva; 'attribute filters' PowerShell Set-VivaInsightsSettings. Opened filter-setting page, Set-VivaInsightsSettings and control-analysis-powershell; no equivalent operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[0].scope; Governance controls table; Open questions",
+      "type": "applicability",
+      "claim": "The administrator's attribute-filter setting has tenant scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/partitions",
+      "quote": "What you set as an admin (unless you’re setting up a partition) applies across your organization.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/viva/insights/advanced/admin/partitions for tenant scope. Replace the per-partition Open questions bullet with 'The attribute-filter admin setting applies across the organisation; analysts remain limited to the attributes in their assigned partitions.'"
+    },
+    {
+      "n": 40,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Administrators enable attributes under Viva Insights web app > Analysis setup > Attribute filters.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/enable-filters-for-reports",
+      "quote": "In the Viva Insights web app, under Analysis setup on the left, select Attribute filters. Under Data field quality, select Enable filter for the filtered attributes you'd like analysts to access in their reports.",
+      "severity": "minor",
+      "fix": "Use the full existing control-table path in these prose instructions: 'Viva Insights web app > Analysis setup > Attribute filters > Data field quality > Enable filter'."
+    },
+    {
+      "n": 41,
+      "where": "Governance guidance: Before rollout; controls",
+      "type": "consistency",
+      "claim": "The checklist asks readers to check organisational data-upload coverage and who holds the Insights Administrator role, but neither control has a table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Check that the organisational data upload covers the people ... Confirm who holds the Insights Administrator role ... The table contains only 'Which organisational attributes report users can filter by'.",
+      "severity": "minor",
+      "fix": "Remove the Before rollout bullets beginning 'Check that the organisational data upload covers' and 'Confirm who holds the Insights Administrator role' to align the checklist with the existing table; do not add control rows."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-27T22:41:18.960Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=559995",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/insights/advanced/admin/enable-filters-for-reports",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/insights/org-team-insights/copilot-analytics-reports",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/environment-requirements",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/privacy-settings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/insights/advanced/admin/prepare-org-data",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/manage/copilot-admin-reports",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/insights/copilot-analytics-introduction",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which organisational attributes report users can filter by in Viva Insights Power BI reports",
+        "docs": "https://learn.microsoft.com/viva/insights/advanced/admin/enable-filters-for-reports",
+        "reachable": true,
+        "segments": [
+          "Analysis setup",
+          "Attribute filters",
+          "Data field quality",
+          "Enable filter"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

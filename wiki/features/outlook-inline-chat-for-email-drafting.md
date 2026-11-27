@@ -49,6 +49,12 @@ sources:
   - title: "Audit records of Copilot interactions in Outlook (PowerShell)"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog"
     kind: "learn"
+  - title: "Release Notes for Microsoft 365 Copilot"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/release-notes"
+    kind: "learn"
+  - title: "Office 365 Management Activity API schema"
+    url: "https://learn.microsoft.com/office/office-365-management-api/office-365-management-activity-api-schema"
+    kind: "learn"
 videos: []
 related: ["outlook-draft-edit-and-format-emails-conversationally-with-copilot-in-outlook","m365-copilot-copilot-chat-in-outlook-expands-to-reason-over-inbox-calendar-and-enterprise","app-management"]
 controls:
@@ -97,19 +103,23 @@ changes:
     note: "Corrected the Premium data-grounding statement to include the Work IQ setting, narrowed the data-access claim in Why it matters, and noted that app availability settings do not affect admin-deployed Copilot apps."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 60 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-27"
+    note: "Corrected the rollout-mechanics statement using the Copilot release notes' safe deployment model, and stated that whether Copilot app access controls remove the new inline chat from compose is not documented."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 67 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-27"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 58
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 2
-  hash: "96d6c9efa2d7910c663d8d16926747c3"
+  claims: 67
+  confirmed: 67
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "de072087fb00275a8bbcd0e86985039e"
 ---
 
 ## What's changing
@@ -124,7 +134,7 @@ The roadmap item lists the Web platform and Worldwide (Standard Multi-Tenant) on
 
 The roadmap describes a new way to reach Copilot while writing mail in Outlook on the web; it does not specify the inline chat's data-access scope. Microsoft has not stated what happens on arrival, and no source says the sidebar is removed. Expect users who already draft with Copilot to see a new chat inside compose from about the December CY2026 target, and expect questions from people who did not ask for it.
 
-The decisions are small: who should have the Copilot app in Outlook, what users are told about checking Copilot's text before they send, and whether audit records from Outlook drafting matter to your compliance team. Microsoft documents no switch for the inline chat on its own, so the documented control is the Copilot app as a whole.
+The decisions are small: who should have the Copilot app in Outlook, what users are told about checking Copilot's text before they send, and whether audit records from Outlook drafting matter to your compliance team. Microsoft documents no switch for the inline chat on its own; the documented app-level controls govern Copilot app access, not a confirmed switch for this new compose component.
 
 ## Risk assessment
 
@@ -158,7 +168,7 @@ The decisions are small: who should have the Copilot app in Outlook, what users 
 
 **Roles.** Integrated Apps controls are available only to Global Administrators on Microsoft's page. For Copilot settings in the Microsoft 365 admin center, Microsoft's page says to use an appropriate admin role, such as AI Administrator.
 
-**Rollout mechanics and prerequisites.** Not stated by the roadmap or on Learn.
+**Rollout mechanics and prerequisites.** The roadmap gives no item-specific rollout window. Microsoft's Copilot release notes describe gradual deployment to a subset of users within a tenant before expansion across the organisation. Item-specific prerequisites are not stated.
 
 ## Governance guidance
 
@@ -169,7 +179,7 @@ The decisions are small: who should have the Copilot app in Outlook, what users 
 
 ### At rollout
 - Test the inline chat with a pilot mailbox in Outlook on the web to see whether it writes into the draft directly and whether the sidebar remains.
-- Brief the service desk that Microsoft documents no switch for the inline chat on its own (row 3), so the documented lever for a user who objects to it is their access to the Copilot app.
+- Brief the service desk that Microsoft documents no switch for the inline chat on its own (row 3). Microsoft documents Copilot app access controls, but whether they remove this new inline chat from compose is not stated.
 
 ### After rollout
 - Search the audit log for Copilot interactions and look at the AppHost values Outlook and OutlookOnCanvas to see how drafting use is recorded (row 4).
@@ -211,12 +221,8 @@ cost: Low. Microsoft's Copilot overview lists Outlook email drafting among Micro
 impact: Medium. Users who draft email with Copilot in Outlook on the web notice a new inline chat in compose; other users and other Outlook clients are not named in the roadmap item.
 -->
 
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Scope: Rollout mechanics and prerequisites / absence: Neither the roadmap nor Learn states rollout mechanics. | Found: Copilot features are introduced using a safe deployment model, gradually rolling out to a subset of users within a tenant before expanding across the organization. | Fix: Replace the rollout-mechanics sentence with: "The roadmap gives no item-specific rollout window. Microsoft's Copilot release notes describe gradual deployment to a subset of users within a tenant before expansion across the organisation. Item-specific prerequisites are not stated." Add https://learn.microsoft.com/microsoft-365/copilot/release-notes to sources. | Source: https://learn.microsoft.com/microsoft-365/copilot/release-notes
-- [unsupported, blocker] Governance guidance: At rollout; Why it matters / applicability: Copilot app access is the documented lever for a user who objects to the new inline chat. | Found: Searched: "Copilot app" "inline" "block" Outlook; "Outlook" "inline" "Copilot" disable policy admin. Read Manage Copilot Chat, Integrated Apps and Configure Copilot settings. They document app access, but not whether it removes this new compose component. | Fix: Replace the At rollout bullet with: "Brief the service desk that Microsoft documents no switch for the inline chat on its own (row 3). Microsoft documents Copilot app access controls, but whether they remove this new inline chat from compose is not stated." In Why it matters, replace "so the documented control is the Copilot app as a whole" with "the documented app-level controls govern Copilot app access, not a confirmed switch for this new compose component".
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance controls / applicability: The Manage Copilot Chat page says the Integrated Apps block also blocks Copilot in Teams. | Found: This setting blocks Copilot in the Microsoft Copilot app, Teams, Outlook, and Copilot Chat on the web for all users. | Fix: After this sentence add: "The Integrated Apps reference instead says blocking affects Outlook and the Microsoft Copilot application, while Teams continues to honour Teams admin-center settings; the Microsoft pages disagree about Teams." Cite https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365. | Source: https://learn.microsoft.com/copilot/manage/manage-copilot-chat
-- [supported, minor] controls[3].api; Governance controls table / command: Search-UnifiedAuditLog -StartDate <start date> -EndDate <end date> -RecordType CopilotInteraction is a valid Exchange PowerShell audit search. | Found: Search-UnifiedAuditLog -EndDate <ExDateTime> -StartDate <ExDateTime> ... [-RecordType <AuditRecordType>]; The RecordType parameter filters the log entries by record type. For details about the available values, see AuditLogRecordType. | Fix: Add https://learn.microsoft.com/office/office-365-management-api/office-365-management-activity-api-schema to sources: the cmdlet reference delegates permitted RecordType values to that page, whose table lists "261 | CopilotInteraction | Copilot interaction events." Keep the command unchanged. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog
+- [supported, minor] Governance controls: first paragraph / applicability: Manage Copilot Chat says Integrated Apps blocking affects the Microsoft Copilot app, Teams, Outlook and Copilot Chat on the web. | Found: This setting blocks Copilot in the Microsoft Copilot app, Teams, Outlook, and Copilot Chat on the web for all users. | Fix: Append: 'Microsoft guidance differs on Teams: the Integrated Apps article says the app is blocked only in the Microsoft Copilot application and Outlook, and Teams continues to honour its Teams admin center settings (https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365#how-to-block-an-app).' | Source: https://learn.microsoft.com/copilot/manage/manage-copilot-chat
 -->

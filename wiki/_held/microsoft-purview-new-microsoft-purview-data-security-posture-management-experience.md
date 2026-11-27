@@ -18,7 +18,7 @@ defaultState: "unknown"
 action: "prepare"
 licensing:
   model: "mixed"
-  notes: "DSPM's prerequisites ask for 'a supporting license' and point to the Purview service description, which has no DSPM entry at the time of writing. The Posture Agent needs Microsoft 365 E5 with SCUs (per-seat plus pay-as-you-go); E5 and E7 include 400 SCUs a month per 1,000 paid licences."
+  notes: "DSPM's prerequisites ask for 'a supporting license' and point to the Purview service description, which mentions DSPM but does not give a base licence requirement for the new DSPM experience. The Posture Agent needs Microsoft 365 E5 with SCUs (per-seat plus pay-as-you-go); E5 and E7 include 400 SCUs a month per 1,000 paid licences."
 audiences: ["security","compliance","finops"]
 tags: ["dspm","purview","oversharing","security-copilot","security-compute-units","microsoft-fabric","sharepoint","data-security-investigations","role-groups","pay-as-you-go"]
 sources:
@@ -119,19 +119,23 @@ changes:
     note: "New briefing: the launched DSPM experience, with its roles, Posture Agent SCU costs, Fabric and item-level oversharing assessments and partner integration."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 82 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-27"
+    note: "Corrected: the role group row now covers baseline DSPM access, with the extra roles some activities need; the service description is described as mentioning DSPM without a base licence; checklist items with no control row removed."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 121 statements contradicted, 1 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-27"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 82
-  confirmed: 79
+  claims: 121
+  confirmed: 119
   unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "2e69d58ed383ed4c9b8da911645e675e"
+  contradicted: 1
+  attempts: 2
+  hash: "3d2270029b703beff5f8fe28468e4d43"
 ---
 
 ## What's changing
@@ -172,7 +176,7 @@ Cost now depends on which parts you use: the Posture Agent draws on SCUs every r
 
 ## Cost and licensing
 
-**Licence.** The DSPM prerequisites on Learn require "a supporting license for this Microsoft Purview solution" and refer to the Microsoft Purview service description, which at the time of writing (November 2026) has no entry for the new DSPM. The classic DSPM documentation states that it needs a Microsoft 365 E5 or Microsoft Purview Suite licence; Microsoft has not published whether the same applies to the new version. Monitoring Microsoft 365 Copilot and agents needs users licensed for Microsoft 365 Copilot.
+**Licence.** The DSPM prerequisites on Learn require "a supporting license for this Microsoft Purview solution" and refer to the Microsoft Purview service description, which at the time of writing (November 2026) mentions DSPM but does not give a base licence requirement for the new DSPM experience. The classic DSPM documentation states that it needs a Microsoft 365 E5 or Microsoft Purview Suite licence; Microsoft has not published whether the same applies to the new version. Monitoring Microsoft 365 Copilot and agents needs users licensed for Microsoft 365 Copilot.
 
 **Meters.**
 - **Data Security Posture Agent (preview):** the get-started page says it needs both per-seat licensing and pay-as-you-go billing, specifically Microsoft 365 E5 with SCUs provisioned, and that it consumes SCUs every time it runs. Microsoft 365 E5 and E7 customers receive 400 SCUs a month for every 1,000 paid user licences, up to 10,000 SCUs a month, at no additional cost. A rate for a Posture Agent run is not yet published.
@@ -195,18 +199,14 @@ Cost now depends on which parts you use: the Posture Agent draws on SCUs every r
 
 ### Before rollout
 - Decide who needs edit access (Microsoft Purview Compliance Administrator role group) and who needs view-only access, and assign the role groups in the Purview portal.
-- Confirm the tenant's DSPM licence with your Microsoft account team, since the service description has no DSPM entry.
-- Check the monthly SCU allocation that comes with Microsoft 365 E5 or E7 before activating the Data Security Posture Agent.
-- Agree with the Entra team who owns the item-level and Fabric app registrations and their credentials, and who may grant admin consent.
+- Confirm the tenant's DSPM licence with your Microsoft account team, since the service description mentions DSPM but does not give a base licence requirement for the new DSPM experience.
 
 ### At rollout
-- Complete the setup tasks under DSPM > Actions > Setup tasks, noting which ones prompt for pay-as-you-go billing.
 - Activate the Posture Agent only if you want it, using an agent identity as Microsoft recommends.
 - Run a first custom assessment with item-level scanning against a few SharePoint sites before using Remove sharing link.
 - Brief site owners on the Notify email and on what Remove sharing link does to their users.
 
 ### After rollout
-- Review Posture Agent SCU use on the agent's Performance tab and remove unneeded scheduled prompts.
 - Re-run custom assessments with the duplicate option after they expire at 30 days.
 - Open DSPM at least every 60 days, or processing of Microsoft 365 data pauses.
 
@@ -225,7 +225,7 @@ Cost now depends on which parts you use: the Posture Agent draws on SCUs every r
 </tbody>
 </table>
 
-- The role group row governs everything in DSPM; edit roles can create one-click policies that apply to all users, so keep them to the people who own DLP and labelling. Adding role group members in the portal needs the Role management role.
+- The role group row governs baseline DSPM access; some activities require additional roles, such as Data Security Viewers to run Security Copilot prompts and Microsoft Sentinel Contributor to connect partner solutions in the Microsoft Sentinel content hub. Edit roles can create one-click policies that apply to all users, so keep them to the people who own DLP and labelling. Adding role group members in the portal needs the Role management role.
 - Microsoft Learn documents no PowerShell or Graph operation for data risk assessments, the Posture Agent or partner integration at the time of writing (November 2026); these are managed in the portal.
 - Deactivating the Posture Agent stops it without removing it; Remove agent deletes it and it must be set up again.
 - Item-level and Fabric assessments depend on Entra app registrations that Cloud Application Administrator, Application Administrator or Privileged Role Administrator creates in the Entra admin centre.
@@ -241,16 +241,12 @@ Cost now depends on which parts you use: the Posture Agent draws on SCUs every r
 <!-- rationale
 risk: Medium. Agents and item-level remediation can label files and remove SharePoint sharing links, and item-level scanning needs an Entra app with Files.ReadWrite.All and Sites.ReadWrite.All; each piece is set up by an admin.
 cost: Variable. The Posture Agent consumes Security Compute Units (SCUs) each run, proactive AI insights consume Data Security Investigations compute units, and some options need Purview pay-as-you-go billing.
-impact: Low. The new experience is used by security and compliance admins; site owners notice only when an admin sends an oversharing notice or removes a sharing link.
+impact: Low. The new experience is used by security and compliance admins; site owners can receive oversharing notices and users can lose access through removed sharing links.
 -->
 
 <!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: first bullet / applicability: The role-group row governs everything in DSPM. | Found: When not supported, additional role groups required ... View Security Copilot insights and run prompts ... Data Security Viewers ... Connect to partner solutions in Microsoft Sentinel content hub ... Microsoft Sentinel Contributor | Fix: Replace 'The role group row governs everything in DSPM' with 'The role group row governs baseline DSPM access; some activities require additional roles'. Keep the existing Data Security Viewers and Microsoft Sentinel Contributor qualifications. Source: https://learn.microsoft.com/purview/data-security-posture-management-permissions. | Source: https://learn.microsoft.com/purview/data-security-posture-management-permissions
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model; licensing.notes; Cost and licensing / licensing: The experience has mixed licensing, including per-seat and pay-as-you-go requirements for the Posture Agent. | Found: This agent requires both the standard per seat licensing model and the pay-as-you-go billing model. | Fix: Keep mixed, but add: 'The Security Copilot inclusion page says eligible E5 and E7 customers do not need manual SCU provisioning and can use included SCUs for core Purview agentic scenarios.' Cite https://learn.microsoft.com/copilot/security/security-copilot-inclusion alongside the agent page's differing wording. | Source: https://learn.microsoft.com/purview/copilot-in-purview-posture-agent-get-started
-- [supported, minor] front matter: licensing.notes; Cost and licensing; Governance guidance; Open questions / absence: The service description has no DSPM entry establishing the base licence for the new experience, and Microsoft has not confirmed whether the classic licence requirement carries over. | Found: Searched: 'Purview DSPM new Data Security Posture Management licensing E5 Purview Suite default automatic rollout'; service-description text for 'posture' and 'DSPM'. Read current prerequisites, classic licensing and service-description matches; no new DSPM base SKU entry. | Fix: Replace 'has no DSPM entry' wherever used with 'mentions DSPM but does not give a base licence requirement for the new DSPM experience'. The service description does mention DSPM in Collection Policies and Posture Reports; retain the narrower base-licence open question.
-- [unsupported, minor] rationale: impact / behaviour: Site owners notice the new experience only when an administrator sends an oversharing notice or removes a sharing link. | Found: Searched: 'Purview DSPM new Data Security Posture Management licensing E5 Purview Suite default automatic rollout'. Read overview, setup and oversharing; Notify and Remove sharing link are documented, but no passage limits all site-owner effects to those two actions. | Fix: Replace 'site owners notice only when an admin sends an oversharing notice or removes a sharing link' with 'site owners can receive oversharing notices and users can lose access through removed sharing links'.
-- [contradicted, minor] Governance guidance / consistency: Every control the governance checklist asks administrators to check or configure is represented in the controls table. | Found: Checklist: 'Check the monthly SCU allocation'; 'app registrations'; 'Complete the setup tasks'; 'Review Posture Agent SCU use ... remove unneeded scheduled prompts'. Table: baseline roles, agent deactivation, item-level scanning, Fabric connection and partner integration. | Fix: The checklist's SCU-allocation check, Entra app-registration and consent management, general setup tasks, Performance monitoring and scheduled-prompt removal have no corresponding rows. Remove these control-setting/checking instructions from the checklist; retain their verified factual explanations elsewhere. Do not add rows as part of this correction.
+- [contradicted, blocker] front matter: defaultState; What's changing; Why it matters / default: DSPM's default is unknown, and Microsoft has not stated what starts without administrator setup. | Found: **Opt-in analytics processing**: Data Security Posture Management requires explicit opt-in before processing organizational data. Analytics in both Insider Risk Management and DLP must be enabled before Data Security Posture Management can generate insights. | Fix: Set defaultState to admin-opt-in. Replace both broad unstated-default sentences with: 'DSPM requires explicit opt-in before processing organisational data; analytics in Insider Risk Management and DLP must be enabled before it can generate insights.' Cite https://learn.microsoft.com/purview/data-security-posture-management-application-card. Retain the separate documented Posture Agent activation requirement. | Source: https://learn.microsoft.com/purview/data-security-posture-management-application-card
+- [unsupported, blocker] Risk assessment: Autonomy & actions / cost: Scheduled Posture Agent SCU use continues until the schedule is removed. | Found: Searched: "Data Security Posture Agent" "remove" "schedule". Opened Posture Agent get-started: it documents recurring eligible prompts, SCUs per run and agent deactivation, but does not state the claimed schedule-removal condition. | Fix: Replace 'so SCU use continues until the schedule is removed' with 'and each run consumes SCUs; deactivating the agent stops it from functioning', as documented at https://learn.microsoft.com/purview/copilot-in-purview-posture-agent-get-started.
 -->

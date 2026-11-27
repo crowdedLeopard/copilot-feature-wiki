@@ -2,33 +2,27 @@
   "slug": "power-apps-model-driven-apps-use-row-summaries-in-us-government-clouds",
   "roadmapId": 576279,
   "title": "Power Apps: row summaries in model-driven apps reach GCC and GCC High",
-  "status": "held",
+  "status": "verified",
   "date": "2026-11-27",
-  "version": 5,
+  "version": 6,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-27",
-    "reasons": [
-      "1 blocking finding (claim 38)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 59,
+    "claims": 58,
     "confirmed": 58,
     "unconfirmed": 0,
-    "contradicted": 1,
-    "blocker": 1,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
-    "minor": 2
+    "minor": 0
   },
-  "summary": "The briefing incorrectly reports that the environment control has no documented automation: the Power Platform API exposes the shared AI insight cards setting and an update operation. The roadmap and licensing claims are supported, but this control gap must be corrected before publication.",
+  "summary": "The briefing passes: the roadmap facts, administrative paths, licensing and credit consumption are supported. The environment settings API is documented despite the automated warning, and the briefing explicitly reports the conflicting Learn descriptions of defaults and configuration scope.",
   "claims": [
     {
       "n": 1,
@@ -37,7 +31,7 @@
       "claim": "The feature is in development.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"status\": \"In development\"",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
       "severity": null,
       "fix": null
     },
@@ -67,7 +61,7 @@
       "n": 4,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
-      "claim": "The planned release phase is General Availability.",
+      "claim": "The release phase is General Availability.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\"]",
@@ -76,12 +70,12 @@
     },
     {
       "n": 5,
-      "where": "title; summary; front matter: clouds; What's changing; Scope",
+      "where": "title; summary; front matter: clouds; What's changing; Scope; rationale: impact",
       "type": "record",
-      "claim": "The expansion covers model-driven apps in GCC and GCC High.",
+      "claim": "The planned government expansion covers GCC and GCC High.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"clouds\": [\"GCC\", \"GCC High\"]; Applies to: Model-driven apps",
+      "quote": "\"clouds\": [\"GCC\", \"GCC High\"]",
       "severity": null,
       "fix": null
     },
@@ -89,7 +83,7 @@
       "n": 6,
       "where": "front matter: platforms",
       "type": "record",
-      "claim": "The roadmap lists the Web platform.",
+      "claim": "The roadmap lists Web as the platform.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -98,12 +92,12 @@
     },
     {
       "n": 7,
-      "where": "summary; What's changing; Scope",
+      "where": "title; front matter: products; What's changing; Scope",
       "type": "record",
-      "claim": "The release channel is Weekly.",
+      "claim": "This roadmap item concerns Power Apps model-driven apps.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Release Channel: Weekly",
+      "quote": "\"products\": [\"Power Apps\"]; Applies to Model-driven apps",
       "severity": null,
       "fix": null
     },
@@ -111,18 +105,29 @@
       "n": 8,
       "where": "summary; What's changing; Scope",
       "type": "record",
-      "claim": "The planned version is 2612.2.",
+      "claim": "The roadmap lists the weekly release channel.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Version: 2612.2",
+      "quote": "Release Channel\nWeekly",
       "severity": null,
       "fix": null
     },
     {
       "n": 9,
+      "where": "summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists version 2612.2.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Version\n2612.2",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
       "where": "What's changing; Why it matters",
       "type": "record",
-      "claim": "The roadmap describes extending an experience already available to commercial customers.",
+      "claim": "The roadmap describes bringing the existing commercial row summary experience to supported government environments.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "This release brings the row summary experience available to commercial customers to supported government environments",
@@ -130,8 +135,8 @@
       "fix": null
     },
     {
-      "n": 10,
-      "where": "What's changing",
+      "n": 11,
+      "where": "What's changing; Why it matters; Governance guidance",
       "type": "record",
       "claim": "The roadmap says the expansion meets applicable compliance and data-boundary requirements.",
       "status": "supported",
@@ -141,8 +146,8 @@
       "fix": null
     },
     {
-      "n": 11,
-      "where": "What's changing",
+      "n": 12,
+      "where": "What's changing; rationale: impact",
       "type": "record",
       "claim": "Admins and makers enable and configure row summaries for users.",
       "status": "supported",
@@ -152,10 +157,10 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 13,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Row summaries provide an AI-generated overview of a record.",
+      "claim": "Row summaries give users an AI-generated overview of a record.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/user/record-summaries",
       "quote": "The Row summary feature in apps provides you with a concise, AI-generated overview of key details about a record.",
@@ -163,10 +168,10 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 14,
       "where": "What's changing; rationale: impact",
       "type": "behaviour",
-      "claim": "Summaries appear in an Insights bar on main forms.",
+      "claim": "Summaries appear in the Insights bar on main forms.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/user/record-summaries",
       "quote": "From the Insights bar at the top of main forms.",
@@ -174,10 +179,10 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 15,
       "where": "What's changing; rationale: impact",
       "type": "behaviour",
-      "claim": "Users access summaries through a Summary action on view pages.",
+      "claim": "Users access summaries through the Summary action on view pages.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/user/record-summaries",
       "quote": "From view pages by selecting the inline Summary action in the grid, which opens the summary for a record in a modal popup.",
@@ -185,10 +190,10 @@
       "fix": null
     },
     {
-      "n": 15,
-      "where": "What's changing; Risk assessment: Data exposure; Governance guidance",
+      "n": 16,
+      "where": "What's changing; Risk assessment: Data exposure; Governance controls",
       "type": "behaviour",
-      "claim": "Makers write table prompts specifying columns to include in the summary.",
+      "claim": "Makers specify the columns to include through a custom prompt for the table.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/data-platform/configure-form-row-summary",
       "quote": "Write a custom prompt to specify which columns should be included in a Copilot-generated row summary.",
@@ -196,10 +201,10 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 17,
       "where": "Risk assessment: Security & identity",
       "type": "applicability",
-      "claim": "Microsoft's Power Platform Copilot FAQ says Copilot adheres to existing permissions and policies.",
+      "claim": "Microsoft's Power Platform Copilot FAQ says Copilot adheres to existing data permissions and policies.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/faqs-copilot-data-security-privacy",
       "quote": "Copilot adheres to existing data permissions and policies",
@@ -207,10 +212,10 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 18,
       "where": "Risk assessment: Security & identity",
       "type": "applicability",
-      "claim": "The Copilot FAQ says responses are based only on data personally accessible to the user.",
+      "claim": "The Copilot FAQ says responses are based only on data the user personally can access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/faqs-copilot-data-security-privacy",
       "quote": "its responses to you're based only on data that you personally can access.",
@@ -218,7 +223,7 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 19,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
       "claim": "Learn documents a column-security limitation for form fill assistance.",
@@ -229,54 +234,32 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 20,
       "where": "Risk assessment: Security & identity",
       "type": "absence",
-      "claim": "Learn does not document that form fill column-security limitation for row summaries.",
+      "claim": "That form fill column-security limitation is not documented for row summaries.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: row summaries usage analytics report secured columns column security model-driven apps. Read record-summaries, configure-form-row-summary, faq-record-summaries, form-filling-assistance; no row-summary-specific column-security limitation.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "The feature reads record data.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/common/faq-record-summaries",
-      "quote": "The feature reads the data on the current record",
+      "quote": "Searched: \"row summaries\" \"column security\". Read record-summaries, configure-form-row-summary, faq-record-summaries and form-filling-assistance; no row-summary equivalent of the form-fill limitation was stated.",
       "severity": null,
       "fix": null
     },
     {
       "n": 21,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "The feature generates a natural-language summary.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/common/faq-record-summaries",
-      "quote": "generates a short, natural-language summary that highlights key information",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
       "claim": "AI-generated summaries may be wrong.",
       "status": "supported",
       "source": "https://learn.microsoft.com/ai-builder/faqs-text-generation",
-      "quote": "AI-generated content can have mistakes, hence makers should inform the end users of their solution that AI creates the content generation by this model in a transparent way.",
+      "quote": "AI-generated content can have mistakes",
       "severity": null,
       "fix": null
     },
     {
-      "n": 23,
+      "n": 22,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "Power Apps model-driven app users require a Power Apps premium licence for row summaries.",
+      "claim": "Users need a Power Apps premium licence for Power Apps model-driven apps.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/user/record-summaries",
       "quote": "Power Apps model-driven app: The user must have a Power Apps premium license.",
@@ -284,10 +267,10 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 23,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "Dynamics 365 model-driven app users require a Dynamics 365 enterprise or premium licence.",
+      "claim": "Users need a Dynamics 365 enterprise or premium licence for Dynamics 365 model-driven apps.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/user/record-summaries",
       "quote": "Dynamics 365 model-driven app: The user must have a Dynamics 365 enterprise or premium license",
@@ -295,10 +278,10 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 24,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "The feature is hidden from users without the required licence.",
+      "claim": "The feature is hidden when the user lacks the required licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/user/record-summaries",
       "quote": "If the user doesn't have the license, the feature is hidden.",
@@ -306,10 +289,10 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 25,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Licence enforcement rolls out gradually following general availability.",
+      "claim": "Microsoft says licence enforcement rolls out gradually following general availability.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/user/record-summaries",
       "quote": "This license enforcement gradually rolls out following the feature's general availability.",
@@ -317,18 +300,18 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 26,
       "where": "Cost and licensing",
-      "type": "cost",
+      "type": "behaviour",
       "claim": "Usage may be subject to service limits.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/user/record-summaries",
-      "quote": "Usage might be subject to service limits or throttling. Microsoft reserves the right to update the limits.",
+      "quote": "Usage might be subject to service limits or throttling.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 28,
+      "n": 27,
       "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "behaviour",
       "claim": "Row summaries rely on AI Builder to execute summary prompts.",
@@ -339,8 +322,8 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "front matter: cost and licensing.notes; Cost and licensing; rationale: cost",
+      "n": 28,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "cost",
       "claim": "AI Builder features in Power Apps consume AI Builder credits or Copilot Credits.",
       "status": "supported",
@@ -350,13 +333,24 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 29,
       "where": "front matter: licensing.model",
       "type": "licensing",
-      "claim": "Licensing is mixed, combining a user licence requirement with AI Builder credit consumption.",
+      "claim": "Licensing is mixed, combining the product user licence with AI Builder capacity consumption.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/user/record-summaries",
-      "quote": "The row summary feature requires specific user licenses based on the product.",
+      "source": "https://learn.microsoft.com/ai-builder/administer-licensing",
+      "quote": "AI Builder is licensed on a capacity basis. Building custom and testing models (including prompts) doesn't require AI Builder credits or Copilot Credits. Running them in agents, agent flows, apps, or flows consume these credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "Cost is variable because running summaries consumes credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/ai-builder/administer-licensing",
+      "quote": "AI Builder features in apps and flows first try to consume AI Builder credits, then if absent or exhausted, they try to consume Copilot Credits.",
       "severity": null,
       "fix": null
     },
@@ -364,7 +358,7 @@
       "n": 31,
       "where": "front matter: licensing.notes",
       "type": "licensing",
-      "claim": "Government terms may differ from the general Power Apps offering.",
+      "claim": "Government terms may differ.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/powerapps-us-government",
       "quote": "It defines the unique commitments of this service and the differences from Power Apps offerings that have been available to our customers since October 2016.",
@@ -378,26 +372,37 @@
       "claim": "Government-specific pricing for row summaries is not yet published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"row summaries\" government pricing AI Builder; row summaries GCC GCC High default enable switch government pricing. Read record-summaries, faq-record-summaries, administer-licensing and powerapps-us-government; no government row-summary price.",
+      "quote": "Searched: Power Apps row summaries government pricing AI Builder Copilot Credits GCC; \"row summaries\" \"GCC\" pricing credits default. Read Power Apps US Government, record-summaries, faq-record-summaries and AI Builder licensing; no government-specific row-summary price.",
       "severity": null,
       "fix": null
     },
     {
       "n": 33,
-      "where": "front matter: defaultState; Scope",
-      "type": "absence",
-      "claim": "The default state for this government rollout is not stated.",
+      "where": "Scope",
+      "type": "record",
+      "claim": "DoD is not listed on this roadmap item.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"row summaries\" \"GCC\"; row summaries GCC GCC High default enable switch government pricing. Read roadmap, record-summaries, configure-form-row-summary, faq-record-summaries, powerapps-us-government; no government-rollout default stated.",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC\", \"GCC High\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 34,
+      "where": "front matter: defaultState; Scope",
+      "type": "absence",
+      "claim": "The default state of the government rollout is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps row summaries GCC GCC High default enable government pricing tenant switch. Read roadmap record, record-summaries, faq-record-summaries and Power Apps US Government; no government-rollout default stated, and Learn gives differing general descriptions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
       "where": "Scope",
       "type": "role",
-      "claim": "The row summaries page says a Power Platform administrator must enable the environment setting.",
+      "claim": "The row summaries page says a Power Platform administrator must enable Row summaries for the environment.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/user/record-summaries",
       "quote": "A Power Platform administrator must enable Row summaries for the environment in the Power Platform admin center",
@@ -405,10 +410,10 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 36,
       "where": "Scope",
       "type": "default",
-      "claim": "The row summaries FAQ says the AI insight cards environment setting is on by default.",
+      "claim": "The FAQ instead says the AI insight cards setting enabling row summaries is on by default.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/common/faq-record-summaries",
       "quote": "The AI insight cards environment setting that enables row summaries is on by default.",
@@ -416,10 +421,10 @@
       "fix": null
     },
     {
-      "n": 36,
-      "where": "Scope; Governance controls",
+      "n": 37,
+      "where": "Scope",
       "type": "behaviour",
-      "claim": "Makers still configure and turn on summary prompts on individual tables.",
+      "claim": "The FAQ says makers still need to configure and turn on summary prompts on individual tables.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/common/faq-record-summaries",
       "quote": "Makers still need to configure and turn on summary prompts on individual tables so that row summaries appear on the corresponding forms and views.",
@@ -427,10 +432,10 @@
       "fix": null
     },
     {
-      "n": 37,
-      "where": "controls[0].ui; Governance controls table",
+      "n": 38,
+      "where": "controls[0].ui; Governance guidance: At rollout; Governance controls table",
       "type": "admin-path",
-      "claim": "Power Platform admin center > Copilot > Settings > Power Apps > Summary > Row summaries > environment > Edit setting reaches the environment control.",
+      "claim": "The environment control is at Power Platform admin center > Copilot > Settings > Power Apps > Summary > Row summaries > environment > Edit setting.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/user/record-summaries#admin-control",
       "quote": "In the navigation pane, select Copilot, and then select Settings. Under Power Apps, locate Row summaries in the Summary section. Select the environment, and then select Edit setting.",
@@ -438,43 +443,54 @@
       "fix": null
     },
     {
-      "n": 38,
-      "where": "controls[0].api; Governance controls table",
-      "type": "absence",
-      "claim": "Microsoft does not document an automation call setting the row summaries environment control.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/rest/api/power-platform/environmentmanagement/environment-management-settings/list-environment-management-settings",
-      "quote": "API Version: 2024-10-01. EnvironmentManagementSetting: | powerApps\\_EnableFormInsights | boolean | |",
-      "severity": "blocker",
-      "fix": "Replace controls[0].api and its rendered gap with kind 'power-platform-api', call 'PATCH /environmentmanagement/environments/{environmentId}/settings?api-version=2024-10-01', docs 'https://learn.microsoft.com/rest/api/power-platform/environmentmanagement/environment-management-settings/update-environment-management-settings'. Add the note 'The request body sets powerApps_EnableFormInsights, the shared AI insight cards setting.' Cite the same-version property reference at https://learn.microsoft.com/rest/api/power-platform/environmentmanagement/environment-management-settings/list-environment-management-settings and the identification of EnableFormInsights as AI insight cards at https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-data-grid#ai-row-summaries. The existing row-summary source already confirms AI insight cards and Row summaries are the same control."
-    },
-    {
       "n": 39,
-      "where": "controls[1].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Power Apps (maker) > Tables > table > Customizations > Row summary reaches the prompt and summary visibility configuration screen.",
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "The Power Platform API updates environment settings through PATCH /environmentmanagement/environments/{environmentId}/settings?api-version=2024-10-01.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/configure-form-row-summary",
-      "quote": "Under Customizations, select Row summary. In the prompt configuration screen, use the Show row summary toggle in the upper-right corner to show or hide the summary.",
-      "severity": "minor",
-      "fix": "For the visibility control, extend controls[1].ui.path and the rendered table path to 'Tables > table > Customizations > Row summary > Show row summary'. Retain the same docs URL; the Prompt box is on this configuration screen."
+      "source": "https://learn.microsoft.com/rest/api/power-platform/environmentmanagement/environment-management-settings/update-environment-management-settings",
+      "quote": "Update fields on the environment management setting. PATCH https://api.powerplatform.com/environmentmanagement/environments/{environmentId}/settings?api-version=2024-10-01",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 40,
-      "where": "controls[1].api; Governance controls table",
-      "type": "absence",
-      "claim": "Microsoft does not document an equivalent automation call configuring the table's row summary prompt and visibility.",
+      "where": "controls[0].note; Governance controls table",
+      "type": "command",
+      "claim": "powerApps_EnableFormInsights is the boolean environment management setting used by the API at version 2024-10-01.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: row summary AI Skill Config table entity reference API prompt Show row summary; \"AI Skill Config\" \"reference\"; \"aiskillconfig\" Web API. Read configure-form-row-summary and ai-skill-config-table; no reference operation or deciding columns found.",
+      "source": "https://learn.microsoft.com/rest/api/power-platform/environmentmanagement/environment-management-settings/list-environment-management-settings",
+      "quote": "API Version: 2024-10-01; EnvironmentManagementSetting; powerApps_EnableFormInsights | boolean",
       "severity": null,
       "fix": null
     },
     {
       "n": 41,
-      "where": "controls[1].note; Governance controls",
+      "where": "controls[0].note; Governance controls table",
       "type": "applicability",
-      "claim": "The configured custom summary applies to all main forms and views for the table.",
+      "claim": "EnableFormInsights is the shared AI insight cards setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-data-grid",
+      "quote": "The canvas grid also checks the shared AI insight cards (EnableFormInsights) setting and whether AI prompts are enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The maker control is at Power Apps > Tables > table > Customizations > Row summary > Show row summary.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/configure-form-row-summary",
+      "quote": "In Power Apps, select Tables on the left navigation pane, and open the table with the configured row summary. Under Customizations, select Row summary. In the prompt configuration screen, use the Show row summary toggle",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[1].note; Governance controls; Governance controls table",
+      "type": "applicability",
+      "claim": "The configuration guide describes summaries applying to all main forms and views for the table.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/data-platform/configure-form-row-summary",
       "quote": "When you configure the row summary, it applies to all views and main forms for the table.",
@@ -482,87 +498,65 @@
       "fix": null
     },
     {
-      "n": 42,
-      "where": "controls[1].note; Governance controls",
-      "type": "applicability",
-      "claim": "Show row summary hides custom summaries configured through this experience.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/configure-form-row-summary",
-      "quote": "The Show row summary toggle affects only custom row summaries configured from this row summary experience.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "controls[1].note; Governance controls",
-      "type": "applicability",
-      "claim": "That maker toggle does not hide Microsoft-provided or other-app summaries, which have separate controls.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/configure-form-row-summary",
-      "quote": "It doesn't hide summaries provided by Microsoft or summaries configured through another application or experience, such as Customer Service summaries for custom tables.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 44,
-      "where": "controls[2].ui and controls[2].api; Governance controls table",
-      "type": "absence",
-      "claim": "No tenant switch specific to the GCC and GCC High expansion is documented on either UI or automation surfaces.",
+      "where": "controls[1].note; Governance controls; Governance controls table",
+      "type": "applicability",
+      "claim": "Show row summary hides only custom summaries configured through this experience, not Microsoft-provided or other-app summaries.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: row summaries GCC GCC High default enable switch government pricing; \"row summaries\" \"GCC\"; row summaries Power Platform API pac. Read record-summaries, configure-form-row-summary, copilot-hub, powerapps-us-government and environment settings API; no cloud-specific switch.",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/configure-form-row-summary",
+      "quote": "The Show row summary toggle affects only custom row summaries configured from this row summary experience. It doesn't hide summaries provided by Microsoft or summaries configured through another application or experience",
       "severity": null,
       "fix": null
     },
     {
       "n": 45,
-      "where": "controls[2].note",
-      "type": "applicability",
-      "claim": "The documented environment setting governs row summaries rather than being a separate government expansion switch.",
+      "where": "controls[1].api; Governance controls table",
+      "type": "absence",
+      "claim": "An automation operation for configuring the summary prompt or changing Show row summary is not documented.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/user/record-summaries#admin-control",
-      "quote": "This setting controls row summaries on both model-driven app main forms and view pages.",
+      "source": null,
+      "quote": "Searched: Power Apps AI Skill Config table row summary Dataverse Web API update prompt enabled; AI Skill Config aiskillconfig table entity reference Dataverse; row summaries API PowerShell CLI. Read configure-form-row-summary and ai-skill-config-table; no deciding property or operation documented.",
       "severity": null,
       "fix": null
     },
     {
       "n": 46,
-      "where": "Governance controls",
-      "type": "applicability",
-      "claim": "The Copilot settings environment control is the primary environment-level availability control.",
+      "where": "controls[2].ui and controls[2].api; Governance controls table",
+      "type": "absence",
+      "claim": "A tenant switch specific to GCC and GCC High is not documented on either the UI or automation surface.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/user/record-summaries#admin-control",
-      "quote": "Use the Copilot settings experience in the Power Platform admin center as the primary environment-level control for row summaries",
+      "source": null,
+      "quote": "Searched: Power Apps row summaries government GCC High tenant switch API PowerShell pac admin; Power Apps row summaries GCC GCC High default enable government pricing tenant switch. Read record-summaries, Copilot hub, Power Apps US Government and environment settings references; no cloud-specific switch.",
       "severity": null,
       "fix": null
     },
     {
       "n": 47,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Learn describes a preview control allowing specific users to use model-driven app Copilot capabilities.",
+      "where": "controls[2].note; Governance controls table",
+      "type": "applicability",
+      "claim": "Row summary availability uses the environment setting rather than a separate cloud-specific control.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/copilot/copilot-hub",
-      "quote": "Admins can define who within an environment can use Copilot capabilities in model-driven apps—either by explicitly allowing specific users",
+      "source": "https://learn.microsoft.com/power-apps/user/record-summaries",
+      "quote": "This setting controls row summaries on both model-driven app main forms and view pages.",
       "severity": null,
       "fix": null
     },
     {
       "n": 48,
       "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "The same preview control can allow all users except an exclusion list.",
+      "type": "applicability",
+      "claim": "The Row summaries environment setting is the primary environment-level availability control.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/copilot/copilot-hub",
-      "quote": "or allowing all users except a defined exclusion list.",
+      "source": "https://learn.microsoft.com/power-apps/user/record-summaries",
+      "quote": "Use the Copilot settings experience in the Power Platform admin center as the primary environment-level control for row summaries",
       "severity": null,
       "fix": null
     },
     {
       "n": 49,
       "where": "Governance controls",
-      "type": "availability",
-      "claim": "This preview user-access control is only for environments activated for Managed Environments.",
+      "type": "applicability",
+      "claim": "The user-access control is in preview and only for environments activated for Managed Environments.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/copilot/copilot-hub",
       "quote": "This capability is currently in preview and is only for environments activated for managed environments",
@@ -572,44 +566,44 @@
     {
       "n": 50,
       "where": "Governance controls",
-      "type": "applicability",
-      "claim": "Power Apps Row summary is listed among the capabilities adhering to the preview user-access control.",
+      "type": "behaviour",
+      "claim": "Admins can explicitly allow specific users through the preview user-access control.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/copilot/copilot-hub",
-      "quote": "Review the following table to learn which capabilities adhere to this configuration. | Power Apps | Row summary |",
+      "quote": "Admins can define who within an environment can use Copilot capabilities in model-driven apps—either by explicitly allowing specific users",
       "severity": null,
       "fix": null
     },
     {
       "n": 51,
       "where": "Governance controls",
-      "type": "absence",
-      "claim": "The Copilot hub page does not state GCC or GCC High availability for this preview user-access control.",
+      "type": "behaviour",
+      "claim": "Admins can allow all users except an exclusion list through the preview user-access control.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"row summaries\" \"GCC\"; row summaries GCC GCC High default enable switch government pricing. Read copilot-hub in full and powerapps-us-government; copilot-hub gives no government-cloud availability for the preview control.",
+      "source": "https://learn.microsoft.com/power-platform/admin/copilot/copilot-hub",
+      "quote": "or allowing all users except a defined exclusion list.",
       "severity": null,
       "fix": null
     },
     {
       "n": 52,
       "where": "Governance controls",
-      "type": "absence",
-      "claim": "The row-summary guidance itself documents no equivalent automation call as of November 2026.",
+      "type": "applicability",
+      "claim": "The Copilot hub page lists Power Apps Row summary among features adhering to the user-access control.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: row summaries AI insight cards environment setting API PowerShell Power Platform API pac admin; row summary AI Skill Config table entity reference API. Read record-summaries, configure-form-row-summary and faq-record-summaries; none prints an equivalent call.",
+      "source": "https://learn.microsoft.com/power-platform/admin/copilot/copilot-hub",
+      "quote": "Review the following table to learn which capabilities adhere to this configuration. Power Apps | Row summary",
       "severity": null,
       "fix": null
     },
     {
       "n": 53,
       "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "The older AI insight cards settings location will be removed in a future release.",
+      "type": "absence",
+      "claim": "The Copilot hub page does not say whether the preview user-access control is available in GCC or GCC High.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/user/record-summaries#admin-control",
-      "quote": "The AI insight cards location will be removed in a future release.",
+      "source": null,
+      "quote": "Searched: \"Copilot\" \"Managed Environments\" \"GCC High\" user access control model-driven apps. Read the complete Copilot hub page, including Control who can use AI features in model-driven apps; no GCC or GCC High availability statement.",
       "severity": null,
       "fix": null
     },
@@ -619,7 +613,7 @@
       "type": "applicability",
       "claim": "The older AI insight cards settings location currently exposes the same control.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/user/record-summaries#admin-control",
+      "source": "https://learn.microsoft.com/power-apps/user/record-summaries",
       "quote": "The same control is currently also available as AI insight cards in the environment feature settings.",
       "severity": null,
       "fix": null
@@ -628,7 +622,18 @@
       "n": 55,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "The row-summary FAQ instead describes configuring and hiding summaries on specific forms.",
+      "claim": "The AI insight cards settings location will be removed in a future release.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/record-summaries",
+      "quote": "The AI insight cards location will be removed in a future release.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Unlike the table-wide configuration guide, the FAQ describes configuring and hiding summaries on specific forms.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/common/faq-record-summaries",
       "quote": "Makers can configure which forms show a row summary, edit the default AI-generated prompt that controls what the summary emphasizes, and hide row summaries from specific forms.",
@@ -636,59 +641,37 @@
       "fix": null
     },
     {
-      "n": 56,
+      "n": 57,
       "where": "Governance controls",
       "type": "absence",
       "claim": "A row-summary-specific usage report is not documented as of November 2026.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"row summary\" \"usage\" report; row summaries usage analytics report secured columns column security model-driven apps. Read copilot-hub, record-summaries and faq-record-summaries; Power Apps analytics lists data entry and data exploration, not a row-summary-specific report.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
-      "where": "rationale: risk",
-      "type": "behaviour",
-      "claim": "Summary prompt execution sends record data to a generative AI service.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/ai-builder/faqs-text-generation",
-      "quote": "Prompt builder prompts run on Azure OpenAI Service hosted by Microsoft. Customer data isn't used to train or improve any of the Azure OpenAI Service foundation models.",
+      "quote": "Searched: Power Apps row summaries usage report analytics Copilot hub; Power Apps row summary usage analytics report summaries. Read Copilot hub, record-summaries and AI Builder licensing; general agent analytics and credit monitoring are documented, not a row-summary-specific report.",
       "severity": null,
       "fix": null
     },
     {
       "n": 58,
-      "where": "Governance guidance: At rollout",
-      "type": "admin-path",
-      "claim": "Admins enable Row summaries for a pilot environment under Copilot > Settings > Power Apps > Summary.",
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "The feature processes record data through generative AI to produce a natural-language summary.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/user/record-summaries#admin-control",
-      "quote": "Under Power Apps, locate Row summaries in the Summary section. Select the environment, and then select Edit setting. Configure the setting, and then select Save.",
-      "severity": "minor",
-      "fix": "Replace the rollout bullet with 'Enable Row summaries for a pilot environment in Power Platform admin center > Copilot > Settings > Power Apps > Summary > Row summaries > environment > Edit setting.'"
-    },
-    {
-      "n": 59,
-      "where": "Scope",
-      "type": "record",
-      "claim": "DoD is not listed in the roadmap record.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"GCC\", \"GCC High\"]",
+      "source": "https://learn.microsoft.com/power-apps/maker/common/faq-record-summaries",
+      "quote": "The feature reads the data on the current record and generates a short, natural-language summary that highlights key information",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-27T20:13:24.276Z",
+    "at": "2026-11-27T22:41:04.878Z",
     "summary": {
-      "links": 11,
+      "links": 14,
       "unreachable": 0,
       "uiPaths": 2,
       "uiPathsWithMissingWords": 0,
-      "apiCalls": 0,
-      "apiCallsNotOnPage": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 1,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -743,7 +726,22 @@
         "status": 200
       },
       {
+        "url": "https://learn.microsoft.com/rest/api/power-platform/environmentmanagement/environment-management-settings/list-environment-management-settings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-data-grid",
+        "ok": true,
+        "status": 200
+      },
+      {
         "url": "https://learn.microsoft.com/power-apps/user/record-summaries#admin-control",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/rest/api/power-platform/environmentmanagement/environment-management-settings/update-environment-management-settings",
         "ok": true,
         "status": 200
       }
@@ -766,6 +764,15 @@
         "missing": []
       },
       {
+        "index": 0,
+        "side": "api",
+        "governs": "Row summaries per environment",
+        "docs": "https://learn.microsoft.com/rest/api/power-platform/environmentmanagement/environment-management-settings/update-environment-management-settings",
+        "reachable": true,
+        "token": "PATCH /environmentmanagement/environments/{environmentId}/settings?api-version=2024-10-01",
+        "found": false
+      },
+      {
         "index": 1,
         "side": "ui",
         "governs": "Summary prompt and whether a table shows a summary",
@@ -774,7 +781,8 @@
         "segments": [
           "Tables",
           "Customizations",
-          "Row summary"
+          "Row summary",
+          "Show row summary"
         ],
         "missing": []
       }
@@ -809,6 +817,12 @@
     {
       "date": "2026-11-20",
       "status": "verified-with-gaps",
+      "version": 5,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-27",
+      "status": "held",
       "version": 5,
       "model": "gpt-6.1-sol"
     }

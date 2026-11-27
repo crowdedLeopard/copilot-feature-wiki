@@ -81,15 +81,17 @@ changes:
     note: "Correction: removed the claim that the Copilot licence does not govern .html upload, removed the spending-policy checklist bullet, and noted Learn's alternative label for Restricted Content Discovery."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 78 statements confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 90 statements confirmed"
 version: 2
 verification:
   status: "verified"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 78
-  confirmed: 78
+  claims: 90
+  confirmed: 90
   unconfirmed: 0
   contradicted: 0
   attempts: 0

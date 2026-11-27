@@ -1,0 +1,836 @@
+{
+  "slug": "microsoft-teams-simplified-device-settings-for-voice-and-face-recognition-on-teams-rooms-o",
+  "roadmapId": 502525,
+  "title": "Microsoft Teams Rooms on Android: voice recognition set in device settings instead of PowerShell",
+  "status": "held",
+  "date": "2026-11-27",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-27",
+    "reasons": [
+      "2 blocking findings (claims 43, 60)"
+    ]
+  },
+  "counts": {
+    "claims": 61,
+    "confirmed": 58,
+    "unconfirmed": 1,
+    "contradicted": 2,
+    "blocker": 2,
+    "major": 1,
+    "minor": 2
+  },
+  "summary": "Hold: the role guidance omits Microsoft's restriction on administrative-unit assignments, which cannot access the Pro Management portal. The rationales also incorrectly imply that rooms cannot identify speakers without the new device setting, although the briefing correctly documents the still-working meeting policy route.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap item is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is October CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"October CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The record gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing",
+      "type": "record",
+      "claim": "Teams and Surface Devices is a listed platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Teams and Surface Devices\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing",
+      "type": "record",
+      "claim": "Web is a listed platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Teams and Surface Devices\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The listed product is Microsoft Teams.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Teams\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modified timestamp is 2026-10-19T23:15:15.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-19T23:15:15\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap title mentions voice and face recognition on Teams Rooms on Android.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Teams: Simplified device settings for voice and face recognition on Teams Rooms on Android",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "controls[0].ui; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The portal path is Rooms > Settings > Recognition > Configure with device settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
+      "quote": "Select Rooms. Select Settings followed by the Recognition tab Enable Configure with device settings",
+      "severity": "minor",
+      "fix": "Complete controls[0].ui.path as 'Rooms > room > Settings > Recognition > Configure with device settings > Voice Recognition'. The cited recognition page supplies the recognition steps; https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings supplies selecting the device. Use the same full route in the rollout guidance."
+    },
+    {
+      "n": 12,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "The console path is Settings > Recognition > Configure with device settings (Recommended) > Voice recognition.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
+      "quote": "On the Teams Room console, go to Settings > Recognition. Select Configure with device settings (Recommended). Turn on Voice recognition and/or Face recognition as applicable.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[0].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No PowerShell or API is documented for the portal Recognition device setting as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Graph teamworkDevice configuration Recognition API; Teams Rooms Recognition device settings PowerShell MicrosoftTeams. Read people-recognition, pro-portal-settings and Graph teamworkDeviceConfiguration: configuration has only Get, with no recognition update operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[1].api",
+      "type": "absence",
+      "claim": "No PowerShell or API is documented for the local Android Recognition device setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Rooms Recognition device settings PowerShell MicrosoftTeams configuration API voiceRecognition Android. Read people-recognition, pro-portal-settings, release notes and Graph teamworkDeviceConfiguration; no operation sets the local Recognition option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -roomAttributeUserOverride Attribute configures voice identification.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
+      "quote": "Set-CsTeamsMeetingPolicy -Identity PolicyName -roomAttributeUserOverride Attribute -roomPeopleNameUserOverride On",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[2].ui",
+      "type": "absence",
+      "claim": "A Teams admin center UI for roomAttributeUserOverride is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Rooms roomAttributeUserOverride Teams admin center UI meeting policy. Read people-recognition meeting-policy steps, settings-policies-reference search excerpt, and Set-CsTeamsMeetingPolicy reference; no UI steps for this parameter were found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[3].api",
+      "type": "command",
+      "claim": "Set-CsTeamsAIPolicy -Identity Global -EnrollVoice Enabled enables active voice enrollment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
+      "quote": "Set-CsTeamsAIPolicy -Identity Global -EnrollVoice Enabled -EnrollFace Enabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[3].ui; controls[3].note; Governance controls",
+      "type": "absence",
+      "claim": "The Teams AI enrollment policy is managed only through PowerShell, not an admin UI.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams AI policy EnrollVoice Teams admin center only PowerShell manage enrollment. Read voice-and-face-recognition and copilot-admin-mtr search excerpt: 'There isn't a way to set this in Teams admin center. You must use PowerShell.'",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[4].ui",
+      "type": "admin-path",
+      "claim": "The transcription UI path is Teams admin center > Meetings > Meeting policies > policy > Transcription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+      "quote": "In the left navigation of the Teams admin center, go to Meetings > Meeting policies. Select the policy that you want to edit or create a new one. Toggle Transcription On or Off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[4].api",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowTranscription $true allows transcription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+      "quote": "Set-CsTeamsMeetingPolicy -Identity \"Your Policy Name\" -AllowTranscription $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; controls[0].note",
+      "type": "default",
+      "claim": "The new device Voice Recognition setting is off by default and an administrator enables it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
+      "quote": "Voice Recognition | Off | Users with enrolled voice profile are identified with their voice when using this device. Others are distinguished as meeting participants.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: licensing.model and notes; summary; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Recognition is included for Teams Rooms devices with a Teams Rooms Pro license and is exclusive to those devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
+      "quote": "This feature is exclusive to Microsoft Teams Rooms devices with a Teams Rooms Pro license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Voice recognition requires a room resource account assigned a Teams Rooms Pro license.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-recognition",
+      "quote": "Teams Room resource account with a Teams Room Pro license assigned.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "summary; What's changing; Scope; controls[0].governs",
+      "type": "availability",
+      "claim": "Teams Rooms on Android supports voice recognition using device settings or a meeting policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
+      "quote": "Teams Rooms on Android | Supported | Not supported | Device settings or meeting policy",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Scope; controls[0].note",
+      "type": "availability",
+      "claim": "Face recognition is not supported on Teams Rooms on Android.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
+      "quote": "Device type | Voice recognition | Face recognition | Configuration method; Teams Rooms on Android | Supported | Not supported | Device settings or meeting policy",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Scope: Devices",
+      "type": "availability",
+      "claim": "Teams Rooms on Windows supports voice recognition.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
+      "quote": "Teams Rooms on Windows | Supported | Supported | Device settings or meeting policy",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Scope: Devices",
+      "type": "availability",
+      "claim": "Teams Rooms on Windows supports face recognition.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
+      "quote": "Teams Rooms on Windows | Supported | Supported | Device settings or meeting policy",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Enrolled users' contributions are attributed by name in transcripts, meeting recaps and Copilot experiences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
+      "quote": "When an enrolled user joins meetings from a Teams Room, their contributions are accurately attributed in transcriptions, meeting recaps, and Copilot experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Unenrolled in-room participants appear as Speaker X in the transcript.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
+      "quote": "If an in-room participant isn't enrolled, they're still displayed on video as Participant X and in the transcript as Speaker X.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing; controls[1].note; Governance guidance: After rollout; Governance controls",
+      "type": "behaviour",
+      "claim": "Setting changes made directly on the device synchronize back to the Pro Management portal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
+      "quote": "Any setting changes made directly on the device are synchronized back to the Teams Rooms Pro Management portal and reflected in the Settings tab of the device panel, providing visibility into the device's current configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing; Risk assessment: Change & support; Governance controls",
+      "type": "behaviour",
+      "claim": "The meeting policy route remains available alongside device settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
+      "quote": "Recognition in Teams Rooms can be configured through either device-level settings or a Teams Meeting policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing; Why it matters; controls[2].note",
+      "type": "behaviour",
+      "claim": "Microsoft recommends using device-level settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
+      "quote": "We recommend using device-level settings because meeting policy-based configuration will be retired in the future.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "summary; What's changing; controls[2].note; Open questions",
+      "type": "behaviour",
+      "claim": "Microsoft plans to retire meeting policy-based recognition configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
+      "quote": "Meeting policy-based configuration will be retired in the future.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "No retirement date for meeting policy-based recognition configuration is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Rooms roomAttributeUserOverride retirement date. Read people-recognition, release notes and voice-recognition, and related Learn search excerpts; retirement is stated only as 'in the future', without a date.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Why it matters; Open questions",
+      "type": "absence",
+      "claim": "The interaction and precedence when enabling device configuration over an assigned meeting policy are not described.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Rooms Configure with device settings overrides precedence roomAttributeUserOverride. Read people-recognition, pro-portal-settings and voice-recognition; neither a migration rule nor precedence between these routes was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Why it matters; Risk assessment: Data exposure; Governance controls",
+      "type": "behaviour",
+      "claim": "Room recognition uses biometric profiles created through separate user enrollment controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
+      "quote": "Voice and face recognition only works if end users have completed enrollment by creating their biometric profiles in Teams. IT admins can manage enrollment permissions using the Teams AI Policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Why it matters; controls[3].note",
+      "type": "default",
+      "claim": "Voice and face enrollment is enabled for all users by default in the Teams AI policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
+      "quote": "By default, voice and face recognition is available and enrollment is enabled for all users in the organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[3].note; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "PassiveVoiceEnrollment governs express voice enrollment using meeting audio.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
+      "quote": "PassiveVoiceEnrollment | Allows users to create their voice profiles via their voice data from Teams meetings for speaker identification, transcription, and voice isolation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "A voice profile unused for one year is automatically removed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
+      "quote": "In addition, a voice and face profile that isn't used for one year is removed automatically.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Data exposure; Governance controls",
+      "type": "behaviour",
+      "claim": "Administrators can view voice and face enrollment status in the Teams admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
+      "quote": "Enterprise administrators can now use Teams admin center to view end-user voice and face enrollment status and manage enrolled data directly from the admin experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Data exposure; Governance controls",
+      "type": "behaviour",
+      "claim": "Administrators can delete users' voice and face profiles in the Teams admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
+      "quote": "Enterprise administrators can also delete end-user voice and face profiles and enrollment data directly from the Teams admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[0].note; Risk assessment: Security & identity; Governance controls",
+      "type": "role",
+      "claim": "Changing device settings requires Room Management modify permission.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
+      "quote": "you can configure settings for Microsoft Teams devices ... provided you have the necessary role-based access control permissions for Rooms Management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Security & identity; Scope: Roles",
+      "type": "role",
+      "claim": "Global Administrator, Teams Administrator and Teams Devices Administrator can modify Room Management without any assignment-scope qualification.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac",
+      "quote": "Teams Administrator or Teams Devices Administrator assigned to an Administrative Unit (AU), can't access the Teams Rooms Pro Management portal, as AUs aren't currently supported.",
+      "severity": "blocker",
+      "fix": "Add to the role guidance in Risk assessment and Scope: 'Teams Administrator and Teams Devices Administrator assignments scoped to an Administrative Unit cannot access the Teams Rooms Pro Management portal because administrative units are not supported.' Cite https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac."
+    },
+    {
+      "n": 44,
+      "where": "Scope: Roles",
+      "type": "role",
+      "claim": "Global Reader has read-only access to the Pro Management portal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac",
+      "quote": "Global Reader: Read-only access to the Microsoft Teams Rooms Pro Management portal",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Change & support; Scope: Prerequisites",
+      "type": "applicability",
+      "claim": "Voice identification requires the meeting organizer's mailbox to be in Exchange Online.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-recognition",
+      "quote": "Identification features are supported only when the meeting organizer's mailbox is in Exchange Online. They aren't supported for on-premises Exchange or third-party calendars (for example, Google Calendar).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope: Prerequisites; Governance controls",
+      "type": "applicability",
+      "claim": "Devices must be signed in for portal settings changes to apply.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
+      "quote": "Settings management is available only for signed-in devices. Ensure that the device is signed in for settings changes from the Teams Rooms Pro management portal to be applied successfully.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Scope: People recognised",
+      "type": "applicability",
+      "claim": "People to be identified must have enrolled a voice profile and be invited to the scheduled meeting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-recognition",
+      "quote": "People to be identified in the room, need to be enrolled with their voice profile and be invited to the scheduled meeting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Scope: People recognised",
+      "type": "behaviour",
+      "claim": "There is a limit of 50 invitees with a voice profile.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-recognition",
+      "quote": "The limitation for people invited with a voice profile is 50 invitees (regardless of the quantity of participants in the room).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[4].governs and note; Risk assessment; Scope; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Voice identification does not occur unless transcription is enabled in the Teams meeting policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
+      "quote": "If transcription isn't enabled in the Teams Meeting policy, voice identification won't occur.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance guidance: At rollout; Governance controls",
+      "type": "behaviour",
+      "claim": "Device setting jobs can apply settings to multiple devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
+      "quote": "You can change settings on a single device, or for many devices at once using Device setting jobs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance controls: settings templates",
+      "type": "behaviour",
+      "claim": "Settings templates offer reusable configurations that can be applied to multiple rooms.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
+      "quote": "Settings templates let you define a named, reusable configuration that is assigned to specific devices or device groups. ... Navigate to: Settings > Device settings page > Templates (Preview) tab",
+      "severity": "minor",
+      "fix": "Change 'settings templates' in the Governance controls paragraph to 'settings templates (Preview)', matching https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings."
+    },
+    {
+      "n": 52,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Enrollment remains optional for users even when administrators enable it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
+      "quote": "Even if the feature is available, users still need to opt in to enroll their voice and face and create their voice and face profile before they can start using voice and face recognition.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Users can opt out at any time through the Teams desktop client.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
+      "quote": "Users can also opt out of voice and face recognition at any time through their desktop client.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Scope: Clouds",
+      "type": "availability",
+      "claim": "Voice and face enrollment is not available in GCC High.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
+      "quote": "No, voice and face enrollments are currently available only up to GCC and aren't available in GCCH or DOD environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Scope: Clouds",
+      "type": "availability",
+      "claim": "Voice and face enrollment is not available in DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
+      "quote": "No, voice and face enrollments are currently available only up to GCC and aren't available in GCCH or DOD environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "What's changing: Android release notes",
+      "type": "date",
+      "claim": "The voice recognition device settings feature is listed in Android version 1449/1.0.96.2025325609, October 2025.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note",
+      "quote": "1449/1.0.96.2025325609 (October 2025) ... Manage voice recognition for rooms via device settings",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "title; summary; What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "The new Android settings replace the requirement to use PowerShell with a UI and clearer recognition-status visibility across rooms.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note",
+      "quote": "we're introducing new admin-facing settings on Android Teams Rooms devices. These settings replace PowerShell-based configuration with a more intuitive UI, offering clearer visibility into recognition status across rooms.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The recognition setting concerns speaker identification rather than an autonomous action capability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
+      "quote": "Recognition data is used only for in-meeting identification, transcription, and AI-generated recaps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Microsoft says the device settings route will remain once the meeting policy option is retired.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Teams Rooms roomAttributeUserOverride retirement Configure with device settings. Read people-recognition, pro-portal-settings and release notes; Microsoft recommends device settings and announces policy retirement, but does not state the post-retirement design.",
+      "severity": "major",
+      "fix": "Remove 'and it is the route Microsoft says will remain once the meeting policy option is retired' from Why it matters. The already-present statement that Microsoft recommends device settings is supported."
+    },
+    {
+      "n": 60,
+      "where": "rationale: risk and impact",
+      "type": "consistency",
+      "claim": "No room identifies enrolled speakers, and participants notice recognition only, after an administrator enables it through the new device setting.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "risk: 'no room identifies enrolled people by voice until an admin turns it on for that device.' What's changing: 'The older route, the roomAttributeUserOverride parameter of the Teams meeting policy, still works'.",
+      "severity": "blocker",
+      "fix": "Replace the risk rationale with 'Low. The new Voice Recognition device setting is Off by default; Microsoft still documents the existing meeting policy configuration route.' Replace the impact rationale with 'Low. Room administrators see the new settings; enrolled meeting participants can notice speaker attribution in rooms configured for recognition.'"
+    },
+    {
+      "n": 61,
+      "where": "controls[2].note",
+      "type": "command",
+      "claim": "roomAttributeUserOverride accepts Off, Attribute or Distinguish.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "-RoomAttributeUserOverride: Possible values: Off; Distinguish; Attribute",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-27T22:41:19.407Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 3,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=502525",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/rooms/voice-recognition",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether a Teams Rooms on Android device identifies enrolled people by voice",
+        "docs": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
+        "reachable": true,
+        "segments": [
+          "Rooms",
+          "Settings",
+          "Recognition",
+          "Configure with device settings"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Voice recognition set locally on the room console",
+        "docs": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Recognition",
+          "Configure with device settings",
+          "Voice recognition"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Voice-based identification in rooms through the meeting policy (route to be retired)",
+        "docs": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
+        "reachable": true,
+        "token": "Set-CsTeamsMeetingPolicy",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Whether users may enrol a voice profile that rooms can recognise",
+        "docs": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
+        "reachable": true,
+        "token": "Set-CsTeamsAIPolicy",
+        "found": true
+      },
+      {
+        "index": 4,
+        "side": "ui",
+        "governs": "Whether meetings can be transcribed, which voice identification depends on",
+        "docs": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+        "reachable": true,
+        "segments": [
+          "Meetings",
+          "Meeting policies",
+          "Transcription"
+        ],
+        "missing": []
+      },
+      {
+        "index": 4,
+        "side": "api",
+        "governs": "Whether meetings can be transcribed, which voice identification depends on",
+        "docs": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+        "reachable": true,
+        "token": "Set-CsTeamsMeetingPolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

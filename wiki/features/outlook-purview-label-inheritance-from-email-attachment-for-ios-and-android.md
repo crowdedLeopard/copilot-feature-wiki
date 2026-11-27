@@ -18,7 +18,7 @@ defaultState: "admin-opt-in"
 action: "review"
 licensing:
   model: "included"
-  notes: "Microsoft's Purview service description says sensitivity labeling, including automatic or policy-based labeling, requires a Microsoft 365 E5 licence or Information Protection and Governance (IPG). No row for this feature is published."
+  notes: "Microsoft's Purview service description says sensitivity labeling, including automatic or policy-based labeling, requires a Microsoft 365 E5 licence or Information Protection and Governance (IPG). For users assigned a premium/P2 entitlement, the standard/Plan 1 entitlement must also be assigned for sensitivity labeling to be available. No row for this feature is published."
 audiences: ["m365-admin","compliance","security"]
 tags: ["outlook","mobile","purview","information-protection","sensitivity-labels","gcc","gcc-high","dod"]
 sources:
@@ -67,7 +67,7 @@ controls:
     note: "Available only when the inheritance checkbox is selected. Without it, the label is applied automatically but users can still change it before sending."
 confidence: "medium"
 created: "2026-11-20"
-updated: "2026-11-20"
+updated: "2026-11-27"
 roadmapModified: "2026-10-27T23:05:02"
 changes:
   - date: "2026-11-20"
@@ -80,19 +80,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 47 statements confirmed"
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 52 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-27"
+    note: "Corrected after the independent check: added the Purview service description's requirement that the standard/Plan 1 entitlement is also assigned for users with a premium/P2 entitlement."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 51 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-27"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 52
+  claims: 51
   confirmed: 51
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "c673c35567c3b648a17f9c4abab3f47b"
+  contradicted: 0
+  attempts: 0
+  hash: "4adae7289baf335d1eacab3f28a94e64"
 ---
 
 ## What's changing
@@ -127,7 +131,7 @@ Microsoft has not stated whether tenants that already selected the checkbox will
 
 ## Cost and licensing
 
-Microsoft's Purview service description states that sensitivity labeling, including automatic or policy-based labeling, requires a Microsoft 365 E5 licence or Microsoft 365 Information Protection and Governance (IPG), and its table lists manual sensitivity labeling as included in Microsoft 365 E3 and several other plans. Learn also says that to use sensitivity labels in Office apps you must use a subscription edition of Office.
+Microsoft's Purview service description states that sensitivity labeling, including automatic or policy-based labeling, requires a Microsoft 365 E5 licence or Microsoft 365 Information Protection and Governance (IPG), and its table lists manual sensitivity labeling as included in Microsoft 365 E3 and several other plans. For users assigned a premium/P2 entitlement, the standard/Plan 1 entitlement must also be assigned for sensitivity labeling to be available, according to the same service description. Learn also says that to use sensitivity labels in Office apps you must use a subscription edition of Office.
 
 The service description states that automatic or policy-based sensitivity labeling requires Microsoft 365 E5 or Microsoft 365 Information Protection and Governance (IPG); it lists no separate row for attachment inheritance. No meter is documented for this feature at the time of writing (November 2026). The indirect cost is admin time to review label policies and to tell mobile users what to expect.
 
@@ -174,10 +178,4 @@ Both rows are settings in a sensitivity label policy, so they apply to the users
 risk: Low. The behaviour follows a label policy checkbox that an administrator selects, and stays inside existing sensitivity labels; tenants that already selected it should check what mobile users will now see.
 cost: Low. The only cost the sources show is admin time and communication; Microsoft's Purview service description states the licences for sensitivity labeling but lists no separate row or meter for this feature.
 impact: Low. Only users who attach labelled files to email in Outlook for iOS or Android, in tenants whose label policy turns the setting on, would notice a label being applied or recommended.
--->
-
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing; front matter: licensing.notes; rationale: cost / licensing: The licensing requirement is Microsoft 365 E5 or Microsoft 365 Information Protection and Governance, without stating the additional standard/Plan 1 assignment requirement for premium/P2 users. | Found: A standard/Plan 1 license must be assigned in addition to the premium/P2 license for users to have access to sensitivity labeling for Information Protection for Office 365 and AIP, even if the premium licenses/Plan 2 are assigned. | Fix: Keep the E5/IPG requirement and add to the licensing notes and Cost and licensing: 'For users assigned a premium/P2 entitlement, the standard/Plan 1 entitlement must also be assigned for sensitivity labeling to be available.' Cite the existing Microsoft Purview service description. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
 -->

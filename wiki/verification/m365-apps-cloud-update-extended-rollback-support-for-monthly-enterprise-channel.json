@@ -1,0 +1,796 @@
+{
+  "slug": "m365-apps-cloud-update-extended-rollback-support-for-monthly-enterprise-channel",
+  "roadmapId": 572673,
+  "title": "Microsoft 365 Apps cloud update: extended rollback that holds Monthly Enterprise Channel devices until an admin resumes them",
+  "status": "verified-with-gaps",
+  "date": "2026-11-27",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 58,
+    "confirmed": 57,
+    "unconfirmed": 1,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 1,
+    "minor": 0
+  },
+  "summary": "The briefing passes: Microsoft documentation supports the persistent rollback behavior, administrative controls, licensing requirements and audit operation. The statement that rollback does not change what data the apps can reach is not established by the documentation and should be removed.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap item is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target date is September CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"September CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is September CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"September CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms",
+      "type": "record",
+      "claim": "The roadmap lists Desktop and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap products are Microsoft 365 and Microsoft 365 app.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft 365\", \"Microsoft 365 app\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap was modified at 2026-10-20T23:00:34.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-20T23:00:34\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "title; summary; What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Cloud update now permits rollback to either of the two previous Monthly Enterprise Channel versions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-pause-rollback",
+      "quote": "Cloud Update lets you roll back eligible devices to either of the two previous Monthly Enterprise Channel versions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "When available, the earlier rollback version includes its latest security update.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-enhancements",
+      "quote": "When available, the earlier version includes its latest security update.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: defaultState; summary; controls[1].note; What's changing; rationale: risk",
+      "type": "default",
+      "claim": "The change is on: starting September 2026, rolled-back devices remain on their target across releases until an admin resumes them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-pause-rollback",
+      "quote": "Starting in September 2026, rolled-back devices no longer resume automatically when a new Monthly Enterprise Channel version is released. An admin must resume the devices by selecting Actions > Manage rolled back devices. Until then, the devices remain on their selected rollback target.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Why it matters; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Existing rollback actions remain in effect when a later release arrives.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-enhancements",
+      "quote": "Existing rollback actions remain in effect when a later Monthly Enterprise Channel release becomes available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[0].note; What's changing; Risk assessment; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "An administrator can apply a newer security build with another Roll back devices action without resuming the devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-pause-rollback",
+      "quote": "Apply another rollback action and select that build to install the security update while keeping the device rolled back.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[0].note; What's changing",
+      "type": "behaviour",
+      "claim": "The newer rollback action replaces the existing rollback target.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-pause-rollback",
+      "quote": "The new rollback action replaces the existing rollback target for the selected devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment: Change & support; Cost and licensing",
+      "type": "behaviour",
+      "claim": "Rollback can take up to 24 hours, depending in part on content download.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-pause-rollback",
+      "quote": "Rollback can take up to 24 hours to complete, depending on device connectivity, content download, and user postponement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Update activity can take up to 24 hours to resume after devices are resumed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-pause-rollback",
+      "quote": "Depending on device connectivity and update conditions, it might take up to 24 hours for update activity to resume.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[2]; What's changing; Scope",
+      "type": "availability",
+      "claim": "Pause and rollback are available only for the Monthly Enterprise profile, not the Current profile.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-pause-rollback",
+      "quote": "Pause and rollback are available only for devices managed by the Monthly Enterprise profile.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Rollback does not change a device's assigned update channel.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-pause-rollback",
+      "quote": "Rollback doesn't change the assigned update channel for a device.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[0].note; What's changing; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "Rollback can target all eligible devices, named devices or Microsoft Entra groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-pause-rollback",
+      "quote": "Select Roll back all devices to roll back all eligible devices. This option also prevents other devices from continuing with the update. Enter one or more device names. Enter one or more Microsoft Entra group names.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Cloud update matches targeted Microsoft Entra group users to their corresponding devices in Inventory.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-pause-rollback",
+      "quote": "Rollback supports Microsoft Entra groups that contain user objects. Cloud update matches those users to their corresponding devices in Inventory.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Security & identity; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Roll back all devices also prevents other devices from continuing with the update.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-pause-rollback",
+      "quote": "Select Roll back all devices to roll back all eligible devices. This option also prevents other devices from continuing with the update.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Security & identity; Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "The Devices tab shows rolled-back devices and their status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-pause-rollback",
+      "quote": "You can monitor rolled-back devices and their status on the Devices tab.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Scope: Rollout",
+      "type": "date",
+      "claim": "The enhancements page gives the extended rollback rollout as September 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-enhancements",
+      "quote": "Extended rollback support for Monthly Enterprise Channel. Note. Rolling out September 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The enhancements page lists Message Center post MC1478946 for this roadmap item.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-enhancements",
+      "quote": "| September 21, 2026 | MC1478946 | 572673 |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "The enhancements page gives September 21, 2026 as the date added for MC1478946.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-enhancements",
+      "quote": "| Date added | Message Center | Microsoft 365 | ... | September 21, 2026 | MC1478946 | 572673 |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Scope: Devices",
+      "type": "availability",
+      "claim": "Cloud update manages Microsoft 365 Apps on Windows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-requirements",
+      "quote": "You can manage Microsoft 365 Apps on Windows with the following version requirements:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Scope: Roles; Governance controls; Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "Supported management roles are Office Apps Administrator (recommended), Security Administrator and Global Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-requirements",
+      "quote": "You can use the following built-in Microsoft Entra roles for accessing and managing the feature: ... Office Apps Administrator (Recommended) ... Security Administrator ... Global Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Scope: Roles; Governance controls",
+      "type": "role",
+      "claim": "Global Reader does not support cloud update.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-requirements",
+      "quote": "Global Reader is another built-in role supported by the Microsoft 365 Apps admin center, but it does not support some features like cloud update or the Modern App Settings page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The user must be assigned Microsoft 365 A3/A5, Business Standard/Premium, Office 365 E3/E5 or Microsoft 365 E3/E5.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-requirements",
+      "quote": "Your user must be assigned to one of the following subscription plans: ... Microsoft 365 A3 ... Microsoft 365 A5 ... Microsoft 365 Business Standard ... Microsoft 365 Business Premium ... Office 365 E3 ... Office 365 E5 ... Microsoft 365 E3 ... Microsoft 365 E5",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "front matter: licensing.model; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Extended rollback is included as an option inside cloud update under the product's published subscription requirements.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-requirements",
+      "quote": "Requirements for cloud update ... Licensing requirements ... Your user must be assigned to one of the following subscription plans:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Cost and licensing; Scope: Clouds",
+      "type": "availability",
+      "claim": "The requirements page lists 21Vianet, GCC, GCC High and DoD plans as not supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-requirements",
+      "quote": "The following plans are not supported: Microsoft 365 operated by 21Vianet; Microsoft 365 GCC; Microsoft 365 GCC High and DoD",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Scope: Targeting",
+      "type": "behaviour",
+      "claim": "Device objects used in Microsoft Entra groups must be Microsoft Entra joined or hybrid joined.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-requirements",
+      "quote": "Device objects must be Microsoft Entra joined or hybrid joined.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Scope: Targeting",
+      "type": "behaviour",
+      "claim": "A single Microsoft Entra group should contain no more than 20,000 objects.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-requirements",
+      "quote": "Multiple groups can be used, but a single group should contain no more than 20,000 objects.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "Devices managed by cloud update download Microsoft 365 Apps updates from the Office CDN.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-prepare",
+      "quote": "Devices managed by cloud update download updates for Microsoft 365 Apps from the Office Content Delivery Network (CDN).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[3].note; Risk assessment: Autonomy & actions; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Device configuration updated, operation updateddeviceconfiguration, records rollback, device resume and update-channel changes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-activities",
+      "quote": "| Device configuration updated | updateddeviceconfiguration | An action for a device managed by Cloud Update was triggered. This action includes triggering a rollback, resuming a rolled back device, or changing the update channel. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[3].note; Governance controls",
+      "type": "applicability",
+      "claim": "Cloud update generates audit records when auditing is enabled for Microsoft 365.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-purview",
+      "quote": "When auditing is enabled for Microsoft 365, cloud update audit records are generated for profile configuration changes, tenant-wide setting changes, and device actions that admins trigger.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[3].governs; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Cloud update audit records identify who performed the administrative action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-purview",
+      "quote": "Audit records help you identify which admin action was performed, who performed it, when it occurred, and which cloud update object was affected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Rollback is reached in the Microsoft 365 Apps admin center at Cloud Update > Monthly Enterprise > Overview > Actions > Roll back devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-pause-rollback",
+      "quote": "Sign in to the Microsoft 365 Apps admin center ... In the navigation pane, expand Cloud Update, and then select Monthly Enterprise. On the Overview tab for the Monthly Enterprise profile, select Actions > Roll back devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[0].api; Governance controls table and notes; Open questions",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no API or PowerShell operation for cloud update rollback as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft 365 Apps cloud update rollback resume pause Microsoft Graph API PowerShell operation reference'; 'site:learn.microsoft.com/graph cloud update Office apps rollback resume pause API beta reference'; read Pause and rollback and returned Graph/Autopatch excerpts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[1].ui; Governance controls table; What's changing; Governance guidance",
+      "type": "admin-path",
+      "claim": "Device resume is reached in the Microsoft 365 Apps admin center at Cloud Update > Monthly Enterprise > Overview > Actions > Manage rolled back devices > device > Resume.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-pause-rollback",
+      "quote": "Expand Cloud Update, and then select Monthly Enterprise. On the Overview tab ... select Actions > Manage rolled back devices. ... To resume an individual device, locate the device, and then select Resume.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[1].api; Governance controls table and notes; Open questions",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no API or PowerShell operation for resuming cloud update rolled-back devices as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft 365 Apps cloud update rollback resume pause Microsoft Graph API PowerShell operation reference'; 'site:learn.microsoft.com/powershell Microsoft 365 Apps cloud update rollback resume pause'; read Pause and rollback and returned reference excerpts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[2].ui; Governance controls table; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Pause is reached in the Microsoft 365 Apps admin center at Cloud Update > Monthly Enterprise > Overview > Pause updates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-pause-rollback",
+      "quote": "Sign in to the Microsoft 365 Apps admin center ... In the navigation pane, expand Cloud Update, and then select Monthly Enterprise. On the Overview tab for the Monthly Enterprise profile, select Pause updates.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[2].api; Governance controls table and notes",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no API or PowerShell operation for pausing a cloud update profile as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'site:learn.microsoft.com/graph cloud update Office apps rollback resume pause API beta reference'; 'site:learn.microsoft.com/powershell Microsoft 365 Apps cloud update rollback resume pause'; read Pause and rollback and Windows update API excerpts, which concern different services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[3].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Audit search is reached in the Microsoft Purview portal at Audit > Search.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "Sign in to the Microsoft Purview portal. Select the Audit solution card. If the Audit solution card isn't displayed, select View all solutions and then select Audit from the Core section. On the Search page, configure the following search criteria as applicable:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[3].api; Governance controls table and notes",
+      "type": "command",
+      "claim": "Search-UnifiedAuditLog -StartDate <ExDateTime> -EndDate <ExDateTime> -Operations updateddeviceconfiguration searches the cloud update device-action audit operation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog?view=exchange-ps",
+      "quote": "Search-UnifiedAuditLog -EndDate <ExDateTime> -StartDate <ExDateTime> ... [-Operations <String[]>] ... The Operations parameter filters the log entries by operation. ... For a list of the available values for this parameter, see Audited activities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[1].note; Governance controls table",
+      "type": "admin-path",
+      "claim": "Manage rolled back devices also provides Resume updates for all rolled back devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-pause-rollback",
+      "quote": "To resume all devices, turn on Resume updates for all rolled back devices, and then select Resume for All devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[2].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "Pausing stops remaining update deployments until an administrator resumes the profile.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-pause-rollback",
+      "quote": "When you pause a profile, the remaining update deployments stop until an admin resumes the profile.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[2].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "An installation already in progress continues when the profile is paused.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-pause-rollback",
+      "quote": "If an update is already in progress on a device, the installation continues.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[2].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "Pausing does not roll devices back.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-pause-rollback",
+      "quote": "Pause temporarily stops update activity. Rollback returns selected devices to a previous version while you investigate or resolve an issue.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Rollback can be started while the profile is paused.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-pause-rollback",
+      "quote": "You can start rollback while the profile is paused.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Resuming a paused profile and resuming rolled-back devices are separate actions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-pause-rollback",
+      "quote": "To resume update activity, return to the Monthly Enterprise profile, and then select Resume updates. ... To resume rolled-back devices ... select Actions > Manage rolled back devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "No separate licence specific to extended rollback is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft 365 Apps cloud update extended rollback licensing price meter fee'; 'Microsoft 365 Apps cloud update extended rollback separate licensing billing pricing requirements'; read Requirements for cloud update, Pause and rollback, and New changes coming to cloud update.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No separate price specific to extended rollback is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft 365 Apps cloud update extended rollback licensing price meter fee'; 'Microsoft 365 Apps cloud update extended rollback separate licensing billing pricing requirements'; read Requirements for cloud update, Pause and rollback, and the returned pricing excerpts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No separate meter specific to extended rollback is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft 365 Apps cloud update extended rollback licensing price meter fee'; 'Microsoft 365 Apps cloud update extended rollback separate licensing billing pricing requirements'; read Requirements for cloud update and New changes coming to cloud update; no rollback meter was identified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Extended rollback does not change what data the apps can reach.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'Microsoft 365 Apps cloud update rollback data access permissions data exposure'; read Pause and rollback, New changes coming to cloud update, Requirements for cloud update, and returned data-access excerpts. None states that rollback preserves application data reach.",
+      "severity": "major",
+      "fix": "Remove 'No change' and 'not what data the apps can reach'. Replace the bullet with: 'The feature changes which Microsoft 365 Apps build a device runs.'"
+    },
+    {
+      "n": 56,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Use Roll back devices rather than Resume to apply a newer security build while retaining rollback state.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-pause-rollback",
+      "quote": "Use Roll back devices to apply the newer security build. Don't select Resume, because resuming returns the devices to the normal update process.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "front matter: cost; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "The low cost rating represents administrator time under the product's existing licensing requirements, with no published separate rollback charge.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-enhancements",
+      "quote": "An admin must resume the devices when they're ready to return to the normal update process. ... If a newer security update becomes available ... start another rollback action and select the newer security build.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Learn describes rollback, security-build retargeting and resume as administrator-initiated actions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-pause-rollback",
+      "quote": "To roll back devices, follow these steps ... Review your selections and then start the rollback action. ... To resume an individual device, locate the device, and then select Resume. ... Apply another rollback action and select that build.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-27T22:41:09.400Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-pause-rollback",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-enhancements",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-requirements",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-prepare",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-purview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-log-activities",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=572673",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-search",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog?view=exchange-ps",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which devices are rolled back, and to which earlier version and security build",
+        "docs": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-pause-rollback",
+        "reachable": true,
+        "segments": [
+          "Cloud Update",
+          "Monthly Enterprise",
+          "Overview",
+          "Actions",
+          "Roll back devices"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "When rolled-back devices return to the normal update process",
+        "docs": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-pause-rollback",
+        "reachable": true,
+        "segments": [
+          "Cloud Update",
+          "Monthly Enterprise",
+          "Overview",
+          "Actions",
+          "Manage rolled back devices",
+          "device",
+          "Resume"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether the Monthly Enterprise profile continues deploying updates",
+        "docs": "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-pause-rollback",
+        "reachable": true,
+        "segments": [
+          "Cloud Update",
+          "Monthly Enterprise",
+          "Overview",
+          "Pause updates"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Review of who triggered rollbacks and resumes",
+        "docs": "https://learn.microsoft.com/purview/audit-search",
+        "reachable": true,
+        "segments": [
+          "Audit",
+          "Search"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Review of who triggered rollbacks and resumes",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog?view=exchange-ps",
+        "reachable": true,
+        "token": "Search-UnifiedAuditLog",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

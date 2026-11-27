@@ -101,19 +101,23 @@ changes:
     note: "Corrected: removed unsupported statements on data storage, sign-in and permissions; licensing set to included (Teams licence); impact raised to high; delete permission notes now give the REST and PowerShell references' differing lists."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 80 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-27"
+    note: "Corrected the rollout line in Scope: MC1462467 gives Targeted Release and General Availability the same early October 2026 start, with completion by early and mid-October respectively, not one after the other."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 83 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-27"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 80
-  confirmed: 79
-  unconfirmed: 1
+  claims: 83
+  confirmed: 83
+  unconfirmed: 0
   contradicted: 0
-  attempts: 2
-  hash: "0dcbf5c1a70464a6654f2778a415f5ac"
+  attempts: 0
+  hash: "fca0ff143c0f220696e4e1effcd3a016"
 ---
 
 ## What's changing
@@ -157,7 +161,7 @@ The cost the sources show is admin time: reviewing what the Awards and Certifica
 - **Where it shows:** the Overview and Contact tabs of Teams profile cards. The post also lists Outlook, the Microsoft 365 Copilot app and Microsoft 365 profile cards under platforms and services.
 - **Clouds:** Worldwide (Standard Multi-Tenant), as the roadmap item lists it.
 - **Platforms:** Desktop and Mac, as the roadmap item lists them.
-- **Rollout:** Targeted Release, then General Availability, both in October 2026 according to MC1462467.
+- **Rollout:** Targeted Release and General Availability both begin in early October 2026, with expected completion by early October and mid-October respectively, according to MC1462467.
 - **Roles:** profile card settings under People settings need the Global Administrator or People Administrator role. Global Readers can view those settings read-only.
 - **Prerequisite:** populated properties. The profile card page says profile properties can be populated from Microsoft Entra ID, organisational data in Microsoft 365, Microsoft 365 Copilot connectors for people data, and user-provided details.
 
@@ -206,10 +210,8 @@ cost: Low. The only cost the sources show is admin time to review the Awards and
 impact: High. In organisations that populate Awards and Certifications, the section appears automatically for all users; organisations with empty properties see no visible change.
 -->
 
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Scope: Rollout / date: According to MC1462467, Targeted Release happens first and General Availability follows it. | Found: Searched: 568078 Targeted rollout October. Read MC1462467 and roadmap record: both rollout starts are early October 2026; different expected completion windows do not establish sequential rollout. Learn search found no feature-specific ordering statement. | Fix: Replace 'Targeted Release, then General Availability, both in October 2026 according to MC1462467' with 'Targeted Release and General Availability both begin in early October 2026, with expected completion by early October and mid-October respectively, according to MC1462467.'
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance controls: Microsoft 365 admin center path / admin-path: Settings > Org settings > People settings > Profile card > Contact info reaches optional profile property visibility. | Found: admins can configure their visibility by navigating to Settings > Org settings > People settings > Profile card > Contact info in the Microsoft 365 admin center. | Fix: The cited People settings page additionally says to find the Services tab on Org settings before selecting People settings. Replace the prose path with 'Settings > Org settings > Services > People settings > Profile card > Contact info', combining the steps at https://learn.microsoft.com/microsoft-365/admin/manage/people-settings-in-microsoft-365-admin-center and https://learn.microsoft.com/microsoft-365/admin/manage/customize-profile-cards. | Source: https://learn.microsoft.com/microsoft-365/admin/manage/customize-profile-cards
+- [supported, minor] Governance controls / admin-path: The profile card optional-property visibility path is Microsoft 365 admin center > Settings > Org settings > People settings > Profile card > Contact info. | Found: admins can configure their visibility by navigating to Settings > Org settings > People settings > Profile card > Contact info in the Microsoft 365 admin center. | Fix: Use 'Microsoft 365 admin center > Settings > Org settings > Services > People settings > Profile card > Contact info'. The already cited https://learn.microsoft.com/microsoft-365/admin/manage/people-settings-in-microsoft-365-admin-center says 'On the Org settings page, find the Services tab' before selecting People settings, although the profile card article omits it. | Source: https://learn.microsoft.com/microsoft-365/admin/manage/customize-profile-cards
 -->
