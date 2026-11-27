@@ -1,0 +1,729 @@
+{
+  "slug": "microsoft-purview-communication-compliance-support-for-adaptive-policy-scopes",
+  "roadmapId": 98186,
+  "title": "Microsoft Purview Communication Compliance: scope policies to users with adaptive scopes",
+  "status": "held",
+  "date": "2026-11-27",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-27",
+    "reasons": [
+      "3 blocking findings (claims 26, 30, 38)",
+      "4 major findings"
+    ]
+  },
+  "counts": {
+    "claims": 48,
+    "confirmed": 40,
+    "unconfirmed": 6,
+    "contradicted": 2,
+    "blocker": 3,
+    "major": 4,
+    "minor": 5
+  },
+  "summary": "Hold: the proposed policy-scoping PowerShell operation has undocumented parameter semantics, while Microsoft's setup guidance says to manage these policies in the portal. The membership command also needs a current-member filter, and the briefing incorrectly extends a licensing warning about Exchange validation results to actual scope membership.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap item is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target date is April CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"April CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is January CY2023.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"January CY2023\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview as release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed by the roadmap item.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "title; summary; What's changing",
+      "type": "behaviour",
+      "claim": "Communication Compliance policies can target users or groups through adaptive scopes instead of All users or selected users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
+      "quote": "You can select **All users**, define specific users in a Communication Compliance policy, or select an adaptive scope.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "User adaptive scopes query Entra attributes including department, country or region, job title and Exchange custom attributes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "Job title  Department  Office Street address  City State or province Postal code  Country or region  Email addresses  Alias  Exchange custom attributes: CustomAttribute1 - CustomAttribute15",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "summary; What's changing; Risk assessment: Autonomy; Open questions",
+      "type": "behaviour",
+      "claim": "Adaptive scope queries run daily.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "These dynamic queries run daily against the attributes or properties that you specify for the selected scope.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "Adaptive scoping is admin-opt-in: an administrator creates scopes and selects them in a policy rather than existing policies changing automatically.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-configure",
+      "quote": "To use an adaptive policy, [create the adaptive scope before you create your policy](purview-adaptive-scopes#configure-adaptive-scopes), then select the scope when you choose this option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; controls[0].note; Scope: Prerequisite",
+      "type": "behaviour",
+      "claim": "The adaptive scopes must exist before creating the policy that selects them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
+      "quote": "If you decide to create an adaptive policy, you must [create one or more adaptive scopes](purview-adaptive-scopes#configure-adaptive-scopes) before you create your policy, and then select them when you choose this option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Scope: Who it affects",
+      "type": "applicability",
+      "claim": "Users and Microsoft 365 Groups adaptive scope types apply to Communication Compliance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "There are three different types of adaptive scopes, and each one supports different attributes or properties: ... For communication compliance policies: ... SharePoint sites and OneDrive accounts aren't supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Scope: Out of scope",
+      "type": "applicability",
+      "claim": "SharePoint sites and OneDrive accounts are not supported for Communication Compliance adaptive scopes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "For communication compliance policies:\n\n- SharePoint sites and OneDrive accounts aren't supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Communication Compliance adaptive scoping supports excluded users and Microsoft 365 groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "For communication compliance policies: ... Excluded users and Microsoft 365 groups are supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment; Scope; Governance guidance; Governance controls; Open questions",
+      "type": "applicability",
+      "claim": "Administrative units and adaptive scopes cannot currently be used together in Communication Compliance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-permissions",
+      "quote": "At this time, you can't use administrative units together with [adaptive scopes](purview-adaptive-scopes) in Communication Compliance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[0].note; What's changing",
+      "type": "behaviour",
+      "claim": "Select adaptive scopes is hidden when a policy is scoped to administrative units.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-configure",
+      "quote": "If the policy is [scoped by one or more admin units](purview-admin-units) the **Select adaptive scopes** option doesn't appear.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "Why it matters; Governance controls; rationale: risk",
+      "type": "behaviour",
+      "claim": "Query values are not validated immediately because the query does not run immediately.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "Because the query doesn't run immediately, there's no validation that you typed in the value correctly.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Why it matters; controls[2].note; Open questions",
+      "type": "behaviour",
+      "claim": "Initial query population and changes reflected in Scope details can take up to five days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "It can take up to five days for the queries to fully populate and changes aren't immediate. ... adaptive scope query changes can take up to five days to become effective and reflected in the scope details view",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Scope: Prerequisite; Governance guidance: At rollout",
+      "type": "date",
+      "claim": "Microsoft advises waiting a few days before adding a new scope to a policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "Factor in this delay by waiting a few days before you add a newly created scope to a policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[1].note; Risk assessment: Security; Scope; Governance guidance",
+      "type": "role",
+      "claim": "Creating adaptive scopes requires the Scope Manager role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "Any role group with the *Scope Manager* role can create an adaptive scope.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[3].note; Risk assessment: Security; Governance guidance",
+      "type": "role",
+      "claim": "Scope Manager is included in Communication Compliance, Communication Compliance Admins, Compliance Administrator, Compliance Data Administrator, Organization Management and Records Management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "The *Scope Manger* role is included in the following ... built-in role groups ... Compliance Administrator ... Compliance Data Administrator ... Organization Management ... Records Management ... Communication Compliance ... Communication Compliance Admins",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[3].note; Scope: Who configures it",
+      "type": "role",
+      "claim": "Communication Compliance and Communication Compliance Admins role groups can configure policies and settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-permissions",
+      "quote": "| Actions | Communication Compliance | Communication Compliance Admins | ... | Configure policies and settings | Yes | Yes | No | No | No |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Scope: Who configures it",
+      "type": "role",
+      "claim": "Global Administrator, Compliance Administrator and Organization Management have the same solution permissions as Communication Compliance Admins.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-permissions",
+      "quote": "Members of the following roles have the same solution permissions included with the *Communication Compliance Admins* role group: ... Microsoft Entra ID *Global Administrator* ... *Compliance Administrator* ... *Organization Management*",
+      "severity": "minor",
+      "fix": "Remove ', or a role with the same permissions (Global Administrator, Compliance Administrator, Organization Management)' from Who configures it. The permissions page supports it, but https://learn.microsoft.com/purview/communication-compliance#workflow says 'By default, Global Administrators don't have access to Communication Compliance features'; keeping only the two verified Communication Compliance role groups avoids presenting the conflicting guidance as settled."
+    },
+    {
+      "n": 24,
+      "where": "Governance controls: closing paragraph",
+      "type": "behaviour",
+      "claim": "Role group permissions can take up to 30 minutes to apply.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-permissions",
+      "quote": "After configuring your role groups, it might take up to 30 minutes for the role group permissions to apply to assigned users across your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[0].ui; What's changing; Governance controls: first row",
+      "type": "admin-path",
+      "claim": "The policy scoping control is at Microsoft Purview portal > Communication Compliance > Policies > Create policy > Custom policy > Choose users and reviewers > Choose users and groups > Select adaptive scopes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-configure",
+      "quote": "Go to the **Communication Compliance** solution. ... Select **Policies** ... Select **Create policy**, then select **Custom policy**. ... On the **Choose users and reviewers** page: ... In the **Choose users and groups** section ... **Select adaptive scopes**",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[0].api; Governance controls: first row",
+      "type": "command",
+      "claim": "New-SupervisoryReviewRule -Policy <PolicyIdParameter> -IncludeAdaptiveScopes <String[]> is a documented operation for configuring adaptive scoping of a Communication Compliance policy.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: '\"New-SupervisoryReviewRule\" \"IncludeAdaptiveScopes\" Communication Compliance'; opened new-supervisoryreviewrule and communication-compliance-configure. Syntax exists, but the parameter description is a placeholder; setup says policy management cannot use PowerShell.",
+      "severity": "blocker",
+      "fix": "Set controls[0].api to null and replace the corresponding rendered command with Not yet documented. Add to its note: 'The PowerShell reference lists -IncludeAdaptiveScopes without documenting its behavior; the setup guide says to create and manage Communication Compliance policies in the portal.' Retain https://learn.microsoft.com/powershell/module/exchangepowershell/new-supervisoryreviewrule and https://learn.microsoft.com/purview/communication-compliance-configure as sources for that qualification. The missing Name parameter is not the finding."
+    },
+    {
+      "n": 27,
+      "where": "controls[1].ui; Governance guidance: At rollout; Governance controls: second row",
+      "type": "admin-path",
+      "claim": "Adaptive scope queries are configured through Microsoft Purview portal > Settings > Roles and scopes > Adaptive scopes > + Create scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "Sign in to the Microsoft Purview portal ... **Settings** ... **Roles and scopes** ... **Adaptive scopes**. ... select **+ Create scope**. ... Select the type of scope, and then select the attributes or properties you want to use to build the dynamic membership.",
+      "severity": "minor",
+      "fix": "Keep the documented entry path, but add to controls[1].note and the rendered note: 'Continue through the scope configuration, keep Full directory when not restricting by administrative units, select Users or Microsoft 365 Groups, and configure the attributes and values or select Advanced query builder.' The printed path currently stops at the wizard entry rather than the query configuration."
+    },
+    {
+      "n": 28,
+      "where": "controls[1].api; controls[1].note; Governance controls: second row",
+      "type": "command",
+      "claim": "New-AdaptiveScope -Name <String> -LocationType <DynamicBoundaryLocationType> -RawQuery <String> creates an adaptive scope using an advanced query in Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-adaptivescope",
+      "quote": "New-AdaptiveScope\n    -Name <String>\n    -LocationType <DynamicBoundaryLocationType>\n    -RawQuery <String> ... The RawQuery parameter switches the scope to advanced query mode. You use OPATH filter syntax for advanced query mode.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[2].ui; Risk assessment: Data exposure; Governance guidance; Governance controls: third row",
+      "type": "admin-path",
+      "claim": "Scope membership is available at Microsoft Purview portal > Settings > Roles and scopes > Adaptive scopes > scope > Scope details.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "Select **Settings** > **Roles and scopes** > **Adaptive scopes**. ... Select an existing adaptive scope from the list. ... From the **Details** flyout pane, select **Scope details**.",
+      "severity": "minor",
+      "fix": "Keep the path. Add to controls[2].note and the rendered note: 'In Scope details, State = Added identifies current members; State = Removed identifies former members.' The page lists both, so reaching it alone is not a current-members-only view."
+    },
+    {
+      "n": 30,
+      "where": "controls[2].api; Governance guidance: At rollout; Governance controls: third row",
+      "type": "command",
+      "claim": "Get-AdaptiveScopeMembers -Identity <ComplianceRuleIdParameter> is the call for checking current membership.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/get-adaptivescopemembers",
+      "quote": "Use this cmdlet to retrieve existing and past members (users, groups, or sites) of an adaptive scope. ... The State parameter specifies the state ... Added: Current members of the adaptive scope. ... Removed: Former members of the adaptive scope.",
+      "severity": "blocker",
+      "fix": "Replace the call with 'Get-AdaptiveScopeMembers -Identity <ComplianceRuleIdParameter> -State Added' in controls[2].api and the rendered table; use that current-member qualification in the membership-checking prose. Add to the row note: 'The default page contains at most 10,000 members; use the returned Watermark with -PageCookie to retrieve subsequent pages.' Reference: https://learn.microsoft.com/powershell/module/exchangepowershell/get-adaptivescopemembers."
+    },
+    {
+      "n": 31,
+      "where": "controls[3].ui; Governance controls: fourth row",
+      "type": "admin-path",
+      "claim": "Role group membership is edited at Microsoft Purview portal > Settings > Roles and groups > Role groups > role group > Edit > Choose users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-permissions",
+      "quote": "Select **Settings** ... select **Roles and groups**, then select **Role groups** ... Select the *Communication Compliance* role group, then select **Edit**. ... Select **Choose users**",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[3].api; Governance controls: fourth row",
+      "type": "command",
+      "claim": "Add-RoleGroupMember -Identity \"<role-group>\" -Member \"<user-UPN>\" adds a user to a role group and grants its effective permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+      "quote": "When you add a member to a role group, the member is given the effective permissions provided by the management roles assigned to the role group. ... The Identity parameter specifies the role group to add a member to. ... User ID or user principal name (UPN)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "front matter: licensing.model; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Adaptive scoping is an included configuration option within licensed Communication Compliance rather than a separately licensed product.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "| Communication Compliance | Included | Included | Included | Included |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The service description includes Communication Compliance in the stated E5/A5/G5, Purview Suite, Insider Risk Management and E5 plus Copilot offerings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, and Microsoft 365 E5/A5/F5/G5 Insider Risk Management | Office 365 E5/A5/G5 ... | Communication Compliance | Included | Included | Included | Included |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing; Open questions: licensing",
+      "type": "absence",
+      "claim": "No separate Communication Compliance adaptive-scoping licence is specified in the cited service description.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Communication Compliance adaptive scopes licensing separate charge license'; read the service description's Communication Compliance table, adaptive scopes licensing warning and Communication Compliance setup subscriptions section; no separate scoping licence was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft publishes no separate adaptive-scoping charge or meter in the reviewed Communication Compliance licensing and billing documentation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"adaptive scopes\" \"Communication Compliance\" \"billing\" \"price\"'; read the Purview service description, adaptive scopes page and setup billing section. Billing is described for non-Microsoft 365 AI data, not for selecting adaptive scopes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.notes; Cost and licensing; Governance guidance: After rollout",
+      "type": "licensing",
+      "claim": "Users without a valid adaptive-scopes licence do not have the policy settings applied.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "When you use these commands to validate a user scope, if the number of recipients returned is higher than expected, it might be because it includes users who don't have a valid license for adaptive scopes. These users don't have the policy settings applied to them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing; Governance guidance: After rollout; Open questions: licensing",
+      "type": "licensing",
+      "claim": "Unlicensed users appear in the actual adaptive scope membership even though the policy does not cover them.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: '\"adaptive scope\" \"unlicensed\" \"members\"'; read adaptive scopes validation and membership details and Get-AdaptiveScopeMembers. The licensing warning concerns Exchange validation-command results, not a guarantee about actual scope membership.",
+      "severity": "blocker",
+      "fix": "Replace 'so a scope can list people the policy does not cover' with 'Exchange query-validation results can include unlicensed users to whom policy settings do not apply.' Replace the After rollout bullet with 'Investigate unlicensed users returned by Exchange query validation; those results are not proof that policy settings apply.' In the licensing open question, replace 'list scope members it excludes' with 'distinguish unlicensed users in Exchange validation results'. Source: https://learn.microsoft.com/purview/purview-adaptive-scopes#validate-advanced-queries."
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Detecting risky interactions in non-Microsoft 365 AI data requires enabling pay-as-you-go billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-configure",
+      "quote": "Additionally, to detect inappropriate or risky interactions for non-Microsoft 365 AI data, you need to enable [pay-as-you-go billing](/en-us/purview/purview-billing-models) in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "No new data is read.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'Communication Compliance adaptive scopes no new data read query values warning automatic remediation' and '\"Communication Compliance\" \"adaptive scopes\" \"no new data\"'; read adaptive scopes and policy setup. Neither states this blanket data-access assurance.",
+      "severity": "major",
+      "fix": "Remove 'No new data is read.' Keep the narrower explanation that an adaptive scope defines the users or groups a policy covers."
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "An existing policy's conditions remain unchanged when adaptive scopes are used.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: '\"Communication Compliance\" \"adaptive scopes\" \"data\" \"conditions\"' and 'Communication compliance adaptive scopes change existing policy all users edit'; read policy settings and custom-policy setup. They describe separate configuration, not this change guarantee.",
+      "severity": "major",
+      "fix": "Replace 'the policy's conditions and locations are unchanged' with 'the policy wizard configures locations and conditions separately from the user selection'. Source: https://learn.microsoft.com/purview/communication-compliance-configure#step-5-required-create-a-communication-compliance-policy."
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "An existing policy's locations remain unchanged when adaptive scopes are used.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: '\"Communication Compliance\" \"adaptive scopes\" \"data\" \"conditions\"' and 'Communication compliance adaptive scopes change existing policy all users edit'; read policy settings and custom-policy setup. No passage guarantees existing locations are preserved by a switch.",
+      "severity": "major",
+      "fix": "Use the same single replacement for the shared clause: 'the policy wizard configures locations and conditions separately from the user selection'. Do not imply that changing an existing policy to adaptive scoping has documented preservation behavior. Source: https://learn.microsoft.com/purview/communication-compliance-configure#step-5-required-create-a-communication-compliance-policy."
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Remediation stays with human investigators rather than adaptive scopes taking automatic remediation actions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-solution-overview#system-capabilities",
+      "quote": "Investigators have a range of actions they can take to address the displayed message and no automatic actions are taken without manual investigator review.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/purview/communication-compliance-solution-overview#system-capabilities to sources for the statement that remediation requires investigator review."
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Change & support; Governance guidance: Before rollout",
+      "type": "command",
+      "claim": "Advanced user or group queries can be validated with Get-Recipient or Get-Mailbox in Exchange Online PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "Use either Get-Recipient, Get-Mailbox, or Get-User with the -Filter parameter and your OPATH query for the adaptive scope enclosed in curly brackets ... Get-Mailbox doesn't support the MailUser recipient type, so you must use Get-Recipient or Get-User",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Why it matters; Risk assessment: Change & support; rationale: risk",
+      "type": "behaviour",
+      "claim": "Mistyped query values always fail silently, with no warning or notification that coverage is wrong.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: '\"adaptive scopes\" \"warning\" \"values\"' and 'Communication Compliance adaptive scopes no new data read query values warning automatic remediation'; read adaptive scopes configuration and validation. No immediate value validation is documented, not a blanket absence of warnings.",
+      "severity": "major",
+      "fix": "Remove 'and nobody is told' from Why it matters. Replace 'Query errors fail silently: a valid but wrong value returns an empty or partial scope with no warning' with 'Query values are not validated immediately because the query does not run immediately'. In the risk rationale replace 'silently leaves users unmonitored' with 'can leave intended users outside the scope'. Source: https://learn.microsoft.com/purview/purview-adaptive-scopes#configure-adaptive-scopes."
+    },
+    {
+      "n": 46,
+      "where": "Governance controls: closing paragraph",
+      "type": "behaviour",
+      "claim": "An adaptive scope is a reusable configuration element that can be used by Communication Compliance, retention and auto-labeling policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "When you create a communication compliance policy, a policy for retention, or an auto-labeling policy, you can add an adaptive scope for your policy. ... As a reusable configuration element, the same adaptive scope can be used for other compliance policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "What's changing; Why it matters; Risk assessment: Security",
+      "type": "record",
+      "claim": "Policy populations update automatically as users match the configured attribute criteria rather than requiring repeated static-list updates.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "With adaptive policy scopes, policies are automatically updated to include users that match defined risk criteria rather than requiring admins to repeatedly update static lists of users to include in the policy scope.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "consistency",
+      "claim": "Every control the governance checklist asks administrators to check is represented in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Check whether Communication Compliance administrators are restricted by admin units ... Controls rows cover adaptive policy selection, scope queries, membership and role-group membership; none provides the administrative-unit assignment control.",
+      "severity": "minor",
+      "fix": "The Before rollout step asking administrators to check administrative-unit restrictions has no corresponding control row. Remove that checklist step; retain the documented restriction in Scope and the policy row's note. Do not add a control row as part of this correction."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-27T08:23:01.835Z",
+    "summary": {
+      "links": 10,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 4,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=98186",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/communication-compliance-policies",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/communication-compliance-configure",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/communication-compliance-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-supervisoryreviewrule",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-adaptivescope",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/get-adaptivescopemembers",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether a Communication Compliance policy covers users through adaptive scopes",
+        "docs": "https://learn.microsoft.com/purview/communication-compliance-configure",
+        "reachable": true,
+        "segments": [
+          "Communication Compliance",
+          "Policies",
+          "Create policy",
+          "Custom policy",
+          "Choose users and reviewers",
+          "Choose users and groups",
+          "Select adaptive scopes"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether a Communication Compliance policy covers users through adaptive scopes",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-supervisoryreviewrule",
+        "reachable": true,
+        "token": "New-SupervisoryReviewRule",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which users or groups an adaptive scope's query matches",
+        "docs": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Roles and scopes",
+          "Adaptive scopes",
+          "+ Create scope"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which users or groups an adaptive scope's query matches",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-adaptivescope",
+        "reachable": true,
+        "token": "New-AdaptiveScope",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Current membership of an adaptive scope",
+        "docs": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Roles and scopes",
+          "Adaptive scopes",
+          "scope",
+          "Scope details"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Current membership of an adaptive scope",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/get-adaptivescopemembers",
+        "reachable": true,
+        "token": "Get-AdaptiveScopeMembers",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Who can configure Communication Compliance policies and settings",
+        "docs": "https://learn.microsoft.com/purview/communication-compliance-permissions",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Roles and groups",
+          "Role groups",
+          "role group",
+          "Edit",
+          "Choose users"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Who can configure Communication Compliance policies and settings",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "reachable": true,
+        "token": "Add-RoleGroupMember",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

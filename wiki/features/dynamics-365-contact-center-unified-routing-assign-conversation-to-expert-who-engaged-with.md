@@ -89,15 +89,17 @@ changes:
     note: "Corrected: the playbook publish row no longer names an API call, the CC User Prompt columns are stated as the reference lists them, and the active conversation limit is described as a representative-level attribute."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 85 statements confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 90 statements not yet confirmed"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-20"
+  status: "verified-with-gaps"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 85
-  confirmed: 85
+  claims: 90
+  confirmed: 90
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -198,4 +200,10 @@ Roles: System administrator or Omnichannel administrator for conversation orches
 risk: Medium. A published playbook changes which representative receives a conversation, and a returning asynchronous chat can be reassigned to the same representative even when the active conversation limit exceeds the capacity profile.
 cost: Variable. Publishing a playbook consumes Copilot credits (the rate for this scenario is not yet published), and Dynamics 365 Contact Center licensing requirements apply on top.
 impact: Medium. Contact centre administrators, supervisors and representatives in queues covered by a playbook notice first, and returning customers are connected to a different person than before.
+-->
+
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Governance controls / absence: The configuration article names no separate tenant-wide switch for this scenario. | Found: Searched: '"conversation orchestration" "enable" "toggle"'; read the configuration article and RAI FAQ. The configuration article gives no tenant-wide switch, but the FAQ says administrators can 'disable the feature toggle to turn off the feature'. | Fix: Replace the switch sentence with: 'The configuration article gives no separate tenant-wide switch path for this scenario. The Responsible AI FAQ says administrators can disable a feature toggle to turn off conversation orchestration, but gives neither its navigation path nor its scope.'
 -->

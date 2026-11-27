@@ -92,15 +92,17 @@ changes:
     note: "Corrected: added the documented Dataverse create and delete calls for playbooks and the create call for user groups, fixed the wait-time rule, and trimmed the risk rationale."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 77 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 81 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 77
-  confirmed: 76
+  claims: 81
+  confirmed: 80
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -212,9 +214,9 @@ cost: Variable. Learn says conversation orchestration consumes Copilot credits w
 impact: Low. Administrators configure it for chosen queues; representatives in the user groups and customers waiting in those queues notice the changed assignment order.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The creation route is Copilot Service admin center > Customer support > Conversation Orchestration > Prompt gallery > scenario category > Bullseye routing. | Found: On the Conversation Orchestration page, select Prompt gallery ... In the drop-down field, select a scenario category, and then select a playbook template ... Review your configuration for any validation warnings, and then select Publish to activate the playbook. | Fix: The printed route correctly reaches the playbook editor but stops before the row's publishing control. Append ' > Publish' to controls[0].ui.path and the corresponding rendered path; retain the note about setting levels and wait times first. | Source: https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration
-- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The governance checklist directs readers to review diagnostics, but the controls table has no diagnostics entry. | Found: Review diagnostics with the custom query Learn references. / Controls table: creating and publishing a playbook; user groups; editing or deleting a playbook. | Fix: The After rollout diagnostics-review step has no corresponding controls row. Remove that checklist bullet, retaining the supported diagnostics statement in Risk assessment.
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The creation route is Copilot Service admin center > Customer support > Conversation Orchestration > Prompt gallery > scenario category > Bullseye routing. | Found: On the Conversation Orchestration page, select Prompt gallery. / In the drop-down field, select a scenario category, and then select a playbook template. / Review your configuration for any validation warnings, and then select Publish to activate the playbook. | Fix: The path reaches the editor but stops before the row's publishing control. Set controls[0].ui.path and the rendered route to 'Customer support > Conversation Orchestration > Prompt gallery > scenario category > Bullseye routing > Publish'; retain the note about configuring levels and wait times first. | Source: https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration
+- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The checklist directs readers to review diagnostics, but the controls table has no corresponding diagnostics row. | Found: Review diagnostics with the custom query Learn references. / Controls table: creating and publishing a playbook; user groups; editing or deleting a published playbook. | Fix: Remove the After rollout bullet 'Review diagnostics with the custom query Learn references.' It has no corresponding controls row; retain the supported diagnostics statement in Risk assessment.
 -->

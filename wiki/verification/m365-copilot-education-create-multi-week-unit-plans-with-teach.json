@@ -2,30 +2,579 @@
   "slug": "m365-copilot-education-create-multi-week-unit-plans-with-teach",
   "roadmapId": 577392,
   "title": "Microsoft Copilot: Teach builds multi-week unit plans for educators",
-  "status": "held",
-  "date": "2026-11-26",
+  "status": "verified-with-gaps",
+  "date": "2026-11-27",
   "version": 1,
-  "model": "none",
-  "engine": "manual",
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
   "attempts": 0,
-  "hold": {
-    "reason": "unverified",
-    "since": "2026-11-26",
-    "reasons": [
-      "Written but not yet checked against Microsoft Learn."
-    ]
-  },
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
   "counts": {
-    "claims": 0,
-    "confirmed": 0,
+    "claims": 43,
+    "confirmed": 43,
     "unconfirmed": 0,
     "contradicted": 0,
     "blocker": 0,
     "major": 0,
-    "minor": 0
+    "minor": 1
   },
-  "summary": "Written but not yet checked against Microsoft Learn.",
-  "claims": [],
-  "precheck": null,
-  "history": []
+  "summary": "The roadmap facts, Teach eligibility and default, and both Integrated Apps paths are supported. Microsoft gives conflicting guidance about whether Integrated Apps blocking also affects Teams; the briefing should acknowledge that discrepancy.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Governance guidance",
+      "type": "record",
+      "claim": "Educators can create structured unit plans spanning multiple lessons or weeks in Teach.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Educators can use Teach in Microsoft 365 Copilot to create structured unit plans that span multiple lessons or weeks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing; Why it matters",
+      "type": "record",
+      "claim": "Educators can customise unit-plan components to organise connected lesson plans and quizzes.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "They can customize the plan components to organize connected lesson plans and quizzes across a unit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is October CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), without listing US Government clouds.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platforms are Desktop and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Teach is an educator area in the Microsoft Copilot app for creating lesson plans and drafting quizzes and rubrics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/education/guide/1-reference/manage-microsoft-365-education-ai-features",
+      "quote": "Teach in the Microsoft Copilot App is a home where educators can easily access AI-powered teaching tools to create lesson plans, draft materials like quizzes and rubrics",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Teach supports modifications to language, reading level, length, difficulty and alignment to standards.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/education/guide/1-reference/manage-microsoft-365-education-ai-features",
+      "quote": "quickly make modifications to language, reading level, length, difficulty, alignment to relevant standards, and more.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "Teach is accessible in the Microsoft Copilot app on web, Windows and Mac.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/education/guide/1-reference/manage-microsoft-365-education-ai-features",
+      "quote": "Teach is enabled by default and can be accessed in the Microsoft Copilot app on web, Windows, and Mac.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The cited Copilot Chat admin page says Microsoft 365 Copilot is now named Microsoft Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage",
+      "quote": "Microsoft 365 Copilot is now named Microsoft Copilot, and Microsoft 365 Copilot Chat is now named Microsoft Copilot Chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "Teach is enabled by default for eligible users without an administrator having to enable it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/education/guide/1-reference/manage-microsoft-365-education-ai-features",
+      "quote": "Teach is enabled by default",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: licensing.model and notes; summary; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "Teach is available within assigned Microsoft 365 A1/A3/A5 or Office 365 A1/A1 Plus/A3/A5 Faculty/Staff licensing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/education/guide/1-reference/manage-microsoft-365-education-ai-features",
+      "quote": "Teach is available to users with the following SKUs assigned and Microsoft Copilot Chat enabled:\n- Microsoft 365 A1/A3/A5 for Faculty/Staff\n- Office 365 A1/A1 Plus/A3/A5 for Faculty/Staff",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope",
+      "type": "availability",
+      "claim": "Eligible Teach users must have Microsoft Copilot Chat enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/education/guide/1-reference/manage-microsoft-365-education-ai-features",
+      "quote": "Teach is available to users with the following SKUs assigned and Microsoft Copilot Chat enabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "Cost and licensing; Scope; rationale: impact",
+      "type": "availability",
+      "claim": "Teach is not available to students.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/education/guide/1-reference/manage-microsoft-365-education-ai-features",
+      "quote": "Teach isn't available to students, enterprise or business customers, or consumer/personal accounts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "Cost and licensing; Scope",
+      "type": "availability",
+      "claim": "Teach is not available to enterprise or business customers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/education/guide/1-reference/manage-microsoft-365-education-ai-features",
+      "quote": "Teach isn't available to students, enterprise or business customers, or consumer/personal accounts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Risk assessment: Security & identity; Cost and licensing; Scope",
+      "type": "availability",
+      "claim": "Teach is not available to consumer or personal accounts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/education/guide/1-reference/manage-microsoft-365-education-ai-features",
+      "quote": "Teach isn't available to students, enterprise or business customers, or consumer/personal accounts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Cost and licensing; front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "Microsoft's education guide describes generative AI features as included in Education licensing and lists Teach as available under the named education licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/education/guide/1-reference/manage-microsoft-365-education-ai-features",
+      "quote": "Microsoft 365 for Education customers have access to many generative AI features included in their licensing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn describes Teach but does not yet describe its unit-plan behaviour.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teach\" \"unit plans\"; \"Teach\" \"Copilot\" \"unit\". Opened Education AI features and read returned teaching/Copilot results; none documents Teach unit plans.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "No licensing requirement specific to unit plans is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teach unit plans save storage share quizzes multi week licensing pricing meter; \"Teach\" \"Copilot\" \"pricing\". Read Education AI features and Education Copilot licensing search excerpts; no unit-plan-specific entitlement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The education guide publishes no separate charge or meter for Teach.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teach\" \"meter\" \"licensing\"; \"Teach\" \"Copilot\" \"pricing\". Opened Education AI features in full and read Education Copilot licensing excerpts; the Teach section specifies SKUs, not a separate price or meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Neither the roadmap description nor the education guide's Teach description mentions new access to organisational files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/education/guide/1-reference/manage-microsoft-365-education-ai-features",
+      "quote": "create lesson plans, draft materials like quizzes and rubrics, and quickly make modifications to language, reading level, length, difficulty, alignment to relevant standards",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "record",
+      "claim": "The described unit-plan operation creates customisable planning content rather than describing autonomous actions on students, classes or assignments.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Educators can use Teach in Microsoft 365 Copilot to create structured unit plans that span multiple lessons or weeks. They can customize the plan components to organize connected lesson plans and quizzes across a unit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Change & support; Open questions",
+      "type": "absence",
+      "claim": "Unit-plan storage is not yet documented in the Microsoft material found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teach Copilot unit plans saved share quizzes; \"Teach\" \"unit plans\". Opened Education AI features and read returned Education Copilot excerpts; none specifies unit-plan storage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Change & support; Open questions",
+      "type": "absence",
+      "claim": "How quizzes from a Teach unit plan are shared with students is not yet documented in the Microsoft material found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teach Copilot unit plans saved share quizzes. Read Education AI features and Education Copilot excerpts: general Forms/Teams quiz generation is described, but no Teach unit-plan distribution workflow is specified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Users can sign in to the Copilot app with work or school accounts or personal Microsoft accounts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage",
+      "quote": "Users can sign in to the Microsoft Copilot app with a work or school account or a personal Microsoft account.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Chats, files and protections stay separate by the account used to sign in.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage",
+      "quote": "Chats, files, permissions, available experiences, and protections remain separate based on the account used to sign in.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Why it matters; controls[2].note; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "Microsoft directs administrators to disable Teach for selected or all users by removing Copilot Chat access through its Integrated Apps instructions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/education/guide/1-reference/manage-microsoft-365-education-ai-features",
+      "quote": "To disable Teach for select or all users, remove access Microsoft Copilot Chat following the instructions in step 2 at Remove access to Copilot Chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[0].ui; Governance controls: first table row",
+      "type": "admin-path",
+      "claim": "The tenant app block is at Microsoft 365 admin center > Settings > Integrated Apps > Available Apps > app > Block app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+      "quote": "Select Settings, and then select Integrated Apps.\nSelect the Available Apps list.\nSelect an app from the Available Apps list to open the overview pane.\nSelect Block app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[0].api; Governance controls: first table row",
+      "type": "absence",
+      "claim": "An API equivalent for blocking the Copilot app itself through Integrated Apps is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot app Integrated Apps block availability specific users Microsoft Graph API PowerShell; \"Integrated Apps\" \"API\" \"Copilot app\". Opened Integrated Apps, Manage Copilot Chat and Package Management overview; package blocking covers agents/tools.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[0].note; controls[1].note; Scope: Roles",
+      "type": "role",
+      "claim": "The cited Integrated Apps controls are documented as available only to Global Administrators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+      "quote": "The following controls on the integrated apps portal in the Microsoft 365 Admin Center are only available to Global Admins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[0].note; Governance controls",
+      "type": "applicability",
+      "claim": "Blocking the Copilot app through Integrated Apps blocks access tenant-wide in the Copilot app, Outlook and the web, including licensed Copilot users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage",
+      "quote": "If you block the Copilot app using the Integrated app control, you block the Copilot app tenant-wide across the Microsoft Copilot app, Outlook, and the web, including for users assigned a Microsoft 365 Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[1].ui; Governance controls: second table row",
+      "type": "admin-path",
+      "claim": "App availability can be scoped at Microsoft 365 admin center > Settings > Integrated Apps > Available Apps > app > Users > Specific users/group in the organization can install.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+      "quote": "Scroll down and select Edit Users or select the Users tab in the overview pane.\nSpecific users/group in the organization can install means that only the users selected by you are able to install the app on their own from the store and use it in the client.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[1].api; Governance controls: second table row",
+      "type": "absence",
+      "claim": "An API equivalent for setting the Copilot app's Integrated Apps user availability is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot app availability Integrated Apps Microsoft Graph beta API install users groups. Opened Integrated Apps and Package Management overview; read returned Graph/Copilot API excerpts. No Copilot-app availability operation was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[1].note; Governance controls",
+      "type": "applicability",
+      "claim": "App availability settings do not affect admin-deployed apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+      "quote": "The availability setting of an app doesn't impact any admin deployed apps. The availability setting only allows you to control which end users can install and use these apps on their own.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[2].ui and api; Why it matters; Governance guidance; Open questions",
+      "type": "absence",
+      "claim": "No Teach-specific or unit-plan-specific switch separate from Copilot Chat is documented on the admin UI or API surfaces.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teach unit plans disable admin setting separate Copilot Chat; Teach Copilot disable Microsoft Graph PowerShell settings. Opened Education AI features, Manage Copilot Chat and Package Management overview; no separate Teach control.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Governance controls: Integrated Apps changes and Teams",
+      "type": "applicability",
+      "claim": "Integrated Apps changes apply to the Copilot app and Outlook, while Copilot Chat in Teams is managed in the Teams admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+      "quote": "Any changes made on the integrated apps portal on the Microsoft 365 admin center only impact whether and how a cross application app is surfaced on Outlook and the Microsoft Copilot application. To manage how these apps show up on Teams, use the Teams admin center.",
+      "severity": "minor",
+      "fix": "Add: 'Microsoft documentation differs on Teams: the Integrated Apps article says its changes affect only Outlook and the Copilot app, but Manage Copilot Chat says blocking through Integrated Apps also blocks Teams.' Both cited URLs already appear in sources."
+    },
+    {
+      "n": 39,
+      "where": "Governance controls: Copilot app settings",
+      "type": "applicability",
+      "claim": "The Copilot app settings in Integrated Apps apply to both Microsoft Copilot and Copilot Chat apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+      "quote": "On the Integrated Apps page, the CoPilot app settings apply to both Microsoft Copilot and the Copilot Chat apps. Any changes made to this app from the integrated apps portal apply to both.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[1].governs and note; Governance controls: availability setting",
+      "type": "applicability",
+      "claim": "Specific-users availability permits only selected users to self-install and use the app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+      "quote": "Specific users/group in the organization can install means that only the users selected by you are able to install the app on their own from the store and use it in the client. Unselected users are not able to do so.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Governance controls: Package Management API",
+      "type": "behaviour",
+      "claim": "The Package Management API defines a package as an agent or tool such as a plugin, MCP server or skill.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview",
+      "quote": "A package represents an agent or a tool, such as a plugin, MCP server, or skill, in the organization catalog.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Governance controls: Package Management API",
+      "type": "behaviour",
+      "claim": "The Package Management API supports blocking packages.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview",
+      "quote": "Block, unblock, and reassign ownership of packages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Governance controls: Package Management API",
+      "type": "behaviour",
+      "claim": "The Package Management overview does not list the Copilot host app itself as a managed package.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview",
+      "quote": "The Package Management API enables IT administrators to view and manage agents and tools across your organization.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-27T08:22:57.491Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=577392",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/education/guide/1-reference/manage-microsoft-365-education-ai-features",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/manage",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether the Copilot app, and so Teach, is available to anyone in the organisation",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Integrated Apps",
+          "Available Apps",
+          "Block app"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which users can install and use the Copilot app, and so Teach",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Integrated Apps",
+          "Available Apps",
+          "Users",
+          "Specific users/group in the organization can install"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": [
+    {
+      "date": "2026-11-26",
+      "status": "held",
+      "version": 1,
+      "model": "none"
+    }
+  ]
 }

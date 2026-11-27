@@ -70,17 +70,19 @@ changes:
     note: "Correction: added the Dataverse CLI command that allows an app on the Finance and Operations client allowlist, and extended the admin path to the New record and Allowed value."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 64 statements confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 62 statements not yet confirmed"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-20"
+  status: "verified-with-gaps"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 64
-  confirmed: 64
+  claims: 62
+  confirmed: 61
   unconfirmed: 0
-  contradicted: 0
+  contradicted: 1
   attempts: 0
   hash: "c625302455501d5759af512be9efabf5"
 ---
@@ -178,4 +180,10 @@ Learn's ERP MCP page says the server feature **Dynamics 365 ERP Model Context Pr
 risk: Low. Learn says the ERP MCP server returns only menu items, entities and actions the user's security role can access, and nothing in the roadmap item widens that; it is a performance change.
 cost: Variable. Tool calls from agents on clients other than Copilot Studio are billed at 0.1 Copilot Credits each, so a change in call counts changes the bill; no rate specific to this feature is published.
 impact: Medium. The roadmap says it is enabled automatically, so makers and anyone running ERP agents may see different tool sequences; end users of finance and operations apps outside agents are not named.
+-->
+
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [contradicted, minor] front matter: action / consistency: The prepare action rating fits the briefing's automatic December rollout and metered-cost assessment on the November 27 run. | Found: action: "prepare"; targetDate: "December CY2026"; cost: "variable"; "the change is enabled automatically"; "run your key ERP agent scenarios before and after it reaches your environment" | Fix: Change action from prepare to act-now: the December CY2026 target is within 60 days of November 27, the change is automatic, and the briefing identifies metered spend and pre-rollout scenario testing.
 -->

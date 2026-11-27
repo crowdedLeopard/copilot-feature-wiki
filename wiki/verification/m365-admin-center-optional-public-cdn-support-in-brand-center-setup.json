@@ -3,7 +3,7 @@
   "roadmapId": 571391,
   "title": "Microsoft 365 admin center: set up Brand Center without enabling Public CDN",
   "status": "verified",
-  "date": "2026-11-20",
+  "date": "2026-11-27",
   "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
@@ -14,106 +14,18 @@
   "notes": [],
   "hold": null,
   "counts": {
-    "claims": 47,
-    "confirmed": 47,
+    "claims": 45,
+    "confirmed": 45,
     "unconfirmed": 0,
     "contradicted": 0,
     "blocker": 0,
     "major": 0,
     "minor": 0
   },
-  "summary": "The setup choice, administrator roles, licensing statements and controls are supported by Microsoft documentation. The briefing correctly distinguishes the documented setup experience from the roadmap's still-in-development status and past target month.",
+  "summary": "The setup choice, permissions, licensing and tenant CDN command are supported by Microsoft documentation. The briefing correctly reports that Learn documents the choice while the roadmap still lists it as In development with an October 2026 target. The embedded instruction to report both sources was treated as page content, not as verification guidance.",
   "claims": [
     {
       "n": 1,
-      "where": "front matter: status; What's changing; Open questions",
-      "type": "record",
-      "claim": "The roadmap record lists the feature as In development.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 2,
-      "where": "front matter: targetDate; What's changing; Open questions",
-      "type": "record",
-      "claim": "The roadmap target is October CY2026, a month already past on the November 2026 run date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"targetDate\": \"October CY2026\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
-      "where": "front matter: previewDate",
-      "type": "record",
-      "claim": "The record gives no preview date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": null",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "front matter: products",
-      "type": "record",
-      "claim": "The listed products are Microsoft 365 admin center and SharePoint.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft 365 admin center\", \"SharePoint\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "front matter: clouds; What's changing; Scope",
-      "type": "record",
-      "claim": "The record lists Worldwide (Standard Multi-Tenant), not GCC, GCC High or DoD.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "front matter: releasePhase; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap release phase is General Availability.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "front matter: platforms; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap platform is Web.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Web\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-09-17T23:00:45.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-09-17T23:00:45\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
       "where": "title; summary; What's changing",
       "type": "record",
       "claim": "Microsoft plans to let administrators set up Brand Center without enabling Public CDN.",
@@ -124,10 +36,10 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 2,
       "where": "What's changing",
       "type": "record",
-      "claim": "According to the roadmap description, Public CDN has been enabled during setup even for organisations needing only governance capabilities.",
+      "claim": "The roadmap describes Public CDN as previously enabled during setup even for branding governance capabilities that do not need it.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Today, Public CDN is enabled as part of Brand Center setup, even when an organization only wants to use branding governance capabilities that do not require it.",
@@ -135,10 +47,10 @@
       "fix": null
     },
     {
-      "n": 11,
-      "where": "What's changing",
+      "n": 3,
+      "where": "What's changing; rationale: risk",
       "type": "record",
-      "claim": "The planned change lets organisations defer Public CDN until they need dependent capabilities such as organisational fonts.",
+      "claim": "The planned change allows organisations to defer Public CDN until they need dependent capabilities such as organisational fonts.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "With this update, organizations can begin using Brand Center while deferring Public CDN until they need capabilities that depend on it, such as organizational fonts.",
@@ -146,10 +58,87 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "What's changing; Why it matters; Open questions",
+      "n": 4,
+      "where": "front matter: status; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap target is October CY2026, a month already past on the November 2026 run date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and does not list GCC, GCC High or DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap associates this change with Microsoft 365 admin center and SharePoint.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft 365 admin center\", \"SharePoint\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Why it matters",
       "type": "behaviour",
-      "claim": "Learn already documents a choice to enable the public Office 365 CDN during Brand Center setup.",
+      "claim": "Learn already describes choosing whether to enable Public CDN during Brand Center setup.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/brand-center-overview",
       "quote": "During setup, you can choose whether to enable the Office 365 Content Delivery Network (CDN), a public content delivery network (public CDN).",
@@ -157,8 +146,8 @@
       "fix": null
     },
     {
-      "n": 13,
-      "where": "summary; What's changing; Risk assessment",
+      "n": 12,
+      "where": "summary; What's changing; Risk assessment: Change & support",
       "type": "behaviour",
       "claim": "Brand fonts require Public CDN because it hosts their font files.",
       "status": "supported",
@@ -168,8 +157,8 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "summary; What's changing; Why it matters",
+      "n": 13,
+      "where": "What's changing; Why it matters",
       "type": "behaviour",
       "claim": "Brand colours and other Brand Center capabilities do not require Public CDN.",
       "status": "supported",
@@ -179,10 +168,10 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 14,
       "where": "What's changing; Governance guidance: Before rollout",
       "type": "behaviour",
-      "claim": "Learn gives three setup scenarios: no organisation assets, organisation assets with private CDN, and organisation assets with public CDN.",
+      "claim": "Learn gives different setup scenarios for tenants without organisation assets, with private CDN assets and with public CDN assets.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/brand-center-overview",
       "quote": "Scenario 1: Your tenant doesn't currently use the SharePoint organization assets feature.\n- Scenario 2: Your tenant uses the SharePoint organization assets feature with a private CDN.\n- Scenario 3: Your tenant uses the SharePoint organization assets feature with a public CDN.",
@@ -190,10 +179,10 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 15,
       "where": "What's changing; Governance guidance: Before rollout",
       "type": "default",
-      "claim": "For the no-assets and private-CDN setup scenarios, Public CDN (optional) is turned off by default.",
+      "claim": "For tenants without organisation assets or using a private CDN, Public CDN (optional) is turned off by default at setup.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/brand-center-overview",
       "quote": "Under Public CDN (optional), choose whether to enable the public CDN now. Enable Public CDN (optional) if you plan to use brand fonts. The option is turned off by default.",
@@ -201,21 +190,10 @@
       "fix": null
     },
     {
-      "n": 17,
-      "where": "What's changing; Why it matters; Governance controls",
-      "type": "behaviour",
-      "claim": "Public CDN can be enabled later if it was deferred during setup.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/brand-center-overview",
-      "quote": "If you defer Public CDN during setup and later want to use brand fonts, a Global Administrator can enable Public CDN from the brand center settings in the Microsoft 365 admin center.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
+      "n": 16,
       "where": "What's changing",
-      "type": "behaviour",
-      "claim": "For tenants already using organisation assets with public CDN, Public CDN is already enabled and no additional CDN action is required.",
+      "type": "default",
+      "claim": "For tenants already using organisation assets with a public CDN, Public CDN is already enabled and no additional CDN action is required.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/brand-center-overview",
       "quote": "For this scenario, the public CDN is already enabled, so no additional CDN action is required.",
@@ -223,10 +201,32 @@
       "fix": null
     },
     {
+      "n": 17,
+      "where": "What's changing; Scope; controls[0].note; Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "A Global Administrator sets up Brand Center in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/brand-center-overview",
+      "quote": "To enable the brand center, a Global Administrator completes a few steps in the Microsoft 365 admin center to create or activate the brand center app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: defaultState; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "Brand Center requires administrator setup before use, supporting admin-opt-in for this setup capability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/brand-center-overview",
+      "quote": "To enable the brand center, a Global Administrator completes a few steps in the Microsoft 365 admin center to create or activate the brand center app.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 19,
-      "where": "controls[0].ui",
+      "where": "controls[0].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "The setup control is in Microsoft 365 admin center > Settings > Org settings > Brand center > Public CDN (optional).",
+      "claim": "The setup option is at Microsoft 365 admin center > Settings > Org settings > Brand center > Public CDN (optional).",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/brand-center-overview#setting-up-the-brand-center",
       "quote": "In the admin center, go to Settings > Org settings.\n2. Select Brand center.\n3. Enter a name for the brand center site, such as Brand Guide.\n4. Under Public CDN (optional), choose whether to enable the public CDN now.",
@@ -235,42 +235,20 @@
     },
     {
       "n": 20,
-      "where": "controls[0].api",
+      "where": "controls[0].api; Governance controls table",
       "type": "command",
-      "claim": "Set-SPOTenantCdnEnabled -CdnType Public -Enable $true enables the tenant's Public CDN.",
+      "claim": "Set-SPOTenantCdnEnabled -CdnType Public -Enable $true enables the tenant's Public CDN using Microsoft.Online.SharePoint.PowerShell.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenantcdnenabled",
-      "quote": "Set-SPOTenantCdnEnabled -CdnType public -Enable $true\n\nThe example enables a CDN.",
+      "quote": "Module: Microsoft.Online.SharePoint.PowerShell Module\nEnables or disables Public content delivery network (CDN) or Private CDN on the tenant level.\nSet-SPOTenantCdnEnabled -CdnType public -Enable $true",
       "severity": null,
       "fix": null
     },
     {
       "n": 21,
-      "where": "controls[0].scope; controls[0].note; Governance controls",
-      "type": "applicability",
-      "claim": "The CDN cmdlet enables or disables Public CDN at tenant scope.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenantcdnenabled",
-      "quote": "Enables or disables Public content delivery network (CDN) or Private CDN on the tenant level.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "controls[0].note; What's changing; Risk assessment; Cost and licensing; Scope",
-      "type": "role",
-      "claim": "Learn assigns Brand Center setup in the Microsoft 365 admin center to a Global Administrator.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/brand-center-overview",
-      "quote": "To enable the brand center, a Global Administrator completes a few steps in the Microsoft 365 admin center to create or activate the brand center app.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
       "where": "controls[0].note; Risk assessment: Security & identity; Governance controls",
       "type": "role",
-      "claim": "The CDN cmdlet reference requires Tenant administrator permissions.",
+      "claim": "The CDN cmdlet requires Tenant administrator permissions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenantcdnenabled",
       "quote": "Requires Tenant administrator permissions.",
@@ -278,153 +256,32 @@
       "fix": null
     },
     {
+      "n": 22,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The cmdlet enables or disables Public CDN at tenant level.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenantcdnenabled",
+      "quote": "Enables or disables Public content delivery network (CDN) or Private CDN on the tenant level.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Governance controls; Governance guidance: After rollout",
+      "type": "role",
+      "claim": "A Global Administrator can enable deferred Public CDN later from Brand Center settings in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/brand-center-overview",
+      "quote": "If you defer Public CDN during setup and later want to use brand fonts, a Global Administrator can enable Public CDN from the brand center settings in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 24,
-      "where": "Risk assessment: Security & identity; Governance guidance: After rollout; Governance controls",
-      "type": "role",
-      "claim": "Learn assigns later Public CDN enablement from Brand Center settings to a Global Administrator.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/brand-center-overview",
-      "quote": "a Global Administrator can enable Public CDN from the brand center settings in the Microsoft 365 admin center.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "front matter: defaultState",
-      "type": "default",
-      "claim": "The capability is admin-opt-in: an administrator must configure Brand Center and choose Public CDN enablement.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/brand-center-overview",
-      "quote": "For this scenario, a Global Administrator creates the brand center app:",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "This SharePoint setup option uses the product's included licensing model rather than a separately documented entitlement.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/sharepoint-online-service-description/sharepoint-online-service-description",
-      "quote": "To access SharePoint, users in your organization need to be assigned a license that includes SharePoint.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "SharePoint access requires an assigned licence that includes SharePoint.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/sharepoint-online-service-description/sharepoint-online-service-description",
-      "quote": "To access SharePoint, users in your organization need to be assigned a license that includes SharePoint.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
-      "type": "absence",
-      "claim": "The Brand Center overview names no licence specific to Brand Center or its optional Public CDN setup choice.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: SharePoint Brand Center licensing license requirements optional Public CDN Brand center setup. Read brand-center-overview in full and SharePoint service-description licensing text; overview names E3/E5 for PowerPoint fonts, not a separate setup licence.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "Customers with E3 or E5 licenses can use Organization Font Support in PowerPoint for the web to edit and display their fonts.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/brand-center-overview",
-      "quote": "Customers with E3 or E5 licenses can take advantage of Organization Font Support in PowerPoint for the web to edit and display their fonts.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "Office 365 CDN is included as part of the SharePoint Online subscription.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/enterprise/use-microsoft-365-cdn-with-spo?view=o365-worldwide",
-      "quote": "The Office 365 CDN service is included as part of your SharePoint Online subscription.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "Why it matters; Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Publishing brand fonts creates font catalog files stored publicly alongside the fonts and accessible outside the organisation to anyone with their URLs.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/brand-font-licensing",
-      "quote": "The newly created font catalog files are publicly stored, along with the fonts, in the cloud\nThe files are accessible to anyone, even people outside of your organization, who can get the URLs that link to them.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Microsoft says not to use the font feature if the fonts contain proprietary information.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/brand-font-licensing",
-      "quote": "Don't use this feature if your fonts contain proprietary information",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "Risk assessment: Data exposure",
-      "type": "licensing",
-      "claim": "Microsoft says not to use the font feature where font licence restrictions prohibit uses such as cloud hosting.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/brand-font-licensing",
-      "quote": "or if they have license usage restrictions, such as restrictions on cloud hosting",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Microsoft says not to use the font feature if the organisation is uncomfortable making the fonts public.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/brand-font-licensing",
-      "quote": "or your organization isn't comfortable making the fonts publicly available.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "Risk assessment: Security & identity; Governance controls",
-      "type": "role",
-      "claim": "Brand Center site permissions control app access, and site owners can use the app.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/brand-center-overview",
-      "quote": "you can control who can access the brand center app by customizing the site permissions of the brand center site. Site owners of the brand center site will be able to use the brand center app.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "Brand managers with access to the app can upload and manage brand assets.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/brand-center-overview",
-      "quote": "Within the app itself, the brand managers are able to upload and manage their organization’s brand assets.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
       "where": "Risk assessment: Change & support; rationale: impact",
       "type": "behaviour",
-      "claim": "Brand managers cannot add fonts until a Global Administrator enables Public CDN.",
+      "claim": "Brand managers cannot add fonts until Public CDN is enabled.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/brand-center-overview",
       "quote": "If Public CDN isn't enabled, a Global Administrator must enable it before brand managers can add fonts.",
@@ -432,32 +289,65 @@
       "fix": null
     },
     {
-      "n": 38,
-      "where": "Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "Each additional geography wanting custom fonts needs an organisation asset library in a site using Public CDN.",
+      "n": 25,
+      "where": "Risk assessment: Security & identity; Governance controls",
+      "type": "applicability",
+      "claim": "Brand Center site permissions control access to the Brand Center app.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/brand-center-overview",
-      "quote": "Each additional geography where custom fonts are wanted must have an organization asset library set up in a site that uses the Public CDN.",
+      "quote": "After you finish setting up your SharePoint brand center, you can control who can access the brand center app by customizing the site permissions of the brand center site.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 39,
+      "n": 26,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Site owners of the Brand Center site can use the app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/brand-center-overview",
+      "quote": "Site owners of the brand center site will be able to use the brand center app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Brand managers with app access can upload and manage brand assets.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/brand-center-overview",
+      "quote": "Within the app itself, the brand managers are able to upload and manage their organization’s brand assets.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Governance controls",
+      "type": "admin-path",
+      "claim": "The Brand Center management table places site permission management in the SharePoint admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/brand-center-overview",
+      "quote": "| - Global administrator- Site administrator- Site owner | SharePoint Admin Center | Update permissions |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
       "where": "Scope",
       "type": "behaviour",
       "claim": "Only one Brand Center is allowed per organisation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/brand-center-overview",
-      "quote": "The SharePoint brand center currently only allows one brand center for your organization",
+      "quote": "The SharePoint brand center currently only allows one brand center for your organization, and the Global Administrator sets it up.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 40,
+      "n": 30,
       "where": "Scope",
       "type": "behaviour",
-      "claim": "The Brand Center app is created in the tenant's primary geo.",
+      "claim": "The Brand Center app is created in the tenant's primary geography.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/brand-center-overview",
       "quote": "The SharePoint brand center currently only creates a single brand center app in the primary geo of a tenant.",
@@ -465,10 +355,21 @@
       "fix": null
     },
     {
-      "n": 41,
+      "n": 31,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Each additional geography needing custom fonts requires an organisation asset library in a site using Public CDN.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/brand-center-overview",
+      "quote": "Each additional geography where custom fonts are wanted must have an organization asset library set up in a site that uses the Public CDN.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
       "where": "Scope",
       "type": "behaviour",
-      "claim": "The Public CDN choice does not change existing SharePoint organisation assets library and template library configuration.",
+      "claim": "The Public CDN setup choice does not change existing organisation assets library or template library configuration.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/brand-center-overview",
       "quote": "this choice doesn't change how your existing SharePoint organization assets library and template libraries are configured.",
@@ -476,81 +377,158 @@
       "fix": null
     },
     {
-      "n": 42,
-      "where": "Why it matters",
-      "type": "record",
-      "claim": "The roadmap describes a setup change without specifying an action for tenants that already set up Brand Center.",
+      "n": 33,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Public CDN hosts brand fonts publicly, and publishing font files creates publicly stored catalog files alongside them.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "We are updating the Brand Center setup experience so that administrators can set up Brand Center without enabling Public CDN.",
+      "source": "https://learn.microsoft.com/sharepoint/brand-font-licensing",
+      "quote": "By using this feature and publishing font files, a font catalog is created. The newly created font catalog files are publicly stored, along with the fonts, in the cloud",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Anyone with the font catalog file URLs, including people outside the organisation, can access the files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/brand-font-licensing",
+      "quote": "The files are accessible to anyone, even people outside of your organization, who can get the URLs that link to them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Microsoft advises against using the font feature for fonts containing proprietary information.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/brand-font-licensing",
+      "quote": "Don't use this feature if your fonts contain proprietary information",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "licensing",
+      "claim": "Microsoft warns against using fonts with licence usage restrictions such as cloud-hosting restrictions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/brand-font-licensing",
+      "quote": "Don't use this feature if your fonts contain proprietary information, or if they have license usage restrictions, such as restrictions on cloud hosting",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Microsoft advises against using the font feature if the organisation is uncomfortable making its fonts publicly available.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/brand-font-licensing",
+      "quote": "or your organization isn't comfortable making the fonts publicly available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The setup option sits within licensed SharePoint access, which requires an assigned licence that includes SharePoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/sharepoint-online-service-description/sharepoint-online-service-description",
+      "quote": "To access SharePoint, users in your organization need to be assigned a license that includes SharePoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Customers with E3 or E5 licences can use Organization Font Support in PowerPoint for the web.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/brand-center-overview",
+      "quote": "Customers with E3 or E5 licenses can take advantage of Organization Font Support in PowerPoint for the web to edit and display their fonts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "The Brand Center overview names no licence specific to Brand Center or its optional Public CDN setup choice.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint brand center licensing license requirements optional Public CDN. Read brand-center-overview in full and SharePoint service description licensing passages; the overview's licence statement concerns E3/E5 PowerPoint font support, not a separate Brand Center entitlement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "The Office 365 CDN service is included as part of a SharePoint Online subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/use-microsoft-365-cdn-with-spo?view=o365-worldwide",
+      "quote": "The Office 365 CDN service is included as part of your SharePoint Online subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The Brand Center overview discusses Public CDN hosting and enablement rather than publishing its cost.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint brand center licensing license requirements optional Public CDN. Read brand-center-overview in full, CDN Quickstart and the CDN subscription passage; the overview gives no CDN price, while the CDN pages state subscription inclusion.",
       "severity": null,
       "fix": null
     },
     {
       "n": 43,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "The roadmap item describes a setup choice rather than an agent or automated action.",
+      "where": "controls[0].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Learn does not state that the Brand Center setup choice calls Set-SPOTenantCdnEnabled.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "organizations can begin using Brand Center while deferring Public CDN until they need capabilities that depend on it, such as organizational fonts.",
+      "source": null,
+      "quote": "Searched: SharePoint brand center enable Public CDN after setup settings Set-SPOTenantCdnEnabled. Read brand-center-overview, Set-SPOTenantCdnEnabled, CDN Quickstart and CDN command passages; they describe the choice and tenant command but not that implementation relationship.",
       "severity": null,
       "fix": null
     },
     {
       "n": 44,
-      "where": "controls[0].note; Governance controls; Open questions",
+      "where": "Governance controls; Open questions",
       "type": "absence",
-      "claim": "Learn does not say that the Brand Center setup option calls Set-SPOTenantCdnEnabled.",
+      "claim": "The Brand Center overview gives no more detailed later-enablement path than brand center settings in the Microsoft 365 admin center.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: SharePoint brand center enable Public CDN after setup brand center settings Set-SPOTenantCdnEnabled licensing. Read brand-center-overview, Set-SPOTenantCdnEnabled and CDN Quickstart; no passage specifies the setup option's implementation.",
+      "quote": "Searched: SharePoint brand center enable Public CDN after setup settings Set-SPOTenantCdnEnabled. Read brand-center-overview in full and the returned setup excerpts; later enablement is described only as from brand center settings in the Microsoft 365 admin center.",
       "severity": null,
       "fix": null
     },
     {
       "n": 45,
-      "where": "Governance controls; Open questions",
-      "type": "absence",
-      "claim": "Learn names Brand Center settings in the Microsoft 365 admin center for later enablement without a more detailed later-enablement path.",
+      "where": "Why it matters; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes a setup choice, not an agent, an automated action or a required action for tenants that already set up Brand Center.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: SharePoint brand center enable Public CDN after setup brand center settings Set-SPOTenantCdnEnabled licensing. Read brand-center-overview setup and management sections; later enablement is described only as from brand center settings.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "Why it matters; rationale: risk",
-      "type": "behaviour",
-      "claim": "A Global Administrator must create or activate Brand Center before people can use its app.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/brand-center-overview",
-      "quote": "To enable the brand center, a Global Administrator completes a few steps in the Microsoft 365 admin center to create or activate the brand center app.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "Governance controls",
-      "type": "role",
-      "claim": "The Brand Center management documentation places site-permissions management in the SharePoint admin center.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/brand-center-overview",
-      "quote": "SharePoint site owners and above can update the site permissions in the SharePoint Admin Center such as adding more brand managers to the experience.",
+      "source": "roadmap record",
+      "quote": "We are updating the Brand Center setup experience so that administrators can set up Brand Center without enabling Public CDN.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-20T20:04:57.116Z",
+    "at": "2026-11-27T08:23:11.597Z",
     "summary": {
       "links": 8,
-      "unreachable": 0,
+      "unreachable": 7,
       "uiPaths": 1,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 1,
       "apiCalls": 1,
-      "apiCallsNotOnPage": 0,
+      "apiCallsNotOnPage": 1,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -561,38 +539,38 @@
       },
       {
         "url": "https://learn.microsoft.com/sharepoint/brand-center-overview",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/sharepoint/brand-font-licensing",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/enterprise/use-microsoft-365-cdn-with-spo?view=o365-worldwide",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenantcdnenabled",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/enterprise/office-365-cdn-quickstart?view=o365-worldwide",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/sharepoint/brand-center-overview#setting-up-the-brand-center",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/office365/servicedescriptions/sharepoint-online-service-description/sharepoint-online-service-description",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -601,23 +579,28 @@
         "side": "ui",
         "governs": "Whether Public CDN is enabled when Brand Center is set up",
         "docs": "https://learn.microsoft.com/sharepoint/brand-center-overview#setting-up-the-brand-center",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Settings",
           "Org settings",
           "Brand center",
           "Public CDN"
         ],
-        "missing": []
+        "missing": [
+          "Settings",
+          "Org settings",
+          "Brand center",
+          "Public CDN"
+        ]
       },
       {
         "index": 0,
         "side": "api",
         "governs": "Whether Public CDN is enabled when Brand Center is set up",
         "docs": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenantcdnenabled",
-        "reachable": true,
+        "reachable": false,
         "token": "Set-SPOTenantCdnEnabled",
-        "found": true
+        "found": false
       }
     ],
     "roadmapDrift": []
@@ -627,6 +610,12 @@
       "date": "2026-11-20",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-20",
+      "status": "verified",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

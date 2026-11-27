@@ -3,7 +3,7 @@
   "roadmapId": 576637,
   "title": "Dynamics 365 Sales: copy a Sales Development agent's configuration to another agent",
   "status": "verified-with-gaps",
-  "date": "2026-11-20",
+  "date": "2026-11-27",
   "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
@@ -14,40 +14,29 @@
   "notes": [],
   "hold": null,
   "counts": {
-    "claims": 66,
-    "confirmed": 66,
+    "claims": 80,
+    "confirmed": 80,
     "unconfirmed": 0,
     "contradicted": 0,
     "blocker": 0,
     "major": 0,
     "minor": 1
   },
-  "summary": "The briefing passes: the roadmap details, preview copying procedure, access requirements and published consumption billing are supported. The automation note should also preserve Microsoft's warning that the reviewed beta contract does not establish deployed availability.",
+  "summary": "The briefing passes: its roadmap facts, preview procedure, licensing prerequisites and consumption billing are supported. The Graph activation reference needs one qualification: it describes a reviewed beta contract whose deployed availability depends on the matching schema and backend release.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing",
-      "type": "behaviour",
-      "claim": "A Sales Development agent's configuration can be copied to another agent.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
-      "quote": "If you already have one Sales Development agent configured the way you want, you can copy that setup to a new agent instead of starting from scratch.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 2,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is In development.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "quote": "\"status\": \"In development\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 3,
+      "n": 2,
       "where": "front matter: targetDate; What's changing; Governance guidance",
       "type": "record",
       "claim": "The roadmap target date is April CY2027.",
@@ -58,7 +47,7 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 3,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
       "claim": "The roadmap preview date is August CY2026.",
@@ -69,24 +58,35 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 4,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "quote": "\"clouds\": [ \"Worldwide (Standard Multi-Tenant)\" ]",
       "severity": null,
       "fix": null
     },
     {
-      "n": 6,
+      "n": 5,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists the Web platform.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"platforms\": [\"Web\"]",
+      "quote": "\"platforms\": [ \"Web\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "General Availability is a listed release phase.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [ \"General Availability\", \"Preview\" ]",
       "severity": null,
       "fix": null
     },
@@ -94,10 +94,10 @@
       "n": 7,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
-      "claim": "The roadmap release phases are General Availability and Preview.",
+      "claim": "Preview is a listed release phase.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "quote": "\"releasePhase\": [ \"General Availability\", \"Preview\" ]",
       "severity": null,
       "fix": null
     },
@@ -105,15 +105,26 @@
       "n": 8,
       "where": "front matter: products",
       "type": "record",
-      "claim": "The roadmap products are Microsoft Copilot (Microsoft 365) and Dynamics 365 Sales.",
+      "claim": "The roadmap lists Microsoft Copilot (Microsoft 365).",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\", \"Dynamics 365 Sales\"]",
+      "quote": "\"products\": [ \"Microsoft Copilot (Microsoft 365)\", \"Dynamics 365 Sales\" ]",
       "severity": null,
       "fix": null
     },
     {
       "n": 9,
+      "where": "front matter: products; title",
+      "type": "record",
+      "claim": "The roadmap lists Dynamics 365 Sales.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [ \"Microsoft Copilot (Microsoft 365)\", \"Dynamics 365 Sales\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
       "where": "Scope",
       "type": "record",
       "claim": "The roadmap describes the feature as enabled by admins, makers or marketers for end users.",
@@ -124,21 +135,43 @@
       "fix": null
     },
     {
-      "n": 10,
-      "where": "What's changing; Scope",
-      "type": "behaviour",
-      "claim": "Export begins by asking the source agent in Teams chat to package its configuration.",
+      "n": 11,
+      "where": "Why it matters; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes distributing guardrails across business units to provide a consistent sales-team experience.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
-      "quote": "Open the source agent chat in Teams (for example, Rolo).\n2. Ask the source agent to package its configuration.",
+      "source": "roadmap record",
+      "quote": "Distribute the agent’s playbook, guidelines, guardrails, and settings to other business units to provide a consistent experience across sales teams.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 11,
+      "n": 12,
+      "where": "title; summary; What's changing; rationale: impact",
+      "type": "behaviour",
+      "claim": "A configured Sales Development agent's setup can be copied to another agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
+      "quote": "If you already have one Sales Development agent configured the way you want, you can copy that setup to a new agent instead of starting from scratch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "summary; What's changing; Scope: Surface",
+      "type": "behaviour",
+      "claim": "Export is requested by asking the source agent in Teams chat to package its configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
+      "quote": "Open the source agent chat in Teams (for example, Rolo).\nAsk the source agent to package its configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
       "where": "What's changing; Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The exported configuration is downloaded as a file.",
+      "claim": "The exported configuration file is downloaded locally from the response link.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
       "quote": "Download the file from the response link and save it locally.",
@@ -146,76 +179,65 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "What's changing; Scope; Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "Import requires attaching the file in the target agent's Teams chat with an import instruction in the same message.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
-      "quote": "Open the target agent chat in Teams (for example, Andra).\n2. Attach the exported configuration file.\n3. In the same message, include a clear instruction to import the configuration.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "summary; What's changing; Risk assessment",
-      "type": "behaviour",
-      "claim": "The exported configuration includes the playbook.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
-      "quote": "The source agent confirms that it includes playbook, guidelines, and settings.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "summary; What's changing; Risk assessment",
-      "type": "behaviour",
-      "claim": "The exported configuration includes guidelines.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
-      "quote": "The source agent confirms that it includes playbook, guidelines, and settings.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 15,
-      "where": "summary; What's changing; Risk assessment",
+      "where": "summary; What's changing; Scope: Surface",
       "type": "behaviour",
-      "claim": "The exported configuration includes settings.",
+      "claim": "Import is performed by attaching the exported file in the target agent's Teams chat.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
-      "quote": "The source agent confirms that it includes playbook, guidelines, and settings.",
+      "quote": "Open the target agent chat in Teams (for example, Andra).\nAttach the exported configuration file.",
       "severity": null,
       "fix": null
     },
     {
       "n": 16,
-      "where": "summary; What's changing; Risk assessment; Scope",
+      "where": "What's changing; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Knowledge sources, including uploaded documents, FAQs and URLs, are excluded from the copy.",
+      "claim": "The import instruction belongs in the same message as the attached file.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
-      "quote": "Knowledge sources (for example, uploaded docs, FAQs, and URLs) aren't included in the configuration copy.",
+      "quote": "In the same message, include a clear instruction to import the configuration.",
       "severity": null,
       "fix": null
     },
     {
       "n": 17,
-      "where": "What's changing; Risk assessment; Cost and licensing; Governance guidance",
+      "where": "summary; What's changing; Risk assessment: Data exposure; rationale: risk",
       "type": "behaviour",
-      "claim": "Knowledge sources must be added separately to the target agent after import.",
+      "claim": "The export includes the playbook.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
-      "quote": "Add those resources separately to the target agent after import.",
+      "quote": "The source agent confirms that it includes playbook, guidelines, and settings.",
       "severity": null,
       "fix": null
     },
     {
       "n": 18,
-      "where": "summary; What's changing; Risk assessment; Scope",
+      "where": "summary; What's changing; Risk assessment: Data exposure; rationale: risk",
       "type": "behaviour",
-      "claim": "Configuration copying is a one-time transfer rather than an ongoing connection.",
+      "claim": "The export includes guidelines.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
+      "quote": "The source agent confirms that it includes playbook, guidelines, and settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "summary; What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The export includes settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
+      "quote": "The source agent confirms that it includes playbook, guidelines, and settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "summary; What's changing; Why it matters; Scope: Not covered",
+      "type": "behaviour",
+      "claim": "Configuration copy is a one-time transfer.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
       "quote": "Configuration copy is a one-time transfer.",
@@ -223,10 +245,10 @@
       "fix": null
     },
     {
-      "n": 19,
-      "where": "What's changing; Why it matters; Risk assessment; Governance guidance",
+      "n": 21,
+      "where": "What's changing; Why it matters; Risk assessment: Change & support; Governance guidance",
       "type": "behaviour",
-      "claim": "Later source-agent changes do not automatically update the target agent.",
+      "claim": "Subsequent source-agent configuration changes do not automatically synchronize to a target agent.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
       "quote": "After import, future changes in the source agent don't automatically sync to the target agent.",
@@ -234,96 +256,30 @@
       "fix": null
     },
     {
-      "n": 20,
-      "where": "What's changing; Risk assessment: Change & support; Governance guidance",
-      "type": "behaviour",
-      "claim": "Learn advises re-exporting and re-importing after source configuration changes.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
-      "quote": "Re-export and re-import if the source configuration changes later.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "What's changing",
-      "type": "availability",
-      "claim": "Learn already documents the procedure as a preview subject to change.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
-      "quote": "[This article is prerelease documentation and is subject to change.]\n\nThis is a preview feature.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 22,
-      "where": "What's changing; Governance guidance: After rollout",
+      "where": "summary; What's changing; Risk assessment: Data exposure; Scope",
       "type": "behaviour",
-      "claim": "Learn includes agent persona and email footer in the post-import validation checklist.",
+      "claim": "Knowledge sources, including uploaded documents, FAQs and URLs, are excluded from configuration export.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
-      "quote": "After import completes, quickly review the target agent configuration:\n\n- Playbook\n- Guidelines and language settings\n- Agent persona and email footer",
+      "quote": "Knowledge sources (for example, uploaded docs, FAQs, and URLs) aren't included in the configuration copy.",
       "severity": null,
       "fix": null
     },
     {
       "n": 23,
-      "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance",
+      "where": "What's changing; Risk assessment: Data exposure; Cost and licensing; Governance guidance",
       "type": "behaviour",
-      "claim": "Learn includes follow-up cadence and send-window settings in post-import validation.",
+      "claim": "Knowledge sources must be added separately to the target agent.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
-      "quote": "Follow-up cadence and send-window settings",
+      "quote": "Add those resources separately to the target agent after import.",
       "severity": null,
       "fix": null
     },
     {
       "n": 24,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Learn includes default product and locale settings, if used, in post-import validation.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
-      "quote": "Default product and locale settings (if used)",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "Risk assessment: Autonomy & actions; Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "Learn tells managers to review the playbook, guidelines and language settings after import.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
-      "quote": "After import completes, quickly review the target agent configuration:\n\n- Playbook\n- Guidelines and language settings",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "front matter: defaultState; Why it matters; Open questions",
-      "type": "default",
-      "claim": "Microsoft has not stated the configuration-copy feature's default state on arrival.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Sales Development agent copy configuration export import tenant administrator disable setting default enabled; \"Sales Development\" \"copy\" \"configuration\" \"default\". Read copy-configuration, activate-agent and roadmap; none states the copy feature's arrival default.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "controls[0]; summary; Risk assessment; Governance controls; rationale: risk",
-      "type": "absence",
-      "claim": "No export/import-specific tenant setting is documented on the admin UI or API surface as of November 2026.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Sales Development agent copy configuration export import tenant administrator disable setting default enabled; configuration export import API Dataverse table entity reference audit event; \"Sales Development agent\" \"export\" \"disable\". Read copy-configuration and activate-agent; no such switch.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "controls[0].note; Risk assessment: Security & identity; Scope; Governance controls",
+      "where": "controls[0].note; Risk assessment: Security & identity; Scope; Governance controls; rationale: impact",
       "type": "role",
       "claim": "The person copying must be a manager or owner of both agents.",
       "status": "supported",
@@ -333,9 +289,9 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "Risk assessment: Security & identity; Scope",
-      "type": "role",
+      "n": 25,
+      "where": "Risk assessment: Security & identity; Scope: Who copies",
+      "type": "behaviour",
       "claim": "The person copying must be able to open both agents in Microsoft Teams.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
@@ -344,8 +300,8 @@
       "fix": null
     },
     {
-      "n": 30,
-      "where": "Scope",
+      "n": 26,
+      "where": "Scope: Who copies",
       "type": "behaviour",
       "claim": "The target agent must already be hired and ready to configure.",
       "status": "supported",
@@ -355,10 +311,131 @@
       "fix": null
     },
     {
+      "n": 27,
+      "where": "What's changing; Open questions",
+      "type": "availability",
+      "claim": "Microsoft Learn identifies configuration copy as a preview feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
+      "quote": "This is a preview feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The copy-configuration article is prerelease documentation subject to change.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
+      "quote": "[This article is prerelease documentation and is subject to change.]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Learn tells managers to validate the target agent persona after import.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
+      "quote": "After import completes, quickly review the target agent configuration:\nPlaybook\nGuidelines and language settings\nAgent persona and email footer",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Learn tells managers to validate the email footer after import.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
+      "quote": "Agent persona and email footer",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 31,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Learn tells managers to validate follow-up cadence after import.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
+      "quote": "Follow-up cadence and send-window settings",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Learn tells managers to validate send-window settings after import.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
+      "quote": "Follow-up cadence and send-window settings",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Learn lists default product settings, if used, among post-import validation items.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
+      "quote": "Default product and locale settings (if used)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Learn lists locale settings, if used, among post-import validation items.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
+      "quote": "Default product and locale settings (if used)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Learn includes language settings in post-import validation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
+      "quote": "Guidelines and language settings",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Learn tells managers to review the playbook after import.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
+      "quote": "After import completes, quickly review the target agent configuration:\nPlaybook",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Learn tells managers to review guidelines after import.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
+      "quote": "After import completes, quickly review the target agent configuration:\nPlaybook\nGuidelines and language settings",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
       "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
       "type": "behaviour",
-      "claim": "Configuration export files can contain business-specific details.",
+      "claim": "Exported configuration files can contain business-specific details.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
       "quote": "Configuration export files can contain business-specific details.",
@@ -366,21 +443,21 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 39,
       "where": "Why it matters",
       "type": "behaviour",
-      "claim": "Learn advises treating the export file as an internal document.",
+      "claim": "Learn advises treating the exported file as an internal document.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
-      "quote": "Treat the file as an internal document:",
+      "quote": "Treat the file as an internal document",
       "severity": null,
       "fix": null
     },
     {
-      "n": 33,
+      "n": 40,
       "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
       "type": "behaviour",
-      "claim": "Learn advises storing and sharing exported files according to organisational data policies.",
+      "claim": "Learn advises storing and sharing exported files according to organizational data policies.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
       "quote": "Store and share it according to your organization's data policies.",
@@ -388,10 +465,10 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 41,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Learn advises limiting exported-file access to authorised users.",
+      "claim": "Learn advises limiting access to exported configuration files to authorized users.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
       "quote": "Limit access to only authorized users.",
@@ -399,7 +476,7 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 42,
       "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
       "type": "behaviour",
       "claim": "Learn advises deleting local and cloud copies, including OneDrive copies, after transfer.",
@@ -410,87 +487,43 @@
       "fix": null
     },
     {
-      "n": 36,
+      "n": 43,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "General Agent 365 auditing records agent invocations and tool calls.",
+      "claim": "General Agent 365 auditing records agent invocations.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/audit-log-activities",
-      "quote": "The following table lists Agent 365 activities that are logged when an agent is invoked or performs any actions or tool calls.",
+      "quote": "Invoked AI agent | AIInvokeAgent | AI agent is invoked by a user, agent, or event.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 37,
+      "n": 44,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "General Agent 365 auditing records tool calls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-activities",
+      "quote": "Executed AI tool | AIExecuteTool | Agent executed a tool call.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
       "where": "Risk assessment: Data exposure; Open questions",
       "type": "absence",
-      "claim": "A configuration-export-specific audit event is not yet documented.",
+      "claim": "An audit event specific to exporting a Sales Development agent configuration is not documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Sales Development\" \"configuration\" \"export\" \"audit\"; Sales Development agent configuration export import API Dataverse table entity reference audit event. Read audit-log-activities Agent 365 table and copy-configuration; no configuration-export-specific event found.",
+      "quote": "Searched: \"Sales Development\" \"configuration\" \"audit\" \"export\"; searched audit-log-activities for configuration export and Sales Development; opened its Agent 365 activities table and copy-configuration.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 38,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Content shared with an agent can appear in responses to people who lacked access to the original content.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/onboard-agent",
-      "quote": "The content you share with an agent, such as files, chat history, or emails, might be summarized or included in the agent's responses to other users, even those individuals who don't originally have access to that content.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "The shared-content exposure warning applies regardless of sensitivity labels or permissions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/onboard-agent",
-      "quote": "This risk applies regardless of sensitivity labels or permissions placed on the content.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "Risk assessment: Security & identity",
-      "type": "role",
-      "claim": "The administrator creating an instance can designate its manager.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent",
-      "quote": "Create the agent identity by entering a unique name and email alias, and then select the person who will manage this instance.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "Why it matters; Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "The roadmap includes guardrails among the configuration distributed across business units.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Distribute the agent’s playbook, guidelines, guardrails, and settings to other business units to provide a consistent experience across sales teams.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "Risk assessment: Autonomy & actions; Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "Learn warns of follow-up warnings or partial-failure messages and advises remaining in chat until completion is confirmed and reviewed.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
-      "quote": "You can miss follow-up warnings or partial-failure messages. | Stay in chat until final completion is confirmed and reviewed.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
+      "n": 46,
       "where": "Risk assessment: Change & support; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Learn says to keep the export file exactly as downloaded, without renaming, unzipping or editing it.",
+      "claim": "Learn tells managers not to rename the export file.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
       "quote": "Keep the file exactly as downloaded. Don't rename, unzip, or edit it.",
@@ -498,10 +531,32 @@
       "fix": null
     },
     {
-      "n": 44,
+      "n": 47,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Learn tells managers not to unzip the export file.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
+      "quote": "Keep the file exactly as downloaded. Don't rename, unzip, or edit it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Learn tells managers not to edit the export file.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
+      "quote": "Keep the file exactly as downloaded. Don't rename, unzip, or edit it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Changing the downloaded export package can prevent the target agent from parsing it.",
+      "claim": "Altering the downloaded package can prevent the target agent from parsing it.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
       "quote": "Renaming or unzipping the export file | The target agent might not be able to parse the package. | Attach the file exactly as downloaded from the source agent.",
@@ -509,10 +564,10 @@
       "fix": null
     },
     {
-      "n": 45,
+      "n": 50,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Attaching a file without a request leaves the agent without an instruction about what action to take.",
+      "claim": "Attaching a file without an accompanying request leaves the agent without an action to take.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
       "quote": "Attaching the file without a request | The target agent doesn't know what action to take.",
@@ -520,40 +575,73 @@
       "fix": null
     },
     {
-      "n": 46,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "The activation page requires the relevant Microsoft 365, Microsoft 365 Copilot and Microsoft Teams subscriptions and licences.",
+      "n": 51,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The documented import procedure can produce follow-up warnings or partial-failure messages.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent",
-      "quote": "You have the required subscriptions and licenses for Microsoft 365, Microsoft 365 Copilot, and Microsoft Teams.",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
+      "quote": "Closing Teams immediately after confirmation | You can miss follow-up warnings or partial-failure messages.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 47,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "cost",
-      "claim": "The activation page's public-preview enablement instructions say to purchase a $0 Agent 365 SKU.",
+      "n": 52,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Learn advises staying in chat until final completion is confirmed and reviewed.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent",
-      "quote": "Purchase the $0 Agent 365 SKU, which includes a license for 25 agent instances.",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
+      "quote": "Stay in chat until final completion is confirmed and reviewed.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 48,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "The $0 preview Agent 365 SKU includes a licence for 25 agent instances.",
+      "n": 53,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Learn advises re-exporting and re-importing when the source configuration changes.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent",
-      "quote": "Purchase the $0 Agent 365 SKU, which includes a license for 25 agent instances.",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
+      "quote": "Re-export and re-import if the source configuration changes later.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 49,
+      "n": 54,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Shared agent content can reach people without original access regardless of sensitivity labels or permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/onboard-agent",
+      "quote": "even those individuals who don't originally have access to that content. This risk applies regardless of sensitivity labels or permissions placed on the content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[1].note; Scope: Prerequisites; Governance controls",
+      "type": "role",
+      "claim": "Activating Sales Development agent requires the AI Administrator or Global Administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent",
+      "quote": "You must have either the AI Administrator or Global Administrator role in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The administrative instance-creation procedure designates the person who will manage the instance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent",
+      "quote": "Create the agent identity by entering a unique name and email alias, and then select the person who will manage this instance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
       "where": "Scope: Prerequisites for the agent itself",
       "type": "behaviour",
       "claim": "Copilot Frontier must be enabled in the Microsoft 365 admin center.",
@@ -564,43 +652,87 @@
       "fix": null
     },
     {
-      "n": 50,
-      "where": "controls[1].note; Scope; Governance controls",
-      "type": "role",
-      "claim": "Sales Development agent activation requires AI Administrator or Global Administrator in the Microsoft 365 admin center.",
+      "n": 58,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The activation article lists required Microsoft 365 subscriptions and licenses as prerequisites.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent",
-      "quote": "You must have either the AI Administrator or Global Administrator role in the Microsoft 365 admin center.",
+      "quote": "You have the required subscriptions and licenses for Microsoft 365, Microsoft 365 Copilot, and Microsoft Teams.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 51,
-      "where": "controls[1].ui; Governance controls",
+      "n": 59,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The activation article lists required Microsoft 365 Copilot subscriptions and licenses as prerequisites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent",
+      "quote": "You have the required subscriptions and licenses for Microsoft 365, Microsoft 365 Copilot, and Microsoft Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The activation article lists required Microsoft Teams subscriptions and licenses as prerequisites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent",
+      "quote": "You have the required subscriptions and licenses for Microsoft 365, Microsoft 365 Copilot, and Microsoft Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "cost",
+      "claim": "The activation article's preview enablement procedure specifies purchasing a $0 Agent 365 SKU.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent",
+      "quote": "Purchase the $0 Agent 365 SKU, which includes a license for 25 agent instances.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The $0 Agent 365 SKU described by the activation article includes a license for 25 agent instances.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent",
+      "quote": "Purchase the $0 Agent 365 SKU, which includes a license for 25 agent instances.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[1].ui; Governance guidance: Before rollout; Governance controls",
       "type": "admin-path",
-      "claim": "Microsoft 365 admin center > Agents > All Agents > Sales Development (Frontier) > Activate leads to choosing users or groups allowed to create instances.",
+      "claim": "Microsoft 365 admin center > Agents > All Agents > Sales Development (Frontier) > Activate reaches activation, where users or groups allowed to create instances are chosen.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent",
-      "quote": "In the Microsoft 365 admin center, go to Agents > All Agents.\n2. Search for Sales Development (Frontier), and then select Activate.\n3. Choose the users or groups that can create Sales Development agent instances.",
+      "quote": "In the Microsoft 365 admin center, go to Agents > All Agents.\nSearch for Sales Development (Frontier), and then select Activate.\nChoose the users or groups that can create Sales Development agent instances.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 52,
-      "where": "controls[1].api; controls[1].note",
+      "n": 64,
+      "where": "controls[1].api; controls[1].note; Governance controls",
       "type": "command",
       "claim": "POST /beta/copilot/admin/catalog/packages/{id}/activate is the documented beta action for activating a template for users or groups allowed to create instances.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackageactivationresult-activate",
-      "quote": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/activate\n\nThis reference describes the reviewed beta contract. Availability depends on the matching schema and backend release; API-review approval isn't evidence of deployed availability.",
+      "quote": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/activate\nThis reference describes the reviewed beta contract. Availability depends on the matching schema and backend release; API-review approval isn't evidence of deployed availability.",
       "severity": "minor",
-      "fix": "Append to controls[1].note and the rendered row note: 'This is a reviewed beta contract; availability depends on the matching schema and backend release, not API-review approval.' The existing API reference states this qualification."
+      "fix": "Append to controls[1].note and the rendered row note: 'This is a reviewed beta contract; availability depends on the matching schema and backend release, not API-review approval.' The qualification is stated at https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackageactivationresult-activate."
     },
     {
-      "n": 53,
-      "where": "controls[1].note",
+      "n": 65,
+      "where": "controls[1].note; Governance controls",
       "type": "command",
-      "claim": "The beta activation request sets agentManagerScope to specify users or groups allowed to create instances.",
+      "claim": "The beta activation request uses agentManagerScope to specify users or groups allowed to create instances.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackageactivationresult-activate",
       "quote": "agentManagerScope | copilotPackageAgentManagerScope | Required. The users or groups allowed to create instances from this template.",
@@ -608,8 +740,8 @@
       "fix": null
     },
     {
-      "n": 54,
-      "where": "controls[1].note",
+      "n": 66,
+      "where": "controls[1].note; Governance controls",
       "type": "command",
       "claim": "The beta activation request requires policyTemplateId.",
       "status": "supported",
@@ -619,10 +751,10 @@
       "fix": null
     },
     {
-      "n": 55,
-      "where": "controls[1].note",
+      "n": 67,
+      "where": "controls[1].note; Governance controls",
       "type": "licensing",
-      "claim": "Access to the activation API requires an Agent 365 licence.",
+      "claim": "Access to the activation API requires an Agent 365 license.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackageactivationresult-activate",
       "quote": "Access to the Package Management API requires a Microsoft Agent 365 license.",
@@ -630,43 +762,65 @@
       "fix": null
     },
     {
-      "n": 56,
-      "where": "controls[1].governs; controls[1].note; Governance guidance; Governance controls",
-      "type": "applicability",
-      "claim": "Activation controls who can create agent instances, rather than directly selecting who can copy an existing configuration.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent",
-      "quote": "Choose the users or groups that can create Sales Development agent instances.\n\nAll users can see the Sales Development agent in the Agent Store, but only users with explicit access can activate an instance.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
-      "where": "Cost and licensing; front matter: licensing.notes",
-      "type": "absence",
-      "claim": "The configuration-copy page lists no licence or meter specific to copying, and no separate copy-specific licence was found.",
+      "n": 68,
+      "where": "front matter: defaultState; Why it matters; Open questions",
+      "type": "default",
+      "claim": "Microsoft has not stated the configuration-copy feature's default state on arrival, and no source states that existing agents automatically change.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Sales Development agent copy configuration export import Copilot Credits licensing price rate. Read copy-configuration, activate-agent and microsoft-365-resources-for-agents; product licensing and consumption are documented, but no separate configuration-copy licence or meter is named.",
+      "quote": "Searched: \"Sales Development\" \"copy\" \"default\" \"configuration\"; read roadmap record, copy-configuration, activate-agent and onboard-agent. These describe deliberate export/import requests, not a default-on-arrival state or automatic changes to existing agents.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 58,
-      "where": "Cost and licensing",
-      "type": "date",
-      "claim": "The Microsoft 365 Resources for Agents description lists Sales Development Agent public preview availability as December 1, 2026.",
+      "n": 69,
+      "where": "front matter: licensing.model; Cost and licensing",
+      "type": "licensing",
+      "claim": "The mixed licensing model reflects the documented agent prerequisites together with consumption billing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-resources-for-agents",
-      "quote": "| Feature | Autopilot | Sales Development Agent and Service Agent | Copilot Studio |\n| Public Preview availability | November 24, 2026 | December 1, 2026 | December 1, 2026 |",
+      "quote": "Resources are provisioned automatically for each supported agent user instance, and charges are billed consumptively via Copilot Credits. The hiring manager responsible for the agent must meet the requirements in Licensing terms.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 59,
+      "n": 70,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "No licensing requirement specific to configuration copy, beyond requirements for its containing agent, is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Sales Development agent export import configuration Copilot Credits rate licensing; read copy-configuration, activate-agent and Microsoft 365 Resources for Agents. No separate configuration-copy entitlement was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The copy-configuration article itself names neither a license nor a meter for copying.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Sales Development agent configuration copy import export pricing Copilot Credits license rate default; opened and read the complete copy-configuration article, including prerequisites. It names no license or meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Cost and licensing",
+      "type": "date",
+      "claim": "The Microsoft 365 Resources for Agents service description lists December 1, 2026 as Sales Development Agent public preview availability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-resources-for-agents",
+      "quote": "Feature | Autopilot | Sales Development Agent and Service Agent | Copilot Studio\nPublic Preview availability | November 24, 2026 | December 1, 2026 | December 1, 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
       "where": "Cost and licensing; rationale: cost",
       "type": "date",
-      "claim": "The service description says consumption billing begins when the product becomes available, December 1, 2026 for Sales Development Agent.",
+      "claim": "The service description says consumption billing begins when each product becomes available, December 1, 2026 for Sales Development Agent.",
       "status": "supported",
       "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-resources-for-agents",
       "quote": "Availability is in Frontier Public. Consumption billing begins when each product becomes available.",
@@ -674,10 +828,10 @@
       "fix": null
     },
     {
-      "n": 60,
+      "n": 74,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "The agent account and persistent resource access carry a recurring charge of 100 Copilot Credits per agent per month.",
+      "claim": "The agent account and persistent resource access incur 100 Copilot Credits per agent per month.",
       "status": "supported",
       "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-resources-for-agents",
       "quote": "The agent account, email address, and persistent access to Microsoft 365 resources (for example, Exchange and OneDrive workspaces) have a recurring charge of 100 Copilot Credits per agent per month.",
@@ -685,81 +839,81 @@
       "fix": null
     },
     {
-      "n": 61,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "All agent activity, including model, context, tools and runtime usage, is billed consumptively.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-resources-for-agents",
-      "quote": "All agent activity is billed consumptively. This includes:\n- Use of the agent's standalone Microsoft 365 resources\n- Applicable protections\n- Any model, context, tools, or runtime usage.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 62,
-      "where": "Cost and licensing; Open questions; rationale: cost",
-      "type": "absence",
-      "claim": "No credit rate or price specific to configuration export or import is published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Sales Development agent copy configuration export import Copilot Credits licensing price rate. Read copy-configuration, activate-agent, microsoft-365-resources-for-agents and billing-rate search excerpts; no export/import-specific rate found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 63,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "The licensing model is mixed, combining documented product licence prerequisites with consumption billing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-resources-for-agents",
-      "quote": "Public Preview requires enrollment in the Frontier program, which requires the tenant to have at least one Microsoft 365 Copilot or E7 license.\n\nAll charges are billed consumptively via Copilot Credits:",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 64,
+      "n": 75,
       "where": "front matter: cost; Cost and licensing; rationale: cost",
       "type": "cost",
-      "claim": "The variable cost rating reflects the documented Copilot Credits meter rather than treating the $0 preview SKU as proof of no usage charge.",
+      "claim": "Sales Development agent activity is billed consumptively via Copilot Credits, including model, context, tools and runtime usage, supporting the variable cost rating.",
       "status": "supported",
       "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-resources-for-agents",
-      "quote": "All charges are billed consumptively via Copilot Credits:",
+      "quote": "All charges are billed consumptively via Copilot Credits:\nAll agent activity is billed consumptively. This includes:\nAny model, context, tools, or runtime usage.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 65,
-      "where": "Why it matters",
-      "type": "behaviour",
-      "claim": "The documented copying procedure changes the target configuration through a manager-initiated file import, rather than documenting an automatic change to existing agents.",
+      "n": 76,
+      "where": "Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No price or Copilot Credits rate specific to exporting or importing configuration is published.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
-      "quote": "Attach the exported configuration file.\n3. In the same message, include a clear instruction to import the configuration.\n\nExample prompt:\n- Take this configuration and apply it.",
+      "source": null,
+      "quote": "Searched: Sales Development agent export import configuration Copilot Credits rate licensing; read copy-configuration, activate-agent and Microsoft 365 Resources for Agents; reviewed billing-rates search excerpts. No export/import-specific rate was found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 66,
+      "n": 77,
+      "where": "controls[0].ui; controls[0].api; summary; Risk assessment; Governance controls; rationale: risk",
+      "type": "absence",
+      "claim": "No tenant UI setting or API control specifically governing configuration export or import is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Sales Development\" \"configuration\" \"export\" \"disable\"; Sales Development agent copy configuration Microsoft Graph API export import tenant control. Read copy-configuration, activate-agent, architecture and Graph activate; no export/import switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "controls[1].note; Governance controls; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Template activation governs who may create agent instances, rather than granting permission to copy configurations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackageactivationresult-activate",
+      "quote": "Activate an already-onboarded agent template for the users or groups allowed to create instances from it, and apply the selected policy template.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "Scope: Surface",
+      "type": "record",
+      "claim": "The roadmap gives 'Export your configuration' as an example prompt.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "For example, enter Export your configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "The playbook and guidelines shape how the agent progresses prospects and communicates during outreach.",
+      "claim": "The copied playbook and guidelines shape the target agent's outreach behavior.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/onboard-agent",
-      "quote": "The playbook defines how a sales prospect progresses from one stage to another (outreach -> qualification -> handoff).\n\nGuidelines define how the AI agent works and communicates at each stage.",
+      "quote": "Playbook | Defines your prospect progression.\nGuidelines | Sets the communication tone and defines acceptable and unacceptable behaviors when engaging with prospects.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-20T12:01:45.253Z",
+    "at": "2026-11-27T08:23:11.250Z",
     "summary": {
       "links": 8,
-      "unreachable": 0,
+      "unreachable": 7,
       "uiPaths": 1,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 1,
       "apiCalls": 1,
-      "apiCallsNotOnPage": 0,
+      "apiCallsNotOnPage": 1,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -770,38 +924,38 @@
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/copy-configuration",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/onboard-agent",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackageactivationresult-activate",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/purview/audit-log-activities",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/architecture",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-resources-for-agents",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -810,23 +964,28 @@
         "side": "ui",
         "governs": "Which users or groups can create Sales Development agent instances",
         "docs": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Agents",
           "All Agents",
           "Sales Development",
           "Activate"
         ],
-        "missing": []
+        "missing": [
+          "Agents",
+          "All Agents",
+          "Sales Development",
+          "Activate"
+        ]
       },
       {
         "index": 1,
         "side": "api",
         "governs": "Which users or groups can create Sales Development agent instances",
         "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackageactivationresult-activate",
-        "reachable": true,
+        "reachable": false,
         "token": "/beta/copilot/admin",
-        "found": true
+        "found": false
       }
     ],
     "roadmapDrift": []
@@ -842,6 +1001,12 @@
       "date": "2026-11-20",
       "status": "held",
       "version": 2,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-20",
+      "status": "verified-with-gaps",
+      "version": 3,
       "model": "gpt-6.1-sol"
     }
   ]

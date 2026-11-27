@@ -1,0 +1,728 @@
+{
+  "slug": "m365-copilot-support-for-refining-query-filters-for-confluence-copilot-connectors",
+  "roadmapId": 503571,
+  "title": "Microsoft 365 Copilot connectors: space and CQL filters for what the Confluence connectors index",
+  "status": "verified-with-gaps",
+  "date": "2026-11-27",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 55,
+    "confirmed": 54,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 0,
+    "major": 0,
+    "minor": 3
+  },
+  "summary": "The briefing passes: the roadmap facts, filtering behaviour, prerequisites and licensing statements are supported. Minor corrections should complete the navigation paths and acknowledge that the checklist also names access permissions and limited-audience rollout controls that are absent from the table.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap item is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap general availability target is May CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"May CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is March CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"March CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap product is Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-11-04T00:02:09.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-04T00:02:09\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing: Status and differences between sources; Open questions",
+      "type": "record",
+      "claim": "The roadmap describes simplified Cloud filters for page ID, creation date/time and last update date/time.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "For Confluence Cloud connector, it introduces simplified options to filter pages by page id, creation date/time and last update date/time",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing: Status and differences between sources",
+      "type": "record",
+      "claim": "The roadmap describes advanced CQL filtering for the On-premises connector.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "For Confluence On-premises connector, it adds support for advanced CQL-based filtering, enabling more complex and flexible filtering scenarios.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing: opening; title; Scope",
+      "type": "behaviour",
+      "claim": "The Confluence Cloud connector brings indexed Confluence pages and blogs into Copilot and Microsoft Search.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-cloud-deployment",
+      "quote": "The Confluence Cloud Microsoft 365 Copilot connector integrates Confluence content into Microsoft 365, enabling Copilot, Copilot Search, and Microsoft Search to surface relevant wiki pages and blogs",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing: Confluence On-premises; Scope",
+      "type": "behaviour",
+      "claim": "The On-premises connector indexes self-hosted Confluence Data Center or Server content for Microsoft Search and Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-onpremises-deployment",
+      "quote": "The Confluence On-premises connector enables Microsoft 365 to index and retrieve content from self-hosted Confluence Data Center or Server instances. It brings enterprise wiki content into Microsoft Search and Copilot",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing: Confluence Cloud; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The Cloud connector indexes all blogs and pages by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-cloud-deployment",
+      "quote": "By default, the Confluence Cloud connector indexes all blogs and pages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing: Confluence Cloud; summary; controls[0].governs",
+      "type": "behaviour",
+      "claim": "Admins can include or exclude Cloud spaces from indexing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-cloud-deployment",
+      "quote": "You can include or exclude spaces that you want to index.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing: Confluence Cloud; summary; Why it matters; controls[0].governs",
+      "type": "behaviour",
+      "claim": "A Cloud CQL string restricts which pages sync, including by modification date.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-cloud-deployment",
+      "quote": "For advanced scenarios, use a Confluence Query Language (CQL) string to specify conditions for syncing pages. For example, you can choose to index only the pages that were modified in the last two years.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing: Confluence Cloud",
+      "type": "behaviour",
+      "claim": "Microsoft documents lastModified >= \"2024/12/31\" as an example CQL date filter.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-cloud-deployment",
+      "quote": "You can use the CQL filter to index content modified after a certain time by using, for example, `lastModified >= \"2024/12/31\"`.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment; Governance guidance; controls[0].note",
+      "type": "behaviour",
+      "claim": "Cloud Preview results checks sample values of selected properties and the CQL string during setup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-cloud-deployment",
+      "quote": "Choose **Preview results** to verify the sample values of the selected properties and CQL string.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing: Confluence On-premises; controls[1].note",
+      "type": "behaviour",
+      "claim": "On-premises connections can include or exclude spaces by space key.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-onpremises-deployment",
+      "quote": "Include or exclude specific spaces by using the space filter option. Each space has a space key identifier that forms part of the URL for that space.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing: Confluence On-premises; summary; controls[1].note",
+      "type": "behaviour",
+      "claim": "On-premises connections can filter pages by Last Created Date or Last Modified Date ranges.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-onpremises-deployment",
+      "quote": "Specify a date range for document indexing. You can filter pages by **Last Created Date** or **Last Modified Date**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing: Confluence On-premises; controls[1].governs",
+      "type": "behaviour",
+      "claim": "On-premises connections support CQL conditions for syncing pages.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-onpremises-deployment",
+      "quote": "For advanced scenarios, use a Confluence Query Language (CQL) string to specify conditions for syncing pages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "summary; What's changing; Risk assessment; Scope; Governance guidance; controls[1].note",
+      "type": "behaviour",
+      "claim": "On-premises CQL requires Microsoft Graph Connector Agent version 3.1.22 or later.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-onpremises-deployment",
+      "quote": "You need Microsoft Graph Connector Agent version 3.1.22 or later to use this feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Why it matters: default behaviour",
+      "type": "default",
+      "claim": "On-premises connections include all spaces by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-onpremises-deployment",
+      "quote": "| Content | Include/exclude space | All spaces included. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The filtering control is admin-opt-in: the documented unrestricted scope remains until an admin configures filters.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-cloud-deployment",
+      "quote": "By default, the Confluence Cloud connector indexes all blogs and pages. You can include or exclude spaces that you want to index.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing: Status and differences between sources; controls[0].note",
+      "type": "date",
+      "claim": "The November 17, 2026 release notes associate roadmap 503571 with Cloud space and CQL filters and use Include or exclude data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes#november-17,-2026",
+      "quote": "**Roadmap ID:**[503571](https://www.microsoft.com/microsoft-365/roadmap?filters=&searchterms=503571)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing: Status and differences between sources; Open questions",
+      "type": "absence",
+      "claim": "The Cloud deployment page does not document separate page ID or date filter fields as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Confluence Cloud connector simplified page ID creation date last update date filter'; read Cloud deployment content settings and Cloud service setup search excerpts. They document space selection and CQL, not separate page ID or date filter fields.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Cloud filter is at Microsoft 365 admin center > Copilot > Connectors > Connectors > Gallery > Confluence Cloud > Custom setup > Include or exclude data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-cloud-deployment",
+      "quote": "Choose the **Connectors** tab, and in the left pane, choose **Gallery**.",
+      "severity": "minor",
+      "fix": "Include the intervening content-settings heading: 'Copilot > Connectors > Connectors > Gallery > Confluence Cloud > Custom setup > Customize content settings > Include or exclude data', as documented at https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-cloud-deployment."
+    },
+    {
+      "n": 27,
+      "where": "controls[0].api; Governance controls table; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not documented automation for setting the Microsoft-built Confluence Cloud connector's space or CQL filters.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Confluence Cloud On-premises connector configure CQL space filters Microsoft Graph API PowerShell'; read Cloud deployment, service-setup excerpts and Graph externalConnection reference. Source-side search APIs do not configure the Microsoft-built connector; no filter-setting call found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "On-premises filter setup is at Microsoft 365 admin center > Copilot > Connectors > Gallery > Confluence On-premises > Custom setup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-onpremises-deployment",
+      "quote": "To customize settings, on the connector page in the admin center, select **Custom setup**.",
+      "severity": "minor",
+      "fix": "Complete the path to the documented filter section: 'Copilot > Connectors > Gallery > Confluence On-premises > Custom setup > Customize content settings', at https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-onpremises-deployment."
+    },
+    {
+      "n": 29,
+      "where": "controls[1].api; Governance controls table; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not documented automation for setting the Microsoft-built On-premises connector's space, date or CQL filters.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Confluence Cloud On-premises connector configure CQL space filters Microsoft Graph API PowerShell'; read On-premises deployment and overview, source-setup search excerpts, and Graph externalConnection reference. No operation configuring these connector filters was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Why it matters; Risk assessment; Governance controls",
+      "type": "default",
+      "claim": "By default, indexed results respect users' existing access in Confluence rather than making content visible to everyone.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-cloud-deployment",
+      "quote": "Only people with access to this data source (default)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Data exposure; Governance controls",
+      "type": "applicability",
+      "claim": "The Everyone access setting exposes the connection's indexed data in search results to all users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-cloud-deployment",
+      "quote": "If you choose **Everyone**, indexed data appears in the search results for all users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Permission updates synchronize only during full crawls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-onpremises-deployment",
+      "quote": "Updates to permissions sync only during full crawls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Security & identity",
+      "type": "default",
+      "claim": "Full crawls run daily, every 24 hours, by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-cloud-deployment",
+      "quote": "By default, full crawls run every 24 hours.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Content filters coexist with the connectors' identity mapping and permission settings rather than replacing them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-cloud-deployment",
+      "quote": "If you choose **Only people with access to this data source**, search results respect the same permission setup as the data source.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Change & support; Governance controls; Open questions",
+      "type": "behaviour",
+      "claim": "The manage-connections page lists published-connection query string editing specifically for ServiceNow, not Confluence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "Query string (ServiceNow)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Change & support; Governance controls",
+      "type": "behaviour",
+      "claim": "Microsoft's manage-connections guidance says to delete and recreate a connection with an exclusion filter to stop indexing unwanted items.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "To update this connection, first delete the existing connection and create a new one with a data source exclusion filter that excludes the items you no longer want to index.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.model and notes",
+      "type": "licensing",
+      "claim": "The filters are included under the connector's existing Microsoft 365 licensing rather than a separately documented filter entitlement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Indexing of synced connector data incurs no extra cost for tenants with Microsoft 365 licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Any Microsoft 365 plan covers synced connectors in Microsoft Search.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "| Microsoft 365 (any plan) | ✅ | ❌ | ❌ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing: Licence; rationale: cost",
+      "type": "cost",
+      "claim": "The prerequisites page says indexing synced connector data costs nothing extra for tenants with Microsoft 365 licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Indexing of synced connector data incurs no extra cost for tenants with Microsoft 365 licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The licensing table supports synced connector Copilot grounding with the Microsoft 365 Copilot add-on or Microsoft 365 E7.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "| Microsoft 365 + Microsoft 365 Copilot add-on | ✅ | ✅ | ✅ |\n| Microsoft 365 E7 | ✅ | ✅ | ✅ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing: Licence",
+      "type": "cost",
+      "claim": "For organizations with Microsoft 365 Copilot licences, connector grounding is included without extra charges.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "If your organization has Microsoft 365 Copilot licenses, connector grounding in Copilot is included, and no extra charges apply.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing: Conflicting statement",
+      "type": "licensing",
+      "claim": "The Copilot Search FAQ separately says connectors may require E5, Viva or capacity units depending on indexed data volume and type.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-search-faq",
+      "quote": "Microsoft 365 Copilot connectors are licensed separately and may require Microsoft 365 E5, Microsoft Viva, or additional capacity units depending on the volume and type of data being indexed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "front matter: licensing.notes",
+      "type": "absence",
+      "claim": "Microsoft publishes no licence specific to these filters.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Confluence Copilot connector query filters licensing price meter CQL'; read connector prerequisites, both Confluence deployment pages and Copilot Search FAQ. Product-level licences are stated; no filter-specific licence was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing: Meter; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft publishes no meter or separate price for the filters themselves.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Confluence Copilot connector query filters licensing price meter CQL'; read prerequisites licensing and cost passages, Copilot Search FAQ and both deployment pages. No filter-specific meter or price was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Scope: Roles; Governance controls",
+      "type": "role",
+      "claim": "The connector prerequisites specify the AI administrator role to configure and deploy Copilot connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "To configure and deploy Copilot connectors, you must be an AI administrator in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope: Roles",
+      "type": "role",
+      "claim": "The deployment prerequisites name Confluence admins for source-side setup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "for prebuilt synced connectors (such as Google Drive, Confluence, ServiceNow), you must have admin access to the external service (Google Workspace Super Admin, Confluence Admin).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Scope: On-premises prerequisites",
+      "type": "behaviour",
+      "claim": "The On-premises connector requires Confluence version 8.0 or higher.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-onpremises-deployment",
+      "quote": "Confirm that your Confluence version is 8.0 or higher.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Scope: On-premises prerequisites; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The On-premises connector uses a Graph connector agent installed on a Windows computer on the Confluence server's network.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-onpremises-deployment",
+      "quote": "Install the [Microsoft Graph connector agent](connector-agent) on a Windows computer on the same network as the Confluence server.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "Connections can be listed under Microsoft 365 admin center > Copilot > Connectors > Your Connections.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "Go to **Copilot** > **Connectors** > **Your Connections**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Rollout to limited audience allows testing a connector with selected users and groups before broader rollout.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-cloud-deployment",
+      "quote": "To roll out to a limited audience, choose the toggle next to **Rollout to limited audience** and specify the users and groups to roll the connector out to.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Your Connections displays connection state.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "You can view the connection state for your deployed connectors on the **Your Connections** tab in the admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Last sync time reports the last successful crawl.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "**Last sync time** indicates when the last successful crawl happened.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[0].note; controls[1].note; Governance controls",
+      "type": "applicability",
+      "claim": "Filters govern the content indexed by an individual connection and are configured in that connector's Custom setup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-cloud-deployment",
+      "quote": "You can customize the default values for the Confluence Cloud connector settings. To customize settings, on the connector page in the admin center, choose **Custom setup**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance controls: externalConnection",
+      "type": "absence",
+      "claim": "The Graph externalConnection resource has no property for configuring these Confluence connector filters.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Confluence Cloud On-premises connector configure CQL space filters Microsoft Graph API PowerShell'; read externalConnection v1.0 properties and JSON. activitySettings, configuration, connectorId, contentCategory, description, id, name, searchSettings and state contain no Confluence filter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance guidance: Before rollout and At rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist names access permissions and limited-audience rollout controls that have no corresponding controls-table rows.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "note each one's access permission setting; Use Rollout to limited audience; the table contains only Cloud and On-premises indexing-filter controls.",
+      "severity": "minor",
+      "fix": "The checklist's access-permission review and Rollout to limited audience steps have no corresponding table rows. Remove those two checklist instructions to make the checklist match the existing table."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-27T08:23:05.257Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-cloud-deployment",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-onpremises-deployment",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-onpremises-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/manage/copilot-search-faq",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/externalconnectors-externalconnection?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=503571",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which Confluence Cloud spaces and pages (by CQL) a connection indexes",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-cloud-deployment",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Connectors",
+          "Connectors",
+          "Gallery",
+          "Confluence Cloud",
+          "Custom setup",
+          "Include or exclude data"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which Confluence On-premises spaces, date ranges and CQL-matched pages a connection indexes",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-onpremises-deployment",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Connectors",
+          "Gallery",
+          "Confluence On-premises",
+          "Custom setup"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

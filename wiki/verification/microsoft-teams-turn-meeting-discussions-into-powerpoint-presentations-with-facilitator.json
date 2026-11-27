@@ -1,0 +1,704 @@
+{
+  "slug": "microsoft-teams-turn-meeting-discussions-into-powerpoint-presentations-with-facilitator",
+  "roadmapId": 571296,
+  "title": "Microsoft Teams: Facilitator creates PowerPoint presentations from meeting discussions",
+  "status": "verified-with-gaps",
+  "date": "2026-11-27",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 53,
+    "confirmed": 51,
+    "unconfirmed": 1,
+    "contradicted": 1,
+    "blocker": 0,
+    "major": 1,
+    "minor": 3
+  },
+  "summary": "The briefing passes: its roadmap facts, licensing, preview qualifications and control paths are supported. Narrow the assurance that Facilitator never acts autonomously to the documented ability to request a deck, and correct the minor governance and citation gaps.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Risk assessment; rationale: risk",
+      "type": "record",
+      "claim": "Users can ask Facilitator to create a PowerPoint presentation from meeting speech, chats and shared files.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "you can ask Facilitator to create a PowerPoint presentation from what was said, chats, and shared files in the meeting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Facilitator can already draft Word documents from meeting discussions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Facilitator can already draft documents in Word, so now your team can also go straight from discussion to a deck.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; summary; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap targets January CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\n    \"General Availability\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\n    \"Worldwide (Standard Multi-Tenant)\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Desktop and Mac.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\n    \"Desktop\",\n    \"Mac\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Risk assessment; changes",
+      "type": "availability",
+      "claim": "Learn already describes Facilitator PowerPoint deck creation in or after meetings as public preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "The following Facilitator capabilities are currently in public preview:\n\n- Task tracking integration with Planner\n- PowerPoint deck creation in meeting or post meeting",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Risk assessment: Data exposure; Open questions",
+      "type": "behaviour",
+      "claim": "Learn's deck-creation example draws on the last two meetings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "@Facilitator, Create a product planning PowerPoint deck based on last two meetings for executive review",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Preview behaviour may change before public release.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Features in preview might not be complete and could undergo changes before becoming available in the public release.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; controls[1].note",
+      "type": "default",
+      "claim": "Facilitator is allowed by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Facilitator is allowed by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: defaultState; What's changing; Why it matters",
+      "type": "default",
+      "claim": "Deck creation is user-opt-in: eligible users ask for a deck, with no documented separate admin enablement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Facilitator is allowed by default.\nPowerPoint deck creation in meeting or post meeting, for example \"@Facilitator, Create a product planning PowerPoint deck based on last two meetings for executive review\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Everyone in the meeting can see a user's prompts to Facilitator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "If a user prompts Facilitator, all users can view that communication, just like if the user was talking with another person in the meeting chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Risk assessment; Governance guidance; rationale: impact",
+      "type": "behaviour",
+      "claim": "Facilitator posts its response in the meeting conversation for everyone to see, including unlicensed participants.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Facilitator then displays its response within the meeting's conversation for everyone to see.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated where generated deck files are saved or whose storage holds them.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Facilitator\" \"PowerPoint\" \"saved\"' and '\"Facilitator\" \"PowerPoint\" \"OneDrive\"'; opened learn.microsoft.com/microsoftteams/facilitator-teams and purview/ai-teams-facilitator. Storage text describes .loop data, not generated decks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated the default sharing of generated decks.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Facilitator\" \"PowerPoint\" permissions sharing sensitivity DLP' and '\"Facilitator\" \"PowerPoint\" \"saved\"'; opened learn.microsoft.com/microsoftteams/facilitator-teams. Meeting-response visibility is stated, but deck-file sharing is not.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "Why it matters; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Prevent copy and paste is not applied to Facilitator responses or AI-generated notes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Meeting settings like Prevent copy and paste and Watermarks aren't applied to Facilitator's responses or AI-generated notes in meetings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Why it matters; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Watermarks are not applied to Facilitator responses or AI-generated notes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Meeting settings like Prevent copy and paste and Watermarks aren't applied to Facilitator's responses or AI-generated notes in meetings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Why it matters; Risk assessment; Governance guidance; rationale: risk",
+      "type": "applicability",
+      "claim": "Purview lists sensitivity labels as unsupported for Facilitator AI interactions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-teams-facilitator",
+      "quote": "| Capability or solution in Microsoft Purview | Supported for AI interactions |\n| Sensitivity labels | **✕** |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Why it matters; Risk assessment; Governance guidance; rationale: risk",
+      "type": "applicability",
+      "claim": "Purview lists DLP as unsupported for Facilitator AI interactions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-teams-facilitator",
+      "quote": "| Capability or solution in Microsoft Purview | Supported for AI interactions |\n| Data loss prevention | **✕** |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Facilitator AI-generated notes do not inherit the meeting's sensitivity label.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "AI-generated notes for meetings don't inherit the meeting's sensitivity label; however, a sensitivity label can be applied to the notes' Loop component in the Loop app or OneDrive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Meeting-label inheritance by generated decks is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Facilitator\" \"PowerPoint\" permissions sharing sensitivity DLP'; opened facilitator-teams and ai-teams-facilitator; read sensitivity-labels-sharepoint-onedrive-files excerpts. General file labelling does not establish meeting-label inheritance for these decks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "No DLP rule is documented as preventing sensitive meeting content from being used to generate a Facilitator deck.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Facilitator\" \"PowerPoint\" permissions sharing sensitivity DLP'; opened purview/ai-teams-facilitator and read dlp-sensitivity-label-as-condition excerpts. File DLP is documented, but no Facilitator deck-generation exclusion rule was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "licensing",
+      "claim": "Only licensed users can initiate or prompt Facilitator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Only licensed userscan initiate Facilitator.\nUnlicensed users can't prompt Facilitator, but they can see others' prompts to Facilitator and Facilitator's responses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "Microsoft has not stated whose permissions are used to read shared files for deck creation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Facilitator\" \"PowerPoint\" \"permissions\"'; opened learn.microsoft.com/microsoftteams/facilitator-teams and purview/ai-teams-facilitator. Neither specifies the identity used to read shared files for deck creation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Facilitator creates decks only when asked and does not act on its own.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: '\"Facilitator\" \"PowerPoint\" autonomous automatically prompt'; opened facilitator-teams. The roadmap says users can ask for decks and Learn gives a prompt example; neither states the absolute exclusion of other initiation mechanisms.",
+      "severity": "major",
+      "fix": "Replace 'Facilitator creates the deck only when a user asks for it. It does not act on its own, but one participant’s request produces a file from everyone’s contributions.' with 'A user can ask Facilitator to create a deck from meeting discussions, chats and shared files.'"
+    },
+    {
+      "n": 27,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Facilitator is included with a Microsoft Copilot licence, subject to available capacity, so existing Facilitator licensees need no new entitlement for this skill.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Facilitator is included with a Microsoft Copilot license and subject to available capacity. The following list contains the prerequisites for users to be able to access Facilitator features in Teams meetings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope",
+      "type": "licensing",
+      "claim": "Users need an eligible Microsoft 365 base licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "An eligible Microsoft 365base license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope",
+      "type": "licensing",
+      "claim": "Users need an eligible Teams licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Have an eligible Microsoft Teamslicense.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible plans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-license-options",
+      "quote": "Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible commercial, US Government, and education subscription plans.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Cost and licensing: Meter",
+      "type": "absence",
+      "claim": "No meter specific to Facilitator deck creation is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Facilitator PowerPoint deck creation pricing meter capacity license'; opened facilitator-teams and copilot/plan/copilot-license-options. The feature is included subject to capacity; no deck-specific meter was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No separate price for Facilitator deck creation is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Facilitator PowerPoint deck creation pricing meter capacity license'; opened facilitator-teams and copilot/plan/copilot-license-options. Neither publishes a separate deck-creation price.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Cost and licensing: Indirect costs",
+      "type": "absence",
+      "claim": "Microsoft has not stated whether generated decks count against a user's OneDrive storage.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Facilitator\" \"PowerPoint\" \"OneDrive\"'; opened facilitator-teams; read OneDrive API overview excerpts. The deck's storage location and attribution to a user's quota are not specified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Scope: Users",
+      "type": "availability",
+      "claim": "Preview experiences require Microsoft Teams Public preview participation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "To use preview experiences, be a Microsoft Teams Public preview participant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Scope: Meetings",
+      "type": "availability",
+      "claim": "Facilitator is not supported in 1:1 chats, group chats, or external chats and meetings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Currently, Facilitator isn't supported in 1:1 chats, group chats, or external chats and meetings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Scope: Prerequisite",
+      "type": "behaviour",
+      "claim": "Loop experiences in Teams must be enabled to use Facilitator in meetings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Loop experiences in Teams need to be turned on in order for Facilitator to be used in meetings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Teams admin center > Teams apps > Built-in Teams agents > agent > Edit availability controls who can use Facilitator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "Sign in to the Teams admin center and go to Teams apps > Built-in Teams agents.\nTo change who can use an agent, select one or more agents and choose Edit availability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[0].api; controls[0].note; Governance controls table",
+      "type": "command",
+      "claim": "Update-M365TeamsApp -Id <app id> -AppAssignmentType UsersAndGroups sets app availability, using -OperationType and -Users or -Groups for assignments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+      "quote": "This cmdlet allows administrators to modify app state, availability and installation status by adding or removing users and groups or changing assignment type or installation status.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoftteams/app-centric-management to sources. It links Update-M365TeamsApp for app availability and describes app-centric access for apps and Copilot agents; the Facilitator setup page expressly directs admins to app-centric management."
+    },
+    {
+      "n": 39,
+      "where": "controls[1].ui; Governance controls table and notes",
+      "type": "admin-path",
+      "claim": "The Facilitator setup page documents Teams apps > Manage apps > Facilitator > Allow or Block.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "In the left rail navigation, select Teams apps > Manage apps.\nSelect Facilitator from the app list.\nIn the actions menu, select Allow or Block.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "Update-M365TeamsApp -Id <app id> -IsBlocked $true is a documented operation for changing tenant app state.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+      "quote": "PS C:\\> Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -IsBlocked $true\n-IsBlocked\nThe state of the app in the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[2]; summary; What's changing; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "A separate admin UI or API switch for Facilitator PowerPoint deck creation is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Facilitator PowerPoint deck creation disable setting PowerShell Teams admin policy'; opened facilitator-teams, manage-apps and Update-M365TeamsApp. The skill-control section covers notes; no deck-only UI or command was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[2].note; Governance controls",
+      "type": "command",
+      "claim": "The setup page documents IsCollabMeetingNotesFluidEnabled for controlling AI-generated meeting notes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Loop experiences in Teams control AI-generated notes for meetings, which are enabled by default.\nYou can manage this control using the IsCollabMeetingNotesFluidEnabled setting in PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "The documented notes setting is tenant-wide rather than per-user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "This setting applies to your entire tenant and can't be configured at the user level.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[0].note; controls[1].note; Governance controls",
+      "type": "applicability",
+      "claim": "Controlling availability of Facilitator as an agent governs access to all its skills, not only deck creation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "As an admin, you control whether Facilitator is available to your entire organization or to a certain group of users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "The setup page says blocking all apps for the organisation also blocks Facilitator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "However, if all apps are blocked for your organization, Facilitator is also blocked.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Retention of Facilitator AI interactions in meetings uses the Teams chats option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-teams-facilitator",
+      "quote": "For Facilitator AI interactions in meetings, use a retention policy with the Teams chats option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Retention of Facilitator AI-generated meeting notes uses OneDrive accounts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-teams-facilitator",
+      "quote": "For Facilitator AI-generated notes in meetings, use a retention policy or retention labels with the OneDrive accounts option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The Purview Facilitator page does not name deck files in its retention guidance.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Facilitator\" \"deck\" audit retention'; opened learn.microsoft.com/purview/ai-teams-facilitator. Its retention instructions name Teams chats for interactions and OneDrive accounts for notes, not deck files.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[0].note; Governance controls",
+      "type": "absence",
+      "claim": "The Update-M365TeamsApp reference describes Teams apps without specifically mentioning built-in agents.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Update-M365TeamsApp built-in Teams agents Facilitator availability block PowerShell'; opened learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp and checked its full text for built-in agents and Facilitator; neither is named.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance guidance: After rollout",
+      "type": "applicability",
+      "claim": "Facilitator activity can be reviewed using Microsoft Purview Audit and DSPM for AI.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-teams-facilitator",
+      "quote": "These events flow into activity explorer in the AI activities tab in the current version of DSPM and in DSPM for AI",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance guidance: After rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist directs readers to review Purview Audit and DSPM for AI, but the controls table has no monitoring row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Review Facilitator activity in Microsoft Purview Audit and DSPM for AI, and check whether deck creation appears there. The table contains only agent availability, app blocking and the separate deck-switch gap.",
+      "severity": "minor",
+      "fix": "The After rollout step 'Review Facilitator activity in Microsoft Purview Audit and DSPM for AI, and check whether deck creation appears there' has no corresponding controls-table row. Remove this checklist step; do not add a row as part of this correction."
+    },
+    {
+      "n": 52,
+      "where": "Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "Teams admin center > Teams apps > Built-in Teams agents > Edit availability reaches the availability control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "To change who can use an agent, select one or more agents and choose Edit availability.",
+      "severity": "minor",
+      "fix": "Replace the checklist path with 'Teams admin center > Teams apps > Built-in Teams agents > agent > Edit availability', matching controls[0].ui and making the agent-selection step explicit."
+    },
+    {
+      "n": 53,
+      "where": "Open questions: Audit",
+      "type": "applicability",
+      "claim": "Purview's Facilitator page lists auditing support for notes, moderation and meeting Q&A, without identifying a deck-specific event.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-teams-facilitator",
+      "quote": "Facilitator AI-generated notes, moderation, and questions and answers for meetings are supported.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-27T08:23:06.130Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=571296",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/ai-teams-facilitator",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/copilot-license-options",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/manage-apps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Who can use Facilitator, including deck creation (everyone, specific users or groups, or no one)",
+        "docs": "https://learn.microsoft.com/microsoftteams/manage-apps",
+        "reachable": true,
+        "segments": [
+          "Teams apps",
+          "Built-in Teams agents",
+          "Edit availability"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Who can use Facilitator, including deck creation (everyone, specific users or groups, or no one)",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+        "reachable": true,
+        "token": "Update-M365TeamsApp",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether the Facilitator app is allowed or blocked for the organisation",
+        "docs": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+        "reachable": true,
+        "segments": [
+          "Teams apps",
+          "Manage apps",
+          "Facilitator",
+          "Allow or Block"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether the Facilitator app is allowed or blocked for the organisation",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+        "reachable": true,
+        "token": "Update-M365TeamsApp",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

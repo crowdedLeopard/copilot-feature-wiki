@@ -68,7 +68,21 @@ roadmapModified: "2026-11-05T23:59:28"
 changes:
   - date: "2026-11-26"
     note: "New briefing: Teach unit plans, Teach licensing and default, and the Copilot app controls used to restrict Teach."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 43 statements not yet confirmed"
 version: 1
+verification:
+  status: "verified-with-gaps"
+  date: "2026-11-27"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 43
+  confirmed: 43
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "8d58c83665f56d4ea46d854a554d1172"
 ---
 
 ## What's changing
@@ -158,4 +172,10 @@ The Agent 365 Package Management API in Microsoft Graph blocks packages, which i
 risk: Low. Unit plans are a new output inside Teach, which eligible educators already have; nothing described reads new data or acts on its own.
 cost: None. Microsoft's education guide lists Teach as available to users with Microsoft 365 A1/A3/A5 or Office 365 A1/A1 Plus/A3/A5 faculty and staff licences and Copilot Chat enabled; no meter is documented for it.
 impact: Medium. Educators with eligible faculty and staff licences notice it; Teach is not available to students.
+-->
+
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Governance controls: Integrated Apps changes and Teams / applicability: Integrated Apps changes apply to the Copilot app and Outlook, while Copilot Chat in Teams is managed in the Teams admin center. | Found: Any changes made on the integrated apps portal on the Microsoft 365 admin center only impact whether and how a cross application app is surfaced on Outlook and the Microsoft Copilot application. To manage how these apps show up on Teams, use the Teams admin center. | Fix: Add: 'Microsoft documentation differs on Teams: the Integrated Apps article says its changes affect only Outlook and the Copilot app, but Manage Copilot Chat says blocking through Integrated Apps also blocks Teams.' Both cited URLs already appear in sources. | Source: https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365
 -->

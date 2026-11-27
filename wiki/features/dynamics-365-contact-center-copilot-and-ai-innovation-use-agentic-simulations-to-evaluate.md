@@ -85,17 +85,19 @@ changes:
     note: "First briefing: documents the preview voice-call simulations, their Copilot Studio credit meter, roles and limits, and the absence of a documented off switch."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 58 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 62 statements not yet confirmed"
 version: 1
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 58
-  confirmed: 58
+  claims: 62
+  confirmed: 61
   unconfirmed: 0
-  contradicted: 0
+  contradicted: 1
   attempts: 0
   hash: "10cf19ce3531a220d38d2601aa7be120"
 ---
@@ -202,11 +204,13 @@ cost: Variable. Learn says each three-minute simulation consumes about 40 Micros
 impact: Low. Only administrators holding the System administrator and Omnichannel administrator roles run simulations; representatives notice only if simulated calls reach their queues.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
 - [supported, minor] front matter: targetDate; What's changing; Scope; Open questions / record: General availability is targeted for June CY2027, although Open questions calls it general availability in June CY2027. | Found: "targetDate": "June CY2027", "status": "In development" | Fix: In the last Open questions bullet, replace 'general availability in June CY2027' with 'general availability targeted for June CY2027'.
 - [supported, minor] Risk assessment: Security & identity / role: System administrator and Omnichannel administrator are high-trust roles. | Found: Omnichannel administrator: Required for performing administrator tasks; also requires the System Administrator role to manage user roles and privileges in Dynamics 365 Contact Center. | Fix: Add https://learn.microsoft.com/dynamics365/customer-service/implement/add-users-assign-roles to sources for the role-privilege assessment. | Source: https://learn.microsoft.com/dynamics365/customer-service/implement/add-users-assign-roles
-- [supported, minor] controls[0].api; controls[0].note; Governance controls / command: The printed Dataverse v9.0 POST to systemuserroles_association/$ref assigns a role to the identified Microsoft Entra ID group user. | Found: POST [Organization URI]/api/data/v9.0/systemusers(azureactivedirectoryobjectid=<user object ID>)/systemuserroles_association/$ref Accept: application/json { "@odata.id":"[Organization URI]/api/data/v9.0/roles(<role ID>)" } | Fix: In controls[0].note, replace 'the body names the role' with 'the request body property @odata.id identifies the role'. Make the same change in the rendered table note. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/aad-group-team
-- [supported, minor] controls[1].ui; Governance controls / admin-path: Per-environment credit consumption is reached through Power Platform admin center > Licensing > Products > Copilot Studio > Environments > environment. | Found: View the Copilot Studio capacity consumed within that environment. The following cards are displayed on the Copilot Credits capacity tab: | Fix: Complete controls[1].ui.path and the rendered table path as 'Licensing > Products > Copilot Studio > Environments > environment > Copilot Credits capacity > Copilot credit consumption details'. The current route reaches the correct environment page but stops before its consumption grid. | Source: https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-messages-capacity
+- [supported, minor] controls[0].ui; rendered table; Governance guidance: Before rollout / admin-path: User role assignments are managed in Power Platform admin center > Manage > Environments > environment > Settings > Users + permissions > Users > user > Manage security roles. | Found: On the Users page select a user, and then select Manage security roles. ... The specified steps help you manage only direct role assignments for the user. | Fix: Add to controls[0].note and the rendered note: 'This UI route manages direct role assignments only; roles inherited through group teams are managed on those teams.' In the first Before rollout bullet, qualify removal as 'remove direct assignments, and review group-team assignments, for anyone who should not launch simulations'. | Source: https://learn.microsoft.com/power-platform/admin/assign-security-roles
+- [supported, minor] controls[0].api; controls[0].note; rendered table; Governance controls / command: The printed Dataverse v9.0 POST to systemuserroles_association/$ref assigns a role to the identified Microsoft Entra ID group user. | Found: POST [Organization URI]/api/data/v9.0/systemusers(azureactivedirectoryobjectid=<user object ID>)/systemuserroles_association/$ref Accept: application/json { "@odata.id":"[Organization URI]/api/data/v9.0/roles(<role ID>)" } | Fix: In controls[0].note and the rendered note, replace 'the body names the role' with 'the request body property @odata.id identifies the role'. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/aad-group-team
+- [supported, minor] controls[1].ui; rendered table / admin-path: Per-environment consumption is reached through Power Platform admin center > Licensing > Products > Copilot Studio > Environments > environment. | Found: Select the Environments tab ... select the environment ... The following cards are displayed on the Copilot Credits capacity tab: ... Copilot Credit consumption details | Fix: Complete controls[1].ui.path and the rendered path as 'Licensing > Products > Copilot Studio > Environments > environment > Copilot Credits capacity > Copilot Credit consumption details'. The present path stops on the correct environment page. | Source: https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-messages-capacity
+- [contradicted, minor] Governance guidance: Before rollout and At rollout; controls / consistency: The checklist names configuration checks that have no corresponding controls-table row. | Found: confirm the voice channel is provisioned and a simulation phone number is configured ... Check which representatives and queues receive the simulated calls ... Table rows cover role assignment, credit reporting and the missing off switch. | Fix: The third Before rollout bullet's voice-channel and phone-number checks, and the second At rollout bullet's representative and queue checks, have no table row. Remove those configuration-check clauses if retaining the current table; no additional row is required by this correction.
 -->

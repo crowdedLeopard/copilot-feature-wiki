@@ -91,15 +91,17 @@ changes:
     note: "Corrected the Create a message wizard paths for the email location and recipients rows, narrowed the claim that the Writer role is the only gate, and removed the unsupported scheduling checklist bullet."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 52 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 53 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 52
-  confirmed: 52
+  claims: 53
+  confirmed: 53
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -203,8 +205,8 @@ cost: Low. The only cost the sources show is admin time; Learn names licences on
 impact: Low. Admins and authors notice first; end users see an email only when an author sends one to them.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] summary; What's changing; Risk assessment; controls notes; Open questions; rationale: risk / behaviour: Email functionality is limited to eight pre-made templates. | Found: Email functionality is currently limited to the eight provided pre-made templates. | Fix: After the template breakdown in What's changing, add: "Microsoft's June 2, 2026 Copilot release notes instead describe nine initial email templates, including a third welcome template, Welcome to Copilot Trial; the organizational messages guide lists eight." The conflicting source is https://learn.microsoft.com/microsoft-365/copilot/release-notes#june-2,-2026. | Source: https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365
+- [supported, minor] summary; What's changing; Risk assessment; Open questions; rationale: risk / behaviour: Email is currently limited to eight pre-made templates. | Found: Email functionality is currently limited to the eight provided pre-made templates. | Fix: After the template breakdown in What's changing, add: "The organizational messages guide lists eight templates; Microsoft's June 2, 2026 Copilot release notes instead describe nine initial email templates, including a third welcome template, Welcome to Copilot Trial." Cite https://learn.microsoft.com/microsoft-365/copilot/release-notes#june-2,-2026. | Source: https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365
 -->

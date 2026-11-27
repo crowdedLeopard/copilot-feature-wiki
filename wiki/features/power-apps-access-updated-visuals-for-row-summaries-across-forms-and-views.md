@@ -22,7 +22,7 @@ licensing:
 audiences: ["power-platform-admin","maker","end-user","change-adoption"]
 tags: ["power-apps","model-driven-apps","row-summary","copilot","ai","dynamics-365","customer-service","power-platform-admin-center","gcc","gcc-high"]
 sources:
-  - title: "Microsoft 365 Roadmap item 576178"
+  - title: "Microsoft 365 Roadmap 576178"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=576178"
     kind: "roadmap"
   - title: "Use row summaries in model-driven apps"
@@ -64,7 +64,7 @@ controls:
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Manage > Environments > environment > Settings > Product > Features > AI insight cards"
+      path: "Manage > Environments > environment > Settings > Product > Features > AI insight cards > Display AI-generated row summaries on records in model-driven apps"
       docs: "https://learn.microsoft.com/power-platform/admin/settings-features"
     api: null
     note: "Same capability as Row summaries, to be removed in a future release. Needs the System Administrator security role or equivalent."
@@ -83,7 +83,7 @@ controls:
     note: "The roadmap lists the feature scope as Users (always enabled)."
 confidence: "medium"
 created: "2026-11-18"
-updated: "2026-11-18"
+updated: "2026-11-27"
 roadmapModified: "2026-10-16T22:00:35"
 changes:
   - date: "2026-11-18"
@@ -94,19 +94,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 74 statements not yet confirmed"
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 82 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-27"
+    note: "Corrected: case summaries come from Customer Service and lead and opportunity summaries from Sales; removed 'read-only'; completed the AI insight cards path to its setting; dropped an unbacked checklist step."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 74 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
-  date: "2026-11-26"
-  version: 1
+  status: "verified-with-gaps"
+  date: "2026-11-27"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 82
-  confirmed: 79
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "8ab6893cf7c6f61c004ec148ad45cb7d"
+  claims: 74
+  confirmed: 74
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "a9c94d4cd065796723faaf34b1535130"
 ---
 
 ## What's changing
@@ -135,7 +139,7 @@ The view-page change matters more for governance. Learn documents the **Row summ
 - The roadmap describes no change to identity or roles. Learn says the feature is hidden for users without the required licence, and the Copilot settings page describes a preview allow or exclude-list control for model-driven app AI features that lists Row summary.
 
 **Autonomy & actions**
-- Learn describes summaries as read-only text that users can copy, rate with thumbs up or down and, on forms, refresh. The roadmap describes no new action for the refreshed layout.
+- Learn describes summaries as text that users can copy, rate with thumbs up or down and, on forms, refresh. The roadmap describes no new action for the refreshed layout.
 
 **Change & support**
 - Users will see a different layout, including generation labels and status indicators. Brief the service desk. Learn's FAQ still lists limits (no calculations, no relative dates, no links to related records) and advises treating a summary as a starting point, so clear labels do not make the content more reliable.
@@ -166,7 +170,6 @@ Indirect cost is admin and maker time: reviewing prompts, briefing users and upd
 ### At rollout
 - Pilot in one environment once the update arrives, checking both the Insights bar on forms and the **Summary** action on view pages.
 - Use the **Show row summary** toggle to hide a table's custom summary where the pilot finds sensitive content.
-- If you use Managed Environments, review the preview allow or exclude-list control for model-driven app AI features.
 
 ### After rollout
 - Collect user feedback on summary accuracy and repeat prompt reviews when columns change.
@@ -181,7 +184,7 @@ Indirect cost is admin and maker time: reviewing prompts, briefing users and upd
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether row summaries show on forms and view pages in an environment</strong><br><small>Environment</small><br><small class="controls__note">Learn says this setting controls row summaries on both model-driven app main forms and view pages.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Copilot › Settings › Power Apps › Summary › Row summaries › environment › Edit setting <a href="https://learn.microsoft.com/power-apps/user/record-summaries#admin-control" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Legacy AI insight cards setting for row summaries in an environment</strong><br><small>Environment</small><br><small class="controls__note">Same capability as Row summaries, to be removed in a future release. Needs the System Administrator security role or equivalent.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › AI insight cards <a href="https://learn.microsoft.com/power-platform/admin/settings-features" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Legacy AI insight cards setting for row summaries in an environment</strong><br><small>Environment</small><br><small class="controls__note">Same capability as Row summaries, to be removed in a future release. Needs the System Administrator security role or equivalent.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › AI insight cards › Display AI-generated row summaries on records in model-driven apps <a href="https://learn.microsoft.com/power-platform/admin/settings-features" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether a table shows its custom row summary</strong><br><small>Maker</small><br><small class="controls__note">Maker-side. Hides only custom summaries from this experience, not summaries provided by Microsoft.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>Tables › table › Customizations › Row summary › Show row summary <a href="https://learn.microsoft.com/power-apps/maker/data-platform/configure-form-row-summary" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Separate switch for the refreshed row summary layout</strong><br><small>Environment</small><br><small class="controls__note">The roadmap lists the feature scope as Users (always enabled).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
@@ -189,7 +192,7 @@ Indirect cost is admin and maker time: reviewing prompts, briefing users and upd
 
 The **Row summaries** setting is the primary environment-level control, and Learn says it covers both main forms and view pages. The **AI insight cards** setting is the same capability in an older location and Learn says it will be removed in a future release. No separate switch for the refreshed layout is documented at the time of writing (November 2026).
 
-The maker toggle hides only custom row summaries configured in the row summary experience. Learn says it does not hide summaries provided by Microsoft, such as Customer Service summaries for case, lead and opportunity; use the Customer Service and Sales pages for those.
+The maker toggle hides only custom row summaries configured in the row summary experience. Learn says it does not hide summaries provided by Microsoft, such as Customer Service summaries for case and Sales summaries for lead and opportunity; use the Customer Service and Sales pages for those.
 
 The Copilot settings page also describes a preview control that lets admins allow specific users, or all users except an exclusion list, to use AI features in model-driven apps. It applies only to environments activated for [Managed Environments](/concepts/managed-environments/) and lists Row summary among the features that adhere to it. Read the path on that page before relying on it.
 
@@ -206,13 +209,8 @@ cost: Variable. Row summaries rely on AI Builder, which consumes AI Builder cred
 impact: Medium. Users of model-driven apps that already show row summaries will see a different layout, and the roadmap lists the feature scope as Users (always enabled).
 -->
 
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: Learn describes summaries as read-only text. | Found: Searched: "row summaries" "read-only". Read record-summaries, configure-form-row-summary and faq-record-summaries; they describe generated content and interaction buttons, but do not state that summaries are read-only. | Fix: Remove 'read-only' so the sentence reads: 'Learn describes summaries as text that users can copy, rate with thumbs up or down and, on forms, refresh.'
-- [contradicted, blocker] Governance controls: maker toggle paragraph / behaviour: Learn identifies Customer Service as providing the summaries for case, lead and opportunity. | Found: Case: Customer Service summary. Lead and opportunity: Sales summary features. | Fix: Replace 'such as Customer Service summaries for case, lead and opportunity' with 'such as Customer Service summaries for case and Sales summaries for lead and opportunity', following https://learn.microsoft.com/power-apps/maker/data-platform/configure-form-row-summary#show-or-hide-a-row-summary. | Source: https://learn.microsoft.com/power-apps/maker/data-platform/configure-form-row-summary
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: The legacy route is Power Platform admin center > Manage > Environments > environment > Settings > Product > Features > AI insight cards. | Found: In the navigation pane, select Manage. In the Manage pane, select Environments. On the Environments page, select an environment. In the command bar, select Settings. Expand Product, and then select Features. | Fix: The path reaches the correct section but stops before its setting. Use 'Manage > Environments > environment > Settings > Product > Features > AI insight cards > Display AI-generated row summaries on records in model-driven apps.' in controls[1].ui.path and the rendered table, as documented at https://learn.microsoft.com/power-platform/admin/settings-features#ai-insight-cards. | Source: https://learn.microsoft.com/power-platform/admin/settings-features
-- [supported, minor] Risk assessment: Change & support / behaviour: The FAQ lists links to related records as unsupported. | Found: Row summaries can't include links to related records. | Fix: After the limitations sentence add: 'The maker guide qualifies related-record links differently: "Hyperlinks to related records might not render as expected in the summary."' The differing source is already cited: https://learn.microsoft.com/power-apps/maker/data-platform/configure-form-row-summary#known-limitations. | Source: https://learn.microsoft.com/power-apps/maker/common/faq-record-summaries
-- [contradicted, minor] Governance guidance: At rollout; Governance controls table / consistency: The governance checklist's preview AI allow/exclude-list control is represented in the controls table. | Found: Checklist: 'If you use Managed Environments, review the preview allow or exclude-list control for model-driven app AI features.' Table: Row summaries, AI insight cards, Show row summary and a separate layout switch; no allow/exclude-list row. | Fix: Remove the At rollout bullet 'If you use Managed Environments, review the preview allow or exclude-list control for model-driven app AI features.' Keep the sourced descriptive paragraph in Governance controls; do not add a row.
+- [supported, minor] Risk assessment: Change & support / behaviour: The FAQ lists no links to related records as a row summary limitation. | Found: Row summaries can't include links to related records. | Fix: Replace 'no links to related records' with 'related-record link limitations'. Add: 'The FAQ says row summaries cannot include related-record links, while the maker guide says those hyperlinks might not render as expected.' The maker guide is https://learn.microsoft.com/power-apps/maker/data-platform/configure-form-row-summary#known-limitations and is already cited. | Source: https://learn.microsoft.com/power-apps/maker/common/faq-record-summaries
 -->

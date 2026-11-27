@@ -3,7 +3,7 @@
   "roadmapId": 569213,
   "title": "Microsoft Copilot: add agents and skills from the plus menu",
   "status": "verified-with-gaps",
-  "date": "2026-11-20",
+  "date": "2026-11-27",
   "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
@@ -14,21 +14,32 @@
   "notes": [],
   "hold": null,
   "counts": {
-    "claims": 80,
-    "confirmed": 80,
+    "claims": 85,
+    "confirmed": 85,
     "unconfirmed": 0,
     "contradicted": 0,
     "blocker": 0,
     "major": 0,
-    "minor": 2
+    "minor": 3
   },
-  "summary": "The roadmap facts, admin paths and preview Graph automation are supported. Two minor corrections remain: name the deciding request property in the User access row, and qualify the broad statement that Premium includes agent usage to acknowledge Microsoft's more specific billing guidance.",
+  "summary": "Pass with minor corrections. Microsoft documents the administrator paths and preview Graph operations; the table notes should identify the apply-once configuration, and the statement that Premium includes agent use needs the qualifications in Microsoft's billing documentation.",
   "claims": [
     {
       "n": 1,
-      "where": "summary; What's changing; rationale: impact",
+      "where": "front matter: products; title",
       "type": "record",
-      "claim": "Microsoft plans to let users insert agents and skills into prompts for specialised tasks.",
+      "claim": "This roadmap item concerns Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\n    \"Microsoft Copilot (Microsoft 365)\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; rationale: risk",
+      "type": "record",
+      "claim": "Microsoft plans to let users insert agents and skills in prompts for specialized tasks.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Users will be able to insert Agents and Skills in prompts for specialized tasks.",
@@ -36,8 +47,8 @@
       "fix": null
     },
     {
-      "n": 2,
-      "where": "What's changing",
+      "n": 3,
+      "where": "What's changing; Governance guidance",
       "type": "record",
       "claim": "The planned route is the plus menu, Add work content, then the Agents and Skills tab.",
       "status": "supported",
@@ -47,21 +58,10 @@
       "fix": null
     },
     {
-      "n": 3,
-      "where": "summary; What's changing; Risk assessment; Governance guidance",
-      "type": "record",
-      "claim": "Users will also be able to access agents and skills by typing /.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Users can also access Agents and Skills by typing / and @ in their prompt.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 4,
-      "where": "summary; What's changing; Risk assessment; Governance guidance",
+      "where": "summary; What's changing; Risk assessment",
       "type": "record",
-      "claim": "Users will also be able to access agents and skills by typing @.",
+      "claim": "Users will also access agents and skills by typing / in their prompt.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Users can also access Agents and Skills by typing / and @ in their prompt.",
@@ -70,45 +70,45 @@
     },
     {
       "n": 5,
-      "where": "front matter: status; What's changing; Scope; Open questions",
+      "where": "summary; What's changing; Risk assessment",
       "type": "record",
-      "claim": "The roadmap status is In development.",
+      "claim": "Users will also access agents and skills by typing @ in their prompt.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "quote": "Users can also access Agents and Skills by typing / and @ in their prompt.",
       "severity": null,
       "fix": null
     },
     {
       "n": 6,
-      "where": "front matter: targetDate; What's changing; Scope; Open questions",
+      "where": "front matter: status; What's changing; Scope; Open questions",
       "type": "record",
-      "claim": "The roadmap target is September CY2026, already past on the run date and not a confirmed launch.",
+      "claim": "The supplied roadmap status remains In development.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\", \"targetDate\": \"September CY2026\"",
+      "quote": "\"status\": \"In development\",\n  \"statusKey\": \"in-development\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 7,
-      "where": "front matter: releasePhase; What's changing; Scope",
+      "where": "front matter: targetDate; What's changing; Scope; Open questions",
       "type": "record",
-      "claim": "The release phase is General Availability.",
+      "claim": "September CY2026 is the roadmap target, which has passed by the November 2026 run without a launched status in the record.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"releasePhase\": [ \"General Availability\" ]",
+      "quote": "\"status\": \"In development\",\n  \"statusKey\": \"in-development\",\n  \"targetDate\": \"September CY2026\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 8,
-      "where": "front matter: platforms; What's changing; Scope; rationale: impact",
+      "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
-      "claim": "Desktop is a listed platform.",
+      "claim": "The roadmap release phase is General Availability.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"platforms\": [ \"Desktop\", \"Web\" ]",
+      "quote": "\"releasePhase\": [\n    \"General Availability\"\n  ]",
       "severity": null,
       "fix": null
     },
@@ -116,29 +116,40 @@
       "n": 9,
       "where": "front matter: platforms; What's changing; Scope; rationale: impact",
       "type": "record",
-      "claim": "Web is a listed platform.",
+      "claim": "Desktop is a listed platform.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"platforms\": [ \"Desktop\", \"Web\" ]",
+      "quote": "\"platforms\": [\n    \"Desktop\",\n    \"Web\"\n  ]",
       "severity": null,
       "fix": null
     },
     {
       "n": 10,
-      "where": "front matter: clouds; What's changing; Scope",
+      "where": "front matter: platforms; What's changing; Scope; rationale: impact",
       "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only listed cloud, without an express exclusion of government clouds.",
+      "claim": "Web is a listed platform.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"clouds\": [ \"Worldwide (Standard Multi-Tenant)\" ]",
+      "quote": "\"platforms\": [\n    \"Desktop\",\n    \"Web\"\n  ]",
       "severity": null,
       "fix": null
     },
     {
       "n": 11,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists only Worldwide (Standard Multi-Tenant), without an explicit US Government exclusion.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\n    \"Worldwide (Standard Multi-Tenant)\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The record provides no preview date.",
+      "claim": "The roadmap supplies no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -146,10 +157,10 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 13,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-08-11T22:53:53.",
+      "claim": "The supplied roadmap modification timestamp is 2026-08-11T22:53:53.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2026-08-11T22:53:53\"",
@@ -157,24 +168,13 @@
       "fix": null
     },
     {
-      "n": 13,
-      "where": "front matter: title, products",
-      "type": "record",
-      "claim": "The item concerns Microsoft Copilot (Microsoft 365).",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"title\": \"Microsoft Copilot (Microsoft 365): Add Agents and Skills from the Plus menu\"",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 14,
       "where": "What's changing",
       "type": "absence",
-      "claim": "The supplied roadmap record carries no Message Center post or act-by date.",
+      "claim": "The supplied record and task contain no Message Center post or act-by date for this item.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: read the complete supplied roadmap record and pre-check file for Message Center posts and act-by dates; neither supplies one.",
+      "quote": "Searched: the supplied roadmap record and pre-check in full for a Message Center post and act-by date; neither supplies one.",
       "severity": null,
       "fix": null
     },
@@ -182,26 +182,356 @@
       "n": 15,
       "where": "front matter: defaultState; summary; What's changing; Why it matters; Open questions; rationale: risk",
       "type": "default",
-      "claim": "Microsoft has not stated the new entry point's default or what happens on arrival.",
+      "claim": "Microsoft has not stated the new entry point's default state or what happens on arrival.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Copilot \"plus menu\" \"default\" skills; \"569213\" Copilot default availability license menu. Read roadmap, agent settings, Chat skills and agent-store pages; no default for this entry point is stated.",
+      "quote": "Searched: Copilot \"plus menu\" agents skills default disable settings license rollout; \"Copilot\" \"Add work content\" license prerequisites rollout default. Read the record, Agent settings, Build skills, agent-store and licensing pages; no menu default found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 16,
-      "where": "What's changing; Governance guidance",
-      "type": "absence",
-      "claim": "Learn does not yet describe the roadmap's plus-menu route.",
+      "where": "front matter: licensing.model and licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Mixed licensing describes the menu's underlying capabilities: licensed agent use alongside consumption-based access.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Copilot\" \"Add work content\" \"Agents and Skills\"; \"Copilot\" \"plus menu\" skills controls Graph API User access billing prerequisites. Read Chat skills, agent-store and agent-settings pages; no matching route.",
+      "source": "https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat",
+      "quote": "Access to agents that use shared tenant data are pay-as-you-go only. Pay-as-you-go agents are turned off by default for Copilot Chat (Basic) and Microsoft 365 Copilot (Basic) users",
       "severity": null,
       "fix": null
     },
     {
       "n": 17,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "No licence specific to the new plus-menu entry or its Agents and Skills tab is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Copilot\" \"Add work content\" license prerequisites rollout default; \"569213\" \"Agents and Skills\" plus menu default admin licensing. Opened License options, Purchase and manage agents, Build skills and the record; no entry-specific licence found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No meter specific to this menu entry is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot \"plus menu\" agents skills default disable settings license rollout. Read Purchase and manage agents, License options, standard-harness licensing and usage-based billing overview; meters concern underlying services, not this entry point.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[0].ui; Governance controls; Scope",
+      "type": "admin-path",
+      "claim": "User access is reached in Microsoft 365 admin center at Agents > Settings > User access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#user-access",
+      "quote": "Select Agents > Settings > User access to manage your organization's agents and plugins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[0].api; Governance controls",
+      "type": "command",
+      "claim": "POST /beta/admin/configurationManagement/configurationMonitors can set agent User access with the applyOnce resource configuration explained in the prose.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+      "quote": "Create a new configurationMonitor object that runs periodically in the background at a scheduled frequency to detect configuration drift in monitorOnly mode, or applies a desired-state baseline once in applyOnce mode.",
+      "severity": "minor",
+      "fix": "Keep the call. Add to controls[0].note and the matching table note: 'Set mode to applyOnce; baseline.resources uses resourceType microsoft.agent.useraccess, resourceVersion 1, and properties.valueObject.userAssignmentCategory set to everyone or noOne.' The body already gives this configuration; the row currently gives values without naming the property."
+    },
+    {
+      "n": 21,
+      "where": "controls[1].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "Publisher access is reached in Microsoft 365 admin center at Agents > Settings > Agent and plugin access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+      "quote": "In the Microsoft 365 admin center, go to Agents > Settings > Agent and plugin access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[1].api; Governance controls",
+      "type": "command",
+      "claim": "POST /beta/admin/configurationManagement/configurationMonitors can set allowed publisher types with the applyOnce resource configuration explained in the prose.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+      "quote": "An active applyOnce monitor runs in the background on behalf of the signed-in administrator and then becomes inactive. Its result reports the outcome of the run.",
+      "severity": "minor",
+      "fix": "Keep the call and existing publisher property names. Add to controls[1].note and the matching table note: 'Set mode to applyOnce; baseline.resources uses resourceType microsoft.agent.allowedagenttypes, resourceVersion 1, and these properties inside properties.valueObject.' This carries the deciding mode from the existing prose into the row; the reference defaults mode to monitorOnly."
+    },
+    {
+      "n": 23,
+      "where": "controls[2].ui and controls[2].api; Governance controls",
+      "type": "absence",
+      "claim": "No separate UI or API switch for the Agents and Skills plus-menu entry is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Copilot\" \"plus menu\" Graph PowerShell disable skills; \"Copilot\" \"Agents and Skills\" \"menu\" \"control\". Read Agent settings, connector availability, TCM Agent resources and Build skills; found general controls but no separate entry-point switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[0].note; Governance guidance; Governance controls",
+      "type": "default",
+      "claim": "The existing User access setting offers All users, which is its default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#user-access",
+      "quote": "All users - This option is the default. It means that all users in the organization can access agents and plugins, subject to the existing app policies and user assignments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "User access offers No users to deny organization-wide access to agents and plugins.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#user-access",
+      "quote": "No users - This option means that no users in the organization can access agents and plugins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[0].note; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "User access offers Specific users or groups to restrict the permitted population.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#user-access",
+      "quote": "Specific users or groups - This option lets you select specific users or groups in your organization to have access to agents and plugins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "summary; controls[0].note; Risk assessment; Governance controls; rationale: risk",
+      "type": "applicability",
+      "claim": "User access governs access to agents and plugins, including skills, irrespective of the menu used to reach them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#user-access",
+      "quote": "Use User access to control how members of your organization access and install agents and plugins. Plugins include tools, MCP servers, connectors, skills, and other AI artifacts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "summary; controls[1].governs; Governance guidance; Governance controls; rationale: risk",
+      "type": "applicability",
+      "claim": "Agent and plugin access governs allowed Microsoft, organization and external publisher types for agents and plugins.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "The Agent and plugin access setting controls which types of agents and plugins users can view and install from the agent catalog.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Disabling Microsoft publisher access leaves Microsoft-built agents and plugins visible but prevents installation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "Users see agents and plugins built by Microsoft even if you disable the setting, but they can't install those agents and plugins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[0].note; controls[1].note; Governance controls",
+      "type": "availability",
+      "claim": "The described TCM setting changes use preview Microsoft Graph beta capabilities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources",
+      "quote": "These capabilities are available in preview through Microsoft Graph beta.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[0].note; controls[1].note; Governance controls",
+      "type": "availability",
+      "claim": "The documented remediation and applyOnce capabilities are global-service only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources",
+      "quote": "TCM is available only in the global service, not in national clouds.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[0].note; Governance controls",
+      "type": "role",
+      "claim": "AI Administrator is the signed-in user role required by the documented least-privilege Agent remediation and applyOnce configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
+      "quote": "AI Administrator is the least-privileged role for the signed-in user for remediation and applyOnce; don't assign that user-role requirement to the service principal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Governance controls: Graph configuration",
+      "type": "command",
+      "claim": "Setting mode to applyOnce makes the monitor apply the desired-state baseline once.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+      "quote": "Create a new configurationMonitor object that runs periodically in the background at a scheduled frequency to detect configuration drift in monitorOnly mode, or applies a desired-state baseline once in applyOnce mode.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Governance controls: Graph configuration",
+      "type": "command",
+      "claim": "The desired resource goes in baseline.resources in the POST request.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+      "quote": "\"baseline\": {\n    \"displayName\": \"Demo Baseline\",\n    \"description\": \"This is a baseline with resources SharedMailbox, AcceptedDomain and MailContact\",\n    \"resources\": [",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Governance controls: Graph configuration",
+      "type": "command",
+      "claim": "microsoft.agent.useraccess is the resource type for User access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
+      "quote": "\"displayName\": \"Agent user access\",\n  \"resourceType\": \"microsoft.agent.useraccess\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Governance controls: Graph configuration",
+      "type": "command",
+      "claim": "microsoft.agent.allowedagenttypes is the resource type for publisher access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
+      "quote": "\"displayName\": \"Allowed agent types\",\n  \"resourceType\": \"microsoft.agent.allowedagenttypes\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Governance controls: Graph configuration",
+      "type": "command",
+      "claim": "Both Agent resources use resourceVersion 1.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
+      "quote": "All resources on this page use resourceVersion: 1 and are singletons.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Governance controls: Graph configuration",
+      "type": "command",
+      "claim": "The User access assignment is set through properties.valueObject.userAssignmentCategory.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
+      "quote": "\"properties\": {\n    \"valueObject\": {\n      \"userAssignmentCategory\": \"everyone\"\n    }\n  }",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[0].note; Governance controls: Graph configuration",
+      "type": "command",
+      "claim": "The documented userAssignmentCategory values are everyone and noOne.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
+      "quote": "userAssignmentCategory | Write | String | Specifies whether all users or no users can access agents and plugins. | everyone, noOne",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Governance controls: Graph configuration",
+      "type": "absence",
+      "claim": "The published useraccess resource schema does not document specific-group assignment.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: the complete useraccess resource type section at https://learn.microsoft.com/graph/utcm-agent-resources for group assignment properties and allowed values; only valueObject.userAssignmentCategory with everyone or noOne is documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[1].note; Governance controls: Graph configuration",
+      "type": "command",
+      "claim": "areMicrosoftAppsAllowed inside valueObject controls Microsoft-built publisher access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
+      "quote": "areMicrosoftAppsAllowed | Write | Boolean | Indicates whether apps, agents, and plugins built by Microsoft are allowed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[1].note; Governance controls: Graph configuration",
+      "type": "command",
+      "claim": "areTenantScopedAppsAllowed inside valueObject controls organization-built publisher access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
+      "quote": "areTenantScopedAppsAllowed | Write | Boolean | Indicates whether apps, agents, and plugins built by the organization are allowed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[1].note; Governance controls: Graph configuration",
+      "type": "command",
+      "claim": "areISVAppsAllowed inside valueObject controls external publisher access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
+      "quote": "areISVAppsAllowed | Write | Boolean | Indicates whether apps, agents, and plugins built by external publishers are allowed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Governance controls: Graph permissions",
+      "type": "command",
+      "claim": "The app creating an applyOnce monitor needs delegated ConfigurationMonitoring.ReadWrite.All.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+      "quote": "Creating an applyOnce monitor supports delegated permissions only. In addition to the calling app's delegated ConfigurationMonitoring.ReadWrite.All permission, the TCM service principal needs delegated permissions for the target workloads",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance controls: Graph permissions",
+      "type": "command",
+      "claim": "The TCM service principal needs delegated CopilotPolicySettings.ReadWrite for these setting changes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
+      "quote": "For remediation and applyOnce, grant it the CopilotPolicySettings.ReadWrite delegated permission.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[0].scope; controls[1].scope; Governance controls",
+      "type": "applicability",
+      "claim": "Both existing settings have tenant-wide scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
+      "quote": "All resources on this page use resourceVersion: 1 and are singletons. They don't have a key property because each tenant has only one instance of each setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
       "where": "What's changing",
       "type": "availability",
       "claim": "Skills in Microsoft 365 Copilot Chat are generally available.",
@@ -212,10 +542,10 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 48,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "A skill packages task-specific instructions and optional supporting files or scripts.",
+      "claim": "A skill packages task-specific instructions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/plugins/build-copilot-chat-skills",
       "quote": "A skill packages task-specific instructions, quality criteria, and optional supporting files or scripts so users don't need to repeat the same workflow in each conversation.",
@@ -223,10 +553,21 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 49,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Users can explicitly select an installed Chat skill.",
+      "claim": "Skills can include optional supporting files or scripts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/build-copilot-chat-skills",
+      "quote": "A skill packages task-specific instructions, quality criteria, and optional supporting files or scripts",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "What's changing; rationale: risk",
+      "type": "behaviour",
+      "claim": "Users can explicitly select an installed skill today.",
       "status": "supported",
       "source": "https://learn.microsoft.com/plugins/build-copilot-chat-skills",
       "quote": "Users can select an installed skill explicitly or let Copilot select it automatically when it's relevant.",
@@ -234,10 +575,10 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 51,
       "where": "What's changing; Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Copilot can automatically select a relevant skill without the user explicitly naming it.",
+      "claim": "Copilot can select a relevant skill automatically without the user explicitly selecting it in that prompt.",
       "status": "supported",
       "source": "https://learn.microsoft.com/plugins/build-copilot-chat-skills",
       "quote": "Users can select an installed skill explicitly or let Copilot select it automatically when it's relevant.",
@@ -245,10 +586,10 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 52,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Users control automatic invocation for each skill.",
+      "claim": "Users control automatic invocation separately for each skill.",
       "status": "supported",
       "source": "https://learn.microsoft.com/plugins/build-copilot-chat-skills",
       "quote": "Users control automatic invocation for each skill.",
@@ -256,10 +597,10 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 53,
       "where": "What's changing; Risk assessment: Change & support",
       "type": "admin-path",
-      "claim": "Learn's Chat skill upload route is Agents > More agents, the drop-down beside Add, then Upload skill.",
+      "claim": "Learn documents uploading a skill in Copilot Chat through Agents > More agents, the drop-down beside Add, and Upload skill.",
       "status": "supported",
       "source": "https://learn.microsoft.com/plugins/build-copilot-chat-skills",
       "quote": "In Copilot Chat, select Agents > More agents. Select the drop-down beside Add, and select Upload skill.",
@@ -267,18 +608,18 @@
       "fix": null
     },
     {
-      "n": 23,
+      "n": 54,
       "where": "What's changing",
-      "type": "admin-path",
-      "claim": "The agent-store documentation instead describes Plugins in the left pane, so the cited pages describe different navigation.",
+      "type": "behaviour",
+      "claim": "The agent-store documentation instead says to open Plugins in the left pane.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/copilot-agent-store",
-      "quote": "Agent Store used to appear as Agents & Skills or Agent Store in the left pane of Microsoft Copilot. It now appears as Plugins, and agents are listed with other plugins, such as skills and connectors.",
+      "quote": "In Microsoft Copilot, agents appear in the Plugins page. To open it, select Plugins in the left pane.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 24,
+      "n": 55,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "Uploaded Chat skill files are stored in tenant-scoped SharePoint Embedded containers.",
@@ -289,10 +630,10 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 56,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Sensitivity labels on uploaded Chat skill files are retained.",
+      "claim": "Sensitivity labels on uploaded skill files are retained.",
       "status": "supported",
       "source": "https://learn.microsoft.com/plugins/build-copilot-chat-skills",
       "quote": "Sensitivity labels are retained and label policies are honored.",
@@ -300,21 +641,21 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 57,
       "where": "Risk assessment: Data exposure",
       "type": "applicability",
-      "claim": "Label policies are honoured for uploaded Chat skill files.",
+      "claim": "Label policies are honored for uploaded Chat skill files.",
       "status": "supported",
       "source": "https://learn.microsoft.com/plugins/build-copilot-chat-skills",
-      "quote": "Uploaded Chat skill files are stored in tenant-scoped SharePoint Embedded containers. Sensitivity labels are retained and label policies are honored.",
+      "quote": "Sensitivity labels are retained and label policies are honored.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 27,
+      "n": 58,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "User-defined permissions are not supported for uploaded Chat skill files.",
+      "claim": "User-defined permissions are unsupported for uploaded Chat skill files.",
       "status": "supported",
       "source": "https://learn.microsoft.com/plugins/build-copilot-chat-skills",
       "quote": "User-defined permissions and Double Key Encryption aren't supported.",
@@ -322,10 +663,10 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 59,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Double Key Encryption is not supported for uploaded Chat skill files.",
+      "claim": "Double Key Encryption is unsupported for uploaded Chat skill files.",
       "status": "supported",
       "source": "https://learn.microsoft.com/plugins/build-copilot-chat-skills",
       "quote": "User-defined permissions and Double Key Encryption aren't supported.",
@@ -333,21 +674,21 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 60,
       "where": "Risk assessment: Data exposure",
       "type": "applicability",
-      "claim": "Data processed by non-Microsoft services is not subject to Microsoft agreements, including when an external agent or plugin is reached through the new menu.",
+      "claim": "Data processed by non-Microsoft services through external agents or plugins is not subject to Microsoft agreements.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#user-access",
       "quote": "Data processed by non-Microsoft services isn't subject to Microsoft agreements. Review the terms provided by non-Microsoft agent and plugin publishers",
       "severity": null,
       "fix": null
     },
     {
-      "n": 30,
+      "n": 61,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Chat skill scripts cannot make authenticated network calls.",
+      "claim": "Skill scripts cannot make authenticated network calls.",
       "status": "supported",
       "source": "https://learn.microsoft.com/plugins/build-copilot-chat-skills",
       "quote": "Can't make authenticated network calls.",
@@ -355,10 +696,10 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 62,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Chat skill scripts have no network access at runtime except during browser use.",
+      "claim": "Skill scripts have no network access at runtime except during browser use.",
       "status": "supported",
       "source": "https://learn.microsoft.com/plugins/build-copilot-chat-skills",
       "quote": "Have no network access at runtime, except during browser use.",
@@ -366,76 +707,54 @@
       "fix": null
     },
     {
-      "n": 32,
-      "where": "Risk assessment: Security & identity",
+      "n": 63,
+      "where": "What's changing; Risk assessment: Security & identity; Governance guidance",
       "type": "absence",
-      "claim": "Microsoft has not described different script behaviour for the plus-menu route.",
+      "claim": "Learn does not yet describe the planned plus-menu route or a route-specific change to script behavior.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Copilot\" \"plus menu\" \"skills\" \"scripts\" capabilities. Read build-copilot-chat-skills and plugin-type-skills excerpts; neither documents this route or an exception for it.",
+      "quote": "Searched: \"Copilot\" \"Add work content\" \"Agents and Skills\"; \"569213\" \"Agents and Skills\" plus menu default admin licensing. Read Build skills, Agent settings and agent-store documentation; no description of this planned route or different runtime found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 33,
-      "where": "summary; controls[0].note; Risk assessment; Governance controls; rationale: risk",
-      "type": "applicability",
-      "claim": "User access governs access to agents and plugins, including skills.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
-      "quote": "Use User access to control how members of your organization access and install agents and plugins. Plugins include tools, MCP servers, connectors, skills, and other AI artifacts.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
+      "n": 64,
       "where": "Risk assessment: Security & identity; Governance controls; Open questions",
       "type": "absence",
-      "claim": "The new menu's presentation of items restricted by User access is not yet documented.",
+      "claim": "The new menu's presentation of items restricted by User access or publisher access is not documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Copilot\" \"Add work content\" \"Agents and Skills\"; \"Copilot\" \"Agent and plugin access\" skills prompt menu restrictions. Read agent settings, connector availability and plugin management; none describes the new menu's rendering.",
+      "quote": "Searched: \"Copilot\" \"Agents and Skills\" \"menu\" \"control\"; \"Copilot\" \"Add work content\" \"Agents and Skills\". Read Agent settings, connector availability and agent-store documentation; general restrictions are documented, but this menu's display is not.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 35,
-      "where": "summary; Risk assessment; Governance guidance; Governance controls; rationale: risk",
-      "type": "applicability",
-      "claim": "Agent and plugin access controls publisher categories for agents and plugins, including skills.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
-      "quote": "The Agent and plugin access setting controls which types of agents and plugins users can view and install from the agent catalog. Plugins include tools, MCP servers, connectors, skills, and other AI artifacts that extend agents.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "Risk assessment: Security & identity; Governance controls; Open questions",
+      "n": 65,
+      "where": "Risk assessment: Security & identity; Governance controls",
       "type": "absence",
-      "claim": "Microsoft has not described how Agent and plugin access is reflected in the plus-menu entry itself.",
+      "claim": "Agent and plugin access is documented for agents and plugins generally, not specifically as a control over this new menu entry.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Copilot\" \"Agent and plugin access\" skills prompt menu restrictions. Read agent settings, manage-federated-connectors and manage-plugins-skills-mcp-servers: catalog and Copilot-channel rules are stated, but not the new prompt menu's behaviour.",
+      "quote": "Searched: \"Copilot\" \"Agents and Skills\" \"menu\" \"control\". Read Agent settings and Manage federated connector availability: they describe catalog installation and publisher controls, not this entry point; this does not negate their documented general scope.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 37,
+      "n": 66,
       "where": "Risk assessment: Autonomy & actions",
       "type": "absence",
-      "claim": "Microsoft has not described additional capabilities conferred by inserting an agent or skill through this menu.",
+      "claim": "Microsoft has not described additional agent or skill abilities conferred specifically by insertion from this menu.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Copilot\" \"plus menu\" \"skills\" \"scripts\" capabilities; \"Copilot\" \"Add work content\" \"Agents and Skills\". Read roadmap, Chat skills and agent-store pages; no route-specific additional capabilities are documented.",
+      "quote": "Searched: \"Copilot\" \"Add work content\" \"Agents and Skills\"; \"569213\" \"Agents and Skills\" plus menu default admin licensing. Read the record, Build skills and agent-store documentation; no route-specific additional capabilities found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 38,
+      "n": 67,
       "where": "Risk assessment: Change & support; Governance guidance",
       "type": "availability",
-      "claim": "Skills are not supported in Copilot Chat in tenants using Microsoft Purview Information Barriers.",
+      "claim": "Copilot Chat skills are unsupported in tenants using Microsoft Purview Information Barriers.",
       "status": "supported",
       "source": "https://learn.microsoft.com/plugins/build-copilot-chat-skills",
       "quote": "In tenants that use Microsoft Purview Information Barriers (IB), skills aren't supported in Copilot Chat. This restriction applies to personal skills and skills distributed as part of a plugin.",
@@ -443,32 +762,10 @@
       "fix": null
     },
     {
-      "n": 39,
-      "where": "licensing.notes; Cost and licensing; Scope; Open questions; rationale: cost",
-      "type": "absence",
-      "claim": "No licence specific to the new menu is published, and the roadmap names none.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Copilot\" \"Agents and Skills\" menu license billing prerequisites; \"569213\" Copilot default availability license menu. Read roadmap, copilot-license-options, manage-agents-copilot-chat and Chat skills; no menu-specific licence.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "No meter specific to this menu entry is published, and the roadmap names none.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Copilot\" \"Agents and Skills\" menu license billing prerequisites; \"Copilot\" \"plus menu\" skills controls Graph API User access billing prerequisites. Read roadmap, agent purchasing and licensing pages; no separate entry-point meter.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
+      "n": 68,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Agents using public data are available with Copilot Chat (Basic) and Microsoft 365 Copilot (Basic).",
+      "claim": "Agents using public data are available with Copilot Chat (Basic).",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat",
       "quote": "Agents that use public data are available for Copilot Chat (Basic) and Microsoft 365 Copilot (Basic) licenses.",
@@ -476,10 +773,21 @@
       "fix": null
     },
     {
-      "n": 42,
-      "where": "licensing.notes; Cost and licensing; Scope; rationale: cost",
+      "n": 69,
+      "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "For Basic users, access to agents using shared tenant data is pay-as-you-go.",
+      "claim": "Agents using public data are available with Microsoft 365 Copilot (Basic).",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat",
+      "quote": "Agents that use public data are available for Copilot Chat (Basic) and Microsoft 365 Copilot (Basic) licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "For Basic users, agents accessing shared tenant data use pay-as-you-go metered consumption.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat",
       "quote": "For Copilot Chat (Basic) and Microsoft 365 (Basic) licenses, agents that access shared tenant data, such as SharePoint or Graph Connector content, are billed based on metered consumption.",
@@ -487,10 +795,10 @@
       "fix": null
     },
     {
-      "n": 43,
+      "n": 71,
       "where": "Cost and licensing",
       "type": "default",
-      "claim": "Pay-as-you-go agents are turned off by default for Basic users.",
+      "claim": "Pay-as-you-go agents are off by default for Copilot Chat (Basic) and Microsoft 365 Copilot (Basic) users.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat",
       "quote": "Pay-as-you-go agents are turned off by default for Copilot Chat (Basic) and Microsoft 365 Copilot (Basic) users",
@@ -498,10 +806,10 @@
       "fix": null
     },
     {
-      "n": 44,
+      "n": 72,
       "where": "Cost and licensing",
       "type": "default",
-      "claim": "No action is needed to enable agents for Microsoft 365 Copilot (Premium).",
+      "claim": "The agent purchasing page says no action is needed to enable agents for Microsoft 365 Copilot (Premium).",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat",
       "quote": "No action is needed to enable agents for Microsoft 365 Copilot (Premium).",
@@ -509,21 +817,21 @@
       "fix": null
     },
     {
-      "n": 45,
-      "where": "licensing.notes; Cost and licensing",
+      "n": 73,
+      "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "Agent use comes with the Microsoft 365 Copilot (Premium) licence.",
+      "claim": "The agent purchasing page says agent use comes with Microsoft 365 Copilot (Premium).",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat",
       "quote": "The use of agents comes with Microsoft 365 Copilot (Premium) license.",
       "severity": "minor",
-      "fix": "Qualify this sentence and the matching licensing.notes clause: 'The agent purchasing page says agent use comes with Premium; the standard-harness licensing page specifies that classic answers, generative answers and Microsoft Graph tenant grounding are not charged when the agent runs with the licensed user's authenticated identity.' Cite https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing#get-access-to-copilot-studio alongside the existing source."
+      "fix": "Qualify the blanket inclusion wording in licensing.notes and Cost and licensing: 'The agent purchasing page says agent use comes with Premium. The standard-harness licensing page specifies non-billed classic answers, generative answers and Microsoft Graph tenant grounding when the agent runs with the licensed user's authenticated identity; this is not a blanket statement that every agent operation is unmetered.' Cite https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing#billing-for-microsoft-365-copilot-license-holders. The separately read https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits also lists Copilot Agents with Work IQ among usage-based services."
     },
     {
-      "n": 46,
-      "where": "licensing.notes; Cost and licensing; Scope; Open questions; rationale: cost",
+      "n": 74,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; Open questions; rationale: cost",
       "type": "licensing",
-      "claim": "Copilot Chat skills are currently available only to Microsoft Copilot (Premium) users.",
+      "claim": "Copilot Chat skills currently require Microsoft Copilot (Premium).",
       "status": "supported",
       "source": "https://learn.microsoft.com/plugins/build-copilot-chat-skills",
       "quote": "Skills in Copilot Chat are currently available only to users with Microsoft Copilot (Premium).",
@@ -531,10 +839,10 @@
       "fix": null
     },
     {
-      "n": 47,
+      "n": 75,
       "where": "Cost and licensing",
-      "type": "availability",
-      "claim": "Copilot Chat skills are not available to Copilot Chat (Basic) users.",
+      "type": "licensing",
+      "claim": "Copilot Chat skills are unavailable to Copilot Chat (Basic) users.",
       "status": "supported",
       "source": "https://learn.microsoft.com/plugins/build-copilot-chat-skills",
       "quote": "They aren't available to Copilot Chat (Basic) users.",
@@ -542,153 +850,54 @@
       "fix": null
     },
     {
-      "n": 48,
+      "n": 76,
       "where": "Cost and licensing",
       "type": "behaviour",
-      "claim": "Microsoft advises administrators to use discretion in managing individual agent and plugin distribution and costs.",
+      "claim": "Microsoft advises administrator discretion over individual agent and plugin distribution and costs.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#user-access",
       "quote": "As the administrator, use discretion when managing individual agent and plugin distribution and costs.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 49,
+      "n": 77,
       "where": "Cost and licensing; Open questions",
       "type": "absence",
-      "claim": "Microsoft has not published changes to licensing or billing rules caused specifically by the plus-menu route.",
+      "claim": "Microsoft has not published a menu-specific change to underlying agent and skill licensing or billing rules.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Copilot\" \"Agents and Skills\" menu license billing prerequisites; \"569213\" Copilot default availability license menu. Read licence options, agent purchasing and Chat skills; no menu-specific billing or entitlement changes.",
+      "quote": "Searched: \"Copilot\" \"Add work content\" license prerequisites rollout default; Copilot \"plus menu\" agents skills default disable settings license rollout. Read Purchase and manage agents, Build skills and usage-based billing overview; no menu-specific change found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 50,
+      "n": 78,
       "where": "Scope",
       "type": "absence",
-      "claim": "Roles and prerequisites specific to the new menu are not stated.",
+      "claim": "Roles specific to configuring the new menu are not stated.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Copilot\" \"Agents and Skills\" menu license billing prerequisites; \"Copilot\" \"Agents and Skills\" \"Add work content\" plus menu default license admin settings. Read roadmap, agent settings, licensing and Chat skills; no new-menu prerequisites.",
+      "quote": "Searched: \"Copilot\" \"Add work content\" license prerequisites rollout default; \"Copilot\" \"Agents and Skills\" \"menu\" \"control\". Read the record and Agent settings; roles for existing settings are documented, but no role for a separate new-menu control is stated.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 51,
-      "where": "controls[0].ui; Scope; Governance controls table",
-      "type": "admin-path",
-      "claim": "User access is at Microsoft 365 admin center > Agents > Settings > User access.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#user-access",
-      "quote": "Open the Microsoft 365 admin center in your browser. Select Agents > Settings > User access to manage your organization's agents and plugins.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
-      "where": "controls[0].api; controls[0].note; Governance controls table and prose",
-      "type": "command",
-      "claim": "POST /beta/admin/configurationManagement/configurationMonitors can apply the User access resource using applyOnce.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
-      "quote": "POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors\nAn active applyOnce monitor runs in the background on behalf of the signed-in administrator and then becomes inactive.",
-      "severity": "minor",
-      "fix": "In controls[0].note and the rendered matching note, replace 'sets everyone or noOne' with 'mode applyOnce; baseline.resources uses microsoft.agent.useraccess, resourceVersion 1, with properties.valueObject.userAssignmentCategory set to everyone or noOne'. The existing prose and https://learn.microsoft.com/graph/utcm-agent-resources document that deciding property; retain the call unchanged."
-    },
-    {
-      "n": 53,
-      "where": "controls[1].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Publisher access is at Microsoft 365 admin center > Agents > Settings > Agent and plugin access.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
-      "quote": "In the Microsoft 365 admin center, go to Agents > Settings > Agent and plugin access.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "controls[1].api; Governance controls table and prose",
-      "type": "command",
-      "claim": "POST /beta/admin/configurationManagement/configurationMonitors can apply allowedagenttypes to configure publisher categories.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
-      "quote": "POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors\nAn active applyOnce monitor runs in the background on behalf of the signed-in administrator and then becomes inactive.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
-      "where": "controls[2].ui; controls[2].api; controls[2].note; Governance controls",
+      "n": 79,
+      "where": "Scope",
       "type": "absence",
-      "claim": "No separate tenant switch or API for the Agents and Skills plus-menu entry is documented as of November 2026.",
+      "claim": "Prerequisites specific to the new menu are not stated.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Copilot\" \"plus menu\" skills admin switch Microsoft Graph configuration. Read agent settings, connector availability, Graph utcm-agent-resources and configurationMonitor reference; no switch or property specific to this entry.",
+      "quote": "Searched: \"Copilot\" \"Add work content\" license prerequisites rollout default. Read the record, License options, Build skills and agent-store documentation; no prerequisites specific to this entry point found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 56,
-      "where": "controls[0].note; Governance guidance; Governance controls table",
-      "type": "behaviour",
-      "claim": "User access offers All users, No users and Specific users or groups.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
-      "quote": "The setting has three options: All users ... No users ... Specific users or groups",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
-      "where": "controls[0].note; Governance guidance; Governance controls table",
-      "type": "default",
-      "claim": "All users is the default User access setting.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
-      "quote": "All users - This option is the default. It means that all users in the organization can access agents and plugins, subject to the existing app policies and user assignments.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 58,
-      "where": "controls[1].note; Governance controls table",
-      "type": "behaviour",
-      "claim": "Microsoft-built agents and plugins remain visible when their publisher setting is disabled.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
-      "quote": "Users see agents and plugins built by Microsoft even if you disable the setting, but they can't install those agents and plugins.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 59,
-      "where": "controls[1].note; Governance controls table",
-      "type": "behaviour",
-      "claim": "Users cannot install those Microsoft-built agents and plugins when their publisher setting is disabled.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
-      "quote": "Users see agents and plugins built by Microsoft even if you disable the setting, but they can't install those agents and plugins.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 60,
-      "where": "controls[0].scope; controls[1].scope; Governance controls",
-      "type": "applicability",
-      "claim": "Both existing settings are tenant-wide settings.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
-      "quote": "Specify which categories of AI agents and plugins are permitted for use within the organization.\nSelect Save to update your Copilot agent and plugin settings for your tenant.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 61,
+      "n": 80,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Connector-setting changes can take up to 10 minutes to take effect.",
+      "claim": "Changes to the documented connector settings can take up to 10 minutes to take effect.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
       "quote": "Changes can take up to 10 minutes to take effect across Microsoft 365 experiences.",
@@ -696,21 +905,10 @@
       "fix": null
     },
     {
-      "n": 62,
+      "n": 81,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Individual connector settings take precedence over bulk Agent and plugin access settings.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
-      "quote": "A setting you make on an individual connector takes precedence over the bulk Agent and plugin access setting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 63,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "User access sets the maximum population that can use connectors.",
+      "claim": "User access sets the maximum population permitted to use connectors.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
       "quote": "User access doesn't turn connectors on or off; it sets the maximum population.",
@@ -718,224 +916,81 @@
       "fix": null
     },
     {
-      "n": 64,
+      "n": 82,
       "where": "Governance controls",
-      "type": "applicability",
-      "claim": "User access continues to apply despite individual connector overrides.",
+      "type": "behaviour",
+      "claim": "An individual connector setting takes precedence over bulk Agent and plugin access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
-      "quote": "A setting you make on an individual connector takes precedence over the bulk Agent and plugin access setting. User access always applies.",
+      "quote": "A setting you make on an individual connector takes precedence over the bulk Agent and plugin access setting.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 65,
-      "where": "controls[0].note; controls[1].note; Governance controls",
-      "type": "availability",
-      "claim": "The TCM applyOnce capabilities are preview Microsoft Graph beta APIs.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources",
-      "quote": "These capabilities are available in preview through Microsoft Graph beta.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 66,
-      "where": "controls[0].note; controls[1].note; Governance controls",
-      "type": "availability",
-      "claim": "TCM is available only in the global service, not national clouds.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources",
-      "quote": "TCM is available only in the global service, not in national clouds.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 67,
+      "n": 83,
       "where": "Governance controls",
-      "type": "command",
-      "claim": "Set configurationMonitor mode to applyOnce to apply the baseline once.",
+      "type": "applicability",
+      "claim": "User access still applies despite individual connector overrides.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
-      "quote": "mode | monitorMode | The monitor mode. The possible values are: monitorOnly, applyOnce, unknownFutureValue. Optional; defaults to monitorOnly.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+      "quote": "User access always applies.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 68,
-      "where": "Governance controls",
-      "type": "command",
-      "claim": "Inline desired-state resources go in baseline.resources in the create request.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
-      "quote": "\"baseline\": {\n    \"displayName\": \"Demo Baseline\",\n    \"description\": \"This is a baseline with resources SharedMailbox, AcceptedDomain and MailContact\",\n    \"resources\": [",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 69,
-      "where": "Governance controls",
-      "type": "command",
-      "claim": "The User access baseline resource type is microsoft.agent.useraccess.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
-      "quote": "\"resourceType\": \"microsoft.agent.useraccess\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 70,
-      "where": "Governance controls",
-      "type": "command",
-      "claim": "The publisher-category baseline resource type is microsoft.agent.allowedagenttypes.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
-      "quote": "\"resourceType\": \"microsoft.agent.allowedagenttypes\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 71,
-      "where": "Governance controls",
-      "type": "command",
-      "claim": "Both agent baseline resources use resourceVersion 1.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
-      "quote": "All resources on this page use resourceVersion: 1 and are singletons.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 72,
-      "where": "controls[0].note; Governance controls",
-      "type": "command",
-      "claim": "The User access property properties.valueObject.userAssignmentCategory accepts everyone or noOne.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
-      "quote": "\"properties\": { \"valueObject\": { \"userAssignmentCategory\": \"everyone\" } }\nuserAssignmentCategory | Write | String | Specifies whether all users or no users can access agents and plugins. | everyone, noOne",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 73,
-      "where": "Governance controls",
-      "type": "absence",
-      "claim": "The published User access resource schema does not document specific-group assignment.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: read the complete useraccess resource type, AgentUserAccessValueObject parameters and sample in https://learn.microsoft.com/graph/utcm-agent-resources for group assignment; its only field is userAssignmentCategory with everyone or noOne.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 74,
-      "where": "controls[1].note; Governance controls",
-      "type": "command",
-      "claim": "areMicrosoftAppsAllowed controls whether Microsoft-built apps, agents and plugins are allowed.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
-      "quote": "areMicrosoftAppsAllowed | Write | Boolean | Indicates whether apps, agents, and plugins built by Microsoft are allowed.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 75,
-      "where": "controls[1].note; Governance controls",
-      "type": "command",
-      "claim": "areTenantScopedAppsAllowed controls whether organization-built apps, agents and plugins are allowed.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
-      "quote": "areTenantScopedAppsAllowed | Write | Boolean | Indicates whether apps, agents, and plugins built by the organization are allowed.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 76,
-      "where": "controls[1].note; Governance controls",
-      "type": "command",
-      "claim": "areISVAppsAllowed controls whether external-publisher apps, agents and plugins are allowed.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
-      "quote": "areISVAppsAllowed | Write | Boolean | Indicates whether apps, agents, and plugins built by external publishers are allowed.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 77,
-      "where": "Governance controls",
-      "type": "command",
-      "claim": "The calling app needs delegated ConfigurationMonitoring.ReadWrite.All for applyOnce.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
-      "quote": "Creating an applyOnce monitor supports delegated permissions only. In addition to the calling app's delegated ConfigurationMonitoring.ReadWrite.All permission, the TCM service principal needs delegated permissions for the target workloads",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 78,
-      "where": "Governance controls",
-      "type": "command",
-      "claim": "The TCM service principal needs delegated CopilotPolicySettings.ReadWrite for the two agent resources.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
-      "quote": "For remediation and applyOnce, grant it the CopilotPolicySettings.ReadWrite delegated permission.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 79,
-      "where": "controls[0].note; Governance controls",
-      "type": "role",
-      "claim": "The signed-in user needs the AI Administrator role for these agent-resource applyOnce operations.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
-      "quote": "AI Administrator is the least-privileged role for the signed-in user for remediation and applyOnce; don't assign that user-role requirement to the service principal.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 80,
-      "where": "front matter: licensing.model; cost; licensing.notes; rationale: cost",
-      "type": "licensing",
-      "claim": "Mixed licensing and variable cost reflect licence-included agent access alongside metered shared-tenant-data agents for Basic users.",
+      "n": 84,
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "Variable cost is supported by documented pay-as-you-go metering for the underlying shared-tenant-data agents used by Basic users.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat",
-      "quote": "Access to agents that use shared tenant data are pay-as-you-go only.\nThe use of agents comes with Microsoft 365 Copilot (Premium) license.",
+      "quote": "For Copilot Chat (Basic) and Microsoft 365 (Basic) licenses, agents that access shared tenant data, such as SharePoint or Graph Connector content, are billed based on metered consumption.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 85,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "applicability",
+      "claim": "Plugins covered by these settings include tools, MCP servers, connectors and skills.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "Plugins include tools, MCP servers, connectors, skills, and other AI artifacts that extend agents.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-20T13:42:20.991Z",
+    "at": "2026-11-27T08:23:11.765Z",
     "summary": {
       "links": 11,
-      "unreachable": 0,
+      "unreachable": 9,
       "uiPaths": 2,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 2,
       "apiCalls": 2,
-      "apiCallsNotOnPage": 0,
+      "apiCallsNotOnPage": 2,
       "roadmapDrift": 0
     },
     "linkChecks": [
       {
         "url": "https://learn.microsoft.com/plugins/build-copilot-chat-skills",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/copilot/plan/copilot-license-options",
@@ -944,23 +999,23 @@
       },
       {
         "url": "https://learn.microsoft.com/copilot/manage/copilot-agent-store",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/graph/utcm-agent-resources",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://www.microsoft.com/microsoft-365/roadmap?id=569213",
@@ -969,8 +1024,8 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#user-access",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -979,44 +1034,52 @@
         "side": "ui",
         "governs": "Which users or groups can access agents and plugins",
         "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#user-access",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Agents",
           "Settings",
           "User access"
         ],
-        "missing": []
+        "missing": [
+          "Agents",
+          "Settings",
+          "User access"
+        ]
       },
       {
         "index": 0,
         "side": "api",
         "governs": "Which users or groups can access agents and plugins",
         "docs": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
-        "reachable": true,
+        "reachable": false,
         "token": "/beta/admin/configurationManagement",
-        "found": true
+        "found": false
       },
       {
         "index": 1,
         "side": "ui",
         "governs": "Which publisher types of agents and plugins are allowed",
         "docs": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Agents",
           "Settings",
           "Agent and plugin access"
         ],
-        "missing": []
+        "missing": [
+          "Agents",
+          "Settings",
+          "Agent and plugin access"
+        ]
       },
       {
         "index": 1,
         "side": "api",
         "governs": "Which publisher types of agents and plugins are allowed",
         "docs": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
-        "reachable": true,
+        "reachable": false,
         "token": "/beta/admin/configurationManagement",
-        "found": true
+        "found": false
       }
     ],
     "roadmapDrift": []
@@ -1026,6 +1089,12 @@
       "date": "2026-11-20",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-20",
+      "status": "verified-with-gaps",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

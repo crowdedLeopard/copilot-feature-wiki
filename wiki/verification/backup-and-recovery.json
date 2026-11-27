@@ -1,0 +1,1413 @@
+{
+  "slug": "backup-and-recovery",
+  "kind": "concept",
+  "roadmapId": null,
+  "title": "Microsoft 365 Backup: what is protected, for how long, and what it costs",
+  "status": "held",
+  "date": "2026-11-27",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-27",
+    "reasons": [
+      "3 blocking findings (claims 12, 26, 47)"
+    ]
+  },
+  "counts": {
+    "claims": 105,
+    "confirmed": 101,
+    "unconfirmed": 0,
+    "contradicted": 4,
+    "blocker": 3,
+    "major": 0,
+    "minor": 6
+  },
+  "summary": "Hold: Microsoft documents beta automation for Full Workload Backup, contrary to the table and open question. The page also overstates protection against deletion outside offboarding and must specify mail-enabled security groups for notifications.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "Tenant role assignments are reached through Identity > Roles & admins > role > Add assignments in Microsoft Entra admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
+      "quote": "Browse to Identity > Roles & admins. ... Select a role name to open the role. ... Select Add assignments",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "POST /v1.0/roleManagement/directory/roleAssignments assigns the Backup Administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
+      "quote": "POST https://graph.microsoft.com/v1.0/roleManagement/directory/roleAssignments",
+      "severity": "minor",
+      "fix": "Keep the call; append to the row note: 'The request body sets roleDefinitionId to the role definition, principalId to the assignee, and directoryScopeId to / for tenant scope.' The cited assignment page documents these properties."
+    },
+    {
+      "n": 3,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Billing > Pay-as-you-go > Billing policies > Add a billing policy opens billing policy creation in Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+      "quote": "go to Billing > Pay-as-you-go. ... On the Billing policies tab, select Add a billing policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "controls[1].api; Open questions, billing policies",
+      "type": "absence",
+      "claim": "Microsoft has not documented automation for creating the Microsoft 365 Backup admin-center pay-as-you-go billing policies.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Backup pay-as-you-go billing policies budget Graph API PowerShell create update; \"billing policy\" \"Microsoft 365 Backup\" \"New-SPO\". Read billing-node setup, Backup setup and third-party billing results; New-SPOAppBillingPolicy concerns partner applications, not these policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "Billing > Pay-as-you-go > policy > Budget > Settings > Set a budget for this policy reaches the budget control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+      "quote": "In the policy panel, select the Budget tab. ... select Settings. ... Select the Set a budget for this policy checkbox.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "controls[2].api; Open questions, budgets",
+      "type": "absence",
+      "claim": "Microsoft has not documented Graph or PowerShell automation for these admin-center billing-policy budgets.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Microsoft 365\" \"billing policies\" \"budget\" \"API\" \"Graph\"; Microsoft 365 Backup pay-as-you-go billing policies budget Graph API PowerShell create update. Read billing-node budget steps, budget article results and Copilot Cost Management API overview; no matching budget operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "Settings > Microsoft 365 Backup > SharePoint > Set up policy is the route to choosing protected SharePoint sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "in the SharePoint section, select Set up policy. ... On the Choose selection method page ... Under Select sites individually, you can search and select sites",
+      "severity": "minor",
+      "fix": "The path stops at the policy wizard entrance. For individual selection, extend it to 'Settings > Microsoft 365 Backup > SharePoint > Set up policy > Overview > Choose selection method > Select sites individually', as documented on the cited page."
+    },
+    {
+      "n": 8,
+      "where": "controls[3].api",
+      "type": "command",
+      "claim": "POST /v1.0/solutions/backupRestore/sharePointProtectionPolicies creates a policy with the selected sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/backuprestoreroot-post-sharepointprotectionpolicies?view=graph-rest-1.0",
+      "quote": "siteProtectionUnits ... Collection of the siteProtectionUnits to be added to the sharePointProtectionPolicy object. Required.",
+      "severity": "minor",
+      "fix": "Keep the call and append to the note: 'The request body sets siteProtectionUnits, with siteId identifying each selected site.' The cited reference documents that collection and shows siteId in the request."
+    },
+    {
+      "n": 9,
+      "where": "controls[4].ui",
+      "type": "admin-path",
+      "claim": "Settings > Microsoft 365 Backup > Backup policies > policy > View details > Recovery window reaches the policy recovery-window setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "select the Backup policies tab ... select that policy and then select View details. ... open an active policy, update the Recovery window",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "controls[4].api; controls[4].note",
+      "type": "command",
+      "claim": "PATCH /v1.0/solutions/backupRestore/sharePointProtectionPolicies/{sharePointProtectionPolicyId} updates recovery-window retention through retentionSettings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/sharepointprotectionpolicy-update?view=graph-rest-1.0",
+      "quote": "retentionSettings ... Updated retention settings for the policy. If retentionSettings is omitted, the existing retention settings are unchanged.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "controls[5].ui",
+      "type": "admin-path",
+      "claim": "Settings > Microsoft 365 Backup > Back up sites > All sites selects Full Workload Backup for SharePoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "On Microsoft 365 Backup dashboard, select Back up sites, and then choose All sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "controls[5].api; Open questions, ProtectionMode",
+      "type": "absence",
+      "claim": "Full Workload Backup automation and the beta policy cmdlet's required ProtectionMode value are not documented.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/graph/api/resources/sharepointprotectionpolicy?view=graph-rest-beta",
+      "quote": "When set to fullServiceBackup, the entire workload is backed up and specific sites can be excluded using exclusion units.",
+      "severity": "blocker",
+      "fix": "Replace controls[5].api with kind 'powershell', call 'New-MgBetaSolutionBackupRestoreSharePointProtectionPolicy -ProtectionMode fullServiceBackup', and docs 'https://learn.microsoft.com/powershell/module/microsoft.graph.beta.backuprestore/new-mgbetasolutionbackuprestoresharepointprotectionpolicy?view=graph-powershell-beta'. The cmdlet reference lists -ProtectionMode, and https://learn.microsoft.com/graph/api/resources/sharepointprotectionpolicy?view=graph-rest-beta defines its value. Note that this is beta automation, subject to change and not supported for production use. Remove the first Open questions bullet and cite both references."
+    },
+    {
+      "n": 13,
+      "where": "controls[6].ui",
+      "type": "admin-path",
+      "claim": "Settings > Microsoft 365 Backup > Email notifications reaches notification configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+      "quote": "Select Settings. ... Select Microsoft 365 Backup ... Go to the Email notifications option on the Microsoft 365 Backup home page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[6].api",
+      "type": "command",
+      "claim": "Update-MgSolutionBackupRestoreEmailNotificationSetting -IsEnabled -Recipients <IMicrosoftGraphNotificationRecipients> enables notifications and sets their recipients.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.graph.backuprestore/update-mgsolutionbackuprestoreemailnotificationsetting?view=graph-powershell-1.0",
+      "quote": "[-IsEnabled] ... [-Recipients <IMicrosoftGraphNotificationRecipients>] ... Indicates whether notifications are enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[0].note",
+      "type": "role",
+      "claim": "Assigning the role requires at least Privileged Role Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
+      "quote": "Sign in to the Microsoft Entra admin center as at least a Privileged Role Administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[1].note",
+      "type": "date",
+      "claim": "Customers onboarded before April 1, 2026 may retain the older Setup billing experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+      "quote": "Existing customers who onboarded to Backup before April 1, 2026 ... can now migrate their billing management from Setup tab",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[1].note",
+      "type": "admin-path",
+      "claim": "Legacy billing management is reached through Setup > Billing and licenses > Activate pay-as-you-go services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+      "quote": "select Setup, and then go to Billing and licenses section. ... select Activate pay-as-you-go services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[2].note; Risks and limits; What to check",
+      "type": "cost",
+      "claim": "Reaching 100% of the billing-policy budget does not stop service or billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+      "quote": "Reaching 100% of your budget doesn't stop the service or billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[3].note; Why it matters",
+      "type": "default",
+      "claim": "A SharePoint policy created through Graph starts inactive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/backuprestoreroot-post-sharepointprotectionpolicies?view=graph-rest-1.0",
+      "quote": "Policy will be created in inactive state.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[3].note; What it is, Backup policies",
+      "type": "behaviour",
+      "claim": "A SharePoint site, OneDrive account or Exchange mailbox can belong to only one backup policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "any SharePoint site, Exchange mailbox, or OneDrive account can be part of one backup policy only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[4].note; Risks and limits, Window changes",
+      "type": "behaviour",
+      "claim": "Recovery-window changes require an active policy with no run in progress.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "You can change the recovery window on an active policy. You can't change it on a policy that is paused or has a run in progress.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[5].note; What it is; What to check",
+      "type": "availability",
+      "claim": "Full Workload Backup is in preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "The full workload backup feature is in preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[5].note",
+      "type": "behaviour",
+      "claim": "The Full Workload Backup setup experience is the same for SharePoint, OneDrive and Exchange.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "The setup experience is the same for SharePoint, OneDrive, and Exchange. The following example uses SharePoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[6].note",
+      "type": "role",
+      "claim": "Global admins and Microsoft 365 Backup admins can enable email notifications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+      "quote": "Global admins and Microsoft 365 Backup admins can turn on this feature and update the notification list at any time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[6].note",
+      "type": "behaviour",
+      "claim": "The notification list supports up to 20 individual recipients.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+      "quote": "You can add up to 20 individual recipients to the list or include distribution lists and security groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[6].note",
+      "type": "behaviour",
+      "claim": "Distribution lists and security groups can receive notifications without a mail-enablement qualification.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+      "quote": "Add users, distribution lists, or security groups (only email enabled) to the Backup Notification List.",
+      "severity": "blocker",
+      "fix": "In controls[6].note and the rendered row, change 'plus distribution lists and security groups' to 'and can include distribution lists and mail-enabled security groups'."
+    },
+    {
+      "n": 27,
+      "where": "summary; What it is, opening",
+      "type": "behaviour",
+      "claim": "Microsoft 365 Backup provides point-in-time recovery for SharePoint sites, OneDrive accounts and Exchange Online mailboxes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-overview",
+      "quote": "Full SharePoint site and OneDrive account restore fidelity ... at specific prior points in time via a rollback operation. ... Full Exchange mailbox item restores or granular item restores",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What it is, opening",
+      "type": "behaviour",
+      "claim": "Backup supports recovery after accidental deletion, malicious overwrite and ransomware.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-overview",
+      "quote": "a ransomware attack ... or instances of an internal accidental or malicious data deletion or overwrite event",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What it is, opening",
+      "type": "behaviour",
+      "claim": "The Microsoft service is operated through Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
+      "quote": "The Microsoft 365 Backup service, offered through the Microsoft 365 admin center",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What it is, opening; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 Backup charges by consumption rather than by user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-overview",
+      "quote": "Microsoft 365 Backup is a pay-as-you-go offering that charges based on consumption, unlike traditional user-based licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What it is, Backup policies",
+      "type": "behaviour",
+      "claim": "Administrators create backup policies separately for each product.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "you need to create a backup policy for each product. A policy represents the backup plan defined by admins",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What it is, Backup policies",
+      "type": "behaviour",
+      "claim": "Protection units include SharePoint sites, OneDrive accounts and Exchange Online mailboxes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+      "quote": "Protection units - SharePoint sites, OneDrive accounts, Exchange Online mailboxes, or supported Microsoft Entra ID directory objects backed up by the Microsoft 365 Backup tool.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What it is, Backup policies; controls[5].governs; What to check",
+      "type": "behaviour",
+      "claim": "Full Workload Backup automatically protects eligible units not covered by custom policies, including new units.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "all eligible SharePoint sites, OneDrive accounts, or Exchange mailboxes ... that aren't already protected by another backup policy. ... any new protection units are automatically protected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What it is, Backup policies",
+      "type": "behaviour",
+      "claim": "Full Workload Backup supports an exclusion list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "You can also maintain an exclusion list to keep specific protection units out of Full Workload Backup protection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What it is, Backup policies",
+      "type": "behaviour",
+      "claim": "Custom backup policies take precedence over Full Workload Backup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "Custom backup policies always take precedence over Full Workload Backup.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What it is, Recovery window; summary; controls[4].governs",
+      "type": "behaviour",
+      "claim": "The recovery window is set per policy and determines recovery-point retention.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "The Recovery window determines how long Microsoft 365 Backup keeps recovery points ... You set the recovery window on a policy",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What it is, Recovery window",
+      "type": "behaviour",
+      "claim": "SharePoint and OneDrive recovery windows can be 3 months, 6 months or whole years from 1 through 10.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "SharePoint and OneDrive: 3 months, 6 months, 1 year, 2 years, 3 years, 4 years, 5 years, 6 years, 7 years, 8 years, 9 years, or 10 years.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What it is, Recovery window",
+      "type": "behaviour",
+      "claim": "Exchange recovery windows can be 3 months, 6 months, 1 year or 2 years.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "Exchange: 3 months, 6 months, 1 year, or 2 years.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What it is, Recovery window",
+      "type": "default",
+      "claim": "Existing SharePoint, OneDrive and Exchange policies default to a one-year recovery window.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "For SharePoint, OneDrive, and Exchange Online, existing policies and artifacts default to a 1-year recovery window.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "What it is, Recovery window",
+      "type": "behaviour",
+      "claim": "Administrators cannot change backup frequency.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "The backup frequency isn't currently variable or modifiable.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "What it is, Restore points",
+      "type": "behaviour",
+      "claim": "Full SharePoint site and OneDrive account restore points have ten-minute frequency within the last 14 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-restore-data",
+      "quote": "Type | RPO for 0-14 days in the past ... Full OneDrive account and full SharePoint site restore | 10 minutes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "What it is, Restore points",
+      "type": "behaviour",
+      "claim": "Full SharePoint site and OneDrive account recovery points are weekly beyond 14 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-restore-data",
+      "quote": "One week, through the configured recovery window of up to 10 years",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "What it is, Restore points",
+      "type": "behaviour",
+      "claim": "Exchange recovery points have ten-minute frequency throughout its recovery window.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-restore-data",
+      "quote": "Exchange Online | 10 minutes | 10 minutes",
+      "severity": "minor",
+      "fix": "Replace 'Exchange has 10-minute points throughout' with 'The restore documentation gives Exchange 10-minute points both within and beyond 14 days; the overview table instead describes 10-minute points for the prior 52 weeks.' Both https://learn.microsoft.com/microsoft-365/backup/backup-restore-data and https://learn.microsoft.com/microsoft-365/backup/backup-overview are already cited."
+    },
+    {
+      "n": 44,
+      "where": "What it is, Restore points",
+      "type": "behaviour",
+      "claim": "Restoration can target the original location, replacing existing data, or a new location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-restore-data",
+      "quote": "restore data either at the original location (replacing existing data at that location) or at a new location.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "What it is, Storage",
+      "type": "behaviour",
+      "claim": "Backup content remains inside the Microsoft 365 data trust boundary.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-overview",
+      "quote": "Data never leaves the Microsoft 365 data trust boundary and honors the geographic locations of your current data residency.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "What it is, Storage; Risks and limits, immutability",
+      "type": "behaviour",
+      "claim": "SharePoint, OneDrive and Exchange backups use append-only storage to prevent overwrites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-overview",
+      "quote": "Our backups are protected from malicious overwrites because OneDrive, SharePoint, and Exchange use Append-Only backup storage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "What it is, Storage; Why it matters; Risks and limits, immutability",
+      "type": "behaviour",
+      "claim": "Backups are deleted only when an administrator offboards them.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "Decreasing the recovery window is a destructive action, because recovery points older than the new window are deleted. ... the deletion takes effect only after a 30-day grace period",
+      "severity": "blocker",
+      "fix": "Replace the Storage sentence with 'Backups stay inside the Microsoft 365 data trust boundary in append-only storage; recovery points expire under the recovery window, and offboarding can also delete backups.' Replace 'Backups are immutable except through offboarding' with 'Append-only storage prevents backup overwrites; decreasing a recovery window can delete older recovery points after a 30-day grace period.' In Why it matters, change 'offboarding does' to 'the backup recovery window and offboarding govern their lifetime'. The policy page documents window reductions, including moving an artifact to a shorter-window policy; the offboarding page also documents billing-triggered offboarding."
+    },
+    {
+      "n": 48,
+      "where": "What it is, Storage; Why it matters",
+      "type": "applicability",
+      "claim": "Purview retention and deletion policies do not change the backup recovery window.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-overview",
+      "quote": "Retention and deletion policies (for example, from Purview) don't affect the backup recovery window, which remains fully isolated from those policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "What it is, Entra paragraph",
+      "type": "behaviour",
+      "claim": "Microsoft Entra Backup and Recovery protects directory objects.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-overview",
+      "quote": "back up all or select SharePoint sites, OneDrive accounts, Exchange mailboxes, and Entra directory objects",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "What it is, Entra paragraph; Cost and licensing",
+      "type": "availability",
+      "claim": "Microsoft Entra Backup and Recovery Premium is in public preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-overview",
+      "quote": "Microsoft Entra Backup and Recovery Premium is in public preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "What it is, Entra paragraph",
+      "type": "behaviour",
+      "claim": "Entra Premium backup is enabled through Microsoft 365 Backup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "Microsoft Entra Backup and Recovery Premium (preview), enabled through Microsoft 365 Backup",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "What it is, Entra paragraph",
+      "type": "behaviour",
+      "claim": "Entra Premium takes daily backups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-overview",
+      "quote": "Premium retains up to 30 days of daily backups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "What it is, Entra paragraph",
+      "type": "behaviour",
+      "claim": "Entra Premium has a 30-day retention window.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "Premium's backup recovery window is fixed at 30 days and isn't configurable.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "What it is, Entra paragraph",
+      "type": "behaviour",
+      "claim": "Entra Premium uses one tenant-wide policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "supports a single policy and full tenant backup. ... There is no provision to create more than one policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "What it is, Entra paragraph",
+      "type": "licensing",
+      "claim": "Entra Backup and Recovery Standard is included with Microsoft Entra ID P1 or P2.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-overview",
+      "quote": "The Standard plan, included with Microsoft Entra ID P1 or P2",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "What it is, Entra paragraph",
+      "type": "behaviour",
+      "claim": "Entra Standard retains seven days of backups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-overview",
+      "quote": "The Standard plan, included with Microsoft Entra ID P1 or P2, retains up to seven days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "What it is, Authenticator sentence; Governance controls, Policies per product",
+      "type": "behaviour",
+      "claim": "Microsoft Authenticator account backup is a separate backup feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-transfer-authenticator-new-phone",
+      "quote": "To back up your Authenticator account entries on an Android device: ... Open Microsoft Authenticator. ... Turn on Cloud Backup. ... Select a Microsoft personal account where the backup will be stored.",
+      "severity": "minor",
+      "fix": "Add the uncited supporting pages to sources: https://learn.microsoft.com/entra/identity/authentication/how-to-transfer-authenticator-new-phone for the Authenticator statement, and https://learn.microsoft.com/graph/api/resources/backuprestoreroot?view=graph-rest-1.0 for the separate OneDrive and Exchange API policy types. This groups the missing citations for otherwise supported statements."
+    },
+    {
+      "n": 58,
+      "where": "Why it matters, first paragraph",
+      "type": "default",
+      "claim": "Microsoft 365 Backup protection requires a policy to exist and be active.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "Active | Protection scope selected under backup policy is being actively backed up. ... Not set up | No backup policy is set up for this scope.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Why it matters; What to check",
+      "type": "behaviour",
+      "claim": "A paused policy takes no further backups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "Paused | No further backups are taken but already taken backups are preserved.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Why it matters, second paragraph",
+      "type": "cost",
+      "claim": "Deleted and versioned content remains billable until it expires under the configured recovery window.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
+      "quote": "Deleted or versioned content held in the recycle bin or in the mailboxes will expire from the backups once the configured backup recovery window lapses",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Cost and licensing, Meter; summary",
+      "type": "cost",
+      "claim": "The list price is $0.15 per GiB per month of protected content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
+      "quote": "The list price is $0.15/GiB/month of protected content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Cost and licensing, Meter",
+      "type": "cost",
+      "claim": "Restores are free.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-overview",
+      "quote": "Restores are free",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Cost and licensing, What is counted",
+      "type": "cost",
+      "claim": "Protected site and OneDrive live sizes include the first-stage recycle bin.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
+      "quote": "Size of OneDrive accounts and SharePoint sites as displayed in the live sites' usage reports, which includes the first-stage recycle bin.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Cost and licensing, What is counted",
+      "type": "cost",
+      "claim": "Deleted SharePoint and OneDrive content in the second-stage recycle bin counts toward protected storage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
+      "quote": "Deleted content in SharePoint sites' and OneDrive accounts' second-stage recycle bin (also known as site collection recycle bin).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Cost and licensing, What is counted",
+      "type": "cost",
+      "claim": "Mailbox size and its associated online archive count toward protected storage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
+      "quote": "Size of the live user or shared mailbox plus their associated online archives if those are being used.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Cost and licensing, What is counted",
+      "type": "cost",
+      "claim": "Deleted and versioned mailbox items count toward protected storage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
+      "quote": "Deleted and versioned items in the protected mailboxes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Cost and licensing, What is counted",
+      "type": "cost",
+      "claim": "Restore-point frequency does not materially change backup storage cost.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
+      "quote": "The restore point frequency doesn't materially impact the cost of the backup storage",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Cost and licensing, What is counted",
+      "type": "cost",
+      "claim": "Expired deleted or versioned content stops contributing to backup consumption charges.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
+      "quote": "Once deleted or versioned content expires from the backups, they're no longer counted in the backup consumption equation and therefore no longer contribute to the cost.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Cost and licensing, Where it is charged; controls[1].governs",
+      "type": "cost",
+      "claim": "A pay-as-you-go billing policy links Microsoft 365 Backup charges to an Azure subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+      "quote": "you should link an Azure subscription in pay-as-you-go ... connect multiple billing policies to Backup and segment backup costs into different Azure subscriptions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Cost and licensing, Where it is charged",
+      "type": "cost",
+      "claim": "There are no additional Azure API or storage charges beyond the Backup usage charges.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
+      "quote": "there are no additional Azure API or storage costs beyond the Microsoft 365 Backup usage charges previously mentioned.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Cost and licensing, Where it is charged",
+      "type": "cost",
+      "claim": "Multiple billing policies can divide Backup costs among Azure subscriptions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+      "quote": "Now you can connect multiple billing policies to Backup and segment backup costs into different Azure subscriptions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Cost and licensing, Entra Premium",
+      "type": "cost",
+      "claim": "Entra Backup and Recovery Premium costs $0.025 USD per protected Microsoft Entra object per month.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
+      "quote": "The price is $0.025 USD per protected Microsoft Entra object per month.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Cost and licensing, Partner applications",
+      "type": "cost",
+      "claim": "Partner applications built on Microsoft 365 Backup Storage are billed solely by the partner.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
+      "quote": "you'll be charged solely by them for their application. You won't receive a separate bill or charge directly from Microsoft for the Backup Storage consumption.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Risks and limits, A budget is not a cap",
+      "type": "cost",
+      "claim": "The billing documentation says disconnecting the payment method is the only way to stop billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+      "quote": "The only way to stop billing is to disconnect the payment method.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Risks and limits, Billing failure starts offboarding",
+      "type": "behaviour",
+      "claim": "An unhealthy billing state can trigger offboarding and its grace periods.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-offboarding",
+      "quote": "If offboarding from Microsoft 365 Backup starts because of either an explicit request from you or an unhealthy billing state, the grace periods shown in the following table start.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "Risks and limits, Offboarding deletes backups",
+      "type": "behaviour",
+      "claim": "SharePoint, OneDrive and Exchange offboarding normally has a 90-day backup recovery grace period.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-overview",
+      "quote": "For OneDrive, SharePoint, and Exchange Online, a fixed 90-day existing backup recovery grace period ... allows the customer to recover their backups up to 90 days after offboarding.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "Risks and limits, Offboarding deletes backups",
+      "type": "behaviour",
+      "claim": "The offboarding grace period for selected items can be shortened to seven days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-offboarding",
+      "quote": "shortening the offboarding grace period for specific items from 90 days to seven days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "Risks and limits, Offboarding deletes backups",
+      "type": "behaviour",
+      "claim": "Shortening the offboarding grace period requires two approvers under Backup critical action approval.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-offboarding",
+      "quote": "a critical action can't proceed until at least two independent approvers approve the specific request.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "Risks and limits, Offboarding deletes backups",
+      "type": "behaviour",
+      "claim": "A purged backup cannot be restored.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-offboarding",
+      "quote": "After an item is purged, the deletion can't be undone.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "Risks and limits, Lengthening the window",
+      "type": "behaviour",
+      "claim": "Increasing the recovery window does not create older recovery points or recover expired ones.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-restore-data",
+      "quote": "Increasing the recovery window doesn't create older recovery points or recover points that have already expired.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
+      "where": "Risks and limits, Scale limits",
+      "type": "behaviour",
+      "claim": "Microsoft 365 Backup supports up to 100 policies per workload.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-overview",
+      "quote": "Policies per workload: up to 100 backup policies per workload.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 82,
+      "where": "Risks and limits, Scale limits",
+      "type": "behaviour",
+      "claim": "Microsoft 365 Backup supports up to 1,000,000 items per workload.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-overview",
+      "quote": "Items per workload: up to 1,000,000 items per workload.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 83,
+      "where": "Risks and limits, Scale limits",
+      "type": "behaviour",
+      "claim": "A backup policy supports up to 100,000 items.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-overview",
+      "quote": "Items per policy: up to 100,000 items per backup policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 84,
+      "where": "Risks and limits, In-place restore overwrites",
+      "type": "behaviour",
+      "claim": "In-place full site or account restore overwrites content and metadata to their chosen prior state.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-overview",
+      "quote": "rolls back to the state of the site at the prior point in time, overwriting all content and metadata since that prior point in time",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 85,
+      "where": "Risks and limits, Entra Premium history",
+      "type": "behaviour",
+      "claim": "Enabling Entra Premium does not immediately supply 30 days of backup history.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-overview",
+      "quote": "Premium backup history accumulates after each daily backup cycle; enabling Premium doesn't immediately provide 30 days of history.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 86,
+      "where": "Risks and limits, Entra Premium history",
+      "type": "cost",
+      "claim": "Existing Entra Premium backups continue to be billed after Premium stops until they expire.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-offboarding",
+      "quote": "Existing Premium backups continue to be billed and remain available for difference reports and recovery until each backup expires under its rolling 30-day retention window.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 87,
+      "where": "Governance controls, Roles",
+      "type": "role",
+      "claim": "Global Administrator can manage OneDrive, SharePoint, Exchange and Entra backups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+      "quote": "Admin role | OneDrive | SharePoint | Exchange | Entra ... Global Administrator | ✓ | ✓ | ✓ | ✓",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 88,
+      "where": "Governance controls, Roles; What to check",
+      "type": "role",
+      "claim": "SharePoint Administrator can manage SharePoint and OneDrive backups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/permissions-reference",
+      "quote": "Create and manage OneDrive protection policy in Microsoft 365 Backup ... Create and manage SharePoint protection policy in Microsoft 365 Backup",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 89,
+      "where": "Governance controls, Roles; What to check",
+      "type": "role",
+      "claim": "Exchange Administrator can manage Exchange backups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/permissions-reference",
+      "quote": "Create and manage Exchange Online protection policy in Microsoft 365 Backup",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 90,
+      "where": "Governance controls, Roles",
+      "type": "role",
+      "claim": "Microsoft Entra Backup Administrator can manage Entra backups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+      "quote": "Admin role | OneDrive | SharePoint | Exchange | Entra ... Microsoft Entra Backup Administrator |  |  |  | ✓",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 91,
+      "where": "controls[0].governs; Governance controls, Roles; What to check",
+      "type": "role",
+      "claim": "Microsoft 365 Backup Administrator can manage SharePoint, OneDrive and Exchange backups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/permissions-reference",
+      "quote": "Create, edit, and manage backup configuration policies for SharePoint, OneDrive, and Exchange Online",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 92,
+      "where": "Governance controls, Roles",
+      "type": "role",
+      "claim": "Setting up Microsoft 365 Backup requires SharePoint Administrator or Global Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+      "quote": "You must be a SharePoint Administrator or Global Administrator to be able to access the Microsoft 365 admin center and set up Microsoft 365 Backup.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 93,
+      "where": "Governance controls, Roles",
+      "type": "role",
+      "claim": "Billing setup requires Owner or Contributor access on the Azure subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+      "quote": "If you already have an Azure subscription and have Owner or Contributor access on the subscription, you can proceed to set up pay-as-you-go billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 94,
+      "where": "Governance controls, Roles",
+      "type": "role",
+      "claim": "End users cannot enable backup or restore for themselves.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+      "quote": "End users don't have the ability to enable backup or restores for their user account, distribution lists, mailboxes, or sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 95,
+      "where": "Governance controls, Policies per product",
+      "type": "behaviour",
+      "claim": "OneDrive and Exchange have their own protection policy types in the Backup Graph API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/backuprestoreroot?view=graph-rest-1.0",
+      "quote": "exchangeProtectionPolicies ... The list of Exchange protection policies in the tenant. ... oneDriveForBusinessProtectionPolicies ... The list of OneDrive for Business protection policies in the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 96,
+      "where": "Governance controls, Watching it",
+      "type": "admin-path",
+      "claim": "Activity logs are opened from the Backup page through Reports > Recent activities > View more.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-privacy-security",
+      "quote": "Click on Reports tab. ... In the Recent activities card, click View more to open the Activity logs page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 97,
+      "where": "Governance controls, Watching it",
+      "type": "behaviour",
+      "claim": "Activity logs record policy changes, offboarding and restore operations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-privacy-security",
+      "quote": "Activity logs include policy creation, activation, modification, pause, rename, deletion ... complete product level offboarding, protection-unit offboarding, and restore task creation and completion.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 98,
+      "where": "Governance controls, Watching it",
+      "type": "behaviour",
+      "claim": "Read-only operations are excluded from Backup activity logs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-privacy-security",
+      "quote": "Read-only operations, such as viewing policies or listing restore points, aren't included.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 99,
+      "where": "Governance controls, Watching it",
+      "type": "behaviour",
+      "claim": "Activity logs are retained for 365 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-whats-new",
+      "quote": "Activity logs are retained for a fixed, nonconfigurable 365 days",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 100,
+      "where": "Governance controls, Watching it",
+      "type": "behaviour",
+      "claim": "Activity logs can be exported to CSV.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-privacy-security",
+      "quote": "Click on Export to download the current filtered or searched result as a CSV file.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 101,
+      "where": "Governance controls, Watching it",
+      "type": "applicability",
+      "claim": "Microsoft Purview Audit supplies the audit record for compliance investigations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-privacy-security",
+      "quote": "For compliance investigations that require the Microsoft 365 audit record, continue to use Microsoft Purview Audit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 102,
+      "where": "Governance controls, Approvals",
+      "type": "admin-path",
+      "claim": "Backup critical action approval is under Settings > Backup critical action approval on the Microsoft 365 Backup page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-offboarding",
+      "quote": "On the Microsoft 365 Backup page, select Settings, and then select Backup critical action approval.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 103,
+      "where": "Governance controls, Approvals",
+      "type": "applicability",
+      "claim": "Backup critical action approval currently gates only shortening the offboarding deletion grace period.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-offboarding",
+      "quote": "In this release, Backup critical action approval gates one action: shortening the offboarding grace period for specific items from 90 days to seven days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 104,
+      "where": "Open questions, grace periods",
+      "type": "behaviour",
+      "claim": "The trigger-specific offboarding grace-period table is published as an image.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-offboarding",
+      "quote": "the grace periods shown in the following table start. ... Screenshot of a data table showing the offboarding undo periods.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 105,
+      "where": "What to check, paused policies",
+      "type": "consistency",
+      "claim": "The checklist's instruction to check whether policies are paused has no corresponding pause/status control row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "List backup policies per workload and check that none you rely on is paused. ... controls[3]: Which SharePoint sites a backup policy protects",
+      "severity": "minor",
+      "fix": "The checklist's paused-policy status check has no matching control row; the existing rows cover policy scope and recovery window, not pause/status. Remove 'and check that none you rely on is paused' from that bullet rather than adding a new row during correction."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-27T08:23:00.554Z",
+    "summary": {
+      "links": 14,
+      "unreachable": 0,
+      "uiPaths": 7,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 4,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/backup/backup-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/backup/backup-restore-data",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/backup/backup-offboarding",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/backup/backup-privacy-security",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/backup/backup-whats-new",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/backuprestoreroot-post-sharepointprotectionpolicies?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/sharepointprotectionpolicy-update?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoft.graph.backuprestore/update-mgsolutionbackuprestoreemailnotificationsetting?view=graph-powershell-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/role-based-access-control/permissions-reference",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Who can run Microsoft 365 Backup for SharePoint, OneDrive and Exchange (Microsoft 365 Backup Administrator role)",
+        "docs": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
+        "reachable": true,
+        "segments": [
+          "Identity",
+          "Roles & admins",
+          "role",
+          "Add assignments"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Who can run Microsoft 365 Backup for SharePoint, OneDrive and Exchange (Microsoft 365 Backup Administrator role)",
+        "docs": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
+        "reachable": true,
+        "token": "/v1.0/roleManagement/directory",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which Azure subscription pays for Microsoft 365 Backup (pay-as-you-go billing policy)",
+        "docs": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+        "reachable": true,
+        "segments": [
+          "Billing",
+          "Pay-as-you-go",
+          "Billing policies",
+          "Add a billing policy"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Spending budget and alert thresholds on the billing policy",
+        "docs": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+        "reachable": true,
+        "segments": [
+          "Billing",
+          "Pay-as-you-go",
+          "Budget",
+          "Settings",
+          "Set a budget for this policy"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Which SharePoint sites a backup policy protects",
+        "docs": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Microsoft 365 Backup",
+          "SharePoint",
+          "Set up policy"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Which SharePoint sites a backup policy protects",
+        "docs": "https://learn.microsoft.com/graph/api/backuprestoreroot-post-sharepointprotectionpolicies?view=graph-rest-1.0",
+        "reachable": true,
+        "token": "/v1.0/solutions/backupRestore",
+        "found": true
+      },
+      {
+        "index": 4,
+        "side": "ui",
+        "governs": "Recovery window (how long recovery points are kept) on a SharePoint backup policy",
+        "docs": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Microsoft 365 Backup",
+          "Backup policies",
+          "View details",
+          "Recovery window"
+        ],
+        "missing": []
+      },
+      {
+        "index": 4,
+        "side": "api",
+        "governs": "Recovery window (how long recovery points are kept) on a SharePoint backup policy",
+        "docs": "https://learn.microsoft.com/graph/api/sharepointprotectionpolicy-update?view=graph-rest-1.0",
+        "reachable": true,
+        "token": "/v1.0/solutions/backupRestore",
+        "found": true
+      },
+      {
+        "index": 5,
+        "side": "ui",
+        "governs": "Full Workload Backup policy that protects all sites not in another policy",
+        "docs": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Microsoft 365 Backup",
+          "Back up sites",
+          "All sites"
+        ],
+        "missing": []
+      },
+      {
+        "index": 6,
+        "side": "ui",
+        "governs": "Who is emailed about harmful and routine Microsoft 365 Backup events",
+        "docs": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Microsoft 365 Backup",
+          "Email notifications"
+        ],
+        "missing": []
+      },
+      {
+        "index": 6,
+        "side": "api",
+        "governs": "Who is emailed about harmful and routine Microsoft 365 Backup events",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoft.graph.backuprestore/update-mgsolutionbackuprestoreemailnotificationsetting?view=graph-powershell-1.0",
+        "reachable": true,
+        "token": "Update-MgSolutionBackupRestoreEmailNotificationSetting",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

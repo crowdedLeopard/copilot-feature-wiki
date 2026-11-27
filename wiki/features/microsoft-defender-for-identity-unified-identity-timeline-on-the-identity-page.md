@@ -78,15 +78,17 @@ changes:
     note: "Corrected after verification: removed the claim that the timeline replaces separate tables, narrowed access wording to unified RBAC, added role, path and custom-role qualifications."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 57 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 62 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-22"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 57
-  confirmed: 55
+  claims: 62
+  confirmed: 60
   unconfirmed: 1
   contradicted: 1
   attempts: 0
@@ -192,10 +194,10 @@ cost: Low. The only cost the sources show is analyst and admin time; Defender fo
 impact: Low. Security analysts who investigate identities in the Microsoft Defender portal notice it; nothing in the sources reaches end users.
 -->
 
-<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: There is no change to autonomy and actions from the timeline update. | Found: Searched: identity Timeline tab Actions menu remediation no change unified timeline. Read roadmap, investigate-users and remediation-actions search excerpts; they describe the view and action mechanisms but do not establish unchanged behaviour before and after this update. | Fix: Remove 'No change:' from the Autonomy & actions bullet. Retain the documented description of the Timeline tab and the Overview Actions menu.
+- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: There is no change to autonomy and actions from the timeline update. | Found: Searched: "identity" "Timeline" "remediation" "no change". Read roadmap, investigate-users and January 2026 what's-new excerpt. They describe the timeline and remediation actions but do not establish unchanged action behaviour across this update. | Fix: Remove 'No change:' from the Autonomy & actions bullet. Retain the descriptions of the Timeline tab and the separate Overview Actions menu.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: Every control the governance checklist asks the reader to check has a corresponding controls-table row. | Found: Checklist: 'Check the data sources and Defender for Identity scopes in each unified RBAC assignment.' Table: role and data-source assignment, and tenant-wide timeline switch; no identity-scoping row. | Fix: Remove 'and Defender for Identity scopes' from the Before rollout checklist bullet so it asks only to check data sources in each unified RBAC assignment. The identity-scoping check has no table row.
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: Every control the governance checklist asks readers to review has a corresponding controls-table row. | Found: Checklist: 'Check the data sources and Defender for Identity scopes in each unified RBAC assignment.' Table: role and data-source assignment, and timeline on/off switch; no identity-scoping row. | Fix: Remove 'and Defender for Identity scopes' from the Before rollout checklist bullet. The checklist should say 'Check the data sources in each unified RBAC assignment.'
 -->

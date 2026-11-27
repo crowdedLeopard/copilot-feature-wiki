@@ -57,15 +57,17 @@ changes:
     note: "First briefing for this roadmap item, now Launched, covering what the report measures, the roles in the roadmap and in Learn, and the gaps Microsoft has not documented."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 2 of 54 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 2 of 56 statements not yet confirmed"
 version: 1
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 54
-  confirmed: 51
+  claims: 56
+  confirmed: 53
   unconfirmed: 2
   contradicted: 1
   attempts: 0
@@ -163,11 +165,11 @@ cost: Low. The Learn pages read name no licence or meter for the report itself; 
 impact: Low. The roadmap names Organizational Data Administrators, People Administrators and AI Administrators as the audience; other users notice only if fixes to people data change what they see.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] What's changing / behaviour: Attributes with too many distinct values cannot be used to group people. | Found: Searched: "data quality report" "People" "Administrator" Microsoft 365. Read data-quality-metrics, Unique values: it says fragmented attributes become difficult to use for segmentation, not that grouping is impossible. | Fix: Replace 'so many values that they cannot be used to group people' with 'so many values that they become difficult to use for segmentation', matching https://learn.microsoft.com/microsoft-365-apps/org-data-service/manage/data-quality-metrics.
-- [unsupported, major] summary; Governance controls; rationale: risk / behaviour: The report is read-only, changes nothing and cannot itself change people data. | Found: Searched: "Organizational Data Service" "data quality" "read-only". Read data-quality-metrics and organizational-data. Metrics says corrections generally belong in the authoritative source; it does not explicitly establish a read-only report or rule out every editing action. | Fix: Delete 'It is read-only and' from the summary, leaving 'It is aimed at admins; nobody has to act, but gaps it finds affect People Card, Org Explorer and Copilot.' Replace the last Governance controls sentence with 'Corrections generally belong in the authoritative source that supplies the attribute.' Replace 'and, on the page Microsoft documents, changes nothing' in the risk rationale with 'and Learn directs corrections to the authoritative source'. The narrower correction guidance is stated at https://learn.microsoft.com/microsoft-365-apps/org-data-service/manage/data-quality-metrics.
+- [unsupported, major] What's changing / behaviour: Attributes with too many distinct values cannot be used to group people. | Found: Searched: "Organizational Data Service" "data quality" automatic remediation unique values segmentation. Read data-quality-metrics, Fragmented attributes: it says difficult to use for segmentation, not impossible to group. | Fix: Replace 'so many values that they cannot be used to group people' with 'so many values that they become difficult to use for segmentation', matching https://learn.microsoft.com/microsoft-365-apps/org-data-service/manage/data-quality-metrics.
+- [unsupported, major] summary; Governance controls; rationale: risk / behaviour: The report is read-only, changes nothing and cannot itself change people data. | Found: Searched: "Organizational Data Service" "data quality" "read-only" "individual". Read data-quality-metrics and organizational-data; corrections generally belong in the authoritative source, but neither establishes an exclusively read-only report. | Fix: In the summary replace 'It is read-only and aimed at admins' with 'It is aimed at admins'. Replace the final Governance controls sentence with 'Corrections generally belong in the authoritative source that supplies the attribute.' In the risk rationale replace 'and, on the page Microsoft documents, changes nothing' with 'and Learn directs corrections to the authoritative source'. The narrower wording is supported by https://learn.microsoft.com/microsoft-365-apps/org-data-service/manage/data-quality-metrics.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist tells administrators to check profile source precedence, but the controls table has no corresponding control. | Found: Checklist: 'Check profile source precedence if a corrected value does not appear'. The table's sole control is 'Entry point to Microsoft 365 Organizational Data Service in the admin centre'. | Fix: Remove the After rollout checklist bullet beginning 'Check profile source precedence if a corrected value does not appear'. Its factual background can remain in Risk assessment; the checklist control has no table row.
+- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist's instruction to check profile source precedence has a corresponding controls-table row. | Found: Checklist: 'Check profile source precedence if a corrected value does not appear'. The sole table row is 'Entry point to Microsoft 365 Organizational Data Service in the admin centre'. | Fix: Remove the After rollout bullet beginning 'Check profile source precedence if a corrected value does not appear'. The supported factual explanation can remain under Change & support.
 -->

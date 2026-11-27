@@ -98,15 +98,17 @@ changes:
     note: "Correction: added the preview Microsoft Graph call for the two agent settings, stated that User access applies to agents and plugins including skills, and removed the claim that the entry adds no new capability."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 80 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 85 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 80
-  confirmed: 80
+  claims: 85
+  confirmed: 85
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -211,9 +213,10 @@ cost: Variable. The roadmap names no licence or meter, but Microsoft Learn says 
 impact: Medium. It changes the prompt box in Copilot on desktop and web for users who already have agents or skills, so they will notice it.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] licensing.notes; Cost and licensing / licensing: Agent use comes with the Microsoft 365 Copilot (Premium) licence. | Found: The use of agents comes with Microsoft 365 Copilot (Premium) license. | Fix: Qualify this sentence and the matching licensing.notes clause: 'The agent purchasing page says agent use comes with Premium; the standard-harness licensing page specifies that classic answers, generative answers and Microsoft Graph tenant grounding are not charged when the agent runs with the licensed user's authenticated identity.' Cite https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing#get-access-to-copilot-studio alongside the existing source. | Source: https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat
-- [supported, minor] controls[0].api; controls[0].note; Governance controls table and prose / command: POST /beta/admin/configurationManagement/configurationMonitors can apply the User access resource using applyOnce. | Found: POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors An active applyOnce monitor runs in the background on behalf of the signed-in administrator and then becomes inactive. | Fix: In controls[0].note and the rendered matching note, replace 'sets everyone or noOne' with 'mode applyOnce; baseline.resources uses microsoft.agent.useraccess, resourceVersion 1, with properties.valueObject.userAssignmentCategory set to everyone or noOne'. The existing prose and https://learn.microsoft.com/graph/utcm-agent-resources document that deciding property; retain the call unchanged. | Source: https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta
+- [supported, minor] controls[0].api; Governance controls / command: POST /beta/admin/configurationManagement/configurationMonitors can set agent User access with the applyOnce resource configuration explained in the prose. | Found: Create a new configurationMonitor object that runs periodically in the background at a scheduled frequency to detect configuration drift in monitorOnly mode, or applies a desired-state baseline once in applyOnce mode. | Fix: Keep the call. Add to controls[0].note and the matching table note: 'Set mode to applyOnce; baseline.resources uses resourceType microsoft.agent.useraccess, resourceVersion 1, and properties.valueObject.userAssignmentCategory set to everyone or noOne.' The body already gives this configuration; the row currently gives values without naming the property. | Source: https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta
+- [supported, minor] controls[1].api; Governance controls / command: POST /beta/admin/configurationManagement/configurationMonitors can set allowed publisher types with the applyOnce resource configuration explained in the prose. | Found: An active applyOnce monitor runs in the background on behalf of the signed-in administrator and then becomes inactive. Its result reports the outcome of the run. | Fix: Keep the call and existing publisher property names. Add to controls[1].note and the matching table note: 'Set mode to applyOnce; baseline.resources uses resourceType microsoft.agent.allowedagenttypes, resourceVersion 1, and these properties inside properties.valueObject.' This carries the deciding mode from the existing prose into the row; the reference defaults mode to monitorOnly. | Source: https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta
+- [supported, minor] front matter: licensing.notes; Cost and licensing / licensing: The agent purchasing page says agent use comes with Microsoft 365 Copilot (Premium). | Found: The use of agents comes with Microsoft 365 Copilot (Premium) license. | Fix: Qualify the blanket inclusion wording in licensing.notes and Cost and licensing: 'The agent purchasing page says agent use comes with Premium. The standard-harness licensing page specifies non-billed classic answers, generative answers and Microsoft Graph tenant grounding when the agent runs with the licensed user's authenticated identity; this is not a blanket statement that every agent operation is unmetered.' Cite https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing#billing-for-microsoft-365-copilot-license-holders. The separately read https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits also lists Copilot Agents with Work IQ among usage-based services. | Source: https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat
 -->

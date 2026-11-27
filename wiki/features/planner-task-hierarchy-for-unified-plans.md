@@ -113,7 +113,7 @@ controls:
     note: "Global admin. Turns off Planner as a whole, not this feature alone; premium plans are covered by a separate page."
 confidence: "medium"
 created: "2026-11-26"
-updated: "2026-11-26"
+updated: "2026-11-27"
 roadmapModified: "2026-11-17T18:36:41"
 changes:
   - date: "2026-11-26"
@@ -124,19 +124,23 @@ changes:
     note: "Corrected: acknowledged Learn's beta Graph description of parent and child tasks, narrowed unified plan eligibility and autonomy wording, re-rated cost low, removed an eDiscovery checklist step, added sources."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 61 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-27"
+    note: "Corrected: removed 'only' from the statement that the Planner service description lists task hierarchy for Planner Plan 1 and Planner and Project Plan 3, since the same page also covers Plan 3 capabilities in Planner and Project Plan 5."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 59 statements confirmed"
+version: 3
 verification:
-  status: "held"
-  date: "2026-11-26"
-  version: 2
+  status: "verified"
+  date: "2026-11-27"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 61
-  confirmed: 60
+  claims: 59
+  confirmed: 59
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "9cf74094bb0794654946ddba81df8a1f"
+  contradicted: 0
+  attempts: 0
+  hash: "590dccc9af9877f2ea8262e66fc4c47b"
 ---
 
 ## What's changing
@@ -151,7 +155,7 @@ The roadmap item is **In development**, targeted for **March CY2027**, for gener
 
 ## Why it matters
 
-The main question for a service owner is licensing, not risk. Today, subtasks live in premium plans, which a user with a Planner premium licence can create by converting a basic plan. Moving the hierarchy into unified plans brings it to a plan type that users with an eligible Microsoft 365 licence can use, while the service description still lists task hierarchy for Planner Plan 1 and Planner and Project Plan 3 only. Expect requests for those licences, or for trials, once users see nested tasks in plans they share with licensed colleagues.
+The main question for a service owner is licensing, not risk. Today, subtasks live in premium plans, which a user with a Planner premium licence can create by converting a basic plan. Moving the hierarchy into unified plans brings it to a plan type that users with an eligible Microsoft 365 licence can use, while the service description still lists task hierarchy for Planner Plan 1 and Planner and Project Plan 3. Expect requests for those licences, or for trials, once users see nested tasks in plans they share with licensed colleagues.
 
 Microsoft has not stated what happens on arrival, nor whether users without a qualifying licence will see nested tasks as view only, as Microsoft 365 users do in premium plans today. No source says existing plans or tasks change. Plan for a mixed experience in shared plans, since "a unified plan doesn't require every member of the plan to have the same license".
 
@@ -233,10 +237,4 @@ The practical lever is licensing: who holds Planner Plan 1 or Planner and Projec
 risk: Low. Nested tasks organise work inside plans users already share; Microsoft documents no new data access, and Planner itself can still be turned off with PowerShell.
 cost: Low. Reviewing licences, handling requests and preparing guidance takes administrator time; licensing specific to task hierarchy in unified plans is not yet published.
 impact: Medium. Project leads and plan members who structure work in Planner notice; Microsoft has not said whether the feature appears for every unified plan user.
--->
-
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters: first paragraph / licensing: The service description lists task hierarchy for Planner Plan 1 and Planner and Project Plan 3 only. | Found: Existing customers may continue to use their subscriptions in line with applicable renewal and lifecycle policies. ... Plan 5 includes all Planner and Project Plan 3 capabilities, plus the following: | Fix: Delete 'only' from 'the service description still lists task hierarchy for Planner Plan 1 and Planner and Project Plan 3 only'. The same cited service description also includes Plan 3 capabilities in existing Planner and Project Plan 5 subscriptions. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-planner-service-description
 -->

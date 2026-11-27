@@ -112,15 +112,17 @@ changes:
     note: "Corrected the admin path for the Cowork spending policy to include the Identity policy type and group scope steps, and removed the billing method from the pre-rollout checklist."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 59 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 67 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 59
-  confirmed: 59
+  claims: 67
+  confirmed: 67
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -216,9 +218,9 @@ cost: Variable. Switching leads into Cowork, which needs a Copilot licence and w
 impact: Medium. Users who already have Cowork (or another supported mode) will see the card in Chat; users without access should not, so the audience is a subset of users, not everyone.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[3].ui; Cost and licensing; Governance guidance: After rollout / admin-path: Copilot > Cost Management > Consumption in the Microsoft 365 admin center is the reporting surface for Cowork service consumption. | Found: Select the Consumption tab. ... The Policies view is the default view ... In the Agents and services view, review usage for supported services. For example, Cowork and Work IQ API. | Fix: Complete controls[3].ui.path and the corresponding monitoring instruction as 'Copilot > Cost Management > Consumption > Agents and services'; the printed path stops on the right page, whose default view is Policies. Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending
-- [supported, minor] controls[3].note / behaviour: Learn lists further API usage reports by group, service and funding class. | Found: usage reports that break down consumption by user, security group, governed service, and funding class. | Fix: Add https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview to sources for the sentence about further reports by group, service and funding class. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview
+- [supported, minor] controls[3].ui; Cost and licensing; Governance guidance: After rollout / admin-path: Microsoft 365 admin center > Copilot > Cost Management > Consumption is the reporting surface for Cowork service consumption. | Found: Select the Consumption tab. ... The Policies view is the default view ... In the Agents and services view, review usage for supported services. For example, Cowork and Work IQ API. | Fix: Complete controls[3].ui.path and the corresponding monitoring instruction as 'Copilot > Cost Management > Consumption > Agents and services'. The existing path reaches the correct page but stops before its Cowork service view. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending
+- [supported, minor] controls[3].note; Governance controls table / behaviour: Learn documents additional API usage reports by group, service and funding class. | Found: usage reports that break down consumption by user, security group, governed service, and funding class. | Fix: Add https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview to sources for the existing statement about further reports by group, service and funding class. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview
 -->

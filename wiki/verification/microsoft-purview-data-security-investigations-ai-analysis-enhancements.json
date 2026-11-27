@@ -1,0 +1,1033 @@
+{
+  "slug": "microsoft-purview-data-security-investigations-ai-analysis-enhancements",
+  "roadmapId": 557556,
+  "title": "Microsoft Purview Data Security Investigations: Standard or Advanced categorisation and automatic data preparation",
+  "status": "held",
+  "date": "2026-11-27",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-27",
+    "reasons": [
+      "1 blocking finding (claim 55)"
+    ]
+  },
+  "counts": {
+    "claims": 79,
+    "confirmed": 76,
+    "unconfirmed": 0,
+    "contradicted": 3,
+    "blocker": 1,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "The scope list includes Data Security Management and Insider Risk Management among users of the AI enhancements, but Microsoft says their Contributor role cannot execute AI jobs. The documented workflow, billing model and listed control paths are otherwise supported; two checklist controls are missing from the controls table.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is April CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"April CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is March CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"March CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [ \"Worldwide (Standard Multi-Tenant)\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [ \"Web\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [ \"General Availability\", \"Preview\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing: opening paragraph",
+      "type": "behaviour",
+      "claim": "Data Security Investigations is a Microsoft Purview tool for analysing data involved in security incidents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
+      "quote": "To get an initial understanding of incident severity, use AI to categorize impacted data and narrow the focus to high-risk assets.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "controls[2].ui; What's changing; Governance controls",
+      "type": "admin-path",
+      "claim": "Investigators choose Standard or Advanced at Microsoft Purview portal > Data Security Investigations > Investigations > investigation > Analysis > Categorize.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
+      "quote": "Select Investigations in the left navigation. ... Select an investigation, then select Analysis. ... Select Categorize. ... Select the Standard or Advanced categorization option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing: Standard categorisation",
+      "type": "behaviour",
+      "claim": "Standard groups scoped content into the selected categories.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
+      "quote": "Standard: AI groups your scope into the selected categories.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing: Standard categorisation",
+      "type": "behaviour",
+      "claim": "Standard can significantly reduce categorisation processing time.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
+      "quote": "This option can significantly reduce the time it takes to complete processing",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing: Standard categorisation",
+      "type": "cost",
+      "claim": "Standard can significantly reduce the compute units needed for categorisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
+      "quote": "This option can significantly reduce the time it takes to complete processing and the amount of Data Security Investigations Compute Units (compute unit) needed for categorization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing: Advanced categorisation",
+      "type": "behaviour",
+      "claim": "Advanced further groups scoped content into topics within each category.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
+      "quote": "Advanced: AI further groups your scope into various topics within each category.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Advanced takes additional processing time.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
+      "quote": "This grouping takes additional time and compute units to process.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Advanced takes additional compute units compared with Standard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
+      "quote": "Advanced: AI further groups your scope into various topics within each category. This grouping takes additional time and compute units to process.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing: existing categories",
+      "type": "behaviour",
+      "claim": "Existing categories can be switched between Standard and Advanced.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
+      "quote": "You can also change existing categories from Standard to Advanced or from Advanced to Standard.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Changing an existing category's processing option reprocesses that category.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
+      "quote": "When you change the categorization option for existing categories, the system reprocesses those categories with the new option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationales",
+      "type": "default",
+      "claim": "Preparation is on automatically and runs in the background during each Add to scope action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-scope",
+      "quote": "After you add data items to the investigation scope, the system automatically prepares all items for AI analysis. This automatic vectorization process runs in the background during each Add to scope action",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing: automatic data preparation",
+      "type": "date",
+      "claim": "New investigations automatically vectorise added data starting June 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-scope",
+      "quote": "Starting June 2026, all new investigations automatically vectorize data when items are added to the investigation scope.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing: automatic data preparation",
+      "type": "date",
+      "claim": "Prepare for AI is unavailable to new investigations created after the June 2026 transition.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-scope",
+      "quote": "The Prepare for AI action is no longer needed or available for new investigations created after this date.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Governance guidance: At rollout; rationale: impact",
+      "type": "date",
+      "claim": "After August 2026, Prepare for AI is removed from all investigations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-scope",
+      "quote": "After August 2026: The Prepare for AI action is removed from all investigations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Why it matters; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Existing investigations containing never-prepared data require Add to scope to be rerun to vectorise it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-scope",
+      "quote": "If you have an existing investigation with data that was never prepared for AI, you must rerun Add to scope to trigger automatic vectorization for those items.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Why it matters: previous Prepare for AI step",
+      "type": "behaviour",
+      "claim": "The previous experience let investigators use a separate Prepare for AI action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-scope",
+      "quote": "June–August 2026: Existing investigations that already have scoped data retain the Prepare for AI experience. You can continue to use Prepare for AI to vectorize data in these investigations during this transition period.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Why it matters; Open questions",
+      "type": "cost",
+      "claim": "Microsoft describes automatic data preparation as requiring few compute units even for larger scopes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-scope",
+      "quote": "Automatic data preparation doesn't require many compute units, even for larger amounts of data included in an investigation scope.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Why it matters: rerunning Add to scope",
+      "type": "behaviour",
+      "claim": "Rerunning Add to scope on previously scoped data does not create duplicates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-scope",
+      "quote": "Rerunning Add to scope on previously scoped data doesn't create duplicate copies",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Why it matters: rerunning Add to scope",
+      "type": "cost",
+      "claim": "Rerunning Add to scope on previously scoped data does not incur additional storage charges.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-scope",
+      "quote": "Rerunning Add to scope on previously scoped data doesn't create duplicate copies or incur additional storage charges.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Why it matters: unprepared older data",
+      "type": "behaviour",
+      "claim": "Unprepared older scoped data needs vectorisation before it can be used by the AI analysis tools.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
+      "quote": "After automatic vectorization completes for your investigation scope, you're ready to review and use AI analytics tools for the data in the investigation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "The AI analysis described here operates on data added to an investigation scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
+      "quote": "To categorize data items in the investigation scope, complete the following steps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Data exposure; controls[4].note",
+      "type": "behaviour",
+      "claim": "Scoped items are prepared for AI analysis unless explicitly excluded.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-scope",
+      "quote": "All data items in the investigation scope are prepared for AI analysis unless you explicitly exclude them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Security & identity; controls[0].note",
+      "type": "role",
+      "claim": "The DSI Admins, Investigators and Reviewers role groups can run categorisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "| Actions | Data Security Investigations Admins | Data Security Investigations Investigators | Data Security Investigations Reviewers |\n| Run categorization activities | Yes | Yes | Yes |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "The DSI Admins, Investigators and Reviewers role groups can run examination.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "| Actions | Data Security Investigations Admins | Data Security Investigations Investigators | Data Security Investigations Reviewers |\n| Run examination activities | Yes | Yes | Yes |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "The DSI Admins, Investigators and Reviewers role groups can run vector searches.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "| Actions | Data Security Investigations Admins | Data Security Investigations Investigators | Data Security Investigations Reviewers |\n| Run vector searches | Yes | Yes | Yes |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Security & identity; Scope; Governance guidance",
+      "type": "role",
+      "claim": "Compliance Administrator includes the DSI Admin role and grants full administrative DSI access without separate DSI-group assignment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "Members of these role groups have Data Security Investigations access without needing explicit assignment to a Data Security Investigations-specific role group. ... Compliance Administrator | Data Security Investigation Admin | Full administrative access",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Security & identity; Scope; Governance guidance",
+      "type": "role",
+      "claim": "Organization Management includes the DSI Admin role and grants administrative DSI access without separate DSI-group assignment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "Members of these role groups have Data Security Investigations access without needing explicit assignment to a Data Security Investigations-specific role group. ... Organization Management | Data Security Investigation Admin, Data Security Investigation Contributor",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "In the investigator workflow, categorisation and examination are started by selecting those operations rather than by automatic vectorisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
+      "quote": "Select Categorize. ... After configuring your categorization settings, select Save. ... Select Examine from the command bar. ... Select Examine to start the examination.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Categorisation results can differ when categories or their Standard/Advanced processing options are changed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
+      "quote": "When you add new categories or change existing categories between Standard and Advanced processing, the system reprocesses those categories. Because relevance is evaluated per category, results may differ based on the categories you select.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Relevance is evaluated per category.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
+      "quote": "Because relevance is evaluated per category, results may differ based on the categories you select.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Change & support",
+      "type": "cost",
+      "claim": "Cancelling Add to scope still incurs charges for compute units consumed before cancellation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-scope",
+      "quote": "If you need to cancel an in-progress Add to scope job, select Cancel on the Analysis tab. You still pay for any compute units consumed before the cancellation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Change & support",
+      "type": "cost",
+      "claim": "Cancelling categorisation still incurs charges for compute units consumed before cancellation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
+      "quote": "If you need to cancel an in-progress categorization job, select Cancel on the Analysis tab. You still pay for any compute units consumed before the cancellation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing; Cost and licensing: Licence; rationale: cost",
+      "type": "licensing",
+      "claim": "DSI uses consumption billing for stored data and AI compute rather than a dedicated enterprise plan or licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Billing in Data Security Investigations is based solely on the combination of the amount of stored data and the associated computing capacity needed for AI analysis. It isn't based on a dedicated enterprise plan or license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing: Meters; rationale: cost",
+      "type": "cost",
+      "claim": "Storage is pay-as-you-go per gigabyte per month across all investigations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "The storage meter for Data Security Investigations uses the pay-as-you-go billing model. You pay for storage on a gigabyte (GB) per month basis for stored data associated with all investigations in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing: Meters",
+      "type": "cost",
+      "claim": "Storage charges are prorated by the number of days stored.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "The charges are prorated to the number of days the data was stored in the billing cycle.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing: Meters; rationale: cost",
+      "type": "cost",
+      "claim": "AI capacity uses pay-as-you-go compute units, charged for actual usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Data Security Investigations uses the pay-as-you-go billing model for AI capacity. You need compute units for deep analysis and AI-related processing in your investigations. You pay only for the compute units you use.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing: Licence; Scope: Prerequisites",
+      "type": "licensing",
+      "claim": "Billing requires an Azure subscription in the same tenant as Microsoft Purview and a resource group in that subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "To configure the storage meter and capacity for Data Security Investigations, you must have: An Azure subscription in the same tenant as Microsoft Purview. An Azure resource group in that subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing: Meters; Why it matters",
+      "type": "cost",
+      "claim": "Add to scope, including AI preparation, is a compute-unit process whose scale depends on data size and extracted text.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "| Add to scope (including data preparation for AI analysis) | Size of data and extracted text |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing: Meters",
+      "type": "cost",
+      "claim": "The billing table scales categorisation by the number of new categories selected.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "| Categorization | Number of new categories selected. Adding categories to an existing categorization only processes net new categories. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing: Meters; Why it matters",
+      "type": "cost",
+      "claim": "Learn says categorisation compute requirements are proportional to selected category count, not data size.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
+      "quote": "The compute unit requirements are directly proportional to the number of categories selected, not the size of the data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing: Meters; Governance guidance: At rollout",
+      "type": "cost",
+      "claim": "Adding categories to an existing categorisation charges for processing the newly added categories.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
+      "quote": "When you add categories, the system processes only the new categories, and you pay only for the compute units needed to process those newly added categories.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "front matter: licensing.notes; Cost and licensing: Meters; Open questions",
+      "type": "absence",
+      "claim": "No specific Standard-versus-Advanced compute rate or quantified difference is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Data Security Investigations Standard Advanced pricing compute units rate'; opened DSI billing and AI analysis. Advanced is described as taking additional compute units, without a number. The pricing-site search returned no option-specific rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[5].ui; Cost and licensing: Watching and limiting spend",
+      "type": "admin-path",
+      "claim": "Microsoft Purview portal > Data Security Investigations > Usage dashboard displays per-investigation storage and compute usage by process.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Go to Data Security Investigations ... in the Microsoft Purview portal ... Select Usage dashboard in the left-navigation. ... The compute unit usage for each investigation and the total for each process.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[5].note; Cost and licensing; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Billing information can take up to 48 hours to appear in the usage dashboard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "It might take up to 48 hours for the latest billing data to show up on the Pay-as-you-go usage dashboard for your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[5].note; Governance controls",
+      "type": "role",
+      "claim": "Only users assigned the Data Security Investigations Admin role can access the usage dashboard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Only users assigned the Data Security Investigations Admin role can access the Pay-as-you-go usage dashboard.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Cost and licensing; Governance guidance: After rollout; Governance controls",
+      "type": "cost",
+      "claim": "Microsoft recommends budgets and spending-threshold alerts for the DSI resource group, rather than describing these as a stop on use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Create budgets for the Data Security Investigations resource group and meter level. Configure alerts when spending approaches defined thresholds (for example, 50%, 75%, or 90%).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance controls: Azure budgets and alerts",
+      "type": "behaviour",
+      "claim": "The recommended budgets and alerts are Azure subscription controls, not Purview portal controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Use built-in spending controls in Azure: Use the powerful built-in spend controls included with your Azure subscription",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Cost and licensing: Rates",
+      "type": "absence",
+      "claim": "The billing page links to storage pricing but does not quote a compute-unit rate itself.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Data Security Investigations Standard Advanced pricing compute units rate'; read the full DSI billing page, including its storage-pricing link and AI capacity section. No numeric compute-unit rate appears on that page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Scope: Who uses it",
+      "type": "role",
+      "claim": "Data Security Management and Insider Risk Management are among the role groups whose members can use these AI analysis enhancements.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "Data Security Management | Data Security Investigation Contributor | Contributor access ... Insider Risk Management | Data Security Investigation Contributor | Contributor access ... This role doesn't include access to data storage, AI job execution, or the Pay-as-you-go usage dashboard.",
+      "severity": "blocker",
+      "fix": "Replace the first sentence of Scope's Who uses it bullet with: 'Who uses it: members of the Data Security Investigations Admins, Investigators and Reviewers role groups, and members of Compliance Administrator or Organization Management.' Keep the following sentence explaining that Contributor does not include AI job execution. Source: https://learn.microsoft.com/purview/data-security-investigations-permissions."
+    },
+    {
+      "n": 56,
+      "where": "Scope: Who uses it",
+      "type": "role",
+      "claim": "The Data Security Investigation Contributor role does not include AI job execution.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "This role doesn't include access to data storage, AI job execution, or the Pay-as-you-go usage dashboard.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Scope: Prerequisites",
+      "type": "licensing",
+      "claim": "Both the storage and AI-capacity billing models must be configured before using DSI.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Before you can use Data Security Investigations in your organization, you must configure both billing models.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Scope: Prerequisites",
+      "type": "role",
+      "claim": "Configuring storage and capacity requires the Global Administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "To configure the storage meter and capacity for Data Security Investigations, you must have: ... The Global Administrator role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Scope: Prerequisites",
+      "type": "role",
+      "claim": "Configuring storage and capacity requires resource-group Owner or Contributor.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "To configure the storage meter and capacity for Data Security Investigations, you must have: ... The resource group Owner or Contributor role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[1].note; Scope: Prerequisites",
+      "type": "role",
+      "claim": "Configuring AI capacity requires membership of Data Security Investigations Admins.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "To configure the AI capacity for Data Security Investigations, you must be a member of the Data Security Investigations Admins role group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Scope: proactive AI insights from DSPM",
+      "type": "behaviour",
+      "claim": "Investigations auto-created by proactive AI insights from DSPM arrive pre-categorised with five fixed risk categories.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
+      "quote": "Investigations auto-created by proactive AI insights from Data Security Posture Management (DSPM) arrive pre-categorized with five fixed risk categories.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Scope: proactive AI insights from DSPM",
+      "type": "behaviour",
+      "claim": "Investigators can further categorise investigations auto-created by proactive DSPM insights.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
+      "quote": "You can run additional categorization with default, suggested, or custom categories on these investigations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "DSI Admins membership is edited through Microsoft Purview portal > Settings > Roles and groups > Role groups > Data Security Investigations Admins > Edit > Choose users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "Select Settings in the upper-right corner of the page, select Roles and groups, then select Role groups in the left navigation. ... Select the Data Security Investigations Admins role group, then select Edit. ... Select Choose users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[0].api; controls[0].note",
+      "type": "command",
+      "claim": "Add-RoleGroupMember -Identity \"<role-group>\" -Member \"<user-UPN>\" adds membership and is available in Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+      "quote": "Use the Add-RoleGroupMember cmdlet to add members to a management role group. ... [-Identity] <RoleGroupIdParameter> -Member <SecurityPrincipalIdParameter> ... Applicable: ... Security & Compliance ... User ID or user principal name (UPN)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[1].ui; Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "AI capacity and primary processing location are configured at Microsoft Purview portal > Data Security Investigations > Setup tasks > Set up AI capacity > AI analysis data processing location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "When you configure compute units, you enable the AI capacity ... Select Set up AI capacity in the Setup tasks section. ... AI analysis data processing location: The primary country/region. Select from the available locations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[1].api",
+      "type": "absence",
+      "claim": "No automation operation is documented for configuring DSI AI capacity and its processing location.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Data Security Investigations AI capacity configure PowerShell Microsoft Graph API' and Exchange PowerShell reference search for DSI AI capacity. Opened DSI billing; results document portal configuration, not a capacity-setting operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "controls[2].api",
+      "type": "absence",
+      "claim": "No automation operation is documented for choosing Standard or Advanced categorisation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Data Security Investigations categorization command PowerShell Exchange Graph API Standard Advanced default'; opened DSI AI analysis and searched Exchange PowerShell references. No matching categorisation-setting call was returned.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "controls[3]; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "A tenant-wide default or restriction on Advanced categorisation is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Data Security Investigations Standard Advanced default administrator setting' and 'categorization Standard Advanced tenant default restriction PowerShell API'; opened AI analysis and permissions. No tenant-wide selector or restriction was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "controls[4].ui",
+      "type": "admin-path",
+      "claim": "Scoped item exclusion is available at Microsoft Purview portal > Data Security Investigations > Investigations > investigation > Analysis > item > Actions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-scope",
+      "quote": "Select Analysis ... within a specific investigation to access the investigation scope. ... For each data item, you can choose to exclude the item from AI analysis ... Select Actions on the command bar for these options.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "controls[4].note",
+      "type": "behaviour",
+      "claim": "An excluded item's status can be changed later to include it for AI processing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-scope",
+      "quote": "You can change the status of any excluded data item later if you want to have the data item processed for AI analysis.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "controls[4].api",
+      "type": "absence",
+      "claim": "No automation operation is documented for excluding scoped items from DSI AI analysis.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Data Security Investigations exclude PowerShell cmdlet Microsoft Graph API' and Exchange PowerShell reference search for DSI exclude. Opened DSI scope; results provided item Actions or unrelated eDiscovery operations, not DSI exclusion automation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "controls[5].api",
+      "type": "absence",
+      "claim": "No automation operation is documented for the DSI per-investigation usage dashboard.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Data Security Investigations usage dashboard PowerShell cmdlet Graph API' and Exchange PowerShell reference search for DSI usage. Opened DSI billing. Dashboard and Export are documented; no corresponding DSI API or cmdlet was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Open questions: Categorize dialog default",
+      "type": "absence",
+      "claim": "The AI analysis page does not state which categorisation option is preselected.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Data Security Investigations Standard Advanced default administrator setting'; read the full AI analysis page. Its instruction is 'Select the Standard or Advanced categorization option'; no preselected option is named.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Open questions: compute for large scopes",
+      "type": "absence",
+      "claim": "A quantified compute-unit requirement for automatic preparation of very large scopes is not supplied.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Data Security Investigations automatic preparation compute units cost rate large scope'; opened DSI scope and billing. Scope says preparation 'doesn't require many compute units'; billing names data size and extracted text, without a numeric requirement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Governance guidance: After rollout",
+      "type": "cost",
+      "claim": "Deleting an investigation ends charges for its associated stored data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "When you delete an investigation, you stop paying for the associated data storage amount. The charges are prorated to the number of days the data was stored in the billing cycle.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "Governance controls: stopping billing",
+      "type": "behaviour",
+      "claim": "Microsoft's instructions for stopping DSI billing involve deleting all investigations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "To stop billing for Data Security Investigations, disable both storage meter and AI capacity support. This action deletes all investigations in Data Security Investigations and deletes compute units for your resource group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "Governance controls: stopping billing",
+      "type": "behaviour",
+      "claim": "Deleting investigations when stopping billing is irreversible, and Microsoft advises preserving results first.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Deleting investigations and your compute unit resource group is irreversible. Make sure you export or preserve any investigation results or reports before stopping billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "Governance guidance: After rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist directs readers to set Azure budgets and alerts, but that control has no controls-table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Set Azure budgets and alerts on the DSI resource group, as Microsoft's billing page recommends.",
+      "severity": "minor",
+      "fix": "Remove the 'Set Azure budgets and alerts on the DSI resource group, as Microsoft's billing page recommends' checklist bullet. Keep the existing explanatory cost and governance notes; do not add a control row during correction."
+    },
+    {
+      "n": 79,
+      "where": "Governance guidance: After rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist directs readers to delete investigations to stop storage charges, but investigation deletion has no controls-table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Delete completed investigations to end their storage charges.",
+      "severity": "minor",
+      "fix": "Remove the 'Delete completed investigations to end their storage charges' checklist bullet, since investigation deletion has no table row. Do not add a control row during correction."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-27T08:23:05.741Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 5,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/data-security-investigations-scope",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=557556",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Who can run categorisation and other AI analysis in Data Security Investigations",
+        "docs": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Roles and groups",
+          "Role groups",
+          "Data Security Investigations Admins",
+          "Edit",
+          "Choose users"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Who can run categorisation and other AI analysis in Data Security Investigations",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "reachable": true,
+        "token": "Add-RoleGroupMember",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether AI analysis can use compute units, and its primary processing location",
+        "docs": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+        "reachable": true,
+        "segments": [
+          "Data Security Investigations",
+          "Setup tasks",
+          "Set up AI capacity",
+          "AI analysis data processing location"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Standard or Advanced processing for a categorisation run",
+        "docs": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
+        "reachable": true,
+        "segments": [
+          "Data Security Investigations",
+          "Investigations",
+          "investigation",
+          "Analysis",
+          "Categorize",
+          "Standard or Advanced"
+        ],
+        "missing": []
+      },
+      {
+        "index": 4,
+        "side": "ui",
+        "governs": "Which scoped items are prepared for AI analysis",
+        "docs": "https://learn.microsoft.com/purview/data-security-investigations-scope",
+        "reachable": true,
+        "segments": [
+          "Data Security Investigations",
+          "Investigations",
+          "investigation",
+          "Analysis",
+          "Actions"
+        ],
+        "missing": []
+      },
+      {
+        "index": 5,
+        "side": "ui",
+        "governs": "Storage and compute unit spend per investigation",
+        "docs": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+        "reachable": true,
+        "segments": [
+          "Data Security Investigations",
+          "Usage dashboard"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

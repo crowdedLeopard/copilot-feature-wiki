@@ -81,16 +81,18 @@ changes:
     note: "Corrected after the independent check: the playbook row now gives the Dataverse Update operation, the inbound profiles row no longer implies it assigns direct numbers, and checklist items without a control row were removed."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 87 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 80 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 87
-  confirmed: 87
-  unconfirmed: 0
+  claims: 80
+  confirmed: 79
+  unconfirmed: 1
   contradicted: 0
   attempts: 0
   hash: "ce3d03187982b02ac73cf141c9f80e37"
@@ -189,10 +191,12 @@ cost: Variable. Learn says conversation orchestration consumes Copilot credits w
 impact: Low. Administrators who build the playbook, representatives with a direct number and their callers notice it; a draft playbook is not active, so nothing changes until one is published.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [unsupported, major] Why it matters: first paragraph / behaviour: An unconfigured missed direct call has no fallback beyond voicemail. | Found: Searched: 'Dynamics 365 direct inward calls default fallback voicemail forwarding unanswered'; read Manage overflow, Configure outbound and inbound profiles and Configure voicemail. Microsoft says calls usually go to voicemail, not that voicemail is the only possible unconfigured outcome. | Fix: Replace the first sentence of Why it matters with: 'A direct line bypasses the queue; Learn says that by default an unanswered call usually goes to voicemail when the representative is busy or away.'
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table; What's changing / admin-path: Copilot Service admin center > Customer support > Conversation Orchestration > Prompt gallery > Overflow handling > Handle overflow for direct inbound call reaches the playbook template. | Found: In the site map of Copilot Service admin center, in Customer support, select Conversation Orchestration. Select Prompt gallery, and select Overflow handling > Handle overflow for direct inbound call. | Fix: Extend controls[0].ui.path and the rendered path to 'Customer support > Conversation Orchestration > Prompt gallery > Overflow handling > Handle overflow for direct inbound call > Build playbook > overflow action'. Keep the note explaining that the inbound-profile scope must first be selected and saved. | Source: https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow
-- [supported, minor] controls[0].api; Governance controls table and prose / command: PATCH /msdyn_ccuserprompts(msdyn_ccuserpromptid) is the Dataverse Update operation for changing the stored playbook prompt. | Found: `Update`Event: True | `PATCH` /msdyn_ccuserprompts(*msdyn_ccuserpromptid*)See Update | Fix: Keep the call and add to controls[0].note and its rendered note: 'The request body sets msdyn_prompt, the stored playbook prompt. This reference does not document executing publication or the format of inbound-profile scope lists.' The property is currently named only in the prose below the table. | Source: https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: Copilot Service admin center > Support experience > Productivity > Outbound and inbound profiles (Manage) reaches the inbound-profile list. | Found: In the Copilot Service admin center site map, select Productivity in Support experience. On the Productivity page, select Manage for Outbound and inbound profiles. | Fix: Extend controls[1].ui.path and the rendered path to 'Support experience > Productivity > Outbound and inbound profiles (Manage) > New profile > Create new profile > Inbound > Phone number > Number'. Retain the note that the personal number must already be assigned and that existing profiles can instead be selected and edited. | Source: https://learn.microsoft.com/dynamics365/customer-service/administer/configure-outbound-inbound-profiles
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: Copilot Service admin center > Customer support > Conversation Orchestration > Prompt gallery > Overflow handling > Handle overflow for direct inbound call reaches the playbook template. | Found: In the site map of Copilot Service admin center, in **Customer support**, select **Conversation Orchestration**. 2. Select **Prompt gallery**, and select **Overflow handling** > **Handle overflow for direct inbound call**. | Fix: Extend controls[0].ui.path and the rendered path to 'Customer support > Conversation Orchestration > Prompt gallery > Overflow handling > Handle overflow for direct inbound call > Build playbook > overflow action'. Retain the note that the inbound-profile scope must first be selected and saved. | Source: https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: Copilot Service admin center > Support experience > Productivity > Outbound and inbound profiles (Manage) reaches the profile list. | Found: In the Copilot Service admin center site map, select **Productivity** in **Support experience**. 2. On the **Productivity** page, select **Manage** for **Outbound and inbound profiles**. | Fix: Extend controls[1].ui.path and the rendered path to 'Support experience > Productivity > Outbound and inbound profiles (Manage) > New profile > Create new profile > Inbound > Phone number > Number'. Retain the note that the personal number must already be assigned and existing profiles can instead be selected and edited. | Source: https://learn.microsoft.com/dynamics365/customer-service/administer/configure-outbound-inbound-profiles
+- [supported, minor] controls[0].api; Governance controls table and prose / command: PATCH /msdyn_ccuserprompts(msdyn_ccuserpromptid) is the Dataverse Update operation for changing the stored playbook prompt. | Found: | `Update`Event: True | `PATCH` /msdyn\_ccuserprompts(*msdyn\_ccuserpromptid*)See [Update] | Fix: Keep the call and add to controls[0].note and the rendered note: 'The request body sets msdyn_prompt, the stored playbook prompt. This reference does not document executing publication or the format of inbound-profile scope lists.' The body property and limitations currently appear only in the prose below the table. | Source: https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt
 -->

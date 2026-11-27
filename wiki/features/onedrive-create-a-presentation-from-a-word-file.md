@@ -25,6 +25,9 @@ sources:
   - title: "License options for Microsoft Copilot"
     url: "https://learn.microsoft.com/copilot/plan/copilot-license-options"
     kind: "learn"
+  - title: "Microsoft Copilot overview"
+    url: "https://learn.microsoft.com/copilot/plan/copilot-overview"
+    kind: "learn"
   - title: "Assign or unassign licenses for users in the Microsoft 365 admin center"
     url: "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users"
     kind: "learn"
@@ -53,7 +56,7 @@ controls:
       kind: "powershell"
       call: "Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @()"
       docs: "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell"
-    note: "Needs at least License Administrator or User Administrator. Governs all Copilot features the licence brings, not this action alone."
+    note: "Needs at least License Administrator or User Administrator. Controls the Copilot licence entitlement, not this action alone."
   - governs: "Switch for the OneDrive create-presentation action separate from the Copilot licence"
     scope: "tenant"
     ui: null
@@ -61,7 +64,7 @@ controls:
     note: "Microsoft Learn documents no such setting at the time of writing (November 2026)."
 confidence: "low"
 created: "2026-11-26"
-updated: "2026-11-26"
+updated: "2026-11-27"
 roadmapModified: "2024-11-20T00:15:49"
 changes:
   - date: "2026-11-26"
@@ -72,19 +75,23 @@ changes:
     note: "Corrected: the sensitivity-label gap now asks only whether this OneDrive action inherits the Word file's label; removed claims that the file must be opened and that only licensed users see the option."
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 45 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-27"
+    note: "Corrected: removing the Copilot add-on licence removes that entitlement, not necessarily all Copilot access (Basic capabilities exist for some users without it); checklist licence path now given in full."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 43 statements confirmed"
+version: 3
 verification:
-  status: "held"
-  date: "2026-11-26"
-  version: 2
+  status: "verified"
+  date: "2026-11-27"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 45
-  confirmed: 44
+  claims: 43
+  confirmed: 43
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "6a4da1e75c084187d757e4bfa63a64c4"
+  contradicted: 0
+  attempts: 0
+  hash: "92c7718b3cf6a9b7ffceb9eaab2cc41c"
 ---
 
 ## What's changing
@@ -135,13 +142,13 @@ Microsoft has not stated what happens on arrival. No source says existing OneDri
 ## Governance guidance
 
 ### Before rollout
-- Check which users hold the Copilot licence in the Microsoft 365 admin center under Users > Active users, since the roadmap ties this feature to that licence.
+- Check which users hold the Copilot licence in the Microsoft 365 admin center > Users > Active users > user > Licenses and Apps > Licenses, since the roadmap ties this feature to that licence.
 - Watch Message center and the roadmap item for a post giving the default state and rollout window, as the item is still In development past its April CY2025 target.
 - Prepare a short helpdesk note: the roadmap states that using the feature requires a Microsoft Copilot for Microsoft 365 licence; it does not specify who sees the option.
 
 ### At rollout
 - Test with a licensed pilot account: create a presentation from a labelled and an unlabelled Word file, and record where the file is saved and which label it carries.
-- Remove the Copilot licence from any user who should not have Copilot features, using the licence assignment control in the table.
+- Remove the Copilot add-on licence from any user who should not hold that entitlement, using the licence assignment control in the table.
 
 ### After rollout
 - Revisit this page once Microsoft publishes Learn or support documentation for the OneDrive action, and compare it with what the pilot showed.
@@ -153,12 +160,12 @@ Microsoft has not stated what happens on arrival. No source says existing OneDri
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which users hold the Copilot licence the roadmap says this feature requires</strong><br><small>User</small><br><small class="controls__note">Needs at least License Administrator or User Administrator. Governs all Copilot features the licence brings, not this action alone.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Users › Active users › user › Licenses and Apps › Licenses <a href="https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = &quot;&lt;SkuId&gt;&quot;} -RemoveLicenses @()</code> <a href="https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users hold the Copilot licence the roadmap says this feature requires</strong><br><small>User</small><br><small class="controls__note">Needs at least License Administrator or User Administrator. Controls the Copilot licence entitlement, not this action alone.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Users › Active users › user › Licenses and Apps › Licenses <a href="https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = &quot;&lt;SkuId&gt;&quot;} -RemoveLicenses @()</code> <a href="https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Switch for the OneDrive create-presentation action separate from the Copilot licence</strong><br><small>Tenant</small><br><small class="controls__note">Microsoft Learn documents no such setting at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-The licence is the only documented route to who can use this feature, and it governs it only because the roadmap item states the feature requires a Copilot licence. Removing the licence removes every Copilot feature the licence brings, not this action alone. Assigning or removing licences needs at least the License Administrator or User Administrator role. Microsoft Learn documents no setting that turns this OneDrive action on or off separately at the time of writing (November 2026).
+The licence is the only documented route to who can use this feature, and it governs it only because the roadmap item states the feature requires a Copilot licence. Removing the Copilot add-on licence removes that entitlement, not necessarily all Copilot access: Microsoft documents Basic capabilities for some users without the add-on ([Microsoft Copilot overview](https://learn.microsoft.com/copilot/plan/copilot-overview)). Assigning or removing licences needs at least the License Administrator or User Administrator role. Microsoft Learn documents no setting that turns this OneDrive action on or off separately at the time of writing (November 2026).
 
 ## Open questions
 
@@ -172,12 +179,4 @@ The licence is the only documented route to who can use this feature, and it gov
 risk: Low. The roadmap describes a one-click draft built from a Word file, limited to users with a Copilot licence; it describes no new data source or automatic action.
 cost: Medium. The roadmap item says the feature requires a Copilot licence, which Microsoft sells with Microsoft 365 E7 or as an add-on; no separate charge for this feature is published.
 impact: Medium. Copilot-licensed users who work in OneDrive on the web would notice it; unlicensed users are outside the roadmap's stated scope.
--->
-
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls; controls[0].note; Governance guidance: At rollout / licensing: Removing the Copilot licence removes every Copilot feature the licence brings. | Found: Microsoft 365 Copilot (Premium) is the full add-on licensed experience ... which includes everything in Microsoft 365 Copilot (Basic) ... Microsoft 365 Copilot (Basic) refers to users without the Copilot add-on license, but who have access to Copilot capabilities inside apps | Fix: Replace the removal sentence with 'Removing the Copilot add-on licence removes that entitlement, not necessarily all Copilot access: Microsoft documents Basic capabilities for some users without the add-on.' Cite https://learn.microsoft.com/copilot/plan/copilot-overview. Replace controls[0].note's scope sentence with 'Controls the Copilot licence entitlement, not this action alone.' Change the At rollout bullet to 'Remove the Copilot add-on licence from any user who should not hold that entitlement, using the licence assignment control in the table.' | Source: https://learn.microsoft.com/copilot/plan/copilot-overview
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance guidance: Before rollout, first bullet / admin-path: Users > Active users in the Microsoft 365 admin center is the starting location for checking a user's Copilot licence. | Found: go to the Users > Active users page. ... Select the row of the user ... In the right pane, select Licenses and Apps. ... Expand the Licenses section | Fix: Extend the checklist path to 'Microsoft 365 admin center > Users > Active users > user > Licenses and Apps > Licenses', matching the existing control row. | Source: https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users
 -->

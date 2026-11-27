@@ -40,6 +40,12 @@ sources:
   - title: "Form fill assistance (data entry agent) per environment (Power Platform admin center)"
     url: "https://learn.microsoft.com/power-apps/user/form-filling-assistance#admin-control"
     kind: "learn"
+  - title: "Create a model-driven app with the app designer"
+    url: "https://learn.microsoft.com/power-apps/maker/model-driven-apps/create-model-driven-app"
+    kind: "learn"
+  - title: "Send in-app notifications within model-driven apps"
+    url: "https://learn.microsoft.com/power-apps/developer/model-driven-apps/clientapi/send-in-app-notifications"
+    kind: "learn"
 videos: []
 related: ["power-apps-use-the-modernized-personal-settings-experience"]
 controls:
@@ -55,7 +61,7 @@ controls:
     scope: "app"
     ui:
       surface: "Power Apps (maker)"
-      path: "app designer > Settings > Features > Form fill assist toolbar"
+      path: "Solutions > solution > app > Edit > Settings > Features > Form fill assist toolbar"
       docs: "https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties"
     api:
       kind: "other"
@@ -69,7 +75,7 @@ controls:
     note: "Microsoft has not yet documented which existing controls govern the speech source."
 confidence: "medium"
 created: "2026-11-14"
-updated: "2026-11-19"
+updated: "2026-11-27"
 roadmapModified: "2026-10-23T21:59:27"
 changes:
   - date: "2026-11-14"
@@ -90,19 +96,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 47 statements confirmed"
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 47 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-27"
+    note: "Corrected the maker-portal path to the Form fill assist toolbar setting: it now starts at Solutions and opens the app with Edit before Settings > Features."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 50 statements not yet confirmed"
+version: 5
 verification:
-  status: "held"
-  date: "2026-11-26"
-  version: 4
+  status: "verified-with-gaps"
+  date: "2026-11-27"
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 47
-  confirmed: 46
+  claims: 50
+  confirmed: 50
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "3c87dd84af4395c432fac8a52cfc290c"
+  contradicted: 0
+  attempts: 0
+  hash: "2783502bb547a09c4bd0077386407c30"
 ---
 
 ## What's changing
@@ -164,7 +174,7 @@ Users of model-driven apps with form fill assistance on, including mobile platfo
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Form fill assistance (data entry agent) per environment</strong><br><small>Environment</small><br><small class="controls__note">This move is gradually rolling out. Selecting the setting opens a panel to select the environment and Edit setting (Copilot hub page).</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Copilot › Settings › Power Apps › Data entry <a href="https://learn.microsoft.com/power-apps/user/form-filling-assistance#admin-control" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Form fill assist toolbar for an app</strong><br><small>App</small><br><small class="controls__note">Save and Publish the app. The designer page shows the toolbar label only; Smart paste is the FormPredictSmartPasteEnabled app setting.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>app designer › Settings › Features › Form fill assist toolbar <a href="https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Xrm.Utility.getGlobalContext().saveSettingValue(&quot;FormFileUploadEnabled&quot;, value, {overrideScope: 2, solutionUniqueName: mySolutionName})</code> <a href="https://learn.microsoft.com/power-apps/developer/model-driven-apps/clientapi/get-update-setting-value-using-code" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Form fill assist toolbar for an app</strong><br><small>App</small><br><small class="controls__note">Save and Publish the app. The designer page shows the toolbar label only; Smart paste is the FormPredictSmartPasteEnabled app setting.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>Solutions › solution › app › Edit › Settings › Features › Form fill assist toolbar <a href="https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Xrm.Utility.getGlobalContext().saveSettingValue(&quot;FormFileUploadEnabled&quot;, value, {overrideScope: 2, solutionUniqueName: mySolutionName})</code> <a href="https://learn.microsoft.com/power-apps/developer/model-driven-apps/clientapi/get-update-setting-value-using-code" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Speech-specific switch</strong><br><small>Environment</small><br><small class="controls__note">Microsoft has not yet documented which existing controls govern the speech source.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -185,10 +195,8 @@ cost: Low. Learn says form fill assistance needs a Power Apps premium or Dynamic
 impact: High. The roadmap lists users as enabled by default, so many users of enabled apps may see the microphone.
 -->
 
-<!-- verifier-findings (2026-11-26, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].ui; Governance controls table / admin-path: The maker-portal route to the app toolbar control is app designer > Settings > Features > Form fill assist toolbar. | Found: Open the solution that contains the model-driven app. ... Select the model-driven app and select the Edit split menu to open it by using the modern app designer. ... Open Settings and switch to Features. | Fix: Replace controls[1].ui.path and the rendered table path with 'Solutions > solution > app > Edit > Settings > Features > Form fill assist toolbar'. Cite https://learn.microsoft.com/power-apps/maker/model-driven-apps/create-model-driven-app for Solutions and https://learn.microsoft.com/power-apps/developer/model-driven-apps/clientapi/send-in-app-notifications for opening the existing app with Edit. Keep app-properties as the control's docs link; it documents Settings, Features and the toolbar setting. | Source: https://learn.microsoft.com/power-apps/developer/model-driven-apps/clientapi/send-in-app-notifications
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table; Governance guidance: At rollout / admin-path: The environment-level form fill assistance control is at Power Platform admin center > Copilot > Settings > Power Apps > Data entry. | Found: The primary admin control for form fill assistance is moving to the Power Platform admin center under Copilot > Settings > Power Apps > Data entry. | Fix: Extend controls[0].ui.path and the rendered table path to 'Copilot > Settings > Power Apps > Data entry > environment > Edit setting'. The cited control page gives the first steps; https://learn.microsoft.com/power-platform/admin/copilot/copilot-hub gives environment selection and Edit setting. | Source: https://learn.microsoft.com/power-apps/user/form-filling-assistance#admin-control
+- [supported, minor] controls[0].ui; Governance guidance; rendered controls table / admin-path: The environment control is at Power Platform admin center > Copilot > Settings > Power Apps > Data entry. | Found: The primary admin control for form fill assistance is moving to the Power Platform admin center under Copilot > Settings > Power Apps > Data entry. | Fix: Complete controls[0].ui.path and the matching rendered route as 'Copilot > Settings > Power Apps > Data entry > environment > Edit setting'. The final steps are documented at https://learn.microsoft.com/power-platform/admin/copilot/copilot-hub#settings. | Source: https://learn.microsoft.com/power-apps/user/form-filling-assistance#admin-control
 -->

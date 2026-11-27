@@ -1,0 +1,872 @@
+{
+  "slug": "microsoft-edge-ground-m365-copilot-chat-in-edge-for-business",
+  "roadmapId": 499423,
+  "title": "Microsoft Edge: Microsoft 365 Copilot Chat answers from open tabs and YouTube videos",
+  "status": "held",
+  "date": "2026-11-27",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-27",
+    "reasons": [
+      "1 blocking finding (claim 49)"
+    ]
+  },
+  "counts": {
+    "claims": 65,
+    "confirmed": 62,
+    "unconfirmed": 1,
+    "contradicted": 2,
+    "blocker": 1,
+    "major": 1,
+    "minor": 4
+  },
+  "summary": "Hold: the cloud-policy precedence guidance omits Microsoft's documented override, which can change which page-access setting wins on a device. The roadmap facts, licensing model and principal controls are supported, but the assertion that a prompt can read every open tab goes beyond the documentation.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Risk assessment; Governance guidance",
+      "type": "record",
+      "claim": "Copilot Chat in the Edge for Business side pane can answer questions using open browser tabs.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Get relevant answers and insights about your open browser tabs and YouTube videos directly from the Edge side pane",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "title; summary; What's changing; Governance guidance",
+      "type": "record",
+      "claim": "The capability includes grounding answers in YouTube videos.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Get relevant answers and insights about your open browser tabs and YouTube videos directly from the Edge side pane",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is October CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap specifies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-10-30T22:08:34.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-30T22:08:34\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing: second paragraph",
+      "type": "date",
+      "claim": "The March 20, 2026 release notes for Edge 146.0.3856.72 describe the forthcoming multi-tab extension.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-archive-stable-channel",
+      "quote": "Version 146.0.3856.72: March 20, 2026 (Stable)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing: first and second paragraphs",
+      "type": "behaviour",
+      "claim": "Multi-tab grounding extends an existing capability that could access only the open page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-archive-stable-channel",
+      "quote": "Microsoft 365 Copilot Chat in Edge will soon be able to answer contextual questions about a user's open window. This extends the existing capability which can only access the open page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The multi-tab extension respects existing user settings, including a user's choice to disable page access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-archive-stable-channel",
+      "quote": "All existing user settings and policies and DLP considerations will continue to be respected",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Why it matters; Governance controls",
+      "type": "applicability",
+      "claim": "Existing policies and DLP considerations continue to govern multi-tab grounding.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-archive-stable-channel",
+      "quote": "All existing user settings and policies and DLP considerations will continue to be respected",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing: second paragraph",
+      "type": "date",
+      "claim": "Edge 153.0.4234.32 release notes dated September 10, 2026 announce the YouTube Summarize toggle.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-archive-stable-channel",
+      "quote": "Version 153.0.4234.32: September 10, 2026 (Stable) - Main Release",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing: second paragraph",
+      "type": "behaviour",
+      "claim": "The YouTube hover overlay has a Summarize toggle for eligible Edge for Business users that opens Copilot Chat to summarise the video.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-archive-stable-channel",
+      "quote": "For eligible Microsoft Edge for Business users, the YouTube video hover overlay now includes a Summarize toggle. Selecting it opens Microsoft 365 Copilot Chat to summarize the video.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Governance controls",
+      "type": "applicability",
+      "claim": "The YouTube toggle respects the organisation's page-context policy, user consent and DLP protections.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-archive-stable-channel",
+      "quote": "Availability respects the organization’s Copilot page-context policy, user consent, and data loss prevention protections.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[0].governs; What's changing; Governance controls; rationale: risk",
+      "type": "applicability",
+      "claim": "EdgeEntraCopilotPageContext governs side-pane access to page content, browsing history and video transcripts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+      "quote": "This policy controls whether Copilot in the Microsoft Edge side pane can access page content, browsing history, and video transcript.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; Scope; rationales",
+      "type": "default",
+      "claim": "Page-content access is on by default outside the EU when the policy is unconfigured.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+      "quote": "If you don't configure this policy:\n\n- Access is enabled by default in non-EU regions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Why it matters; Scope; Governance guidance",
+      "type": "default",
+      "claim": "Page-content access is disabled by default in EU regions when the policy is unconfigured.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+      "quote": "Access is disabled by default in EU regions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Why it matters; Governance controls",
+      "type": "behaviour",
+      "claim": "Users can turn page access on or off in Edge settings if the policy is unconfigured.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+      "quote": "Users can turn this setting on or off in Microsoft Edge settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Why it matters; Risk assessment",
+      "type": "behaviour",
+      "claim": "Copilot page-content access supports intranet sites such as SharePoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/edge-learnmore-copilot-page-summary-results",
+      "quote": "Intranet Sites such as SharePoint | Copilot access to page content is supported",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Copilot page-content access supports public sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/edge-learnmore-copilot-page-summary-results",
+      "quote": "Public Sites such as Wikipedia | Copilot access to page content is supported",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Why it matters; Risk assessment",
+      "type": "behaviour",
+      "claim": "Copilot page-content access supports Outlook Web App.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/edge-learnmore-copilot-page-summary-results",
+      "quote": "Outlook Web App | Copilot access to page content is supported",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Why it matters; Risk assessment",
+      "type": "behaviour",
+      "claim": "Copilot page-content access supports PDFs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/edge-learnmore-copilot-page-summary-results",
+      "quote": "PDFs | Copilot access to page content is supported",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Scope; Open questions",
+      "type": "behaviour",
+      "claim": "The page-content support table lists Office documents as unsupported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/edge-learnmore-copilot-page-summary-results",
+      "quote": "Office Documents | Copilot access to page content isn't supported",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Office documents embedded in SharePoint are not supported for page-content access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/edge-learnmore-copilot-page-summary-results",
+      "quote": "Embedded Office docs in SharePoint aren't supported",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "rationale: risk; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Copilot can read every open tab, or answer from all open tabs, in one contextual query.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'Copilot tabs all window Edge' and 'Copilot multi-tab limit'; searched archived Stable release notes for 'all open tabs' and 'every open tab'; read page-content support and EdgeEntraCopilotPageContext. Sources describe multiple tabs or an open window, not every tab.",
+      "severity": "major",
+      "fix": "Replace 'the content of every open tab' in the risk rationale with 'content from multiple open tabs'. Replace 'answer from all open tabs' in Governance guidance with 'answer contextual questions across multiple open tabs'."
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Why it matters; Risk assessment; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "Copilot cannot access DLP-protected page content even when the page-context policy permits access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+      "quote": "Copilot can't access page content on pages protected by data loss prevention (DLP) policies, even if this policy is enabled.",
+      "severity": "minor",
+      "fix": "Attribute the blanket DLP statement to the EdgeEntraCopilotPageContext reference. Add: 'Separate Protected Session documentation describes an admin-enabled public preview from Edge 158 that can use supported protected content in the current tab, but not additional tabs; explicit AI-access blocks still apply.' Cite https://learn.microsoft.com/deployedge/microsoft-edge-management-protected-session."
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "Copilot accesses contextual content when users initiate contextual queries in the side pane or from Edge.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+      "quote": "If you enable this policy, Copilot can access page content, browsing history, and video transcript when users initiate contextual queries in the side pane or from Edge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "Microsoft's documentation of this grounding change describes no action it takes on pages.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Edge Copilot multi tab grounding single page policy disable actions page context user consent'; read roadmap, Stable release notes and EdgeEntraCopilotPageContext. These describe contextual answers and summaries, not page actions introduced by this change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[0].note; Risk assessment; Scope; Governance controls",
+      "type": "applicability",
+      "claim": "The page-context policy applies to Entra-signed-in Edge profiles using Copilot in the side pane.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+      "quote": "This policy applies only to users who are signed in to Microsoft Edge with a Microsoft Entra account and are using Copilot in the side pane.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "applicability",
+      "claim": "The page-context policy does not apply to Microsoft account profiles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+      "quote": "Applies to a profile that is signed in with a Microsoft account: No",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Data exposure; controls[0]",
+      "type": "behaviour",
+      "claim": "Disabling EdgeEntraCopilotPageContext blocks page content, browsing history and video transcript access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+      "quote": "If you disable this policy, Copilot can't access page content, browsing history, or video transcript.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Mandatory policy prevents users from changing the managed setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/configure-microsoft-edge",
+      "quote": "Mandatory policies override user preferences and prevent the user from changing the policy settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[0].note",
+      "type": "behaviour",
+      "claim": "EdgeEntraCopilotPageContext supports mandatory but not recommended configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+      "quote": "Can be mandatory: Yes\n- Can be recommended: No",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[0].note; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Disabling page-context access also disables M365LinksAutoOpenCopilotEnabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+      "quote": "This also disables the M365LinksAutoOpenCopilotEnabled feature, because Copilot requires page content access to provide contextual insights for Microsoft 365 links.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "M365LinksAutoOpenCopilotEnabled is described as automatically opening the Copilot side pane for Microsoft 365 links.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-archive-stable-channel",
+      "quote": "Automatically open Copilot side pane with contextual insights for links opened from Outlook",
+      "severity": "minor",
+      "fix": "Keep only 'Disabling the policy also disables the M365LinksAutoOpenCopilotEnabled feature' and remove the statements implying a currently working general Microsoft 365-link auto-open experience. Its own reference narrows this to eligible links from same-tenant Outlook emails and says 'This policy is not yet supported': https://learn.microsoft.com/deployedge/microsoft-edge-policies/m365linksautoopencopilotenabled."
+    },
+    {
+      "n": 38,
+      "where": "controls[0].note; Scope",
+      "type": "availability",
+      "claim": "EdgeEntraCopilotPageContext supports Windows from version 130.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+      "quote": "Windows: ≥ 130",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[0].note; Scope",
+      "type": "availability",
+      "claim": "EdgeEntraCopilotPageContext supports macOS from version 130.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+      "quote": "macOS: ≥ 130",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Scope: Platforms",
+      "type": "availability",
+      "claim": "EdgeEntraCopilotPageContext is not supported on Android.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+      "quote": "Android: Not supported",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Scope: Platforms",
+      "type": "availability",
+      "claim": "EdgeEntraCopilotPageContext is not supported on iOS.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+      "quote": "iOS: Not supported",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "Under Computer Configuration or User Configuration > Policies, the printed Administrative Templates > Microsoft Edge path reaches the named page-context control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+      "quote": "GP name: Control Copilot access to Microsoft Edge page content, browsing history, and video transcript for Entra account user profiles when using Copilot in the Microsoft Edge sidepane\n- GP path (Mandatory): Administrative Templates/Microsoft Edge",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "The Boolean REG_DWORD EdgeEntraCopilotPageContext under SOFTWARE\\Policies\\Microsoft\\Edge configures page access, with 0 disabling and 1 enabling it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+      "quote": "Path (Mandatory): SOFTWARE\\Policies\\Microsoft\\Edge\n- Path (Recommended): N/A\n- Value name: EdgeEntraCopilotPageContext\n- Value type: REG\\_DWORD",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[1].ui; Governance guidance",
+      "type": "admin-path",
+      "claim": "Microsoft 365 admin center > Settings > Microsoft Edge > Copilot > Access to browser context reaches the cloud browser-context setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-copilot-features",
+      "quote": "In the Microsoft Edge management service, select the Copilot tab, then use each dropdown to select Enabled or Disabled and assign the changes to either a new or existing configuration policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[1].api",
+      "type": "absence",
+      "claim": "No API for the Edge management service Access to browser context cloud setting is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Edge management service Access to browser context configuration policy Microsoft Graph API update settings' and 'Edge management service API Copilot policy'; read cloud configuration docs and Graph Edge API overview, including beta. No cloud-setting write operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[1].scope; controls[1].note",
+      "type": "behaviour",
+      "claim": "Cloud Copilot feature choices are assigned through configuration policies that can target Entra groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service",
+      "quote": "Each configuration policy can be assigned to multiple Microsoft Entra groups, and a group can be assigned to multiple configuration policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[1].note; Scope; Governance guidance; Governance controls",
+      "type": "role",
+      "claim": "The Edge management service documentation requires Microsoft Edge Administrator to access the experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service",
+      "quote": "You must be a Microsoft Edge Administrator to access the experience in Microsoft 365 Admin Center",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[1].note; Scope",
+      "type": "availability",
+      "claim": "The Edge management service is not available to customers with GCC plans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service",
+      "quote": "The Microsoft Edge management service is currently not available to customers with GCC plans.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[1].note; Governance controls: second paragraph",
+      "type": "behaviour",
+      "claim": "A conflicting device GPO or MDM policy overrides Edge management service policies without qualification.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service",
+      "quote": "If you want the Microsoft Edge management service policy to override MDM/GPM policy you can set the override in the EdgeManagementPolicyOverridesPlatformPolicy policy.",
+      "severity": "blocker",
+      "fix": "Replace both unconditional precedence statements with: 'Device GPO or MDM policies override conflicting Edge management service policies by default; EdgeManagementPolicyOverridesPlatformPolicy can reverse that precedence.' The qualification is documented under Control policy source precedence at https://learn.microsoft.com/deployedge/microsoft-edge-management-service."
+    },
+    {
+      "n": 50,
+      "where": "controls[2].governs; Governance controls",
+      "type": "behaviour",
+      "claim": "Microsoft365CopilotChatIconEnabled controls whether the Copilot Chat toolbar icon is shown.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/microsoft365copilotchaticonenabled",
+      "quote": "If the policy is enabled: Copilot appears in the toolbar.\n\nIf the policy is disabled: Copilot doesn't appear in the toolbar.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The toolbar-icon policy covers Microsoft 365 Copilot licensed and unlicensed users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/microsoft365copilotchaticonenabled",
+      "quote": "For users in an Entra ID Microsoft Edge profile, this policy controls whether the Microsoft 365 Copilot Chat icon is shown in the Microsoft Edge for Business toolbar for Microsoft 365 Copilot licensed and unlicensed users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[2].note",
+      "type": "availability",
+      "claim": "The toolbar-icon policy supports Windows from version 139.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/microsoft365copilotchaticonenabled",
+      "quote": "Windows: ≥ 139",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[2].note",
+      "type": "availability",
+      "claim": "The toolbar-icon policy supports macOS from version 139.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/microsoft365copilotchaticonenabled",
+      "quote": "macOS: ≥ 139",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "Administrative Templates > Microsoft Edge contains the named Copilot toolbar-icon control in Group Policy Editor.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/microsoft365copilotchaticonenabled",
+      "quote": "GP name: Control whether Microsoft 365 Copilot Chat shows in the Microsoft Edge for Business toolbar\n- GP path (Mandatory): Administrative Templates/Microsoft Edge",
+      "severity": "minor",
+      "fix": "Include the configuration scope and Policies prefix documented at https://learn.microsoft.com/deployedge/configure-microsoft-edge: 'Computer Configuration or User Configuration > Policies > Administrative Templates > Microsoft Edge > Control whether Microsoft 365 Copilot Chat shows in the Microsoft Edge for Business toolbar'."
+    },
+    {
+      "n": 55,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "The Boolean REG_DWORD Microsoft365CopilotChatIconEnabled under SOFTWARE\\Policies\\Microsoft\\Edge hides the icon when set to 0.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/microsoft365copilotchaticonenabled",
+      "quote": "Path (Mandatory): SOFTWARE\\Policies\\Microsoft\\Edge\n- Path (Recommended): SOFTWARE\\Policies\\Microsoft\\Edge\\Recommended\n- Value name: Microsoft365CopilotChatIconEnabled\n- Value type: REG\\_DWORD",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[2].note; Governance controls",
+      "type": "absence",
+      "claim": "The toolbar-icon policy reference does not describe that policy as controlling page-content access.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched the complete Microsoft365CopilotChatIconEnabled reference for page-content access; it describes toolbar visibility, not page-access permission. Read EdgeEntraCopilotPageContext, which separately documents page-access control.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "front matter: licensing.model and cost; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Copilot Chat (Basic), including its Edge entry point, is included with eligible Microsoft 365 licences, supporting included entitlement and the none direct-cost rating.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Copilot Chat (Basic) is the standalone baseline experience included with eligible Microsoft 365 licenses.\nCopilot Chat in Edge (select the Copilot icon in the upper-right corner of the Edge browser).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "front matter: licensing.notes",
+      "type": "absence",
+      "claim": "Microsoft has published no separate licensing requirement specific to multi-tab or YouTube grounding.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft 365 Copilot Chat Edge multiple tabs YouTube grounding license pricing limits number tabs' and 'Copilot Edge YouTube license'; read Copilot overview, page-content support, policy and release notes. No feature-specific licence requirement found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Copilot overview says some Copilot Chat features have fair use limits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Some features are subject to fair use limits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft publishes no meter or price specifically for multi-tab or YouTube grounding.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft 365 Copilot Chat Edge multiple tabs YouTube grounding license pricing limits number tabs' and 'Copilot Chat Edge pricing page'; read Copilot overview and Edge release notes; reviewed returned billing-rate excerpts. No tab/video-grounding meter or price found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "Opening edge://policy on a client shows the applied policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/configure-microsoft-edge",
+      "quote": "On a target client device, open Microsoft Edge and go to edge://policy to see all policies that are applied.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Open questions: single-page versus multi-tab setting",
+      "type": "absence",
+      "claim": "A separate control allowing single-page grounding while blocking multi-tab grounding is not established by the published references.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Edge single-page multi-tab policy' and 'Edge Copilot multi tab grounding single page policy disable actions page context user consent'; read EdgeEntraCopilotPageContext, cloud Copilot settings and Stable notes. No separate single-page-only setting found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Open questions: tab count and content per tab",
+      "type": "absence",
+      "claim": "The references do not establish how many tabs or how much per-tab content a prompt can use.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft 365 Copilot Chat Edge multiple tabs YouTube grounding license pricing limits number tabs' and 'Copilot multi-tab limit'; read Stable notes, page-content support and page-context policy. No tab count or per-tab content limit found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Open questions: YouTube versus other video sites",
+      "type": "absence",
+      "claim": "The references do not establish whether YouTube transcript grounding is treated differently from other video sites.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Edge YouTube transcript Copilot policy'; read EdgeEntraCopilotPageContext and Stable release notes. The policy covers video transcripts generally; the release notes name YouTube, without a comparison to other video sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist asks readers to check Purview DLP coverage, but the controls table has no DLP row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Check which sensitive web apps used in Edge are covered by Microsoft Purview DLP policies. The table contains only page-context policy, cloud browser-context settings and toolbar-icon visibility.",
+      "severity": "minor",
+      "fix": "Remove the checklist instruction to check Purview DLP coverage; this control is not represented in the existing controls table. Keep the separately sourced explanation of DLP behaviour."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-27T08:23:06.006Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 1,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 2,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=499423",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-archive-stable-channel",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/edge-learnmore-copilot-page-summary-results",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-copilot-features",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/configure-microsoft-edge",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/microsoft365copilotchaticonenabled",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether Copilot in the Edge side pane can read page content, browsing history and video transcripts",
+        "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+        "reachable": true,
+        "segments": [
+          "Administrative Templates",
+          "Microsoft Edge",
+          "Control Copilot access to Microsoft Edge page content, browsing history, and video transcript for Entra account user profiles when using Copilot in the Microsoft Edge sidepane"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether Copilot in the Edge side pane can read page content, browsing history and video transcripts",
+        "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+        "reachable": true,
+        "token": "Registry: SOFTWARE\\Policies\\Microsoft\\Edge,",
+        "found": false
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether Microsoft 365 Copilot Chat may use browser context such as page content, set from the cloud",
+        "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-copilot-features",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Microsoft Edge",
+          "Copilot",
+          "Access to browser context"
+        ],
+        "missing": [
+          "Settings"
+        ]
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether the Microsoft 365 Copilot Chat icon shows in the Edge for Business toolbar",
+        "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/microsoft365copilotchaticonenabled",
+        "reachable": true,
+        "segments": [
+          "Administrative Templates",
+          "Microsoft Edge",
+          "Control whether Microsoft 365 Copilot Chat shows in the Microsoft Edge for Business toolbar"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Whether the Microsoft 365 Copilot Chat icon shows in the Edge for Business toolbar",
+        "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/microsoft365copilotchaticonenabled",
+        "reachable": true,
+        "token": "Registry: SOFTWARE\\Policies\\Microsoft\\Edge,",
+        "found": false
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

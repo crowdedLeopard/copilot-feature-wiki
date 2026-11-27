@@ -100,15 +100,17 @@ changes:
     note: "Corrected after verification: qualified the missing-header behaviour, removed an unsupported claim about index access rules, reworded the configuration methods, and trimmed checklist steps with no controls row."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 85 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 79 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-24"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 85
-  confirmed: 84
+  claims: 79
+  confirmed: 78
   unconfirmed: 1
   contradicted: 0
   attempts: 0
@@ -216,10 +218,10 @@ cost: Variable. The feature runs on a Foundry IQ (Azure AI Search) service bille
 impact: Low. The people who set it up are search administrators and developers; searchers see only results their label rights allow.
 -->
 
-<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] title / behaviour: Azure AI Search enforces sensitivity labels at indexing time as well as query time. | Found: Searched: Azure AI Search Purview sensitivity labels enforce user access rights at indexing time not query time. Read indexer How policy enforcement works and query enforcement: indexing extracts content and label metadata; no indexing-time access enforcement is stated. | Fix: Replace the title with "Azure AI Search: ingest Microsoft Purview sensitivity labels and enforce them at query time".
+- [unsupported, major] title / behaviour: Azure AI Search enforces sensitivity labels at indexing time as well as query time. | Found: Searched: Azure AI Search Purview sensitivity labels indexing time enforce access rights query time. Opened search-indexer-sensitivity-labels and search-query-sensitivity-labels: indexing extracts content and metadata; enforcement is described at query time. | Fix: Replace the title with "Azure AI Search: ingest Microsoft Purview sensitivity labels and enforce them at query time".
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[3].ui; Governance controls / admin-path: The cited general audit guide locates search at Microsoft Purview portal > Audit > Search. | Found: Select the **Audit** solution card. If the **Audit** solution card isn't displayed, select **View all solutions** and then select **Audit** from the **Core** section. On the **Search** page, configure the following search criteria as applicable: | Fix: Add to the audit row's note: "The general audit guide uses Audit > Search; the feature-specific query guide instead lists Solutions > Audit > Audit Search (https://learn.microsoft.com/azure/search/search-query-sensitivity-labels#find-elevated-read-audit-logs-in-microsoft-purview)." | Source: https://learn.microsoft.com/purview/audit-search
+- [supported, minor] controls[3].ui; Governance controls / admin-path: The cited general audit guide locates audit search at Microsoft Purview portal > Audit > Search. | Found: Select the **Audit** solution card. If the **Audit** solution card isn't displayed, select **View all solutions** and then select **Audit** from the **Core** section. 3. On the **Search** page, configure the following search criteria as applicable: | Fix: Add to the audit row's note: "The general audit guide uses Audit > Search; the feature-specific query guide instead lists Solutions > Audit > Audit Search (https://learn.microsoft.com/azure/search/search-query-sensitivity-labels#find-elevated-read-audit-logs-in-microsoft-purview)." | Source: https://learn.microsoft.com/purview/audit-search
 -->

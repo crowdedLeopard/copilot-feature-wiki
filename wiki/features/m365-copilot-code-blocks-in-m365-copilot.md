@@ -70,15 +70,17 @@ changes:
     note: "Corrected after the independent check: Learn documents code previews in Copilot Chat and a Cloud Policy setting for them; licensing model set to included; execution and arrival wording narrowed."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 47 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 46 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 47
-  confirmed: 46
+  claims: 46
+  confirmed: 45
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -171,9 +173,9 @@ cost: Low. The only cost the sources show is communication and service-desk time
 impact: Medium. Chat users on desktop and mobile who ask for code, charts or diagrams would see previews inline, where the roadmap says they previously used a side-by-side code canvas.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The Microsoft 365 Apps admin center path is Customization > Policy Management > policy configuration > Configure Settings > Enable code previews for AI-generated content in Microsoft Copilot Chat and Copilot Pages. | Found: Select Customization from the left pane. Select Policy Management. Create a new policy configuration or edit an existing one. From the Choose the scope dropdown list, choose either All users or select the group for which you want to apply the policy. | Fix: Include the omitted scope-selection step in both paths: 'Customization > Policy Management > policy configuration > Choose the scope > all users or group > Configure Settings > Enable code previews for AI-generated content in Microsoft Copilot Chat and Copilot Pages', as documented at https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration. | Source: https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration
-- [contradicted, minor] front matter: action; Why it matters / consistency: Review is the appropriate action classification for the described change in preview placement. | Found: action: "review"; "The roadmap describes a change in preview placement"; "Users on desktop and mobile may see previews inline where the roadmap says they previously used a side-by-side code canvas." | Fix: Set action to 'prepare' and replace 'this is a feature to review and plan communications for, not one with a deadline' with 'this is a layout change to prepare communications for, with no administrator deadline stated.' The assessment scale assigns prepare to redesigns of existing experiences even when the arrival default is unknown.
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The code-preview policy is at Microsoft 365 Apps admin center > Customization > Policy Management > policy configuration > Configure Settings > Enable code previews for AI-generated content in Microsoft Copilot Chat and Copilot Pages. | Found: Select Customization from the left pane. Select Policy Management. Create a new policy configuration or edit an existing one. From the Choose the scope dropdown list, choose either All users or select the group for which you want to apply the policy. | Fix: In controls[0].ui.path and the rendered table, use 'Customization > Policy Management > policy configuration > Choose the scope > all users or group > Configure Settings > Enable code previews for AI-generated content in Microsoft Copilot Chat and Copilot Pages', as documented at https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration. | Source: https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration
+- [contradicted, minor] front matter: action; Why it matters / consistency: Review is the appropriate action classification for this change in an existing preview layout. | Found: action: "review"; "The roadmap describes a change in preview placement"; "Users on desktop and mobile may see previews inline where the roadmap says they previously used a side-by-side code canvas." | Fix: Set action to 'prepare'. Replace 'this is a feature to review and plan communications for, not one with a deadline' with 'this is a layout change to prepare communications for, with no administrator deadline stated.' The assessment scale assigns prepare to redesigns of existing experiences even when the arrival default is unknown.
 -->

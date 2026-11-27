@@ -2,8 +2,8 @@
   "slug": "dynamics-365-contact-center-unified-routing-assign-conversation-to-expert-who-engaged-with",
   "roadmapId": 576746,
   "title": "Dynamics 365 Contact Center: route returning customers to a previous or preferred expert",
-  "status": "verified",
-  "date": "2026-11-20",
+  "status": "verified-with-gaps",
+  "date": "2026-11-27",
   "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
@@ -14,15 +14,15 @@
   "notes": [],
   "hold": null,
   "counts": {
-    "claims": 85,
-    "confirmed": 85,
+    "claims": 90,
+    "confirmed": 90,
     "unconfirmed": 0,
     "contradicted": 0,
     "blocker": 0,
     "major": 0,
-    "minor": 0
+    "minor": 1
   },
-  "summary": "The briefing passes: its roadmap facts, routing behavior, administrator controls and publication-based credit consumption are supported. The stated gaps are appropriately narrow; documented record operations do not establish an API procedure for publishing a playbook.",
+  "summary": "The routing behaviour, administrator opt-in, publishing charge and control operations are supported by Microsoft documentation. A minor clarification should distinguish the configuration article's silence about a global switch from the Responsible AI FAQ's reference to a feature toggle. All seven Learn pages flagged by the pre-check were retrieved successfully.",
   "claims": [
     {
       "n": 1,
@@ -59,31 +59,9 @@
     },
     {
       "n": 4,
-      "where": "front matter: clouds; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) only, without listing US Government clouds.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "front matter: platforms; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap platform is Web.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Web\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
       "where": "front matter: releasePhase",
       "type": "record",
-      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "claim": "The record lists General Availability and Preview release phases.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
@@ -91,10 +69,32 @@
       "fix": null
     },
     {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only listed cloud, and US Government clouds are not listed.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 7,
       "where": "front matter: products",
       "type": "record",
-      "claim": "The roadmap products are Microsoft Copilot (Microsoft 365) and Dynamics 365 Contact Center.",
+      "claim": "The record associates the feature with Microsoft Copilot (Microsoft 365) and Dynamics 365 Contact Center.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\", \"Dynamics 365 Contact Center\"]",
@@ -103,273 +103,31 @@
     },
     {
       "n": 8,
-      "where": "title; summary; What's changing",
-      "type": "behaviour",
-      "claim": "Unified routing can assign a returning customer's conversation to an expert who previously engaged with that customer.",
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-11-06T23:04:41.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
-      "quote": "This scenario assigns conversations to an expert who previously interacted with the customer within a configured time window.",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-06T23:04:41\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 9,
-      "where": "title; summary; What's changing",
-      "type": "behaviour",
-      "claim": "The playbook can instead assign a conversation to a preferred expert mapped to the contact.",
+      "where": "front matter: defaultState; summary; Why it matters; Governance controls",
+      "type": "default",
+      "claim": "This is administrator opt-in: the playbook's routing is inactive until an administrator publishes it.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
-      "quote": "When a conversation enters the queue, the system checks for a preferred expert mapped to the contact.",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "Administrators define the logic by using natural-language playbooks, and conversation orchestration handles the execution. ... Draft ... The playbook is saved but not active.",
       "severity": null,
       "fix": null
     },
     {
       "n": 10,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Administrators define assignment logic using natural-language conversation orchestration playbooks.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
-      "quote": "Administrators define assignment logic by using natural language playbooks through conversation orchestration.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "What's changing; Governance controls",
-      "type": "behaviour",
-      "claim": "The Assign to a previous or preferred expert playbook lets administrators configure precedence between preferred and previous experts.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
-      "quote": "Admins can change the priority between preferred and previous experts to fit their business needs.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "What's changing; Governance controls",
-      "type": "behaviour",
-      "claim": "Administrators can configure the look-back period in the Assign to a previous or preferred expert playbook.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
-      "quote": "You can configure the precedence order and the look back period with conditions based on context variables by using the **Assign to a previous or preferred expert** playbook in conversation orchestration.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "What's changing",
-      "type": "default",
-      "claim": "The default priority order is preferred expert, previous expert, then fallback.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
-      "quote": "| 1 | Preferred Expert | Relationship manager or service representative mapped to the contact |\n| 2 | Previous Expert | Expert who handled prior interaction within recency window |\n| 3 | Fallback | Next best available expert using queue's assignment method |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Before assignment, an expert must have an allowed presence status.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
-      "quote": "| Presence check | Expert must be in an allowed presence status |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "What's changing; Governance guidance: Before rollout",
-      "type": "behaviour",
-      "claim": "The selected expert must belong to the relevant queue.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
-      "quote": "| Queue membership | Expert must be a member of the relevant queue |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "A previous interaction must fall within the configured recency window.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
-      "quote": "Previous interaction must be within configured time period such as 7, 10, or 30 days.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Learn gives 7, 10 and 30 days as recency-window examples.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
-      "quote": "Previous interaction must be within configured time period such as 7, 10, or 30 days.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "What's changing; Governance guidance: Before rollout",
-      "type": "behaviour",
-      "claim": "The recency-window cut-off supports up to 30 days.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
-      "quote": "The system supports up to 30 days cut off period for the recency window.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "summary; What's changing",
-      "type": "behaviour",
-      "claim": "If neither preferred nor previous experts qualify, fallback invokes the queue's configured assignment method.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
-      "quote": "1. Detects that no preferred or previous expert is available or eligible.\n2. Invokes the queue's configured assignment method.\n3. Assigns the conversation to the next best available expert.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "What's changing; Scope",
-      "type": "behaviour",
-      "claim": "Using preferred-expert assignment through playbooks requires preferred representatives to be configured.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
-      "quote": "You must configure preferred representatives if you want to configure assignment to a preferred expert by using playbooks through conversation orchestration.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "What's changing; controls[1].note",
-      "type": "behaviour",
-      "claim": "Keep the same expert for async chats reconnects returning chats when the previous representative meets configured presence and active-conversation-limit checks.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/contact-center/implement/conversation-orchestration-rai-faq",
-      "quote": "For returning asynchronous chats, keeps the same expert when representative affinity is enabled and the expert meets the presence and active conversation limit requirements.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "What's changing; Governance guidance: At rollout; controls[1].note",
-      "type": "behaviour",
-      "claim": "Administrators can configure async fallback to the next best representative or leave the chat unassigned in the queue.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
-      "quote": "Select one of the following **fallback**options if the previous expert isn't available:\n    - **assign to next best expert in queue**\n    - **keep the chat unassigned in the queue**",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "What's changing; controls[1].note",
-      "type": "applicability",
-      "claim": "The async playbook applies to queues where representative affinity is enabled.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
-      "quote": "Configure this behavior for queues where representative affinity is enabled by using the **Keep the same expert for async chats** playbook in conversation orchestration.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "What's changing; Scope",
-      "type": "availability",
-      "claim": "Conversation orchestration is available for voice and messaging channels only.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
-      "quote": "Conversation orchestration is available for voice and messaging channels only.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "front matter: defaultState; summary; Why it matters; Governance controls",
-      "type": "default",
-      "claim": "The feature is admin-opt-in: a playbook does not become active until an administrator publishes it.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
-      "quote": "Administrators define the logic by using natural-language playbooks ... Review your configuration for any validation warnings, and then select **Publish** to activate the playbook.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "Why it matters; controls[0].note; Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "Saving a playbook as a draft leaves it inactive and does not change routing through that playbook.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
-      "quote": "| **Draft** | The playbook is saved but not active. You can make changes freely. |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "summary; Cost and licensing; rationale: cost; front matter: cost",
-      "type": "cost",
-      "claim": "Publishing a conversation orchestration playbook consumes Copilot credits, supporting the variable cost rating.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
-      "quote": "Conversation orchestration consumes Copilot credits only when you publish a playbook, which makes the configured orchestration logic active for use.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "A published playbook can process any number of customer conversations without extra Copilot credits.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
-      "quote": "After you publish, the playbook can process any number of customer conversations without consuming extra Copilot credits.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "Saving a playbook as a draft does not consume Copilot credits.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
-      "quote": "When you save the playbook as a draft or enable conversation orchestration, it doesn't consume Copilot credits.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "Enabling conversation orchestration does not consume Copilot credits.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
-      "quote": "When you save the playbook as a draft or enable conversation orchestration, it doesn't consume Copilot credits.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "Specific licensing requirements apply to configuring and using conversation orchestration, and Learn points to the Dynamics 365 Licensing Guide.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
-      "quote": "Specific licensing requirements apply to configure and use conversation orchestration in Dynamics 365 Contact Center. Learn more in Dynamics 365 Licensing Guide.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
       "where": "front matter: licensing.model",
       "type": "licensing",
-      "claim": "The licensing model is mixed, combining Dynamics 365 licensing requirements with consumption-based billing.",
+      "claim": "The mixed licensing model reflects licensing requirements plus consumption-based billing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
       "quote": "Specific licensing requirements apply to configure and use conversation orchestration in Dynamics 365 Contact Center. ... Set up consumption-based billing.",
@@ -377,142 +135,32 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
-      "type": "absence",
-      "claim": "The cited Learn prerequisites do not name a specific licence for conversation orchestration and instead refer readers to the licensing guide.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"conversation orchestration\" \"licensing\" \"republish\"; read configure-conversation-orchestration prerequisites and system-requirements-contact-center Licenses. Both refer to the Dynamics 365 Licensing Guide without naming an orchestration licence.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
+      "n": 11,
       "where": "front matter: licensing.notes; Cost and licensing; Scope",
       "type": "licensing",
-      "claim": "Consumption-based billing must be set up for conversation orchestration.",
+      "claim": "Conversation orchestration has specific licensing requirements and directs administrators to the Dynamics 365 Licensing Guide.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
-      "quote": "Set up consumption-based billing.",
+      "quote": "Specific licensing requirements apply to configure and use conversation orchestration in Dynamics 365 Contact Center. Learn more in Dynamics 365 Licensing Guide.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 35,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "Dynamics 365 supports prepaid capacity and pay-as-you-go billing models.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go",
-      "quote": "Dynamics 365 supports two billing models: prepaid capacity and pay-as-you-go.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "Pay-as-you-go requires an Azure subscription.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go",
-      "quote": "To set up pay-as-you-go billing, you first need an active Azure subscription.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "Cost and licensing; Open questions; rationale: cost",
+      "n": 12,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
       "type": "absence",
-      "claim": "A Copilot credit rate per published playbook for this scenario is not yet published.",
+      "claim": "The Learn pages read do not name a required licence for conversation orchestration.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: conversation orchestration playbook publish Copilot credits rate republish Save publish billing. Read configure-conversation-orchestration, setup-pay-as-you-go and requirements-messages-management billing-rate tables; no scenario-specific publication rate was stated.",
+      "quote": "Searched: '\"conversation orchestration\" \"licensing\" \"license\"'; read configure-conversation-orchestration, system-requirements-contact-center and setup-pay-as-you-go. The feature and system prerequisites refer to the licensing guide without naming a licence.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 38,
-      "where": "Cost and licensing",
-      "type": "behaviour",
-      "claim": "Editing an active playbook uses Save & publish.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
-      "quote": "**For active playbooks**: Select **Save & publish** to save and immediately publish your changes.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "Cost and licensing; Open questions",
-      "type": "absence",
-      "claim": "Learn does not explicitly state whether publishing an edited active playbook consumes credits again.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: conversation orchestration playbook publish Copilot credits rate republish Save publish billing; \"conversation orchestration\" \"licensing\" \"republish\". Read configure-conversation-orchestration billing and Edit a playbook; no explicit repeat-publication charging rule.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Previous-expert assignment retrieves previous experts from the customer's interaction history.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
-      "quote": "Retrieves the previous experts from the customer's interaction history.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "Risk assessment: Data exposure; Open questions",
-      "type": "absence",
-      "claim": "The cited feature pages do not describe a separate retention setting for the history used to find previous experts.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"previous expert\" \"retention\" Dynamics 365; conversation orchestration previous expert interaction history retention setting enable feature toggle. Read configure-preferred-agent and configure-conversation-orchestration; no separate history-retention setting stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Preferred representatives can be mapped to contacts only in the documented configuration experience.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
-      "quote": "You can map representatives to contacts only.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Up to three preferred representatives can be mapped to a contact.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
-      "quote": "You can map up to three preferred representatives to a contact.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Finding a preferred representative requires the incoming customer's contact to be identified.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
-      "quote": "To find the preferred representative for an incoming work item, the contact should be identified.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "Risk assessment: Security & identity; Scope; controls[0].note; Governance controls",
+      "n": 13,
+      "where": "controls[0].note; Risk assessment; Scope; Governance controls",
       "type": "role",
-      "claim": "Conversation orchestration configuration requires the System administrator or Omnichannel administrator role.",
+      "claim": "System administrator is a qualifying role for configuring conversation orchestration.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
       "quote": "System administrator or Omnichannel administrator role.",
@@ -520,29 +168,183 @@
       "fix": null
     },
     {
-      "n": 46,
-      "where": "Risk assessment: Security & identity; controls[2].note; Governance controls",
+      "n": 14,
+      "where": "controls[0].note; Risk assessment; Scope; Governance controls",
       "type": "role",
-      "claim": "Preferred representative routing configuration in Contact Center requires Omnichannel Administrator.",
+      "claim": "Omnichannel administrator is a qualifying role for configuring conversation orchestration.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
-      "quote": "**For Dynamics 365 Contact Center**: Omnichannel Administrator",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "System administrator or Omnichannel administrator role.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 47,
-      "where": "Risk assessment: Security & identity; controls[2].note; Governance controls",
-      "type": "role",
-      "claim": "Preferred representative routing configuration in Customer Service requires CSR Manager.",
+      "n": 15,
+      "where": "Scope",
+      "type": "applicability",
+      "claim": "Unified routing must be enabled in the environment.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
-      "quote": "**For Customer Service**: CSR Manager",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "Unified routing enabled for your environment.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 48,
+      "n": 16,
+      "where": "Scope",
+      "type": "applicability",
+      "claim": "At least one queue and workstream must be configured for voice or messaging.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "At least one queue and workstream is configured for voice or messaging channels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "Scope",
+      "type": "applicability",
+      "claim": "A voice or messaging channel must be configured.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "A voice or messaging channel is configured.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Cost and licensing; Scope",
+      "type": "cost",
+      "claim": "Consumption-based billing must be set up before using conversation orchestration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "Set up consumption-based billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[0].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "The previous/preferred expert playbook is published in Copilot Service admin center through Customer support > Conversation orchestration > Prompt gallery > Assign to a previous or preferred expert scenario > Assign to a previous or preferred expert > Publish.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "In Copilot Service admin center, go to Customer support > Conversation Orchestration. ... select Prompt gallery. ... select a scenario category, and then select a playbook template. ... select Publish to activate the playbook.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[0].api; controls[0].note; Governance controls",
+      "type": "absence",
+      "claim": "No operation that publishes this playbook is documented in the references checked, although record operations exist.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"conversation orchestration\" \"publish\" \"API\" \"msdyn_ccuserprompt\"'; read configure-conversation-orchestration and msdyn_ccuserprompt Messages and writable columns. CRUD and Published stage are documented, but no publishing procedure or operation is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[1].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "The async playbook is reached in Copilot Service admin center through Customer support > Conversation orchestration > Prompt gallery > Assign to a previous or preferred expert scenario > Keep the same expert for async chats > Publish.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
+      "quote": "go to Customer support > Conversation orchestration. ... Select Prompt gallery. In the category dropdown, select Assign to a previous or preferred expert scenario, and then choose the Keep the same expert for async chats template. ... select Publish to activate it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[1].api; Governance controls",
+      "type": "absence",
+      "claim": "An API for publishing the async playbook is not documented in the references checked.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Keep the same expert for async chats\" \"API\"' and '\"conversation orchestration\" \"publish\" \"API\" \"msdyn_ccuserprompt\"'; read configure-preferred-agent, configure-conversation-orchestration and msdyn_ccuserprompt Messages. No publishing API was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[2].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "With preferred routing enabled, contact mappings are added in Copilot Service admin center through Routing > Preferred representative routing > Manage > Preferred representatives matrix > Add a contact > contact > Add user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
+      "quote": "select Routing. ... select Manage next to Preferred representative routing. ... Preferred representatives matrix ... Select Add a contact ... In Select a contact, enter a contact name ... Select Add user to map representatives to the contact.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[2].api; Governance controls",
+      "type": "command",
+      "claim": "POST /msdyn_preferredagents creates a preferred representative mapping.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_preferredagent",
+      "quote": "Preferred Agent Table, table used to store the mapping between the system user and contact/account ... Create ... POST /msdyn_preferredagents",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[2].note; Governance controls",
+      "type": "command",
+      "claim": "The mapping's msdyn_recordid column identifies the contact.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_preferredagent",
+      "quote": "Store the id for preferred agent routed entity. ... LogicalName ... msdyn_recordid ... Type ... Lookup ... Targets ... account, contact",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[2].note; Governance controls",
+      "type": "command",
+      "claim": "The mapping's msdyn_systemuserid column identifies the representative.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_preferredagent",
+      "quote": "Stores the system user id for the preferred agent. ... LogicalName ... msdyn_systemuserid ... Targets ... systemuser",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[2].note; Governance controls",
+      "type": "command",
+      "claim": "The mapping's msdyn_preferencerating column stores the preference rating.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_preferredagent",
+      "quote": "Stores the preference rating for a preferred agent for a specific record. ... LogicalName ... msdyn_preferencerating",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[2].note; Risk assessment; Governance controls",
+      "type": "role",
+      "claim": "Omnichannel Administrator configures preferred representative routing for Contact Center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
+      "quote": "You must have one of the following roles to configure preferred representative routing: ... For Dynamics 365 Contact Center: Omnichannel Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[2].note; Risk assessment; Governance controls",
+      "type": "role",
+      "claim": "CSR Manager configures preferred representative routing for Customer Service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
+      "quote": "For Customer Service: CSR Manager",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
       "where": "Risk assessment: Security & identity",
       "type": "role",
       "claim": "A custom role additionally needs access to msdyn_preferredagent and msdyn_preferredagentcustomeridentity.",
@@ -553,57 +355,255 @@
       "fix": null
     },
     {
-      "n": 49,
-      "where": "Risk assessment: Autonomy & actions",
+      "n": 31,
+      "where": "controls[2].note; Governance controls",
       "type": "behaviour",
-      "claim": "A published playbook automatically assigns conversations rather than requiring supervisor approval for each assignment.",
+      "claim": "Preferred representative routing is enabled before configuring its contact matrix.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
+      "quote": "3. Turn on Enable preferred representative routing. ... 5. Select contacts and their preferred representatives in the Preferred representatives matrix area",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "The preferred routing configuration supports mapping representatives to contacts only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
+      "quote": "You can map representatives to contacts only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Up to three preferred representatives can be mapped to a contact.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
+      "quote": "You can map up to three preferred representatives to a contact.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Preferred matching depends on identifying and configuring the contact.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
+      "quote": "If you don't configure a contact, you can't assign a preferred representative to the contact. ... To find the preferred representative for an incoming work item, the contact should be identified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Mapped representatives must belong to the queue receiving the work item.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
+      "quote": "Ensure that the representatives you want to assign to a contact are members of the queue to which you route work items.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "title; summary; What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Published playbooks can automatically assign conversations to previously engaged experts.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
-      "quote": "Conversation orchestration monitors each conversation as conditions evolve ... and automatically runs the relevant action in accordance with your configured playbooks.",
+      "quote": "automatically runs the relevant action in accordance with your configured playbooks. ... Assign to previously engaged representative ... Attempts to assign the conversation to a representative who previously interacted with the customer",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "title; summary; What's changing",
+      "type": "behaviour",
+      "claim": "Playbooks can assign conversations to a preferred expert mapped to the contact.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
+      "quote": "This scenario assigns conversations to a designated relationship manager mapped to the customer contact.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Administrators define the assignment logic using natural-language playbooks in conversation orchestration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
+      "quote": "Administrators define assignment logic by using natural language playbooks through conversation orchestration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What's changing; controls[0].ui",
+      "type": "behaviour",
+      "claim": "Assign to a previous or preferred expert is the playbook template for this assignment scenario.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
+      "quote": "by using the Assign to a previous or preferred expert playbook in conversation orchestration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "What's changing; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "Administrators can change the priority between preferred and previous experts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
+      "quote": "Admins can change the priority between preferred and previous experts to fit their business needs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "What's changing",
+      "type": "default",
+      "claim": "The default assignment hierarchy is preferred expert, previous expert, then fallback.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
+      "quote": "| 1 | Preferred Expert | Relationship manager or service representative mapped to the contact |\n| 2 | Previous Expert | Expert who handled prior interaction within recency window |\n| 3 | Fallback | Next best available expert using queue's assignment method |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "What's changing; Governance controls",
+      "type": "behaviour",
+      "claim": "The playbook permits a configurable look-back period.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
+      "quote": "You can configure the precedence order and the look back period with conditions based on context variables",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "An expert must have an allowed presence status before assignment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
+      "quote": "Presence check | Expert must be in an allowed presence status",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Assignment checks that the expert is a member of the relevant queue.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
+      "quote": "Queue membership | Expert must be a member of the relevant queue",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The previous interaction must fall within the configured recency window.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
+      "quote": "Recency window | Previous interaction must be within configured time period",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Learn gives 7, 10 and 30 days as recency examples.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
+      "quote": "Previous interaction must be within configured time period such as 7, 10, or 30 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The supported recency cut-off is up to 30 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
+      "quote": "The system supports up to 30 days cut off period for the recency window.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "If no preferred or previous expert qualifies, fallback invokes the queue's configured assignment method.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
+      "quote": "Detects that no preferred or previous expert is available or eligible. ... Invokes the queue's configured assignment method. ... Assigns the conversation to the next best available expert.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "What's changing; Scope",
+      "type": "applicability",
+      "claim": "Preferred representatives must be configured before using preferred-expert assignment in playbooks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
+      "quote": "You must configure preferred representatives if you want to configure assignment to a preferred expert by using playbooks through conversation orchestration.",
       "severity": null,
       "fix": null
     },
     {
       "n": 50,
-      "where": "Why it matters; Risk assessment: Autonomy & actions",
+      "where": "What's changing; controls[1].ui",
       "type": "behaviour",
-      "claim": "Publishing converts natural-language playbooks into a structured runtime format using a language model.",
+      "claim": "Keep the same expert for async chats is the template for reconnecting returning asynchronous chats.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/contact-center/implement/conversation-orchestration-rai-faq",
-      "quote": "When you publish a playbook, the system uses a language model to convert it into a structured runtime format that the system then uses to perform playbook actions.",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
+      "quote": "Configure this behavior for queues where representative affinity is enabled by using the Keep the same expert for async chats playbook in conversation orchestration.",
       "severity": null,
       "fix": null
     },
     {
       "n": 51,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "The converted output might not fully capture the intended playbook logic.",
+      "where": "What's changing; controls[1].note; Scope",
+      "type": "applicability",
+      "claim": "The async playbook requires a messaging queue and workstream with representative affinity enabled.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/contact-center/implement/conversation-orchestration-rai-faq",
-      "quote": "Because the system uses a language model to convert natural language playbooks into a structured runtime format, the converted output might not fully capture the intended logic.",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
+      "quote": "At least one queue and workstream are configured for the messaging channel, and representative affinity is enabled for the workstream.",
       "severity": null,
       "fix": null
     },
     {
       "n": 52,
-      "where": "Risk assessment: Autonomy & actions",
+      "where": "What's changing; controls[1].note; Governance controls",
       "type": "behaviour",
-      "claim": "Deviations between intended and converted logic can be identified only during runtime.",
+      "claim": "The async playbook can require the previous representative to have one of the configured allowed presences.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/contact-center/implement/conversation-orchestration-rai-faq",
-      "quote": "You can identify any deviations only during runtime.",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
+      "quote": "If allowed presences are configured in the Keep the same expert for async chats conversation orchestration playbook, the representative must be in one of the configured presence states.",
       "severity": null,
       "fix": null
     },
     {
       "n": 53,
-      "where": "Risk assessment: Autonomy & actions; Governance guidance: After rollout",
+      "where": "What's changing; Risk assessment; controls[1].note; Governance controls",
       "type": "behaviour",
-      "claim": "Microsoft advises testing and monitoring runtime behavior and revising playbooks when orchestration does not work as intended.",
+      "claim": "The async playbook checks the representative's total active conversations against their active conversation limit before reconnecting.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/contact-center/implement/conversation-orchestration-rai-faq",
-      "quote": "Administrators should test and monitor runtime behavior and revise the playbook if orchestration doesn't work as intended.",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
+      "quote": "Compare the representative's total active conversations against their limit. If the total is below the limit, the system reconnects the conversation to the same representative",
       "severity": null,
       "fix": null
     },
@@ -611,7 +611,7 @@
       "n": 54,
       "where": "Risk assessment: Autonomy & actions; rationale: risk",
       "type": "behaviour",
-      "claim": "A returning async conversation can reconnect below the active conversation limit even when that limit exceeds the configured capacity profile.",
+      "claim": "Reconnection can occur even when the active conversation limit exceeds the configured capacity profile.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
       "quote": "If the total is below the limit, the system reconnects the conversation to the same representative, even when the limit exceeds the configured capacity profile.",
@@ -620,9 +620,108 @@
     },
     {
       "n": 55,
+      "where": "What's changing; controls[1].note; Governance guidance",
+      "type": "behaviour",
+      "claim": "An administrator can choose next-best-expert assignment as the async fallback when the previous expert does not qualify.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
+      "quote": "Select one of the following fallback options if the previous expert isn't available: ... assign to next best expert in queue",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "What's changing; controls[1].note; Governance guidance",
+      "type": "behaviour",
+      "claim": "An administrator can instead choose to leave the async chat unassigned in the queue.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
+      "quote": "Select one of the following fallback options if the previous expert isn't available: ... keep the chat unassigned in the queue",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The active conversation limit is a representative-level attribute; the playbook selects its check.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
+      "quote": "The active conversation limit is a configurable attribute defined at the representative level. ... 6. Select active conversation limit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "Conversation orchestration is available for voice and messaging channels only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "Conversation orchestration is available for voice and messaging channels only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Why it matters; controls[0].note; Governance guidance",
+      "type": "behaviour",
+      "claim": "Saving keeps a playbook in an inactive Draft state.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "Draft | The playbook is saved but not active. You can make changes freely. ... Select Save. The playbook is saved as a draft.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Why it matters; Risk assessment",
+      "type": "behaviour",
+      "claim": "A language model converts published natural-language playbooks to a structured runtime format.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/implement/conversation-orchestration-rai-faq",
+      "quote": "When you publish a playbook, the system uses a language model to convert it into a structured runtime format that the system then uses to perform playbook actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "behaviour",
+      "claim": "Deviations between intended playbook logic and conversion output can only be identified at runtime.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "Any deviations can be identified only during runtime.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Microsoft warns that conversion might not fully capture the intended playbook logic.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "the converted output might not fully capture the intended playbook logic.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Microsoft advises testing and monitoring runtime behaviour and revising playbooks when necessary.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "Administrators should test and monitor runtime behavior and revise the playbook if orchestration doesn't work as intended.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
       "where": "Risk assessment: Autonomy & actions",
       "type": "applicability",
-      "claim": "Microsoft says the feature should not be used for decisions affecting employment, compensation or similar employee rights.",
+      "claim": "The feature is not intended for decisions affecting employment, compensation or similar employee rights.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
       "quote": "This feature isn't intended for use in making—and shouldn't be used to make—decisions that affect the employment of an employee or group of employees, including compensation, rewards, seniority, or other rights or entitlements.",
@@ -630,10 +729,10 @@
       "fix": null
     },
     {
-      "n": 56,
-      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "n": 65,
+      "where": "Risk assessment: Change & support; Governance guidance",
       "type": "behaviour",
-      "claim": "Multiple active playbooks for the same scenario and queue cause a conflict that prevents publication and produces an error message.",
+      "claim": "A second active playbook for the same queue and scenario is blocked from publishing with a conflict error.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
       "quote": "You can't have multiple active playbooks for the same scenario and the same queue. This configuration creates a conflict that prevents publishing. ... the system displays an error message",
@@ -641,10 +740,10 @@
       "fix": null
     },
     {
-      "n": 57,
+      "n": 66,
       "where": "Risk assessment: Change & support; Governance controls",
       "type": "behaviour",
-      "claim": "Deleting an active playbook immediately stops conversation orchestration for the corresponding queue.",
+      "claim": "Deleting an active playbook stops conversation orchestration for the corresponding queue immediately.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
       "quote": "If you delete an active playbook, conversation orchestration stops for the corresponding queue immediately.",
@@ -652,10 +751,10 @@
       "fix": null
     },
     {
-      "n": 58,
+      "n": 67,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Troubleshooting a failed previous-expert assignment includes checking queue membership, presence and interaction recency.",
+      "claim": "Troubleshooting previous-expert assignment includes checking queue membership, presence and the recency window.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
       "quote": "Verify the queue membership and presence status of the previous representatives and check if their last interactions with the customer was within the configured recency window.",
@@ -663,10 +762,10 @@
       "fix": null
     },
     {
-      "n": 59,
+      "n": 68,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Conversation orchestration diagnostics can be read using a custom query.",
+      "claim": "Diagnostics can be viewed using a custom query.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
       "quote": "You can view the diagnostics information by using a custom query.",
@@ -674,32 +773,131 @@
       "fix": null
     },
     {
-      "n": 60,
+      "n": 69,
       "where": "Risk assessment: Change & support",
       "type": "availability",
-      "claim": "The Responsible AI FAQ says the system currently supports English only.",
+      "claim": "The Responsible AI FAQ states that the system currently supports English only.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/implement/conversation-orchestration-rai-faq",
-      "quote": "**Support English only**: The system currently supports the English language only.",
+      "quote": "Support English only: The system currently supports the English language only.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 61,
-      "where": "Scope; Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "Playbook queue scope can be all queues, a selected list, or all queues except exclusions.",
+      "n": 70,
+      "where": "summary; Cost and licensing; front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "Publishing a playbook consumes Copilot credits, supporting the variable cost rating.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
-      "quote": "**All queues**: Applies to all queues for the selected channel. ... **List of queues**: Select specific queues from the list. ... **All queues except**: Applies to all queues except the ones you exclude.",
+      "quote": "Conversation orchestration consumes Copilot credits only when you publish a playbook, which makes the configured orchestration logic active for use.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 62,
+      "n": 71,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "A published playbook can process any number of customer conversations without additional Copilot credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "After you publish, the playbook can process any number of customer conversations without consuming extra Copilot credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Saving a draft does not consume Copilot credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "When you save the playbook as a draft or enable conversation orchestration, it doesn't consume Copilot credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Enabling conversation orchestration does not consume Copilot credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "When you save the playbook as a draft or enable conversation orchestration, it doesn't consume Copilot credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Dynamics 365 supports prepaid capacity and pay-as-you-go billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go",
+      "quote": "Dynamics 365 supports two billing models: prepaid capacity and pay-as-you-go.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Pay-as-you-go requires an Azure subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go",
+      "quote": "To set up pay-as-you-go billing, you first need an active Azure subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "A credit rate per published playbook for this scenario is not published in the documentation found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"conversation orchestration\" \"Copilot\" \"credits\" \"rate\" publish' and 'Copilot Studio billing rates conversation orchestration playbook published Copilot credits'; read configure-conversation-orchestration and requirements-messages-management billing rates. No playbook rate found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "Editing an active playbook uses Save & publish.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "For active playbooks: Select Save & publish to save and immediately publish your changes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "The documentation does not explicitly explain repeat credit consumption for Save & publish on an edited active playbook.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"conversation orchestration\" \"Save & publish\" credits billing' and '\"conversation orchestration\" \"republish\" credits'; read configure-conversation-orchestration, its edit steps, the RAI FAQ and billing rates. No explicit repeat-publish billing explanation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "Scope; Governance guidance",
+      "type": "applicability",
+      "claim": "A playbook can apply to all queues for a selected channel, a list of queues, or all queues except exclusions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "All queues: Applies to all queues for the selected channel. ... List of queues: Select specific queues from the list. ... All queues except: Applies to all queues except the ones you exclude.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
       "where": "Scope",
       "type": "applicability",
-      "claim": "The preferred/previous representative Learn page applies to Contact Center embedded, Contact Center standalone and Dynamics 365 Customer Service.",
+      "claim": "The preferred/previous routing article applies to embedded and standalone Contact Center and to Dynamics 365 Customer Service.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
       "quote": "Applies to: Dynamics 365 Contact Center—embedded, Dynamics 365 Contact Center—standalone, and Dynamics 365 Customer Service",
@@ -707,241 +905,10 @@
       "fix": null
     },
     {
-      "n": 63,
-      "where": "Scope",
-      "type": "behaviour",
-      "claim": "Conversation orchestration requires unified routing enabled in the environment.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
-      "quote": "Unified routing enabled for your environment.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 64,
-      "where": "Scope",
-      "type": "behaviour",
-      "claim": "Conversation orchestration requires at least one queue and workstream configured for voice or messaging.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
-      "quote": "At least one queue and workstream is configured for voice or messaging channels.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 65,
-      "where": "Scope",
-      "type": "behaviour",
-      "claim": "A voice or messaging channel must be configured.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
-      "quote": "A voice or messaging channel is configured.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 66,
-      "where": "Scope",
-      "type": "behaviour",
-      "claim": "The async playbook requires a messaging queue and workstream with representative affinity enabled for the workstream.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
-      "quote": "At least one queue and workstream are configured for the messaging channel, and representative affinity is enabled for the workstream.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 67,
-      "where": "controls[0].ui; Governance controls: first table row",
-      "type": "admin-path",
-      "claim": "The previous/preferred expert playbook is published through Copilot Service admin center > Customer support > Conversation orchestration > Prompt gallery > Assign to a previous or preferred expert scenario > Assign to a previous or preferred expert > Publish.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
-      "quote": "In Copilot Service admin center, go to **Customer support** > **Conversation Orchestration**. ... select **Prompt gallery**. ... select a scenario category, and then select a playbook template. ... select **Publish** to activate the playbook.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 68,
-      "where": "controls[0].api; controls[0].note; Governance controls",
-      "type": "absence",
-      "claim": "No documented API procedure publishes the previous/preferred expert playbook; CC User Prompt record operations alone do not document publication.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"msdyn_ccuserprompt\" \"publish\" API; Dynamics 365 conversation orchestration publish playbook API msdyn_ccuserprompt Keep same expert async chats. Read CC User Prompt Messages, prompt-stage columns and orchestration management steps; no publishing procedure.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 69,
-      "where": "controls[1].ui; Governance controls: second table row",
-      "type": "admin-path",
-      "claim": "The async playbook is published through Copilot Service admin center > Customer support > Conversation orchestration > Prompt gallery > Assign to a previous or preferred expert scenario > Keep the same expert for async chats > Publish.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
-      "quote": "In the category dropdown, select **Assign to a previous or preferred expert scenario**, and then choose the **Keep the same expert for async chats** template. ... Review any validation warnings, and then select **Publish** to activate it.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 70,
-      "where": "controls[1].api; Governance controls: second table row",
-      "type": "absence",
-      "claim": "No API operation is documented for configuring and activating the async playbook's presence, active-limit check and fallback.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Dynamics 365 conversation orchestration publish playbook API msdyn_ccuserprompt Keep same expert async chats; \"msdyn_ccuserprompt\" \"publish\" API. Read configure-preferred-agent async procedure and CC User Prompt reference; no equivalent API procedure.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 71,
-      "where": "controls[1].note; Governance controls",
-      "type": "behaviour",
-      "claim": "The async playbook editor lets the administrator select allowed presence statuses.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
-      "quote": "Select the allowed presence statuses in the **presence** list.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 72,
-      "where": "controls[1].note; Governance controls",
-      "type": "behaviour",
-      "claim": "The async playbook selects the active conversation limit check rather than defining the representative's limit.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
-      "quote": "Select **active conversation limit**. ... The active conversation limit is a configurable attribute defined at the representative level.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 73,
-      "where": "controls[1].note; Governance controls",
-      "type": "behaviour",
-      "claim": "The active conversation limit itself is a representative-level configurable attribute.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
-      "quote": "The active conversation limit is a configurable attribute defined at the representative level.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 74,
-      "where": "controls[2].ui; Governance controls: third table row",
-      "type": "admin-path",
-      "claim": "Preferred representatives are mapped through Copilot Service admin center > Routing > Preferred representative routing > Manage > Preferred representatives matrix > Add a contact > contact > Add user.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
-      "quote": "select **Manage** next to **Preferred representative routing**. ... **Preferred representatives matrix** area ... Select **Add a contact** ... enter a contact name, and select a value from the dropdown list. ... Select **Add user** to map representatives to the contact.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 75,
-      "where": "controls[2].api; Governance controls: third table row",
-      "type": "command",
-      "claim": "POST /msdyn_preferredagents creates a preferred representative mapping record.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_preferredagent",
-      "quote": "Preferred Agent Table, table used to store the mapping between the system user and contact/account ... `Create`Event: True | `POST` /msdyn_preferredagents",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 76,
-      "where": "controls[2].note",
-      "type": "command",
-      "claim": "msdyn_recordid identifies the contact in a preferred representative mapping.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_preferredagent",
-      "quote": "Description | **Store the id for preferred agent routed entity.** ... LogicalName | `msdyn_recordid` ... Type | Lookup ... Targets | account, contact",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 77,
-      "where": "controls[2].note",
-      "type": "command",
-      "claim": "msdyn_systemuserid identifies the preferred representative.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_preferredagent",
-      "quote": "Description | **Stores the system user id for the preferred agent.** ... LogicalName | `msdyn_systemuserid`",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 78,
-      "where": "controls[2].note",
-      "type": "command",
-      "claim": "msdyn_preferencerating stores the preferred representative's rating for the record.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_preferredagent",
-      "quote": "Description | **Stores the preference rating for a preferred agent for a specific record.** ... LogicalName | `msdyn_preferencerating`",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 79,
-      "where": "controls[2].note",
-      "type": "behaviour",
-      "claim": "Preferred representative routing is enabled before contacts and their preferred representatives are configured.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
-      "quote": "3. Turn on **Enable preferred representative routing**. ... 5. Select contacts and their preferred representatives in the **Preferred representatives matrix** area",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 80,
-      "where": "Governance controls",
-      "type": "absence",
-      "claim": "The configuration page names no separate tenant-wide switch specifically for this previous/preferred expert scenario.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"previous or preferred\" \"enable\" \"toggle\" conversation orchestration. Read configure-conversation-orchestration and configure-preferred-agent. The FAQ mentions a general feature toggle, but gives no separate tenant-wide switch for this scenario.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 81,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "The CC User Prompt reference lists msdyn_prompt with display name Prompt.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt",
-      "quote": "DisplayName | **Prompt** ... LogicalName | `msdyn_prompt`",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 82,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "The CC User Prompt reference lists msdyn_promptstage with Published equal to 3.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt",
-      "quote": "LogicalName | `msdyn_promptstage` ... msdyn_promptstage Choices/Options ... | 3 | **Published** |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 83,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "The CC User Prompt reference lists msdyn_promptstatus with Active and Inactive options.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt",
-      "quote": "LogicalName | `msdyn_promptstatus` ... msdyn_promptstatus Choices/Options ... | 0 | **Active** | ... | 1 | **Inactive** |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 84,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Microsoft documents moving conversation orchestration playbooks between environments using solution export and import.",
+      "claim": "Microsoft documents moving playbooks between environments through solution export and import.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
       "quote": "Move a playbook from a source environment to a destination environment by adding it to a solution and using the solution export and import.",
@@ -949,26 +916,114 @@
       "fix": null
     },
     {
+      "n": 82,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The CC User Prompt reference lists msdyn_prompt with the display name Prompt.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt",
+      "quote": "DisplayName | Prompt ... LogicalName | msdyn_prompt",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 83,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The reference lists msdyn_promptstage with Published equal to 3.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt",
+      "quote": "LogicalName | msdyn_promptstage ... msdyn_promptstage Choices/Options ... 3 | Published",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 84,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The reference lists msdyn_promptstatus with Active and Inactive choices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt",
+      "quote": "LogicalName | msdyn_promptstatus ... msdyn_promptstatus Choices/Options ... 0 | Active ... 1 | Inactive",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 85,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The configuration article names no separate tenant-wide switch for this scenario.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"conversation orchestration\" \"enable\" \"toggle\"'; read the configuration article and RAI FAQ. The configuration article gives no tenant-wide switch, but the FAQ says administrators can 'disable the feature toggle to turn off the feature'.",
+      "severity": "minor",
+      "fix": "Replace the switch sentence with: 'The configuration article gives no separate tenant-wide switch path for this scenario. The Responsible AI FAQ says administrators can disable a feature toggle to turn off conversation orchestration, but gives neither its navigation path nor its scope.'"
+    },
+    {
+      "n": 86,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Previous-expert assignment retrieves experts from the customer's interaction history.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
+      "quote": "Retrieves the previous experts from the customer's interaction history.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 87,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "The cited feature pages do not describe a separate retention setting for the history used in previous-expert matching.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"previous expert\" \"interaction history\" retention'; read configure-preferred-agent, configure-conversation-orchestration and conversation-orchestration-rai-faq. They describe the matching recency window, not a separate history-retention setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 88,
       "where": "Open questions",
       "type": "behaviour",
-      "claim": "The Responsible AI FAQ says Microsoft plans to introduce human review of converted playbooks before they take effect.",
+      "claim": "The Responsible AI FAQ says Microsoft plans a human review step for converted playbooks before they take effect.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/implement/conversation-orchestration-rai-faq",
       "quote": "Microsoft will introduce a human review step that allows administrators to review the converted output of their playbooks before it takes effect, helping catch conversion errors before publication.",
       "severity": null,
       "fix": null
+    },
+    {
+      "n": 89,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Microsoft's stated aim includes reducing repeated explanations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
+      "quote": "This capability reduces repeat explanations, speeds up resolution times, and improves customer satisfaction.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 90,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Microsoft's stated aim includes faster resolution.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
+      "quote": "This capability reduces repeat explanations, speeds up resolution times, and improves customer satisfaction.",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-20T20:04:57.670Z",
+    "at": "2026-11-27T08:23:10.591Z",
     "summary": {
       "links": 8,
-      "unreachable": 0,
+      "unreachable": 7,
       "uiPaths": 3,
-      "uiPathsWithMissingWords": 1,
+      "uiPathsWithMissingWords": 3,
       "apiCalls": 1,
-      "apiCallsNotOnPage": 0,
+      "apiCallsNotOnPage": 1,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -979,38 +1034,38 @@
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/contact-center/implement/conversation-orchestration-rai-faq",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/contact-center/implement/system-requirements-contact-center",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_preferredagent",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -1019,7 +1074,7 @@
         "side": "ui",
         "governs": "Whether a previous or preferred expert playbook is published for a queue",
         "docs": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Customer support",
           "Conversation orchestration",
@@ -1029,7 +1084,12 @@
           "Publish"
         ],
         "missing": [
-          "Assign to a previous or preferred expert scenario"
+          "Customer support",
+          "Conversation orchestration",
+          "Prompt gallery",
+          "Assign to a previous or preferred expert scenario",
+          "Assign to a previous or preferred expert",
+          "Publish"
         ]
       },
       {
@@ -1037,7 +1097,7 @@
         "side": "ui",
         "governs": "Whether returning asynchronous chats keep the same expert, with presence and active conversation limit checks",
         "docs": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Customer support",
           "Conversation orchestration",
@@ -1046,14 +1106,21 @@
           "Keep the same expert for async chats",
           "Publish"
         ],
-        "missing": []
+        "missing": [
+          "Customer support",
+          "Conversation orchestration",
+          "Prompt gallery",
+          "Assign to a previous or preferred expert scenario",
+          "Keep the same expert for async chats",
+          "Publish"
+        ]
       },
       {
         "index": 2,
         "side": "ui",
         "governs": "Which preferred representatives are mapped to a contact",
         "docs": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Routing",
           "Preferred representative routing",
@@ -1063,16 +1130,24 @@
           "contact",
           "Add user"
         ],
-        "missing": []
+        "missing": [
+          "Routing",
+          "Preferred representative routing",
+          "Manage",
+          "Preferred representatives matrix",
+          "Add a contact",
+          "contact",
+          "Add user"
+        ]
       },
       {
         "index": 2,
         "side": "api",
         "governs": "Which preferred representatives are mapped to a contact",
         "docs": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_preferredagent",
-        "reachable": true,
+        "reachable": false,
         "token": "POST /msdyn_preferredagents",
-        "found": true
+        "found": false
       }
     ],
     "roadmapDrift": []
@@ -1082,6 +1157,12 @@
       "date": "2026-11-20",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-20",
+      "status": "verified",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

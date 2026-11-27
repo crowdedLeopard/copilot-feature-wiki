@@ -82,15 +82,17 @@ changes:
     note: "Corrected after verification: cost is now variable, with the published Copilot Credits consumption billing for Sales Development agents, and the audit statement now notes general Agent 365 auditing."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 66 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 80 statements not yet confirmed"
 version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 66
-  confirmed: 66
+  claims: 80
+  confirmed: 80
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -188,8 +190,8 @@ cost: Variable. Microsoft publishes consumption billing via Copilot Credits for 
 impact: Low. Per the Learn page, those who manage both agents carry out the copy; sellers notice only that a new agent starts with the same playbook and settings.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].api; controls[1].note / command: POST /beta/copilot/admin/catalog/packages/{id}/activate is the documented beta action for activating a template for users or groups allowed to create instances. | Found: POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/activate This reference describes the reviewed beta contract. Availability depends on the matching schema and backend release; API-review approval isn't evidence of deployed availability. | Fix: Append to controls[1].note and the rendered row note: 'This is a reviewed beta contract; availability depends on the matching schema and backend release, not API-review approval.' The existing API reference states this qualification. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackageactivationresult-activate
+- [supported, minor] controls[1].api; controls[1].note; Governance controls / command: POST /beta/copilot/admin/catalog/packages/{id}/activate is the documented beta action for activating a template for users or groups allowed to create instances. | Found: POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/activate This reference describes the reviewed beta contract. Availability depends on the matching schema and backend release; API-review approval isn't evidence of deployed availability. | Fix: Append to controls[1].note and the rendered row note: 'This is a reviewed beta contract; availability depends on the matching schema and backend release, not API-review approval.' The qualification is stated at https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackageactivationresult-activate. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackageactivationresult-activate
 -->

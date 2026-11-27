@@ -73,15 +73,17 @@ changes:
     note: "Correction: removed the unsupported no-action claim, reworded the Global Administrator role to the Learn page's terms, replaced the unpublished-CDN-price claim with the CDN's inclusion in SharePoint Online, set licensing to included, and dropped two site-owner checklist steps."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 47 statements confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 45 statements confirmed"
 version: 2
 verification:
   status: "verified"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 47
-  confirmed: 47
+  claims: 45
+  confirmed: 45
   unconfirmed: 0
   contradicted: 0
   attempts: 0

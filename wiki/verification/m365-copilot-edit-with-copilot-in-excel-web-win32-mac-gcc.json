@@ -1,0 +1,712 @@
+{
+  "slug": "m365-copilot-edit-with-copilot-in-excel-web-win32-mac-gcc",
+  "roadmapId": 542181,
+  "title": "Excel: Edit with Copilot builds and edits workbooks in GCC, GCC High and DoD",
+  "status": "verified-with-gaps",
+  "date": "2026-11-27",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 49,
+    "confirmed": 49,
+    "unconfirmed": 0,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 0,
+    "minor": 1
+  },
+  "summary": "The briefing accurately reports the disagreement between the launched roadmap item and Microsoft's government-cloud availability table. Its licensing and existing controls are supported; the Anthropic control path needs one section heading added.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap marks this feature Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is October CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; title; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists Desktop, Mac and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Mac\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The record gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "title; What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "record",
+      "claim": "Edit with Copilot builds and edits workbooks side by side with the user.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Edit with Copilot lets you build and edit workbooks side by side with Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Copilot uses tables, charts, PivotTables and formulas.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Copilot uses Excel's most powerful tools like tables, charts, PivotTables, and formulas to help you get the job done.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Why it matters",
+      "type": "record",
+      "claim": "The roadmap describes updating budgets, creating financial models and analysing data.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "When you're updating budgets, creating financial models, or analyzing data",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing; Why it matters; Scope; Governance guidance; Open questions",
+      "type": "availability",
+      "claim": "The service description lists Edit with Copilot in Word, Excel, PowerPoint and OneNote as not currently available in GCC, GCCH and DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+      "quote": "| Edit with Copilot in Word, Excel, PowerPoint, and OneNote | Yes | Not currently available | Not currently available | Not currently available |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The service description's table reports availability as of its last update date.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+      "quote": "The table below shows availability as of the last update date for the Service Description (visible at the bottom of this page).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "summary; Why it matters; Cost and licensing; Scope; controls[0].note; rationale: cost",
+      "type": "licensing",
+      "claim": "Edit with Copilot is a Microsoft 365 Copilot Premium feature requiring a Microsoft 365 Copilot licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+      "quote": "Edit with Copilot in Word, Excel, PowerPoint, and OneNote^2^; ^2^Microsoft 365 Copilot (Premium) features: A Microsoft 365 Copilot license is required to access this feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Microsoft 365 Copilot is an add-on plan with licensing prerequisites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+      "quote": "Microsoft 365 Copilot is an add-on plan with specific licensing prerequisites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The licence options page lists Copilot as an add-on for the government plans it specifies in GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-license-options",
+      "quote": "Microsoft Copilot is available as an add-on in Government Community Cloud (GCC), Government Community Cloud High (GCC High), and Department of Defense (DoD) environments for the following plans.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "Scope: Platforms",
+      "type": "availability",
+      "claim": "Copilot Chat in web apps is currently unavailable to government-cloud users without the Copilot licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+      "quote": "Copilot Chat is currently not available in Web apps for M365 Copilot (Basic) users in GCC, GCC-High and DoD.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The service description says structured Excel data analysis is impacted until Edit with Copilot in Excel is released in the government clouds.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+      "quote": "Copilot's ability to analyze structured Excel data is impacted until Edit with Copilot in Excel is released in GCC, GCC-High and DoD.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The release-notes entry calls the feature formerly Agent Mode and gives roadmap IDs 542182 and 527835.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Edit with Copilot in Excel to enhance your productivity (formerly Agent Mode) [Windows, Web, Mac] ... Roadmap IDs: 542182, 527835",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The worldwide release notes describe a new option for editing workbooks through chat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "A new option is available in Copilot in Excel that enables you to edit your workbook through chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The release notes tell users to open Copilot chat in Excel and use the Let's edit together message or select Edit with Copilot in the tools menu.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Open Copilot chat in Excel and see \"Let's edit together\" welcome message. ... If you don't see the message, then go to the tools menu and select \"Edit with Copilot\".",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn has no dedicated page describing the government-cloud release.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Edit with Copilot Excel GCC government availability default rollout; \"Edit with Copilot\" \"Excel\" \"GCC\" default. Read service description, government overview and release-notes excerpts; no dedicated government-release page found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: defaultState; What's changing; Why it matters; Open questions",
+      "type": "default",
+      "claim": "Microsoft has not stated the arrival default for Edit with Copilot in Excel in government tenants.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Edit with Copilot\" \"Excel\" \"GCC\" default; Edit with Copilot Excel GCC government availability default rollout. Read roadmap, service description, government overview and release-notes excerpts; none states a government default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Scope: Rollout",
+      "type": "absence",
+      "claim": "A government-tenant rollout mechanism has not been stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Edit with Copilot Excel GCC government availability default rollout; \"Edit with Copilot\" \"government\" rollout undo. Read roadmap, service description and release-notes excerpts; no government rollout mechanism found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "Microsoft has not described government-specific review or undo behaviour.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Edit with Copilot\" \"government\" rollout undo; Edit with Copilot Excel GCC government default rollout review undo admin disable policy. Read service description and release-notes excerpts; no government-specific review or undo instructions found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "The government overview says prompts, responses and generated content stay in the government cloud, subject to the Anthropic exception the briefing separately states.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/gov-overview",
+      "quote": "Prompts, responses, and generated content stay in the government cloud.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Copilot inherits the underlying government environment's security and compliance controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/gov-overview",
+      "quote": "Copilot inherits the security and compliance controls of the underlying environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Copilot works on the workbook the user has open.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Open Copilot chat in Excel ... A new option is available in Copilot in Excel that enables you to edit your workbook through chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Enabled Anthropic models for non-federal GCC process Customer Data outside Microsoft's FedRAMP-authorized government cloud.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/anthropic-non-federal-gcc",
+      "quote": "When enabled, these Anthropic AI models process Customer Data outside Microsoft’s FedRAMP-authorized U.S. Government cloud.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[1].note; Risk assessment; Governance guidance; rationale: risk",
+      "type": "default",
+      "claim": "The non-federal GCC Anthropic setting is optional and disabled by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/anthropic-non-federal-gcc",
+      "quote": "This capability is optional and the setting is disabled by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[1].note; Risk assessment; Open questions",
+      "type": "availability",
+      "claim": "The GCC-specific page documents Anthropic models only in Copilot Chat's model picker in the Microsoft Copilot app and on the web, not Edit with Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/anthropic-non-federal-gcc",
+      "quote": "Currently, those models appear as an option in the dropdown model picker only in Copilot Chat in the Microsoft Copilot app and on the web.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[1].note; Scope: Roles",
+      "type": "role",
+      "claim": "Changing the non-federal GCC Anthropic setting requires AI Administrator or Global Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/anthropic-non-federal-gcc",
+      "quote": "You must be a member of the AI Administrator or Global Administrator role to perform this task.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Security & identity",
+      "type": "availability",
+      "claim": "Claude models are unavailable to federal GCC customers and all GCC High and DoD customers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+      "quote": "Claude models aren't available for federal customers in GCC or for any customers in GCC High and Department of Defense (DoD) environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Governance controls: notes",
+      "type": "availability",
+      "claim": "The Claude option does not appear in the admin center for those excluded government customers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+      "quote": "The option to use Claude models doesn't appear in the Microsoft 365 admin center for these government and sovereign cloud customers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Microsoft asks admins to coordinate with compliance and procurement before enabling Anthropic models.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/anthropic-non-federal-gcc",
+      "quote": "Coordinating with their organization's compliance and procurement stakeholders before enabling Anthropic models in their tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[0].ui; Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "Licence assignment is at Microsoft 365 admin center > Users > Active users > user > Licenses and Apps > Licenses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "go to the Users > Active users page. ... Select the row of the user ... select Licenses and Apps. ... Expand the Licenses section, select the boxes for the licenses that you want to assign",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "Set-MgUserLicense with the printed UserId, AddLicenses SkuId and empty RemoveLicenses assigns a licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+      "quote": "To assign a license to a user, use the following command in PowerShell. Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @()",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[0].note; Scope: Roles",
+      "type": "role",
+      "claim": "Licence assignment requires at least a License or User Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "You must be at least a License or User Administrator to assign licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "The printed Microsoft 365 admin center path reaches Anthropic user access configuration for non-federal GCC.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/anthropic-non-federal-gcc",
+      "quote": "Review the information in the Terms and conditions section, and if they’re acceptable, select the I acknowledge and agree to the above terms checkbox. ... Under Choose which users can access Anthropic models",
+      "severity": "minor",
+      "fix": "Set the path to 'Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Available subprocessors for your organization > Anthropic > Terms and conditions > I acknowledge and agree to the above terms > Choose which users can access Anthropic models', adding the omitted section heading documented at https://learn.microsoft.com/copilot/implement/anthropic-non-federal-gcc."
+    },
+    {
+      "n": 38,
+      "where": "controls[1].api",
+      "type": "absence",
+      "claim": "No API for the non-federal GCC Anthropic subprocessor access setting is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Graph API Anthropic subprocessors setting GCC copilot admin policy; \"Anthropic\" \"API\" \"subprocessor\" \"Graph\". Opened copilotPolicySetting, GCC Anthropic and general subprocessor pages; no API for this setting found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "The printed Group Policy Management path reaches Allow the use of connected experiences in Office that analyze content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls",
+      "quote": "all these policy settings are located under User Configuration\\Policies\\Administrative Templates\\Microsoft Office 2016\\Privacy\\Trust Center. ... Allow the use of connected experiences in Office that analyze content",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "Setting UserContentDisabled to 2 under the printed HKCU privacy key disables connected experiences that analyse content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls",
+      "quote": "Allow the use of connected experiences in Office that analyze content | UserContentDisabled | 1=Enabled 2=Disabled ... [HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\office\\16.0\\common\\privacy]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[2].note; Risk assessment; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "Disabling connected experiences that analyse content removes Copilot features from Excel, OneNote, Outlook, PowerPoint and Word rather than just Edit with Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy",
+      "quote": "If you turn off connected experiences that analyze your content on devices in your organization, Microsoft Copilot features won't be available to your users in the following apps: Excel; OneNote; Outlook; PowerPoint; Word",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Governance controls; Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "Microsoft documents that effect for current app versions on Windows, Mac, iOS and Android.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy",
+      "quote": "This applies to when you're running the most current version of these apps on Windows, Mac, iOS, or Android devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The privacy page's connected-experiences applicability passage does not mention Excel for the web.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched the opened Data, Privacy, and Security for Microsoft Copilot page's connected-experiences section for web applicability. Its stated device list is Windows, Mac, iOS or Android; Excel for the web is not listed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[2].note; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The documented privacy policy can be implemented through Group Policy or Cloud Policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls",
+      "quote": "These policy settings can be implemented by using either Group Policy or Cloud Policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[2].note",
+      "type": "default",
+      "claim": "Connected experiences that analyse content remain available when this policy is unconfigured.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls",
+      "quote": "If you don’t configure this policy setting, these connected experiences will be available to your users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[3]; summary; Risk assessment; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No tenant UI setting or API specifically turns Edit with Copilot in Excel on or off on its own.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Edit with Copilot\" \"policy\" \"Excel\" disable; Excel agent mode administrator control editing Copilot policy setting. Opened configure-copilot-admin-center, copilotPolicySetting and privacy controls; found broader controls, not an Edit-only switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing: Meter and caps",
+      "type": "absence",
+      "claim": "Neither the service description nor the licence options page attaches a meter or credit rate to Edit with Copilot.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Edit with Copilot\" \"GCC\" licensing meter price. Read the complete Microsoft Copilot service description and License options for Microsoft Copilot; neither names a meter or credit rate for Edit with Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Neither cited licensing page publishes a price for the government Copilot add-on.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Edit with Copilot\" \"GCC\" licensing meter price. Read the complete service description and licence options page, including its US Government section; neither states a government add-on price.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Why it matters; rationale: impact",
+      "type": "absence",
+      "claim": "No source documents an existing Excel behaviour change from this release for users without the Copilot licence.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Edit with Copilot Excel GCC government availability default rollout. Read roadmap, service description and release-notes excerpts; the service description requires a Copilot licence, and no change for unlicensed users was documented.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-27T08:23:02.142Z",
+    "summary": {
+      "links": 12,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 1,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=542181",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/gov-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/copilot-license-options",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/anthropic-non-federal-gcc",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/resources/copilotpolicysetting",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which users hold the Microsoft 365 Copilot licence Edit with Copilot requires",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+        "reachable": true,
+        "segments": [
+          "Users",
+          "Active users",
+          "Licenses and Apps",
+          "Licenses"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Which users hold the Microsoft 365 Copilot licence Edit with Copilot requires",
+        "docs": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+        "reachable": true,
+        "token": "Set-MgUserLicense",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which users can access Anthropic models in non-federal GCC tenants",
+        "docs": "https://learn.microsoft.com/copilot/implement/anthropic-non-federal-gcc",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Settings",
+          "View all",
+          "AI providers operating as Microsoft subprocessors",
+          "Available subprocessors for your organization",
+          "Anthropic",
+          "I acknowledge and agree to the above terms",
+          "Choose which users can access Anthropic models"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether Copilot features are available in Excel and other Office apps (connected experiences that analyse content)",
+        "docs": "https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls",
+        "reachable": true,
+        "segments": [
+          "User Configuration",
+          "Policies",
+          "Administrative Templates",
+          "Microsoft Office 2016",
+          "Privacy",
+          "Trust Center",
+          "Allow the use of connected experiences in Office that analyze content"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Whether Copilot features are available in Excel and other Office apps (connected experiences that analyse content)",
+        "docs": "https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls",
+        "reachable": true,
+        "token": "Registry value",
+        "found": false
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}
