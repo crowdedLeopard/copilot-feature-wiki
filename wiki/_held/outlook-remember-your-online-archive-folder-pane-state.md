@@ -74,19 +74,23 @@ changes:
     note: "New briefing: Outlook on the web and new Outlook for Windows will remember the online archive's expanded or collapsed state, targeted for February CY2027."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 56 statements contradicted, 5 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-27"
+    note: "Corrected: narrowed the mailbox-policy sentence to 'most' policies, and replaced assurances about access, archive contents and mail actions with what the roadmap item describes."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 65 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-27"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 56
-  confirmed: 50
-  unconfirmed: 5
-  contradicted: 1
-  attempts: 1
-  hash: "3f955e37de5f744800681e8be2a5cb2f"
+  claims: 65
+  confirmed: 61
+  unconfirmed: 0
+  contradicted: 4
+  attempts: 2
+  hash: "30d6569f85402685037d4b8f1cdb8bd4"
 ---
 
 ## What's changing
@@ -99,24 +103,24 @@ The item is **In development**, with a General Availability target of **February
 
 ## Why it matters
 
-This is a user-interface convenience, and it changes nothing about who can see the archive, what is in it, or how mail is moved there. For a service owner, the practical effect is fewer small complaints from users with large archives who find the archive folder tree reopening, or closing, every time they return to the mailbox.
+This is a user-interface convenience. The roadmap describes a display-state change and does not describe new access to archive content. For a service owner, the practical effect is fewer small complaints from users with large archives who find the archive folder tree reopening, or closing, every time they return to the mailbox.
 
 Microsoft has not stated what happens on arrival. No source says anything beyond the folder pane's display will change, so there is nothing to configure ahead of the target date. The one thing worth knowing for the help desk is that the two clients keep separate states, so differing views between Outlook on the web and the new Outlook are expected, not a sync fault.
 
 ## Risk assessment
 
 **Data exposure**
-- No change: the feature records only whether the archive node is expanded or collapsed, and the roadmap item describes no new access to archive content.
+- The roadmap describes remembering whether the archive is expanded or collapsed; it describes no new access to archive content.
 
 **Security & identity**
-- No change: who can open an archive is still decided by whether the mailbox has an archive and, for delegates, by their mailbox permissions.
+- The roadmap describes a display-state change and does not describe new access to archive content.
 
 **Autonomy & actions**
-- No change: the feature acts on nothing; it does not move, delete or archive mail.
+- The roadmap describes remembering the archive's expanded or collapsed state; it describes no mail-processing action.
 
 **Change & support**
 - Because Outlook on the web and the new Outlook for Windows keep separate saved states, users who work in both may report that the archive looks different in each. Brief the help desk that this is the described behaviour.
-- A user who cannot see the archive at all has a different problem, which this change does not fix; Microsoft's troubleshooting page for a missing archive mailbox covers it.
+- A user who cannot see the archive at all can be pointed to Microsoft's troubleshooting page for a missing archive mailbox.
 
 ## Cost and licensing
 
@@ -160,7 +164,7 @@ Microsoft has not stated what happens on arrival. No source says anything beyond
 
 Microsoft Learn documents no administrator setting for whether Outlook remembers the archive's folder pane state at the time of writing (November 2026); the roadmap item describes it as client behaviour.
 
-The Set-OwaMailboxPolicy reference lists a ShowOnlineArchiveEnabled parameter, available only in Exchange Online, and Microsoft's page mapping classic Outlook policies to new Outlook points to it for mailbox archive settings. The reference carries no description of what the parameter does at the time of writing, so it is not listed as a control here. Mailbox policies for Outlook on the web and the new Outlook for Windows apply to both clients, so a policy cannot be set for one and not the other.
+The Set-OwaMailboxPolicy reference lists a ShowOnlineArchiveEnabled parameter, available only in Exchange Online, and Microsoft's page mapping classic Outlook policies to new Outlook points to it for mailbox archive settings. The reference carries no description of what the parameter does at the time of writing, so it is not listed as a control here. Most mailbox policies apply to both Outlook on the web and new Outlook for Windows, so those policies cannot be enabled on one client but not the other ([Policy Management in new Outlook for Windows](https://learn.microsoft.com/microsoft-365-apps/outlook/manage/policy-management)).
 
 Enabling or disabling an archive needs the Mail Recipients role. Disabling an archive is not a way to manage this change: after 30 days the archive's contents are permanently deleted.
 
@@ -172,7 +176,7 @@ Enabling or disabling an archive needs the Mail Recipients role. Disabling an ar
 - Does the remembered state follow the user across devices in the new Outlook for Windows, or is it kept per device?
 
 <!-- rationale
-risk: Low. The change only remembers how the folder pane shows an archive the user can already open; it reaches no new data and grants no new access.
+risk: Low. The roadmap describes a display-state change and does not describe new access to archive content.
 cost: Low. Microsoft publishes no licence or meter for this change; the online archive itself comes with the Exchange Online plans that include archiving or the Exchange Online Archiving add-on. The only cost is a line in user communications.
 impact: Low. Only users who have an online archive and use Outlook on the web or the new Outlook for Windows will notice, and only as the archive staying expanded or collapsed between visits.
 -->
@@ -180,10 +184,8 @@ impact: Low. Only users who have an online archive and use Outlook on the web or
 <!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls / applicability: Mailbox policies apply to both clients, so a policy cannot be set for one and not the other. | Found: Most of the mailbox policies apply to both Outlook on the web and new Outlook for Windows, so you can't enable them on one client but not the other. | Fix: Replace the sentence with: 'Most mailbox policies apply to both Outlook on the web and new Outlook for Windows, so those policies cannot be enabled on one client but not the other.' Retain the policy-management citation. | Source: https://learn.microsoft.com/microsoft-365-apps/outlook/manage/policy-management
-- [unsupported, major] Why it matters; Risk assessment: Security & identity; rationale: risk / behaviour: This feature changes nothing about who can see the archive and grants no new access. | Found: Searched: "Outlook" "remember" "archive" "permissions" "state". Read roadmap, archive troubleshooting and policy pages; they describe pane state or existing permissions, not this feature's effect on access. | Fix: Replace the unchanged-access assurances with: 'The roadmap describes a display-state change and does not describe new access to archive content.' Use that narrower premise in the risk rationale and Security & identity bullet.
-- [unsupported, major] Why it matters / behaviour: The feature changes nothing about what is in the archive. | Found: Searched: "Outlook" "archive" "pane" "state" "delete". Read roadmap and archive-management documentation; none expressly states that archive contents are unchanged by this feature. | Fix: Remove 'what is in it' from the unchanged-behaviour assurance; retain only the roadmap's description of remembering expanded or collapsed state.
-- [unsupported, major] Why it matters; Risk assessment: Autonomy & actions / behaviour: The feature does not move, delete or archive mail. | Found: Searched: "Outlook" "archive" "pane" "state" "delete". Read roadmap, enable-archive-mailboxes and release notes; none states these negative operational guarantees for the remembered-state feature. | Fix: Replace the Autonomy & actions bullet with: 'The roadmap describes remembering the archive's expanded or collapsed state; it describes no mail-processing action.' Remove the categorical assurance about how mail is moved from Why it matters.
-- [unsupported, major] Risk assessment: Data exposure; rationale: risk / behaviour: The feature records only whether the archive node is expanded or collapsed and reaches no new data. | Found: Searched: "Outlook" "remember" "archive" "permissions" "state". Read roadmap and policy documentation; no page specifies the complete data recorded or accessed to implement this feature. | Fix: Replace the Data exposure bullet with: 'The roadmap describes remembering whether the archive is expanded or collapsed; it describes no new access to archive content.' Remove 'it reaches no new data' from the risk rationale.
-- [unsupported, major] Risk assessment: Change & support / behaviour: This change does not fix an archive mailbox that is missing entirely. | Found: Searched: "online archive" "folder pane" "remember". Read roadmap and archive-mailbox-not-visible; the latter provides missing-archive fixes but neither source states what this future feature cannot fix. | Fix: Remove 'which this change does not fix' and retain the advice to use Microsoft's missing-archive troubleshooting page.
+- [contradicted, blocker] front matter: licensing.notes / licensing: Exchange Online Plan 1 users need the Exchange Online Archiving add-on for the online archive. | Found: | Feature | Exchange Server | Exchange Online Plan 1 | Exchange Online Plan 2 | Exchange Online Kiosk | | Archive mailboxes | 100 GB | 50 GB | 1.5 TB | Not available | | Fix: Remove Exchange Online Plan 1 from the licensing.notes list of plans that 'need' the add-on. Add: 'Exchange Online Plan 1 includes a 50 GB archive mailbox.' Cite https://learn.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits#storage-limits. | Source: https://learn.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits
+- [contradicted, blocker] front matter: licensing.notes / licensing: Microsoft 365 Business Basic users need the Exchange Online Archiving add-on for the online archive. | Found: | Feature | Microsoft 365 Business Basic and Standard | Microsoft 365 Business Premium ... | Archive mailboxes^7,8^ | 50 GB | 1.5 TB^1^ ... | Fix: Remove Business Basic from the licensing.notes list of plans that 'need' the add-on. Add: 'Microsoft 365 Business Basic includes a 50 GB archive mailbox.' Cite https://learn.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits#storage-limits. | Source: https://learn.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits
+- [contradicted, blocker] front matter: licensing.notes / licensing: Microsoft 365 Business Standard users need the Exchange Online Archiving add-on for the online archive. | Found: | Feature | Microsoft 365 Business Basic and Standard | Microsoft 365 Business Premium ... | Archive mailboxes^7,8^ | 50 GB | 1.5 TB^1^ ... | Fix: Remove Business Standard from the licensing.notes list of plans that 'need' the add-on. Add: 'Microsoft 365 Business Standard includes a 50 GB archive mailbox.' Cite https://learn.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits#storage-limits. | Source: https://learn.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits
+- [contradicted, blocker] front matter: licensing.notes / licensing: Office 365 E1 users need the Exchange Online Archiving add-on for the online archive. | Found: | Feature | Microsoft 365 Business Basic and Standard | Microsoft 365 Business Premium | Microsoft 365 Enterprise E3/E5 | Office 365 Enterprise E1 | ... | Archive mailboxes^7,8^ | 50 GB | 1.5 TB^1^ | 1.5 TB^1^ | 50 GB | ... | Fix: Remove E1 from the licensing.notes list of plans that 'need' the add-on. Add: 'Office 365 E1 includes a 50 GB archive mailbox.' Cite https://learn.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits#storage-limits. | Source: https://learn.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits
 -->

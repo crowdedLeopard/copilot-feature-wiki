@@ -92,19 +92,23 @@ changes:
     note: "New briefing: AI prompt and response messages viewable for anonymised users in Insider Risk Management, with role-group, privacy and audit-log controls."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 47 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-27"
+    note: "Corrected two statements: Autonomy & actions now gives only the roadmap's description, and Scope now says Microsoft has not documented which role groups can read AI interaction messages for anonymised users."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 47 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-27"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 47
-  confirmed: 45
-  unconfirmed: 2
+  confirmed: 47
+  unconfirmed: 0
   contradicted: 0
-  attempts: 1
-  hash: "49e10da1f28b0337d333bd361801abf2"
+  attempts: 0
+  hash: "64c8d30efc9f51e74066c09111475be1"
 ---
 
 ## What's changing
@@ -131,7 +135,7 @@ Microsoft has not stated what happens on arrival. Because the roadmap describes 
 - Anonymisation of usernames is limited in places already: Learn states that it is not preserved for alerts exported through the exporting API or to Microsoft Purview eDiscovery. AI message text adds another place where identity can surface.
 
 **Autonomy & actions**
-- No change: the capability displays interaction records to people investigating alerts and takes no action of its own.
+- The roadmap describes this capability as access to and review of underlying risky AI prompt and response interactions.
 
 **Change & support**
 - Privacy notices, works council agreements or internal procedures that describe Insider Risk Management as pseudonymised may now overstate what anonymisation hides. Expect questions from privacy and HR stakeholders rather than from end users.
@@ -144,7 +148,7 @@ Microsoft has not stated what happens on arrival. Because the roadmap describes 
 
 ## Scope
 
-- **Who sees it:** members of role groups that can access and investigate alerts: *Insider Risk Management*, *Insider Risk Management Analysts* and *Insider Risk Management Investigators*, according to the permissions page. Of these, *Insider Risk Management* and *Insider Risk Management Investigators* can also open Content explorer.
+- **Who can investigate alerts:** members of role groups that can access and investigate alerts: *Insider Risk Management*, *Insider Risk Management Analysts* and *Insider Risk Management Investigators*, according to the permissions page. Of these, *Insider Risk Management* and *Insider Risk Management Investigators* can also open Content explorer. Microsoft has not documented which of these role groups can read the new AI interaction messages for anonymised users.
 - **Which users' activity:** users with Insider Risk Management alerts from AI usage, in tenants where **Show anonymized versions of usernames** is selected.
 - **Cloud:** Worldwide (Standard Multi-Tenant), as the roadmap record lists it.
 - **Platform:** Web (Microsoft Purview portal).
@@ -193,11 +197,4 @@ Microsoft Learn documents no setting that hides AI prompt and response text from
 risk: Medium. Pseudonymised investigations now show the full text of users' AI prompts and responses, which can identify the person; membership of the Insider Risk Management role groups is the documented control over who investigates alerts.
 cost: Low. Insider Risk Management is included in the licences the Microsoft Purview service description lists; no separate charge for this capability is published, so the cost is admin time on role reviews and privacy sign-off.
 impact: Low. Only Insider Risk Management analysts and investigators see the change; end users notice nothing.
--->
-
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: The capability introduces no change in actions and takes no action of its own. | Found: Searched: '"Insider Risk Management" "viewing" "messages" "automatic"'. Read roadmap and activities documentation. They describe access and review, not a guarantee of no autonomous actions or an unchanged action model. | Fix: Replace the bullet with: 'The roadmap describes this capability as access to and review of underlying risky AI prompt and response interactions.'
-- [unsupported, blocker] Scope: Who sees it / role: The new message-viewing capability is visible to members of all three role groups that can investigate alerts. | Found: Searched: '"Insider Risk Management" "prompt" "Analysts" "view"'. Read permissions, activities and Content explorer. Alert access is documented for three groups, but no passage grants each group this new message view; the briefing itself says that mapping is unknown. | Fix: Change the Scope bullet label from 'Who sees it' to 'Who can investigate alerts'. Retain the documented alert and Content explorer role permissions, and append: 'Microsoft has not documented which of these role groups can read the new AI interaction messages for anonymised users.'
 -->

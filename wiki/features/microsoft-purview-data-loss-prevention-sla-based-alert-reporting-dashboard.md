@@ -95,15 +95,17 @@ changes:
     note: "Corrected after the independent check: removed the unsourced MTTA/MTTD/MTTR expansions and the cap statement, fixed aggregated-alert licensing, qualified the None severity value and set the SLA control's scope to other."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 60 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 68 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 60
+  claims: 68
+  confirmed: 68
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -202,9 +204,9 @@ cost: Low. The only cost the sources show is admin and analyst time to set SLA t
 impact: Low. Admins and DLP alert analysts are the people who would see it; end users are not mentioned in the roadmap item and nothing in it changes how DLP policies act on them.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls / admin-path: The rule severity control is reached through Microsoft Purview portal > Data loss prevention > Policies > policy > Edit policy > Customize advanced DLP rules > rule > Incident reports. | Found: Go to the Customize advanced DLP rules page and edit the Low volume of content detected scenarios U.S. PII Data Enhanced. 5. Scroll down to the Incident reports section | Fix: Extend controls[0].ui.path and the rendered row to 'Data loss prevention > Policies > policy > Edit policy > Customize advanced DLP rules > rule > Incident reports > Use this severity level in admin alerts and reports'. Set ui.docs to https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external, which documents the final setting; retain the already cited endpoint procedure for the route into the existing rule. | Source: https://learn.microsoft.com/purview/endpoint-dlp-create-policy-detect-pii-data-exposure
-- [supported, minor] controls[1].ui; Governance controls / admin-path: DLP alert role-group membership is managed in Microsoft Purview portal > Settings > Roles and scopes > Role groups. | Found: Go to Settings > Roles and scopes to view and manage compliance and governance roles in your organization. 2. Select Role groups. | Fix: Extend controls[1].ui.path and the rendered row to 'Settings > Roles and scopes > Role groups > Role groups for Microsoft Purview solutions > role group > Edit > Edit members of the role group > Choose users', as documented at https://learn.microsoft.com/purview/purview-permissions. The current path stops on the correct list but does not reach membership editing. | Source: https://learn.microsoft.com/purview/purview-permissions
+- [supported, minor] controls[0].ui; Governance controls / admin-path: The rule-severity path is Microsoft Purview portal > Data loss prevention > Policies > policy > Edit policy > Customize advanced DLP rules > rule > Incident reports. | Found: Choose Edit policy. ... Go to the Customize advanced DLP rules page and edit the Low volume of content detected scenarios U.S. PII Data Enhanced. ... Scroll down to the Incident reports section | Fix: Extend the front-matter and rendered path to 'Data loss prevention > Policies > policy > Edit policy > Customize advanced DLP rules > rule > Incident reports > Use this severity level in admin alerts and reports'. Set ui.docs to https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external, which documents the final setting. Keep the existing endpoint procedure as the source for reaching and editing the rule. | Source: https://learn.microsoft.com/purview/endpoint-dlp-create-policy-detect-pii-data-exposure
+- [supported, minor] controls[1].ui; Governance controls / admin-path: Microsoft Purview role-group membership management is reached through Settings > Roles and scopes > Role groups. | Found: Go to Settings > Roles and scopes to view and manage compliance and governance roles in your organization. 2. Select Role groups. | Fix: Extend the front-matter and rendered path to 'Settings > Roles and scopes > Role groups > Role groups for Microsoft Purview solutions > role group > Edit > Edit members of the role group > Choose users', as documented at https://learn.microsoft.com/purview/purview-permissions. The current path reaches the correct role-group list but stops before membership editing. | Source: https://learn.microsoft.com/purview/purview-permissions
 -->

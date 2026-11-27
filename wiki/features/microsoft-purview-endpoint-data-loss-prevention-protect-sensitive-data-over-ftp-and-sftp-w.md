@@ -114,15 +114,17 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 69 statements not yet confirmed"
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 69 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 68 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 69
-  confirmed: 69
+  claims: 68
+  confirmed: 68
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -221,7 +223,7 @@ cost: Variable. Endpoint DLP is included in the listed licences, but choosing cu
 impact: Low. Admins who manage Endpoint DLP and users on managed Windows devices who transfer files over FTP or SFTP notice it, and only where a rule applies the activity.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
 - [supported, minor] Risk assessment: Change & support / behaviour: A device that has not received a new or updated policy is not covered by that policy version. | Found: Policies that are updated while a device is offline won't be pushed to that device. Similarly, such policies won't be enforced on that device, until the device is back online. However, the outdated policy that exists on the offline device will still be enforced. | Fix: Add https://learn.microsoft.com/purview/endpoint-dlp-learn-about#endpoint-dlp-and-offline-devices to sources for the statement about coverage before a device receives the latest policy. | Source: https://learn.microsoft.com/purview/endpoint-dlp-learn-about#endpoint-dlp-and-offline-devices

@@ -1,0 +1,689 @@
+{
+  "slug": "microsoft-purview-insider-risk-management-ability-to-create-cases-without-content-in-irm",
+  "roadmapId": 554940,
+  "title": "Microsoft Purview Insider Risk Management: create cases without downloading content",
+  "status": "verified",
+  "date": "2026-11-27",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 48,
+    "confirmed": 48,
+    "unconfirmed": 0,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 0,
+    "minor": 0
+  },
+  "summary": "The briefing is supported by the roadmap record and Microsoft documentation. It accurately distinguishes the roadmap's 2,000 active cases from Learn's still-published limit of 100, and flags the content-download option's preview label.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap item is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "General availability was targeted for May CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"May CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is February CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"February CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The release phases are General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: products; title",
+      "type": "record",
+      "claim": "This is a Microsoft Purview Insider Risk Management feature.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"title\": \"Microsoft Purview: Insider Risk Management – Ability to create cases without content in IRM\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-06-11T23:15:28.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-06-11T23:15:28\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "summary; What's changing; Why it matters; rationale: risk",
+      "type": "behaviour",
+      "claim": "An investigator can create a case from an alert without downloading its content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-activities",
+      "quote": "If you don't enable content download when you create the case, you can enable downloads when the case is active.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing; controls[1].note",
+      "type": "behaviour",
+      "claim": "Content download can be initiated later while the case is active, subject to available capacity.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "If a case is created without content download, content download can be initiated anytime the case is active pending available content download limits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing: opening parenthesis",
+      "type": "behaviour",
+      "claim": "Insider Risk Management scores user activity for insider risk.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-activities",
+      "quote": "Triggering event: Displays the most recent triggering event that prompted the policy to start assigning risk scores to the user's activity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing: opening parenthesis",
+      "type": "behaviour",
+      "claim": "Insider Risk Management raises alerts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-activities",
+      "quote": "Insider Risk Management policies automatically generate alerts based on risk indicators you define, and display them on the Standard alert dashboard.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Creating a case without content download avoids making the alert's file and email copies in Content explorer until content is added.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-cases",
+      "quote": "The Content explorer tab helps risk investigators review copies of all individual files and email messages associated with risk alerts. ... If content download is off for the case, select Add content from the Content explorer tab.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[0].ui; Governance controls table; What's changing; Governance guidance",
+      "type": "admin-path",
+      "claim": "The per-case download choice is at Microsoft Purview portal > Insider Risk Management > Alerts > alert > Actions > Confirm alerts & create case > Create case with content download on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-activities",
+      "quote": "Go to the Insider Risk Management solution. ... Select Alerts in the left navigation. ... select Actions > Confirm alerts & create case. ... To download the content for the case, select Create case with content download on (preview).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[0].note; What's changing; Open questions",
+      "type": "availability",
+      "claim": "Learn marks Create case with content download on as preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-activities",
+      "quote": "To download the content for the case, select Create case with content download on (preview).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing: case-creation dialog",
+      "type": "admin-path",
+      "claim": "The case-creation dialog is named Confirm alert and create insider risk case.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-activities",
+      "quote": "In the Confirm alert and create insider risk case dialog box, enter a name for the case, select users to add as contributors, and add comments as applicable.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The Cases dashboard's Content download column shows whether download is on or off for each case.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-cases",
+      "quote": "Content download: This field shows whether content download is on or off for the case.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Why it matters; Scope; Open questions; changes",
+      "type": "record",
+      "claim": "The roadmap describes a new active case limit of 2,000.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "With this, we will introduce a new active case limit (2000).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Why it matters; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap says the active content download limit stays at 100.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "There is no change to the active content download limit (100).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Scope; Governance guidance; Open questions; changes",
+      "type": "behaviour",
+      "claim": "The Learn limits page still lists 100 active cases, unlike the roadmap's 2,000.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-limits",
+      "quote": "| Maximum number of active cases. | 100 |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[0].note; What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "At the content download limit, investigators may still create cases but must leave the download box unchecked.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-activities",
+      "quote": "After you reach the content download limit, you can still create cases, but you must leave the box unchecked.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Content download copies the alert's files from their original storage sources into the case.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-cases",
+      "quote": "the case captures and copies all the downloaded files for the alert to the Insider Risk Management case from original storage sources.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Security & identity; Scope; controls[3].note; rationale: impact",
+      "type": "role",
+      "claim": "Creating a case requires membership of Insider Risk Management or Insider Risk Management Investigators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-activities",
+      "quote": "You must be a member of the Insider Risk Management or Insider Risk Management Investigators role group to create a case.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Data exposure; controls[3]; Governance controls; rationale: risk",
+      "type": "role",
+      "claim": "The Insider Risk Management and Insider Risk Management Investigators role groups have Content explorer access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "| Access & view the Content Explorer | Yes | No | No | Yes | No | No |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Data exposure; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Active cases and associated artefacts are retained indefinitely.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-limits",
+      "quote": "| Active cases (and associated artifacts) | Indefinite retention, never expire. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[2].note; Risk assessment: Data exposure; Governance controls table",
+      "type": "behaviour",
+      "claim": "Resolved cases and associated artefacts are automatically deleted 120 days after resolution.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-limits",
+      "quote": "| Resolved cases (and associated artifacts) | 120 days from case resolution, then automatically deleted. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "The Privacy setting controls whether usernames are displayed or anonymized in alerts and cases.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings",
+      "quote": "Choose whether to display usernames or anonymized versions of usernames for all current and past policy matches for alerts and cases.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Cases are created manually from alerts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-cases",
+      "quote": "Create cases manually from alerts when you need to take extra steps to address a compliance-related issue for a user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "New-case content usually takes about an hour to populate in Content explorer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-content-explorer",
+      "quote": "For new cases, it usually takes about an hour for content to populate in Content explorer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Change & support; Open questions",
+      "type": "behaviour",
+      "claim": "Content explorer stops reflecting new activities after a case has been active for over 30 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-content-explorer",
+      "quote": "After a case is active for over 30 days, Content explorer isn't updated to reflect new activities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[1].note; controls[2].governs; Why it matters; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "At the content download limit, resolving cases frees capacity for additional content download.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-content-explorer",
+      "quote": "If you've reached the maximum number cases with content downloaded limit, you must resolve cases to download additional content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: licensing.model; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The new per-case option is included within Insider Risk Management's existing licensing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "To access and use Insider Risk Management, administrators need to verify their organization has a supported subscription and assign the appropriate licenses to users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "front matter: licensing.notes; Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "Administrators must verify a supported subscription and assign appropriate licences to users to use Insider Risk Management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "To access and use Insider Risk Management, administrators need to verify their organization has a supported subscription and assign the appropriate licenses to users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "front matter: licensing.notes; Cost and licensing: Licence",
+      "type": "absence",
+      "claim": "Microsoft publishes no licence specific to the option to create cases without content.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Insider Risk Management cases content download licensing price meter charge'; opened Learn insider-risk-management-configure, activities, cases and purview-billing-models. Found general product licensing and indicator billing, not an option-specific licence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.notes; Cost and licensing: Meter; rationale: cost",
+      "type": "absence",
+      "claim": "No separate charge or meter for creating cases or downloading their content is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Insider Risk Management cases content download licensing price meter charge'; opened Learn insider-risk-management-configure, cases, content-explorer and purview-billing-models. Found indicator processing meters, not a separate case or content-download meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "Some Insider Risk Management indicators require the Purview pay-as-you-go billing model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "Some indicators included in Insider Risk Management are only available if you enable the pay-as-you-go billing model for your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: defaultState; summary; Governance controls",
+      "type": "default",
+      "claim": "The capability is user-opt-in: the investigator chooses content download per case without a separate admin enablement switch.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-activities",
+      "quote": "To download the content for the case, select Create case with content download on (preview). ... If you don't enable content download when you create the case, you can enable downloads when the case is active.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[1].ui; Governance controls table; What's changing; Governance guidance",
+      "type": "admin-path",
+      "claim": "The add-content path is Microsoft Purview portal > Insider Risk Management > Cases > case > Content explorer > Add content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-content-explorer",
+      "quote": "go to the Insider Risk Management Cases page and select the row of the Case name ... select the Content explorer tab ... If content download is off for the case, select Add content from the Content explorer tab.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The resolution path is Microsoft Purview portal > Insider Risk Management > Cases > case > Resolve case.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-cases",
+      "quote": "Go to the Insider Risk Management solution. ... Select Cases in the left navigation. ... Select a case, and then select Resolve case on the case action toolbar.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[3].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Membership is configured at Microsoft Purview portal > Settings > Roles and groups > Roles groups > Insider Risk Management > Edit > Choose users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "Select Settings ... select Roles and groups, then select Roles groups ... Select the Insider Risk Management role group, then select Edit. ... Select Choose users, then select the checkboxes for all the users you want to add to the role group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[3].api; Governance controls table",
+      "type": "command",
+      "claim": "Add-RoleGroupMember -Identity \"Insider Risk Management\" -Member \"<user-UPN>\" adds a user to that role group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+      "quote": "Use the Add-RoleGroupMember cmdlet to add members to a management role group. ... The Identity parameter specifies the role group to add a member to. ... The Member parameter specifies who you want to add to the role group. ... User ID or user principal name (UPN)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[0].api; Governance controls table",
+      "type": "absence",
+      "claim": "No API or command is documented for creating an Insider Risk Management case with the content download choice.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Insider Risk Management case create add content resolve API PowerShell content download'; opened Learn activities, settings-power-automate and Graph security-casemanagementroot-post-cases. No IRM case-creation operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[1].api; Governance controls table",
+      "type": "absence",
+      "claim": "No API or command is documented for adding downloaded content to an existing Insider Risk Management case.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Insider Risk Management case create add content resolve API PowerShell content download'; opened Learn content-explorer, settings-power-automate and Graph security-casemanagementroot-post-cases. No IRM add-content operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[2].api; Governance controls table",
+      "type": "absence",
+      "claim": "No API or command is documented for resolving an Insider Risk Management case.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'site:learn.microsoft.com powershell InsiderRisk case resolve content download'; opened Learn cases and settings-power-automate and inspected the documented flow actions. No IRM case-resolution operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[4].ui and controls[4].api; summary; Why it matters; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No tenant-wide UI setting or API is documented to require, prevent or separately enable content download for new cases.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Insider Risk Management cases create without content download tenant admin switch require prevent settings'; opened Learn settings, activities, settings-power-automate and Graph security-casemanagementroot-post-cases. No tenant-wide download control found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance controls: role propagation",
+      "type": "role",
+      "claim": "Role group permission changes can take up to 30 minutes to apply.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "After configuring your role groups, it might take up to 30 minutes for the role group permissions to apply to assigned users across your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Scope: Who uses it; Governance controls",
+      "type": "role",
+      "claim": "Insider Risk Management Analysts can access and investigate cases but cannot view Content explorer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "| Access & investigate cases | Yes | No | Yes | Yes | No | No |\n| Access & view the Content Explorer | Yes | No | No | Yes | No | No |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Governance controls: immediate deletion",
+      "type": "behaviour",
+      "claim": "Selecting immediate case and associated-content deletion during resolution permanently removes related content, alerts and insights.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-cases",
+      "quote": "If you select the option to delete the case and associated content immediately when resolving the case, you permanently remove all related content, alerts, and insights.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-27T11:53:38.089Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=554940",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-activities",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-cases",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-content-explorer",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-limits",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-settings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether a new case downloads the alert's content into Content explorer",
+        "docs": "https://learn.microsoft.com/purview/insider-risk-management-activities",
+        "reachable": true,
+        "segments": [
+          "Insider Risk Management",
+          "Alerts",
+          "alert",
+          "Actions",
+          "Confirm alerts & create case",
+          "Create case with content download on"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Downloading content into an active case created without it",
+        "docs": "https://learn.microsoft.com/purview/insider-risk-management-content-explorer",
+        "reachable": true,
+        "segments": [
+          "Insider Risk Management",
+          "Cases",
+          "case",
+          "Content explorer",
+          "Add content"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Resolving a case, which frees content download capacity",
+        "docs": "https://learn.microsoft.com/purview/insider-risk-management-cases",
+        "reachable": true,
+        "segments": [
+          "Insider Risk Management",
+          "Cases",
+          "case",
+          "Resolve case"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Who can create cases and view Content explorer (Insider Risk Management role group membership)",
+        "docs": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Roles and groups",
+          "Roles groups",
+          "Insider Risk Management",
+          "Edit",
+          "Choose users"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Who can create cases and view Content explorer (Insider Risk Management role group membership)",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "reachable": true,
+        "token": "Add-RoleGroupMember",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

@@ -107,15 +107,17 @@ changes:
     note: "Corrected: default state is now on, qualified by agent deployment, and action is prepare; role-group path extended; checklist items without a controls row removed."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 93 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 95 statements not yet confirmed"
 version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 93
-  confirmed: 92
+  claims: 95
+  confirmed: 94
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -231,10 +233,11 @@ cost: Variable. The agent consumes Security Copilot security compute units (SCUs
 impact: Low. Security analysts and admins who triage DLP alerts notice it; Microsoft's notice MC1255406 says there is no impact to users.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing: public preview rollout / record: MC1255406 says public preview began rolling out in early April 2026. | Found: Public Preview: We will begin rolling out early April 2026 and expect to complete by mid-April 2026. | Fix: Replace 'says the public preview began rolling out in early April 2026' with 'says the public preview was scheduled to begin rolling out in early April 2026'. The notice gives a plan, not confirmation that rollout began.
-- [supported, minor] Risk assessment: Security & identity; Governance guidance: Before rollout; rationale: risk / behaviour: Microsoft recommends creating a separate Microsoft Entra agent identity. | Found: Create and use agent identity (recommended): Create a separate Microsoft Entra agent identity for the agent. Associate all agent activities with this agent identity. | Fix: Add to the identity discussion: 'The get-started and overview pages recommend an agent identity, although the separate preview page still describes the DLP agent as running under the administrator who enabled it.' Cite https://learn.microsoft.com/purview/copilot-in-purview-agents, whose DLP Identity row says 'Runs as the administrator who turned on the agent.' | Source: https://learn.microsoft.com/purview/copilot-in-purview-agents-overview
-- [contradicted, minor] Governance guidance: Before rollout, first bullet / consistency: Every control the checklist tells the reader to check is represented in the controls table. | Found: Check that the tenant is onboarded to Security Copilot and has SCUs provisioned or the E5/E7 inclusion capacity ... Table: agent configuration; deactivation; role group membership; agent SCU consumption monitoring. | Fix: The first Before rollout bullet asks readers to check Security Copilot onboarding and available SCU or inclusion capacity, but the table only gives agent consumption monitoring, not onboarding or capacity configuration. Remove that checklist bullet; its prerequisite facts already appear in Scope. Do not add a control row as part of this correction.
+- [supported, minor] What's changing: public preview rollout / record: MC1255406 says public preview began rolling out in early April 2026. | Found: Public Preview: We will begin rolling out early April 2026 and expect to complete by mid-April 2026. | Fix: Replace 'says the public preview began rolling out in early April 2026' with 'says the public preview was scheduled to begin rolling out in early April 2026'. The notice gives a plan rather than confirmation that delivery began.
+- [supported, minor] Risk assessment: Data exposure; controls[2].governs; Scope: Roles / role: The get-started page's viewing roles govern access to agent results in both Purview and Defender XDR. | Found: Permissions for viewing alert results in Purview and Defender XDR ... The account you use to view results ... must be assigned the roles (any one from each group) | Fix: Append to Scope's Roles bullet: 'The separate preview overview still lists Insider Risk Management roles for DLP viewing, unlike the DLP-specific get-started page.' Cite https://learn.microsoft.com/purview/copilot-in-purview-agents, whose DLP role-based access row lists Insider Risk Management Analysts, Investigators or the Insider Risk Management role group. Keep the specific get-started requirements. | Source: https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started
+- [supported, minor] Risk assessment: Security & identity; Governance guidance: Before rollout; rationale: risk / behaviour: Microsoft recommends creating a separate Microsoft Entra agent identity. | Found: Create and use agent identity (recommended): Create a separate Microsoft Entra agent identity for the agent. | Fix: Append to the identity discussion: 'The get-started and overview pages recommend an agent identity, although the separate preview page still describes the DLP agent as running under the administrator who enabled it.' Cite https://learn.microsoft.com/purview/copilot-in-purview-agents, whose DLP Identity row says 'Runs as the administrator who turned on the agent.' | Source: https://learn.microsoft.com/purview/copilot-in-purview-agents-overview
+- [contradicted, minor] Governance guidance: Before rollout, first bullet / consistency: Every control the governance checklist asks readers to check has a controls-table row. | Found: Check that the tenant is onboarded to Security Copilot and has SCUs provisioned or the E5/E7 inclusion capacity ... Table: agent configuration; deactivation; role group membership; agent SCU consumption monitoring. | Fix: Remove the first Before rollout checklist bullet. It asks readers to check Security Copilot onboarding and available capacity, while the table only provides consumption monitoring, not onboarding or capacity configuration. Those prerequisite facts already appear in Scope; do not add a control row.
 -->

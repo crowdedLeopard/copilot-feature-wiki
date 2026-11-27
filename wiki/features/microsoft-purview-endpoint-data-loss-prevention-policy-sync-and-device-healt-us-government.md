@@ -74,15 +74,17 @@ changes:
     note: "First briefing for roadmap item 565374, the GCC, GCC High and DoD entry for this feature, targeted August CY2027."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 58 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 72 statements not yet confirmed"
 version: 1
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 58
-  confirmed: 57
+  claims: 72
+  confirmed: 71
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -184,10 +186,10 @@ cost: Low. The only cost the sources show is administrator time to review the ou
 impact: Low. The roadmap describes it for administrators who track DLP policy deployment across devices. It does not describe anything that end users see.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Scope; Governance guidance / record: Roadmap item 562016 names the same feature for Worldwide (Standard Multi-Tenant). | Found: "id": 562016; "title": "Microsoft Purview: Endpoint Data Loss Prevention - Policy Sync & Device Health AI-Powered Investigation"; "clouds": ["Worldwide (Standard Multi-Tenant)"] | Fix: Add https://www.microsoft.com/microsoft-365/roadmap?id=562016 to sources for the Worldwide item's scope and targets.
-- [supported, minor] front matter: licensing.model / licensing: Licensing is unknown for the capability. | Found: Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, Microsoft 365 E5/A5/F5/G5 Information Protection & Governance | Endpoint Data Loss Prevention (DLP) | Included | Fix: Set licensing.model to included. Replace licensing.notes with 'Endpoint DLP is included in Microsoft 365 E5/A5/G5, among other listed plans. Licensing specific to this planned AI investigation capability is not yet published.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-data-loss-prevention-endpoint-data-loss-protection-dlp. This acknowledges product-level entitlement, not confirmed feature-specific entitlement. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-data-loss-prevention-endpoint-data-loss-protection-dlp
-- [contradicted, minor] Governance guidance: Before rollout, role assignment; controls / consistency: The checklist's instruction to assign device-health triage roles has a corresponding controls-table row. | Found: Assign Compliance Administrator or Security Administrator to the people who will triage device health; ... Controls rows: Tenant switch for the AI-powered policy sync and device health investigation; Per-device configuration status and policy sync status. | Fix: Replace the checklist bullet beginning 'Assign Compliance Administrator or Security Administrator' with 'Plan who will triage device health using the dashboard roles described in Risk assessment.' The role-assignment step currently has no controls-table row; do not add a row as part of this correction.
+- [supported, minor] What's changing; Scope; Governance guidance / record: Roadmap item 562016 lists the same named feature for Worldwide (Standard Multi-Tenant). | Found: "id": 562016; "title": "Microsoft Purview: Endpoint Data Loss Prevention - Policy Sync & Device Health AI-Powered Investigation"; "clouds": ["Worldwide (Standard Multi-Tenant)"] | Fix: Add https://www.microsoft.com/microsoft-365/roadmap?id=562016 to sources for the Worldwide item's scope and targets.
+- [supported, minor] front matter: licensing.model / licensing: Licensing is unknown for the capability. | Found: Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, Microsoft 365 E5/A5/F5/G5 Information Protection & Governance | Endpoint Data Loss Prevention (DLP) | Included | Fix: Set licensing.model to included. Replace licensing.notes with 'Endpoint DLP is included in Microsoft 365 E5/A5/G5, among other listed plans. Licensing specific to this planned AI investigation capability is not yet published.' Add the cited Microsoft Purview service description URL to sources. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-data-loss-prevention-endpoint-data-loss-protection-dlp
+- [contradicted, minor] Governance guidance: Before rollout; controls / consistency: The checklist's instruction to assign device-health triage roles has a corresponding controls-table row. | Found: Assign Compliance Administrator or Security Administrator to the people who will triage device health; controls: Tenant switch for the AI-powered policy sync and device health investigation; Per-device configuration status and policy sync status. | Fix: Replace the checklist bullet beginning 'Assign Compliance Administrator or Security Administrator' with 'Plan who will triage device health using the dashboard roles described in Risk assessment.' The role-assignment instruction has no controls-table row; do not add a row as part of this correction.
 -->

@@ -3,7 +3,7 @@
   "roadmapId": 562342,
   "title": "Microsoft Purview DLP: count of labelled attachments condition for Exchange Online",
   "status": "verified-with-gaps",
-  "date": "2026-11-20",
+  "date": "2026-11-27",
   "version": 1,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
@@ -14,21 +14,21 @@
   "notes": [],
   "hold": null,
   "counts": {
-    "claims": 56,
-    "confirmed": 55,
+    "claims": 53,
+    "confirmed": 52,
     "unconfirmed": 0,
     "contradicted": 1,
     "blocker": 0,
     "major": 0,
     "minor": 3
   },
-  "summary": "The briefing accurately reports the planned condition, counting rules, rollout windows and administrator-configured default. The cited documentation supports the policy controls and general licensing; minor corrections would complete the navigation headings and align the checklist with its controls table.",
+  "summary": "The briefing is supported by the roadmap, the supplied Microsoft notice and Microsoft Learn. Minor corrections should add the omitted wizard heading to both portal paths and remove checklist checks for label publication and administrator membership that have no corresponding control row.",
   "claims": [
     {
       "n": 1,
-      "where": "What's changing",
+      "where": "title; summary; What's changing",
       "type": "record",
-      "claim": "Microsoft plans the Exchange Online condition named Count of labeled documents is greater than.",
+      "claim": "Microsoft Purview DLP is adding the condition named Count of labeled documents is greater than.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "This release introduces a new condition for Exchange Online policies: “Count of labeled documents is greater than.”",
@@ -37,9 +37,31 @@
     },
     {
       "n": 2,
-      "where": "summary; What's changing; Risk assessment; Governance guidance",
+      "where": "What's changing; Scope; Governance guidance",
       "type": "record",
-      "claim": "The condition counts attachments in one email that carry a matching sensitivity label, rather than unlabelled files.",
+      "claim": "The condition is available for Exchange Online DLP policies.",
+      "status": "supported",
+      "source": "Message Center post MC1508235",
+      "quote": "The condition is available for Exchange Online DLP policies",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The condition does not apply to SharePoint, OneDrive, Teams or Endpoint DLP.",
+      "status": "supported",
+      "source": "Message Center post MC1508235",
+      "quote": "does not apply to SharePoint, OneDrive, Teams, or Endpoint DLP workloads.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "summary; What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "It counts attachments carrying a matching sensitivity label in a single email message, rather than unlabelled attachments.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "This condition evaluates the number of attachments in an email message that carry a matching sensitivity label.",
@@ -47,10 +69,21 @@
       "fix": null
     },
     {
-      "n": 3,
-      "where": "What's changing; Risk assessment",
+      "n": 5,
+      "where": "summary; What's changing; Risk assessment: Data exposure",
       "type": "record",
-      "claim": "Exceeding the configured threshold triggers the DLP rule and its configured actions.",
+      "claim": "The configured threshold is strict greater-than, so a count equal to the threshold does not trigger the condition.",
+      "status": "supported",
+      "source": "Message Center post MC1508235",
+      "quote": "The condition uses a strict greater-than threshold.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "When the threshold is exceeded, the DLP rule triggers and applies its configured actions.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "When the count exceeds a defined threshold, the DLP rule is triggered, and configured actions are applied.",
@@ -58,10 +91,10 @@
       "fix": null
     },
     {
-      "n": 4,
-      "where": "What's changing",
+      "n": 7,
+      "where": "What's changing; Why it matters",
       "type": "record",
-      "claim": "The roadmap describes detection of high-volume exfiltration involving multiple individually low-risk files.",
+      "claim": "The roadmap describes detection of high-volume exfiltration in which individually low-risk files collectively represent significant risk.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "This capability enables detection of high-volume data exfiltration scenarios, where multiple sensitive files—individually low-risk—collectively represent a significant compliance or security risk.",
@@ -69,10 +102,10 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 8,
       "where": "Why it matters",
       "type": "record",
-      "claim": "The roadmap says existing conditions evaluate content without controls based on labelled-attachment volume.",
+      "claim": "The roadmap says existing conditions evaluate content but provide no controls based on labelled-attachment volume.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Existing conditions evaluate file content, but do not provide controls based on the volume of labeled attachments.",
@@ -80,10 +113,10 @@
       "fix": null
     },
     {
-      "n": 6,
-      "where": "What's changing; Risk assessment",
+      "n": 9,
+      "where": "What's changing; Risk assessment: Data exposure",
       "type": "record",
-      "claim": "Each matching attachment is counted individually, including duplicate copies.",
+      "claim": "Each matching attachment is counted individually, including duplicate copies of a file.",
       "status": "supported",
       "source": "Message Center post MC1508235",
       "quote": "Each attachment with a matching sensitivity label will be counted individually, including duplicate copies of the same file.",
@@ -91,10 +124,10 @@
       "fix": null
     },
     {
-      "n": 7,
-      "where": "What's changing; Risk assessment",
+      "n": 10,
+      "where": "What's changing; Risk assessment: Data exposure",
       "type": "record",
-      "claim": "Selecting several labels causes the condition to evaluate the combined count of matching attachments.",
+      "claim": "Selecting several labels evaluates the combined count of all matching attachments.",
       "status": "supported",
       "source": "Message Center post MC1508235",
       "quote": "When multiple sensitivity labels are selected in a rule, the condition evaluates the combined count of all matching attachments.",
@@ -102,21 +135,21 @@
       "fix": null
     },
     {
-      "n": 8,
-      "where": "What's changing; Risk assessment; Governance guidance",
+      "n": 11,
+      "where": "What's changing; Governance guidance: Before rollout",
       "type": "record",
-      "claim": "The threshold is strict greater-than: a value of 3 triggers at 4 or more matching attachments, not at 3.",
+      "claim": "A threshold of 3 triggers at 4 or more matching attachments.",
       "status": "supported",
       "source": "Message Center post MC1508235",
-      "quote": "The condition uses a strict greater-than threshold. For example, a threshold of 3 is triggered when 4 or more matching attachments are detected.",
+      "quote": "For example, a threshold of 3 is triggered when 4 or more matching attachments are detected.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 9,
+      "n": 12,
       "where": "What's changing",
       "type": "record",
-      "claim": "For encrypted rights-protected attachments the protection wrapper is excluded to avoid double-counting.",
+      "claim": "The protection wrapper of encrypted, rights-protected attachments is excluded to avoid double-counting.",
       "status": "supported",
       "source": "Message Center post MC1508235",
       "quote": "Encrypted (rights-protected) attachments: protection wrapper is excluded to prevent double-counting.",
@@ -124,10 +157,10 @@
       "fix": null
     },
     {
-      "n": 10,
-      "where": "What's changing; Why it matters; Governance guidance",
+      "n": 13,
+      "where": "What's changing; Why it matters; Governance guidance: At rollout",
       "type": "record",
-      "claim": "Administrators can combine this condition with existing DLP conditions and actions, including content-based conditions.",
+      "claim": "Administrators can combine this condition with existing content-based DLP conditions and actions.",
       "status": "supported",
       "source": "Message Center post MC1508235",
       "quote": "The feature provides an additional volume-based signal that can be combined with existing content-based DLP conditions for layered protection.",
@@ -135,18 +168,7 @@
       "fix": null
     },
     {
-      "n": 11,
-      "where": "What's changing; Scope",
-      "type": "record",
-      "claim": "The condition applies only to Exchange Online DLP, not SharePoint, OneDrive, Teams or Endpoint DLP.",
-      "status": "supported",
-      "source": "Message Center post MC1508235",
-      "quote": "The condition is available for Exchange Online DLP policies and does not apply to SharePoint, OneDrive, Teams, or Endpoint DLP workloads.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
+      "n": 14,
       "where": "front matter: status; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap status is In development.",
@@ -157,18 +179,7 @@
       "fix": null
     },
     {
-      "n": 13,
-      "where": "front matter: targetDate; What's changing; Open questions",
-      "type": "record",
-      "claim": "The roadmap general availability target is December CY2026.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"targetDate\": \"December CY2026\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
+      "n": 15,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
       "claim": "The roadmap preview target is November CY2026.",
@@ -179,10 +190,21 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 16,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap general availability target is December CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"December CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
-      "claim": "The roadmap lists General Availability and Preview as release phases.",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
@@ -190,43 +212,10 @@
       "fix": null
     },
     {
-      "n": 16,
-      "where": "front matter: clouds; Scope",
-      "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "front matter: platforms; Scope",
-      "type": "record",
-      "claim": "The roadmap platform is Web.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Web\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 18,
       "where": "What's changing",
       "type": "record",
-      "claim": "MC1508235 was published on 2026-10-14.",
-      "status": "supported",
-      "source": "Message Center post MC1508235",
-      "quote": "Published 2026-10-14; last updated 2026-10-14",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The notice targets Public Preview from early November 2026 through early December 2026.",
+      "claim": "The notice schedules Public Preview from early November 2026 with expected completion by early December 2026.",
       "status": "supported",
       "source": "Message Center post MC1508235",
       "quote": "Public Preview: Beginning in early November 2026 and expected to complete by early December 2026",
@@ -234,10 +223,10 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 19,
       "where": "What's changing",
       "type": "record",
-      "claim": "The notice targets Worldwide General Availability from mid-December through late December 2026.",
+      "claim": "The notice schedules Worldwide general availability from mid-December 2026 with expected completion by late December 2026.",
       "status": "supported",
       "source": "Message Center post MC1508235",
       "quote": "General Availability (Worldwide): Beginning in mid-December 2026 and expected to complete by late December 2026",
@@ -245,10 +234,21 @@
       "fix": null
     },
     {
+      "n": 20,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice was published on 2026-10-14.",
+      "status": "supported",
+      "source": "Message Center post MC1508235",
+      "quote": "Published 2026-10-14; last updated 2026-10-14",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 21,
       "where": "What's changing",
       "type": "record",
-      "claim": "The supplied notice sets no act-by date.",
+      "claim": "The notice sets no act-by date.",
       "status": "supported",
       "source": "Message Center post MC1508235",
       "quote": "Act by: none",
@@ -257,6 +257,17 @@
     },
     {
       "n": 22,
+      "where": "front matter: defaultState; summary; Why it matters; Governance controls; rationale: risk",
+      "type": "default",
+      "claim": "The condition is admin-opt-in and is not automatically enabled through existing policies, so leaving it unconfigured changes nothing.",
+      "status": "supported",
+      "source": "Message Center post MC1508235",
+      "quote": "The feature is administrator configured and is not enabled automatically through existing policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
       "where": "summary; Why it matters",
       "type": "record",
       "claim": "No action is required before rollout.",
@@ -267,32 +278,32 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "front matter: defaultState; summary; Why it matters; Governance controls; rationale: risk",
-      "type": "default",
-      "claim": "The condition is admin-opt-in and is not enabled automatically through existing policies.",
-      "status": "supported",
-      "source": "Message Center post MC1508235",
-      "quote": "The feature is administrator configured and is not enabled automatically through existing policies.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 24,
-      "where": "Risk assessment: Security & identity",
+      "where": "What's changing; controls[0].note; Governance controls; Open questions",
       "type": "absence",
-      "claim": "The notice describes no identity or authentication change.",
+      "claim": "The Learn Exchange conditions reference and cited policy-creation article do not yet list the new condition or its specific admin path.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: read supplied MC1508235 in full for identity and authentication changes; its identity-related discussion concerns whether Entra ID group membership can control the condition, not an authentication change.",
+      "quote": "Searched: Purview DLP \"Count of labeled documents is greater than\" admin condition reference. Opened dlp-policy-reference, dlp-exchange-conditions-and-actions and dlp-create-policy-cc-email; searched count, label and threshold; no entry for the new condition.",
       "severity": null,
       "fix": null
     },
     {
       "n": 25,
       "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "The supplied notice describes no identity or authentication change.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: read the full supplied MC1508235, including What will happen and Compliance considerations, for identity and authentication changes; none is described.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Security & identity",
       "type": "record",
-      "claim": "The notice says available information does not indicate direct control of this condition through Entra ID group membership.",
+      "claim": "The notice says available information does not indicate that Entra ID group membership can control the condition itself.",
       "status": "supported",
       "source": "Message Center post MC1508235",
       "quote": "The available information does not indicate that the condition itself can be controlled through Entra ID group membership.",
@@ -300,10 +311,10 @@
       "fix": null
     },
     {
-      "n": 26,
-      "where": "Scope; Risk assessment; controls[0].note",
+      "n": 27,
+      "where": "Scope; Risk assessment: Security & identity; controls[0].note",
       "type": "role",
-      "claim": "The deployment page lists Compliance administrator, Compliance data administrator, Information Protection, Information Protection Admin and Security administrator as role groups for creating and deploying DLP policies.",
+      "claim": "The deployment article requires membership in Compliance administrator, Compliance data administrator, Information Protection, Information Protection Admin or Security administrator to create and deploy DLP policies.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
       "quote": "The account you use to create and deploy policies must be a member of one of these role groups:\n- Compliance administrator\n- Compliance data administrator\n- Information Protection\n- Information Protection Admin\n- Security administrator",
@@ -311,10 +322,10 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 28,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "A blocking action blocks activity when its rule is enforced.",
+      "claim": "A blocking action can stop messages matched by the rule.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
       "quote": "Block: The user activity is blocked no matter what. You can audit the event, raise alerts and notifications.",
@@ -322,10 +333,10 @@
       "fix": null
     },
     {
-      "n": 28,
-      "where": "Risk assessment; Governance guidance",
+      "n": 29,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Simulation mode does not enforce configured policy actions.",
+      "claim": "No policy actions are enforced in Run the policy in simulation mode.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
       "quote": "Run the policy in simulation mode: No policy actions are enforced, events are audited.",
@@ -333,7 +344,7 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 30,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
       "claim": "Events are audited in simulation mode.",
@@ -344,219 +355,10 @@
       "fix": null
     },
     {
-      "n": 30,
-      "where": "Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "Policy impact in simulation mode can be monitored in the DLP simulation mode overview and Activity explorer.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
-      "quote": "While in this state, you can monitor the impact of the policy in the DLP simulation mode overview and the DLP Activity explorer console.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 31,
-      "where": "Governance controls",
-      "type": "applicability",
-      "claim": "Policy state governs simulation or enforcement for the policy, rather than just this condition.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
-      "quote": "Turn it on | All targeted location instances | - All configured actions are enforced on user activities",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "controls[0].ui; Governance controls",
-      "type": "admin-path",
-      "claim": "The printed Purview policy creation route reaches Conditions > Add condition, although the specific new condition is not documented there.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-create-policy-cc-email",
-      "quote": "On the Define policy settings page, the Create or customize advanced DLP rules option should already be selected.",
-      "severity": "minor",
-      "fix": "Add the omitted wizard-page heading in front matter and the rendered table: 'Data loss prevention > Policies > + Create policy > Enterprise applications & devices > Custom > Custom > Exchange email > Define policy settings > Create or customize advanced DLP rules > Create rule > Conditions > Add condition'. Retain the note that the cited page does not list the new condition."
-    },
-    {
-      "n": 33,
-      "where": "controls[0].api; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "No documented PowerShell parameter sets this labelled-attachment count condition in New-DlpComplianceRule or Set-DlpComplianceRule.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'DlpComplianceRule labeled count'; opened New-DlpComplianceRule and Set-DlpComplianceRule; searched both for label/count/attachment and read AdvancedRule. Neither documents this condition or its deciding property.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "controls[1].ui; Governance controls",
-      "type": "admin-path",
-      "claim": "The printed Purview creation route reaches Run the policy in simulation mode after the rule is saved.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-create-policy-cc-email",
-      "quote": "Select Save.\n40. Select Next, then select Run the policy in simulation mode.",
-      "severity": "minor",
-      "fix": "Add the omitted wizard-page heading in front matter and the rendered table: 'Data loss prevention > Policies > + Create policy > Enterprise applications & devices > Custom > Custom > Exchange email > Define policy settings > Create or customize advanced DLP rules > Create rule > Run the policy in simulation mode'. Retain the note that the rule must first be saved."
-    },
-    {
-      "n": 35,
-      "where": "controls[1].api; Governance controls",
-      "type": "command",
-      "claim": "Set-DlpCompliancePolicy -Identity <policy name> -Mode TestWithoutNotifications sets an identified policy to simulation without actions or notifications.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancepolicy",
-      "quote": "The Identity parameter specifies the DLP policy that you want to modify.\nTestWithoutNotifications: Simulation mode where no actions are taken, and no notifications are sent.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "controls[1].note",
-      "type": "command",
-      "claim": "Mode accepts Enable for enforcement.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancepolicy",
-      "quote": "Enable: The policy is enabled for actions and notifications. This value is the default.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "controls[1].note",
-      "type": "command",
-      "claim": "Mode accepts Disable.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancepolicy",
-      "quote": "Disable: The policy is disabled.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "controls[1].note",
-      "type": "command",
-      "claim": "Mode accepts TestWithNotifications.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancepolicy",
-      "quote": "TestWithNotifications: Simulation mode where no actions are taken, but notifications are sent.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "controls[1].note",
-      "type": "admin-path",
-      "claim": "The simulation option is selected on the wizard page after the rule is saved.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-create-policy-cc-email",
-      "quote": "Select Save.\n40. Select Next, then select Run the policy in simulation mode.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "Cost and licensing; front matter: licensing.notes",
-      "type": "licensing",
-      "claim": "The service description lists Microsoft 365 E5/A5/G5/E3/A3/G3, Business Premium, SharePoint Online Plan 2, OneDrive for Business (Plan 2) and Exchange Online Plan 2 for the named DLP service.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "Microsoft 365 E5/A5/G5/E3/A3/G3, Microsoft 365 Business Premium, SharePoint Online Plan 2, OneDrive for Business (Plan 2), Exchange Online Plan 2",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "The same DLP service licensing list includes Office 365 E5/A5/G5/E3/A3/G3.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "Office 365 E5/A5/G5/E3/A3/G3",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "The same list includes Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "front matter: licensing.model; Cost and licensing",
-      "type": "licensing",
-      "claim": "Included is the applicable product-level licensing model for a new condition inside the licensed Exchange Online DLP service.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "Users benefit from DLP for Exchange Online, SharePoint Online, and OneDrive for Business when their emails and files are being inspected for sensitive information, as configured in the organization's DLP policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
-      "type": "absence",
-      "claim": "A licence requirement specific to this count condition is not yet published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Purview Exchange DLP count labeled documents condition license pricing' and 'Count of labeled documents licensing price meter threshold'; opened the Purview service description. Results state general DLP entitlements, not a licence for this condition.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
-      "type": "absence",
-      "claim": "A price specific to the count condition is not yet published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Purview Exchange DLP count labeled documents condition license pricing' and 'Count of labeled documents licensing price meter threshold'; read the Purview service description's DLP section. No condition-specific price was found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "No meter for this condition is documented at the time of writing.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Count of labeled documents licensing price meter threshold'; opened and searched the Purview service description for count, attachment and meter. No consumption meter for this Exchange condition was found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "What's changing; controls[0].note; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "The Learn DLP policy reference does not yet list the count condition among Exchange conditions.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Purview Exchange DLP labeled attachment count condition threshold minimum maximum'; opened dlp-policy-reference, read Conditions Exchange supports, and searched its full text for Count of labeled documents and label/count combinations; no entry found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
-      "where": "Open questions",
-      "type": "absence",
-      "claim": "The notice and Learn reference publish no minimum or maximum threshold for this condition.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Purview Exchange DLP labeled attachment count condition threshold minimum maximum'; read MC1508235 and the DLP policy reference's conditions and limits material. The notice gives strict greater-than and an example, but no allowed range was found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "Risk assessment; Governance guidance",
+      "where": "Risk assessment: Change & support",
       "type": "record",
-      "claim": "Microsoft recommends testing policies in simulation or audit mode before enforcing them.",
+      "claim": "Microsoft recommends testing policies in simulation or audit mode before enforcing actions.",
       "status": "supported",
       "source": "Message Center post MC1508235",
       "quote": "Test policies in simulation or audit mode before enabling enforcement actions.",
@@ -564,21 +366,109 @@
       "fix": null
     },
     {
-      "n": 50,
-      "where": "Governance guidance: After rollout",
-      "type": "record",
-      "claim": "Microsoft recommends updating internal documentation if it lists supported Exchange Online conditions.",
+      "n": 32,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Included is the applicable product-level licensing model for a new condition inside Exchange Online DLP, with feature-specific licensing still unpublished.",
       "status": "supported",
-      "source": "Message Center post MC1508235",
-      "quote": "Update internal DLP administration documentation if supported Exchange Online conditions are documented within your organization.",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft Purview Data Loss Prevention: Data Loss Prevention (DLP) for Exchange Online, SharePoint Online, and OneDrive for Business\nWhich licenses provide the rights for a user to benefit from the service?",
       "severity": null,
       "fix": null
     },
     {
-      "n": 51,
+      "n": 33,
+      "where": "Cost and licensing; front matter: licensing.notes",
+      "type": "licensing",
+      "claim": "The service description lists Microsoft 365 E5/A5/G5/E3/A3/G3, Business Premium, SharePoint Online Plan 2, OneDrive for Business (Plan 2) and Exchange Online Plan 2 for this DLP service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft 365 E5/A5/G5/E3/A3/G3, Microsoft 365 Business Premium, SharePoint Online Plan 2, OneDrive for Business (Plan 2), Exchange Online Plan 2",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The service description also lists Office 365 E5/A5/G5/E3/A3/G3.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Office 365 E5/A5/G5/E3/A3/G3",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The service description also lists Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft has not published a licence or price specific to the labelled-attachment count condition.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Count of labeled documents\" licensing price meter Purview. Opened Microsoft Purview service description, purview-billing-models and dlp-policy-reference; the supplied notice also names no feature-specific licence or price.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No meter specific to this condition is documented at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Count of labeled documents\" licensing price meter Purview. Opened purview-billing-models and Microsoft Purview service description; neither documents a meter for the Exchange Online attachment-count condition.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: clouds; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Web as the platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "rationale: impact",
+      "type": "record",
+      "claim": "The notice identifies administrators managing Exchange Online DLP policies as the affected audience.",
+      "status": "supported",
+      "source": "Message Center post MC1508235",
+      "quote": "Who is affected\n- Administrators who manage Exchange Online DLP policies",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
       "where": "Governance guidance: Before rollout",
       "type": "record",
-      "claim": "The notice recommends reviewing existing Exchange Online DLP policies for the benefit of attachment thresholds.",
+      "claim": "Microsoft recommends reviewing existing Exchange Online DLP policies for possible attachment-count thresholds.",
       "status": "supported",
       "source": "Message Center post MC1508235",
       "quote": "Review existing Exchange Online DLP policies to determine whether attachment count thresholds would improve protection for sensitive content.",
@@ -586,10 +476,10 @@
       "fix": null
     },
     {
-      "n": 52,
-      "where": "Governance guidance: Before rollout",
+      "n": 42,
+      "where": "Governance guidance: Before rollout; Cost and licensing",
       "type": "record",
-      "claim": "The notice recommends evaluating thresholds and policy actions against organizational risk requirements.",
+      "claim": "Microsoft recommends evaluating thresholds and policy actions against organisational risk requirements.",
       "status": "supported",
       "source": "Message Center post MC1508235",
       "quote": "Evaluate appropriate thresholds and policy actions based on organizational risk requirements.",
@@ -597,52 +487,129 @@
       "fix": null
     },
     {
-      "n": 53,
-      "where": "rationale: impact",
+      "n": 43,
+      "where": "Governance guidance: After rollout",
       "type": "record",
-      "claim": "The notice identifies administrators managing Exchange Online DLP policies as the affected audience.",
+      "claim": "Microsoft recommends updating internal documentation where supported Exchange Online conditions are documented.",
       "status": "supported",
       "source": "Message Center post MC1508235",
-      "quote": "Who is affected\n\n- Administrators who manage Exchange Online DLP policies",
+      "quote": "Update internal DLP administration documentation if supported Exchange Online conditions are documented within your organization.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 54,
-      "where": "controls[0].scope; controls[1].scope",
-      "type": "applicability",
-      "claim": "The policy controls are tenant-level controls, with policy location scoping available.",
+      "n": 44,
+      "where": "controls[0].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "The printed Microsoft Purview portal path reaches Conditions > Add condition in the Exchange policy wizard.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "Admins can customize locations (workloads), include users, and exclude users in the Microsoft Purview compliance portal.",
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-cc-email",
+      "quote": "On the Define policy settings page, the Create or customize advanced DLP rules option should already be selected.",
+      "severity": "minor",
+      "fix": "In controls[0].ui.path and the rendered table, use 'Data loss prevention > Policies > + Create policy > Enterprise applications & devices > Custom > Custom > Exchange email > Define policy settings > Create or customize advanced DLP rules > Create rule > Conditions > Add condition'. Retain the note that this page does not document the new condition."
+    },
+    {
+      "n": 45,
+      "where": "controls[0].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No documented PowerShell parameter sets this specific labelled-attachment count condition in New-DlpComplianceRule or Set-DlpComplianceRule.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Count of labeled documents\" New-DlpComplianceRule and Set-DlpComplianceRule threshold. Opened both cmdlet references and dlp-exchange-conditions-and-actions; searched count/label/attachment parameter names and descriptions; no matching setting documented.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 55,
+      "n": 46,
+      "where": "controls[1].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "The printed Microsoft Purview portal path reaches Run the policy in simulation mode after the rule is saved.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-cc-email",
+      "quote": "On the Define policy settings page, the Create or customize advanced DLP rules option should already be selected.",
+      "severity": "minor",
+      "fix": "In controls[1].ui.path and the rendered table, use 'Data loss prevention > Policies > + Create policy > Enterprise applications & devices > Custom > Custom > Exchange email > Define policy settings > Create or customize advanced DLP rules > Create rule > Run the policy in simulation mode'. Retain the note that the rule is saved before choosing simulation mode."
+    },
+    {
+      "n": 47,
+      "where": "controls[1].api; Governance controls",
+      "type": "command",
+      "claim": "Set-DlpCompliancePolicy -Identity <policy name> -Mode TestWithoutNotifications sets the named policy to simulation without notifications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancepolicy",
+      "quote": "The Mode parameter specifies the action and notification level of the DLP policy. Valid values are:\nTestWithoutNotifications: Simulation mode where no actions are taken, and no notifications are sent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[1].note; Governance controls",
+      "type": "command",
+      "claim": "Mode also accepts Enable, Disable and TestWithNotifications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancepolicy",
+      "quote": "Enable: The policy is enabled for actions and notifications. This value is the default.\nDisable: The policy is disabled.\nTestWithNotifications: Simulation mode where no actions are taken, but notifications are sent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The wizard offers simulation mode on the page after the rule is saved.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-cc-email",
+      "quote": "39. Select Save.\n40. Select Next, then select Run the policy in simulation mode.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Policy impact in simulation mode can be monitored in the DLP simulation mode overview and DLP Activity explorer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
+      "quote": "While in this state, you can monitor the impact of the policy in the DLP simulation mode overview and the DLP Activity explorer console.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Simulation and enforcement state control the whole DLP policy, rather than this condition alone.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
+      "quote": "Turn it on | All targeted location instances | - All configured actions are enforced on user activities",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "The notice states strict greater-than semantics but supplies no minimum or maximum threshold value.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: read supplied MC1508235 for threshold minimum, maximum and range; only strict greater-than and the example of 3 are given. Learn search for \"Count of labeled documents\" threshold minimum maximum and the opened DLP reference give no range.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
       "where": "Governance guidance: Before rollout",
       "type": "consistency",
-      "claim": "The checklist asks readers to check label publication and DLP role-group membership, but neither control is represented in the controls table.",
+      "claim": "The checklist asks readers to check label publication and administrator role-group membership, but neither control has a table row.",
       "status": "contradicted",
       "source": "page",
-      "quote": "Check which sensitivity labels are published and in use\nConfirm which of the role groups listed under Scope your DLP administrators belong to.\nThe table covers only the attachment-count condition and policy simulation state.",
+      "quote": "Check which sensitivity labels are published and in use; Confirm which of the role groups listed under Scope your DLP administrators belong to. The controls table covers only the attachment-count condition and policy state.",
       "severity": "minor",
-      "fix": "Remove the Before rollout bullets beginning 'Check which sensitivity labels are published and in use' and 'Confirm which of the role groups listed under Scope'. These checklist controls have no corresponding table row; retain the factual labelling and permissions discussion elsewhere."
-    },
-    {
-      "n": 56,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap record was modified on 2026-08-11T22:53:53.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-08-11T22:53:53\"",
-      "severity": null,
-      "fix": null
+      "fix": "Remove the Before rollout bullets beginning 'Check which sensitivity labels are published and in use' and 'Confirm which of the role groups listed under Scope'. Retain the factual labelling and permissions discussion elsewhere; do not add control rows."
     }
   ],
   "precheck": {
-    "at": "2026-11-20T09:04:53.927Z",
+    "at": "2026-11-27T11:53:42.935Z",
     "summary": {
       "links": 8,
       "unreachable": 0,
@@ -748,5 +715,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-20",
+      "status": "verified-with-gaps",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

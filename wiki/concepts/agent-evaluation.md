@@ -5,12 +5,15 @@ slug: "agent-evaluation"
 summary: "Agent evaluation runs a set of test questions against a Copilot Studio agent and scores each answer. Administrators decide how many Copilot Credits evaluation runs can draw and whether makers may run them under an authenticated account."
 created: "2026-11-27"
 updated: "2026-11-27"
-version: 1
+version: 2
 tags: ["agent-evaluation","copilot-studio","graders","quality-assurance","copilot-credits","data-policies","power-platform-admin-center"]
 covers: ["graders"]
 sources:
   - title: "Evaluate an agent (Microsoft Copilot) (preview)"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-intro"
+    kind: "learn"
+  - title: "Run an evaluation for an agent (Microsoft Copilot) (preview)"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-results"
     kind: "learn"
   - title: "About agent evaluation"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-intro"
@@ -54,13 +57,16 @@ sources:
   - title: "Resource Threshold - Upsert Resource Threshold"
     url: "https://learn.microsoft.com/rest/api/power-platform/licensing/resource-threshold/upsert-resource-threshold"
     kind: "learn"
+  - title: "Use AI-generated conversations for agentic simulations (preview)"
+    url: "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-simulation-agent"
+    kind: "learn"
 related: ["copilot-credits","data-policies","microsoft-copilot-studio-improvements-to-agent-evaluations-experience","microsoft-copilot-studio-cost-visibility-in-agent-evaluations","microsoft-power-platform-governance-and-administration-multi-grader-comparison","dynamics-365-contact-center-copilot-and-ai-innovation-use-agentic-simulations-to-evaluate"]
 controls:
   - governs: "Whether makers can run evaluations with an authenticated account"
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Security > Data and privacy > Data policy > policy > Edit Policy > Assign connectors > connector > three dots (⋮) > Block"
+      path: "Security > Data and privacy > Data policy > policy > Edit Policy > Add an environment > Assign connectors > connector > three dots (⋮) > Block"
       docs: "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention"
     api:
       kind: "powershell"
@@ -84,11 +90,8 @@ controls:
       surface: "Power Platform admin center"
       path: "Licensing > Copilot Studio > Manage Agents > agent > Set limit > Stop usage"
       docs: "https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness"
-    api:
-      kind: "power-platform-api"
-      call: "PUT https://api.powerplatform.com/licensing/environments/{environmentId}/entitlements/{entitlementId}/resources/{resourceId}/threshold?api-version=2024-10-01"
-      docs: "https://learn.microsoft.com/rest/api/power-platform/licensing/resource-threshold/upsert-resource-threshold"
-    note: "The reference calls the target an environment resource and does not name agents; the body sets limit and stopIfOverCapacity. Whether the limit counts evaluation runs is not documented."
+    api: null
+    note: "The Resource Threshold API documents thresholds for an environment resource, but Microsoft does not document how to use it for a Copilot Studio agent's monthly limit. Limits aren't applied instantly."
   - governs: "Starting an evaluation run against a test set"
     scope: "agent"
     ui:
@@ -99,7 +102,7 @@ controls:
       kind: "power-platform-api"
       call: "POST https://api.powerplatform.com/copilotstudio/environments/{EnvironmentId}/bots/{BotId}/api/makerevaluation/testsets/{TestSetId}/run?api-version=2024-10-01"
       docs: "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-rest-api"
-    note: "Maker-side. Runs as the signed-in user; mcsConnectionId in the request attaches a user profile, and without it the run is unauthenticated."
+    note: "Maker-side; runs as the signed-in user. The UI route is for the Microsoft Copilot harness preview; the cited evaluation API documentation describes the standard harness."
   - governs: "Tenant or environment switch that turns agent evaluation off"
     scope: "tenant"
     ui: null
@@ -112,18 +115,22 @@ changes:
     note: "New concept page: how Copilot Studio agent evaluation works, what its runs cost in Copilot Credits, and the data policy and credit controls that limit it."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 75 statements contradicted, 1 unconfirmed; taken offline until corrected"
+  - date: "2026-11-27"
+    note: "Corrected the per-agent credit limit row: no API is documented for it, and limits are not applied instantly. Added the Add an environment step to the data policy path and noted which harness the evaluation API covers."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 78 statements not yet confirmed"
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-27"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 75
-  confirmed: 74
-  unconfirmed: 1
+  claims: 78
+  confirmed: 78
+  unconfirmed: 0
   contradicted: 0
-  attempts: 1
-  hash: "66e57af0a96067940797169613cbd32a"
+  attempts: 0
+  hash: "ec73b63da201b622b910d27c7fa9c191"
 ---
 
 ## What it is
@@ -173,10 +180,10 @@ A credit rate specific to evaluation is not yet published; rates and purchase op
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether makers can run evaluations with an authenticated account</strong><br><small>Environment</small><br><small class="controls__note">Block the Microsoft Copilot Studio connector. Power Platform's connector classification page lists this connector as one data policies can't block.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Data policy › policy › Edit Policy › Assign connectors › connector › three dots (⋮) › Block <a href="https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-ConnectorsToPolicy -PolicyName &lt;policy name&gt; -Classification &lt;group&gt; -Connectors &lt;connectors&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether makers can run evaluations with an authenticated account</strong><br><small>Environment</small><br><small class="controls__note">Block the Microsoft Copilot Studio connector. Power Platform's connector classification page lists this connector as one data policies can't block.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Data policy › policy › Edit Policy › Add an environment › Assign connectors › connector › three dots (⋮) › Block <a href="https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-ConnectorsToPolicy -PolicyName &lt;policy name&gt; -Classification &lt;group&gt; -Connectors &lt;connectors&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Copilot Credits allocated to an environment, and whether it draws on tenant capacity once they are used</strong><br><small>Environment</small><br><small class="controls__note">The request body's TenantPool enforcement rule sets the tenant-capacity draw. Cleared, the environment stops at its allocation unless pay-as-you-go billing is linked.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Products › Copilot Studio › Manage Copilot Credits › environment › Capacity overages › Draw from the available capacity in my tenant <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01</code> <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Monthly Copilot Credit limit for one agent, and whether it stops at the limit</strong><br><small>Agent</small><br><small class="controls__note">The reference calls the target an environment resource and does not name agents; the body sets limit and stopIfOverCapacity. Whether the limit counts evaluation runs is not documented.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Copilot Studio › Manage Agents › agent › Set limit › Stop usage <a href="https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>PUT https://api.powerplatform.com/licensing/environments/{environmentId}/entitlements/{entitlementId}/resources/{resourceId}/threshold?api-version=2024-10-01</code> <a href="https://learn.microsoft.com/rest/api/power-platform/licensing/resource-threshold/upsert-resource-threshold" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Starting an evaluation run against a test set</strong><br><small>Agent</small><br><small class="controls__note">Maker-side. Runs as the signed-in user; mcsConnectionId in the request attaches a user profile, and without it the run is unauthenticated.</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>agent › Evaluate › evaluation › Evaluate <a href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-intro" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>POST https://api.powerplatform.com/copilotstudio/environments/{EnvironmentId}/bots/{BotId}/api/makerevaluation/testsets/{TestSetId}/run?api-version=2024-10-01</code> <a href="https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-rest-api" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Monthly Copilot Credit limit for one agent, and whether it stops at the limit</strong><br><small>Agent</small><br><small class="controls__note">The Resource Threshold API documents thresholds for an environment resource, but Microsoft does not document how to use it for a Copilot Studio agent's monthly limit. Limits aren't applied instantly.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Copilot Studio › Manage Agents › agent › Set limit › Stop usage <a href="https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Starting an evaluation run against a test set</strong><br><small>Agent</small><br><small class="controls__note">Maker-side; runs as the signed-in user. The UI route is for the Microsoft Copilot harness preview; the cited evaluation API documentation describes the standard harness.</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>agent › Evaluate › evaluation › Evaluate <a href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-intro" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>POST https://api.powerplatform.com/copilotstudio/environments/{EnvironmentId}/bots/{BotId}/api/makerevaluation/testsets/{TestSetId}/run?api-version=2024-10-01</code> <a href="https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-rest-api" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Tenant or environment switch that turns agent evaluation off</strong><br><small>Tenant</small><br><small class="controls__note">Not documented at the time of writing (November 2026). The data policy and credit controls above are the documented levers.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -200,13 +207,8 @@ These credit controls govern all Copilot Studio usage in the environment or agen
 - Which of the two Microsoft pages is right about blocking the **Microsoft Copilot Studio** connector with a data policy?
 - Will Microsoft add an environment or tenant setting that turns agent evaluation off?
 
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] controls[2].api / applicability: The Resource Threshold PUT operation is the API equivalent of setting a Copilot Studio agent's monthly Copilot Credit limit and Stop usage. | Found: Searched: Power Platform API agent monthly limit resource threshold resourceId MCSMessages stopIfOverCapacity; "Copilot Studio" "agent" "upsert" "threshold". Read Resource Threshold REST reference, pac licensing and both cited capacity-management pages; none maps an agent to this resource. | Fix: Set controls[2].api to null and replace its API-related note with 'The Resource Threshold API documents thresholds for an environment resource, but Microsoft does not document here how to use it for a Copilot Studio agent's monthly limit.' Keep the existing question about whether evaluation runs count. The generic operation's existence does not establish that it changes this agent control.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui / admin-path: An existing data policy's connector Block action is reached through Security > Data and privacy > Data policy > policy > Edit Policy > Assign connectors > connector > three dots > Block. | Found: Select Next. The Add an environment page appears. ... Select Next. The Assign connectors page appears. | Fix: Include the intervening scope-selection page: 'Security > Data and privacy > Data policy > policy > Edit Policy > Add an environment > Assign connectors > connector > three dots > Block'. The omitted environment selection is a target-selection step, not a wrong route. | Source: https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention
-- [supported, minor] controls[3].api / command: POST https://api.powerplatform.com/copilotstudio/environments/{EnvironmentId}/bots/{BotId}/api/makerevaluation/testsets/{TestSetId}/run?api-version=2024-10-01 starts an evaluation against a test set. | Found: This article describes features used in agents or agent flows powered by the standard harness. ... Purpose: Run an evaluation for a test set by using the test set's id. | Fix: Add to the row note: 'The UI route is for the Microsoft Copilot harness preview; the cited evaluation API documentation describes the standard harness.' Do not imply that this API is documented for both experiences. | Source: https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-rest-api
-- [supported, minor] controls[2].governs; What to check / cost: An agent-level monthly Copilot Credit limit with Stop usage turns the agent off when it reaches the limit. | Found: Turn on Stop usage if the agent should be turned off when it reaches the limit. | Fix: Add to the row note: 'Limits are not applied instantly: an agent can continue to respond after reaching its limit. An agent's monthly limit does not stop the agent flows it calls.' These qualifications are in https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity#manage-monthly-consumption-limits-for-copilot-studio-agents; the row should not read as an instantaneous spending guarantee. | Source: https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness
-- [supported, minor] What it is: Other products / behaviour: Dynamics 365 Contact Center has agentic simulations for testing agents. | Found: Agentic simulations help your administrators test and validate configurations, AI agents, and routing flows before they roll out in real time. | Fix: Add the Microsoft pages relied on but absent from sources: https://learn.microsoft.com/dynamics365/contact-center/administer/configure-simulation-agent for this example, and https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-results for selecting and running an existing evaluation in the new experience. | Source: https://learn.microsoft.com/dynamics365/contact-center/administer/configure-simulation-agent
+- [supported, minor] What it is: definition / behaviour: Evaluation can be performed before and after an agent is published. | Found: Evaluations: validate quality with test sets and a shared grader library before and after you publish. | Fix: Add https://learn.microsoft.com/microsoft-copilot-studio/fundamentals-what-is-copilot-studio to sources for the statement that evaluation works before and after publication. | Source: https://learn.microsoft.com/microsoft-copilot-studio/fundamentals-what-is-copilot-studio
 -->

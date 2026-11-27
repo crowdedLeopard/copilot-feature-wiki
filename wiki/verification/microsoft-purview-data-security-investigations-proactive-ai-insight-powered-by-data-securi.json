@@ -1,0 +1,1066 @@
+{
+  "slug": "microsoft-purview-data-security-investigations-proactive-ai-insight-powered-by-data-securi",
+  "roadmapId": 560327,
+  "title": "Microsoft Purview: proactive AI insights from Data Security Investigations in DSPM exfiltration reports",
+  "status": "verified-with-gaps",
+  "date": "2026-11-27",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 79,
+    "confirmed": 77,
+    "unconfirmed": 1,
+    "contradicted": 1,
+    "blocker": 0,
+    "major": 1,
+    "minor": 5
+  },
+  "summary": "The opt-in workflow, daily analysis, metered billing and listed controls are supported by Microsoft documentation. Remove the unsupported assurance that no new identity is involved, and clarify the conflicting Microsoft guidance about investigation access and additional categorisation.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists this feature as Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate and previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is June CY2026 and it supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"June CY2026\", \"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) only.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2026-06-09T20:46:16.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-06-09T20:46:16\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "DSI is an AI-assisted tool for analysing content involved in data security incidents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations",
+      "quote": "Microsoft Purview Data Security Investigations helps cybersecurity teams in your organization use generative artificial intelligence (AI) to analyze and respond to data security incidents, risky insiders, and data breaches.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "title; summary; What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Proactive AI insights runs DSI analysis automatically from DSPM.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-learn-about",
+      "quote": "the proactive AI insights feature uses Data Security Investigations to automatically analyze exfiltrated data and surface risk counts by category on the exfiltration objective card, without requiring manual investigation creation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "Proactive AI insights is opt-in rather than automatically enabled on arrival.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-investigation",
+      "quote": "Proactive AI insights (preview): Enable an opt-in toggle that automatically creates and refreshes a single investigation for your tenant every 24 hours.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; controls[0].note",
+      "type": "behaviour",
+      "claim": "Enabling the toggle creates a single investigation for the tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-investigation",
+      "quote": "Enable an opt-in toggle that automatically creates and refreshes a single investigation for your tenant every 24 hours.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing; Why it matters; controls[0].note; rationales",
+      "type": "behaviour",
+      "claim": "The investigation refreshes automatically every 24 hours while enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-investigation",
+      "quote": "The investigation refreshes automatically every 24 hours while the toggle remains enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "The investigation scopes to all sensitive data exfiltrated from the organisation in the last 30 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-investigation",
+      "quote": "Investigations created from DSPM automatically scope to all sensitive data exfiltrated from your organization in the last 30 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Cost and licensing: Meters",
+      "type": "behaviour",
+      "claim": "The five fixed categories are credentials and access information, PII, financial information, confidential information and IP.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-investigation",
+      "quote": "five fixed risk categories: credentials and access information, personally identifiable information (PII), financial information, confidential information, and intellectual property (IP).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "summary; What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The DSPM exfiltration objective card displays the item count for each risk category.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-investigation",
+      "quote": "The DSPM exfiltration objective card displays the count of items identified in each risk category.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Initial proactive insights might take up to 24 hours to appear.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-investigation",
+      "quote": "Insights might take up to 24 hours to appear after initial activation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Analysts can also create a manual investigation from the exfiltration objective card.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-investigation",
+      "quote": "Manual investigation: Create an investigation on demand from the exfiltration objective card to analyze specific data exposure insights.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing: current version limitations",
+      "type": "behaviour",
+      "claim": "Learn says custom category templates are not supported in the auto-created investigation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-investigation",
+      "quote": "In the current preview, proactive AI insights use five fixed risk categories. Custom category templates and per-item deletion within the auto-created investigation aren't supported.",
+      "severity": "minor",
+      "fix": "Add: 'The AI analysis page separately says these investigations can run additional categorisation with default, suggested or custom categories.' Cite https://learn.microsoft.com/purview/data-security-investigations-ai-analysis#use-categorization, which states: 'You can run additional categorization with default, suggested, or custom categories on these investigations.'"
+    },
+    {
+      "n": 18,
+      "where": "What's changing: current version limitations",
+      "type": "behaviour",
+      "claim": "Per-item deletion within the auto-created investigation is not supported in the current preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-investigation",
+      "quote": "Custom category templates and per-item deletion within the auto-created investigation aren't supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Scope; controls[0].note; Open questions",
+      "type": "availability",
+      "claim": "Learn still labels proactive AI insights as preview, unlike the roadmap's GA phase.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-investigation",
+      "quote": "Proactive AI insights (preview)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "summary; Why it matters; Cost and licensing; controls[0].note; rationale: cost",
+      "type": "cost",
+      "claim": "The proactive investigation continuously consumes storage while the toggle is enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Investigations auto-created by proactive AI insights from DSPM consume storage continuously while the toggle is enabled. Because the investigation refreshes every 24 hours, storage charges are ongoing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "licensing.notes; Why it matters; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Each 24-hour proactive refresh consumes DSI compute units for the five-category analysis.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Proactive AI insights from DSPM also consume compute units. Each 24-hour refresh cycle uses compute units to generate AI insights across five fixed risk categories.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Why it matters",
+      "type": "cost",
+      "claim": "Microsoft advises budgeting for recurring storage and compute costs of proactive insights.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Budget for proactive AI costs from DSPM: If you enable proactive AI insights from DSPM, the auto-created investigation refreshes every 24 hours, incurring ongoing storage and AI compute charges.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Why it matters; rationale: cost",
+      "type": "cost",
+      "claim": "DSI pay-as-you-go charges are associated with the Azure subscription configured for DSI.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "The Azure subscription you configure for Data Security Investigations manages all pay-as-you-go capabilities across Microsoft Purview solutions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Investigation content is held in DSI storage for AI analysis.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "The Data Security Investigations non-AI processing and storage meter lets you store data related to an investigation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "DSI compute processing uses GPU resources in Azure datacenters.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Compute unit processing uses GPU resources in Azure datacenters protected by Azure security and privacy controls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Data exposure",
+      "type": "availability",
+      "claim": "The AI processing location can be selected from ANZ, EU, UK or US.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Australia/New Zealand (ANZ)\nEurope (EU)\nUnited Kingdom (UK)\nUnited States (US)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Data exposure; controls[3].note",
+      "type": "behaviour",
+      "claim": "Tenants can opt in to AI processing anywhere in the world.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "You can opt in to having compute units provisioned and AI analysis processing done anywhere in the world to mitigate potential disruptions in case your primary location experiences high activity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Data exposure; controls[1].governs",
+      "type": "role",
+      "claim": "Data Security Investigations Admins can create, manage and view every investigation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "| Create and manage all investigations | Yes | No | No |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Data exposure",
+      "type": "role",
+      "claim": "People outside the DSI Admins role group can view only investigations they are assigned to.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-investigation",
+      "quote": "If you're not assigned to the Data Security Investigations Admins role group, you can only view investigations you're assigned to as an investigator or reviewer.",
+      "severity": "minor",
+      "fix": "Add: 'The DSI permissions page also grants full administrative access through Compliance Administrator and administrative access through Organization Management without explicit membership of a DSI-specific role group.' Cite https://learn.microsoft.com/purview/data-security-investigations-permissions#additional-role-groups-with-data-security-investigations-access. This qualifies the investigation page's narrower wording and agrees with the existing control note."
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Proactive AI insights introduces no new identity.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'Data Security Investigations identity service principal'; 'proactive AI insights identity'. Opened DSI overview, investigation and permissions pages; none describes the background job's identity or says no new identity is created.",
+      "severity": "major",
+      "fix": "Remove 'No new identity:'. Keep the separately supported discussion of DSPM and DSI role permissions without asserting a background execution identity."
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "Access to the DSPM and DSI investigation experience is governed by their role permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-investigation",
+      "quote": "For more information about the roles and permissions needed to create an investigation in Data Security Investigations from DSPM, see Permissions for Microsoft Purview Data Security Posture Management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Security & identity; Governance guidance; controls[1].note",
+      "type": "role",
+      "claim": "Compliance Administrator includes the Data Security Investigation Admin role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "| Compliance Administrator | Data Security Investigation Admin | Full administrative access |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Security & identity; Governance guidance; controls[1].note",
+      "type": "role",
+      "claim": "Organization Management includes DSI administrative access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "| Organization Management | Data Security Investigation Admin, Data Security Investigation Contributor | Administrative and contributor access |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Change & support; Governance controls; rationale: risk",
+      "type": "behaviour",
+      "claim": "The Purview Usage center lists DSI as not pausable.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-usage",
+      "quote": "| Feature name | Pausable | Detailed report available |\n| Data Security Investigations | No | No |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.model and cost; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The consumption licensing model and variable cost rating describe DSI's pay-as-you-go storage and AI capacity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "The storage meter for Data Security Investigations uses the pay-as-you-go billing model. ... Data Security Investigations uses the pay-as-you-go billing model for AI capacity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "licensing.notes; Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "DSI billing is based solely on stored data and AI compute capacity, not a dedicated enterprise plan or licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Billing in Data Security Investigations is based solely on the combination of the amount of stored data and the associated computing capacity needed for AI analysis. It isn't based on a dedicated enterprise plan or license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing: Storage meter; rationale: cost",
+      "type": "cost",
+      "claim": "DSI storage is charged per GB per month for stored data associated with all investigations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "You pay for storage on a gigabyte (GB) per month basis for stored data associated with all investigations in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing: Storage meter; Scope: Prerequisites",
+      "type": "licensing",
+      "claim": "Storage billing requires an Azure subscription in the same tenant as Microsoft Purview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Storage meter billing requires a link to an Azure subscription for pay-as-you-go billing. ... An Azure subscription in the same tenant as Microsoft Purview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Scope: Prerequisites; controls[2].governs",
+      "type": "licensing",
+      "claim": "DSI billing setup requires a resource group in the selected Azure subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "An Azure resource group in that subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing: Rates",
+      "type": "cost",
+      "claim": "The billing documentation links to the Microsoft Purview pricing page for rates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "For more data storage rates and pricing, see Data Security Investigations storage meter pricing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "licensing.notes; Cost and licensing: Rates; Open questions",
+      "type": "absence",
+      "claim": "Microsoft does not publish a compute-unit figure per proactive refresh for a given volume of data.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'proactive AI insights compute refresh units cost'; 'proactive AI insights compute units off delete'. Read DSI billing, including AI capacity and estimation sections, and proactive setup documentation; no per-refresh volume-to-unit figure found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing: Rates; Governance guidance: Before rollout",
+      "type": "cost",
+      "claim": "An in-product estimator can estimate monthly storage and AI investigation costs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Before configuring billing, use the estimate costs tool to calculate an estimate of potential monthly data storage and AI costs for investigations in Data Security Investigations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing: Budgets",
+      "type": "cost",
+      "claim": "Microsoft recommends Azure budgets at the DSI resource-group and meter level.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Create budgets for the Data Security Investigations resource group and meter level.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing: Budgets",
+      "type": "cost",
+      "claim": "Microsoft gives 50%, 75% and 90% as example alert thresholds.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Configure alerts when spending approaches defined thresholds (for example, 50%, 75%, or 90%).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing: Budgets",
+      "type": "absence",
+      "claim": "The DSI billing page does not say that consumption stops when an Azure budget is reached.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Data Security Investigations budget stops consumption'. Read DSI billing, Best practices for managing investigation costs and Stop billing; budgets and alerts are described, but no budget-triggered consumption stop is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing: Budgets; Governance guidance: After rollout; controls[4].note",
+      "type": "behaviour",
+      "claim": "Billing data can take up to 48 hours to appear in the DSI usage dashboard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "It might take up to 48 hours for the latest billing data to show up on the Pay-as-you-go usage dashboard for your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing: Stopping charges",
+      "type": "cost",
+      "claim": "Deleting an investigation stops its associated storage charges.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "When you delete an investigation, you stop paying for the associated data storage amount. The charges are prorated to the number of days the data was stored in the billing cycle.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing: Stopping charges; controls[2].note",
+      "type": "cost",
+      "claim": "Stopping DSI billing means disabling both storage and AI capacity and deletes all investigations and compute units for the resource group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "To stop billing for Data Security Investigations, disable both storage meter and AI capacity support. This action deletes all investigations in Data Security Investigations and deletes compute units for your resource group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing: Stopping charges",
+      "type": "behaviour",
+      "claim": "The deletion associated with stopping billing is irreversible.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Deleting investigations and your compute unit resource group is irreversible.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Scope: Roles",
+      "type": "role",
+      "claim": "Creating a DSI investigation from DSPM requires one of the six role groups listed in the briefing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-permissions",
+      "quote": "Create data security investigation ... Compliance Administrator  Data Security Management  Insider Risk Management Admin  Organization Management  Data Security Investigations Admin  Data Security Investigations Investigator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Scope: Roles; controls[3].note",
+      "type": "role",
+      "claim": "Configuring AI capacity requires membership of Data Security Investigations Admins.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "To configure the AI capacity for Data Security Investigations, you must be a member of the Data Security Investigations Admins role group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Scope: Roles; controls[2].note",
+      "type": "role",
+      "claim": "Storage meter setup requires Global Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "To configure the storage meter and capacity for Data Security Investigations, you must have: ... The Global Administrator role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Scope: Roles; controls[2].note",
+      "type": "role",
+      "claim": "Storage meter setup also requires resource-group Owner or Contributor.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "The resource group Owner or Contributor role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Scope: Prerequisites; Governance guidance: At rollout",
+      "type": "licensing",
+      "claim": "DSI storage billing and AI capacity must be configured before using the feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Before you can use Data Security Investigations in your organization, you must configure both billing models. Storage meter billing requires a link to an Azure subscription for pay-as-you-go billing. Capacity billing requires dedicated compute unit configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls; Open questions: toggle role",
+      "type": "absence",
+      "claim": "The DSPM permissions page does not name a role specifically for the Proactive AI insights toggle.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'proactive AI insights role permissions assigned investigation'; 'proactive AI insights role toggle permissions administrator'. Read DSPM permissions and proactive enablement steps: general view/create/edit roles are listed, but no toggle-specific role assignment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Risk assessment: Data exposure; Open questions: automatic membership",
+      "type": "absence",
+      "claim": "Who is automatically assigned to the proactive investigation is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'proactive AI insights role permissions assigned investigation'; 'proactive AI insights assigned off'. Read investigation creation, DSI permissions and investigation access settings; no automatic proactive-investigation membership rule found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Open questions: disabling the toggle",
+      "type": "absence",
+      "claim": "Whether switching the toggle off deletes the investigation and ends its storage charges is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'proactive AI insights compute units off delete'; 'proactive AI insights assigned off'. Read DSI billing and investigation enablement; no off-toggle deletion or residual-storage behaviour is specified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance controls: Contributor role",
+      "type": "role",
+      "claim": "Data Security Management and Insider Risk Management include Data Security Investigation Contributor.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "| Data Security Management | Data Security Investigation Contributor | Contributor access |\n| Insider Risk Management | Data Security Investigation Contributor | Contributor access |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance controls: Contributor role",
+      "type": "role",
+      "claim": "Contributors can create and manage investigations they own or belong to.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "Members with the Data Security Investigation Contributor role can create and manage investigations they own or are members of.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Governance controls: Contributor role",
+      "type": "role",
+      "claim": "Contributor does not include access to data storage, AI job execution or the usage dashboard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "This role doesn't include access to data storage, AI job execution, or the Pay-as-you-go usage dashboard.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Governance controls: Global admins",
+      "type": "role",
+      "claim": "Global admins need a DSI role-group assignment to create and access investigations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "Global admins must be assigned to one of the listed role groups for Data Security Investigations to create and access investigations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[0].ui; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The proactive toggle is at Microsoft Purview portal > DSPM (preview) > Objectives > Prevent exfiltration to risky destinations > View objective > Exfiltration risk patterns > Proactive AI insights.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-investigation",
+      "quote": "go to DSPM (preview). ... In Objectives, select the Prevent exfiltration to risky destinations card. ... Select View objective ... On the Exfiltration risk patterns card, turn on the Proactive AI insights toggle.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[0].api; Governance controls: toggle automation",
+      "type": "absence",
+      "claim": "No PowerShell or Graph operation is documented for the proactive toggle.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Proactive AI insights PowerShell Graph toggle'; 'Security Compliance PowerShell cmdlet configure DSPM proactive AI insights Data Security Investigations storage billing AI capacity usage dashboard'. Read SCC PowerShell overview, DSI setup and Graph DSI audit-record reference; no toggle call.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "The DSI Admins membership path is Settings > Roles and groups > Role groups > Data Security Investigations Admins > Edit > Choose users in the Microsoft Purview portal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "Select Settings ... select Roles and groups, then select Role groups ... Select the Data Security Investigations Admins role group, then select Edit. ... Select Choose users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "Add-RoleGroupMember -Identity \"<role-group>\" -Member \"<user-UPN>\" adds membership and grants the group's effective role permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+      "quote": "Add-RoleGroupMember [-Identity] <RoleGroupIdParameter> -Member <SecurityPrincipalIdParameter> ... When you add a member to a role group, the member is given the effective permissions provided by the management roles assigned to the role group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "Data Security Investigations > Setup tasks > Setup pay-as-you-go-billing for data storage reaches storage subscription setup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Select Setup pay-as-you-go-billing for data storage in the Setup tasks section. ... Azure subscription: The Azure subscription you want to assign to the storage meter. ... Resource group",
+      "severity": "minor",
+      "fix": "Keep the path, which correctly reaches the setup pane, and append to the row note: 'On the setup pane, choose Azure subscription and Resource group.'"
+    },
+    {
+      "n": 67,
+      "where": "controls[2].api",
+      "type": "absence",
+      "claim": "No automation operation is documented for linking DSI storage billing to a subscription and resource group.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Data Security Investigations storage PowerShell billing'; 'Security Compliance PowerShell cmdlet configure DSPM proactive AI insights Data Security Investigations storage billing AI capacity usage dashboard'. Read DSI billing and SCC PowerShell overview; no storage-meter setup operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "The processing location control is Data Security Investigations > Setup tasks > Set up AI capacity > AI analysis data processing location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Select Set up AI capacity in the Setup tasks section. ... AI analysis data processing location: The primary country/region. Select from the available locations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "controls[3].api",
+      "type": "absence",
+      "claim": "No automation operation is documented for DSI's AI processing location.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Data Security Investigations AI capacity API location'; 'Security Compliance PowerShell cmdlet configure DSPM proactive AI insights Data Security Investigations storage billing AI capacity usage dashboard'. Read DSI billing, SCC PowerShell overview and Graph audit-record reference; no location call.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "controls[4].ui; Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "Data Security Investigations > Usage dashboard displays storage and compute usage per investigation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Go to Data Security Investigations ... Select Usage dashboard in the left-navigation. ... The data storage usage for each investigation ... The compute unit usage for each investigation",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "controls[4].api",
+      "type": "absence",
+      "claim": "No DSI usage-dashboard automation operation is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Data Security Investigations usage Graph API'; 'Security Compliance PowerShell cmdlet configure DSPM proactive AI insights Data Security Investigations storage billing AI capacity usage dashboard'. Read DSI billing dashboard section and Graph audit-record reference; only portal export is described.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "controls[4].note",
+      "type": "role",
+      "claim": "Only users assigned the Data Security Investigations Admin role can access the usage dashboard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Only users assigned the Data Security Investigations Admin role can access the Pay-as-you-go usage dashboard.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "controls[5].ui",
+      "type": "admin-path",
+      "claim": "Microsoft Purview portal > Audit > Search reaches audit-log search.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "Sign in to the Microsoft Purview portal. ... Select the Audit solution card. ... On the Search page, configure the following search criteria as applicable",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "controls[5].api",
+      "type": "command",
+      "claim": "Search-UnifiedAuditLog is the PowerShell command for audit-log searching.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "The underlying cmdlet used to search the audit log is an Exchange Online cmdlet, which is Search-UnifiedAuditLog. ... You have to run this cmdlet in Exchange Online PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "controls[5].note",
+      "type": "applicability",
+      "claim": "DSI activities are automatically logged in the unified audit log.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations",
+      "quote": "Data Security Investigations activities are automatically logged in the unified audit log.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "Governance guidance: After rollout",
+      "type": "applicability",
+      "claim": "The unified audit log can show who views and works on an investigation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-activities#data-security-investigations-activities",
+      "quote": "| Get DSI Investigation | GetDSIInvestigation | A user viewed an investigation. |\n| Updated DSI Investigation | UpdatedDSIInvestigation | A user updated an investigation. |",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/purview/audit-log-activities#data-security-investigations-activities to sources to support the specific view/work auditing advice."
+    },
+    {
+      "n": 77,
+      "where": "Governance controls: Usage center",
+      "type": "admin-path",
+      "claim": "The Purview usage page is reached at Usage center > Pay-as-you-go.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-usage",
+      "quote": "To access the Usage center > Pay-as-you-go and Usage center > Premium usage pages, the account you use must have one of the following roles",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "Governance guidance: Before rollout, cost estimator",
+      "type": "consistency",
+      "claim": "The governance checklist tells readers to run the cost estimator, but the controls table has no estimator row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Run the DSI cost estimator against a typical month of exfiltration activity before enabling. ... Controls list the proactive toggle, role membership, storage setup, processing location, usage dashboard and audit search, but not the estimator.",
+      "severity": "minor",
+      "fix": "Remove the checklist bullet 'Run the DSI cost estimator against a typical month of exfiltration activity before enabling.' Keep the existing estimator advice in Cost and licensing; do not add a control row."
+    },
+    {
+      "n": 79,
+      "where": "controls[1].note",
+      "type": "role",
+      "claim": "The Investigators and Reviewers role groups provide narrower permissions than Admins.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "| Create and manage all investigations | Yes | No | No |\n| Create and manage assigned investigations | Yes | Yes | No |\n| View the Pay-as-you-go usage dashboard | Yes | No | No |",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-27T11:53:36.621Z",
+    "summary": {
+      "links": 10,
+      "unreachable": 0,
+      "uiPaths": 6,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=560327",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/data-security-investigations-investigation",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/data-security-posture-management-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/purview-billing-usage",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/data-security-investigations",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/data-security-posture-management-learn-about",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-search",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether DSI runs proactive AI insights on exfiltrated data for the tenant",
+        "docs": "https://learn.microsoft.com/purview/data-security-investigations-investigation",
+        "reachable": true,
+        "segments": [
+          "DSPM",
+          "Objectives",
+          "Prevent exfiltration to risky destinations",
+          "View objective",
+          "Exfiltration risk patterns",
+          "Proactive AI insights"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Who can create and manage all Data Security Investigations, including viewing every investigation",
+        "docs": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Roles and groups",
+          "Role groups",
+          "Data Security Investigations Admins",
+          "Edit",
+          "Choose users"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Who can create and manage all Data Security Investigations, including viewing every investigation",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "reachable": true,
+        "token": "Add-RoleGroupMember",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Which Azure subscription and resource group the DSI storage meter bills",
+        "docs": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+        "reachable": true,
+        "segments": [
+          "Data Security Investigations",
+          "Setup tasks",
+          "Setup pay-as-you-go-billing for data storage"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Where DSI AI analysis is processed",
+        "docs": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+        "reachable": true,
+        "segments": [
+          "Data Security Investigations",
+          "Setup tasks",
+          "Set up AI capacity",
+          "AI analysis data processing location"
+        ],
+        "missing": []
+      },
+      {
+        "index": 4,
+        "side": "ui",
+        "governs": "Storage and compute unit spend per investigation",
+        "docs": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+        "reachable": true,
+        "segments": [
+          "Data Security Investigations",
+          "Usage dashboard"
+        ],
+        "missing": []
+      },
+      {
+        "index": 5,
+        "side": "ui",
+        "governs": "Searching audit records of Data Security Investigations activity",
+        "docs": "https://learn.microsoft.com/purview/audit-search",
+        "reachable": true,
+        "segments": [
+          "Audit",
+          "Search"
+        ],
+        "missing": []
+      },
+      {
+        "index": 5,
+        "side": "api",
+        "governs": "Searching audit records of Data Security Investigations activity",
+        "docs": "https://learn.microsoft.com/purview/audit-search",
+        "reachable": true,
+        "token": "Search-UnifiedAuditLog",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

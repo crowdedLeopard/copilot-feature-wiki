@@ -70,19 +70,23 @@ changes:
     note: "New briefing: Minecraft Education connected lessons planned for Learning Zone, targeted for February CY2027."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 57 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-27"
+    note: "Corrected: removed the unsupported claim that licence type decides who runs in-game teacher controls; qualified the Minecraft Education trial logins to Microsoft-verified academic organisations."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 61 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-27"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 57
-  confirmed: 56
-  unconfirmed: 1
+  claims: 61
+  confirmed: 61
+  unconfirmed: 0
   contradicted: 0
-  attempts: 1
-  hash: "d957865ef56bf8d4b7be6ad87e8869f5"
+  attempts: 0
+  hash: "4ac859377d9005c8274c538dc2bf8a1c"
 ---
 
 ## What's changing
@@ -106,7 +110,7 @@ Microsoft has not stated what happens on arrival. No source says existing Learni
 - The roadmap promises visibility of participation, completion and student understanding. Which Minecraft activity data feeds those reports is not yet documented.
 
 **Security & identity**
-- Learning Zone uses the Microsoft 365 Education account and applies the institution's policies on sign-in. Assigning a faculty Minecraft Education licence gives the user the teacher role in Minecraft Education with elevated permissions, so licence type decides who can run in-game teacher controls.
+- Learning Zone uses the Microsoft 365 Education account and applies the institution's policies on sign-in. Assigning a faculty Minecraft Education licence gives the user the teacher role in Minecraft Education with elevated permissions.
 
 **Autonomy & actions**
 - No change described: the roadmap describes tools educators use to build and launch lessons, not actions taken without an educator.
@@ -118,7 +122,7 @@ Microsoft has not stated what happens on arrival. No source says existing Learni
 ## Cost and licensing
 
 - **Learning Zone**: available to organisations with a Microsoft 365 Education A1, A3 or A5 licence, with no additional cost when used with an eligible education licence ([Deploy Microsoft Learning Zone](https://learn.microsoft.com/microsoft-365/education/guide/1-reference/baseline-reference-deploy-learning-zone)).
-- **Minecraft Education**: users need a Minecraft Education, A1 for device or A3/A5 licence; with A3 or A5 the Minecraft Education toggle must be on. Organisations can buy subscriptions in the Microsoft 365 admin center, through volume licensing or partners ([Get and deploy Minecraft Education](https://learn.microsoft.com/education/windows/get-minecraft-for-education)). Faculty accounts get 25 free logins and student accounts 10 before a paid licence is required to continue playing.
+- **Minecraft Education**: users need a Minecraft Education, A1 for device or A3/A5 licence; with A3 or A5 the Minecraft Education toggle must be on. Organisations can buy subscriptions in the Microsoft 365 admin center, through volume licensing or partners ([Get and deploy Minecraft Education](https://learn.microsoft.com/education/windows/get-minecraft-for-education)). In Microsoft-verified academic organisations with Microsoft 365 accounts, faculty accounts get 25 free logins and student accounts 10 before a paid licence is required to continue playing.
 - **Device limit for generation**: on Windows 11 PCs that are not Copilot+ PCs, each Learning Zone generation is limited to 10 slides, and generation on those devices is available until 1 August 2027. Whether this applies to Build Challenge matching is not yet published.
 - **Not yet published**: whether connected lessons need any licence beyond the two above, and whether every student assigned a connected lesson needs a Minecraft Education licence.
 - **Indirect costs**: admin time to align Minecraft Education licence assignment with the classes that will use connected lessons, and to deploy the Minecraft Education client.
@@ -175,12 +179,4 @@ The Learning Zone access switch turns off Learning Zone as a whole; Microsoft Le
 risk: Medium. Student participation, completion and understanding data flows into Learning Zone reports, and Learning Zone is on by default in eligible organisations; Microsoft documents no switch for the Minecraft integration alone.
 cost: Low. Learning Zone has no additional cost with an eligible Microsoft 365 Education licence; Minecraft Education needs a Minecraft Education, A1 for device or A3/A5 licence. A licence rule for connected lessons is not yet published.
 impact: Medium. Educators who build Minecraft-based lessons and the students they assign them to notice; nothing reaches other staff.
--->
-
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Risk assessment: Security & identity / role: Licence type decides who can run in-game teacher controls. | Found: Searched: 'Minecraft Education teacher role faculty license elevated permissions operator student teacher controls'; 'Minecraft Education teacher permissions students operator world host teacher license'; read Get and deploy Minecraft Education. No exclusive permission rule found. | Fix: Remove ', so licence type decides who can run in-game teacher controls'. Retain: 'Assigning a faculty Minecraft Education licence gives the user the teacher role in Minecraft Education with elevated permissions.' The cited deployment page supports that narrower statement.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing: Minecraft Education / licensing: Faculty accounts get 25 free logins before a paid licence is required. | Found: Users in a Microsoft-verified academic organization with Microsoft 365 accounts have access to a free trial for Minecraft Education. This grants faculty accounts 25 free logins, and student accounts 10 free logins before a paid license is required to continue playing. | Fix: Qualify the sentence for the briefing's academic audience: 'In Microsoft-verified academic organisations with Microsoft 365 accounts, faculty accounts get 25 free logins and student accounts 10 before a paid licence is required to continue playing.' | Source: https://learn.microsoft.com/education/windows/get-minecraft-for-education
 -->

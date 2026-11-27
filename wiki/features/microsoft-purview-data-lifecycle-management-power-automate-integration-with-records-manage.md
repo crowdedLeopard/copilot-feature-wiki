@@ -76,15 +76,17 @@ changes:
     note: "Corrected after the independent check: summary now states the Message Center condition (no user impact unless administrators configure and apply flows); moved-or-renamed-file risk reworded to Learn's timing; two sharing-review checklist bullets removed."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 69 statements confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 71 statements confirmed"
 version: 2
 verification:
   status: "verified"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 69
-  confirmed: 69
+  claims: 71
+  confirmed: 71
   unconfirmed: 0
   contradicted: 0
   attempts: 0

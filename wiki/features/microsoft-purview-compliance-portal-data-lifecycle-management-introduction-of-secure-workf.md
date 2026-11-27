@@ -89,17 +89,19 @@ changes:
     note: "Corrected the licence statement to say any user benefiting from the service needs a licence, added the control label to the tenant switch path, and moved role, adaptive scope and auditing steps into prerequisites."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 88 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 95 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 88
-  confirmed: 87
+  claims: 95
+  confirmed: 93
   unconfirmed: 0
-  contradicted: 1
+  contradicted: 2
   attempts: 0
   hash: "7aba76a75c3cd9c6023b77ee04e21b13"
 ---
@@ -209,9 +211,10 @@ cost: Medium. The Microsoft Purview service description lists the licences that 
 impact: Low. Mainly Priority Cleanup Admins and approvers notice it; users of a mailbox only see a Retention message bar in Outlook on items a policy has identified.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Data exposure / behaviour: Review-set data is deleted only when the eDiscovery case is deleted. | Found: You can't delete items from a review set, and you can't delete review sets from a case. To delete a review set and its data, you must delete the eDiscovery case that contains the review set. | Fix: Add https://learn.microsoft.com/purview/edisc-review-set-manage to sources for the statement that review-set data is deleted only by deleting its case. | Source: https://learn.microsoft.com/purview/edisc-review-set-manage
-- [contradicted, minor] Governance guidance: At rollout; Governance controls table / consistency: The governance checklist's instruction to use Relabel is represented in the controls table. | Found: Checklist: 'Brief approvers on the Pending cleanups page, on the Relabel option'. Table controls: tenant policy-creation switch; creating a policy; searching the audit trail. No row covers Relabel. | Fix: Replace the At rollout bullet beginning 'Brief approvers' with 'Brief approvers on the Pending cleanups page.' The instruction to use Relabel has no corresponding controls-table row; retain its factual description in Risk assessment.
+- [supported, minor] Risk assessment: Data exposure / behaviour: Review-set data is deleted only when its eDiscovery case is deleted. | Found: You can't delete items from a review set, and you can't delete review sets from a case. To delete a review set and its data, you must delete the eDiscovery case that contains the review set. | Fix: Add https://learn.microsoft.com/purview/edisc-review-set-manage to sources for the statement that review-set data can be deleted only by deleting its case. | Source: https://learn.microsoft.com/purview/edisc-review-set-manage
+- [contradicted, minor] front matter: action; Why it matters / consistency: The prepare action fits the standard for this optional, medium-risk capability. | Found: action: "prepare"; risk: "medium". Body: "no mailbox content is deleted until a Priority Cleanup Admin creates a policy and the approvers approve it." | Fix: Set action to "review": the standard assigns review to optional capabilities that change nothing until an administrator chooses them, and the high-risk new-control exception does not apply to this medium-risk page.
+- [contradicted, minor] Governance guidance: At rollout; Governance controls table / consistency: The checklist's instruction concerning Relabel has a corresponding controls-table row. | Found: Checklist: "Brief approvers on the Pending cleanups page, on the Relabel option and on which existing retention labels they should choose". Table rows cover the tenant switch, policy creation and audit search, not Relabel. | Fix: Replace the At rollout bullet beginning "Brief approvers" with "Brief approvers on the Pending cleanups page." Keep the supported factual description of relabeling in Risk assessment.
 -->

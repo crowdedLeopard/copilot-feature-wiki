@@ -75,15 +75,17 @@ changes:
     note: "Corrected after verification: reworded the key-custody claim to export packages at rest, added the SharePoint E3 licence qualification, and removed the instruction to use the assignment cmdlet as a status check."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 58 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 53 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 58
-  confirmed: 57
+  claims: 53
+  confirmed: 52
   unconfirmed: 1
   contradicted: 0
   attempts: 0
@@ -195,11 +197,10 @@ cost: Low. No Microsoft page read names a separate charge for CMK on direct expo
 impact: Low. Administrators and the investigators who run direct exports are affected, and Microsoft's notice says the eDiscovery user experience does not change.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: The feature adds no agent or automated action. | Found: Searched: 'eDiscovery CMK direct export adds agent automatic actions'; opened edisc-search-export and read MC1289726. These describe automatic encryption, not an assurance that no agent or automated action is added. | Fix: Remove 'No change: the feature adds no agent or automated action.' Retain 'Encryption is applied by the service during the export.'
+- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: The feature adds no agent or automated action. | Found: Searched: 'eDiscovery CMK agent automatic actions'; opened edisc-search-export and read MC1289726. These describe automatic export encryption but give no blanket assurance about agents or autonomous actions. | Fix: Remove 'No change: the feature adds no agent or automated action.' Retain 'Encryption is applied by the service during the export.'
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance controls / behaviour: The Customer Key pages say all Customer Key operations run through Exchange Online PowerShell. | Found: Permissions: Exchange admin permissions (all Customer Key operations run through Exchange Online PowerShell) | Fix: Replace the sentence with 'Multi-workload DEP assignment uses Exchange Online PowerShell and requires Exchange admin permissions.' The cited https://learn.microsoft.com/purview/customer-key-manage also says 'To configure Customer Key for SharePoint and OneDrive, use SharePoint PowerShell' and lists Azure PowerShell for Key Vault operations. | Source: https://learn.microsoft.com/purview/customer-key-set-up
-- [supported, minor] Cost and licensing / cost: The tenant remains responsible for Azure Key Vault usage charges under its paid Azure subscriptions. | Found: 'purge' and 'recover' actions will count towards normal key vault operations and will be billed. | Fix: Add https://learn.microsoft.com/azure/key-vault/general/soft-delete-overview#scenarios to sources and cite it for the statement that Azure Key Vault usage is billed. | Source: https://learn.microsoft.com/azure/key-vault/general/soft-delete-overview#scenarios
+- [supported, minor] Governance controls / behaviour: The Customer Key pages say all Customer Key operations run through Exchange Online PowerShell. | Found: Permissions: Exchange admin permissions (all Customer Key operations run through Exchange Online PowerShell) | Fix: Replace the sentence with 'Multi-workload DEP assignment uses Exchange Online PowerShell and requires Exchange admin permissions.' The cited https://learn.microsoft.com/purview/customer-key-manage also directs SharePoint configuration through SharePoint PowerShell and Key Vault operations through Azure PowerShell. | Source: https://learn.microsoft.com/purview/customer-key-set-up
 -->

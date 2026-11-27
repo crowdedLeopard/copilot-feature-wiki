@@ -146,15 +146,17 @@ changes:
     note: "Rewritten for this Worldwide roadmap item: preview January CY2027, general availability March CY2027, with the rollout windows Microsoft gave in MC1281505 on 17 November 2026."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 80 statements confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 76 statements confirmed"
 version: 24
 verification:
   status: "verified"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 24
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 80
-  confirmed: 80
+  claims: 76
+  confirmed: 76
   unconfirmed: 0
   contradicted: 0
   attempts: 0

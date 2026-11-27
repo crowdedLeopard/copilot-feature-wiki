@@ -63,15 +63,17 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 71 statements not yet confirmed"
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 71 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 74 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 71
-  confirmed: 69
+  claims: 74
+  confirmed: 72
   unconfirmed: 0
   contradicted: 2
   attempts: 0
@@ -176,9 +178,9 @@ cost: Low. The Purview service description lists DLP that restricts Copilot proc
 impact: Low. Admins configure it, and users notice only if an admin enables it, when Copilot answers without external emails and shows a message that content was excluded by an organisational policy.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist asks administrators to review accepted domains without a corresponding controls-table row. | Found: Review your tenant's accepted domains, because the rule compares each sender's domain with them. / The table's only row is Whether Copilot excludes external senders' emails from grounding. | Fix: Remove the checklist bullet 'Review your tenant's accepted domains, because the rule compares each sender's domain with them.' Keep the documented comparison mechanism in What's changing.
-- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist asks administrators to assign a policy-author role without a corresponding controls-table row. | Found: Assign the policy author one of the roles listed under Scope, preferably the narrowest. / The table's only row is Whether Copilot excludes external senders' emails from grounding. | Fix: Remove the checklist bullet 'Assign the policy author one of the roles listed under Scope, preferably the narrowest.' Keep the verified role prerequisites in Scope.
+- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist asks administrators to review accepted domains without a corresponding controls-table row. | Found: Review your tenant's accepted domains, because the rule compares each sender's domain with them. / The only controls row is Whether Copilot excludes external senders' emails from grounding. | Fix: Remove the checklist bullet 'Review your tenant's accepted domains, because the rule compares each sender's domain with them.' Keep the documented domain-comparison mechanism in What's changing.
+- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist asks administrators to assign a policy-author role without a corresponding controls-table row. | Found: Assign the policy author one of the roles listed under Scope, preferably the narrowest. / The only controls row is Whether Copilot excludes external senders' emails from grounding. | Fix: Remove the checklist bullet 'Assign the policy author one of the roles listed under Scope, preferably the narrowest.' Keep the role prerequisites in Scope.
 -->

@@ -94,15 +94,17 @@ changes:
     note: "Corrected after verification: setup-method wording for the retention policy, storage-quota cost, product-level Insider Risk Management licence, risk-level path, and removal of an unsupported test-group step."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 66 statements confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 64 statements confirmed"
 version: 2
 verification:
   status: "verified"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 66
-  confirmed: 66
+  claims: 64
+  confirmed: 64
   unconfirmed: 0
   contradicted: 0
   attempts: 0

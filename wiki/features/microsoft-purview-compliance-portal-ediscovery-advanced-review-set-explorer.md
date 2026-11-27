@@ -81,15 +81,17 @@ changes:
     note: "Corrected: the explorer route now starts at eDiscovery > Cases in the Microsoft Purview portal, the impact rationale says opening it requires eDiscovery permissions, and the role-group path and audit-role note are completed."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 60 statements confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 63 statements confirmed"
 version: 2
 verification:
   status: "verified"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 60
+  claims: 63
+  confirmed: 63
   unconfirmed: 0
   contradicted: 0
   attempts: 0

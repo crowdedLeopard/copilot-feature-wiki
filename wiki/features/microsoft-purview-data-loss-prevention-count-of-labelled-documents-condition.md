@@ -77,15 +77,17 @@ changes:
     note: "First briefing for this item: covers the notice's counting rules, rollout windows, the policy path and simulation-mode control, and the gaps Learn has not yet filled."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 56 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 53 statements not yet confirmed"
 version: 1
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 56
-  confirmed: 55
+  claims: 53
+  confirmed: 52
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -182,10 +184,10 @@ cost: Low. The only cost the sources show is admin time to design and test rules
 impact: Low. Administrators who manage Exchange Online DLP policies are the audience in MC1508235; senders notice only if a rule they write blocks or flags messages above a threshold.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls / admin-path: The printed Purview policy creation route reaches Conditions > Add condition, although the specific new condition is not documented there. | Found: On the Define policy settings page, the Create or customize advanced DLP rules option should already be selected. | Fix: Add the omitted wizard-page heading in front matter and the rendered table: 'Data loss prevention > Policies > + Create policy > Enterprise applications & devices > Custom > Custom > Exchange email > Define policy settings > Create or customize advanced DLP rules > Create rule > Conditions > Add condition'. Retain the note that the cited page does not list the new condition. | Source: https://learn.microsoft.com/purview/dlp-create-policy-cc-email
-- [supported, minor] controls[1].ui; Governance controls / admin-path: The printed Purview creation route reaches Run the policy in simulation mode after the rule is saved. | Found: Select Save. 40. Select Next, then select Run the policy in simulation mode. | Fix: Add the omitted wizard-page heading in front matter and the rendered table: 'Data loss prevention > Policies > + Create policy > Enterprise applications & devices > Custom > Custom > Exchange email > Define policy settings > Create or customize advanced DLP rules > Create rule > Run the policy in simulation mode'. Retain the note that the rule must first be saved. | Source: https://learn.microsoft.com/purview/dlp-create-policy-cc-email
-- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist asks readers to check label publication and DLP role-group membership, but neither control is represented in the controls table. | Found: Check which sensitivity labels are published and in use Confirm which of the role groups listed under Scope your DLP administrators belong to. The table covers only the attachment-count condition and policy simulation state. | Fix: Remove the Before rollout bullets beginning 'Check which sensitivity labels are published and in use' and 'Confirm which of the role groups listed under Scope'. These checklist controls have no corresponding table row; retain the factual labelling and permissions discussion elsewhere.
+- [supported, minor] controls[0].ui; Governance controls / admin-path: The printed Microsoft Purview portal path reaches Conditions > Add condition in the Exchange policy wizard. | Found: On the Define policy settings page, the Create or customize advanced DLP rules option should already be selected. | Fix: In controls[0].ui.path and the rendered table, use 'Data loss prevention > Policies > + Create policy > Enterprise applications & devices > Custom > Custom > Exchange email > Define policy settings > Create or customize advanced DLP rules > Create rule > Conditions > Add condition'. Retain the note that this page does not document the new condition. | Source: https://learn.microsoft.com/purview/dlp-create-policy-cc-email
+- [supported, minor] controls[1].ui; Governance controls / admin-path: The printed Microsoft Purview portal path reaches Run the policy in simulation mode after the rule is saved. | Found: On the Define policy settings page, the Create or customize advanced DLP rules option should already be selected. | Fix: In controls[1].ui.path and the rendered table, use 'Data loss prevention > Policies > + Create policy > Enterprise applications & devices > Custom > Custom > Exchange email > Define policy settings > Create or customize advanced DLP rules > Create rule > Run the policy in simulation mode'. Retain the note that the rule is saved before choosing simulation mode. | Source: https://learn.microsoft.com/purview/dlp-create-policy-cc-email
+- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist asks readers to check label publication and administrator role-group membership, but neither control has a table row. | Found: Check which sensitivity labels are published and in use; Confirm which of the role groups listed under Scope your DLP administrators belong to. The controls table covers only the attachment-count condition and policy state. | Fix: Remove the Before rollout bullets beginning 'Check which sensitivity labels are published and in use' and 'Confirm which of the role groups listed under Scope'. Retain the factual labelling and permissions discussion elsewhere; do not add control rows.
 -->

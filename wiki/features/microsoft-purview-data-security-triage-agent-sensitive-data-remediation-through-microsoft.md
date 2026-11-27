@@ -107,15 +107,17 @@ changes:
     note: "Correction: Teams app availability now lists Update-M365TeamsApp, the reminders path ends at the switch, the 24-hour Teams caveat and E5/E7 inclusion capacity are added, and the first Before rollout item is removed."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 75 statements confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 83 statements confirmed"
 version: 2
 verification:
   status: "verified"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 75
-  confirmed: 75
+  claims: 83
+  confirmed: 83
   unconfirmed: 0
   contradicted: 0
   attempts: 0

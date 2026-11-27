@@ -57,19 +57,23 @@ changes:
     note: "New briefing: planned option to expand or collapse all accounts in Outlook's folder pane at once, targeted for February CY2027."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 37 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-27"
+    note: "Corrected the multi-account licensing sentence to say that, once an account with a qualifying desktop-app licence is added, secondary Business Basic or E1 accounts can also be added."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 42 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-27"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 37
-  confirmed: 36
+  claims: 42
+  confirmed: 42
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "4fbd341b747c3acc8ba8fa7de9f0c26f"
+  contradicted: 0
+  attempts: 0
+  hash: "29d427063f7485c0acedc77e51b5dec3"
 ---
 
 ## What's changing
@@ -104,7 +108,7 @@ If nobody acts, the roadmap describes users gaining an option they choose to use
 
 ## Cost and licensing
 
-**Licence.** The option is part of Outlook. Microsoft's page *Understand licensing in new Outlook for Windows* states that using the Outlook for Windows desktop app with a Microsoft 365 organisational email address needs a plan that includes the desktop versions of the Microsoft 365 apps, and that the Business Basic plan provides the web and mobile versions of Outlook. For people with several accounts, the same page says that if any account signed into the app has a licence for the desktop applications, other types of account can be added.
+**Licence.** The option is part of Outlook. Microsoft's page *Understand licensing in new Outlook for Windows* states that using the Outlook for Windows desktop app with a Microsoft 365 organisational email address needs a plan that includes the desktop versions of the Microsoft 365 apps, and that the Business Basic plan provides the web and mobile versions of Outlook. For people with several accounts, the same page says that once an account with a qualifying desktop-app licence is added, secondary accounts licensed for Business Basic or E1 can also be added.
 
 **Meter.** Microsoft publishes no meter, charge or licence specific to this option.
 
@@ -156,8 +160,8 @@ cost: None. The option is part of Outlook, which users already need a licence fo
 impact: Low. Only people with several accounts in Outlook who choose to use the option will notice it.
 -->
 
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing: Licence, final sentence / licensing: If any signed-in account has a desktop-app licence, other account types can be added, without stating the page's Frontline-account exception. | Found: Can Microsoft 365 accounts with a Frontline license be added to new Outlook? No. | Fix: Narrow the final sentence to: "For people with several accounts, the same page says that once an account with a qualifying desktop-app licence is added, secondary accounts licensed for Business Basic or E1 can also be added." This wording is supported by https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options and does not imply the separate Frontline exclusion is waived. | Source: https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Cost and licensing: Licence / licensing: After an account with a qualifying desktop-app licence is added, secondary Business Basic accounts can be added. | Found: Once you add an account with a qualifying license to Outlook, you can add secondary accounts with licenses for products that don't include the desktop apps such as Business Basic or E1. | Fix: After the secondary-account licensing sentence, add: "The separate Supported accounts page gives conflicting guidance, stating that accounts associated with SKUs without Outlook client-app licences are not supported." Cite https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/supported-account-types alongside https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options. | Source: https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options
 -->

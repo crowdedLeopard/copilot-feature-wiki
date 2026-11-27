@@ -71,18 +71,20 @@ changes:
     note: "First briefing for this roadmap item: documents today's Edge for Business inline DLP for unmanaged AI apps and flags what the expansion has not yet published."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 70 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 68 statements contradicted, 1 unconfirmed; taken offline until corrected"
 version: 1
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-20"
+  status: "held"
+  date: "2026-11-27"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 70
-  confirmed: 68
+  claims: 68
+  confirmed: 65
   unconfirmed: 1
-  contradicted: 1
-  attempts: 0
+  contradicted: 2
+  attempts: 1
   hash: "17944bd97cf91a0b46ed3f290f15951c"
 ---
 
@@ -179,11 +181,12 @@ cost: Low. The Purview service description lists inline DLP for cloud apps in th
 impact: Medium. Users inside a policy's scope who use generative AI sites in Edge for Business see audits or blocks, and users under a Block policy also lose access to other browsers.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Governance controls: paragraph after table / behaviour: The automatically created security groups are read-only. | Found: Searched: 'Purview automatically created security groups read only Edge DLP'; read microsoft-edge-dlp-purview-configuration, including How it works and FAQs. Microsoft calls policies read-only and groups automatically managed, but does not state that groups are read-only. | Fix: Replace 'the auto-created Edge configuration policies, Intune policies and security groups are read-only and are updated by editing the Purview policy' with 'the auto-created Edge configuration policies and Intune policies are read-only; these policies and the security groups update automatically when the Purview policy changes'.
+- [unsupported, major] Governance controls: paragraph after table / behaviour: The automatically created security groups are read-only. | Found: Searched: '"Purview" "security groups" "read-only" "Edge"'; read microsoft-edge-dlp-purview-configuration, including How it works and FAQs. It calls policies read-only and groups automatically managed, but does not state that the security groups are read-only. | Fix: Replace 'the auto-created Edge configuration policies, Intune policies and security groups are read-only and are updated by editing the Purview policy' with 'the auto-created Edge configuration policies and Intune policies are read-only; these policies and the security groups update automatically when the Purview policy changes'. Source: https://learn.microsoft.com/deployedge/microsoft-edge-dlp-purview-configuration.
+- [contradicted, blocker] Scope: Users and devices / availability: Learn lists these Edge for Business features as starting with version 144. | Found: These features are available in the two latest stable versions of Edge for Business, starting with version 158. | Fix: Replace 'Learn lists Edge for Business versions from 144, in the two latest stable versions' with 'Learn lists these features as available in the two latest stable versions of Edge for Business, starting with version 158'. Source: https://learn.microsoft.com/purview/dlp-browser-dlp-learn#supported-browsers. | Source: https://learn.microsoft.com/purview/dlp-browser-dlp-learn
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls / admin-path: The displayed Purview path reaches the unmanaged AI app scope and the browser enforcement selection. | Found: Select + Add cloud apps > Adaptive app scopes Select All unmanaged AI apps > Add. On the Choose where to enforce the policy step, select Edge for Business. | Fix: The printed steps correctly reach app selection but stop before enforcement selection. Extend the path to 'Data loss prevention > Policies > + Create policy > Inline web traffic > Custom > Custom policy > + Add cloud apps > Adaptive app scopes > All unmanaged AI apps > Choose where to enforce the policy > Edge for Business'. User/group selection and wizard navigation can remain omitted. | Source: https://learn.microsoft.com/purview/dlp-create-policy-block-to-ai-via-edge
-- [contradicted, minor] Governance guidance; Governance controls / consistency: Every control the governance checklist asks readers to check or take stock of is represented in the controls table. | Found: Compare users in scope with any Endpoint DLP policies for the same actions, because Endpoint DLP takes priority. Which unmanaged AI apps an inline DLP policy covers, and where it is enforced Resync of the automatic Edge and Intune configuration for Purview DLP protections | Fix: The Before rollout steps checking Intune multi-admin approval and comparing Endpoint DLP policies, and the After rollout step reviewing Activity explorer, have no corresponding row in the controls table.
+- [supported, minor] controls[0].ui; What's changing; Governance controls / admin-path: The printed Purview portal path reaches the All unmanaged AI apps scope for an inline DLP policy. | Found: Select + Add cloud apps > Adaptive app scopes Select All unmanaged AI apps > Add. On the Choose where to enforce the policy step, select Edge for Business. | Fix: The printed path reaches app selection but omits the enforcement choice named in the control. Use 'Data loss prevention > Policies > + Create policy > Inline web traffic > Custom > Custom policy > + Add cloud apps > Adaptive app scopes > All unmanaged AI apps > Choose where to enforce the policy > Edge for Business' in controls[0].ui.path and the rendered table. | Source: https://learn.microsoft.com/purview/dlp-create-policy-block-to-ai-via-edge
+- [contradicted, minor] Governance guidance; Governance controls / consistency: Every control the governance checklist asks readers to check or take stock of is represented in the controls table. | Found: Check whether the tenant uses multi-admin approval in Microsoft Intune Compare users in scope with any Endpoint DLP policies for the same actions Review activity in Activity explorer The table contains only inline policy scope/enforcement and configuration resync. | Fix: The Before rollout checks for Intune multi-admin approval and overlapping Endpoint DLP policies, and the After rollout Activity explorer review, have no corresponding controls-table rows. Do not add rows as part of this correction.
 -->

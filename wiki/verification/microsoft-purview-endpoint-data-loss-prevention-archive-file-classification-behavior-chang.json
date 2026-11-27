@@ -3,7 +3,7 @@
   "roadmapId": 570965,
   "title": "Microsoft Purview Endpoint DLP: archive files classified as one object on Windows",
   "status": "verified",
-  "date": "2026-11-20",
+  "date": "2026-11-27",
   "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
@@ -14,21 +14,21 @@
   "notes": [],
   "hold": null,
   "counts": {
-    "claims": 52,
-    "confirmed": 52,
+    "claims": 49,
+    "confirmed": 49,
     "unconfirmed": 0,
     "contradicted": 0,
     "blocker": 0,
     "major": 0,
     "minor": 0
   },
-  "summary": "The briefing accurately reports Microsoft's notice, including the affected organisations, unchanged policy evaluation and rollout windows. The updated licensing page still supports the stated Endpoint DLP entitlement, and the audit-search path and PowerShell command are documented.",
+  "summary": "The briefing accurately reports Microsoft's archive-classification notice and distinguishes its rollout schedule from the roadmap targets. The audit controls, licensing and automatic default are supported; no corrections are needed.",
   "claims": [
     {
       "n": 1,
-      "where": "title; front matter: products; What's changing; Scope",
+      "where": "front matter: products; What's changing",
       "type": "record",
-      "claim": "This change concerns Microsoft Purview Endpoint Data Loss Prevention on Windows endpoints.",
+      "claim": "This change belongs to Microsoft Purview Endpoint Data Loss Prevention.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Microsoft Purview: Endpoint Data Loss Prevention-Archive File Classification Behavior Change for Windows Endpoints",
@@ -37,127 +37,6 @@
     },
     {
       "n": 2,
-      "where": "front matter: status; What's changing; Open questions",
-      "type": "record",
-      "claim": "The supplied roadmap record still says In development.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"status\": \"In development\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
-      "where": "front matter: targetDate; What's changing",
-      "type": "record",
-      "claim": "The roadmap general availability target is October CY2026.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"targetDate\": \"October CY2026\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "front matter: previewDate; What's changing",
-      "type": "record",
-      "claim": "The roadmap preview target is September CY2026.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": \"September CY2026\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "front matter: releasePhase; Scope",
-      "type": "record",
-      "claim": "The roadmap lists both General Availability and Preview release phases.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "front matter: clouds; Scope",
-      "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "front matter: platforms; Scope",
-      "type": "record",
-      "claim": "The roadmap platform is Web, notwithstanding the notice's more specific Windows endpoint scope.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Web\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "MC1474107 was published on 2026-09-18.",
-      "status": "supported",
-      "source": "Message Center post MC1474107",
-      "quote": "Published 2026-09-18; last updated 2026-09-18",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "What's changing; Scope",
-      "type": "record",
-      "claim": "The notice gives a Public Preview beginning in late September 2026 and expected to complete in mid-October 2026.",
-      "status": "supported",
-      "source": "Message Center post MC1474107",
-      "quote": "Public Preview: Beginning in late September 2026 and expected to complete in mid-October 2026",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "What's changing; Scope; Open questions",
-      "type": "record",
-      "claim": "The notice gives Worldwide General Availability beginning in late October 2026 and expected to complete in early November 2026.",
-      "status": "supported",
-      "source": "Message Center post MC1474107",
-      "quote": "General Availability (Worldwide): Beginning in late October 2026 and expected to complete in early November 2026",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "Microsoft's end date for the notice is 2026-12-07.",
-      "status": "supported",
-      "source": "Message Center post MC1474107",
-      "quote": "Microsoft's end date 2026-12-07",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The supplied notice sets no act-by date.",
-      "status": "supported",
-      "source": "Message Center post MC1474107",
-      "quote": "Act by: none",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
       "where": "What's changing; Why it matters; Scope",
       "type": "record",
       "claim": "The affected organisations use Endpoint DLP on Windows endpoints with archive file classification enabled.",
@@ -168,10 +47,10 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "title; summary; What's changing; Scope",
+      "n": 3,
+      "where": "summary; What's changing; Scope; Open questions",
       "type": "record",
-      "claim": "Archive files such as .zip and .rar will be classified directly.",
+      "claim": "Microsoft names .zip and .rar as examples of affected archives.",
       "status": "supported",
       "source": "Message Center post MC1474107",
       "quote": "Archive files such as .zip and .rar files will be classified directly.",
@@ -179,10 +58,21 @@
       "fix": null
     },
     {
-      "n": 15,
-      "where": "title; summary; What's changing; Why it matters; rationale: impact",
+      "n": 4,
+      "where": "What's changing",
       "type": "record",
-      "claim": "The archive is classified as a single atomic object rather than separate constituent classification operations.",
+      "claim": "Archive files will be classified directly.",
+      "status": "supported",
+      "source": "Message Center post MC1474107",
+      "quote": "Archive files such as .zip and .rar files will be classified directly.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "title; summary; What's changing; rationale: impact",
+      "type": "record",
+      "claim": "Archive classification will be a single atomic operation on the archive object.",
       "status": "supported",
       "source": "Message Center post MC1474107",
       "quote": "Classification of archive files will occur as a single, atomic operation.",
@@ -190,10 +80,10 @@
       "fix": null
     },
     {
-      "n": 16,
-      "where": "summary; What's changing; Why it matters; Risk assessment; rationale: impact",
+      "n": 6,
+      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
       "type": "record",
-      "claim": "Files inside an archive will no longer generate separate classification events.",
+      "claim": "Files inside archives will no longer generate separate classification events.",
       "status": "supported",
       "source": "Message Center post MC1474107",
       "quote": "Individual files contained within an archive will no longer generate separate classification events.",
@@ -201,8 +91,8 @@
       "fix": null
     },
     {
-      "n": 17,
-      "where": "summary; What's changing; Why it matters; Risk assessment; rationale: risk",
+      "n": 7,
+      "where": "summary; What's changing; Why it matters; Risk assessment; Governance guidance; rationale",
       "type": "record",
       "claim": "Only the outer archive file will be reported in Endpoint DLP events.",
       "status": "supported",
@@ -212,21 +102,21 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 8,
       "where": "What's changing",
       "type": "record",
-      "claim": "Microsoft says the change aligns Windows endpoint classification with classification across Microsoft cloud workloads.",
+      "claim": "Microsoft says the change aligns Windows archive classification with its cloud workloads.",
       "status": "supported",
       "source": "Message Center post MC1474107",
-      "quote": "to align with classification behavior across Microsoft cloud workloads",
+      "quote": "We are updating archive file classification behavior for Microsoft Purview Endpoint Data Loss Prevention (DLP) on Windows endpoints to align with classification behavior across Microsoft cloud workloads.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 19,
+      "n": 9,
       "where": "What's changing",
       "type": "record",
-      "claim": "Microsoft says the change improves consistency in classification results.",
+      "claim": "Microsoft says the change improves classification consistency.",
       "status": "supported",
       "source": "Message Center post MC1474107",
       "quote": "This change improves consistency in classification results",
@@ -234,7 +124,7 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 10,
       "where": "What's changing",
       "type": "record",
       "claim": "Microsoft says the change reduces event-reporting noise.",
@@ -245,21 +135,21 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 11,
       "where": "What's changing",
       "type": "record",
-      "claim": "Microsoft says the change enhances performance when processing archive files.",
+      "claim": "Microsoft says the change improves performance when processing archives.",
       "status": "supported",
       "source": "Message Center post MC1474107",
-      "quote": "enhances performance when processing archive files",
+      "quote": "enhances performance when processing archive files.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 22,
+      "n": 12,
       "where": "What's changing; Risk assessment: Autonomy & actions",
       "type": "record",
-      "claim": "Context-based policy evaluation continues to apply to content within archive files.",
+      "claim": "Context-based policy evaluation continues to apply to content within archives.",
       "status": "supported",
       "source": "Message Center post MC1474107",
       "quote": "Context-based and sensitivity label-based policy evaluation will continue to apply to content within archive files.",
@@ -267,10 +157,10 @@
       "fix": null
     },
     {
-      "n": 23,
+      "n": 13,
       "where": "What's changing; Risk assessment: Autonomy & actions",
       "type": "record",
-      "claim": "Sensitivity label-based policy evaluation continues to apply to content within archive files.",
+      "claim": "Sensitivity label-based policy evaluation continues to apply to content within archives.",
       "status": "supported",
       "source": "Message Center post MC1474107",
       "quote": "Context-based and sensitivity label-based policy evaluation will continue to apply to content within archive files.",
@@ -278,7 +168,7 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 14,
       "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
       "type": "record",
       "claim": "Existing DLP policy behaviour for evaluating content within archives is unchanged.",
@@ -289,10 +179,10 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 15,
       "where": "summary; What's changing; Scope; Governance controls",
       "type": "record",
-      "claim": "Microsoft requires no administrator configuration changes for this update.",
+      "claim": "The notice requires no administrator configuration changes.",
       "status": "supported",
       "source": "Message Center post MC1474107",
       "quote": "No administrator configuration changes are required.",
@@ -300,7 +190,7 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 16,
       "where": "What's changing; Scope; rationale: impact",
       "type": "record",
       "claim": "No user action is required.",
@@ -311,21 +201,142 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 17,
       "where": "front matter: defaultState; Why it matters",
       "type": "default",
-      "claim": "The default state is on: the change reaches the affected organisations without an administrator choosing the update.",
+      "claim": "The default is on for the affected organisations, with no administrator action needed for the change.",
       "status": "supported",
       "source": "Message Center post MC1474107",
-      "quote": "Organizations using Microsoft Purview Endpoint DLP on Windows endpoints with archive file classification enabled; No administrator configuration changes are required.",
+      "quote": "No administrator configuration changes are required.- No user action is required.[Action required and recommendations]\n\nNo action is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: status; What's changing; Open questions",
+      "type": "record",
+      "claim": "The supplied roadmap record, last fetched on November 13, still has status In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"; \"fetchedAt\": \"2026-11-13T21:57:28.404Z\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview target is September CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"September CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap general availability target is October CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: releasePhase; Scope",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: clouds; Scope",
+      "type": "record",
+      "claim": "The roadmap cloud is Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The roadmap platform field lists Web, although the notice specifically concerns Windows endpoints.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1474107 was published on September 18, 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1474107",
+      "quote": "Published 2026-09-18; last updated 2026-09-18",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The notice gives Public Preview beginning in late September 2026 and expected to complete in mid-October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1474107",
+      "quote": "Public Preview: Beginning in late September 2026 and expected to complete in mid-October 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The notice gives Worldwide General Availability beginning in late October 2026 and expected to complete in early November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1474107",
+      "quote": "General Availability (Worldwide): Beginning in late October 2026 and expected to complete in early November 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Microsoft's end date for the notice is December 7, 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1474107",
+      "quote": "Microsoft's end date 2026-12-07",
       "severity": null,
       "fix": null
     },
     {
       "n": 28,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1474107",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
       "where": "What's changing; Open questions",
       "type": "behaviour",
-      "claim": "The Endpoint DLP Learn page lists monitored archive formats including .zip, .rar, .7z and .tar.",
+      "claim": "The Endpoint DLP Learn page lists archive formats including .zip, .rar, .7z and .tar as monitored.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
       "quote": "| Archive | Zip, RAR, 7z, TAR | `.zip, .rar, .7z, .tar, .gz, .arj, .bz2, .cab, .chm, .lzh, .lzma, .mhtml, .xar, .xz` |",
@@ -333,98 +344,21 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 30,
       "where": "What's changing",
       "type": "absence",
-      "claim": "The cited Endpoint DLP Learn page does not describe the new single-object archive-classification behaviour at the time of writing.",
+      "claim": "The cited Endpoint DLP Learn page does not describe the new single-object archive-classification behaviour at the time checked.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Endpoint DLP\" \"archive\" \"atomic\"; opened learn.microsoft.com/purview/endpoint-dlp-learn-about and searched its full text for archive, atomic and classification. It lists archive types but not the new atomic/outer-only behaviour.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "Risk assessment: Data exposure",
-      "type": "absence",
-      "claim": "The notice does not say that the change reads any new data.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Endpoint DLP\" \"archive file classification\" \"data\" \"automated actions\"; read MC1474107 in full and opened Learn about Endpoint data loss prevention. The notice describes classification/reporting changes, not additional data access.",
+      "quote": "Searched: Endpoint DLP archive file classification behavior change Windows separate classification events zip rar; searched fetched endpoint-dlp-learn-about for archive and classification and read the matching passages.",
       "severity": null,
       "fix": null
     },
     {
       "n": 31,
-      "where": "Risk assessment: Security & identity",
-      "type": "absence",
-      "claim": "No change to identity or roles is described for this archive-classification update.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Endpoint DLP\" \"archive\" \"classification\" \"identity\" \"roles\"; read MC1474107 in full and opened the Endpoint DLP overview, Audit search and Activity explorer pages. No identity or role change is described for this update.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "absence",
-      "claim": "No new automated action is described for this update.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Endpoint DLP\" \"archive file classification\" \"data\" \"automated actions\"; read MC1474107 in full and opened the Endpoint DLP overview. The notice says existing DLP policy evaluation is unchanged and describes no new automated action.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "The service description lists Endpoint DLP as included in Microsoft 365 E5/A5/G5.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "Feature | Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, Microsoft 365 E5/A5/F5/G5 Information Protection & Governance; Endpoint Data Loss Prevention (DLP) | Included",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "The service description lists Endpoint DLP as included in Microsoft Purview Suite/EDU/GOV/FLW.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "Feature | Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, Microsoft 365 E5/A5/F5/G5 Information Protection & Governance; Endpoint Data Loss Prevention (DLP) | Included",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "The service description lists Endpoint DLP as included in Microsoft Defender + Purview Suite FLW.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "Feature | Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, Microsoft 365 E5/A5/F5/G5 Information Protection & Governance; Endpoint Data Loss Prevention (DLP) | Included",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "The service description lists Endpoint DLP as included in Microsoft 365 E5/A5/F5/G5 Information Protection & Governance.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "Feature | Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, Microsoft 365 E5/A5/F5/G5 Information Protection & Governance; Endpoint Data Loss Prevention (DLP) | Included",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "front matter: licensing.model; Cost and licensing",
-      "type": "licensing",
-      "claim": "The licensing model is included, based on the published entitlement for Endpoint DLP as a whole.",
+      "claim": "The licensing model is included within the qualifying licences for Endpoint DLP, rather than a separately licensed feature.",
       "status": "supported",
       "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
       "quote": "| Endpoint Data Loss Prevention (DLP) | Included |",
@@ -432,43 +366,43 @@
       "fix": null
     },
     {
-      "n": 38,
+      "n": 32,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Endpoint DLP entitlement table names Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW, Microsoft Defender + Purview Suite FLW and Microsoft 365 E5/A5/F5/G5 Information Protection & Governance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, Microsoft 365 E5/A5/F5/G5 Information Protection & Governance",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "absence",
-      "claim": "A licence specific to this archive-classification behaviour change is not published.",
+      "claim": "A licence or charge specific to this archive-classification behaviour change is not published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Endpoint DLP\" \"archive\" \"classification\" \"license\" \"charge\"; opened Microsoft Purview service description and Learn about Endpoint data loss prevention; read MC1474107. Found product entitlement, not a licence specific to this change.",
+      "quote": "Searched: Endpoint DLP archive file classification single atomic outer archive 570965 pricing license charge. Read Purview service description Endpoint DLP entitlement, Endpoint DLP Learn page, roadmap and MC1474107; results on on-demand scan billing concern a different capability.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 39,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "A charge specific to this archive-classification behaviour change is not published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Endpoint DLP\" \"archive\" \"classification\" \"license\" \"charge\"; opened Purview service description and Endpoint DLP overview; read MC1474107. Search results distinguish separately billed on-demand scans, not a charge for this reporting change.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
+      "n": 34,
       "where": "Cost and licensing",
       "type": "absence",
-      "claim": "Neither the roadmap record nor MC1474107 describes a meter or consumption charge for the change.",
+      "claim": "The roadmap record and Message Center notice describe no meter or consumption charge.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Endpoint DLP\" \"archive\" \"classification\" \"license\" \"charge\"; read the roadmap record and MC1474107 in full. Neither describes a meter or consumption charge; the service description lists Endpoint DLP as included.",
+      "quote": "Searched: Endpoint DLP archive file classification single atomic outer archive 570965 pricing license charge; read the supplied roadmap description and all of MC1474107 for pricing, meters and consumption charges. Neither record describes one.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 41,
+      "n": 35,
       "where": "Governance guidance: Before rollout",
       "type": "record",
-      "claim": "Microsoft recommends reviewing internal documentation that describes archive file classification.",
+      "claim": "Microsoft recommends reviewing internal documentation describing archive classification.",
       "status": "supported",
       "source": "Message Center post MC1474107",
       "quote": "Review internal documentation that describes archive file classification behavior.",
@@ -476,10 +410,10 @@
       "fix": null
     },
     {
-      "n": 42,
+      "n": 36,
       "where": "Risk assessment: Change & support; Governance guidance: After rollout",
       "type": "record",
-      "claim": "Microsoft recommends updating operational and monitoring procedures that reference individual event generation for files inside archives.",
+      "claim": "Microsoft recommends updating procedures that reference separate events for files within archives.",
       "status": "supported",
       "source": "Message Center post MC1474107",
       "quote": "Update operational and monitoring procedures if they reference individual event generation for files contained within archives.",
@@ -487,10 +421,10 @@
       "fix": null
     },
     {
-      "n": 43,
+      "n": 37,
       "where": "Governance guidance: Before rollout",
       "type": "record",
-      "claim": "Microsoft recommends telling compliance and security teams that reports will show outer archive files instead of individual files inside them.",
+      "claim": "Microsoft recommends informing compliance and security teams about outer-archive reporting.",
       "status": "supported",
       "source": "Message Center post MC1474107",
       "quote": "Inform compliance and security teams that Endpoint DLP reporting will show events for the outer archive file instead of individual files within the archive.",
@@ -498,32 +432,65 @@
       "fix": null
     },
     {
-      "n": 44,
-      "where": "controls[0].ui; Governance controls table",
+      "n": 38,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "The notice does not say that the change reads new data.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: read MC1474107 What will happen and Compliance considerations for new data access; the notice describes atomic classification and outer-file reporting and says existing content evaluation is unchanged, without asserting new data is read.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "The change notice describes no identity or role changes.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: read all of MC1474107 and the roadmap description for identity, roles and permissions changes; neither describes a change to identity or roles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "No new automated action is described beyond the stated classification and reporting change.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: read MC1474107 What will happen and Compliance considerations, and roadmap description for new automated actions; they describe archive classification/reporting and unchanged policy evaluation, not a new autonomous action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[0].ui; Governance controls",
       "type": "admin-path",
-      "claim": "Audit search is reached in the Microsoft Purview portal through Audit > Search.",
+      "claim": "Audit searches are reached through Microsoft Purview portal > Audit > Search.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/audit-search",
-      "quote": "Select the **Audit** solution card. If the **Audit** solution card isn't displayed, select **View all solutions** and then select **Audit** from the **Core** section. ... On the **Search** page, configure the following search criteria as applicable:",
+      "quote": "Sign in to the Microsoft Purview portal.\n2. Select the Audit solution card. If the Audit solution card isn't displayed, select View all solutions and then select Audit from the Core section.\n3. On the Search page, configure the following search criteria as applicable:",
       "severity": null,
       "fix": null
     },
     {
-      "n": 45,
-      "where": "controls[0].api; Governance controls table",
+      "n": 42,
+      "where": "controls[0].api; Governance controls",
       "type": "command",
-      "claim": "Search-UnifiedAuditLog -StartDate <ExDateTime> -EndDate <ExDateTime> searches the unified audit log for the specified date range.",
+      "claim": "Search-UnifiedAuditLog -StartDate <ExDateTime> -EndDate <ExDateTime> searches unified audit records within a date range.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog",
-      "quote": "Search-UnifiedAuditLog\n    -EndDate <ExDateTime>\n    -StartDate <ExDateTime>\n\nYou can search for all events in a specified date range",
+      "quote": "Search-UnifiedAuditLog\n    -EndDate <ExDateTime>\n    -StartDate <ExDateTime>",
       "severity": null,
       "fix": null
     },
     {
-      "n": 46,
+      "n": 43,
       "where": "controls[0].note; Governance controls",
       "type": "behaviour",
-      "claim": "The listed audit control performs read-only review rather than switching the classification behaviour on or off.",
+      "claim": "The audit control is read-only review, not a switch for the classification change.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog",
       "quote": "Use the Search-UnifiedAuditLog cmdlet to search the unified audit log.",
@@ -531,19 +498,30 @@
       "fix": null
     },
     {
-      "n": 47,
-      "where": "controls[0].note; Governance controls; Risk assessment: Security & identity",
-      "type": "role",
-      "claim": "Audit log searching requires the Audit Logs or View-Only Audit Logs roles.",
+      "n": 44,
+      "where": "controls[0].scope; Governance controls",
+      "type": "applicability",
+      "claim": "Audit search is a tenant-level facility, subject to the searching administrator's permitted scope.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/audit-search",
-      "quote": "You must be assigned the *Audit Logs* or *View-Only Audit Logs* roles in the Microsoft Purview portal to search the audit log. ... To access audit cmdlets, you must be assigned the *Audit Logs* or *View-Only Audit Logs* roles in the Exchange admin center.",
+      "quote": "An unrestricted admin has access to all audit logs, including logs generated by non-user and system accounts.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 48,
-      "where": "controls[0].note; Governance controls table",
+      "n": 45,
+      "where": "controls[0].note; Risk assessment: Security & identity; Governance controls",
+      "type": "role",
+      "claim": "Searching audit logs requires Audit Logs or View-Only Audit Logs roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "You must be assigned the Audit Logs or View-Only Audit Logs roles in the Microsoft Purview portal to search the audit log.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[0].note; Governance controls",
       "type": "command",
       "claim": "Search-UnifiedAuditLog runs in Exchange Online PowerShell.",
       "status": "supported",
@@ -553,21 +531,10 @@
       "fix": null
     },
     {
-      "n": 49,
-      "where": "controls[0].scope; Governance controls table",
-      "type": "applicability",
-      "claim": "The audit-search control operates at tenant scope.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/audit-search",
-      "quote": "None (Default): Unrestricted admin | All administrative units are available | Access to all activity logs from any user, nonuser, or system account.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
+      "n": 47,
       "where": "controls[0].governs; Governance guidance: At rollout; Governance controls",
       "type": "applicability",
-      "claim": "Audit search can be used to review Endpoint DLP activity.",
+      "claim": "Audit search can be used to review Endpoint DLP audit records before and after the change.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/audit-search",
       "quote": "| Endpoint data loss prevention | FileCreated  FileCreatedOnNetworkShare  FileCreatedOnRemovableMedia  FileDeleted |",
@@ -575,10 +542,10 @@
       "fix": null
     },
     {
-      "n": 51,
+      "n": 48,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Activity explorer takes its activity information from Microsoft 365 unified audit logs.",
+      "claim": "Activity explorer takes its activity data from Microsoft 365 unified audit logs.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-classification-activity-explorer",
       "quote": "The activity information comes from the Microsoft 365 unified audit logs. It's transformed and then made available in the activity explorer UI.",
@@ -586,10 +553,10 @@
       "fix": null
     },
     {
-      "n": 52,
+      "n": 49,
       "where": "Why it matters; Governance controls",
       "type": "applicability",
-      "claim": "Activity explorer is a place analysts can review endpoint events.",
+      "claim": "Activity explorer provides views of endpoint activities.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-classification-activity-explorer",
       "quote": "When you enable Endpoint data loss prevention (DLP), Activity Explorer also includes device-level activities from onboarded Windows 10, Windows 11, and the three most recent major macOS versions.",
@@ -598,7 +565,7 @@
     }
   ],
   "precheck": {
-    "at": "2026-11-20T09:05:00.939Z",
+    "at": "2026-11-27T11:53:46.085Z",
     "summary": {
       "links": 7,
       "unreachable": 0,
@@ -679,6 +646,12 @@
     },
     {
       "date": "2026-11-19",
+      "status": "verified",
+      "version": 2,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-20",
       "status": "verified",
       "version": 2,
       "model": "gpt-6.1-sol"

@@ -114,15 +114,17 @@ changes:
     note: "Corrected after the independent check: the open question on roles now states the db_owner requirement for the configuring account, and the unsupported checklist bullet on restricting database read access was removed."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 73 statements confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 71 statements confirmed"
 version: 3
 verification:
   status: "verified"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 73
-  confirmed: 73
+  claims: 71
+  confirmed: 71
   unconfirmed: 0
   contradicted: 0
   attempts: 0

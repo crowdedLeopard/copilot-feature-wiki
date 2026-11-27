@@ -63,19 +63,23 @@ changes:
     note: "New briefing: the roadmap item is being withdrawn although its status reads Launched; points to the Policies page columns Learn documents today."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 44 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-27"
+    note: "Corrected the alert-access statements: viewing and acting on alerts needs the Analysts or Investigators role group and reviewer assignment in the policy; removed the claim that role-group membership is the only control."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 48 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-27"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 44
-  confirmed: 42
+  claims: 48
+  confirmed: 48
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "23696b3651637ec8bb4b00a6490c3485"
+  contradicted: 0
+  attempts: 0
+  hash: "c4754d8c628d62733366dab7fe04c55f"
 ---
 
 ## What's changing
@@ -128,7 +132,7 @@ Nothing specific to this withdrawn item is published, and there is nothing to bu
 - Tell compliance analysts that the planned real-time parent-item columns are not coming, and point them to the **Messages scanned today** and **New pending today** columns on the Policies page.
 
 ### At rollout
-- Check who belongs to the Communication Compliance, Communication Compliance Admins, Analysts and Investigators role groups, since membership decides who can open the Policies page and its alerts.
+- Check membership of the Communication Compliance role groups to review solution access.
 
 ### After rollout
 - Review any policy whose **Messages scanned today** value stays at 0 or low, which Microsoft says may mean the policy is too strict.
@@ -145,7 +149,7 @@ Nothing specific to this withdrawn item is published, and there is nothing to bu
 </tbody>
 </table>
 
-Membership of the Communication Compliance role groups is the only control that bears on this item, because the counts appear on a page inside the solution. The permissions page says role group changes can take up to 30 minutes to apply. The Communication Compliance and Communication Compliance Admins role groups configure policies and settings; the Analysts and Investigators role groups access and investigate alerts. Admin units assigned to role-group members limit the Policies page to the policies those members are scoped for (see the Microsoft Purview admin units page linked from the permissions page).
+The permissions page says role group changes can take up to 30 minutes to apply. The Communication Compliance and Communication Compliance Admins role groups configure policies and settings. To view and act on alerts, the investigation page requires the Communication Compliance Analysts or Communication Compliance Investigators role group and reviewer assignment in the policy associated with the alert. Admin units assigned to role-group members limit the Policies page to the policies those members are scoped for (see the Microsoft Purview admin units page linked from the permissions page).
 
 ## Open questions
 
@@ -159,11 +163,8 @@ cost: None. The item is being withdrawn; the Policies page counts that exist tod
 impact: Low. Only compliance administrators, analysts and investigators who track the roadmap or use the Communication Compliance Policies page would notice.
 -->
 
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance guidance: At rollout; Governance controls / role: Role-group membership decides who can open policy alerts, and Analysts and Investigators can access and investigate alerts without a stated further condition. | Found: To view and act on alerts, assign users the following permissions: - The Communication Compliance Analysts or the Communication Compliance Investigators role group - Reviewer in the policy that is associated with the alert | Fix: Replace the At rollout bullet with "Check membership of the Communication Compliance role groups to review solution access." Replace the alert-access clause in Governance controls with "To view and act on alerts, the investigation page requires the Communication Compliance Analysts or Communication Compliance Investigators role group and reviewer assignment in the policy associated with the alert." The source is https://learn.microsoft.com/purview/communication-compliance-investigate-remediate. | Source: https://learn.microsoft.com/purview/communication-compliance-investigate-remediate
-- [contradicted, blocker] Governance controls: opening sentence / applicability: Membership of the Communication Compliance role groups is the only control that bears on the displayed counts. | Found: If your role group is scoped by one or more admin units, you see a message at the top of the page that you can only view and manage the policies that you're scoped for. | Fix: Remove the sentence "Membership of the Communication Compliance role groups is the only control that bears on this item, because the counts appear on a page inside the solution." The existing paragraph already describes administrative-unit scoping, which also restricts policy visibility. | Source: https://learn.microsoft.com/purview/communication-compliance-investigate-remediate
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Scope: Roles / role: The permissions page lists the six stated roles and role groups as making Communication Compliance available as a menu option. | Found: To make Communication Compliance available as a menu option in Microsoft Purview portal and to continue with these configuration steps, you must be assigned to one of the following roles or role groups: | Fix: Keep the attributed list, but add: "The Learn overview separately says that, by default, Global Administrators don't have access to Communication Compliance features." Cite https://learn.microsoft.com/purview/communication-compliance#workflow, whose excerpt states that qualification; the two Learn pages disagree. | Source: https://learn.microsoft.com/purview/communication-compliance-permissions
+- [supported, minor] Governance controls / role: The investigation page requires the Communication Compliance Analysts or Communication Compliance Investigators role group to view and act on alerts. | Found: To view and act on alerts, assign users the following permissions: ... The Communication Compliance Analysts or the Communication Compliance Investigators role group | Fix: After the alert-access sentence, add: "The permissions page also lists the combined Communication Compliance role group as able to access and investigate alerts, although the investigation page names only Analysts and Investigators." Cite https://learn.microsoft.com/purview/communication-compliance-permissions, whose table gives Yes for Communication Compliance under Access and investigate alerts. | Source: https://learn.microsoft.com/purview/communication-compliance-investigate-remediate
 -->

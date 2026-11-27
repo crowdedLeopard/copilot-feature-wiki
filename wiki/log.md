@@ -1059,3 +1059,12 @@ Append-only record of ingests, compiles and lint passes. One line per event.
 - 2026-11-27 lint: 956 briefings ok, 0 errors (0 quarantined), 30 warnings, 935 notes; 1001 checked, 0 awaiting correction, 22 held
 - 2026-11-27 index: 955 briefings, 1 archived, 45 concepts indexed
 - 2026-11-27 digest: 2026-w48 written (675 updated briefings)
+- 2026-11-27 message-center: 900 posts read (federated credential (GitHub Actions OIDC)), 643 in scope and published, 0 new, 0 changed, 236 outside the topics, 21 withheld by the tenant screen (13 targeted-wording, 3 tenant-word, 1 tenant-domain, 1 email-address, 4 guid); 683 in the ledger, 24 with an act-by date ahead (3s)
+- 2026-11-27 ingest: 2420 roadmap items fetched, 1915 in scope, 0 new, 0 changed, 959 queued for compile (copilot-studio 4, power-platform 2, governance 123, m365-copilot 230, modern-work 600; 0 review due; 0 refresh after a Message Center post), 249 with Message Center posts, 1 duplicate listing(s) covered by another item's page, 0 archived, 0 briefed item(s) missing from the feed (1s)
+- 2026-11-27 source watch: 800 of 2878 Microsoft pages cited by 1000 live pages re-read in 155s (1598 read earlier today), 15 read for the first time, 0 changed, 1 unreachable, 480 not reached (SOURCE_WATCH_LIMIT)
+- 2026-11-27 compile: 22 briefings written, 1 concept page written and 1 declined, 0 rejected by schema, 0 not reached, 24 attempted (copilot, claude-opus-5.5, 2,476 AI credits)
+- 2026-11-27 verify: 47 checked (13 verified, 23 verified with gaps, 11 held, 0 not reached, 2 live page(s) held on re-check (check-expired 2; blockers: record 1, availability 1)) on copilot gpt-6.1-sol; 21 page(s) held in total
+- 2026-11-27 spend: 4,451 AI credits this run (2,476 writing, 1,975 checking); 14,191 of 15,000 today over 3 runs; next run starts when this one finishes
+- 2026-11-27 lint: 967 briefings ok, 0 errors (0 quarantined), 29 warnings, 933 notes; 1013 checked, 0 awaiting correction, 21 held
+- 2026-11-27 index: 966 briefings, 1 archived, 46 concepts indexed
+- 2026-11-27 digest: 2026-w48 written (688 updated briefings)

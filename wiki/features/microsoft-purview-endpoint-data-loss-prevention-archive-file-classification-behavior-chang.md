@@ -72,15 +72,17 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 52 statements confirmed"
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 52 statements confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 49 statements confirmed"
 version: 2
 verification:
   status: "verified"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 52
-  confirmed: 52
+  claims: 49
+  confirmed: 49
   unconfirmed: 0
   contradicted: 0
   attempts: 0

@@ -89,15 +89,17 @@ changes:
     note: "Correction: replaced the claim that devices not showing Updated receive no policies, with what Learn says about onboarding and sync status; added the device path step and a source for local agents."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 47 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 52 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 47
-  confirmed: 47
+  claims: 52
+  confirmed: 52
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -193,8 +195,8 @@ cost: Low. Learn lists Endpoint DLP as included in Microsoft 365 E5 and other na
 impact: Medium. People who run supported local AI agents on Endpoint DLP devices would notice blocked prompts, files or tool calls. Admins who manage DLP policies configure it.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui / admin-path: The printed Purview policy-creation route reaches the Devices location. | Found: Select the Custom from the Categories then Custom policy template from Regulations. Select Next. 5. Give your new policy a Name and Description. 6. Accept the default Full directory under Admin units. 7. Scope the location to only the Devices location. | Fix: Add the omitted category and regulation headings to controls[0].ui.path and its rendered table path: 'Data loss prevention > Policies > Create policy > Enterprise applications & devices > Categories > Custom > Regulations > Custom policy > Devices'. | Source: https://learn.microsoft.com/purview/endpoint-dlp-create-policy-device-scoping
+- [supported, minor] controls[0].ui; Governance controls: first row / admin-path: The printed Microsoft Purview policy-creation route reaches the Devices location for an existing Endpoint DLP policy. | Found: Select the Custom from the Categories then Custom policy template from Regulations. Select Next. ... Accept the default Full directory under Admin units. ... Scope the location to only the Devices location. | Fix: Set controls[0].ui.path and the corresponding rendered path to 'Data loss prevention > Policies > Create policy > Enterprise applications & devices > Categories > Custom > Regulations > Custom policy > Devices'. The cited page names Categories and Regulations as the headings for those choices. | Source: https://learn.microsoft.com/purview/endpoint-dlp-create-policy-device-scoping
 -->

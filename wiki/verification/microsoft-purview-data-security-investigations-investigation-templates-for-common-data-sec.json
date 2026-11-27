@@ -1,0 +1,958 @@
+{
+  "slug": "microsoft-purview-data-security-investigations-investigation-templates-for-common-data-sec",
+  "roadmapId": 560326,
+  "title": "Microsoft Purview Data Security Investigations: pre-built search templates for common scenarios",
+  "status": "held",
+  "date": "2026-11-27",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-27",
+    "reasons": [
+      "1 blocking finding (claim 70)"
+    ]
+  },
+  "counts": {
+    "claims": 73,
+    "confirmed": 71,
+    "unconfirmed": 1,
+    "contradicted": 1,
+    "blocker": 1,
+    "major": 0,
+    "minor": 1
+  },
+  "summary": "Hold: the briefing directs investigators to read a template's generated query on Review estimates, but Microsoft does not document that workflow or confirm that templates expose their queries. The roadmap details, consumption billing and listed governance controls are otherwise supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists the feature as Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only listed roadmap cloud; no US Government cloud is listed.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "Web is the listed platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "title; summary; What's changing; rationale: risk",
+      "type": "record",
+      "claim": "DSI has pre-built templates providing pre-configured search queries for common data security scenarios.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Templates provide pre-configured search queries for common data security scenarios, allowing investigators to scope an investigation in just a few clicks instead of manually building queries.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "summary; What's changing; Why it matters",
+      "type": "record",
+      "claim": "Investigators select a template and provide minimal inputs such as a user or site.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users select a template, provide minimal inputs (such as a user or site)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Selecting the template and supplying its inputs configures a search ready to run.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users select a template, provide minimal inputs (such as a user or site), and the search is configured and ready to run.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "Why it matters; Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The roadmap describes no new role for templates.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users select a template, provide minimal inputs (such as a user or site), and the search is configured and ready to run.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes no scheduled or automatic template searches.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users select a template, provide minimal inputs (such as a user or site), and the search is configured and ready to run.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "DSI lets investigators search Microsoft 365 content relevant to a security incident.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-search",
+      "quote": "Use search in Data Security Investigations to find Microsoft 365 content such as email, documents, and instant messaging conversations in your organization that are relevant to a security incident.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "DSI provides AI analysis of content added to an investigation scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-search",
+      "quote": "Adding copies of the original data to an investigation scope also facilitates the AI analysis and review process by providing you with advanced categorization, examination, and vector search tools.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The documented Search tab offers Query builder, Audit and Endpoint DLP.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-search",
+      "quote": "Query builder: Search for content based on keywords, file types, dates, and other conditions. Audit: Use audit search to identify content based on user activities recorded in the unified audit log. Endpoint DLP: Use endpoint DLP evidence collection",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Learn supplies example Keyword Query Language queries as starting points for investigation scenarios.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-search",
+      "quote": "You can use Keyword Query Language (KeyQL) syntax in the query builder to create targeted search queries for common investigation scenarios. Use these examples as starting points and adjust the date ranges, paths, and keywords to match your investigation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Learn does not yet describe the roadmap's pre-built search templates.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: purview Data Security Investigations search templates enable disable settings edit query scenarios. Opened DSI search; inspected workflow and get-started search excerpts. Found query-builder examples, not pre-built search-template documentation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment: Change & support; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not documented which scenarios and queries the templates contain or organisational customisation options.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: purview Data Security Investigations search templates enable disable settings edit query scenarios. Opened DSI search and read workflow search results; examples are manual KeyQL queries. No template catalogue or search-template customisation instructions found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not documented whether investigators can see or edit a template's generated query.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Data Security Investigations\" \"templates\" \"Review estimates\" query; also search templates enable disable settings edit query scenarios. Opened DSI search and read returned Scope dashboard and Query builder passages. No generated-template-query visibility statement found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "No source states that templates change existing investigations, searches or permissions.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: purview Data Security Investigations search templates enable disable settings edit query scenarios. Read roadmap, DSI search, permissions and workflow search excerpts. None states that templates alter existing investigations, searches or permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[0]; summary; Why it matters; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No tenant-wide template enable/disable setting is documented in the UI or automation references.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: DSI search templates enable disable settings edit query scenarios; \"Data Security Investigations\" template enable disable Graph beta PowerShell. Opened search and permissions; inspected Graph beta search results. No DSI search-template switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: defaultState; Why it matters",
+      "type": "default",
+      "claim": "Templates are user-opt-in in the sense that an investigator chooses to use one, rather than a documented automatic change.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users select a template, provide minimal inputs (such as a user or site), and the search is configured and ready to run.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[1].note; Why it matters; Risk assessment; Scope; rationale: risk",
+      "type": "role",
+      "claim": "DSI Admins can create searches and add items to an investigation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "| Actions | Data Security Investigations Admins | Data Security Investigations Investigators | Data Security Investigations Reviewers |\n| Create searches and add items to an investigation | Yes | Yes | No |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[1].note; Why it matters; Risk assessment; Scope; rationale: risk",
+      "type": "role",
+      "claim": "DSI Investigators can create searches and add items to an investigation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "| Actions | Data Security Investigations Admins | Data Security Investigations Investigators | Data Security Investigations Reviewers |\n| Create searches and add items to an investigation | Yes | Yes | No |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[1].note; Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "DSI Reviewers do not have the permission to create searches and add items to an investigation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "| Actions | Data Security Investigations Admins | Data Security Investigations Investigators | Data Security Investigations Reviewers |\n| Create searches and add items to an investigation | Yes | Yes | No |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Security & identity; Scope; Governance guidance",
+      "type": "role",
+      "claim": "Compliance Administrator includes a DSI administrative role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "| Compliance Administrator | Data Security Investigation Admin | Full administrative access |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Security & identity; Scope; Governance guidance",
+      "type": "role",
+      "claim": "Organization Management includes DSI roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "| Organization Management | Data Security Investigation Admin, Data Security Investigation Contributor | Administrative and contributor access |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity; Scope; Governance guidance",
+      "type": "role",
+      "claim": "Data Security Management includes a DSI role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "| Data Security Management | Data Security Investigation Contributor | Contributor access |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Security & identity; Scope; Governance guidance",
+      "type": "role",
+      "claim": "Insider Risk Management includes a DSI role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "| Insider Risk Management | Data Security Investigation Contributor | Contributor access |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Role group permissions can take up to 30 minutes to apply.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "After you configure your role groups, it might take up to 30 minutes for the role group permissions to apply to assigned users across your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Scope: Who",
+      "type": "role",
+      "claim": "Global admins must be assigned a listed DSI role group to create and access investigations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "Global admins must be assigned to one of the listed role groups for Data Security Investigations to create and access investigations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Role group membership is edited in Microsoft Purview portal > Settings > Roles and groups > Role groups > role group > Edit > Choose users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "Select Settings in the upper-right corner of the page, select Roles and groups, then select Role groups in the left navigation. Select the Data Security Investigations Admins role group, then select Edit. Select Choose users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[1].api; controls[1].note",
+      "type": "command",
+      "claim": "Add-RoleGroupMember -Identity \"<role-group>\" -Member \"<user-UPN>\" adds membership in Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+      "quote": "Use the Add-RoleGroupMember cmdlet to add members to a management role group. The Identity parameter specifies the role group to add a member to. The Member parameter specifies who you want to add to the role group. User ID or user principal name (UPN)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "User data sources in DSI include mail, Teams chats and OneDrive files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-search",
+      "quote": "Users: Data associated with individual users, such as their mail, 1:1 Teams messages, and OneDrive files.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "DSI can search documents in SharePoint sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-search",
+      "quote": "| SharePoint | Documents and files in sites | Documents containing passwords, customer data, or confidential plans. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Scope: Data sources",
+      "type": "behaviour",
+      "claim": "Analysts can select a user or group and scope searches to those data sources.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-search",
+      "quote": "Analysts select a user or group and scope searches to those data sources. Analysts can refine the scope by selecting or excluding specific locations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Data exposure; Scope; Governance controls; rationale: risk",
+      "type": "applicability",
+      "claim": "DSI searches respect configured compliance boundaries and scoped investigators see results only for permitted locations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-search",
+      "quote": "If your organization has configured compliance boundaries using search permissions filters, Data Security Investigations searches respect those boundaries. Investigators whose accounts are scoped by a compliance boundary only see search results for content locations within their permitted boundary.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Compliance boundaries are configured through search permissions filters outside the DSI search workflow.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-compliance-boundaries",
+      "quote": "Step 3: Create a search permissions filter to enforce the compliance boundary",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Add to scope copies search result items to an Azure Storage location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-activity-history",
+      "quote": "A user adds search results to an investigation scope. The process copies the items to an Azure Storage location",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Items copied to scope are reindexed for querying and analysis.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-activity-history",
+      "quote": "then reindexes those items in the Azure Storage location. This new index enables querying and analyzing items in the data set.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: licensing.model and notes; Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "DSI is consumption-billed for storage and AI compute, rather than based on a dedicated enterprise plan or licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Billing in Data Security Investigations is based solely on the combination of the amount of stored data and the associated computing capacity needed for AI analysis. It isn't based on a dedicated enterprise plan or license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "front matter: licensing.notes; Cost and licensing: Meters; rationale: cost",
+      "type": "cost",
+      "claim": "The pay-as-you-go storage meter bills per GB per month for stored data across investigations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "The storage meter for Data Security Investigations uses the pay-as-you-go billing model. You pay for storage on a gigabyte (GB) per month basis for stored data associated with all investigations in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing: Meters",
+      "type": "cost",
+      "claim": "Storage billing uses a linked Azure subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Storage meter billing requires a link to an Azure subscription for pay-as-you-go billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Why it matters; Cost and licensing; Governance guidance: Before rollout; rationale: cost",
+      "type": "cost",
+      "claim": "Storage charges start when items are added to an investigation scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Data storage charges start when you add items to the scope of an investigation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing: Meters; Risk assessment: Data exposure; Governance guidance: After rollout",
+      "type": "cost",
+      "claim": "Deleting an investigation stops its associated ongoing storage charges.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "When you delete an investigation, you stop paying for the associated data storage amount. The charges are prorated to the number of days the data was stored in the billing cycle.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "front matter: licensing.notes; Cost and licensing: Meters; rationale: cost",
+      "type": "cost",
+      "claim": "AI capacity uses pay-as-you-go DSI compute units and customers pay for units used.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Data Security Investigations uses the pay-as-you-go billing model for AI capacity. You need compute units for deep analysis and AI-related processing in your investigations. You pay only for the compute units you use.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing: Meters; rationale: cost",
+      "type": "cost",
+      "claim": "Add to scope, including AI data preparation, drives compute-unit costs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "| Add to scope (including data preparation for AI analysis) | Size of data and extracted text |\nThese variables primarily influence the cost for compute unit billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft publishes no separate template-specific rate, charge or meter.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: site:learn.microsoft.com Data Security Investigations templates pricing meter billing rate. Opened DSI billing; read Purview billing-models and DSI overview excerpts. Found storage and compute-unit billing, no search-template-specific rate or meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The billing documentation links to Azure's Microsoft Purview pricing page for rates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "For more data storage rates and pricing, see Data Security Investigations storage meter pricing (https://azure.microsoft.com/pricing/details/purview/).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing: Spend controls",
+      "type": "cost",
+      "claim": "Microsoft recommends Azure budgets for the DSI resource group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Create budgets for the Data Security Investigations resource group and meter level.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Cost and licensing: Spend controls",
+      "type": "cost",
+      "claim": "Microsoft recommends alerts at spending thresholds such as 50%, 75% or 90%, without describing these as stopping use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Configure alerts when spending approaches defined thresholds (for example, 50%, 75%, or 90%).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[2].ui; Cost and licensing; Governance guidance",
+      "type": "admin-path",
+      "claim": "The dashboard route is Microsoft Purview portal > Data Security Investigations > Usage dashboard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Go to Data Security Investigations in the Microsoft Purview portal ... Select Usage dashboard in the left-navigation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[2].api",
+      "type": "absence",
+      "claim": "No automation equivalent for per-investigation DSI usage-dashboard data is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: DSI usage dashboard PowerShell Graph API usage storage compute; \"Data Security Investigations\" \"Usage\" \"PowerShell\" cmdlet Security Compliance. Read billing, Graph security overview and Security & Compliance PowerShell excerpts. No per-investigation DSI usage operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[2].note; Governance controls",
+      "type": "role",
+      "claim": "Only users assigned the Data Security Investigations Admin role can access the usage dashboard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Only users assigned the Data Security Investigations Admin role can access the Pay-as-you-go usage dashboard.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[2].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Dashboard billing data can take up to 48 hours to appear.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "It might take up to 48 hours for the latest billing data to show up on the Pay-as-you-go usage dashboard for your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[2]; Cost and licensing; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The usage dashboard shows storage and compute usage per investigation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Use the Pay-as-you-go usage dashboard to quickly view and track data storage and compute unit usage for each investigation in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[2].note",
+      "type": "behaviour",
+      "claim": "The usage dashboard is a reporting view, not a spending cap.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "The current data storage and compute unit totals for each investigation help you manage usage and cost per investigation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "Both DSI billing models must be configured before DSI can be used.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Before you can use Data Security Investigations in your organization, you must configure both billing models.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Scope: Prerequisites",
+      "type": "licensing",
+      "claim": "Configuring billing requires an Azure subscription in the same tenant as Microsoft Purview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "To configure the storage meter and capacity for Data Security Investigations, you must have: An Azure subscription in the same tenant as Microsoft Purview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "Configuring billing requires an Azure resource group in that subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "An Azure resource group in that subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Scope: Prerequisites",
+      "type": "role",
+      "claim": "The billing configuration prerequisites include the Global Administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "To configure the storage meter and capacity for Data Security Investigations, you must have: ... The Global Administrator role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Scope: Prerequisites",
+      "type": "role",
+      "claim": "The billing configuration prerequisites include the resource group's Owner or Contributor role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "The resource group Owner or Contributor role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "Audit searches are configured in Microsoft Purview portal > Audit > Search.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "Sign in to the Microsoft Purview portal. Select the Audit solution card. ... On the Search page, configure the following search criteria as applicable",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[3].api",
+      "type": "command",
+      "claim": "Search-UnifiedAuditLog is the PowerShell operation for searching the unified audit log.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "The underlying cmdlet used to search the audit log is an Exchange Online cmdlet, which is Search-UnifiedAuditLog. ... You have to run this cmdlet in Exchange Online PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[3].note; Governance controls",
+      "type": "role",
+      "claim": "Searching audit logs requires Audit Logs or View-Only Audit Logs permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "You must be assigned the Audit Logs or View-Only Audit Logs roles in the Microsoft Purview portal to search the audit log. ... To access audit cmdlets, you must be assigned the Audit Logs or View-Only Audit Logs roles in the Exchange admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The unified audit log records DSI activities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-activities",
+      "quote": "To meet these requirements, the unified audit log records Data Security Investigations activities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[3].note; Risk assessment; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "DSI search added is logged as DSIPurviewSearchAdded when a user adds a search.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-activities",
+      "quote": "| DSI search added | DSIPurviewSearchAdded | A user added a search. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "controls[3].note; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Submitted DSI search add to evidence set job is logged as DSIPurviewSearchAddToEvidenceSetJobSubmitted.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-activities",
+      "quote": "| Submitted DSI search add to evidence set job | DSIPurviewSearchAddToEvidenceSetJobSubmitted | A user added searched data to an investigation scope. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Risk assessment: Change & support; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not documented how template searches can be distinguished from manually built searches in audit logs.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: site:learn.microsoft.com/purview/audit-log-activities DSIPurviewSearchAdded DSIPurviewSearchAddToEvidenceSetJobSubmitted template. Read DSI activity-table excerpts and audit-search documentation; found generic search events, no template-specific distinction.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Risk assessment: Change & support; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The documented Review estimates tab provides scope and sample statistics before adding query-builder results to an investigation scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-search",
+      "quote": "Review estimates: Review scope and sample statistics for search results to refine your query before adding results to an investigation scope.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Risk assessment: Change & support; Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "Investigators can read a template's generated query and its estimate on Review estimates before Add to scope.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Data Security Investigations\" \"templates\" \"Review estimates\" query. Opened DSI search: Review estimates documents statistics; query editing is in Query builder. No passage documents viewing a generated template query or the template-specific review route.",
+      "severity": "blocker",
+      "fix": "Replace the Change & support bullet with: 'The scenarios and queries inside templates are not documented; confirm what a template searches before adding its results to scope.' Replace the Before rollout bullet with: 'Agree with investigators to confirm a template's scope before adding results, because adding to scope starts storage charges.' Do not direct readers to view a generated template query on Review estimates; https://learn.microsoft.com/purview/data-security-investigations-search documents scope and sample statistics there, not template-query visibility."
+    },
+    {
+      "n": 71,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "applicability",
+      "claim": "Adding template search results to a DSI investigation scope is covered by the general DSI storage and processing meters.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Data storage charges start when you add items to the scope of an investigation. ... Add to scope (including data preparation for AI analysis)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Governance guidance: After rollout; controls",
+      "type": "consistency",
+      "claim": "The checklist tells readers to delete completed investigations to stop storage charges, but the controls table has no investigation-deletion row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Delete completed investigations to stop their storage charges, after exporting anything you need to keep. | Controls: template switch; DSI role group membership; usage dashboard; audit search.",
+      "severity": "minor",
+      "fix": "Remove the final After rollout checklist bullet about deleting investigations; the existing Cost and licensing paragraph already explains the storage consequence. No additional control row is requested."
+    },
+    {
+      "n": 73,
+      "where": "Why it matters; rationale: risk and impact",
+      "type": "applicability",
+      "claim": "The existing DSI search permissions govern access to searches configured using templates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "To enable users to access Data Security Investigations capabilities and features in the Microsoft Purview portal, assign users the appropriate permissions. ... Create searches and add items to an investigation | Yes | Yes | No",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-27T11:53:35.281Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/purview/data-security-investigations-search",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/data-security-investigations-activity-history",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-log-activities",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-search",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=560326",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/edisc-compliance-boundaries",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Who can create searches and add items to investigations (DSI role group membership)",
+        "docs": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Roles and groups",
+          "Role groups",
+          "role group",
+          "Edit",
+          "Choose users"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Who can create searches and add items to investigations (DSI role group membership)",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "reachable": true,
+        "token": "Add-RoleGroupMember",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Storage and compute unit spend per investigation",
+        "docs": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+        "reachable": true,
+        "segments": [
+          "Data Security Investigations",
+          "Usage dashboard"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Searching audit records of DSI search activity",
+        "docs": "https://learn.microsoft.com/purview/audit-search",
+        "reachable": true,
+        "segments": [
+          "Audit",
+          "Search"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Searching audit records of DSI search activity",
+        "docs": "https://learn.microsoft.com/purview/audit-search",
+        "reachable": true,
+        "token": "Search-UnifiedAuditLog",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

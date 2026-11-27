@@ -65,13 +65,13 @@ controls:
     scope: "other"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Solutions > Information Protection > Sensitivity labels > label > Edit label > Choose protection settings for the types of items you selected > Control access > Access control > Configure access control settings"
+      path: "Solutions > Information Protection > Sensitivity labels > label > Edit label > Define the scope for this label > Files & other data assets > Choose protection settings for the types of items you selected > Control access > Access control"
       docs: "https://learn.microsoft.com/purview/encryption-sensitivity-labels"
     api:
       kind: "powershell"
       call: "Set-Label -Identity <label> -EncryptionPromptUser $true"
       docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/set-label"
-    note: "Then select Let users assign permissions when they apply the label and In Word, PowerPoint, and Excel, prompt users to specify permissions. EncryptionPromptUser needs EncryptionProtectionType UserDefined."
+    note: "On Access control, select Configure access control settings > Let users assign permissions when they apply the label > In Word, PowerPoint, and Excel, prompt users to specify permissions. API needs EncryptionProtectionType UserDefined."
   - governs: "Whether SharePoint and OneDrive process labelled files so labels appear in Office for the web"
     scope: "tenant"
     ui:
@@ -114,19 +114,23 @@ changes:
     note: "New briefing: user-defined permissions labels in Office for the web, the two tenant prerequisites and their portal and PowerShell controls."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 71 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-27"
+    note: "Corrected the label editing path to include the label scope page and the user-defined permissions options, replaced 'any browser' with the web apps, and narrowed a checklist step."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 77 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-27"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 71
-  confirmed: 68
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "3c9180f69b033a69c1de1e89bda305e5"
+  claims: 77
+  confirmed: 77
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "ce95cc4c1a7c23378ed70bc38d1ff049"
 ---
 
 ## What's changing
@@ -139,7 +143,7 @@ The roadmap item is **Launched** (General Availability), with a target of April 
 
 ## Why it matters
 
-This puts the choice of who can read an encrypted document in the hands of whoever applies the label, in apps that run in any browser. The domain option is wider than many users will expect: Learn states that entering a domain grants access to all users in every domain the organisation owns in Microsoft Entra ID, so **@sales.contoso.com** is not limited to the sales subdomain. Relabelling also behaves differently: when a file labelled with user-defined permissions is relabelled with a label that doesn't apply encryption, the original encryption is removed rather than preserved.
+This puts the choice of who can read an encrypted document in the hands of whoever applies the label, in Word, Excel and PowerPoint for the web. The domain option is wider than many users will expect: Learn states that entering a domain grants access to all users in every domain the organisation owns in Microsoft Entra ID, so **@sales.contoso.com** is not limited to the sales subdomain. Relabelling also behaves differently: when a file labelled with user-defined permissions is relabelled with a label that doesn't apply encryption, the original encryption is removed rather than preserved.
 
 Nothing becomes available in the web apps until an administrator has enabled sensitivity labels for SharePoint and OneDrive and published a label with this configuration. In a tenant that has already done both, Learn states that labels with this configuration are displayed in Office for the web, so the decision to review is which of those labels users should reach from the browser, and whether the co-authoring prerequisite is in place.
 
@@ -182,7 +186,7 @@ Nothing becomes available in the web apps until an administrator has enabled sen
 ## Governance guidance
 
 ### Before rollout
-- List the labels that have **Let users assign permissions when they apply the label** with the Word, PowerPoint and Excel prompt selected, and decide which should be usable in the browser.
+- List the labels that have **Let users assign permissions when they apply the label** with the Word, PowerPoint and Excel prompt selected.
 - Check every app, service, script and tool that reads labelling metadata against the minimum versions on the co-authoring page before turning co-authoring on.
 - Confirm that sensitivity labels are enabled for Office files in SharePoint and OneDrive, running Set-SPOTenant in each geo-location for Multi-Geo tenants.
 - Write user guidance on domain entries and the @ everybody entry, and on relabelling to a label without encryption.
@@ -204,7 +208,7 @@ Nothing becomes available in the web apps until an administrator has enabled sen
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether a label prompts users to choose permissions in Word, PowerPoint and Excel</strong><br><small class="controls__note">Then select Let users assign permissions when they apply the label and In Word, PowerPoint, and Excel, prompt users to specify permissions. EncryptionPromptUser needs EncryptionProtectionType UserDefined.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Information Protection › Sensitivity labels › label › Edit label › Choose protection settings for the types of items you selected › Control access › Access control › Configure access control settings <a href="https://learn.microsoft.com/purview/encryption-sensitivity-labels" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-Label -Identity &lt;label&gt; -EncryptionPromptUser $true</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-label" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether a label prompts users to choose permissions in Word, PowerPoint and Excel</strong><br><small class="controls__note">On Access control, select Configure access control settings &gt; Let users assign permissions when they apply the label &gt; In Word, PowerPoint, and Excel, prompt users to specify permissions. API needs EncryptionProtectionType UserDefined.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Information Protection › Sensitivity labels › label › Edit label › Define the scope for this label › Files &amp; other data assets › Choose protection settings for the types of items you selected › Control access › Access control <a href="https://learn.microsoft.com/purview/encryption-sensitivity-labels" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-Label -Identity &lt;label&gt; -EncryptionPromptUser $true</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-label" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether SharePoint and OneDrive process labelled files so labels appear in Office for the web</strong><br><small>Tenant</small><br><small class="controls__note">Portal route needs a global administrator and shows only while the setting is off. Multi-Geo tenants must use PowerShell in each geo-location.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Information Protection › Sensitivity labels › Turn on now <a href="https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOTenant -EnableAIPIntegration $true</code> <a href="https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether co-authoring is supported for files encrypted with sensitivity labels</strong><br><small>Tenant</small><br><small class="controls__note">Needs at least DLP Compliance Management or Information Protection Admin. Changes labelling metadata; can be turned off only with PowerShell.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Solution settings › Information Protection › Co-authoring for files with sensitivity labels › Turn on co-authoring for files with sensitivity labels <a href="https://learn.microsoft.com/purview/sensitivity-labels-coauthoring" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-PolicyConfig -EnableLabelCoauth $true</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Searching audit records of labels applied, changed or removed on files</strong><br><small>Tenant</small><br><small class="controls__note">Labels applied in Office for the web are recorded as FileSensitivityLabelApplied; changes as FileSensitivityLabelChanged.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Audit › Search <a href="https://learn.microsoft.com/purview/audit-search" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Search-UnifiedAuditLog</code> <a href="https://learn.microsoft.com/purview/audit-search" rel="noopener" class="controls__docs">Learn</a></td></tr>
@@ -228,11 +232,8 @@ cost: Low. The Microsoft Purview service description lists manual sensitivity la
 impact: Medium. Only users who are published a label configured for user-defined permissions notice, and only in Word, Excel and PowerPoint for the web.
 -->
 
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters / behaviour: The apps run in any browser. | Found: Searched: Office for the web supported browsers any browser Word Excel PowerPoint. Read the Office for the web service description search excerpt: it says a supported browser and an internet connection, not any browser. | Fix: Replace 'in apps that run in any browser' with 'in Word, Excel and PowerPoint for the web'.
-- [contradicted, blocker] controls[0].ui; Governance controls table / admin-path: The route from Edit label goes directly to Choose protection settings without a label scope choice. | Found: Follow the general instructions to create or edit a sensitivity label and make sure the Files & other data assets option is selected for the label's scope | Fix: Replace the path with 'Solutions > Information Protection > Sensitivity labels > label > Edit label > Define the scope for this label > Files & other data assets > Choose protection settings for the types of items you selected > Control access > Access control > Configure access control settings > Let users assign permissions when they apply the label > In Word, PowerPoint, and Excel, prompt users to specify permissions'. The scope page and route into Edit label are documented at https://learn.microsoft.com/purview/create-sensitivity-labels; the required scope and encryption choices are at https://learn.microsoft.com/purview/encryption-sensitivity-labels. | Source: https://learn.microsoft.com/purview/encryption-sensitivity-labels
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The guidance to decide which labels users can reach depends on label publishing policies, which have no row in the controls table. | Found: decide which should be usable in the browser ... which users are published them ... The table has rows for the label prompt, SharePoint and OneDrive integration, co-authoring, and audit search, but none for publishing policies. | Fix: The Before rollout instruction to decide which labels should be usable in the browser depends on publishing policies, a control with no corresponding table row. This is a checklist/table coverage finding, not a request to add a row during correction.
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The Purview path through Sensitivity labels, Edit label, scope and Control access reaches the Access control page for configuring user-defined permissions. | Found: on the **Choose protection settings for the types of items you selected** page, make sure you select **Control access**. ... On the **Access control** page, select one of the following options | Fix: Extend controls[0].ui.path to 'Solutions > Information Protection > Sensitivity labels > label > Edit label > Define the scope for this label > Files & other data assets > Choose protection settings for the types of items you selected > Control access > Access control > Configure access control settings > Let users assign permissions when they apply the label > In Word, PowerPoint, and Excel, prompt users to specify permissions'. The existing note already gives these final choices. The entry steps are supported by the already-cited https://learn.microsoft.com/purview/create-sensitivity-labels. | Source: https://learn.microsoft.com/purview/encryption-sensitivity-labels
 -->

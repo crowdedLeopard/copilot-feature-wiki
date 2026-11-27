@@ -96,19 +96,23 @@ changes:
     note: "New briefing: per-app selection for the Copilot experiences and Enterprise AI apps indicators, its default, pay-as-you-go effect and controls."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 49 statements contradicted, 6 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-27"
+    note: "Corrected: narrowed the coverage, data exposure and actions statements to what the policy indicators page documents, reworded the cost and impact rationales, and marked the Usage center as preview."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 50 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-27"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 49
-  confirmed: 43
-  unconfirmed: 6
+  claims: 50
+  confirmed: 49
+  unconfirmed: 1
   contradicted: 0
-  attempts: 1
-  hash: "bde271fffd993fd102c81e2fbef1e022"
+  attempts: 0
+  hash: "3f33a1b1246beaf9e909a96e92bd4c6b"
 ---
 
 ## What's changing
@@ -121,20 +125,20 @@ The roadmap item describes the change in terms of four indicators: "Entering ris
 
 ## Why it matters
 
-This is mainly a cost and noise lever. The Enterprise AI apps indicator and the Copilot experiences indicator for non-Microsoft 365 AI data run on Purview pay-as-you-go billing, and the Usage center lists Insider Risk Management as a pay-as-you-go feature that cannot be paused there. Clearing apps the organisation does not use, or does not consider risky, is the documented way to stop paying to process their interactions.
+This is mainly a cost and noise lever. The Enterprise AI apps indicator and the Copilot experiences indicator for non-Microsoft 365 AI data run on Purview pay-as-you-go billing, and the preview Usage center lists Insider Risk Management as a pay-as-you-go feature that cannot be paused there. Clearing apps the organisation does not use, or does not consider risky, is the documented way to stop paying to process their interactions.
 
-The trade-off is coverage. A deselected app's prompts and responses are not processed, so a user who pastes sensitive data into it raises no Insider Risk Management alert and adds nothing to their risk score, which also feeds Adaptive Protection. If nobody acts, every available app stays selected and the tenant keeps today's coverage and today's charges.
+The trade-off is coverage. A deselected app's prompts and responses are not processed by these generative AI apps indicators. If nobody acts, every available app stays selected and the tenant keeps today's coverage and today's charges.
 
 ## Risk assessment
 
 **Data exposure**
-- No new data is read: the setting narrows which apps' interactions are processed. Deselecting an app removes its prompts and responses from Insider Risk Management analysis, so risky sharing in that app goes undetected by these indicators.
+- The setting narrows which apps' interactions are processed. Deselecting an app means these indicators no longer process its prompts and responses, so risky sharing in that app goes undetected by these indicators.
 
 **Security & identity**
 - The setting is a global Insider Risk Management setting, configured by the *Insider Risk Management* and *Insider Risk Management Admins* role groups (or the Global Administrator, Compliance Administrator and Organization Management roles). Keep membership of those groups small, since one change here alters coverage for every policy.
 
 **Autonomy & actions**
-- No change: the feature takes no action on users or apps.
+- The documented setting includes or excludes individual apps from monitoring.
 
 **Change & support**
 - Analysts may see alert volumes fall after apps are cleared; record which apps were deselected and why, so a quiet queue is not mistaken for low risk.
@@ -200,19 +204,14 @@ The app selection is a tenant-wide Insider Risk Management setting: it sits in I
 
 <!-- rationale
 risk: Low. This is a scoping control and every available app stays selected by default, so detection carries on as before; the exposure it creates is a blind spot for any app an administrator deselects.
-cost: Low. The setting adds no charge of its own and only admin time; it can reduce the data security processing unit pay-as-you-go meter, because Microsoft says a deselected app's signals are not processed and incur no cost.
-impact: Low. Only Insider Risk Management administrators and the analysts who triage its alerts notice; users of the AI apps see no change.
+cost: Low. Plan for admin time to review app selection; deselecting apps can reduce existing data security processing unit charges because Microsoft says their signals are not processed and incur no cost.
+impact: Low. Expect the operational impact to fall mainly on administrators reviewing app selection and analysts interpreting monitoring coverage.
 -->
 
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters: coverage trade-off / behaviour: Pasting sensitive data into a deselected app raises no Insider Risk Management alert. | Found: Searched: Insider Risk Management app deselection no alerts risk score sensitive data pasted browser exfiltration. Opened policy-indicators and policy-templates pages; neither establishes exclusion from every Insider Risk Management detection route. | Fix: Replace 'so a user who pastes sensitive data into it raises no Insider Risk Management alert and adds nothing to their risk score' with 'so these generative AI apps indicators no longer process that app's signals'. The cited policy-indicators page documents that narrower effect.
-- [unsupported, major] Why it matters: coverage trade-off / behaviour: Pasting sensitive data into a deselected app adds nothing to the user's Insider Risk Management risk score. | Found: Searched: Insider Risk Management app deselection no alerts risk score sensitive data pasted browser exfiltration. Opened policy-indicators and policy-templates pages; no statement rules out contributions through other indicators. | Fix: Use the same narrowed replacement for the coverage sentence: 'A deselected app's prompts and responses are not processed by these generative AI apps indicators.' Do not promise zero risk-score contribution across Insider Risk Management.
-- [unsupported, major] Risk assessment: Data exposure / behaviour: No new data is read by this feature. | Found: Searched: Insider Risk Management app selection no new data read no action users apps end user experience. Opened policy-indicators page; it describes selecting signals to process, not a guarantee about all data read by the setting. | Fix: Remove 'No new data is read:' and begin the bullet 'The setting narrows which apps' interactions are processed.' Keep the documented explanation that deselected app signals are not processed.
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: The feature takes no action on users or apps. | Found: Searched: Insider Risk Management app selection no new data read no action users apps end user experience. Opened policy-indicators and policy-templates pages; neither expressly guarantees no action on users or apps. | Fix: Replace 'No change: the feature takes no action on users or apps.' with 'The documented setting includes or excludes individual apps from monitoring.'
-- [unsupported, blocker] rationale: cost / cost: The app-selection setting adds no charge of its own. | Found: Searched: Insider Risk Management AI app selection pricing additional charge feature choosing apps monitoring cost. Opened policy-indicators, configure and billing-models pages; no statement that the selection setting itself has no charge. | Fix: Replace the cost rationale with 'Low. Plan for admin time to review app selection; deselecting apps can reduce existing data security processing unit charges because Microsoft says their signals are not processed and incur no cost.' Do not assert that Microsoft has stated there is no separate setting charge.
+- [unsupported, major] What's changing: first sentence / behaviour: Before this change, the indicators monitored every available app rather than allowing app selection. | Found: Searched: "Insider Risk Management" "previously" "apps" "monitor"; opened the policy indicators, getting-started and policy templates pages. They describe current selection and defaults, not the earlier monitoring behaviour. | Fix: Remove ', instead of monitoring every available app' from the first sentence of What's changing; retain the documented statement that administrators can choose individual apps.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters; controls[3].note; Cost and licensing; Governance controls / behaviour: The Usage center lists Insider Risk Management as not pausable. | Found: The Microsoft Purview Usage center feature is in preview. ... | Feature name | Pausable | Detailed report available | ... | Insider Risk Management | No | Yes | | Fix: At the first mention of Usage center, describe it as 'the preview Usage center'; keep the statement that Insider Risk Management is not pausable there. The cited billing-usage page explicitly marks Usage center as preview. | Source: https://learn.microsoft.com/purview/purview-billing-usage
-- [unsupported, minor] rationale: impact / behaviour: Users of the AI apps see no change from app selection. | Found: Searched: Insider Risk Management app selection no new data read no action users apps end user experience. Opened policy-indicators page; it documents monitoring exclusions but does not state the resulting end-user experience. | Fix: Replace the impact rationale with the assessment 'Low. Expect the operational impact to fall mainly on administrators reviewing app selection and analysts interpreting monitoring coverage.' Remove the guarantee that AI app users see no change.
+- [supported, minor] What's changing; Risk assessment: Security & identity; Scope; Governance controls / applicability: Insider Risk Management settings are tenant-wide and apply across policies regardless of template. | Found: Insider Risk Management settings apply to all Insider Risk Management policies, regardless of the template you choose when creating a policy. | Fix: Add https://learn.microsoft.com/purview/insider-risk-management-settings to sources as 'Learn about Insider Risk Management settings'; it directly supports the cross-policy scope statement. | Source: https://learn.microsoft.com/purview/insider-risk-management-settings
 -->

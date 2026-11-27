@@ -74,10 +74,12 @@ changes:
     note: "First briefing on the planned Data Lifecycle Management meter change for non-Microsoft 365 AI retention, targeted March CY2027."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 44 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 44 statements not yet confirmed"
 version: 1
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
@@ -185,9 +187,9 @@ cost: Variable. DLM for non-Microsoft 365 AI apps is metered pay-as-you-go throu
 impact: Low. Compliance administrators and whoever owns the Azure bill notice; the roadmap item describes no change for end users or for how policies retain and delete.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls / admin-path: Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy opens the relevant policy configuration in the Microsoft Purview portal. | Found: Sign in to the Microsoft Purview portal > Solutions > Data Lifecycle Management > Policies > Retention policies. ... Select New retention policy to start the Create retention policy configuration | Fix: The route correctly opens the wizard but stops before its scope control. For the documented static-policy route, use 'Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy > Assign admin units > Full directory > Choose the type of retention policy to create > Static > Choose locations to apply the policy' as documented at https://learn.microsoft.com/purview/create-retention-policies. | Source: https://learn.microsoft.com/purview/create-retention-policies
-- [supported, minor] controls[0].note; Governance controls / behaviour: Microsoft Copilot experiences, Enterprise AI apps and Other AI apps are available app-retention policy locations. | Found: Microsoft Copilot experiences: Currently in Preview. ... Enterprise AI apps: Currently in Preview. ... Other AI apps: Currently in Preview. | Fix: Add 'The cmdlet reference currently marks these three AI application location groups as Preview.' to controls[0].note and the rendered row, citing https://learn.microsoft.com/powershell/module/exchangepowershell/new-appretentioncompliancepolicy. This qualification concerns the existing retention locations, not the roadmap meter's General Availability release phase. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/new-appretentioncompliancepolicy
+- [supported, minor] controls[0].ui; Governance controls; Governance guidance / Before rollout / admin-path: Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy opens the relevant wizard in the Microsoft Purview portal. | Found: Sign in to the Microsoft Purview portal > Solutions > Data Lifecycle Management > Policies > Retention policies. | Fix: Extend controls[0].ui.path and the rendered path to 'Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy > Assign admin units > Full directory > Choose the type of retention policy to create > Static > Choose locations to apply the policy', the documented static-policy route at https://learn.microsoft.com/purview/create-retention-policies. The current path correctly opens the wizard but stops before its location selector. | Source: https://learn.microsoft.com/purview/create-retention-policies
+- [supported, minor] controls[0].note; Governance controls / behaviour: The existing application-retention locations include Microsoft Copilot experiences, Enterprise AI apps and Other AI apps. | Found: Microsoft Copilot experiences: Currently in Preview. ... Enterprise AI apps: Currently in Preview. ... Other AI apps: Currently in Preview. | Fix: Add 'The cmdlet reference currently marks these three AI application location groups as Preview.' to controls[0].note and the rendered row, citing https://learn.microsoft.com/powershell/module/exchangepowershell/new-appretentioncompliancepolicy. This is the preview status of the existing retention locations, not the roadmap meter's release phase. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/new-appretentioncompliancepolicy
 -->
