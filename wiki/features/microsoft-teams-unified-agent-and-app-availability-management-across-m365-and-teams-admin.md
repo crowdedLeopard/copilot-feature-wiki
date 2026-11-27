@@ -100,15 +100,17 @@ changes:
     note: "Correction: removed Set-CsTeamsSettingsCustomApp as an availability-default automation route, set licensing to included with the Teams licence statement, completed two admin paths and dropped an unsupported checklist step."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 66 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 68 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 66
-  confirmed: 65
+  claims: 68
+  confirmed: 67
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -213,9 +215,9 @@ cost: Low. The Learn pages name the Teams Administrator role and no licence or m
 impact: Medium. Administrators do the work, but the availability they align decides which agents and apps users see in Teams, Outlook and Microsoft 365 Copilot.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[3].note / command: Set-CsTeamsSettingsCustomApp controls custom-app uploading rather than the availability default. | Found: If the isSideloadedAppsInteractionEnabled is set to true, the switch is enabled. So that the custom apps can be uploaded as app packages and available in the organization's app store, vice versa. | Fix: Add https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamssettingscustomapp?view=teams-ps to sources with title 'Set-CsTeamsSettingsCustomApp'; this reference supports the distinction in controls[3].note. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamssettingscustomapp?view=teams-ps
-- [contradicted, minor] Governance guidance: Before rollout, catalogue-export bullet / consistency: The governance checklist's catalogue-export instruction has no corresponding control row. | Found: Export the agent and app catalogue from the Teams admin center as CSV. Controls cover moving to unified management, per-app availability, allow/block status and org-wide defaults, but not catalogue export. | Fix: Remove the Before rollout bullet beginning 'Export the agent and app catalogue from the Teams admin center as CSV'; it asks readers to use a control not represented in the controls table.
+- [supported, minor] controls[3].note / command: Set-CsTeamsSettingsCustomApp controls custom-app uploading rather than the availability-default switch. | Found: If the isSideloadedAppsInteractionEnabled is set to true, the switch is enabled. So that the custom apps can be uploaded as app packages and available in the organization's app store, vice versa. | Fix: Add https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamssettingscustomapp?view=teams-ps to sources with title 'Set-CsTeamsSettingsCustomApp'; it supports the distinction in controls[3].note. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamssettingscustomapp?view=teams-ps
+- [contradicted, minor] Governance guidance: Before rollout, catalogue-export bullet / consistency: The checklist instructs administrators to export the catalogue, but the controls table contains no catalogue-export row. | Found: Export the agent and app catalogue from the Teams admin center as CSV. The four controls cover the unification move, per-app availability, allow/block status and org-wide defaults, not catalogue export. | Fix: Remove the Before rollout bullet beginning 'Export the agent and app catalogue from the Teams admin center as CSV'; this checklist control has no controls-table row.
 -->

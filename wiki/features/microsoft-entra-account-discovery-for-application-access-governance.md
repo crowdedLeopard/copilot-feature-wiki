@@ -43,6 +43,9 @@ sources:
   - title: "Update synchronizationSchema"
     url: "https://learn.microsoft.com/graph/api/synchronization-synchronizationschema-update?view=graph-rest-1.0"
     kind: "learn"
+  - title: "attributeMapping resource type"
+    url: "https://learn.microsoft.com/graph/api/resources/synchronization-attributemapping?view=graph-rest-1.0"
+    kind: "learn"
 videos: []
 related: ["microsoft-entra-microsoft-security-copilot-app-lifecycle-management-agent-in-microsoft-ent"]
 controls:
@@ -96,19 +99,23 @@ changes:
     note: "New briefing: account discovery for provisioned apps, its licence, supported connectors, roles and Graph beta report API."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 60 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-27"
+    note: "Corrected the Graph permissions note: ProvisioningLog.Read.All (or AuditLog.Read.All) for delegated and application access, plus a supported role for delegated access; removed an access review step with no control row."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 74 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-27"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 58
+  claims: 74
+  confirmed: 74
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "2be62415212a5e07303a5c47ffb1898d"
+  contradicted: 0
+  attempts: 0
+  hash: "0171f0adb4ce2de1ecb1d16277835814"
 ---
 
 ## What's changing
@@ -175,7 +182,6 @@ The feature is a report, not an enforcement point. Microsoft documents the repor
 ### After rollout
 - Rerun discovery on each governed app at a set interval to catch accounts created directly in the app after onboarding.
 - Pull completed reports with `GET /beta/reports/correlations` for tracking, bearing in mind that Microsoft does not support beta APIs in production.
-- Add access reviews to the access packages that newly assigned users land in.
 
 ## Governance controls
 
@@ -194,7 +200,7 @@ The feature is a report, not an enforcement point. Microsoft documents the repor
 - Discovery only reads. The controls that change access are the app assignment (or access package) and, in the app itself, removal of local accounts.
 - Changing **Match objects using this attribute** also changes how provisioning matches users between Microsoft Entra ID and the app, not only the discovery report. The Graph schema update replaces the whole schema, so read the current schema first.
 - Starting a discovery run is documented in the admin centre only: the Microsoft Graph identityCorrelation resource lists List, Get and List identities operations, all reads, at the time of writing (November 2026).
-- Graph reads need `ProvisioningLog.Read.All` and one of the supported roles, which include Enterprise Application Owner, Global Reader, Reports Reader and the Security roles as well as the application administrator roles.
+- ProvisioningLog.Read.All is the least-privileged permission for delegated and application access; AuditLog.Read.All is also accepted. For delegated work or school access, the signed-in user additionally needs a supported Microsoft Entra role or a custom role granting the operation's permissions.
 
 ## Open questions
 
@@ -209,11 +215,8 @@ cost: Medium. Account discovery requires the Microsoft Entra ID Governance add-o
 impact: Low. Application and identity administrators see the report; end users notice only if their unmanaged app accounts are later removed or brought under assignment.
 -->
 
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: final bullet; controls[1].note / role: Graph reads need ProvisioningLog.Read.All and one of the supported directory roles. | Found: | Application | ProvisioningLog.Read.All | AuditLog.Read.All | For delegated access using work or school accounts, the signed-in user must be assigned a supported Microsoft Entra role or a custom role that grants the permissions required for this operation. | Fix: Replace the final Governance controls bullet with: 'ProvisioningLog.Read.All is the least-privileged permission for delegated and application access; AuditLog.Read.All is also accepted. For delegated work or school access, the signed-in user additionally needs a supported Microsoft Entra role or a custom role granting the operation's permissions.' Keep controls[1].note's least-privileged wording. | Source: https://learn.microsoft.com/graph/api/reportroot-list-correlations?view=graph-rest-beta
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].note / behaviour: Attribute mappings carry matchingPriority to determine matching precedence. | Found: matchingPriority | Int32 | If higher than 0, this attribute will be used to perform an initial match of the objects between source and target directories. | Fix: Add https://learn.microsoft.com/graph/api/resources/synchronization-attributemapping?view=graph-rest-1.0 to sources; it documents matchingPriority on attributeMapping. | Source: https://learn.microsoft.com/graph/api/resources/synchronization-attributemapping?view=graph-rest-1.0
-- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The checklist's instruction to add access reviews has a corresponding controls-table row. | Found: Checklist: 'Add access reviews to the access packages that newly assigned users land in.' Table rows cover discovery runs, report retrieval, matching attributes and assignment, but not access reviews. | Fix: Remove the checklist bullet 'Add access reviews to the access packages that newly assigned users land in.': that step has no corresponding controls-table row.
+- [supported, minor] controls[2].ui / admin-path: The matching setting is reached through Entra ID > Enterprise apps > app > Provisioning > Manage > Attribute Mapping > mapping > Match objects using this attribute. | Found: Under Manage, select Attribute Mapping. ... To edit an existing mapping, select the pencil icon to the right of the mapping row. The Edit Attribute screen opens ... Match objects using this attribute | Fix: Set controls[2].ui.path and its rendered table path to 'Entra ID > Enterprise apps > app > Provisioning > Manage > Attribute Mapping > mapping > Edit Attribute > Match objects using this attribute', adding the screen heading documented at https://learn.microsoft.com/entra/identity/app-provisioning/customize-application-attributes. | Source: https://learn.microsoft.com/entra/identity/app-provisioning/customize-application-attributes
 -->

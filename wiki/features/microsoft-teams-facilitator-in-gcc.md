@@ -70,7 +70,7 @@ controls:
     note: "Learn names app centric management for allowing Facilitator to a group of users. Availability changes take up to 24 hours to take effect; in rare cases, they can take up to six days to reflect in the client."
 confidence: "medium"
 created: "2026-11-20"
-updated: "2026-11-20"
+updated: "2026-11-27"
 roadmapModified: "2026-10-23T21:59:27"
 changes:
   - date: "2026-11-20"
@@ -83,19 +83,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 71 statements confirmed"
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 71 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-27"
+    note: "Added that tenants not migrated to unified app management must also allow the app under Integrated apps in the Microsoft 365 admin center, to the availability checklist step and the controls notes."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 74 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-27"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 71
-  confirmed: 70
+  claims: 74
+  confirmed: 73
   unconfirmed: 0
   contradicted: 1
-  attempts: 1
-  hash: "44d7067fd255867a520a95bd8fb32979"
+  attempts: 0
+  hash: "6522ed00b533267e3449301deb0f8613"
 ---
 
 ## What's changing
@@ -159,7 +163,7 @@ Per Learn, users need an eligible Microsoft 365 base licence, an eligible Teams 
 ### At rollout
 
 - Search Manage apps in the Teams admin center for Facilitator and check whether it appears and is allowed or blocked.
-- Assign availability to the intended users and groups where the default is not right for your tenant.
+- Assign availability to the intended users and groups where the default is not right for your tenant. For tenants not migrated to unified app management, also allow the app under Integrated apps in the Microsoft 365 admin center; migrated tenants can allow it in either admin center.
 - Tell meeting organisers that Facilitator prompts and responses are visible to everyone in the meeting, and that unlicensed attendees can see its notes.
 
 ### After rollout
@@ -179,7 +183,7 @@ Per Learn, users need an eligible Microsoft 365 base licence, an eligible Teams 
 </tbody>
 </table>
 
-The first two rows are the Learn-documented controls for allowing Facilitator. Blocking the app in the Teams admin center is the switch that Learn describes; if all apps are blocked for the organisation, Learn says Facilitator is also blocked. Both rows come from Learn pages that describe Facilitator generally; they do not mention GCC, so confirm each in your GCC admin center once Facilitator appears.
+The first two rows are the Learn-documented controls for allowing Facilitator. Blocking the app in the Teams admin center is the switch that Learn describes; if all apps are blocked for the organisation, Learn says Facilitator is also blocked. Both rows come from Learn pages that describe Facilitator generally; they do not mention GCC, so confirm each in your GCC admin center once Facilitator appears. For tenants not migrated to unified app management, also allow the app under Integrated apps in the Microsoft 365 admin center; migrated tenants can allow it in either admin center.
 
 AI-generated notes are controlled separately through Loop experiences in Teams: Learn names the tenant-wide `IsCollabMeetingNotesFluidEnabled` setting, documented on [Admin policies for Loop components and Loop workspaces](https://learn.microsoft.com/microsoft-365/loop/loop-components-configuration), and says it cannot be configured at the user level. Disabling it turns AI-generated notes for meetings off for every user in the organisation.
 
@@ -196,8 +200,9 @@ cost: Medium. The roadmap item says a Microsoft 365 Copilot licence is required,
 impact: Medium. Licensed users start Facilitator, but Learn says unlicensed users in the same meeting can see its notes and responses, so everyone who attends affected meetings will notice it.
 -->
 
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].ui; Governance controls; Governance guidance: At rollout / admin-path: Assign Facilitator availability to intended users and groups through Teams admin center > Teams apps > Manage apps > Facilitator > Users and groups > Select to manage who this app is installed for or available to in your organization > Availability > Edit availability > Available to. | Found: If your organization isn't migrated to unified app management, allow apps and Copilot agents in Teams admin center and under the Integrated apps page in Microsoft 365 admin center. | Fix: Keep the printed Teams admin center path, whose labels and order are documented. Append to controls[1].note and the At rollout availability instruction: 'For tenants not migrated to unified app management, also allow the app under Integrated apps in the Microsoft 365 admin center; migrated tenants can allow it in either admin center.' The prerequisite is documented at https://learn.microsoft.com/microsoftteams/app-centric-management#add-or-modify-app-availability-for-users. | Source: https://learn.microsoft.com/microsoftteams/app-centric-management
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].api; rendered controls table / command: Update-M365TeamsApp -Id <app id> -IsBlocked $true is documented for changing an app's tenant state. | Found: Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -IsBlocked $true ... Unblocks Bookings app | Fix: Append to controls[0].note: 'The Update-M365TeamsApp reference describes its -IsBlocked $true example as unblocking an app; verify the intended state before scripting this control.' Keep the call: its names and value are documented, but do not describe $true as a confirmed blocking operation. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp
+- [contradicted, minor] Governance guidance: At rollout, availability bullet / consistency: Every control the checklist instructs administrators to set appears in the controls table. | Found: Checklist: "also allow the app under Integrated apps in the Microsoft 365 admin center". The controls table has only Teams admin center app blocking and availability rows. | Fix: Remove the two sentences beginning 'For tenants not migrated to unified app management' from the At rollout availability checklist bullet. Retain the verified migration qualification in Governance controls; do not add a controls-table row.
 -->

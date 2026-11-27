@@ -5,7 +5,7 @@ slug: "administrative-units"
 summary: "Administrative units are Microsoft Entra ID containers of users, groups or devices. Roles scoped to a unit, in Entra and in Microsoft Purview role groups, reach only its members, so regional or departmental admins need no tenant-wide rights."
 created: "2026-11-27"
 updated: "2026-11-27"
-version: 1
+version: 2
 tags: ["administrative-units","entra-id","purview","role-groups","delegation","least-privilege","dlp","adaptive-scopes","microsoft-graph"]
 covers: []
 sources:
@@ -79,7 +79,7 @@ controls:
       kind: "graph"
       call: "POST /v1.0/directory/administrativeUnits/{id}/members/$ref"
       docs: "https://learn.microsoft.com/graph/api/administrativeunit-post-members?view=graph-rest-1.0"
-    note: "Groups > Add and Devices > Add device for the other member types. Adding a group does not add its members."
+    note: "Groups > Add and Devices > Add device for the other member types. Adding a group does not add its members. The request body sets @odata.id to the URL of the user, group or device to add."
   - governs: "Which Entra role an administrator holds over a unit's members"
     scope: "user"
     ui:
@@ -125,18 +125,22 @@ changes:
     note: "New concept page: how Microsoft Entra administrative units scope delegated roles, how Microsoft Purview reuses them, their licensing and the controls in each portal."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 82 statements contradicted, 0 unconfirmed; taken offline until corrected"
+  - date: "2026-11-27"
+    note: "Corrected restricted management units: they block direct changes to members' Entra properties by unassigned administrators, while related Microsoft 365 operations, licence assignment and usage location updates stay allowed. Bulk adding narrowed to users; Graph request body noted."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 95 statements contradicted, 0 unconfirmed; taken offline until corrected"
 verification:
   status: "held"
   date: "2026-11-27"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 82
-  confirmed: 81
+  claims: 95
+  confirmed: 94
   unconfirmed: 0
   contradicted: 1
-  attempts: 1
-  hash: "c0a8376ce1ba0a68f96698c8e79991f6"
+  attempts: 2
+  hash: "c3a914acc50061788bcc8fc4ea1536bb"
 ---
 
 ## What it is
@@ -146,9 +150,9 @@ An **administrative unit** is a Microsoft Entra ID container that can hold only 
 ### How it works
 
 - **The unit.** Created in the Microsoft Entra admin center, with Microsoft Graph or with PowerShell. A user can belong to several units. Units can't be nested.
-- **Members.** Users, groups and devices are added one at a time, in bulk, or for users and devices by dynamic membership rules. Adding a group brings the group itself into the unit's scope, not the group's members.
+- **Members.** Users, groups and devices can be added manually. Users can also be added in bulk, and users and devices by dynamic membership rules. Adding a group brings the group itself into the unit's scope, not the group's members.
 - **Scoped role assignments.** An Entra role such as User Administrator assigned over a unit lets the holder manage the unit's members, not the unit itself. Such administrators can use the Microsoft 365 admin center for basic management of users in their units; users outside their units are filtered out there.
-- **Restricted management units.** A variant that protects its members from modification by anyone other than the administrators you assign over the unit. Global Administrators can still manage the unit itself, but can't change the objects in it unless they assign themselves a role scoped to the unit.
+- **Restricted management units.** A variant that restricts direct modification of members' Microsoft Entra properties to explicitly assigned unit-scoped administrators. Related Microsoft 365 operations are not affected; assigning licences and updating users' usage location also remain allowed. Global Administrators can still manage the unit itself and assign themselves a unit-scoped role.
 
 ### In Microsoft Purview
 
@@ -186,7 +190,7 @@ The scope covers management, not sight of the directory: Microsoft states that u
 <tbody>
 <tr><td data-label="Control"><strong>Creating an administrative unit</strong><br><small>Tenant</small><br><small class="controls__note">At least Privileged Role Administrator.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › Roles &amp; admins › Admin units › Add <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-manage" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/directory/administrativeUnits</code> <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-manage" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether a unit's members are protected from tenant-level administrators (restricted management)</strong><br><small>Group</small><br><small class="controls__note">The request body sets isMemberManagementRestricted. Set at creation only; it can't be changed later. Maximum 100 per tenant.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › Roles &amp; admins › Admin units › Add › Restricted management administrative unit <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-manage" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/directory/administrativeUnits</code> <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-manage" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which users, groups and devices belong to a unit</strong><br><small>Group</small><br><small class="controls__note">Groups &gt; Add and Devices &gt; Add device for the other member types. Adding a group does not add its members.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › Roles &amp; admins › Admin units › administrative unit › Users › Add member <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-members-add" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/directory/administrativeUnits/{id}/members/$ref</code> <a href="https://learn.microsoft.com/graph/api/administrativeunit-post-members?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users, groups and devices belong to a unit</strong><br><small>Group</small><br><small class="controls__note">Groups &gt; Add and Devices &gt; Add device for the other member types. Adding a group does not add its members. The request body sets @odata.id to the URL of the user, group or device to add.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › Roles &amp; admins › Admin units › administrative unit › Users › Add member <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-members-add" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/directory/administrativeUnits/{id}/members/$ref</code> <a href="https://learn.microsoft.com/graph/api/administrativeunit-post-members?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which Entra role an administrator holds over a unit's members</strong><br><small>User</small><br><small class="controls__note">The request body sets directoryScopeId to /administrativeUnits/&lt;ID&gt;. Only roles with permissions over unit objects are offered.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › Roles &amp; admins › Admin units › administrative unit › Roles and administrators › role › Add assignments <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/roleManagement/directory/roleAssignments</code> <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which units a Purview role-group member is restricted to</strong><br><small>User</small><br><small class="controls__note">Needs the Role management role. Members with no units stay unrestricted.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and scopes › Role groups › Role groups for Microsoft Purview solutions › role group › Edit › Edit members of the role group › member › Assign admin units <a href="https://learn.microsoft.com/purview/purview-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which units a DLP policy is scoped to</strong><br><small class="controls__note">Path as documented for the Copilot, Copilot Chat and Cowork location, where unit support is in preview. Security &amp; Compliance PowerShell.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data Loss Prevention › Policies › + Create policy › Custom › Custom policy › Admin units <a href="https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpCompliancePolicy -Name &lt;String&gt; -PolicyRBACScopes &lt;administrative-unit-ObjectID&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
@@ -218,8 +222,5 @@ Creation of restricted management units, member changes and scoped role changes 
 <!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What it is: Restricted management units / applicability: Restricted management prevents anyone, including Global Administrators, from changing member objects unless assigned a unit-scoped role. | Found: operations that directly modify the Microsoft Entra properties of objects in restricted management administrative units are blocked, whereas operations on related objects in Microsoft 365 services aren't affected. | Fix: Qualify the Restricted management units bullet rather than promising protection from all changes. Replace it with: 'A variant that restricts direct modification of members' Microsoft Entra properties to explicitly assigned unit-scoped administrators. Related Microsoft 365 operations are not affected; assigning licences and updating users' usage location also remain allowed. Global Administrators can still manage the unit itself and assign themselves a unit-scoped role.' The cited page's operations table explicitly allows those exceptions. | Source: https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-restricted-management
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What it is: Members / behaviour: Users, groups and devices can be added to administrative units in bulk. | Found: Entries: Object Ids or UPN of members to add to the Admin Unit. Rename the file if desired, then select and upload the edited file. | Fix: The broader bulk-operations source is titled 'Bulk operations in Microsoft Entra ID (Preview)' and is not cited. Avoid expanding the sources or implying final availability by replacing the Members bullet's first sentence with: 'Users, groups and devices can be added manually. Users can also be added in bulk, and users and devices by dynamic membership rules.' The existing cited admin-units-members-add page supports that narrower statement. | Source: https://learn.microsoft.com/entra/fundamentals/bulk-operations
-- [supported, minor] controls[2].api / command: POST /v1.0/directory/administrativeUnits/{id}/members/$ref adds an existing user, group or device. | Found: POST https://graph.microsoft.com/v1.0/directory/administrativeUnits/{id}/members/$ref Content-type: application/json { "@odata.id":"https://graph.microsoft.com/v1.0/groups/{id}" } | Fix: Keep the call unchanged and append to controls[2].note: 'The request body sets @odata.id to the URL of the user, group or device to add.' Mirror that note in the rendered table. | Source: https://learn.microsoft.com/graph/api/administrativeunit-post-members?view=graph-rest-1.0
+- [contradicted, blocker] summary; What it is: In Microsoft Purview; Why it matters / applicability: Assigning units to a Purview role-group member limits their policy management and visibility to users in those units without qualification. | Found: If you assign both an Entra role and a scoped Microsoft Purview role group assignment to a user or group (for example, a role group scoped to an Administrative Unit), the Entra role takes precedence at runtime. | Fix: Replace the summary's second sentence with 'Unit-scoped roles delegate regional or departmental administration without tenant-wide rights.' Qualify the Purview scoping statement in What it is with: 'For overlapping capabilities, an Entra role takes precedence over a scoped Purview role-group assignment and gives unscoped access.' Apply that qualification to the corresponding statement in Why it matters. The qualification is documented under Role precedence and scope behavior at https://learn.microsoft.com/purview/purview-permissions. | Source: https://learn.microsoft.com/purview/purview-permissions
 -->

@@ -5,10 +5,10 @@
   "title": "Administrative units: which users can a delegated administrator manage?",
   "status": "held",
   "date": "2026-11-27",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "hold",
@@ -17,25 +17,25 @@
     "reason": "failed",
     "since": "2026-11-27",
     "reasons": [
-      "1 blocking finding (claim 13)"
+      "1 blocking finding (claim 3)"
     ]
   },
   "counts": {
-    "claims": 82,
-    "confirmed": 81,
+    "claims": 95,
+    "confirmed": 94,
     "unconfirmed": 0,
     "contradicted": 1,
     "blocker": 1,
     "major": 0,
-    "minor": 2
+    "minor": 0
   },
-  "summary": "The page overstates the protection provided by restricted management units: some changes remain available without a unit-scoped role, including licence assignment and usage-location updates. The documented control paths and commands check out, with minor corrections needed to the membership API note and the description of bulk membership operations.",
+  "summary": "The page overstates the protection provided by Purview administrative-unit scoping. Microsoft documents that overlapping Entra roles take precedence and give unscoped access, even when a scoped Purview assignment exists. The listed controls and licensing requirements are otherwise supported.",
   "claims": [
     {
       "n": 1,
       "where": "summary; What it is",
       "type": "behaviour",
-      "claim": "An Entra administrative unit can contain only users, groups or devices.",
+      "claim": "An administrative unit is an Entra ID container that can contain only users, groups or devices.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/administrative-units",
       "quote": "An administrative unit can contain only users, groups, or devices.",
@@ -44,9 +44,9 @@
     },
     {
       "n": 2,
-      "where": "summary; What it is; Why it matters",
+      "where": "summary; What it is",
       "type": "behaviour",
-      "claim": "Unit-scoped Entra roles limit management permissions to the unit's members rather than granting tenant-wide management.",
+      "claim": "An Entra role assigned at administrative-unit scope reaches only that unit's members.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
       "quote": "When a Microsoft Entra role is assigned at the scope of an administrative unit, role permissions apply only when managing members of the administrative unit itself, and don't apply to tenant-wide settings or configurations.",
@@ -55,20 +55,306 @@
     },
     {
       "n": 3,
-      "where": "What it is: The unit",
+      "where": "summary; What it is: In Microsoft Purview; Why it matters",
+      "type": "applicability",
+      "claim": "Assigning units to a Purview role-group member limits their policy management and visibility to users in those units without qualification.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "If you assign both an Entra role and a scoped Microsoft Purview role group assignment to a user or group (for example, a role group scoped to an Administrative Unit), the Entra role takes precedence at runtime.",
+      "severity": "blocker",
+      "fix": "Replace the summary's second sentence with 'Unit-scoped roles delegate regional or departmental administration without tenant-wide rights.' Qualify the Purview scoping statement in What it is with: 'For overlapping capabilities, an Entra role takes precedence over a scoped Purview role-group assignment and gives unscoped access.' Apply that qualification to the corresponding statement in Why it matters. The qualification is documented under Role precedence and scope behavior at https://learn.microsoft.com/purview/purview-permissions."
+    },
+    {
+      "n": 4,
+      "where": "summary; What it is",
       "type": "behaviour",
-      "claim": "Administrative units can be managed through the Entra admin center, PowerShell and Microsoft Graph.",
+      "claim": "Administrative units allow regional or departmental administration without a tenant-wide role.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/administrative-units",
-      "quote": "You can manage administrative units by using the Microsoft Entra admin center, PowerShell cmdlets and scripts, or Microsoft Graph API.",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "You can scope a DLP policy for these experiences to a region or department and delegate policy management to administrators assigned to those units, without granting tenant-wide policy management permissions.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 4,
-      "where": "What it is: The unit",
+      "n": 5,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "Create a unit in Microsoft Entra admin center at Entra ID > Roles & admins > Admin units > Add.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-manage",
+      "quote": "Browse to Entra ID > Roles & admins > Admin units.\n3. Select Add.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "POST /v1.0/directory/administrativeUnits creates an administrative unit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-manage",
+      "quote": "Use the Create administrativeUnit API to create a new administrative unit.\n\nRequest\n\nPOST https://graph.microsoft.com/v1.0/directory/administrativeUnits",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Restricted management is selected at Entra ID > Roles & admins > Admin units > Add > Restricted management administrative unit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-manage",
+      "quote": "If you don't want tenant-level administrators to be able to access this administrative unit, set the Restricted management administrative unit toggle to Yes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "POST /v1.0/directory/administrativeUnits sets restricted management through isMemberManagementRestricted.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-manage",
+      "quote": "Set the isMemberManagementRestricted property to true.\n\nRequest\n\nPOST https://graph.microsoft.com/v1.0/directory/administrativeUnits",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "Add users at Entra ID > Roles & admins > Admin units > administrative unit > Users > Add member.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-members-add",
+      "quote": "Browse to Entra ID > Roles & admins > Admin units.\n3. Select the administrative unit you want to add users, groups, or devices to.\n4. Select one of the following:\n\n- Users\n- Groups\n- Devices\n5. Select Add member, Add, or Add device.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "POST /v1.0/directory/administrativeUnits/{id}/members/$ref adds an existing user, group or device.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/administrativeunit-post-members?view=graph-rest-1.0",
+      "quote": "The following request adds an existing user, group, or device to the administrative unit.\n\nPOST /directory/administrativeUnits/{id}/members/$ref\n\nPOST https://graph.microsoft.com/v1.0/directory/administrativeUnits/{id}/members/$ref",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "Assign a scoped role at Entra ID > Roles & admins > Admin units > administrative unit > Roles and administrators > role > Add assignments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
+      "quote": "Select Roles and administrators from the left navigation menu to see the list of all roles available to be assigned over an administrative unit.\n5. Select the desired role.\n6. Select Add assignments and then select the users or groups you want to assign this role to.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "controls[3].api",
+      "type": "command",
+      "claim": "POST /v1.0/roleManagement/directory/roleAssignments assigns a unit-scoped Entra role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
+      "quote": "POST https://graph.microsoft.com/v1.0/roleManagement/directory/roleAssignments\n\n\"directoryScopeId\": \"/administrativeUnits/<Object ID of administrative unit>\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[4].ui",
+      "type": "admin-path",
+      "claim": "Assign units to a Purview role-group member at Settings > Roles and scopes > Role groups > Role groups for Microsoft Purview solutions > role group > Edit > Edit members of the role group > member > Assign admin units.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "On Role groups for Microsoft Purview solutions, select a Microsoft Purview role group you want to add users to. Select Edit on the control bar.\n\nIf the selected users or groups need to be assigned to administrative units, select the users or groups and select Assign admin units.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[4].api; Open questions",
+      "type": "absence",
+      "claim": "Automation for assigning units to Purview role-group members is not yet documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview assign administrative units role group members PowerShell Set-RoleGroup administrative units; \"Set-RoleGroup\" \"AdministrativeUnits\" Purview. Read purview-admin-units, purview-permissions and Set-RoleGroup syntax. No unit-assignment operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[5].ui",
+      "type": "admin-path",
+      "claim": "Scope a Copilot DLP policy at Microsoft Purview portal > Data Loss Prevention > Policies > + Create policy > Custom > Custom policy > Admin units.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "go to Data Loss Prevention > Policies and select + Create policy.\n2. Select the Custom template, then Custom policy, and enter a name and description.\n3. On the Admin units page, select the administrative units for the policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[5].api; What to check",
+      "type": "command",
+      "claim": "New-DlpCompliancePolicy -Name <String> -PolicyRBACScopes <administrative-unit-ObjectID> scopes the new policy to administrative units.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy",
+      "quote": "The PolicyRBACScopes parameter specifies the administrative units to assign to the policy. A valid value is the Microsoft Entra ObjectID (GUID value) of the administrative unit. You can specify multiple values separated by commas.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[6].ui",
+      "type": "admin-path",
+      "claim": "Associate SharePoint sites at Microsoft Purview portal > Settings > Roles and scopes > Administrative units > administrative unit > Edit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-admin-units",
+      "quote": "Select Settings and select Roles and scopes.\n3. Select Administrative units.\n4. Select an existing administrative unit from the list.\n5. Select Edit.\n6. Create a query to associate SharePoint sites with the administrative unit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[6].api; Open questions",
+      "type": "absence",
+      "claim": "Automation for configuring Purview administrative-unit SharePoint site queries is not yet documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview administrative units SharePoint site query PowerShell Graph API; \"Purview\" \"SharePoint\" \"administrative units\" \"PowerShell\" query; \"administrative unit\" \"extension\" \"Set-\" SharePoint query. Read purview-admin-units and Graph extension excerpts; none documents setting this query.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[0].note; Governance controls",
+      "type": "role",
+      "claim": "Creating units, adding existing members and assigning scoped roles in Entra admin center needs at least Privileged Role Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/administrative-units",
+      "quote": "As a Privileged Role Administrator, you can use the Microsoft Entra admin center to:\n- Create administrative units\n- Add users, groups, or devices as members of administrative units\n\nAssign IT staff to administrative unit-scoped administrator roles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[2].note",
+      "type": "admin-path",
+      "claim": "Groups > Add and Devices > Add device add the other member types inside an Entra administrative unit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-members-add",
+      "quote": "Select one of the following:\n- Users\n- Groups\n- Devices\n5. Select Add member, Add, or Add device.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[2].note",
+      "type": "command",
+      "claim": "The Graph member-add request body sets @odata.id to the URL of the user, group or device.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-members-add",
+      "quote": "\"@odata.id\":\"https://graph.microsoft.com/v1.0/users/{user-id}\"\n\n\"@odata.id\":\"https://graph.microsoft.com/v1.0/groups/{group-id}\"\n\n\"@odata.id\":\"https://graph.microsoft.com/v1.0/devices/{device-id}\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[3].note",
+      "type": "command",
+      "claim": "directoryScopeId is set to /administrativeUnits/<ID> for an administrative-unit role assignment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
+      "quote": "\"directoryScopeId\": \"/administrativeUnits/<Object ID of administrative unit>\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[3].note",
       "type": "behaviour",
-      "claim": "A user can belong to multiple administrative units.",
+      "claim": "The unit's role list offers only roles with permissions related to supported unit objects.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
+      "quote": "We show the roles which have permissions related to the objects that are supported within the administrative unit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[4].note; Governance controls",
+      "type": "role",
+      "claim": "Assigning units to Purview role-group members needs the Role management role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-admin-units",
+      "quote": "To assign a role group member to an administrative unit, administrators must be assigned the Role management role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[4].note; What it is: In Microsoft Purview",
+      "type": "behaviour",
+      "claim": "Purview administrators with no units assigned are unrestricted administrators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-admin-units",
+      "quote": "If administrators don't have administrative units assigned (unrestricted administrators), they can assign policies to the entire directory without being required to select individual administrative units.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[5].note; Open questions",
+      "type": "availability",
+      "claim": "Administrative-unit support for the Copilot, Copilot Chat and Cowork DLP location is in preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "Administrative unit support for this location, including Cowork, is in preview and is rolling out. The option might not yet be available in your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[5].note",
+      "type": "command",
+      "claim": "New-DlpCompliancePolicy runs in Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy",
+      "quote": "This cmdlet is available only in Security & Compliance PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[6].note; Governance controls",
+      "type": "role",
+      "claim": "Associating SharePoint sites with a unit needs the admin unit extension manager role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-admin-units",
+      "quote": "To complete the following steps to configure SharePoint sites within administrative units for use in Microsoft Purview, you must have the admin unit extension manager role assigned.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[6].note",
+      "type": "behaviour",
+      "claim": "SharePoint site queries support site URL, site name and RefinableString00-99.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-admin-units",
+      "quote": "Queries to associate SharePoint sites with administrative units support site properties for Site URL, site name, and RefinableString00-RefinableString99.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What it is: How it works",
+      "type": "behaviour",
+      "claim": "A user can belong to several administrative units.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/administrative-units",
       "quote": "Users can be members of multiple administrative units.",
@@ -76,8 +362,8 @@
       "fix": null
     },
     {
-      "n": 5,
-      "where": "What it is: The unit; Risks and limits: No nesting",
+      "n": 31,
+      "where": "What it is: How it works; Risks and limits",
       "type": "behaviour",
       "claim": "Administrative units cannot be nested.",
       "status": "supported",
@@ -87,10 +373,21 @@
       "fix": null
     },
     {
-      "n": 6,
-      "where": "What it is: Members",
+      "n": 32,
+      "where": "What it is: How it works",
       "type": "behaviour",
-      "claim": "Users, groups and devices can be added manually to administrative units.",
+      "claim": "Units can be created with PowerShell as well as Entra admin center and Microsoft Graph.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-manage",
+      "quote": "You can create a new administrative unit by using either the Microsoft Entra admin center, Microsoft Entra PowerShell, or Microsoft Graph.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What it is: How it works",
+      "type": "behaviour",
+      "claim": "Users, groups and devices can be added manually.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-members-add",
       "quote": "This article describes how to add users, groups, or devices to administrative units manually.",
@@ -98,21 +395,21 @@
       "fix": null
     },
     {
-      "n": 7,
-      "where": "What it is: Members",
+      "n": 34,
+      "where": "What it is: How it works",
       "type": "behaviour",
-      "claim": "Users, groups and devices can be added to administrative units in bulk.",
+      "claim": "Users can be added in bulk.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/entra/fundamentals/bulk-operations",
-      "quote": "Entries: Object Ids or UPN of members to add to the Admin Unit. Rename the file if desired, then select and upload the edited file.",
-      "severity": "minor",
-      "fix": "The broader bulk-operations source is titled 'Bulk operations in Microsoft Entra ID (Preview)' and is not cited. Avoid expanding the sources or implying final availability by replacing the Members bullet's first sentence with: 'Users, groups and devices can be added manually. Users can also be added in bulk, and users and devices by dynamic membership rules.' The existing cited admin-units-members-add page supports that narrower statement."
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-members-add",
+      "quote": "You can also add users in a bulk operation or create a new group in an administrative unit.",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 8,
-      "where": "What it is: Members",
+      "n": 35,
+      "where": "What it is: How it works",
       "type": "behaviour",
-      "claim": "Dynamic membership rules can manage users and devices in administrative units.",
+      "claim": "Users and devices can be added by dynamic membership rules.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-members-add",
       "quote": "For information about how to add users or devices to administrative units dynamically using rules, see Manage users or devices for an administrative unit with rules for dynamic membership groups.",
@@ -120,32 +417,32 @@
       "fix": null
     },
     {
-      "n": 9,
-      "where": "What it is: Members; controls[2].note; Risks and limits",
+      "n": 36,
+      "where": "controls[2].note; What it is: How it works; What to check",
       "type": "behaviour",
-      "claim": "Adding a group scopes management of the group itself, not its members.",
+      "claim": "Adding a group to an Entra unit brings the group itself into scope, not its members.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/administrative-units",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-members-add",
       "quote": "Adding a group to an administrative unit brings the group itself into the management scope of the administrative unit, but not the members of the group.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 10,
-      "where": "What it is: Scoped role assignments",
+      "n": 37,
+      "where": "What it is: How it works",
       "type": "role",
-      "claim": "A User Administrator assigned at unit scope manages the members, not the administrative unit itself.",
+      "claim": "An Entra role such as User Administrator scoped to a unit manages members rather than the administrative unit itself.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
-      "quote": "The scope /administrativeUnits/<ID> means the principal can manage the members of the administrative unit (based on the role that the principal is assigned), not the administrative unit itself.",
+      "quote": "The scope /administrativeUnits/<ID> means the principal can manage the members of the administrative unit (based on the role the principal is assigned), not the administrative unit itself.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 11,
-      "where": "What it is: Scoped role assignments",
+      "n": 38,
+      "where": "What it is: How it works",
       "type": "behaviour",
-      "claim": "Unit-scoped administrators can use the Microsoft 365 admin center for basic management of their units' users.",
+      "claim": "Unit-scoped administrators can use Microsoft 365 admin center for basic user management.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/administrative-units",
       "quote": "Administrative unit-scoped admins can use the Microsoft 365 admin center for basic management of users in their administrative units.",
@@ -153,10 +450,10 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "What it is: Scoped role assignments",
+      "n": 39,
+      "where": "What it is: How it works",
       "type": "behaviour",
-      "claim": "The Microsoft 365 admin center filters out users outside the scoped administrator's units.",
+      "claim": "Microsoft 365 admin center filters out users outside a scoped administrator's units.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/administrative-units",
       "quote": "In the Microsoft 365 admin center, users outside a scoped admin's administrative units are filtered out.",
@@ -164,21 +461,65 @@
       "fix": null
     },
     {
-      "n": 13,
-      "where": "What it is: Restricted management units",
-      "type": "applicability",
-      "claim": "Restricted management prevents anyone, including Global Administrators, from changing member objects unless assigned a unit-scoped role.",
-      "status": "contradicted",
+      "n": 40,
+      "where": "What it is: How it works; controls[1]",
+      "type": "behaviour",
+      "claim": "Restricted management limits direct modification of members' Entra properties to administrators explicitly assigned at restricted-unit scope.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-restricted-management",
-      "quote": "operations that directly modify the Microsoft Entra properties of objects in restricted management administrative units are blocked, whereas operations on related objects in Microsoft 365 services aren't affected.",
-      "severity": "blocker",
-      "fix": "Qualify the Restricted management units bullet rather than promising protection from all changes. Replace it with: 'A variant that restricts direct modification of members' Microsoft Entra properties to explicitly assigned unit-scoped administrators. Related Microsoft 365 operations are not affected; assigning licences and updating users' usage location also remain allowed. Global Administrators can still manage the unit itself and assign themselves a unit-scoped role.' The cited page's operations table explicitly allows those exceptions."
+      "quote": "For administrators not explicitly assigned at the restricted management administrative unit scope, operations that directly modify the Microsoft Entra properties of objects in restricted management administrative units are blocked",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 14,
-      "where": "What it is: Restricted management units",
+      "n": 41,
+      "where": "What it is: How it works",
+      "type": "behaviour",
+      "claim": "Restricted management does not affect operations on related Microsoft 365 service objects.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-restricted-management",
+      "quote": "whereas operations on related objects in Microsoft 365 services aren't affected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "What it is: How it works",
+      "type": "behaviour",
+      "claim": "Assigning licences remains allowed for users in restricted management units.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-restricted-management",
+      "quote": "Assign licenses and update the usage location of users in a restricted management administrative unit | | ✅",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "What it is: How it works",
+      "type": "behaviour",
+      "claim": "Updating users' usage location remains allowed in restricted management units.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-restricted-management",
+      "quote": "Assign licenses and update the usage location of users in a restricted management administrative unit | | ✅",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "What it is: How it works",
       "type": "role",
-      "claim": "Global Administrators can manage restricted management units themselves and assign themselves scoped roles.",
+      "claim": "Global Administrators can manage restricted management units themselves.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-restricted-management",
+      "quote": "Global Administrator | Tenant | No | Yes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "What it is: How it works",
+      "type": "role",
+      "claim": "Global Administrators can assign themselves a role scoped to a restricted management unit.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-restricted-management",
       "quote": "Assign roles to themselves with restricted management administrative units scope",
@@ -186,40 +527,18 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 46,
       "where": "What it is: In Microsoft Purview",
       "type": "behaviour",
-      "claim": "Purview reuses Entra administrative units by assigning role-group members to them.",
+      "claim": "Purview reuses units defined in Entra.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-admin-units",
-      "quote": "Microsoft Purview integrates with administrative units by enabling you to assign role group members to specific units.",
+      "quote": "Any administrative unit you create appears in the listing for Microsoft Purview.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 16,
-      "where": "What it is: In Microsoft Purview",
-      "type": "behaviour",
-      "claim": "Role-group members assigned administrative units become restricted administrators.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
-      "quote": "After you assign admin units to members of role groups, those members become restricted administrators and have limited access to Insider Risk Management settings, policies, and user data in the organization.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "What it is: In Microsoft Purview; controls[4].note",
-      "type": "behaviour",
-      "claim": "Administrators without assigned administrative units are unrestricted administrators.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-admin-units",
-      "quote": "If administrators don't have administrative units assigned (unrestricted administrators), they can assign policies to the entire directory without being required to select individual administrative units.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
+      "n": 47,
       "where": "What it is: In Microsoft Purview",
       "type": "applicability",
       "claim": "Data lifecycle management supports administrative units.",
@@ -230,7 +549,7 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 48,
       "where": "What it is: In Microsoft Purview",
       "type": "applicability",
       "claim": "DLP supports administrative units.",
@@ -241,7 +560,7 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 49,
       "where": "What it is: In Microsoft Purview",
       "type": "applicability",
       "claim": "Communication Compliance supports administrative units.",
@@ -252,7 +571,7 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 50,
       "where": "What it is: In Microsoft Purview",
       "type": "applicability",
       "claim": "Insider Risk Management supports administrative units.",
@@ -263,7 +582,7 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 51,
       "where": "What it is: In Microsoft Purview",
       "type": "applicability",
       "claim": "Records management supports administrative units.",
@@ -274,7 +593,7 @@
       "fix": null
     },
     {
-      "n": 23,
+      "n": 52,
       "where": "What it is: In Microsoft Purview",
       "type": "applicability",
       "claim": "Sensitivity labelling supports administrative units.",
@@ -285,32 +604,10 @@
       "fix": null
     },
     {
-      "n": 24,
-      "where": "What it is: In Microsoft Purview; Why it matters",
-      "type": "behaviour",
-      "claim": "Restricted administrators create and manage supported policies for users in their assigned units.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-admin-units",
-      "quote": "Restricted administrators can create or manage policies only for users assigned to their administrative units.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "What it is: In Microsoft Purview; Why it matters",
-      "type": "behaviour",
-      "claim": "Supported alert and activity visibility is scoped to the restricted administrator's assigned units.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-admin-units",
-      "quote": "Going forward, restricted administrators can see this related data for their assigned administrative units only.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "What it is: In Microsoft Purview; Risks and limits; controls[6].note",
+      "n": 53,
+      "where": "controls[6].note; What it is: In Microsoft Purview; Risks and limits",
       "type": "applicability",
-      "claim": "Purview SharePoint-site membership supports auto-labelling and DLP policies that apply to SharePoint sites only.",
+      "claim": "Purview SharePoint site associations apply only to auto-labelling and DLP policies that support SharePoint sites.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-admin-units",
       "quote": "This support is only available for Microsoft Information Protection auto-labeling policies and Microsoft Data Loss Prevention policies that support application to SharePoint sites.",
@@ -318,10 +615,10 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 54,
       "where": "Why it matters",
-      "type": "applicability",
-      "claim": "Copilot, Copilot Chat and Cowork DLP unit scoping matches the user submitting the prompt, not the content owner.",
+      "type": "behaviour",
+      "claim": "Copilot, Copilot Chat and Cowork DLP unit scoping follows the prompting user rather than the content owner.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
       "quote": "DLP policy scoping for Microsoft 365 Copilot, Copilot Chat, and Cowork is based on the user who submits the prompt, not the owner of a file or email that the experience accesses.",
@@ -329,10 +626,10 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 55,
       "where": "Why it matters",
       "type": "behaviour",
-      "claim": "Units scope management permissions but do not prevent default-permission browsing outside the unit.",
+      "claim": "Administrative units do not prevent directory browsing outside the unit using default user permissions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/administrative-units",
       "quote": "They don't prevent members or administrators from using their default user permissions to browse other users, groups, or resources outside the administrative unit.",
@@ -340,30 +637,41 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 56,
       "where": "Why it matters",
       "type": "behaviour",
-      "claim": "After unit assignment, restricted administrators cannot see or edit existing policies, which remain available to unrestricted administrators.",
+      "claim": "After assigning units to Purview role-group members, restricted administrators cannot see or edit existing policies.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-admin-units",
-      "quote": "After you assign administrative units to members of the role groups, these restricted administrators can't see and edit existing policies. However, there's no operational change to these policies and they remain visible and can be edited by unrestricted administrators.",
+      "quote": "After you assign administrative units to members of the role groups, these restricted administrators can't see and edit existing policies.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 30,
+      "n": 57,
       "where": "Why it matters",
       "type": "behaviour",
-      "claim": "Restricted administrators lose visibility of historical activity explorer and alert data, which remains visible to unrestricted administrators.",
+      "claim": "Restricted Purview administrators cannot see historical alerts or activity explorer data in features supporting units.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-admin-units",
-      "quote": "Restricted administrators also can't see historical data by using features that support administrative units, such as activity explorer and alerts. They remain visible to unrestricted administrators.",
+      "quote": "Restricted administrators also can't see historical data by using features that support administrative units, such as activity explorer and alerts.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 31,
-      "where": "Cost and licensing: Microsoft Entra ID",
+      "n": 58,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Existing policies and historical activity remain accessible to unrestricted Purview administrators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-admin-units",
+      "quote": "they remain visible and can be edited by unrestricted administrators.\n\nThey remain visible to unrestricted administrators.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Cost and licensing",
       "type": "licensing",
       "claim": "Creating administrative units is available with Entra ID Free.",
       "status": "supported",
@@ -373,10 +681,10 @@
       "fix": null
     },
     {
-      "n": 32,
-      "where": "Cost and licensing: Microsoft Entra ID; What to check; Open questions",
+      "n": 60,
+      "where": "Cost and licensing; What to check; Open questions",
       "type": "licensing",
-      "claim": "Each administrator assigned directory roles over an administrative unit needs Entra ID P1.",
+      "claim": "Each administrator assigned directory roles over a unit's scope needs Entra ID P1.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/administrative-units",
       "quote": "Using administrative units requires a Microsoft Entra ID P1 license for each administrative unit administrator who is assigned directory roles over the scope of the administrative unit",
@@ -384,10 +692,10 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "Cost and licensing: Microsoft Entra ID",
+      "n": 61,
+      "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Each administrative unit member needs Entra ID Free.",
+      "claim": "Each administrative-unit member needs Entra ID Free for ordinary membership.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/administrative-units",
       "quote": "and a Microsoft Entra ID Free license for each administrative unit member.",
@@ -395,10 +703,10 @@
       "fix": null
     },
     {
-      "n": 34,
-      "where": "Cost and licensing: Microsoft Entra ID; What to check",
+      "n": 62,
+      "where": "Cost and licensing; What to check",
       "type": "licensing",
-      "claim": "Each member of a dynamic-membership administrative unit needs Entra ID P1.",
+      "claim": "Each member of a unit using dynamic membership rules needs Entra ID P1.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/administrative-units",
       "quote": "If you are using rules for dynamic membership groups for administrative units, each administrative unit member requires a Microsoft Entra ID P1 license.",
@@ -406,32 +714,65 @@
       "fix": null
     },
     {
-      "n": 35,
-      "where": "Cost and licensing: Microsoft Purview; Open questions",
+      "n": 63,
+      "where": "Cost and licensing; Open questions",
       "type": "licensing",
-      "claim": "The Purview administrative-units prerequisites list Entra ID P1 or P2 licensing.",
+      "claim": "Purview's administrative-unit prerequisites list Entra ID P1 or P2.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-admin-units",
-      "quote": "Microsoft Entra ID P1 or P2 licensing",
+      "quote": "Before configuring administrative units for Microsoft Purview solutions, make sure your organization and users meet the following subscription and licensing requirements:\n- Microsoft Entra ID P1 or P2 licensing",
       "severity": null,
       "fix": null
     },
     {
-      "n": 36,
-      "where": "Cost and licensing: Microsoft Purview",
+      "n": 64,
+      "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Purview lists the four subscription alternatives reproduced in the licensing paragraph.",
+      "claim": "Microsoft 365 E5/A5/G5 is one of the listed Purview subscription alternatives.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-admin-units",
-      "quote": "Microsoft 365 E5/A5/G5\nMicrosoft 365 E5/A5/G5/F5 Compliance or F5 Security & Compliance\nMicrosoft 365 E5/A5/G5/F5 Information Protection & Governance\nMicrosoft 365 E5/A5/F5 Insider Risk Management",
+      "quote": "Microsoft Purview licensing (one of the following subscriptions):\n- Microsoft 365 E5/A5/G5",
       "severity": null,
       "fix": null
     },
     {
-      "n": 37,
-      "where": "Cost and licensing: Microsoft Purview",
+      "n": 65,
+      "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "The New-DlpCompliancePolicy reference says administrative units are available only in Entra ID P1 or P2.",
+      "claim": "Microsoft 365 E5/A5/G5/F5 Compliance or F5 Security & Compliance is a listed subscription alternative.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-admin-units",
+      "quote": "Microsoft 365 E5/A5/G5/F5 Compliance or F5 Security & Compliance",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 E5/A5/G5/F5 Information Protection & Governance is a listed subscription alternative.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-admin-units",
+      "quote": "Microsoft 365 E5/A5/G5/F5 Information Protection & Governance",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 E5/A5/F5 Insider Risk Management is a listed subscription alternative.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-admin-units",
+      "quote": "Microsoft 365 E5/A5/F5 Insider Risk Management",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The New-DlpCompliancePolicy reference states that units are available only in Entra ID P1 or P2.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy",
       "quote": "Administrative units are available only in Microsoft Entra ID P1 or P2.",
@@ -439,32 +780,54 @@
       "fix": null
     },
     {
-      "n": 38,
-      "where": "Cost and licensing: Microsoft Purview; Open questions",
+      "n": 69,
+      "where": "Cost and licensing; Open questions",
       "type": "absence",
-      "claim": "The Purview administrative-units page does not specify which users the Entra licence is counted for.",
+      "claim": "The Purview administrative-unit page does not specify which users the Entra licence is counted for.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Purview administrative units P1 P2 license which administrators role group scoped members'; read purview-admin-units prerequisites and linked admin-units-manage prerequisites. The Purview page lists P1/P2 but gives no per-user counting rule.",
+      "quote": "Searched: Purview administrative units P1 P2 licence restricted administrators without directory role licensing. Read purview-admin-units prerequisites, its linked admin-units-manage prerequisites and Entra licensing excerpt; no rule for Purview-only administrators found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 39,
+      "n": 70,
       "where": "Risks and limits: Group membership does not flow",
       "type": "behaviour",
-      "claim": "A scoped administrator can change the name and membership of a group in the administrative unit.",
+      "claim": "A scoped administrator can manage the name of a group in the unit.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/administrative-units",
-      "quote": "an administrator scoped to the administrative unit can manage properties of the group, such as group name or membership",
+      "quote": "Manage the name of the group | ✅",
       "severity": null,
       "fix": null
     },
     {
-      "n": 40,
+      "n": 71,
       "where": "Risks and limits: Group membership does not flow",
       "type": "behaviour",
-      "claim": "Scoping a group does not permit editing its members' properties or passwords unless the users are directly added to the unit.",
+      "claim": "A scoped administrator can manage the membership of a group in the unit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/administrative-units",
+      "quote": "Manage the membership of the group | ✅",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Risks and limits: Group membership does not flow",
+      "type": "behaviour",
+      "claim": "Unit scope over a group does not permit resetting its members' passwords unless those users are separately in the unit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/administrative-units",
+      "quote": "Reset the passwords of individual members of the group | ❌\n\nunless those users and devices are separately added as members of the administrative unit",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Risks and limits: Group membership does not flow",
+      "type": "behaviour",
+      "claim": "Unit scope over a group does not permit editing its members' properties unless those users are separately in the unit.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/administrative-units",
       "quote": "they cannot manage properties of the users or devices within that group (unless those users and devices are separately added as members of the administrative unit).",
@@ -472,10 +835,10 @@
       "fix": null
     },
     {
-      "n": 41,
+      "n": 74,
       "where": "Risks and limits: Group membership does not flow",
       "type": "behaviour",
-      "claim": "Dynamic distribution group membership does not automatically confer administrative unit membership.",
+      "claim": "Dynamic distribution group membership does not automatically create administrative-unit membership.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-admin-units",
       "quote": "Members of Dynamic Distribution Groups don't automatically become members of an administrative unit.",
@@ -483,10 +846,10 @@
       "fix": null
     },
     {
-      "n": 42,
+      "n": 75,
       "where": "Risks and limits: Dynamic units hold no groups",
       "type": "behaviour",
-      "claim": "An administrative unit using dynamic membership rules cannot contain groups.",
+      "claim": "Units using dynamic membership rules cannot contain groups.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-admin-units",
       "quote": "You can't add groups to an administrative unit that uses dynamic membership rules.",
@@ -494,10 +857,10 @@
       "fix": null
     },
     {
-      "n": 43,
+      "n": 76,
       "where": "Risks and limits: Dynamic units hold no groups",
       "type": "behaviour",
-      "claim": "Microsoft advises creating separate user and group units where needed.",
+      "claim": "Microsoft's Purview guidance suggests separate units for users and groups if needed.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-admin-units",
       "quote": "If needed, create two administrative units, one for users and one for groups.",
@@ -505,32 +868,10 @@
       "fix": null
     },
     {
-      "n": 44,
-      "where": "Risks and limits: Insider Risk Management alerts for group-added users are hidden",
-      "type": "behaviour",
-      "claim": "Only unrestricted administrators can access IRM alerts for users included through security or distribution groups in units.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
-      "quote": "Restricted administrators can't access alerts for the users assigned to them through security groups or distribution groups added in administrative units. Such user alerts are visible only to unrestricted administrators.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "Risks and limits: Insider Risk Management alerts for group-added users are hidden",
-      "type": "behaviour",
-      "claim": "Microsoft recommends adding users directly to units to make their alerts visible to restricted administrators.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
-      "quote": "Microsoft recommends adding users directly to administrative units to ensure their alerts are also visible to restricted administrators with administrative units assigned.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
+      "n": 77,
       "where": "controls[1].note; Risks and limits; What to check",
       "type": "behaviour",
-      "claim": "Restricted management must be configured at creation and cannot subsequently be changed.",
+      "claim": "Restricted management must be set at unit creation and cannot be changed afterward.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-restricted-management",
       "quote": "The restricted management setting must be applied during administrative unit creation and can't be changed once the administrative unit is created.",
@@ -538,10 +879,10 @@
       "fix": null
     },
     {
-      "n": 47,
+      "n": 78,
       "where": "controls[1].note; Risks and limits",
       "type": "behaviour",
-      "claim": "A tenant can have at most 100 restricted management administrative units.",
+      "claim": "A tenant can have at most 100 restricted management units.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-restricted-management",
       "quote": "A maximum of 100 restricted management administrative units in a tenant.",
@@ -549,10 +890,10 @@
       "fix": null
     },
     {
-      "n": 48,
+      "n": 79,
       "where": "Risks and limits: Restricted management is fixed at creation",
       "type": "applicability",
-      "claim": "Users and groups in restricted management units cannot be managed with the named Entra ID Governance features.",
+      "claim": "Users and groups in restricted management units cannot be managed with Entra ID Governance features such as PIM, entitlement management, lifecycle workflows and access reviews.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-restricted-management",
       "quote": "Groups and users in a restricted management administrative unit can't be managed with Microsoft Entra ID Governance features such as Privileged Identity Management, Entitlement management, Lifecycle workflows and Access reviews.",
@@ -560,10 +901,43 @@
       "fix": null
     },
     {
-      "n": 49,
+      "n": 80,
+      "where": "Risks and limits: Insider Risk Management alerts for group-added users are hidden",
+      "type": "behaviour",
+      "claim": "Restricted IRM administrators cannot access alerts for users assigned through security or distribution groups in units.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "Restricted administrators can't access alerts for the users assigned to them through security groups or distribution groups added in administrative units.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
+      "where": "Risks and limits: Insider Risk Management alerts for group-added users are hidden",
+      "type": "behaviour",
+      "claim": "Only unrestricted administrators can see those IRM alerts for group-added users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "Such user alerts are visible only to unrestricted administrators.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 82,
+      "where": "Risks and limits: Insider Risk Management alerts for group-added users are hidden",
+      "type": "behaviour",
+      "claim": "Microsoft recommends adding users directly so their IRM alerts are visible to restricted administrators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "Microsoft recommends adding users directly to administrative units to ensure their alerts are also visible to restricted administrators with administrative units assigned.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 83,
       "where": "Risks and limits: Defender XDR scopes only DLP",
       "type": "applicability",
-      "claim": "Defender XDR administrative-unit support applies to DLP alerts, not IRM alerts.",
+      "claim": "Defender XDR supports unit scoping for DLP but not IRM alerts.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-admin-units",
       "quote": "Although DLP and Insider Risk Management both surface alerts in Microsoft Defender XDR, Microsoft Defender XDR only supports administrative units for DLP.",
@@ -571,7 +945,7 @@
       "fix": null
     },
     {
-      "n": 50,
+      "n": 84,
       "where": "Risks and limits: Defender XDR scopes only DLP",
       "type": "behaviour",
       "claim": "Defender XDR supports up to 100 administrative units.",
@@ -582,10 +956,10 @@
       "fix": null
     },
     {
-      "n": 51,
+      "n": 85,
       "where": "Risks and limits: SharePoint site queries are slow and coarse",
       "type": "behaviour",
-      "claim": "A SharePoint-site query can take up to five days to populate.",
+      "claim": "A SharePoint site query can take up to five days to populate.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-admin-units",
       "quote": "It can take up to five days for a SharePoint site query to fully populate.",
@@ -593,10 +967,10 @@
       "fix": null
     },
     {
-      "n": 52,
+      "n": 86,
       "where": "Risks and limits: SharePoint site queries are slow and coarse",
       "type": "behaviour",
-      "claim": "Administrators selecting administrative units cannot include or exclude individual SharePoint sites.",
+      "claim": "Administrators selecting units cannot include or exclude individual SharePoint sites.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-admin-units",
       "quote": "Additionally, administrators selecting administrative units can't include or exclude individual SharePoint sites.",
@@ -604,10 +978,10 @@
       "fix": null
     },
     {
-      "n": 53,
+      "n": 87,
       "where": "Risks and limits: Intune is outside it",
       "type": "applicability",
-      "claim": "Administrative units do not support managing devices in Intune.",
+      "claim": "Managing devices in Intune is not supported with administrative units.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/administrative-units",
       "quote": "Managing devices in Intune is not supported at this time.",
@@ -615,87 +989,21 @@
       "fix": null
     },
     {
-      "n": 54,
-      "where": "controls[0].note; Governance controls",
-      "type": "role",
-      "claim": "Creating a unit in the Entra admin center requires at least Privileged Role Administrator.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-manage",
-      "quote": "Sign in to the Microsoft Entra admin center as at least a Privileged Role Administrator.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
+      "n": 88,
       "where": "Governance controls",
       "type": "role",
-      "claim": "Adding existing members in the Entra admin center requires at least Privileged Role Administrator.",
+      "claim": "Purview unit assignment does not replace the solution's own required permissions.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-members-add",
-      "quote": "To add existing users, groups, or devices:\nPrivileged Role Administrator",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "The permissions you manage in the Microsoft Purview portal don't cover the management of all the permissions needed in each individual service. You still need to manage certain service-specific permissions in the admin center for the specific service.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 56,
+      "n": 89,
       "where": "Governance controls",
       "type": "role",
-      "claim": "Assigning unit-scoped roles in the Entra admin center requires at least Privileged Role Administrator.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
-      "quote": "Sign in to the Microsoft Entra admin center as at least a Privileged Role Administrator.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
-      "where": "controls[4].note; Governance controls",
-      "type": "role",
-      "claim": "Assigning units to Purview role-group members requires Role management.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-admin-units",
-      "quote": "To assign a role group member to an administrative unit, administrators must be assigned the Role management role.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 58,
-      "where": "controls[6].note; Governance controls",
-      "type": "role",
-      "claim": "Configuring SharePoint-site associations requires the admin unit extension manager role.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-admin-units",
-      "quote": "To complete the following steps to configure SharePoint sites within administrative units for use in Microsoft Purview, you must have the admin unit extension manager role assigned.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 59,
-      "where": "controls[6].note",
-      "type": "behaviour",
-      "claim": "Site membership queries support site URL, site name and RefinableString00 through RefinableString99.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-admin-units",
-      "quote": "Queries to associate SharePoint sites with administrative units support site properties for Site URL, site name, and RefinableString00-RefinableString99.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 60,
-      "where": "controls[3].note",
-      "type": "role",
-      "claim": "The unit's role picker offers roles with permissions relevant to objects supported in administrative units.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
-      "quote": "We show the roles which have permissions related to the objects that are supported within the administrative unit.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 61,
-      "where": "Governance controls",
-      "type": "role",
-      "claim": "Unit scoping does not replace solution permissions; DLP unit administrators still need the same DLP roles or role groups.",
+      "claim": "DLP administrative-unit administrators need the same DLP roles or role groups as unrestricted DLP administrators.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
       "quote": "Administrative unit admins need to be assigned to one of the same roles or role groups as administrators of unrestricted DLP policies in order to create and manage DLP policies for their administrative unit.",
@@ -703,10 +1011,10 @@
       "fix": null
     },
     {
-      "n": 62,
+      "n": 90,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Restricted administrators must select one or more units when configuring supported policies.",
+      "claim": "Restricted administrators must select one or more of their units when configuring a policy that supports units.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-admin-units",
       "quote": "Restricted administrators must select one or more administrative units as part of the policy configuration.",
@@ -714,32 +1022,32 @@
       "fix": null
     },
     {
-      "n": 63,
+      "n": 91,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Unrestricted administrators can retain whole-directory policy scope or select administrative units.",
+      "claim": "Unrestricted administrators can retain full-directory policy scope or choose units.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-admin-units",
-      "quote": "They can keep the default of the entire directory or select one or more administrative units.",
+      "quote": "Unrestricted administrators don't have to select administrative units as part of the policy configuration. They can keep the default of the entire directory or select one or more administrative units.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 64,
+      "n": 92,
       "where": "Governance controls",
       "type": "behaviour",
       "claim": "Creation of restricted management units is recorded in Entra audit logs.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-restricted-management",
-      "quote": "Add administrative unit | AdministrativeUnit | IsMemberManagementRestricted = true",
+      "quote": "these activities are recorded in the Microsoft Entra audit logs.\n\nAdd administrative unit | AdministrativeUnit | IsMemberManagementRestricted = true",
       "severity": null,
       "fix": null
     },
     {
-      "n": 65,
+      "n": 93,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Membership additions and removals in restricted management units are audited.",
+      "claim": "Member additions and removals in restricted management units are recorded in Entra audit logs.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-restricted-management",
       "quote": "Add member to restricted management administrative unit | AdministrativeUnit\nRemove member from restricted management administrative unit | AdministrativeUnit",
@@ -747,10 +1055,10 @@
       "fix": null
     },
     {
-      "n": 66,
+      "n": 94,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Role membership changes scoped to restricted management units are audited.",
+      "claim": "Restricted-unit scoped role membership changes are recorded in Entra audit logs.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-restricted-management",
       "quote": "Add member to role scoped over Restricted Management Administrative Unit | RoleManagement\nRemove member from role scoped over Restricted Management Administrative Unit | RoleManagement",
@@ -758,184 +1066,19 @@
       "fix": null
     },
     {
-      "n": 67,
+      "n": 95,
       "where": "Governance controls",
       "type": "applicability",
-      "claim": "Purview applies administrative-unit configuration to audit log search access.",
+      "claim": "Purview applies administrative-unit scoping to audit log search access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-admin-units",
-      "quote": "The configuration for administrative units automatically flows down to the following features:\nAudit log:\nSearch access.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 68,
-      "where": "controls[0].ui",
-      "type": "admin-path",
-      "claim": "The creation path is Microsoft Entra admin center > Entra ID > Roles & admins > Admin units > Add.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-manage",
-      "quote": "Browse to Entra ID > Roles & admins > Admin units.\nSelect Add.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 69,
-      "where": "controls[0].api",
-      "type": "command",
-      "claim": "POST /v1.0/directory/administrativeUnits creates an administrative unit.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-manage",
-      "quote": "Use the Create administrativeUnit API to create a new administrative unit.\nPOST https://graph.microsoft.com/v1.0/directory/administrativeUnits",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 70,
-      "where": "controls[1].ui",
-      "type": "admin-path",
-      "claim": "The restricted-management toggle is under Entra ID > Roles & admins > Admin units > Add > Restricted management administrative unit.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-manage",
-      "quote": "Browse to Entra ID > Roles & admins > Admin units.\nSelect Add.\nIf you don't want tenant-level administrators to be able to access this administrative unit, set the Restricted management administrative unit toggle to Yes.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 71,
-      "where": "controls[1].api",
-      "type": "command",
-      "claim": "POST /v1.0/directory/administrativeUnits with isMemberManagementRestricted creates a restricted management unit.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-manage",
-      "quote": "Use the Create administrativeUnit API to create a new restricted management administrative unit. Set the isMemberManagementRestricted property to true.\nPOST https://graph.microsoft.com/v1.0/directory/administrativeUnits",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 72,
-      "where": "controls[2].ui",
-      "type": "admin-path",
-      "claim": "The member-addition path is Entra ID > Roles & admins > Admin units > administrative unit > Users > Add member, with Groups > Add and Devices > Add device alternatives.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-members-add",
-      "quote": "Browse to Entra ID > Roles & admins > Admin units.\nSelect the administrative unit you want to add users, groups, or devices to.\nSelect one of the following:\nUsers\nGroups\nDevices\nSelect Add member, Add, or Add device.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 73,
-      "where": "controls[2].api",
-      "type": "command",
-      "claim": "POST /v1.0/directory/administrativeUnits/{id}/members/$ref adds an existing user, group or device.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/administrativeunit-post-members?view=graph-rest-1.0",
-      "quote": "POST https://graph.microsoft.com/v1.0/directory/administrativeUnits/{id}/members/$ref\nContent-type: application/json\n{\n  \"@odata.id\":\"https://graph.microsoft.com/v1.0/groups/{id}\"\n}",
-      "severity": "minor",
-      "fix": "Keep the call unchanged and append to controls[2].note: 'The request body sets @odata.id to the URL of the user, group or device to add.' Mirror that note in the rendered table."
-    },
-    {
-      "n": 74,
-      "where": "controls[3].ui",
-      "type": "admin-path",
-      "claim": "Unit-scoped role assignment uses Entra ID > Roles & admins > Admin units > administrative unit > Roles and administrators > role > Add assignments.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
-      "quote": "Select Roles and administrators from the left navigation menu to see the list of all roles available to be assigned over an administrative unit.\nSelect the desired role.\nSelect Add assignments and then select the users or groups you want to assign this role to.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 75,
-      "where": "controls[3].api",
-      "type": "command",
-      "claim": "POST /v1.0/roleManagement/directory/roleAssignments sets unit scope through directoryScopeId = /administrativeUnits/<ID>.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
-      "quote": "POST https://graph.microsoft.com/v1.0/roleManagement/directory/roleAssignments\n...\n\"directoryScopeId\": \"/administrativeUnits/<Object ID of administrative unit>\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 76,
-      "where": "controls[4].ui",
-      "type": "admin-path",
-      "claim": "The Purview role-group route through Settings > Roles and scopes > Role groups > Role groups for Microsoft Purview solutions > role group > Edit > Edit members of the role group > member > Assign admin units reaches the unit assignment control.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-permissions",
-      "quote": "To update the administrative units for users or groups, select any of the currently assigned user or groups and select Assign admin units.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 77,
-      "where": "controls[5].ui",
-      "type": "admin-path",
-      "claim": "For the Copilot location, Purview uses Data Loss Prevention > Policies > + Create policy > Custom > Custom policy > Admin units.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
-      "quote": "go to Data Loss Prevention > Policies and select + Create policy.\nSelect the Custom template, then Custom policy, and enter a name and description.\nOn the Admin units page, select the administrative units for the policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 78,
-      "where": "controls[5].api",
-      "type": "command",
-      "claim": "New-DlpCompliancePolicy -Name <String> -PolicyRBACScopes <administrative-unit-ObjectID> sets DLP policy administrative units in Security & Compliance PowerShell.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy",
-      "quote": "This cmdlet is available only in Security & Compliance PowerShell.\n...\nThe PolicyRBACScopes parameter specifies the administrative units to assign to the policy. A valid value is the Microsoft Entra ObjectID (GUID value) of the administrative unit.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 79,
-      "where": "controls[6].ui",
-      "type": "admin-path",
-      "claim": "SharePoint site association uses Purview Settings > Roles and scopes > Administrative units > administrative unit > Edit.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-admin-units",
-      "quote": "Select Settings and select Roles and scopes.\nSelect Administrative units.\nSelect an existing administrative unit from the list.\nSelect Edit.\nCreate a query to associate SharePoint sites with the administrative unit.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 80,
-      "where": "controls[4].api; Open questions",
-      "type": "absence",
-      "claim": "No PowerShell or Graph operation is documented for assigning administrative units to Purview role-group members.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Purview administrative units assign role group members PowerShell Add-RoleGroupMember AdministrativeUnits parameter'; '\"Add-RoleGroupMember\" \"Administrative\"'. Read purview-admin-units, purview-permissions and Add-RoleGroupMember. No unit-setting operation.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 81,
-      "where": "controls[6].api; Open questions",
-      "type": "absence",
-      "claim": "No PowerShell or Graph operation is documented for configuring Purview SharePoint-site membership queries.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Purview administrative units SharePoint site query PowerShell Graph API administrative unit extension'; '\"Purview\" \"administrative units\" \"SharePoint\" \"Set-AdministrativeUnit\"'. Read purview-admin-units and Graph administrativeUnit search excerpts. No site-query setter.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 82,
-      "where": "controls[5].note; Open questions",
-      "type": "availability",
-      "claim": "Administrative-unit support for the Copilot, Copilot Chat and Cowork DLP location is in preview.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
-      "quote": "Administrative unit support for this location, including Cowork, is in preview and is rolling out. The option might not yet be available in your tenant.",
+      "quote": "The configuration for administrative units automatically flows down to the following features:\n\nAudit log:\n- Search access.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-27T14:20:21.372Z",
+    "at": "2026-11-27T20:12:53.131Z",
     "summary": {
       "links": 12,
       "unreachable": 0,
@@ -1168,5 +1311,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-27",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

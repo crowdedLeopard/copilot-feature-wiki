@@ -66,15 +66,17 @@ changes:
     note: "Removed the claim that no licence is published for these enhancements and the two Before rollout checks with no controls row; corrected the dashboard licence-share bullet."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 54 statements confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 69 statements confirmed"
 version: 2
 verification:
   status: "verified"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 54
-  confirmed: 54
+  claims: 69
+  confirmed: 69
   unconfirmed: 0
   contradicted: 0
   attempts: 0

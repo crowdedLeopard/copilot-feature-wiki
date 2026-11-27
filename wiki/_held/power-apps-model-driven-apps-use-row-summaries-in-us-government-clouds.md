@@ -103,18 +103,20 @@ changes:
     note: "Corrected after the check: target date and version now follow the roadmap record (December CY2026, 2612.2), the summary says the date is a target, and the table-wide maker scope is qualified by the FAQ."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 60 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 59 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 5
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-20"
+  status: "held"
+  date: "2026-11-27"
   version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 60
+  claims: 59
+  confirmed: 58
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "4cf33d43198c804cdefaecc4ae64b9b4"
 ---
 
@@ -204,8 +206,11 @@ cost: Variable. Row summaries rely on AI Builder to execute prompts; AI Builder 
 impact: Medium. Users of enabled model-driven apps in government environments see summaries on forms and views.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[0].api; Governance controls table / absence: Microsoft does not document an automation call setting the row summaries environment control. | Found: API Version: 2024-10-01. EnvironmentManagementSetting: | powerApps\_EnableFormInsights | boolean | | | Fix: Replace controls[0].api and its rendered gap with kind 'power-platform-api', call 'PATCH /environmentmanagement/environments/{environmentId}/settings?api-version=2024-10-01', docs 'https://learn.microsoft.com/rest/api/power-platform/environmentmanagement/environment-management-settings/update-environment-management-settings'. Add the note 'The request body sets powerApps_EnableFormInsights, the shared AI insight cards setting.' Cite the same-version property reference at https://learn.microsoft.com/rest/api/power-platform/environmentmanagement/environment-management-settings/list-environment-management-settings and the identification of EnableFormInsights as AI insight cards at https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-data-grid#ai-row-summaries. The existing row-summary source already confirms AI insight cards and Row summaries are the same control. | Source: https://learn.microsoft.com/rest/api/power-platform/environmentmanagement/environment-management-settings/list-environment-management-settings
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: Power Apps (maker) > Tables > table > Customizations > Row summary reaches the prompt and visibility configuration screen. | Found: Under Customizations, select Row summary. In the prompt configuration screen, use the Show row summary toggle in the upper-right corner to show or hide the summary. | Fix: For the visibility control, extend the path to 'Tables > table > Customizations > Row summary > Show row summary'. Retain the same docs URL; the Prompt box is on that configuration screen. | Source: https://learn.microsoft.com/power-apps/maker/data-platform/configure-form-row-summary
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: Power Apps (maker) > Tables > table > Customizations > Row summary reaches the prompt and summary visibility configuration screen. | Found: Under Customizations, select Row summary. In the prompt configuration screen, use the Show row summary toggle in the upper-right corner to show or hide the summary. | Fix: For the visibility control, extend controls[1].ui.path and the rendered table path to 'Tables > table > Customizations > Row summary > Show row summary'. Retain the same docs URL; the Prompt box is on this configuration screen. | Source: https://learn.microsoft.com/power-apps/maker/data-platform/configure-form-row-summary
+- [supported, minor] Governance guidance: At rollout / admin-path: Admins enable Row summaries for a pilot environment under Copilot > Settings > Power Apps > Summary. | Found: Under Power Apps, locate Row summaries in the Summary section. Select the environment, and then select Edit setting. Configure the setting, and then select Save. | Fix: Replace the rollout bullet with 'Enable Row summaries for a pilot environment in Power Platform admin center > Copilot > Settings > Power Apps > Summary > Row summaries > environment > Edit setting.' | Source: https://learn.microsoft.com/power-apps/user/record-summaries#admin-control
 -->

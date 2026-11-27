@@ -17,8 +17,8 @@ impact: "low"
 defaultState: "on"
 action: "prepare"
 licensing:
-  model: "unknown"
-  notes: "Not yet published for the report itself. Microsoft Learn lists service-side auto-labeling (SharePoint, OneDrive, Exchange) with Microsoft 365 E5, E5 Compliance, E5 Information Protection & Governance and Azure Information Protection Premium P2."
+  model: "included"
+  notes: "The report is a view within licensed service-side auto-labeling; no separate report-specific licence or meter is documented as of November 2026. Microsoft's Purview service description lists Microsoft 365 E5 and Microsoft 365 E5 Information Protection and Governance among the subscriptions that include client and service-side automatic sensitivity labeling."
 audiences: ["compliance","m365-admin","security"]
 tags: ["purview","information-protection","sensitivity-labels","auto-labeling","monitoring"]
 sources:
@@ -27,6 +27,9 @@ sources:
     kind: "roadmap"
   - title: "Automatically apply a sensitivity label to Microsoft 365 data"
     url: "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically"
+    kind: "learn"
+  - title: "Microsoft Purview service description"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description"
     kind: "learn"
   - title: "Get-AutoSensitivityLabelPolicy"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/get-autosensitivitylabelpolicy"
@@ -58,7 +61,7 @@ controls:
     note: "Security & Compliance PowerShell only. Shows labeling progress, not the comparison with simulation. Roles: Compliance Administrator, Compliance Data Administrator, Information Protection Admin or Information Protection Analyst."
 confidence: "high"
 created: "2026-11-18"
-updated: "2026-11-18"
+updated: "2026-11-27"
 roadmapModified: "2026-11-11T00:52:46"
 changes:
   - date: "2026-11-18"
@@ -73,19 +76,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 67 statements not yet confirmed"
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 63 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-27"
+    note: "Correction: service-side auto-labeling licensing now cites the Purview service description (Microsoft 365 E5 and E5 Information Protection and Governance), dropping the client-side SKU list; licensing model set to included."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 81 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-27"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 63
-  confirmed: 62
+  claims: 81
+  confirmed: 81
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "85a3ef2c24a3fec941c6e71047de2016"
+  contradicted: 0
+  attempts: 0
+  hash: "ddb149b66a6549a3729187c3d23a27a1"
 ---
 
 ## What's changing
@@ -121,9 +128,9 @@ Because Microsoft says no action is required, the report appears on its own. The
 
 ## Cost and licensing
 
-Microsoft Learn's auto-labeling page lists service-side auto-labeling (SharePoint, OneDrive, Exchange) as included with Microsoft 365 E5, Microsoft 365 E5 Compliance, Microsoft 365 E5 Information Protection & Governance and Azure Information Protection Premium P2 (standalone). The page says auto-labeling of files and emails is not included with E3 or Business Premium.
+Microsoft's [Purview service description](https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description) lists Microsoft 365 E5 and Microsoft 365 E5 Information Protection and Governance among the subscriptions that include client and service-side automatic sensitivity labeling. Microsoft Learn's auto-labeling page says that, for E3 or Business Premium, manual labeling entitlement doesn't include automatic labeling.
 
-The licence and any meter for the coverage report itself are not yet published: neither the roadmap record, MC1456609 nor the Learn page names a separate licence or charge for it. The indirect cost is admin time to review the report and to rerun simulations so that coverage is available again after 30 days.
+No separate licence or meter for the coverage report is documented as of November 2026: neither the roadmap record, MC1456609 nor the Learn page names a separate licence or charge for it. The indirect cost is admin time to review the report and to rerun simulations so that coverage is available again after 30 days.
 
 ## Scope
 
@@ -165,21 +172,13 @@ The PowerShell row is today's alternative: it reports labeling progress for enab
 
 ## Open questions
 
-- Does the coverage report carry any licence or meter beyond the E5-tier licensing listed for auto-labeling? Watch the Learn auto-labeling page and Message center.
+- Does the coverage report carry any licence or meter beyond the published service-side auto-labeling licensing? Watch the Learn auto-labeling page and Message center.
 - When does Learn drop the preview label on **Coverage by simulation context**, given the roadmap lists General Availability?
 - Will Microsoft document a PowerShell or Graph interface for coverage data? None is documented at the time of writing (November 2026).
 - Which role, if any, is specific to **View coverage**, as Learn lists roles only for the review pages?
 
 <!-- rationale
 risk: Low. Microsoft describes the report as monitoring auto-labeling enforcement outcomes on policies an admin has already turned on, and its notice says no action is required to receive it.
-cost: Low. The only cost the sources show is admin time; Microsoft Learn lists no separate meter or licence for the report, and auto-labeling itself is listed with E5 or P2-tier SKUs.
+cost: Low. The only cost the sources show is admin time; Microsoft Learn lists no separate meter or licence for the report, and service-side auto-labeling is listed with Microsoft 365 E5 and Microsoft 365 E5 Information Protection and Governance.
 impact: Low. Microsoft's notice identifies Purview administrators who create and manage Information Protection auto-labeling policies as the people affected by the new View coverage action.
--->
-
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.notes; Cost and licensing; rationale: cost; Open questions / licensing: The feature page lists service-side auto-labeling as included with Microsoft 365 E5, E5 Compliance, E5 Information Protection & Governance and Azure Information Protection Premium P2 standalone. | Found: Check the **Client and service-side automatic sensitivity labeling** entry in the feature matrix linked below. Client-only entitlements don't establish service-side entitlement. | Fix: Replace the service-side SKU sentence and licensing.notes SKU list with: "Microsoft's Purview service description lists Microsoft 365 E5 and Microsoft 365 E5 Information Protection and Governance among the subscriptions that include client and service-side automatic sensitivity labeling." Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description. The feature page now gives the old four-SKU list for client-side labeling only. Remove the standalone AIP P2 service-side entitlement implication, including 'or P2-tier' in the cost rationale and 'E5-tier licensing listed for auto-labeling' in the first open question; use 'published service-side auto-labeling licensing' instead. | Source: https://learn.microsoft.com/purview/apply-sensitivity-label-automatically
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model; licensing.notes; Cost and licensing / licensing: Licensing is marked unknown because entitlement specific to the coverage report has not been published. | Found: Auto-labeling is gated by license, and the two surfaces (client-side and service-side) appear in different places in the portal. | Fix: Set licensing.model to "included". Start licensing.notes with "The report is a view within licensed service-side auto-labeling; no separate report-specific licence or meter is documented as of November 2026." In Cost and licensing replace "The licence and any meter for the coverage report itself are not yet published" with "No separate licence or meter for the coverage report is documented as of November 2026". Keep only the corrected service-side entitlement statement specified in the licensing correction. | Source: https://learn.microsoft.com/purview/apply-sensitivity-label-automatically
 -->

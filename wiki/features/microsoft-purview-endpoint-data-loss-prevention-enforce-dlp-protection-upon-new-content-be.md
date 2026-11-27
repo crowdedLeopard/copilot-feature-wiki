@@ -37,7 +37,7 @@ sources:
   - title: "Set-PolicyConfig"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig"
     kind: "docs"
-  - title: "Whether a device rule audits, warns or blocks printing and copying to USB or network shares (Microsoft Purview portal)"
+  - title: "Help protect files that Endpoint Data Loss Prevention fails to scan"
     url: "https://learn.microsoft.com/purview/dlp-create-policy-edlp-scan-fails"
     kind: "learn"
   - title: "Whether a device rule audits, warns or blocks printing and copying to USB or network shares (PowerShell)"
@@ -71,19 +71,23 @@ changes:
     note: "New briefing: roadmap item rolling out; Learn still documents that unsaved data is not scanned, and no dedicated setting is documented."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 36 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-27"
+    note: "Corrected the supported platforms for print, USB and network-share restrictions to Learn's Windows versions and macOS releases and removed an unsupported claim about which activities rules most often block."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 41 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-27"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 36
-  confirmed: 34
-  unconfirmed: 1
+  claims: 41
+  confirmed: 40
+  unconfirmed: 0
   contradicted: 1
-  attempts: 1
-  hash: "e3509f109f482ab42ab279d5f5ca7d96"
+  attempts: 0
+  hash: "056ee3fab2e444c1b279ea4094885779"
 ---
 
 ## What's changing
@@ -96,7 +100,7 @@ The roadmap record lists the item as **Rolling out**, General Availability, with
 
 ## Why it matters
 
-Print, copy to USB and copy to a network share are the device activities Endpoint DLP rules most often block, and Learn documents a gap for content that has never been saved locally. A user who drafts sensitive text in a new document and sends it straight to a printer or USB stick is the case this item addresses. Until it works in your tenant, Learn's statement stands: such a direct save to USB is not inspected or blocked.
+Print, copy to USB and copy to a network share are device activities Endpoint DLP rules can block, and Learn documents a gap for content that has never been saved locally. A user who drafts sensitive text in a new document and sends it straight to a printer or USB stick is the case this item addresses. Until it works in your tenant, Learn's statement stands: such a direct save to USB is not inspected or blocked.
 
 Microsoft has not stated what happens on arrival. If the protection attaches to existing rules, users may meet new warnings or blocks on unsaved work, which lands on the helpdesk. If it needs configuring, the gap stays open until someone does. Either way, test it before telling auditors the gap is closed.
 
@@ -125,7 +129,7 @@ Microsoft has not stated what happens on arrival. If the protection attaches to 
 ## Scope
 
 - **Users and devices:** an Endpoint DLP policy is enforced on an endpoint only when both the user and the device are in the policy's scope, per Learn.
-- **Platforms:** Learn lists **Print**, **Copy to USB removable device** and **Copy to a network share** as supported on Windows 10 and 11 (x64 and ARM64) and macOS. The roadmap record lists the platform as Web. Which platforms get unsaved-content protection is not yet documented.
+- **Platforms:** Learn lists Print, Copy to USB removable device and Copy to a network share as supported on Windows 10 and Windows 11 (21H2, 22H2) on x64, Windows 11 (21H2, 22H2) on ARM64, and the three latest released macOS versions. The roadmap record lists the platform as Web. Which platforms get unsaved-content protection is not yet documented.
 - **Clouds:** the roadmap record lists GCC, GCC High and DoD.
 - **Rollout:** the record lists the item as Rolling out, with a target of May CY2026.
 - **Roles:** the `EndpointDlpRestrictions` parameter requires membership in the Compliance Administrator or Compliance Data Administrator roles in Microsoft Entra ID.
@@ -173,11 +177,9 @@ cost: Low. Endpoint DLP is included in Microsoft 365 E5/A5/G5 and the Purview su
 impact: Medium. Users on onboarded devices who fall under rules restricting print, USB or network share copies would notice new warnings or blocks on unsaved work; others see nothing.
 -->
 
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Scope: Platforms / availability: Learn lists printing, USB copying and network-share copying as supported on Windows 10 and 11 on both x64 and ARM64, and on macOS. | Found: Windows 10 (21H2, 22H2), Windows 11 (21H2, 22H2), Windows Server 2019 and later versions for Endpoints (X64) | Windows 11 (21H2, 22H2) for Endpoints (ARM64) | macOS three latest released versions | Fix: Replace the first sentence of Scope: Platforms with: 'Learn lists Print, Copy to USB removable device and Copy to a network share as supported on Windows 10 and Windows 11 (21H2, 22H2) on x64, Windows 11 (21H2, 22H2) on ARM64, and the three latest released macOS versions.' Keep the following roadmap-platform caveat. Source: https://learn.microsoft.com/purview/endpoint-dlp-learn-about | Source: https://learn.microsoft.com/purview/endpoint-dlp-learn-about
-- [unsupported, major] Why it matters / behaviour: Print, copy to USB and copy to a network share are the device activities Endpoint DLP rules most often block. | Found: Searched: Endpoint DLP most print USB block. Read endpoint-dlp-learn-about and returned dlp-configure-endpoint-settings excerpts; these describe available restrictions, not comparative frequency of deployed blocks. | Fix: Replace 'are the device activities Endpoint DLP rules most often block' with 'are device activities Endpoint DLP rules can block'. Source: https://learn.microsoft.com/purview/endpoint-dlp-learn-about
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The printed Purview portal path reaches the device activity restriction configuration. | Found: Select Full directory under Admin units. Scope the location to Devices only. Create a rule where: ... In Actions: Select Audit or restrict activities on devices. ... Select Apply restrictions to specific activity | Fix: Use this path in controls[0].ui and the rendered table: 'Data Loss Prevention > Policies > Create policy > Enterprise applications & devices > Custom > Custom policy > Admin units > Full directory > Devices > rule > Actions > Audit or restrict activities on devices > Apply restrictions to specific activity'. This restores the omitted scope selection; the final step is a valid configuration-page stopping point. Source: https://learn.microsoft.com/purview/dlp-create-policy-edlp-scan-fails | Source: https://learn.microsoft.com/purview/dlp-create-policy-edlp-scan-fails
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The printed Microsoft Purview portal route reaches the device activity restrictions in the custom policy wizard. | Found: Select the Custom from the Categories then Custom policy template from Regulations. ... Select Full directory under Admin units. ... Scope the location to Devices only. ... Select Audit or restrict activities on devices. ... Select Apply restrictions to specific activity | Fix: Replace the path with 'Data Loss Prevention > Policies > Create policy > Enterprise applications & devices > Categories > Custom > Regulations > Custom policy > Admin units > Full directory > Devices > rule > Actions > Audit or restrict activities on devices > Apply restrictions to specific activity'. The existing steps are in the documented order; the omitted headings and administrative-scope selection warrant only a minor. The path may end at the restrictions control without reproducing the sample rule's condition. | Source: https://learn.microsoft.com/purview/dlp-create-policy-edlp-scan-fails
+- [contradicted, minor] Governance guidance: Before rollout, second bullet / consistency: The checklist directs administrators to check user and device policy scope, but no controls-table row governs that scope. | Found: Check that the users and devices you expect are both in each rule's scope ...; controls rows: Whether a device rule audits, warns or blocks printing and copying to USB or network shares; Separate switch for protection of unsaved content. | Fix: Remove the Before rollout bullet beginning 'Check that the users and devices you expect are both in each rule's scope'. User/device policy scoping has no corresponding control row; the verified scope requirement can remain in Scope and the existing control's note.
 -->

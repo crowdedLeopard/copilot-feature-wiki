@@ -132,15 +132,17 @@ changes:
     note: "Correction: the new policy's announced admin centre path is now shown; roles and the Teams licence requirement added; read-only template cmdlet and an unsupported 'not stated' sentence removed; label path completed."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 63 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 71 statements not yet confirmed"
 version: 5
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 63
-  confirmed: 63
+  claims: 71
+  confirmed: 71
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -252,8 +254,8 @@ cost: Low. Admin time and organiser communication are the only costs the sources
 impact: Medium. Organisers and presenters notice if an admin enforces it: presenters who can record today could lose that ability, and organisers could lose the per-meeting choice.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[4].ui / admin-path: The Purview label creation path reaches Control who can record and transcribe through the label scope and Protect Teams meetings and chats selection. | Found: On the Settings for Teams meetings and chats page, choose the following values: Select Control who can record and transcribe and choose Organizers and co-organizers from the dropdown list. | Fix: Include the intervening wizard page heading: 'Solutions > Information protection > Labels > Create a label > Define the scope for this label > Choose protection settings for types of items you selected > Protect Teams meetings and chats > Settings for Teams meetings and chats > Control who can record and transcribe'. The existing note already names this page; no different selection is required. Source: https://learn.microsoft.com/microsoftteams/configure-meetings-sensitive-protection. | Source: https://learn.microsoft.com/microsoftteams/configure-meetings-sensitive-protection
+- [supported, minor] controls[4].ui; rendered controls table / admin-path: The Purview label path reaches Control who can record and transcribe through the label scope and Protect Teams meetings and chats selection. | Found: On the Settings for Teams meetings and chats page, choose the following values: ... Select Control who can record and transcribe and choose Organizers and co-organizers from the dropdown list. | Fix: In controls[4].ui.path and the rendered table, use 'Solutions > Information protection > Labels > Create a label > Define the scope for this label > Choose protection settings for types of items you selected > Protect Teams meetings and chats > Settings for Teams meetings and chats > Control who can record and transcribe'. The missing step is the intervening wizard-page heading documented at https://learn.microsoft.com/microsoftteams/configure-meetings-sensitive-protection. | Source: https://learn.microsoft.com/microsoftteams/configure-meetings-sensitive-protection
 -->

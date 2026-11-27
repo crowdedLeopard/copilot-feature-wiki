@@ -78,18 +78,20 @@ changes:
     note: "Corrected after the independent check: stated the Purview service description's licence requirement for policy-based labeling, removed the label-priority claim tied to the policy and the checklist step with no controls row."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 47 statements confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 52 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-20"
+  status: "held"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 47
-  confirmed: 47
+  claims: 52
+  confirmed: 51
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "c673c35567c3b648a17f9c4abab3f47b"
 ---
 
@@ -172,4 +174,10 @@ Both rows are settings in a sensitivity label policy, so they apply to the users
 risk: Low. The behaviour follows a label policy checkbox that an administrator selects, and stays inside existing sensitivity labels; tenants that already selected it should check what mobile users will now see.
 cost: Low. The only cost the sources show is admin time and communication; Microsoft's Purview service description states the licences for sensitivity labeling but lists no separate row or meter for this feature.
 impact: Low. Only users who attach labelled files to email in Outlook for iOS or Android, in tenants whose label policy turns the setting on, would notice a label being applied or recommended.
+-->
+
+<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Cost and licensing; front matter: licensing.notes; rationale: cost / licensing: The licensing requirement is Microsoft 365 E5 or Microsoft 365 Information Protection and Governance, without stating the additional standard/Plan 1 assignment requirement for premium/P2 users. | Found: A standard/Plan 1 license must be assigned in addition to the premium/P2 license for users to have access to sensitivity labeling for Information Protection for Office 365 and AIP, even if the premium licenses/Plan 2 are assigned. | Fix: Keep the E5/IPG requirement and add to the licensing notes and Cost and licensing: 'For users assigned a premium/P2 entitlement, the standard/Plan 1 entitlement must also be assigned for sensitivity labeling to be available.' Cite the existing Microsoft Purview service description. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
 -->

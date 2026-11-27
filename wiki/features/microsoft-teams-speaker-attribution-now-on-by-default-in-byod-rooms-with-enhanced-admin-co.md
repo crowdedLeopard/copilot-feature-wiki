@@ -94,17 +94,19 @@ changes:
     note: "Corrected after verification: cost rating changed from low to medium with its rationale, and the Teams Premium licensing page added as a source for the add-on model."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 67 statements confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 65 statements not yet confirmed"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-20"
+  status: "verified-with-gaps"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 67
-  confirmed: 67
+  claims: 65
+  confirmed: 64
   unconfirmed: 0
-  contradicted: 0
+  contradicted: 1
   attempts: 0
   hash: "2e12daec2eba9cb42c77becbf0b09cba"
 ---
@@ -221,4 +223,10 @@ Learn also describes a Teams admin center experience to view end-user voice and 
 risk: Medium. Speaker attribution in BYOD rooms is enabled by default and works from voice profiles that users choose to enrol; a PowerShell setting turns it off, but there is no Teams admin center switch.
 cost: Medium. BYOD speaker recognition requires a room host with Teams Premium or a Copilot licence, so hosts without a qualifying licence need an add-on; the cited pages name no separate meter for this setting.
 impact: Medium. People who join BYOD-room meetings with an enrolled voice profile are the ones who notice, as speaker labels and Copilot insights in those meetings; most other users never see it.
+-->
+
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [contradicted, minor] front matter: impact; rationale: impact / consistency: The medium impact rating does not fit the standard's high-impact classification for a change to default behaviour. | Found: impact: "medium" defaultState: "on" Speaker attribution for BYOD (bring your own device) meeting rooms is now on by default | Fix: Set impact to high and replace its rationale with: "High. Speaker attribution in BYOD rooms is enabled by default, changing how enrolled speakers are labelled in qualifying meetings." The standard classifies a change to default behaviour as high impact.
 -->

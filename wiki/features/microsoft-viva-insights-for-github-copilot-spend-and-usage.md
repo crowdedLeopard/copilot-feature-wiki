@@ -17,8 +17,8 @@ impact: "medium"
 defaultState: "on"
 action: "act-now"
 licensing:
-  model: "unknown"
-  notes: "Microsoft Learn publishes no licence requirement for the Consumption Dashboard or its GitHub page at the time of writing (November 2026). GitHub AI Credits are billed by GitHub, and the dashboard's credit figures are for reference only."
+  model: "included"
+  notes: "Viva Insights requires applicable Viva Insights licensing; Microsoft Copilot plans also include manager, leader and advanced analysis for all employees with an assigned Copilot licence. A requirement specific to the Consumption Dashboard's GitHub page is not published. GitHub AI Credits are billed by GitHub, and the dashboard's credit figures are for reference only."
 audiences: ["m365-admin","finops","compliance","service-owner"]
 tags: ["viva-insights","github","usage-reports","finops","privacy","reporting-roles","viva-feature-access-management","admin-controls"]
 sources:
@@ -42,6 +42,15 @@ sources:
     kind: "learn"
   - title: "Roles in Viva Insights"
     url: "https://learn.microsoft.com/viva/insights/advanced/setup-maint/user-roles"
+    kind: "learn"
+  - title: "Environment requirements for Viva Insights"
+    url: "https://learn.microsoft.com/viva/insights/advanced/setup-maint/environment-requirements"
+    kind: "learn"
+  - title: "Control who can access features in Microsoft Viva using the Microsoft 365 admin center"
+    url: "https://learn.microsoft.com/viva/control-access-admin-center"
+    kind: "learn"
+  - title: "Add-VivaModuleFeaturePolicy (ExchangePowerShell)"
+    url: "https://learn.microsoft.com/powershell/module/exchangepowershell/add-vivamodulefeaturepolicy"
     kind: "learn"
   - title: "Microsoft Viva: Insights for GitHub Copilot spend and usage"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=566470"
@@ -83,12 +92,15 @@ controls:
     note: "AI Administrator. Changes take effect in 24 hours."
   - governs: "Whether the Viva Insights web app is on for the tenant, groups or users"
     scope: "tenant"
-    ui: null
+    ui:
+      surface: "Microsoft 365 admin center"
+      path: "Settings > Viva > Settings > Manage feature access > Create a policy > Access setting"
+      docs: "https://learn.microsoft.com/viva/control-access-admin-center"
     api:
       kind: "powershell"
       call: "Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId \"Viva Insights web app\" -Name DisableFeatureForAll -IsFeatureEnabled $false -Everyone"
       docs: "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard"
-    note: "Turns off the entire app, including the Copilot Dashboard, Copilot Analytics reports and analyst tools, not just this page."
+    note: "Turns off the whole app, including the Copilot Dashboard, Copilot Analytics reports and analyst tools. Select the Viva Insights app and Viva Insights web app feature; choose On or Off, then Everyone or Specific people and groups."
 confidence: "medium"
 created: "2026-11-27"
 updated: "2026-11-27"
@@ -98,19 +110,23 @@ changes:
     note: "New briefing: GitHub Copilot spend and usage page in the Viva Insights Consumption Dashboard, with manager and privacy settings."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 5 of 71 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-27"
+    note: "Corrected: GitHub page access now notes the preview must be enabled in Privacy settings; added the admin centre path for turning off the Viva Insights web app; licensing set to the Viva Insights licence; removed three checklist items with no table row."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 74 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-27"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 71
-  confirmed: 65
-  unconfirmed: 1
-  contradicted: 5
-  attempts: 1
-  hash: "3931f213fe5833867117891cfc99443e"
+  claims: 74
+  confirmed: 74
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "313db1f3ecb479971ca3ac256ac64a67"
 ---
 
 ## What's changing
@@ -123,14 +139,14 @@ The sources differ on status. The roadmap item is **Launched**, with General Ava
 
 ## Why it matters
 
-This puts developer-level AI activity in front of line managers. A manager whose team meets the minimum team size can see GitHub Copilot credit use, active users and usage intensity for their group without any extra step, because Learn says consumption insights are on for all managers by default. Expect questions from engineering leads and works councils about whether the figures are used to judge individuals, and decide before then which managers should see them.
+This puts developer-level AI activity in front of line managers. Consumption insights are enabled for managers by default, but Learn says the GitHub public preview must be enabled in Privacy settings. Confirm preview enablement as well as manager eligibility before assuming managers can see GitHub figures. Expect questions from engineering leads and works councils about whether the figures are used to judge individuals, and decide before then which managers should see them.
 
 For FinOps, it is a second view of GitHub Copilot spend next to GitHub's own billing. Microsoft says the dashboard's credit figures are for reference only and that official GitHub AI credit charges are on GitHub.com, so budgets and chargeback still need GitHub's numbers.
 
 ## Risk assessment
 
 **Data exposure**
-- Managers see team-scoped GitHub Copilot use and credit consumption by default. Learn says metrics are not shown for groups smaller than the minimum group size; the **Grant managers scoped access to Consumption insights** setting and the minimum team size decide which managers see anything.
+- Consumption insights are enabled for managers by default, but Learn says the GitHub public preview must be enabled in Privacy settings. Confirm preview enablement as well as manager eligibility before assuming managers can see GitHub figures. Learn says metrics are not shown for groups smaller than the minimum group size; the **Grant managers scoped access to Consumption insights** setting and the minimum team size decide which managers see anything.
 - Identification can move the dashboard from anonymised metrics to named employees. Check whether it is on before managers start using the GitHub page.
 - Users can be kept out of the dashboard's aggregates through the unified exclusion list, managed with Viva Feature Access Management (VFAM); the exclusion list only takes effect once its policy is turned on.
 
@@ -138,7 +154,7 @@ For FinOps, it is a second view of GitHub Copilot spend next to GitHub's own bil
 - Microsoft Learn does not describe how GitHub Copilot activity is matched to Microsoft Entra users for this page. Confirm the matching before relying on group-level figures.
 
 **Autonomy & actions**
-- No change: the page reports activity and takes no action in GitHub or Microsoft 365.
+- The documented GitHub page provides usage and credit-consumption insights.
 
 **Change & support**
 - The roadmap and Learn disagree on whether the GitHub page is generally available or a preview switched on in Privacy settings; confirm which applies in your tenant before announcing it. Expect helpdesk questions from managers who see the Copilot Dashboard but not the Consumption Dashboard: Learn says users whose only access is to the Copilot and Agent Dashboard do not get it.
@@ -146,7 +162,7 @@ For FinOps, it is a second view of GitHub Copilot spend next to GitHub's own bil
 
 ## Cost and licensing
 
-Microsoft Learn names roles, not a licence, as the way into the Consumption Dashboard, and publishes no licence requirement for it or for its GitHub page at the time of writing (November 2026). The [Copilot Analytics introduction](https://learn.microsoft.com/viva/insights/copilot-analytics-introduction) gives access by role only.
+Viva Insights requires applicable Viva Insights licensing; Microsoft Copilot plans also include manager, leader and advanced analysis for all employees with an assigned Copilot licence ([Environment requirements for Viva Insights](https://learn.microsoft.com/viva/insights/advanced/setup-maint/environment-requirements)). A requirement specific to the Consumption Dashboard's GitHub page is not published at the time of writing (November 2026). Microsoft Learn names roles as the way into the Consumption Dashboard; the [Copilot Analytics introduction](https://learn.microsoft.com/viva/insights/copilot-analytics-introduction) gives access by role only.
 
 The spend shown is GitHub AI Credits used for GitHub Copilot. The [Consumption Dashboard page](https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard) says its credit usage information is for reference only and that official billing and detailed charges for GitHub AI credits are on GitHub.com.
 
@@ -167,7 +183,6 @@ The [GitHub query page](https://learn.microsoft.com/viva/insights/advanced/analy
 - Decide with engineering and HR leads whether people managers should see team-level GitHub Copilot spend, and record the decision before the page is used.
 - Check the **Grant managers scoped access to Consumption insights** option in Viva Insights **Manager settings**, and clear it if managers should not see consumption data.
 - Confirm the **Minimum team size** in Manager settings is high enough for small development teams to stay out of scope.
-- Check whether identification is turned on for Copilot Analytics, since it decides whether the GitHub page can show named employees.
 
 ### At rollout
 - Open **Privacy settings** in the Viva Insights web app as an Insights Administrator and see whether the GitHub page preview is offered and enabled in your tenant.
@@ -176,8 +191,6 @@ The [GitHub query page](https://learn.microsoft.com/viva/insights/advanced/analy
 
 ### After rollout
 - Reconcile the dashboard's GitHub AI Credits figures against GitHub's billing each month before using them for chargeback, allowing for the 28-day window at month end.
-- Add any employee who asks to be excluded to the unified exclusion list, and allow up to three days for it to take effect.
-- Remove analysts from the global partition if they should not see consumption insights, knowing they lose every global-partition experience.
 
 ## Governance controls
 
@@ -190,7 +203,7 @@ The [GitHub query page](https://learn.microsoft.com/viva/insights/advanced/analy
 <tr><td data-label="Control"><strong>Minimum team size a manager needs before seeing any insights</strong><br><small>Tenant</small><br><small class="controls__note">Lowest allowed value is five; team size counts the manager and direct and indirect reports.</small></td><td data-label="Admin UI"><strong>Viva Insights Admin portal</strong><br>Settings › Manager settings › Minimum team size <a href="https://learn.microsoft.com/viva/insights/advanced/setup-maint/manager-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether the GitHub page preview is enabled</strong><br><small>Tenant</small><br><small class="controls__note">Learn names only the Privacy settings page, not the option's label. Privacy settings is an Insights Administrator page.</small></td><td data-label="Admin UI"><strong>Viva Insights web app</strong><br>Privacy settings <a href="https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which users and groups can open the Viva Insights web app that hosts the Consumption Dashboard</strong><br><small>User</small><br><small class="controls__note">AI Administrator. Changes take effect in 24 hours.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Microsoft Viva › Viva Insights › Set up and management › Microsoft Copilot Dashboard › Manage access settings for Microsoft Copilot Dashboard › Users › Add <a href="https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether the Viva Insights web app is on for the tenant, groups or users</strong><br><small>Tenant</small><br><small class="controls__note">Turns off the entire app, including the Copilot Dashboard, Copilot Analytics reports and analyst tools, not just this page.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId &quot;Viva Insights web app&quot; -Name DisableFeatureForAll -IsFeatureEnabled $false -Everyone</code> <a href="https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether the Viva Insights web app is on for the tenant, groups or users</strong><br><small>Tenant</small><br><small class="controls__note">Turns off the whole app, including the Copilot Dashboard, Copilot Analytics reports and analyst tools. Select the Viva Insights app and Viva Insights web app feature; choose On or Off, then Everyone or Specific people and groups.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Viva › Settings › Manage feature access › Create a policy › Access setting <a href="https://learn.microsoft.com/viva/control-access-admin-center" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId &quot;Viva Insights web app&quot; -Name DisableFeatureForAll -IsFeatureEnabled $false -Everyone</code> <a href="https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -205,25 +218,11 @@ Microsoft Learn documents no PowerShell or API equivalent for Manager settings o
 - Is the GitHub page generally available, as the roadmap's Launched status suggests, or still a preview that an Insights Administrator must enable in Privacy settings? Watch the [Consumption Dashboard page](https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard).
 - How is GitHub Copilot activity matched to Microsoft Entra users and the manager hierarchy, and what happens to GitHub users with no matching account?
 - Which employees form the measured population for the GitHub page: every licensed GitHub Copilot user, or only those also in the Viva Insights measured population?
-- Will a licence requirement be published for the Consumption Dashboard, and will delegate access be added for it?
+- Will a licence requirement specific to the Consumption Dashboard's GitHub page be published beyond the applicable Viva Insights licensing, and will delegate access be added for the dashboard?
 - Does the roadmap's "5 direct reports" rule replace the minimum team size that counts indirect reports, or is it shorthand for it?
 
 <!-- rationale
-risk: Medium. Managers get team-scoped figures on developers' GitHub Copilot use and spend by default, inside existing Viva Insights privacy thresholds and access settings that an administrator needs to review.
-cost: Low. The dashboard reports GitHub AI Credits that GitHub bills; a licence for the dashboard itself is not yet published, so the known cost is admin time on access settings.
+risk: Medium. Consumption insights are enabled for managers by default, but Learn says the GitHub public preview must be enabled in Privacy settings; once it is, managers get team-scoped figures on developers' GitHub Copilot use and spend, inside existing Viva Insights privacy thresholds and access settings that an administrator needs to review.
+cost: Low. The dashboard reports GitHub AI Credits that GitHub bills; the Viva Insights web app needs applicable Viva Insights licensing, and no licence requirement specific to the GitHub page is published, so the known cost of this change is admin time on access settings.
 impact: Medium. Enabled people managers, Insights Analysts with global partition access and Global Administrators notice the new page; developers are the people measured.
--->
-
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters; Risk assessment: Data exposure; rationale: risk / default: A manager meeting the team-size requirement sees GitHub insights without any extra step because consumption insights are enabled by default. | Found: This feature is for public preview customers only. ... To enable this preview feature, go to Privacy settings in the Viva Insights web app. | Fix: Replace the unconditional GitHub-access assertions in Why it matters, Data exposure and the risk rationale with: 'Consumption insights are enabled for managers by default, but Learn says the GitHub public preview must be enabled in Privacy settings. Confirm preview enablement as well as manager eligibility before assuming managers can see GitHub figures.' Keep the separately attributed roadmap default. | Source: https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: The page takes no action in GitHub or Microsoft 365. | Found: Searched: Viva Insights Consumption Dashboard GitHub page reporting read only actions change GitHub settings. Opened ai-cost-dashboard and manage-settings-copilot-dashboard; they describe reporting, not an explicit guarantee of no actions in either service. | Fix: Replace 'No change: the page reports activity and takes no action in GitHub or Microsoft 365' with 'The documented GitHub page provides usage and credit-consumption insights.'
-- [contradicted, blocker] controls[4].ui / absence: Microsoft has not documented an admin UI for enabling or disabling the Viva Insights web app. | Found: The AI admin can turn the Viva Insights web app on or off at the tenant, group, or user level using the Viva Insights web app feature access management control in the Microsoft 365 admin center. | Fix: Populate controls[4].ui with surface 'Microsoft 365 admin center', path 'Settings > Viva > Settings > Manage feature access > Create a policy > Access setting', and docs https://learn.microsoft.com/viva/control-access-admin-center. Add to its note: 'Select the Viva Insights app and Viva Insights web app feature; choose On or Off, then Everyone or Specific people and groups.' The feature-specific control is confirmed at https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard#enable-or-disable-the-viva-insights-web-app. | Source: https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing; Cost and licensing; rationale: cost; Open questions / licensing: The licensing model is unknown because no Consumption Dashboard or GitHub-page-specific licence requirement is published. | Found: With the applicable Viva Insights licensing, your company can get manager and leader insights in the Viva Insights web app, and advanced analysis features as an add-on to the licensing agreement. | Fix: Set licensing.model to included. Replace the licensing-gap statement with: 'Viva Insights requires applicable Viva Insights licensing; Microsoft Copilot plans also include manager, leader and advanced analysis for assigned employees. A requirement specific to the Consumption Dashboard's GitHub page is not published.' Cite https://learn.microsoft.com/viva/insights/advanced/setup-maint/environment-requirements. Narrow the licensing open question and cost rationale to the feature-specific gap; do not imply that nothing is known about product licensing. | Source: https://learn.microsoft.com/viva/insights/advanced/setup-maint/environment-requirements
-- [supported, minor] controls[4].api / command: Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId "Viva Insights web app" -Name DisableFeatureForAll -IsFeatureEnabled $false -Everyone creates a tenant-wide disabling policy. | Found: Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId Reflection -Name DisableFeatureForAll -IsFeatureEnabled $false -Everyone | Fix: Keep the call unchanged and add https://learn.microsoft.com/powershell/module/exchangepowershell/add-vivamodulefeaturepolicy to sources for its syntax and parameters. The currently cited settings page supplies the Viva Insights web app FeatureId and disabling-policy values. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/add-vivamodulefeaturepolicy
-- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist asks the reader to check identification, but the controls table has no identification row. | Found: Check whether identification is turned on for Copilot Analytics ... Controls table: manager consumption access, Minimum team size, GitHub preview, web-app user access and web-app enablement. | Fix: Remove the checklist bullet beginning 'Check whether identification is turned on for Copilot Analytics'; it names a control absent from the table. Keep the separately supported identification risk statement.
-- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist directs use of the unified exclusion list, but the controls table has no exclusion-list row. | Found: Add any employee who asks to be excluded to the unified exclusion list ... Controls table contains no exclusion-list control. | Fix: Remove the After rollout checklist bullet beginning 'Add any employee who asks to be excluded'; the exclusion-list control has no table row. Keep the separately supported exclusion-list explanation.
-- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist directs changing global-partition membership, but the controls table has no partition-membership row. | Found: Remove analysts from the global partition if they should not see consumption insights ... Controls table contains no partition-membership control. | Fix: Remove the After rollout checklist bullet beginning 'Remove analysts from the global partition'; that control has no table row. Keep the separately supported explanation of global-partition access.
 -->

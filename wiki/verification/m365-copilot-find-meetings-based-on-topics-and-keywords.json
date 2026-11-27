@@ -1,0 +1,659 @@
+{
+  "slug": "m365-copilot-find-meetings-based-on-topics-and-keywords",
+  "roadmapId": 559110,
+  "title": "Microsoft Copilot (Microsoft 365): find meetings by topic or keyword in meeting body, chat and transcript",
+  "status": "held",
+  "date": "2026-11-27",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-27",
+    "reasons": [
+      "4 blocking findings (claims 23, 24, 29, 36)"
+    ]
+  },
+  "counts": {
+    "claims": 47,
+    "confirmed": 43,
+    "unconfirmed": 0,
+    "contradicted": 4,
+    "blocker": 4,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "Hold: the briefing treats licensing and mailbox scope as unpublished even though Microsoft's Copilot Search and requirements pages document them. It also directs readers to meeting policies for transcript viewing permissions, whereas Microsoft distinguishes those permissions from the transcription policy. The roadmap facts and the four control paths and commands are supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: products; title",
+      "type": "record",
+      "claim": "The roadmap product is Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap target is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platforms are Android, Desktop, iOS and Mac.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "summary; What's changing; Scope; rationale: impact",
+      "type": "behaviour",
+      "claim": "Copilot can now find meetings using topics or keywords in the meeting body.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Copilot now searches meetings using topics or keywords found in the meeting body, chat messages, and transcription text from the past two months.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "summary; What's changing; Risk assessment; Scope; Governance guidance; rationale: impact",
+      "type": "behaviour",
+      "claim": "Copilot can now find meetings using topics or keywords in meeting chat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Copilot now searches meetings using topics or keywords found in the meeting body, chat messages, and transcription text from the past two months.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing; Risk assessment; Scope; Governance guidance; rationale: impact",
+      "type": "behaviour",
+      "claim": "Copilot can now find meetings using topics or keywords in transcription text.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Copilot now searches meetings using topics or keywords found in the meeting body, chat messages, and transcription text from the past two months.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing; Risk assessment; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "Transcript-based meeting search covers meetings in the last two months.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "The search for meetings based on transcript text is based on meetings in last two months.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Previously meeting searches were limited and did not include chat or transcript content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Previously, meeting searches were limited and did not include chat or transcript content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The user enters a topic or keyword in Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Open Copilot and enter a topic or keyword in the search box.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The user reviews a list of meetings containing the keyword in their body, chat or transcript.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Review the list of meetings that include the keyword in the body, chat, or transcript.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Selecting a meeting displays its details and related content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Select a meeting to view details and related content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Open questions",
+      "type": "date",
+      "claim": "The feature is listed in the September 23, 2026 release-notes entry.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "September 23, 2026 ... Find meetings based on topics and keywords ... Roadmap ID: 559110",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "That entry covers updates released between August 26, 2026 and September 22, 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Updates released between August 26, 2026, and September 22, 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "The release notes list Android, Windows, iOS and Mac for the feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Find meetings based on topics and keywords [Android, Windows, iOS, Mac]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Copilot features roll out gradually to a subset of tenant users before expanding across the organisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Copilot features are introduced using a safe deployment model, gradually rolling out to a subset of users within a tenant before expanding across the organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: defaultState; Why it matters",
+      "type": "default",
+      "claim": "The search is on for eligible Copilot users without an administrator setting it up.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-search-overview",
+      "quote": "Admins and users don't need to take any action to set up Copilot Search. If a user has an eligible Microsoft Copilot license, Copilot Search appears as a tab in the Microsoft Copilot app.",
+      "severity": "minor",
+      "fix": "Keep defaultState on and add https://learn.microsoft.com/copilot/manage/copilot-search-overview to sources; cite its Access and eligibility section for the no-setup statement."
+    },
+    {
+      "n": 21,
+      "where": "controls[0]; summary; Risk assessment; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft documents no UI or API switch specifically for turning topic-and-keyword meeting search on or off independently.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot find meetings topics keywords disable admin policy Graph; Copilot meeting search disable policy Graph. Opened configure-copilot-admin-center, copilotpolicysetting-update, resources/copilotpolicysetting, Copilot Search overview and FAQ; no independent meeting-search switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible commercial, US Government and education plans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-license-options",
+      "quote": "Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible commercial, US Government, and education subscription plans.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "front matter: licensing.model",
+      "type": "consistency",
+      "claim": "The licensing model for this new search capability is add-on.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-search-faq",
+      "quote": "Page: model: \"add-on\". Microsoft: \"No, there's no additional cost for Microsoft Copilot Search itself. It's included as part of the Microsoft Copilot license.\"",
+      "severity": "blocker",
+      "fix": "Set licensing.model to included. Add 'Copilot Search is included as part of the Microsoft Copilot license' to licensing.notes and cite https://learn.microsoft.com/copilot/manage/copilot-search-faq. Retain the existing explanation of how the underlying Copilot licence is purchased."
+    },
+    {
+      "n": 24,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; Open questions",
+      "type": "absence",
+      "claim": "Whether Copilot Chat users without a Microsoft Copilot licence receive this search is not stated.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-search-faq",
+      "quote": "No, Microsoft Copilot Search is not included with Microsoft Copilot Chat. While both are part of the broader Microsoft Copilot ecosystem, they are licensed and delivered differently.",
+      "severity": "blocker",
+      "fix": "Replace the licensing uncertainty with 'Microsoft Copilot Search requires an eligible Microsoft Copilot licence and is not included with Microsoft Copilot Chat; users without that licence retain Microsoft Search.' Cite https://learn.microsoft.com/copilot/manage/copilot-search-faq and remove the corresponding Open questions bullet."
+    },
+    {
+      "n": 25,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The feature's release-notes entry itself names no licence or separate charge.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot find meetings topics keywords license meter billing; Copilot meeting search license topics. Read the complete 559110 release-notes entry, including Details and Try this; it names no licence or charge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No meter specific to this meeting-search feature is documented at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot find meetings topics keywords Copilot Chat license meter billing transcript search. Opened release notes, copilot-license-options, Copilot Search overview and FAQ; no meeting-search meter is named; Search itself is included.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "The feature-specific description on Learn is confined to its release note.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot find meetings topics keywords; Copilot meeting topic keyword search ranking mailbox sources events calls documentation. Results describe 559110 in release notes; opened Copilot Search overview and FAQ for surrounding-product documentation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft does not describe how results for this particular meeting-search feature are ranked.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot meeting topic keyword search ranking mailbox sources events calls documentation. Read 559110 release note, Copilot Search overview and FAQ; general semantic and personalisation descriptions give no feature-specific ranking rules.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Which mailbox sources are read is not described.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements#licensing-requirements",
+      "quote": "Microsoft Copilot supports primary mailboxes hosted in Exchange Online. Copilot can also use content that a user is permitted to access in archive, shared, and delegate mailboxes.",
+      "severity": "blocker",
+      "fix": "Narrow 'which mailbox and chat sources are read' to 'how this feature selects meeting-body, chat and transcript sources for an individual result'. The product's mailbox scope is documented; the feature-specific source-selection mechanism is not."
+    },
+    {
+      "n": 30,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "Whether this particular search includes events and calls is not described.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot meeting topic keyword search ranking mailbox sources events calls documentation. Read 559110 entry and Copilot Search overview/FAQ; no explicit 559110 scope for calls, webinars or town halls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Why it matters; Risk assessment; Governance guidance; rationale: risk",
+      "type": "applicability",
+      "claim": "Copilot surfaces only organisational content the signed-in user already has at least view permission to access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy",
+      "quote": "Microsoft Copilot only surfaces organizational data to which individual users have at least view permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Transcripts are stored with meeting recordings in OneDrive and SharePoint storage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+      "quote": "Transcripts are stored together with meeting recordings in OneDrive and SharePoint storage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Data exposure; Governance guidance: After rollout",
+      "type": "applicability",
+      "claim": "Sharing and file permissions govern access to stored meeting recordings and transcripts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/tmr-meeting-recording-change",
+      "quote": "All meeting invitees, except for external participants, automatically get a personally shared link. The meeting organizer must add external participants to the shared list.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoftteams/tmr-meeting-recording-change to sources for the stored-file permissions statement."
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "The feature description identifies no new identity or consent mechanism.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot find meetings topics keywords disable admin policy Graph; Copilot meeting topic keyword search documentation. Read complete 559110 entry and privacy page; no identity or consent change is described for this search.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The release note describes finding and listing meetings rather than an autonomous action on the user's behalf.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot find meetings topics keywords. Read complete 559110 release note: enter query, review results, select a meeting; it describes no autonomous action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Why it matters",
+      "type": "applicability",
+      "claim": "The levers deciding who can read transcripts are set in Teams meeting policies.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-meeting-recording-options",
+      "quote": "| Who has access to the recording and transcript **(Teams Premium/Copilot license)** | No | No | Yes | Yes |",
+      "severity": "blocker",
+      "fix": "Replace 'The levers that matter are the ones that decide whether transcripts exist and who can read them, set in Teams meeting policies' with 'Teams meeting policies govern whether users can transcribe meetings; sharing and file permissions govern access to stored transcripts.' Cite https://learn.microsoft.com/microsoftteams/tmr-meeting-recording-change."
+    },
+    {
+      "n": 37,
+      "where": "controls[1].note; Scope; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "The Transcription policy controls whether meetings can produce transcripts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+      "quote": "For meetings and events to include transcripts, the organizer must have this setting turned on. The user who starts the recording or transcript must also have this setting turned on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Transcription is both a per-organiser and a per-user policy setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+      "quote": "Transcription is both a per-organizer and per-user policy setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[1].note; Governance controls table",
+      "type": "default",
+      "claim": "Transcription is on by default for new policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+      "quote": "Toggle Transcription On or Off. This setting is On by default for new policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[1].ui; Governance guidance; Governance controls table",
+      "type": "admin-path",
+      "claim": "Teams admin center > Meetings > Meeting policies > policy > Transcription reaches the transcription control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+      "quote": "In the left navigation of the Teams admin center, go to Meetings > Meeting policies. ... Select the policy that you want to edit or create a new one. ... Toggle Transcription On or Off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowTranscription $false sets meeting transcription off.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+      "quote": "To manage meeting transcription using PowerShell, use the -AllowTranscription parameter in Set-CsTeamsMeetingPolicy. ... Set-CsTeamsMeetingPolicy -Identity Global -AllowTranscription $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[2].ui; Governance guidance; Governance controls table",
+      "type": "admin-path",
+      "claim": "Microsoft 365 admin center > Billing > Licenses > product > Assign licenses reaches licence assignment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "In the admin center, go to the Billing > Licenses page. ... Select a product. ... On the product details page, select Assign licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @() assigns a licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+      "quote": "To assign a license to a user, use the following command in PowerShell. ... Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @()",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[1].note; controls[2].note; Governance controls",
+      "type": "absence",
+      "claim": "Neither transcription policy nor licence assignment is documented as an independent switch over searches of existing transcripts.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot find meetings topics keywords disable admin policy Graph; Copilot meeting search disable policy Graph. Opened transcription-captions, licence assignment UI/PowerShell, Copilot settings, Graph policySettings and Search FAQ; no independent search switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The Copilot settings page lists Copilot image generation as a Copilot action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center",
+      "quote": "| Copilot image generation | Allow or prevent supported image-generation experiences. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The Copilot settings page lists Copilot in Teams meetings as a Copilot action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center",
+      "quote": "| Copilot in Teams meetings | Manage Copilot behavior for Teams meetings and calls. | Follow the shortcut to the Teams admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[2].note; Governance controls",
+      "type": "licensing",
+      "claim": "Licence assignment governs access to the Microsoft Copilot product rather than licensing this feature separately.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-license-options",
+      "quote": "The following plans are eligible prerequisite licenses for Microsoft Copilot. After you purchase licenses, assign the licenses to users in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-27T20:12:55.787Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=559110",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/copilot-license-options",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/copilotpolicysetting-update",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether users can transcribe meetings, which transcript matches depend on",
+        "docs": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+        "reachable": true,
+        "segments": [
+          "Meetings",
+          "Meeting policies",
+          "Transcription"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether users can transcribe meetings, which transcript matches depend on",
+        "docs": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+        "reachable": true,
+        "token": "Set-CsTeamsMeetingPolicy",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Which users hold a Microsoft Copilot licence",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+        "reachable": true,
+        "segments": [
+          "Billing",
+          "Licenses",
+          "product",
+          "Assign licenses"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Which users hold a Microsoft Copilot licence",
+        "docs": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+        "reachable": true,
+        "token": "Set-MgUserLicense",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

@@ -85,15 +85,17 @@ changes:
     note: "Corrected unsupported statements on a historical first, model changes, where GitHub charges appear and where spending limits sit; added the FAQ's US-environments limitation."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 50 statements confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 54 statements confirmed"
 version: 6
 verification:
   status: "verified"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 6
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 50
-  confirmed: 50
+  claims: 54
+  confirmed: 54
   unconfirmed: 0
   contradicted: 0
   attempts: 0

@@ -2,39 +2,33 @@
   "slug": "microsoft-teams-facilitator-in-gcc",
   "roadmapId": 577401,
   "title": "Microsoft Teams: Facilitator meeting agent for GCC",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-27",
-  "version": 2,
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-27",
-    "reasons": [
-      "1 blocking finding (claim 67)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 71,
-    "confirmed": 70,
+    "claims": 74,
+    "confirmed": 73,
     "unconfirmed": 0,
     "contradicted": 1,
-    "blocker": 1,
+    "blocker": 0,
     "major": 0,
-    "minor": 0
+    "minor": 2
   },
-  "summary": "The roadmap facts, licensing and general Facilitator behaviour are supported. The app availability instructions omit a prerequisite: tenants not migrated to unified app management must also allow the app under Integrated apps in the Microsoft 365 admin center.",
+  "summary": "The roadmap facts, licensing and documented controls are supported, and the briefing distinguishes general Facilitator documentation from the unconfirmed GCC behaviour. Two minor corrections remain: clarify the command reference's ambiguous blocking example, and remove the checklist instruction for a control missing from the table.",
   "claims": [
     {
       "n": 1,
-      "where": "summary; What's changing",
+      "where": "title; summary; What's changing",
       "type": "record",
-      "claim": "Microsoft plans to bring Facilitator to Microsoft Teams meetings in GCC.",
+      "claim": "Microsoft plans to bring Facilitator to Teams meetings in GCC.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Facilitator is coming to Microsoft Teams meetings in GCC.",
@@ -67,7 +61,7 @@
       "n": 4,
       "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap describes keeping the agenda and discussion on track.",
+      "claim": "The roadmap describes helping keep the agenda and discussion on track.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "help keep the agenda and discussion on track.",
@@ -76,20 +70,9 @@
     },
     {
       "n": 5,
-      "where": "summary; licensing.notes; Why it matters; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "The roadmap requires a Microsoft 365 Copilot licence to use Facilitator.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "A Microsoft 365 Copilot license is required to use Facilitator.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
       "where": "front matter: status; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap status is In development.",
+      "claim": "The item is In development.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
@@ -97,10 +80,10 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 6,
       "where": "front matter: targetDate; summary; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap targets December CY2026.",
+      "claim": "The roadmap target is December CY2026.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"December CY2026\"",
@@ -108,13 +91,24 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 7,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
-      "claim": "The roadmap release phase is General Availability.",
+      "claim": "The release phase is General Availability.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "quote": "\"releasePhase\": [ \"General Availability\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "Desktop is a listed platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [ \"Desktop\", \"Mac\", \"Web\" ]",
       "severity": null,
       "fix": null
     },
@@ -122,10 +116,10 @@
       "n": 9,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "Desktop is a listed platform.",
+      "claim": "Mac is a listed platform.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"platforms\": [\"Desktop\", \"Mac\", \"Web\"]",
+      "quote": "\"platforms\": [ \"Desktop\", \"Mac\", \"Web\" ]",
       "severity": null,
       "fix": null
     },
@@ -133,40 +127,29 @@
       "n": 10,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "Mac is a listed platform.",
+      "claim": "Web is a listed platform.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"platforms\": [\"Desktop\", \"Mac\", \"Web\"]",
+      "quote": "\"platforms\": [ \"Desktop\", \"Mac\", \"Web\" ]",
       "severity": null,
       "fix": null
     },
     {
       "n": 11,
-      "where": "front matter: platforms; What's changing; Scope",
-      "type": "record",
-      "claim": "Web is a listed platform.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Desktop\", \"Mac\", \"Web\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "GCC is the only listed cloud; the record does not mention GCC High or DoD.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"clouds\": [\"GCC\"]",
+      "quote": "\"clouds\": [ \"GCC\" ]",
       "severity": null,
       "fix": null
     },
     {
-      "n": 13,
+      "n": 12,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The record publishes no preview date.",
+      "claim": "The record supplies no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -174,7 +157,7 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 13,
       "where": "front matter: roadmapModified",
       "type": "record",
       "claim": "The roadmap modification timestamp is 2026-10-23T21:59:27.",
@@ -185,131 +168,54 @@
       "fix": null
     },
     {
+      "n": 14,
+      "where": "summary; licensing.notes; Cost and licensing; rationale: cost",
+      "type": "record",
+      "claim": "The roadmap requires a Microsoft 365 Copilot licence to use Facilitator.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "A Microsoft 365 Copilot license is required to use Facilitator.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 15,
-      "where": "front matter: defaultState; Why it matters; Open questions",
-      "type": "default",
-      "claim": "Microsoft has not stated the GCC arrival default, so defaultState is unknown.",
+      "where": "summary; What's changing; rationale: risk",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe Facilitator's GCC-specific behaviour in November 2026.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Facilitator\" \"GCC\" \"default\"; opened learn.microsoft.com/microsoftteams/facilitator-teams and the Microsoft Copilot service description. Neither specifies the GCC arrival default; the roadmap does not specify it.",
+      "quote": "Searched: Facilitator GCC default availability licensing capacity meter price identity permissions; \"Facilitator\" \"GCC\" default permissions limitations. Opened facilitator-teams, the Copilot service description and ai-teams-facilitator; no GCC-specific Facilitator behaviour found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 16,
-      "where": "front matter: licensing.model; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "Microsoft 365 Copilot is an add-on plan, supporting the add-on licensing model for this GCC briefing.",
+      "where": "What's changing; controls[0].note; Governance controls",
+      "type": "absence",
+      "claim": "The Facilitator setup page does not mention GCC.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
-      "quote": "Microsoft 365 Copilot is an add-on plan with specific licensing prerequisites.",
+      "source": null,
+      "quote": "Searched: \"Facilitator\" \"GCC\" default permissions limitations. Read the complete facilitator-teams page, including licensing, storage, controls and limitations; no GCC reference appears.",
       "severity": null,
       "fix": null
     },
     {
       "n": 17,
-      "where": "licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "Learn says Facilitator is included with a Microsoft Copilot licence.",
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "The Microsoft 365 Copilot service description has no Facilitator row for GCC.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
-      "quote": "Facilitator is included with a Microsoft Copilot license and subject to available capacity.",
+      "source": null,
+      "quote": "Searched: \"Facilitator\" \"GCC\" default permissions limitations. Read the complete Microsoft Copilot service description and its cloud availability table; no Facilitator row appears.",
       "severity": null,
       "fix": null
     },
     {
       "n": 18,
-      "where": "licensing.notes; Cost and licensing; Open questions",
-      "type": "licensing",
-      "claim": "Facilitator is subject to available capacity.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
-      "quote": "Facilitator is included with a Microsoft Copilot license and subject to available capacity.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "licensing.notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "A Facilitator-specific price is not yet published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Facilitator\" \"pricing\"; opened Facilitator setup, Microsoft Copilot service description and License options for Microsoft Copilot. Found licence prerequisites, not a Facilitator-specific price.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "licensing.notes; Cost and licensing; Open questions; rationale: cost",
-      "type": "absence",
-      "claim": "A Facilitator-specific meter is not yet published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Facilitator pricing meter capacity license available capacity; \"Facilitator\" \"pricing\"; opened Facilitator setup, Microsoft Copilot service description and Copilot licensing. No Facilitator-specific meter found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "Cost and licensing; Open questions",
-      "type": "absence",
-      "claim": "A Facilitator capacity figure is not published; the setup page does not quantify available capacity.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Facilitator\" \"capacity\"; read Facilitator licensing and permission requirements and License options for Microsoft Copilot. Found 'subject to available capacity', without a Facilitator capacity figure.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "summary; What's changing; rationale: risk",
-      "type": "absence",
-      "claim": "Microsoft Learn has not described GCC-specific Facilitator behaviour as of November 2026.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Facilitator\" \"GCC\"; read Facilitator setup, Microsoft Copilot service description and Facilitator Purview guidance. No GCC-specific Facilitator behaviour found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "What's changing; controls[0].note; Governance controls",
-      "type": "absence",
-      "claim": "The Facilitator setup and app-centric management pages give general guidance without mentioning GCC.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Facilitator\" \"GCC\"; opened learn.microsoft.com/microsoftteams/facilitator-teams and learn.microsoft.com/microsoftteams/app-centric-management. Neither page names GCC.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "What's changing",
-      "type": "absence",
-      "claim": "The Microsoft Copilot service description contains no Facilitator availability row for GCC.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Facilitator\" \"GCC\"; read the full Feature availability table at learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot. It contains no Facilitator row.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "What's changing; Risk assessment: Autonomy & actions; Open questions",
-      "type": "record",
-      "claim": "The roadmap does not enumerate which of the documented general capabilities, including Planner and PowerPoint previews, GCC will receive.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "The Facilitator agent can help capture notes in real time, answers questions about the meeting, and help keep the agenda and discussion on track.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Collaborative, real-time notes in the Notes tab are generally available in the general Facilitator documentation.",
+      "claim": "Generally available Facilitator capabilities include collaborative real-time notes in the Notes tab.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
       "quote": "The following Facilitator capabilities are currently generally available: ... Collaborative, real-time notes editable by all participants via the Notes tab",
@@ -317,7 +223,7 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 19,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "AI-powered Q&A from meeting and web content is generally available.",
@@ -328,7 +234,7 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 20,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "Timeline markers with reminders are generally available.",
@@ -339,21 +245,21 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 21,
       "where": "What's changing; Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Word document creation during or after a meeting is generally available.",
+      "claim": "Word document creation in or after a meeting is generally available.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
-      "quote": "Word document creation in meeting or post meeting",
+      "quote": "The following Facilitator capabilities are currently generally available: ... Word document creation in meeting or post meeting",
       "severity": null,
       "fix": null
     },
     {
-      "n": 30,
+      "n": 22,
       "where": "What's changing; Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Planner task tracking integration is public preview.",
+      "claim": "Planner task tracking integration is in public preview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
       "quote": "The following Facilitator capabilities are currently in public preview: ... Task tracking integration with Planner",
@@ -361,10 +267,10 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 23,
       "where": "What's changing; Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "PowerPoint deck creation is public preview.",
+      "claim": "PowerPoint deck creation is in public preview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
       "quote": "The following Facilitator capabilities are currently in public preview: ... PowerPoint deck creation in meeting or post meeting",
@@ -372,10 +278,21 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 24,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Open questions",
+      "type": "record",
+      "claim": "The roadmap does not identify which of Learn's detailed capabilities will reach GCC.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The Facilitator agent can help capture notes in real time, answers questions about the meeting, and help keep the agenda and discussion on track.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
       "where": "What's changing; Risk assessment: Data exposure; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "All users in the meeting can see a user's communication with Facilitator.",
+      "claim": "All meeting users can view a user's communication with Facilitator.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
       "quote": "If a user prompts Facilitator, all users can view that communication, just like if the user was talking with another person in the meeting chat.",
@@ -383,8 +300,8 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "What's changing; Why it matters; Risk assessment: Autonomy & actions; Governance guidance: At rollout",
+      "n": 26,
+      "where": "What's changing; Why it matters; Risk assessment: Autonomy & actions",
       "type": "behaviour",
       "claim": "Facilitator displays its responses in the meeting conversation for everyone to see.",
       "status": "supported",
@@ -394,10 +311,10 @@
       "fix": null
     },
     {
-      "n": 34,
-      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "n": 27,
+      "where": "Risk assessment: Data exposure; Why it matters; rationale: risk",
       "type": "behaviour",
-      "claim": "Learn documents Facilitator meeting data as stored in a .loop file.",
+      "claim": "Facilitator meeting data is stored as a .loop file.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
       "quote": "Facilitator data in meetings is stored as a `.loop` file in a OneDrive folder titled Meetings of the user who initiated Facilitator in Teams.",
@@ -405,29 +322,29 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 28,
       "where": "Risk assessment: Data exposure; Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "The documented OneDrive folder is titled Meetings.",
+      "claim": "The OneDrive folder for Facilitator meeting data is titled Meetings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
-      "quote": "in a OneDrive folder titled Meetings",
+      "quote": "a OneDrive folder titled Meetings",
       "severity": null,
       "fix": null
     },
     {
-      "n": 36,
+      "n": 29,
       "where": "Risk assessment: Data exposure; Governance guidance: After rollout; rationale: risk",
       "type": "behaviour",
-      "claim": "The documented storage belongs to the user who initiated Facilitator.",
+      "claim": "The storage is in the OneDrive of the user who initiated Facilitator.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
-      "quote": "a OneDrive folder titled Meetings of the user who initiated Facilitator in Teams.",
+      "quote": "a OneDrive folder titled Meetings of the user who initiated Facilitator in Teams",
       "severity": null,
       "fix": null
     },
     {
-      "n": 37,
+      "n": 30,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "Facilitator meeting data is treated as meeting transcript data.",
@@ -438,10 +355,10 @@
       "fix": null
     },
     {
-      "n": 38,
-      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout; Open questions; rationale: risk",
-      "type": "behaviour",
-      "claim": "AI-generated notes do not inherit the meeting sensitivity label.",
+      "n": 31,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout; rationale: risk",
+      "type": "applicability",
+      "claim": "AI-generated meeting notes do not inherit the meeting's sensitivity label.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
       "quote": "AI-generated notes for meetings don't inherit the meeting's sensitivity label",
@@ -449,29 +366,29 @@
       "fix": null
     },
     {
-      "n": 39,
+      "n": 32,
       "where": "Risk assessment: Data exposure",
       "type": "applicability",
-      "claim": "A sensitivity label can be applied to the notes' Loop component in the Loop app or OneDrive.",
+      "claim": "A sensitivity label can be applied to the notes' Loop component in the Loop app.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
-      "quote": "a sensitivity label can be applied to the notes' Loop component in the Loop app or OneDrive.",
+      "quote": "a sensitivity label can be applied to the notes' Loop component in the Loop app or OneDrive",
       "severity": null,
       "fix": null
     },
     {
-      "n": 40,
-      "where": "Risk assessment: Data exposure; Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "Applying a sensitivity label to the notes outside Teams prevents access to the notes file in Teams.",
+      "n": 33,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "A sensitivity label can be applied to the notes' Loop component in OneDrive.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
-      "quote": "If a sensitivity label is applied to the notes outside of Teams, the note's file can't be accessed in Teams.",
+      "quote": "a sensitivity label can be applied to the notes' Loop component in the Loop app or OneDrive",
       "severity": null,
       "fix": null
     },
     {
-      "n": 41,
+      "n": 34,
       "where": "Risk assessment: Data exposure",
       "type": "applicability",
       "claim": "Prevent copy and paste is not applied to Facilitator responses or AI-generated meeting notes.",
@@ -482,7 +399,7 @@
       "fix": null
     },
     {
-      "n": 42,
+      "n": 35,
       "where": "Risk assessment: Data exposure",
       "type": "applicability",
       "claim": "Watermarks are not applied to Facilitator responses or AI-generated meeting notes.",
@@ -493,10 +410,10 @@
       "fix": null
     },
     {
-      "n": 43,
+      "n": 36,
       "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
       "type": "applicability",
-      "claim": "Retention labels are not supported for cloud attachments in AI-generated notes.",
+      "claim": "Retention labels are unsupported for cloud attachments in AI-generated notes.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
       "quote": "Retention labels aren't supported for cloud attachments in AI-generated notes.",
@@ -504,8 +421,8 @@
       "fix": null
     },
     {
-      "n": 44,
-      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout; Open questions; rationale: risk",
+      "n": 37,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout; rationale: risk",
       "type": "applicability",
       "claim": "Facilitator meeting notes are not automatically collected as cloud attachments in Purview eDiscovery.",
       "status": "supported",
@@ -515,19 +432,19 @@
       "fix": null
     },
     {
-      "n": 45,
-      "where": "Risk assessment: Data exposure; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not specified whether the documented limitations apply unchanged in GCC.",
+      "n": 38,
+      "where": "Risk assessment: Data exposure; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Notes labelled outside Teams cannot be accessed in Teams.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Facilitator\" \"GCC\"; \"Facilitator\" \"GCC\" \"permissions\"; read Facilitator setup, its limitations and Purview Facilitator guidance. No GCC-specific confirmation of these limits found.",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "If a sensitivity label is applied to the notes outside of Teams, the note's file can't be accessed in Teams.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 46,
-      "where": "Risk assessment: Security & identity; Scope; Governance guidance: Before rollout; rationale: impact",
+      "n": 39,
+      "where": "Risk assessment: Security & identity; Scope; Governance guidance; rationale: impact",
       "type": "licensing",
       "claim": "Only licensed users can initiate Facilitator.",
       "status": "supported",
@@ -537,10 +454,10 @@
       "fix": null
     },
     {
-      "n": 47,
-      "where": "Why it matters; Risk assessment: Data exposure; Scope; Governance guidance: At rollout; rationale: impact",
-      "type": "licensing",
-      "claim": "Unlicensed users can see Facilitator notes in meetings.",
+      "n": 40,
+      "where": "Why it matters; Risk assessment: Data exposure; Scope; Governance guidance; rationale: impact",
+      "type": "behaviour",
+      "claim": "Unlicensed users can see Facilitator's meeting notes.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
       "quote": "Unlicensed users can see Facilitator's notes in meetings.",
@@ -548,10 +465,10 @@
       "fix": null
     },
     {
-      "n": 48,
-      "where": "Why it matters; Scope; rationale: impact",
-      "type": "licensing",
-      "claim": "Unlicensed users can see others' prompts and Facilitator responses.",
+      "n": 41,
+      "where": "Why it matters; Scope; Governance guidance: At rollout; rationale: impact",
+      "type": "behaviour",
+      "claim": "Unlicensed attendees can see others' Facilitator prompts and Facilitator's responses.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
       "quote": "Unlicensed users can't prompt Facilitator, but they can see others' prompts to Facilitator and Facilitator's responses.",
@@ -559,10 +476,10 @@
       "fix": null
     },
     {
-      "n": 49,
+      "n": 42,
       "where": "Risk assessment: Security & identity; Scope",
       "type": "availability",
-      "claim": "Facilitator is not supported in 1:1 chats.",
+      "claim": "Facilitator is unsupported in 1:1 chats.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
       "quote": "Currently, Facilitator isn't supported in 1:1 chats, group chats, or external chats and meetings.",
@@ -570,10 +487,10 @@
       "fix": null
     },
     {
-      "n": 50,
+      "n": 43,
       "where": "Risk assessment: Security & identity; Scope",
       "type": "availability",
-      "claim": "Facilitator is not supported in group chats.",
+      "claim": "Facilitator is unsupported in group chats.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
       "quote": "Currently, Facilitator isn't supported in 1:1 chats, group chats, or external chats and meetings.",
@@ -581,10 +498,10 @@
       "fix": null
     },
     {
-      "n": 51,
+      "n": 44,
       "where": "Risk assessment: Security & identity; Scope",
       "type": "availability",
-      "claim": "Facilitator is not supported in external chats.",
+      "claim": "Facilitator is unsupported in external chats and meetings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
       "quote": "Currently, Facilitator isn't supported in 1:1 chats, group chats, or external chats and meetings.",
@@ -592,19 +509,8 @@
       "fix": null
     },
     {
-      "n": 52,
-      "where": "Risk assessment: Security & identity; Scope",
-      "type": "availability",
-      "claim": "Facilitator is not supported in external meetings.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
-      "quote": "Currently, Facilitator isn't supported in 1:1 chats, group chats, or external chats and meetings.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "Risk assessment: Security & identity; Scope",
+      "n": 45,
+      "where": "Risk assessment: Security & identity; Scope; Governance controls",
       "type": "applicability",
       "claim": "Loop experiences in Teams must be turned on for Facilitator in meetings.",
       "status": "supported",
@@ -614,32 +520,21 @@
       "fix": null
     },
     {
-      "n": 54,
-      "where": "Risk assessment: Security & identity",
+      "n": 46,
+      "where": "Risk assessment: Security & identity; Data exposure; Open questions",
       "type": "absence",
-      "claim": "GCC-specific Facilitator identity behaviour is not documented.",
+      "claim": "GCC-specific identity, permissions and whether general limitations apply unchanged are not documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Facilitator\" \"GCC\" \"permissions\"; read Facilitator setup, licensing and permission requirements, and Facilitator Purview guidance. No GCC-specific identity behaviour found.",
+      "quote": "Searched: \"Facilitator\" \"GCC\" default permissions limitations; Facilitator GCC default availability licensing capacity meter price identity permissions. Opened facilitator-teams, ai-teams-facilitator and the Copilot service description; no GCC-specific qualification found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 55,
-      "where": "Risk assessment: Security & identity",
-      "type": "absence",
-      "claim": "GCC-specific Facilitator permission behaviour is not documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Facilitator\" \"GCC\" \"permissions\"; read Facilitator setup, licensing and permission requirements, app-centric management and Facilitator Purview guidance. No GCC-specific permission behaviour found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "controls[0].note; Risk assessment: Change & support; Governance controls",
+      "n": 47,
+      "where": "controls[0].note; Risk assessment: Change & support",
       "type": "default",
-      "claim": "The general Facilitator setup page says Facilitator is allowed by default.",
+      "claim": "The general Facilitator setup page says the app is allowed by default.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
       "quote": "Facilitator is allowed by default.",
@@ -647,10 +542,10 @@
       "fix": null
     },
     {
-      "n": 57,
+      "n": 48,
       "where": "controls[0].note; Risk assessment: Change & support; Governance controls",
       "type": "applicability",
-      "claim": "If all apps are blocked for the organisation, Facilitator is also blocked.",
+      "claim": "Facilitator is also blocked when all apps are blocked for the organisation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
       "quote": "However, if all apps are blocked for your organization, Facilitator is also blocked.",
@@ -658,10 +553,10 @@
       "fix": null
     },
     {
-      "n": 58,
+      "n": 49,
       "where": "Risk assessment: Change & support; Governance controls",
       "type": "applicability",
-      "claim": "Learn identifies IsCollabMeetingNotesFluidEnabled as the PowerShell setting controlling AI-generated meeting notes.",
+      "claim": "Loop experiences control AI-generated meeting notes through IsCollabMeetingNotesFluidEnabled.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
       "quote": "Loop experiences in Teams control AI-generated notes for meetings, which are enabled by default. You can manage this control using the `IsCollabMeetingNotesFluidEnabled` setting in PowerShell.",
@@ -669,10 +564,21 @@
       "fix": null
     },
     {
-      "n": 59,
+      "n": 50,
       "where": "Risk assessment: Change & support; Governance controls",
       "type": "applicability",
-      "claim": "The setting applies to the whole tenant.",
+      "claim": "IsCollabMeetingNotesFluidEnabled applies tenant-wide.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-components-configuration",
+      "quote": "This property controls the collaborative meeting notes creation and integration in Microsoft Teams. It applies to the entire tenant and can't be configured at the user level.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Change & support; Governance controls",
+      "type": "applicability",
+      "claim": "IsCollabMeetingNotesFluidEnabled cannot be configured per user.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
       "quote": "This setting applies to your entire tenant and can't be configured at the user level.",
@@ -680,21 +586,10 @@
       "fix": null
     },
     {
-      "n": 60,
-      "where": "Risk assessment: Change & support; Governance controls",
-      "type": "applicability",
-      "claim": "The setting cannot be configured per user.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
-      "quote": "This setting applies to your entire tenant and can't be configured at the user level.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 61,
+      "n": 52,
       "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Disabling the setting turns off AI-generated meeting notes for every user in the organisation.",
+      "type": "applicability",
+      "claim": "Disabling IsCollabMeetingNotesFluidEnabled turns off AI-generated meeting notes for all users.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
       "quote": "if you disable this setting, AI-generated notes for meetings is turned off for all users in your organization.",
@@ -702,10 +597,32 @@
       "fix": null
     },
     {
-      "n": 62,
+      "n": 53,
+      "where": "licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Facilitator is included with a Microsoft Copilot licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Facilitator is included with a Microsoft Copilot license and subject to available capacity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "licensing.notes; Cost and licensing; Open questions",
+      "type": "licensing",
+      "claim": "Facilitator is subject to available capacity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Facilitator is included with a Microsoft Copilot license and subject to available capacity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
       "where": "Cost and licensing; Scope",
       "type": "licensing",
-      "claim": "Learn requires an eligible Microsoft 365 base licence.",
+      "claim": "Users require an eligible Microsoft 365 base licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
       "quote": "Users must meet all of the following requirements: ... An eligible Microsoft 365 base license.",
@@ -713,10 +630,10 @@
       "fix": null
     },
     {
-      "n": 63,
+      "n": 56,
       "where": "Cost and licensing; Scope",
       "type": "licensing",
-      "claim": "Learn requires an eligible Teams licence.",
+      "claim": "Users require an eligible Microsoft Teams licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
       "quote": "Have an eligible Microsoft Teams license.",
@@ -724,10 +641,76 @@
       "fix": null
     },
     {
-      "n": 64,
+      "n": 57,
+      "where": "Cost and licensing; Scope",
+      "type": "licensing",
+      "claim": "The general Facilitator setup page requires a Microsoft Copilot licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Have a Microsoft Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "front matter: licensing.model; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The entitlement model is add-on because the required Microsoft 365 Copilot plan is an add-on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+      "quote": "Microsoft 365 Copilot is an add-on plan with specific licensing prerequisites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "front matter: cost; Why it matters; rationale: cost",
+      "type": "cost",
+      "claim": "The direct cost is add-on licensing for users who initiate Facilitator, supporting a medium cost rating.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+      "quote": "Microsoft 365 Copilot is an add-on plan with specific licensing prerequisites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No separate Facilitator-specific price is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Facilitator\" price meter capacity credits licensing. Opened facilitator-teams and the Copilot service description; results cover Copilot Studio meters and Teams Rooms licensing, not a separate price for this Teams meeting capability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No Facilitator-specific meter is published for the Teams meeting capability.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Facilitator\" price meter capacity credits licensing. Read facilitator-teams, the Copilot service description and returned pay-as-you-go meter excerpts; none documents a Facilitator meeting meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "The available-capacity qualification has no published Facilitator-specific numerical figure.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Facilitator\" price meter capacity credits licensing. Read facilitator-teams licensing and the Copilot service description; the phrase \"subject to available capacity\" has no numerical allowance, and search found none for this capability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
       "where": "Scope",
       "type": "role",
-      "claim": "The documented setup procedure uses Teams admin credentials in the Teams admin center.",
+      "claim": "The setup instructions tell administrators to sign into Teams admin center with Teams admin credentials.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
       "quote": "Sign in to the Teams admin center with your Teams admin credentials.",
@@ -735,43 +718,43 @@
       "fix": null
     },
     {
-      "n": 65,
-      "where": "controls[0].ui; Governance controls; Governance guidance: At rollout",
+      "n": 64,
+      "where": "controls[0].ui; rendered controls table; summary; Governance guidance: At rollout",
       "type": "admin-path",
-      "claim": "The allow/block route is Teams admin center > Teams apps > Manage apps > Facilitator > actions menu > Allow or Block.",
+      "claim": "The allow/block path is Teams admin center > Teams apps > Manage apps > Facilitator > actions menu > Allow or Block.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
-      "quote": "select Teams apps > Manage apps. ... Select Facilitator from the app list. ... In the actions menu, select Allow or Block.",
+      "quote": "In the left rail navigation, select Teams apps > Manage apps. ... Select Facilitator from the app list. ... In the actions menu, select Allow or Block.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 66,
-      "where": "controls[0].api; Governance controls",
+      "n": 65,
+      "where": "controls[0].api; rendered controls table",
       "type": "command",
-      "claim": "Update-M365TeamsApp -Id <app id> -IsBlocked $true is a documented MicrosoftTeams PowerShell call to change app state.",
+      "claim": "Update-M365TeamsApp -Id <app id> -IsBlocked $true is documented for changing an app's tenant state.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
-      "quote": "This cmdlet updates app state and app available values for the Microsoft Teams app. ... Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -IsBlocked $true",
+      "quote": "Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -IsBlocked $true ... Unblocks Bookings app",
+      "severity": "minor",
+      "fix": "Append to controls[0].note: 'The Update-M365TeamsApp reference describes its -IsBlocked $true example as unblocking an app; verify the intended state before scripting this control.' Keep the call: its names and value are documented, but do not describe $true as a confirmed blocking operation."
+    },
+    {
+      "n": 66,
+      "where": "controls[1].ui; rendered controls table; Governance guidance",
+      "type": "admin-path",
+      "claim": "The availability path runs through Manage apps, Facilitator, Users and groups, Availability, Edit availability and Available to.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "Select the Users and groups tab. Under Select to manage who this app is installed for or available to in your organization, select Availability. Select Edit availability. Select the required option from Available to menu.",
       "severity": null,
       "fix": null
     },
     {
       "n": 67,
-      "where": "controls[1].ui; Governance controls; Governance guidance: At rollout",
-      "type": "admin-path",
-      "claim": "Assign Facilitator availability to intended users and groups through Teams admin center > Teams apps > Manage apps > Facilitator > Users and groups > Select to manage who this app is installed for or available to in your organization > Availability > Edit availability > Available to.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
-      "quote": "If your organization isn't migrated to unified app management, allow apps and Copilot agents in Teams admin center and under the Integrated apps page in Microsoft 365 admin center.",
-      "severity": "blocker",
-      "fix": "Keep the printed Teams admin center path, whose labels and order are documented. Append to controls[1].note and the At rollout availability instruction: 'For tenants not migrated to unified app management, also allow the app under Integrated apps in the Microsoft 365 admin center; migrated tenants can allow it in either admin center.' The prerequisite is documented at https://learn.microsoft.com/microsoftteams/app-centric-management#add-or-modify-app-availability-for-users."
-    },
-    {
-      "n": 68,
-      "where": "controls[1].api; Governance controls",
+      "where": "controls[1].api; rendered controls table",
       "type": "command",
-      "claim": "Update-M365TeamsApp -Id <app id> -AppAssignmentType Everyone sets app availability to Everyone.",
+      "claim": "Update-M365TeamsApp -Id <app id> -AppAssignmentType Everyone changes app availability to Everyone.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
       "quote": "Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -AppAssignmentType Everyone ... Updates the availability value for Bookings app ... to Everyone.",
@@ -779,21 +762,10 @@
       "fix": null
     },
     {
-      "n": 69,
-      "where": "controls[1].note; Governance guidance: Before rollout; Governance controls",
-      "type": "applicability",
-      "claim": "Learn names app-centric management for assigning Facilitator to the tenant or selected users and groups.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
-      "quote": "You can then assign the policy to your entire tenant or to a select group of users. Follow the instructions at Add or modify app availability for users to assign the policy to users using app-centric management.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 70,
-      "where": "controls[1].note; Governance controls",
-      "type": "behaviour",
-      "claim": "Availability changes take up to 24 hours to take effect.",
+      "n": 68,
+      "where": "controls[1].note; rendered controls table",
+      "type": "date",
+      "claim": "App availability changes take up to 24 hours to take effect.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
       "quote": "It takes up to 24 hours for the availability changes to take effect.",
@@ -801,19 +773,74 @@
       "fix": null
     },
     {
-      "n": 71,
-      "where": "controls[1].note; Governance controls",
-      "type": "behaviour",
+      "n": 69,
+      "where": "controls[1].note; rendered controls table",
+      "type": "date",
       "claim": "In rare cases availability changes take up to six days to reflect in the client.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
       "quote": "In rare cases, it might take up to six days for the changes to reflect in the client.",
       "severity": null,
       "fix": null
+    },
+    {
+      "n": 70,
+      "where": "controls[1].note; Governance controls",
+      "type": "applicability",
+      "claim": "Learn documents app-centric management for assigning Facilitator availability to users and groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Follow the instructions at Add or modify app availability for users to assign the policy to users using app-centric management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Governance guidance: At rollout; Governance controls",
+      "type": "applicability",
+      "claim": "Tenants not migrated to unified app management must allow the app in Teams admin center and under Integrated apps in Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "If your organization isn't migrated to unified app management, allow apps and Copilot agents in Teams admin center and under the Integrated apps page in Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Governance guidance: At rollout; Governance controls",
+      "type": "applicability",
+      "claim": "Migrated tenants can allow the app in either Teams admin center or Integrated apps in Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "If your organization is migrated to unified app management, allow apps and Copilot agents in Teams admin center or under the Integrated apps page in Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "front matter: defaultState; Why it matters; Open questions",
+      "type": "absence",
+      "claim": "The default state on arrival in GCC is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Facilitator\" \"GCC\" default permissions limitations. Read roadmap description, facilitator-teams, app-centric-management and Copilot service description; general app defaults are documented, but no GCC Facilitator arrival default is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Governance guidance: At rollout, availability bullet",
+      "type": "consistency",
+      "claim": "Every control the checklist instructs administrators to set appears in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: \"also allow the app under Integrated apps in the Microsoft 365 admin center\". The controls table has only Teams admin center app blocking and availability rows.",
+      "severity": "minor",
+      "fix": "Remove the two sentences beginning 'For tenants not migrated to unified app management' from the At rollout availability checklist bullet. Retain the verified migration qualification in Governance controls; do not add a controls-table row."
     }
   ],
   "precheck": {
-    "at": "2026-11-27T14:21:34.515Z",
+    "at": "2026-11-27T20:13:00.747Z",
     "summary": {
       "links": 7,
       "unreachable": 0,
@@ -927,6 +954,12 @@
     {
       "date": "2026-11-20",
       "status": "verified",
+      "version": 2,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-27",
+      "status": "held",
       "version": 2,
       "model": "gpt-6.1-sol"
     }

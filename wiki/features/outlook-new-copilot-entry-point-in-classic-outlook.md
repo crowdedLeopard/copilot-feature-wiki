@@ -63,15 +63,17 @@ changes:
     note: "First briefing for roadmap item 567007, based on the roadmap record and Message Center notice MC1441784."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 48 statements confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 67 statements confirmed"
 version: 1
 verification:
   status: "verified"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 48
-  confirmed: 48
+  claims: 67
+  confirmed: 67
   unconfirmed: 0
   contradicted: 0
   attempts: 0

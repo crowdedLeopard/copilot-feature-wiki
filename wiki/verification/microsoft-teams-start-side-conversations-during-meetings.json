@@ -3,7 +3,7 @@
   "roadmapId": 573156,
   "title": "Microsoft Teams: start side conversations from the meeting chat",
   "status": "verified-with-gaps",
-  "date": "2026-11-20",
+  "date": "2026-11-27",
   "version": 1,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
@@ -14,32 +14,43 @@
   "notes": [],
   "hold": null,
   "counts": {
-    "claims": 44,
-    "confirmed": 43,
+    "claims": 52,
+    "confirmed": 50,
     "unconfirmed": 0,
-    "contradicted": 1,
+    "contradicted": 2,
     "blocker": 0,
     "major": 0,
-    "minor": 4
+    "minor": 5
   },
-  "summary": "The briefing accurately reports Microsoft's rollout notice and documents the existing meeting chat control without claiming it governs side conversations. Minor corrections should acknowledge the general Teams licence requirement, a conflicting PowerShell reference note, and the compliance checklist's missing table entries.",
+  "summary": "The briefing passes: its rollout dates, default state and meeting-chat controls are supported. Minor corrections should distinguish the published Teams licence requirement from unpublished feature-specific requirements, report the cmdlet reference's additional qualification, cite the administrator-role documentation and align the governance prose with its table.",
   "claims": [
     {
       "n": 1,
-      "where": "summary; What's changing; Scope; rationale: impact",
+      "where": "summary; What's changing; Governance guidance",
       "type": "record",
-      "claim": "Teams plans to let meeting participants start and continue private one-to-one or small-group chats.",
+      "claim": "Microsoft plans one-to-one side conversations for meeting participants.",
       "status": "supported",
       "source": "Message Center post MC1523090",
-      "quote": "Users will be able to start or continue private 1:1 and group chats directly from the meeting chat experience, without leaving the meeting window.",
+      "quote": "Microsoft Teams will enable meeting participants to start and continue one-to-one or small-group conversations directly from the meeting chat experience.",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "title; summary; What's changing",
+      "where": "summary; What's changing; Governance guidance",
       "type": "record",
-      "claim": "Users can start these chats directly from meeting chat without leaving the meeting window.",
+      "claim": "Microsoft plans small-group side conversations for meeting participants.",
+      "status": "supported",
+      "source": "Message Center post MC1523090",
+      "quote": "Microsoft Teams will enable meeting participants to start and continue one-to-one or small-group conversations directly from the meeting chat experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "title; What's changing; Risk assessment; Scope; rationale: impact",
+      "type": "record",
+      "claim": "Participants will be able to start or continue private chats from meeting chat without leaving the meeting window.",
       "status": "supported",
       "source": "Message Center post MC1523090",
       "quote": "Users will be able to start or continue private 1:1 and group chats directly from the meeting chat experience, without leaving the meeting window.",
@@ -47,10 +58,10 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 4,
       "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap describes asking questions, coordinating next steps, sharing information and collaborating in parallel with the main discussion.",
+      "claim": "The roadmap describes asking questions, coordinating next steps, sharing information and collaborating in parallel during the main discussion.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Start and continue one-to-one or small-group conversations directly from a meeting to ask questions, coordinate next steps, share information, and collaborate in parallel while staying engaged in the conversation",
@@ -58,7 +69,40 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 5,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe this side-conversation feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Teams \"side conversations\" meeting chat; Teams \"side-chat\" policy PowerShell. Read manage-meeting-chat and Set-CsTeamsMeetingPolicy; results described ordinary meeting chat, not this feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1523090 is a Stay informed notice.",
+      "status": "supported",
+      "source": "Message Center post MC1523090",
+      "quote": "Category: Stay informed; severity: Normal; major change: no; tags: Updated message, New feature, User impact",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1523090 was updated on 29 October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1523090",
+      "quote": "Updated October 29, 2026: We have updated the timeline. Thank you for your patience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
       "where": "What's changing",
       "type": "record",
       "claim": "Existing chat history is preserved.",
@@ -69,7 +113,7 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 9,
       "where": "What's changing; Risk assessment; Governance guidance; rationale: risk",
       "type": "record",
       "claim": "Side conversations remain part of the user's regular Teams chat history.",
@@ -80,8 +124,8 @@
       "fix": null
     },
     {
-      "n": 6,
-      "where": "controls[1].note; What's changing; Risk assessment; Governance guidance",
+      "n": 10,
+      "where": "What's changing; controls[1].note; Risk assessment; Governance guidance",
       "type": "record",
       "claim": "Users can turn off the side-chat tab experience.",
       "status": "supported",
@@ -91,7 +135,7 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 11,
       "where": "What's changing; Risk assessment; rationale: risk",
       "type": "record",
       "claim": "The notice says the feature introduces no new chat surface.",
@@ -102,8 +146,8 @@
       "fix": null
     },
     {
-      "n": 8,
-      "where": "summary; controls[1].note; What's changing; Why it matters; Governance controls",
+      "n": 12,
+      "where": "summary; What's changing; Why it matters; controls[1].note; Governance controls; rationale: risk",
       "type": "record",
       "claim": "The notice says the feature introduces no new admin policy.",
       "status": "supported",
@@ -113,7 +157,7 @@
       "fix": null
     },
     {
-      "n": 9,
+      "n": 13,
       "where": "What's changing; rationale: risk",
       "type": "record",
       "claim": "The notice says the feature introduces no new meeting option.",
@@ -124,10 +168,10 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 14,
       "where": "summary; What's changing",
       "type": "record",
-      "claim": "Microsoft's notice says no admin action is required.",
+      "claim": "Microsoft says no admin action is required.",
       "status": "supported",
       "source": "Message Center post MC1523090",
       "quote": "No admin action is required.",
@@ -135,32 +179,10 @@
       "fix": null
     },
     {
-      "n": 11,
-      "where": "What's changing",
+      "n": 15,
+      "where": "What's changing; Why it matters; Scope; Risk assessment; rationale: impact",
       "type": "record",
-      "claim": "MC1523090 is a Stay informed notice updated on 29 October 2026.",
-      "status": "supported",
-      "source": "Message Center post MC1523090",
-      "quote": "Published 2026-10-23; last updated 2026-10-29; Microsoft's end date 2027-03-15\n- Category: Stay informed",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "What's changing; Scope; rationale: impact",
-      "type": "record",
-      "claim": "The notice schedules General Availability for Worldwide, GCC, GCC High and DoD.",
-      "status": "supported",
-      "source": "Message Center post MC1523090",
-      "quote": "General Availability (Worldwide, GCC, GCC High, DoD): We will begin rolling out in early December 2026",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "What's changing; Why it matters; Scope; rationale: impact",
-      "type": "record",
-      "claim": "Rollout is scheduled to begin in early December 2026, previously early January 2027.",
+      "claim": "The notice schedules rollout to begin in early December 2026.",
       "status": "supported",
       "source": "Message Center post MC1523090",
       "quote": "We will begin rolling out in early December 2026 (previously early January 2027)",
@@ -168,10 +190,10 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 16,
       "where": "What's changing; Scope",
       "type": "record",
-      "claim": "Rollout is expected to complete in mid-January 2027, previously late January.",
+      "claim": "Microsoft expects rollout to complete in mid-January 2027.",
       "status": "supported",
       "source": "Message Center post MC1523090",
       "quote": "expect to complete in mid-January 2027 (previously late January).",
@@ -179,65 +201,98 @@
       "fix": null
     },
     {
-      "n": 15,
-      "where": "front matter: status; What's changing",
-      "type": "record",
-      "claim": "The roadmap status is In development.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"status\": \"In development\",\n  \"statusKey\": \"in-development\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "front matter: targetDate; What's changing",
-      "type": "record",
-      "claim": "The roadmap target is December CY2026, presented as a target rather than a commitment.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"targetDate\": \"December CY2026\"",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 17,
-      "where": "front matter: releasePhase; What's changing; Scope",
+      "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap release phases are General Availability and Targeted Release.",
+      "claim": "The previous rollout start was early January 2027.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\n    \"General Availability\",\n    \"Targeted Release\"\n  ]",
+      "source": "Message Center post MC1523090",
+      "quote": "early December 2026 (previously early January 2027)",
       "severity": null,
       "fix": null
     },
     {
       "n": 18,
-      "where": "front matter: platforms; What's changing; Scope",
+      "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap platforms are Android, Desktop, iOS, Mac and Web.",
+      "claim": "The previous expected rollout completion was late January.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\n    \"Android\",\n    \"Desktop\",\n    \"iOS\",\n    \"Mac\",\n    \"Web\"\n  ]",
+      "source": "Message Center post MC1523090",
+      "quote": "mid-January 2027 (previously late January).",
       "severity": null,
       "fix": null
     },
     {
       "n": 19,
-      "where": "front matter: clouds; Scope",
+      "where": "What's changing; Scope; rationale: impact",
       "type": "record",
-      "claim": "The roadmap clouds are Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "claim": "The notice's General Availability rollout covers Worldwide, GCC, GCC High and DoD.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\n    \"Worldwide (Standard Multi-Tenant)\",\n    \"GCC\",\n    \"GCC High\",\n    \"DoD\"\n  ]",
+      "source": "Message Center post MC1523090",
+      "quote": "General Availability (Worldwide, GCC, GCC High, DoD)",
       "severity": null,
       "fix": null
     },
     {
       "n": 20,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is December CY2026, not a committed availability date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\"; \"targetDate\": \"December CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phases are General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Android, Desktop, iOS, Mac and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "front matter: clouds; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap gives no preview date.",
+      "claim": "The roadmap publishes no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -245,10 +300,10 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 26,
       "where": "front matter: defaultState; Why it matters",
       "type": "default",
-      "claim": "The feature arrives without admin enablement, so its default state is on.",
+      "claim": "The capability arrives without admin enablement, represented by defaultState on.",
       "status": "supported",
       "source": "Message Center post MC1523090",
       "quote": "No admin action is required. This feature does not introduce a new chat surface, admin policy, or meeting option. Users can turn off the side-chat tab experience if they prefer not to use it.",
@@ -256,98 +311,142 @@
       "fix": null
     },
     {
-      "n": 22,
-      "where": "front matter: licensing.model and notes; Cost and licensing; Scope; Open questions; rationale: cost",
+      "n": 27,
+      "where": "front matter: licensing; Cost and licensing; Scope; Open questions; rationale: cost",
       "type": "licensing",
-      "claim": "The licensing model is unknown because a licence specific to side conversations has not been published.",
+      "claim": "The licensing model is unknown because a licence specific to side conversations is not published.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/user-access",
       "quote": "Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams.",
       "severity": "minor",
-      "fix": "Set licensing.model to included. Replace the licensing notes and the opening Cost and licensing sentence with: 'Manage Teams licenses states that, except for joining Teams meetings anonymously, each user in the organisation must have a Teams license before using Teams. No requirement specific to side conversations is published.' Cite https://learn.microsoft.com/microsoftteams/user-access. Apply that same distinction to Scope, the licensing open question and the cost rationale; do not imply that a feature-specific price has been published."
-    },
-    {
-      "n": 23,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "absence",
-      "claim": "The roadmap, supplied notice and Teams add-on licensing page name no licence or add-on specifically for side conversations.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: '\"Teams\" \"side-chat\" licensing', '\"Teams\" \"side conversations\" license meter storage charge prerequisites guest anonymous'; read roadmap, MC1523090, learn.microsoft.com/microsoftteams/user-access and the cited Teams add-on licenses page.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "No meter, credit rate or storage charge specifically for side conversations is documented as of November 2026.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: '\"Teams\" \"side conversations\" license meter storage charge prerequisites guest anonymous', '\"Teams\" \"side-chat\" licensing'; opened Teams add-on licenses and Manage Teams licenses; read MC1523090 and the roadmap. No feature-specific charge found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "What's changing",
-      "type": "absence",
-      "claim": "Microsoft Learn does not yet describe the side-conversation feature.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: '\"Teams\" \"side conversations\"', '\"Teams\" \"side-chat\" policy PowerShell', '\"Teams\" \"side conversations\" \"meeting chat\" policy'; opened Manage chat in Microsoft Teams meetings and Set-CsTeamsMeetingPolicy. No feature-specific Learn description found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "Scope",
-      "type": "absence",
-      "claim": "Microsoft Learn names no prerequisites specific to this feature.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Teams side conversations meeting side-chat tab admin policy PowerShell licensing prerequisites external guest anonymous', '\"Teams\" \"side conversations\" license meter storage charge prerequisites guest anonymous'; opened meeting chat and Teams licensing pages.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "Risk assessment: Security & identity; Open questions",
-      "type": "absence",
-      "claim": "The sources do not state whether external, guest or anonymous participants can take part in side conversations.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Teams side conversations meeting side-chat tab admin policy PowerShell licensing prerequisites external guest anonymous', '\"Teams\" \"side conversations\" license meter storage charge prerequisites guest anonymous'; read MC1523090 and Manage chat in Microsoft Teams meetings.",
-      "severity": null,
-      "fix": null
+      "fix": "Set licensing.model to included and cite https://learn.microsoft.com/microsoftteams/user-access. Replace the notes and opening licensing sentence with: 'Manage Teams licenses states that, except for joining Teams meetings anonymously, each user in the organisation must have a Teams license before using Teams. No requirement specific to side conversations is published.' In Scope, state that same general requirement. Narrow the licensing open question to 'Will Microsoft publish any additional requirement specific to side conversations?' In the cost rationale, replace 'no licence or meter for this feature is yet published' with 'no additional licensing requirement or meter specific to side conversations is published'."
     },
     {
       "n": 28,
-      "where": "controls[0].ui; rendered Governance controls table",
-      "type": "admin-path",
-      "claim": "The Meeting chat setting is at Teams admin center > Meetings > Meeting policies > policy > Meeting engagement > Meeting chat.",
+      "where": "front matter: licensing.notes; Cost and licensing; Scope",
+      "type": "absence",
+      "claim": "The roadmap and supplied notice name no licence requirement specific to side conversations.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-meeting-chat",
-      "quote": "go to Meetings > Meeting policies.\n2. Select the policy you want to edit.\n3. Go to the Meeting engagement section.\n4. Set Meeting chat to your chosen value",
+      "source": null,
+      "quote": "Searched: Teams side conversations license meter storage; read the complete roadmap record and MC1523090, Manage Teams licenses and Microsoft Teams add-on licenses. Neither supplied record names a licence for side conversations.",
       "severity": null,
       "fix": null
     },
     {
       "n": 29,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "Microsoft Teams add-on licenses lists no add-on for side conversations.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams side conversations license meter storage. Read Microsoft Teams add-on licenses, including its Overview of all add-on licenses table; no side-conversation add-on is listed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No meter specific to side conversations is documented as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams side conversations license meter storage. Read Microsoft Teams add-on licenses and Manage Teams licenses; search excerpts included Teams storage limits, but no side-conversation meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No credit rate for side conversations is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Teams side conversations meeting chat side-chat tab admin policy PowerShell licensing default external guest anonymous prerequisites meter storage; Teams side conversations license meter storage. Read Teams add-on licenses; no relevant credit rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No storage charge specific to side conversations is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams side conversations license meter storage. Read Teams add-on licenses and the Limits and specifications for Microsoft Teams Storage search excerpt; no side-conversation storage charge was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Scope: Users",
+      "type": "absence",
+      "claim": "The sources name no role requirement specific to using side conversations.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams side conversations external guest anonymous prerequisites permissions. Read MC1523090 and the roadmap; reviewed external-participant and user-type search excerpts. No side-conversation role requirement was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Scope: Rollout",
+      "type": "absence",
+      "claim": "Microsoft Learn names no prerequisites specific to side conversations.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams side conversations external guest anonymous prerequisites permissions; Microsoft Teams side conversations meeting chat. Read manage-meeting-chat and user-access; results did not document prerequisites for this feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "The sources do not state whether external, guest or anonymous participants can use the new side-conversation experience.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams side conversations external guest anonymous prerequisites permissions. Read MC1523090 and manage-meeting-chat; search excerpts covered ordinary external and guest chat, not eligibility for the new side-conversation experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "The notice describes no new permissions.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams side conversations external guest anonymous prerequisites permissions. Read the whole MC1523090 notice; it describes no new permissions and says there is no new chat surface, admin policy or meeting option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[0].ui; rendered Governance controls table",
+      "type": "admin-path",
+      "claim": "Meeting chat is at Teams admin center > Meetings > Meeting policies > policy > Meeting engagement > Meeting chat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-meeting-chat",
+      "quote": "go to Meetings > Meeting policies. 2. Select the policy you want to edit. 3. Go to the Meeting engagement section. 4. Set Meeting chat to your chosen value",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
       "where": "controls[0].api; rendered Governance controls table",
       "type": "command",
       "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -MeetingChatEnabledType Disabled turns off meeting chat for users assigned the policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-meeting-chat",
-      "quote": "To turn off meeting chat for users with this assigned policy, run the following command:\n\nSet-CsTeamsMeetingPolicy -Identity <policy name> -MeetingChatEnabledType Disabled",
+      "quote": "To turn off meeting chat for users with this assigned policy, run the following command: Set-CsTeamsMeetingPolicy -Identity <policy name> -MeetingChatEnabledType Disabled",
       "severity": "minor",
-      "fix": "Keep the call, which the cited guide prints exactly, but add this qualification to the row note and cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps: 'The cmdlet reference additionally says that setting MeetingChatEnabledType to Disabled requires LobbyChat to be Disabled during a feature rollout; the meeting-chat guide omits that qualification.' This reports the disagreement between the two Microsoft pages."
+      "fix": "Keep the call supported by the meeting-chat guide. Add to controls[0].note: 'The cmdlet reference additionally says that setting MeetingChatEnabledType to Disabled requires LobbyChat to be Disabled during a feature rollout; the meeting-chat guide omits that qualification.' Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps, which states: 'Due to a new feature rollout, in order to set the value of MeetingChatEnabledType to Disabled, you will need to also set the value of LobbyChat to disabled.'"
     },
     {
-      "n": 30,
-      "where": "controls[0].governs and note; Governance controls",
+      "n": 39,
+      "where": "controls[0].governs; Governance controls",
       "type": "applicability",
-      "claim": "Meeting chat controls whether meeting participants can read and send meeting chat messages.",
+      "claim": "The Meeting chat setting controls whether meeting participants can read and send meeting-chat messages.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-meeting-chat",
       "quote": "The Meeting chat setting controls whether participants in your users' meetings can read and send chat messages.",
@@ -355,9 +454,9 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 40,
       "where": "controls[0].scope and note; Governance controls",
-      "type": "applicability",
+      "type": "behaviour",
       "claim": "Meeting chat is a per-user policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-meeting-chat",
@@ -366,9 +465,9 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 41,
       "where": "controls[0].note; Governance controls",
-      "type": "applicability",
+      "type": "behaviour",
       "claim": "Meeting chat is also a per-organiser policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-meeting-chat",
@@ -377,10 +476,10 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 42,
       "where": "controls[0].note; Governance controls",
       "type": "applicability",
-      "claim": "The Meeting chat setting does not apply to channel meetings.",
+      "claim": "The Meeting chat policy does not apply to channel meetings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-meeting-chat",
       "quote": "This setting doesn't apply to channel meetings",
@@ -388,54 +487,98 @@
       "fix": null
     },
     {
-      "n": 34,
-      "where": "controls[0].note; Governance controls",
-      "type": "behaviour",
-      "claim": "Setting Meeting chat to Off disables ordinary meeting chat for all participants.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-meeting-chat",
-      "quote": "Meeting chat is turned off for all participants; organizers can't use their Allow meeting chat to turn on chat in their meetings.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Organisers cannot override an admin Meeting chat policy set to Off.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-meeting-chat",
-      "quote": "Meeting chat is turned off for all participants; organizers can't use their Allow meeting chat to turn on chat in their meetings. Organizers can't override this setting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
+      "n": 43,
       "where": "controls[0].note; Why it matters; Governance guidance; Governance controls; Open questions",
       "type": "absence",
-      "claim": "Learn does not state whether the Meeting chat policy governs side conversations.",
+      "claim": "Learn does not establish whether the Meeting chat policy governs the private side conversations in this feature.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: '\"Teams\" \"side conversations\" \"meeting chat\" policy', '\"Teams\" \"side-chat\" policy PowerShell'; opened Manage chat in Microsoft Teams meetings and searched Set-CsTeamsMeetingPolicy. They describe meeting chat, not regular private chats opened alongside it.",
+      "quote": "Searched: Microsoft Teams side conversations meeting chat; Teams side-chat policy PowerShell. Read manage-meeting-chat and searched Set-CsTeamsMeetingPolicy. They describe meeting chat, not private side chats retained in regular chat history.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 37,
+      "n": 44,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Setting Meeting chat to Off turns off ordinary meeting chat for all participants.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-meeting-chat",
+      "quote": "Off | Disabled | Meeting chat is turned off for all participants",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Organisers cannot override Meeting chat set to Off.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-meeting-chat",
+      "quote": "organizers can't use their Allow meeting chat to turn on chat in their meetings. Organizers can't override this setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
       "where": "controls[1].ui and api; Risk assessment; Governance controls",
       "type": "absence",
-      "claim": "No dedicated tenant switch for side conversations is documented in either the admin UI or automation.",
+      "claim": "No dedicated tenant switch for side conversations is documented on the admin UI or automation surface.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: '\"Teams\" \"side-chat\" policy PowerShell', '\"Teams\" \"side conversations\" \"meeting chat\" policy'; read MC1523090 and Manage chat in Microsoft Teams meetings; searched Set-CsTeamsMeetingPolicy for side-chat and side-conversation terms. No dedicated switch found.",
+      "quote": "Searched: Teams side-chat policy PowerShell; Microsoft Teams side conversations meeting chat. Read MC1523090 and manage-meeting-chat; searched Set-CsTeamsMeetingPolicy for side-conversation terms. No dedicated UI switch or parameter was documented.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 38,
+      "n": 47,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Changing meeting policies requires an administrator role permitted to edit them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/using-admin-roles",
+      "quote": "Teams Communications Administrator | Manage calling and meetings features within the Teams service. | Manage meetings, including meeting policies, configurations, and conference bridges.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/microsoftteams/using-admin-roles for the sentence about a role that can edit Teams meeting policies. Keep its general wording; this source documents Teams Administrator and Teams Communications Administrator access to meeting policies."
+    },
+    {
+      "n": 48,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The briefing's cited sources do not name the administrator role required to edit meeting policies.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Teams license each user use Teams user-access meeting policies administrator roles. Read manage-meeting-chat, Teams add-on licenses, roadmap and MC1523090; none names a meeting-policy editing role. using-admin-roles does, outside that cited set.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance guidance: Before rollout; Risk assessment: Data exposure",
+      "type": "consistency",
+      "claim": "The checklist asks readers to check retention, DLP and eDiscovery settings, but those controls have no table rows.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Confirm with your compliance team that retention, DLP and eDiscovery settings for Teams chats cover ordinary chats; table rows: Whether meeting participants can read and send meeting chat; Tenant switch for side conversations.",
+      "severity": "minor",
+      "fix": "Remove the Before rollout bullet asking readers to confirm retention, DLP and eDiscovery settings, since those controls have no rows. Do not add unverified rows."
+    },
+    {
+      "n": 50,
+      "where": "Governance controls",
+      "type": "consistency",
+      "claim": "The governance prose calls the no-dedicated-switch entry the first row, although it is the second row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "the first row records that no dedicated tenant switch is documented; first row: Whether meeting participants can read and send meeting chat; second row: Tenant switch for side conversations.",
+      "severity": "minor",
+      "fix": "Replace 'the first row records that no dedicated tenant switch is documented' with 'the second row records that no dedicated tenant switch is documented'."
+    },
+    {
+      "n": 51,
       "where": "Risk assessment: Data exposure",
       "type": "record",
-      "claim": "Microsoft's notice identifies no compliance considerations.",
+      "claim": "The notice identifies no compliance considerations.",
       "status": "supported",
       "source": "Message Center post MC1523090",
       "quote": "No compliance considerations identified. Review as appropriate for your organization.",
@@ -443,74 +586,19 @@
       "fix": null
     },
     {
-      "n": 39,
-      "where": "Risk assessment: Security & identity",
-      "type": "absence",
-      "claim": "The notice describes no new permissions.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: read supplied MC1523090 in full for permissions, consent and access changes. It describes private chats in regular chat history and no new chat surface, admin policy or meeting option; it names no new permission.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "Risk assessment: Autonomy & actions",
+      "n": 52,
+      "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The described conversations are started and continued by users themselves.",
+      "claim": "The roadmap modification timestamp is 2026-10-29T23:01:00.",
       "status": "supported",
-      "source": "Message Center post MC1523090",
-      "quote": "Users will be able to start or continue private 1:1 and group chats directly from the meeting chat experience",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-29T23:01:00\"",
       "severity": null,
       "fix": null
-    },
-    {
-      "n": 41,
-      "where": "Governance controls",
-      "type": "role",
-      "claim": "Changing the meeting policy requires an administrator role with permission to edit Teams meeting policies.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/using-admin-roles",
-      "quote": "Teams Communications Administrator | Manage calling and meetings features within the Teams service. | Manage meetings, including meeting policies, configurations, and conference bridges.",
-      "severity": "minor",
-      "fix": "Cite https://learn.microsoft.com/microsoftteams/using-admin-roles for the sentence about a role that can edit Teams meeting policies. The existing statement about the narrower cited sources not naming a role need not become a claim that Microsoft has not documented one."
-    },
-    {
-      "n": 42,
-      "where": "Scope; Governance controls",
-      "type": "absence",
-      "claim": "The cited feature sources do not name a feature-specific role or a role for editing the meeting-chat policy.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Teams meeting policies Teams administrator communications administrator roles edit'; read cited meeting-chat page, roadmap and MC1523090. Those sources name no role. The separate using-admin-roles page does document roles for meeting policies.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "Open questions",
-      "type": "behaviour",
-      "claim": "The Meeting chat policy has In-meeting only values.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-meeting-chat",
-      "quote": "In-meeting only for everyone | EnabledInMeetingOnlyForAll\nIn-meeting only for everyone but anonymous users | EnabledInMeetingOnlyForAllExceptAnonymous",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "Governance guidance: Before rollout",
-      "type": "consistency",
-      "claim": "The checklist asks readers to check retention, DLP and eDiscovery settings, but those controls have no rows in the controls table.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Confirm with your compliance team that retention, DLP and eDiscovery settings for Teams chats cover ordinary chats\nTable rows: Whether meeting participants can read and send meeting chat; Tenant switch for side conversations.",
-      "severity": "minor",
-      "fix": "Remove the Before rollout bullet asking readers to confirm retention, DLP and eDiscovery settings, since none of those controls has a table row. Do not add unverified control rows."
     }
   ],
   "precheck": {
-    "at": "2026-11-20T12:01:53.154Z",
+    "at": "2026-11-27T20:13:16.432Z",
     "summary": {
       "links": 4,
       "unreachable": 0,
@@ -569,5 +657,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-20",
+      "status": "verified-with-gaps",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

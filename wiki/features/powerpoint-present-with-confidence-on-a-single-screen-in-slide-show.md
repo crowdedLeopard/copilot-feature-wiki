@@ -48,16 +48,18 @@ changes:
     note: "First briefing: roadmap-only description, no Learn page or admin control yet; target November CY2026."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 34 statements confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 42 statements not yet confirmed"
 version: 1
 verification:
-  status: "verified"
-  date: "2026-11-20"
+  status: "verified-with-gaps"
+  date: "2026-11-27"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 34
-  confirmed: 34
-  unconfirmed: 0
+  claims: 42
+  confirmed: 41
+  unconfirmed: 1
   contradicted: 0
   attempts: 0
   hash: "769caca014554808fd2b3af84ada3161"
@@ -149,4 +151,10 @@ Cloud Policy service for Microsoft 365 lets administrators enforce policy settin
 risk: Low. The roadmap describes only the on-screen controls shown during single-screen Slide Show and mentions no new data access, sharing or automation; its default state is not stated.
 cost: Low. The only cost the sources show is admin and support time to brief presenters; no licence or meter for this feature is published, and PowerPoint itself is part of Microsoft 365 Apps.
 impact: Medium. Anyone who presents on a single display, such as a laptop without a second monitor, will see different Slide Show controls; presenters who use Presenter View on two screens are not the audience in the description.
+-->
+
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: A person triggers each action. | Found: Searched: "PowerPoint" "single-screen" "Slide Show" controls automatic actions. Read roadmap and https://learn.microsoft.com/office/vba/api/powerpoint.slideshowsettings excerpt; neither establishes that every action of the new controls is person-triggered. | Fix: Remove ', so a person triggers each action'. Retain the narrower statements that no autonomous behaviour is described and that the controls help the presenter move through slides and stay in command.
 -->

@@ -89,15 +89,17 @@ changes:
     note: "Cost rating changed to variable because Claude Code on Microsoft Foundry bills per token; removed two After rollout checks that had no controls-table row."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 39 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 40 statements not yet confirmed"
 version: 5
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 39
-  confirmed: 39
+  claims: 40
+  confirmed: 40
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -179,8 +181,9 @@ cost: Variable. Coding-agent charges depend on the provider and plan; Claude Cod
 impact: Low. It affects developers and makers who adopt the plugin.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model / licensing: Feature-specific licensing is unknown. | Found: As you work on projects and need to establish permanent sites that don't expire, you can apply Power Pages subscriptions and convert websites from trial to production. | Fix: Set licensing.model to included under the standard's product-level licensing rule. Replace the first sentence of licensing.notes with 'Power Pages subscriptions cover permanent production sites; no plugin-specific price is published.' Retain the separate coding-agent billing qualification and cite https://learn.microsoft.com/power-pages/go-live/assign-licensing. | Source: https://learn.microsoft.com/power-pages/go-live/assign-licensing
+- [supported, minor] front matter: licensing.model / licensing: Feature-specific licensing is unknown. | Found: As you work on projects and need to establish permanent sites that don't expire, you can apply Power Pages subscriptions and convert websites from trial to production. | Fix: Set licensing.model to included under the standard's product-level licensing rule. Replace the first sentence of licensing.notes with 'Power Pages subscriptions cover permanent production sites; no plugin-specific price is published.' Retain the coding-agent billing qualification and cite https://learn.microsoft.com/power-pages/go-live/assign-licensing. | Source: https://learn.microsoft.com/power-pages/go-live/assign-licensing
+- [supported, minor] Governance controls: Code sites / behaviour: Code sites follow the same CLI-based development path. | Found: Power Pages SPA sites are managed using the PAC CLI commands upload-code-site and download-code-site. | Fix: Replace '[Code sites](https://learn.microsoft.com/power-pages/configure/create-code-sites) follow the same path.' with '[Code sites](https://learn.microsoft.com/power-pages/configure/create-code-sites) are also managed through PAC CLI, using upload-code-site and download-code-site.' This distinguishes the shared CLI workflow from the traditional-site commands in the table. | Source: https://learn.microsoft.com/power-pages/configure/create-code-sites
 -->

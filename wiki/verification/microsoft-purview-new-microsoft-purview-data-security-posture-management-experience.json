@@ -1,0 +1,1122 @@
+{
+  "slug": "microsoft-purview-new-microsoft-purview-data-security-posture-management-experience",
+  "roadmapId": 532728,
+  "title": "Microsoft Purview: new Data Security Posture Management experience with objectives, AI observability and agents",
+  "status": "held",
+  "date": "2026-11-27",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [
+    "claim 64: severity major on a rationale: impact rating lowered to minor; ratings are judgements and cannot hold a page"
+  ],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-27",
+    "reasons": [
+      "1 blocking finding (claim 63)"
+    ]
+  },
+  "counts": {
+    "claims": 82,
+    "confirmed": 79,
+    "unconfirmed": 1,
+    "contradicted": 2,
+    "blocker": 1,
+    "major": 0,
+    "minor": 4
+  },
+  "summary": "Hold: assigning a DSPM role group does not govern everything in the experience, as the briefing claims; Microsoft requires additional roles for several activities. The published controls and roadmap facts are otherwise supported, with smaller corrections needed to the licensing wording and governance checklist.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap item is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "General availability is targeted for May CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"May CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is December CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"December CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The release phases are General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Role-group membership is managed at Microsoft Purview portal > Settings > Roles and scopes > Role groups > Role groups for Microsoft Purview solutions > role group > Edit > Edit members of the role group > Choose users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Go to Settings > Roles and scopes ... Select Role groups. ... select a Microsoft Purview role group ... Select Edit ... On Edit members of the role group, select Choose users or Choose groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Add-RoleGroupMember -Identity \"<role-group>\" -Member \"<user-UPN>\" adds a user to a role group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+      "quote": "Use the Add-RoleGroupMember cmdlet to add members to a management role group. ... [-Identity] <RoleGroupIdParameter> -Member <SecurityPrincipalIdParameter> ... User ID or user principal name (UPN)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Posture Agent is deactivated at Microsoft Purview portal > Agents > Explore agents > View agent > ellipsis next to Edit agent > Deactivate agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-posture-agent-get-started",
+      "quote": "select Agents. ... Select Explore agents. ... Select View agent ... select the ellipsis (three dots) next to the Edit agent button. ... Select Deactivate agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Item-level scanning is selected at Microsoft Purview portal > Solutions > DSPM > Discover > Data risk assessments > Create custom assessment > Scan level > Item-level.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-oversharing",
+      "quote": "DSPM > Discover > Data risk assessments ... select Create custom assessment ... Select Item-level on the Scan level page, and then Authenticate to specify the Entra application information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "controls[3].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Fabric assessment configuration is reached at Microsoft Purview portal > Solutions > DSPM > Discover > Data risk assessments > Fabric > Set config.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-oversharing",
+      "quote": "DSPM > Discover > Data risk assessments ... the Fabric tab for items in Fabric workspaces. ... select Set config for Fabric data risk assessments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "controls[4].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Partner integration is reached at Microsoft Purview portal > Solutions > DSPM > Actions > Setup tasks > Integrate with partner solutions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-setup",
+      "quote": "All setup tasks can found from DSPM > Actions > Setup tasks. ... Integrate with partner solutions ... Set up Microsoft Sentinel data lake to integrate partner solutions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[1].api; Governance controls notes",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no PowerShell or Graph operation to activate or deactivate the Purview Posture Agent.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview Security Copilot Posture Agent deactivate enable Microsoft Graph API PowerShell Security Compliance'; 'site:learn.microsoft.com/powershell \"Data Security Posture\" assessment agent'. Read Posture Agent get-started and returned overview excerpts; no matching operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[2].api; Governance controls notes",
+      "type": "absence",
+      "claim": "No PowerShell or Graph operation for DSPM custom item-level data risk assessments is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview DSPM data risk assessments item-level Fabric configuration PowerShell Microsoft Graph API automation'; 'site:learn.microsoft.com/graph \"data risk assessment\" Purview'. Read oversharing and shared app prerequisites; no assessment-setting operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[3].api; Governance controls notes",
+      "type": "absence",
+      "claim": "No PowerShell or Graph operation for connecting Fabric workspaces to DSPM assessments is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview DSPM data risk assessments item-level Fabric configuration PowerShell Microsoft Graph API automation'; 'site:learn.microsoft.com/powershell \"Data Security Posture\" assessment agent'. Read oversharing and Fabric prerequisites; no DSPM connection-setting operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[4].api; Governance controls notes",
+      "type": "absence",
+      "claim": "No PowerShell or Graph operation for DSPM partner integration setup is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview DSPM integrate partner solutions Sentinel data lake setup PowerShell Microsoft Graph API'. Read DSPM setup and returned Sentinel integration excerpts; results document portal setup and unrelated auditing or collection policies, not this operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: defaultState; What's changing; Why it matters",
+      "type": "absence",
+      "claim": "Microsoft has not stated the overall tenant behaviour on arrival of the new DSPM experience.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview DSPM new Data Security Posture Management licensing E5 Purview Suite default automatic rollout'; '\"DSPM\" \"default\" \"new\" setup automatically'. Read roadmap, current overview, setup, considerations and oversharing; no overall arrival default is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The experience has mixed licensing, including per-seat and pay-as-you-go requirements for the Posture Agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-posture-agent-get-started",
+      "quote": "This agent requires both the standard per seat licensing model and the pay-as-you-go billing model.",
+      "severity": "minor",
+      "fix": "Keep mixed, but add: 'The Security Copilot inclusion page says eligible E5 and E7 customers do not need manual SCU provisioning and can use included SCUs for core Purview agentic scenarios.' Cite https://learn.microsoft.com/copilot/security/security-copilot-inclusion alongside the agent page's differing wording."
+    },
+    {
+      "n": 19,
+      "where": "title; summary; What's changing",
+      "type": "behaviour",
+      "claim": "The new DSPM unifies visibility and control for traditional applications and AI apps and agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-learn-about",
+      "quote": "This solution provides unified visibility and control for both traditional applications and AI apps and agents",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "admin-path",
+      "claim": "The new experience is under Microsoft Purview portal > Solutions > DSPM.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-learn-about",
+      "quote": "Sign in to the Microsoft Purview portal > Solutions > DSPM.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "summary; What's changing",
+      "type": "availability",
+      "claim": "Earlier versions remain accessible as Data Security Posture Management (classic) and DSPM for AI (classic).",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-learn-about",
+      "quote": "you can still access the previous versions ... now named Data Security Posture Management (classic) and DSPM for AI (classic).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Most new features will be added only to the new version.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-learn-about",
+      "quote": "Most new features will be added to this version only",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Data security objectives include Prevent oversharing of sensitive data and Prevent exfiltration to risky locations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-learn-about",
+      "quote": "Each security objective represents a specific security goal, such as ... Prevent oversharing of sensitive data, Prevent exfiltration to risky locations",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Objectives provide suggested actions, one-click policies and progress metrics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-learn-about",
+      "quote": "Each Outcome card displays key metrics ... Within each outcome, you see suggested prioritized actions ... configuring one-click policies",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "AI observability inventories AI apps and agents with activity in the last 30 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-learn-about",
+      "quote": "AI observability: An inventory of all AI apps and agents ... with activity in the last 30 days",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The experience includes Reports and Asset explorer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-learn-about",
+      "quote": "Asset explorer: ... a unified view ... Reports: To help you track sensitive data usage and labeling, policy usage, and risky behavior of users and AI agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Risk assessment; controls[1].note",
+      "type": "behaviour",
+      "claim": "The Data Security Posture Agent provides natural-language sensitive-data search and remains in preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-considerations",
+      "quote": "The Data Security Posture Agent is currently in preview. ... It uses natural-language search",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; controls[4].note; Cost and licensing",
+      "type": "behaviour",
+      "claim": "Partner integration uses Microsoft Sentinel data lake and remains in preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-setup",
+      "quote": "Integrate with partner solutions ... This options is in preview. Set up Microsoft Sentinel data lake to integrate partner solutions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Initial partners are Varonis for Salesforce, Cyera for Snowflake, BigID for Databricks and OneTrust for Google Cloud Platform.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-setup",
+      "quote": "Initial partners include Varonis (for Salesforce), Cyera (for Snowflake), BigID (for Databricks), and OneTrust (for Google Cloud Platform).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "summary; What's changing; controls[3]",
+      "type": "behaviour",
+      "claim": "Data risk assessments cover Fabric workspaces.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-oversharing",
+      "quote": "the Fabric tab for items in Fabric workspaces.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "summary; What's changing; controls[2]; rationale: risk",
+      "type": "behaviour",
+      "claim": "Custom Microsoft 365 assessments support item-level scanning and remediation including Remove sharing link and sensitivity labelling.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-oversharing",
+      "quote": "Microsoft 365 custom assessments optionally support item-level scanning with remediation actions ... Apply sensitivity label ... Remove sharing link",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap describes bulk disabling of overshared SharePoint links.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "new remediation actions like bulk disabling of overshared SharePoint links.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "First-time DSPM use prompts acceptance of initial setup tasks if they are not already enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-learn-about",
+      "quote": "With the first-time use of DSPM, you're prompted to accept some initial setup tasks if they're not already turned on for your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing; Governance guidance; rationale: risk",
+      "type": "default",
+      "claim": "The Posture Agent must be activated and configured before use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-considerations",
+      "quote": "Before you can use it, you must first activate and configure it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "DSPM workflows let users configure DLP policies, sensitivity labelling and oversharing remediation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-learn-about",
+      "quote": "suggested prioritized actions, such as applying sensitivity labels, configuring DLP policies ... take action directly from the workflow, such as remediating oversharing",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "applicability",
+      "claim": "Item-level custom assessments require an Entra app with Graph application permissions including Files.ReadWrite.All and Sites.ReadWrite.All and tenant admin consent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dspm-for-ai-considerations",
+      "quote": "for Microsoft 365 item-level scanning in a custom data risk assessment ... Microsoft Graph > Application permissions ... Files: Files.ReadWrite.All ... Sites: Sites.ReadWrite.All ... Grant admin consent for your tenant",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[3].note; Risk assessment: Data exposure; Scope",
+      "type": "applicability",
+      "claim": "Fabric assessments require an Entra app in a security group specified in the Fabric admin portal's Admin API settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-oversharing",
+      "quote": "requires an app registered in Entra, which is a member of a security group that you specify with the Admin API settings in the Fabric admin portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The Posture Agent searches SharePoint and OneDrive files, Teams messages, Exchange email and Copilot interactions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-considerations",
+      "quote": "search across files in SharePoint and OneDrive, messages in Teams, emails in Exchange, and interactions with Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Data exposure",
+      "type": "role",
+      "claim": "Compliance Admin, Security Reader, Data Security Viewer and Data Security AI Viewer can view agent summaries but not matched content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-posture-agent-get-started",
+      "quote": "Role Name | Can run Posture Agent and view summary | Can view content snippet ... | Can view file ... | Can label file ... Compliance Admin | Yes | No | No | No ... Security Reader ... Data Security Viewer ... Data Security AI Viewer",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Data exposure",
+      "type": "role",
+      "claim": "Data Classification Content Viewer and Purview Content Analyst can open matched files and label them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-posture-agent-get-started",
+      "quote": "Data Classification Content Viewer | Yes | Yes | Yes | Yes ... Purview Content Analyst | Yes | Yes | Yes | Yes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Security & identity; Governance guidance",
+      "type": "behaviour",
+      "claim": "Microsoft recommends deploying the agent using an agent identity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-posture-agent-get-started",
+      "quote": "We recommend that you deploy the agent using an agent identity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "The account deploying the agent with an agent identity requires Role Management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-posture-agent-get-started",
+      "quote": "The account used to deploy the agent with an agent identity must have the Role Management role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "Restricted administrators see data for their assigned administrative units only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-considerations",
+      "quote": "restricted administrators who view policies, reports, activity explorer or asset explorer see data for users in their assigned administrative units only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Security & identity; Governance controls",
+      "type": "role",
+      "claim": "Restricted administrators cannot create one-click policies because these policies apply to all users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-considerations",
+      "quote": "Because the one-click policies apply to all users, restricted administrators can't create these policies. You must be an unrestricted administrator to create one-click policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "Under administrator guidance and review, DSPM AI agents can remove public sharing links, apply DLP policies or revoke permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-learn-about",
+      "quote": "under your guidance, AI agents can take direct action on detected risks, such as removing public sharing links, applying DLP policies, or revoking permissions. ... You review, approve, or customize automated actions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "DSPM AI agent actions are audited.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-learn-about",
+      "quote": "You review, approve, or customize automated actions taken by AI agents, and these actions are always audited.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "behaviour",
+      "claim": "Remove sharing link prevents further access through that link and can block legitimate access until an owner creates a less permissive link.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-oversharing",
+      "quote": "remove the existing sharing link so it can no longer be used to access the item ... could prevent people from accessing the item legitimately. ... the site owner or item owner must then set a less permissive sharing link type",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "behaviour",
+      "claim": "Posture Agent prompts can recur daily, weekly or monthly, causing repeated agent runs and SCU consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-posture-agent-get-started",
+      "quote": "The agent consumes SCUs every time it runs ... Schedule prompts to run automatically on a recurring basis—daily, weekly, or monthly",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Microsoft 365 background processing pauses after more than 60 days without tenant access to DSPM and automatically resumes with an initial delay when an administrator returns.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-considerations",
+      "quote": "pauses the background processing ... when a tenant hasn't accessed the solution for more than 60 days. ... Processing automatically resumes when you or another admin ... returns ... expect an initial delay.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Notify sends the site owner a non-customisable email about potentially overshared items.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-oversharing",
+      "quote": "Notify the site owner with an email notification (not customizable). ... The email notification contains information and instructions about the potentially overshared items in the site.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Current DSPM prerequisites require a supporting licence and point to the Purview service description.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-considerations",
+      "quote": "You have a supporting license for this Microsoft Purview solution, and your region is supported. For more information, see the Microsoft Purview service description.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "front matter: licensing.notes; Cost and licensing; Governance guidance; Open questions",
+      "type": "absence",
+      "claim": "The service description has no DSPM entry establishing the base licence for the new experience, and Microsoft has not confirmed whether the classic licence requirement carries over.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview DSPM new Data Security Posture Management licensing E5 Purview Suite default automatic rollout'; service-description text for 'posture' and 'DSPM'. Read current prerequisites, classic licensing and service-description matches; no new DSPM base SKU entry.",
+      "severity": "minor",
+      "fix": "Replace 'has no DSPM entry' wherever used with 'mentions DSPM but does not give a base licence requirement for the new DSPM experience'. The service description does mention DSPM in Collection Policies and Posture Reports; retain the narrower base-licence open question."
+    },
+    {
+      "n": 53,
+      "where": "Cost and licensing; Open questions",
+      "type": "licensing",
+      "claim": "Classic DSPM requires Microsoft 365 E5 or Microsoft Purview Suite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-get-started",
+      "quote": "To access and use DSPM, you need a Microsoft 365 E5 or Microsoft Purview Suite (formerly known as Microsoft 365 E5 Compliance) license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Monitoring Microsoft 365 Copilot and agents requires users assigned Microsoft 365 Copilot licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-considerations",
+      "quote": "For Microsoft 365 Copilot and agents, users are assigned a license for Microsoft 365 Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "front matter: licensing.notes; Cost and licensing; Why it matters; rationale: cost",
+      "type": "cost",
+      "claim": "The Posture Agent documentation specifies Microsoft 365 E5 with SCUs and says every run consumes SCUs according to analysis complexity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-posture-agent-get-started",
+      "quote": "Microsoft 365 E5, with security compute units (SCUs) provisioned ... The agent consumes SCUs every time it runs based on the complexity of analysis it performs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "front matter: licensing.notes; Cost and licensing; Governance guidance",
+      "type": "cost",
+      "claim": "E5 and E7 include 400 SCUs monthly per 1,000 paid user licences, capped at 10,000 SCUs monthly, at no additional cost.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+      "quote": "Customers with Microsoft 365 E5 and E7 will have 400 Security Compute Units (SCU) each month for every 1,000 paid user license, up to 10,000 SCUs each month at no additional cost.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "A fixed SCU rate per Posture Agent run has not been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview Posture Agent SCU per run rate DSPM spending limit cap'. Read agent licensing, inclusion and billing-model search excerpts; agent usage is complexity-dependent, with no fixed per-run SCU figure.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Cost and licensing; Why it matters; rationale: cost",
+      "type": "cost",
+      "claim": "Proactive AI insights on the exfiltration objective use Data Security Investigations pay-as-you-go compute units on each 24-hour refresh.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Data Security Investigations uses the pay-as-you-go billing model for AI capacity. ... Proactive AI insights from DSPM also consume compute units. Each 24-hour refresh cycle uses compute units",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Security Copilot inclusion excludes the non-agentic Data Security Investigations experience and Sentinel data lake compute and storage costs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+      "quote": "What isn't covered as part of this inclusion? ... Microsoft Sentinel data lake compute or storage costs. Non-agentic Data Security Investigations experience in Microsoft Purview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Cost and licensing; Why it matters; Governance guidance; rationale: cost",
+      "type": "cost",
+      "claim": "Some setup options require Purview pay-as-you-go billing and display notices and instructions in the UI.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-setup",
+      "quote": "For some options you must set up pay-as-you-go billing for your organization. When this billing model is applicable for specific configurations, you'll see notifications and instructions in the UI.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Cost and licensing: Caps",
+      "type": "absence",
+      "claim": "Learn documents no spending limit specific to DSPM.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview Posture Agent SCU per run rate DSPM spending limit cap'. Read setup, agent, inclusion and DSI billing; billing-model excerpt offers general SCU overage limits, not a DSPM-specific spending limit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[0].note; Scope; Governance guidance",
+      "type": "role",
+      "claim": "Entra Compliance Administrator, Global Administrator and the Microsoft Purview Compliance Administrator role group can view, create and edit in DSPM.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-permissions",
+      "quote": "Roles and role groups that can view, create, and edit in Data Security Posture Management: Microsoft Entra Compliance Administrator role; Microsoft Entra Global Administrator role; Microsoft Purview Compliance Administrator role group",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Governance controls: first bullet",
+      "type": "applicability",
+      "claim": "The role-group row governs everything in DSPM.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-permissions",
+      "quote": "When not supported, additional role groups required ... View Security Copilot insights and run prompts ... Data Security Viewers ... Connect to partner solutions in Microsoft Sentinel content hub ... Microsoft Sentinel Contributor",
+      "severity": "blocker",
+      "fix": "Replace 'The role group row governs everything in DSPM' with 'The role group row governs baseline DSPM access; some activities require additional roles'. Keep the existing Data Security Viewers and Microsoft Sentinel Contributor qualifications. Source: https://learn.microsoft.com/purview/data-security-posture-management-permissions."
+    },
+    {
+      "n": 64,
+      "where": "rationale: impact",
+      "type": "behaviour",
+      "claim": "Site owners notice the new experience only when an administrator sends an oversharing notice or removes a sharing link.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'Purview DSPM new Data Security Posture Management licensing E5 Purview Suite default automatic rollout'. Read overview, setup and oversharing; Notify and Remove sharing link are documented, but no passage limits all site-owner effects to those two actions.",
+      "severity": "minor",
+      "fix": "Replace 'site owners notice only when an admin sends an oversharing notice or removes a sharing link' with 'site owners can receive oversharing notices and users can lose access through removed sharing links'."
+    },
+    {
+      "n": 65,
+      "where": "Governance guidance",
+      "type": "consistency",
+      "claim": "Every control the governance checklist asks administrators to check or configure is represented in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'Check the monthly SCU allocation'; 'app registrations'; 'Complete the setup tasks'; 'Review Posture Agent SCU use ... remove unneeded scheduled prompts'. Table: baseline roles, agent deactivation, item-level scanning, Fabric connection and partner integration.",
+      "severity": "minor",
+      "fix": "The checklist's SCU-allocation check, Entra app-registration and consent management, general setup tasks, Performance monitoring and scheduled-prompt removal have no corresponding rows. Remove these control-setting/checking instructions from the checklist; retain their verified factual explanations elsewhere. Do not add rows as part of this correction."
+    },
+    {
+      "n": 66,
+      "where": "Scope: Data sources",
+      "type": "behaviour",
+      "claim": "Asset explorer's Microsoft locations currently include Microsoft 365 only, with non-Microsoft locations supplied through partner integration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-learn-about",
+      "quote": "Microsoft locations currently include Microsoft 365 only. Non-Microsoft locations are made possible by integration with partner solutions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "controls[2].note; What's changing; Scope; Open questions",
+      "type": "availability",
+      "claim": "Item-level scanning is restricted to SharePoint sites, excludes OneDrive and supports at most 10 sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-oversharing",
+      "quote": "currently restricted to SharePoint sites. ... OneDrive currently isn't supported for item-level scanning. ... A current maximum of 10 SharePoint sites for item-level scanning.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Scope: Item-level limits",
+      "type": "behaviour",
+      "claim": "Microsoft 365 assessments support at most 200,000 items per location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-oversharing",
+      "quote": "A maximum of 200,000 items per location, which applies to both a custom data risk assessment and a default data risk assessment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "controls[4].note; Scope: Partner connection",
+      "type": "role",
+      "claim": "Connecting partner solutions in the Sentinel content hub requires Microsoft Sentinel Contributor.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-permissions",
+      "quote": "Connect to partner solutions in Microsoft Sentinel content hub ... When not supported, additional role groups required ... Microsoft Sentinel Contributor",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Scope: Prerequisites",
+      "type": "default",
+      "claim": "Purview auditing is on by default for new tenants and is checked on first DSPM use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-setup",
+      "quote": "auditing is on by default for new tenants, and checked when you first run Data Security Posture Management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Scope: Prerequisites",
+      "type": "applicability",
+      "claim": "The Posture Agent requires Security Copilot onboarding and the Microsoft Purview plug-in.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-posture-agent-get-started",
+      "quote": "Your tenant must be onboarded to Microsoft Security Copilot. ... You must enable the Microsoft Purview plug-in in Microsoft Security Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "controls[0].note; Governance controls",
+      "type": "role",
+      "claim": "Adding members to Purview role groups in the portal requires Role management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Complete the following steps to add users or groups to a Microsoft Purview role group: ... Sign in ... by using credentials for an admin account assigned the Role management role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Governance controls: final bullet",
+      "type": "role",
+      "claim": "Cloud Application Administrator, Application Administrator or Privileged Role Administrator can create the Entra app registrations required by Fabric and item-level assessments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dspm-for-ai-considerations",
+      "quote": "For steps 1 and 2, use one of the following Entra roles ... Cloud Application Administrator; Application Administrator; Privileged Role Administrator ... You must have one of the following Entra roles to create and configure the required registered app",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Custom assessments expire after 30 days and can be rerun using duplicate to create a new assessment with the same selections.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-oversharing",
+      "quote": "To rerun a custom data risk assessment, and to see results after the 30-day expiration, use the duplicate option to create a new assessment with the same selections.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "controls[1].note; Cost and licensing; Governance controls",
+      "type": "behaviour",
+      "claim": "Deactivating the Posture Agent stops it functioning without removing it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-posture-agent-get-started",
+      "quote": "Deactivating the agent stops it from functioning. It doesn't remove the agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Remove agent deletes the agent and using it again requires the enabling procedure.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-posture-agent-get-started",
+      "quote": "Select Remove agent. Removing the agent deletes it from Microsoft Purview. To use it again, follow Enabling the agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "Cost and licensing: Caps; Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "SCU consumption can be monitored from the Posture Agent's Performance tab.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-posture-agent-get-started",
+      "quote": "Select View agent for the agent you want to edit. This action opens the agent overview page. ... Select the Performance tab. ... Track your SCU consumption in the usage monitoring tool.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "controls[2].note",
+      "type": "admin-path",
+      "claim": "After choosing Item-level on Scan level, Authenticate accepts the Entra application information.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-oversharing",
+      "quote": "Select Item-level on the Scan level page, and then Authenticate to specify the Entra application information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "The variable cost rating reflects metered Data Security Investigations compute consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Data Security Investigations uses the pay-as-you-go billing model for AI capacity. ... Proactive AI insights from DSPM also consume compute units.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2026-06-01T23:15:29.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-06-01T23:15:29\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
+      "where": "Scope: Who uses it",
+      "type": "role",
+      "claim": "View-only roles include Microsoft Purview Security Reader, Data Security Viewers and Entra AI Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-permissions",
+      "quote": "Roles and role groups that can view-only ... Microsoft Purview Security Reader role group ... Data Security Viewers role group and Data Security Viewer role ... AI Administrator role from Entra",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 82,
+      "where": "controls[0].note; Scope: Who uses it",
+      "type": "role",
+      "claim": "Running Security Copilot prompts in DSPM requires Data Security Viewers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-permissions",
+      "quote": "View Security Copilot insights and run prompts | ✕ | ✕ | ✕ | ✕ | ✕ | Data Security Viewers",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-27T20:13:14.445Z",
+    "summary": {
+      "links": 14,
+      "unreachable": 0,
+      "uiPaths": 5,
+      "uiPathsWithMissingWords": 3,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=532728",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/data-security-posture-management-learn-about",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/data-security-posture-management-considerations",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/data-security-posture-management-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/data-security-posture-management-setup",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/data-security-posture-management-oversharing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/copilot-in-purview-posture-agent-get-started",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dspm-for-ai-considerations",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/data-security-posture-management-get-started",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/purview-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Who can view, create and edit in DSPM (Purview role group membership)",
+        "docs": "https://learn.microsoft.com/purview/purview-permissions",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Roles and scopes",
+          "Role groups",
+          "Role groups for Microsoft Purview solutions",
+          "role group",
+          "Edit",
+          "Edit members of the role group",
+          "Choose users"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Who can view, create and edit in DSPM (Purview role group membership)",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "reachable": true,
+        "token": "Add-RoleGroupMember",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether the Data Security Posture Agent is active",
+        "docs": "https://learn.microsoft.com/purview/copilot-in-purview-posture-agent-get-started",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "Explore agents",
+          "View agent",
+          "ellipsis next to Edit agent",
+          "Deactivate agent"
+        ],
+        "missing": [
+          "ellipsis next to Edit agent"
+        ]
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Item-level scanning and remediation in custom Microsoft 365 data risk assessments",
+        "docs": "https://learn.microsoft.com/purview/data-security-posture-management-oversharing",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "DSPM",
+          "Discover",
+          "Data risk assessments",
+          "Create custom assessment",
+          "Scan level",
+          "Item-level"
+        ],
+        "missing": [
+          "Solutions"
+        ]
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Connecting Fabric workspaces to data risk assessments",
+        "docs": "https://learn.microsoft.com/purview/data-security-posture-management-oversharing",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "DSPM",
+          "Discover",
+          "Data risk assessments",
+          "Fabric",
+          "Set config"
+        ],
+        "missing": [
+          "Solutions"
+        ]
+      },
+      {
+        "index": 4,
+        "side": "ui",
+        "governs": "Integration of partner solutions through Microsoft Sentinel data lake",
+        "docs": "https://learn.microsoft.com/purview/data-security-posture-management-setup",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "DSPM",
+          "Actions",
+          "Setup tasks",
+          "Integrate with partner solutions"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

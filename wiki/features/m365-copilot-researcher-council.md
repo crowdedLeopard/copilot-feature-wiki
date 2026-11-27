@@ -15,7 +15,7 @@ risk: "medium"
 cost: "low"
 impact: "medium"
 defaultState: "user-opt-in"
-action: "act-now"
+action: "review"
 licensing:
   model: "included"
   notes: "The Researcher FAQ says Researcher is part of the core default experience for Microsoft Copilot licensed users; Frontier features for Copilot need a Microsoft Copilot licence. No Council-specific licence or price is published."
@@ -45,6 +45,9 @@ sources:
     kind: "learn"
   - title: "Supported Copilot resources for Tenant Configuration Management (preview)"
     url: "https://learn.microsoft.com/graph/utcm-copilot-resources"
+    kind: "learn"
+  - title: "May 2026 announcements"
+    url: "https://learn.microsoft.com/partner-center/announcements/2026-may#2026-agents-move-into-action"
     kind: "learn"
   - title: "Which users may use Anthropic (Claude) models, and so run Council (Microsoft 365 admin center)"
     url: "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor#opt-in-to-use-claude-models"
@@ -107,19 +110,23 @@ changes:
     note: "New briefing: Model Council in Researcher, its Anthropic and OpenAI model use, and the provider, Frontier and Researcher block controls."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 68 statements contradicted, 3 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-27"
+    note: "Corrected after the independent check: action is now review; removed unsupported statements on how work content reaches each model, on identity and on report-only behaviour."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 71 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-27"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 68
-  confirmed: 64
-  unconfirmed: 3
-  contradicted: 1
-  attempts: 1
-  hash: "39e49b7993d255fe0c3142c340667f23"
+  claims: 71
+  confirmed: 71
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "510cb2667202be6bb5d46ac286d34dd6"
 ---
 
 ## What's changing
@@ -132,7 +139,7 @@ The blog says Council has been broadly available in the Microsoft Frontier progr
 
 ## Why it matters
 
-In Council, every run sends the same prompt, and the work data Researcher retrieves for it, to an Anthropic model as well as an OpenAI model. Whether that is acceptable is a data-processing decision, not a feature decision: Microsoft's Anthropic page says Claude models in Researcher are excluded from the EU Data Boundary and in-country processing commitments, while the Researcher FAQ says Researcher adheres to the EU and Microsoft 365 boundaries. Tenants that left Anthropic at its default (on outside the EU/EFTA and UK) have, in effect, already said yes.
+Council runs an Anthropic and an OpenAI model simultaneously; Microsoft has not documented how retrieved work content is distributed between those models. Whether that is acceptable is a data-processing decision, not a feature decision: Microsoft's Anthropic page says Claude models in Researcher are excluded from the EU Data Boundary and in-country processing commitments, while the Researcher FAQ says Researcher adheres to the EU and Microsoft 365 boundaries. Tenants that left Anthropic at its default (on outside the EU/EFTA and UK) have, in effect, already said yes.
 
 Council is something each user chooses in the model picker, so nothing runs through it until someone selects it. With the general availability target only days away, the time to confirm the Anthropic and OpenAI provider assignments, and to tell Researcher users what a Council report is and is not, is before December 2026.
 
@@ -143,10 +150,10 @@ Council is something each user chooses in the model picker, so nothing runs thro
 - The FAQ says that, by default, the content of Researcher sessions isn't directly accessible to admins or compliance tools, so Council reports are not something to plan an eDiscovery process around.
 
 **Security & identity**
-- No change to identity: Microsoft describes no new account or permission for Council. Provider access is assigned to users or Microsoft Entra ID security groups, up to 999 combined assignments per AI provider.
+- Microsoft has not documented a Council-specific account or permission at the time of writing (November 2026). Provider access is assigned to users or Microsoft Entra ID security groups, up to 999 combined assignments per AI provider.
 
 **Autonomy & actions**
-- Council produces reports only; the blog describes no actions on data. The risk is decision quality: a judge model's summary of agreement can be read as verification. Users should still check the citations.
+- The Council announcement describes report generation and comparison; it does not describe actions on data. The risk is decision quality: a judge model's summary of agreement can be read as verification. Users should still check the citations.
 
 **Change & support**
 - During preview, Frontier features carry no HIPAA Business Associate Agreement coverage and do not comply with ISO 27001, 27002 or 27018, according to the Frontier page. Regulated teams enrolled in Frontier should not use Council for regulated content.
@@ -174,7 +181,7 @@ Council is something each user chooses in the model picker, so nothing runs thro
 - Decide, with your data protection officer, whether Anthropic processing outside the EU Data Boundary is acceptable for Researcher work, and set the Anthropic assignment to match.
 - Check who is enrolled in **Copilot Frontier**, since Council is a Frontier feature during preview and Frontier lacks HIPAA BAA and ISO 27001 coverage.
 ### At rollout
-- Tell Researcher users that **Model Council** sends their question and retrieved work content to an Anthropic and an OpenAI model, and that the judge's summary is not a fact check.
+- Tell Researcher users that **Model Council** runs an Anthropic and an OpenAI model simultaneously, and that the judge's summary is not a fact check.
 - Block Researcher under **Agents > All agents** only if your organisation cannot accept multi-provider processing, since this removes Researcher for everyone.
 ### After rollout
 - Watch Message center and the Researcher FAQ for a Council-specific setting or a change to the 25-query monthly limit.
@@ -215,16 +222,9 @@ cost: Low. Researcher comes with the Microsoft Copilot licence according to the 
 impact: Medium. Only Researcher users who choose Model Council in the model picker notice it, typically analysts and decision-makers preparing high-stakes reports.
 -->
 
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Why it matters; Governance guidance: At rollout / behaviour: Every Council run sends the work data Researcher retrieves to both the Anthropic and the OpenAI model. | Found: Searched: Researcher Council same prompt retrieved enterprise data sent Anthropic OpenAI models permissions account actions. Opened Council blog, Researcher overview and FAQ, AI Subprocessors overview and both provider pages; none specifies this per-model grounding-data distribution. | Fix: In Why it matters replace the opening sentence with 'Council runs an Anthropic and an OpenAI model simultaneously; Microsoft has not documented how retrieved work content is distributed between those models.' In Governance guidance replace 'sends their question and retrieved work content to an Anthropic and an OpenAI model' with 'runs an Anthropic and an OpenAI model simultaneously'. The announcement documents parallel reports, not the asserted work-content routing.
-- [unsupported, major] Risk assessment: Security & identity / behaviour: Council makes no change to identity. | Found: Searched: '"Council" "Researcher" "permissions"' and Researcher Council same prompt retrieved enterprise data sent Anthropic OpenAI models permissions account actions. Opened Council blog, provider guidance and Researcher FAQ; none states that Council makes no identity change. | Fix: Replace 'No change to identity: Microsoft describes no new account or permission for Council' with 'Microsoft has not documented a Council-specific account or permission at the time of writing (November 2026)'. Lack of a documented change does not establish that there is no change.
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: Council produces reports only. | Found: Searched: Researcher Council same prompt retrieved enterprise data sent Anthropic OpenAI models permissions account actions. Opened Council blog and Researcher overview and FAQ; they describe reports but do not state an exhaustive report-only restriction. | Fix: Replace 'Council produces reports only; the blog describes no actions on data' with 'The Council announcement describes report generation and comparison; it does not describe actions on data'.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing / absence: Microsoft Learn has no page for Council yet. | Found: Searched: '"Council" "Researcher"' and '"Researcher" "Council" "admin"'; opened Researcher overview and FAQ. No dedicated Council page found; Learn's May 2026 Partner Center announcements do describe Council. | Fix: Replace 'Microsoft Learn has no page for Council yet' with 'No dedicated Microsoft Learn configuration page for Council was found at the time of writing (November 2026)'; Learn does mention Council at https://learn.microsoft.com/partner-center/announcements/2026-may#2026-agents-move-into-action.
-- [supported, minor] summary; Why it matters; Governance guidance: At rollout / behaviour: Council runs the same question or prompt across multiple models. | Found: Council (in Researcher) runs a single prompt across multiple models in parallel and surfaces where they agree, disagree, and add unique value | Fix: Add https://learn.microsoft.com/partner-center/announcements/2026-may#2026-agents-move-into-action to sources as 'May 2026 announcements'. | Source: https://learn.microsoft.com/partner-center/announcements/2026-may#2026-agents-move-into-action
-- [supported, minor] controls[2].ui; Governance guidance: Before rollout / admin-path: Frontier enrolment is managed at Microsoft 365 admin center > Copilot > Settings > View all > Copilot Frontier > Turn on Frontier. | Found: go to Copilot > Settings. Select the View all tab. Select Copilot Frontier. To opt in to Frontier preview, toggle Turn on Frontier to On. Choose how Frontier access is assigned in your organization | Fix: For the row governing which users are enrolled, extend the existing path to 'Copilot > Settings > View all > Copilot Frontier > Turn on Frontier > Specific users and groups'; note that All users is the alternative assignment. The current path reaches the correct pane but stops before its user assignment. | Source: https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier
-- [supported, minor] controls[3].api / command: POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks a Copilot package. | Found: Block a Copilot package to prevent its usage. POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported. | Fix: Keep the call unchanged and append to controls[3].note: 'The Graph blocking API is beta, subject to change, and not supported for production applications.' | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block
-- [contradicted, minor] front matter: action; front matter: defaultState; Why it matters / consistency: The act-now rating fits the standard for an optional mode that users must choose. | Found: action: "act-now"; defaultState: "user-opt-in"; "Council is something each user chooses in the model picker, so nothing runs through it until someone selects it." | Fix: Set action to 'review'. Under the assessment scale, an optional capability is review when no verified source says existing behaviour changes without a choice; proximity of the GA target alone does not meet the act-now definition.
+- [supported, minor] controls[3].api; Governance controls table / command: POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks a Copilot package. | Found: Block a Copilot package to prevent its usage. ... POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block ... Use of these APIs in production applications is not supported. | Fix: Append to controls[3].note: 'The blocking API is beta, subject to change and unsupported for production applications.' The reference is https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block
+- [supported, minor] What's changing / absence: Learn has no dedicated Council feature page yet, although the briefing says it has no page for Council. | Found: Council (in Researcher) runs a single prompt across multiple models in parallel and surfaces where they agree, disagree, and add unique value | Fix: Replace 'Microsoft Learn has no page for Council yet.' with 'Microsoft Learn mentions Council in its May 2026 announcements, but does not yet provide a dedicated Council feature page.' Retain the cited May announcements URL. | Source: https://learn.microsoft.com/partner-center/announcements/2026-may#2026-agents-move-into-action
 -->

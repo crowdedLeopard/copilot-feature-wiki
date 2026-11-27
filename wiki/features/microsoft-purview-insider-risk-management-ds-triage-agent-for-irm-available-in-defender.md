@@ -72,7 +72,7 @@ controls:
     note: "Links to the Security Copilot usage monitoring tool, where consumption is tracked. Monitors usage; it does not cap it."
 confidence: "medium"
 created: "2026-11-20"
-updated: "2026-11-20"
+updated: "2026-11-27"
 roadmapModified: "2026-07-09T23:00:39"
 changes:
   - date: "2026-11-20"
@@ -81,19 +81,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 2 of 80 statements not yet confirmed"
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 86 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-27"
+    note: "Corrected after the independent check: Defender summaries no longer described as naming users, MC1438568 cited as Microsoft's readiness guidance, the agent security context attributed to the get-started article, and the comparison and role checklist steps narrowed or removed."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 86 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-27"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 86
-  confirmed: 83
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "24d7cd42cb928ffdef034789e6e20a9b"
+  confirmed: 86
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "247d00947e67c3e87998fb5c4dbc9642"
 ---
 
 ## What's changing
@@ -108,7 +112,7 @@ At the time of writing (November 2026), the Learn page on investigating insider 
 
 ## Why it matters
 
-This puts AI-written context about a named user's risky activity in front of the security operations team in Defender, a portal where analysts may not normally work with insider risk data. Microsoft's notice says the summaries come from IRM alert data and that the change involves AI capabilities that interact with customer data. Qualifying organisations get it without an administrator choosing to, so the decision for a service owner is whether the people who see Defender alerts should also see these summaries.
+This puts AI-written context about a user's risky activity in front of the security operations team in Defender, a portal where analysts may not normally work with insider risk data. Microsoft's notice says the summaries come from IRM alert data and that the change involves AI capabilities that interact with customer data. Qualifying organisations get it without an administrator choosing to, so the decision for a service owner is whether the people who see Defender alerts should also see these summaries.
 
 If nobody acts, the notice says the feature is enabled automatically for organisations that meet the prerequisites: IRM alerts shared with Defender and an active IRM triage agent. Organisations that have not deployed the agent or turned on data sharing are not described as affected. The agent also consumes SCUs, so the cost question sits with the team that owns Security Copilot capacity.
 
@@ -119,14 +123,14 @@ If nobody acts, the notice says the feature is enabled automatically for organis
 - The roadmap says users in IRM are pseudonymised by default. Confirm in a preview tenant whether the summaries in Defender show names or pseudonyms before widening Defender access.
 
 **Security & identity**
-- Learn says agents run in the security context of the last user who saved the agent configuration, and that authentication is good for 90 days, after which the agent stops running until the configuration is saved again. Put the renewal on a calendar owned by an accountable role, and confirm how Defender shows alerts the agent has stopped triaging.
+- The get-started article for the IRM triage agent says agents run in the security context of the last user who saved the agent configuration, and that authentication is good for 90 days, after which the agent stops running until the configuration is saved again. Put the renewal on a calendar owned by an accountable role, and confirm how Defender shows alerts the agent has stopped triaging.
 - Learn names Security Operator or Security Reader, plus membership of an IRM role group (Insider Risk Management, Analysts or Investigators), for viewing IRM alerts in Defender. Learn does not say whether the same roles govern the summaries.
 
 **Autonomy & actions**
 - The agent categorises and summarises alerts; the Learn pages read describe no action it takes on users or content. It does not triage every alert: Learn says it triages alerts in the timeframe and policies you select, and that during preview it analyses only SharePoint file content, so an alert with only email or device activities is not analysed. Tell analysts that a missing summary is not a low-risk signal.
 
 **Change & support**
-- Notice MC1438568 asks administrators to confirm that alerts are shared with Defender and the IRM triage agent is deployed and active, to inform security operations and investigation teams, and to update internal documentation on IRM alert investigations. Learn's Defender page has no agent-summary content yet, so support teams have no Microsoft guidance to point to for it.
+- Notice MC1438568 asks administrators to confirm that alerts are shared with Defender and the IRM triage agent is deployed and active, to inform security operations and investigation teams, and to update internal documentation on IRM alert investigations. Learn's Defender page has no agent-summary content yet; MC1438568 provides Microsoft's rollout and readiness guidance.
 
 ## Cost and licensing
 
@@ -150,13 +154,12 @@ The Learn page on investigating insider risk alerts in Defender lists two prereq
 
 ### Before rollout
 - Confirm that **Data sharing** is turned on in Insider Risk Management settings and that IRM alerts appear in the Defender alert queue under the **Service source** filter (see the data sharing row in the controls table).
-- Check who holds Security Operator, Security Reader and the IRM role groups, because those people will be able to open IRM alerts in Defender.
 - Check that SCUs are provisioned and agree who pays for them, using the **Usage monitoring** page for the agent.
 - Identify which account last saved the agent configuration and set a reminder before its 90-day authentication lapses.
 
 ### At rollout
 - Brief security operations and IRM investigators on the new summaries, as the notice asks, and say that a missing summary does not mean a low-risk alert.
-- Compare a sample of alerts in Defender and in the Purview **Triage Agent** view to see what the summaries show for your policies.
+- Compare a sample of alerts in Defender and in the Purview alert investigation experience to see what the summaries show for your policies.
 - Update internal runbooks that describe IRM alert investigation, as the notice recommends.
 
 ### After rollout
@@ -195,14 +198,10 @@ cost: Variable. The agent consumes Security Compute Units (SCUs) and Learn says 
 impact: Medium. Security analysts and insider risk investigators who work Insider Risk Management alerts in Defender will notice; other users do not.
 -->
 
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters: first sentence / behaviour: The summaries in Defender contain context about a named user's activity. | Found: Searched: Insider Risk Management Defender agent summaries permissions pseudonymized hide summary. Read MC1438568, the roadmap, Defender investigation, Purview activities and username privacy; real names in the Purview Triage Agent dashboard do not establish names in Defender summaries. | Fix: Replace "a named user's risky activity" with "a user's risky activity". Keep the question about names versus pseudonyms in Defender open.
-- [contradicted, blocker] Risk assessment: Change & support / absence: Support teams have no Microsoft guidance to point to for agent summaries in Defender. | Found: Review the following to ensure readiness: Confirm that Insider Risk Management alerts are being shared with Microsoft Defender. Confirm that the IRM triage agent is deployed and active. | Fix: Replace "Learn's Defender page has no agent-summary content yet, so support teams have no Microsoft guidance to point to for it" with "Learn's Defender page has no agent-summary content yet; MC1438568 provides Microsoft's rollout and readiness guidance."
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Security & identity; Governance guidance: Before rollout / behaviour: Learn says agents run in the security context of the last user who saved their configuration. | Found: Agents run in the security context of the last user that saved the agent configuration. | Fix: Attribute this specifically to the get-started article and add: "The overview also documents a recommended separate Microsoft Entra agent identity and an alternative user identity: https://learn.microsoft.com/purview/copilot-in-purview-agents-overview#agent-identity." | Source: https://learn.microsoft.com/purview/copilot-in-purview-triage-irm-agent-get-started
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The tenant sharing control is at Purview Settings > Insider Risk Management > Data sharing > Sharing data with other Microsoft security solutions. | Found: In Insider Risk Management settings, select the Data sharing setting. Under the Sharing data with other Microsoft security solutions section, turn on the setting. | Fix: The path reaches the correct section but stops before its toggle. Use "Settings > Insider Risk Management > Data sharing > Sharing data with other Microsoft security solutions > Share user risk details with other security solutions"; the final label is documented at https://learn.microsoft.com/defender-xdr/irm-investigate-alerts-defender. | Source: https://learn.microsoft.com/purview/insider-risk-management-settings-share-data
-- [supported, minor] Governance guidance: At rollout / behaviour: Purview provides a separate Triage Agent view for comparing alerts with Defender. | Found: Set the toggle to the Triage Agent view. This view shows the alerts that have been triaged by the agent. | Fix: Replace "the Purview **Triage Agent** view" with "the Purview alert investigation experience". The already-cited https://learn.microsoft.com/purview/insider-risk-management-activities also says the unified Alerts (preview) experience removes the toggle and combines both alert types. | Source: https://learn.microsoft.com/purview/copilot-in-purview-triage-irm-agent-get-started
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The governance checklist's role-assignment check is represented in the controls table. | Found: Checklist: "Check who holds Security Operator, Security Reader and the IRM role groups". The controls table covers data sharing, agent deactivation and usage monitoring, not role assignments. | Fix: The role-assignment check has no corresponding controls-table row. Remove that checklist bullet; retain the roles discussion in Risk assessment and Scope.
+- [supported, minor] Risk assessment: Security & identity; Governance guidance: Before rollout / behaviour: The get-started article says agents run in the security context of the last user who saved their configuration. | Found: Agents run in the security context of the last user that saved the agent configuration. | Fix: After the attributed security-context sentence add: 'The cited Security Copilot agents in Microsoft Purview overview also documents Create and use agent identity (recommended) and Assign and use my identity; confirm which identity your deployed agent uses.' Keep the get-started attribution. The differing options are at https://learn.microsoft.com/purview/copilot-in-purview-agents-overview#agent-identity. | Source: https://learn.microsoft.com/purview/copilot-in-purview-triage-irm-agent-get-started
+- [supported, minor] front matter: licensing; Cost and licensing; rationale: cost / licensing: The licensing model is mixed, as the IRM get-started article says it requires standard per-seat licensing and pay-as-you-go billing. | Found: The Triage Agent in Insider Risk Management requires both the standard per-seat licensing model and the pay-as-you-go billing model. | Fix: Keep the attributed requirement and mixed model, but add: 'Security Copilot's inclusion article separately says eligible Microsoft 365 E5 and E7 customers receive included SCU capacity covering agentic scenarios in Purview and Defender.' Cite https://learn.microsoft.com/copilot/security/security-copilot-inclusion. This acknowledges the differing billing guidance without implying every tenant needs separately purchased capacity. | Source: https://learn.microsoft.com/purview/copilot-in-purview-triage-irm-agent-get-started
+- [supported, minor] controls[0].ui; Governance controls table; Governance guidance: Before rollout / admin-path: The tenant sharing control is reached in Microsoft Purview via Settings > Insider Risk Management > Data sharing > Sharing data with other Microsoft security solutions. | Found: In Insider Risk Management settings, select the **Data sharing** setting. 2. Under the **Sharing data with other Microsoft security solutions** section, turn on the setting. | Fix: Finish controls[0].ui.path and its table path at the named toggle: 'Settings > Insider Risk Management > Data sharing > Sharing data with other Microsoft security solutions > Share user risk details with other security solutions'. The existing path reaches the correct section; the toggle's label is confirmed by the already cited https://learn.microsoft.com/defender-xdr/irm-investigate-alerts-defender. | Source: https://learn.microsoft.com/purview/insider-risk-management-settings-share-data
 -->

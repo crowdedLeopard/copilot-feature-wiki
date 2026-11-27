@@ -71,15 +71,17 @@ changes:
     note: "Correction: privacy-preference path given in full from Manage onwards; removed an unsupported 'unchanged in kind' claim; licensing now states the model-driven app premium use-rights requirement."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 45 statements confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 47 statements confirmed"
 version: 5
 verification:
   status: "verified"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 45
-  confirmed: 45
+  claims: 47
+  confirmed: 47
   unconfirmed: 0
   contradicted: 0
   attempts: 0

@@ -4,7 +4,7 @@ slug: "microsoft-purview-information-protection-auto-labeling-for-legacy-office-
 roadmapId: 578872
 topic: "governance"
 products: ["Microsoft Purview"]
-summary: "Microsoft plans to extend Purview service-side auto-labeling to .doc, .xls and .ppt files in SharePoint and OneDrive for GCC, GCC High and DoD, targeted for December CY2026. Plan simulation runs; no admin switch is documented."
+summary: "Microsoft plans to extend Purview service-side auto-labeling to .doc, .xls and .ppt files in SharePoint and OneDrive for GCC, GCC High and DoD, targeted December CY2026. No admin switch specific to legacy-format support is documented."
 status: "in-development"
 releasePhase: ["General Availability"]
 clouds: ["GCC","GCC High","DoD"]
@@ -18,7 +18,7 @@ defaultState: "unknown"
 action: "review"
 licensing:
   model: "included"
-  notes: "Learn lists service-side auto-labeling (SharePoint, OneDrive, Exchange) under Microsoft 365 E5, E5 Compliance, E5 Information Protection & Governance and Azure Information Protection Premium P2 (standalone). Nothing specific to legacy formats is published at the time of writing (November 2026)."
+  notes: "The Microsoft Purview service-description matrix lists client and service-side automatic sensitivity labeling as included with Microsoft 365 G5, Office 365 G5 and Microsoft Purview Suite GOV. Licensing specific to legacy formats has not been published (November 2026)."
 audiences: ["compliance","security","m365-admin"]
 tags: ["purview","auto-labeling","sensitivity-labels","information-protection","sharepoint","onedrive","gcc","gcc-high","dod"]
 sources:
@@ -30,6 +30,9 @@ sources:
     kind: "learn"
   - title: "Set-AutoSensitivityLabelPolicy"
     url: "https://learn.microsoft.com/powershell/module/exchange/set-autosensitivitylabelpolicy"
+    kind: "learn"
+  - title: "Microsoft Purview service description"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-information-protection-sensitivity-labeling"
     kind: "learn"
   - title: "Plan for Microsoft Purview compliance and risk management solutions – GCC deployments"
     url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/plan-for-microsoft-purview-gcc-deployments"
@@ -67,7 +70,7 @@ controls:
     note: "Use -AddOneDriveLocation for OneDrive locations. Applies to the files of any format the policy evaluates."
 confidence: "medium"
 created: "2026-11-20"
-updated: "2026-11-20"
+updated: "2026-11-27"
 roadmapModified: "2026-11-04T23:59:50"
 changes:
   - date: "2026-11-20"
@@ -80,26 +83,30 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 60 statements not yet confirmed"
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 61 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-27"
+    note: "Corrected the Worldwide item's dates (December CY2026 target, November CY2026 preview), replaced the licence SKU list with the Purview service-description entitlement, narrowed the admin-switch absence and removed the throughput-monitoring checklist item."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 62 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-27"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 61
-  confirmed: 58
+  claims: 62
+  confirmed: 62
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "da0791b368ae21bb64b8302c13cd9fdc"
+  contradicted: 0
+  attempts: 0
+  hash: "3d7a058529dac56d7e9ce4a758077c87"
 ---
 
 ## What's changing
 
 Microsoft plans to add the legacy Office file formats Word (.doc), Excel (.xls) and PowerPoint (.ppt) to Microsoft Purview server-side auto-labeling. The roadmap item states that organisations will be able to automatically evaluate and apply sensitivity labels to these files in SharePoint and OneDrive. This item covers the GCC, GCC High and DoD clouds on the Web platform.
 
-The roadmap record shows the item as In development, in the General Availability release phase, targeted for December CY2026. The dates are Microsoft's targets, not commitments. Microsoft lists the same feature under a second roadmap item, 574363, which covers Worldwide (Standard Multi-Tenant), targets November CY2026 and lists both General Availability and Preview. See [the Worldwide briefing](/features/microsoft-purview-information-protection-auto-labeling-for-legacy-office-files/).
+The roadmap record shows the item as In development, in the General Availability release phase, targeted for December CY2026. The dates are Microsoft's targets, not commitments. Microsoft lists the same feature under a second roadmap item, 574363, which covers Worldwide (Standard Multi-Tenant), targets December CY2026, with a November CY2026 preview target, and lists both General Availability and Preview. See [the Worldwide briefing](/features/microsoft-purview-information-protection-auto-labeling-for-legacy-office-files/).
 
 Microsoft Learn does not describe the legacy-format change yet. At the time of writing (November 2026), the Learn page on auto-labeling lists Word (.docx), PowerPoint (.pptx), Excel (.xlsx) and PDF files as supported for SharePoint and OneDrive and does not mention .doc, .xls or .ppt. What follows about the change is therefore the roadmap's description, and how existing policies treat legacy files is not stated.
 
@@ -130,7 +137,7 @@ Microsoft has not stated what happens on arrival, so base planning on no source 
 
 ## Cost and licensing
 
-**Licence.** The Learn page on auto-labeling lists service-side auto-labeling (SharePoint, OneDrive, Exchange) under the same SKUs as client-side auto-labeling: Microsoft 365 E5, Microsoft 365 E5 Compliance, Microsoft 365 E5 Information Protection & Governance and Azure Information Protection Premium P2 (standalone). It says auto-labeling of files and emails is not included with E3 or Business Premium. That page points to Microsoft's licensing guidance for security and compliance for the per-SKU matrix, including Government clouds; entitlements for GCC, GCC High and DoD are read there, not on the page cited here.
+**Licence.** The Microsoft Purview service-description matrix lists client and service-side automatic sensitivity labeling as included with Microsoft 365 G5, Office 365 G5 and Microsoft Purview Suite GOV. Licensing specific to legacy formats has not been published (November 2026). The Learn page on auto-labeling says auto-labeling of files and emails is not included with E3 or Business Premium.
 
 **Meter.** The Learn page names no meter for auto-labeling, and a meter for legacy formats is not yet published.
 
@@ -159,7 +166,6 @@ Microsoft has not stated what happens on arrival, so base planning on no source 
 
 ### After rollout
 
-- Compare labelling progress with the 500,000 files per tenant per day ceiling that Learn gives.
 - Re-read the Learn page on auto-labeling and Message center for the legacy-format behaviour, because the page does not describe it yet.
 
 ## Governance controls
@@ -182,22 +188,18 @@ Set-AutoSensitivityLabelPolicy is available only in Security & Compliance PowerS
 
 - Will existing auto-labeling policies evaluate legacy files automatically once support arrives, or does an admin have to change them? Watch the Learn auto-labeling page and Message center.
 - How will existing file-extension conditions and exceptions apply to legacy formats once support arrives? Watch the Learn auto-labeling page.
-- Is the licensing for GCC, GCC High and DoD the same as the E5-tier SKUs Learn lists for the commercial cloud, for these formats? Watch the Microsoft 365 licensing guidance for security and compliance.
+- Will auto-labeling of legacy formats in GCC, GCC High and DoD carry the same entitlement as the client and service-side automatic sensitivity labeling entry in the Microsoft Purview service description? Watch that service description.
 - When will the roadmap status move from In development, and will this item's December CY2026 target hold? Watch roadmap item 578872 and Message center.
 
 <!-- rationale
 risk: Medium. Once legacy files are in scope, a policy running in enforcement mode can label older files without a user acting, so the outcome depends on each policy's rules and on running simulation first. If the default is not stated, rate on current behaviour continuing.
-cost: Low. Learn lists service-side auto-labeling under Microsoft 365 E5-tier SKUs and names no separate meter for legacy formats; the known cost is admin time to review policies and simulation results. Nothing specific to legacy formats is published.
+cost: Low. The service-description matrix lists service-side automatic sensitivity labeling in qualifying subscriptions and names no separate meter for legacy formats; the known cost is admin time to review policies and simulation results. Nothing specific to legacy formats is published.
 impact: Medium. Owners of older Office files in the SharePoint sites and OneDrive accounts a policy covers may see labels appear; people outside those locations are not affected by the roadmap description.
 -->
 
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing: comparison with item 574363 / record: Item 574363 targets November CY2026. | Found: 574363: "targetDate": "December CY2026", "previewDate": "November CY2026", "modified": "2026-11-25T00:10:31" | Fix: Replace 'targets November CY2026' with 'targets December CY2026, with a November CY2026 preview target'. The current record for Worldwide item 574363 distinguishes those two dates.
-- [contradicted, blocker] front matter: licensing.notes; Cost and licensing: Licence; rationale: cost / licensing: The cited auto-labeling article lists service-side auto-labeling under the same four SKUs as client-side labeling, including standalone Azure Information Protection Premium P2. | Found: Check the Client and service-side automatic sensitivity labeling entry in the feature matrix linked below. Client-only entitlements don't establish service-side entitlement. | Fix: Replace the SKU-list sentence in both licensing.notes and the Licence paragraph with: 'The Microsoft Purview service-description matrix lists client and service-side automatic sensitivity labeling as included with Microsoft 365 G5, Office 365 G5 and Microsoft Purview Suite GOV. Licensing specific to legacy formats has not been published (November 2026).' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-information-protection-sensitivity-labeling. In the cost rationale, replace 'Learn lists service-side auto-labeling under Microsoft 365 E5-tier SKUs' with 'The service-description matrix lists service-side automatic sensitivity labeling in qualifying subscriptions'. | Source: https://learn.microsoft.com/purview/apply-sensitivity-label-automatically
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] summary / absence: No admin switch is documented for the legacy-format extension. | Found: Searched: Purview auto-labeling legacy Office files admin switch file extension Set-AutoSensitivityLabelPolicy. Read the auto-labeling article and policy reference; searched the reference for legacy, extension, format, .doc, .xls and .ppt. Found policy controls, not a legacy-format switch. | Fix: Replace 'no admin switch is documented' with 'no admin switch specific to legacy-format support is documented' so the summary does not imply that the documented policy controls are absent.
-- [supported, minor] front matter: licensing.model / licensing: Service-side automatic sensitivity labeling is included in qualifying existing subscriptions. | Found: | Client and service-side automatic sensitivity labeling | Included | Included | | Fix: Keep licensing.model as included. Add https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-information-protection-sensitivity-labeling to sources; it is the entitlement matrix supporting this field, not the client-side SKU list. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
-- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist asks the administrator to monitor labeling progress, but neither controls row describes monitoring. | Found: Compare labelling progress with the 500,000 files per tenant per day ceiling ... Controls: Whether an auto-labeling policy runs in simulation or enforces labels; Which SharePoint and OneDrive locations an auto-labeling policy covers. | Fix: Remove the 'Compare labelling progress with the 500,000 files per tenant per day ceiling that Learn gives' checklist bullet; it asks readers to check a monitoring control that has no row in the table.
+- [supported, minor] What's changing: second paragraph / record: Roadmap item 574363 describes the same legacy-format feature. | Found: 574363: Microsoft Purview server-side auto-labeling will support legacy Microsoft Office file formats, including Word (.doc), Excel (.xls), and PowerPoint (.ppt). | Fix: Add Microsoft 365 Roadmap 574363 to sources at https://www.microsoft.com/microsoft-365/roadmap?id=574363.
+- [supported, minor] Risk assessment: Autonomy & actions; Cost and licensing: Indirect cost / behaviour: Learn gives a maximum throughput of 500,000 automatically labeled SharePoint and OneDrive files per tenant per day. | Found: The absolute maximum throughput is 500,000 automatically labeled SharePoint and OneDrive files per tenant per day | Fix: After the throughput statement, add: 'Microsoft's Australian Government guidance still describes up to 25,000 Office documents per day; this briefing uses the 500,000-file tenant ceiling in the auto-labeling reference.' Cite https://learn.microsoft.com/compliance/anz/pspf-service-based-auto#labeling-existing-items-at-rest, which says 'up to 25,000 office documents per day'. | Source: https://learn.microsoft.com/purview/apply-sensitivity-label-automatically
 -->

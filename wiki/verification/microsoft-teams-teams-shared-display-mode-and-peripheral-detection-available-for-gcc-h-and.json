@@ -1,0 +1,905 @@
+{
+  "slug": "microsoft-teams-teams-shared-display-mode-and-peripheral-detection-available-for-gcc-h-and",
+  "roadmapId": 553592,
+  "title": "Microsoft Teams: shared display mode and BYOD peripheral detection in GCC High and DoD",
+  "status": "held",
+  "date": "2026-11-27",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-27",
+    "reasons": [
+      "6 blocking findings (claims 49, 53, 63, 68, 69, 70)"
+    ]
+  },
+  "counts": {
+    "claims": 71,
+    "confirmed": 64,
+    "unconfirmed": 0,
+    "contradicted": 7,
+    "blocker": 6,
+    "major": 0,
+    "minor": 7
+  },
+  "summary": "Hold: the briefing confuses default-on portal ingestion with client collection, which Microsoft documents as off by default in government clouds. Licensing statements also omit alternative entitlements and the billing-account restriction on free Single Space licences, and the low cost rating conflicts with the documented add-on licensing.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is March CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"March CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The record supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists Desktop and Mac.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Mac\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-10-22T22:58:40.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-22T22:58:40\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Shared display mode in Microsoft Teams is available in the government environments named by the record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Shared display mode in Teams is now available in government CCC-H and DoD environments",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Peripheral detection for BYOD spaces is available for inventory management and reporting through the Teams Rooms Pro Management portal.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "peripheral detection for bring-your-own-device spaces is available for inventory management and reporting through the Teams Rooms Pro Management portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing: BYOD definition",
+      "type": "behaviour",
+      "claim": "Microsoft defines BYOD rooms as rooms without a Microsoft Teams Rooms system or Surface Hub.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+      "quote": "In the Pro Management portal specifically, that means any room that does not have a Microsoft Teams Room or Surface Hub.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing: Shared display mode; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Shared display mode extends a view-only pop-out of the meeting stage onto the TV in a BYOD room.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/officeupdates/governmentchannel",
+      "quote": "The new shared display mode provides users the ability to extend their Teams meeting via a pop-out view-only version of the stage onto the TV screen in BYOD meeting rooms.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing: Shared display mode",
+      "type": "behaviour",
+      "claim": "The host can keep their desktop private while meeting content is displayed to the room.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/officeupdates/governmentchannel",
+      "quote": "This gives the host of the room the peace of mind that their desktop is for their viewing only, giving them the flexibility to multi-task or work privately on their host desktop.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Why it matters; Governance guidance; rationale: impact",
+      "type": "behaviour",
+      "claim": "Plugging in room-associated peripherals automatically activates BYOD end-user experiences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+      "quote": "Users who plug-in room associated peripherals will have BYOD end user experiences automatically activated for the best meeting room experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing: Peripheral detection; rationale: risk",
+      "type": "behaviour",
+      "claim": "At the meeting prejoin screen, Teams scans connected displays and USB audio/video peripherals and transmits their data to the cloud.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+      "quote": "When a user enters the prejoin screen of a meeting, any connected displays and USB audio/video peripherals are scanned and transmitted to the cloud.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing: Peripheral detection",
+      "type": "behaviour",
+      "claim": "The personal device filter requires at least five unique internal users before making a peripheral manageable.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+      "quote": "This filter requires that each peripheral be used by at least five unique users internal to the same organization before making the peripheral available for management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing: Peripheral detection",
+      "type": "behaviour",
+      "claim": "Peripherals can be associated with room accounts manually or automatically.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+      "quote": "Manually associate peripherals to rooms individually\nLet Pro management portal automatically associate peripherals for you (recommended)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing: Peripheral detection; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The portal reports usage and quality information for BYOD rooms.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+      "quote": "View usage, quality, and peripheral status reports for BYOD rooms.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing: Peripheral detection; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "BYOD reports flag peripherals that may be offline or moved.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+      "quote": "BYOD reports now run a best effort detection algorithm designed to help you understand when peripherals in your rooms are offline or have moved to a different room.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Teams sends product ID, vendor ID and serial-number signals with usage, quality and status information.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+      "quote": "a combination of the peripheral's product ID, vendor ID, and serial number. ... the Teams client application on your users' computer will send device signals required to construct this peripheral ID along with usage, quality, and peripheral status information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Microsoft states that no personally identifiable data is collected by this BYOD client collection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+      "quote": "No personally identifiable data is collected",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[0]; Risk assessment: Data exposure; Governance controls",
+      "type": "applicability",
+      "claim": "DeviceDataCollection governs BYOD peripheral collection for particular users or groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+      "quote": "should you feel that this data collection is inappropriate for certain users or groups in your organization, you may use the following PowerShell commands to configure this policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[0].note; Why it matters; Governance controls",
+      "type": "behaviour",
+      "claim": "Disabling DeviceDataCollection stops BYOD and desk information flowing to the service for the affected users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+      "quote": "Disabling this setting for certain users will cause BYOD and desk information to cease flowing to the service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[0].note; Why it matters; Governance controls",
+      "type": "behaviour",
+      "claim": "Disabling collection stops the automatic BYOD end-user activation that depends on users' peripheral data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+      "quote": "The Teams BYOD and Desk solution requires peripheral data sent from users to automatically activate BYOD end user experiences",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-CsTeamsBYODAndDesksPolicy -Identity <policy name> -DeviceDataCollection Disabled disables collection in the named policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+      "quote": "Import-Module MicrosoftTeams\nSet-CsTeamsBYODAndDesksPolicy -Identity \"Test\" -DeviceDataCollection Disabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "absence",
+      "claim": "Microsoft has not documented an admin UI route for DeviceDataCollection.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams BYOD DeviceDataCollection Teams admin center policy user interface. Read BYOD rooms and search excerpts for unified policies/settings and Teams settings reference; no UI route for DeviceDataCollection was returned.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The PowerShell setting requires MicrosoftTeams module 6.5.0 or later.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bookable-desks",
+      "quote": "First, ensure that your Microsoft Teams module is on version 6.5.0 or higher.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/microsoftteams/rooms/bookable-desks for '6.5.0 or later'; add 'The BYOD rooms page instead says > 6.5.0.' The two pages give different minimum-version wording."
+    },
+    {
+      "n": 27,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The portal ingestion setting is reached through Settings > General > BYOD Rooms and Desk management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+      "quote": "BYOD Rooms and Desk management\nThis setting option is located under the General tab in Teams Pro Management portal",
+      "severity": "minor",
+      "fix": "Keep the path and its docs URL; add https://learn.microsoft.com/microsoftteams/rooms/bookable-desks to sources, since it explicitly establishes the portal's Settings > General route."
+    },
+    {
+      "n": 28,
+      "where": "controls[1]; Why it matters; Governance controls",
+      "type": "applicability",
+      "claim": "BYOD Rooms and Desk management controls ingestion into the portal's cloud service for the organisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+      "quote": "controls if peripheral data is ingested into the cloud service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[1].note; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The portal's BYOD Rooms and Desk management ingestion setting is enabled by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+      "quote": "This feature is currently enabled by default, but admins have the option to disable it with this function.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Disabling portal ingestion hides BYOD and desk reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+      "quote": "Disabling this setting will stop showing any reports for BYOD rooms or Desks",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Disabling portal ingestion hides devices in Inventory.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+      "quote": "also remove the display of any devices in the Inventory section",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Governance controls: ingestion",
+      "type": "behaviour",
+      "claim": "Devices remain in the database after portal ingestion is disabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+      "quote": "though those devices will continue to exist in the database.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[1].api; Governance controls table",
+      "type": "absence",
+      "claim": "No automation operation for the portal ingestion toggle is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Pro Management portal BYOD Rooms Desk management ingestion Graph API PowerShell role assignments API. Read BYOD rooms and Bookable Desks; returned PowerShell controls client collection, not the portal ingestion toggle.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[2].ui; Risk assessment: Security & identity; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Pro Manager assignment route is Settings > Roles > Teams Rooms Pro Manager > Assignments > Add.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/enrolling-mtrp-managed-service",
+      "quote": "Navigate to Settings > Roles and then select Teams Rooms Pro Manager.\nUnder Teams Rooms Pro Manager, select the Assignments tab and then select Add.",
+      "severity": "minor",
+      "fix": "Keep the cited route; add 'The RBAC page labels the assignment button Add assignment' and cite https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac, which gives Settings > Roles > role > Assignments > Add assignment."
+    },
+    {
+      "n": 35,
+      "where": "controls[2].note; Governance controls table",
+      "type": "role",
+      "claim": "The assignment described by the access page applies to all rooms and room groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/enrolling-mtrp-managed-service",
+      "quote": "The assignment will apply to all rooms and room groups.",
+      "severity": "minor",
+      "fix": "Add 'The RBAC assignment instructions instead include a Scope page where a room or room group is selected' and cite https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac. Preserve the attribution of the all-rooms statement to the access page."
+    },
+    {
+      "n": 36,
+      "where": "controls[2].governs; Risk assessment: Security & identity; Governance guidance",
+      "type": "role",
+      "claim": "The Teams Rooms Pro Manager role grants access to all portal rooms and features, including inventory.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/enrolling-mtrp-managed-service",
+      "quote": "will have access to all rooms and features within the Teams Rooms Pro management portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[2].api; Governance controls table",
+      "type": "absence",
+      "claim": "Microsoft has not documented automation for assigning the portal's Teams Rooms Pro Manager role.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Pro Management portal role assignments API; \"Pro Management\" \"role assignments\" \"API\". Read access and RBAC pages. Results describe portal assignment steps or unrelated Entra/Azure role APIs, not this portal role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[3].ui and api; Open questions",
+      "type": "absence",
+      "claim": "No separate tenant admin switch for shared display mode itself is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams shared display mode license admin policy disable automatic DeviceDataCollection default; \"shared display mode\". Read BYOD rooms, Government Channel excerpts and Microsoft Support meeting room mode; no separate tenant switch was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[3].note; Governance controls table",
+      "type": "absence",
+      "claim": "Peripheral data collection is the documented admin setting affecting automatic shared-display activation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"shared display mode\" license policy admin disable; Teams shared display mode license admin policy disable automatic DeviceDataCollection default. Read BYOD rooms and Support meeting room mode; no other admin activation setting was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Autonomy & actions; Governance controls",
+      "type": "behaviour",
+      "claim": "Automatic association requires at least five unique users' signals.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+      "quote": "Auto association requires that multiple unique users provide these signals ... with a minimum of five unique signals and no maximum.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Autonomy & actions; Governance controls",
+      "type": "behaviour",
+      "claim": "Automatic association can be turned off in portal settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+      "quote": "Auto association can be turned off for your organization in Pro Management portal's settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Autonomy & actions; Governance controls",
+      "type": "behaviour",
+      "claim": "The automatic-association signal threshold can be raised.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+      "quote": "the threshold for how many signals it requires before associating is configurable ... with a minimum of five unique signals and no maximum.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Change & support; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "A manageable BYOD peripheral must report a unique serial number.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+      "quote": "In order for a BYOD peripheral to be manageable in Pro Management portal, the serial number must be unique.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Non-unique peripheral data can cause errors or overcounted usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+      "quote": "Microsoft can't guarantee that peripherals provide unique data like serial numbers, and this may cause errors or overcounting of usage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Change & support; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Microsoft advises checking serial-number uniqueness with peripheral manufacturers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+      "quote": "Check with your peripheral manufacturer to see if the peripherals used in your organization satisfy this requirement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "front matter: licensing.notes; Cost and licensing: Portal access; rationale: cost",
+      "type": "licensing",
+      "claim": "Portal access requires at least one Pro, Premium or Teams Shared Device licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+      "quote": "To have access to the portal, you'll need at least one pro, premium, or Teams Shared Device (TSD) license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing: Usage reports",
+      "type": "licensing",
+      "claim": "The BYOD rooms page says a Teams Shared Device licence unlocks the usage report.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+      "quote": "A Teams Shared Device license is required to unlock the Bring Your Own Device room usage report.",
+      "severity": "minor",
+      "fix": "Keep the attribution but add 'The current Shared Space licensing page also grants analytics through Shared Space - Single Space and through a Shared Space licensed device in the room' with https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/teams-shared-device-license."
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing: Usage reports",
+      "type": "licensing",
+      "claim": "The BYOD rooms page says only rooms with Shared Devices or Pro licences appear in usage reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+      "quote": "Only rooms with Teams Shared Devices or Pro licenses are shown in the Bring Your Own Device usage report.",
+      "severity": "minor",
+      "fix": "Add 'The current Shared Space licensing page additionally documents Shared Space - Single Space entitlement for room usage analytics' with https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/teams-shared-device-license."
+    },
+    {
+      "n": 49,
+      "where": "front matter: licensing.notes; rationale: cost; Governance guidance: After rollout",
+      "type": "licensing",
+      "claim": "BYOD usage reports require a Teams Shared Space licence assigned to the room account.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/teams-shared-device-license",
+      "quote": "Associating a Teams Shared Space license or Teams Shared Space – Single Space license to these room accounts enables valuable usage analytics",
+      "severity": "blocker",
+      "fix": "Replace the room-licence requirement with 'The Shared Space licensing page enables BYOD usage analytics through Shared Space or Shared Space - Single Space assigned to the room; a Shared Space licensed device in the room also grants analytics without an additional Single Space licence. The BYOD rooms page also lists Pro-licensed rooms.' Cite the existing Shared Space and BYOD sources. In the checklist replace 'Assign Teams Shared Space licences' with 'Confirm the documented analytics entitlement'."
+    },
+    {
+      "n": 50,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The documented portal and reporting licensing is add-on licensing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/teams-shared-device-license",
+      "quote": "a single $8 Shared Space license can be used to enable 4 bookable desks or bring your own device (BYOD) rooms.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Cost and licensing: Licence name and price; front matter: licensing.notes",
+      "type": "date",
+      "claim": "Before April 2026, Microsoft Teams Shared Space was called Microsoft Teams Shared Devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/teams-shared-device-license",
+      "quote": "Prior to April 2026, this license was called Microsoft Teams Shared Devices license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Cost and licensing: Licence name and price",
+      "type": "cost",
+      "claim": "Microsoft publishes a single $8 Shared Space licence as enabling four bookable desks or BYOD rooms.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/teams-shared-device-license",
+      "quote": "Aside from Teams devices, a single $8 Shared Space license can be used to enable 4 bookable desks or bring your own device (BYOD) rooms.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Cost and licensing: Licence name and price",
+      "type": "licensing",
+      "claim": "One paid Shared Space licence supplies three $0 Single Space licences without a billing-account qualification.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/teams-shared-device-license",
+      "quote": "make sure you're using a Microsoft Customer Agreement (MCA) billing account (not a Microsoft Online Services Agreement (MOSA) billing account), because the Single Space license is only available for purchase with an MCA billing account.",
+      "severity": "blocker",
+      "fix": "Add to the existing four-space/$0 sentence: 'Acquiring the Single Space licences requires a Microsoft Customer Agreement (MCA) billing account; they are not available through a Microsoft Online Services Agreement (MOSA) billing account.'"
+    },
+    {
+      "n": 54,
+      "where": "Cost and licensing: Licence name and price",
+      "type": "availability",
+      "claim": "Teams Shared Space licences are available to GCC High and DoD tenants.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/teams-shared-device-license",
+      "quote": "The Teams Shared Space license is available to purchase worldwide to commercial, public sector, GCC, GCC High, and DoD tenants.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "front matter: licensing.notes; Cost and licensing: Shared display mode; Open questions",
+      "type": "absence",
+      "claim": "No licence specific to shared display mode is published on Microsoft Learn at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"shared display mode\"; \"shared display mode\" license policy admin disable; Teams shared display mode license admin policy disable automatic DeviceDataCollection default. Read BYOD rooms, Shared Space licensing, Government Channel excerpts and Support; no mode-specific licence stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Scope: Rooms",
+      "type": "behaviour",
+      "claim": "Automatic association requires a room account.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+      "quote": "Auto association only works for rooms that have a room account",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Scope: Rooms; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Automatic association requires the room to be bookable through Exchange.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+      "quote": "Auto association only works for rooms that have a room account, are bookable via Exchange",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Scope: Rooms; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Automatic association requires the room to be visible in the global address list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+      "quote": "are bookable via Exchange and visible in the GAL",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Scope: Rooms",
+      "type": "behaviour",
+      "claim": "Automatic association supports the documented audio, video, display and dock peripheral classes with unique serial numbers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+      "quote": "has audio, video, display, or dock peripherals with unique serial numbers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Scope: Portal",
+      "type": "availability",
+      "claim": "The GCC High portal address is devices.gov.teams.microsoft.us.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/enrolling-mtrp-managed-service",
+      "quote": "GCC-High customers use this link (https://devices.gov.teams.microsoft.us/)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Scope: Portal",
+      "type": "availability",
+      "claim": "The portal documentation gives devices.dod.teams.microsoft.us for DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/managed-meeting-rooms-portal",
+      "quote": "Microsoft Teams Rooms Pro Management Portal is now available for DoD cloud environment customers. Admins can access it at https://devices.dod.teams.microsoft.us/.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Scope: Conflicting sources; Risk assessment: Change & support; Open questions",
+      "type": "availability",
+      "claim": "The portal page includes DoD, while the Pro Management service page excludes DoD and 21Vianet.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-management",
+      "quote": "Service page: All Microsoft clouds except DoD and Office 365 operated by 21Vianet. Portal page: This feature is only available in the commercial, GCC, GCC-High and DoD clouds as of now.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Scope: Roles",
+      "type": "role",
+      "claim": "The Microsoft Entra roles named by the portal access page can manage the portal without further qualification.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/enrolling-mtrp-managed-service",
+      "quote": "A Teams Administrator or a Teams Devices Administrator assigned to an Administrative Unit (AU), won't able to access Teams Rooms Pro Management portal, as AUs aren't yet supported.",
+      "severity": "blocker",
+      "fix": "Replace the Roles bullet with 'Teams Rooms Pro Manager provides full portal access. The access page also lists Global Administrator, Teams Administrator, Teams Devices Administrator and Global Reader; Teams Administrator and Teams Devices Administrator assignments scoped to an Administrative Unit do not grant portal access. The RBAC page identifies Global Reader as read-only.' Cite https://learn.microsoft.com/microsoftteams/rooms/enrolling-mtrp-managed-service and https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac."
+    },
+    {
+      "n": 64,
+      "where": "Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "The Devices tab is under Planning > Inventory in the Pro Management portal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+      "quote": "In the left navigation menu, select Planning and then the Inventory option.\nThere are two main tabs under Inventory: Rooms and Devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Governance controls: Delete Device Data",
+      "type": "behaviour",
+      "claim": "Delete Device Data removes device management data for a specific user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+      "quote": "Delete Device Data\nThis setting option enables admins to delete all device management data for a specific user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Governance controls: inventory management permission",
+      "type": "behaviour",
+      "claim": "Custom roles can grant inventory access and peripheral-association permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+      "quote": "You can create roles and grant other users permission to access inventory management and associate peripherals to rooms or desks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Governance controls: additional settings",
+      "type": "behaviour",
+      "claim": "The BYOD page names deletion, inventory permissions and automatic-association settings without their complete UI routes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+      "quote": "Delete Device Data\nThis setting option enables admins to delete all device management data for a specific user.\nAuto association can be turned off for your organization in Pro Management portal's settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "front matter: defaultState; Why it matters",
+      "type": "default",
+      "claim": "The combined change is on by default in GCC High and DoD, so administrators should decide whether to keep client collection on.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bookable-desks",
+      "quote": "Turning off automatic discovery and usage data collection in the Teams client\nFor government clouds, this policy is off by default.",
+      "severity": "blocker",
+      "fix": "Set defaultState to unknown for this combined briefing rather than deriving the client default from portal ingestion. Replace the keep-collection-on wording with 'The Bookable Desks page documents the shared TeamsBYODAndDesks collection policy as off by default in government clouds; the BYOD rooms page separately documents portal ingestion as enabled by default. Confirm the effective collection policy before enabling or disabling it.' Cite https://learn.microsoft.com/microsoftteams/rooms/bookable-desks. Do not present the portal toggle as proof that client collection is on."
+    },
+    {
+      "n": 69,
+      "where": "Open questions: Global policy default",
+      "type": "absence",
+      "claim": "The default of DeviceDataCollection in government clouds is an unpublished question.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bookable-desks",
+      "quote": "For government clouds, this policy is off by default.\nUse the following commands to create, set, grant, or remove a configuration in the TeamsBYODAndDesks policy",
+      "severity": "blocker",
+      "fix": "Remove the open question about the unpublished government-cloud collection default and state the documented off-by-default policy with https://learn.microsoft.com/microsoftteams/rooms/bookable-desks, as specified in the default-state correction."
+    },
+    {
+      "n": 70,
+      "where": "front matter: cost; rationale: cost",
+      "type": "consistency",
+      "claim": "The low cost rating is consistent with the briefing's documented add-on licensing.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "cost: \"low\"\nlicensing: model: \"add-on\"\nLow. The BYOD inventory needs at least one Teams Rooms Pro, Premium or Teams Shared Device licence in the tenant; per-room usage reports need a Teams Shared Space licence",
+      "severity": "blocker",
+      "fix": "Set cost to medium and replace its rationale with 'Medium. Portal access requires a qualifying licence, and BYOD room usage analytics require a documented reporting entitlement. Additional licensing may be needed for selected rooms; admin time is an indirect cost.' Low is reserved by the standard for indirect costs only."
+    },
+    {
+      "n": 71,
+      "where": "Governance guidance: At rollout and After rollout",
+      "type": "consistency",
+      "claim": "Every checklist control to configure or review is represented in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Make BYOD rooms bookable in Exchange and visible in the global address list ... Review the Devices tab ... Check the BYOD report ... Assign Teams Shared Space licences",
+      "severity": "minor",
+      "fix": "The checklist's room booking/GAL configuration, inventory review, BYOD report review and room reporting-entitlement steps have no table rows. Remove those checklist bullets; retain their already documented facts in Scope and Cost and licensing. Do not add unverified control rows."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-27T20:13:03.681Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=553592",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/officeupdates/governmentchannel",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/teams-shared-device-license",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/rooms/managed-meeting-rooms-portal",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-management",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/rooms/enrolling-mtrp-managed-service",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether the Teams client sends peripheral data for BYOD discovery and automatic room experiences",
+        "docs": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+        "reachable": true,
+        "token": "Set-CsTeamsBYODAndDesksPolicy",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether peripheral data is ingested into the Pro Management portal",
+        "docs": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "General",
+          "BYOD Rooms and Desk management"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Who can manage all rooms and features in the Pro Management portal",
+        "docs": "https://learn.microsoft.com/microsoftteams/rooms/enrolling-mtrp-managed-service",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Roles",
+          "Teams Rooms Pro Manager",
+          "Assignments",
+          "Add"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

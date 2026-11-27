@@ -75,15 +75,17 @@ changes:
     note: "Corrected how the Viva Glint app is installed for Teams users (Manage apps or setup policies) and removed three checklist items that had no controls-table row."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 61 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 65 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 61
-  confirmed: 60
+  claims: 65
+  confirmed: 64
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -189,8 +191,8 @@ cost: Low. Viva Glint needs a Viva Suite or Viva Glint subscription, and Microso
 impact: Medium. Recipients of surveys that have Teams notifications enabled would see the new wording, and the admins who run those survey programs do the editing.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: At rollout; Governance controls table / consistency: The checklist tells readers to use the notification preview, but neither controls-table row covers that action. | Found: Preview the invite, reminder and results notifications on the Teams tab of the Configure Notifications preview pane. Table rows: Whether Microsoft Teams is a notification option for the organisation; Whether a survey program sends invites and reminders in Teams. | Fix: Remove the At rollout checklist bullet beginning 'Preview the invite, reminder and results notifications'; it has no corresponding controls-table row.
+- [contradicted, minor] Governance guidance: At rollout; Governance controls table / consistency: The notification preview action in the governance checklist has a corresponding controls-table row. | Found: Checklist: Preview the invite, reminder and results notifications on the Teams tab of the Configure Notifications preview pane. Table: Whether Microsoft Teams is a notification option for the organisation; Whether a survey program sends invites and reminders in Teams. | Fix: Remove the At rollout checklist bullet 'Preview the invite, reminder and results notifications on the Teams tab of the Configure Notifications preview pane.' Neither controls-table row covers this preview action.
 -->
