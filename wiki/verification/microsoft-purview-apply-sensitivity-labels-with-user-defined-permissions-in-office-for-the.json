@@ -1,0 +1,992 @@
+{
+  "slug": "microsoft-purview-apply-sensitivity-labels-with-user-defined-permissions-in-office-for-the",
+  "roadmapId": 468888,
+  "title": "Microsoft Purview: apply sensitivity labels with user-defined permissions in Word, Excel and PowerPoint for the web",
+  "status": "held",
+  "date": "2026-11-27",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-27",
+    "reasons": [
+      "1 blocking finding (claim 54)"
+    ]
+  },
+  "counts": {
+    "claims": 71,
+    "confirmed": 68,
+    "unconfirmed": 1,
+    "contradicted": 2,
+    "blocker": 1,
+    "major": 1,
+    "minor": 1
+  },
+  "summary": "The briefing's rollout facts, licensing quotations and PowerShell controls are supported. The label configuration route omits the required Files & other data assets scope choice, which determines whether the encryption settings can be configured. The claim that the apps run in any browser also needs narrowing.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap lists Excel, Microsoft Purview, PowerPoint and Word.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Excel\", \"Microsoft Purview\", \"PowerPoint\", \"Word\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is April CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"April CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The record provides no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "title; summary; What's changing",
+      "type": "behaviour",
+      "claim": "Word, Excel and PowerPoint for the web support applying sensitivity labels with user-defined permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "Labels with this configuration are displayed in Office for the web. Before users select these labels to specify users and permissions, or change the label applied, make sure you've enabled co-authoring for files encrypted with sensitivity labels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "This user-defined permissions configuration selects Let users assign permissions when they apply the label and the Word, PowerPoint and Excel prompt checkbox.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "User-defined permissions refers to an encryption configuration and the setting Let users assign permissions when they apply the label and the checkbox In Word, PowerPoint, and Excel, prompt users to specify permissions is selected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing; Why it matters; rationale: risk",
+      "type": "behaviour",
+      "claim": "The user applying the label controls who can access the document and their permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/encryption-sensitivity-labels",
+      "quote": "For this configuration, the user and not the administrator controls both who can access the document, and what permissions they have.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: defaultState; summary; Why it matters",
+      "type": "default",
+      "claim": "Web label support is admin-opt-in through enabling sensitivity labels for SharePoint and OneDrive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "How to enable sensitivity labels for SharePoint and OneDrive (opt-in)\nYou can enable the new capabilities by using the Microsoft Purview portal, or by using PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "Both user-defined permissions rows in the Word, Excel and PowerPoint capabilities table show Yes - opt-in for Web.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-versions",
+      "quote": "Let users assign permissions: - Prompt users for custom permissions (users and groups) ... Yes - opt-in\nLet users assign permissions: - Prompt users for custom permissions (users, groups, and organizations) ... Yes - opt-in",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Why it matters; Governance controls",
+      "type": "applicability",
+      "claim": "Enabling SharePoint and OneDrive sensitivity label support makes labels configured for user-defined permissions display in Office for the web.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "After you've enabled sensitivity labels for SharePoint and OneDrive ... Labels with this configuration are displayed in Office for the web.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "summary; What's changing; Governance controls",
+      "type": "applicability",
+      "claim": "Microsoft asks administrators to enable encrypted-file co-authoring before users select these labels or change the label in the browser.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "Before users select these labels to specify users and permissions, or change the label applied, make sure you've enabled co-authoring for files encrypted with sensitivity labels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Entering a domain in Office for the web grants the chosen rights to users across every domain owned by that organization in Microsoft Entra ID, not just the named subdomain.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/encryption-sensitivity-labels",
+      "quote": "Because Contoso Corporation owns the contoso.com domain, all users in that domain and all other domains that the organization owns in Microsoft Entra ID will be granted read access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment: Data exposure; Governance guidance",
+      "type": "behaviour",
+      "claim": "Typing @ in Office for the web displays a selectable entry for everybody in the organization.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/encryption-sensitivity-labels",
+      "quote": "When you use Office for the web, typing the @ character automatically displays a selectable entry for everybody in the organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "The apps run in any browser.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Office for the web supported browsers any browser Word Excel PowerPoint. Read the Office for the web service description search excerpt: it says a supported browser and an internet connection, not any browser.",
+      "severity": "major",
+      "fix": "Replace 'in apps that run in any browser' with 'in Word, Excel and PowerPoint for the web'."
+    },
+    {
+      "n": 18,
+      "where": "Why it matters; Risk assessment: Data exposure; Governance guidance",
+      "type": "behaviour",
+      "claim": "Relabelling a file protected with user-defined permissions to a label without encryption removes the original encryption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "If an existing file that's labeled with user-defined permissions is relabeled with a sensitivity label that doesn't apply encryption, the original encryption is removed rather than preserved.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Why it matters; Scope: Users; Governance controls; rationale: impact",
+      "type": "applicability",
+      "claim": "Labels must be published through a label policy to the users who should see and apply them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+      "quote": "Until you publish your labels, they won't be available to select in apps or for services. To publish the labels, they must be added to a label policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Office for the web does not prevent screen captures of encrypted documents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "For encrypted documents in Office for the web, screen captures aren't prevented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Office for the web blocks copying to the clipboard when the Copy usage right is not granted.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "when documents are labeled and encrypted, and the Copy usage right isn't granted, Office for the web prevents copying to clipboard in the same way as desktop apps prevent this action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "behaviour",
+      "claim": "An external guest granted user-defined permissions through a group in their home tenant cannot open the file in Office for the web or from SharePoint or OneDrive in desktop Office.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "users from an external tenant can't open files protected with a user-defined permissions sensitivity label in Office for the web. The same limitation also applies when users open the file from SharePoint or OneDrive with Microsoft Office desktop applications.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Security & identity; Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "Microsoft documents granting permissions directly to the external user as a workaround for the external-group limitation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "Grant permissions directly to the external user in the sensitivity label.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Security & identity; Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "Microsoft documents adding the external user to a group in the resource tenant and granting that group permissions as another workaround.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "Add the external user to a group in the contoso tenant, and grant permissions to that contoso tenant group in the sensitivity label.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Autonomy & actions; Cost and licensing",
+      "type": "behaviour",
+      "claim": "The document permissions prompt is used when a person manually applies the label.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/encryption-sensitivity-labels",
+      "quote": "Often referred to as \"user-defined permissions\", you can use the following options to let users assign permissions when they manually apply a sensitivity label to content:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "A sensitivity label that lets users assign permissions can be recommended.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/encryption-sensitivity-labels",
+      "quote": "A sensitivity label that lets users assign permissions can be recommended to users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Such labels can be automatically applied only for the Outlook Do Not Forward and Encrypt-Only options.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/encryption-sensitivity-labels",
+      "quote": "can only be automatically applied for the Do Not Forward and Encrypt-Only options.\nIn Outlook, a user can select restrictions equivalent to the Do Not Forward option or Encrypt-only for their chosen recipients.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Change & support; controls[2].note; Governance guidance",
+      "type": "behaviour",
+      "claim": "Enabling the co-authoring setting changes the format and location of Office labelling metadata.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-coauthoring",
+      "quote": "The change that this setting makes is the metadata format and location for Word, Excel, and PowerPoint files.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Change & support; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Microsoft warns against enabling co-authoring while apps, services, scripts or tools read or write metadata in the old location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-coauthoring",
+      "quote": "Don't enable this setting if you use any apps, services, scripts, or tools that read or write labeling metadata to the old location.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Change & support; controls[2].note; Governance controls",
+      "type": "behaviour",
+      "claim": "After enabling co-authoring, it can be disabled only with PowerShell, not in the Purview portal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-coauthoring",
+      "quote": "After you enable co-authoring for files with sensitivity labels for your tenant, you can't disable this setting in the Microsoft Purview portal. This action is supported only by using PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Some files encrypted in desktop apps containing Power Query data, custom add-in data, custom XML parts or bibliographies cannot be processed by SharePoint and OneDrive and require desktop apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "SharePoint and OneDrive can't process some files that are labeled and encrypted from Office desktop apps when these files contain Power Query data, data stored by custom add-ins, or custom XML parts",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Printing encrypted documents is not supported in Office for the web.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "For encrypted documents, printing, downloading, exporting, and creating a copy aren't supported in Office for the web.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Downloading encrypted documents is not supported in Office for the web.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "For encrypted documents, printing, downloading, exporting, and creating a copy aren't supported in Office for the web.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Exporting encrypted documents is not supported in Office for the web.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "For encrypted documents, printing, downloading, exporting, and creating a copy aren't supported in Office for the web.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Creating a copy of an encrypted document is not supported in Office for the web.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "For encrypted documents, printing, downloading, exporting, and creating a copy aren't supported in Office for the web.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Manual Sensitivity Labeling is included in the Microsoft 365, Office 365, OneDrive, EMS and AIP plans listed in the briefing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft 365 E5/A5/G5/E3/A3/G3/F1/F3/Business Premium | OneDrive for Business (Plan 2) | Enterprise Mobility + Security E3/E5 | Office 365 E5/A5/E3/A3 | AIP Plan 1, AIP Plan 2\nManual Sensitivity Labeling | Included | Included | Included | Included | Included",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "licensing",
+      "claim": "The same service description also states that sensitivity labeling requires Microsoft 365 E5 or Microsoft 365 Information Protection and Governance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Sensitivity labeling, including automatic or policy‑based labeling, requires a Microsoft 365 E5 license or Microsoft 365 Information Protection and Governance (IPG).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Administrators need a licence to manage sensitivity labels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/get-started-with-sensitivity-labels",
+      "quote": "Admins also need a license to manage sensitivity labels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing: Meter",
+      "type": "absence",
+      "claim": "The service description and Get started page document no meter for this Office web feature at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Purview sensitivity labels Office web user defined permissions manual labeling billing meter pricing. Opened Microsoft Purview service description and Get started with sensitivity labels; no meter for this feature was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "The Get started page specifies pay-as-you-go billing for applying labels to non-Microsoft 365 data sources.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/get-started-with-sensitivity-labels",
+      "quote": "Specific to non-Microsoft 365 data sources, applying sensitivity labels in the Data Map and using protection policies requires you to set up pay-as-you-go billing in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Scope: Apps and files",
+      "type": "availability",
+      "claim": "Supported web labelling file types are Word .docx/.docm, Excel .xlsx/.xlsm/.xlsb and PowerPoint .pptx/.ppsx in SharePoint and OneDrive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "Applying a sensitivity label in Office for the web or in SharePoint:\nWord: .docx, .docm\nExcel: .xlsx, .xlsm, .xlsb\nPowerPoint: .pptx, .ppsx",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Scope: Roles; controls[1].note",
+      "type": "role",
+      "claim": "The portal route to enable SharePoint and OneDrive label support requires a global administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "You must sign in as a global administrator for your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Scope: Roles",
+      "type": "role",
+      "claim": "The SharePoint PowerShell route requires SharePoint admin privileges.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "Using a work or school account that has SharePoint admin privileges in Microsoft 365, connect to SharePoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Scope: Roles; controls[2].note",
+      "type": "role",
+      "claim": "Co-authoring configuration needs at least DLP Compliance Management or Information Protection Admin; Security Administrator and Compliance Administrator are alternatives.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-coauthoring",
+      "quote": "To turn this capability on or off, you need at least the DLP Compliance Management or Information Protection Admin role. Alternative roles include the Security Administrator and Compliance Administrator roles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Scope: Timing",
+      "type": "behaviour",
+      "claim": "The SharePoint and OneDrive configuration change takes about 15 minutes to take effect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "As with all tenant-level configuration changes for SharePoint and OneDrive, it takes about 15 minutes for the change to take effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope: Timing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Microsoft instructs administrators to wait 24 hours after enabling the co-authoring setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-coauthoring",
+      "quote": "Wait 24 hours for this setting to replicate across your environment before you use this new feature for co-authoring.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Scope: Multi-Geo; controls[1].note; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Multi-Geo tenants must use PowerShell in every geo-location to enable label support.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "If you have Microsoft 365 Multi-Geo, you must use PowerShell to enable this support for all your geo-locations.\nFor Microsoft 365 Multi-Geo: Repeat steps 1 and 2 for each of your remaining geo-locations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Scope: Out of scope; Open questions",
+      "type": "availability",
+      "claim": "Labels with User access to content expires set to anything other than Never are not displayed in Office for the web.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "User access to content expires is set to a value other than Never.\nDouble Key Encryption is selected.\nFor labels with either of these encryption configurations, the labels aren't displayed to users in Office for the web.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Scope: Out of scope",
+      "type": "availability",
+      "claim": "Labels configured with Double Key Encryption are not displayed in Office for the web.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "Double Key Encryption is selected.\nFor labels with either of these encryption configurations, the labels aren't displayed to users in Office for the web.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Scope: Out of scope",
+      "type": "availability",
+      "claim": "Documents encrypted with an on-premises key cannot be opened in Office for the web.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "Documents that are encrypted in the following ways can't be opened in Office for the web:\nEncryption that uses an on-premises key (\"hold your own key\" or HYOK)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Scope: Out of scope",
+      "type": "availability",
+      "claim": "Documents encrypted with Double Key Encryption cannot be opened in Office for the web.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "Documents that are encrypted in the following ways can't be opened in Office for the web:\nEncryption that was applied by using Double Key Encryption",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Scope: Out of scope",
+      "type": "availability",
+      "claim": "Documents encrypted by a Rights Management protection template independently of a label cannot be opened in Office for the web.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "Documents that are encrypted in the following ways can't be opened in Office for the web:\nEncryption that was applied independently from a label, for example, by directly applying a Rights Management protection template.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "A labelled and encrypted Office file larger than 12 MB copied to another site cannot be opened in Office for the web but can be opened in an Office client app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "When a labeled and encrypted Office file larger than 12 MB is copied or moved to a different site, SharePoint can no longer process this file.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The route from Edit label goes directly to Choose protection settings without a label scope choice.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/encryption-sensitivity-labels",
+      "quote": "Follow the general instructions to create or edit a sensitivity label and make sure the Files & other data assets option is selected for the label's scope",
+      "severity": "blocker",
+      "fix": "Replace the path with 'Solutions > Information Protection > Sensitivity labels > label > Edit label > Define the scope for this label > Files & other data assets > Choose protection settings for the types of items you selected > Control access > Access control > Configure access control settings > Let users assign permissions when they apply the label > In Word, PowerPoint, and Excel, prompt users to specify permissions'. The scope page and route into Edit label are documented at https://learn.microsoft.com/purview/create-sensitivity-labels; the required scope and encryption choices are at https://learn.microsoft.com/purview/encryption-sensitivity-labels."
+    },
+    {
+      "n": 55,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-Label -Identity <label> -EncryptionPromptUser $true sets the label's Word, Excel and PowerPoint user-defined permissions prompt.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-label",
+      "quote": "The EncryptionPromptUser parameter specifies whether to set the label with user defined permission in Word, Excel, and PowerPoint. Valid values are:\n$true: The label is set with user defined permissions in Word, Excel and PowerPoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[0].note",
+      "type": "command",
+      "claim": "EncryptionPromptUser requires EncryptionProtectionType UserDefined.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-label",
+      "quote": "This parameter is meaningful only when the EncryptionEnabled parameter value is either $true or $false, and when the EncryptionProtectionType parameter value is UserDefined.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "SharePoint and OneDrive label support is enabled in the Purview portal at Solutions > Information Protection > Sensitivity labels > Turn on now.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "Sign in to the Microsoft Purview portal > Solutions > Information Protection > Sensitivity labels.\nIf you see a message to turn on the ability to process content in Office online files, select Turn on now",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[1].api; Governance controls table; Governance guidance",
+      "type": "command",
+      "claim": "Set-SPOTenant -EnableAIPIntegration $true enables SharePoint and OneDrive sensitivity label support.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "To enable the new capabilities, use the Set-SPOTenant cmdlet with the EnableAIPIntegration parameter:\nSet-SPOTenant -EnableAIPIntegration $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[1].note",
+      "type": "behaviour",
+      "claim": "The Turn on now portal message and button disappear after enabling the setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "The command runs immediately and when the page is next refreshed, you no longer see the message or button.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The co-authoring setting is at Purview portal > Settings > Solution settings > Information Protection > Co-authoring for files with sensitivity labels > Turn on co-authoring for files with sensitivity labels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-coauthoring",
+      "quote": "Sign in to the Microsoft Purview portal > Settings > Solution settings > Information Protection > Co-authoring for files with sensitivity labels.\nThen select Turn on co-authoring for files with sensitivity labels, and Apply",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-PolicyConfig -EnableLabelCoauth $true enables tenant-wide co-authoring support for sensitivity-label-encrypted files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig",
+      "quote": "The EnableLabelCoauth parameter enables or disables co-authoring support in Office desktop apps for the entire organization.\n$true: Co-authoring support in Office desktop apps is enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[3].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Purview portal audit search route is Audit > Search.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "Select the Audit solution card. If the Audit solution card isn't displayed, select View all solutions and then select Audit from the Core section.\nOn the Search page, configure the following search criteria as applicable",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[3].api; Governance controls table",
+      "type": "command",
+      "claim": "Search-UnifiedAuditLog is the PowerShell operation for searching the audit log.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "The underlying cmdlet used to search the audit log is an Exchange Online cmdlet, which is Search-UnifiedAuditLog.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[3].note; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Applying a label in Office for the web is audited as Applied sensitivity label to file with operation FileSensitivityLabelApplied.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-activities",
+      "quote": "Applied sensitivity label to file ... Office for the web, details pane in a SharePoint document library or the Files tab in Teams, or an auto-labeling policy (FileSensitivityLabelApplied)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[3].note; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Changing a label in Office for the web is audited as Changed sensitivity label applied to file with operation FileSensitivityLabelChanged.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-activities",
+      "quote": "Changed sensitivity label applied to file ... Office for the web, details pane in a SharePoint document library or the Files tab in Teams, or an auto-labeling policy (FileSensitivityLabelChanged)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Removed sensitivity label from file is an audit activity covering Office for the web label removal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-activities",
+      "quote": "Removed sensitivity label from file ... A sensitivity label was removed from an item by using Microsoft 365 apps, Office for the web, the details pane in a SharePoint document library or the Files tab in Teams",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Governance controls: publishing policies path",
+      "type": "admin-path",
+      "claim": "Label publishing policies are reached at Purview portal > Solutions > Information Protection > Publishing policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+      "quote": "Sign in to the Microsoft Purview portal > Solutions > Information Protection > Publishing policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Governance controls: disabling co-authoring",
+      "type": "command",
+      "claim": "Set-PolicyConfig with EnableLabelCoauth set to $false disables co-authoring.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-coauthoring",
+      "quote": "To disable co-authoring for your tenant\nUse the Set-PolicyConfig cmdlet with the EnableLabelCoauth parameter.\nSet-PolicyConfig -EnableLabelCoauth:$false",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Governance controls: disabling co-authoring",
+      "type": "behaviour",
+      "claim": "Disabling co-authoring loses labelling information for unencrypted Word, Excel and PowerPoint files stored in the new metadata format.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-coauthoring",
+      "quote": "The new metadata format and location for Office documents that were used while the setting was enabled won't be copied to the original format and location. As a result, this labeling information for unencrypted Word, Excel, and PowerPoint files will be lost.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Governance controls: changes to user-assigned permissions",
+      "type": "behaviour",
+      "claim": "Changes to encryption options for letting users assign permissions apply only to newly labelled or relabelled items.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/encryption-sensitivity-labels",
+      "quote": "Whenever you change the encryption options for letting users assign permissions, that change only applies to newly labeled or relabeled items.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Governance guidance: Before rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The guidance to decide which labels users can reach depends on label publishing policies, which have no row in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "decide which should be usable in the browser ... which users are published them ... The table has rows for the label prompt, SharePoint and OneDrive integration, co-authoring, and audit search, but none for publishing policies.",
+      "severity": "minor",
+      "fix": "The Before rollout instruction to decide which labels should be usable in the browser depends on publishing policies, a control with no corresponding table row. This is a checklist/table coverage finding, not a request to add a row during correction."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-27T10:10:58.819Z",
+    "summary": {
+      "links": 12,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 1,
+      "apiCalls": 4,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=468888",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/encryption-sensitivity-labels",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/sensitivity-labels-versions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/sensitivity-labels-coauthoring",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/get-started-with-sensitivity-labels",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-log-activities",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-label",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-search",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether a label prompts users to choose permissions in Word, PowerPoint and Excel",
+        "docs": "https://learn.microsoft.com/purview/encryption-sensitivity-labels",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "Information Protection",
+          "Sensitivity labels",
+          "label",
+          "Edit label",
+          "Choose protection settings for the types of items you selected",
+          "Control access",
+          "Access control",
+          "Configure access control settings"
+        ],
+        "missing": [
+          "Solutions",
+          "Edit label"
+        ]
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether a label prompts users to choose permissions in Word, PowerPoint and Excel",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-label",
+        "reachable": true,
+        "token": "Set-Label",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether SharePoint and OneDrive process labelled files so labels appear in Office for the web",
+        "docs": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "Information Protection",
+          "Sensitivity labels",
+          "Turn on now"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether SharePoint and OneDrive process labelled files so labels appear in Office for the web",
+        "docs": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+        "reachable": true,
+        "token": "Set-SPOTenant",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether co-authoring is supported for files encrypted with sensitivity labels",
+        "docs": "https://learn.microsoft.com/purview/sensitivity-labels-coauthoring",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Solution settings",
+          "Information Protection",
+          "Co-authoring for files with sensitivity labels",
+          "Turn on co-authoring for files with sensitivity labels"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Whether co-authoring is supported for files encrypted with sensitivity labels",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig",
+        "reachable": true,
+        "token": "Set-PolicyConfig",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Searching audit records of labels applied, changed or removed on files",
+        "docs": "https://learn.microsoft.com/purview/audit-search",
+        "reachable": true,
+        "segments": [
+          "Audit",
+          "Search"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Searching audit records of labels applied, changed or removed on files",
+        "docs": "https://learn.microsoft.com/purview/audit-search",
+        "reachable": true,
+        "token": "Search-UnifiedAuditLog",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

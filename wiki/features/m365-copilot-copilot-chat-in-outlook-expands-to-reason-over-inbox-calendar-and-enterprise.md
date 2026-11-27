@@ -110,15 +110,17 @@ changes:
     note: "Corrected after verification: narrowed the mailbox-reach and on-premises mailbox statements, removed an unsupported claim about spending controls, clarified Integrated Apps blocking and pinning, and set action to act-now."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 79 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 88 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 79
-  confirmed: 79
+  claims: 88
+  confirmed: 88
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -231,8 +233,8 @@ cost: Low. The roadmap text and Microsoft's requirements page say no Microsoft 3
 impact: High. It changes what Copilot Chat in Outlook can answer from for users who have Copilot Chat but no Microsoft 365 Copilot licence, on desktop, web and mobile.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].ui; Governance controls: third row / admin-path: The printed Purview route reaches the Microsoft Copilot, Copilot Chat, and Copilot Cowork policy location. | Found: Go to Data Loss Prevention > Policies and select + Create policy. Select the Custom template, then Custom policy. On the Locations page, set the Microsoft Copilot, Copilot Chat, and Copilot Cowork location to on. | Fix: The route correctly reaches the policy location but stops before the label restriction. Extend controls[2].ui.path to 'Data Loss Prevention > Policies > Create policy > Custom template > Custom policy > Locations > Microsoft Copilot, Copilot Chat, and Copilot Cowork > Add a rule > Content contains > Sensitivity labels > Prevent Copilot and Cowork from processing content', using https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about. Retain the separate external-email condition and action in the prose. | Source: https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about
+- [supported, minor] controls[2].ui; Governance controls: third row / admin-path: The printed Purview route reaches the Copilot policy location, stopping before configuring the labelled-email exclusion. | Found: Go to Data Loss Prevention > Policies and select + Create policy. Select the Custom template, then Custom policy. On the Locations page, set the Microsoft Copilot, Copilot Chat, and Copilot Cowork location to on. | Fix: Extend controls[2].ui.path and the matching table route to 'Data Loss Prevention > Policies > Create policy > Custom template > Custom policy > Locations > Microsoft Copilot, Copilot Chat, and Copilot Cowork > Add a rule > Content contains > Sensitivity labels > Prevent Copilot and Cowork from processing content', using https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about. Retain the separate external-email condition and action in the prose. | Source: https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about
 -->

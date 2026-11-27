@@ -14,11 +14,11 @@ previewDate: null
 risk: "medium"
 cost: "low"
 impact: "medium"
-defaultState: "user-opt-in"
+defaultState: "unknown"
 action: "act-now"
 licensing:
   model: "included"
-  notes: "Town halls are listed as available in GCC, GCC High and DoD in the Microsoft Teams service description, and the feature comparison lists the attendee comment stream without a Premium marking. No licence or price specific to event chat is published."
+  notes: "Attendee chat is included in eligible Teams event licences. Teams Enterprise supports interactive events with up to 3,000 attendees; larger ones need an Attendee Capacity Pack assigned to the organiser, except during an eligible pre-April 1, 2026 Teams Premium term. Packs are available in GCC, GCC High and DoD. Chat is limited to events with up to 20,000 attendees."
 audiences: ["m365-admin","compliance","service-owner","change-adoption"]
 tags: ["teams","teams-events","ediscovery","information-barriers","retention","powershell","gcc","gcc-high","dod"]
 sources:
@@ -43,6 +43,15 @@ sources:
   - title: "Set-CsTeamsEventsPolicy"
     url: "https://learn.microsoft.com/powershell/module/teams/set-csteamseventspolicy"
     kind: "docs"
+  - title: "Teams events licensing overview"
+    url: "https://learn.microsoft.com/microsoftteams/events-licensing"
+    kind: "learn"
+  - title: "Attendee Capacity Pack for Teams events"
+    url: "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/attendee-capacity-pack"
+    kind: "learn"
+  - title: "Create holds in eDiscovery"
+    url: "https://learn.microsoft.com/purview/edisc-hold-create"
+    kind: "learn"
 videos: []
 related: ["microsoft-teams-external-presenter-support-for-event-group-chat","microsoft-teams-share-reactions-at-events-with-up-to-100-000-attendees","microsoft-teams-raise-your-hand-to-speak-up-at-large-events-with-up-to-100-000-attendees","ediscovery"]
 controls:
@@ -88,19 +97,23 @@ changes:
     note: "New briefing: town hall attendee chat planned for GCC, GCC High and DoD, with the events policy chat setting and 30-day organiser-mailbox storage."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 58 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-27"
+    note: "Corrected licensing to the Teams events licensing overview and Attendee Capacity Pack rules, set the default to Not stated for the government release, and narrowed the Purview hold and checklist."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 63 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-27"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 58
-  confirmed: 54
-  unconfirmed: 1
-  contradicted: 3
-  attempts: 1
-  hash: "6c39fb0d5fd31ba0a5a4b1981d446764"
+  claims: 63
+  confirmed: 61
+  unconfirmed: 0
+  contradicted: 2
+  attempts: 2
+  hash: "d9be81b8326cc81298de74c6f43c87ff"
 ---
 
 ## What's changing
@@ -111,7 +124,7 @@ Microsoft Learn describes this chat for the commercial service on [Manage chat f
 
 The chat is limited by design: attendees can send up to 200 characters of text and emojis, can't use @ to mention others, reply or react, and see only the last 200 messages, and messages may arrive with 15-30 seconds of latency. Attendee chat is supported in events with up to 20,000 attendees, and isn't available in the new event if an event restarts.
 
-The roadmap item is In development, with a target of January CY2027, release phase General Availability, on Android, Desktop, iOS, Mac and Web. No Message center post was supplied for this item.
+The roadmap item is In development, with a target of January CY2027, release phase General Availability, on Android, Desktop, iOS, Mac and Web. No Message center post was supplied for this item. Microsoft has not stated the arrival default for the government-cloud release. The commercial documentation allows organisers to enable attendee chat under the default **Optimized** policy.
 
 ## Why it matters
 
@@ -140,7 +153,9 @@ The records position is the larger issue. Microsoft states that these messages a
 
 The [Microsoft Teams service description](https://learn.microsoft.com/office365/servicedescriptions/teams-service-description) lists **Town halls (Teams events)** as available in GCC, GCC High and DoD. The [Meetings and events feature and capacity comparison](https://learn.microsoft.com/microsoftteams/meetings-events-feature-comparison) lists **Comment stream** as the chat for events optimised for large audiences, available in events with up to 20,000 attendees, without the "Premium" marking that page gives Teams Premium features.
 
-Neither page documents a meter for event chat, and a licence or price specific to event chat is not yet published. The indirect cost is admin and records-management time to set events policies and decide how town hall chat is retained.
+Microsoft publishes attendee-chat entitlement in its [Teams events licensing overview](https://learn.microsoft.com/microsoftteams/events-licensing): **Chat for attendees** is listed under both foundational and advanced event features, with capacity depending on the organiser's licence. Teams Enterprise supports interactive events with up to 3,000 attendees; larger interactive events require an appropriately sized [Attendee Capacity Pack](https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/attendee-capacity-pack) assigned to the organiser, except while an eligible Teams Premium term purchased before April 1, 2026 remains active. Attendee packs are available in GCC, GCC High and DoD. Chat remains limited to events with up to 20,000 attendees.
+
+Neither the service description nor the feature comparison documents a meter for event chat, and no separate price for event chat is published. The indirect cost is admin and records-management time to set events policies and decide how town hall chat is retained.
 
 ## Scope
 
@@ -155,7 +170,7 @@ Neither page documents a meter for event chat, and a licence or price specific t
 ### Before rollout
 - Decide, for each events policy, whether town hall organisers may turn on attendee chat, and set **Events optimized for a large audience chat experience** to **Optimized** or **None**.
 - Check **Who can attend events optimized for a large audience** in each events policy, since at **Everyone** any user can attend and join the chat.
-- Ask records and legal owners whether storage in the organiser's mailbox for up to 30 days meets your obligations for town hall content, and agree how a hold is requested for events that need longer.
+- Ask records and legal owners whether storage in the organiser's mailbox for up to 30 days meets your obligations for town hall content.
 - Tell the owners of any Information Barriers policies that Microsoft states town hall chat doesn't support them.
 
 ### At rollout
@@ -164,7 +179,6 @@ Neither page documents a meter for event chat, and a licence or price specific t
 - Tell organisers to reschedule an event if its organiser leaves the organisation, as Microsoft advises.
 
 ### After rollout
-- Run a content search of an organiser's mailbox after a pilot town hall to confirm the chat messages are there for eDiscovery.
 - Revisit the chat setting in events policies if Microsoft documents Information Barriers support or changes the storage period.
 
 ## Governance controls
@@ -180,7 +194,7 @@ Neither page documents a meter for event chat, and a licence or price specific t
 </tbody>
 </table>
 
-The events policy is a user-level policy, so the chat setting follows the organiser: it decides whether that organiser can turn on chat for attendees, not who may type in a given event. The **Meeting chat** setting in meeting policies covers meetings and events with up to 1,000 attendees and does not govern this chat. Turning **Events optimized for a large audience** off after an organiser has scheduled a town hall stops them running or starting it. To keep chat messages beyond 30 days, Microsoft's page points to placing the organiser's mailbox on legal hold; that is done in Microsoft Purview and is not a row here. The `Set-CsTeamsEventsPolicy` reference describes the policy as "currently still in preview".
+The events policy is a user-level policy, so the chat setting follows the organiser: it decides whether that organiser can turn on chat for attendees, not who may type in a given event. The **Meeting chat** setting in meeting policies covers meetings and events with up to 1,000 attendees and does not govern this chat. Turning **Events optimized for a large audience** off after an organiser has scheduled a town hall stops them running or starting it. To keep chat messages beyond 30 days, Microsoft's page points to placing the organiser's mailbox on legal hold; an eDiscovery hold on the organiser's Exchange mailbox can be created in [Microsoft Purview](https://learn.microsoft.com/purview/edisc-hold-create). The `Set-CsTeamsEventsPolicy` reference describes the policy as "currently still in preview".
 
 ## Open questions
 
@@ -191,17 +205,16 @@ The events policy is a user-level policy, so the chat setting follows the organi
 
 <!-- rationale
 risk: Medium. The events policy default lets organisers open a chat to every attendee, messages are kept only in the organiser's mailbox for up to 30 days, and Microsoft states the chat doesn't support Information Barriers.
-cost: Low. Town halls are listed for GCC, GCC High and DoD in the Teams service description and attendee chat is not marked Premium; the cost shown is admin time for policy and records decisions.
+cost: Low. Attendee chat is included in eligible Teams event licences and is not marked Premium; Attendee Capacity Packs apply to interactive events above 3,000 attendees generally, so the cost this change adds is admin time for policy and records decisions.
 impact: Medium. Town hall organisers and their audiences notice it, and only in events where an organiser turns chat on.
 -->
 
 <!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model; licensing.notes / licensing: Attendee chat is included without stating which license covers the large-audience experience or its licensed capacity. | Found: To host events with more than 3,000 attendees with engagement capabilities (chat, reactions, raise hand, polls, Q&A), organizations must purchase Attendee Capacity Pack add-on licenses and assign them to organizers. | Fix: Keep included for the chat capability itself, but replace licensing.notes with: 'Attendee chat is included in eligible Teams event licenses. Teams Enterprise supports interactive events with up to 3,000 attendees; larger interactive events require an appropriately sized Attendee Capacity Pack assigned to the organizer, except while an eligible pre-April 1, 2026 Teams Premium term remains active. Packs are available in GCC, GCC High and DoD. Chat remains limited to events with up to 20,000 attendees.' Cite https://learn.microsoft.com/microsoftteams/events-licensing and https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/attendee-capacity-pack alongside the existing chat reference. | Source: https://learn.microsoft.com/microsoftteams/events-licensing
-- [contradicted, blocker] licensing.notes; Cost and licensing / absence: Microsoft has not published the license covering event chat. | Found: Chat for attendees | Organizers can allow attendees to use chat during events. | Manage chat for Teams events | Fix: Replace the licensing-absence statement with: 'Microsoft publishes attendee-chat entitlement in its Teams events licensing overview; chat is listed under both foundational and advanced event features, with capacity depending on the organizer's license.' Cite https://learn.microsoft.com/microsoftteams/events-licensing. Retain only the narrower absence that no separate per-chat price is published, and include the capacity qualification specified for licensing.notes. | Source: https://learn.microsoft.com/microsoftteams/events-licensing
-- [unsupported, blocker] front matter: defaultState; Open questions / default: The planned government-cloud feature arrives in a user-opt-in state. | Found: Searched: "573625" "chat" default GCC; "TownhallChatExperience" "GCC" default. Read roadmap, manage-event-chat and Set-CsTeamsEventsPolicy. The roadmap states no government default; Learn still excludes GCC, GCCH and DoD. | Fix: Set defaultState to unknown. Add: 'Microsoft has not stated the arrival default for the government-cloud release. The commercial documentation allows organizers to enable attendee chat under the default Optimized policy.' Keep the government-default open question and the conditional wording in Why it matters.
+- [contradicted, blocker] Governance controls: eDiscovery hold sentence / licensing: An eDiscovery hold on the organiser's Exchange mailbox can be created in Purview, without stating the cited page's licence prerequisite. | Found: eDiscovery holds require an eligible license on every user whose content you preserve. ... Placing a user on hold without proper licensing isn't supported. | Fix: Remove the clause '; an eDiscovery hold on the organiser's Exchange mailbox can be created in Microsoft Purview' and its link. End the sentence after 'legal hold'. This retains the verified event-chat guidance without introducing an unqualified eDiscovery licensing recommendation. | Source: https://learn.microsoft.com/purview/edisc-hold-create
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance controls / admin-path: Microsoft Purview can be used to place an organizer's Exchange mailbox on a hold. | Found: Place a hold on the Exchange mailboxes ... Go to the Microsoft Purview portal ... Select the eDiscovery solution card and then select Cases ... Select a case, and then select the Hold policies tab. | Fix: Cite https://learn.microsoft.com/purview/edisc-hold-create for the Purview statement and narrow it to 'An eDiscovery hold on the organizer's Exchange mailbox can be created in Microsoft Purview.' | Source: https://learn.microsoft.com/purview/edisc-hold-create
-- [contradicted, minor] Governance guidance: Before rollout and After rollout; Governance controls / consistency: The checklist includes mailbox holds and content search, but neither control appears in the controls table. | Found: Agree how a hold is requested for events that need longer. ... Run a content search of an organiser's mailbox ... [The controls table contains only chat experience, attendance and event creation.] | Fix: Remove the checklist clause 'and agree how a hold is requested for events that need longer' and the After rollout content-search bullet. Keep the sourced explanation of storage and holds in the prose; do not add unverified control rows.
+- [supported, minor] What's changing; Governance guidance: At rollout / availability: Manage chat for Teams events currently says chat is unavailable in GCC, GCCH and DoD. | Found: Chat isn't available on the GCC, GCCH, and DoD government clouds at this time. | Fix: After quoting the limitation, add: 'Microsoft's Government Channel release notes separately state under GCC Customers: "Event chat for town halls: With this new update, everyone in a town hall will be able to chat using Event chat." These Microsoft pages disagree about GCC availability.' Cite https://learn.microsoft.com/officeupdates/governmentchannel#teams-admin-and-teams-app-july-24. Replace the first At rollout bullet with 'Confirm availability in the tenant before telling organisers chat is available; Microsoft documentation currently disagrees about GCC availability.' | Source: https://learn.microsoft.com/microsoftteams/manage-event-chat
+- [supported, minor] controls[0].note; What's changing; Why it matters; rationale: risk / default: The commercial chat guidance gives Optimized as the default policy value, permitting organisers to enable chat. | Found: Optimized | This is the default value. Organizers with this policy can turn on chat for their attendees. | Fix: Add to the control note and the discussion of the commercial default: 'Manage chat for Teams events gives Optimized as the default; the Set-CsTeamsEventsPolicy reference instead lists None as the default for TownhallChatExperience.' The reference is already cited: https://learn.microsoft.com/powershell/module/teams/set-csteamseventspolicy. Keep the government arrival default as unknown. | Source: https://learn.microsoft.com/microsoftteams/manage-event-chat
+- [contradicted, minor] front matter: action / consistency: The act-now rating fits the standard despite an unknown arrival default and a capability organisers choose to enable. | Found: action: "act-now"; defaultState: "unknown"; "Microsoft has not stated the arrival default for the government-cloud release."; "organisers turn on Meeting chat in their Meeting options" | Fix: Set action to review. The standard assigns review to a new optional capability whose default is not stated when no source says existing behaviour changes; a near-term target alone does not establish act-now.
 -->

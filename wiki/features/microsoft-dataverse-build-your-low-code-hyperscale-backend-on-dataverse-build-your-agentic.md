@@ -152,15 +152,17 @@ changes:
     note: "Corrected the app access control and auditing API rows to calls that change the setting, extended the application user path and call detail, and replaced the unknown caller-licence statement with what the OAuth and table licence pages say."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 88 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 95 statements not yet confirmed"
 version: 4
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 88
-  confirmed: 88
+  claims: 95
+  confirmed: 95
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -272,8 +274,8 @@ cost: Low. The SDK is open source and its Learn pages name no SDK-specific Micro
 impact: Low. Developers, data scientists and makers who choose to install the package notice it; most users and administrators see no change unless a script runs against their environment.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; Governance controls / admin-path: Application users and their roles are configured through Manage > Environments > environment > Settings > Users + permissions > Application users > + New app user > + Add an app. | Found: Select + New app user ... Select + Add an app ... Under Business Unit, select a business unit ... Select the edit icon to select security roles for the new application user. | Fix: Extend controls[1].ui.path to 'Manage > Environments > environment > Settings > Users + permissions > Application users > + New app user > + Add an app > security roles edit icon'. Keep the note instructing readers to choose the app and business unit. The cited application-users page documents the remaining selector. | Source: https://learn.microsoft.com/power-platform/admin/manage-application-users
+- [supported, minor] controls[1].ui; Governance controls / admin-path: Application users and roles are configured through Manage > Environments > environment > Settings > Users + permissions > Application users > + New app user > + Add an app. | Found: Select + New app user ... Select + Add an app ... Under Business Unit, select a business unit ... Select the edit icon to select security roles for the new application user. | Fix: Extend controls[1].ui.path and the rendered path to 'Manage > Environments > environment > Settings > Users + permissions > Application users > + New app user > + Add an app > security roles edit icon'. Keep the note about choosing the app and business unit. The remaining selector is documented at https://learn.microsoft.com/power-platform/admin/manage-application-users. | Source: https://learn.microsoft.com/power-platform/admin/manage-application-users
 -->

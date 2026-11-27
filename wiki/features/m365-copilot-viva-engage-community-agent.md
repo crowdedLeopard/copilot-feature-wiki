@@ -90,15 +90,17 @@ changes:
     note: "First briefing for roadmap item 499898, based on the public preview documentation for Community Agent."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 88 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 101 statements not yet confirmed"
 version: 1
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 88
-  confirmed: 87
+  claims: 101
+  confirmed: 100
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -210,9 +212,9 @@ cost: Medium. The preview page requires a Microsoft 365 Copilot licence for comm
 impact: Medium. Community admins and experts set it up and review drafts, and community members see agent answers posted as replies to their questions.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Security & identity / role: Site owners can remove the access granted to the community. | Found: Full Control | Contains all available SharePoint permissions. By default, the Owners group has this permission level. | Fix: Add https://learn.microsoft.com/sharepoint/understanding-permission-levels to sources for the site-owner permissions claim. | Source: https://learn.microsoft.com/sharepoint/understanding-permission-levels
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist asks administrators to check sensitivity labels, but that control has no corresponding row in the controls table. | Found: check their sensitivity labels against the label on the community or its Microsoft 365 group. | Controls rows cover the preview toggle, answer review, agent knowledge sources and user licence assignment. | Fix: The Before rollout inventory bullet's sensitivity-label check has no controls row. Remove 'and check their sensitivity labels against the label on the community or its Microsoft 365 group' from that bullet; do not add a control row in this correction.
+- [supported, minor] Risk assessment: Security & identity / role: Site owners can remove the access granted to the community. | Found: Full Control | Contains all available SharePoint permissions. By default, the Owners group has this permission level. You can't customize or delete it. | Fix: Add https://learn.microsoft.com/sharepoint/understanding-permission-levels to sources for the site-owner permissions claim. | Source: https://learn.microsoft.com/sharepoint/understanding-permission-levels
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist asks administrators to check sensitivity labels, but that control has no corresponding controls-table row. | Found: check their sensitivity labels against the label on the community or its Microsoft 365 group. | Controls rows cover the preview toggle, answer review, agent knowledge sources and user licence assignment. | Fix: Remove 'and check their sensitivity labels against the label on the community or its Microsoft 365 group' from the Before rollout inventory bullet. Do not add a control row in this correction.
 -->

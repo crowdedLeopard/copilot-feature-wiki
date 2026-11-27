@@ -104,17 +104,19 @@ changes:
     note: "Corrected after verification: default state is now user-opt-in, label inheritance is documented, and the licence wording is qualified for Copilot Chat (Basic) and Microsoft 365 Copilot (Basic)."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 63 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 64 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 63
+  claims: 64
   confirmed: 63
   unconfirmed: 0
-  contradicted: 0
+  contradicted: 1
   attempts: 0
   hash: "30583ae83f3e11bc29e2ba44a4ca3a8c"
 ---
@@ -217,8 +219,9 @@ cost: Low. The only cost the sources show is admin time to review permissions an
 impact: Medium. Anyone using Copilot to create presentations in PowerPoint for the web can name a file in a prompt instead of attaching it, so the change reaches deck authors, not only admins.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Data exposure / behaviour: The generated presentation is a new file built from referenced content. | Found: Copilot generates the new presentation in a new file when starting from an existing presentation [Web] Now, when creating a presentation using Copilot from an existing presentation, it creates the new presentation in a new file without affecting the original presentation. | Fix: Add https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes#september-30,-2025 to sources for the new-file statement. | Source: https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes#september-30,-2025
+- [supported, minor] Risk assessment: Data exposure / behaviour: The generated presentation is a new file built from referenced content. | Found: Now, when creating a presentation using Copilot from an existing presentation, it creates the new presentation in a new file without affecting the original presentation. | Fix: Add https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes#september-30,-2025 to sources for the new-file statement. | Source: https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes#september-30,-2025
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: Every control the governance checklist tells readers to rely on is represented in the controls table. | Found: Plan separately for OneDrive: Restricted Content Discovery is not supported for OneDrive sites, so rely on permissions and DLP there. The table contains licence assignment, Restricted Content Discovery and DLP rows, but no permissions row. | Fix: Replace the OneDrive checklist bullet with: 'Plan separately for OneDrive: Restricted Content Discovery is not supported for OneDrive sites; check the DLP policy described in the controls table.'
 -->

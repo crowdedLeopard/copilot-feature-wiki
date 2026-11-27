@@ -3,7 +3,7 @@
   "roadmapId": 579968,
   "title": "Copilot Studio: PPAC Reporting API for Copilot Credit usage data",
   "status": "verified-with-gaps",
-  "date": "2026-11-20",
+  "date": "2026-11-27",
   "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
@@ -14,19 +14,30 @@
   "notes": [],
   "hold": null,
   "counts": {
-    "claims": 57,
-    "confirmed": 57,
+    "claims": 55,
+    "confirmed": 55,
     "unconfirmed": 0,
     "contradicted": 0,
     "blocker": 0,
     "major": 0,
     "minor": 1
   },
-  "summary": "The briefing accurately reports the roadmap targets and distinguishes them from the documented preview reporting operation. The monthly-limit navigation reaches the correct page but should continue to the agent's limit and Stop usage controls.",
+  "summary": "The briefing passes: its roadmap facts, preview reporting operation and documented limitations are supported. The monthly-limit path stops on the correct page but should include the remaining steps to configure the limit and stop usage.",
   "claims": [
     {
       "n": 1,
-      "where": "What's changing; title; summary",
+      "where": "front matter: products; Scope",
+      "type": "record",
+      "claim": "The roadmap product is Microsoft Copilot Studio.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot Studio\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; rationale: risk",
       "type": "record",
       "claim": "Microsoft plans access to Copilot Studio Copilot Credit usage through the Power Platform API.",
       "status": "supported",
@@ -36,10 +47,10 @@
       "fix": null
     },
     {
-      "n": 2,
+      "n": 3,
       "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap describes the API as extending existing Power Platform admin center reports.",
+      "claim": "The planned API extends existing Power Platform admin center reports.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "extending the existing reports available in the Power Platform Admin Center.",
@@ -47,8 +58,8 @@
       "fix": null
     },
     {
-      "n": 3,
-      "where": "What's changing; summary; Risk assessment; Governance guidance; rationale: risk",
+      "n": 4,
+      "where": "summary; What's changing; Why it matters; Risk assessment; Governance guidance",
       "type": "record",
       "claim": "The roadmap describes usage insights by resource, environment, user and feature.",
       "status": "supported",
@@ -58,7 +69,7 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 5,
       "where": "What's changing",
       "type": "record",
       "claim": "The roadmap says new reports and capabilities will continue to be released.",
@@ -69,10 +80,10 @@
       "fix": null
     },
     {
-      "n": 5,
-      "where": "What's changing; Risk assessment; Governance guidance",
+      "n": 6,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance",
       "type": "record",
-      "claim": "The roadmap pairs the reports with Power Platform API credit allocations to monitor and optimise consuming resources and environments.",
+      "claim": "The roadmap pairs reports with Power Platform API credit allocations to monitor and optimise credit-consuming resources and environments.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "These reports can be used with Power Platform API credit allocations to monitor and optimize resources and environments that consume Copilot Credits.",
@@ -80,7 +91,7 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 7,
       "where": "front matter: status; summary; What's changing",
       "type": "record",
       "claim": "The roadmap status is In development.",
@@ -91,7 +102,18 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 8,
+      "where": "front matter: targetDate; What's changing; Risk assessment; Scope",
+      "type": "record",
+      "claim": "General Availability is targeted for January CY2027, not committed.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
       "where": "front matter: previewDate; summary; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap preview target is November CY2026.",
@@ -102,35 +124,13 @@
       "fix": null
     },
     {
-      "n": 8,
-      "where": "front matter: targetDate; What's changing; Risk assessment; Scope",
-      "type": "record",
-      "claim": "The roadmap General Availability target is January CY2027.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"targetDate\": \"January CY2027\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
+      "n": 10,
       "where": "front matter: releasePhase; Scope",
       "type": "record",
-      "claim": "The roadmap lists General Availability and Preview as release phases.",
+      "claim": "The release phases listed are General Availability and Preview.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "front matter: products; Scope",
-      "type": "record",
-      "claim": "The roadmap product is Microsoft Copilot Studio.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Copilot Studio\"]",
       "severity": null,
       "fix": null
     },
@@ -158,9 +158,9 @@
     },
     {
       "n": 13,
-      "where": "What's changing; Why it matters; Governance controls",
+      "where": "What's changing; controls[0].note; Governance controls",
       "type": "behaviour",
-      "claim": "Microsoft Learn documents programmatic Copilot Studio usage reporting in public preview.",
+      "claim": "Learn documents programmatic Copilot Credit usage reporting in public preview with an end-to-end tutorial.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-download-copilot-credit-usage-reports",
       "quote": "The usage reports API is in public preview.",
@@ -169,12 +169,12 @@
     },
     {
       "n": 14,
-      "where": "What's changing; controls[0].note; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "Learn does not explicitly identify the documented preview operation as the roadmap's PPAC Reporting API.",
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The documented reporting workflow starts by submitting an asynchronous generation request.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"PPAC Reporting API\" default authentication permissions licensing price; opened Manage Copilot Credits and capacity, Download Copilot Credit usage reports programmatically, and Generate Licensing Report. None explicitly identifies the operation by that roadmap name.",
+      "source": "https://learn.microsoft.com/rest/api/power-platform/copilotstudio/licensing-reports/generate-licensing-report",
+      "quote": "Starts generating a Copilot Studio licensing report for your tenant over the requested date range. Generation runs asynchronously; poll the URL in the Location header for status.",
       "severity": null,
       "fix": null
     },
@@ -182,18 +182,7 @@
       "n": 15,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The preview report operation begins with an asynchronous submission.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-download-copilot-credit-usage-reports",
-      "quote": "Report generation is asynchronous. Every client in this tutorial follows the same three steps:",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The preview workflow polls the report operation for completion.",
+      "claim": "The documented reporting workflow polls for completion before downloading the file.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-download-copilot-credit-usage-reports",
       "quote": "Poll the operation until its status is Succeeded or Failed. Follow the polling interval specified by Retry-After.",
@@ -201,10 +190,10 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 16,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The preview reporting workflow downloads a gzip-compressed file.",
+      "claim": "The generated report download is gzip-compressed.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
       "quote": "Report retrieval requires delegated administrator authentication and follows an asynchronous workflow: submit a request, poll for completion, and download the gzip-compressed file.",
@@ -212,76 +201,54 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "Why it matters",
-      "type": "behaviour",
-      "claim": "The admin center provides manually triggered consumption report downloads.",
+      "n": 17,
+      "where": "What's changing; controls[0].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft does not explicitly identify the documented preview operation as the roadmap's named PPAC Reporting API.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
-      "quote": "Select Download report. Select the download type you need: environment, agent, or user. Download the report.",
+      "source": null,
+      "quote": "Searched: \"PPAC Reporting API\" Copilot licensing default roles enable; \"copilotstudio/licensing/reports\" \"license\". Opened the capacity page, reporting tutorial and Generate Licensing Report reference; none explicitly equates the names.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: defaultState; summary; Why it matters",
+      "type": "default",
+      "claim": "The arrival default of the roadmap's API is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"PPAC Reporting API\" Copilot licensing default roles enable; \"Copilot\" \"usage reports API\" \"default\" \"permissions\". Read roadmap, capacity page, tutorial and operation reference; none states the roadmap feature's arrival default.",
       "severity": null,
       "fix": null
     },
     {
       "n": 19,
-      "where": "Why it matters",
-      "type": "behaviour",
-      "claim": "The tutorial says reporting API data can be combined with other data sources.",
+      "where": "controls[0].ui; Governance controls; Governance guidance",
+      "type": "admin-path",
+      "claim": "Power Platform admin center > Licensing > Products > Copilot Studio > Summary > Download report reaches consumption report downloads.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-download-copilot-credit-usage-reports",
-      "quote": "Use this data to automate decisions, combine it with other data sources, or maintain a long-term history beyond the 30-day reporting window.",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
+      "quote": "On the navigation pane, select Licensing. In the Licensing pane, under Products, select Copilot Studio. Select the Summary tab. Select Download report.",
       "severity": null,
       "fix": null
     },
     {
       "n": 20,
-      "where": "Why it matters",
-      "type": "behaviour",
-      "claim": "The tutorial describes maintaining a long-term history beyond the 30-day reporting window.",
+      "where": "controls[0].api; Governance controls",
+      "type": "command",
+      "claim": "POST https://api.powerplatform.com/copilotstudio/licensing/reports/{ReportName}?api-version=2024-10-01 generates a tenant licensing report.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-download-copilot-credit-usage-reports",
-      "quote": "maintain a long-term history beyond the 30-day reporting window.",
+      "source": "https://learn.microsoft.com/rest/api/power-platform/copilotstudio/licensing-reports/generate-licensing-report",
+      "quote": "POST https://api.powerplatform.com/copilotstudio/licensing/reports/{ReportName}?api-version=2024-10-01",
       "severity": null,
       "fix": null
     },
     {
       "n": 21,
-      "where": "front matter: defaultState; summary; Why it matters",
-      "type": "default",
-      "claim": "The roadmap API's default state and effects on arrival are not stated.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"PPAC Reporting API\" default authentication permissions licensing price; \"Copilot\" \"reporting API\" \"enable\" permissions default PPAC. Read the roadmap, capacity guide, reporting tutorial and generate reference; none states an arrival default or automatic behaviour change.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "The existing user report can place unauthenticated usage under the all-zero user ID with no user name.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
-      "quote": "In the user report, usage from sessions where the user didn't sign in, for example on an agent that doesn't require authentication, can appear under the user ID 00000000-0000-0000-0000-000000000000 with no user name.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "Risk assessment: Data exposure; Scope",
-      "type": "absence",
-      "claim": "Roles and prerequisites specifically identified for the roadmap's named API have not been published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"PPAC Reporting API\" default authentication permissions licensing price; Power Platform Copilot Studio licensing reports API permissions enable disable cost pricing prerequisites. Opened the reporting tutorial and generate reference; their requirements concern the documented preview.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
       "where": "controls[0].note; Risk assessment; Scope; Governance guidance",
       "type": "role",
-      "claim": "The documented preview operation requires a Global, Dynamics 365 or Power Platform administrator.",
+      "claim": "The documented preview report operation requires a Global, Dynamics 365 or Power Platform administrator.",
       "status": "supported",
       "source": "https://learn.microsoft.com/rest/api/power-platform/copilotstudio/licensing-reports/generate-licensing-report",
       "quote": "Requires the Global, Dynamics 365, or Power Platform administrator role.",
@@ -289,7 +256,73 @@
       "fix": null
     },
     {
+      "n": 22,
+      "where": "controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "The report request body uses startDate and endDate for the report date range.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/rest/api/power-platform/copilotstudio/licensing-reports/generate-licensing-report",
+      "quote": "endDate: The inclusive UTC end date of the report range. Must be on or after the start date. startDate: The inclusive UTC start date of the report range.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "The report request body supports the granularity property.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/rest/api/power-platform/copilotstudio/licensing-reports/generate-licensing-report",
+      "quote": "granularity: The granularity of a licensing report. Daily returns one row per day in the date range, and Summary returns a single summarized row for the whole range.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Why it matters; controls[0].governs; Governance guidance",
+      "type": "behaviour",
+      "claim": "Administrators can manually download existing consumption reports organised by environment, agent or user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
+      "quote": "From the Summary tab, you can download reports that organize consumption by environment, agent, or user.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 25,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "The tutorial says API report data can be combined with other data sources.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-download-copilot-credit-usage-reports",
+      "quote": "Use this data to automate decisions, combine it with other data sources, or maintain a long-term history beyond the 30-day reporting window.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "The tutorial describes retaining report data as long-term history beyond its 30-day reporting window.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-download-copilot-credit-usage-reports",
+      "quote": "Use this data to automate decisions, combine it with other data sources, or maintain a long-term history beyond the 30-day reporting window.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The existing user report can show unauthenticated sessions under user ID 00000000-0000-0000-0000-000000000000 without a user name.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
+      "quote": "In the user report, usage from sessions where the user didn't sign in, for example on an agent that doesn't require authentication, can appear under the user ID 00000000-0000-0000-0000-000000000000 with no user name.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
       "claim": "The documented usage reports API supports delegated user authentication only.",
@@ -300,10 +333,10 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 29,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Application-only service principal tokens are not supported by the preview usage reports API.",
+      "claim": "Application-only service principal tokens are not supported by the documented usage reports API.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-download-copilot-credit-usage-reports",
       "quote": "application-only (service principal) tokens aren't supported.",
@@ -311,54 +344,65 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 30,
       "where": "Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "A script using the documented preview operation uses a signed-in administrator's delegated token.",
+      "type": "role",
+      "claim": "A scheduled script using the documented preview operation must use delegated administrator authentication.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-download-copilot-credit-usage-reports",
-      "quote": "Create an authentication profile for your tenant and sign in interactively with an account that has one of the required roles.",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
+      "quote": "Report retrieval requires delegated administrator authentication",
       "severity": null,
       "fix": null
     },
     {
-      "n": 28,
+      "n": 31,
+      "where": "Risk assessment: Data exposure; Scope",
+      "type": "absence",
+      "claim": "Roles and prerequisites specifically attributed to the roadmap's named API are not separately published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"PPAC Reporting API\" Copilot licensing default roles enable; Copilot Studio licensing reports API pricing license charge permissions enable disable. Read roadmap, tutorial and Generate Licensing Report; published roles describe the preview operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
       "where": "Risk assessment: Security & identity; Open questions",
       "type": "absence",
-      "claim": "Authentication specifically identified for the roadmap's named API is not yet documented.",
+      "claim": "The authorisation design for the roadmap's named API is not separately documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"PPAC Reporting API\" default authentication permissions licensing price. Opened the capacity guide, reporting tutorial and Generate Licensing Report; they document delegated authentication for the preview operation without explicitly naming the roadmap API.",
+      "quote": "Searched: \"PPAC Reporting API\" Copilot licensing default roles enable; \"Copilot\" \"usage reports API\" \"default\" \"permissions\". Read roadmap, reporting tutorial and operation reference; only the documented preview's authentication is stated.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 29,
+      "n": 33,
       "where": "controls[1].api; Risk assessment: Autonomy & actions; Governance guidance",
       "type": "absence",
-      "claim": "No API for setting the PPAC per-agent monthly consumption limit is documented at the time of writing.",
+      "claim": "No API for setting a Copilot Studio agent's monthly credit limit is documented at the time of writing.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Copilot Studio monthly limit API; site:learn.microsoft.com/rest/api/power-platform agent limit; Copilot Studio monthly limit PowerShell Dataverse table; Copilot Studio credit limit table API. Opened the capacity guide and pac copilot-studio reference; found no limit-setting operation.",
+      "quote": "Searched: Copilot Studio monthly limit API PowerShell pac admin; site:learn.microsoft.com/rest/api/power-platform agent monthly limit; Copilot limit Set-AdminPowerApp. Read capacity and harness cost pages and pac copilot-studio command-list excerpt; no limit-setting call found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 30,
+      "n": 34,
       "where": "controls[1].ui; Governance controls",
       "type": "admin-path",
-      "claim": "Licensing > Products > Copilot Studio > Summary > Manage Agents leads to the page for monthly limits and hard stops.",
+      "claim": "Licensing > Products > Copilot Studio > Summary > Manage Agents reaches the page for monthly credit limits and hard stops.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
       "quote": "On the Summary tab, select Manage Agents. The Agents page appears where you can: ... You can set a monthly limit for any agent directly from this page.",
       "severity": "minor",
-      "fix": "Extend controls[1].ui.path and the matching table path to 'Licensing > Products > Copilot Studio > Summary > Manage Agents > agent > Set limit > Stop usage'. Add https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness to sources; its 'Set a monthly limit for an agent' section documents selecting the agent, Set limit and Stop usage, and states these controls apply across Copilot Studio."
+      "fix": "Extend controls[1].ui.path and the matching table path to 'Licensing > Products > Copilot Studio > Summary > Manage Agents > agent > Set limit > Stop usage'. Add https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness to sources; its 'Set a monthly limit for an agent' section gives these remaining steps and states that capacity and consumption controls apply across Copilot Studio."
     },
     {
-      "n": 31,
-      "where": "controls[1].governs; controls[1].scope; Risk assessment: Autonomy & actions",
+      "n": 35,
+      "where": "controls[1].governs; Risk assessment: Autonomy & actions; Governance controls",
       "type": "applicability",
-      "claim": "Administrators can set monthly consumption limits for individual Copilot Studio agents in PPAC.",
+      "claim": "Administrators can set monthly consumption limits for individual Copilot Studio agents as an existing cost control.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
       "quote": "Admins can set monthly consumption limits for each Copilot Studio agent, regardless of whether the environment uses prepaid capacity or pay-as-you-go billing.",
@@ -366,10 +410,10 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 36,
       "where": "controls[1].governs; Governance controls",
       "type": "behaviour",
-      "claim": "The monthly-limit control has a configurable hard stop that turns the agent off at its limit.",
+      "claim": "An agent monthly limit has a configurable hard stop that turns the agent off at the limit.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
       "quote": "After you set limits, you can configure two key guardrails: ... Hard stop: The agent is automatically turned off once it hits the defined limit.",
@@ -377,10 +421,10 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 37,
       "where": "controls[1].note; Governance controls",
       "type": "behaviour",
-      "claim": "Limits are not applied instantly and an agent can continue responding after reaching its limit.",
+      "claim": "Limits are not applied instantly and an agent can continue responding for some time after reaching its limit.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
       "quote": "Limits aren't applied instantly. An agent can continue to respond for some time after it reaches its limit, so set limits and notification thresholds with some margin.",
@@ -388,10 +432,10 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 38,
       "where": "controls[1].note; Governance controls",
       "type": "behaviour",
-      "claim": "An agent's monthly limit does not stop agent flows it calls.",
+      "claim": "An agent's monthly limit does not stop the agent flows it calls.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
       "quote": "An agent's monthly limit doesn't stop the agent flows that the agent calls. Agent flows are billed and checked for capacity separately",
@@ -399,79 +443,35 @@
       "fix": null
     },
     {
-      "n": 35,
-      "where": "Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "Both the tutorial and capacity guide mark programmatic reporting as preview documentation subject to change.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-download-copilot-credit-usage-reports",
-      "quote": "[This article is prerelease documentation and is subject to change.]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "Report submissions can return 429 Too Many Requests when service protection is enforced.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-download-copilot-credit-usage-reports",
-      "quote": "Report submissions can return 429 Too Many Requests when service protection is enforced.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "The tutorial recommends scheduling reports instead of generating them in a tight loop.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-download-copilot-credit-usage-reports",
-      "quote": "Schedule reports (for example, once a day or once a week) instead of generating them on demand in a tight loop.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "front matter: licensing.model; licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "An entitlement specifically covering calls to the roadmap's reporting API is not yet published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: PPAC Reporting API licensing price; Copilot Credit reports API price license. Opened reporting tutorial, generate reference, Assign licenses and manage access, and Licensing for agents powered by the standard harness; found client and authoring requirements, not an API-call entitlement.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 39,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "No charge or rate specific to calling the PPAC reporting API is published at the time of writing.",
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The tutorial and capacity documentation mark programmatic usage reporting as preview and subject to change.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot Credit reports API price license; Power Platform Copilot Studio licensing reports API cost pricing. Opened the reporting tutorial, generate reference, capacity guide and both cited licensing pages; none publishes a rate or charge per reporting API call.",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
+      "quote": "Programmatic access to usage reports (preview)\n\n[This article is prerelease documentation and is subject to change.]",
       "severity": null,
       "fix": null
     },
     {
       "n": 40,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "The cited authoring requirements page lists a Copilot Studio User License for each standard-harness agent author.",
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The tutorial says report submissions can return 429 Too Many Requests under service protection.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-licensing",
-      "quote": "A license for each user, also known as a per user license (or Copilot Studio User License as referred to on the Microsoft 365 admin center). Assign this license to individual users who need access to create and manage agents.",
+      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-download-copilot-credit-usage-reports",
+      "quote": "Report submissions can return 429 Too Many Requests when service protection is enforced. A rejected submission doesn't start a report.",
       "severity": null,
       "fix": null
     },
     {
       "n": 41,
-      "where": "front matter: licensing.notes; Cost and licensing",
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "The cited standard-harness authoring requirements page also lists an organisational tenant licence.",
+      "claim": "Entitlement specifically for calling the roadmap's reporting API is not yet published.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-licensing",
-      "quote": "A license for your organization, also known as a tenant license (or Copilot Studio as referred to on the Microsoft 365 admin center).",
+      "source": null,
+      "quote": "Searched: Copilot Studio licensing reports API pricing license charge permissions enable disable; \"copilotstudio/licensing/reports\" \"license\". Read tutorial prerequisites, Generate Licensing Report, requirements-licensing and billing-licensing; no API-specific entitlement stated.",
       "severity": null,
       "fix": null
     },
@@ -479,10 +479,10 @@
       "n": 42,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "The licensing overview lists Copilot Studio authors access as an alternative access configuration.",
+      "claim": "Assign licenses and manage access to Copilot Studio lists a Copilot Studio User License per user creating and managing standard-harness agents.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing",
-      "quote": "To use Copilot Studio, you need one of the following configurations: ... Copilot Studio authors role in Power Platform admin center.",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-licensing",
+      "quote": "A license for each user, also known as a per user license (or Copilot Studio User License as referred to on the Microsoft 365 admin center). Assign this license to individual users who need access to create and manage agents.",
       "severity": null,
       "fix": null
     },
@@ -490,10 +490,10 @@
       "n": 43,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "The licensing overview lists a Microsoft 365 Copilot licence as an access route.",
+      "claim": "The same licensing page lists an organisational tenant licence for creating and managing agents.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing",
-      "quote": "To use Copilot Studio, you need one of the following configurations: ... Microsoft 365 Copilot license",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-licensing",
+      "quote": "A license for your organization, also known as a tenant license (or Copilot Studio as referred to on the Microsoft 365 admin center).",
       "severity": null,
       "fix": null
     },
@@ -501,7 +501,29 @@
       "n": 44,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "The licensing overview lists a Copilot Studio trial licence as an access route.",
+      "claim": "The licensing overview also lists Copilot Studio authors access as a product-access route.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing",
+      "quote": "To use Copilot Studio, you need one of the following configurations: ... Copilot Studio authors role in Power Platform admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The licensing overview lists a Microsoft 365 Copilot licence as a product-access route.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing",
+      "quote": "To use Copilot Studio, you need one of the following configurations: ... Microsoft 365 Copilot license",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The licensing overview lists a Copilot Studio trial licence as a product-access route.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing",
       "quote": "To use Copilot Studio, you need one of the following configurations: ... Copilot Studio trial license.",
@@ -509,21 +531,32 @@
       "fix": null
     },
     {
-      "n": 45,
+      "n": 47,
       "where": "Cost and licensing",
       "type": "absence",
-      "claim": "Neither of the two cited Copilot Studio licensing pages mentions reporting APIs.",
+      "claim": "Neither of the two cited product licensing pages mentions reporting APIs.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Copilot Credit reports API price license. Opened and read Assign licenses and manage access to Copilot Studio and Licensing for agents powered by the standard harness; neither describes reporting API entitlement.",
+      "quote": "Searched: \"copilotstudio/licensing/reports\" \"license\"; Copilot Studio licensing reports API pricing license charge permissions enable disable. Read requirements-licensing and billing-licensing in full; neither mentions reporting APIs.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 46,
+      "n": 48,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "A charge or rate specifically for calling the reporting API is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio licensing reports API pricing license charge permissions enable disable; \"copilotstudio/licensing/reports\" \"license\". Read tutorial, report operation reference, capacity and both licensing pages; none states an API-call price.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "Copilot Credits are the usage unit shown in the admin center's consumption reporting.",
+      "claim": "The admin centre reports agent consumption in Copilot Credits.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
       "quote": "Copilot Credits measure agent usage.",
@@ -531,10 +564,10 @@
       "fix": null
     },
     {
-      "n": 47,
+      "n": 50,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "One agent interaction can consume several credits because individual features have their own rates.",
+      "claim": "An agent interaction can consume several credits because its features have their own rates.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
       "quote": "One interaction with an agent can consume several credits because each feature the agent uses in that interaction has its own rate.",
@@ -542,7 +575,7 @@
       "fix": null
     },
     {
-      "n": 48,
+      "n": 51,
       "where": "Cost and licensing",
       "type": "cost",
       "claim": "The tutorial's Copilot Studio workflow client requires sufficient Copilot Credits to run the workflow.",
@@ -553,10 +586,10 @@
       "fix": null
     },
     {
-      "n": 49,
+      "n": 52,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "The tutorial's Power Automate client requires a Power Automate licence that includes standard connectors.",
+      "claim": "The tutorial's Power Automate client requires a licence that includes standard connectors.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-download-copilot-credit-usage-reports",
       "quote": "A Power Automate license that includes standard connectors, and permission to create a Power Platform for Admins V2 connection with an OAuth Connection authentication type.",
@@ -564,7 +597,7 @@
       "fix": null
     },
     {
-      "n": 50,
+      "n": 53,
       "where": "Scope",
       "type": "availability",
       "claim": "Sovereign clouds are not currently supported by the documented preview usage reports API.",
@@ -575,85 +608,30 @@
       "fix": null
     },
     {
-      "n": 51,
-      "where": "controls[0].ui; Governance guidance; Governance controls",
-      "type": "admin-path",
-      "claim": "PPAC consumption reports are downloaded through Licensing > Products > Copilot Studio > Summary > Download report.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
-      "quote": "On the navigation pane, select Licensing. In the Licensing pane, under Products, select Copilot Studio. Select the Summary tab. Select Download report.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
-      "where": "controls[0].api; Governance controls",
-      "type": "command",
-      "claim": "The tenant licensing-report generation operation is POST https://api.powerplatform.com/copilotstudio/licensing/reports/{ReportName}?api-version=2024-10-01.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/rest/api/power-platform/copilotstudio/licensing-reports/generate-licensing-report",
-      "quote": "POST https://api.powerplatform.com/copilotstudio/licensing/reports/{ReportName}?api-version=2024-10-01",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "controls[0].note",
-      "type": "command",
-      "claim": "The reporting request body includes startDate.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/rest/api/power-platform/copilotstudio/licensing-reports/generate-licensing-report",
-      "quote": "startDate | True | string (date) | The inclusive UTC start date of the report range.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 54,
-      "where": "controls[0].note",
-      "type": "command",
-      "claim": "The reporting request body includes endDate.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/rest/api/power-platform/copilotstudio/licensing-reports/generate-licensing-report",
-      "quote": "endDate | True | string (date) | The inclusive UTC end date of the report range. Must be on or after the start date.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
-      "where": "controls[0].note",
-      "type": "command",
-      "claim": "The reporting request body includes granularity.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/rest/api/power-platform/copilotstudio/licensing-reports/generate-licensing-report",
-      "quote": "granularity | CopilotStudioLicensingReportGranularity | Daily | The granularity of a licensing report.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "Governance controls",
-      "type": "absence",
-      "claim": "No configurable control specifically enabling, disabling or restricting callers of the roadmap's named PPAC Reporting API is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: PPAC Reporting API permissions default; Copilot reporting API enable permissions default PPAC; usage reports API access enable. Opened the reporting tutorial, generate reference and capacity guide; found fixed preview role requirements, not a configurable reporting-API switch.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
       "where": "Scope; Open questions",
-      "type": "applicability",
-      "claim": "The admin center user report documents user-level consumption for agents powered by the standard harness.",
+      "type": "behaviour",
+      "claim": "The admin centre's user report documents user-level consumption for standard-harness agents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
       "quote": "The reports show consumption by environment and agent. For agents powered by the standard harness, the user report also shows consumption by user.",
       "severity": null,
       "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "A switch to enable or disable the roadmap's named API, or a feature-specific caller restriction, is not yet documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"PPAC Reporting API\" Copilot licensing default roles enable; Copilot Studio licensing reports API pricing license charge permissions enable disable. Read capacity page, tutorial and report reference; they document preview caller roles but no separate roadmap-API switch.",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-20T09:04:51.241Z",
+    "at": "2026-11-27T10:11:10.817Z",
     "summary": {
       "links": 6,
       "unreachable": 0,
@@ -749,6 +727,12 @@
       "date": "2026-11-19",
       "status": "verified-with-gaps",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-20",
+      "status": "verified-with-gaps",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

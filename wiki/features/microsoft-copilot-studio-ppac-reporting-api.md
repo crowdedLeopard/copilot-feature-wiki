@@ -77,15 +77,17 @@ changes:
     note: "Corrected after the independent check: Learn now documents preview programmatic usage reporting, the licensing notes name the licence routes, and text the current roadmap record no longer states was removed."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 57 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 55 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 57
-  confirmed: 57
+  claims: 55
+  confirmed: 55
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -182,8 +184,8 @@ cost: Low. Microsoft has not published a licence or charge for this API, so the 
 impact: Low. Administrators, FinOps analysts and report builders would notice it; the roadmap describes no change for makers or end users.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; Governance controls / admin-path: Licensing > Products > Copilot Studio > Summary > Manage Agents leads to the page for monthly limits and hard stops. | Found: On the Summary tab, select Manage Agents. The Agents page appears where you can: ... You can set a monthly limit for any agent directly from this page. | Fix: Extend controls[1].ui.path and the matching table path to 'Licensing > Products > Copilot Studio > Summary > Manage Agents > agent > Set limit > Stop usage'. Add https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness to sources; its 'Set a monthly limit for an agent' section documents selecting the agent, Set limit and Stop usage, and states these controls apply across Copilot Studio. | Source: https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity
+- [supported, minor] controls[1].ui; Governance controls / admin-path: Licensing > Products > Copilot Studio > Summary > Manage Agents reaches the page for monthly credit limits and hard stops. | Found: On the Summary tab, select Manage Agents. The Agents page appears where you can: ... You can set a monthly limit for any agent directly from this page. | Fix: Extend controls[1].ui.path and the matching table path to 'Licensing > Products > Copilot Studio > Summary > Manage Agents > agent > Set limit > Stop usage'. Add https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness to sources; its 'Set a monthly limit for an agent' section gives these remaining steps and states that capacity and consumption controls apply across Copilot Studio. | Source: https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity
 -->

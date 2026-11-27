@@ -99,19 +99,23 @@ changes:
     note: "New briefing: Standard and Advanced categorisation, automatic data preparation replacing Prepare for AI, compute unit billing and the role groups that can run AI analysis."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 79 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-27"
+    note: "Corrected Scope: Data Security Management and Insider Risk Management are no longer listed as using AI analysis, since their Contributor role excludes AI job execution; removed two after-rollout checklist steps that had no control row."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 81 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-27"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 79
-  confirmed: 76
+  claims: 81
+  confirmed: 81
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "652677970ff4898c3873d08d1c6c6ed3"
+  contradicted: 0
+  attempts: 0
+  hash: "2e565a2443ba3e7fafa263b1f224e8bf"
 ---
 
 ## What's changing
@@ -157,7 +161,7 @@ If nobody acts, preparation happens automatically and each categorisation run us
 
 ## Scope
 
-- **Who uses it:** members of the Data Security Investigations Admins, Investigators and Reviewers role groups, and of the role groups that include DSI roles (Compliance Administrator, Organization Management, Data Security Management, Insider Risk Management). Learn says the Data Security Investigation Contributor role does not include AI job execution.
+- **Who uses it:** members of the Data Security Investigations Admins, Investigators and Reviewers role groups, and members of Compliance Administrator or Organization Management. Learn says the Data Security Investigation Contributor role does not include AI job execution.
 - **Prerequisites:** both billing models configured (storage meter linked to an Azure subscription and resource group, and AI capacity set up). Configuring them needs the Global Administrator role and the resource group Owner or Contributor role; configuring AI capacity needs membership of Data Security Investigations Admins.
 - **Cloud and platform:** Worldwide (Standard Multi-Tenant), web, as the roadmap lists them.
 - **Investigations created by proactive AI insights from DSPM** arrive pre-categorised with five fixed risk categories and can be categorised further.
@@ -176,8 +180,6 @@ If nobody acts, preparation happens automatically and each categorisation run us
 
 ### After rollout
 - Check the **Usage dashboard** for compute units by process, comparing categorisation with add-to-scope, after the 48-hour reporting delay.
-- Set Azure budgets and alerts on the DSI resource group, as Microsoft's billing page recommends.
-- Delete completed investigations to end their storage charges.
 
 ## Governance controls
 
@@ -210,13 +212,4 @@ If nobody acts, preparation happens automatically and each categorisation run us
 risk: Low. AI analysis still runs only on data an investigator has added to an investigation scope; what changes is when preparation happens and how much categorisation work each run does.
 cost: Variable. Data Security Investigations bills pay-as-you-go through Data Security Investigations Compute Units and a storage meter; Advanced categorisation takes additional compute units and automatic preparation runs on every Add to scope.
 impact: Low. Only members of the Data Security Investigations role groups and the role groups that include its roles notice: the Prepare for AI step is gone and categorisation asks for Standard or Advanced.
--->
-
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Scope: Who uses it / role: Data Security Management and Insider Risk Management are among the role groups whose members can use these AI analysis enhancements. | Found: Data Security Management | Data Security Investigation Contributor | Contributor access ... Insider Risk Management | Data Security Investigation Contributor | Contributor access ... This role doesn't include access to data storage, AI job execution, or the Pay-as-you-go usage dashboard. | Fix: Replace the first sentence of Scope's Who uses it bullet with: 'Who uses it: members of the Data Security Investigations Admins, Investigators and Reviewers role groups, and members of Compliance Administrator or Organization Management.' Keep the following sentence explaining that Contributor does not include AI job execution. Source: https://learn.microsoft.com/purview/data-security-investigations-permissions. | Source: https://learn.microsoft.com/purview/data-security-investigations-permissions
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist directs readers to set Azure budgets and alerts, but that control has no controls-table row. | Found: Set Azure budgets and alerts on the DSI resource group, as Microsoft's billing page recommends. | Fix: Remove the 'Set Azure budgets and alerts on the DSI resource group, as Microsoft's billing page recommends' checklist bullet. Keep the existing explanatory cost and governance notes; do not add a control row during correction.
-- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist directs readers to delete investigations to stop storage charges, but investigation deletion has no controls-table row. | Found: Delete completed investigations to end their storage charges. | Fix: Remove the 'Delete completed investigations to end their storage charges' checklist bullet, since investigation deletion has no table row. Do not add a control row during correction.
 -->

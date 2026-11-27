@@ -91,15 +91,17 @@ changes:
     note: "Corrected after verification: the three relaunch policies are now scoped to the users or computers targeted, with their full Group Policy routes; the idle-restart gap is narrowed to the RelaunchNotification reference; action set to review."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 58 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 64 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 58
-  confirmed: 58
+  claims: 64
+  confirmed: 64
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -193,8 +195,8 @@ cost: Low. The only cost the sources show is admin time to review relaunch polic
 impact: Medium. Users of Edge on managed devices may notice the browser restarting while idle, and Microsoft has not stated whether this is on by default.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].api; Governance controls table / command: The registry control is RelaunchNotification, REG_DWORD, under SOFTWARE\Policies\Microsoft\Edge, with 1 Recommended and 2 Required. | Found: Recommended (1) = Recommended Required (2) = Required Path (Mandatory): SOFTWARE\Policies\Microsoft\Edge Value name: RelaunchNotification Value type: REG_DWORD | Fix: Keep the mapping from the cited RelaunchNotification reference. Add: 'Microsoft's RelaunchFastIfOutdated reference inconsistently calls value 1 Required, whereas the RelaunchNotification reference maps 1 to Recommended and 2 to Required.' Cite https://learn.microsoft.com/deployedge/microsoft-edge-policies/relaunchfastifoutdated. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/relaunchnotification
+- [supported, minor] controls[0].api; Governance controls table / command: RelaunchNotification is a REG_DWORD registry value under SOFTWARE\Policies\Microsoft\Edge, with 1 meaning Recommended and 2 meaning Required. | Found: Recommended (1) = Recommended - Show a recurring prompt to the user indicating that a restart is recommended Required (2) = Required - Show a recurring prompt to the user indicating that a restart is required | Fix: Keep the cited RelaunchNotification mapping. Add this qualification and source: 'The RelaunchFastIfOutdated reference inconsistently calls RelaunchNotification value 1 Required, while the RelaunchNotification reference maps 1 to Recommended and 2 to Required.' Cite https://learn.microsoft.com/deployedge/microsoft-edge-policies/relaunchfastifoutdated, which says: "If the RelaunchNotification policy is set to 1 ('Required'), a browser relaunch is forced at the end of the period." | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/relaunchnotification
 -->

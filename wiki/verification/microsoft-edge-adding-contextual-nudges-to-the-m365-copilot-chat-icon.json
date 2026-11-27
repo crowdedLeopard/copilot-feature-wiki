@@ -1,0 +1,680 @@
+{
+  "slug": "microsoft-edge-adding-contextual-nudges-to-the-m365-copilot-chat-icon",
+  "roadmapId": 537284,
+  "title": "Microsoft Edge: contextual nudges on the Microsoft 365 Copilot Chat toolbar icon",
+  "status": "verified-with-gaps",
+  "date": "2026-11-27",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 49,
+    "confirmed": 47,
+    "unconfirmed": 1,
+    "contradicted": 1,
+    "blocker": 0,
+    "major": 1,
+    "minor": 1
+  },
+  "summary": "The roadmap facts, existing policy controls and product-level licensing are supported. The page should avoid asserting that nudge-driven page actions require reading page content before Microsoft documents their behaviour, and its DLP checklist instruction has no corresponding controls-table row.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary; What's changing; rationale: risk",
+      "type": "record",
+      "claim": "Microsoft plans contextual nudges attached to the Copilot toolbar icon in Edge for Business to help users act on open pages.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Edge for Business will soon help users quickly take contextual action on their open pages using contextual nudges attached to the Copilot icon in the toolbar",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap targets November CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\n    \"General Availability\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Web as the platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\n    \"Web\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\n    \"Worldwide (Standard Multi-Tenant)\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap provides no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap associates this change with Microsoft Edge and Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\n    \"Microsoft Edge\",\n    \"Microsoft Copilot (Microsoft 365)\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-10-07T23:01:35.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-07T23:01:35\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "controls[0].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "The icon control is at Microsoft 365 admin center > Settings > Microsoft Edge > Copilot > Copilot icon in the toolbar.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-copilot-features",
+      "quote": "In the Microsoft Edge management service, select the Copilot tab, then use each dropdown to select Enabled or Disabled and assign the changes to either a new or existing configuration policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "controls[0].api; Governance controls",
+      "type": "command",
+      "claim": "The icon policy uses registry value Microsoft365CopilotChatIconEnabled, REG_DWORD, under SOFTWARE\\Policies\\Microsoft\\Edge.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/microsoft365copilotchaticonenabled",
+      "quote": "Path (Mandatory): SOFTWARE\\Policies\\Microsoft\\Edge\n- Path (Recommended): SOFTWARE\\Policies\\Microsoft\\Edge\\Recommended\n- Value name: Microsoft365CopilotChatIconEnabled\n- Value type: REG\\_DWORD",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "controls[1].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "The context control is at Microsoft 365 admin center > Settings > Microsoft Edge > Copilot > Access to browser context.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-copilot-features",
+      "quote": "Access to browser context: Allows Microsoft 365 Copilot Chat to use a user’s browser context, such as page content, to provide contextual responses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[1].api; Governance controls",
+      "type": "command",
+      "claim": "The context policy uses registry value EdgeEntraCopilotPageContext, REG_DWORD, under SOFTWARE\\Policies\\Microsoft\\Edge.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+      "quote": "Path (Mandatory): SOFTWARE\\Policies\\Microsoft\\Edge\n- Path (Recommended): N/A\n- Value name: EdgeEntraCopilotPageContext\n- Value type: REG\\_DWORD",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[2].ui; controls[2].api; summary; Why it matters; Governance controls",
+      "type": "absence",
+      "claim": "No dedicated management-service setting or Edge policy for these toolbar-icon nudges is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Edge \"nudges\" \"policy\"' and 'Microsoft Edge contextual nudges Copilot toolbar 537284 policy default licensing'; opened Microsoft Edge - Policies and Configuring Copilot Features. Neither lists a nudge-specific control.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: defaultState; What's changing; Why it matters; rationale: impact",
+      "type": "default",
+      "claim": "Microsoft has not stated the default state of this change.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Edge\" \"contextual nudges\" \"default\"' and '\"537284\" nudges default enabled policy license'; read the roadmap, icon and context references, and relevant release-note excerpts. None states this item's default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The product-level licensing model is included: Copilot Chat (Basic) is included with eligible Microsoft 365 licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Copilot Chat (Basic) is the standalone baseline experience included with eligible Microsoft 365 licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "behaviour",
+      "claim": "Copilot Chat in Edge is an entry point to Copilot Chat (Basic), reached through the icon in the browser's upper-right corner.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Copilot Chat in Edge (select the Copilot icon in the upper-right corner of the Edge browser).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No meter, price or licence specific to these nudges is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Edge\" \"contextual nudges\" \"license\"' and 'Edge Copilot toolbar contextual nudges disable policy page content before select licensing price'; read Microsoft Copilot overview and relevant Edge and Copilot release-note excerpts. No nudge-specific charge or entitlement found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The icon policy covers Microsoft 365 Copilot licensed and unlicensed users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/microsoft365copilotchaticonenabled",
+      "quote": "For users in an Entra ID Microsoft Edge profile, this policy controls whether the Microsoft 365 Copilot Chat icon is shown in the Microsoft Edge for Business toolbar for Microsoft 365 Copilot licensed and unlicensed users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[0].note and scope; Risk assessment: Security & identity; Scope",
+      "type": "applicability",
+      "claim": "The icon policy applies to Microsoft Entra ID Edge for Business profiles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/microsoft365copilotchaticonenabled",
+      "quote": "For users in an Entra ID Microsoft Edge profile, this policy controls whether the Microsoft 365 Copilot Chat icon is shown in the Microsoft Edge for Business toolbar",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "applicability",
+      "claim": "The icon policy does not apply to Microsoft-account profiles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/microsoft365copilotchaticonenabled",
+      "quote": "Applies to a profile that is signed in with a Microsoft account: No",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "The icon policy applies only when users access Copilot in the side pane.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/microsoft365copilotchaticonenabled",
+      "quote": "This policy only applies when users are accessing Copilot in the sidepane.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[1].governs; Risk assessment: Data exposure; rationale: risk",
+      "type": "applicability",
+      "claim": "EdgeEntraCopilotPageContext controls Copilot side-pane access to page content, browsing history and video transcripts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+      "quote": "This policy controls whether Copilot in the Microsoft Edge side pane can access page content, browsing history, and video transcript.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[1].scope; Scope",
+      "type": "applicability",
+      "claim": "The page-content policy applies to users signed into Edge with a Microsoft Entra account using Copilot in the side pane.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+      "quote": "This policy applies only to users who are signed in to Microsoft Edge with a Microsoft Entra account and are using Copilot in the side pane.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Scope",
+      "type": "applicability",
+      "claim": "The page-content policy does not apply to Microsoft-account profiles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+      "quote": "Applies to a profile that is signed in with a Microsoft account: No",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[1].note; Why it matters; Governance guidance",
+      "type": "default",
+      "claim": "When EdgeEntraCopilotPageContext is unconfigured, access is enabled by default outside the EU.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+      "quote": "If you don't configure this policy:\n\n- Access is enabled by default in non-EU regions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[1].note; Why it matters; Governance guidance",
+      "type": "default",
+      "claim": "When EdgeEntraCopilotPageContext is unconfigured, access is disabled by default in the EU.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+      "quote": "If you don't configure this policy:\n\n- Access is enabled by default in non-EU regions.\n- Access is disabled by default in EU regions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[1].note; Risk assessment: Data exposure; Governance guidance; rationale: risk",
+      "type": "applicability",
+      "claim": "Copilot cannot access page content on DLP-protected pages even when the context policy is enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+      "quote": "Copilot can't access page content on pages protected by data loss prevention (DLP) policies, even if this policy is enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Users can hide the Copilot icon when its policy is unconfigured.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/microsoft365copilotchaticonenabled",
+      "quote": "If the policy isn't configured: Otherwise, Copilot shows in the toolbar and users can enable or disable Copilot from showing by using the Show Copilot toggle in settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Scope: Platforms",
+      "type": "availability",
+      "claim": "The icon policy supports Windows from Edge version 139.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/microsoft365copilotchaticonenabled",
+      "quote": "Windows: ≥ 139",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Scope: Platforms",
+      "type": "availability",
+      "claim": "The icon policy supports macOS from Edge version 139.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/microsoft365copilotchaticonenabled",
+      "quote": "macOS: ≥ 139",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Scope: Platforms",
+      "type": "availability",
+      "claim": "The icon policy does not support Android.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/microsoft365copilotchaticonenabled",
+      "quote": "Android: Not supported",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Scope: Platforms",
+      "type": "availability",
+      "claim": "The icon policy does not support iOS.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/microsoft365copilotchaticonenabled",
+      "quote": "iOS: Not supported",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[0].note; Scope: Roles; Governance controls",
+      "type": "role",
+      "claim": "Access to the Edge management service in Microsoft 365 admin center requires Microsoft Edge Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service",
+      "quote": "You must be a Microsoft Edge Administrator to access the experience in Microsoft 365 Admin Center",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Edge management service settings can be assigned through configuration policies to Microsoft Entra groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service",
+      "quote": "Each configuration policy can be assigned to multiple Microsoft Entra groups, and a group can be assigned to multiple configuration policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Cloud configuration-policy settings take effect when Edge restarts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service",
+      "quote": "Policies from Cloud Policy are only applied when Microsoft Edge is restarted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing; Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "Learn does not yet specifically describe this roadmap item's behaviour or an identity/security change for it.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Edge contextual nudges Copilot toolbar 537284 policy default licensing' and '\"537284\" nudges default enabled policy license'; read policy references, management-service documentation and release-note excerpts. Related nudges are documented, not this item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft has not specified which actions this item's nudges offer.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Edge contextual nudges Copilot toolbar 537284 policy default licensing'; read the roadmap description and May 5 Copilot and Edge 144 release-note excerpts. The roadmap names no actions; the summarization notes concern related changes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft has not specified when these nudges appear.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Edge\" \"contextual nudges\" \"default\"' and '\"Edge\" \"nudges\" \"page content\"'; read the roadmap and relevant Edge and Copilot release-note excerpts. No trigger conditions for this item were stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Scope: Rollout",
+      "type": "absence",
+      "claim": "The Edge version that ships this item's nudges is not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Edge \"537284\" \"version\"' and 'Microsoft Edge contextual nudges Copilot toolbar 537284 policy default licensing'; read the roadmap and Edge release-note excerpts. Edge 144 describes address-bar nudges, not a shipping version for this item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[0].note; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft has not documented whether these nudges appear with the Copilot toolbar icon hidden.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Edge \"contextual nudges\" \"toolbar\" \"hidden\"'; opened Microsoft365CopilotChatIconEnabled and Configuring Copilot Features. They describe icon visibility, not what happens to nudges when the icon is hidden.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[1].note; Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not documented pre-selection page evaluation by these nudges or whether disabling page-context access suppresses them.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Edge \"contextual nudges\" \"before\" \"content\"' and '\"Edge\" \"nudges\" \"page content\"'; read EdgeEntraCopilotPageContext and relevant release-note excerpts. They do not describe nudge evaluation or suppression.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap does not say Copilot acts without user selection of a nudge.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Edge for Business will soon help users quickly take contextual action on their open pages using contextual nudges attached to the Copilot icon in the toolbar",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Edge 144 Stable in January 2026 documented address-bar contextual nudges for webpage summarization.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-archive-stable-channel",
+      "quote": "Version 144.0.3719.82: January 16, 2026 (Stable)\n6. Contextual nudges on address bar offering help summarizing webpages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The May 5, 2026 Copilot release notes describe Copilot-entry-point nudges for actions such as summarizing a page under roadmap item 515167.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Edge for Business introduces contextual nudges attached to the Copilot entry point that prompt users to take actions-such as summarizing an open page-through Microsoft 365 Copilot Chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Neither of the related release-note passages identifies itself as documentation for this roadmap item.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'site:learn.microsoft.com/deployedge/microsoft-edge-relnote-archive-stable-channel \"144\" \"Contextual nudges\"' and 'site:learn.microsoft.com/microsoft-365/copilot/release-notes \"515167\" \"May 5\"'; read both passages. Neither identifies item 537284.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "A nudge that leads to a page action relies on Copilot reading page content.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: '\"Edge\" \"nudges\" \"page content\"' and 'Edge \"contextual nudges\" \"before\" \"content\"'; read EdgeEntraCopilotPageContext and related release-note excerpts. They describe contextual queries and summarization, not how this item's unspecified page actions operate.",
+      "severity": "major",
+      "fix": "Remove 'A nudge that leads to a page action relies on Copilot reading page content.' Keep the following documented description of EdgeEntraCopilotPageContext and the explicit uncertainty about nudge evaluation."
+    },
+    {
+      "n": 48,
+      "where": "Governance guidance: Before rollout",
+      "type": "command",
+      "claim": "The existing icon policy can be configured through Group Policy as well as the management service or registry.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/microsoft365copilotchaticonenabled",
+      "quote": "GP unique name: Microsoft365CopilotChatIconEnabled\n- GP name: Control whether Microsoft 365 Copilot Chat shows in the Microsoft Edge for Business toolbar\n- GP path (Mandatory): Administrative Templates/Microsoft Edge",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist tells administrators to check DLP coverage, but the controls table has no DLP row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Confirm that sites holding sensitive content are covered by the DLP policies that block Copilot's page-content access in Edge.",
+      "severity": "minor",
+      "fix": "Remove the checklist bullet 'Confirm that sites holding sensitive content are covered by the DLP policies that block Copilot's page-content access in Edge.' It names a control with no table row; retain the documented DLP limitation elsewhere."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-27T10:11:03.224Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 2,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=537284",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/microsoft365copilotchaticonenabled",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-copilot-features",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/microsoft-edge-policies",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-archive-stable-channel",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether the Copilot icon, which the nudges attach to, shows in the Edge for Business toolbar",
+        "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-copilot-features",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Microsoft Edge",
+          "Copilot",
+          "Copilot icon in the toolbar"
+        ],
+        "missing": [
+          "Settings"
+        ]
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether the Copilot icon, which the nudges attach to, shows in the Edge for Business toolbar",
+        "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/microsoft365copilotchaticonenabled",
+        "reachable": true,
+        "token": "Registry value",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether Copilot in Edge can read page content, browsing history and video transcripts",
+        "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-copilot-features",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Microsoft Edge",
+          "Copilot",
+          "Access to browser context"
+        ],
+        "missing": [
+          "Settings"
+        ]
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether Copilot in Edge can read page content, browsing history and video transcripts",
+        "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+        "reachable": true,
+        "token": "Registry value",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

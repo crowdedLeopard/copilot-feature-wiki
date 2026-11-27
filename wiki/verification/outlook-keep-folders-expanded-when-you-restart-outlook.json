@@ -1,0 +1,378 @@
+{
+  "slug": "outlook-keep-folders-expanded-when-you-restart-outlook",
+  "roadmapId": 579187,
+  "title": "Outlook: folders and shared mailboxes stay expanded or collapsed after a restart",
+  "status": "verified-with-gaps",
+  "date": "2026-11-27",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 28,
+    "confirmed": 27,
+    "unconfirmed": 1,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 1,
+    "minor": 0
+  },
+  "summary": "The briefing passes: its roadmap details and product licensing match the sources, and searches found no documented control for remembering folder expansion. One descriptive assurance should be narrowed: the roadmap describes a display change but does not explicitly guarantee that the feature takes no action on mail.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Change & support; governance; rationale: impact",
+      "type": "record",
+      "claim": "Outlook is planned to remember whether folders were expanded or collapsed after restarting.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Outlook will remember which folders and shared mailboxes you have expanded or collapsed when you restart the app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "title; summary; What's changing; Change & support; governance; rationale: impact",
+      "type": "record",
+      "claim": "The remembered expansion state also covers shared mailboxes.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Outlook will remember which folders and shared mailboxes you have expanded or collapsed when you restart the app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says users can resume without reopening the same folder branches.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "You can pick up where you left off without opening the same folder branches again.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing; Scope: Clients; summary; rationale: impact",
+      "type": "record",
+      "claim": "The item is tagged for new Outlook for Windows.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "#newoutlookforwindows",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; summary; What's changing; Scope: Clients",
+      "type": "record",
+      "claim": "The roadmap lists Desktop and Web platforms.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: releasePhase; What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: targetDate; What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "The roadmap target is February CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"February CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: clouds; What's changing; Scope: Clouds",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "Scope: Clients",
+      "type": "record",
+      "claim": "The roadmap does not mention classic Outlook for Windows, Outlook for Mac or Outlook mobile.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Outlook will remember which folders and shared mailboxes you have expanded or collapsed when you restart the app. You can pick up where you left off without opening the same folder branches again. This makes returning to your usual folders easier. #newoutlookforwindows",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: defaultState; What's changing; Why it matters; Open questions",
+      "type": "default",
+      "claim": "The default state is unknown: Microsoft has not specified automatic enablement or user opt-in.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook remember expanded collapsed folders shared mailboxes restart default state stored settings policy; Outlook folders expanded restart default. Read roadmap, Policy Management, and returned Learn excerpts; none specifies this feature's default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not documented where this remembered expansion state is stored or whether it carries between clients.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook remember collapsed storage mailbox device mail actions; Outlook remember expanded collapsed folders shared mailboxes restart default state stored settings policy. Read roadmap, Policy Management and returned excerpts; no feature-specific storage or roaming description.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe this roadmap feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook remember expanded collapsed folders shared mailboxes restart default state stored settings policy. Results concerned older folder behaviour, Q&A and troubleshooting, not documentation for this planned feature; read Policy Management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[0] (ui and api null); summary; Risk assessment; Governance controls",
+      "type": "absence",
+      "claim": "No admin UI setting or automation policy for remembering expanded and collapsed folders and shared mailboxes is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: new Outlook keep folders expanded collapsed restart admin policy Cloud Policy Set-OwaMailboxPolicy Microsoft Graph. Opened Policy Management, Create a mailbox policy and Set-OwaMailboxPolicy; searched the full reference for expand, collaps, folder pane and remember; no matching control.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: licensing.model; Cost and licensing",
+      "type": "licensing",
+      "claim": "The licensing model is included under Outlook's existing product licensing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options",
+      "quote": "For example, a Business Standard or Business Premium plan provides access to a Microsoft 365 email address and the desktop versions of Outlook and other Microsoft 365 apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Using Outlook for Windows, classic or new, with a Microsoft 365 organisational email address requires a plan including desktop Microsoft 365 apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options",
+      "quote": "To use the Outlook for Windows desktop app (either the classic or new version) with a Microsoft 365 organizational email address, you need to purchase a plan that includes the desktop versions of the Microsoft 365 apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Business Basic provides web and mobile Outlook access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options",
+      "quote": "The Business Basic plan provides access to productivity tools through the web and mobile versions of Outlook and Microsoft 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No licence specific to remembering folder expansion is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 579187 Outlook licensing; Outlook remember folders restart licensing price charge. Opened Understand licensing in new Outlook for Windows; returned excerpts and the product licensing page name no entitlement specific to folder expansion persistence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft publishes no meter or separate charge for this feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook remember folders restart licensing price charge; 579187 Outlook licensing. Opened Understand licensing in new Outlook for Windows and read the returned licensing excerpts; no feature-specific charge or meter was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Scope: Users",
+      "type": "licensing",
+      "claim": "The licensing page says Microsoft 365 Frontline accounts cannot be added to new Outlook.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options",
+      "quote": "Can Microsoft 365 accounts with a Frontline license be added to new Outlook?\n\nNo.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Scope: Users",
+      "type": "licensing",
+      "claim": "The licensing page directs Frontline-licensed users to web and mobile Outlook.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options",
+      "quote": "Users with these licenses are required to use the web and mobile versions of Outlook and Microsoft 365 apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Most Outlook on the web mailbox policies apply to both Outlook on the web and new Outlook for Windows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/manage/policy-management",
+      "quote": "Most of the mailbox policies apply to both Outlook on the web and new Outlook for Windows, so you can't enable them on one client but not the other.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The documented Exchange admin center mailbox policy features list includes no folder pane setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: new Outlook keep folders expanded collapsed restart admin policy Cloud Policy Set-OwaMailboxPolicy Microsoft Graph. Read the complete Features list in Create a mailbox policy in Exchange Online for Outlook on the web and the new Outlook for Windows; no folder pane setting is listed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The Set-OwaMailboxPolicy reference has no parameter for remembering folder expansion.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: new Outlook keep folders expanded collapsed restart admin policy Cloud Policy Set-OwaMailboxPolicy Microsoft Graph. Opened Set-OwaMailboxPolicy, read its full syntax and searched its full reference for expand, collaps, folder pane and remember; no matches.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Autonomy & actions; summary",
+      "type": "behaviour",
+      "claim": "The feature takes no action on mail and is a display change only.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Outlook remember collapsed storage mailbox device mail actions; Outlook remember expanded collapsed folders shared mailboxes restart default state stored settings policy. Read roadmap and Policy Management; neither explicitly states that no action on mail occurs.",
+      "severity": "major",
+      "fix": "Replace 'No change: the feature takes no action on mail.' with 'No action on mail is described in the roadmap item.' Replace 'A display change only' in the summary with 'The roadmap describes a display change'."
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Data exposure; Why it matters; rationale: risk",
+      "type": "absence",
+      "claim": "No source describes this feature as changing existing access to folders or shared mailboxes.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook remember expanded collapsed folders shared mailboxes restart default state stored settings policy. Read the roadmap, Policy Management and returned excerpts; none describes this planned feature as changing access to folders or mailboxes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The roadmap description says nothing about sign-in, permissions or delegation.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Outlook will remember which folders and shared mailboxes you have expanded or collapsed when you restart the app. You can pick up where you left off without opening the same folder branches again. This makes returning to your usual folders easier. #newoutlookforwindows",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-27T10:11:05.242Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 0,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=579187",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-apps/outlook/manage/policy-management",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/exchange/clients-and-mobile-in-exchange-online/outlook-on-the-web/create-outlook-web-app-mailbox-policy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-owamailboxpolicy",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [],
+    "roadmapDrift": []
+  },
+  "history": []
+}

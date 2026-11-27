@@ -138,17 +138,19 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 75 statements not yet confirmed"
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 77 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 80 statements not yet confirmed"
 version: 5
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 77
-  confirmed: 76
+  claims: 80
+  confirmed: 80
   unconfirmed: 0
-  contradicted: 1
+  contradicted: 0
   attempts: 0
   hash: "a16a42933f0f04220606cf72a69e6ce3"
 ---
@@ -250,8 +252,9 @@ cost: Variable. Copilot Credits meter Dataverse MCP tool calls and direct Work I
 impact: Medium. It affects developers and makers building Dataverse solutions, and the environments they use.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] front matter: sources titles / consistency: The reference titles label the business-skills and general Work IQ administration articles as preview. | Found: The sources say "Create and use business skills (preview)" and "Business skills overview (preview)"; the opened articles are titled "Create and use business skills" and "Business skills overview". The four general Work IQ administration titles likewise omit "(preview)". | Fix: Remove the trailing ' (preview)' from these six source titles: Create and use business skills; Business skills overview; Business Applications in Work IQ default settings; Manage AI experience access to Business Applications in Work IQ; Manage participation in Business Applications in Work IQ; Understand costs for Business Applications in Work IQ. Keep the preview designation on the Dataverse plugin sources.
+- [supported, minor] Scope: Work IQ defaults / default: The Work IQ default-settings article says Business Applications in Work IQ is on by default for new public production environments. | Found: Business Applications in Work IQ is on by default for new public production environments created for new or existing tenants. | Fix: After the default-enablement paragraph, add: 'Microsoft's general Manage feature settings article still lists the default for "Turn on Dataverse intelligence (Work IQ) for agents and AI experiences" as Off, unlike the new-production-environment default in the Work IQ article.' Cite https://learn.microsoft.com/power-platform/admin/settings-features#dataverse-intelligence-preview. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings
+- [supported, minor] front matter: sources titles / behaviour: The cited business-skills and general Work IQ administration articles cover the described functionality, but their reference titles retain obsolete preview suffixes. | Found: Create and use business skills This article explains how to create and manage business skills that ground agents in your organization's processes. | Fix: Remove ' (preview)' from these six source titles: 'Create and use business skills', 'Business skills overview', 'Business Applications in Work IQ default settings', 'Manage AI experience access to Business Applications in Work IQ', 'Manage participation in Business Applications in Work IQ', and 'Understand costs for Business Applications in Work IQ'. Keep the Dataverse plugin preview labels. | Source: https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills
 -->

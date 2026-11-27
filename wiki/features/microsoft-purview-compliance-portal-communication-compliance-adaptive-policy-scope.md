@@ -40,7 +40,7 @@ sources:
   - title: "Microsoft Purview service description"
     url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description"
     kind: "learn"
-  - title: "Whether a Communication Compliance policy takes its users from adaptive scopes (PowerShell)"
+  - title: "New-SupervisoryReviewRule (ExchangePowerShell)"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-supervisoryreviewrule"
     kind: "learn"
   - title: "Which users or Microsoft 365 groups an adaptive scope includes (PowerShell)"
@@ -53,7 +53,7 @@ sources:
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/get-adaptivescopemembers"
     kind: "learn"
 videos: []
-related: ["role-groups","microsoft-purview-adaptive-scope-evaluation-control-with-recipient-and-site-us-government","microsoft-purview-compliance-portal-communication-compliance-enhanced-policy-conditions","microsoft-purview-communication-compliance-alert-improvements"]
+related: ["role-groups","microsoft-purview-communication-compliance-alert-improvements"]
 controls:
   - governs: "Whether a Communication Compliance policy takes its users from adaptive scopes"
     scope: "other"
@@ -61,11 +61,8 @@ controls:
       surface: "Microsoft Purview portal"
       path: "Communication Compliance > Policies > Create policy > Custom policy > Choose users and reviewers > Choose users and groups > Select adaptive scopes"
       docs: "https://learn.microsoft.com/purview/communication-compliance-configure"
-    api:
-      kind: "powershell"
-      call: "New-SupervisoryReviewRule -Policy <PolicyIdParameter> -IncludeAdaptiveScopes <String[]>"
-      docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-supervisoryreviewrule"
-    note: "Needs Communication Compliance or Communication Compliance Admins. Option is hidden when the policy is scoped by admin units. The reference does not describe -IncludeAdaptiveScopes (November 2026)."
+    api: null
+    note: "Members of Communication Compliance and Communication Compliance Admins can configure policies and settings. Option is hidden when the policy is scoped by admin units."
   - governs: "Which users or Microsoft 365 groups an adaptive scope includes"
     scope: "tenant"
     ui:
@@ -92,7 +89,7 @@ controls:
     scope: "other"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Settings > Roles and scopes > Adaptive scopes > adaptive scope > Scope details"
+      path: "Settings > Roles and scopes > Adaptive scopes > adaptive scope > Details > Scope details"
       docs: "https://learn.microsoft.com/purview/purview-adaptive-scopes"
     api:
       kind: "powershell"
@@ -108,19 +105,23 @@ changes:
     note: "New briefing: adaptive scopes in Communication Compliance policies, with the scope, policy, role and membership controls."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 59 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-27"
+    note: "Corrected the policy-row role note and Scope roles line, marked PowerShell for selecting adaptive scopes in a policy as not yet documented, replaced the autonomy bullet, added the Details pane to the membership path and removed the exclusions checklist step."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 62 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-27"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 59
-  confirmed: 55
-  unconfirmed: 2
-  contradicted: 2
-  attempts: 1
-  hash: "b9439f8991ce95a61fe7803b760c0c2b"
+  claims: 62
+  confirmed: 61
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "c0cf4b078998d0c8485de624dd7629c5"
 ---
 
 ## What's changing
@@ -140,7 +141,7 @@ If nobody acts, existing policies keep their current user selection; the option 
 ## Risk assessment
 
 **Data exposure**
-- A scope that matches more people than intended brings their messages in the locations the policy checks into reviewers' queues. Check the scope's membership list before attaching it to a policy (Settings > Roles and scopes > Adaptive scopes > scope > Scope details).
+- A scope that matches more people than intended brings their messages in the locations the policy checks into reviewers' queues. Check the scope's membership list before attaching it to a policy (Settings > Roles and scopes > Adaptive scopes > scope > Details > Scope details).
 - A scope edited for a retention or auto-labeling policy also changes a Communication Compliance policy that uses it, because scopes are shared configuration.
 
 **Security & identity**
@@ -148,7 +149,7 @@ If nobody acts, existing policies keep their current user selection; the option 
 - Any role group with the Scope Manager role can create scopes, including Compliance Administrator, Organization Management and Records Management, not only the Communication Compliance groups.
 
 **Autonomy & actions**
-- No change: the scope selects users; detection, alerts and remediation work as before.
+- The scope selects which users or groups the policy covers.
 
 **Change & support**
 - Because the query does not run immediately, there is no validation that values were typed correctly; a misspelt value yields an empty or partial scope.
@@ -169,7 +170,7 @@ If nobody acts, existing policies keep their current user selection; the option 
 ## Scope
 
 - **Who is covered:** users and Microsoft 365 groups matched by a **Users** or **Microsoft 365 Groups** scope; site scopes are not applicable to Communication Compliance.
-- **Roles:** creating a scope needs a role group with the Scope Manager role (Compliance Administrator, Compliance Data Administrator, Organization Management, Records Management, Communication Compliance, Communication Compliance Admins). Configuring policies needs the Communication Compliance or Communication Compliance Admins role group.
+- **Roles:** creating a scope needs a role group with the Scope Manager role (Compliance Administrator, Compliance Data Administrator, Organization Management, Records Management, Communication Compliance, Communication Compliance Admins). Members of Communication Compliance and Communication Compliance Admins can configure policies and settings.
 - **Query limits:** attribute values up to 200 characters; up to 10 attributes without a group or within a group; up to 10 groups; advanced queries up to 10,000 characters.
 - **Clouds:** the roadmap item lists GCC, GCC High and DoD. **Platform:** Web.
 - **Out of scope:** policies scoped by admin units, which cannot use adaptive scopes at this time.
@@ -185,7 +186,6 @@ If nobody acts, existing policies keep their current user selection; the option 
 ### At rollout
 - Create the scope under Settings > Roles and scopes > Adaptive scopes and wait a few days for it to populate before selecting it in a policy.
 - Compare the scope's Scope details list, or Get-AdaptiveScopeMembers output, against the expected supervised population.
-- Add known exceptions in the policy's Excluded users and groups section.
 - Name scopes so retention and records administrators can see that a Communication Compliance policy depends on them.
 
 ### After rollout
@@ -200,14 +200,14 @@ If nobody acts, existing policies keep their current user selection; the option 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether a Communication Compliance policy takes its users from adaptive scopes</strong><br><small class="controls__note">Needs Communication Compliance or Communication Compliance Admins. Option is hidden when the policy is scoped by admin units. The reference does not describe -IncludeAdaptiveScopes (November 2026).</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Communication Compliance › Policies › Create policy › Custom policy › Choose users and reviewers › Choose users and groups › Select adaptive scopes <a href="https://learn.microsoft.com/purview/communication-compliance-configure" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-SupervisoryReviewRule -Policy &lt;PolicyIdParameter&gt; -IncludeAdaptiveScopes &lt;String[]&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-supervisoryreviewrule" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether a Communication Compliance policy takes its users from adaptive scopes</strong><br><small class="controls__note">Members of Communication Compliance and Communication Compliance Admins can configure policies and settings. Option is hidden when the policy is scoped by admin units.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Communication Compliance › Policies › Create policy › Custom policy › Choose users and reviewers › Choose users and groups › Select adaptive scopes <a href="https://learn.microsoft.com/purview/communication-compliance-configure" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which users or Microsoft 365 groups an adaptive scope includes</strong><br><small>Tenant</small><br><small class="controls__note">Any role group with the Scope Manager role can create a scope. Security &amp; Compliance PowerShell; -LocationType also accepts Group.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and scopes › Adaptive scopes › + Create scope <a href="https://learn.microsoft.com/purview/purview-adaptive-scopes" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-AdaptiveScope -Name &lt;String&gt; -LocationType User -FilterConditions &lt;PswsHashtable&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-adaptivescope" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Who can configure Communication Compliance policies and settings</strong><br><small>Tenant</small><br><small class="controls__note">Communication Compliance and Communication Compliance Admins role groups can configure policies and settings.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and groups › Role groups › role group › Edit › Choose users <a href="https://learn.microsoft.com/purview/communication-compliance-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember -Identity &quot;&lt;role-group&gt;&quot; -Member &quot;&lt;user-UPN&gt;&quot;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Current and past members of an adaptive scope</strong><br><small class="controls__note">Monitoring only. The portal list shows up to 1 million members; Microsoft points to the cmdlet for 1,000 or more members.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and scopes › Adaptive scopes › adaptive scope › Scope details <a href="https://learn.microsoft.com/purview/purview-adaptive-scopes" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Get-AdaptiveScopeMembers -Identity &lt;ComplianceRuleIdParameter&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/get-adaptivescopemembers" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Current and past members of an adaptive scope</strong><br><small class="controls__note">Monitoring only. The portal list shows up to 1 million members; Microsoft points to the cmdlet for 1,000 or more members.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and scopes › Adaptive scopes › adaptive scope › Details › Scope details <a href="https://learn.microsoft.com/purview/purview-adaptive-scopes" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Get-AdaptiveScopeMembers -Identity &lt;ComplianceRuleIdParameter&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/get-adaptivescopemembers" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-The policy row and the scope row interact: the policy only points at a scope, and the scope's query decides membership, so the Scope Manager role and Entra ID attribute-write rights both govern coverage. A scope change can take up to five days to be reflected. The Security & Compliance PowerShell references for New-AdaptiveScope and Get-AdaptiveScopeMembers describe scopes in terms of retention and Insider Risk Management policies; the adaptive scopes page is the one that names Communication Compliance policies. The New-SupervisoryReviewRule reference lists -IncludeAdaptiveScopes but gives no description of the parameter at the time of writing (November 2026).
+The policy row and the scope row interact: the policy only points at a scope, and the scope's query decides membership, so the Scope Manager role and Entra ID attribute-write rights both govern coverage. A scope change can take up to five days to be reflected. The Security & Compliance PowerShell references for New-AdaptiveScope and Get-AdaptiveScopeMembers describe scopes in terms of retention and Insider Risk Management policies; the adaptive scopes page is the one that names Communication Compliance policies. The New-SupervisoryReviewRule reference lists -IncludeAdaptiveScopes as String[] but does not document its effect or accepted scope identifiers (November 2026).
 
 ## Open questions
 
@@ -222,13 +222,9 @@ cost: Low. Communication Compliance is included in Microsoft 365 E5/A5/G5 and Of
 impact: Low. Compliance administrators and reviewers notice; the change is to how a policy's users are chosen.
 -->
 
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].note; Scope: Roles / role: Configuring Communication Compliance policies needs membership of Communication Compliance or Communication Compliance Admins. | Found: Members of the following roles have the same solution permissions included with the Communication Compliance Admins role group: ... Microsoft Entra ID Global Administrator ... Compliance Administrator ... Microsoft Purview portal Organization Management ... Compliance Administrator | Fix: Replace 'Needs Communication Compliance or Communication Compliance Admins' in the policy-row note with 'Members of Communication Compliance and Communication Compliance Admins can configure policies and settings.' Replace the corresponding 'Configuring policies needs' sentence in Scope with that same sentence. The permissions page also explicitly grants equivalent solution permissions to broader administrator roles. | Source: https://learn.microsoft.com/purview/communication-compliance-permissions
-- [unsupported, blocker] controls[0].api; Governance controls: policy row / command: New-SupervisoryReviewRule -Policy <PolicyIdParameter> -IncludeAdaptiveScopes <String[]> is documented automation for assigning adaptive scopes to a Communication Compliance policy. | Found: Searched: 'New-SupervisoryReviewRule IncludeAdaptiveScopes parameter scope GUID' and '"IncludeAdaptiveScopes" "Communication"'; read the New reference and New/Set excerpts. Syntax lists String[]; the description is an unfilled placeholder, not an explanation of the operation. | Fix: Set controls[0].api to null and update its rendered table cell to 'Not yet documented'. Replace the parameter note with 'The New-SupervisoryReviewRule reference lists -IncludeAdaptiveScopes as String[] but does not document its effect or accepted scope identifiers (November 2026).' Keep the documented UI route.
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: Detection, alerts and remediation work exactly as before when adaptive scopes are used. | Found: Searched: '"Communication Compliance" "adaptive scopes" "detection" alerts remediation unchanged'; read policies, Get started and workflow excerpts. They describe selection and workflows, not an explicit guarantee that all three behaviours are unchanged. | Fix: Replace the bullet with 'The scope selects which users or groups the policy covers.' Remove the unsupported historical comparison about detection, alerts and remediation.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[3].ui; Risk assessment: Data exposure; Governance guidance / admin-path: Scope membership is available at Settings > Roles and scopes > Adaptive scopes > adaptive scope > Scope details. | Found: Select Settings > Roles and scopes > Adaptive scopes. ... Select an existing adaptive scope from the list. ... From the Details flyout pane, select Scope details. | Fix: Include the intervening pane heading in the front matter and rendered/prose routes: 'Settings > Roles and scopes > Adaptive scopes > adaptive scope > Details > Scope details'. No additional selection is required to open the Details pane. | Source: https://learn.microsoft.com/purview/purview-adaptive-scopes
-- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: The checklist's instruction to configure Excluded users and groups has no corresponding control row. | Found: Checklist: 'Add known exceptions in the policy's Excluded users and groups section.' The four rows cover selecting scopes, defining scopes, assigning administrators and viewing membership; none covers exclusions. | Fix: Remove the checklist bullet 'Add known exceptions in the policy's Excluded users and groups section.' Its exclusion control has no row in the existing table; the supported exclusions statement in What's changing can remain.
+- [supported, minor] controls[1].ui; What's changing; Governance guidance: At rollout; rendered table / admin-path: Settings > Roles and scopes > Adaptive scopes > + Create scope is the Purview route to creating a scope. | Found: Settings > Roles and scopes > Adaptive scopes. ... select + Create scope. ... first asked to assign an administrative unit. ... keep the default of Full directory. ... Select the type of scope, and then select the attributes or properties | Fix: The route correctly opens creation but stops before its configuration choices. Keep 'Settings > Roles and scopes > Adaptive scopes > + Create scope' and append to the row note: 'In the wizard, choose Full directory or an assigned administrative unit, select Users or Microsoft 365 Groups, then select the attributes and enter their values.' Source: https://learn.microsoft.com/purview/purview-adaptive-scopes. | Source: https://learn.microsoft.com/purview/purview-adaptive-scopes
+- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The governance checklist's instruction to check assigned user licences has a corresponding control in the controls table. | Found: 'Confirm that matched users hold a licence that includes Communication Compliance'; the table covers policy scope selection, scope creation, role-group membership and scope-member reporting, not licence assignment. | Fix: The After rollout instruction to check assigned licences has no corresponding control row. Remove that checklist bullet; retain the verified user-licensing requirement in Cost and licensing and the unlicensed-user limitation in Risk assessment.
 -->

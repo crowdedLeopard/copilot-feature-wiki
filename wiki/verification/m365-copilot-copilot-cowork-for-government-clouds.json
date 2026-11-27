@@ -3,7 +3,7 @@
   "roadmapId": 571637,
   "title": "Microsoft 365 Copilot: Copilot Cowork for GCC and GCC High",
   "status": "verified-with-gaps",
-  "date": "2026-11-20",
+  "date": "2026-11-27",
   "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
@@ -14,15 +14,15 @@
   "notes": [],
   "hold": null,
   "counts": {
-    "claims": 73,
-    "confirmed": 73,
+    "claims": 77,
+    "confirmed": 77,
     "unconfirmed": 0,
     "contradicted": 0,
     "blocker": 0,
     "major": 0,
-    "minor": 2
+    "minor": 3
   },
-  "summary": "The briefing passes: its roadmap facts, GCC licensing, access requirements and documented government differences are supported. Two admin paths stop on the correct settings page or section and should be extended to name the final control.",
+  "summary": "The briefing passes: its roadmap facts, GCC licensing, access requirements and government feature differences are supported. The web-search API needs a caveat about conflicting government-cloud documentation, and two settings paths should name the final control.",
   "claims": [
     {
       "n": 1,
@@ -81,6 +81,28 @@
     },
     {
       "n": 6,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap product is Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
       "where": "What's changing; Risk assessment: Data exposure",
       "type": "record",
       "claim": "The roadmap says Cowork automatically grounds delegated work in emails, meetings, messages, files and data.",
@@ -91,40 +113,40 @@
       "fix": null
     },
     {
-      "n": 7,
-      "where": "summary; Risk assessment: Autonomy & actions; rationale: risk",
+      "n": 9,
+      "where": "summary; What's changing; Risk assessment: Autonomy & actions; rationale: risk",
       "type": "behaviour",
       "claim": "Cowork can send mail on a user's behalf.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-government",
-      "quote": "every action needs your explicit approval, such as sending mail, posting in Teams, scheduling meetings or creating files.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "summary; Risk assessment: Autonomy & actions; rationale: risk",
-      "type": "behaviour",
-      "claim": "Cowork can post in Teams.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-government",
-      "quote": "every action needs your explicit approval, such as sending mail, posting in Teams, scheduling meetings or creating files.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "summary; Risk assessment: Autonomy & actions; rationale: risk",
-      "type": "behaviour",
-      "claim": "Cowork can schedule meetings.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-government",
-      "quote": "every action needs your explicit approval, such as sending mail, posting in Teams, scheduling meetings or creating files.",
+      "source": "https://learn.microsoft.com/copilot/cowork/",
+      "quote": "You describe what you need, and Cowork sends emails, schedules meetings, creates documents, posts in Teams, and manages your calendar.",
       "severity": null,
       "fix": null
     },
     {
       "n": 10,
+      "where": "summary; Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "Cowork can post in Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/",
+      "quote": "Posts in Teams: Sends messages to channels and chats.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "Cowork can schedule meetings and manage the user's calendar.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/",
+      "quote": "Schedules meetings: Creates calendar events, adds attendees, and helps you organize your day.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
       "where": "summary; Risk assessment: Autonomy & actions; rationale: risk",
       "type": "behaviour",
       "claim": "Cowork can create files.",
@@ -135,10 +157,10 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 13,
       "where": "What's changing",
       "type": "availability",
-      "claim": "Learn says Cowork is available in GCC, unlike the roadmap's In development status.",
+      "claim": "Learn says Cowork is available in GCC, in contrast to the roadmap's In development status.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-government",
       "quote": "Copilot Cowork is available in Government Community Cloud (GCC).",
@@ -146,7 +168,7 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 14,
       "where": "What's changing; Scope; Governance guidance: Before rollout",
       "type": "availability",
       "claim": "The government Cowork article covers GCC only.",
@@ -157,18 +179,40 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 15,
       "where": "What's changing; Open questions",
       "type": "absence",
-      "claim": "No Cowork page for GCC High was found on Learn at the time of writing in November 2026.",
+      "claim": "No Cowork page for GCC High was found on Microsoft Learn as of November 2026.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Copilot Cowork GCC government licensing spending policy default GCC High browser web search; \"Cowork\" \"GCC High\" availability. Opened cowork-government and the overview; reviewed FAQ, get-started and mobile search excerpts. No GCC High Cowork page returned.",
+      "quote": "Searched: \"Cowork\" \"GCC High\". Read cowork-government, cowork overview, cowork-access and cowork-admin-governance; results describe GCC and refer government readers to the GCC-only article, not a GCC High Cowork page.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 14,
+      "n": 16,
+      "where": "front matter: defaultState; summary; Why it matters; Scope; rationale: impact",
+      "type": "default",
+      "claim": "Cowork is admin-opt-in: tenant admins enable access by adding users to a spending policy that includes Cowork.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-government",
+      "quote": "Tenant admins turn on Cowork for users by adding them to a spending policy that includes Cowork in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Cowork honours existing permissions and sharing boundaries.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-government",
+      "quote": "Cowork honors existing permissions, so make sure your sharing and data access policies reflect how you want it to be used.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "GCC uses GPT-6.1 models hosted in Azure Government.",
@@ -179,7 +223,7 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 19,
       "where": "What's changing; Risk assessment: Change & support",
       "type": "availability",
       "claim": "Anthropic models are not available in GCC.",
@@ -190,10 +234,10 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 20,
       "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance; rationale: risk",
       "type": "behaviour",
-      "claim": "The GCC page says every action needs the user's explicit approval.",
+      "claim": "The GCC page says every action needs explicit user approval.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-government",
       "quote": "Same as worldwide: every action needs your explicit approval, such as sending mail, posting in Teams, scheduling meetings or creating files.",
@@ -201,18 +245,18 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 21,
       "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance; rationale: risk",
       "type": "behaviour",
-      "claim": "Always allow is a user option that can skip future approval prompts.",
+      "claim": "The GCC page offers Always allow so users can skip future approval prompts.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-government",
-      "quote": "Always allow is an option for users. ... As in worldwide environments, you can approve each action, including file creation, before Cowork runs it or you can also skip future approval prompt",
+      "quote": "Always allow is an option for users. ... you can approve each action, including file creation, before Cowork runs it or you can also skip future approval prompt",
       "severity": null,
       "fix": null
     },
     {
-      "n": 18,
+      "n": 22,
       "where": "What's changing; Risk assessment: Security & identity; Governance controls",
       "type": "default",
       "claim": "Web search is off by default in government clouds.",
@@ -223,10 +267,10 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 23,
       "where": "What's changing; Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Event-driven tasks in GCC support mail and calendar triggers only.",
+      "claim": "GCC event-driven tasks support mail and calendar triggers only.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-government",
       "quote": "| Event-driven tasks | Mail and calendar triggers only. |",
@@ -234,10 +278,10 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 24,
       "where": "What's changing; Risk assessment: Change & support",
       "type": "availability",
-      "claim": "App Builder is listed as not currently available in GCC.",
+      "claim": "App Builder is not currently available in GCC.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-government",
       "quote": "| App Builder and functional plugins | Not currently available |",
@@ -245,10 +289,10 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 25,
       "where": "What's changing; Risk assessment: Change & support",
       "type": "availability",
-      "claim": "Functional plugins are listed as not currently available in GCC.",
+      "claim": "Functional plugins are not currently available in GCC.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-government",
       "quote": "| App Builder and functional plugins | Not currently available |",
@@ -256,10 +300,10 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 26,
       "where": "What's changing; Risk assessment: Change & support; Scope",
       "type": "availability",
-      "claim": "The GCC article lists web device access.",
+      "claim": "The GCC capability table lists web device access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-government",
       "quote": "| Device Access | Copilot Cowork is available on Web |",
@@ -267,10 +311,10 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "What's changing; Risk assessment: Change & support; Scope",
+      "n": 27,
+      "where": "What's changing; Risk assessment: Change & support; Scope; Open questions",
       "type": "availability",
-      "claim": "The overview says GCC access includes the Microsoft 365 Copilot web app and mobile progress checks and approvals.",
+      "claim": "The overview additionally documents GCC mobile progress checks and approvals.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/",
       "quote": "GCC access includes the Microsoft 365 Copilot web app and mobile progress checks and approvals.",
@@ -278,40 +322,18 @@
       "fix": null
     },
     {
-      "n": 24,
-      "where": "front matter: defaultState; summary; Why it matters; Scope; rationale: impact",
-      "type": "default",
-      "claim": "GCC access is admin-opt-in through a spending policy that includes Cowork.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-government",
-      "quote": "Tenant admins turn on Cowork for users by adding them to a spending policy that includes Cowork in the Microsoft 365 admin center. Once billing is set up for a group of users, Cowork is enabled for them with no additional configuration.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "Why it matters; Governance controls",
-      "type": "applicability",
-      "claim": "The worldwide access page says a user has no access without an in-scope policy selecting Cowork.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-access",
-      "quote": "If no policy in scope selects Cowork, the user has no access.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "Why it matters; Risk assessment: Data exposure",
+      "n": 28,
+      "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Cowork honours existing user permissions.",
+      "claim": "Microsoft's admin article says Cowork runs within the GCC boundary in GCC.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-government",
-      "quote": "Cowork honors existing permissions, so make sure your sharing and data access policies reflect how you want it to be used.",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
+      "quote": "In GCC, Cowork runs within the GCC boundary, and Purview features are not yet supported.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 27,
+      "n": 29,
       "where": "Why it matters; Risk assessment; Governance guidance; Open questions; rationale: risk",
       "type": "applicability",
       "claim": "Microsoft says Purview features are not yet supported for Cowork in GCC.",
@@ -322,21 +344,10 @@
       "fix": null
     },
     {
-      "n": 28,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Cowork runs within the GCC boundary in GCC.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
-      "quote": "In GCC, Cowork runs within the GCC boundary",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
+      "n": 30,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "The GCC troubleshooting table refers to a Cowork service principal and consented required permissions.",
+      "claim": "The government troubleshooting table refers to an enabled Cowork service principal with required permissions consented.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-government",
       "quote": "Ask your admin to verify that the Cowork service principal is enabled and its required permissions are consented.",
@@ -344,32 +355,43 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 31,
       "where": "Risk assessment: Security & identity; controls[1]; Governance controls",
       "type": "applicability",
-      "claim": "Cowork web search requires the Allow web search in Copilot policy in Cloud Policy service.",
+      "claim": "Government Cowork web search requires the Copilot web search policy in Cloud Policy service to be on.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
-      "quote": "The information about web search in this article also applies to ... Cowork ... The primary way that IT admins can control access to web search is by using the Allow web search in Copilot policy, which is available only in Cloud Policy service for Microsoft 365.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "The worldwide admin page says automated tasks run as the user who created them.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
-      "quote": "Each automated task runs as the user who created it.",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-government",
+      "quote": "To let Copilot Cowork search the web, an admin needs to turn on the Copilot web search policy in the cloud policy service. Cowork uses web search only when this policy is on.",
       "severity": null,
       "fix": null
     },
     {
       "n": 32,
-      "where": "front matter: licensing.notes; Cost and licensing; Scope; Governance guidance; rationale: cost",
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The worldwide administration article says automated tasks run as the user who created them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
+      "quote": "Each automated task runs as the user who created it. It sees only the data that user can see",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "front matter: licensing.model",
       "type": "licensing",
-      "claim": "Cowork in GCC requires a Microsoft 365 GCC Copilot license.",
+      "claim": "The licensing model is mixed, combining a Microsoft 365 GCC Copilot licence requirement with usage-based billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-government",
+      "quote": "Cowork requires a Microsoft 365 GCC Copilot license, with no separate Cowork license. It is billed based on usage",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "licensing.notes; Cost and licensing; Scope; Governance guidance; rationale: cost",
+      "type": "licensing",
+      "claim": "Cowork requires a Microsoft 365 GCC Copilot licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-government",
       "quote": "Cowork requires a Microsoft 365 GCC Copilot license",
@@ -377,30 +399,30 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "There is no separate Cowork license.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-government",
-      "quote": "Cowork requires a Microsoft 365 GCC Copilot license, with no separate Cowork license.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "summary; front matter: cost; licensing.notes; Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "Cowork is usage-billed through Copilot Credits and spending policies.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-government",
-      "quote": "It is billed based on usage, so tenants pay only for what users actually use. Government tenants can buy prepaid Copilot Credits ... Tenant admins turn on Cowork for users by adding them to a spending policy that includes Cowork",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 35,
-      "where": "front matter: licensing.notes; Cost and licensing; Governance guidance",
+      "where": "licensing.notes; Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "No separate Cowork licence is required.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-government",
+      "quote": "with no separate Cowork license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: cost; summary; licensing.notes; Why it matters; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Cowork is billed on usage through Copilot Credits, supporting the variable cost rating.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-government",
+      "quote": "It is billed based on usage, so tenants pay only for what users actually use. Government tenants can buy prepaid Copilot Credits",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "licensing.notes; Cost and licensing: Meter; Governance guidance",
       "type": "cost",
       "claim": "Government tenants can buy prepaid Copilot Credits without an Azure subscription.",
       "status": "supported",
@@ -410,32 +432,43 @@
       "fix": null
     },
     {
-      "n": 36,
-      "where": "front matter: licensing.notes; Cost and licensing; Governance guidance",
-      "type": "cost",
-      "claim": "Government tenants can connect an Azure subscription and choose pay-as-you-go.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-government",
-      "quote": "or connect an Azure subscription and choose pay-as-you-go or pre-purchase packs.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "cost",
-      "claim": "Government tenants can connect an Azure subscription and choose pre-purchase packs.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-government",
-      "quote": "or connect an Azure subscription and choose pay-as-you-go or pre-purchase packs.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 38,
+      "where": "licensing.notes; Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "Government tenants can connect an Azure subscription for pay-as-you-go funding.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-government",
+      "quote": "or connect an Azure subscription and choose pay-as-you-go or pre-purchase packs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "licensing.notes; Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "The government page also lists Azure-linked pre-purchase packs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-government",
+      "quote": "or connect an Azure subscription and choose pay-as-you-go or pre-purchase packs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing: Meter",
+      "type": "admin-path",
+      "claim": "Copilot > Cost Management > Configuration in the Microsoft 365 admin center is where spending policies are managed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "In the Microsoft 365 admin center, go to Copilot > Cost Management. ... Select the Configuration tab.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
       "where": "Cost and licensing: Limits",
       "type": "cost",
-      "claim": "The worldwide spending-policy documentation says reaching the limit removes service access for the rest of the month.",
+      "claim": "The worldwide policy documentation says users reaching a monthly limit lose selected-service access for the rest of the month.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
       "quote": "When users hit the limit, they lose access to agents and services for the rest of the month until credits reset on the first of the month.",
@@ -443,10 +476,10 @@
       "fix": null
     },
     {
-      "n": 39,
+      "n": 42,
       "where": "Cost and licensing: Limits",
-      "type": "cost",
-      "claim": "Enforcement is asynchronous and users may start tasks after reaching a limit.",
+      "type": "behaviour",
+      "claim": "Limit enforcement is asynchronous and users might start tasks after reaching their limit.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-access",
       "quote": "Credit consumption and limit enforcement are evaluated asynchronously, so a user might be able to start one or more tasks after their limit is reached before enforcement takes effect.",
@@ -454,10 +487,10 @@
       "fix": null
     },
     {
-      "n": 40,
+      "n": 43,
       "where": "Cost and licensing: Limits; Governance controls",
-      "type": "applicability",
-      "claim": "A low spending-policy credit limit does not itself block Cowork access in the worldwide access rules.",
+      "type": "behaviour",
+      "claim": "The worldwide access page says a low credit limit does not remove Cowork access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-access",
       "quote": "A policy with a limit of one credit still grants access. ... A low credit limit doesn't block access.",
@@ -465,10 +498,10 @@
       "fix": null
     },
     {
-      "n": 41,
+      "n": 44,
       "where": "Cost and licensing: Limits; Governance controls",
-      "type": "applicability",
-      "claim": "The worldwide access rules say removing access requires removing the user from every spending policy that includes Cowork.",
+      "type": "behaviour",
+      "claim": "The worldwide access page says removing access requires removing a user from every spending policy that includes Cowork.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-access",
       "quote": "To remove access for a user, remove them from every spending policy that includes Cowork.",
@@ -476,8 +509,19 @@
       "fix": null
     },
     {
-      "n": 42,
-      "where": "Cost and licensing; controls[0].note; Governance controls",
+      "n": 45,
+      "where": "Why it matters; controls[0]; Governance controls",
+      "type": "applicability",
+      "claim": "The worldwide access rules grant Cowork access through any in-scope policy selecting Cowork and deny it if no such policy exists.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-access",
+      "quote": "A user has access to Cowork when a policy's scope includes them ... and that policy selects Cowork under Select agents and services. If no policy in scope selects Cowork, the user has no access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[0].note; Cost and licensing; Governance controls",
       "type": "applicability",
       "claim": "The GCC article warns that the worldwide spending-policy access procedure is not government setup guidance.",
       "status": "supported",
@@ -487,21 +531,21 @@
       "fix": null
     },
     {
-      "n": 43,
+      "n": 47,
       "where": "Cost and licensing: Not yet published; rationale: cost",
       "type": "absence",
-      "claim": "The GCC article gives no credit rate for Cowork tasks.",
+      "claim": "The GCC page gives no credit rate for Cowork tasks.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Cowork\" \"GCC\" \"credit rate\". Read cowork-government in full, including licensing and billing prerequisites; it names funding methods but no task credit rate. Reviewed credit-usage and Cowork billing search excerpts.",
+      "quote": "Searched: \"Cowork\" \"GCC\" \"credit rate\". Read cowork-government in full, including licensing and billing prerequisites; it names funding methods and usage billing but gives no per-task credit rate.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 44,
+      "n": 48,
       "where": "Scope: Roles; Governance controls",
       "type": "role",
-      "claim": "The Graph spending-policy creation reference requires Billing Administrator or Global Administrator at runtime.",
+      "claim": "The Graph create-spending-policy reference requires Billing Administrator or Global Administrator.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create",
       "quote": "At runtime, creating a policy also requires the Billing Administrator or Global Administrator directory role.",
@@ -509,10 +553,10 @@
       "fix": null
     },
     {
-      "n": 45,
+      "n": 49,
       "where": "Scope: Roles",
       "type": "role",
-      "claim": "Cloud Policy lists Office Apps Administrator as recommended, plus Security Administrator and Global Administrator.",
+      "claim": "Cloud Policy lists Office Apps Administrator as recommended, alongside Security Administrator and Global Administrator.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
       "quote": "Office Apps Administrator (Recommended) ... Security Administrator ... Global Administrator",
@@ -520,10 +564,10 @@
       "fix": null
     },
     {
-      "n": 46,
+      "n": 50,
       "where": "Scope: Rollout; Governance guidance: Before rollout",
       "type": "availability",
-      "claim": "Microsoft tells GCC admins to check Message Center for tenant availability.",
+      "claim": "Microsoft directs GCC administrators to Message Center for their tenant's availability information.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-government",
       "quote": "Check Microsoft 365 Message Center for availability information for your tenant.",
@@ -531,21 +575,21 @@
       "fix": null
     },
     {
-      "n": 47,
-      "where": "controls[0].ui; Cost and licensing: Meter; Governance guidance: At rollout",
+      "n": 51,
+      "where": "controls[0].ui; Governance controls",
       "type": "admin-path",
-      "claim": "The spending-policy path goes through Copilot > Cost Management > Configuration > + Add spending policy > Policy scope > Identity > Specific groups > group > Select agents and services > Cowork.",
+      "claim": "The group-scoped spending-policy path is Copilot > Cost Management > Configuration > + Add spending policy > Policy scope > Identity > Specific groups > group > Select agents and services > Cowork.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
-      "quote": "go to Copilot > Cost Management. ... select the Configuration tab and then select + Add spending policy. ... choose Identity as the scope. ... switch to Specific groups and select the directory group. ... The Model templates step appears only when you select Cowork in a spending policy.",
+      "quote": "Select the Configuration tab and then select + Add spending policy. ... choose Identity as the scope. ... switch to Specific groups and select the directory group. ... The Model templates step appears only when you select Cowork in a spending policy.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 48,
-      "where": "controls[0].api",
+      "n": 52,
+      "where": "controls[0].api; Governance controls",
       "type": "command",
-      "claim": "POST /beta/copilot/costManagement/spendingPolicies/{id}/serviceSettings adds a service setting to an existing spending policy.",
+      "claim": "POST /beta/copilot/costManagement/spendingPolicies/{id}/serviceSettings adds a service setting to a spending policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-create",
       "quote": "Create a new spendingPolicyServiceSetting object to add a service to an existing spending policy. ... POST https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/3f9e2c1a-0000-0000-0000-00000000c21b/serviceSettings",
@@ -553,90 +597,46 @@
       "fix": null
     },
     {
-      "n": 49,
+      "n": 53,
       "where": "controls[0].note",
       "type": "command",
-      "claim": "The service-setting request body requires serviceId and state.",
+      "claim": "The service-setting API is beta and requires serviceId and state in its request body.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-create",
-      "quote": "Required properties are serviceId and state.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
-      "where": "controls[0].note",
-      "type": "absence",
-      "claim": "The cited service-setting creation reference uses another serviceId in its example and gives no Cowork value.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: read spendingpolicyservicesetting-create in full for Cowork and serviceId. Its sole example uses researcherCritiqueAndCouncil; it supplies no Cowork serviceId. The separate spendingpolicy-create page does show cowork, but the claim is explicitly about this reference.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 51,
-      "where": "controls[1].ui; Governance controls",
-      "type": "admin-path",
-      "claim": "The Apps admin center path is Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
-      "quote": "Under Customization, select Policy Management. ... On the Policy configurations page, select Create. ... On the Start with the basics page ... On the Choose the scope page ... On the Configure Settings page, select the policies",
-      "severity": "minor",
-      "fix": "Extend controls[1].ui.path to 'Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings > Allow web search in Copilot'. The existing path reaches the correct page; the policy name is documented at https://learn.microsoft.com/copilot/plan/manage-public-web-access."
-    },
-    {
-      "n": 52,
-      "where": "controls[1].api",
-      "type": "command",
-      "claim": "POST /beta/admin/configurationManagement/configurationMonitors creates a configuration monitor that can apply a baseline once.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
-      "quote": "Create a new configurationMonitor ... applies a desired-state baseline once in applyOnce mode. ... POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "controls[0].note; controls[1].note; Governance controls",
-      "type": "command",
-      "claim": "The printed Graph automation uses beta APIs, with TCM capabilities in preview.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources",
-      "quote": "These capabilities are available in preview through Microsoft Graph beta.",
+      "quote": "APIs under the /beta version are subject to change. ... Required properties are serviceId and state.",
       "severity": null,
       "fix": null
     },
     {
       "n": 54,
-      "where": "controls[1].note; Governance controls",
-      "type": "command",
-      "claim": "Creating a monitor with mode applyOnce applies the desired-state baseline once rather than merely reading settings.",
+      "where": "controls[0].note",
+      "type": "absence",
+      "claim": "The create-service-setting reference example uses another serviceId and does not give a Cowork value.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
-      "quote": "An active applyOnce monitor runs in the background on behalf of the signed-in administrator and then becomes inactive. Its result reports the outcome of the run.",
+      "source": null,
+      "quote": "Searched: read spendingpolicyservicesetting-create in full for Cowork/serviceId. Its request and response examples use researcherCritiqueAndCouncil, with no Cowork value; this narrow statement is about that reference, not all Graph documentation.",
       "severity": null,
       "fix": null
     },
     {
       "n": 55,
-      "where": "controls[1].note; Governance controls",
-      "type": "command",
-      "claim": "The web-search resource is microsoft.copilot.allowwebsearch with resourceVersion 1 and properties.value.",
+      "where": "controls[1].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "The web-search policy route in the Apps admin center ends at Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
-      "quote": "\"resourceType\": \"microsoft.copilot.allowwebsearch\", \"resourceVersion\": 1, \"properties\": { \"value\": \"0\" }",
-      "severity": null,
-      "fix": null
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+      "quote": "Under Customization, select Policy Management. ... On the Policy configurations page, select Create. ... On the Configure Settings page, select the policies that you want to include in the policy configuration.",
+      "severity": "minor",
+      "fix": "Extend controls[1].ui.path and the rendered path to 'Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings > Allow web search in Copilot'. The existing route reaches the correct page; the final policy name is documented at https://learn.microsoft.com/copilot/plan/manage-public-web-access, already cited."
     },
     {
       "n": 56,
-      "where": "controls[1].note; Governance controls",
+      "where": "controls[1].api; Governance controls",
       "type": "command",
-      "claim": "Web-search properties.value of string 0 enables web search in Microsoft 365 Copilot and Copilot Chat.",
+      "claim": "POST /beta/admin/configurationManagement/configurationMonitors can apply a desired-state baseline in applyOnce mode.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
-      "quote": "Controls web search. 0 enables it in Microsoft 365 Copilot and Microsoft 365 Copilot Chat.",
+      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+      "quote": "applies a desired-state baseline once in applyOnce mode. ... POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors",
       "severity": null,
       "fix": null
     },
@@ -644,7 +644,29 @@
       "n": 57,
       "where": "controls[1].note; Governance controls",
       "type": "command",
-      "claim": "Web-search properties.value of string 1 disables web search in both Microsoft 365 Copilot and Copilot Chat.",
+      "claim": "The preview TCM resource for web search is microsoft.copilot.allowwebsearch with resourceVersion 1 and properties.value.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+      "quote": "\"resourceType\": \"microsoft.copilot.allowwebsearch\",\n  \"resourceVersion\": 1,\n  \"properties\": {\n    \"value\": \"0\"\n  }",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[1].note; Governance controls",
+      "type": "command",
+      "claim": "The web-search resource value \"0\" enables search in Microsoft 365 Copilot and Copilot Chat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+      "quote": "0 enables it in Microsoft 365 Copilot and Microsoft 365 Copilot Chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[1].note; Governance controls",
+      "type": "command",
+      "claim": "The web-search resource value \"1\" disables search in both Copilot experiences.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
       "quote": "1 disables it in both.",
@@ -652,18 +674,29 @@
       "fix": null
     },
     {
-      "n": 58,
+      "n": 60,
       "where": "controls[1].note; Governance controls",
       "type": "applicability",
-      "claim": "TCM supports these Copilot settings only in tenant-level policies and fails if the setting is configured in a group-level policy.",
+      "claim": "TCM supports these Copilot settings only in tenant-level policies.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources",
-      "quote": "TCM supports these settings only in tenant-level policies in the Microsoft 365 Apps admin center. ... If it is, monitoring, snapshots, remediation, and applyOnce fail for that resource.",
+      "quote": "TCM supports these settings only in tenant-level policies in the Microsoft 365 Apps admin center.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 59,
+      "n": 61,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "A target Copilot setting must not also be configured in a group-level policy when using TCM.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources",
+      "quote": "Before using TCM, ensure that the target setting isn't configured in any group-level policy in that admin center. If it is, monitoring, snapshots, remediation, and applyOnce fail for that resource.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
       "where": "Governance controls",
       "type": "command",
       "claim": "Creating an applyOnce monitor supports delegated permissions only.",
@@ -674,43 +707,43 @@
       "fix": null
     },
     {
-      "n": 60,
+      "n": 63,
       "where": "controls[1].note; Governance controls",
       "type": "role",
-      "claim": "AI Administrator is the signed-in user's required least-privileged role for web-search remediation and applyOnce.",
+      "claim": "The signed-in user needs the AI Administrator role for Copilot-setting applyOnce.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
-      "quote": "For remediation and applyOnce, AI Administrator is the least-privileged Microsoft Entra role for the signed-in user. This role requirement applies to the user, not to the TCM service principal.",
+      "quote": "AI Administrator is the least-privileged role for the signed-in user for remediation and applyOnce; don't assign that user-role requirement to the service principal.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 61,
+      "n": 64,
       "where": "Governance controls",
       "type": "command",
-      "claim": "The TCM service principal needs delegated CopilotPolicySettings.ReadWrite for the web-search setting.",
+      "claim": "The TCM service principal needs delegated CopilotPolicySettings.ReadWrite for this applyOnce operation.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources",
-      "quote": "| microsoft.copilot.allowwebsearch | CopilotPolicySettings.ReadWrite | AI Administrator |",
+      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+      "quote": "For remediation and applyOnce, grant it the CopilotPolicySettings.ReadWrite delegated permission.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 62,
+      "n": 65,
       "where": "controls[1].note; Governance controls",
       "type": "availability",
-      "claim": "TCM is available only in the global service, not in national clouds.",
+      "claim": "TCM is available only in the global service, so the web-search applyOnce call is unavailable to GCC High.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources",
-      "quote": "TCM is available only in the global service, not in national clouds.",
-      "severity": null,
-      "fix": null
+      "quote": "These capabilities are available in preview through Microsoft Graph beta. TCM is available only in the global service, not in national clouds.",
+      "severity": "minor",
+      "fix": "Replace 'Global service only, not GCC High' in controls[1].note with 'Government-cloud availability differs between Microsoft pages; see below.' Replace the categorical global-only and GCC High exclusion sentences with: 'The remediation/applyOnce support page says TCM is available only in the global service, but the create-configurationMonitor reference lists US Government L4 and L5 as supported. Confirm web-search applyOnce availability for GCC High before relying on this API.' Both https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources and https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta are already cited."
     },
     {
-      "n": 63,
+      "n": 66,
       "where": "Governance controls",
       "type": "availability",
-      "claim": "GCC uses worldwide Microsoft Graph endpoints.",
+      "claim": "GCC uses the worldwide Microsoft Graph endpoint.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/deployments",
       "quote": "If you're working in a Microsoft 365 GCC environment, continue using the worldwide endpoints: https://portal.azure.com and https://graph.microsoft.com.",
@@ -718,7 +751,7 @@
       "fix": null
     },
     {
-      "n": 64,
+      "n": 67,
       "where": "Governance controls",
       "type": "availability",
       "claim": "GCC High uses graph.microsoft.us.",
@@ -729,65 +762,65 @@
       "fix": null
     },
     {
-      "n": 65,
-      "where": "controls[1].note; Governance controls",
-      "type": "availability",
-      "claim": "The configuration-monitor call is not available in GCC High.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
-      "quote": "| Global service | US Government L4 | US Government L5 (DOD) | China operated by 21Vianet | ... | ✅ | ❌ | ❌ | ❌ |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 66,
-      "where": "controls[2].ui",
+      "n": 68,
+      "where": "controls[2].ui; Governance controls",
       "type": "admin-path",
-      "claim": "The browser article gives the admin-center path Copilot > Settings > View All > Cowork settings > Allow browser access.",
+      "claim": "The browser article gives Microsoft 365 admin center > Copilot > Settings > View All > Cowork settings > Allow browser access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-local-browser",
       "quote": "From the menu, select Copilot > Settings > View All > Cowork settings. ... Under Allow browser access, select Allow Cowork to use the Microsoft Edge browser to perform tasks on behalf of users.",
       "severity": "minor",
-      "fix": "Extend controls[2].ui.path to 'Copilot > Settings > View All > Cowork settings > Allow browser access > Allow Cowork to use the Microsoft Edge browser to perform tasks on behalf of users' as given at https://learn.microsoft.com/copilot/cowork/cowork-local-browser#admin-control. Retain the existing warning about conflicting GCC guidance."
-    },
-    {
-      "n": 67,
-      "where": "controls[2].api",
-      "type": "absence",
-      "claim": "No API or PowerShell operation is documented for the tenant-level Cowork browser-access switch.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Cowork browser API policy; Cowork Local Browsing Allowed Graph; Cowork Allow browser access PowerShell; Cowork Browsing graph settings. Read cowork-local-browser, cowork-admin-governance and Edge CopilotCoworkToolActionsEnabled; no operation for this tenant switch.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 68,
-      "where": "controls[2].note; Governance guidance: At rollout",
-      "type": "default",
-      "claim": "The browser capability is disabled by default, including the GCC Local Browsing Allowed policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-local-browser",
-      "quote": "In GCC, local browsing is governed by the default-off Local Browsing Allowed policy. ... For worldwide and GCC tenants ... This feature is disabled by default.",
-      "severity": null,
-      "fix": null
+      "fix": "Extend controls[2].ui.path and the rendered path to 'Copilot > Settings > View All > Cowork settings > Allow browser access > Allow Cowork to use the Microsoft Edge browser to perform tasks on behalf of users', as given at https://learn.microsoft.com/copilot/cowork/cowork-local-browser#admin-control. Keep the existing warning about conflicting GCC guidance."
     },
     {
       "n": 69,
-      "where": "controls[2].note; Governance controls; Open questions",
-      "type": "applicability",
-      "claim": "The browser page inconsistently calls its path worldwide-only and applicable to worldwide and GCC tenants, while naming Local Browsing Allowed for GCC.",
+      "where": "controls[2].api",
+      "type": "absence",
+      "claim": "No API or automation operation is documented for the Cowork tenant browser-access switch.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-local-browser",
-      "quote": "In GCC, local browsing is governed by the default-off Local Browsing Allowed policy. ... The web address and admin click path below describe the worldwide experience. ... For worldwide and GCC tenants, admins enable Cowork browsing by performing the following steps.",
+      "source": null,
+      "quote": "Searched: \"Cowork\" \"Allow browser access\" \"Graph\"; \"Cowork\" \"Local Browsing Allowed\" API PowerShell; Graph Cowork browsing; PowerShell Cowork browser. Read browser/admin articles and TCM resources. Edge policy controls browser instances, not this tenant switch.",
       "severity": null,
       "fix": null
     },
     {
       "n": 70,
+      "where": "controls[2].note; Governance guidance: At rollout",
+      "type": "default",
+      "claim": "The browser article's admin-control section says browser use is disabled by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-local-browser",
+      "quote": "For worldwide and GCC tenants, admins enable Cowork browsing by performing the following steps. This feature is disabled by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "controls[2].note; Governance controls; Open questions",
+      "type": "applicability",
+      "claim": "The browser article's admin-control section explicitly applies its path to worldwide and GCC tenants.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-local-browser",
+      "quote": "For worldwide and GCC tenants, admins enable Cowork browsing by performing the following steps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "controls[2].note; Governance controls; Open questions",
+      "type": "default",
+      "claim": "The same browser article separately names a default-off Local Browsing Allowed policy for GCC.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-local-browser",
+      "quote": "In GCC, local browsing is governed by the default-off Local Browsing Allowed policy. ... The web address and admin click path below describe the worldwide experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
       "where": "Open questions: Auto-apply new services",
       "type": "default",
-      "claim": "The spending-policy article says Auto-apply new services is selected by default.",
+      "claim": "The spending-policy page says Auto-apply new services is selected by default.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
       "quote": "By default, the Auto-apply new services toggle is selected for spending policies.",
@@ -795,30 +828,30 @@
       "fix": null
     },
     {
-      "n": 71,
+      "n": 74,
+      "where": "Open questions: Auto-apply new services",
+      "type": "behaviour",
+      "claim": "Auto-apply new services automatically adds newly supported Copilot services and agents to a policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "When a spending policy has Auto-apply new services turned on, newly supported Microsoft Copilot services and agents are automatically added to the policy as they become available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
       "where": "Open questions: Auto-apply new services",
       "type": "absence",
-      "claim": "The GCC article does not say whether Auto-apply new services adds Cowork to existing GCC policies.",
+      "claim": "The GCC page does not say whether Auto-apply new services adds Cowork to existing GCC policies.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Cowork\" \"GCC\" \"Auto-apply new services\". Read cowork-government, cowork-access and usage-based-billing-manage-copilot-credits. The general article describes automatic additions; the GCC article does not address existing policies or this toggle.",
+      "quote": "Searched: read cowork-government in full for spending policy, automatic enablement and Auto-apply new services; compared the cited spending-policy page. The GCC page gives manual setup prerequisites and no statement about Auto-apply new services.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 72,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "The mixed licensing model reflects the required Microsoft 365 GCC Copilot license together with usage-based charges.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-government",
-      "quote": "Cowork requires a Microsoft 365 GCC Copilot license, with no separate Cowork license. It is billed based on usage, so tenants pay only for what users actually use.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 73,
-      "where": "Governance controls: Apps admin center address",
+      "n": 76,
+      "where": "Governance controls",
       "type": "admin-path",
       "claim": "GCC High administrators access the Microsoft 365 Apps admin center at config.office365.us.",
       "status": "supported",
@@ -826,10 +859,21 @@
       "quote": "US Government Community (GCC) High customers can access the Microsoft 365 Apps admin center at https://config.office365.us",
       "severity": null,
       "fix": null
+    },
+    {
+      "n": 77,
+      "where": "Governance controls; Governance guidance: At rollout",
+      "type": "default",
+      "claim": "Leaving Allow web search in Copilot unconfigured keeps web search off for GCC.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
+      "quote": "If you don't configure the Allow web search in Copilot policy, web search remains turned off, regardless of how the Allow the use of additional optional connected experiences in Office policy is configured.",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-20T12:52:39.922Z",
+    "at": "2026-11-27T10:11:09.420Z",
     "summary": {
       "links": 15,
       "unreachable": 0,
@@ -994,6 +1038,12 @@
       "date": "2026-11-20",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-20",
+      "status": "verified-with-gaps",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

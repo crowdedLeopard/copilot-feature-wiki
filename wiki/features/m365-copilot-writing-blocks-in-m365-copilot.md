@@ -62,15 +62,17 @@ changes:
     note: "First briefing for Writing blocks: the roadmap describes it, Microsoft Learn does not yet, and the only documented lever is blocking the Copilot app through Integrated Apps."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 34 statements confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 36 statements confirmed"
 version: 1
 verification:
   status: "verified"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 34
-  confirmed: 34
+  claims: 36
+  confirmed: 36
   unconfirmed: 0
   contradicted: 0
   attempts: 0

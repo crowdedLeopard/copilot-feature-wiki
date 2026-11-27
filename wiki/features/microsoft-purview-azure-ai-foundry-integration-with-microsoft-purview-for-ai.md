@@ -40,6 +40,15 @@ sources:
   - title: "Manage pay-as-you-go and per-user licensing usage"
     url: "https://learn.microsoft.com/purview/purview-billing-usage"
     kind: "learn"
+  - title: "Audit logs for Copilot and AI applications"
+    url: "https://learn.microsoft.com/purview/audit-copilot"
+    kind: "learn"
+  - title: "Integrate Microsoft Foundry with your applications (Microsoft or third-party services)"
+    url: "https://learn.microsoft.com/azure/foundry/how-to/integrate-with-other-apps"
+    kind: "learn"
+  - title: "Collection policy reference"
+    url: "https://learn.microsoft.com/purview/collection-policies-policy-reference"
+    kind: "learn"
   - title: "Microsoft 365 Roadmap: Azure AI Foundry integration with Microsoft Purview for AI"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=537271"
     kind: "roadmap"
@@ -107,19 +116,23 @@ changes:
     note: "New briefing: the Foundry and Defender for Cloud switches that send Foundry prompts and responses to Purview, the pay-as-you-go meters, and the conflicting statements on agent coverage."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 78 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-27"
+    note: "Corrected: data security policies apply to Entra ID user-context calls or calls that include user context; Foundry apps are in Audit Standard, so Audit is no longer listed as a Foundry meter; removed unsupported end-user and actions statements."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 75 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-27"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 78
-  confirmed: 72
-  unconfirmed: 2
-  contradicted: 4
-  attempts: 1
-  hash: "42057e841c4e7ee9d6ff9e884fd44524"
+  claims: 75
+  confirmed: 75
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "ea8a6b2788202d66bf9810cf0e39accc"
 ---
 
 ## What's changing
@@ -136,7 +149,7 @@ The roadmap item is **Launched**, listed under General Availability and Preview,
 
 This is the switch that brings Foundry-built apps inside the same Purview controls already used for Microsoft 365 Copilot: audit, retention, eDiscovery, Insider Risk Management and DSPM for AI. Until an administrator enables it, Microsoft's page says Purview cannot manage these interactions, so a tenant with Foundry apps in production may have AI prompts and responses that compliance teams cannot search or retain.
 
-The catch is in two details. First, enabling it creates a new copy of prompt and response content inside Purview, which needs the same access and retention decisions as Copilot data. Second, Microsoft's page says data security policies apply only to API calls using Microsoft Entra ID with a user-context token, or calls that explicitly include user context; for everything else, interactions appear only in Audit and DSPM for AI Activity Explorer. Expect audit visibility without policy enforcement for apps that call models with keys or service identities.
+The catch is in two details. First, enabling it creates a new copy of prompt and response content inside Purview, which needs the same access and retention decisions as Copilot data. Second, Microsoft's page says data security policies apply to API calls using Microsoft Entra ID with a user-context token, or calls that explicitly include user context; for all other authentication scenarios, interactions appear only in Audit and DSPM for AI Activity Explorer. Expect audit visibility without policy enforcement for calls that meet neither user-context condition.
 
 ## Risk assessment
 
@@ -145,10 +158,10 @@ The catch is in two details. First, enabling it creates a new copy of prompt and
 - Insider Risk Management, Communication Compliance, eDiscovery and Data Lifecycle Management each need a collection policy for Foundry prompts and responses, such as **DSPM for AI - Detect sensitive info shared with AI via network**.
 
 **Security & identity**
-- Data security policies apply only to calls that carry user context through Microsoft Entra ID. Apps that authenticate otherwise are audited but not governed by policy. The Purview Foundry page says DLP support today covers only a policy that blocks prompts based on sensitive information types, scoped to an Entra-registered AI app.
+- Data security policies apply to API calls that use Microsoft Entra ID authentication with a user-context token, or explicitly include user context. Other authentication scenarios appear only in Audit and DSPM for AI Activity Explorer. The Purview Foundry page says DLP support today covers only a policy that blocks prompts based on sensitive information types, scoped to an Entra-registered AI app.
 
 **Autonomy & actions**
-- No change: the integration captures and classifies interactions; it does not make Foundry apps take new actions.
+- The integration captures and classifies interactions.
 
 **Change & support**
 - Two enabling routes exist and the Defender for Cloud one is being deprecated. Tenants that used it should confirm the setting in the Foundry Compliance view. Microsoft's Foundry page warns not to equate audit visibility with data security policy enforcement.
@@ -157,7 +170,7 @@ The catch is in two details. First, enabling it creates a new copy of prompt and
 
 **Licence.** The Defender for Cloud page says the feature requires a Microsoft Purview licence, which is not included in the Defender for AI Services plan, and calls data security for AI interactions "a paid Purview feature". The [Purview Foundry page](https://learn.microsoft.com/purview/ai-azure-foundry) says Purview Audit includes Foundry data as part of the Purview licence.
 
-**Meter.** The same page says managing policies for Foundry interactions requires [pay-as-you-go billing](https://learn.microsoft.com/purview/purview-billing-models). That model is billed through an Azure subscription associated with the Microsoft 365 tenant, with an Azure bill at month end. The billing models page lists meters for non-Microsoft 365 AI interactions: Audit per audit record processed, Data Lifecycle Management per interaction under a retention policy, Communication Compliance per text record scanned, and data security for generative AI apps per request or message. Rates are on the Microsoft Purview pricing page that the billing models page links to; a rate specific to Foundry is not yet published.
+**Meter.** The same page says managing policies for Foundry interactions requires [pay-as-you-go billing](https://learn.microsoft.com/purview/purview-billing-models). That model is billed through an Azure subscription associated with the Microsoft 365 tenant, with an Azure bill at month end. The billing models page lists meters for non-Microsoft 365 AI interactions: Data Lifecycle Management per interaction under a retention policy, Communication Compliance per text record scanned, and data security for generative AI apps per request or message. The Audit consumption meter applies to non-Microsoft AI applications; custom applications built using Microsoft Foundry are included in Audit Standard ([Audit logs for Copilot and AI applications](https://learn.microsoft.com/purview/audit-copilot)). Rates are on the Microsoft Purview pricing page that the billing models page links to; a rate specific to Foundry is not yet published.
 
 **Spend control.** The Purview **Usage center** (preview) shows pay-as-you-go use by feature and lets an administrator toggle Audit, Data lifecycle management, Communication compliance and other listed features between paused and active (see the controls table).
 
@@ -169,16 +182,15 @@ The catch is in two details. First, enabling it creates a new copy of prompt and
 - **Unit of enablement:** an Azure subscription; the roadmap item and the Defender for Cloud route both work per subscription.
 - **Roles:** Foundry's administrator guide lists Foundry Account Owner, on the Foundry resource, as the minimum role to configure Microsoft Purview. Enabling the Defender for AI Services plan needs Owner or Contributor. DSPM for AI gives Microsoft Entra Compliance Administrator as an example of an account with appropriate permissions.
 - **Portal:** the Foundry Compliance view is available only in the Foundry (new) portal.
-- **Prerequisites:** a Purview licence and Purview pay-as-you-go billing for policy features. Policy enforcement needs Microsoft Entra ID calls with user context.
+- **Prerequisites:** a Purview licence and Purview pay-as-you-go billing for policy features. Data security policies apply to API calls that use Microsoft Entra ID authentication with a user-context token, or explicitly include user context. Other authentication scenarios appear only in Audit and DSPM for AI Activity Explorer.
 - **Agents:** the roadmap item includes agents; the Defender for Cloud page excludes Foundry agent data (see What's changing).
 
 ## Governance guidance
 
 ### Before rollout
 - Decide with the compliance team which Azure subscriptions hosting Foundry apps should send prompts and responses to Purview.
-- Confirm that Purview pay-as-you-go billing is linked to an Azure subscription, and agree who watches the Usage center.
-- Ask Foundry developers whether their apps call models with Microsoft Entra ID user-context tokens; apps that do not will be audited but not covered by data security policies.
-- Review who holds the Content Explorer Content Viewer role group, since its members can read captured prompt and response text.
+- Agree who watches the Usage center.
+- Ask Foundry developers whether their apps' API calls use Microsoft Entra ID authentication with a user-context token, or explicitly include user context. Data security policies apply to those calls; other authentication scenarios appear only in Audit and DSPM for AI Activity Explorer.
 
 ### At rollout
 - Have a Foundry Account Owner check the **Powered by Microsoft Purview** setting in the Foundry portal Compliance view for each chosen subscription.
@@ -211,26 +223,19 @@ The Foundry and Defender for Cloud switches decide whether a subscription's inte
 
 - Does the integration now include Foundry agents, as the roadmap item says, or still exclude them, as the Defender for Cloud page states? Watch the [Defender for Cloud AI onboarding page](https://learn.microsoft.com/azure/defender-for-cloud/ai-onboarding).
 - When will the Defender for Cloud enabling route stop working, and do subscriptions enabled there carry over to the Foundry setting?
-- Is there a published Purview pay-as-you-go rate specific to Foundry interactions, and which meter does audit of Foundry data use beyond the Purview licence?
+- Is there a published Purview pay-as-you-go rate specific to Foundry interactions?
 - What does pausing Audit or Data lifecycle management in the Usage center do to Foundry interactions already being captured?
 - Which location value does `New-FeatureConfiguration` take to scope a collection policy to Foundry?
 
 <!-- rationale
 risk: Medium. Turning it on lets Purview access, process and store prompt and response data from Foundry, and left off, Foundry interactions stay outside Purview; data security policies only apply to calls that carry user context.
-cost: Variable. Managing policies for Foundry interactions needs Purview pay-as-you-go billing, charged on an Azure bill per audit record, retained interaction or text record; Audit of Foundry data is part of the Purview licence.
-impact: Low. Compliance and Foundry administrators notice it; developers may need to pass user context for policies to apply. End users see no change.
+cost: Variable. Managing policies for Foundry interactions requires Purview pay-as-you-go billing through an Azure subscription. Audit of Foundry applications is included in Audit Standard.
+impact: Low. Compliance and Foundry administrators notice it; developers may need to pass user context for policies to apply.
 -->
 
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Security & identity; Scope: Prerequisites; Governance guidance: Before rollout / applicability: Only calls carrying user context through Microsoft Entra ID can receive policy enforcement; apps authenticating otherwise cannot. | Found: apply to API calls that use Microsoft Entra ID authentication with a user-context token, or for API calls that explicitly include user context. | Fix: Replace the narrower authentication statements in Risk assessment, Scope and Before rollout with: 'Data security policies apply to API calls that use Microsoft Entra ID authentication with a user-context token, or explicitly include user context. Other authentication scenarios appear only in Audit and DSPM for AI Activity Explorer.' In Why it matters replace the prediction about keys or service identities with 'Expect audit visibility without policy enforcement for calls that meet neither user-context condition.' Source: https://learn.microsoft.com/purview/ai-azure-foundry. | Source: https://learn.microsoft.com/purview/ai-azure-foundry
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: The integration does not make Foundry applications take new actions. | Found: Searched: 'Purview Foundry integration captures classifies does not change application actions end users'; opened ai-azure-foundry, ai-onboarding and how-to-manage-compliance-security. They describe capture and compliance capabilities, not this categorical behavioural guarantee. | Fix: Remove 'No change' and 'it does not make Foundry apps take new actions'. Retain only 'The integration captures and classifies interactions.'
-- [contradicted, blocker] Cost and licensing: Meter; rationale: cost / cost: The Audit consumption meter applies to non-Microsoft 365 AI interactions generally, implying per-record charges for Foundry. | Found: Pay-as-you-go billing doesn't apply to Microsoft applications. All Microsoft applications, including Microsoft Copilots like Microsoft Security Copilot, Copilot in Microsoft Fabric, and custom applications built using Microsoft Copilot Studio and Microsoft Foundry are included in Audit Standard. | Fix: Remove Audit from the list introduced as meters for non-Microsoft 365 AI interactions. Replace its statement with 'The Audit consumption meter applies to non-Microsoft AI applications; custom applications built using Microsoft Foundry are included in Audit Standard.' Cite https://learn.microsoft.com/purview/audit-copilot. Replace the cost rationale with 'Variable. Managing policies for Foundry interactions requires Purview pay-as-you-go billing through an Azure subscription. Audit of Foundry applications is included in Audit Standard.' Remove the open question about which additional Audit meter applies beyond the Purview licence. | Source: https://learn.microsoft.com/purview/audit-copilot
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing: opening parenthesis / behaviour: Microsoft Foundry is Microsoft's Azure platform for building AI applications and agents. | Found: Microsoft Foundry is a developer platform that lets you embed AI models, agents, evaluation tools, and Responsible AI capabilities into your workflows and applications. | Fix: Add https://learn.microsoft.com/azure/foundry/how-to/integrate-with-other-apps to sources for the platform description, or remove the parenthetical description. | Source: https://learn.microsoft.com/azure/foundry/how-to/integrate-with-other-apps
-- [unsupported, minor] rationale: impact / behaviour: End users see no change. | Found: Searched: 'Purview Foundry integration captures classifies does not change application actions end users'; opened ai-azure-foundry, ai-onboarding and how-to-manage-compliance-security. No passage guarantees an unchanged end-user experience. | Fix: Remove 'End users see no change.' The remaining impact rationale can stand as the wiki's assessment of the administrative audience.
-- [supported, minor] Governance controls: collection policy explanation / applicability: Collection policies govern capture and storage of enterprise AI prompt and response content for use by other Purview solutions. | Found: By using this feature, you can easily discover and protect the captured content later by using other Microsoft Purview policies and solutions. | Fix: Add https://learn.microsoft.com/purview/collection-policies-policy-reference to sources for the collection-policy explanation. Its Enterprise AI data source explicitly includes Microsoft Foundry. | Source: https://learn.microsoft.com/purview/collection-policies-policy-reference
-- [contradicted, minor] Governance guidance: Before rollout, billing linkage / consistency: Every checklist instruction to check a control is represented in the controls table. | Found: Confirm that Purview pay-as-you-go billing is linked to an Azure subscription ... Controls[3] covers feature pausing and usage, not Azure subscription billing linkage. | Fix: The instruction 'Confirm that Purview pay-as-you-go billing is linked to an Azure subscription' has no corresponding control row. Remove that instruction from the checklist; keep 'Agree who watches the Usage center.' The billing prerequisite is already stated in Cost and licensing.
-- [contradicted, minor] Governance guidance: Before rollout, Content Explorer membership / consistency: The checklist instruction to review Content Explorer Content Viewer membership is represented in the controls table. | Found: Review who holds the Content Explorer Content Viewer role group ... The controls table has enablement, collection, billing usage and audit-search rows, but no role-group membership row. | Fix: Remove the checklist bullet 'Review who holds the Content Explorer Content Viewer role group, since its members can read captured prompt and response text.' The verified role requirement remains in Risk assessment; no new control row is requested.
+- [supported, minor] Why it matters: same controls as Microsoft 365 Copilot / applicability: Audit, retention, eDiscovery, Insider Risk Management and DSPM for AI are also Purview controls used for Microsoft 365 Copilot. | Found: | DSPM and DSPM for AI (classic) | **✓** | | Auditing | **✓** | ... | Insider Risk Management | **✓** | ... | eDiscovery | **✓** | | Data Lifecycle Management | **✓** | | Fix: Add https://learn.microsoft.com/purview/ai-m365-copilot to sources for the comparison with Microsoft 365 Copilot. Its capabilities sections cover these controls; audit is also supported by the already cited audit-copilot page. | Source: https://learn.microsoft.com/purview/ai-m365-copilot
+- [supported, minor] Why it matters: until enabled; Governance controls: at all; rationale: risk / applicability: Until an administrator enables one of these switches, Foundry interactions stay outside Purview. | Found: Before Microsoft Purview can manage these AI interactions, ensure you perform either of the following configuration steps: | Fix: Narrow this to the native integration. Replace the Why it matters sentence with 'The native subscription integration requires administrator enablement.' Replace 'decide whether a subscription's interactions reach Purview at all' with 'enable the native subscription-level integration' and the rationale clause 'left off, Foundry interactions stay outside Purview' with 'left off, this native integration does not send Foundry interactions to Purview'. The cited page supports the enablement requirement, but https://learn.microsoft.com/purview/developer/secure-ai-with-purview also documents Microsoft Graph APIs and Agent Framework as alternative integration routes. | Source: https://learn.microsoft.com/purview/ai-azure-foundry
 -->

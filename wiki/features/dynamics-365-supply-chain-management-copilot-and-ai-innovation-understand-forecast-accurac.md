@@ -40,6 +40,9 @@ sources:
   - title: "Enable Copilot capabilities in finance and operations apps"
     url: "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot"
     kind: "learn"
+  - title: "Manage Dynamics 365 apps"
+    url: "https://learn.microsoft.com/power-platform/admin/manage-apps"
+    kind: "learn"
   - title: "Dynamics 365 Supply Chain Management: Copilot and AI innovation - Understand forecast accuracy with AI explanations"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=576754"
     kind: "roadmap"
@@ -94,19 +97,23 @@ changes:
     note: "New briefing: calculation accuracy page with SMAPE and AI forecast explanations in Demand planning version 1.4."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 59 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-27"
+    note: "Corrected the row-level access statements to apply to Contributors without the Manager or System Administrator role, removed the row-level open question, and narrowed the version 1.4 gap to its rollout schedule."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 69 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-27"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 59
-  confirmed: 56
+  claims: 69
+  confirmed: 69
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "b3f4336867bf21fdc2c37a901f8beacb"
+  contradicted: 0
+  attempts: 0
+  hash: "81a41c5139246aa754e355d0d15bfd08"
 ---
 
 ## What's changing
@@ -126,7 +133,7 @@ For the service owner the decision is less about switching it off, for which Mic
 ## Risk assessment
 
 **Data exposure**
-- The explanation view shows historical demand next to each forecast for a planning object. Demand Planning Contributors see only data that a row-level access rule grants them, and none by default; Microsoft Learn does not say whether the calculation accuracy page applies those rules.
+- The explanation view shows historical demand next to each forecast for a planning object. Users with Demand Planning Contributor, but not Demand Planning Manager or System Administrator, can view and edit only data granted by row-level access rules and see no data by default.
 - Microsoft Learn does not describe what forecast data the explanation sends to an AI model or where it is processed.
 
 **Security & identity**
@@ -153,7 +160,7 @@ For the service owner the decision is less about switching it off, for which Mic
 - **Roles that manage access:** assigning security roles needs at least Read and Assign privileges on the Security Role table, which the System Administrator role has by default; assigning licences needs at least the License or User Administrator role.
 - **Clouds:** Worldwide (Standard Multi-Tenant), as the roadmap item lists.
 - **Platforms:** Web.
-- **Version:** Learn lists the feature under Demand planning version 1.4. Microsoft Learn does not say how or when an existing installation moves to that version.
+- **Version:** Learn lists the feature under Demand planning version 1.4. A rollout schedule specific to Demand planning version 1.4 is not yet published.
 - **Prerequisites:** Demand planning installed from the Power Platform admin center on the same tenant as Supply Chain Management, not in the tenant's default environment, with Supply Chain Management version 10.0.36 build 10.0.1695.83 or later, or another build the install page lists.
 
 ## Governance guidance
@@ -189,14 +196,13 @@ The table has no row that turns the forecast explanations off: Microsoft Learn d
 - The **Copilot for demand planning** environment setting (Power Apps maker portal, Solutions > Default Solution > Settings > Copilot for demand planning), which Learn documents as turning *Analyze demand plans with Copilot* on or off, on by default, changed by a system administrator of the environment.
 - The tenant-level **Publish bots with AI features** setting (Power Platform admin center, Settings), enabled by default. Learn says that if it is disabled you can't use Copilot features in finance and operations apps, so it reaches well beyond this feature.
 
-The security role and licence rows decide who reaches Demand planning at all, not this page alone. Inside Demand planning, a system admin account manages row-level access rules under **Configuration > Row level access**, and Demand Planning Contributors see no data until a rule grants it.
+The security role and licence rows decide who reaches Demand planning at all, not this page alone. Inside Demand planning, a system admin account manages row-level access rules under **Configuration > Row level access**. Users with Demand Planning Contributor, but not Demand Planning Manager or System Administrator, can view and edit only data granted by row-level access rules and see no data by default.
 
 ## Open questions
 
 - Does the **Copilot for demand planning** setting, or any other setting, turn off the AI explanations on the calculation accuracy page? Watch the Analyze demand plans with Copilot page and the Demand planning what's-new page.
-- Does the calculation accuracy page apply row-level access rules to Demand Planning Contributors? Watch the Demand planning security roles and row-level security page.
 - What forecast data does the explanation send to an AI model, and in which region is it processed? Watch for a Responsible AI FAQ for this feature.
-- How and when does an existing Demand planning installation move to version 1.4, given the roadmap still shows the item as In development? Watch the what's-new page and Message center.
+- When will version 1.4 be offered to each existing Demand planning environment, given that the roadmap still shows In development? Watch the what's-new page and Message center.
 
 <!-- rationale
 risk: Medium. The explanations reach planners automatically and Microsoft Learn documents no switch for them, so access rests on the Demand planning roles and licence that already gate the app.
@@ -204,12 +210,9 @@ cost: Low. The page sits inside Demand planning, which needs a Demand planning l
 impact: Medium. Demand planners and planning managers see a new calculation accuracy page and AI explanations in the tool they forecast with.
 -->
 
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure; Governance controls / applicability: Demand Planning Contributors see only data granted by row-level rules and no data by default, without qualification for other assigned roles. | Found: Users who have the Demand Planning Contributor role (but not Demand Planning Manager or System Administrator) can access Demand planning, but they can only view and edit data that they're granted access to. | Fix: Qualify both statements: 'Users with Demand Planning Contributor, but not Demand Planning Manager or System Administrator, can view and edit only data granted by row-level access rules and see no data by default.' Retain the existing users-access citation. | Source: https://learn.microsoft.com/dynamics365/supply-chain/demand-planning/users-access
-- [contradicted, blocker] Risk assessment: Data exposure; Open questions: row-level access / absence: Microsoft has not said whether row-level access rules apply to the calculation accuracy page. | Found: Users who have the Demand Planning Contributor role (but not Demand Planning Manager or System Administrator) can access Demand planning, but they can only view and edit data that they're granted access to. | Fix: Remove the sentence saying Microsoft has not confirmed row-level access for this page and remove that Open questions bullet. The documented app-wide rule already covers Contributors without the Manager or System Administrator roles; retain the practical test-account recommendation as validation advice. | Source: https://learn.microsoft.com/dynamics365/supply-chain/demand-planning/users-access
-- [contradicted, blocker] Scope: Version; Open questions: existing installations / absence: Microsoft Learn does not say how or when an existing Demand planning installation moves to version 1.4. | Found: You can use the Microsoft Power Platform admin center to install, configure, and manage Dynamics 365 apps that run on Microsoft Dataverse. ... Update: Appears if an update is available. Select to update the package. | Fix: Narrow the Scope sentence to 'A rollout schedule specific to Demand planning version 1.4 is not yet published.' Narrow the corresponding Open questions bullet to 'When will version 1.4 be offered to each existing Demand planning environment, given that the roadmap still shows In development?' Do not claim that no update method is documented. | Source: https://learn.microsoft.com/power-platform/admin/manage-apps
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance controls: Copilot for demand planning path / admin-path: The Copilot for demand planning setting is reached through the Power Apps maker portal > Solutions > Default Solution > Settings > Copilot for demand planning. | Found: Go to Solutions. ... In the Default Solution row, select the link in the Default name column. ... In the Objects list, select Settings. ... In the Copilot for demand planning row, select the link in the Display name column. | Fix: Complete the path to the setting: 'Power Apps maker portal > environment > Solutions > Default Solution > Objects > Settings > Copilot for demand planning > Setting environment value > Add existing value > Yes/No', as documented at https://learn.microsoft.com/dynamics365/supply-chain/demand-planning/demand-planning-copilot. | Source: https://learn.microsoft.com/dynamics365/supply-chain/demand-planning/demand-planning-copilot
+- [supported, minor] What's changing: SMAPE parenthesis / behaviour: SMAPE measures forecast accuracy through errors relative to observed demand. | Found: **SMAPE** metric. Returns the symmetric mean absolute percentage error metric, an accuracy measure based on percentage errors. | Fix: Add https://learn.microsoft.com/office/vba/api/excel.worksheetfunction.forecast_ets_stat#remarks to sources for the plain-language SMAPE definition, or remove the parenthetical definition. | Source: https://learn.microsoft.com/office/vba/api/excel.worksheetfunction.forecast_ets_stat#remarks
+- [supported, minor] Governance controls: Copilot for demand planning path / admin-path: The Power Apps maker portal route is Solutions > Default Solution > Settings > Copilot for demand planning. | Found: In the Objects list, select Settings. In the Copilot for demand planning row, select the link in the Display name column. In the Edit Copilot for demand planning dialog box, in the Setting environment value section, select Add existing value. | Fix: Complete the background setting path as 'Solutions > Default Solution > Objects > Settings > Copilot for demand planning > Setting environment value > Add existing value > Yes/No', selecting the target environment first. Keep its applicability limited to Analyze demand plans with Copilot. | Source: https://learn.microsoft.com/dynamics365/supply-chain/demand-planning/demand-planning-copilot
 -->

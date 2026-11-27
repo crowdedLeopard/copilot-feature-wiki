@@ -18,7 +18,7 @@ defaultState: "user-opt-in"
 action: "review"
 licensing:
   model: "mixed"
-  notes: "DSPM (classic) needs a Microsoft 365 E5 or Microsoft Purview Suite licence. Prompts run on Security Copilot, which bills SCUs; eligible Microsoft 365 E5 customers get an auto-provisioned default capacity, others provision SCUs."
+  notes: "DSPM (classic) needs a Microsoft 365 E5 or Microsoft Purview Suite licence. Prompts run on Security Copilot, which bills SCUs; eligible Microsoft 365 E5 and E7 customers whose tenants have been enabled receive automatically provisioned Security Copilot capacity; customers without Security Copilot inclusion must provision SCUs."
 audiences: ["security","compliance","finops"]
 tags: ["purview","dspm","security-copilot","prompt-gallery","role-groups","auditing","security-compute-units"]
 sources:
@@ -37,6 +37,9 @@ sources:
   - title: "Microsoft Security Copilot Security Compute Units and capacity"
     url: "https://learn.microsoft.com/copilot/security/security-compute-units-capacity"
     kind: "learn"
+  - title: "Understand how Security Copilot is auto provisioned for eligible Microsoft 365 E5 and E7 customers"
+    url: "https://learn.microsoft.com/copilot/security/auto-provisioning-security-copilot"
+    kind: "learn"
   - title: "Manage security compute unit usage in Security Copilot"
     url: "https://learn.microsoft.com/copilot/security/manage-usage"
     kind: "learn"
@@ -49,14 +52,14 @@ sources:
   - title: "Access the Security Copilot audit log"
     url: "https://learn.microsoft.com/copilot/security/audit-log"
     kind: "learn"
+  - title: "Manage plugins in Microsoft Security Copilot"
+    url: "https://learn.microsoft.com/copilot/security/manage-plugins"
+    kind: "learn"
   - title: "Who holds the Data Security Viewer role needed for Security Copilot in DSPM (Microsoft Purview portal)"
     url: "https://learn.microsoft.com/purview/purview-permissions"
     kind: "learn"
   - title: "Who holds the Data Security Viewer role needed for Security Copilot in DSPM (PowerShell)"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember"
-    kind: "learn"
-  - title: "Which preinstalled plugins are available to all users or owners only (Security Copilot portal)"
-    url: "https://learn.microsoft.com/copilot/security/manage-plugins"
     kind: "learn"
 videos: []
 related: ["microsoft-purview-dspm-new-microsoft-purview-data-security-posture-management-experience","microsoft-purview-data-security-posture-management-data-security-posture-agent-in-dspm","role-groups","auditing","microsoft-purview-data-loss-prevention-dlp-policy-change-insights-with-security-copilot"]
@@ -89,7 +92,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Security Copilot portal"
-      path: "Owner > Plugin settings"
+      path: "Owner > Plugin settings > preinstalled plugin > All users or Owners only"
       docs: "https://learn.microsoft.com/copilot/security/manage-plugins"
     api: null
     note: "Owners only. Applies to standalone and embedded experiences; restriction takes effect immediately."
@@ -108,7 +111,7 @@ controls:
       path: "Home menu > Owner settings > Usage monitoring"
       docs: "https://learn.microsoft.com/copilot/security/manage-usage"
     api: null
-    note: "Copilot owners. Up to 90 days of data; exportable to Excel."
+    note: "Copilot owners. Up to 90 days of data; exportable to Excel. Microsoft documentation differs: the Navigate Security Copilot page lists Usage monitoring directly under Home menu > Owner, alongside Owner settings."
   - governs: "Whether Security Copilot activity is logged to the Purview unified audit log"
     scope: "tenant"
     ui:
@@ -126,19 +129,23 @@ changes:
     note: "New briefing: the DSPM (classic) Copilot prompt gallery, its SCU billing, and the Purview and Security Copilot controls that govern who can use it."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 83 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-27"
+    note: "Corrected SCU provisioning to cover Microsoft 365 E5 and E7 inclusion, noted that Security Copilot roles go to role-assignable groups, completed the plugin settings path and noted the two documented routes to Usage monitoring."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 87 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-27"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 83
-  confirmed: 81
+  claims: 87
+  confirmed: 87
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "e809a102d0e78eb472698d455e4f5e4e"
+  contradicted: 0
+  attempts: 0
+  hash: "d751b6b81c7b2bec1d19be2f6ab7a790"
 ---
 
 ## What's changing
@@ -174,7 +181,7 @@ If nobody acts, the gallery is simply available to analysts who already meet the
 ## Cost and licensing
 
 - **Licence.** The DSPM (classic) get-started page states that DSPM needs a Microsoft 365 E5 or Microsoft Purview Suite (formerly Microsoft 365 E5 Compliance) licence. It also requires the organisation to be configured for Security Copilot.
-- **Meter.** Security Copilot bills Security Compute Units. The SCU page lists running embedded Security Copilot experiences among the scenarios that consume SCUs. Eligible, onboarded Microsoft 365 E5 customers get Security Copilot auto-provisioned with a default capacity; other customers must provision SCUs. Provisioned SCUs are set up in advance (at least one) and billed per hour; overage SCUs are billed on use, to one decimal place. Generally available and public preview capabilities are both charged. The price per SCU is on Microsoft's Security Copilot pricing page.
+- **Meter.** Security Copilot bills Security Compute Units. The SCU page lists running embedded Security Copilot experiences among the scenarios that consume SCUs. Eligible Microsoft 365 E5 and E7 customers whose tenants have been enabled receive automatically provisioned Security Copilot capacity; customers without Security Copilot inclusion must provision SCUs. Provisioned SCUs are set up in advance (at least one) and billed per hour; overage SCUs are billed on use, to one decimal place. Generally available and public preview capabilities are both charged. The price per SCU is on Microsoft's Security Copilot pricing page.
 - **Cap.** Overage capacity can be set to a maximum or to unlimited. When provisioned and overage SCUs are both used up, analysts cannot submit more prompts until capacity refreshes the next hour (see the overage row in the controls table).
 - **Indirect costs.** Opting in to DSPM turns on analytics in Insider Risk Management and DLP if they are not already on, and the first scan can take up to three days.
 - **Not yet published.** Microsoft publishes no SCU figure for the gallery's prompts; the SCU page gives only worked examples.
@@ -191,7 +198,7 @@ If nobody acts, the gallery is simply available to analysts who already meet the
 
 ### Before rollout
 - Review who holds the Data Security Viewer role and other DSPM roles in the Purview portal role groups, and remove anyone who should not query per-user activity.
-- Check the Security Copilot **Role assignment** page for an **Everyone** group in **Copilot contributor**, and replace it with the recommended roles or named security groups.
+- Check the Security Copilot **Role assignment** page for an **Everyone** group in **Copilot contributor**, and replace it with the recommended roles or named role-assignable security groups.
 - Set **Number of overage units** in Security Copilot owner settings to a maximum that matches the budget, rather than unlimited.
 
 ### At rollout
@@ -212,9 +219,9 @@ If nobody acts, the gallery is simply available to analysts who already meet the
 <tr><td data-label="Control"><strong>A switch to show or hide the DSPM Copilot prompt gallery itself</strong><br><small>Tenant</small><br><small class="controls__note">Learn documents the gallery as built-in prompts on the DSPM (classic) Overview page with no separate setting, at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Who holds the Data Security Viewer role needed for Security Copilot in DSPM</strong><br><small>Group</small><br><small class="controls__note">Choose a role group that holds the Data Security Viewer role, such as Data Security Viewers. Needs the Role management role.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and scopes › Role groups › Role groups for Microsoft Purview solutions › role group › Edit › Edit members of the role group › Choose users <a href="https://learn.microsoft.com/purview/purview-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember -Identity &quot;&lt;role-group&gt;&quot; -Member &quot;&lt;user-UPN&gt;&quot;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Who can use Security Copilot (Copilot owner or contributor)</strong><br><small>User</small><br><small class="controls__note">Default contributor assignment is the Recommended Microsoft Security roles group; some tenants still have Everyone assigned.</small></td><td data-label="Admin UI"><strong>Security Copilot portal</strong><br>Home menu › Owner › Role assignment › Add members <a href="https://learn.microsoft.com/copilot/security/authentication" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which preinstalled plugins are available to all users or owners only</strong><br><small>Tenant</small><br><small class="controls__note">Owners only. Applies to standalone and embedded experiences; restriction takes effect immediately.</small></td><td data-label="Admin UI"><strong>Security Copilot portal</strong><br>Owner › Plugin settings <a href="https://learn.microsoft.com/copilot/security/manage-plugins" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which preinstalled plugins are available to all users or owners only</strong><br><small>Tenant</small><br><small class="controls__note">Owners only. Applies to standalone and embedded experiences; restriction takes effect immediately.</small></td><td data-label="Admin UI"><strong>Security Copilot portal</strong><br>Owner › Plugin settings › preinstalled plugin › All users or Owners only <a href="https://learn.microsoft.com/copilot/security/manage-plugins" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Maximum overage SCUs the tenant can consume beyond provisioned capacity</strong><br><small>Tenant</small><br><small class="controls__note">Needs Azure capacity owner or contributor who is also a Security Copilot owner. Can also be changed in the Azure portal.</small></td><td data-label="Admin UI"><strong>Security Copilot portal</strong><br>Home menu › Owner › Owner settings › Number of overage units › Change <a href="https://learn.microsoft.com/copilot/security/manage-usage" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>SCU consumption by user, plugin and Copilot experience</strong><br><small>Tenant</small><br><small class="controls__note">Copilot owners. Up to 90 days of data; exportable to Excel.</small></td><td data-label="Admin UI"><strong>Security Copilot portal</strong><br>Home menu › Owner settings › Usage monitoring <a href="https://learn.microsoft.com/copilot/security/manage-usage" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>SCU consumption by user, plugin and Copilot experience</strong><br><small>Tenant</small><br><small class="controls__note">Copilot owners. Up to 90 days of data; exportable to Excel. Microsoft documentation differs: the Navigate Security Copilot page lists Usage monitoring directly under Home menu &gt; Owner, alongside Owner settings.</small></td><td data-label="Admin UI"><strong>Security Copilot portal</strong><br>Home menu › Owner settings › Usage monitoring <a href="https://learn.microsoft.com/copilot/security/manage-usage" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether Security Copilot activity is logged to the Purview unified audit log</strong><br><small>Tenant</small><br><small class="controls__note">Security Administrator. Prompt and response content is captured only through DSPM for AI.</small></td><td data-label="Admin UI"><strong>Security Copilot portal</strong><br>Home menu › Owner › Owner settings › Logging audit data in Microsoft Purview <a href="https://learn.microsoft.com/copilot/security/audit-log" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -233,16 +240,13 @@ If nobody acts, the gallery is simply available to analysts who already meet the
 
 <!-- rationale
 risk: Low. The gallery adds ready-made prompts to the existing Security Copilot experience in DSPM, which uses on-behalf-of authentication and does not go beyond the access the user already has.
-cost: Variable. DSPM needs Microsoft 365 E5 or Microsoft Purview Suite, and every prompt run consumes Security Compute Units (SCUs), the Security Copilot meter, from provisioned, overage or E5 default capacity.
+cost: Variable. DSPM needs Microsoft 365 E5 or Microsoft Purview Suite, and every prompt run consumes Security Compute Units (SCUs), the Security Copilot meter, from provisioned, overage or E5 and E7 default capacity.
 impact: Low. Only data security staff who hold a DSPM role and Security Copilot access see the gallery; end users notice nothing.
 -->
 
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.notes; Cost and licensing: Meter / licensing: Customers other than eligible Microsoft 365 E5 customers must provision SCUs. | Found: Default Security Copilot Capacity is the automatically created inclusion capacity that appears in your tenant when Security Copilot inclusion is enabled through Microsoft 365 E5 and E7. | Fix: Replace the E5-versus-others sentence in licensing.notes and Cost and licensing with: 'Eligible Microsoft 365 E5 and E7 customers whose tenants have been enabled receive automatically provisioned Security Copilot capacity; customers without Security Copilot inclusion must provision SCUs.' The capacity page's introduction still says non-E5 customers must purchase SCUs, but its capacity section includes E7; cite https://learn.microsoft.com/copilot/security/auto-provisioning-security-copilot, which explicitly confirms automatic provisioning for E5 and E7. | Source: https://learn.microsoft.com/copilot/security/security-compute-units-capacity
-- [contradicted, blocker] Governance guidance: Before rollout, Security Copilot role assignment bullet / role: Administrators can replace Everyone contributor access with named security groups without a qualification on the group type. | Found: Security Copilot only supports assigning permissions to Role-assignable groups. | Fix: Replace 'replace it with the recommended roles or named security groups' with 'replace it with the recommended roles or named role-assignable security groups' in Governance guidance. The cited authentication page requires role-assignable groups. | Source: https://learn.microsoft.com/copilot/security/authentication
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[3].ui; Governance controls table / admin-path: Owner > Plugin settings reaches the page for restricting preinstalled plugins to all users or owners. | Found: On the left navigation, navigate to Owner. Select Plugin settings. ... Choose to manage preinstalled plugin availability and restrict access. ... All users ... Owners only | Fix: Extend controls[3].ui.path and the rendered table to 'Owner > Plugin settings > preinstalled plugin > All users or Owners only'. The existing path reaches the correct page but stops before choosing plugin availability; the cited manage-plugins page documents those choices. | Source: https://learn.microsoft.com/copilot/security/manage-plugins
-- [supported, minor] controls[5].ui; Governance controls table / admin-path: The usage dashboard path is Home menu > Owner settings > Usage monitoring. | Found: Sign in to Security Copilot ... and go to the Home menu > Owner settings. ... Select Usage monitoring. | Fix: Keep the cited usage-guide path, but add to controls[5].note: 'Microsoft documentation differs: https://learn.microsoft.com/copilot/security/navigating-security-copilot lists Usage monitoring directly under Home menu > Owner, alongside Owner settings.' The briefing already cites both pages; report their navigation difference rather than silently presenting only one route. | Source: https://learn.microsoft.com/copilot/security/manage-usage
+- [supported, minor] Why it matters: Every prompt and promptbook run is billed in SCUs / cost: Every prompt and promptbook run is billed in SCUs. | Found: Provisioned capacity is billed by the hour while the overage capacity is billed on usage. ... Runs a prompt | 3.0 SCUs ... Runs a promptbook | 3.7 SCUs | Fix: Replace with 'Every prompt and promptbook run consumes SCUs.' Add 'For enabled Microsoft 365 E5 and E7 inclusion tenants, usage deducts from included monthly capacity rather than generating hourly capacity charges.' Cite https://learn.microsoft.com/copilot/security/security-copilot-inclusion, which says the default capacity 'isn't billed hourly' and its UI cost values are 'informational only, not charges'. | Source: https://learn.microsoft.com/copilot/security/security-compute-units-capacity
+- [supported, minor] controls[2].ui; Governance controls table / admin-path: Security Copilot role assignment is reached through Home menu > Owner > Role assignment > Add members. | Found: Select the home menu. Select Role assignment > Add members. ... Select the person or group. Select the Security Copilot role to assign (Copilot owner or Copilot contributor). | Fix: Extend the path to 'Home menu > Owner > Role assignment > Add members > Copilot owner or Copilot contributor'. The current route reaches the correct dialog but stops before choosing the role; the cited Navigate Security Copilot page supplies the Owner menu step. | Source: https://learn.microsoft.com/copilot/security/authentication
 -->

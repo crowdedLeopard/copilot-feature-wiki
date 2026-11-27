@@ -79,19 +79,23 @@ changes:
     note: "New briefing for the GCC, GCC High and DoD roadmap item; the worldwide feature is listed separately as item 532735."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 61 statements contradicted, 3 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-27"
+    note: "Corrected three unsupported statements: removed the claim that Copilot chooses attendees, and reworded the data-exposure bullets on whose calendars are read and who receives drafted agendas."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 57 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-27"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 61
-  confirmed: 58
-  unconfirmed: 3
+  claims: 57
+  confirmed: 57
+  unconfirmed: 0
   contradicted: 0
-  attempts: 1
-  hash: "1211661ed5997d1e402d4947223ea7e5"
+  attempts: 0
+  hash: "66dc96ec4cb28f2222ec4868c00b94f4"
 ---
 
 ## What's changing
@@ -104,15 +108,15 @@ The record gives the status as In development, the release phase as General Avai
 
 ## Why it matters
 
-Scheduling from chat hands the choice of slot, room, attendee list and agenda to Copilot, and the result lands in colleagues' calendars and room mailboxes. For a government tenant the decisions are who is entitled to it and whether drafted agendas meet the organisation's rules for meeting content. Microsoft states that Copilot in these clouds operates entirely within the customer's US government cloud tenant, and that prompts, responses and generated content stay in the government cloud.
+Scheduling from chat hands the choice of slot, room and agenda to Copilot, and the result lands in colleagues' calendars and room mailboxes. For a government tenant the decisions are who is entitled to it and whether drafted agendas meet the organisation's rules for meeting content. Microsoft states that Copilot in these clouds operates entirely within the customer's US government cloud tenant, and that prompts, responses and generated content stay in the government cloud.
 
 Microsoft has not stated what happens on arrival. Because no scheduling-only switch is documented, the practical control is who can reach the Copilot app at all, so settle that before the feature ships rather than after the first unexpected room booking.
 
 ## Risk assessment
 
 **Data exposure**
-- Finding available times draws on calendar information for the user and the colleagues named. Microsoft has not described which calendar details Copilot reads or shows in chat; confirm this in a pilot before broad use. Microsoft's requirements page states that an Exchange Online mailbox is required for experiences that use email, calendar, meeting or other mailbox data.
-- Agendas Copilot drafts go out in invitations to every attendee. Microsoft has not said which content Copilot draws on for them.
+- The roadmap says Copilot will find available times. Microsoft has not described which calendar details Copilot reads or shows in chat; confirm this in a pilot before broad use. Microsoft's requirements page states that an Exchange Online mailbox is required for experiences that use email, calendar, meeting or other mailbox data.
+- Review any agenda included in a proposed invitation before sending it. Microsoft has not said which content Copilot draws on for agendas.
 
 **Security & identity**
 - Microsoft has not described which account books the room and sends the invitation. Confirm this before relying on room booking rules or calendar audit trails that assume a person acted.
@@ -188,10 +192,9 @@ cost: Low. The only cost the sources show is admin and help desk time; which lic
 impact: Medium. Meeting organisers who use Copilot Chat notice it, and so do the colleagues and room mailboxes that receive the invitations it sends.
 -->
 
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters: first sentence / behaviour: Scheduling from chat hands the choice of attendee list to Copilot. | Found: Searched: '"Copilot" "schedule" "attendees" "agenda" "chat" -site:learn.microsoft.com/answers'; read roadmap and August 25 release-note excerpts. They describe scheduling with colleagues, not Copilot deciding whom to invite; email-thread scheduling is a different scenario. | Fix: Remove 'attendee list' from the first sentence of Why it matters. The roadmap supports finding times, booking rooms and drafting agendas, but not choosing attendees.
-- [unsupported, major] Risk assessment: Data exposure, first bullet / behaviour: Finding available times draws on calendar information for both the user and the named colleagues. | Found: Searched: '"Copilot" "scheduling" "calendar availability"', '"Copilot" "schedule" calendar details agenda sources confirm send invitation account'; read roadmap, requirements, overview and release-note excerpts. None identifies whose calendars this item reads. | Fix: Replace 'Finding available times draws on calendar information for the user and the colleagues named.' with 'The roadmap says Copilot will find available times.' Keep the following question about which calendar details it reads or shows.
-- [unsupported, major] Risk assessment: Data exposure, second bullet / behaviour: Agendas drafted by this feature go out in invitations to every attendee. | Found: Searched: '"Scheduling with Copilot" "agenda" "source"', '"Copilot" "schedule" "attendees" "agenda" "chat" -site:learn.microsoft.com/answers'; read roadmap and release-note excerpts. Drafting agendas and sending invites are stated, but this distribution guarantee is not. | Fix: Replace 'Agendas Copilot drafts go out in invitations to every attendee.' with 'Review any agenda included in a proposed invitation before sending it.' This frames the point as advice rather than an undocumented distribution guarantee.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Why it matters / behaviour: Microsoft's government-cloud overview says Copilot operates entirely within the customer's US government cloud tenant. | Found: Microsoft Copilot is available in GCC, GCC High, and DoD, and operates entirely within the customer's U.S. government cloud tenant. | Fix: Attribute this assurance explicitly to the government-cloud overview and add: 'Microsoft separately documents an optional exception for non-federal GCC customers: enabling Anthropic models processes Customer Data outside the government cloud.' Cite https://learn.microsoft.com/copilot/implement/anthropic-non-federal-gcc, which says: 'When enabled, these Anthropic AI models process Customer Data outside Microsoft’s FedRAMP-authorized U.S. Government cloud.' | Source: https://learn.microsoft.com/copilot/plan/gov-overview
+- [supported, minor] Why it matters / behaviour: Microsoft's government-cloud overview says prompts, responses and generated content stay in the government cloud. | Found: Prompts, responses, and generated content stay in the government cloud. | Fix: Keep this statement attributed to the overview, alongside the optional non-federal GCC Anthropic exception, rather than as an unconditional guarantee. Cite https://learn.microsoft.com/copilot/implement/anthropic-non-federal-gcc, which states: 'If you choose to enable Anthropic models, Customer Data will be processed in commercial environments.' | Source: https://learn.microsoft.com/copilot/plan/gov-overview
 -->

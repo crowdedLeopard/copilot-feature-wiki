@@ -1,0 +1,706 @@
+{
+  "slug": "microsoft-purview-insider-risk-management-ai-app-selection-for-generative-ai-apps-indicato",
+  "roadmapId": 559992,
+  "title": "Microsoft Purview Insider Risk Management: choose which AI apps the generative AI apps indicators monitor",
+  "status": "held",
+  "date": "2026-11-27",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [
+    "claim 48: severity major on a rationale: impact rating lowered to minor; ratings are judgements and cannot hold a page"
+  ],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-27",
+    "reasons": [
+      "1 blocking finding (claim 47)",
+      "4 major findings"
+    ]
+  },
+  "counts": {
+    "claims": 49,
+    "confirmed": 43,
+    "unconfirmed": 6,
+    "contradicted": 0,
+    "blocker": 1,
+    "major": 4,
+    "minor": 2
+  },
+  "summary": "The documented app-selection controls, defaults and billing prerequisites check out. Hold the briefing because it asserts an unpublished guarantee that the setting adds no charge, and extends the documented exclusion of app signals into broader guarantees about alerts, risk scores, data access and user experience.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap lists the feature as Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is May CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"May CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing",
+      "type": "record",
+      "claim": "The roadmap lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing: roadmap indicator names",
+      "type": "record",
+      "claim": "The roadmap applies app selection to the four quoted risky-prompt and sensitive-response indicators for Copilot and enterprise AI apps.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"Entering risky prompts in Copilot\", \"Receiving sensitive responses from Copilot\", \"Entering risky prompts in enterprise AI apps\", and \"Receiving sensitive responses from enterprise AI apps\".",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "title; summary; What's changing",
+      "type": "behaviour",
+      "claim": "Administrators can choose individual generative AI apps to monitor rather than retain the selection of every available app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "For Microsoft Copilot experiences and Enterprise AI apps, you can select which specific generative AI apps you want to monitor.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing: Microsoft Copilot experiences",
+      "type": "behaviour",
+      "claim": "Microsoft Copilot experiences includes Copilot in Microsoft Fabric, Microsoft Security Copilot, Microsoft Copilot Studio and connected or cloud AI applications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "Microsoft Copilot experiences: Support for user interactions in Copilot in Microsoft Fabric, Microsoft Security Copilot, Microsoft Copilot Studio, any connected or cloud AI application.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing: Enterprise AI apps; Governance guidance",
+      "type": "behaviour",
+      "claim": "Enterprise AI apps are non-Copilot AI applications connected using Microsoft Entra and Microsoft Purview Data Map connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "Enterprise AI apps: Non-Copilot AI applications connected using Microsoft Entra and Microsoft Purview Data Map connectors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing: Other AI applications",
+      "type": "behaviour",
+      "claim": "Other AI applications are discovered from users' browser activity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "Other AI applications: AI applications that users in your organization discover from their browser activity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; controls[0].note; Scope; Governance controls",
+      "type": "applicability",
+      "claim": "Per-app selection is available only for Microsoft Copilot experiences and Enterprise AI apps, not the Other AI applications group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "For Microsoft Copilot experiences and Enterprise AI apps only, you can review and deselect apps to optimize costs and reduce alert noise.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "App selection is admin-opt-in as a scoping control: all available apps are selected by default, with no exclusion until an administrator clears an app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "By default, all available apps are selected. You can deselect apps that aren't relevant to your organization to reduce alert noise and avoid unnecessary pay-as-you-go billing charges.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "summary; What's changing; Why it matters; Risk assessment; Cost and licensing",
+      "type": "behaviour",
+      "claim": "Deselecting an app excludes its signals from processing by these indicators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "When an app is deselected, signals from that app aren't processed and no cost is incurred.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "summary; What's changing; Why it matters; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "No cost is incurred for processing a deselected app's signals.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "When an app is deselected, signals from that app aren't processed and no cost is incurred.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; controls[].scope; Risk assessment; Scope; Governance controls",
+      "type": "applicability",
+      "claim": "The app-selection setting is a global Insider Risk Management setting applying across policies regardless of template.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "Insider risk settings apply to all Insider Risk Management policies, regardless of the template you choose when creating a policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[0].ui; Governance controls table; Governance guidance",
+      "type": "admin-path",
+      "claim": "The app-selection route in Microsoft Purview is Insider Risk Management > Settings > Policy indicators > Generative AI apps indicators > Choose apps to monitor.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "In the Microsoft Purview portal, go to Insider Risk Management > Settings > Policy indicators. ... Expand Generative AI apps indicators. ... select Choose apps to monitor.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[0].api; Governance controls",
+      "type": "absence",
+      "claim": "No Security & Compliance PowerShell cmdlet or Microsoft Graph operation is documented for setting the generative AI app selection.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: exchangepowershell Insider Risk Management generative AI app selection policy indicators; graph/api insiderRisk settings. Opened policy-indicators page; reviewed Learn search results. No app-selection operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[1].ui; Governance controls table; Governance guidance",
+      "type": "admin-path",
+      "claim": "The global generative AI indicators are configured in Microsoft Purview at Insider Risk Management > Settings > Policy indicators > Generative AI apps indicators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "To enable policy indicators for all insider risk policies ... Select Settings, then select Policy indicators. ... Select one or more policy indicators.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[1].api; Governance controls",
+      "type": "absence",
+      "claim": "No PowerShell or Microsoft Graph operation is documented for configuring Insider Risk Management indicator settings.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: exchangepowershell Insider Risk Management policy indicators Set-InsiderRiskPolicy; graph/api insiderRisk settings. Opened policy-indicators page and reviewed module/Graph-targeted Learn results; no operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[1].note; Governance controls table",
+      "type": "default",
+      "claim": "All global indicators are disabled by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "All global indicators are disabled by default; you must select one or more indicators to configure an Insider Risk Management policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Role-group membership is configured in Microsoft Purview at Settings > Roles and groups > Roles groups > Insider Risk Management > Edit > Choose users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "Select Settings ... select Roles and groups, then select Roles groups ... Select the Insider Risk Management role group, then select Edit. ... Select Choose users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[2].api; controls[2].note; Governance controls table",
+      "type": "command",
+      "claim": "Add-RoleGroupMember -Identity \"Insider Risk Management\" -Member \"<user-UPN>\" adds a user to that role group in Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+      "quote": "Use the Add-RoleGroupMember cmdlet to add members to a management role group. ... The Identity parameter specifies the role group to add a member to. ... User ID or user principal name (UPN)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Security & identity; Scope; controls[2].note",
+      "type": "role",
+      "claim": "The Insider Risk Management and Insider Risk Management Admins role groups can configure policies and settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "| Actions | Insider Risk Management | Insider Risk Management Admins | ... | Configure policies and settings | Yes | Yes | No | No | No | No |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Security & identity; Scope: Who configures it",
+      "type": "role",
+      "claim": "Global Administrator, Compliance Administrator and Organization Management have the solution permissions of Insider Risk Management Admins.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "Members of the following roles ... have the same solution permissions included with the Insider Risk Management Admins role group: ... Global Administrator ... Compliance Administrator ... Organization Management",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[3].ui; Governance controls table; Governance guidance",
+      "type": "admin-path",
+      "claim": "The report is in Microsoft Purview at Insider Risk Management > Reports > Pay-as-you-go.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-reports",
+      "quote": "The following reports are available by navigating to Insider Risk Management > Reports in the Microsoft Purview portal: ... Pay-as-you-go: Review pay-as-you-go usage reports",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[3].api; Governance controls table",
+      "type": "absence",
+      "claim": "No API for the Insider Risk Management Pay-as-you-go report is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Insider Risk Management pay-as-you-go report API processing usage data source category indicator; Insider Risk Management pay-as-you-go API report. Opened reports, billing-models and billing-usage pages; no report API found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[3].governs; Cost and licensing: Spend control; Governance guidance",
+      "type": "behaviour",
+      "claim": "The Pay-as-you-go report breaks down billed processing by data source category and activity indicator over time.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-reports",
+      "quote": "The reports let you explore granular breakdowns of billed processing usage across different data source categories and activity indicators over time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Why it matters; controls[3].note; Cost and licensing; Governance controls",
+      "type": "behaviour",
+      "claim": "The Usage center lists Insider Risk Management as not pausable.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-usage",
+      "quote": "The Microsoft Purview Usage center feature is in preview. ... | Feature name | Pausable | Detailed report available | ... | Insider Risk Management | No | Yes |",
+      "severity": "minor",
+      "fix": "At the first mention of Usage center, describe it as 'the preview Usage center'; keep the statement that Insider Risk Management is not pausable there. The cited billing-usage page explicitly marks Usage center as preview."
+    },
+    {
+      "n": 30,
+      "where": "Governance controls: Usage center permissions",
+      "type": "role",
+      "claim": "Reading the Usage center Pay-as-you-go and Premium usage pages requires Global Reader, Security Reader or Global Admin.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-usage",
+      "quote": "To access the Usage center > Pay-as-you-go and Usage center > Premium usage pages, the account you use must have one of the following roles: ... Global Reader ... Security Reader ... Global Admin",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Governance controls: Usage center capabilities",
+      "type": "behaviour",
+      "claim": "The Usage center can pause some Purview pay-as-you-go features.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-usage",
+      "quote": "The pay-as-you-go usage page also lets you toggle the features listed between paused and active states.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: licensing.notes; Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "Insider Risk Management requires a supported subscription and appropriate licences assigned to users, with subscription requirements linked from the getting-started page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "To access and use Insider Risk Management, administrators need to verify their organization has a supported subscription and assign the appropriate licenses to users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "The getting-started page offers a Microsoft 365 Enterprise E5 trial to organisations without an existing E5 plan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "If you don't have an existing Microsoft 365 Enterprise E5 plan and want to try Insider Risk Management, you can add Microsoft 365 to your existing subscription or sign up for a trial of Microsoft 365 Enterprise E5.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "front matter: licensing.model; Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "A mixed licensing model describes the documented combination of per-user licensing and pay-as-you-go billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "This feature uses pay-as-you-go billing or per-user licensing for Microsoft Purview capabilities or both.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.notes; controls[1].note; Why it matters; Cost and licensing; Scope",
+      "type": "licensing",
+      "claim": "The Enterprise AI apps indicator requires pay-as-you-go billing enabled in the organisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "To use the Enterprise AI apps indicator, enable pay-as-you-go billing in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.notes; controls[1].note; Why it matters; Cost and licensing; Scope",
+      "type": "licensing",
+      "claim": "The Microsoft Copilot experiences indicator requires pay-as-you-go billing for non-Microsoft 365 AI data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "To use the Microsoft Copilot experiences indicator for non-Microsoft 365 AI data, enable pay-as-you-go billing in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.notes; Cost and licensing: Meter; Open questions",
+      "type": "cost",
+      "claim": "Detecting risky interactions in Microsoft 365 Copilot data has no pay-as-you-go billing requirement or charge.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "There aren't any pay-as-you-go billing requirements or charges for Microsoft 365 detecting inappropriate or risky interaction for Microsoft 365 Copilot data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing: Meter; rationale: cost",
+      "type": "cost",
+      "claim": "Insider Risk Management cloud and generative AI indicators for non-Microsoft 365 locations use Data Security processing units measured daily.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "| Insider Risk Management | Detect risky behavior for non-Microsoft 365 locations when using Cloud and generative AI policy indicators | Data Security processing unit as measured on a daily basis |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "Pay-as-you-go billing is Azure based and requires the Microsoft 365 tenant to be associated with an active Azure subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "The billing mechanisms are Azure based, so you must associate your Microsoft 365 tenant with an active Azure subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "An Azure bill for pay-as-you-go usage is generated monthly.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "An Azure bill is generated at the end of the month for the total number of pay-as-you-go charges across all Microsoft solutions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "The billing models page links to Microsoft Purview pay-as-you-go pricing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "Understand pricing and estimate your expected monthly costs for pay-as-you-go capabilities: ... Microsoft pay-as-you-go pricing",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Why it matters: coverage trade-off",
+      "type": "behaviour",
+      "claim": "Pasting sensitive data into a deselected app raises no Insider Risk Management alert.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Insider Risk Management app deselection no alerts risk score sensitive data pasted browser exfiltration. Opened policy-indicators and policy-templates pages; neither establishes exclusion from every Insider Risk Management detection route.",
+      "severity": "major",
+      "fix": "Replace 'so a user who pastes sensitive data into it raises no Insider Risk Management alert and adds nothing to their risk score' with 'so these generative AI apps indicators no longer process that app's signals'. The cited policy-indicators page documents that narrower effect."
+    },
+    {
+      "n": 43,
+      "where": "Why it matters: coverage trade-off",
+      "type": "behaviour",
+      "claim": "Pasting sensitive data into a deselected app adds nothing to the user's Insider Risk Management risk score.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Insider Risk Management app deselection no alerts risk score sensitive data pasted browser exfiltration. Opened policy-indicators and policy-templates pages; no statement rules out contributions through other indicators.",
+      "severity": "major",
+      "fix": "Use the same narrowed replacement for the coverage sentence: 'A deselected app's prompts and responses are not processed by these generative AI apps indicators.' Do not promise zero risk-score contribution across Insider Risk Management."
+    },
+    {
+      "n": 44,
+      "where": "Why it matters: Adaptive Protection",
+      "type": "behaviour",
+      "claim": "Detection by the Risky AI usage policy contributes to user risk scoring in Adaptive Protection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-policy-templates",
+      "quote": "Detection of risky activity by this policy also contributes to the user risk scoring in Adaptive Protection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "No new data is read by this feature.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Insider Risk Management app selection no new data read no action users apps end user experience. Opened policy-indicators page; it describes selecting signals to process, not a guarantee about all data read by the setting.",
+      "severity": "major",
+      "fix": "Remove 'No new data is read:' and begin the bullet 'The setting narrows which apps' interactions are processed.' Keep the documented explanation that deselected app signals are not processed."
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The feature takes no action on users or apps.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Insider Risk Management app selection no new data read no action users apps end user experience. Opened policy-indicators and policy-templates pages; neither expressly guarantees no action on users or apps.",
+      "severity": "major",
+      "fix": "Replace 'No change: the feature takes no action on users or apps.' with 'The documented setting includes or excludes individual apps from monitoring.'"
+    },
+    {
+      "n": 47,
+      "where": "rationale: cost",
+      "type": "cost",
+      "claim": "The app-selection setting adds no charge of its own.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Insider Risk Management AI app selection pricing additional charge feature choosing apps monitoring cost. Opened policy-indicators, configure and billing-models pages; no statement that the selection setting itself has no charge.",
+      "severity": "blocker",
+      "fix": "Replace the cost rationale with 'Low. Plan for admin time to review app selection; deselecting apps can reduce existing data security processing unit charges because Microsoft says their signals are not processed and incur no cost.' Do not assert that Microsoft has stated there is no separate setting charge."
+    },
+    {
+      "n": 48,
+      "where": "rationale: impact",
+      "type": "behaviour",
+      "claim": "Users of the AI apps see no change from app selection.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Insider Risk Management app selection no new data read no action users apps end user experience. Opened policy-indicators page; it documents monitoring exclusions but does not state the resulting end-user experience.",
+      "severity": "minor",
+      "fix": "Replace the impact rationale with the assessment 'Low. Expect the operational impact to fall mainly on administrators reviewing app selection and analysts interpreting monitoring coverage.' Remove the guarantee that AI app users see no change."
+    },
+    {
+      "n": 49,
+      "where": "controls[0].note; Governance controls table; Governance guidance",
+      "type": "behaviour",
+      "claim": "The Choose apps to monitor side panel has checkboxes to include or exclude individual apps from monitoring.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "From the side panel, you can select or clear the checkbox for each app to include or exclude it from monitoring.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-27T10:11:07.726Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=559992",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/purview-billing-models",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/purview-billing-usage",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-reports",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-policy-templates",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which Copilot experiences and enterprise AI apps the generative AI apps indicators monitor",
+        "docs": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+        "reachable": true,
+        "segments": [
+          "Insider Risk Management",
+          "Settings",
+          "Policy indicators",
+          "Generative AI apps indicators",
+          "Choose apps to monitor"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether the generative AI apps indicators are turned on for all insider risk policies",
+        "docs": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+        "reachable": true,
+        "segments": [
+          "Insider Risk Management",
+          "Settings",
+          "Policy indicators",
+          "Generative AI apps indicators"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Who can configure Insider Risk Management policies and settings",
+        "docs": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Roles and groups",
+          "Roles groups",
+          "Insider Risk Management",
+          "Edit",
+          "Choose users"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Who can configure Insider Risk Management policies and settings",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "reachable": true,
+        "token": "Add-RoleGroupMember",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Billed pay-as-you-go processing by data source category and indicator",
+        "docs": "https://learn.microsoft.com/purview/insider-risk-management-reports",
+        "reachable": true,
+        "segments": [
+          "Insider Risk Management",
+          "Reports",
+          "Pay-as-you-go"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

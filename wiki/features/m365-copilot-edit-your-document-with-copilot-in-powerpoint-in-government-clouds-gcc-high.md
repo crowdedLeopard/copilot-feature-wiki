@@ -63,15 +63,17 @@ changes:
     note: "New briefing: the roadmap lists the capability as rolling out in GCC High, while the service description still shows it as not currently available for GCCH."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 54 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 58 statements not yet confirmed"
 version: 1
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 54
-  confirmed: 53
+  claims: 58
+  confirmed: 57
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -167,9 +169,9 @@ cost: Medium. Microsoft documents Microsoft Copilot as an add-on licence in GCC 
 impact: Medium. Licensed Copilot users in GCC High tenants who build or revise decks will notice it; users without the licence will not, and Microsoft has not stated a default.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist's group-membership control is represented in the controls table. | Found: Checklist: "For group-based assignments, inspect the group's members under Teams & groups > Active teams & groups." Table: its sole row is "Which users hold the Microsoft 365 Copilot licence this capability requires", with only licence-assignment UI and automation. | Fix: Remove the sentence 'For group-based assignments, inspect the group's members under Teams & groups > Active teams & groups.' from Before rollout; it directs a separate group-membership check not represented in the controls table.
-- [supported, minor] Governance controls: licence-removal roles / role: License Administrator or User Administrator can unassign licences. | Found: Add or remove licenses for the user to enable or disable their use of Microsoft cloud offerings. The following least privileged roles are supported for this operation: Directory Writers; License Administrator; User Administrator. | Fix: Add https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0 to sources as 'user: assignLicense'; it explicitly supports the licence-removal roles that the cited assignment article does not spell out. | Source: https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0
+- [supported, minor] Governance controls: licence-removal roles / role: License Administrator is a supported role for unassigning licences. | Found: Add or remove licenses for the user to enable or disable their use of Microsoft cloud offerings. The following least privileged roles are supported for this operation: Directory Writers; License Administrator; User Administrator. | Fix: Add https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0 to sources as 'user: assignLicense'; it explicitly supports both named licence-removal roles. | Source: https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: Every control the governance checklist tells readers to inspect appears in the controls table. | Found: Checklist: 'For group-based assignments, inspect the group's members under Teams & groups > Active teams & groups.' The sole table row governs licence assignment and gives no group-membership control. | Fix: Remove 'For group-based assignments, inspect the group's members under Teams & groups > Active teams & groups.' from Before rollout; that separate group-membership check has no controls-table row.
 -->

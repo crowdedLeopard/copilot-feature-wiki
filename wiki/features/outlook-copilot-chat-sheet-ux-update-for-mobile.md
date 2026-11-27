@@ -14,7 +14,7 @@ previewDate: null
 risk: "low"
 cost: "low"
 impact: "low"
-defaultState: "on"
+defaultState: "unknown"
 action: "prepare"
 licensing:
   model: "included"
@@ -40,6 +40,9 @@ sources:
   - title: "copilotPackage: block"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
     kind: "learn"
+  - title: "Agent 365 Package Management API overview"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview"
+    kind: "learn"
 videos: []
 related: ["outlook-copilot-chat-pop-out-for-outlook-for-mac-and-ipad","m365-copilot-copilot-chat-in-outlook-expands-to-reason-over-inbox-calendar-and-enterprise","app-management","outlook-enhanced-user-interface-updates-for-iphone-and-ipad"]
 controls:
@@ -50,7 +53,7 @@ controls:
       path: "Settings > Integrated Apps > Available Apps > app > Block app"
       docs: "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365"
     api: null
-    note: "Global Admins only. Blocks the Copilot app in the Microsoft Copilot app, Outlook and the web, including for licensed users; Teams keeps its Teams admin center setting."
+    note: "Global Admins only. Blocks the app in the Microsoft Copilot app, Outlook and the web, incl. licensed users. Integrated Apps guide says Teams keeps its Teams admin center setting; Manage Copilot Chat says the block also affects Teams."
   - governs: "Which users can install and use the Copilot app themselves in Outlook and the Microsoft Copilot app"
     scope: "group"
     ui:
@@ -68,26 +71,30 @@ changes:
     note: "New briefing on the refreshed Copilot Chat sheet in Outlook for iOS and Android, targeted for December CY2026."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 43 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-27"
+    note: "Corrected the default state to unknown, as Microsoft has not stated what happens on arrival; noted that Manage Copilot Chat says the Integrated Apps block also affects Teams; reworded the Package Management API scope."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 48 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-27"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 43
-  confirmed: 42
-  unconfirmed: 1
+  claims: 48
+  confirmed: 48
+  unconfirmed: 0
   contradicted: 0
-  attempts: 1
-  hash: "80549e6a017f5516fbe965e5e258ab13"
+  attempts: 0
+  hash: "f7bc529a2790740240788aed8cb35a00"
 ---
 
 ## What's changing
 
 Microsoft plans to refresh the Copilot Chat sheet in Outlook for iOS and Android. The roadmap item lists smoother animations, improved strings (the wording in the interface) and small changes to the header, among them moving the new/temporary chat button behind the **...** button.
 
-Microsoft Learn does not describe this update yet, so what follows about its behaviour is the roadmap's description. The item presents it as something users will notice in the app and names no admin step, so expect it to reach users without anyone switching it on. Copilot Chat itself is not new on these platforms: Microsoft's release notes for August 2024 record that the Copilot Chat experience became available in Outlook for iOS and Android.
+Microsoft Learn does not describe this update yet, so what follows about its behaviour is the roadmap's description. Microsoft has not stated what happens on arrival for this refresh. Copilot Chat itself is not new on these platforms: Microsoft's release notes for August 2024 record that the Copilot Chat experience became available in Outlook for iOS and Android.
 
 The roadmap item is **In development**, targeted for **December CY2026**, in the General Availability release phase, for the Worldwide (Standard Multi-Tenant) cloud on Android and iOS.
 
@@ -95,7 +102,7 @@ The roadmap item is **In development**, targeted for **December CY2026**, in the
 
 This is a cosmetic change to an experience users already have, so the service-owner angle is support, not risk. The one change that alters how people work is the new/temporary chat button: users who start a fresh or temporary chat from the header will find it behind the **...** button instead. Expect a few "where did the button go" questions in December, and put one line about it in your mobile or Copilot adoption notes.
 
-If nobody acts, the refresh arrives as the roadmap describes it. No source describes any change to what Copilot Chat can reach, who can use it or how it is licensed, and the existing Integrated Apps controls on the Copilot app continue to decide whether people see Copilot Chat in Outlook at all.
+No source describes any change to what Copilot Chat can reach, who can use it or how it is licensed, and the existing Integrated Apps controls on the Copilot app continue to decide whether people see Copilot Chat in Outlook at all.
 
 ## Risk assessment
 
@@ -149,17 +156,17 @@ If nobody acts, the refresh arrives as the roadmap describes it. No source descr
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether users can use the Copilot app, and so Copilot Chat, in Outlook and the Microsoft Copilot app</strong><br><small>Tenant</small><br><small class="controls__note">Global Admins only. Blocks the Copilot app in the Microsoft Copilot app, Outlook and the web, including for licensed users; Teams keeps its Teams admin center setting.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Integrated Apps › Available Apps › app › Block app <a href="https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether users can use the Copilot app, and so Copilot Chat, in Outlook and the Microsoft Copilot app</strong><br><small>Tenant</small><br><small class="controls__note">Global Admins only. Blocks the app in the Microsoft Copilot app, Outlook and the web, incl. licensed users. Integrated Apps guide says Teams keeps its Teams admin center setting; Manage Copilot Chat says the block also affects Teams.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Integrated Apps › Available Apps › app › Block app <a href="https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which users can install and use the Copilot app themselves in Outlook and the Microsoft Copilot app</strong><br><small>Group</small><br><small class="controls__note">Global Admins only. Does not affect apps an admin has deployed; the CoPilot app settings apply to both Microsoft Copilot and Copilot Chat.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Integrated Apps › Available Apps › app › Users › Specific users/group in the organization can install <a href="https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
 Microsoft Learn documents no setting that governs this layout change itself; the controls in the table decide whether users get Copilot Chat in Outlook at all, and so whether they see the refreshed sheet.
 
-- The Integrated Apps page states that the **CoPilot** app settings apply to both the Microsoft Copilot and Copilot Chat apps, and that blocking an app there takes effect in the Microsoft Copilot application and Outlook, not in Teams, which keeps the setting made in the Teams admin center.
+- The Integrated Apps page states that the **CoPilot** app settings apply to both the Microsoft Copilot and Copilot Chat apps, and that blocking an app there takes effect in the Microsoft Copilot application and Outlook, not in Teams, which keeps the setting made in the Teams admin center. [Manage Copilot Chat](https://learn.microsoft.com/copilot/manage/manage-copilot-chat#block-users-from-using-copilot-chat), however, says this block also affects Teams: it blocks Copilot in the Microsoft Copilot app, Teams, Outlook and Copilot Chat on the web.
 - Blocking the Copilot app through Integrated Apps blocks it tenant-wide across the Microsoft Copilot app, Outlook and the web, including for users assigned a Microsoft 365 Copilot licence.
 - The availability setting controls which users can install the app themselves; the page says it does not affect apps an admin has deployed.
-- The Package Management API in Microsoft Graph (beta, requiring a Microsoft Agent 365 licence) can block a Copilot package, but its reference is written for agents and does not say whether the Copilot app is a package in that catalogue, so it is not listed as the automation for these rows.
+- The Package Management API in Microsoft Graph (beta, requiring a Microsoft Agent 365 licence) can block a Copilot package, but its overview describes packages as agents or tools and does not say whether the Copilot app is a package in that catalogue, so it is not listed as the automation for these rows.
 
 ## Open questions
 
@@ -171,13 +178,4 @@ Microsoft Learn documents no setting that governs this layout change itself; the
 risk: Low. The roadmap item describes animations, wording and header layout only; nothing in it changes what Copilot Chat can read or do.
 cost: Low. Copilot Chat is available to users with an eligible Microsoft 365 subscription, and this is a layout change to it; the cost is a note to mobile users and any helpdesk questions about the moved button.
 impact: Low. Only people who use Copilot Chat in Outlook on iOS and Android notice, and the change is to how the chat sheet looks and where one button sits.
--->
-
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] front matter: defaultState; What's changing; Why it matters / default: The refresh is on by default and reaches users without any administrator switching it on. | Found: Searched: "579897" "default" Outlook; "Outlook" "Chat Sheet" "automatically"; Outlook Copilot Chat mobile sheet layout update admin enable disable temporary chat button setting. Read the roadmap and Manage Copilot Chat; neither states the refresh's activation default. | Fix: Set defaultState to "unknown". Replace the sentence beginning "The item presents it" with "Microsoft has not stated what happens on arrival for this refresh." Remove "If nobody acts, the refresh arrives as the roadmap describes it." Keep the communication advice and the roadmap target.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].note; Governance controls / applicability: Integrated Apps blocking does not affect Teams, which retains its Teams admin center setting. | Found: The app is only be blocked in the Microsoft Copilot application and Outlook. Teams continues to honor the current setting for Teams Apps made in the Teams admin center | Fix: Replace "Teams keeps its Teams admin center setting" in the row note with "The Integrated Apps guide says Teams keeps its Teams admin center setting, but Manage Copilot Chat says this block also affects Teams." Make the same qualification in the corresponding prose bullet, citing https://learn.microsoft.com/copilot/manage/manage-copilot-chat#block-users-from-using-copilot-chat, which states: "This setting blocks Copilot in the Microsoft Copilot app, Teams, Outlook, and Copilot Chat on the web for all users." | Source: https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365
-- [supported, minor] Governance controls: Package Management API / behaviour: The Package Management API reference describes managing agents rather than establishing automation for the Copilot app. | Found: A package represents an agent or a tool, such as a plugin, MCP server, or skill, in the organization catalog. The Package Management API enables IT administrators to view and manage agents and tools across your organization. | Fix: Add https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview to sources for the API scope statement. Replace "its reference is written for agents" with "its overview describes packages as agents or tools". | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview
 -->

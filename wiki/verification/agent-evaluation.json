@@ -1,0 +1,1050 @@
+{
+  "slug": "agent-evaluation",
+  "kind": "concept",
+  "roadmapId": null,
+  "title": "Agent evaluation in Copilot Studio: how agents are tested, what the tests cost and who can limit them",
+  "status": "held",
+  "date": "2026-11-27",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-27",
+    "reasons": [
+      "1 blocking finding (claim 6)"
+    ]
+  },
+  "counts": {
+    "claims": 75,
+    "confirmed": 74,
+    "unconfirmed": 1,
+    "contradicted": 0,
+    "blocker": 1,
+    "major": 0,
+    "minor": 4
+  },
+  "summary": "Hold: the proposed automation for an agent's monthly spending limit is documented only for an unspecified environment resource, not for a Copilot Studio agent. The evaluation behaviour, billing distinction and documented disagreement about blocking the connector are otherwise supported, with small qualifications and citation corrections needed.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "An existing data policy's connector Block action is reached through Security > Data and privacy > Data policy > policy > Edit Policy > Assign connectors > connector > three dots > Block.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "Select Next. The Add an environment page appears. ... Select Next. The Assign connectors page appears.",
+      "severity": "minor",
+      "fix": "Include the intervening scope-selection page: 'Security > Data and privacy > Data policy > policy > Edit Policy > Add an environment > Assign connectors > connector > three dots > Block'. The omitted environment selection is a target-selection step, not a wrong route."
+    },
+    {
+      "n": 2,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "Add-ConnectorsToPolicy with PolicyName, Classification and Connectors assigns connectors to a policy's data group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy",
+      "quote": "Add-ConnectorsToPolicy\n    [-PolicyName] <String>\n    [-Classification] <String>\n    [-Connectors] <Object[]>",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "The environment tenant-capacity draw setting is at Licensing > Products > Copilot Studio > Manage Copilot Credits > environment > Capacity overages > Draw from the available capacity in my tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
+      "quote": "Under Products, select Copilot Studio, and then select Manage Copilot Credits. ... Under Capacity overages, select or clear Draw from the available capacity in my tenant",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01 writes an environment's allocation and tenant-capacity enforcement rule.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
+      "quote": "Invoke-RestMethod -Method Put ... -Uri \"$apiBaseUrl/licensing/allocationsV2?api-version=$apiVersion\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "An agent's monthly limit and Stop usage setting are reached through Licensing > Copilot Studio > Manage Agents > agent > Set limit > Stop usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness",
+      "quote": "Select Manage Agents. ... Select the agent, and then select Set limit. ... Turn on Stop usage if the agent should be turned off when it reaches the limit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "controls[2].api",
+      "type": "applicability",
+      "claim": "The Resource Threshold PUT operation is the API equivalent of setting a Copilot Studio agent's monthly Copilot Credit limit and Stop usage.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Power Platform API agent monthly limit resource threshold resourceId MCSMessages stopIfOverCapacity; \"Copilot Studio\" \"agent\" \"upsert\" \"threshold\". Read Resource Threshold REST reference, pac licensing and both cited capacity-management pages; none maps an agent to this resource.",
+      "severity": "blocker",
+      "fix": "Set controls[2].api to null and replace its API-related note with 'The Resource Threshold API documents thresholds for an environment resource, but Microsoft does not document here how to use it for a Copilot Studio agent's monthly limit.' Keep the existing question about whether evaluation runs count. The generic operation's existence does not establish that it changes this agent control."
+    },
+    {
+      "n": 7,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "In the Microsoft Copilot harness experience, a maker opens the agent, selects Evaluate, selects an evaluation and selects Evaluate to start it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-results",
+      "quote": "Open your agent in Copilot Studio. ... Select the Evaluate tab. ... In the Evaluation dropdown, select the evaluation you want to run. ... Select Evaluate to start the evaluation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "controls[3].api",
+      "type": "command",
+      "claim": "POST https://api.powerplatform.com/copilotstudio/environments/{EnvironmentId}/bots/{BotId}/api/makerevaluation/testsets/{TestSetId}/run?api-version=2024-10-01 starts an evaluation against a test set.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-rest-api",
+      "quote": "This article describes features used in agents or agent flows powered by the standard harness. ... Purpose: Run an evaluation for a test set by using the test set's id.",
+      "severity": "minor",
+      "fix": "Add to the row note: 'The UI route is for the Microsoft Copilot harness preview; the cited evaluation API documentation describes the standard harness.' Do not imply that this API is documented for both experiences."
+    },
+    {
+      "n": 9,
+      "where": "controls[4]",
+      "type": "absence",
+      "claim": "A dedicated tenant or environment switch that turns agent evaluation off is not documented as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio disable agent evaluation tenant environment setting Power Platform API evaluation switch; \"agent evaluation\" \"Organization\" \"Is\" \"enabled\" Dataverse. Opened evaluation intro, evaluation REST API and data-policy pages; no dedicated switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "controls[0].note; summary; Risks and limits",
+      "type": "applicability",
+      "claim": "Copilot Studio's data-policy page says blocking the Microsoft Copilot Studio connector prevents authenticated evaluation runs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "To prevent agent makers from adding event triggers to their agents or running automated evaluations by using an authenticated account, configure a data policy that blocks the Microsoft Copilot Studio connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "controls[0].note; Risks and limits",
+      "type": "applicability",
+      "claim": "Power Platform's connector-classification page lists Microsoft Copilot Studio among connectors that data policies cannot block.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/dlp-connector-classification",
+      "quote": "The following connectors can't be blocked by using data policies. ... Microsoft 365 Groups Mail (Preview) | Microsoft Copilot Studio",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "Risks and limits: The data policy route may not hold",
+      "type": "applicability",
+      "claim": "The connector-classification page says advanced connector policies can restrict the otherwise nonblockable certified connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/dlp-connector-classification",
+      "quote": "ACP uses a strict allowlist model and can restrict any certified connector, including the nonblockable connectors listed in this article.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[1].note",
+      "type": "command",
+      "claim": "The TenantPool enforcement rule in the allocation request controls whether the environment draws on tenant capacity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
+      "quote": "The Draw from the available capacity in my tenant option in the admin center maps to the TenantPool enforcement rule",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[1].note; Governance controls",
+      "type": "cost",
+      "claim": "Clearing tenant-capacity draw stops prepaid consumption at the environment's allocation but does not stop consumption through a linked pay-as-you-go plan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness",
+      "quote": "When you clear this option, the environment doesn't draw from unallocated prepaid capacity ... If the environment is linked to a pay-as-you-go billing plan, usage can continue through the linked Azure subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[2].governs; What to check",
+      "type": "cost",
+      "claim": "An agent-level monthly Copilot Credit limit with Stop usage turns the agent off when it reaches the limit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness",
+      "quote": "Turn on Stop usage if the agent should be turned off when it reaches the limit.",
+      "severity": "minor",
+      "fix": "Add to the row note: 'Limits are not applied instantly: an agent can continue to respond after reaching its limit. An agent's monthly limit does not stop the agent flows it calls.' These qualifications are in https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity#manage-monthly-consumption-limits-for-copilot-studio-agents; the row should not read as an instantaneous spending guarantee."
+    },
+    {
+      "n": 16,
+      "where": "controls[2].note",
+      "type": "command",
+      "claim": "The threshold reference describes an environment resource, rather than naming agents, and lists limit and stopIfOverCapacity in the request body.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/rest/api/power-platform/licensing/resource-threshold/upsert-resource-threshold",
+      "quote": "Create or update the resource threshold for an environment resource. ... Request Body ... limit ... stopIfOverCapacity",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[2].note; Open questions",
+      "type": "absence",
+      "claim": "Microsoft does not explicitly document whether the per-agent monthly limit counts or stops evaluation runs.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio evaluation runs agent monthly limit stop usage evaluations; \"Copilot Studio\" \"evaluations\" \"monthly\" \"limit\" \"stop\". Read harness cost-management, capacity-management and Resource Threshold pages; none explicitly resolves evaluation-run counting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[3].note; What it is; Why it matters; Risks and limits",
+      "type": "behaviour",
+      "claim": "Evaluations and tool connections use the currently signed-in user's profile.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-intro",
+      "quote": "Evaluations and connections used by tools run with the currently signed-in user profile.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[3].note",
+      "type": "command",
+      "claim": "mcsConnectionId specifies the user profile for authenticating connections during an API evaluation run.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-rest-api",
+      "quote": "You can also include a user profile for authenticating connections during the evaluation run. Use mcsConnectionId to specify the user profile.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[3].note; What it is: Whose identity",
+      "type": "command",
+      "claim": "An API evaluation run without mcsConnectionId runs without authentication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-rest-api",
+      "quote": "If you don't add an mcsConnectionId to your call, the evaluation runs without authentication.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "summary; What it is",
+      "type": "behaviour",
+      "claim": "Agent evaluation automates testing against test questions and assigns a score to each test case.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-intro",
+      "quote": "Agent evaluation provides automated, structured testing. ... assigns a score to each test case.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "Makers can generate, import or manually write test cases.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-intro",
+      "quote": "By using agent evaluation, you can generate, import, or manually write a group of test cases.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "The same test set can be rerun after agent changes instead of manually asking one question at a time.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-intro",
+      "quote": "Test changes to your agents by using the same test set, so you have an objective standard to measure and compare changes in performance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "Evaluation can be used before an agent is published.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-intro",
+      "quote": "Use evaluations to measure agent quality across test cases, track improvements over time, and validate your agent's behavior before you publish it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "Evaluation can be used after an agent is published.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-rest-api",
+      "quote": "Run recurring performance checks against production or staging agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What it is: Test cases and test sets",
+      "type": "behaviour",
+      "claim": "A test case can be a single question or an entire conversation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-intro",
+      "quote": "The interaction can be a single question or an entire conversation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What it is: Test cases and test sets",
+      "type": "behaviour",
+      "claim": "A test case can include the expected answer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-intro",
+      "quote": "A test case can also include the answer you expect your agent to reply with.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What it is: Test cases and test sets",
+      "type": "behaviour",
+      "claim": "A group of test cases is a test set.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-intro",
+      "quote": "This group of test cases is called a test set.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What it is: Test cases and test sets",
+      "type": "behaviour",
+      "claim": "A single-response test set holds up to 100 test cases.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-create",
+      "quote": "A test set for single response evaluations consists of a group of up to 100 test cases.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What it is: Test cases and test sets",
+      "type": "behaviour",
+      "claim": "A conversational test set holds up to 20 test cases.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-multi-turn",
+      "quote": "A test set for conversational evaluations consists of a group of up to 20 test cases.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What it is: Test methods",
+      "type": "behaviour",
+      "claim": "General quality is a test method that scores response quality.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-intro",
+      "quote": "General quality | Whether responses meet quality standards, such as relevance and completeness.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What it is: Test methods",
+      "type": "behaviour",
+      "claim": "Compare meaning is an evaluation method.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-intro",
+      "quote": "Compare meaning | Whether answers have the same meaning as the expected response, even if they're worded differently.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What it is: Test methods",
+      "type": "behaviour",
+      "claim": "Capability use checks whether an agent used the expected tools.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-intro",
+      "quote": "Capability use | Whether the agent used specific tools or skills to generate an answer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What it is: Test methods",
+      "type": "behaviour",
+      "claim": "Keyword match is an evaluation method.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-intro",
+      "quote": "Keyword match | Whether answers contain matching words and phrases.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What it is: Test methods",
+      "type": "behaviour",
+      "claim": "Text similarity is an evaluation method.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-intro",
+      "quote": "Text similarity | How close the text of an agent's answer is to the expected response.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What it is: Test methods",
+      "type": "behaviour",
+      "claim": "Exact match is an evaluation method.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-intro",
+      "quote": "Exact match | Whether agent answers match the expected response completely.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What it is: Test methods",
+      "type": "behaviour",
+      "claim": "Classification is an evaluation method.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-intro",
+      "quote": "Classification | Checks and labels agent answers according to instructions you define.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What it is: Test methods",
+      "type": "behaviour",
+      "claim": "Content safety checks violent, hateful, self-harm or sexual content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-intro",
+      "quote": "Content safety | Whether responses contain harmful content of the selected content type: Violent, Hateful, Self-harm, or Sexual.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What it is: Test methods",
+      "type": "behaviour",
+      "claim": "In the new agent experience, an evaluation can have up to five test methods.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-intro",
+      "quote": "Each new evaluation starts with General quality, and you can add up to five test methods to an evaluation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "What it is: Test methods",
+      "type": "availability",
+      "claim": "Available test methods can vary by environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-intro",
+      "quote": "The test methods available to you can vary by environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "What it is: The run",
+      "type": "behaviour",
+      "claim": "During an evaluation Copilot Studio sends the test-case questions to the agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-intro",
+      "quote": "Copilot Studio sends the questions in the test cases",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "What it is: The run",
+      "type": "behaviour",
+      "claim": "Copilot Studio records the agent's responses during the evaluation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-intro",
+      "quote": "records the agent's responses",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "What it is: The run",
+      "type": "behaviour",
+      "claim": "Copilot Studio compares responses against expected responses or a quality standard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-intro",
+      "quote": "compares those responses against expected responses or a standard of quality",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "What it is: The run",
+      "type": "behaviour",
+      "claim": "Programmatically triggered evaluation runs can be integrated into CI/CD pipelines.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-intro",
+      "quote": "you can programmatically trigger evaluation runs and integrate testing into automated workflows such as continuous integration and continuous deployment (CI/CD) pipelines.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "What it is",
+      "type": "applicability",
+      "claim": "Copilot Studio documents the standard-harness evaluation experience separately from the new experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-intro",
+      "quote": "This article describes features used in agents or agent flows powered by the standard harness.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "What it is",
+      "type": "availability",
+      "claim": "The Evaluate tab in the new agent experience is a production-ready preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-intro",
+      "quote": "The Evaluate tab in the new agent experience provides structured, repeatable testing for your agent. ... This is a production-ready preview feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "What it is: Other products",
+      "type": "behaviour",
+      "claim": "Dynamics 365 Contact Center has agentic simulations for testing agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-simulation-agent",
+      "quote": "Agentic simulations help your administrators test and validate configurations, AI agents, and routing flows before they roll out in real time.",
+      "severity": "minor",
+      "fix": "Add the Microsoft pages relied on but absent from sources: https://learn.microsoft.com/dynamics365/contact-center/administer/configure-simulation-agent for this example, and https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-results for selecting and running an existing evaluation in the new experience."
+    },
+    {
+      "n": 48,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "The Review panel warns when no evaluation exists.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-results",
+      "quote": "You get warning indicators if: ... No evaluation exists.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "The Review panel warns when the agent model changed since the latest evaluation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-results",
+      "quote": "The agent model changed since the latest evaluation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Review's evaluation warnings do not block publishing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-results",
+      "quote": "These warnings don't block you from publishing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Why it matters; Cost and licensing",
+      "type": "cost",
+      "claim": "Generating and running evaluations on the Microsoft Copilot harness consume Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness",
+      "quote": "Building, testing, evaluating, and running these agents can consume Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Cost and licensing: Microsoft Copilot harness",
+      "type": "cost",
+      "claim": "Microsoft says the Microsoft Copilot harness charges credits from the moment building starts, including generating and creating evaluations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
+      "quote": "the Microsoft Copilot harness charges credits from the moment you start building. Experiences such as ... generating and creating agent evaluations all consume credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Cost and licensing: Standard harness",
+      "type": "cost",
+      "claim": "Microsoft's billing overview says standard-harness billing starts after publish.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
+      "quote": "Unlike the standard harness, which starts billing after publish",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Cost and licensing: Standard harness; Open questions",
+      "type": "absence",
+      "claim": "Whether standard-harness evaluation runs consume Copilot Credits is not explicitly published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio standard harness evaluation runs billed Copilot Credits evaluation rate; \"Copilot Studio\" \"evaluation\" \"standard harness\" \"billing\". Read billing overview, Billing rates and management and evaluation intro; no explicit evaluation billing rule found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Cost and licensing: Microsoft Copilot harness",
+      "type": "cost",
+      "claim": "Evaluate shows an estimated Copilot Credit total for each run.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-intro",
+      "quote": "an estimated total for each evaluation run",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Cost and licensing: Microsoft Copilot harness",
+      "type": "cost",
+      "claim": "Evaluate breaks estimated credits down between generating and scoring responses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-intro",
+      "quote": "a breakdown between generating and scoring responses",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Cost and licensing: Microsoft Copilot harness",
+      "type": "cost",
+      "claim": "Evaluate shows estimated credit usage per test case.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-intro",
+      "quote": "credit usage at the individual test-case level.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Cost and licensing; Risks and limits: Evaluate shows estimates",
+      "type": "cost",
+      "claim": "Evaluate's credit figures are near-real-time approximations rather than final billed totals.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-understand-display",
+      "quote": "The estimates in Preview and Evaluate are near-real-time approximations",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Cost and licensing: Microsoft Copilot harness",
+      "type": "cost",
+      "claim": "The final accurate credit figure is reflected in Monitor within a few hours.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-understand-display",
+      "quote": "the final, accurate number is reflected in Monitor within a few hours.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "A credit rate specific to agent evaluation is not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Copilot Studio\" \"evaluation\" \"credits\" \"rate\". Read Billing rates and management, usage-based billing overview, evaluation intro and estimated-credit display; no evaluation-specific rate found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Risks and limits: Results expire after 89 days; What to check",
+      "type": "behaviour",
+      "claim": "Test results remain available in Copilot Studio for 89 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-create",
+      "quote": "Test results are available in Copilot Studio for 89 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Risks and limits: Results expire after 89 days; What to check",
+      "type": "behaviour",
+      "claim": "Evaluation results can be exported to CSV for retention outside Copilot Studio.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-results",
+      "quote": "To save your test results for a longer period, export the results to a CSV file.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Risks and limits: Some agents can't be evaluated; What to check",
+      "type": "availability",
+      "claim": "Agents configured to Authenticate manually are not supported by evaluation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-intro",
+      "quote": "Agents set to Authenticate manually aren't supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Risks and limits: Some agents can't be evaluated",
+      "type": "availability",
+      "claim": "Agent evaluation does not support Fabric data agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-intro",
+      "quote": "Agent evaluation doesn't support Fabric data agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Risks and limits: A pass reflects one user's access",
+      "type": "behaviour",
+      "claim": "Running an evaluation as another user requires signing out and signing in with that user's account.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-intro",
+      "quote": "To run an evaluation as a different user, sign out, sign in by using that user's account, and then run the evaluation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Risks and limits: Content safety scores are not a safety guarantee",
+      "type": "behaviour",
+      "claim": "Microsoft says content-safety evaluations do not guarantee an agent is safe or appropriate for every scenario.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-intro",
+      "quote": "Content safety evaluations help identify potentially harmful content, but they don't guarantee that an agent is safe or appropriate for every scenario.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Risks and limits: GCC differences",
+      "type": "availability",
+      "claim": "In GCC, makers cannot add a user profile to evaluation test sets.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-intro",
+      "quote": "Agent evaluation in Government Community Cloud (GCC) environments has the following limitations: ... Makers can't add a user profile to their test sets.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Risks and limits: GCC differences",
+      "type": "availability",
+      "claim": "In GCC, makers cannot use the similarity test method.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-intro",
+      "quote": "Makers can't use the similarity test method for evaluations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Managing credit allocations and tenant-capacity draw requires Power Platform Administrator, Global Administrator or equivalent licensing-and-capacity permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
+      "quote": "Sign in as a user with the Power Platform Administrator or Global Administrator role, or an equivalent role that can manage licensing and capacity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Governance controls",
+      "type": "admin-path",
+      "claim": "Bill to my pay-as-you-go billing plan is an overage option under Capacity overages.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
+      "quote": "Under Capacity overages ... Select Bill to my pay-as-you-go billing plan to let the environment continue usage through the selected billing plan.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "A published environment-group rule governing tenant-capacity draw cannot be overridden for an individual environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
+      "quote": "If a published environment group rule governs Draw from the available capacity in my tenant, you can't override the setting for an individual environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Governance controls",
+      "type": "cost",
+      "claim": "Azure budgets and alerts notify but do not stop Copilot Studio consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness",
+      "quote": "Azure budgets and alerts send notifications but don't stop Copilot Studio consumption.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Capacity and consumption controls are shared Copilot Studio controls, not controls exclusive to evaluation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness",
+      "quote": "The capacity and consumption controls in the Power Platform admin center apply across Copilot Studio. ... Configure controls with the other Copilot Studio agents, workflows, and features in mind for each environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Governance controls",
+      "type": "cost",
+      "claim": "The agent's Monitor page shows billed credit consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-understand-display",
+      "quote": "use the Monitor experience and review the Total estimated credits used metric for your agent. This value reflects the number of Copilot Credits that will be billed for the selected period",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Governance controls",
+      "type": "admin-path",
+      "claim": "Environment and tenant credit consumption can be viewed under Licensing > Copilot Studio in the Power Platform admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
+      "quote": "To view credit consumption across an environment or your tenant, go to Licensing > Copilot Studio in the Power Platform admin center.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-27T10:10:59.902Z",
+    "summary": {
+      "links": 15,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 4,
+      "apiCallsNotOnPage": 1,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-intro",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-intro",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-rest-api",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-create",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-multi-turn",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-results",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-understand-display",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/dlp-connector-classification",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/rest/api/power-platform/licensing/resource-threshold/upsert-resource-threshold",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether makers can run evaluations with an authenticated account",
+        "docs": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+        "reachable": true,
+        "segments": [
+          "Security",
+          "Data and privacy",
+          "Data policy",
+          "Edit Policy",
+          "Assign connectors",
+          "three dots",
+          "Block"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether makers can run evaluations with an authenticated account",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy",
+        "reachable": true,
+        "token": "Add-ConnectorsToPolicy",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Copilot Credits allocated to an environment, and whether it draws on tenant capacity once they are used",
+        "docs": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
+        "reachable": true,
+        "segments": [
+          "Licensing",
+          "Products",
+          "Copilot Studio",
+          "Manage Copilot Credits",
+          "Capacity overages",
+          "Draw from the available capacity in my tenant"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Copilot Credits allocated to an environment, and whether it draws on tenant capacity once they are used",
+        "docs": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
+        "reachable": true,
+        "token": "api.powerplatform.com/licensing/allocationsV2",
+        "found": false
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Monthly Copilot Credit limit for one agent, and whether it stops at the limit",
+        "docs": "https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness",
+        "reachable": true,
+        "segments": [
+          "Licensing",
+          "Copilot Studio",
+          "Manage Agents",
+          "Set limit",
+          "Stop usage"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Monthly Copilot Credit limit for one agent, and whether it stops at the limit",
+        "docs": "https://learn.microsoft.com/rest/api/power-platform/licensing/resource-threshold/upsert-resource-threshold",
+        "reachable": true,
+        "token": "api.powerplatform.com/licensing/environments/{environmentId}/entitlements/{entitlementId}/resources/{resourceId}/threshold",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Starting an evaluation run against a test set",
+        "docs": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-intro",
+        "reachable": true,
+        "segments": [
+          "Evaluate",
+          "evaluation",
+          "Evaluate"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Starting an evaluation run against a test set",
+        "docs": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-rest-api",
+        "reachable": true,
+        "token": "api.powerplatform.com/copilotstudio/environments/{EnvironmentId}/bots/{BotId}/api/makerevaluation/testsets/{TestSetId}/run",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

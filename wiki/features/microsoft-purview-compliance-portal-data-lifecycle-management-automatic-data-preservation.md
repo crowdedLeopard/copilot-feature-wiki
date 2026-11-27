@@ -84,15 +84,17 @@ changes:
     note: "Corrected after verification: cost now says retained SharePoint and OneDrive content counts against the site's storage quota, so storage might need to be increased."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 60 statements confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 58 statements confirmed"
 version: 3
 verification:
   status: "verified"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 60
+  claims: 58
+  confirmed: 58
   unconfirmed: 0
   contradicted: 0
   attempts: 0

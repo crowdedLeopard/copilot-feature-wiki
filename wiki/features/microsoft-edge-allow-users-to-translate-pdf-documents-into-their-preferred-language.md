@@ -60,15 +60,17 @@ changes:
     note: "First briefing for this roadmap item: whole-PDF translation in Edge's PDF viewer, controlled by the TranslateEnabled policy, targeted January CY2027."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 50 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 53 statements not yet confirmed"
 version: 1
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 50
-  confirmed: 49
+  claims: 53
+  confirmed: 52
   unconfirmed: 1
   contradicted: 0
   attempts: 0
@@ -168,11 +170,11 @@ cost: Low. The only cost the sources show is admin time to decide on the Transla
 impact: Medium. Anyone who opens PDFs in a language they do not read in Edge's PDF viewer is likely to notice; the roadmap does not say whether it appears for all users on arrival.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Governance guidance: At rollout / behaviour: The roadmap explicitly describes the original document staying in its own tab after translation. | Found: Searched: Microsoft Edge translate full PDF new tab original document remains open. Read roadmap description, PDF reader and TranslateEnabled; the roadmap specifies a new tab for the translated document but does not state what happens to the original tab. | Fix: Replace the bullet with: 'Brief users that the translated PDF opens in a new tab, as the roadmap item describes.'
+- [unsupported, major] Governance guidance: At rollout / behaviour: The roadmap describes the original document staying in its own tab after translation. | Found: Searched: Microsoft Edge PDF translation original document stays open new tab; read roadmap record, PDF reader and TranslateEnabled. The roadmap states that the translated document opens in a new tab, not what happens to the original document. | Fix: Replace the bullet with: 'Brief users that the translated PDF opens in a new tab, as the roadmap item describes.'
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Scope / availability: The TranslateEnabled reference lists Android version 30 or later. | Found: Android: ≥ 30 | Fix: After the policy-version sentence add: 'The separate mobile policy reference lists TranslateEnabled support on Android since version 109, rather than 30 (https://learn.microsoft.com/deployedge/microsoft-edge-mobile-policies#additional-policies).' Alternatively remove the Android version clause. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/translateenabled
-- [supported, minor] Scope / availability: The TranslateEnabled reference lists iOS version 84 or later. | Found: iOS: ≥ 84 | Fix: After the policy-version sentence add: 'The separate mobile policy reference lists TranslateEnabled support on iOS and iPadOS since version 109, rather than 84 (https://learn.microsoft.com/deployedge/microsoft-edge-mobile-policies#additional-policies).' Alternatively remove the iOS version clause. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/translateenabled
+- [supported, minor] Scope / availability: The TranslateEnabled reference lists Android support from version 30. | Found: Android: ≥ 30 | Fix: Remove the Android version clause, or add: 'The separate mobile policy reference instead lists TranslateEnabled support on Android since version 109 (https://learn.microsoft.com/deployedge/microsoft-edge-mobile-policies#additional-policies).' | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/translateenabled
+- [supported, minor] Scope / availability: The TranslateEnabled reference lists iOS support from version 84. | Found: iOS: ≥ 84 | Fix: Remove the iOS version clause, or add: 'The separate mobile policy reference instead lists TranslateEnabled support on iOS and iPadOS since version 109 (https://learn.microsoft.com/deployedge/microsoft-edge-mobile-policies#additional-policies).' | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/translateenabled
 -->

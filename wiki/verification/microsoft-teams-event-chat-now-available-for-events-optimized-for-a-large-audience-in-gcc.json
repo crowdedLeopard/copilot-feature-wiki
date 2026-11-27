@@ -4,10 +4,10 @@
   "title": "Microsoft Teams: attendee chat in town halls for GCC, GCC High and DoD",
   "status": "held",
   "date": "2026-11-27",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "hold",
@@ -16,25 +16,36 @@
     "reason": "failed",
     "since": "2026-11-27",
     "reasons": [
-      "3 blocking findings (claims 50, 51, 53)"
+      "1 blocking finding (claim 62)"
     ]
   },
   "counts": {
-    "claims": 58,
-    "confirmed": 54,
-    "unconfirmed": 1,
-    "contradicted": 3,
-    "blocker": 3,
+    "claims": 63,
+    "confirmed": 61,
+    "unconfirmed": 0,
+    "contradicted": 2,
+    "blocker": 1,
     "major": 0,
-    "minor": 2
+    "minor": 3
   },
-  "summary": "Hold: the government-cloud default is presented as user opt-in even though the cited documentation excludes those clouds and the roadmap does not state their default. Microsoft also publishes attendee-chat licensing and capacity requirements that the briefing reports as unpublished. The control paths, commands and commercial-service limitations are supported.",
+  "summary": "Hold: the eDiscovery hold advice omits Microsoft's requirement for an eligible licence on every user whose content is preserved. The control paths, commands and roadmap details are supported, but conflicting Microsoft documentation about the chat default and GCC availability should also be acknowledged.",
   "claims": [
     {
       "n": 1,
       "where": "title; summary; What's changing",
+      "type": "behaviour",
+      "claim": "Town halls are events optimised for large audiences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
+      "quote": "In events optimized for large audiences, such as town halls, the chat experience differs depending on the event role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing",
       "type": "record",
-      "claim": "Microsoft plans public event chat for all users in events larger than 1,000 users or any event optimized for a large audience.",
+      "claim": "The roadmap plans public event chat between all users in events larger than 1,000 users or any event optimised for a large audience.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "All users in Events larger than 1,000 users or in any Event optimized for a large audience can now chat with one another in a public event chat in GCC, GCC High and DoD.",
@@ -42,7 +53,29 @@
       "fix": null
     },
     {
-      "n": 2,
+      "n": 3,
+      "where": "front matter: clouds; title; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists GCC, GCC High and DoD for the change.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Android, Desktop, iOS, Mac and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
       "where": "front matter: status; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap status is In development.",
@@ -53,8 +86,8 @@
       "fix": null
     },
     {
-      "n": 3,
-      "where": "front matter: targetDate; summary; What's changing; Scope",
+      "n": 6,
+      "where": "front matter: targetDate; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap target is January CY2027.",
       "status": "supported",
@@ -64,18 +97,7 @@
       "fix": null
     },
     {
-      "n": 4,
-      "where": "front matter: previewDate",
-      "type": "record",
-      "claim": "The record gives no preview date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": null",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
+      "n": 7,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
       "claim": "The release phase is General Availability.",
@@ -86,54 +108,43 @@
       "fix": null
     },
     {
-      "n": 6,
-      "where": "front matter: clouds; title; summary; What's changing; Scope",
-      "type": "record",
-      "claim": "The planned release covers GCC, GCC High and DoD.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "front matter: platforms; What's changing; Scope",
-      "type": "record",
-      "claim": "The listed platforms are Android, Desktop, iOS, Mac and Web.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\", \"Web\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 8,
-      "where": "front matter: roadmapModified",
+      "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap record was modified on 2026-11-17T00:31:56.",
+      "claim": "The roadmap gives no preview date.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"modified\": \"2026-11-17T00:31:56\"",
+      "quote": "\"previewDate\": null",
       "severity": null,
       "fix": null
     },
     {
       "n": 9,
-      "where": "What's changing; Open questions",
-      "type": "availability",
-      "claim": "Learn currently excludes GCC, GCCH and DoD from this chat, so its documented behavior is not confirmation of the planned government release.",
+      "where": "front matter: defaultState; What's changing; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated the arrival default specifically for the government-cloud release.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
-      "quote": "Chat isn't available on the GCC, GCCH, and DoD government clouds at this time.",
+      "source": null,
+      "quote": "Searched: 573625 TownhallChatExperience GCC GCC High DoD attendee chat default Optimized. Read roadmap, manage-event-chat, set-csteamseventspolicy and Government Channel search excerpts; none states this release's arrival default.",
       "severity": null,
       "fix": null
     },
     {
       "n": 10,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "availability",
+      "claim": "Manage chat for Teams events currently says chat is unavailable in GCC, GCCH and DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
+      "quote": "Chat isn't available on the GCC, GCCH, and DoD government clouds at this time.",
+      "severity": "minor",
+      "fix": "After quoting the limitation, add: 'Microsoft's Government Channel release notes separately state under GCC Customers: \"Event chat for town halls: With this new update, everyone in a town hall will be able to chat using Event chat.\" These Microsoft pages disagree about GCC availability.' Cite https://learn.microsoft.com/officeupdates/governmentchannel#teams-admin-and-teams-app-july-24. Replace the first At rollout bullet with 'Confirm availability in the tenant before telling organisers chat is available; Microsoft documentation currently disagrees about GCC availability.'"
+    },
+    {
+      "n": 11,
       "where": "What's changing; Governance guidance: At rollout; rationale: impact",
       "type": "behaviour",
-      "claim": "Documented attendee chat is available only during the event.",
+      "claim": "Attendee chat is available only during the event in the commercial design described.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
       "quote": "Meeting chat for attendees is available only during the event.",
@@ -141,10 +152,10 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 12,
       "where": "What's changing; controls[0].note; Scope; Governance guidance",
-      "type": "admin-path",
-      "claim": "Organizers turn on Meeting chat in their Meeting options to let attendees send and view messages.",
+      "type": "behaviour",
+      "claim": "Organisers turn on Meeting chat in Meeting options to let attendees send and view messages.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
       "quote": "Organizers can turn on Meeting chat in their Meeting options to allow attendees to send and view chat messages.",
@@ -152,21 +163,32 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "controls[0].note; What's changing; Why it matters; rationale: risk",
-      "type": "default",
-      "claim": "In the documented commercial design, Optimized is the events-policy chat default and allows organizers to turn chat on.",
+      "n": 13,
+      "where": "controls[0].governs; What's changing; Governance controls",
+      "type": "applicability",
+      "claim": "The events policy chat control decides whether organisers can turn on attendee chat, rather than choosing individual chat participants.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
-      "quote": "Optimized | This is the default value. Organizers with this policy can turn on chat for their attendees.",
+      "quote": "As an admin, you can manage whether organizers can turn on meeting chat for their attendees in events optimized for large audiences.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 13,
+      "n": 14,
+      "where": "controls[0].note; What's changing; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The commercial chat guidance gives Optimized as the default policy value, permitting organisers to enable chat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
+      "quote": "Optimized | This is the default value. Organizers with this policy can turn on chat for their attendees.",
+      "severity": "minor",
+      "fix": "Add to the control note and the discussion of the commercial default: 'Manage chat for Teams events gives Optimized as the default; the Set-CsTeamsEventsPolicy reference instead lists None as the default for TownhallChatExperience.' The reference is already cited: https://learn.microsoft.com/powershell/module/teams/set-csteamseventspolicy. Keep the government arrival default as unknown."
+    },
+    {
+      "n": 15,
       "where": "controls[0].note; Governance guidance: Before rollout",
       "type": "behaviour",
-      "claim": "Setting the events-policy chat experience to None prevents organizers from turning on attendee chat.",
+      "claim": "Setting TownhallChatExperience to None prevents organisers with the policy from enabling attendee chat.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
       "quote": "None | Organizers with this policy can't turn on chat for their attendees.",
@@ -174,35 +196,13 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "What's changing",
-      "type": "role",
-      "claim": "Organizers, co-organizers and presenters can chat with each other in the separate event group chat.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
-      "quote": "Organizers, co-organizers, and presenters can chat with each other in the event group chat.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The separate event group chat is available before, during and after the event.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
-      "quote": "The event group chat is available before, during, and after an event, and is a separate experience from the chat with attendees.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 16,
-      "where": "What's changing; Governance guidance: At rollout; Open questions",
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "Attendees can send up to 200 characters of text and emojis per message.",
+      "claim": "Organisers, co-organisers and presenters have an event group chat separate from attendee chat.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
-      "quote": "Attendees can only send up to 200 characters of text and emojis into the chat.",
+      "quote": "Organizers, co-organizers, and presenters can chat with each other in the event group chat. The event group chat is available before, during, and after an event, and is a separate experience from the chat with attendees.",
       "severity": null,
       "fix": null
     },
@@ -210,18 +210,40 @@
       "n": 17,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Attendees cannot use @ to mention others in this chat.",
+      "claim": "Event group chat is available before, during and after the event.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
-      "quote": "Attendees can't use @ to mention others, reply to other chat messages using the \"reply\" function, or \"react\" to messages.",
+      "quote": "The event group chat is available before, during, and after an event",
       "severity": null,
       "fix": null
     },
     {
       "n": 18,
+      "where": "What's changing; Governance guidance: At rollout; Open questions",
+      "type": "behaviour",
+      "claim": "Attendee messages are limited to 200 characters.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
+      "quote": "Attendees can only send up to 200 characters of text and emojis into the chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Attendees cannot use the reply function in this chat.",
+      "claim": "Attendees can send text and emojis.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
+      "quote": "Attendees can only send up to 200 characters of text and emojis into the chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Attendees cannot use @mentions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
       "quote": "Attendees can't use @ to mention others, reply to other chat messages using the \"reply\" function, or \"react\" to messages.",
@@ -229,7 +251,18 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 21,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Attendees cannot reply using the reply function.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
+      "quote": "Attendees can't use @ to mention others, reply to other chat messages using the \"reply\" function, or \"react\" to messages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "Attendees cannot react to chat messages.",
@@ -240,10 +273,10 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 23,
       "where": "What's changing; Open questions",
       "type": "behaviour",
-      "claim": "Attendees can see only the last 200 messages during the event.",
+      "claim": "Attendees see only the last 200 messages during the event.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
       "quote": "During the event, attendees can only see the last 200 messages.",
@@ -251,10 +284,10 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 24,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Attendee messages might experience 15-30 seconds of latency relative to presenters and organizers.",
+      "claim": "Attendee chat messages can experience 15-30 seconds of latency.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
       "quote": "Attendees sending chat messages might experience a 15-30 second latency from the presenters and organizers.",
@@ -262,10 +295,10 @@
       "fix": null
     },
     {
-      "n": 22,
-      "where": "What's changing; Scope; Cost and licensing; Open questions",
+      "n": 25,
+      "where": "licensing.notes; What's changing; Cost and licensing; Scope; Open questions",
       "type": "behaviour",
-      "claim": "Attendee chat is supported up to 20,000 attendees, but not for events larger than that.",
+      "claim": "Attendee chat is supported only in events with up to 20,000 attendees.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
       "quote": "Attendee meeting chat is supported in events with up to 20,000 attendees. ... Chat isn't supported for events with more than 20,000 attendees.",
@@ -273,10 +306,10 @@
       "fix": null
     },
     {
-      "n": 23,
+      "n": 26,
       "where": "What's changing; Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "If an event restarts, chat is not available in the new event.",
+      "claim": "If an event restarts, chat is unavailable in the new event.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
       "quote": "If an event restarts, chat isn't available in the new event.",
@@ -284,10 +317,10 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 27,
       "where": "Why it matters; Risk assessment; Governance guidance; rationale: risk",
       "type": "behaviour",
-      "claim": "Attendee event-chat messages are stored only in the organizer's mailbox, unlike event group chat.",
+      "claim": "Attendee chat messages are stored only in the organiser's mailbox.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
       "quote": "Meeting chat messages in events optimized for large audiences, excluding the event group chat, are stored only in an organizer's mailbox for up to 30 days.",
@@ -295,10 +328,10 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "Why it matters; Risk assessment; Governance guidance; rationale: risk; changes",
+      "n": 28,
+      "where": "Why it matters; Risk assessment; Governance guidance; Governance controls; rationale: risk",
       "type": "behaviour",
-      "claim": "The documented mailbox storage period for attendee event-chat messages is up to 30 days.",
+      "claim": "Ordinary attendee chat storage lasts up to 30 days.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
       "quote": "Meeting chat messages in events optimized for large audiences, excluding the event group chat, are stored only in an organizer's mailbox for up to 30 days.",
@@ -306,7 +339,7 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 29,
       "where": "Why it matters",
       "type": "behaviour",
       "claim": "Chat messages cannot be searched in an attendee's mailbox.",
@@ -317,10 +350,10 @@
       "fix": null
     },
     {
-      "n": 27,
-      "where": "Risk assessment: Data exposure; Governance guidance; Governance controls",
+      "n": 30,
+      "where": "Risk assessment: Data exposure; Governance controls",
       "type": "applicability",
-      "claim": "A legal hold on the organizer's mailbox preserves these chat messages longer.",
+      "claim": "The event chat page says legal hold on the organiser's mailbox preserves chat messages longer.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
       "quote": "However, if you place the organizer's mailbox on legal hold, the mailbox keeps the chat messages for longer.",
@@ -328,10 +361,10 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 31,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Chat might be unavailable if the organizer leaves between scheduling and 30 days after the event.",
+      "claim": "If an organiser leaves between scheduling and 30 days after the event ends, chat might be unavailable during the event.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
       "quote": "When an organizer leaves the company anytime from when the event is scheduled to 30 days after the event ends, the following details apply: ... Chat might be unavailable during the event.",
@@ -339,10 +372,10 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 32,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "If the organizer leaves during that period, chat might run without its messages reaching the organizer's mailbox.",
+      "claim": "In that departure window, chat may work during the event without reaching the organiser's mailbox.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
       "quote": "Chat might be available during the event, but might not get sent to the organizer's mailbox.",
@@ -350,10 +383,10 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 33,
       "where": "Why it matters",
       "type": "behaviour",
-      "claim": "The organizer leaving may cause messages to be missing from the discoverable record.",
+      "claim": "An organiser's departure can leave some messages absent from the discoverable record.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
       "quote": "Some messages aren't e-discoverable in the organizer's mailbox depending on when the organizer leaves the company.",
@@ -361,10 +394,10 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 34,
       "where": "Risk assessment: Change & support; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Microsoft advises rescheduling the event if its organizer leaves the company.",
+      "claim": "Microsoft advises rescheduling the event when its organiser leaves the company.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
       "quote": "If an organizer leaves the company, reschedule the event.",
@@ -372,10 +405,10 @@
       "fix": null
     },
     {
-      "n": 32,
-      "where": "Why it matters; Risk assessment; Governance guidance; rationale: risk",
+      "n": 35,
+      "where": "Why it matters; Risk assessment; Governance guidance; Open questions; rationale: risk",
       "type": "applicability",
-      "claim": "The documented event chat does not support Information Barriers.",
+      "claim": "The documented attendee chat does not support Information Barriers.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
       "quote": "Chat doesn't support Information Barriers.",
@@ -383,10 +416,10 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 36,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Microsoft Teams Rooms on Windows with a Pro license cannot use chat when joining events as a presenter.",
+      "claim": "Teams Rooms on Windows with a Pro licence cannot use chat when joining events as a presenter.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
       "quote": "Microsoft Teams Rooms on Windows with a Pro license can't use chat when they join events as a presenter.",
@@ -394,54 +427,131 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 37,
       "where": "Risk assessment: Security & identity; Governance controls",
       "type": "applicability",
-      "claim": "The Meeting chat meeting policy governs meetings and events up to 1,000 attendees rather than large-audience attendee chat.",
+      "claim": "Meeting policy chat controls cover meetings and events up to 1,000 attendees, while large-audience attendee chat uses the events policy control.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-meeting-chat",
-      "quote": "As an admin, you can control: Whether participants in your users' meetings and events with up to 1,000 attendees can read and send chat messages.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "The Meeting chat meeting policy includes options that exclude anonymous users.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-meeting-chat",
-      "quote": "On for everyone but anonymous users | EnabledExceptAnonymous | All participants, except anonymous ones, can read and send chat messages.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "controls[].scope; Scope; Governance controls",
-      "type": "applicability",
-      "claim": "The events policy is user-level.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/teams/set-csteamseventspolicy",
-      "quote": "User-level policy for tenant admin to configure options for customizing Teams events experiences. Use this cmdlet to update an existing policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "controls[0].governs; Governance controls",
-      "type": "applicability",
-      "claim": "The events-policy chat control decides whether the organizer may enable chat, rather than selecting individual attendees who may type.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/teams/set-csteamseventspolicy",
-      "quote": "This setting governs whether the user can enable the Comment Stream chat experience for an event optimized for a large audience.",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
+      "quote": "As an admin, you can control whether participants in your organizers' events with up to 1,000 attendees can read and send chat messages. ... As an admin, you can manage whether organizers can turn on meeting chat for their attendees in events optimized for large audiences.",
       "severity": null,
       "fix": null
     },
     {
       "n": 38,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Meeting chat policy includes options that exclude anonymous users from reading or sending messages.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-meeting-chat",
+      "quote": "On for everyone but anonymous users ... All participants, except anonymous ones, can read and send chat messages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The roadmap and chat guidance describe users exchanging messages, not an automated action capability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
+      "quote": "Organizers can turn on Meeting chat in their Meeting options to allow attendees to send and view chat messages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "Teams admin center > Meetings > Events policies > policy > Events optimized for a large audience chat experience reaches the chat control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
+      "quote": "go to Meetings > Events policies. ... Select the policy you want to edit or create a new one. ... In the Events optimized for a large audience chat experience dropdown list, select Optimized (the default value) or None.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "Set-CsTeamsEventsPolicy -Identity <policy name> -TownhallChatExperience None turns off the ability to enable attendee chat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
+      "quote": "To turn off chat for attendees in events optimized for large audiences, run the following command: ... Set-CsTeamsEventsPolicy -Identity <policy name> -TownhallChatExperience None",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Teams admin center > Meetings > Events policies > policy > Who can attend events optimized for a large audience reaches the attendance control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
+      "quote": "go to Meetings > Events policies. ... Select an existing policy or create a new one. ... in the Who can attend events optimized for a large audience dropdown list, select one of the following",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "Set-CsTeamsEventsPolicy -Identity <policy name> -TownhallEventAttendeeAccess EveryoneInOrganizationAndGuests restricts attendance to the organisation and guests.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
+      "quote": "To only allow users in your organization and guests to attend events optimized for large audiences created by organizers with this policy, run the following command: ... Set-CsTeamsEventsPolicy -Identity <policy name> -TownhallEventAttendeeAccess EveryoneInOrganizationAndGuests",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[1].note; Why it matters; Risk assessment; Governance guidance",
+      "type": "default",
+      "claim": "The event attendance setting defaults to Everyone, allowing any user, including people outside the organisation, to attend.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
+      "quote": "By default, both settings are set to Everyone. When users with this policy create events with up to 1,000 attendees or events optimized for large audiences, any user can attend.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[1].note",
+      "type": "command",
+      "claim": "TownhallEventAttendeeAccess also supports EveryoneInOrganization and EveryoneInOrganizationAndGuests.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
+      "quote": "-TownhallEventAttendeeAccess (Everyone,EveryoneInOrganization,EveryoneInOrganizationAndGuests)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "Teams admin center > Meetings > Events policies > policy > Events optimized for a large audience reaches the control over creating large-audience events.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
+      "quote": "go to Meetings > Events policies. ... Select an existing policy or create a new one. ... For events optimized for large audiences, such as town halls, turn the Events optimized for a large audience toggle On or Off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "Set-CsTeamsEventsPolicy -Identity <policy name> -AllowTownhalls Disabled prevents organisers with that policy from creating large-audience events.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
+      "quote": "To prevent organizers with this policy from creating events optimized for large audiences, run the following command: ... Set-CsTeamsEventsPolicy -Identity <policy name> -AllowTownhalls Disabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
       "where": "controls[2].note; Governance controls",
       "type": "behaviour",
-      "claim": "Turning off Events optimized for a large audience after scheduling prevents the organizer from running or starting the event.",
+      "claim": "Turning the event creation setting off after scheduling prevents the organiser from running or starting the event.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
       "quote": "If you change the value to Off after a user schedules an event, they can't run or start the event.",
@@ -449,7 +559,18 @@
       "fix": null
     },
     {
-      "n": 39,
+      "n": 49,
+      "where": "controls[].scope; Scope; Governance controls",
+      "type": "applicability",
+      "claim": "Teams events policy is a user-level policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/teams/set-csteamseventspolicy",
+      "quote": "User-level policy for tenant admin to configure options for customizing Teams events experiences. Use this cmdlet to update an existing policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
       "where": "Governance controls",
       "type": "behaviour",
       "claim": "The Set-CsTeamsEventsPolicy reference describes the policy as currently still in preview.",
@@ -460,96 +581,85 @@
       "fix": null
     },
     {
-      "n": 40,
-      "where": "controls[0].ui",
-      "type": "admin-path",
-      "claim": "The chat control is in Teams admin center at Meetings > Events policies > policy > Events optimized for a large audience chat experience.",
+      "n": 51,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Attendee chat is included in eligible Teams event licences rather than separately licensed as a chat feature.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
-      "quote": "Go to Meetings > Events policies. ... Select the policy you want to edit or create a new one. ... In the Events optimized for a large audience chat experience dropdown list, select Optimized (the default value) or None.",
+      "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
+      "quote": "All eligible Teams licenses include the foundational capabilities needed to create and run events, engage attendees, review attendance reports, and publish event recordings. ... Chat for attendees | Organizers can allow attendees to use chat during events.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 41,
-      "where": "controls[0].api",
-      "type": "command",
-      "claim": "Set-CsTeamsEventsPolicy -Identity <policy name> -TownhallChatExperience None turns off attendee chat for organizers under that policy.",
+      "n": 52,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The licensing overview lists Chat for attendees in both its foundational and advanced feature tables.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
-      "quote": "To turn off chat for attendees in events optimized for large audiences, run the following command: Set-CsTeamsEventsPolicy -Identity <policy name> -TownhallChatExperience None",
+      "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
+      "quote": "Foundational event features ... Chat for attendees | Organizers can allow attendees to use chat during events. ... Advanced event features ... Chat for attendees | Organizers can allow attendees to use chat during events.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 42,
-      "where": "controls[1].ui",
-      "type": "admin-path",
-      "claim": "The attendance control is in Teams admin center at Meetings > Events policies > policy > Who can attend events optimized for a large audience.",
+      "n": 53,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Event capabilities and attendee capacity depend on the organiser's licence.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
-      "quote": "Go to Meetings > Events policies. ... Select an existing policy or create a new one. ... For events optimized for large audiences, such as town halls, in the Who can attend events optimized for a large audience dropdown list, select one of the following:",
+      "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
+      "quote": "Event capabilities and attendee capacity vary based on the organizer's license.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 43,
-      "where": "controls[1].api",
-      "type": "command",
-      "claim": "Set-CsTeamsEventsPolicy -Identity <policy name> -TownhallEventAttendeeAccess EveryoneInOrganizationAndGuests restricts attendance to the organization and guests.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
-      "quote": "To only allow users in your organization and guests to attend events optimized for large audiences ... Set-CsTeamsEventsPolicy -Identity <policy name> -TownhallEventAttendeeAccess EveryoneInOrganizationAndGuests",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "controls[2].ui",
-      "type": "admin-path",
-      "claim": "The town-hall creation control is in Teams admin center at Meetings > Events policies > policy > Events optimized for a large audience.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
-      "quote": "Go to Meetings > Events policies. ... Select an existing policy or create a new one. ... For events optimized for large audiences, such as town halls, turn the Events optimized for a large audience toggle On or Off.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "controls[2].api",
-      "type": "command",
-      "claim": "Set-CsTeamsEventsPolicy -Identity <policy name> -AllowTownhalls Disabled prevents organizers under that policy from creating large-audience events.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
-      "quote": "To prevent organizers with this policy from creating events optimized for large audiences, run the following command: Set-CsTeamsEventsPolicy -Identity <policy name> -AllowTownhalls Disabled",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "controls[1].note; Why it matters; Risk assessment; Governance guidance",
-      "type": "default",
-      "claim": "The documented events attendance policy defaults to Everyone, permitting users outside the organization to attend.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
-      "quote": "By default, both settings are set to Everyone. When users with this policy create events with up to 1,000 attendees or events optimized for large audiences, any user can attend.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "controls[1].note",
-      "type": "command",
-      "claim": "The documented attendance-policy values are Everyone, EveryoneInOrganization and EveryoneInOrganizationAndGuests.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
-      "quote": "-TownhallEventAttendeeAccess(Everyone,EveryoneInOrganization,EveryoneInOrganizationAndGuests)",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
+      "n": 54,
       "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Teams Enterprise supports interactive large-audience events with up to 3,000 attendees.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/attendee-capacity-pack",
+      "quote": "With Teams Enterprise, event organizers can: ... Host events with capabilities to engage with audiences (including reactions, raise hand, polls, and Q&A) for up to 3,000 attendees.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Interactive events above 3,000 attendees require an appropriately sized Attendee Capacity Pack assigned to the organiser, subject to the stated legacy exception.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
+      "quote": "To host events with more than 3,000 attendees with engagement capabilities (chat, reactions, raise hand, polls, Q&A), organizations must purchase Attendee Capacity Pack add-on licenses and assign them to organizers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "An active Teams Premium licence purchased before April 1, 2026 preserves the earlier higher-capacity entitlement until that term ends.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
+      "quote": "Organizers with an active Teams Premium license purchased before April 1, 2026, can continue to host events for up to 100,000 attendees until their current Teams Premium term ends.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "licensing.notes; Cost and licensing",
+      "type": "availability",
+      "claim": "Attendee Capacity Packs are available in GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/attendee-capacity-pack",
+      "quote": "Attendee packs are available in commercial, worldwide public sector, EDU, GCC, GCC High, DoD, and nonprofit environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Cost and licensing",
       "type": "availability",
       "claim": "The Teams service description lists Town halls (Teams events) as available in GCC, GCC High and DoD.",
       "status": "supported",
@@ -559,120 +669,65 @@
       "fix": null
     },
     {
-      "n": 49,
-      "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "n": 59,
+      "where": "Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "The feature comparison lists Comment stream for large-audience events without a Premium marking.",
+      "claim": "The feature comparison labels large-audience chat Comment stream without a Premium marker.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/meetings-events-feature-comparison",
-      "quote": "| Chat | [checkmark] | [checkmark] | Comment stream^2^ | ... ^2^ Available in events with up to 20,000 attendees.",
+      "quote": "| Chat | ... | Comment stream^2^ | ... ^2^ Available in events with up to 20,000 attendees.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 50,
-      "where": "front matter: licensing.model; licensing.notes",
-      "type": "licensing",
-      "claim": "Attendee chat is included without stating which license covers the large-audience experience or its licensed capacity.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
-      "quote": "To host events with more than 3,000 attendees with engagement capabilities (chat, reactions, raise hand, polls, Q&A), organizations must purchase Attendee Capacity Pack add-on licenses and assign them to organizers.",
-      "severity": "blocker",
-      "fix": "Keep included for the chat capability itself, but replace licensing.notes with: 'Attendee chat is included in eligible Teams event licenses. Teams Enterprise supports interactive events with up to 3,000 attendees; larger interactive events require an appropriately sized Attendee Capacity Pack assigned to the organizer, except while an eligible pre-April 1, 2026 Teams Premium term remains active. Packs are available in GCC, GCC High and DoD. Chat remains limited to events with up to 20,000 attendees.' Cite https://learn.microsoft.com/microsoftteams/events-licensing and https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/attendee-capacity-pack alongside the existing chat reference."
-    },
-    {
-      "n": 51,
-      "where": "licensing.notes; Cost and licensing",
-      "type": "absence",
-      "claim": "Microsoft has not published the license covering event chat.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
-      "quote": "Chat for attendees | Organizers can allow attendees to use chat during events. | Manage chat for Teams events",
-      "severity": "blocker",
-      "fix": "Replace the licensing-absence statement with: 'Microsoft publishes attendee-chat entitlement in its Teams events licensing overview; chat is listed under both foundational and advanced event features, with capacity depending on the organizer's license.' Cite https://learn.microsoft.com/microsoftteams/events-licensing. Retain only the narrower absence that no separate per-chat price is published, and include the capacity qualification specified for licensing.notes."
-    },
-    {
-      "n": 52,
+      "n": 60,
       "where": "Cost and licensing",
       "type": "absence",
-      "claim": "The cited service description and feature comparison publish no separate event-chat meter or per-chat price.",
+      "claim": "The service description and feature comparison document no event-chat meter.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams town hall attendee comment stream chat licensing price meter; Teams event attendee chat automated actions bots public comment stream licensing meter price. Read service description, feature comparison, events licensing and eCDN purchasing; no separate per-chat meter or price found.",
+      "quote": "Searched: Teams event attendee chat separate price meter licensing. Opened Teams service description, meetings-events-feature-comparison, events-licensing and attendee-capacity-pack; no event-chat meter is specified.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 53,
-      "where": "front matter: defaultState; Open questions",
-      "type": "default",
-      "claim": "The planned government-cloud feature arrives in a user-opt-in state.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: \"573625\" \"chat\" default GCC; \"TownhallChatExperience\" \"GCC\" default. Read roadmap, manage-event-chat and Set-CsTeamsEventsPolicy. The roadmap states no government default; Learn still excludes GCC, GCCH and DoD.",
-      "severity": "blocker",
-      "fix": "Set defaultState to unknown. Add: 'Microsoft has not stated the arrival default for the government-cloud release. The commercial documentation allows organizers to enable attendee chat under the default Optimized policy.' Keep the government-default open question and the conditional wording in Why it matters."
-    },
-    {
-      "n": 54,
-      "where": "Risk assessment: Autonomy & actions",
+      "n": 61,
+      "where": "Cost and licensing",
       "type": "absence",
-      "claim": "The roadmap and chat documentation describe human chat, not new automated actions.",
+      "claim": "Microsoft publishes no separate price for event chat.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Microsoft Teams event attendee chat automated actions bots public comment stream licensing meter price. Read roadmap and manage-event-chat: users chat with one another and organizers enable attendee messages; neither describes new automated actions.",
+      "quote": "Searched: Teams event attendee chat separate price meter licensing. Read licensing overview, attendee pack page, service description, feature comparison and returned pricing excerpts; found capacity licensing but no separate event-chat price.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 55,
-      "where": "Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "A content search for the organizer can find attendee chat messages in the documented storage period.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
-      "quote": "During this time, if you do a content search for the organizer, you can see all the messages that were sent in that chat.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "Governance controls",
-      "type": "admin-path",
-      "claim": "Microsoft Purview can be used to place an organizer's Exchange mailbox on a hold.",
-      "status": "supported",
+      "n": 62,
+      "where": "Governance controls: eDiscovery hold sentence",
+      "type": "licensing",
+      "claim": "An eDiscovery hold on the organiser's Exchange mailbox can be created in Purview, without stating the cited page's licence prerequisite.",
+      "status": "contradicted",
       "source": "https://learn.microsoft.com/purview/edisc-hold-create",
-      "quote": "Place a hold on the Exchange mailboxes ... Go to the Microsoft Purview portal ... Select the eDiscovery solution card and then select Cases ... Select a case, and then select the Hold policies tab.",
-      "severity": "minor",
-      "fix": "Cite https://learn.microsoft.com/purview/edisc-hold-create for the Purview statement and narrow it to 'An eDiscovery hold on the organizer's Exchange mailbox can be created in Microsoft Purview.'"
+      "quote": "eDiscovery holds require an eligible license on every user whose content you preserve. ... Placing a user on hold without proper licensing isn't supported.",
+      "severity": "blocker",
+      "fix": "Remove the clause '; an eDiscovery hold on the organiser's Exchange mailbox can be created in Microsoft Purview' and its link. End the sentence after 'legal hold'. This retains the verified event-chat guidance without introducing an unqualified eDiscovery licensing recommendation."
     },
     {
-      "n": 57,
-      "where": "Governance guidance: Before rollout and After rollout; Governance controls",
+      "n": 63,
+      "where": "front matter: action",
       "type": "consistency",
-      "claim": "The checklist includes mailbox holds and content search, but neither control appears in the controls table.",
+      "claim": "The act-now rating fits the standard despite an unknown arrival default and a capability organisers choose to enable.",
       "status": "contradicted",
       "source": "page",
-      "quote": "Agree how a hold is requested for events that need longer. ... Run a content search of an organiser's mailbox ... [The controls table contains only chat experience, attendance and event creation.]",
+      "quote": "action: \"act-now\"; defaultState: \"unknown\"; \"Microsoft has not stated the arrival default for the government-cloud release.\"; \"organisers turn on Meeting chat in their Meeting options\"",
       "severity": "minor",
-      "fix": "Remove the checklist clause 'and agree how a hold is requested for events that need longer' and the After rollout content-search bullet. Keep the sourced explanation of storage and holds in the prose; do not add unverified control rows."
-    },
-    {
-      "n": 58,
-      "where": "What's changing",
-      "type": "absence",
-      "claim": "No Message Center post was supplied for this item.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: the supplied pre-check file, roadmap record and writer evidence list for Message Center posts. No message_center_post block or supplied Message Center notice was present.",
-      "severity": null,
-      "fix": null
+      "fix": "Set action to review. The standard assigns review to a new optional capability whose default is not stated when no source says existing behaviour changes; a near-term target alone does not establish act-now."
     }
   ],
   "precheck": {
-    "at": "2026-11-27T08:23:03.668Z",
+    "at": "2026-11-27T10:11:02.888Z",
     "summary": {
-      "links": 7,
+      "links": 10,
       "unreachable": 0,
       "uiPaths": 3,
       "uiPathsWithMissingWords": 0,
@@ -713,6 +768,21 @@
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/teams/set-csteamseventspolicy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/events-licensing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/attendee-capacity-pack",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/edisc-hold-create",
         "ok": true,
         "status": 200
       }
@@ -787,5 +857,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-27",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

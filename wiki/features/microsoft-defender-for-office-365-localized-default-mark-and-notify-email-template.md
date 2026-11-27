@@ -76,15 +76,17 @@ changes:
     note: "First briefing: default Mark as and notify result email is localised to the user's Outlook language; rollout schedule per MC1387578 updated 12 November 2026."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 54 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 58 statements not yet confirmed"
 version: 1
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 54
-  confirmed: 53
+  claims: 58
+  confirmed: 57
   unconfirmed: 1
   contradicted: 0
   attempts: 0
@@ -185,8 +187,8 @@ cost: Low. The only cost the sources show is admin time to brief users and the h
 impact: Medium. People who report messages and receive the default result email notice the change, and the helpdesk may see questions; administrators who use the default template also see it.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Data exposure / behaviour: The change makes no change in data access. | Found: Searched: Defender Office 365 localized default mark notify email template data access. Read Admin review for user reported messages, User reported settings and the What's new search excerpt; none states that data access is unchanged. | Fix: Remove 'No change in data access:' and retain the documented statement that localised templates do not change message verdicts, classification logic or automated investigation behaviour.
+- [unsupported, major] Risk assessment: Data exposure / behaviour: The change makes no change in data access. | Found: Searched: Defender localized default mark notify email template data access; read Admin review for user reported messages, User reported settings, AIR automatic feedback and What's new excerpts. None establishes that data access is unchanged. | Fix: Remove 'No change in data access:' and retain the documented statement that localised templates do not change message verdicts, classification logic or automated investigation behaviour.
 -->

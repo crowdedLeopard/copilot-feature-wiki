@@ -113,15 +113,17 @@ changes:
     note: "Corrected the spending-policy path, added the preview Graph automation for the web search policy, and removed three checklist steps that had no controls row."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 73 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 77 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 73
-  confirmed: 73
+  claims: 77
+  confirmed: 77
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -230,9 +232,10 @@ cost: Variable. Cowork needs a Microsoft 365 GCC Copilot licence and is billed o
 impact: Low. Microsoft's GCC page has admins turn Cowork on by adding users to a spending policy, so the people who notice are the groups an admin chooses.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; Governance controls / admin-path: The Apps admin center path is Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings. | Found: Under Customization, select Policy Management. ... On the Policy configurations page, select Create. ... On the Start with the basics page ... On the Choose the scope page ... On the Configure Settings page, select the policies | Fix: Extend controls[1].ui.path to 'Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings > Allow web search in Copilot'. The existing path reaches the correct page; the policy name is documented at https://learn.microsoft.com/copilot/plan/manage-public-web-access. | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy
-- [supported, minor] controls[2].ui / admin-path: The browser article gives the admin-center path Copilot > Settings > View All > Cowork settings > Allow browser access. | Found: From the menu, select Copilot > Settings > View All > Cowork settings. ... Under Allow browser access, select Allow Cowork to use the Microsoft Edge browser to perform tasks on behalf of users. | Fix: Extend controls[2].ui.path to 'Copilot > Settings > View All > Cowork settings > Allow browser access > Allow Cowork to use the Microsoft Edge browser to perform tasks on behalf of users' as given at https://learn.microsoft.com/copilot/cowork/cowork-local-browser#admin-control. Retain the existing warning about conflicting GCC guidance. | Source: https://learn.microsoft.com/copilot/cowork/cowork-local-browser
+- [supported, minor] controls[1].ui; Governance controls / admin-path: The web-search policy route in the Apps admin center ends at Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings. | Found: Under Customization, select Policy Management. ... On the Policy configurations page, select Create. ... On the Configure Settings page, select the policies that you want to include in the policy configuration. | Fix: Extend controls[1].ui.path and the rendered path to 'Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings > Allow web search in Copilot'. The existing route reaches the correct page; the final policy name is documented at https://learn.microsoft.com/copilot/plan/manage-public-web-access, already cited. | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy
+- [supported, minor] controls[1].note; Governance controls / availability: TCM is available only in the global service, so the web-search applyOnce call is unavailable to GCC High. | Found: These capabilities are available in preview through Microsoft Graph beta. TCM is available only in the global service, not in national clouds. | Fix: Replace 'Global service only, not GCC High' in controls[1].note with 'Government-cloud availability differs between Microsoft pages; see below.' Replace the categorical global-only and GCC High exclusion sentences with: 'The remediation/applyOnce support page says TCM is available only in the global service, but the create-configurationMonitor reference lists US Government L4 and L5 as supported. Confirm web-search applyOnce availability for GCC High before relying on this API.' Both https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources and https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta are already cited. | Source: https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources
+- [supported, minor] controls[2].ui; Governance controls / admin-path: The browser article gives Microsoft 365 admin center > Copilot > Settings > View All > Cowork settings > Allow browser access. | Found: From the menu, select Copilot > Settings > View All > Cowork settings. ... Under Allow browser access, select Allow Cowork to use the Microsoft Edge browser to perform tasks on behalf of users. | Fix: Extend controls[2].ui.path and the rendered path to 'Copilot > Settings > View All > Cowork settings > Allow browser access > Allow Cowork to use the Microsoft Edge browser to perform tasks on behalf of users', as given at https://learn.microsoft.com/copilot/cowork/cowork-local-browser#admin-control. Keep the existing warning about conflicting GCC guidance. | Source: https://learn.microsoft.com/copilot/cowork/cowork-local-browser
 -->

@@ -112,15 +112,17 @@ changes:
     note: "Corrected after verification: People Skills needs no separate licence (licensing now included), access policies are no longer listed as chat-configurable, and the install and block controls now show their beta Graph package APIs."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 84 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 85 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 84
-  confirmed: 83
+  claims: 85
+  confirmed: 84
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -228,9 +230,9 @@ cost: Low. Learn requires a paid Microsoft 365 Copilot licence for users and del
 impact: Medium. Leaders, managers and their delegates notice it, and anyone whose attributes feed it is affected by what the access policies reveal; most staff will not use it directly.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].ui / admin-path: The printed Microsoft 365 admin-center route reaches the organizational-data access-policy configuration page. | Found: Under the Organization-wide access policy section, select Edit access policies. | Fix: Extend the route to 'Settings > Setup > Migration and Imports > Microsoft 365 Organizational Data Service > Settings > Organization-wide access policy > Edit access policies > policy > Edit access policy'. The note can say 'Configure Users and Population group on this page', as documented at https://learn.microsoft.com/viva/set-access-policies. | Source: https://learn.microsoft.com/viva/set-access-policies
-- [contradicted, minor] Governance guidance: Before rollout and At rollout; Governance controls table / consistency: Every configuration control the checklist tells administrators to set or check is represented in the controls table. | Found: Confirm an attribute description for each custom column; Publish organisation context, any organisation-specific prompts and the custom AI disclaimer. The table contains only installation, blocking, access policies and delegation. | Fix: The checklist's role-assignment, reserved-field migration, attribute-description and context/prompt/disclaimer configuration steps have no corresponding controls-table rows. Remove those four configuration bullets from the checklist, retaining their already documented explanations in the body; do not add unverified rows.
+- [supported, minor] controls[2].ui; Governance controls table / admin-path: The printed organizational-data access-policy route reaches the page listing configurable policies. | Found: Under the Organization-wide access policy section, select Edit access policies. ... To edit one of the configurable access policies, select the access policy from the list, then select Edit access policy. | Fix: Extend controls[2].ui.path and its rendered route to 'Settings > Setup > Migration and Imports > Microsoft 365 Organizational Data Service > Settings > Organization-wide access policy > Edit access policies > policy > Edit access policy'. The cited page documents Users and Population group there. | Source: https://learn.microsoft.com/viva/set-access-policies
+- [contradicted, minor] Governance guidance: Before rollout and At rollout; Governance controls table / consistency: The checklist's configuration controls are all represented in the controls table. | Found: Assign AI Administrator and Organizational Data Source Administrator; copy them to renamed custom fields; Confirm an attribute description; Publish organisation context ... prompts and ... disclaimer. The table covers only installation, blocking, access policies and delegation. | Fix: The role-assignment, reserved-field migration, attribute-description and context/prompt/disclaimer checklist steps have no corresponding controls-table rows. Remove those four configuration bullets from the checklist, retaining their documented explanations elsewhere; do not add rows.
 -->

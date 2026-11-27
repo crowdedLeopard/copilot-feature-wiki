@@ -1,0 +1,728 @@
+{
+  "slug": "powerpoint-skills-in-brand-kit",
+  "roadmapId": 569018,
+  "title": "PowerPoint: upload skills to a Brand Kit for use by Copilot in PowerPoint",
+  "status": "held",
+  "date": "2026-11-27",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-27",
+    "reasons": [
+      "7 blocking findings (claims 18, 21, 23, 29, 34, 43, 53)"
+    ]
+  },
+  "counts": {
+    "claims": 56,
+    "confirmed": 49,
+    "unconfirmed": 0,
+    "contradicted": 7,
+    "blocker": 7,
+    "major": 0,
+    "minor": 5
+  },
+  "summary": "Hold: Microsoft Support already documents Brand Kit skills, including their upload and use, while the briefing leaves important behaviour and governance unresolved. Brand Kit documentation also names a Premium Copilot licence requirement and distinguishes publishing from organization-wide sharing; the briefing should reflect those facts without changing the roadmap's recorded status.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "Microsoft plans to allow uploading a skill as a .md file into a Brand Kit for use within Copilot in PowerPoint.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Upload skill (.md file) in Brand Kit and use within PPT Copilot",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap products are PowerPoint and Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"PowerPoint\", \"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status remains In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is October CY2026, a month already past on the run date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; summary; What's changing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "The roadmap lists Desktop as the platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2026-09-23T22:59:12.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-09-23T22:59:12\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing: first paragraph",
+      "type": "absence",
+      "claim": "Microsoft Learn does not describe the feature, so the briefing relies on the roadmap description for its behaviour.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"PowerPoint\" \"skills\" \"Brand Kit\"' and '\"skills in Brand Kit\"'. No feature-specific Learn article found. Opened Microsoft Support's Brand Skill support for Copilot in PowerPoint, which documents uploading and using the skills.",
+      "severity": "minor",
+      "fix": "Replace the documentation-gap sentence with: 'Microsoft Support now documents uploading and using Brand Kit skills, although the roadmap record still says In development.' Cite https://support.microsoft.com/en-us/powerpoint/copilot/brand-skill-support-copilot-powerpoint. Do not describe the passed target as proof the capability is unavailable."
+    },
+    {
+      "n": 11,
+      "where": "What's changing: second paragraph",
+      "type": "behaviour",
+      "claim": "Brand kits can include logos, colour palettes, fonts, images and templates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/configure-brand-kit-governance-organizational-assets",
+      "quote": "Brand kits can include logos, color palettes, fonts, images, and templates.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "controls[0].governs; What's changing; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "The Enterprise Brand Manager policy controls who can publish, edit and manage official brand kits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/configure-brand-kit-governance-organizational-assets",
+      "quote": "Enterprise Brand Manager policy | Who can publish, edit, and manage official brand kits. | Members of the brand manager mail-enabled security group specified in the policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[1].governs; What's changing; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Restrict brand kit creation controls who can create and edit personal brand kits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/configure-brand-kit-governance-organizational-assets",
+      "quote": "Restrict brand kit creation policy | Who can create and edit personal brand kits. | Members of the mail-enabled security group specified in the policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "Governance controls: closing paragraph",
+      "type": "behaviour",
+      "claim": "The two brand kit policies are independent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/configure-brand-kit-governance-organizational-assets",
+      "quote": "Microsoft Copilot provides two independent policies for brand kit governance",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "Governance controls: closing paragraph",
+      "type": "applicability",
+      "claim": "A user must satisfy both policy checks to publish a personal brand kit as an official kit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/configure-brand-kit-governance-organizational-assets",
+      "quote": "To publish a personal brand kit as an official brand kit, a user must satisfy both policy checks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[0].note; controls[1].note; What's changing; Governance controls",
+      "type": "absence",
+      "claim": "The cited Learn brand kit governance page does not itself mention skills.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"PowerPoint\" \"skills\" \"Brand Kit\"'; read Configure brand kit governance and organizational assets in full. That page lists brand assets and both policies but does not mention skills; this is not an absence across Microsoft documentation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing: second paragraph; Open questions: final bullet",
+      "type": "date",
+      "claim": "The 6 October 2026 Copilot release notes list user-defined custom skills for Copilot in PowerPoint on Windows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes#october-06,-2026",
+      "quote": "October 06, 2026 ... PowerPoint ... Create custom skills in Copilot in PowerPoint [Windows] ... Copilot now supports user defined custom skills",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing: second paragraph; Open questions: final bullet",
+      "type": "absence",
+      "claim": "Microsoft has not said how PowerPoint custom skills relate to skills stored in a Brand Kit.",
+      "status": "contradicted",
+      "source": "https://support.microsoft.com/en-us/powerpoint/copilot/brand-skill-support-copilot-powerpoint",
+      "quote": "To learn more about skills, see Use custom skills with Copilot in PowerPoint. ... Uploaded skills can be a `.md` file or a `.zip` file. For skill format guidance, see Use custom skills with Copilot in PowerPoint.",
+      "severity": "blocker",
+      "fix": "Replace the relationship-gap sentence with: 'Microsoft documents Brand Kit skills as shared skills for Copilot in PowerPoint and links to the same custom-skill format guidance.' Cite https://support.microsoft.com/en-us/powerpoint/copilot/brand-skill-support-copilot-powerpoint and remove the final Open questions bullet."
+    },
+    {
+      "n": 19,
+      "where": "Why it matters: first sentence; Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "A skill is a set of written instructions that steers Copilot's work in PowerPoint.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/en-us/powerpoint/copilot/copilot-in-powerpoint-skills",
+      "quote": "Skills are reusable, instruction-based capabilities that provide agents with domain expertise, workflows, and task-specific guidance. ... The body section is your instructions, telling Copilot how to do the task.",
+      "severity": "minor",
+      "fix": "Add https://support.microsoft.com/en-us/powerpoint/copilot/copilot-in-powerpoint-skills to sources for the definition of a skill."
+    },
+    {
+      "n": 20,
+      "where": "Why it matters: first paragraph; rationale: risk",
+      "type": "behaviour",
+      "claim": "Putting a skill in a brand kit makes it shareable with the people who have access to the kit.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/en-us/powerpoint/copilot/brand-skill-support-copilot-powerpoint",
+      "quote": "Once added, your brand skill is ready for anyone who has shared access to the Brand kit.",
+      "severity": "minor",
+      "fix": "Cite https://support.microsoft.com/en-us/powerpoint/copilot/brand-skill-support-copilot-powerpoint for the sharing statement and the risk rationale."
+    },
+    {
+      "n": 21,
+      "where": "Why it matters: first paragraph; Governance guidance: Before rollout",
+      "type": "availability",
+      "claim": "An official brand kit is published to the whole organisation.",
+      "status": "contradicted",
+      "source": "https://support.microsoft.com/en-us/microsoft-365-copilot/configure-brand-kit-access-and-governance",
+      "quote": "To share a Brand Kit, select Share, search for people or groups (or turn on Share with everyone in my organization), choose Can edit or Can view, and then select Save changes. Sharing doesn't publish Draft changes.",
+      "severity": "blocker",
+      "fix": "Replace 'an official brand kit is published to the whole organisation' with 'official brand kits are governed by brand managers; access is controlled through sharing with people, groups or everyone in the organization'. In the Before rollout bullet, replace 'publish official brand kits to the organisation' with 'publish and manage official brand kits'. Cite https://support.microsoft.com/en-us/microsoft-365-copilot/configure-brand-kit-access-and-governance."
+    },
+    {
+      "n": 22,
+      "where": "Why it matters: first paragraph; Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Brand managers control the content, including skills, in official brand kits used for branded presentations.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/topic/create-and-manage-official-brand-kits-in-microsoft-365-copilot-app-6bc8a5a7-5697-466b-9e1f-302a38d44afc",
+      "quote": "Once a Brand Kit has been made official, only brand managers can make edits and changes to the Brand Kit. ... Brand Kit skills allow you to share skills with anyone who has access to the Brand Kit.",
+      "severity": "minor",
+      "fix": "Add https://support.microsoft.com/topic/create-and-manage-official-brand-kits-in-microsoft-365-copilot-app-6bc8a5a7-5697-466b-9e1f-302a38d44afc to sources for official-kit editing and skills."
+    },
+    {
+      "n": 23,
+      "where": "front matter: defaultState; What's changing; Why it matters; Open questions",
+      "type": "default",
+      "claim": "The feature's default state is unknown because Microsoft has not stated what happens on arrival.",
+      "status": "contradicted",
+      "source": "https://support.microsoft.com/en-us/powerpoint/copilot/brand-skill-support-copilot-powerpoint",
+      "quote": "Once added, your brand skill is ready for anyone who has shared access to the Brand kit. ... With the Brand kit selected, select +, and then select Choose skills.",
+      "severity": "blocker",
+      "fix": "Set defaultState to 'user-opt-in'. Replace the default-unknown statements with: 'Microsoft documents a user-selected capability: add a skill to a Brand Kit, select that kit in Copilot in PowerPoint, and choose the skill. Access depends on Brand Kit permissions.' Cite https://support.microsoft.com/en-us/powerpoint/copilot/brand-skill-support-copilot-powerpoint. Retain the narrower question about a separate tenant-wide switch."
+    },
+    {
+      "n": 24,
+      "where": "Why it matters: second paragraph",
+      "type": "absence",
+      "claim": "No source says existing brand kits are automatically changed by this feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"PowerPoint\" \"Brand Kit\" \"existing\" \"skills\"'. Read the roadmap, Brand Skill support for Copilot in PowerPoint, and Create and manage official Brand kits. They describe adding skills, not automatic modification of existing kits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Data exposure; Open questions: storage",
+      "type": "absence",
+      "claim": "Microsoft has not documented the storage location of a skill uploaded into a Brand Kit.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"brand kit\" \"skills\" \"storage\" \"audit\"'. Read Brand Skill support and Use custom skills with Copilot in PowerPoint. The latter documents personal-skill OneDrive storage, not Brand Kit storage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "Microsoft has not documented who can read the uploaded skill file once a kit is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"PowerPoint\" \"Brand Kit\" \"skills\" \"stored\" share files'. Read Brand Skill support and Configure access and governance for Brand Kits; neither explicitly describes raw skill-file read permissions.",
+      "severity": "minor",
+      "fix": "Narrow the data-exposure sentence to: 'Microsoft documents that a Brand Kit skill is available for use by anyone with shared access to the kit; its storage location and raw file-read permissions are not stated.' Cite https://support.microsoft.com/en-us/powerpoint/copilot/brand-skill-support-copilot-powerpoint."
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Membership of the mail-enabled security group named in a brand kit policy grants policy access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/configure-brand-kit-governance-organizational-assets",
+      "quote": "Group membership grants policy access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Group ownership alone does not grant permission to publish or edit official brand kits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/configure-brand-kit-governance-organizational-assets",
+      "quote": "Group owners can manage the group, but ownership alone doesn't grant permission to publish or edit official brand kits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "Microsoft has not described what a Brand Kit skill can instruct Copilot to do.",
+      "status": "contradicted",
+      "source": "https://support.microsoft.com/en-us/powerpoint/copilot/copilot-in-powerpoint-skills",
+      "quote": "Skills provide Copilot in PowerPoint with information to complete repeatable tasks. ... The body section is your instructions, telling Copilot how to do the task.",
+      "severity": "blocker",
+      "fix": "Remove 'what a Brand Kit skill can instruct Copilot to do' from the documentation-gap sentence. Microsoft links Brand Kit skills to this custom-skill guidance, which defines instruction-based tasks and supplies a worked executive-summary-slide example. Retain only the narrower unanswered questions about file references and pre-run visibility."
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "Microsoft has not described whether a Brand Kit skill can reference files.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"PowerPoint\" \"Brand Kit\" \"skills\" \"reference files\"'. Read Brand Skill support and its linked Use custom skills guidance; neither explicitly describes file-reference behaviour for Brand Kit skills.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "Microsoft has not stated whether users see a Brand Kit skill's text before it runs.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"PowerPoint\" \"Brand Kit\" \"skills\" \"before\" \"text\"'. Read Brand Skill support and Use custom skills. They document choosing and editing skills, but do not state whether users are shown the skill text before execution.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: licensing.notes; Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "Microsoft 365 Copilot (Basic) gives users without the Copilot add-on access to Copilot capabilities in PowerPoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "You don't have the Microsoft 365 Copilot add-on license but can use Copilot in Word, Excel, PowerPoint, and OneNote.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "front matter: licensing.notes; Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "The Microsoft 365 Copilot add-on gives access to the full Copilot in PowerPoint experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "You have the Microsoft 365 Copilot add-on license with access to the full experience of Copilot in Word, Excel, PowerPoint, and OneNote.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "front matter: licensing.model and notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "licensing",
+      "claim": "Licensing is unknown because Microsoft has not published whether Basic or the Copilot add-on covers skills in Brand Kit.",
+      "status": "contradicted",
+      "source": "https://support.microsoft.com/topic/create-and-manage-official-brand-kits-in-microsoft-365-copilot-app-6bc8a5a7-5697-466b-9e1f-302a38d44afc",
+      "quote": "This feature requires a Microsoft Copilot Premium license. ... A Brand Kit can bring together ... skills and connectors for how those elements should be used.",
+      "severity": "blocker",
+      "fix": "Set licensing.model to 'included' and replace the licensing-gap text with: 'Brand Kits require a Microsoft Copilot Premium license. Microsoft's Brand Kit access guidance specifies a work or school account with a Copilot add-on license for Microsoft 365.' Cite https://support.microsoft.com/topic/create-and-manage-official-brand-kits-in-microsoft-365-copilot-app-6bc8a5a7-5697-466b-9e1f-302a38d44afc and https://support.microsoft.com/en-us/microsoft-365-copilot/configure-brand-kit-access-and-governance. Remove the Basic-versus-add-on open question. Replace the cost rationale's unpublished-licensing clause with 'Brand Kits require Copilot Premium; budget for licences where intended users do not already have them.'"
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing: Meter",
+      "type": "absence",
+      "claim": "No meter specific to skills in Brand Kit is documented as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"PowerPoint\" \"Brand Kit\" \"skills\" \"meter\" pricing'. Read Brand Skill support, Microsoft Copilot overview, and Understand usage-based billing and cost management for Copilot Credits; no Brand Kit skill meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Scope: Prerequisites for brand kits",
+      "type": "behaviour",
+      "claim": "The cited governance page lists an organization assets library among the brand kit prerequisites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/configure-brand-kit-governance-organizational-assets",
+      "quote": "Before users can create and publish brand kits, complete the following prerequisites: ... Create an organization assets library to connect to Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Scope: Prerequisites for brand kits",
+      "type": "role",
+      "claim": "Configuring brand kit governance requires administrator privileges to manage groups and policy configurations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/configure-brand-kit-governance-organizational-assets",
+      "quote": "Make sure that you're an administrator with the privileges required to manage groups and policy configurations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Scope: Prerequisites for brand kits; Cost and licensing: Indirect costs",
+      "type": "behaviour",
+      "claim": "The governance procedure calls for separate mail-enabled security groups for brand managers and personal brand kit creators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/configure-brand-kit-governance-organizational-assets",
+      "quote": "Create a separate mail-enabled security group for brand managers ... Create a mail-enabled security group for users who can create and edit personal brand kits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Scope: Roles",
+      "type": "role",
+      "claim": "Office Apps Administrator is the recommended role for managing Cloud Policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+      "quote": "Office Apps Administrator (Recommended) | This role can manage Office apps cloud services, including policy and settings management",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Scope: Roles",
+      "type": "role",
+      "claim": "Security Administrator is also supported for accessing and managing Cloud Policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+      "quote": "You can use the following built-in Microsoft Entra roles for accessing and managing the feature: ... Security Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Scope: Roles",
+      "type": "role",
+      "claim": "Global Administrator is also supported for managing Cloud Policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+      "quote": "Global Administrator | This role can manage all aspects of Microsoft Entra ID and Microsoft services that use Microsoft Entra identities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Scope: final bullet",
+      "type": "absence",
+      "claim": "Feature-specific rollout mechanics are not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"brand kit\" \"skills\" \"rollout\"'. Read the roadmap, Brand Skill support, and Brand Kit access guidance. They describe availability and use but do not give this roadmap item's tenant rollout sequence or schedule beyond its target month.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Scope: final bullet",
+      "type": "absence",
+      "claim": "No skill-specific prerequisites are published.",
+      "status": "contradicted",
+      "source": "https://support.microsoft.com/en-us/powerpoint/copilot/brand-skill-support-copilot-powerpoint",
+      "quote": "Select a Brand kit that you own or have shared editing access to. ... Uploaded skills can be a `.md` file or a `.zip` file. For skill format guidance, see Use custom skills with Copilot in PowerPoint.",
+      "severity": "blocker",
+      "fix": "Replace 'Rollout mechanics and any skill-specific prerequisites are not yet published' with: 'Feature-specific rollout mechanics are not published. Adding a skill requires a Brand Kit you own or have shared editing access to; Microsoft supports .md and .zip uploads and links to its custom-skill format guidance.' Cite https://support.microsoft.com/en-us/powerpoint/copilot/brand-skill-support-copilot-powerpoint."
+    },
+    {
+      "n": 44,
+      "where": "controls[0].ui; Governance controls: first table row",
+      "type": "admin-path",
+      "claim": "The official-kit policy is under Microsoft 365 Apps admin center > Customization > Policy Management > policy > Policies > Elevated role for Brand Managers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/configure-brand-kit-governance-organizational-assets",
+      "quote": "In the left navigation, select Customization > Policy Management. ... Select an existing tenant-level policy ... Select the Policies tab. ... select Elevated role for Brand Managers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[0].api; Governance controls: first table row",
+      "type": "absence",
+      "claim": "No API or automation operation for configuring the official brand manager policy is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Elevated role for Brand Managers\" \"Graph\"' and both policy names with 'API PowerShell Graph'. Read brand kit governance, Cloud Policy overview and TCM Copilot resources; no operation setting this policy found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[0].note; Governance controls: first table row",
+      "type": "behaviour",
+      "claim": "Enable Elevated role for Brand Managers and enter the brand manager security group's email address.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/configure-brand-kit-governance-organizational-assets",
+      "quote": "Set the policy to Enabled. ... In Security group email address, enter the email address of the brand manager security group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[0].scope and note; Governance controls: closing paragraph",
+      "type": "applicability",
+      "claim": "The brand manager policy configuration must have Tenant scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/configure-brand-kit-governance-organizational-assets",
+      "quote": "Verify that the policy has the following configuration: The policy scope is set to Tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[0].note; Governance controls: closing paragraph",
+      "type": "behaviour",
+      "claim": "The brand manager policy configuration must have priority 0.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/configure-brand-kit-governance-organizational-assets",
+      "quote": "The policy priority is set to 0.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[1].ui; Governance controls: second table row",
+      "type": "admin-path",
+      "claim": "Restrict brand kit creation is reached through Customization > Policy Management > policy > Start with the basics > Choose the scope > Configure Settings in the Microsoft 365 Apps admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/configure-brand-kit-governance-organizational-assets",
+      "quote": "select Customization > Policy Management. ... Select an existing tenant-level policy ... On the Start with the basics page ... On the Choose the scope page ... On the Configure Settings page ... Select Restrict brand kit creation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[1].api; Governance controls: second table row",
+      "type": "absence",
+      "claim": "No API or automation operation for configuring Restrict brand kit creation is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Restrict brand kit creation\" \"API\"' and both policy names with 'API PowerShell Graph'. Read brand kit governance, Cloud Policy overview and TCM Copilot resources; no operation for this policy found. Advertising BrandKit APIs are unrelated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[1].scope and note; Governance controls: second table row",
+      "type": "behaviour",
+      "claim": "Configure the creation restriction in a tenant-level policy, set Configuration setting to Enabled and supply the permitted security group's email address.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/configure-brand-kit-governance-organizational-assets",
+      "quote": "Select an existing tenant-level policy ... set Configuration setting to Enabled. ... enter the email address of the security group whose members can create brand kits in Security group email address.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[2].ui; controls[2].api; Why it matters; Open questions",
+      "type": "absence",
+      "claim": "No tenant-wide switch specific to skills in Brand Kit is documented on either an admin UI or API surface.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"PowerPoint\" \"Brand Kit\" \"skills\" \"default\" administrator' and '\"Brand kit\" \"skill\" \"PowerShell\"'. Read Brand Skill support, custom-skills guidance, brand kit governance, Cloud Policy overview and TCM resources; no feature-specific tenant switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance controls: closing paragraph; Why it matters; Open questions; rationale: risk",
+      "type": "applicability",
+      "claim": "Whether brand kit creation and management policies govern who can add skills to kits remains unconfirmed.",
+      "status": "contradicted",
+      "source": "https://support.microsoft.com/en-us/powerpoint/copilot/brand-skill-support-copilot-powerpoint",
+      "quote": "Select a Brand kit that you own or have shared editing access to. ... Next to each skill, select Edit or Delete as needed.",
+      "severity": "blocker",
+      "fix": "Replace the prose and risk-rationale caveat with: 'Adding a skill requires ownership or shared editing access to the Brand Kit. Brand Kit creation and editing are governed by the documented kit policies; only brand managers can edit official kits.' Cite https://support.microsoft.com/en-us/powerpoint/copilot/brand-skill-support-copilot-powerpoint and https://support.microsoft.com/en-us/microsoft-365-copilot/configure-brand-kit-access-and-governance. Remove the Open questions bullet asking whether the two policies decide who can add or change a skill. Keep the narrower absence of a separate tenant-wide skills switch."
+    },
+    {
+      "n": 54,
+      "where": "Governance guidance: At rollout; Governance controls: closing paragraph",
+      "type": "behaviour",
+      "claim": "Brand kit policy changes can take up to 24 hours to take effect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/configure-brand-kit-governance-organizational-assets",
+      "quote": "Policy changes can take up to 24 hours to take effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance guidance: After rollout",
+      "type": "applicability",
+      "claim": "Microsoft Purview audit searches can find Cloud Policy configuration and setting changes when auditing is enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+      "quote": "When auditing is enabled, events such as the creation, deletion, modification of policy configurations, changes to configured policy settings, and adjustments to priority order are tracked. You can use the portal or PowerShell to search the audit log for such changes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance controls: final sentence",
+      "type": "absence",
+      "claim": "The Microsoft Graph TCM Copilot Cloud Policy resource list contains no brand kit setting as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Elevated role for Brand Managers\" \"Graph\"'. Fetched Supported Copilot resources for Tenant Configuration Management (preview) and searched its full text for brand and skill; neither occurs in the resource list.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-27T10:11:05.162Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/configure-brand-kit-governance-organizational-assets",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=569018",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Who can publish, edit and manage official brand kits for the organisation",
+        "docs": "https://learn.microsoft.com/copilot/implement/configure-brand-kit-governance-organizational-assets",
+        "reachable": true,
+        "segments": [
+          "Customization",
+          "Policy Management",
+          "Policies",
+          "Elevated role for Brand Managers"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Who can create and edit personal brand kits",
+        "docs": "https://learn.microsoft.com/copilot/implement/configure-brand-kit-governance-organizational-assets",
+        "reachable": true,
+        "segments": [
+          "Customization",
+          "Policy Management",
+          "Start with the basics",
+          "Choose the scope",
+          "Configure Settings",
+          "Restrict brand kit creation"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}
