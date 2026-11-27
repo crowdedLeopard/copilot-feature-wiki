@@ -54,19 +54,23 @@ changes:
     note: "New briefing: users will be able to sort a folder's subfolders A to Z in new Outlook for Windows and Outlook on the web; no admin setting documented."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 35 statements contradicted, 6 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-27"
+    note: "Corrected statements the check could not support: removed claims that only the sorting user sees a change, that permissions, retention and storage are untouched, that sorting takes no mail action, and that no admin role is involved."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 35 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-27"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 35
-  confirmed: 29
-  unconfirmed: 6
+  confirmed: 35
+  unconfirmed: 0
   contradicted: 0
-  attempts: 1
-  hash: "122c3c555a51d0d4b6646294e280da0c"
+  attempts: 0
+  hash: "4739b0da6d81f3e54263eb2e90e24986"
 ---
 
 ## What's changing
@@ -79,9 +83,9 @@ The roadmap item is **In development**, with a General Availability target of **
 
 ## Why it matters
 
-This is a convenience change to the folder pane, and it matters to a tenant mainly through support. People who file mail into dozens of subfolders often ask the service desk how to put them in order; once this arrives, the answer is a user action rather than manual dragging. Because the roadmap item describes sorting as something each user chooses to do from a parent folder, a user's folder order changes only when that user sorts.
+This is a convenience change to the folder pane, and it matters to a tenant mainly through support. People who file mail into dozens of subfolders often ask the service desk how to put them in order; once this arrives, the answer is a user action rather than manual dragging. The roadmap describes a user-initiated sort from a parent folder.
 
-The change does not touch permissions, retention or where mail is stored, as the roadmap describes it. There is nothing for an administrator to configure: Microsoft Learn documents no admin setting for folder sorting at the time of writing (November 2026).
+The roadmap describes subfolder sorting; it does not describe changes to permissions, retention or mail storage. There is nothing for an administrator to configure: Microsoft Learn documents no admin setting for folder sorting at the time of writing (November 2026).
 
 ## Risk assessment
 
@@ -92,7 +96,7 @@ The change does not touch permissions, retention or where mail is stored, as the
 - No change described: the roadmap item says nothing about sign-in, permissions or delegation.
 
 **Autonomy & actions**
-- No change: sorting reorders the folder list when a user asks for it and takes no action on mail.
+- No mail action is described: the roadmap says users will be able to sort a folder's subfolders alphabetically from the parent folder.
 
 **Change & support**
 - A user who sorts a parent folder may lose a hand-arranged subfolder order, if the sort replaces it; Microsoft has not said whether it does. Expect a few "my folders moved" tickets from users who try the option.
@@ -108,7 +112,7 @@ That page publishes no meter or separate charge for this feature. The indirect c
 
 - **Clients:** the roadmap item is tagged for new Outlook for Windows and lists the Desktop and Web platforms. It does not mention classic Outlook for Windows, Outlook for Mac or Outlook mobile.
 - **Users:** anyone using those clients who chooses to sort a folder's subfolders. The licensing page says users with a Microsoft 365 Frontline licence are required to use the web and mobile versions of Outlook, so for them this arrives through Outlook on the web.
-- **Roles:** no admin role is involved; Microsoft Learn documents no admin setting for the feature.
+- **Roles:** Microsoft Learn documents no admin setting for the feature.
 - **Clouds:** Worldwide (Standard Multi-Tenant), as the roadmap record lists.
 - **Rollout:** General Availability, targeted for February CY2027.
 
@@ -148,16 +152,5 @@ Microsoft Learn documents no admin setting for sorting subfolders at the time of
 <!-- rationale
 risk: Low. The roadmap item describes a change to the order in which a user's own subfolders are shown, not to which folders or mailboxes anyone can open.
 cost: Low. Microsoft publishes no separate licence or meter for this feature; it comes with the licence Outlook already needs, and the only cost is a line in user and helpdesk communications.
-impact: Low. Only users who choose to sort a folder's subfolders see a change, mostly people who file mail into long folder lists.
--->
-
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Why it matters; rationale: impact / default: A user's folder order changes only when that user sorts, and only users who choose to sort see a change. | Found: Searched: Outlook sort subfolders A to Z parent folder custom order shared mailboxes sync; Outlook sort subfolders A to Z automatic default permissions retention mail storage. Read roadmap, policy-management and mailFolder; none establishes this exclusive guarantee. | Fix: Replace the final sentence of the first Why it matters paragraph with 'The roadmap describes a user-initiated sort from a parent folder.' Replace the impact rationale with 'Low. The roadmap describes an optional sorting action for people managing subfolder lists.' Keep defaultState as user-opt-in; do not claim that only the initiating user can see an order change while synchronization and shared-mailbox behavior remain undocumented.
-- [unsupported, major] Why it matters: second paragraph / behaviour: The change does not touch permissions. | Found: Searched: Outlook sort subfolders A to Z automatic default permissions retention mail storage. Read roadmap and policy-management; the roadmap describes sorting but does not state that permissions are unaffected. | Fix: Replace 'The change does not touch permissions, retention or where mail is stored, as the roadmap describes it.' with 'The roadmap describes subfolder sorting; it does not describe changes to permissions, retention or mail storage.'
-- [unsupported, major] Why it matters: second paragraph / behaviour: The change does not touch retention. | Found: Searched: Outlook sort subfolders A to Z automatic default permissions retention mail storage. Read roadmap and search results; general retention-policy documentation does not state what this feature does to retention. | Fix: Use the replacement sentence given for the permissions claim: 'The roadmap describes subfolder sorting; it does not describe changes to permissions, retention or mail storage.'
-- [unsupported, major] Why it matters: second paragraph / behaviour: The change does not touch where mail is stored. | Found: Searched: Outlook sort subfolders A to Z automatic default permissions retention mail storage. Read roadmap and Graph mailFolder reference; neither specifies storage behavior for this planned sort. | Fix: Use the replacement sentence given for the permissions claim: 'The roadmap describes subfolder sorting; it does not describe changes to permissions, retention or mail storage.'
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: Sorting takes no action on mail. | Found: Searched: Outlook sort subfolders A to Z automatic default permissions retention mail storage. Read roadmap, policy-management and Graph mailFolder reference; none expressly documents the absence of mail actions for this feature. | Fix: Replace the bullet with: No mail action is described: the roadmap says users will be able to sort a folder's subfolders alphabetically from the parent folder.
-- [unsupported, blocker] Scope: Roles / role: No admin role is involved. | Found: Searched: new Outlook folder sort order admin policy Cloud Policy Set-OwaMailboxPolicy Set-MailboxMessageConfiguration. Read policy-management and both cmdlet references; no feature-specific setting was found, but none states that no admin role is involved. | Fix: Remove 'no admin role is involved;' and retain 'Microsoft Learn documents no admin setting for the feature.' An absence of a documented switch does not establish a role requirement or its absence.
+impact: Low. The roadmap describes an optional sorting action for people managing subfolder lists.
 -->

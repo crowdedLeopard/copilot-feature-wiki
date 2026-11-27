@@ -1,0 +1,934 @@
+{
+  "slug": "microsoft-teams-badges-in-profile-card-in-teams",
+  "roadmapId": 568078,
+  "title": "Microsoft Teams: Awards and Certifications badges on profile cards",
+  "status": "held",
+  "date": "2026-11-27",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-27",
+    "reasons": [
+      "3 major findings"
+    ]
+  },
+  "counts": {
+    "claims": 74,
+    "confirmed": 70,
+    "unconfirmed": 3,
+    "contradicted": 1,
+    "blocker": 0,
+    "major": 3,
+    "minor": 7
+  },
+  "summary": "Hold: the assurances that this change creates no new data store and changes neither sign-in nor permissions are not established by Microsoft's published text. The rollout, automatic display and both Graph delete operations are supported; the licensing description and impact rating also need small corrections.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: products; title",
+      "type": "record",
+      "claim": "This roadmap change is a Microsoft Teams feature.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Teams\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "title; summary; What's changing; changes",
+      "type": "record",
+      "claim": "Awards and Certifications now appear as badges on Teams profile cards.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "You can now see Awards and Certifications as badges on a user’s profile card, bringing a more consistent experience across Teams and Outlook.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "summary; What's changing; Why it matters; rationale: risk",
+      "type": "record",
+      "claim": "The badges display existing Awards and Certifications properties from the Microsoft 365 profile schema.",
+      "status": "supported",
+      "source": "Message Center post MC1462467",
+      "quote": "We are updating profile cards in Microsoft Teams to display existing Awards and Certifications profile properties from the Microsoft 365 profile schema.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "summary; What's changing; rationale: risk",
+      "type": "record",
+      "claim": "The feature previously rolled out to Outlook and the Microsoft 365 Copilot app in April 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1462467",
+      "quote": "This feature previously rolled out to Outlook and the Microsoft 365 Copilot app in April 2026 and will now be available in Teams profile cards.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes a more consistent experience across Teams and Outlook.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "bringing a more consistent experience across Teams and Outlook.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What's changing; Scope; Governance guidance",
+      "type": "record",
+      "claim": "The new section appears on the Overview tab of Teams profile cards.",
+      "status": "supported",
+      "source": "Message Center post MC1462467",
+      "quote": "A new Awards and Certifications section will be added to profile cards in Teams in the Overview and Contact tabs, below the Skills section.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The new section appears on the Contact tab of Teams profile cards.",
+      "status": "supported",
+      "source": "Message Center post MC1462467",
+      "quote": "A new Awards and Certifications section will be added to profile cards in Teams in the Overview and Contact tabs, below the Skills section.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "The Awards and Certifications section is below Skills.",
+      "status": "supported",
+      "source": "Message Center post MC1462467",
+      "quote": "A new Awards and Certifications section will be added to profile cards in Teams in the Overview and Contact tabs, below the Skills section.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Each entry displays its title by default.",
+      "status": "supported",
+      "source": "Message Center post MC1462467",
+      "quote": "Each award or certification entry will display the title and issuer by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Each entry displays its issuer by default.",
+      "status": "supported",
+      "source": "Message Center post MC1462467",
+      "quote": "Each award or certification entry will display the title and issuer by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Selecting a badge reveals its description.",
+      "status": "supported",
+      "source": "Message Center post MC1462467",
+      "quote": "Selecting a badge will reveal additional details, including the description and award date.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Selecting a badge reveals its award date.",
+      "status": "supported",
+      "source": "Message Center post MC1462467",
+      "quote": "Selecting a badge will reveal additional details, including the description and award date.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Why it matters; Risk assessment; Governance guidance; rationale: risk",
+      "type": "record",
+      "claim": "The card is read-only and cannot directly create, edit or manage awards and certifications.",
+      "status": "supported",
+      "source": "Message Center post MC1462467",
+      "quote": "Note that the profile card experience is read-only. Users cannot create, edit, or manage awards and certifications directly from the profile card.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; rationale: risk; rationale: impact",
+      "type": "record",
+      "claim": "If the organisation does not populate these properties, no change is visible and the section does not appear.",
+      "status": "supported",
+      "source": "Message Center post MC1462467",
+      "quote": "If your organization does not currently populate these profile properties, no changes will be visible and the new section will not appear on profile cards.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is October CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap lists no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phases are General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Desktop.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Mac\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Mac.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Mac\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-10-22T22:58:40.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-22T22:58:40\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "MC1462467 gives the Targeted Release rollout start as early October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1462467",
+      "quote": "Targeted Release (Worldwide): Rollout begins in early October 2026 and is expected to complete by early October 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing: rollout dates",
+      "type": "record",
+      "claim": "MC1462467 gives Targeted Release as completing by early October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1462467",
+      "quote": "Targeted Release (Worldwide): Rollout begins in early October 2026 and is expected to complete by early October 2026.",
+      "severity": "minor",
+      "fix": "Replace 'and completing by early October 2026' with 'and expected to complete by early October 2026' to retain the notice's qualification."
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "MC1462467 gives the General Availability rollout start as early October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1462467",
+      "quote": "General Availability (Worldwide): Rollout begins in early-October 2026 and is expected to complete by mid-October 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing: rollout dates",
+      "type": "record",
+      "claim": "MC1462467 gives General Availability as completing by mid-October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1462467",
+      "quote": "General Availability (Worldwide): Rollout begins in early-October 2026 and is expected to complete by mid-October 2026.",
+      "severity": "minor",
+      "fix": "Replace 'and completing by mid-October 2026' with 'and expected to complete by mid-October 2026' to retain the notice's qualification."
+    },
+    {
+      "n": 27,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The supplied Message Center post sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1462467",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Why it matters; Scope: Users; rationale: impact",
+      "type": "record",
+      "claim": "The change affects all users in organisations that populate the Awards and Certifications properties.",
+      "status": "supported",
+      "source": "Message Center post MC1462467",
+      "quote": "Who is affected: All users in organizations that populate the Awards and Certifications properties in Microsoft 365 profiles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Scope: Where it shows",
+      "type": "record",
+      "claim": "The post lists Teams, Outlook, the Microsoft 365 Copilot app and Microsoft 365 profile cards as platforms and services.",
+      "status": "supported",
+      "source": "Message Center post MC1462467",
+      "quote": "Platforms and services: Microsoft Teams; Microsoft Outlook; Microsoft 365 Copilot app; Microsoft 365 profile cards",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "front matter: defaultState; Why it matters; rationale: impact",
+      "type": "default",
+      "claim": "The default is on for the users whose Awards and Certifications fields are populated.",
+      "status": "supported",
+      "source": "Message Center post MC1462467",
+      "quote": "If your organization already uses the Awards and Certifications fields in the Microsoft 365 profile schema, no action is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "summary; Why it matters",
+      "type": "record",
+      "claim": "Tenants already using these fields need take no admin action for the display change.",
+      "status": "supported",
+      "source": "Message Center post MC1462467",
+      "quote": "If your organization already uses the Awards and Certifications fields in the Microsoft 365 profile schema, no action is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "Values stored in these fields become visible on profile cards in Teams, Outlook and the Microsoft 365 Copilot app.",
+      "status": "supported",
+      "source": "Message Center post MC1462467",
+      "quote": "Values stored in these fields will become visible on profile cards in Teams, Outlook, and the Microsoft 365 Copilot app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "This change does not create a new data store.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Teams profile cards Microsoft Graph certifications allowedAudiences user added certification sign in permissions storage; \"Teams\" \"Awards and Certifications\" \"permissions\" \"storage\". Read MC1462467, customize-profile-cards and Graph profile resource; none states the storage architecture.",
+      "severity": "major",
+      "fix": "Remove 'It does not create a new data store.' Keep the supported statement that this change displays existing Microsoft 365 profile properties."
+    },
+    {
+      "n": 34,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "The Credly connector can populate Awards and Certifications badges on profile cards without manual entry.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/credly-overview",
+      "quote": "Boosts profile visibility - Employees' verified digital badges, awards, and certifications appear on their Microsoft 365 profile cards automatically, without manual data entry.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Why it matters; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "The Credly connector is in preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/credly-overview",
+      "quote": "The Credly connector is currently in preview. Connector functionality and requirements are subject to change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Data exposure; Governance guidance",
+      "type": "availability",
+      "claim": "Imported Credly badge data is visible to everyone in the organisation by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/credly-overview",
+      "quote": "All imported badge data is visible to everyone in your organization by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Granular per-user or group filtering of imported Credly badge access is unavailable in this preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/credly-overview",
+      "quote": "Granular per-user or group filtering isn't available in this release.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The Credly connector indexes only badges users publicly accept or share on their Credly profiles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/credly-overview",
+      "quote": "The connector indexes only badge data that users publicly accept or share on their Credly profiles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The feature makes no change to sign-in.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"profile card\" \"sign-in\" badges; Teams profile cards Microsoft Graph certifications allowedAudiences user added certification sign in permissions storage. Read MC1462467 and the cited profile-card and Graph creation pages; none states unchanged sign-in.",
+      "severity": "major",
+      "fix": "Remove 'No change to sign-in or permissions.' Retain the separately supported description of the Graph creation operation."
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The feature makes no change to permissions.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"Awards and Certifications\" \"permissions\" \"storage\"; Teams profile cards Microsoft Graph certifications allowedAudiences user added certification sign in permissions storage. Read MC1462467, customize-profile-cards and Graph references; none states unchanged feature permissions.",
+      "severity": "major",
+      "fix": "Remove 'No change to sign-in or permissions.' The API's documented permissions do not establish whether the Teams display feature changes permissions."
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "command",
+      "claim": "Microsoft Graph beta supports POST /me/profile/certifications to add a certification to the signed-in user's profile.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/profile-post-certifications?view=graph-rest-beta",
+      "quote": "Create a new personCertification object in a user's profile. POST https://graph.microsoft.com/beta/me/profile/certifications",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "User.ReadWrite is the least privileged delegated permission for creating a certification.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/profile-post-certifications?view=graph-rest-beta",
+      "quote": "Delegated (work or school account) | User.ReadWrite | AgentIdUser.ReadWrite.All, AgentIdUser.ReadWrite.IdentityParentedBy, User.ReadWrite.All",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "Microsoft does not explicitly say whether user-created Graph certification entries appear on the Teams card.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"profile\" \"certifications\" \"user-provided\"; \"certifications\" \"profile card\" \"allowedAudiences\". Read MC1462467, customize-profile-cards, profile-post-certifications and personCertification; no passage explicitly connects user-created entries to Teams badge display.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Users can export profile card data to find the source ID of each property.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/customize-profile-cards",
+      "quote": "Users can learn the source of each property on their profile cards by exporting their profile card data. The export shows source IDs for each property, indicating the system the data comes from.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Why it matters; Risk assessment: Change & support; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "Admins can correct organisation-managed profile information in its source system.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/customize-profile-cards",
+      "quote": "As above, users should find the source ID of the property and share it with their admin. Admins can then update the info in the source system.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing; Scope: Roles; Governance controls",
+      "type": "role",
+      "claim": "Global Administrator or People Administrator is required for the documented profile card administration tasks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/customize-profile-cards",
+      "quote": "You must be a Global Administrator or a People Administrator to do the tasks in this article.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Scope: Roles",
+      "type": "role",
+      "claim": "Global Readers can view People settings read-only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/people-settings-in-microsoft-365-admin-center",
+      "quote": "Global Readers can view these settings (read-only).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Scope: Prerequisite",
+      "type": "behaviour",
+      "claim": "Microsoft Entra ID can populate profile card properties.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/customize-profile-cards",
+      "quote": "Properties in profile cards map to attributes in the Microsoft 365 profile resource and can be populated from various sources, including: Microsoft Entra ID",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Scope: Prerequisite; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Organisational data in Microsoft 365 can populate profile card properties.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/customize-profile-cards",
+      "quote": "Properties in profile cards map to attributes in the Microsoft 365 profile resource and can be populated from various sources, including: Organizational data in Microsoft 365",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Scope: Prerequisite; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Microsoft 365 Copilot connectors for people data can populate profile card properties.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/customize-profile-cards",
+      "quote": "Properties in profile cards map to attributes in the Microsoft 365 profile resource and can be populated from various sources, including: Microsoft 365 Copilot connectors for people data",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Scope: Prerequisite; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "User-provided details can populate profile card properties.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/customize-profile-cards",
+      "quote": "Properties in profile cards map to attributes in the Microsoft 365 profile resource and can be populated from various sources, including: User-provided details",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "front matter: licensing.model; licensing.notes",
+      "type": "licensing",
+      "claim": "The licensing model is unknown because no feature-specific licence requirement is published.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/user-access",
+      "quote": "Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams.",
+      "severity": "minor",
+      "fix": "Set licensing.model to 'included' and licensing.notes to 'Each user in the organisation must have a Teams licence before using Teams, except for joining meetings anonymously. Microsoft has not published a licence requirement specific to Awards and Certifications display.' Cite https://learn.microsoft.com/microsoftteams/user-access. The standard treats this product-level entitlement beside an unpublished feature-specific requirement as an understatement, not a blocker."
+    },
+    {
+      "n": 53,
+      "where": "Cost and licensing; licensing.notes; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft has not published a licence requirement specific to this badge display feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Teams license requirements profile cards Awards Certifications badges pricing meter; \"Awards and Certifications\" \"profile card\" hide licensing. Read MC1462467, roadmap, customize-profile-cards, Credly overview and user-access; no feature-specific badge-display licence is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The profile card customisation page lists only administrator roles in its prerequisite section and names no licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/customize-profile-cards",
+      "quote": "Before you begin: You must be a Global Administrator or a People Administrator to do the tasks in this article. For more information, see About admin roles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft documents no meter for this badge display feature as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Awards\" \"Certifications\" \"profile card\" \"meter\"; Microsoft Teams license requirements profile cards Awards Certifications badges pricing meter. Read customize-profile-cards, Credly overview and user-access; no meter for the display change is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[0].ui and controls[0].api; summary; Risk assessment; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft documents no tenant-wide UI or automation switch to hide the Awards and Certifications section.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Teams Awards Certifications profile card hide disable section People settings Microsoft Graph PowerShell. Read customize-profile-cards, People settings, profileCardProperty and add-properties-profilecard; documented visibility properties exclude Awards and Certifications.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "absence",
+      "claim": "No admin UI is documented for deleting an individual Microsoft 365 profile certification.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 profile individual award certification delete remove admin center UI; \"award\" \"certification\" \"profile\" \"delete\" admin. Read customize-profile-cards, People settings and personcertification-delete; no certification-deletion admin UI is documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[1].api; Governance controls table; Governance guidance: After rollout; changes",
+      "type": "command",
+      "claim": "DELETE /beta/users/{userId}/profile/certifications/{id} removes an individual certification from that user's profile.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/personcertification-delete?view=graph-rest-beta",
+      "quote": "Deletes a personCertification object from a user's profile. DELETE https://graph.microsoft.com/beta/users/{userId}/profile/certifications/{id}",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "absence",
+      "claim": "No admin UI is documented for deleting an individual Microsoft 365 profile award.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 profile individual award certification delete remove admin center UI; \"award\" \"certification\" \"profile\" \"delete\" admin. Read customize-profile-cards, People settings and personaward-delete; no award-deletion admin UI is documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[2].api; Governance controls table; Governance guidance: After rollout; changes",
+      "type": "command",
+      "claim": "DELETE /beta/users/{userId}/profile/awards/{personAwardId} removes an individual award from that user's profile.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/personaward-delete?view=graph-rest-beta",
+      "quote": "Delete a personAward object from a user's profile. DELETE https://graph.microsoft.com/beta/users/{userId}/profile/awards/{personAwardId}",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "User.ReadWrite is the least privileged delegated permission for deleting a certification.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/personcertification-delete?view=graph-rest-beta",
+      "quote": "Delegated (work or school account) | User.ReadWrite | AgentIdUser.ReadWrite.All, AgentIdUser.ReadWrite.IdentityParentedBy, User.ReadWrite.All",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "Certification deletion supports delegated permissions only and does not support application permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/personcertification-delete?view=graph-rest-beta",
+      "quote": "Application | Not supported. | Not supported.",
+      "severity": "minor",
+      "fix": "Replace the certification note with 'Beta. The REST reference lists User.ReadWrite as the least privileged delegated permission and says application permissions are not supported; the PowerShell reference instead lists application User.ReadWrite.All, AgentIdUser.ReadWrite.All and AgentIdUser.ReadWrite.IdentityParentedBy.' Cite https://learn.microsoft.com/powershell/module/microsoft.graph.beta.people/remove-mgbetauserprofilecertification?view=graph-powershell-beta and carry this qualification into the prose."
+    },
+    {
+      "n": 63,
+      "where": "Governance controls: delegated permissions",
+      "type": "role",
+      "claim": "User.ReadWrite.All is a higher privileged delegated permission for deleting a certification.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/personcertification-delete?view=graph-rest-beta",
+      "quote": "Delegated (work or school account) | User.ReadWrite | AgentIdUser.ReadWrite.All, AgentIdUser.ReadWrite.IdentityParentedBy, User.ReadWrite.All",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[2].note; Governance controls",
+      "type": "role",
+      "claim": "User.ReadWrite is the least privileged delegated permission for deleting an award.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/personaward-delete?view=graph-rest-beta",
+      "quote": "Delegated (work or school account) | User.ReadWrite | AgentIdUser.ReadWrite.All, AgentIdUser.ReadWrite.IdentityParentedBy, User.ReadWrite.All",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[2].note; Governance controls",
+      "type": "role",
+      "claim": "Award deletion supports delegated permissions only and does not support application permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/personaward-delete?view=graph-rest-beta",
+      "quote": "Application | Not supported. | Not supported.",
+      "severity": "minor",
+      "fix": "Replace the award note with 'Beta. The REST reference lists User.ReadWrite as the least privileged delegated permission and says application permissions are not supported; the PowerShell reference instead lists application User.ReadWrite.All, AgentIdUser.ReadWrite.All and AgentIdUser.ReadWrite.IdentityParentedBy.' Cite https://learn.microsoft.com/powershell/module/microsoft.graph.beta.people/remove-mgbetauserprofileaward?view=graph-powershell-beta and carry this qualification into the prose."
+    },
+    {
+      "n": 66,
+      "where": "Governance controls: delegated permissions",
+      "type": "role",
+      "claim": "User.ReadWrite.All is a higher privileged delegated permission for deleting an award.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/personaward-delete?view=graph-rest-beta",
+      "quote": "Delegated (work or school account) | User.ReadWrite | AgentIdUser.ReadWrite.All, AgentIdUser.ReadWrite.IdentityParentedBy, User.ReadWrite.All",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Governance controls; controls[0].note",
+      "type": "admin-path",
+      "claim": "Microsoft 365 admin center Settings > Org settings > People settings > Profile card > Contact info controls visibility of documented optional properties.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/customize-profile-cards",
+      "quote": "Admins can choose to show or hide certain properties on the profile cards. They're hidden by default, but admins can configure their visibility by navigating to Settings > Org settings > People settings > Profile card > Contact info in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The optional visibility list includes Division, Role and Employee number but not Awards or Certifications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/customize-profile-cards",
+      "quote": "Division; Role; Employee number; Employee type; Cost center; User principal name; Alias; Fax; Street address; State; Postal code",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Governance controls: profileCardProperty",
+      "type": "behaviour",
+      "claim": "profileCardProperty directoryPropertyName allows only its listed Entra properties and custom attributes, not Awards or Certifications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/profilecardproperty?view=graph-rest-1.0",
+      "quote": "Allowed values for this field are: UserPrincipalName, Fax, StreetAddress, PostalCode, StateOrProvince, Alias, CustomAttribute1, CustomAttribute2, CustomAttribute3, CustomAttribute4, CustomAttribute5, CustomAttribute6, CustomAttribute7, CustomAttribute8",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Governance controls: underlying data",
+      "type": "behaviour",
+      "claim": "Hiding a profile card property does not delete the underlying Microsoft 365 profile data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/customize-profile-cards",
+      "quote": "Hiding a property removes it from profile cards but doesn't delete the underlying data from Microsoft 365 profiles or stop the property from appearing in other Microsoft 365 experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Governance controls: underlying data; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The profile card customisation page directs admins to remove data from the source system for permanent deletion.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/customize-profile-cards",
+      "quote": "To permanently delete the data, admins need to remove it from the source system.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Open questions: allowedAudiences",
+      "type": "behaviour",
+      "claim": "Certification entries have an allowedAudiences property describing audiences able to see their values.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/personcertification?view=graph-rest-beta",
+      "quote": "allowedAudiences | String | The audiences that are able to see the values contained within the entity. Inherited from itemFacet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Open questions: allowedAudiences",
+      "type": "behaviour",
+      "claim": "Award entries also have an allowedAudiences property describing audiences able to see their values.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/personaward?view=graph-rest-beta",
+      "quote": "allowedAudiences | String | The audiences that are able to see the values contained within the entity. Inherited from itemFacet.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/graph/api/resources/personaward?view=graph-rest-beta to sources; the existing certification resource citation supports only the certification half of this factual premise."
+    },
+    {
+      "n": 74,
+      "where": "front matter: impact; rationale: impact",
+      "type": "consistency",
+      "claim": "Impact is low even though the rationale says every Teams user opening a populated card sees the automatic change.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "impact: \"low\"; Where they are populated, every Teams user who opens a card sees it. Standard: Impact low means admins only, or a small opt-in group; high means most users, or a change to default behaviour.",
+      "severity": "minor",
+      "fix": "Set impact to 'high' and replace its rationale with 'High. In organisations that populate Awards and Certifications, the section appears automatically for all users; organisations with empty properties see no visible change.' The tenant-data prerequisite does not make the viewers an opt-in group."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-27T14:20:19.700Z",
+    "summary": {
+      "links": 10,
+      "unreachable": 0,
+      "uiPaths": 0,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 2,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=568078",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1462467",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/manage/customize-profile-cards",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/manage/people-settings-in-microsoft-365-admin-center",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/profilecardproperty?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/credly-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/personcertification?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/profile-post-certifications?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/personcertification-delete?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/personaward-delete?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Removal of an individual certification from a user's Microsoft 365 profile",
+        "docs": "https://learn.microsoft.com/graph/api/personcertification-delete?view=graph-rest-beta",
+        "reachable": true,
+        "token": "/beta/users/profile",
+        "found": false
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Removal of an individual award from a user's Microsoft 365 profile",
+        "docs": "https://learn.microsoft.com/graph/api/personaward-delete?view=graph-rest-beta",
+        "reachable": true,
+        "token": "/beta/users/profile",
+        "found": false
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

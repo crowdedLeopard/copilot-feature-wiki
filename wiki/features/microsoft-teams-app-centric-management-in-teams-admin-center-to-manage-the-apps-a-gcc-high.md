@@ -89,10 +89,12 @@ changes:
     note: "Corrected after the independent check: default state is now on, because Learn describes automatic migration (no GCC High-specific schedule); action is act-now; per-app availability path completed."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 79 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 79 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
@@ -202,9 +204,9 @@ cost: Low. Learn names a Teams Administrator role, not a separate licence or met
 impact: Low. Admins see new screens and rules; users notice only where an app's availability changes, which Learn says happens in one policy-conflict case.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: Teams apps > Manage apps > Actions > Org-wide app settings > Third-party apps reaches the pane section for the org-wide third-party default. | Found: On Manage apps page, under the Actions menu, select Org-wide app settings. You can then configure the settings in the pane. Under Third-party apps, a single control manages the bulk availability of both the new and existing third-party agents and apps. | Fix: Complete controls[1].ui.path and the matching table cell as 'Teams apps > Manage apps > Actions > Org-wide app settings > Third-party apps > Let users install and use available apps by default'. The setting label is given at https://learn.microsoft.com/microsoftteams/app-centric-management#default-settings-for-app-availability, already cited by the briefing. | Source: https://learn.microsoft.com/microsoftteams/manage-apps
-- [supported, minor] controls[2].api; Governance controls table / command: Update-M365TeamsApp -Id <app id> -IsBlocked $true is a documented operation for changing the app's organisation-wide state. | Found: Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -IsBlocked $true Unblocks Bookings app (App ID 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b). | Fix: Keep the documented call, but append to controls[2].note and the matching table note: 'The reference describes -IsBlocked $true as unblocking in Example 3, but also describes -IsBlocked $false as unblocking in Example 4; its examples do not consistently establish the Boolean polarity. Use the UI when the intended state must be unambiguous.' Reference: https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: Teams apps > Manage apps > Actions > Org-wide app settings > Third-party apps reaches the pane containing the third-party default. | Found: On Manage apps page, under the Actions menu, select Org-wide app settings. You can then configure the settings in the pane. | Fix: Complete controls[1].ui.path and the matching table cell as 'Teams apps > Manage apps > Actions > Org-wide app settings > Third-party apps > Let users install and use available apps by default'. The switch label is documented at https://learn.microsoft.com/microsoftteams/app-centric-management#default-settings-for-app-availability, already cited. | Source: https://learn.microsoft.com/microsoftteams/manage-apps
+- [supported, minor] controls[2].api; Governance controls table / command: Update-M365TeamsApp -Id <app id> -IsBlocked $true is documented for changing the app's org-level state. | Found: Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -IsBlocked $true Unblocks Bookings app (App ID 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b). | Fix: Keep the call but append to controls[2].note and the matching table note: 'The reference describes -IsBlocked $true as unblocking in Example 3, but also describes -IsBlocked $false as unblocking in Example 4; its examples do not consistently establish the Boolean polarity. Use the UI when the intended state must be unambiguous.' Source: https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp
 -->

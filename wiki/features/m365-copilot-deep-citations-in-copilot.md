@@ -67,7 +67,7 @@ controls:
       kind: "powershell"
       call: "Set-SPOSite -Identity <site-url> -RestrictContentOrgWideSearch $true"
       docs: "https://learn.microsoft.com/sharepoint/restricted-content-discovery"
-    note: "Existing control. Keeps a site out of org-wide search and Copilot; it affects discoverability, not access permissions. Needs a Microsoft Copilot licence."
+    note: "Limits discovery in organisation-wide search and Copilot discovery scenarios; does not affect content already in use, such as summarising an open document. Needs a Microsoft Copilot licence."
 confidence: "low"
 created: "2026-11-27"
 updated: "2026-11-27"
@@ -81,19 +81,23 @@ changes:
     note: "Corrected: removed unsupported claims about where existing citations land, what Restricted Content Discovery does to citations, the recent-interaction exception and the service desk; reworded the accuracy caveat."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 42 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-27"
+    note: "Corrected: Restricted Content Discovery is now described as limiting discovery in organisation-wide search and Copilot discovery scenarios, not experiences using content already in use; expanded the Before rollout admin path."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 42 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-27"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 42
-  confirmed: 41
+  confirmed: 42
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "2e34cfc207acd25e122d6a9f973485c1"
+  contradicted: 0
+  attempts: 0
+  hash: "4a23f51b0891865afc2afff3dff92d8b"
 ---
 
 ## What's changing
@@ -115,7 +119,7 @@ Microsoft has not stated what happens on arrival. No source says existing citati
 ## Risk assessment
 
 **Data exposure**
-- Deep citations lead to the part of a Word or PowerPoint file that Copilot used. Copilot only surfaces data the user can at least view, so an overshared file is the exposure; Restricted Content Discovery keeps a site out of Copilot.
+- Deep citations lead to the part of a Word or PowerPoint file that Copilot used. Copilot only surfaces data the user can at least view, so an overshared file is the exposure; Restricted Content Discovery limits discovery of site content in organisation-wide search and Copilot discovery scenarios, but does not affect experiences using content already in use, such as summarising an open document.
 
 **Security & identity**
 - Microsoft has not described any new permission, identity or connection for this feature; it is known only from the roadmap description.
@@ -145,7 +149,7 @@ No meter is documented for this feature at the time of writing. The indirect cos
 ## Governance guidance
 
 ### Before rollout
-- Turn on **Restrict content from Microsoft Copilot** for sites that need review before Copilot cites them (SharePoint admin center > Sites > Active sites).
+- Turn on **Restrict content from Microsoft Copilot** for sites that need review before Copilot cites them (SharePoint admin center > Sites > Active sites > site > Settings > Restrict content from Microsoft Copilot).
 - Watch Message center and the Microsoft 365 Copilot release notes for a post on roadmap item 523223 that states the default and rollout window.
 
 ### At rollout
@@ -166,7 +170,7 @@ No meter is documented for this feature at the time of writing. The indirect cos
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether users see deep citations (tenant or user switch)</strong><br><small>Tenant</small><br><small class="controls__note">Microsoft Learn documents no setting for this feature at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which SharePoint sites Microsoft Copilot can discover content from, and so cite</strong><br><small>Site</small><br><small class="controls__note">Existing control. Keeps a site out of org-wide search and Copilot; it affects discoverability, not access permissions. Needs a Microsoft Copilot licence.</small></td><td data-label="Admin UI"><strong>SharePoint admin center</strong><br>Sites › Active sites › site › Settings › Restrict content from Microsoft Copilot <a href="https://learn.microsoft.com/sharepoint/restricted-content-discovery" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOSite -Identity &lt;site-url&gt; -RestrictContentOrgWideSearch $true</code> <a href="https://learn.microsoft.com/sharepoint/restricted-content-discovery" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which SharePoint sites Microsoft Copilot can discover content from, and so cite</strong><br><small>Site</small><br><small class="controls__note">Limits discovery in organisation-wide search and Copilot discovery scenarios; does not affect content already in use, such as summarising an open document. Needs a Microsoft Copilot licence.</small></td><td data-label="Admin UI"><strong>SharePoint admin center</strong><br>Sites › Active sites › site › Settings › Restrict content from Microsoft Copilot <a href="https://learn.microsoft.com/sharepoint/restricted-content-discovery" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOSite -Identity &lt;site-url&gt; -RestrictContentOrgWideSearch $true</code> <a href="https://learn.microsoft.com/sharepoint/restricted-content-discovery" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -188,11 +192,8 @@ cost: Low. The feature belongs to Microsoft Copilot (Microsoft 365) and Microsof
 impact: Medium. Copilot users who check citations to Word and PowerPoint files will notice; Microsoft has not stated whether it reaches every Copilot user by default.
 -->
 
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].note; Risk assessment: Data exposure; Governance controls: table / applicability: Restricted Content Discovery keeps a site out of Copilot. | Found: Restricted Content Discovery doesn't affect experiences that operate on content that's already in use by the user, such as summarizing an open document. | Fix: Replace 'Keeps a site out of org-wide search and Copilot' in the row note and rendered table with 'Limits discovery of site content in organization-wide search and Copilot discovery scenarios; it does not affect experiences using content already in use, such as summarizing an open document.' Replace 'Restricted Content Discovery keeps a site out of Copilot' in Risk assessment with the same qualified statement. Source: https://learn.microsoft.com/sharepoint/restricted-content-discovery. | Source: https://learn.microsoft.com/sharepoint/restricted-content-discovery
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].governs; Governance controls: prose / applicability: Restricted Content Discovery is an existing site-level control limiting discovery of SharePoint content in organisation-wide search and Copilot responses. | Found: Restricted Content Discovery helps you limit discovery of content from specific SharePoint sites, including recently interacted files, in organization-wide search results and Microsoft Copilot responses | Fix: After the description of Restricted Content Discovery, add: 'Microsoft's Copilot Search FAQ describes an exception for recent interaction, whereas the Restricted Content Discovery page says it includes recently interacted files.' Cite https://learn.microsoft.com/copilot/manage/copilot-search-faq alongside https://learn.microsoft.com/sharepoint/restricted-content-discovery. | Source: https://learn.microsoft.com/sharepoint/restricted-content-discovery
-- [supported, minor] Governance guidance: Before rollout / admin-path: The before-rollout instruction points to SharePoint admin center > Sites > Active sites to turn on Restrict content from Microsoft Copilot. | Found: In the SharePoint admin center, expand Sites and select Active sites. 2. Select the site you want to configure. 3. Open the Settings tab, and then turn Restrict content from Microsoft Copilot on. | Fix: Expand the parenthetical route in Before rollout to 'SharePoint admin center > Sites > Active sites > site > Settings > Restrict content from Microsoft Copilot', matching controls[1].ui and https://learn.microsoft.com/sharepoint/restricted-content-discovery. | Source: https://learn.microsoft.com/sharepoint/restricted-content-discovery
+- [supported, minor] controls[1].governs and note; Risk assessment: Data exposure; Governance controls / applicability: Restricted Content Discovery limits site-content discovery in organisation-wide search and Copilot discovery scenarios. | Found: Restricted Content Discovery affects organization-wide search experiences (SharePoint home, Office.com, Bing) and Microsoft Copilot discovery scenarios, including experiences that rely on tenant-wide content discovery. | Fix: Add to the existing control note: 'Microsoft guidance differs on recently interacted files: the Restricted Content Discovery page explicitly includes them, while the Copilot Search FAQ describes an exception for recent interaction.' Both pages are already cited: https://learn.microsoft.com/sharepoint/restricted-content-discovery and https://learn.microsoft.com/copilot/manage/copilot-search-faq. | Source: https://learn.microsoft.com/sharepoint/restricted-content-discovery
 -->

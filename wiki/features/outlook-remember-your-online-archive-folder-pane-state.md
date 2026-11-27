@@ -18,7 +18,7 @@ defaultState: "unknown"
 action: "none"
 licensing:
   model: "included"
-  notes: "Nothing specific to this change is published. It applies to the online archive, which Exchange Online Plan 2, Microsoft 365 Business Premium, E3 and E5 and Office 365 E3 and E5 include; Exchange Online Plan 1, Business Basic, Business Standard, E1 and F3 need the Exchange Online Archiving add-on."
+  notes: "Nothing specific to this change is published. It applies to the online archive, which Exchange Online Plan 2, Microsoft 365 Business Premium, E3 and E5 and Office 365 E3 and E5 include; F3 needs the Exchange Online Archiving add-on. Exchange Online Plan 1, Microsoft 365 Business Basic, Microsoft 365 Business Standard and Office 365 E1 include a 50 GB archive mailbox."
 audiences: ["m365-admin","service-owner","end-user"]
 tags: ["outlook","new-outlook","archive-mailboxes","exchange","user-experience"]
 sources:
@@ -27,6 +27,9 @@ sources:
     kind: "roadmap"
   - title: "Exchange Online Archiving service description"
     url: "https://learn.microsoft.com/office365/servicedescriptions/exchange-online-archiving-service-description/exchange-online-archiving-service-description"
+    kind: "learn"
+  - title: "Exchange Online limits"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits"
     kind: "learn"
   - title: "Enable archive mailboxes for Microsoft 365"
     url: "https://learn.microsoft.com/purview/enable-archive-mailboxes"
@@ -78,19 +81,23 @@ changes:
     note: "Corrected: narrowed the mailbox-policy sentence to 'most' policies, and replaced assurances about access, archive contents and mail actions with what the roadmap item describes."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 65 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-27"
+    note: "Corrected the licensing notes: Exchange Online Plan 1, Microsoft 365 Business Basic and Standard and Office 365 E1 include a 50 GB archive mailbox, per the Exchange Online limits page."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 63 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-27"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 65
-  confirmed: 61
+  claims: 63
+  confirmed: 63
   unconfirmed: 0
-  contradicted: 4
-  attempts: 2
-  hash: "30d6569f85402685037d4b8f1cdb8bd4"
+  contradicted: 0
+  attempts: 0
+  hash: "3c20a06ecbc062bf0aa549372d9cefb1"
 ---
 
 ## What's changing
@@ -124,7 +131,7 @@ Microsoft has not stated what happens on arrival. No source says anything beyond
 
 ## Cost and licensing
 
-**Licence.** Microsoft has published nothing specific to this change. It applies to the online archive, which the [Exchange Online Archiving service description](https://learn.microsoft.com/office365/servicedescriptions/exchange-online-archiving-service-description/exchange-online-archiving-service-description) says is already included in Exchange Online Plan 2, Microsoft 365 Business Premium, Microsoft 365 E3, Microsoft 365 E5, Microsoft 365 F5 Compliance, Office 365 A3, Office 365 A5, Office 365 E3 and Office 365 E5. For Exchange Online Plan 1, Exchange Online Kiosk, Microsoft 365 Business Basic, Microsoft 365 Business Standard, Office 365 E1, Office 365 A1, Office 365 G1, Office 365 F3 and Microsoft 365 F3, the same page lists Exchange Online Archiving as an add-on.
+**Licence.** Microsoft has published nothing specific to this change. It applies to the online archive, which the [Exchange Online Archiving service description](https://learn.microsoft.com/office365/servicedescriptions/exchange-online-archiving-service-description/exchange-online-archiving-service-description) says is already included in Exchange Online Plan 2, Microsoft 365 Business Premium, Microsoft 365 E3, Microsoft 365 E5, Microsoft 365 F5 Compliance, Office 365 A3, Office 365 A5, Office 365 E3 and Office 365 E5. For Exchange Online Plan 1, Exchange Online Kiosk, Microsoft 365 Business Basic, Microsoft 365 Business Standard, Office 365 E1, Office 365 A1, Office 365 G1, Office 365 F3 and Microsoft 365 F3, the same page lists Exchange Online Archiving as an add-on. The [Exchange Online limits](https://learn.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits#storage-limits) page gives a 50 GB archive mailbox for Exchange Online Plan 1, Microsoft 365 Business Basic, Microsoft 365 Business Standard and Office 365 E1.
 
 **Meter.** No meter is documented for this change at the time of writing (November 2026).
 
@@ -181,11 +188,8 @@ cost: Low. Microsoft publishes no licence or meter for this change; the online a
 impact: Low. Only users who have an online archive and use Outlook on the web or the new Outlook for Windows will notice, and only as the archive staying expanded or collapsed between visits.
 -->
 
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.notes / licensing: Exchange Online Plan 1 users need the Exchange Online Archiving add-on for the online archive. | Found: | Feature | Exchange Server | Exchange Online Plan 1 | Exchange Online Plan 2 | Exchange Online Kiosk | | Archive mailboxes | 100 GB | 50 GB | 1.5 TB | Not available | | Fix: Remove Exchange Online Plan 1 from the licensing.notes list of plans that 'need' the add-on. Add: 'Exchange Online Plan 1 includes a 50 GB archive mailbox.' Cite https://learn.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits#storage-limits. | Source: https://learn.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits
-- [contradicted, blocker] front matter: licensing.notes / licensing: Microsoft 365 Business Basic users need the Exchange Online Archiving add-on for the online archive. | Found: | Feature | Microsoft 365 Business Basic and Standard | Microsoft 365 Business Premium ... | Archive mailboxes^7,8^ | 50 GB | 1.5 TB^1^ ... | Fix: Remove Business Basic from the licensing.notes list of plans that 'need' the add-on. Add: 'Microsoft 365 Business Basic includes a 50 GB archive mailbox.' Cite https://learn.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits#storage-limits. | Source: https://learn.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits
-- [contradicted, blocker] front matter: licensing.notes / licensing: Microsoft 365 Business Standard users need the Exchange Online Archiving add-on for the online archive. | Found: | Feature | Microsoft 365 Business Basic and Standard | Microsoft 365 Business Premium ... | Archive mailboxes^7,8^ | 50 GB | 1.5 TB^1^ ... | Fix: Remove Business Standard from the licensing.notes list of plans that 'need' the add-on. Add: 'Microsoft 365 Business Standard includes a 50 GB archive mailbox.' Cite https://learn.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits#storage-limits. | Source: https://learn.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits
-- [contradicted, blocker] front matter: licensing.notes / licensing: Office 365 E1 users need the Exchange Online Archiving add-on for the online archive. | Found: | Feature | Microsoft 365 Business Basic and Standard | Microsoft 365 Business Premium | Microsoft 365 Enterprise E3/E5 | Office 365 Enterprise E1 | ... | Archive mailboxes^7,8^ | 50 GB | 1.5 TB^1^ | 1.5 TB^1^ | 50 GB | ... | Fix: Remove E1 from the licensing.notes list of plans that 'need' the add-on. Add: 'Office 365 E1 includes a 50 GB archive mailbox.' Cite https://learn.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits#storage-limits. | Source: https://learn.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Governance guidance: After rollout, final bullet / admin-path: Administrators can start checking users' archive enablement under Exchange admin center > Recipients > Mailboxes. | Found: navigate to Recipients > Mailboxes. [...] select the user [...] select Others, and under Mailbox archive, select Manage mailbox archive | Fix: Replace the final checklist bullet with: 'Check in the Exchange admin center under Recipients > Mailboxes > mailbox > Others > Mailbox archive > Manage mailbox archive that Mailbox archive is enabled for users reporting archive problems.' The full route is documented at https://learn.microsoft.com/purview/enable-archive-mailboxes. | Source: https://learn.microsoft.com/purview/enable-archive-mailboxes
 -->

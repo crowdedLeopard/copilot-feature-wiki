@@ -3,7 +3,7 @@
   "roadmapId": 565216,
   "title": "Microsoft Teams: Intelligent call delegation answers and screens incoming calls",
   "status": "verified-with-gaps",
-  "date": "2026-11-20",
+  "date": "2026-11-27",
   "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
@@ -22,10 +22,32 @@
     "major": 0,
     "minor": 1
   },
-  "summary": "The briefing passes: its billing prerequisites, policy controls and rollout statements are supported by Microsoft documentation and the supplied notices. One minor correction is needed because the checklist names Auto-apply new services but the controls table does not cover that setting.",
+  "summary": "The briefing's rollout dates, licensing, billing prerequisites and documented controls are supported. One minor correction remains: the checklist asks administrators to configure Auto-apply new services, but that control is not represented in the controls table.",
   "claims": [
     {
       "n": 1,
+      "where": "front matter: title, roadmapId",
+      "type": "record",
+      "claim": "Roadmap item 565216 is Microsoft Teams: Intelligent call delegation.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"id\": 565216, \"title\": \"Microsoft Teams: Intelligent call delegation\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The record lists Microsoft Teams and Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Teams\", \"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is Rolling out.",
@@ -36,7 +58,7 @@
       "fix": null
     },
     {
-      "n": 2,
+      "n": 4,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target is November CY2026.",
@@ -47,35 +69,13 @@
       "fix": null
     },
     {
-      "n": 3,
-      "where": "front matter: previewDate",
-      "type": "record",
-      "claim": "The roadmap gives no preview date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": null",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
+      "n": 5,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
       "claim": "The roadmap lists General Availability and Preview phases.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "front matter: clouds; What's changing; Scope",
-      "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
       "severity": null,
       "fix": null
     },
@@ -92,17 +92,28 @@
     },
     {
       "n": 7,
-      "where": "front matter: products",
+      "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap products are Microsoft Teams and Microsoft Copilot (Microsoft 365).",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed on the roadmap item.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Teams\", \"Microsoft Copilot (Microsoft 365)\"]",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 8,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap record has no previewDate value.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
       "where": "front matter: roadmapModified",
       "type": "record",
       "claim": "The roadmap modification timestamp is 2026-11-17T18:34:37.",
@@ -113,10 +124,10 @@
       "fix": null
     },
     {
-      "n": 9,
+      "n": 10,
       "where": "front matter: defaultState; Why it matters",
       "type": "default",
-      "claim": "Admin configuration of billing and a spending policy is required before users can use the feature, making its default admin-opt-in.",
+      "claim": "The feature is admin-opt-in because administrators must configure usage-based billing and a spending policy before use.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
       "quote": "Admins must set up usage-based billing for Copilot Credits and create a spending policy for Intelligent call delegation in the Microsoft 365 admin center.",
@@ -124,24 +135,13 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 11,
       "where": "front matter: licensing.model",
       "type": "licensing",
-      "claim": "The licensing model is mixed, combining a user licence prerequisite with consumption billing.",
+      "claim": "The mixed licensing model combines a user licence requirement with metered consumption.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
-      "quote": "Users must have a Microsoft Copilot license.\nIntelligent call delegation uses usage-based billing with Copilot Credits.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "front matter: cost; summary; Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "Cost is variable because usage is metered in Copilot Credits.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
-      "quote": "Intelligent call delegation uses usage-based billing with Copilot Credits.",
+      "quote": "Users must have a Microsoft Copilot license. Intelligent call delegation uses usage-based billing with Copilot Credits.",
       "severity": null,
       "fix": null
     },
@@ -149,7 +149,7 @@
       "n": 12,
       "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
       "type": "licensing",
-      "claim": "The Learn feature page requires users to have a Microsoft Copilot licence.",
+      "claim": "Learn requires users to have a Microsoft Copilot licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
       "quote": "Users must have a Microsoft Copilot license.",
@@ -158,20 +158,42 @@
     },
     {
       "n": 13,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
-      "type": "absence",
-      "claim": "A Copilot Credit rate specific to Intelligent call delegation is not yet published.",
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "record",
+      "claim": "MC1537490 asks administrators to confirm Microsoft 365 Copilot USL licensing where required.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Intelligent call delegation\" credits rate pricing; \"Intelligent call delegation\" \"Copilot Credits\" minute; \"Intelligent call delegation\" \"Copilot Credits Guide\" rate. Read feature and UBB overview pages; returned Studio rates do not cover this feature.",
+      "source": "Message Center post MC1537490",
+      "quote": "Confirm users are licensed with Microsoft 365 Copilot USL where required.",
       "severity": null,
       "fix": null
     },
     {
       "n": 14,
-      "where": "title; summary; What's changing",
+      "where": "summary; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Intelligent call delegation consumes Copilot Credits through usage-based billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
+      "quote": "Intelligent call delegation uses usage-based billing with Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "A Copilot Credit rate specific to Intelligent call delegation is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Intelligent call delegation\" \"credits\" \"rate\" pricing; \"Intelligent call delegation\" \"Copilot Credits\" pricing rate licensing guide. Read feature prerequisites, usage-based billing overview and Copilot Studio Billing rates excerpts; none gives this feature's rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "summary; What's changing",
       "type": "behaviour",
-      "claim": "Intelligent call delegation is an AI-powered voice agent for Microsoft Teams calls.",
+      "claim": "Intelligent call delegation is an AI-powered voice agent for incoming Microsoft Teams calls.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
       "quote": "Intelligent call delegation in Microsoft Teams is an AI-powered voice agent that helps users manage incoming calls.",
@@ -179,10 +201,10 @@
       "fix": null
     },
     {
-      "n": 15,
-      "where": "summary; What's changing; Risk assessment; rationale: risk",
+      "n": 17,
+      "where": "summary; What's changing; Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "The agent answers calls on users' behalf.",
+      "claim": "The voice agent answers calls on the user's behalf when turned on.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
       "quote": "When users turn on Intelligent call delegation, the voice agent answers calls on their behalf.",
@@ -190,10 +212,10 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 18,
       "where": "What's changing; Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The agent gathers the caller's reason for calling.",
+      "claim": "The agent collects the caller's reason for calling.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
       "quote": "Screen incoming calls and collect the caller's reason for calling.",
@@ -201,7 +223,7 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 19,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "The agent takes action based on the user's availability and settings.",
@@ -212,8 +234,8 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "title; summary; What's changing; Risk assessment",
+      "n": 20,
+      "where": "summary; What's changing; Risk assessment: Autonomy & actions",
       "type": "behaviour",
       "claim": "The agent can screen incoming calls before connecting them.",
       "status": "supported",
@@ -223,7 +245,7 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 21,
       "where": "What's changing; Risk assessment: Autonomy & actions",
       "type": "behaviour",
       "claim": "The agent can route urgent calls to the user.",
@@ -234,7 +256,7 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 22,
       "where": "summary; What's changing; Scope",
       "type": "behaviour",
       "claim": "The agent can schedule follow-up appointments through Microsoft Bookings.",
@@ -245,10 +267,10 @@
       "fix": null
     },
     {
-      "n": 21,
-      "where": "What's changing; Why it matters; Risk assessment; Governance guidance",
+      "n": 23,
+      "where": "What's changing; Risk assessment: Security & identity; Governance guidance",
       "type": "behaviour",
-      "claim": "Callers are informed that they are speaking with an attendant rather than a person.",
+      "claim": "Callers are told they are speaking with an attendant rather than a person.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
       "quote": "Callers are informed that they're speaking with an attendant rather than a person.",
@@ -256,10 +278,10 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 24,
       "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance; rationale: risk",
       "type": "behaviour",
-      "claim": "Turning on Intelligent call delegation replaces the user's existing call routing, so existing forwarding or simultaneous-ring routing stops applying.",
+      "claim": "Turning on the feature replaces existing call routing, including the user's existing forwarding or simultaneous-ring setup.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
       "quote": "When Intelligent call delegation is turned on, it replaces the user's existing call routing settings.",
@@ -267,10 +289,10 @@
       "fix": null
     },
     {
-      "n": 23,
+      "n": 25,
       "where": "What's changing; Governance controls; rationale: risk",
       "type": "applicability",
-      "claim": "Teams intelligent call delegation policies control availability and the settings available to users.",
+      "claim": "Teams intelligent call delegation policies control availability and the settings offered to users.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
       "quote": "As an admin, you use Teams intelligent call delegation policies to control whether users in your organization can use Intelligent call delegation, and which settings are available to them.",
@@ -278,10 +300,10 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 26,
       "where": "What's changing; Why it matters",
       "type": "default",
-      "claim": "The feature is enabled by default in the Teams policy.",
+      "claim": "Intelligent call delegation is enabled by default in the Teams policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
       "quote": "By default, Intelligent call delegation is enabled in the policy",
@@ -289,10 +311,10 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "What's changing; Why it matters; Scope; rationale: impact",
+      "n": 27,
+      "where": "What's changing; Why it matters; Scope",
       "type": "behaviour",
-      "claim": "Users with the policy choose whether to turn the feature on in Teams settings.",
+      "claim": "Users with the policy choose whether to turn the feature on in Teams settings after prerequisites are met.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
       "quote": "users with the policy can choose whether to turn it on or off in their Teams settings.",
@@ -300,7 +322,7 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 28,
       "where": "What's changing",
       "type": "default",
       "claim": "Call screening is enabled by default in the policy.",
@@ -311,10 +333,10 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 29,
       "where": "What's changing",
       "type": "default",
-      "claim": "Follow-up scheduling is enabled by default in the policy.",
+      "claim": "Scheduling follow-ups is enabled by default in the policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
       "quote": "Individual settings, such as call screening and scheduling follow-ups, are also enabled by default",
@@ -322,32 +344,32 @@
       "fix": null
     },
     {
-      "n": 28,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Users can change individual settings, including call screening and follow-up scheduling.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
-      "quote": "Individual settings, such as call screening and scheduling follow-ups, are also enabled by default, and users can change them.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Policy settings cover how the attendant speaks.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
-      "quote": "Choose how Intelligent call delegation speaks\nUser's preferred name\nAssistant voice\nLanguage\nConversation tone",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 30,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Users can change the default individual settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
+      "quote": "users can change them. Depending on the setting, users can turn it on or off or choose from available options.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Policy settings cover how the agent speaks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
+      "quote": "Choose how Intelligent call delegation speaks",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
       "where": "What's changing; Risk assessment: Security & identity",
       "type": "applicability",
-      "claim": "An Internal Teams calls policy setting controls answering calls from the same organisation.",
+      "claim": "Internal Teams calls have their own policy setting.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
       "quote": "Internal Teams calls | Controls whether Intelligent call delegation answers calls from users in the same organization.",
@@ -355,10 +377,10 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 33,
       "where": "What's changing; Risk assessment: Security & identity; rationale: risk",
       "type": "applicability",
-      "claim": "A separate Federated Teams calls setting controls answering calls from other organisations.",
+      "claim": "Federated Teams calls can be answered and have a separate policy setting.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
       "quote": "Federated Teams calls | Controls whether Intelligent call delegation answers calls from other organizations.",
@@ -366,10 +388,10 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 34,
       "where": "What's changing; Risk assessment: Security & identity; rationale: risk",
       "type": "applicability",
-      "claim": "A separate External PSTN calls setting controls answering public telephone network calls.",
+      "claim": "External PSTN calls can be answered and have a separate policy setting.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
       "quote": "External PSTN calls | Controls whether Intelligent call delegation answers calls from the public telephone network.",
@@ -377,8 +399,8 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "What's changing; Risk assessment: Data exposure; controls[2]",
+      "n": 35,
+      "where": "What's changing; Risk assessment: Data exposure",
       "type": "applicability",
       "claim": "Calendar integration controls access to the user's personal Bookings calendar for availability checks and follow-up scheduling.",
       "status": "supported",
@@ -388,7 +410,7 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 36,
       "where": "What's changing; Risk assessment: Data exposure",
       "type": "applicability",
       "claim": "Callbacks for people outside the user's contacts controls use of calendar integration for those callers.",
@@ -399,10 +421,10 @@
       "fix": null
     },
     {
-      "n": 35,
-      "where": "What's changing; Risk assessment: Data exposure; controls[3].note",
+      "n": 37,
+      "where": "What's changing; Risk assessment: Data exposure",
       "type": "applicability",
-      "claim": "Automatically save transcription controls whether handled-call transcripts are automatically saved.",
+      "claim": "Automatically save transcription governs automatic transcript saving for handled calls.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
       "quote": "Automatically save transcription | Controls whether transcripts are automatically saved for calls handled by Intelligent call delegation.",
@@ -410,10 +432,10 @@
       "fix": null
     },
     {
-      "n": 36,
-      "where": "What's changing; Risk assessment: Data exposure; controls[3]",
+      "n": 38,
+      "where": "What's changing; Risk assessment: Data exposure",
       "type": "applicability",
-      "claim": "Automatically save recording controls whether handled-call recordings are automatically saved.",
+      "claim": "Automatically save recording governs automatic recording saving for handled calls.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
       "quote": "Automatically save recording | Controls whether recordings are automatically saved for calls handled by Intelligent call delegation.",
@@ -421,40 +443,7 @@
       "fix": null
     },
     {
-      "n": 37,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "Users are notified when the agent answers or takes action.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
-      "quote": "Notify the user when it answers or takes action on a call.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "Users can monitor calls through a live preview.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
-      "quote": "Users can monitor calls through a live preview and join at any time.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 39,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "Users can join an agent-handled call at any time.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
-      "quote": "Users can monitor calls through a live preview and join at any time.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "The agent can provide a post-call summary in call history.",
@@ -465,10 +454,10 @@
       "fix": null
     },
     {
-      "n": 41,
+      "n": 40,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "The agent can schedule callbacks and follow-up meetings while the user is unavailable rather than taking the call.",
+      "claim": "The agent can schedule callbacks and follow-up meetings while the user is unavailable.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
       "quote": "Schedule callbacks and follow-up meetings when the user is unavailable, including after the user returns from out of office.",
@@ -476,10 +465,43 @@
       "fix": null
     },
     {
+      "n": 41,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The user is notified when the agent answers or takes action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
+      "quote": "Notify the user when it answers or takes action on a call.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 42,
-      "where": "What's changing; Why it matters; Risk assessment",
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Users can monitor calls through a live preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
+      "quote": "Users can monitor calls through a live preview and join at any time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Users can join the call at any time.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
+      "quote": "Users can monitor calls through a live preview and join at any time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "What's changing; Why it matters; Risk assessment: Change & support",
       "type": "availability",
-      "claim": "The Learn feature page marks the feature as public preview.",
+      "claim": "The feature's Learn page marks it as public preview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
       "quote": "This feature is currently in public preview.",
@@ -487,10 +509,142 @@
       "fix": null
     },
     {
-      "n": 43,
-      "where": "summary; Why it matters; Cost and licensing; Scope; Governance guidance; Governance controls",
+      "n": 45,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The 3 November notice says the move from Frontier public preview to Ring 3.6 public preview begins as early as 17 November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1537490",
+      "quote": "Intelligent call delegation is moving from Frontier public preview to public preview (Ring 3.6) beginning as early as November 17, 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "MC1537490 gives a Worldwide public preview window of mid-November to mid-December 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1537490",
+      "quote": "Public Preview (Worldwide): Mid-Nov 2026 to Mid Dec 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "What's changing; Scope; Governance guidance: After rollout",
+      "type": "record",
+      "claim": "MC1537490 gives a Worldwide General Availability window of mid-January to late January 2027.",
+      "status": "supported",
+      "source": "Message Center post MC1537490",
+      "quote": "General Availability (Worldwide): Mid-January 2027 to late January 2027.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "Microsoft qualifies these rollout dates as subject to change.",
+      "status": "supported",
+      "source": "Message Center post MC1537490",
+      "quote": "(Dates are subject to change)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The 21 October notice gives Worldwide public preview from mid-November to late November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1519860",
+      "quote": "Public Preview (Worldwide): We will begin rolling out in mid-November 2026 and expect to complete by late November 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "MC1519860 gives Worldwide General Availability beginning in January 2027 and expected completion by late January 2027.",
+      "status": "supported",
+      "source": "Message Center post MC1519860",
+      "quote": "General Availability (Worldwide): We will begin rolling out in January 2027 and expect to complete by late January 2027.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Scope; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "MC1519860 says appropriately licensed users configure the feature under Call Settings, with personalization options depending on administrator configuration.",
+      "status": "supported",
+      "source": "Message Center post MC1519860",
+      "quote": "Once a user is provisioned with the appropriate licensing, users will be enabled to configure Intelligent call delegation under Call Settings.- Depending on admin configuration, users will have configuration options to personalize their intelligent delegate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Why it matters; Risk assessment: Change & support; Governance guidance",
+      "type": "record",
+      "claim": "MC1537490 addresses tenants previously using Frontier preview as well as tenants planning Ring 3.6 use.",
+      "status": "supported",
+      "source": "Message Center post MC1537490",
+      "quote": "Tenants that used Intelligent call delegation during Frontier preview and tenants planning to use it in Ring 3.6 public preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "summary; Cost and licensing; rationale: cost",
+      "type": "record",
+      "claim": "Public preview uses usage-based billing with Copilot Credits.",
+      "status": "supported",
+      "source": "Message Center post MC1537490",
+      "quote": "Public preview uses usage-based billing (UBB) with Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Why it matters; Cost and licensing",
+      "type": "record",
+      "claim": "Billing does not begin until an administrator configures spending in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "Message Center post MC1537490",
+      "quote": "Billing does not begin until an admin configures spending in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "summary; Why it matters; Risk assessment; Governance guidance; rationale: impact",
+      "type": "record",
+      "claim": "Frontier preview tenants lose incoming call screening if spending is not configured.",
+      "status": "supported",
+      "source": "Message Center post MC1537490",
+      "quote": "If spending is not configured, tenants coming from Frontier preview will no longer have incoming calls screened by this feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Why it matters; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not separately stated arrival behavior for non-Frontier tenants without a spending policy.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Intelligent call delegation\" \"spending policy\" \"Frontier\"; \"Intelligent call delegation\" \"no spending policy\". Read feature prerequisites, billing overview and both supplied notices; explicit loss-of-screening wording covers Frontier tenants only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Cost and licensing; Scope; Governance guidance",
       "type": "applicability",
-      "claim": "Usage-based billing and a Microsoft 365 admin center spending policy for this feature are prerequisites separate from its Teams policy.",
+      "claim": "Administrators must set up usage-based billing and create a spending policy for this feature in the Microsoft 365 admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
       "quote": "Admins must set up usage-based billing for Copilot Credits and create a spending policy for Intelligent call delegation in the Microsoft 365 admin center.",
@@ -498,10 +652,10 @@
       "fix": null
     },
     {
-      "n": 44,
-      "where": "Cost and licensing: Meter; Governance guidance; controls[4].note",
+      "n": 58,
+      "where": "Cost and licensing; Governance guidance; controls[4].note",
       "type": "applicability",
-      "claim": "The spending policy should select only Intelligent call delegation under Agents and services.",
+      "claim": "The feature's spending policy should select only Intelligent call delegation under Agents and services and clear other selections.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
       "quote": "When you create the spending policy, under Agents and services, ensure that only Intelligent call delegation is selected. Clear the checkboxes for all other services.",
@@ -509,8 +663,8 @@
       "fix": null
     },
     {
-      "n": 45,
-      "where": "Cost and licensing: Meter; Governance guidance",
+      "n": 59,
+      "where": "Cost and licensing; Governance guidance",
       "type": "applicability",
       "claim": "Administrators should choose the intended user and group scope before assigning the spending policy.",
       "status": "supported",
@@ -520,195 +674,19 @@
       "fix": null
     },
     {
-      "n": 46,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "MC1537490 was published on 3 November 2026.",
-      "status": "supported",
-      "source": "Message Center post MC1537490",
-      "quote": "Published 2026-11-03; last updated 2026-11-03",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "MC1537490 says the transition from Frontier public preview to public preview Ring 3.6 begins as early as 17 November 2026.",
-      "status": "supported",
-      "source": "Message Center post MC1537490",
-      "quote": "Intelligent call delegation is moving from Frontier public preview to public preview (Ring 3.6) beginning as early as November 17, 2026.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
-      "where": "What's changing; Scope",
-      "type": "record",
-      "claim": "MC1537490 gives a Worldwide public preview rollout from mid-November to mid-December 2026, subject to change.",
-      "status": "supported",
-      "source": "Message Center post MC1537490",
-      "quote": "Public Preview (Worldwide): Mid-Nov 2026 to Mid Dec 2026.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "What's changing; Scope; Governance guidance; Open questions",
-      "type": "record",
-      "claim": "MC1537490 targets Worldwide General Availability from mid-January to late January 2027, subject to change.",
-      "status": "supported",
-      "source": "Message Center post MC1537490",
-      "quote": "General Availability (Worldwide): Mid-January 2027 to late January 2027. (Dates are subject to change)",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "MC1519860 was published on 21 October 2026.",
-      "status": "supported",
-      "source": "Message Center post MC1519860",
-      "quote": "Published 2026-10-21; last updated 2026-10-21",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 51,
-      "where": "What's changing; Scope",
-      "type": "record",
-      "claim": "MC1519860 targets Worldwide public preview from mid-November to late November 2026.",
-      "status": "supported",
-      "source": "Message Center post MC1519860",
-      "quote": "Public Preview (Worldwide): We will begin rolling out in mid-November 2026 and expect to complete by late November 2026.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
-      "where": "What's changing; Scope",
-      "type": "record",
-      "claim": "MC1519860 targets Worldwide General Availability beginning in January 2027 and completing by late January 2027.",
-      "status": "supported",
-      "source": "Message Center post MC1519860",
-      "quote": "General Availability (Worldwide): We will begin rolling out in January 2027 and expect to complete by late January 2027.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "Why it matters; Cost and licensing: Meter",
-      "type": "record",
-      "claim": "MC1537490 says public preview uses Copilot Credits usage-based billing, which does not begin until an administrator configures spending.",
-      "status": "supported",
-      "source": "Message Center post MC1537490",
-      "quote": "Public preview uses usage-based billing (UBB) with Copilot Credits.- Billing does not begin until an admin configures spending in the Microsoft 365 admin center.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "Why it matters; Risk assessment: Change & support; Governance guidance; rationale: impact",
-      "type": "record",
-      "claim": "Tenants coming from Frontier preview lose incoming-call screening if spending is not configured.",
-      "status": "supported",
-      "source": "Message Center post MC1537490",
-      "quote": "If spending is not configured, tenants coming from Frontier preview will no longer have incoming calls screened by this feature.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
-      "where": "front matter: licensing.notes; Cost and licensing: Licence",
-      "type": "record",
-      "claim": "MC1537490 asks administrators to confirm Microsoft 365 Copilot USL licensing where required.",
-      "status": "supported",
-      "source": "Message Center post MC1537490",
-      "quote": "Confirm users are licensed with Microsoft 365 Copilot USL where required.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "Scope: Users; Governance guidance: At rollout",
-      "type": "record",
-      "claim": "MC1519860 says appropriately licensed users configure the feature under Call Settings, with options depending on admin configuration.",
-      "status": "supported",
-      "source": "Message Center post MC1519860",
-      "quote": "Once a user is provisioned with the appropriate licensing, users will be enabled to configure Intelligent call delegation under Call Settings.- Depending on admin configuration, users will have configuration options to personalize their intelligent delegate.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
-      "where": "What's changing; Governance guidance: Before rollout",
-      "type": "record",
-      "claim": "Microsoft's notice identifies Personal attendant policies as the administrative configuration mechanism.",
-      "status": "supported",
-      "source": "Message Center post MC1519860",
-      "quote": "Admins will be enabled with Personal attendant policies that allow them to configure Intelligent call delegation settings for their users.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 58,
-      "where": "Why it matters; Open questions",
-      "type": "absence",
-      "claim": "Microsoft does not state the arrival behaviour for non-Frontier tenants without a spending policy beyond documenting the spending-policy prerequisite.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Intelligent call delegation\" \"spending policy\" \"without\". Read feature prerequisites and management sections, UBB overview and spending-policy guidance, and both supplied notices; none describes that non-Frontier arrival case.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 59,
-      "where": "Cost and licensing: Licence",
-      "type": "absence",
-      "claim": "The feature page does not further define which Microsoft Copilot licences count.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Intelligent call delegation\" \"license\" prerequisites. Read the entire feature page: its sole licence prerequisite is \"Users must have a Microsoft Copilot license\", without a plan or SKU breakdown.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 60,
-      "where": "Cost and licensing: Not yet published; Open questions",
-      "type": "absence",
-      "claim": "Billing arrangements specifically at General Availability have not yet been published.",
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "The variable cost rating reflects metered Copilot Credit consumption.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Intelligent call delegation\" \"General Availability\" \"billing\"; credits rate pricing. Read feature and UBB overview pages and both notices: preview billing is stated, but no GA-specific billing terms or change is stated.",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
+      "quote": "Intelligent call delegation uses usage-based billing with Copilot Credits.",
       "severity": null,
       "fix": null
     },
     {
       "n": 61,
-      "where": "Open questions: recordings and transcripts",
-      "type": "absence",
-      "claim": "The Learn feature page names recording and transcription controls but not their storage location.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Intelligent call delegation\" recordings transcripts stored access. Read the entire feature page and returned policy-setting excerpt; they describe automatic saving but give no storage location or access rules.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 62,
-      "where": "Cost and licensing: Meter",
-      "type": "applicability",
-      "claim": "The usage-based billing overview lists Teams: Intelligent Call Delegation among supported services.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits",
-      "quote": "Services managed by usage-based billing in the Microsoft admin center now include:\nTeams: Intelligent Call Delegation",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 63,
-      "where": "Cost and licensing: Limits; Governance guidance",
+      "where": "Cost and licensing: Limits",
       "type": "cost",
       "claim": "A limited monthly budget limits the credits a spending policy can spend each month.",
       "status": "supported",
@@ -718,10 +696,10 @@
       "fix": null
     },
     {
-      "n": 64,
+      "n": 62,
       "where": "Cost and licensing: Limits",
       "type": "cost",
-      "claim": "Users who hit a spending-policy limit lose access to agents and services for the rest of the month.",
+      "claim": "Users hitting the limit lose access to agents and services for the rest of the month.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
       "quote": "When users hit the limit, they lose access to agents and services for the rest of the month until credits reset on the first of the month.",
@@ -729,10 +707,10 @@
       "fix": null
     },
     {
-      "n": 65,
+      "n": 63,
       "where": "Cost and licensing: Limits",
       "type": "cost",
-      "claim": "Spending-policy credits reset on the first of the month.",
+      "claim": "Credits reset on the first of the month under the spending-policy limits guidance.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
       "quote": "until credits reset on the first of the month.",
@@ -740,10 +718,10 @@
       "fix": null
     },
     {
-      "n": 66,
+      "n": 64,
       "where": "Cost and licensing: Limits",
       "type": "cost",
-      "claim": "The spending-policy page gives general guidance to set at least 2,000 credits per user per month.",
+      "claim": "The spending-policy page's general per-user monthly limit guidance is at least 2,000 credits.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
       "quote": "Monthly budget limit for users: Set at least 2,000 credits per user per month",
@@ -751,7 +729,7 @@
       "fix": null
     },
     {
-      "n": 67,
+      "n": 65,
       "where": "Cost and licensing: Limits",
       "type": "cost",
       "claim": "A spending policy uses prepaid credits before pay-as-you-go.",
@@ -762,32 +740,153 @@
       "fix": null
     },
     {
-      "n": 68,
-      "where": "Governance guidance: At rollout",
-      "type": "applicability",
-      "claim": "Turning off Auto-apply new services prevents newly supported services from being automatically added to the spending policy.",
+      "n": 66,
+      "where": "Cost and licensing: Not yet published; Open questions",
+      "type": "absence",
+      "claim": "Feature-specific billing arrangements for General Availability are not yet published.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
-      "quote": "When the setting is off, future services and agents aren't automatically included. Administrators must review and add the new services and agents to the policy.",
+      "source": null,
+      "quote": "Searched: \"Intelligent call delegation\" \"General Availability\" billing; \"Intelligent call delegation\" billing general availability January 2027 pricing. Read feature page, billing overview and supplied notices; published feature billing describes the public preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Cost and licensing: Licence",
+      "type": "absence",
+      "claim": "The feature page does not further define which licences count beyond its Microsoft Copilot licence prerequisite.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Intelligent call delegation\" \"Which licenses\". Read the complete Manage Intelligent call delegation feature page, particularly Prerequisites; it requires a Microsoft Copilot license without defining qualifying SKUs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Open questions: saved recordings and transcripts",
+      "type": "absence",
+      "claim": "The feature's Learn page names recording and transcription settings but not storage location or access permissions.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Intelligent call delegation\" recordings transcripts stored access. Read complete feature page and search excerpts; its Policy settings table describes saving recordings/transcripts, not storage location or access permissions.",
       "severity": null,
       "fix": null
     },
     {
       "n": 69,
-      "where": "Governance guidance: After rollout",
+      "where": "controls[0].ui",
       "type": "admin-path",
-      "claim": "Copilot > Cost Management in the Microsoft 365 admin center provides credit consumption monitoring against spending limits.",
+      "claim": "The availability switch is at Teams admin center > Voice > Intelligent call delegation policies > policy > General > Enable Intelligent call delegation.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits",
-      "quote": "In the Microsoft admin center, Copilot > Cost management, admins can monitor Copilot Credit consumption and manage spending associated with the supported services",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
+      "quote": "go to Voice > Intelligent call delegation policies. Select an existing policy or create a new one. Under General, turn Enable Intelligent call delegation on or off.",
       "severity": null,
       "fix": null
     },
     {
       "n": 70,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "Set-CsTeamsPersonalAttendantPolicy -Identity <policy name> -PersonalAttendant Disabled disables personal attendant for users with that policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamspersonalattendantpolicy",
+      "quote": "Set-CsTeamsPersonalAttendantPolicy\n    [-Identity <string>]\n    [-PersonalAttendant <string>]\n-PersonalAttendant\nEnables the user to use the personal attendant\nDisabled: The user is not enabled to use this functionality.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "The PSTN caller control is at Teams admin center > Voice > Intelligent call delegation policies > policy > Choose which calls Intelligent call delegation answers > External PSTN calls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
+      "quote": "go to Voice > Intelligent call delegation policies. Select an existing policy or create a new one. Choose which calls Intelligent call delegation answers; External PSTN calls",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "Set-CsTeamsPersonalAttendantPolicy -Identity <policy name> -InboundPSTNCalls Disabled disables personal attendant for incoming PSTN calls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamspersonalattendantpolicy",
+      "quote": "[-Identity <string>]\n[-InboundPSTNCalls <string>]\n-InboundPSTNCalls\nEnables the user to use the personal attendant for incoming PSTN calls\nDisabled: The user is not enabled to use this functionality.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "Calendar access is at Teams admin center > Voice > Intelligent call delegation policies > policy > Choose what Intelligent call delegation can do > Calendar integration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
+      "quote": "go to Voice > Intelligent call delegation policies. Select an existing policy or create a new one. Choose what Intelligent call delegation can do; Calendar integration",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "Set-CsTeamsPersonalAttendantPolicy -Identity <policy name> -CalendarBookings Disabled disables the personal attendant calendar functionality.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamspersonalattendantpolicy",
+      "quote": "Set-CsTeamsPersonalAttendantPolicy -Identity SalesPersonalAttendantPolicy -CalendarBookings Disabled\nSets the value of the parameter CalendarBookings to Disabled in the Teams Personal Attendant Policy instance called SalesPersonalAttendantPolicy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "Automatic recording is at Teams admin center > Voice > Intelligent call delegation policies > policy > Manage recording and transcription > Automatically save recording.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
+      "quote": "go to Voice > Intelligent call delegation policies. Select an existing policy or create a new one. Manage recording and transcription; Automatically save recording",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "controls[3].api",
+      "type": "command",
+      "claim": "Set-CsTeamsPersonalAttendantPolicy -Identity <policy name> -AutomaticRecording Disabled disables automatic saving of personal attendant call recordings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamspersonalattendantpolicy",
+      "quote": "[-Identity <string>]\n[-AutomaticRecording <string>]\n-AutomaticRecording\nEnables the user to use the automatic storing of personal attendant call recordings\nDisabled: The user is not enabled to use this functionality.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "controls[4].ui",
+      "type": "admin-path",
+      "claim": "Spending limits are at Microsoft 365 admin center > Copilot > Cost Management > Configuration > policy > Spending limits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "go to Copilot > Cost Management. Select the Configuration tab. Select the spending policy you want to edit. The spending policy details fly-out opens, where you can modify its settings. This includes: Scope; Agents and services; Billing method; Spending limits",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "controls[4].api",
+      "type": "command",
+      "claim": "PATCH /beta/copilot/costManagement/spendingPolicies/{id} can update spending limits through periodLimit or perUserLimit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "PATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/3f9e2c1a-0000-0000-0000-00000000c21b\nThe following properties can be updated: displayName, periodLimit, perUserLimit, and billingMethods.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
       "where": "controls[0].note; Risk assessment: Change & support; Governance controls; Open questions",
       "type": "availability",
-      "claim": "The Teams personal attendant policy cmdlet reference retains a Limited Preview banner.",
+      "claim": "The Set-CsTeamsPersonalAttendantPolicy reference still carries a Limited Preview banner.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamspersonalattendantpolicy",
       "quote": "Limited Preview: Functionality described in this document is currently in limited preview and only authorized organizations have access.",
@@ -795,30 +894,8 @@
       "fix": null
     },
     {
-      "n": 71,
-      "where": "Governance controls",
-      "type": "command",
-      "claim": "The feature page lists New, Set, Get, Grant and Remove-CsTeamsPersonalAttendantPolicy for policy management.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
-      "quote": "New-CsTeamsPersonalAttendantPolicy\nSet-CsTeamsPersonalAttendantPolicy\nGet-CsTeamsPersonalAttendantPolicy\nGrant-CsTeamsPersonalAttendantPolicy\nRemove-CsTeamsPersonalAttendantPolicy",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 72,
-      "where": "Governance controls",
-      "type": "absence",
-      "claim": "The Learn feature page does not provide a parameter pairing for every portal setting.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched the feature page's complete Policy settings and Use PowerShell sections for parameter pairings; the sole command example names CalendarBookings, while other portal settings are listed without parameter mappings.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 73,
-      "where": "controls[0].note; Governance controls; Governance guidance",
+      "n": 80,
+      "where": "controls[0].note; Governance controls; Governance guidance: At rollout",
       "type": "command",
       "claim": "Grant-CsTeamsPersonalAttendantPolicy assigns a policy to users or groups.",
       "status": "supported",
@@ -828,43 +905,32 @@
       "fix": null
     },
     {
-      "n": 74,
+      "n": 81,
       "where": "controls[1].note",
       "type": "command",
-      "claim": "Set-CsTeamsPersonalAttendantPolicy -InboundFederatedCalls configures handling of incoming federated calls.",
+      "claim": "The MicrosoftTeams Set cmdlet exposes InboundFederatedCalls and InboundInternalCalls for the other caller types, with EnabledUserOverride, Enabled and Disabled values.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamspersonalattendantpolicy",
-      "quote": "-InboundFederatedCalls\nEnables the user to use the personal attendant for incoming calls from other domains",
+      "quote": "-InboundFederatedCalls: Enables the user to use the personal attendant for incoming calls from other domains. -InboundInternalCalls: Enables the user to use the personal attendant for incoming domain calls. Possible values: EnabledUserOverride; Enabled; Disabled.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 75,
-      "where": "controls[1].note",
+      "n": 82,
+      "where": "controls[2].note",
       "type": "command",
-      "claim": "Set-CsTeamsPersonalAttendantPolicy -InboundInternalCalls configures handling of incoming internal calls.",
+      "claim": "The feature page's New-CsTeamsPersonalAttendantPolicy example uses CalendarBookings Disabled to disable calendar integration.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamspersonalattendantpolicy",
-      "quote": "-InboundInternalCalls\nEnables the user to use the personal attendant for incoming domain calls",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
+      "quote": "The following command creates a new policy named SalesPersonalAttendantPolicy with calendar integration for scheduling follow-ups disabled.\nNew-CsTeamsPersonalAttendantPolicy -Identity SalesPersonalAttendantPolicy -CalendarBookings Disabled",
       "severity": null,
       "fix": null
     },
     {
-      "n": 76,
-      "where": "controls[1].note",
-      "type": "command",
-      "claim": "The incoming-call policy parameters accept EnabledUserOverride, Enabled and Disabled.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamspersonalattendantpolicy",
-      "quote": "Possible values:\nEnabledUserOverride: Users can set their preferences from personal attendant settings in the Teams app.\nEnabled: Enables the user to use this functionality.\nDisabled: The user is not enabled to use this functionality.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 77,
+      "n": 83,
       "where": "controls[3].note",
       "type": "command",
-      "claim": "Set-CsTeamsPersonalAttendantPolicy -AutomaticTranscription controls automatic transcript storage.",
+      "claim": "AutomaticTranscription is the Set cmdlet parameter for automatic transcript saving.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamspersonalattendantpolicy",
       "quote": "-AutomaticTranscription\nEnables the user to use the automatic storing of personal attendant call transcriptions",
@@ -872,142 +938,76 @@
       "fix": null
     },
     {
-      "n": 78,
-      "where": "controls[2].note",
+      "n": 84,
+      "where": "controls[4].note; Governance controls",
       "type": "command",
-      "claim": "The Learn feature page demonstrates disabling calendar integration with New-CsTeamsPersonalAttendantPolicy -CalendarBookings Disabled.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
-      "quote": "New-CsTeamsPersonalAttendantPolicy -Identity SalesPersonalAttendantPolicy -CalendarBookings Disabled",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 79,
-      "where": "Governance controls",
-      "type": "command",
-      "claim": "The beta spending-policy update reference lists displayName, periodLimit, perUserLimit and billingMethods as updatable properties.",
+      "claim": "The spending-policy update API is beta and lists displayName, periodLimit, perUserLimit and billingMethods as updatable properties.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
-      "quote": "The following properties can be updated: displayName, periodLimit, perUserLimit, and billingMethods.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 80,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Teams admin center > Voice > Intelligent call delegation policies > policy > General > Enable Intelligent call delegation reaches the availability control.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
-      "quote": "In the left navigation of the Teams admin center, go to Voice > Intelligent call delegation policies.\nSelect an existing policy or create a new one.\nUnder General, turn Enable Intelligent call delegation on or off.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 81,
-      "where": "controls[0].api; Governance controls table",
-      "type": "command",
-      "claim": "Set-CsTeamsPersonalAttendantPolicy -Identity <policy name> -PersonalAttendant Disabled disables access under that policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamspersonalattendantpolicy",
-      "quote": "Set-CsTeamsPersonalAttendantPolicy\n[-Identity <string>]\n[-PersonalAttendant <string>]\n-PersonalAttendant\nEnables the user to use the personal attendant\nDisabled: The user is not enabled to use this functionality.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 82,
-      "where": "controls[1].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Teams admin center > Voice > Intelligent call delegation policies > policy > Choose which calls Intelligent call delegation answers > External PSTN calls reaches the PSTN control.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
-      "quote": "go to Voice > Intelligent call delegation policies.\nSelect an existing policy or create a new one.\nChoose which calls Intelligent call delegation answers\nExternal PSTN calls | Controls whether Intelligent call delegation answers calls from the public telephone network.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 83,
-      "where": "controls[1].api; Governance controls table",
-      "type": "command",
-      "claim": "Set-CsTeamsPersonalAttendantPolicy -Identity <policy name> -InboundPSTNCalls Disabled disables the attendant for PSTN calls.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamspersonalattendantpolicy",
-      "quote": "-InboundPSTNCalls\nEnables the user to use the personal attendant for incoming PSTN calls\nDisabled: The user is not enabled to use this functionality.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 84,
-      "where": "controls[2].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Teams admin center > Voice > Intelligent call delegation policies > policy > Choose what Intelligent call delegation can do > Calendar integration reaches the Bookings control.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
-      "quote": "go to Voice > Intelligent call delegation policies.\nSelect an existing policy or create a new one.\nChoose what Intelligent call delegation can do\nCalendar integration | Controls whether Intelligent call delegation can access the user's personal Bookings calendar",
+      "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported. The following properties can be updated: displayName, periodLimit, perUserLimit, and billingMethods.",
       "severity": null,
       "fix": null
     },
     {
       "n": 85,
-      "where": "controls[2].api; Governance controls table",
-      "type": "command",
-      "claim": "Set-CsTeamsPersonalAttendantPolicy -Identity <policy name> -CalendarBookings Disabled disables the policy's calendar functionality.",
+      "where": "controls[4].note",
+      "type": "admin-path",
+      "claim": "The spending-policy creation entry point is + Add spending policy under Copilot > Cost Management > Configuration.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamspersonalattendantpolicy",
-      "quote": "Set-CsTeamsPersonalAttendantPolicy -Identity SalesPersonalAttendantPolicy -CalendarBookings Disabled\nSets the value of the parameter CalendarBookings to Disabled in the Teams Personal Attendant Policy instance called SalesPersonalAttendantPolicy.",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "In the Microsoft 365 admin center, go to Copilot > Cost Management. Select the Configuration tab and then select + Add spending policy.",
       "severity": null,
       "fix": null
     },
     {
       "n": 86,
-      "where": "controls[3].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Teams admin center > Voice > Intelligent call delegation policies > policy > Manage recording and transcription > Automatically save recording reaches the recording control.",
+      "where": "Cost and licensing: Meter; Governance controls",
+      "type": "applicability",
+      "claim": "The usage-based billing overview lists Teams: Intelligent Call Delegation among services governed through spending policies.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
-      "quote": "go to Voice > Intelligent call delegation policies.\nSelect an existing policy or create a new one.\nManage recording and transcription\nAutomatically save recording | Controls whether recordings are automatically saved for calls handled by Intelligent call delegation.",
+      "source": "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits",
+      "quote": "Services managed by usage-based billing in the Microsoft admin center now include: Teams: Intelligent Call Delegation",
       "severity": null,
       "fix": null
     },
     {
       "n": 87,
-      "where": "controls[3].api; Governance controls table",
-      "type": "command",
-      "claim": "Set-CsTeamsPersonalAttendantPolicy -Identity <policy name> -AutomaticRecording Disabled disables automatic recording storage under that policy.",
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The feature page lists New, Set, Get, Grant and Remove-CsTeamsPersonalAttendantPolicy without giving a parameter pairing for every portal setting.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamspersonalattendantpolicy",
-      "quote": "-AutomaticRecording\nEnables the user to use the automatic storing of personal attendant call recordings\nDisabled: The user is not enabled to use this functionality.",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation",
+      "quote": "New-CsTeamsPersonalAttendantPolicy\nSet-CsTeamsPersonalAttendantPolicy\nGet-CsTeamsPersonalAttendantPolicy\nGrant-CsTeamsPersonalAttendantPolicy\nRemove-CsTeamsPersonalAttendantPolicy",
       "severity": null,
       "fix": null
     },
     {
       "n": 88,
-      "where": "controls[4].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Microsoft 365 admin center > Copilot > Cost Management > Configuration > policy > Spending limits reaches policy spending limits.",
+      "where": "Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "Turning off Auto-apply new services prevents future supported services and agents from automatically joining the spending policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
-      "quote": "go to Copilot > Cost Management.\nSelect the Configuration tab.\nSelect the spending policy you want to edit.\nThe spending policy details fly-out opens, where you can modify its settings.\nSpending limits",
+      "quote": "When the setting is off, future services and agents aren't automatically included. Administrators must review and add the new services and agents to the policy.",
       "severity": null,
       "fix": null
     },
     {
       "n": 89,
-      "where": "controls[4].api; controls[4].note; Governance controls table",
-      "type": "command",
-      "claim": "PATCH /beta/copilot/costManagement/spendingPolicies/{id} updates spending limits through periodLimit or perUserLimit.",
+      "where": "Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "Copilot > Cost Management provides credit-consumption review against spending limits and alert thresholds.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
-      "quote": "PATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/3f9e2c1a-0000-0000-0000-00000000c21b\nThe following properties can be updated: displayName, periodLimit, perUserLimit, and billingMethods.",
+      "source": "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits",
+      "quote": "In the Microsoft admin center, Copilot > Cost management, admins can monitor Copilot Credit consumption and manage spending associated with the supported services",
       "severity": null,
       "fix": null
     },
     {
       "n": 90,
-      "where": "Governance guidance: At rollout; controls",
+      "where": "Governance guidance: At rollout; Governance controls",
       "type": "consistency",
-      "claim": "Every control the governance checklist tells readers to configure is represented in the controls table.",
+      "claim": "Every control the governance checklist tells readers to configure appears in the controls table.",
       "status": "contradicted",
       "source": "page",
       "quote": "Checklist: \"Switch off Auto-apply new services on the spending policy\". The spending-policy table row governs \"Spending limits\" and contains no Auto-apply new services setting.",
@@ -1016,7 +1016,7 @@
     }
   ],
   "precheck": {
-    "at": "2026-11-20T14:41:00.281Z",
+    "at": "2026-11-27T14:21:35.244Z",
     "summary": {
       "links": 9,
       "unreachable": 0,
@@ -1197,6 +1197,12 @@
       "date": "2026-11-20",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-20",
+      "status": "verified-with-gaps",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

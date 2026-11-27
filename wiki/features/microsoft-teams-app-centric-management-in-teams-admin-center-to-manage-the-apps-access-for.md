@@ -84,15 +84,17 @@ changes:
     note: "Corrected after verification: Learn describes automatic migration, so the default is on and action is act-now; trimmed checklist items without a controls row; added the omitted heading to the availability path."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 70 statements confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 73 statements confirmed"
 version: 2
 verification:
   status: "verified"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 70
-  confirmed: 70
+  claims: 73
+  confirmed: 73
   unconfirmed: 0
   contradicted: 0
   attempts: 0

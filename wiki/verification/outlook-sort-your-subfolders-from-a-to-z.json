@@ -2,40 +2,33 @@
   "slug": "outlook-sort-your-subfolders-from-a-to-z",
   "roadmapId": 579186,
   "title": "Outlook: sort a folder's subfolders from A to Z in new Outlook for Windows and Outlook on the web",
-  "status": "held",
+  "status": "verified",
   "date": "2026-11-27",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-27",
-    "reasons": [
-      "2 blocking findings (claims 28, 33)",
-      "4 major findings"
-    ]
-  },
+  "hold": null,
   "counts": {
     "claims": 35,
-    "confirmed": 29,
-    "unconfirmed": 6,
+    "confirmed": 35,
+    "unconfirmed": 0,
     "contradicted": 0,
-    "blocker": 2,
-    "major": 4,
+    "blocker": 0,
+    "major": 0,
     "minor": 0
   },
-  "summary": "Hold: the briefing turns a planned user action into unsupported guarantees about whose folder order can change and whether any administrator role is involved. The roadmap dates and scope match, and the cited licensing guidance is accurate, but the assurances about permissions, retention, storage and mail actions also go beyond the published description.",
+  "summary": "The briefing passes: its planned behaviour, rollout target and scope agree with the roadmap, and its licensing statements match Microsoft Learn. Searches found no documented administrative control for this sorting option; the briefing appropriately leaves custom-order replacement, shared-mailbox support and cross-client persistence open.",
   "claims": [
     {
       "n": 1,
-      "where": "summary; What's changing; Governance guidance",
+      "where": "title; summary; What's changing; Risk assessment; rationale: risk",
       "type": "record",
-      "claim": "Microsoft plans to let users sort a folder's subfolders alphabetically from the parent folder.",
+      "claim": "Microsoft plans alphabetical A-to-Z sorting of a folder's subfolders.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "You'll be able to sort a folder's subfolders alphabetically from the parent folder.",
@@ -44,20 +37,42 @@
     },
     {
       "n": 2,
-      "where": "What's changing",
+      "where": "summary; What's changing; Why it matters; Governance guidance",
       "type": "record",
-      "claim": "The roadmap says this avoids rearranging subfolders individually and helps organize long folder lists.",
+      "claim": "The planned sorting action is initiated by the user from the parent folder.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "This makes it easier to find the folder you need without rearranging subfolders one by one. It's a simple way to keep long folder lists organized.",
+      "quote": "You'll be able to sort a folder's subfolders alphabetically from the parent folder.",
       "severity": null,
       "fix": null
     },
     {
       "n": 3,
-      "where": "title; What's changing; Scope: Clients",
+      "where": "What's changing; Why it matters",
       "type": "record",
-      "claim": "The item is tagged for new Outlook for Windows.",
+      "claim": "The roadmap describes sorting as avoiding rearranging subfolders one by one.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This makes it easier to find the folder you need without rearranging subfolders one by one.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says the change helps keep long folder lists organized.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "It's a simple way to keep long folder lists organized.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "title; summary; What's changing; Scope: Clients",
+      "type": "record",
+      "claim": "The item concerns new Outlook for Windows.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "#newoutlookforwindows",
@@ -65,21 +80,10 @@
       "fix": null
     },
     {
-      "n": 4,
-      "where": "title; summary; Scope: Clients",
-      "type": "record",
-      "claim": "The planned Outlook change includes the web client.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\"Outlook\"], \"platforms\": [\"Desktop\", \"Web\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
+      "n": 6,
       "where": "front matter: platforms; What's changing; Scope: Clients",
       "type": "record",
-      "claim": "The listed platforms are Desktop and Web.",
+      "claim": "Desktop is a listed platform.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Desktop\", \"Web\"]",
@@ -87,7 +91,18 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 7,
+      "where": "title; summary; front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Web, supporting the briefing's planned Outlook-on-the-web scope.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Outlook\"], \"platforms\": [\"Desktop\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is In development.",
@@ -98,7 +113,18 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 9,
+      "where": "front matter: targetDate; What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "The target is February CY2027, not a committed rollout date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"February CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
       "where": "front matter: releasePhase; What's changing; Scope: Rollout",
       "type": "record",
       "claim": "The release phase is General Availability.",
@@ -109,18 +135,7 @@
       "fix": null
     },
     {
-      "n": 8,
-      "where": "front matter: targetDate; What's changing; Scope: Rollout",
-      "type": "record",
-      "claim": "General Availability is targeted for February CY2027.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"targetDate\": \"February CY2027\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
+      "n": 11,
       "where": "front matter: clouds; What's changing; Scope: Clouds",
       "type": "record",
       "claim": "The record lists Worldwide (Standard Multi-Tenant).",
@@ -131,18 +146,7 @@
       "fix": null
     },
     {
-      "n": 10,
-      "where": "front matter: previewDate",
-      "type": "record",
-      "claim": "The record supplies no preview date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": null",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
+      "n": 12,
       "where": "front matter: roadmapModified",
       "type": "record",
       "claim": "The roadmap modification timestamp is 2026-11-11T00:56:01.",
@@ -153,10 +157,21 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 13,
       "where": "Scope: Clients",
       "type": "record",
-      "claim": "The roadmap does not mention classic Outlook, Outlook for Mac or Outlook mobile.",
+      "claim": "The roadmap does not name classic Outlook for Windows, Outlook for Mac or Outlook mobile.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Web\"]; description ends \"#newoutlookforwindows\".",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "Why it matters; Risk assessment: Data exposure and Security & identity; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap describes sorting, not changes to folder or mailbox access permissions.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "You'll be able to sort a folder's subfolders alphabetically from the parent folder. This makes it easier to find the folder you need without rearranging subfolders one by one. It's a simple way to keep long folder lists organized. #newoutlookforwindows",
@@ -164,10 +179,109 @@
       "fix": null
     },
     {
-      "n": 13,
-      "where": "front matter: defaultState; summary",
+      "n": 15,
+      "where": "Why it matters",
+      "type": "record",
+      "claim": "The roadmap does not describe retention changes.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "You'll be able to sort a folder's subfolders alphabetically from the parent folder. This makes it easier to find the folder you need without rearranging subfolders one by one. It's a simple way to keep long folder lists organized. #newoutlookforwindows",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "Why it matters",
+      "type": "record",
+      "claim": "The roadmap does not describe mail-storage changes.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "You'll be able to sort a folder's subfolders alphabetically from the parent folder. This makes it easier to find the folder you need without rearranging subfolders one by one. It's a simple way to keep long folder lists organized. #newoutlookforwindows",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The roadmap says nothing about changes to sign-in.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "You'll be able to sort a folder's subfolders alphabetically from the parent folder. This makes it easier to find the folder you need without rearranging subfolders one by one. It's a simple way to keep long folder lists organized. #newoutlookforwindows",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The roadmap says nothing about delegation changes.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "You'll be able to sort a folder's subfolders alphabetically from the parent folder. This makes it easier to find the folder you need without rearranging subfolders one by one. It's a simple way to keep long folder lists organized. #newoutlookforwindows",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes no mail action beyond the stated subfolder sorting.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "You'll be able to sort a folder's subfolders alphabetically from the parent folder. This makes it easier to find the folder you need without rearranging subfolders one by one. It's a simple way to keep long folder lists organized. #newoutlookforwindows",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn has not yet documented this particular planned parent-folder subfolder-sorting feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook 579186; Outlook subfolders sort A to Z. Read search excerpts, Policy Management in new Outlook, and Graph mailFolder. Results concern existing folder ordering, message sorting or community answers, not documentation for this roadmap feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Risk assessment: Change & support; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated whether this planned sort replaces an existing custom subfolder order.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook subfolders order shared custom; Outlook subfolders sort licensing shared mailbox custom order. Read roadmap, Learn search excerpts and Graph mailFolder. No feature-specific statement about replacing a custom order was found; community answers discuss other sorting experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated whether this planned sorting option applies to shared mailboxes.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook subfolders sort licensing shared mailbox custom order; Outlook subfolders order shared custom. Read roadmap, shared-mailbox search excerpts and Graph mailFolder. None establishes shared-mailbox support for this planned sorting option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated whether this planned sort order carries across Outlook clients.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook subfolders order shared custom; Outlook sort subfolders A to Z folder order shared mailbox admin policy licensing. Read roadmap, search excerpts and Graph mailFolder. No feature-specific persistence or cross-client synchronization statement was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "front matter: defaultState; summary; Scope: Users; rationale: impact",
       "type": "default",
-      "claim": "The capability is user-opt-in: the roadmap describes sorting as a user action, with no documented administrator enablement switch.",
+      "claim": "The feature is user-opt-in: sorting is an action each user chooses to perform.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "You'll be able to sort a folder's subfolders alphabetically from the parent folder.",
@@ -175,10 +289,21 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 25,
       "where": "front matter: licensing.model; Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "The included licensing model uses Outlook's existing product entitlement rather than a published feature-specific licence.",
+      "claim": "The included licensing model uses Outlook's existing product licensing for this new option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options",
+      "quote": "For example, a Business Standard or Business Premium plan provides access to a Microsoft 365 email address and the desktop versions of Outlook and other Microsoft 365 apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Using classic or new Outlook for Windows with a Microsoft 365 organizational email address requires a plan that includes desktop Microsoft 365 apps.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options",
       "quote": "To use the Outlook for Windows desktop app (either the classic or new version) with a Microsoft 365 organizational email address, you need to purchase a plan that includes the desktop versions of the Microsoft 365 apps.",
@@ -186,21 +311,10 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 27,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "Desktop Outlook with a Microsoft 365 organizational email address requires a plan including desktop Microsoft 365 apps.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options",
-      "quote": "To use the Outlook for Windows desktop app (either the classic or new version) with a Microsoft 365 organizational email address, you need to purchase a plan that includes the desktop versions of the Microsoft 365 apps.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "Business Basic provides web and mobile Outlook access.",
+      "claim": "Business Basic provides access through web and mobile Outlook.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options",
       "quote": "The Business Basic plan provides access to productivity tools through the web and mobile versions of Outlook and Microsoft 365.",
@@ -208,10 +322,10 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 28,
       "where": "Scope: Users",
       "type": "licensing",
-      "claim": "Microsoft 365 Frontline users must use web and mobile Outlook, making the web client their relevant listed platform.",
+      "claim": "Microsoft's licensing page requires users with Microsoft 365 Frontline licenses to use web and mobile Outlook.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options",
       "quote": "Can Microsoft 365 accounts with a Frontline license be added to new Outlook? No. ... Users with these licenses are required to use the web and mobile versions of Outlook and Microsoft 365 apps.",
@@ -219,109 +333,65 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "What's changing; front matter: confidence",
-      "type": "absence",
-      "claim": "No Microsoft Learn product documentation describing this planned parent-folder sorting feature was found.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Outlook sort subfolders A to Z parent folder custom order shared mailboxes sync; \"sort\" \"subfolders\" \"new Outlook\". Read policy-management and search results: general folder APIs and community answers, not product documentation of this planned feature.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "What's changing; Risk assessment: Change & support; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not documented whether this planned sort replaces a custom subfolder order or allows restoration.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Outlook sort subfolders A to Z parent folder custom order shared mailboxes sync. Read roadmap, policy-management and results; community discussion of existing sorting does not establish replacement or restoration behavior for this planned feature.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "What's changing; Open questions",
-      "type": "absence",
-      "claim": "Shared-mailbox and additional-account support for the planned parent-folder sort is not documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Outlook sort subfolders A to Z parent folder custom order shared mailboxes sync. Read roadmap, licensing-options, policy-management and results; none states shared-mailbox or additional-account support for this planned sort.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "What's changing; Open questions",
-      "type": "absence",
-      "claim": "Persistence and cross-client synchronization of this planned sort order are not documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Outlook sort subfolders A to Z parent folder custom order shared mailboxes sync. Read roadmap, mailFolder reference and results; community reports about existing mobile sorting do not document persistence of this planned feature.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
+      "n": 29,
       "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "absence",
-      "claim": "No licence specific to this feature is published.",
+      "claim": "No license specific to this subfolder-sorting feature is published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Outlook sort subfolders alphabetically licensing price meter; \"sort subfolders\" \"licensing\". Opened licensing-options; it describes Outlook product licensing and names no entitlement specific to parent-folder subfolder sorting.",
+      "quote": "Searched: Outlook subfolders licensing; Outlook sort subfolders A to Z feature price meter charge licence. Opened Understand licensing in new Outlook for Windows and read licensing search excerpts. Product requirements are published, but no separate license for this option was found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 23,
+      "n": 30,
       "where": "Cost and licensing; rationale: cost",
       "type": "absence",
-      "claim": "The licensing page publishes no meter or separate charge for this feature.",
+      "claim": "The licensing page publishes no separate meter or charge for this feature, and searches found no feature-specific meter.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Outlook sort subfolders alphabetically licensing price meter. Read licensing-options in full; it lists desktop and web/mobile entitlements but no charge or meter for parent-folder sorting.",
+      "quote": "Searched: Outlook sort subfolders A to Z feature price meter charge licence. Read the full Understand licensing in new Outlook for Windows page and search excerpts. Neither the page nor relevant results publish a separate meter or charge for this sorting option.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 24,
-      "where": "controls[0] (ui and api null); summary; Why it matters; Governance controls",
+      "n": 31,
+      "where": "controls[0] (ui and api); summary; Why it matters; Risk assessment; Scope: Roles; Governance controls",
       "type": "absence",
-      "claim": "No feature-specific administrator UI or automation control for allowing subfolder A-to-Z sorting is documented.",
+      "claim": "No feature-specific administrative UI setting or automation control for allowing subfolder sorting is documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: new Outlook folder sort order admin policy Cloud Policy Set-OwaMailboxPolicy Set-MailboxMessageConfiguration. Read policy-management, both cmdlet references (searched sort/folder), and Graph mailFolder; none documents this control.",
+      "quote": "Searched: Outlook subfolder sort order admin policy Set-OwaMailboxPolicy Set-MailboxMessageConfiguration; Outlook folder sort policy. Opened Policy Management, Map classic Outlook policies, both cmdlet references and Graph mailFolder; found no control for this option.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 25,
+      "n": 32,
       "where": "controls[0].note; Governance controls",
       "type": "absence",
-      "claim": "Set-OwaMailboxPolicy has no documented folder-sort-order parameter.",
+      "claim": "The Set-OwaMailboxPolicy reference contains no parameter for folder sort order.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: new Outlook folder sort order admin policy Cloud Policy Set-OwaMailboxPolicy Set-MailboxMessageConfiguration; searched the fetched Set-OwaMailboxPolicy reference for sort and folder. No sort-order parameter appears.",
+      "quote": "Searched: Outlook subfolder sort order admin policy Set-OwaMailboxPolicy Set-MailboxMessageConfiguration. Opened Set-OwaMailboxPolicy, read its full syntax and searched its full reference for sort, folder and alphabet. No folder-sort-order parameter appears.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 26,
+      "n": 33,
       "where": "controls[0].note; Governance controls",
       "type": "absence",
-      "claim": "Set-MailboxMessageConfiguration has no documented folder-sort-order parameter.",
+      "claim": "The Set-MailboxMessageConfiguration reference contains no parameter for folder sort order.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: new Outlook folder sort order admin policy Cloud Policy Set-OwaMailboxPolicy Set-MailboxMessageConfiguration; searched the fetched mailbox-configuration reference for sort and folder. ConversationSortOrder sorts messages, not the folder list.",
+      "quote": "Searched: Outlook subfolder sort order admin policy Set-OwaMailboxPolicy Set-MailboxMessageConfiguration. Read Set-MailboxMessageConfiguration syntax and searched its reference for sort, folder and alphabet. ConversationSortOrder sorts messages, not the folder tree.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 27,
+      "n": 34,
       "where": "Governance controls",
       "type": "applicability",
-      "claim": "Most Outlook on the web mailbox policies apply to both Outlook on the web and new Outlook for Windows.",
+      "claim": "Most Outlook-on-the-web mailbox policies apply to both Outlook on the web and new Outlook for Windows.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/manage/policy-management",
       "quote": "Most of the mailbox policies apply to both Outlook on the web and new Outlook for Windows, so you can't enable them on one client but not the other.",
@@ -329,96 +399,19 @@
       "fix": null
     },
     {
-      "n": 28,
-      "where": "Why it matters; rationale: impact",
-      "type": "default",
-      "claim": "A user's folder order changes only when that user sorts, and only users who choose to sort see a change.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Outlook sort subfolders A to Z parent folder custom order shared mailboxes sync; Outlook sort subfolders A to Z automatic default permissions retention mail storage. Read roadmap, policy-management and mailFolder; none establishes this exclusive guarantee.",
-      "severity": "blocker",
-      "fix": "Replace the final sentence of the first Why it matters paragraph with 'The roadmap describes a user-initiated sort from a parent folder.' Replace the impact rationale with 'Low. The roadmap describes an optional sorting action for people managing subfolder lists.' Keep defaultState as user-opt-in; do not claim that only the initiating user can see an order change while synchronization and shared-mailbox behavior remain undocumented."
-    },
-    {
-      "n": 29,
-      "where": "Why it matters: second paragraph",
-      "type": "behaviour",
-      "claim": "The change does not touch permissions.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Outlook sort subfolders A to Z automatic default permissions retention mail storage. Read roadmap and policy-management; the roadmap describes sorting but does not state that permissions are unaffected.",
-      "severity": "major",
-      "fix": "Replace 'The change does not touch permissions, retention or where mail is stored, as the roadmap describes it.' with 'The roadmap describes subfolder sorting; it does not describe changes to permissions, retention or mail storage.'"
-    },
-    {
-      "n": 30,
-      "where": "Why it matters: second paragraph",
-      "type": "behaviour",
-      "claim": "The change does not touch retention.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Outlook sort subfolders A to Z automatic default permissions retention mail storage. Read roadmap and search results; general retention-policy documentation does not state what this feature does to retention.",
-      "severity": "major",
-      "fix": "Use the replacement sentence given for the permissions claim: 'The roadmap describes subfolder sorting; it does not describe changes to permissions, retention or mail storage.'"
-    },
-    {
-      "n": 31,
-      "where": "Why it matters: second paragraph",
-      "type": "behaviour",
-      "claim": "The change does not touch where mail is stored.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Outlook sort subfolders A to Z automatic default permissions retention mail storage. Read roadmap and Graph mailFolder reference; neither specifies storage behavior for this planned sort.",
-      "severity": "major",
-      "fix": "Use the replacement sentence given for the permissions claim: 'The roadmap describes subfolder sorting; it does not describe changes to permissions, retention or mail storage.'"
-    },
-    {
-      "n": 32,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "Sorting takes no action on mail.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Outlook sort subfolders A to Z automatic default permissions retention mail storage. Read roadmap, policy-management and Graph mailFolder reference; none expressly documents the absence of mail actions for this feature.",
-      "severity": "major",
-      "fix": "Replace the bullet with: No mail action is described: the roadmap says users will be able to sort a folder's subfolders alphabetically from the parent folder."
-    },
-    {
-      "n": 33,
-      "where": "Scope: Roles",
-      "type": "role",
-      "claim": "No admin role is involved.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: new Outlook folder sort order admin policy Cloud Policy Set-OwaMailboxPolicy Set-MailboxMessageConfiguration. Read policy-management and both cmdlet references; no feature-specific setting was found, but none states that no admin role is involved.",
-      "severity": "blocker",
-      "fix": "Remove 'no admin role is involved;' and retain 'Microsoft Learn documents no admin setting for the feature.' An absence of a documented switch does not establish a role requirement or its absence."
-    },
-    {
-      "n": 34,
-      "where": "Risk assessment: Security & identity",
-      "type": "record",
-      "claim": "The roadmap description says nothing about sign-in, permissions or delegation.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "You'll be able to sort a folder's subfolders alphabetically from the parent folder. This makes it easier to find the folder you need without rearranging subfolders one by one. It's a simple way to keep long folder lists organized. #newoutlookforwindows",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 35,
-      "where": "Risk assessment: Data exposure; rationale: risk",
+      "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap describes organizing existing subfolders, not a change to which folders or mailboxes users can open.",
+      "claim": "The roadmap supplies no preview date.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "You'll be able to sort a folder's subfolders alphabetically from the parent folder. This makes it easier to find the folder you need without rearranging subfolders one by one. It's a simple way to keep long folder lists organized.",
+      "quote": "\"previewDate\": null",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-27T11:53:39.079Z",
+    "at": "2026-11-27T14:21:14.563Z",
     "summary": {
       "links": 5,
       "unreachable": 0,
@@ -458,5 +451,12 @@
     "controlChecks": [],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-27",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

@@ -96,19 +96,23 @@ changes:
     note: "New briefing: planned side-by-side view of two shared screens on Teams Rooms on Windows with a Pro licence, with the related meeting policy and dual monitor settings."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 48 statements contradicted, 3 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-27"
+    note: "Corrected three unsupported statements: Why it matters no longer asserts the change leaves data and identity untouched, and Autonomy & actions now says the roadmap names no autonomous actions."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 46 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-27"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 48
-  confirmed: 45
-  unconfirmed: 3
+  claims: 46
+  confirmed: 46
+  unconfirmed: 0
   contradicted: 0
-  attempts: 1
-  hash: "32ad177fed93ef299906393731c17660"
+  attempts: 0
+  hash: "bd68c902276397103358b93022e90f58"
 ---
 
 ## What's changing
@@ -121,7 +125,7 @@ The roadmap item is **In development**, with a General Availability target of **
 
 ## Why it matters
 
-For room service owners this is a change to what people see on the front-of-room displays, not to data or identity. Because the roadmap ties it to Teams Rooms Pro, an estate that mixes Pro and Basic rooms should expect different behaviour from room to room when two people share. The licences page lists dual screen support as a Pro feature too, and the Pro Management portal lists **Dual Monitor mode** as disabled by default, so confirm after release which layout each room shows.
+For room service owners, the roadmap describes a change to what people see on the front-of-room displays. Because the roadmap ties it to Teams Rooms Pro, an estate that mixes Pro and Basic rooms should expect different behaviour from room to room when two people share. The licences page lists dual screen support as a Pro feature too, and the Pro Management portal lists **Dual Monitor mode** as disabled by default, so confirm after release which layout each room shows.
 
 Microsoft has not stated what happens on arrival. Plan as though Pro rooms may start showing two shares once the Teams Rooms app update lands in January CY2027, and prepare a short note for room users and the service desk explaining the side-by-side and expanded views.
 
@@ -134,7 +138,7 @@ Microsoft has not stated what happens on arrival. Plan as though Pro rooms may s
 - No change described: the roadmap names no new sign-in, permission or account for the room.
 
 **Autonomy & actions**
-- No change: the feature displays content and takes no action of its own.
+- The roadmap describes displaying shared screens and switching views; it names no autonomous actions.
 
 **Change & support**
 - Room users meet new layouts and a view switch without training, and Pro and Basic rooms may behave differently when two people share. Expect service desk questions about why one room shows both shares and another does not.
@@ -203,12 +207,4 @@ Microsoft has not stated what happens on arrival. Plan as though Pro rooms may s
 risk: Low. The room shows content that presenters already chose to share in the meeting; Microsoft describes no new data access, and who may share stays under the meeting policy's screen sharing setting.
 cost: Low. The roadmap item says the feature is available with Teams Rooms Pro, so rooms already on Pro need no new licence; the cost is support and user communication, plus Pro licences for any Basic rooms that should get it.
 impact: Medium. People meeting in Teams Rooms on Windows rooms with a Pro licence notice the new layouts, along with the room support team; people in other rooms do not.
--->
-
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters: first paragraph / behaviour: This feature does not change data access or handling. | Found: Searched: "Teams Rooms" "multiple screen shares" "data". Read roadmap, rooms-release-note and room-planning-guidance; none states that this planned feature leaves data access or handling unchanged. | Fix: Replace the first sentence with: 'For room service owners, the roadmap describes a change to what people see on the front-of-room displays.' This removes the unsupported data and identity assurances without changing the advice.
-- [unsupported, major] Why it matters: first paragraph / behaviour: This feature does not change identity behaviour. | Found: Searched: "Teams Rooms" "multiple screen shares" "identity" permissions. Read roadmap, rooms-release-note and rooms-licensing; none guarantees unchanged identity behaviour for this feature. | Fix: Use the same replacement for the first sentence: 'For room service owners, the roadmap describes a change to what people see on the front-of-room displays.' Keep the narrower, supported statement in Security & identity that the roadmap names no new sign-in, permission or account.
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: The feature takes no action of its own. | Found: Searched: "Teams Rooms" "multiple screen shares" autonomous actions. Read roadmap, rooms-release-note and room-planning-guidance; none explicitly rules out autonomous actions for this feature. | Fix: Replace 'No change: the feature displays content and takes no action of its own.' with 'The roadmap describes displaying shared screens and switching views; it names no autonomous actions.'
 -->

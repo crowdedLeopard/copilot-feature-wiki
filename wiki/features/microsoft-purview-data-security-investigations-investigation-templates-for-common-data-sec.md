@@ -93,19 +93,23 @@ changes:
     note: "New briefing: search templates in Data Security Investigations, with role group, spend and audit controls."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 73 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-27"
+    note: "Corrected: no longer says a template's generated query can be read on Review estimates; investigators now confirm a template's scope before adding results. Removed the checklist step on deleting investigations."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 68 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-27"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 73
-  confirmed: 71
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 1
-  hash: "c24df40c40d130d10e2a498a514d8cb9"
+  claims: 68
+  confirmed: 68
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "cdf3b09fc544f34cc173f08d59caa225"
 ---
 
 ## What's changing
@@ -135,7 +139,7 @@ Microsoft has not stated a default or an admin switch for templates; the roadmap
 - The roadmap describes a template as configuring a search that is then ready to run; it describes no scheduled or automatic searches.
 
 **Change & support**
-- The scenarios and queries inside the templates are not documented, so investigators should read the generated query and its estimate on **Review estimates** before adding results to scope.
+- The scenarios and queries inside templates are not documented; confirm what a template searches before adding its results to scope.
 - DSI activity is recorded in the unified audit log, including **DSI search added** (DSIPurviewSearchAdded). Whether a template search is logged differently from a hand-built one is not documented.
 
 ## Cost and licensing
@@ -164,7 +168,7 @@ A search started from a template is billed like any other once its results are a
 
 ### Before rollout
 - Review who is in the Data Security Investigations Admins, Investigators and Reviewers role groups, and in the Compliance Administrator, Organization Management, Data Security Management and Insider Risk Management role groups, in the Microsoft Purview portal.
-- Agree with investigators that a template's query and its estimate are read on **Review estimates** before **Add to scope**, because adding to scope starts storage charges.
+- Agree with investigators to confirm a template's scope before adding results, because adding to scope starts storage charges.
 
 ### At rollout
 - Open an investigation's **Search** tab to confirm templates appear, and record which scenarios they cover.
@@ -173,7 +177,6 @@ A search started from a template is billed like any other once its results are a
 ### After rollout
 - Check storage and compute unit use per investigation on the DSI **Usage dashboard** each month.
 - Search the audit log for **DSI search added** and **Submitted DSI search add to evidence set job** to see who is creating searches and adding data to scope.
-- Delete completed investigations to stop their storage charges, after exporting anything you need to keep.
 
 ## Governance controls
 
@@ -206,12 +209,4 @@ A search started from a template is billed like any other once its results are a
 risk: Low. Templates pre-fill searches inside Data Security Investigations; who can create searches is still decided by the existing DSI role groups, and searches respect compliance boundaries.
 cost: Variable. Microsoft publishes no separate charge for templates, but results added to an investigation's scope are billed on the DSI pay-as-you-go storage meter (per GB per month) and use DSI compute units.
 impact: Low. Only members of the Data Security Investigations role groups who build searches notice the change.
--->
-
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Risk assessment: Change & support; Governance guidance: Before rollout / admin-path: Investigators can read a template's generated query and its estimate on Review estimates before Add to scope. | Found: Searched: "Data Security Investigations" "templates" "Review estimates" query. Opened DSI search: Review estimates documents statistics; query editing is in Query builder. No passage documents viewing a generated template query or the template-specific review route. | Fix: Replace the Change & support bullet with: 'The scenarios and queries inside templates are not documented; confirm what a template searches before adding its results to scope.' Replace the Before rollout bullet with: 'Agree with investigators to confirm a template's scope before adding results, because adding to scope starts storage charges.' Do not direct readers to view a generated template query on Review estimates; https://learn.microsoft.com/purview/data-security-investigations-search documents scope and sample statistics there, not template-query visibility.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: After rollout; controls / consistency: The checklist tells readers to delete completed investigations to stop storage charges, but the controls table has no investigation-deletion row. | Found: Delete completed investigations to stop their storage charges, after exporting anything you need to keep. | Controls: template switch; DSI role group membership; usage dashboard; audit search. | Fix: Remove the final After rollout checklist bullet about deleting investigations; the existing Cost and licensing paragraph already explains the storage consequence. No additional control row is requested.
 -->

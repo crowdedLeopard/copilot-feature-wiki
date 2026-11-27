@@ -97,15 +97,17 @@ changes:
     note: "Corrected after verification: Content Explorer timing limited to SharePoint and OneDrive, endpoint no-rebilling conditions added, scan cmdlet wording fixed, and the pilot-scope step now says to confirm support."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 73 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 78 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 73
-  confirmed: 72
+  claims: 78
+  confirmed: 77
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -206,10 +208,10 @@ cost: Variable. Today's on-demand classification is metered under pay-as-you-go 
 impact: Low. The people who set it up are compliance administrators; users notice only if policies act on reclassified files, and Microsoft has not described a user-facing change.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Autonomy & actions; rationale: risk / applicability: Scanned files are evaluated against DLP, Information Protection, Data Lifecycle Management and Insider Risk Management policies. | Found: Files are evaluated against DLP, Microsoft Information Protection (MIP), data lifecycle management (DLM), and insider risk management (IRM) policies simultaneously. | Fix: Add https://learn.microsoft.com/purview/on-demand-classification-endpoints to sources and cite it for endpoint policy evaluation; the already-cited on-demand-classification page gives this statement under SharePoint and OneDrive. | Source: https://learn.microsoft.com/purview/on-demand-classification-endpoints
-- [supported, minor] Risk assessment: Change & support / behaviour: Selecting specific classifiers updates only their results, so other classifiers' policies might not trigger. | Found: Applies to SharePoint and OneDrive ... If you select specific classifiers during a scan, only those classifiers have their classification results updated for the scanned files. | Fix: Replace the sentence with: 'For SharePoint and OneDrive, choosing specific classifiers updates results only for those classifiers, so other classifiers' policies may not trigger.' | Source: https://learn.microsoft.com/purview/on-demand-classification
-- [contradicted, minor] Governance guidance: Before rollout; At rollout; Governance controls / consistency: Every control the governance checklist asks readers to review or keep configured appears in the controls table. | Found: List the active DLP, auto-labeling, retention and Insider Risk Management policies ... Keep policies you are still testing in simulation ... Record which role group members can create scans | Fix: Remove the checklist bullets beginning 'List the active DLP', 'Keep policies you are still testing in simulation', and 'Record which role group members'. The controls table has no policy-mode or role-membership review control; retain the documented policy and role facts in the explanatory prose.
+- [supported, minor] Risk assessment: Autonomy & actions; rationale: risk / applicability: Scanned files are evaluated against DLP, Information Protection, Data Lifecycle Management and Insider Risk Management policies. | Found: Files are evaluated against DLP, Microsoft Information Protection (MIP), data lifecycle management (DLM), and insider risk management (IRM) policies simultaneously. | Fix: Add https://learn.microsoft.com/purview/on-demand-classification-endpoints to sources and cite it for endpoint policy evaluation. The existing on-demand-classification source supports the same policy-evaluation statement for SharePoint and OneDrive. | Source: https://learn.microsoft.com/purview/on-demand-classification-endpoints
+- [supported, minor] Risk assessment: Change & support / behaviour: Choosing specific classifiers updates classification results only for those classifiers. | Found: Applies to SharePoint and OneDrive ... If you select specific classifiers during a scan, only those classifiers have their classification results updated for the scanned files. | Fix: Replace the sentence with: 'For SharePoint and OneDrive, choosing specific classifiers updates results only for those classifiers, so other classifiers' policies may not trigger.' This preserves the workload qualification attached to the source passage. | Source: https://learn.microsoft.com/purview/on-demand-classification
+- [contradicted, minor] Governance guidance: Before rollout; At rollout; Governance controls / consistency: Every control the governance checklist asks readers to review or keep configured appears in the controls table. | Found: List the active DLP, auto-labeling, retention and Insider Risk Management policies ... Keep policies you are still testing in simulation ... Record which role group members can create scans. The table covers scan creation, recurrence, billing pause and scan cancellation. | Fix: Remove the checklist bullets beginning 'List the active DLP', 'Keep policies you are still testing in simulation', and 'Record which role group members'. The controls table has no policy-mode or role-membership review control; retain the documented policy and role facts in the explanatory prose.
 -->

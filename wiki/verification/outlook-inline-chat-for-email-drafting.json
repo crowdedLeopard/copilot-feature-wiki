@@ -1,0 +1,653 @@
+{
+  "slug": "outlook-inline-chat-for-email-drafting",
+  "roadmapId": 570440,
+  "title": "Outlook on the web: inline Copilot chat for drafting emails without opening the sidebar",
+  "status": "held",
+  "date": "2026-11-27",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-27",
+    "reasons": [
+      "2 blocking findings (claims 21, 29)"
+    ]
+  },
+  "counts": {
+    "claims": 46,
+    "confirmed": 42,
+    "unconfirmed": 1,
+    "contradicted": 3,
+    "blocker": 2,
+    "major": 1,
+    "minor": 4
+  },
+  "summary": "Hold: the access guidance omits that app availability settings do not override existing administrator deployments, so restricting self-installation alone may leave users with access. The data-access explanation also omits the documented Work IQ exception and asserts unchanged data reach without evidence.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Risk assessment; rationale: impact",
+      "type": "record",
+      "claim": "Microsoft plans inline chat for Outlook email drafting without opening the Copilot Chat sidebar.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Instead of opening Copilot Chat every time you want to use Copilot to draft a message, this change introduces an inline chat component that streamlines the process and lets you interact with Copilot without opening the sidebar.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: platforms; title; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The listed cloud is Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The item is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: targetDate; summary; What's changing; Why it matters; Scope",
+      "type": "record",
+      "claim": "December CY2026 is the roadmap target, not a shipped date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"December CY2026\", \"status\": \"In development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "No preview date is specified.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-11-05T23:59:28.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-05T23:59:28\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "Scope; rationale: impact",
+      "type": "record",
+      "claim": "Other Outlook clients and US Government clouds are not listed on this item.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Outlook\"], \"clouds\": [\"Worldwide (Standard Multi-Tenant)\"], \"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap does not specify exact placement, direct draft edits, approval, sending, or continued sidebar availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "this change introduces an inline chat component that streamlines the process and lets you interact with Copilot without opening the sidebar.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "Risk assessment: Data exposure; Security & identity; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap describes a new entry point and describes no new data source, connector, agent, permission, or autonomous action.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Instead of opening Copilot Chat every time you want to use Copilot to draft a message, this change introduces an inline chat component",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Learn does not yet describe this specific planned inline chat feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Outlook\" \"inline chat\"'; release notes text for 570440 and inline chat. Read audit-copilot: general inline compose is described, but no documentation identifying this roadmap change was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "Scope: Rollout mechanics and prerequisites; What's changing; Open questions",
+      "type": "absence",
+      "claim": "Feature-specific rollout mechanics, prerequisites, and sidebar replacement details are not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Outlook inline chat email drafting 570440 default rollout licensing prerequisites price meter disable sidebar'. Read roadmap and searched Copilot release notes for 570440, inline chat and sidebar; no feature-specific prerequisites found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: defaultState; Why it matters",
+      "type": "default",
+      "claim": "The inline chat default state is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Outlook Copilot inline chat compose disable policy default licensing November 2026'. Read roadmap and Copilot settings; searched release notes for 570440 and inline chat. No stated default found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: licensing.model and licensing.notes",
+      "type": "licensing",
+      "claim": "The included licensing model rests on the documented Basic Outlook drafting entitlement, with no inline-specific requirement asserted.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Microsoft 365 Copilot (Basic) refers to users without the Copilot add-on license, but who have access to Copilot capabilities inside apps (for example, Word or Excel).\nOutlook: Draft emails, summarize threads, and use the coaching tips to improve clarity, sentiment and tone",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "Microsoft 365 Copilot (Basic) lists Outlook email drafting, thread summaries, and coaching as in-app features.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Outlook: Draft emails, summarize threads, and use the coaching tips to improve clarity, sentiment and tone",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "Microsoft 365 Copilot (Basic) describes users without the Copilot add-on license who have in-app Copilot capabilities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Microsoft 365 Copilot (Basic) refers to users without the Copilot add-on license, but who have access to Copilot capabilities inside apps (for example, Word or Excel).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 Copilot (Premium) includes everything in Basic.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "which includes everything in Microsoft 365 Copilot (Basic)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Cost and licensing: Licence",
+      "type": "availability",
+      "claim": "Copilot Chat in Outlook is an access surface for Copilot Chat (Basic).",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "You can access Copilot Chat (Basic) through:\n- `copilot.cloud.microsoft`\n- Microsoft Copilot app (web, desktop, mobile)\n- Copilot Chat in Outlook and Teams",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The overview says Basic can use open Outlook content but not organizational data through Microsoft Graph.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Copilot Chat (Basic) and Microsoft 365 Copilot (Basic) can't use organizational data via Microsoft Graph when interacting with Copilot Chat.",
+      "severity": "minor",
+      "fix": "After this sentence add: 'Microsoft also documents that Copilot Chat in Outlook can access inbox, calendar, meetings, chats and limited files through lexical indexing without the Copilot add-on; this does not establish the new inline chat's data scope.' Cite https://learn.microsoft.com/copilot/plan/privacy-and-protections#organizational-data."
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Premium uses Microsoft Graph automatically, without mentioning the Work IQ configuration exception.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "When Work IQ is off, Copilot responses aren't grounded in Microsoft Graph and Work IQ.",
+      "severity": "blocker",
+      "fix": "Replace 'while Premium uses Microsoft Graph automatically' with 'while Premium can automatically use Microsoft Graph and Work IQ; when Work IQ is off, responses are not grounded in Microsoft Graph and Work IQ'."
+    },
+    {
+      "n": 22,
+      "where": "Why it matters: first sentence",
+      "type": "behaviour",
+      "claim": "The change does not change what Copilot can reach.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'Outlook inline Copilot chat email drafting unchanged data access'. Read roadmap, Copilot overview, privacy-and-protections search excerpt and release notes. None states that this specific inline chat preserves the existing data-access scope.",
+      "severity": "major",
+      "fix": "Replace the first sentence with: 'The roadmap describes a new way to reach Copilot while writing mail in Outlook on the web; it does not specify the inline chat's data-access scope.'"
+    },
+    {
+      "n": 23,
+      "where": "Cost and licensing; front matter: licensing.notes; Scope; rationale: cost",
+      "type": "absence",
+      "claim": "No inline-specific license assignment, price, or meter is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Copilot\" \"inline\" \"Outlook\" \"licensing\"'; 'Outlook inline chat email drafting 570440 default rollout licensing prerequisites price meter disable sidebar'. Read Copilot overview and searched release notes; no inline-specific entitlement or meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "The overview says some Copilot features are subject to fair use limits, without assigning a limit to this inline chat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Some features are subject to fair use limits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The app block control is at Microsoft 365 admin center > Settings > Integrated Apps > Available Apps > app > Block app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+      "quote": "Select Settings, and then select Integrated Apps.\n3. Select the Available Apps list.\n4. Select an app from the Available Apps list to open the overview pane.\n5. Select Block app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[0].api",
+      "type": "absence",
+      "claim": "No automation operation is documented specifically for blocking the Copilot integrated app itself.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Graph Integrated Apps Copilot app availability users package block API'. Read Integrated Apps, Manage Copilot Chat and package block; searched Set-OwaMailboxPolicy. No operation identifying the Copilot integrated app block found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Specific-user self-installation is configured under Settings > Integrated Apps > Available Apps > app > Users > Specific users/group in the organization can install.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+      "quote": "Scroll down and select Edit Users or select the Users tab in the overview pane.\nSpecific users/group in the organization can install means that only the users selected by you are able to install the app on their own from the store and use it in the client.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[1].api",
+      "type": "absence",
+      "claim": "No automation equivalent is documented specifically for the Copilot app's Integrated Apps user-availability selection.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Copilot Integrated Apps availability scope users Microsoft Graph API PowerShell block'. Read Integrated Apps, Manage Copilot Chat and package block; no Copilot app user-availability operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[1].governs; Governance guidance: Before rollout; Governance controls",
+      "type": "applicability",
+      "claim": "The app availability selection decides which users can use Copilot in Outlook, without qualifying existing administrator deployments.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+      "quote": "The availability setting of an app doesn't impact any admin deployed apps. The availability setting only allows you to control which end users can install and use these apps on their own. Any previous admin deployments made are still be honored.",
+      "severity": "blocker",
+      "fix": "Change controls[1].governs and its rendered label to 'Which users can self-install and use the Copilot app in Outlook'. Add to its note and the group-scoping prose: 'Availability settings do not affect admin-deployed apps; existing admin deployments remain honored.' Replace the first Before rollout bullet with 'Check both Copilot app availability and existing admin deployments in Integrated Apps; restricting self-installation does not remove admin-deployed access.'"
+    },
+    {
+      "n": 30,
+      "where": "controls[0].note; controls[1].note; Risk assessment; Scope; Governance controls",
+      "type": "role",
+      "claim": "The cited Integrated Apps controls require Global Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+      "quote": "The following controls on the integrated apps portal in the Microsoft 365 Admin Center are only available to Global Admins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[0].note; Governance controls; rationale: risk",
+      "type": "applicability",
+      "claim": "Blocking the Copilot app is tenant-wide and blocks it in Outlook, the Copilot app and the web, including licensed users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/manage-copilot-chat",
+      "quote": "If you block the Copilot app using the Integrated app control, you block the Copilot app tenant-wide across the Microsoft Copilot app, Outlook, and the web, including for users assigned a Microsoft 365 Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Governance controls: first paragraph",
+      "type": "applicability",
+      "claim": "Manage Copilot Chat says the Integrated Apps block also blocks Copilot in Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/manage-copilot-chat",
+      "quote": "This setting blocks Copilot in the Microsoft Copilot app, Teams, Outlook, and Copilot Chat on the web for all users.",
+      "severity": "minor",
+      "fix": "After the first sentence add: 'The Integrated Apps documentation differs on Teams: it says the block affects Outlook and the Microsoft Copilot application, while Teams continues to honor Teams admin center settings.' Cite https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365."
+    },
+    {
+      "n": 33,
+      "where": "controls[2]; Why it matters; Governance guidance; Open questions",
+      "type": "absence",
+      "claim": "No separate administrative UI or API switch for the planned inline chat is documented, including in Copilot settings and Set-OwaMailboxPolicy.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Outlook Copilot inline chat compose disable policy default licensing November 2026'. Read Copilot settings; searched Set-OwaMailboxPolicy for Copilot and Draft: no matches. No separate inline switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[3].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Copilot audit searches use Microsoft Purview portal > Audit > Activities – operation names.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-copilot",
+      "quote": "Access Copilot audit logs by using the Microsoft Purview portal and selecting Audit.\n\nTo search for specific Copilot or AI application scenarios, use the Activities – operation names field",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[3].api; Governance controls table",
+      "type": "command",
+      "claim": "Search-UnifiedAuditLog -StartDate <start date> -EndDate <end date> -RecordType CopilotInteraction searches Copilot interaction records.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog",
+      "quote": "Search-UnifiedAuditLog\n    -EndDate <ExDateTime>\n    -StartDate <ExDateTime>\n[-RecordType <AuditRecordType>]\nThe RecordType parameter filters the log entries by record type.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[3].note; Cost and licensing: Audit; Governance guidance",
+      "type": "applicability",
+      "claim": "Copilot activities are logged in Audit (Standard), provided organization auditing is enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-copilot",
+      "quote": "The system automatically logs these activities as part of Audit (Standard). If your organization enables auditing, you don't need to take extra steps to configure auditing support for Copilot and AI applications.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing: Audit",
+      "type": "cost",
+      "claim": "Pay-as-you-go audit billing does not apply to Microsoft applications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-copilot",
+      "quote": "Pay-as-you-go billing doesn't apply to Microsoft applications.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[3].note; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Outlook is a documented AppHost value for Copilot interactions while using Outlook, including drafting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-copilot",
+      "quote": "Outlook | Copilot in Microsoft Outlook. The user in engaging Copilot while using Outlook (desktop, web, or mobile). This typically means the Copilot is helping with email tasks. For example, drafting an email reply",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[3].note; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "OutlookOnCanvas identifies inline assistance in Outlook compose rather than a separate pane.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-copilot",
+      "quote": "OutlookOnCanvas | Copilot inline in Outlook compose. This refers to Copilot's assistance directly in the email canvas.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Governance controls: final paragraph; Open questions",
+      "type": "absence",
+      "claim": "Microsoft does not explicitly identify the AppHost mapping for this specific roadmap change.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Outlook\" \"inline chat\"'. Read audit-copilot and searched release notes for 570440 and inline chat. Found the general OutlookOnCanvas description but no explicit mapping of this specific change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Governance controls: Graph paragraph",
+      "type": "command",
+      "claim": "Microsoft Graph documents a beta operation for blocking Copilot packages.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Governance controls: Graph paragraph",
+      "type": "licensing",
+      "claim": "The package management API requires a Microsoft Agent 365 license.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Access to the Package Management API requires a Microsoft Agent 365 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Governance controls: Graph paragraph",
+      "type": "absence",
+      "claim": "The package block reference does not identify the Copilot integrated app itself as its target.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Graph Integrated Apps Copilot app availability users package block API'. Read copilotPackage: block in full; it names packages but not the Copilot integrated app's identity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Scope: Roles",
+      "type": "role",
+      "claim": "Copilot settings use an appropriate administrative role, such as AI Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center",
+      "quote": "To manage Copilot settings in the Microsoft 365 admin center, use an appropriate admin role, such as AI Administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[0].note; Governance controls: first paragraph",
+      "type": "applicability",
+      "claim": "The Copilot app's documented Outlook block is presented with a caveat about confirmation for the new inline chat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/manage-copilot-chat",
+      "quote": "The Copilot app is an integrated app that provides Copilot Chat via web, in the Microsoft Copilot app (web, desktop, mobile) and in Outlook (web, desktop, mobile).",
+      "severity": "minor",
+      "fix": "Replace the final sentence of controls[0].note with 'Microsoft documents this as blocking the Copilot app in Outlook, including licensed users.' Replace the pilot-confirmation sentence in the first Governance controls paragraph with 'Microsoft describes the block as applying to the Copilot app in Outlook.'"
+    },
+    {
+      "n": 46,
+      "where": "Governance guidance: Before rollout; controls[3]",
+      "type": "consistency",
+      "claim": "The checklist says to confirm auditing is turned on and points to a row that only searches existing records.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "confirm auditing is turned on (row 4) / Audit > Activities – operation names / Search-UnifiedAuditLog",
+      "severity": "minor",
+      "fix": "Remove 'and confirm auditing is turned on' from the Before rollout bullet: row 4 documents searching audit records, not the auditing enablement control."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-27T14:21:05.963Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/manage/manage-copilot-chat",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-copilot",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-owamailboxpolicy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=570440",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether the Copilot app, which provides Copilot Chat in Outlook, is blocked for the organisation",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Integrated Apps",
+          "Available Apps",
+          "Block app"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which users can install and use the Copilot app in Outlook",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Integrated Apps",
+          "Available Apps",
+          "Users",
+          "Specific users/group in the organization can install"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Audit records of Copilot interactions in Outlook",
+        "docs": "https://learn.microsoft.com/purview/audit-copilot",
+        "reachable": true,
+        "segments": [
+          "Audit",
+          "Activities – operation names"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Audit records of Copilot interactions in Outlook",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog",
+        "reachable": true,
+        "token": "Search-UnifiedAuditLog",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

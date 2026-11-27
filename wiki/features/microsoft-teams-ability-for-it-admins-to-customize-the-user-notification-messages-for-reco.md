@@ -95,17 +95,19 @@ changes:
     note: "Corrected: summary now says the default is not stated; removed calling policies from the pre-rollout check; licensing now cites the Teams licence requirement."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 57 statements confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 50 statements not yet confirmed"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-20"
+  status: "verified-with-gaps"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 57
-  confirmed: 57
+  claims: 50
+  confirmed: 49
   unconfirmed: 0
-  contradicted: 0
+  contradicted: 1
   attempts: 0
   hash: "892e995a5e903e8fe468061037c6611c"
 ---
@@ -211,4 +213,11 @@ The New-CsTeamsRecordingAndTranscriptionCustomMessage reference carries a note t
 risk: Low. The change alters the wording of a notification, not what is recorded or who can record, and Microsoft Learn documents it as a per-policy setting an admin chooses to use.
 cost: Low. The only cost the sources show is admin time to write, translate and test messages; no licence or meter is yet published for this feature.
 impact: Low. Admins configure it, and users notice only where a policy carries custom text; the page says all participants in a meeting follow the organiser's settings.
+-->
+
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Governance guidance: At rollout; Governance controls / applicability: Meeting policies can be assigned to pilot users or groups and use normal meeting-policy assignment rules. | Found: You can assign a policy directly to users, either individually or at scale through a batch assignment (if supported for the policy type), or to a group that the users are members of (if supported for the policy type). | Fix: Add https://learn.microsoft.com/microsoftteams/meeting-policies-overview to sources for the meeting-policy assignment guidance. | Source: https://learn.microsoft.com/microsoftteams/meeting-policies-overview
+- [contradicted, minor] Governance guidance: Before rollout and At rollout; controls / consistency: The checklist's policy-assignment checks and assignment actions have a corresponding control row. | Found: Check which meeting policies your users hold ... Assign the test policy to a pilot group ... Assign the policy more widely ... Controls cover enabling custom messages, selecting message text and the calling-policy parameter, not policy assignments. | Fix: The checklist's 'Check which meeting policies your users hold', 'Assign the test policy to a pilot group' and 'Assign the policy more widely' steps have no policy-assignment row. Remove those three bullets to resolve the mismatch without adding a control row.
 -->

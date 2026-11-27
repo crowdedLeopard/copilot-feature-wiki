@@ -70,24 +70,28 @@ changes:
     note: "New briefing: Copilot summary card planned for Outlook search results; target July CY2026 passed while still In development."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 46 statements contradicted, 4 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-27"
+    note: "Corrected: the Integrated Apps control is described as governing the Copilot app that provides Copilot Chat in Outlook; removed unsupported claims that the card summarises the user's mailbox, cites mail, or reaches data by licence tier."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 45 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-27"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 46
-  confirmed: 42
-  unconfirmed: 4
+  claims: 45
+  confirmed: 45
+  unconfirmed: 0
   contradicted: 0
-  attempts: 1
-  hash: "4b9a15bee362fd225cd2f73d0c8b1e82"
+  attempts: 0
+  hash: "516fad73d79e945c33182ce17e5e82e1"
 ---
 
 ## What's changing
 
-Microsoft plans to show a short Copilot summary at the top of Outlook search results, so that a user who searches their mail gets an AI-written answer to the query above the list of messages. The roadmap item states that users can then "dig deeper by opening Copilot chat directly from the Copilot summary card".
+Microsoft plans to show a short Copilot summary at the top of Outlook search results, giving the user an AI-written answer to their query above the results list. The roadmap item states that users can then "dig deeper by opening Copilot chat directly from the Copilot summary card".
 
 Microsoft Learn does not describe this feature yet, so what follows about its behaviour is the roadmap's description. Microsoft has not stated whether the card appears automatically, which licences include it, or which content the summary draws on beyond the search results it sits above.
 
@@ -95,15 +99,14 @@ The roadmap item is **In development**, with a target of **July CY2026** for Gen
 
 ## Why it matters
 
-A card above the search results list is a visible change to a screen most mail users rely on daily. Users will read an AI summary of their mail before they read the mail itself, and some will treat it as the answer. Expect help desk questions about wrong or incomplete summaries and about why some colleagues see the card and others do not.
+A card above the search results list is a visible change to a screen most mail users rely on daily. Users will read the planned summary above Outlook search results before they open the results themselves, and some will treat it as the answer. Expect help desk questions about wrong or incomplete summaries and about why some colleagues see the card and others do not.
 
-Microsoft has not stated what happens on arrival. No source says the card needs an admin to enable it, so plan as though it may reach users through normal Outlook updates. The documented lever today is the Copilot app in Integrated Apps, which Microsoft says provides Copilot Chat in Outlook; it governs Copilot in Outlook as a whole, not this card.
+Microsoft has not stated what happens on arrival. No source says the card needs an admin to enable it, so plan as though it may reach users through normal Outlook updates. The documented lever today is the Copilot app in Integrated Apps: it governs availability of the Copilot app that provides Copilot Chat in Outlook; its effect on the search summary card is not stated.
 
 ## Risk assessment
 
 **Data exposure**
-- The card summarises search results from the user's own mailbox. Microsoft has not documented which content the summary can draw on (only the matched messages, the wider mailbox, or other Microsoft 365 data), so confirm this before telling users what the card can see.
-- Microsoft's licence comparison says Copilot Chat (Basic) and Microsoft 365 Copilot (Basic) users don't have access to Microsoft Graph, while Microsoft 365 Copilot (Premium) grounds responses in organisational data automatically. Which tier the card belongs to will decide how far its summaries reach.
+- The roadmap places an AI summary above Outlook search results. Microsoft has not documented which content the summary can draw on (only the matched messages, the wider mailbox, or other Microsoft 365 data), so confirm this before telling users what the card can see.
 
 **Security & identity**
 - No change documented: nothing in the roadmap item suggests a new sign-in, permission or identity.
@@ -113,7 +116,7 @@ Microsoft has not stated what happens on arrival. No source says the card needs 
 
 **Change & support**
 - No setting for the card alone is documented at the time of writing (November 2026). Blocking the Copilot app in Integrated Apps blocks Copilot in Outlook, Teams, the Microsoft Copilot app and Copilot Chat on the web, so it is a blunt instrument if the only aim is to remove this card.
-- Users may rely on the summary in place of reading messages; plan communication on checking the cited mail.
+- Users may rely on the summary in place of reading messages; plan communication on checking the original messages.
 
 ## Cost and licensing
 
@@ -179,15 +182,8 @@ cost: Low. Microsoft has not published which Copilot licence tier gets the summa
 impact: Medium. Anyone who searches mail in Outlook on the web, Mac, iOS or Android could see the card, but Microsoft has not said which Copilot licence tiers get it or whether it is on by default.
 -->
 
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Why it matters / applicability: The Integrated Apps Copilot app control governs Copilot in Outlook as a whole. | Found: Searched: '"Integrated Apps" "Copilot" "in-app" "Outlook"'; '"Copilot" "Outlook" "Integrated" "drafting" block'. Read Manage Copilot Chat, Integrated Apps reference and Copilot overview; these do not establish control over all Outlook Copilot features. | Fix: Replace 'it governs Copilot in Outlook as a whole, not this card' with 'it governs availability of the Copilot app that provides Copilot Chat in Outlook; its effect on the search summary card is not stated', citing https://learn.microsoft.com/copilot/manage/manage-copilot-chat.
-- [unsupported, major] Risk assessment: Data exposure; What's changing; Why it matters / behaviour: The card summarises search results from the user's own mailbox. | Found: Searched: '"Copilot" "search results" "Outlook" "mailbox"'; '"Outlook" "summary card" Copilot'. Read roadmap, Copilot overview and release-note excerpts; the roadmap locates the card above Outlook results but does not specify its grounding. | Fix: Replace the first Data exposure sentence with 'The roadmap places an AI summary above Outlook search results.' In What's changing and Why it matters, replace assertions that it summarises the user's mail with 'the planned summary above Outlook search results'. Keep the existing question about what content it draws on.
-- [unsupported, major] Risk assessment: Data exposure / behaviour: The licence tier assigned to the search summary card will determine how far its summaries reach. | Found: Searched: '"Outlook" "search" "summaries" "license" Copilot'; 'Outlook Copilot search results summaries licensing billing meter content mailbox rollout'. Read Copilot overview and license options; neither maps this card's data reach to a tier. | Fix: Remove 'Which tier the card belongs to will decide how far its summaries reach.' The existing questions about entitlement and grounding can remain separate.
-- [unsupported, major] Risk assessment: Change & support / behaviour: The search summary supplies cited mail that users can check. | Found: Searched: '"Outlook" "summary card" Copilot'; '"Outlook" "search results" "summary" "content" "card"'. Read roadmap and Copilot overview; neither states that this Outlook card cites mail. References documented for Copilot Search are a different surface. | Fix: Replace 'plan communication on checking the cited mail' with 'plan communication on checking the original messages'.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].note; Risk assessment: Change & support; Governance controls table / applicability: Blocking Copilot through Integrated Apps blocks it in the Copilot app, Teams, Outlook and Copilot Chat on the web. | Found: This setting blocks Copilot in the Microsoft Copilot app, Teams, Outlook, and Copilot Chat on the web for all users. | Fix: Attribute this scope to Manage Copilot Chat and add: 'The general Integrated Apps reference says app blocking affects Outlook and the Microsoft Copilot application, while Teams continues to use Teams admin center settings.' Cite https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365 alongside https://learn.microsoft.com/copilot/manage/manage-copilot-chat. | Source: https://learn.microsoft.com/copilot/manage/manage-copilot-chat
-- [supported, minor] Risk assessment: Data exposure / behaviour: Microsoft 365 Copilot (Premium) automatically grounds responses in organisational data. | Found: Microsoft 365 Copilot (Premium) uses both web and organizational data via Microsoft Graph and pulls information automatically. | Fix: Qualify the general Premium description with 'when Work IQ is on; the overview says responses are not grounded in Microsoft Graph and Work IQ when it is off', citing https://learn.microsoft.com/copilot/plan/copilot-overview. Do not apply this general description to the search card without feature-specific evidence. | Source: https://learn.microsoft.com/copilot/plan/copilot-overview
-- [supported, minor] front matter: licensing.model; licensing.notes; Cost and licensing; Scope; rationale: cost / licensing: The licensing model is unknown because no feature-specific licence tier is published. | Found: Copilot Chat (Basic) is the standalone baseline experience included with eligible Microsoft 365 licenses. ... Microsoft 365 Copilot (Premium) is the full add-on licensed experience | Fix: Set licensing.model to 'included' for a new option inside an already licensed product. Replace the notes with 'Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible subscription plans. The overview also documents Copilot Chat with eligible Microsoft 365 licences; the tier covering this search card is not yet published.' Cite https://learn.microsoft.com/copilot/plan/copilot-license-options and retain https://learn.microsoft.com/copilot/plan/copilot-overview. Keep the feature-specific entitlement question open. | Source: https://learn.microsoft.com/copilot/plan/copilot-overview
+- [supported, minor] controls[1].note; Risk assessment: Change & support / applicability: Blocking Copilot through Integrated Apps blocks it in the Microsoft Copilot app, Teams, Outlook and Copilot Chat on the web. | Found: This setting blocks Copilot in the Microsoft Copilot app, Teams, Outlook, and Copilot Chat on the web for all users. | Fix: After the cross-client blocking statement, add: "Microsoft's general cross-application apps guidance says blocking affects only Outlook and the Microsoft Copilot application, with Teams continuing to honour Teams admin center settings; this differs from the Copilot-specific guidance above." Cite https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365#how-to-block-an-app. Retain the supported Copilot-specific statement. | Source: https://learn.microsoft.com/copilot/manage/manage-copilot-chat
 -->

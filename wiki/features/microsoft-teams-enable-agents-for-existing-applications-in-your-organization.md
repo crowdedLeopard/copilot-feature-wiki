@@ -106,15 +106,17 @@ changes:
     note: "Status is now Rolling out. A Learn page now documents the feature: recommendations are off by default and need consent to share sign-in activity data; added the opt-out path, the enablement workflow and automatic group addition."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 70 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 75 statements not yet confirmed"
 version: 4
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 70
-  confirmed: 70
+  claims: 75
+  confirmed: 75
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -221,10 +223,10 @@ cost: Low. The only cost the sources show is administrator time to review recomm
 impact: Low. Teams administrators see the recommendations; other users notice only if an administrator makes a recommended agent available or installs it for them.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; Governance guidance: At rollout / admin-path: The recommended-agent workflow is reached through Teams apps > Manage apps > Filter by action > Agents from applications used in your org > Review > agent > Add users. | Found: In the recommended agents list, select the agent, and then select Add users to proceed to the Users step. | Fix: Complete controls[1].ui.path as 'Teams apps > Manage apps > Filter by action > Agents from applications used in your org > Review > agent > Add users > Users'. The Users step is where the cited page says to select users to install the agent for or make it available to. | Source: https://learn.microsoft.com/microsoftteams/agents-existing-applications
-- [supported, minor] controls[4].ui / admin-path: The bulk third-party-app availability control is under Teams apps > Manage apps > Actions > Org-wide app settings > Third-party apps. | Found: On Manage apps page, under the Actions menu, select Org-wide app settings. Under Third-party apps, a single control manages the bulk availability of both the new and existing third-party agents and apps. | Fix: Complete controls[4].ui.path as 'Teams apps > Manage apps > Actions > Org-wide app settings > Third-party apps > Let users install and use available apps by default'. The setting label is documented at the already cited https://learn.microsoft.com/microsoftteams/app-centric-management. | Source: https://learn.microsoft.com/microsoftteams/manage-apps
-- [supported, minor] front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost / licensing: The licensing model is unknown because no feature-specific licence is published. | Found: Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams. | Fix: Set licensing.model to 'included'. Replace licensing.notes with 'Teams users need a Teams licence, except when joining meetings anonymously (https://learn.microsoft.com/microsoftteams/user-access). Microsoft has not published a licence or meter specific to agent recommendations as of November 2026.' Add that source and state the general Teams requirement in Cost and licensing while retaining the narrower feature-specific gap. | Source: https://learn.microsoft.com/microsoftteams/user-access
+- [supported, minor] controls[1].ui; Governance guidance: At rollout; Governance controls / admin-path: The recommendation deployment path is Teams apps > Manage apps > Filter by action > Agents from applications used in your org > Review > agent > Add users. | Found: In the recommended agents list, select the agent, and then select Add users to proceed to the Users step. | Fix: Complete controls[1].ui.path and its rendered counterpart as 'Teams apps > Manage apps > Filter by action > Agents from applications used in your org > Review > agent > Add users > Users'. The cited page places the availability and installation selections on Users. | Source: https://learn.microsoft.com/microsoftteams/agents-existing-applications
+- [supported, minor] controls[4].ui; Governance guidance: Before rollout; Governance controls / admin-path: Bulk third-party availability is under Teams apps > Manage apps > Actions > Org-wide app settings > Third-party apps. | Found: On Manage apps page, under the Actions menu, select Org-wide app settings. Under Third-party apps, a single control manages the bulk availability of both the new and existing third-party agents and apps. | Fix: Complete controls[4].ui.path and its rendered counterpart as 'Teams apps > Manage apps > Actions > Org-wide app settings > Third-party apps > Let users install and use available apps by default'. The setting label is given on the already cited https://learn.microsoft.com/microsoftteams/app-centric-management. | Source: https://learn.microsoft.com/microsoftteams/manage-apps
+- [supported, minor] front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost / licensing: The licensing model is unknown because a feature-specific licence has not been published. | Found: Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams. | Fix: Set licensing.model to 'included'. Replace licensing.notes with 'Teams users need a Teams licence, except when joining meetings anonymously (https://learn.microsoft.com/microsoftteams/user-access). Microsoft has not published a licence or meter specific to agent recommendations as of November 2026.' Add that source and the same general Teams requirement to Cost and licensing, retaining the narrower feature-specific gap. | Source: https://learn.microsoft.com/microsoftteams/user-access
 -->

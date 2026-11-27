@@ -25,6 +25,9 @@ sources:
   - title: "Microsoft 365 Roadmap 573701"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=573701"
     kind: "roadmap"
+  - title: "Use mailbox import and export APIs with archive mailboxes (preview)"
+    url: "https://learn.microsoft.com/graph/work-with-archive-mailboxes"
+    kind: "learn"
   - title: "Microsoft Graph national cloud deployments"
     url: "https://learn.microsoft.com/graph/deployments"
     kind: "learn"
@@ -88,7 +91,7 @@ controls:
     note: "Read-only report of SOAP actions per application ID; data is weekly and can take up to 10 days to appear."
 confidence: "medium"
 created: "2026-11-20"
-updated: "2026-11-20"
+updated: "2026-11-27"
 roadmapModified: "2026-10-22T22:58:40"
 changes:
   - date: "2026-11-20"
@@ -101,30 +104,34 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 77 statements confirmed"
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 75 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-27"
+    note: "Corrected the Worldwide item 567313's status to Launched; noted that Microsoft's preview archive guide shows HTTP 308 where the redirects page shows 409 for import-session mismatches, and that the guide is marked preview."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 83 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-27"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 75
-  confirmed: 74
+  claims: 83
+  confirmed: 83
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "d28db38b6a112eed7dcc8d11f6fe1786"
+  contradicted: 0
+  attempts: 0
+  hash: "21625141f0753e9ab19b1fea627a48e6"
 ---
 
 ## What's changing
 
 Roadmap item 573701 plans Microsoft Graph access to archive mailboxes, both the main archive and the auxiliary archives that auto-expanding archiving creates, for GCC, GCC High and DoD. The roadmap description gives the goal as a single, seamless archive view even though archive data may physically sit across several auxiliary mailboxes, with the EWS APIs being deprecated. Microsoft Learn has no page for this item in these clouds, so what the item will do in them is the roadmap's description; the behaviour below is what Learn documents for the Graph APIs in general.
 
-Learn's page on archive mailbox redirects says a folder can appear in the main archive while its contents sit in an auxiliary archive. The API then returns a redirect such as HTTP 308 Permanent Redirect, an `ErrorArchiveFolderMovedPermanently` error on export, or an HTTP 409 Conflict on import, and the app repeats the request against the mailbox the response names. The same page says well-known folder names are not supported for archive mailboxes, so apps reference archive folders by folder ID, and its examples use `/beta/` endpoints.
+Learn's page on archive mailbox redirects says a folder can appear in the main archive while its contents sit in an auxiliary archive. The API then returns a redirect such as HTTP 308 Permanent Redirect, an `ErrorArchiveFolderMovedPermanently` error on export, or an HTTP 409 Conflict on import, and the app repeats the request against the mailbox the response names. Microsoft's preview guide at https://learn.microsoft.com/graph/work-with-archive-mailboxes instead illustrates this import-session mismatch with HTTP 308 and `ErrorArchiveFolderMovedPermanently`; the Learn examples disagree on the response code. The same redirects page says well-known folder names are not supported for archive mailboxes, so apps reference archive folders by folder ID, and its examples use `/beta/` endpoints. Microsoft's archive import/export guide describes this workflow as preview; the roadmap item's General Availability release phase is the record's plan, not the status of that documentation.
 
 Learn's Graph reference pages for exporting items and listing folders carry a national cloud table that marks the Global service as available and US Government L4 and US Government L5 (DOD) as not available. Learn's EWS deprecation page lists "Sovereign Cloud availability" for the Exchange workload APIs needed for EWS migration with a Q4 CY2026 estimate, and calls such dates targets that might change. Microsoft Graph's national cloud documentation places GCC on the worldwide endpoint, GCC High on US Government L4 and DoD on US Government L5. This endpoint mapping does not establish the GCC rollout date for archive access; the roadmap still targets December CY2026.
 
-The roadmap record shows status In development, targeted for December CY2026, release phase General Availability, platform Web. Microsoft lists the feature under a second roadmap item, 567313, for Worldwide (Standard Multi-Tenant), which the record shows as Rolling out and targeted for October CY2026; [that item has its own briefing](/features/microsoft-purview-data-lifecycle-management-graph-api-support-for-archive-mailboxes/). Learn's EWS deprecation page says EWS starts to be disabled globally for all organizations in October 2026 and is fully disabled in April 2027.
+The roadmap record shows status In development, targeted for December CY2026, release phase General Availability, platform Web. Microsoft lists the feature under a second roadmap item, 567313, for Worldwide (Standard Multi-Tenant), which the current record shows as Launched with an October CY2026 target; [that item has its own briefing](/features/microsoft-purview-data-lifecycle-management-graph-api-support-for-archive-mailboxes/). Learn's EWS deprecation page says EWS starts to be disabled globally for all organizations in October 2026 and is fully disabled in April 2027.
 
 ## Why it matters
 
@@ -142,7 +149,7 @@ Microsoft has not stated what happens on arrival or whether a tenant switch gove
 - Learn notes that user-agent based EWS blocking also impacts connections that use REST or Graph, so an EWS allow or block list can interfere with a migrated app.
 
 **Autonomy & actions**
-- Import calls write items into archive folders. An import into a folder held in an auxiliary archive returns HTTP 409 until the app creates a new import session against the mailbox the error names; apps that do not handle this fail on those folders.
+- Import calls write items into archive folders. An import into a folder held in an auxiliary archive returns HTTP 409 (HTTP 308 in the preview guide's example) until the app creates a new import session against the mailbox the error names; apps that do not handle this fail on those folders.
 
 **Change & support**
 - An application that still calls EWS can be blocked once Microsoft disables EWS for the tenant. If the Graph archive APIs are not yet available in your cloud at that point, the tool has no documented Graph route to move to.
@@ -209,13 +216,4 @@ Application access to the Graph mailbox APIs is governed by the Graph permission
 risk: Medium. EWS starts to be disabled globally in October 2026, while Learn's Graph reference currently marks the archive-capable mailbox APIs as unavailable in US Government L4 and L5 (DOD), so EWS-based archive tools in GCC High and DoD may have no Graph route yet.
 cost: Low. The cost the sources show is developer, vendor and admin time to migrate; archive mailboxes need an Exchange Online Archiving entitlement, and no licence or meter specific to these APIs is published.
 impact: Medium. Administrators, developers and vendors of EWS-based eDiscovery, export and records tools notice first; end users notice only if one of those tools stops working.
--->
-
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing / record: The worldwide counterpart's roadmap record shows Rolling out. | Found: Roadmap item 567313: "status": "Launched", "modified": "2026-11-24T00:13:11". | Fix: Replace 'which the record shows as Rolling out and targeted for October CY2026' with 'which the current record shows as Launched with an October CY2026 target'.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Risk assessment: Autonomy & actions; Governance guidance: At rollout / behaviour: An import targeting a folder in an auxiliary archive returns HTTP 409 Conflict when its session targets the wrong mailbox. | Found: When you attempt to import an item into a folder that physically resides in an auxiliary (autoexpanded) archive mailbox, you receive an HTTP 409 Conflict response that indicates the correct target mailbox. | Fix: After the 409 description, add: 'Microsoft's preview guide at https://learn.microsoft.com/graph/work-with-archive-mailboxes instead illustrates this import-session mismatch with HTTP 308 and ErrorArchiveFolderMovedPermanently; the Learn examples disagree on the response code.' Add that guide to sources. | Source: https://learn.microsoft.com/graph/handle-archive-mailbox-redirects
-- [supported, minor] What's changing; Risk assessment: Change & support; Open questions / behaviour: Learn's archive redirect examples use beta endpoints. | Found: GET https://graph.microsoft.com/beta/admin/exchange/mailboxes/MBX:e0643f21@a7809c93/folders/NJWt2LeVEAAAIBDAAAAA== | Fix: Qualify the described archive workflow with: 'Microsoft's archive import/export guide describes this workflow as preview.' Cite https://learn.microsoft.com/graph/work-with-archive-mailboxes, titled 'Use mailbox import and export APIs with archive mailboxes (preview)'. Keep the roadmap's General Availability phase distinct from that documentation status. | Source: https://learn.microsoft.com/graph/handle-archive-mailbox-redirects
 -->

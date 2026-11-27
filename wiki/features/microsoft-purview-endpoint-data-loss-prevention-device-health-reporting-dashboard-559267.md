@@ -28,6 +28,9 @@ sources:
   - title: "Troubleshooting endpoint data loss prevention configuration and policy sync"
     url: "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync"
     kind: "learn"
+  - title: "Onboard Windows devices into Microsoft 365 overview"
+    url: "https://learn.microsoft.com/purview/device-onboarding-overview#check-device-status"
+    kind: "learn"
   - title: "Microsoft Purview service description"
     url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description"
     kind: "learn"
@@ -52,7 +55,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Settings > Device onboarding > Devices"
+      path: "Settings > Device onboarding > Devices > device"
       docs: "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync"
     api:
       kind: "other"
@@ -68,19 +71,23 @@ changes:
     note: "New briefing for the Worldwide roadmap item for the Endpoint DLP device health reporting dashboard."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 54 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-27"
+    note: "Corrected the advice for devices silent beyond the dashboard's 30-day window: the Devices list keeps onboarded devices for 180 days after they go offline, and the DeviceInfo alternative was removed. The Devices path now ends at selecting a device."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 62 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-27"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 54
-  confirmed: 53
-  unconfirmed: 1
+  claims: 62
+  confirmed: 62
+  unconfirmed: 0
   contradicted: 0
-  attempts: 1
-  hash: "c2b3d69891d3f1940701757417e8fa9b"
+  attempts: 0
+  hash: "ee19c0143a000de0ca065d1f9f8ff606"
 ---
 
 ## What's changing
@@ -112,7 +119,7 @@ Microsoft has not stated what happens on arrival if nobody acts, and no source s
 
 **Change & support**
 - The readiness indicators flag risk, not failure. Use the Policy sync status on the Devices page to confirm whether a given device received the latest policy version.
-- A device silent for more than 30 days falls outside the dashboard's data window, so find it through the Devices list or a DeviceInfo query instead.
+- A device silent for more than 30 days falls outside the dashboard data window. Check the Devices list: Microsoft's onboarding overview says onboarded devices continue to appear for 180 days after going offline.
 
 ## Cost and licensing
 
@@ -153,7 +160,7 @@ The indirect cost is administrator time to review the dashboard and fix flagged 
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Viewing device onboarding and readiness in the device health reporting dashboard</strong><br><small>Tenant</small><br><small class="controls__note">Needs Compliance Administrator, Security Administrator or Global Administrator. Devices must be onboarded to Endpoint DLP and actively reporting telemetry.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Device onboarding › Device report <a href="https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Per-device configuration status and policy sync status (today's alternative to the dashboard)</strong><br><small>Tenant</small><br><small class="controls__note">Advanced hunting query in the Microsoft Defender portal. It reads device data and changes nothing; it is not an API for the dashboard.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Device onboarding › Devices <a href="https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>DeviceInfo | where DlpInfo != &quot;&quot;</code> <a href="https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Per-device configuration status and policy sync status (today's alternative to the dashboard)</strong><br><small>Tenant</small><br><small class="controls__note">Advanced hunting query in the Microsoft Defender portal. It reads device data and changes nothing; it is not an API for the dashboard.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Device onboarding › Devices › device <a href="https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>DeviceInfo | where DlpInfo != &quot;&quot;</code> <a href="https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -170,13 +177,4 @@ The dashboard has one documented way in: the Microsoft Purview portal, with one 
 risk: Low. It is a read-only view of device readiness for Compliance, Security or Global Administrators, built on devices already onboarded to Endpoint DLP. Microsoft has not stated a default, so the rating assumes today's behaviour continues.
 cost: Low. Microsoft's Purview service description lists Endpoint DLP as included in the E5-level licences it names; the dashboard page names no licence of its own, so the only cost the sources show is administrator time.
 impact: Low. Only holders of the Compliance Administrator, Security Administrator or Global Administrator role can open it; end users do not see it.
--->
-
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Risk assessment: Change & support, final bullet / behaviour: A DeviceInfo query can find a device silent for more than 30 days as an alternative to the dashboard. | Found: Searched: DeviceInfo advanced hunting data older than 30 days retention inactive devices Purview Devices; DeviceInfo inactive 30. Read DeviceInfo, sync and advanced-hunting-overview. No passage guarantees retrieval of such devices; hunting retention depends on the tenant and data. | Fix: Remove 'or a DeviceInfo query' from the final Change & support bullet. Neither cited device-data page establishes recovery of devices silent beyond the dashboard window; https://learn.microsoft.com/defender-xdr/advanced-hunting-overview qualifies the available hunting history by retention and supported data.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui / admin-path: Per-device configuration and policy-sync status are reached through Purview portal > Settings > Device onboarding > Devices. | Found: Sign in to the Microsoft Purview portal > Settings (gear icon in the upper right corner) > Device onboarding > Devices. ... Select a device to open the details pane for more information on the policy sync status. | Fix: Complete controls[1].ui.path as 'Settings > Device onboarding > Devices > device'. The existing path reaches the right device-list page but omits selecting the device to inspect its details. | Source: https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync
-- [supported, minor] Risk assessment: Change & support, final bullet / behaviour: The Devices list can show devices silent beyond the dashboard's 30-day window. | Found: To view these details, go to Device onboarding > Devices. ... Onboarded devices will continue to appear for 180 days after the device is offline. | Fix: After removing the unsupported DeviceInfo alternative, replace the bullet with 'A device silent for more than 30 days falls outside the dashboard data window. Check the Devices list: Microsoft's onboarding overview says onboarded devices continue to appear for 180 days after going offline.' Cite https://learn.microsoft.com/purview/device-onboarding-overview#check-device-status in sources. | Source: https://learn.microsoft.com/purview/device-onboarding-overview#check-device-status
 -->

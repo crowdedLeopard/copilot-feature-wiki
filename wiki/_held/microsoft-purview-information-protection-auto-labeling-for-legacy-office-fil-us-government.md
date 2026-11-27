@@ -78,18 +78,20 @@ changes:
     note: "Corrected after verification: replaced the claim that Learn documents no file-extension setting with the documented file-extension condition and exceptions, and removed the role-assignment checklist bullet."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 60 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 61 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-20"
+  status: "held"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 60
+  claims: 61
+  confirmed: 58
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 3
+  attempts: 1
   hash: "da0791b368ae21bb64b8302c13cd9fdc"
 ---
 
@@ -189,8 +191,13 @@ cost: Low. Learn lists service-side auto-labeling under Microsoft 365 E5-tier SK
 impact: Medium. Owners of older Office files in the SharePoint sites and OneDrive accounts a policy covers may see labels appear; people outside those locations are not affected by the roadmap description.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] What's changing: comparison with item 574363 / record: Item 574363 targets November CY2026. | Found: 574363: "targetDate": "December CY2026", "previewDate": "November CY2026", "modified": "2026-11-25T00:10:31" | Fix: Replace 'targets November CY2026' with 'targets December CY2026, with a November CY2026 preview target'. The current record for Worldwide item 574363 distinguishes those two dates.
+- [contradicted, blocker] front matter: licensing.notes; Cost and licensing: Licence; rationale: cost / licensing: The cited auto-labeling article lists service-side auto-labeling under the same four SKUs as client-side labeling, including standalone Azure Information Protection Premium P2. | Found: Check the Client and service-side automatic sensitivity labeling entry in the feature matrix linked below. Client-only entitlements don't establish service-side entitlement. | Fix: Replace the SKU-list sentence in both licensing.notes and the Licence paragraph with: 'The Microsoft Purview service-description matrix lists client and service-side automatic sensitivity labeling as included with Microsoft 365 G5, Office 365 G5 and Microsoft Purview Suite GOV. Licensing specific to legacy formats has not been published (November 2026).' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-information-protection-sensitivity-labeling. In the cost rationale, replace 'Learn lists service-side auto-labeling under Microsoft 365 E5-tier SKUs' with 'The service-description matrix lists service-side automatic sensitivity labeling in qualifying subscriptions'. | Source: https://learn.microsoft.com/purview/apply-sensitivity-label-automatically
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] summary / absence: No admin switch is documented for the legacy-format extension. | Found: Searched: "auto-labeling" "legacy" "enable" ".doc"; opened the auto-labeling article and Set-AutoSensitivityLabelPolicy reference; searched the reference for legacy, extension, format, .doc, .xls and .ppt. Found policy controls, not a legacy-format switch. | Fix: Replace 'no admin switch is documented' with 'no admin switch specific to legacy-format support is documented' so the summary cannot be mistaken for an absence of the policy controls shown below.
+- [supported, minor] summary / absence: No admin switch is documented for the legacy-format extension. | Found: Searched: Purview auto-labeling legacy Office files admin switch file extension Set-AutoSensitivityLabelPolicy. Read the auto-labeling article and policy reference; searched the reference for legacy, extension, format, .doc, .xls and .ppt. Found policy controls, not a legacy-format switch. | Fix: Replace 'no admin switch is documented' with 'no admin switch specific to legacy-format support is documented' so the summary does not imply that the documented policy controls are absent.
+- [supported, minor] front matter: licensing.model / licensing: Service-side automatic sensitivity labeling is included in qualifying existing subscriptions. | Found: | Client and service-side automatic sensitivity labeling | Included | Included | | Fix: Keep licensing.model as included. Add https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-information-protection-sensitivity-labeling to sources; it is the entitlement matrix supporting this field, not the client-side SKU list. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
+- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist asks the administrator to monitor labeling progress, but neither controls row describes monitoring. | Found: Compare labelling progress with the 500,000 files per tenant per day ceiling ... Controls: Whether an auto-labeling policy runs in simulation or enforces labels; Which SharePoint and OneDrive locations an auto-labeling policy covers. | Fix: Remove the 'Compare labelling progress with the 500,000 files per tenant per day ceiling that Learn gives' checklist bullet; it asks readers to check a monitoring control that has no row in the table.
 -->

@@ -91,17 +91,19 @@ changes:
     note: "First briefing for the GCC, GCC High and DoD roadmap item; status Rolling out, with no Learn page yet for the new audit records."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 58 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 53 statements not yet confirmed"
 version: 1
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 58
-  confirmed: 58
+  claims: 53
+  confirmed: 51
   unconfirmed: 0
-  contradicted: 0
+  contradicted: 2
   attempts: 0
   hash: "40945ce8546fd39e01412631fbd68ad0"
 ---
@@ -206,10 +208,12 @@ cost: Low. The only cost the sources show is admin time; no licence or meter for
 impact: Low. The roadmap names administrators who troubleshoot access issues and monitor authorisation outcomes; it does not describe any change for ordinary users.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model / licensing: The licensing model is unknown because no feature-specific licence has been published. | Found: Licensing for Audit (Standard) and Audit (Premium) requires the appropriate organization subscription that provides access to the audit log search tool and per-user licensing that's required to log and retain audit records. | Fix: Set licensing.model to included under the standard's rule for an option inside a licensed product. Replace the notes with: 'The existing Audit (Standard) or Audit (Premium) organisation subscription and per-user licensing requirements apply. A licence requirement specific to this improvement is not yet published.' Keep https://learn.microsoft.com/purview/audit-get-started as the source; do not assert that the new events are Premium-only. | Source: https://learn.microsoft.com/purview/audit-get-started
-- [supported, minor] controls[1].ui; Governance controls / admin-path: Settings > Roles and scopes > Role groups reaches the Purview role groups used to manage audit access. | Found: Go to Settings > Roles and scopes ... Select Role groups. ... select a Microsoft Purview role group you want to add users to. Select Edit on the control bar. ... select Choose users or Choose groups. | Fix: Extend controls[1].ui.path and the rendered table path to 'Settings > Roles and scopes > Role groups > role group > Edit > Choose users' for adding individual users, as documented at https://learn.microsoft.com/purview/purview-permissions#add-users-or-groups-to-a-microsoft-purview-built-in-role-group. The current path stops early on the correct listing page. | Source: https://learn.microsoft.com/purview/purview-permissions
-- [supported, minor] controls[1].api; Governance controls / command: Add-RoleGroupMember -Identity <role group> -Member <user> grants a user the roles assigned to a Purview role group. | Found: Add-RoleGroupMember [-Identity] <RoleGroupIdParameter> -Member <SecurityPrincipalIdParameter> ... When you add a member to a role group, the member is given the effective permissions provided by the management roles assigned to the role group. | Fix: Add https://learn.microsoft.com/entra/identity/role-based-access-control/m365-workload-docs#microsoft-365 to sources. Its management API reference explicitly documents Add-RoleGroupMember for Purview-specific roles in Security & Compliance PowerShell; the cited command reference supplies the syntax. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember
+- [supported, minor] front matter: licensing.model; licensing.notes / licensing: The licensing model is unknown because a feature-specific entitlement has not been published. | Found: Licensing for Audit (Standard) and Audit (Premium) requires the appropriate organization subscription that provides access to the audit log search tool and per-user licensing that's required to log and retain audit records. | Fix: Set licensing.model to included under the standard's rule for a new option inside a licensed product. Replace licensing.notes with: 'The existing Audit (Standard) or Audit (Premium) organisation subscription and per-user licensing requirements apply. A licence requirement specific to this improvement is not yet published.' Retain https://learn.microsoft.com/purview/audit-get-started as the source. | Source: https://learn.microsoft.com/purview/audit-get-started
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: Settings > Roles and scopes > Role groups reaches the Purview role-group listing used to manage audit access. | Found: Go to Settings > Roles and scopes ... Select Role groups. ... select a Microsoft Purview role group you want to add users to. Select Edit on the control bar. ... select Choose users or Choose groups. | Fix: Extend controls[1].ui.path and the rendered table route to 'Settings > Roles and scopes > Role groups > role group > Edit > Choose users' for individual membership changes, as documented at https://learn.microsoft.com/purview/purview-permissions#add-users-or-groups-to-a-microsoft-purview-built-in-role-group. The present route stops early on the correct listing page. | Source: https://learn.microsoft.com/purview/purview-permissions
+- [supported, minor] controls[1].api; Governance controls table / command: Add-RoleGroupMember -Identity <role group> -Member <user> grants the selected user membership and the role group's effective permissions. | Found: Add-RoleGroupMember [-Identity] <RoleGroupIdParameter> -Member <SecurityPrincipalIdParameter> ... When you add a member to a role group, the member is given the effective permissions provided by the management roles assigned to the role group. | Fix: Add https://learn.microsoft.com/entra/identity/role-based-access-control/m365-workload-docs#microsoft-365 to sources. Its Management API reference names Add-RoleGroupMember under Purview-specific roles and Security & Compliance PowerShell, establishing applicability; the existing reference supplies the command syntax. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember
+- [contradicted, minor] front matter: action / consistency: The review action rating fits this rolling-out change to existing audit visibility. | Found: action: "review"; "Microsoft plans to improve the permission checks that run when users access the Microsoft Purview portal, and to make the audit logs clearer about the outcome."; "Item 573447 has status Rolling out" | Fix: Set action to prepare. The standard assigns prepare to an arriving improvement to existing behaviour that needs communication, even when risk and cost are low and the default state is unknown; review is for an optional capability that changes nothing until chosen.
+- [contradicted, minor] Governance guidance: Before rollout / consistency: Every control the checklist tells administrators to take stock of is represented in the controls table. | Found: "Identify administrators who hold both an Entra role and a scoped Purview role group assignment"; the table covers searching, audit-search role-group membership and unified-audit recording, but not Entra role assignments. | Fix: The Before rollout step beginning 'Identify administrators who hold both an Entra role' has no corresponding Entra-assignment control row. Remove that checklist bullet; keep the already-supported role-precedence explanation in Risk assessment.
 -->

@@ -99,15 +99,17 @@ changes:
     note: "Corrected: removed the unsupported five-member ordering gap and its open question, extended the After rollout admin path, and removed the licence checklist step that had no control row."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 55 statements confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 51 statements confirmed"
 version: 3
 verification:
   status: "verified"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 55
-  confirmed: 55
+  claims: 51
+  confirmed: 51
   unconfirmed: 0
   contradicted: 0
   attempts: 0

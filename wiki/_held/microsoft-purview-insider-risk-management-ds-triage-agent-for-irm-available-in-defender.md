@@ -79,18 +79,20 @@ changes:
     note: "New briefing: IRM triage agent summaries reach the Defender alert queue, with rollout per MC1438568, agent licensing and SCU consumption, and the controls Learn documents."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 2 of 80 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 86 statements contradicted, 1 unconfirmed; taken offline until corrected"
 version: 1
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-20"
+  status: "held"
+  date: "2026-11-27"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 80
-  confirmed: 77
-  unconfirmed: 2
-  contradicted: 1
-  attempts: 0
+  claims: 86
+  confirmed: 83
+  unconfirmed: 1
+  contradicted: 2
+  attempts: 1
   hash: "24d7cd42cb928ffdef034789e6e20a9b"
 ---
 
@@ -193,14 +195,14 @@ cost: Variable. The agent consumes Security Compute Units (SCUs) and Learn says 
 impact: Medium. Security analysts and insider risk investigators who work Insider Risk Management alerts in Defender will notice; other users do not.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters: first sentence / behaviour: The summaries present context about a named user's activity. | Found: Searched: '"Insider Risk Management" "Defender" "summaries" "pseudonymized"'; read the roadmap, MC1438568, and Learn's Defender investigation and Purview activities articles. They establish user context, not whether Defender summaries expose real names. | Fix: Replace "a named user's risky activity" with "a user's risky activity". Keep the existing open question about names versus pseudonyms.
-- [unsupported, major] Risk assessment: Change & support / behaviour: Support teams have no Microsoft guidance to point to for summaries in Defender. | Found: Searched: '"Insider Risk Management" "agent summaries" "Defender"'; read Defender investigation and MC1438568. The absence of agent-summary content in that Learn article does not establish a universal absence of Microsoft guidance; the notice gives readiness recommendations. | Fix: Replace "Learn's Defender page has no agent-summary content yet, so support teams have no Microsoft guidance to point to for it" with "Learn's Defender page has no agent-summary content yet; MC1438568 provides Microsoft's rollout and readiness guidance".
+- [unsupported, major] Why it matters: first sentence / behaviour: The summaries in Defender contain context about a named user's activity. | Found: Searched: Insider Risk Management Defender agent summaries permissions pseudonymized hide summary. Read MC1438568, the roadmap, Defender investigation, Purview activities and username privacy; real names in the Purview Triage Agent dashboard do not establish names in Defender summaries. | Fix: Replace "a named user's risky activity" with "a user's risky activity". Keep the question about names versus pseudonyms in Defender open.
+- [contradicted, blocker] Risk assessment: Change & support / absence: Support teams have no Microsoft guidance to point to for agent summaries in Defender. | Found: Review the following to ensure readiness: Confirm that Insider Risk Management alerts are being shared with Microsoft Defender. Confirm that the IRM triage agent is deployed and active. | Fix: Replace "Learn's Defender page has no agent-summary content yet, so support teams have no Microsoft guidance to point to for it" with "Learn's Defender page has no agent-summary content yet; MC1438568 provides Microsoft's rollout and readiness guidance."
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Security & identity; Governance guidance: Before rollout / behaviour: Learn says agents run in the security context of the last user who saved their configuration. | Found: Agents run in the security context of the last user that saved the agent configuration. | Fix: Qualify this as the get-started article's description and add: "The overview also documents a recommended separate Microsoft Entra agent identity and an alternative user identity: https://learn.microsoft.com/purview/copilot-in-purview-agents-overview#agent-identity." | Source: https://learn.microsoft.com/purview/copilot-in-purview-triage-irm-agent-get-started
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The sharing control is under Purview Settings > Insider Risk Management > Data sharing > Sharing data with other Microsoft security solutions. | Found: In Insider Risk Management settings, select the Data sharing setting. Under the Sharing data with other Microsoft security solutions section, turn on the setting. | Fix: The path reaches the correct section but stops before its toggle. Use "Settings > Insider Risk Management > Data sharing > Sharing data with other Microsoft security solutions > Share user risk details with other security solutions"; the final label is on the already-cited Defender investigation page. | Source: https://learn.microsoft.com/purview/insider-risk-management-settings-share-data
-- [supported, minor] Governance guidance: At rollout / admin-path: Investigators can compare alerts in Defender with the Purview Triage Agent view. | Found: Set the toggle to the Triage Agent view. This view shows the alerts that have been triaged by the agent. | Fix: Replace "the Purview **Triage Agent** view" with "the Purview alert investigation experience". The already-cited https://learn.microsoft.com/purview/insider-risk-management-activities also says the unified Alerts (preview) experience removes the toggle, whereas get-started still describes it. | Source: https://learn.microsoft.com/purview/copilot-in-purview-triage-irm-agent-get-started
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The governance checklist's instruction to check Defender and IRM role assignments has a corresponding control row. | Found: Checklist: "Check who holds Security Operator, Security Reader and the IRM role groups". The table covers only data sharing, agent deactivation and usage monitoring. | Fix: The role-assignment check has no corresponding controls-table row. Remove that checklist bullet; the existing roles discussion in Risk assessment and Scope can remain.
+- [supported, minor] Risk assessment: Security & identity; Governance guidance: Before rollout / behaviour: Learn says agents run in the security context of the last user who saved their configuration. | Found: Agents run in the security context of the last user that saved the agent configuration. | Fix: Attribute this specifically to the get-started article and add: "The overview also documents a recommended separate Microsoft Entra agent identity and an alternative user identity: https://learn.microsoft.com/purview/copilot-in-purview-agents-overview#agent-identity." | Source: https://learn.microsoft.com/purview/copilot-in-purview-triage-irm-agent-get-started
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The tenant sharing control is at Purview Settings > Insider Risk Management > Data sharing > Sharing data with other Microsoft security solutions. | Found: In Insider Risk Management settings, select the Data sharing setting. Under the Sharing data with other Microsoft security solutions section, turn on the setting. | Fix: The path reaches the correct section but stops before its toggle. Use "Settings > Insider Risk Management > Data sharing > Sharing data with other Microsoft security solutions > Share user risk details with other security solutions"; the final label is documented at https://learn.microsoft.com/defender-xdr/irm-investigate-alerts-defender. | Source: https://learn.microsoft.com/purview/insider-risk-management-settings-share-data
+- [supported, minor] Governance guidance: At rollout / behaviour: Purview provides a separate Triage Agent view for comparing alerts with Defender. | Found: Set the toggle to the Triage Agent view. This view shows the alerts that have been triaged by the agent. | Fix: Replace "the Purview **Triage Agent** view" with "the Purview alert investigation experience". The already-cited https://learn.microsoft.com/purview/insider-risk-management-activities also says the unified Alerts (preview) experience removes the toggle and combines both alert types. | Source: https://learn.microsoft.com/purview/copilot-in-purview-triage-irm-agent-get-started
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The governance checklist's role-assignment check is represented in the controls table. | Found: Checklist: "Check who holds Security Operator, Security Reader and the IRM role groups". The controls table covers data sharing, agent deactivation and usage monitoring, not role assignments. | Fix: The role-assignment check has no corresponding controls-table row. Remove that checklist bullet; retain the roles discussion in Risk assessment and Scope.
 -->

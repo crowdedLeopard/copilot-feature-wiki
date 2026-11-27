@@ -2,52 +2,36 @@
   "slug": "microsoft-purview-information-protection-auto-labeling-scale-increase-for-sharepoint-and-o",
   "roadmapId": 567890,
   "title": "Microsoft Purview: auto-labeling ceiling for SharePoint and OneDrive rises to 500,000 files a day (Worldwide)",
-  "status": "verified-with-gaps",
-  "date": "2026-11-20",
+  "status": "held",
+  "date": "2026-11-27",
   "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 0,
+  "attempts": 1,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "pass",
+  "verifierVerdict": "hold",
   "notes": [],
-  "hold": null,
-  "counts": {
-    "claims": 88,
-    "confirmed": 86,
-    "unconfirmed": 0,
-    "contradicted": 2,
-    "blocker": 0,
-    "major": 0,
-    "minor": 2
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-27",
+    "reasons": [
+      "2 blocking findings (claims 48, 52)"
+    ]
   },
-  "summary": "The briefing's rollout, licensing and administrative controls are supported by the supplied records and Microsoft documentation. Two minor omissions remain: the governance checklist mentions policy conditions and label-encryption settings that have no corresponding controls-table entries.",
+  "counts": {
+    "claims": 87,
+    "confirmed": 83,
+    "unconfirmed": 1,
+    "contradicted": 3,
+    "blocker": 2,
+    "major": 0,
+    "minor": 5
+  },
+  "summary": "Hold: the licensing paragraph carries client-side entitlements over to service-side auto-labeling, including an unconfirmed standalone P2 entitlement. The rollout, automatic application to active policies, throughput caveat and documented control paths are supported.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing; rationale: risk",
-      "type": "record",
-      "claim": "SharePoint and OneDrive auto-labeling capacity increases from 100,000 to up to 500,000 files per tenant per day.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "We are increasing the maximum auto-labeling capacity for SharePoint and OneDrive from 100,000 up to 500,000 files per tenant per day.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 2,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Auto-labeling policies are the service-side method for applying sensitivity labels to stored SharePoint and OneDrive files matching administrator-defined conditions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
-      "quote": "Service-side labeling when content is already saved (in SharePoint or OneDrive) or emailed (processed by Exchange Online): Use an auto-labeling policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "Roadmap item 567890 is Launched.",
@@ -58,7 +42,7 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 2,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target is October CY2026.",
@@ -69,7 +53,7 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 3,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
       "claim": "The roadmap preview date is September CY2026.",
@@ -80,10 +64,10 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 4,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
-      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "claim": "The record lists General Availability and Preview release phases.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
@@ -91,10 +75,10 @@
       "fix": null
     },
     {
-      "n": 7,
-      "where": "front matter: clouds; What's changing; Scope",
+      "n": 5,
+      "where": "title; front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "Item 567890 lists Worldwide (Standard Multi-Tenant).",
+      "claim": "Item 567890 covers Worldwide (Standard Multi-Tenant).",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -102,7 +86,7 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 6,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap platform is Web.",
@@ -113,10 +97,21 @@
       "fix": null
     },
     {
-      "n": 9,
+      "n": 7,
+      "where": "front matter: products; title",
+      "type": "record",
+      "claim": "The feature belongs to Microsoft Purview Information Protection.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"title\": \"Microsoft Purview: Information Protection - Auto-labeling scale increase for SharePoint and OneDrive\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap record was modified on 2026-10-06T22:56:31.",
+      "claim": "The roadmap modification timestamp is 2026-10-06T22:56:31.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2026-10-06T22:56:31\"",
@@ -124,7 +119,62 @@
       "fix": null
     },
     {
+      "n": 9,
+      "where": "title; summary; What's changing; rationale: risk",
+      "type": "record",
+      "claim": "The maximum SharePoint and OneDrive auto-labeling capacity rises from 100,000 to up to 500,000 files per tenant per day.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "We are increasing the maximum auto-labeling capacity for SharePoint and OneDrive from 100,000 up to 500,000 files per tenant per day.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 10,
+      "where": "What's changing; Why it matters",
+      "type": "record",
+      "claim": "The roadmap presents the increase as closing labeling gaps and helping prepare data for Microsoft 365 Copilot.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "With sensitivity labels and protection settings applied to more files sooner, organizations can better prepare their data estate for Microsoft 365 Copilot with greater confidence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "Roadmap item 571309 describes the same increase for GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"id\": 571309; \"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]; \"description\": \"We are increasing the maximum auto-labeling capacity for SharePoint and OneDrive from 100,000 up to 500,000 files per tenant per day.\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Roadmap item 571309 is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"id\": 571309; \"status\": \"Launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "Roadmap item 571309 has a November CY2026 target.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"id\": 571309; \"targetDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
       "where": "What's changing",
       "type": "record",
       "claim": "MC1461154 was published on 24 August 2026.",
@@ -135,10 +185,10 @@
       "fix": null
     },
     {
-      "n": 11,
-      "where": "summary; What's changing; Why it matters; Scope; rationale: risk and impact",
-      "type": "record",
-      "claim": "The increase automatically applies to existing active SharePoint and OneDrive auto-labeling policies.",
+      "n": 15,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The increased limit automatically applies to existing active policies, supporting defaultState on.",
       "status": "supported",
       "source": "Message Center post MC1461154",
       "quote": "The increased processing limit will automatically apply to existing active auto-labeling policies.",
@@ -146,57 +196,13 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 16,
       "where": "What's changing; Why it matters",
       "type": "record",
-      "claim": "The capacity increase does not change policy configuration.",
+      "claim": "The update does not change policy configuration.",
       "status": "supported",
       "source": "Message Center post MC1461154",
       "quote": "Policy configuration, labeling conditions, and label settings will not change.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The capacity increase does not change labeling conditions.",
-      "status": "supported",
-      "source": "Message Center post MC1461154",
-      "quote": "Policy configuration, labeling conditions, and label settings will not change.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The capacity increase does not change label settings.",
-      "status": "supported",
-      "source": "Message Center post MC1461154",
-      "quote": "Policy configuration, labeling conditions, and label settings will not change.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The notice gives a public preview rollout from early to late September 2026.",
-      "status": "supported",
-      "source": "Message Center post MC1461154",
-      "quote": "Public Preview: Rollout begins in early September 2026 and is expected to complete by late September 2026.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "What's changing; Open questions",
-      "type": "record",
-      "claim": "The notice gives a Worldwide General Availability rollout from early to late October 2026.",
-      "status": "supported",
-      "source": "Message Center post MC1461154",
-      "quote": "General Availability (Worldwide): Rollout begins in early October 2026 and is expected to complete by late October 2026.",
       "severity": null,
       "fix": null
     },
@@ -204,7 +210,51 @@
       "n": 17,
       "where": "What's changing",
       "type": "record",
-      "claim": "The notice sets no act-by date.",
+      "claim": "The update does not change labeling conditions.",
+      "status": "supported",
+      "source": "Message Center post MC1461154",
+      "quote": "Policy configuration, labeling conditions, and label settings will not change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The update does not change label settings.",
+      "status": "supported",
+      "source": "Message Center post MC1461154",
+      "quote": "Policy configuration, labeling conditions, and label settings will not change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice gives a public preview rollout beginning early September and expected to complete late September 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1461154",
+      "quote": "Public Preview: Rollout begins in early September 2026 and is expected to complete by late September 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice gives a Worldwide GA rollout beginning early October and expected to complete late October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1461154",
+      "quote": "General Availability (Worldwide): Rollout begins in early October 2026 and is expected to complete by late October 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The supplied notice sets no act-by date.",
       "status": "supported",
       "source": "Message Center post MC1461154",
       "quote": "Act by: none",
@@ -212,10 +262,10 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 22,
       "where": "summary; What's changing",
       "type": "record",
-      "claim": "Microsoft says no action is required for organisations already using auto-labeling policies.",
+      "claim": "Microsoft says no action is required for organisations currently using auto-labeling policies.",
       "status": "supported",
       "source": "Message Center post MC1461154",
       "quote": "No action is required for organizations currently using auto-labeling policies.",
@@ -223,7 +273,7 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 23,
       "where": "What's changing; Risk assessment; Governance guidance; rationale: impact",
       "type": "record",
       "claim": "Microsoft expects no end-user experience changes.",
@@ -234,21 +284,21 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 24,
       "where": "What's changing",
       "type": "record",
-      "claim": "Microsoft recommends that organisations not using auto-labeling create a SharePoint or OneDrive policy in simulation mode.",
+      "claim": "For organisations not using auto-labeling, Microsoft recommends creating a SharePoint or OneDrive policy in simulation mode.",
       "status": "supported",
       "source": "Message Center post MC1461154",
-      "quote": "If you are not currently using auto-labeling, we recommend: Create an auto-labeling policy for SharePoint or OneDrive in simulation mode.",
+      "quote": "If you are not currently using auto-labeling, we recommend: ... Create an auto-labeling policy for SharePoint or OneDrive in simulation mode.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 21,
+      "n": 25,
       "where": "What's changing",
       "type": "record",
-      "claim": "Microsoft recommends reviewing simulation results before enabling the policy.",
+      "claim": "Microsoft recommends reviewing simulation results to validate expected outcomes.",
       "status": "supported",
       "source": "Message Center post MC1461154",
       "quote": "Review simulation results to validate expected labeling outcomes.",
@@ -256,7 +306,7 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 26,
       "where": "What's changing",
       "type": "record",
       "claim": "Microsoft recommends enabling the policy after validation.",
@@ -267,95 +317,73 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "What's changing; Risk assessment; Governance guidance; Open questions",
-      "type": "behaviour",
-      "claim": "Learn describes 500,000 automatically labeled files per tenant per day as absolute maximum throughput.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
-      "quote": "The absolute maximum throughput is 500,000 automatically labeled SharePoint and OneDrive files per tenant per day",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "What's changing; Governance controls",
-      "type": "behaviour",
-      "claim": "The 500,000-file ceiling is aggregated across all tenant auto-labeling policies.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
-      "quote": "in aggregate across all auto-labeling policies.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "What's changing; Risk assessment; Governance guidance; Open questions",
-      "type": "behaviour",
-      "claim": "The ceiling is not a guaranteed or consistently expected daily processing rate.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
-      "quote": "This ceiling isn't a guaranteed or consistently expected daily processing rate",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Actual throughput can be lower than the ceiling.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
-      "quote": "actual throughput can be lower.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 27,
-      "where": "What's changing; Scope",
+      "where": "Risk assessment: Data exposure",
       "type": "record",
-      "claim": "Roadmap item 571309 describes the same SharePoint and OneDrive auto-labeling capacity increase.",
+      "claim": "This update introduces no new labeling conditions.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"id\": 571309; \"description\": \"We are increasing the maximum auto-labeling capacity for SharePoint and OneDrive from 100,000 up to 500,000 files per tenant per day.",
+      "source": "Message Center post MC1461154",
+      "quote": "This update does not introduce new labeling conditions, data storage locations, or protection capabilities.",
       "severity": null,
       "fix": null
     },
     {
       "n": 28,
-      "where": "What's changing; Scope; Open questions",
+      "where": "Risk assessment: Data exposure",
       "type": "record",
-      "claim": "Item 571309 lists GCC, GCC High and DoD separately.",
+      "claim": "This update introduces no new data storage locations.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"id\": 571309; \"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
+      "source": "Message Center post MC1461154",
+      "quote": "This update does not introduce new labeling conditions, data storage locations, or protection capabilities.",
       "severity": null,
       "fix": null
     },
     {
       "n": 29,
-      "where": "What's changing",
+      "where": "Risk assessment: Data exposure",
       "type": "record",
-      "claim": "Item 571309 has status Launched.",
+      "claim": "This update introduces no new protection capabilities.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"id\": 571309; \"status\": \"Launched\"",
+      "source": "Message Center post MC1461154",
+      "quote": "This update does not introduce new labeling conditions, data storage locations, or protection capabilities.",
       "severity": null,
       "fix": null
     },
     {
       "n": 30,
-      "where": "What's changing; Open questions",
-      "type": "record",
-      "claim": "Item 571309 targets November CY2026.",
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Auto-labeling policies are service-side labeling of stored SharePoint and OneDrive files based on administrator-defined conditions.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"id\": 571309; \"targetDate\": \"November CY2026\"",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "Service-side labeling when content is already saved (in SharePoint or OneDrive) or emailed (processed by Exchange Online): Use an auto-labeling policy.",
       "severity": null,
       "fix": null
     },
     {
       "n": 31,
+      "where": "What's changing; Governance controls; rationale: risk",
+      "type": "behaviour",
+      "claim": "The 500,000-file daily maximum is tenant-wide in aggregate across all auto-labeling policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "The absolute maximum throughput is 500,000 automatically labeled SharePoint and OneDrive files per tenant per day, in aggregate across all auto-labeling policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing; Risk assessment; Governance guidance; Open questions",
+      "type": "behaviour",
+      "claim": "The ceiling is not a guaranteed or consistently expected daily rate and actual throughput can be lower.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "This ceiling isn't a guaranteed or consistently expected daily processing rate; actual throughput can be lower.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
       "where": "Why it matters",
       "type": "behaviour",
       "claim": "Learn says auto-labeling policies run continuously until deleted.",
@@ -366,7 +394,7 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 34,
       "where": "Why it matters",
       "type": "behaviour",
       "claim": "New and modified files are included using the current policy settings.",
@@ -377,32 +405,32 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "Why it matters",
-      "type": "record",
-      "claim": "The roadmap frames the change as closing labeling gaps and helping prepare data for Microsoft 365 Copilot.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "closing labeling gaps across existing content. With sensitivity labels and protection settings applied to more files sooner, organizations can better prepare their data estate for Microsoft 365 Copilot with greater confidence.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "Why it matters; Risk assessment; rationale: risk",
-      "type": "behaviour",
-      "claim": "An auto-labeling policy can apply a label that encrypts SharePoint or OneDrive content.",
+      "n": 35,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "A label applying encryption in a SharePoint or OneDrive auto-labeling policy must use Assign permissions now.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
-      "quote": "When the auto-labeling policy includes locations for SharePoint or OneDrive, the label must be configured for the Assign permissions now setting, and User access to content expires must be set to Never.",
+      "quote": "When the auto-labeling policy includes locations for SharePoint or OneDrive, the label must be configured for the Assign permissions now setting",
       "severity": null,
       "fix": null
     },
     {
-      "n": 35,
+      "n": 36,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Those encryption labels must have User access to content expires set to Never.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "User access to content expires must be set to Never.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Label-applied encryption restricts readability to authorised users.",
+      "claim": "Label encryption restricts reading to people authorised by its encryption settings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/encryption-sensitivity-labels",
       "quote": "Can be decrypted only by users authorized by the label's encryption settings.",
@@ -410,40 +438,40 @@
       "fix": null
     },
     {
-      "n": 36,
-      "where": "Risk assessment: Security & identity; Why it matters; rationale: risk",
-      "type": "behaviour",
-      "claim": "A policy can replace a lower-priority manually applied label when configured to do so.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
-      "quote": "All locations: Applicable for emails and for files in SharePoint and OneDrive. When you select this setting, an existing sensitivity label will always be overriden if the sensitivity label you chose for the policy has a higher priority.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "A label-removal policy can remove a manually applied label.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
-      "quote": "an auto-labeling policy configured to automatically remove a label can remove the selected label, including when the label was manually applied, and leave the content unlabeled.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 38,
-      "where": "Risk assessment; Governance guidance; controls[1].note; Governance controls",
-      "type": "role",
-      "claim": "Turning a policy from Ready to turn on to On requires Compliance Administrator or Compliance Data Administrator.",
+      "where": "Risk assessment: Security & identity; Why it matters",
+      "type": "behaviour",
+      "claim": "An auto-labeling policy can be configured to override a lower-priority manually applied label.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
-      "quote": "Turning a policy from Ready to turn on to On requires Compliance Administrator or Compliance Data Administrator. Without one of these roles, the Turn on policy button appears greyed out even after a successful simulation.",
+      "quote": "For auto-labeling policies that apply a sensitivity label, you can select a setting to override a manually applied label that has lower priority.",
       "severity": null,
       "fix": null
     },
     {
       "n": 39,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "A policy configured to remove a label can remove the selected label even when it was manually applied.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "An auto-labeling policy configured to automatically remove a label can remove the selected label, including when the label was manually applied, and leave the content unlabeled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[1].note; Risk assessment; Governance guidance; Governance controls: Roles",
+      "type": "role",
+      "claim": "Turning a policy from Ready to turn on to On requires Compliance Administrator or Compliance Data Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "Turning a policy from Ready to turn on to On requires Compliance Administrator or Compliance Data Administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
       "claim": "Service-side auto-labeling operates without user interaction.",
@@ -454,8 +482,8 @@
       "fix": null
     },
     {
-      "n": 40,
-      "where": "Risk assessment: Autonomy & actions; controls[1].note",
+      "n": 42,
+      "where": "controls[1].note; Risk assessment: Autonomy & actions",
       "type": "behaviour",
       "claim": "A policy must run at least one simulation before automatically applying or removing labels.",
       "status": "supported",
@@ -465,76 +493,21 @@
       "fix": null
     },
     {
-      "n": 41,
+      "n": 43,
       "where": "Risk assessment: Autonomy & actions",
       "type": "absence",
-      "claim": "Simulation is the only documented pre-enforcement checkpoint.",
+      "claim": "Simulation is the only documented pre-enforcement checkpoint in the auto-labeling workflow.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Purview auto-labeling policy simulation only checkpoint approval before enable policy'; opened apply-sensitivity-label-automatically, including prerequisites, simulation workflow and activation instructions; no separate approval checkpoint found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "Risk assessment: Data exposure",
-      "type": "record",
-      "claim": "The update introduces no new labeling conditions.",
-      "status": "supported",
-      "source": "Message Center post MC1461154",
-      "quote": "This update does not introduce new labeling conditions, data storage locations, or protection capabilities.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "Risk assessment: Data exposure",
-      "type": "record",
-      "claim": "The update introduces no new data storage locations.",
-      "status": "supported",
-      "source": "Message Center post MC1461154",
-      "quote": "This update does not introduce new labeling conditions, data storage locations, or protection capabilities.",
+      "quote": "Searched: Purview auto-labeling simulation only checkpoint approval before enable policies no active policy scale increase. Read apply-sensitivity-label-automatically simulation workflow and troubleshoot-auto-labeling-policies search excerpts; no separate approval gate found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 44,
-      "where": "Risk assessment: Data exposure",
-      "type": "record",
-      "claim": "The update introduces no new protection capabilities.",
-      "status": "supported",
-      "source": "Message Center post MC1461154",
-      "quote": "This update does not introduce new labeling conditions, data storage locations, or protection capabilities.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
-      "type": "behaviour",
-      "claim": "Labels applying encryption through SharePoint or OneDrive auto-labeling policies require Assign permissions now.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
-      "quote": "When the auto-labeling policy includes locations for SharePoint or OneDrive, the label must be configured for the Assign permissions now setting",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
-      "type": "behaviour",
-      "claim": "For those encrypted labels, User access to content expires must be Never.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
-      "quote": "User access to content expires must be set to Never.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
       "where": "Risk assessment: Autonomy & actions; Scope",
       "type": "behaviour",
-      "claim": "Files cannot be auto-labeled while open.",
+      "claim": "Open files cannot be auto-labeled.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
       "quote": "Files can't be auto-labeled if they're part of an open session (the file is open).",
@@ -542,7 +515,7 @@
       "fix": null
     },
     {
-      "n": 48,
+      "n": 45,
       "where": "Risk assessment: Autonomy & actions; Scope",
       "type": "behaviour",
       "claim": "PDFs are skipped unless PDF labeling is enabled for the tenant.",
@@ -553,10 +526,10 @@
       "fix": null
     },
     {
-      "n": 49,
+      "n": 46,
       "where": "Risk assessment: Change & support; Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "Policy labeling-progress information refreshes every 48 hours.",
+      "claim": "Policy labeling progress figures refresh every 48 hours.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
       "quote": "This progress information updates every 48 hours, so you can expect to see the most current data about every other day.",
@@ -564,74 +537,96 @@
       "fix": null
     },
     {
-      "n": 50,
+      "n": 47,
       "where": "front matter: licensing.model; rationale: cost",
       "type": "licensing",
-      "claim": "The licensing model is included within qualifying existing auto-labeling licences.",
+      "claim": "The capability is included in qualifying licenses rather than separately entitled by the ceiling increase.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
-      "quote": "| Service-side auto-labeling (SharePoint, OneDrive, Exchange) | Microsoft Purview portal → Information Protection → Policies → Auto-labeling policies | Same E5 / P2-tier SKUs as above |",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-information-protection-sensitivity-labeling",
+      "quote": "| Client and service-side automatic sensitivity labeling | Included | Included |",
       "severity": null,
       "fix": null
+    },
+    {
+      "n": 48,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The cited auto-labeling page lists service-side auto-labeling with the same four SKUs as client-side auto-labeling.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "Check the Client and service-side automatic sensitivity labeling entry in the feature matrix linked below. Client-only entitlements don't establish service-side entitlement.",
+      "severity": "blocker",
+      "fix": "Replace the SKU-list sentence in licensing.notes and Cost and licensing with: 'Microsoft Learn directs service-side auto-labeling licensing to the Client and service-side automatic sensitivity labeling feature matrix; that matrix includes Microsoft 365 E5 and Microsoft 365 E5 Information Protection and Governance.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-information-protection-sensitivity-labeling."
+    },
+    {
+      "n": 49,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 E5 includes service-side automatic sensitivity labeling.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-information-protection-sensitivity-labeling",
+      "quote": "Microsoft 365 E5/A5/G5 ... | Client and service-side automatic sensitivity labeling | Included | Included |",
+      "severity": "minor",
+      "fix": "Cite the service-side feature matrix at https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-information-protection-sensitivity-labeling."
+    },
+    {
+      "n": 50,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 E5 Information Protection and Governance includes service-side automatic sensitivity labeling.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-information-protection-sensitivity-labeling",
+      "quote": "Microsoft 365 E5 Information Protection and Governance ... | Client and service-side automatic sensitivity labeling | Included | Included |",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-information-protection-sensitivity-labeling."
     },
     {
       "n": 51,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "The listed qualifying SKUs are Microsoft 365 E5, E5 Compliance, E5 Information Protection & Governance and Azure Information Protection Premium P2 standalone.",
+      "claim": "Microsoft lists Microsoft 365 E5 Compliance among licenses for automatically applying sensitivity labels to Microsoft 365 assets.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
-      "quote": "Microsoft 365 E5, Microsoft 365 E5 Compliance, Microsoft 365 E5 Information Protection & Governance, Azure Information Protection Premium P2 (standalone)",
-      "severity": null,
-      "fix": null
+      "source": "https://learn.microsoft.com/purview/data-map-sensitivity-labels-faq#licensing-and-setup",
+      "quote": "The following Microsoft 365 licenses are required to automatically apply sensitivity labels to your assets in Microsoft 365 and the Microsoft Purview Data Map: ... Microsoft 365 E5/A5/G5 Compliance",
+      "severity": "minor",
+      "fix": "Remove E5 Compliance from the service-side SKU sentence when applying the licensing correction: the cited feature page now directs readers to a service-side matrix naming Microsoft Purview Suite rather than E5 Compliance. If retaining the broader historical entitlement statement, cite https://learn.microsoft.com/purview/data-map-sensitivity-labels-faq#licensing-and-setup and also link the current service-side matrix."
     },
     {
       "n": 52,
-      "where": "Cost and licensing",
+      "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "Learn lists the same E5/P2-tier SKUs for client-side and service-side auto-labeling.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
-      "quote": "| Service-side auto-labeling (SharePoint, OneDrive, Exchange) | Microsoft Purview portal → Information Protection → Policies → Auto-labeling policies | Same E5 / P2-tier SKUs as above |",
-      "severity": null,
-      "fix": null
+      "claim": "Standalone Azure Information Protection Premium P2, or a P2-tier add-on to E3 or Business Premium, establishes entitlement to this service-side feature.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"service-side\" \"Azure Information Protection Premium P2\" auto-labeling licensing. Read the auto-labeling surface table, Purview service-side SKU matrix and AIP service-description excerpt; P2's client-side or generic automatic-classification entries do not establish this entitlement.",
+      "severity": "blocker",
+      "fix": "Remove Azure Information Protection Premium P2 from the service-side SKU list and replace 'requires an E5 or P2-tier add-on' with 'requires an eligible subscription or add-on for service-side automatic sensitivity labeling; check the Client and service-side automatic sensitivity labeling matrix.' Link https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-information-protection-sensitivity-labeling."
     },
     {
       "n": 53,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Learn says auto-labeling of files and emails is not included with E3 or Business Premium.",
+      "claim": "E3 or Business Premium manual-labeling entitlement does not include automatic labeling.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
-      "quote": "You have E3 or Business Premium. Auto-labeling of files and emails isn't included at this SKU.",
+      "quote": "You have E3 or Business Premium. Manual labeling entitlement doesn't include automatic labeling. Check the feature matrix for an eligible subscription or add-on for the labeling method you intend to use.",
       "severity": null,
       "fix": null
     },
     {
       "n": 54,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "Learn says those customers require an E5/P2-tier add-on for auto-labeling.",
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No separate charge, meter or license specific to the higher daily ceiling is documented.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
-      "quote": "Sensitivity labels and manual labeling are — auto-labeling requires an E5 / P2-tier add-on.",
+      "source": null,
+      "quote": "Searched: Purview auto-labeling 500000 ceiling additional charge license meter pricing. Read apply-sensitivity-label-automatically, Purview service description, purview-billing-models, the roadmap and MC1461154; no ceiling-specific charge, meter or license found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 55,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "No separate charge, meter or licence specific to the higher ceiling is documented in the cited material.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Purview auto-labeling 500,000 higher daily limit additional charge meter license simulation checkpoint existing policies'; opened apply-sensitivity-label-automatically and searched its pricing/licensing text; also read roadmap 567890 and MC1461154. No ceiling-specific charge found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "Cost and licensing; Governance controls",
+      "where": "Cost and licensing; Governance controls: Roles",
       "type": "role",
       "claim": "Viewing file contents in simulation source view requires Data Classification Content Viewer.",
       "status": "supported",
@@ -641,10 +636,10 @@
       "fix": null
     },
     {
-      "n": 57,
+      "n": 56,
       "where": "Cost and licensing",
       "type": "role",
-      "claim": "Global admins do not hold Data Classification Content Viewer by default.",
+      "claim": "Global admins do not have Data Classification Content Viewer by default.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
       "quote": "Global admins don't have this role by default.",
@@ -652,10 +647,10 @@
       "fix": null
     },
     {
-      "n": 58,
+      "n": 57,
       "where": "Scope",
       "type": "behaviour",
-      "claim": "PDF and Word, Excel and PowerPoint files are supported.",
+      "claim": "Supported file formats include PDF and Word, Excel and PowerPoint files.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
       "quote": "PDF documents and Office files for Word (.docx), PowerPoint (.pptx), and Excel (.xlsx) are supported.",
@@ -663,10 +658,10 @@
       "fix": null
     },
     {
-      "n": 59,
+      "n": 58,
       "where": "Scope",
       "type": "behaviour",
-      "claim": "A detached OneDrive account not associated with its corresponding user account is unsupported.",
+      "claim": "A OneDrive account not associated with its corresponding user account is unsupported.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
       "quote": "A OneDrive account that isn't associated with its user account (sometimes called a detached OneDrive account) isn't supported for auto-labeling or simulation.",
@@ -674,21 +669,21 @@
       "fix": null
     },
     {
-      "n": 60,
+      "n": 59,
       "where": "Scope",
-      "type": "behaviour",
+      "type": "applicability",
       "claim": "Sensitivity labels must be enabled for Office files in SharePoint and OneDrive.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
-      "quote": "To auto-label files in SharePoint and OneDrive: You have enabled sensitivity labels for Office files in SharePoint and OneDrive.",
+      "quote": "Sensitivity labels are enabled for Office files in SharePoint and OneDrive. Required before any label can be applied to files in those locations.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 61,
+      "n": 60,
       "where": "Scope",
       "type": "behaviour",
-      "claim": "The maximum is 100 auto-labeling policies per tenant.",
+      "claim": "There is a maximum of 100 auto-labeling policies per tenant.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
       "quote": "Maximum of 100 auto-labeling policies per tenant.",
@@ -696,10 +691,10 @@
       "fix": null
     },
     {
-      "n": 62,
+      "n": 61,
       "where": "Scope",
       "type": "availability",
-      "claim": "The Auto-labeling page is not visible where a backend Azure dependency makes the functionality unavailable.",
+      "claim": "The Auto-labeling page is not visible in unsupported regions because of a backend Azure dependency.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
       "quote": "Auto-labeling isn't currently available in all regions because of a backend Azure dependency. If your tenant can't support this functionality, the Auto-labeling page isn't visible in the Microsoft Purview portal.",
@@ -707,74 +702,30 @@
       "fix": null
     },
     {
-      "n": 63,
-      "where": "front matter: defaultState; Why it matters; rationale: risk",
-      "type": "default",
-      "claim": "The capacity increase is on by default for the active policies it targets.",
+      "n": 62,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The portal limit is 1,000 explicitly included or excluded SharePoint sites per policy.",
       "status": "supported",
-      "source": "Message Center post MC1461154",
-      "quote": "The increased processing limit will automatically apply to existing active auto-labeling policies.",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "In the portal, each policy can target up to 1,000 explicitly included or excluded SharePoint sites",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[0].note; Governance controls",
+      "type": "default",
+      "claim": "Keeping the default All selection is exempt from the explicit-location maximums.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "If you keep the default configuration of All, this configuration is exempt from these maximums.",
       "severity": null,
       "fix": null
     },
     {
       "n": 64,
-      "where": "Why it matters",
-      "type": "absence",
-      "claim": "Nothing is documented about this capacity increase changing tenants with no auto-labeling policies.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Purview auto-labeling 500,000 files capacity increase no existing policies automatic configuration'; read MC1461154 and apply-sensitivity-label-automatically. No change for policy-free tenants was attributed to this capacity increase.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 65,
-      "where": "Open questions",
-      "type": "behaviour",
-      "claim": "Simulation has a separate limit of 20,000,000 matched files per policy simulation.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
-      "quote": "Simulation mode supports up to 20,000,000 matched files. If more than this number of files are matched from an auto-labeling policy, you can't turn on the policy to apply the labels.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 66,
-      "where": "controls[0].ui",
-      "type": "admin-path",
-      "claim": "Policy locations can be edited through Solutions > Information Protection > Policies > Auto-labeling policies > policy > Edit policy > Choose locations where you want to apply the label.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
-      "quote": "Solutions > Information Protection > Policies > Auto-labeling policies. ... select the Edit policy button. ... Choose locations where you want to apply the label: Select and specify locations for Exchange, SharePoint, and OneDrive.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 67,
-      "where": "controls[0].api",
-      "type": "command",
-      "claim": "Set-AutoSensitivityLabelPolicy -Identity <PolicyIdParameter> -AddSharePointLocation <SharePointSites> adds SharePoint locations to an existing policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-autosensitivitylabelpolicy",
-      "quote": "Set-AutoSensitivityLabelPolicy -Identity \"Main PII\" -AddSharePointLocation \"https://my.url1\",\"https://my.url2\" -AddOneDriveLocation \"https://my.url3\",\"https://my.url4\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 68,
-      "where": "controls[0].note",
-      "type": "command",
-      "claim": "The corresponding parameter for adding OneDrive locations is -AddOneDriveLocation.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-autosensitivitylabelpolicy",
-      "quote": "The AddOneDriveLocation parameter specifies the OneDrive sites to add to the list of included sites when you aren't using the value All for the OneDriveLocation parameter. You identify the site by its URL value.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 69,
-      "where": "controls[0].note",
+      "where": "controls[0].note; Governance controls",
       "type": "command",
       "claim": "Set-AutoSensitivityLabelPolicy runs in Security & Compliance PowerShell.",
       "status": "supported",
@@ -784,21 +735,65 @@
       "fix": null
     },
     {
-      "n": 70,
-      "where": "controls[0].note",
-      "type": "behaviour",
-      "claim": "The default All configuration is exempt from the portal's 1,000-explicit-SharePoint-site limit.",
+      "n": 65,
+      "where": "controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "The AddOneDriveLocation parameter adds OneDrive locations to the policy.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
-      "quote": "In the portal, each policy can target up to 1,000 explicitly included or excluded SharePoint sites ... If you keep the default configuration of All, this configuration is exempt from these maximums.",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-autosensitivitylabelpolicy",
+      "quote": "The AddOneDriveLocation parameter specifies the OneDrive sites to add to the list of included sites when you aren't using the value All for the OneDriveLocation parameter. You identify the site by its URL value.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 71,
-      "where": "controls[1].ui; Governance guidance: At rollout",
+      "n": 66,
+      "where": "controls[1].note; Governance controls: Roles",
+      "type": "command",
+      "claim": "Mode TestWithoutNotifications is test mode without policy actions or notifications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-autosensitivitylabelpolicy",
+      "quote": "TestWithoutNotifications: An audit mode where no actions are taken, and no notifications are sent (Test mode).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "controls[1].note; Governance controls: Roles",
+      "type": "command",
+      "claim": "Mode Disable disables the policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-autosensitivitylabelpolicy",
+      "quote": "Disable: The policy is disabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "controls[0].ui; Governance controls",
       "type": "admin-path",
-      "claim": "An eligible simulated policy can be enabled through Solutions > Information Protection > Policies > Auto-labeling policies > policy > Turn on policy.",
+      "claim": "Policy locations can be edited through Purview > Solutions > Information Protection > Policies > Auto-labeling policies > policy > Edit policy > Choose locations where you want to apply the label.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "Solutions > Information Protection > Policies > Auto-labeling policies. ... For a policy in the Off section, select the Edit policy button. ... Choose locations where you want to apply the label",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "controls[0].api; Governance controls",
+      "type": "command",
+      "claim": "Set-AutoSensitivityLabelPolicy -Identity <PolicyIdParameter> -AddSharePointLocation <SharePointSites> modifies the policy's included SharePoint sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-autosensitivitylabelpolicy",
+      "quote": "The AddSharePointLocation parameter specifies the SharePoint sites to add to the list of included sites when you aren't using the value All for the SharePointLocation parameter. You identify the site by its URL value.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "controls[1].ui; Governance guidance: At rollout; Governance controls",
+      "type": "admin-path",
+      "claim": "A simulated policy can be enabled through Purview > Solutions > Information Protection > Policies > Auto-labeling policies > policy > Turn on policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
       "quote": "Solutions > Information Protection > Policies > Auto-labeling policies. ... Select your policy to see the details ... When you're ready to run the policy without simulation, select the Turn on policy option.",
@@ -806,8 +801,8 @@
       "fix": null
     },
     {
-      "n": 72,
-      "where": "controls[1].api",
+      "n": 71,
+      "where": "controls[1].api; Governance controls",
       "type": "command",
       "claim": "Set-AutoSensitivityLabelPolicy -Identity <PolicyIdParameter> -Mode Enable enables policy actions.",
       "status": "supported",
@@ -817,65 +812,43 @@
       "fix": null
     },
     {
-      "n": 73,
-      "where": "controls[1].note; Governance controls",
-      "type": "command",
-      "claim": "-Mode TestWithoutNotifications selects the test mode.",
+      "n": 72,
+      "where": "controls[2].ui; Governance controls; Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "The documented per-policy monitoring route is Purview > Solutions > Information Protection > Policies > Auto-labeling policies > policy > View details.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-autosensitivitylabelpolicy",
-      "quote": "TestWithoutNotifications: An audit mode where no actions are taken, and no notifications are sent (Test mode).",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "To open the newer review pages, go to Solutions > Information Protection > Policies > Auto-labeling policies. Select a policy, then select View details in the policy details panel.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "controls[2].api; Governance controls",
+      "type": "command",
+      "claim": "Export-ActivityExplorerData -Filter1 @(\"Activity\", \"LabelApplied\") exports activity records filtered to LabelApplied.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/export-activityexplorerdata",
+      "quote": "For example, @(\"Activity\", \"LabelApplied\") returns records with the activity value LabelApplied.",
       "severity": null,
       "fix": null
     },
     {
       "n": 74,
-      "where": "controls[1].note; Governance controls",
-      "type": "command",
-      "claim": "-Mode Disable switches the policy off.",
+      "where": "controls[2].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The export reads Activity explorer data rather than configuring the ceiling or exporting the per-policy review page itself.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-autosensitivitylabelpolicy",
-      "quote": "Disable: The policy is disabled.",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/export-activityexplorerdata",
+      "quote": "Use the Export-ActivityExplorerData cmdlet to export activities from Data classification > Activity Explorer",
       "severity": null,
       "fix": null
     },
     {
       "n": 75,
-      "where": "controls[2].ui; Governance guidance: After rollout",
+      "where": "controls[3].ui; Governance controls",
       "type": "admin-path",
-      "claim": "Solutions > Information Protection > Policies > Auto-labeling policies > policy > View details opens per-policy review pages with Labeled items and Labeling failures.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
-      "quote": "go to Solutions > Information Protection > Policies > Auto-labeling policies. Select a policy, then select View details in the policy details panel. ... The newer review page has separate Overview, Labeled items, and Labeling failures tabs.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 76,
-      "where": "controls[2].api; controls[2].note; Governance guidance: After rollout",
-      "type": "command",
-      "claim": "Export-ActivityExplorerData -Filter1 @(\"Activity\", \"LabelApplied\") exports matching labeling activity rather than configuring the ceiling or reproducing the per-policy review pages.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/export-activityexplorerdata",
-      "quote": "Use the Export-ActivityExplorerData cmdlet to export activities ... For example, @(\"Activity\", \"LabelApplied\") returns records with the activity value LabelApplied.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 77,
-      "where": "Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "Learn advises reviewing the failure reason even when few files fail.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
-      "quote": "Review the failure reason even when few files fail. Transient infrastructure failures are retried automatically, but file format, protection, or label configuration failures might require action regardless of volume.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 78,
-      "where": "controls[3].ui",
-      "type": "admin-path",
-      "claim": "In the Microsoft Purview portal, Audit > Start recording user and admin activity enables auditing.",
+      "claim": "Auditing can be enabled in the Purview portal through Audit > Start recording user and admin activity.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
       "quote": "Select the Audit solution card. ... Select the Start recording user and admin activity banner.",
@@ -883,19 +856,19 @@
       "fix": null
     },
     {
-      "n": 79,
-      "where": "controls[3].api; controls[3].note",
+      "n": 76,
+      "where": "controls[3].api; controls[3].note; Governance controls",
       "type": "command",
       "claim": "Set-AdminAuditLogConfig -UnifiedAuditLogIngestionEnabled $true turns on auditing in Exchange Online PowerShell.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
-      "quote": "Connect to Exchange Online PowerShell. ... Set-AdminAuditLogConfig -UnifiedAuditLogIngestionEnabled $true",
+      "quote": "Complete the following steps to turn on auditing by using Exchange Online PowerShell: ... Set-AdminAuditLogConfig -UnifiedAuditLogIngestionEnabled $true",
       "severity": null,
       "fix": null
     },
     {
-      "n": 80,
-      "where": "controls[3].note; Governance controls",
+      "n": 77,
+      "where": "controls[3].note; Governance controls: Roles",
       "type": "role",
       "claim": "Turning auditing on or off requires the Audit Logs role in Exchange Online.",
       "status": "supported",
@@ -905,10 +878,10 @@
       "fix": null
     },
     {
-      "n": 81,
-      "where": "controls[3].note",
+      "n": 78,
+      "where": "controls[3].note; Governance controls",
       "type": "behaviour",
-      "claim": "The start-recording banner appears when auditing is not already enabled.",
+      "claim": "The auditing enablement banner appears if auditing is not already turned on.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
       "quote": "If auditing isn't turned on for your organization, a banner is displayed prompting you to start recording user and admin activity.",
@@ -916,19 +889,19 @@
       "fix": null
     },
     {
-      "n": 82,
-      "where": "controls[3].governs; Governance guidance: Before rollout",
+      "n": 79,
+      "where": "controls[3].governs; Governance guidance: Before rollout; Governance controls",
       "type": "applicability",
-      "claim": "Organisation auditing must be enabled for auto-labeling simulation.",
+      "claim": "Microsoft 365 auditing must be on for auto-labeling simulation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
-      "quote": "Simulation mode: Auditing for Microsoft 365 must be turned on.",
+      "quote": "Auditing is turned on for Microsoft 365. Required for simulation.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 83,
-      "where": "Governance controls",
+      "n": 80,
+      "where": "Governance controls: Roles",
       "type": "command",
       "claim": "The Activity explorer export cmdlet runs in Security & Compliance PowerShell.",
       "status": "supported",
@@ -938,10 +911,10 @@
       "fix": null
     },
     {
-      "n": 84,
-      "where": "Governance controls",
+      "n": 81,
+      "where": "Governance controls: Roles",
       "type": "role",
-      "claim": "Using the Activity explorer export cmdlet requires assigned permissions.",
+      "claim": "Activity explorer export requires assigned permissions in Security & Compliance PowerShell.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/export-activityexplorerdata",
       "quote": "To use this cmdlet in Security & Compliance PowerShell, you need to be assigned permissions.",
@@ -949,8 +922,8 @@
       "fix": null
     },
     {
-      "n": 85,
-      "where": "Governance controls",
+      "n": 82,
+      "where": "Governance controls: Roles",
       "type": "behaviour",
       "claim": "Activity explorer reports on up to 30 days of data.",
       "status": "supported",
@@ -960,21 +933,43 @@
       "fix": null
     },
     {
-      "n": 86,
-      "where": "Governance controls",
+      "n": 83,
+      "where": "Open questions",
       "type": "behaviour",
-      "claim": "None of the calls in the table sets the tenant-wide 500,000-file ceiling itself.",
+      "claim": "Simulation has a separate maximum of 20,000,000 matched files per policy simulation.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-autosensitivitylabelpolicy",
-      "quote": "The AddSharePointLocation parameter specifies the SharePoint sites to add to the list of included sites ... The Mode parameter specifies the action and notification level of the auto-labeling policy.",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "Simulation mode supports up to 20,000,000 matched files. ... This maximum of 20,000,000 matched files applies to simulation mode only and not to an auto-labeling policy that's already turned on",
       "severity": null,
       "fix": null
     },
     {
-      "n": 87,
+      "n": 84,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "Nothing is documented about this scale update changing a tenant with no auto-labeling policies.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"500,000\" \"auto-labeling\" \"no\" \"policies\". Read auto-labeling guidance, MC1461154 and the roadmap; the increase applies to existing policies and the notice recommends policy creation for nonusers, not automatic creation by this update.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 85,
+      "where": "Governance guidance: After rollout; controls[2].governs",
+      "type": "behaviour",
+      "claim": "Per-policy review pages expose Labeled items and Labeling failures, including failure reasons worth reviewing even at low failure volumes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "Use Labeled items to review successfully labeled files. Use Labeling failures ... to investigate failures. Select a file and review its failure reason. ... Review the failure reason even when few files fail.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 86,
       "where": "Governance guidance: Before rollout; Governance controls",
       "type": "consistency",
-      "claim": "The checklist asks administrators to check policy conditions, but the controls table only documents location selection for policy scope.",
+      "claim": "The checklist instructs readers to check policy conditions, but the controls table represents locations rather than condition configuration.",
       "status": "contradicted",
       "source": "page",
       "quote": "confirm each one's SharePoint and OneDrive locations and conditions still match your intent. / Which SharePoint and OneDrive locations an auto-labeling policy covers",
@@ -982,19 +977,19 @@
       "fix": "The first Before rollout checklist step's instruction to check policy conditions has no corresponding controls-table entry; the existing first row covers locations, not conditions."
     },
     {
-      "n": 88,
+      "n": 87,
       "where": "Governance guidance: Before rollout; Governance controls",
       "type": "consistency",
-      "claim": "The checklist asks administrators to check label-encryption settings, but no controls-table row represents those settings.",
+      "claim": "The checklist instructs readers to check label-encryption settings, but the controls table has no row for those settings.",
       "status": "contradicted",
       "source": "page",
-      "quote": "Check every label used by a SharePoint or OneDrive policy: those that apply encryption need Assign permissions now and User access to content expires set to Never.",
+      "quote": "Check every label used by a SharePoint or OneDrive policy: those that apply encryption need Assign permissions now and User access to content expires set to Never. / Controls rows cover locations, policy mode, monitoring and auditing.",
       "severity": "minor",
       "fix": "The third Before rollout checklist step, checking Assign permissions now and User access to content expires on sensitivity labels, has no corresponding controls-table entry."
     }
   ],
   "precheck": {
-    "at": "2026-11-20T20:05:06.510Z",
+    "at": "2026-11-27T14:21:18.863Z",
     "summary": {
       "links": 8,
       "unreachable": 0,
@@ -1149,6 +1144,12 @@
       "date": "2026-11-20",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-20",
+      "status": "verified-with-gaps",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

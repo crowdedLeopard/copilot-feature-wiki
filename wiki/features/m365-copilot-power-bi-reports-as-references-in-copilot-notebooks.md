@@ -43,7 +43,10 @@ sources:
   - title: "Supported Copilot resources for Tenant Configuration Management (preview)"
     url: "https://learn.microsoft.com/graph/utcm-copilot-resources"
     kind: "learn"
-  - title: "Whether users can create and view Copilot Notebooks at all (Microsoft Graph)"
+  - title: "Overview of Copilot Pages and Copilot Notebooks permissions"
+    url: "https://learn.microsoft.com/microsoft-365/loop/cpcn-permission"
+    kind: "learn"
+  - title: "Whether users can create Notebooks and access the Notebooks module in the Copilot app (Microsoft Graph)"
     url: "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta"
     kind: "learn"
   - title: "Whether Fabric shares Power BI report metadata with Microsoft 365 (REST API)"
@@ -52,7 +55,7 @@ sources:
 videos: []
 related: ["copilot-notebooks","m365-copilot-csv-and-tsv-references-in-copilot-notebooks","teams-meetings-in-copilot-notebooks","cloud-policy","data-residency"]
 controls:
-  - governs: "Whether users can create and view Copilot Notebooks at all"
+  - governs: "Whether users can create Notebooks and access the Notebooks module in the Copilot app"
     scope: "group"
     ui:
       surface: "Microsoft 365 Apps admin center"
@@ -62,7 +65,7 @@ controls:
       kind: "graph"
       call: "POST /beta/admin/configurationManagement/configurationMonitors"
       docs: "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta"
-    note: "Turns off all Notebooks, not only Power BI references. Beta: in applyOnce mode the baseline can carry resource microsoft.copilot.copilotpagesnotebooks with value 0 or 1."
+    note: "Blocks new Notebooks and hides the Notebooks module; existing items aren't deleted. Beta Graph is tenant-level only: applyOnce fails if a group-level policy sets it. Resource microsoft.copilot.copilotpagesnotebooks, value 0 or 1."
   - governs: "Which users Microsoft Copilot can use Fabric (Power BI) data for"
     scope: "tenant"
     ui:
@@ -96,19 +99,23 @@ changes:
     note: "New briefing: Power BI reports as references in Copilot Notebooks, with the Notebooks Cloud Policy switch and the two Power BI settings for Microsoft Copilot."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 54 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-27"
+    note: "Corrected the Notebooks Cloud Policy description (it blocks new Notebooks and hides the module; existing items stay), noted that the Graph automation works only for tenant-level policies, and scoped report freshness to Copilot Chat."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 65 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-27"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 54
-  confirmed: 51
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "b3c6f2b9d2ec81297594787416f1baea"
+  claims: 65
+  confirmed: 65
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "0e669628e6f7c859def1b994017a0960"
 ---
 
 ## What's changing
@@ -121,9 +128,9 @@ The roadmap item lists the products as OneNote and Microsoft Copilot (Microsoft 
 
 ## Why it matters
 
-A Power BI reference brings governed business data, which may be subject to row-level security, into a notebook that can be shared with colleagues. For Copilot Chat, Microsoft's [Fabric IQ page](https://learn.microsoft.com/fabric/iq/connectors/microsoft-365-copilot-overview) says Copilot uses the user's existing Power BI permissions, including row-level and object-level security. Microsoft has not said whether a notebook's other readers see answers built from the owner's view of a report, which is the question a Power BI owner will ask first.
+A Power BI reference brings governed business data, which may be subject to row-level security, into a notebook that can be [shared with colleagues](https://learn.microsoft.com/microsoft-365/loop/cpcn-permission). For Copilot Chat, Microsoft's [Fabric IQ page](https://learn.microsoft.com/fabric/iq/connectors/microsoft-365-copilot-overview) says Copilot uses the user's existing Power BI permissions, including row-level and object-level security. Microsoft has not said whether a notebook's other readers see answers built from the owner's view of a report, which is the question a Power BI owner will ask first.
 
-Microsoft has not stated what happens on arrival. Two settings already govern Power BI data in Microsoft Copilot and are on by default: the Microsoft 365 admin center's Fabric data setting and Fabric's metadata-sharing setting. Whether either governs Notebook references is not stated, so the one documented switch that certainly reaches this feature is the Cloud Policy setting that turns Copilot Notebooks off altogether.
+Microsoft has not stated what happens on arrival. Two settings already govern Power BI data in Microsoft Copilot: the Microsoft 365 admin center's Fabric data setting, which is on by default, and Fabric's metadata-sharing setting, which is on by default when the Fabric and Microsoft 365 tenants are in the same geographic region. Whether either governs Notebook references is not stated, so the one documented switch that certainly reaches this feature is the Cloud Policy setting that blocks new Notebook creation and hides the Notebooks module in the Copilot app.
 
 ## Risk assessment
 
@@ -171,7 +178,7 @@ Microsoft has not stated what happens on arrival. Two settings already govern Po
 
 ### At rollout
 - Test with a pilot user that a Power BI report can be added as a reference, and check what a second user with different report permissions sees in the shared notebook.
-- Tell Notebook users that answers reflect the report's last refresh and that sharing a notebook may expose report-derived content.
+- Check the freshness of Notebook answers during the pilot, and brief users that sharing a notebook may expose report-derived content.
 
 ### After rollout
 - Watch Message center and the Copilot Notebooks admin pages for a setting specific to Power BI references.
@@ -184,14 +191,14 @@ Microsoft has not stated what happens on arrival. Two settings already govern Po
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether users can create and view Copilot Notebooks at all</strong><br><small>Group</small><br><small class="controls__note">Turns off all Notebooks, not only Power BI references. Beta: in applyOnce mode the baseline can carry resource microsoft.copilot.copilotpagesnotebooks with value 0 or 1.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › policy configuration › Choose the scope › Configure Settings › Create and view Copilot Pages and Copilot Notebooks <a href="https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether users can create Notebooks and access the Notebooks module in the Copilot app</strong><br><small>Group</small><br><small class="controls__note">Blocks new Notebooks and hides the Notebooks module; existing items aren't deleted. Beta Graph is tenant-level only: applyOnce fails if a group-level policy sets it. Resource microsoft.copilot.copilotpagesnotebooks, value 0 or 1.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › policy configuration › Choose the scope › Configure Settings › Create and view Copilot Pages and Copilot Notebooks <a href="https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which users Microsoft Copilot can use Fabric (Power BI) data for</strong><br><small>Tenant</small><br><small class="controls__note">No users, All users or Specific groups. Documented for Microsoft Copilot answering from Power BI; the page does not name Copilot Notebooks.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › View all › Fabric data in Microsoft Copilot › Step 1 <a href="https://learn.microsoft.com/copilot/manage/copilot-powerbi-copilot-chat" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether Fabric shares Power BI report metadata with Microsoft 365</strong><br><small>Tenant</small><br><small class="controls__note">Fabric administrator. The request body sets enabled. Feeds Copilot search and attachment menus; users can still paste report links.</small></td><td data-label="Admin UI"><strong>Microsoft Fabric</strong><br>OneLake catalog › Govern › Configurations › Tenant settings › Share Fabric data with your Microsoft 365 services <a href="https://learn.microsoft.com/fabric/admin/admin-share-power-bi-metadata-microsoft-365-services" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST https://api.fabric.microsoft.com/v1/admin/tenantsettings/{tenantSettingName}/update</code> <a href="https://learn.microsoft.com/rest/api/fabric/admin/tenants/update-tenant-setting" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether users can add Power BI reports as Notebook references</strong><br><small>Tenant</small><br><small class="controls__note">No switch specific to Power BI references is documented; the Notebooks policy above is the nearest control.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-No setting specific to Power BI references in Copilot Notebooks is documented at the time of writing (November 2026). The Cloud Policy setting turns off Copilot Notebooks entirely for the users in scope; Microsoft says existing notebooks are hidden in the Copilot app and the files added to them stay in OneDrive and SharePoint.
+No setting specific to Power BI references in Copilot Notebooks is documented at the time of writing (November 2026). The Cloud Policy setting blocks new Notebook creation and hides the Notebooks module in the Copilot app for the users in scope. Existing items are not deleted; users with permission can still view and edit existing items through the documented access routes, and files added to Notebooks remain available in OneDrive and SharePoint.
 
 The two Power BI settings are documented for Microsoft Copilot's use of Power BI data and do not name Copilot Notebooks. Fabric's page says turning off metadata sharing does not block Fabric content from appearing in Microsoft 365: it removes reports from search and attachment menus, while users can still paste report links or name reports. Changes to the Fabric setting can take up to 24 hours. The Fabric setting needs a Fabric administrator; the Copilot setting is in the Microsoft 365 admin center.
 
@@ -209,13 +216,8 @@ cost: Low. Copilot Notebooks already need a Microsoft Copilot licence; no licenc
 impact: Medium. Noticed by Copilot Notebooks users who work with Power BI reports, such as analysts and managers, and by the Fabric and Copilot admins who own the settings.
 -->
 
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; controls[0].note; Governance controls table / command: POST /beta/admin/configurationManagement/configurationMonitors in applyOnce mode automates the adjacent group-scoped Notebooks control using microsoft.copilot.copilotpagesnotebooks with value 0 or 1. | Found: TCM supports these settings only in tenant-level policies in the Microsoft 365 Apps admin center. Before using TCM, ensure that the target setting isn't configured in any group-level policy in that admin center. | Fix: Keep the endpoint, but qualify controls[0].note and the rendered note: 'Beta automation is tenant-level only, not group-scoped. The setting must not be configured in any group-level policy or applyOnce fails. Set mode to applyOnce and baseline resourceType to microsoft.copilot.copilotpagesnotebooks with properties.value "0" or "1".' The create endpoint and mode are documented at https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta; the scope restriction is at https://learn.microsoft.com/graph/utcm-copilot-resources. | Source: https://learn.microsoft.com/graph/utcm-copilot-resources
-- [contradicted, blocker] controls[0].governs; controls[0].note; Why it matters; Governance controls / applicability: The Cloud Policy turns off Notebooks altogether and controls whether users can create and view them at all. | Found: Existing Copilot Pages and Notebooks aren't deleted. Users can still view and edit existing items if they have permission. These files remain accessible in the following ways: | Fix: Change controls[0].governs and its rendered label to 'Whether users can create Notebooks and access the Notebooks module in the Copilot app'. Replace 'turns off all Notebooks', 'turns Copilot Notebooks off altogether' and 'turns off Copilot Notebooks entirely' with 'blocks new Notebook creation and hides the Notebooks module in the Copilot app'. Add to the note and explanatory prose: 'Existing items are not deleted; users with permission can still view and edit existing items through the documented access routes.' Cite https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration. | Source: https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration
-- [unsupported, major] Governance guidance: At rollout / behaviour: Notebook answers reflect the report's last refresh. | Found: Searched: "Copilot Notebooks" "Power BI" "refresh"; Copilot Notebooks Power BI reports references permissions licensing admin settings default refresh. Opened Fabric IQ Chat overview and Notebook admin/requirements pages; freshness is documented for Chat, not Notebook references. | Fix: Replace 'Tell Notebook users that answers reflect the report's last refresh and that sharing a notebook may expose report-derived content.' with 'Check the freshness of Notebook answers during the pilot, and brief users that sharing a notebook may expose report-derived content.' Keep the last-refresh fact scoped to Copilot Chat in Risk assessment.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters / default: Fabric's metadata-sharing setting is on by default. | Found: The Share Fabric data with your Microsoft 365 services tenant setting is on by default. | Fix: Qualify the default statement as 'Fabric metadata sharing is on by default when the Fabric and Microsoft 365 tenants are in the same geographic region.' The opening section of the same cited page explicitly gives that qualification, while its configuration section gives the unqualified default. | Source: https://learn.microsoft.com/fabric/admin/admin-share-power-bi-metadata-microsoft-365-services
-- [supported, minor] Why it matters; Risk assessment: Data exposure; rationale: risk / behaviour: Copilot Notebooks can be shared with colleagues. | Found: Copilot Notebooks can be shared. | Fix: Cite https://learn.microsoft.com/microsoft-365/loop/cpcn-permission for Notebook sharing and add it to sources. | Source: https://learn.microsoft.com/microsoft-365/loop/cpcn-permission
+- [supported, minor] controls[0].api; controls[0].note; Governance controls table / command: POST /beta/admin/configurationManagement/configurationMonitors can apply the Notebook Cloud Policy through the named copilotpagesnotebooks resource and its value property. | Found: Create a new configurationMonitor object that runs periodically in the background at a scheduled frequency to detect configuration drift in monitorOnly mode, or applies a desired-state baseline once in applyOnce mode. | Fix: Keep the call unchanged. Add to controls[0].note: 'Set mode to applyOnce to apply the policy; the default monitorOnly mode only detects drift. The baseline resource is microsoft.copilot.copilotpagesnotebooks, with properties.value set to the string "0" or "1".' The mode is documented at https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta and the resource at https://learn.microsoft.com/graph/utcm-copilot-resources. | Source: https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta
 -->

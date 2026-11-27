@@ -1,0 +1,838 @@
+{
+  "slug": "microsoft-entra-account-discovery-for-application-access-governance",
+  "roadmapId": 559476,
+  "title": "Microsoft Entra ID Governance: account discovery finds local and unassigned accounts in provisioned apps",
+  "status": "held",
+  "date": "2026-11-27",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-27",
+    "reasons": [
+      "1 blocking finding (claim 57)"
+    ]
+  },
+  "counts": {
+    "claims": 60,
+    "confirmed": 58,
+    "unconfirmed": 0,
+    "contradicted": 2,
+    "blocker": 1,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "Hold: the Graph guidance incorrectly makes a signed-in user's directory role mandatory for every report read, although Microsoft also documents application access. The controls and roadmap details otherwise check out; the permissions sentence needs to distinguish delegated access from application access.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The general availability target is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The preview date is April CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"April CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and GCC.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "title; front matter: products",
+      "type": "record",
+      "claim": "This roadmap item concerns Microsoft Entra account discovery for application access governance.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"title\": \"Microsoft Entra: Account Discovery for Application Access Governance.\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "Account discovery retrieves an application's users and groups, matches them to Entra identities and classifies the results.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/app-provisioning/how-to-account-discovery",
+      "quote": "Account discovery uses the Discover identities experience to retrieve users and groups from a target application, match them to corresponding users and groups in Microsoft Entra ID, and classify the results so you can bring unmanaged identities under governance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing: Local identities",
+      "type": "behaviour",
+      "claim": "Local identities have no corresponding user or group in Microsoft Entra ID.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/app-provisioning/how-to-account-discovery",
+      "quote": "Local identities — Users or groups in the target application that have no corresponding user or group in Microsoft Entra ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing: Local identities; Risk assessment",
+      "type": "behaviour",
+      "claim": "Local identities can include former employees, service or shared accounts, separately provisioned users and app-created groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/app-provisioning/how-to-account-discovery",
+      "quote": "These identities might belong to former employees, service accounts, users who were provisioned through a different process, groups created directly in the target application\nService accounts or shared accounts created directly in the application.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing: Unassigned identities",
+      "type": "behaviour",
+      "claim": "Unassigned identities match Entra identities but lack the app assignment required for provisioning management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/app-provisioning/how-to-account-discovery",
+      "quote": "These identities exist in your directory but don't have the required application assignment for provisioning to manage them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing: Assigned identities",
+      "type": "behaviour",
+      "claim": "Assigned identities are matched, assigned and fully managed by the provisioning service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/app-provisioning/how-to-account-discovery",
+      "quote": "Assigned identities — Users or groups that match a user or group in Microsoft Entra ID and are assigned to the enterprise application. These identities are fully managed by the provisioning service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "Discovery uses an application's provisioning configuration with valid credentials and a successful test connection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/app-provisioning/how-to-account-discovery",
+      "quote": "An enterprise application configured for provisioning with valid credentials and a successful test connection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "Discovery requires a direct matching attribute mapping.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/app-provisioning/how-to-account-discovery",
+      "quote": "Account discovery requires a direct matching attribute for correlation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; controls[2].note; Governance guidance",
+      "type": "behaviour",
+      "claim": "Discovery uses only the first matching attribute when multiple matching attributes are configured.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/app-provisioning/how-to-account-discovery",
+      "quote": "If multiple matching attributes are configured, only the first matching attribute is used.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "Discovery does not support expression-based transformations for matching.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/app-provisioning/how-to-account-discovery",
+      "quote": "Expression-based transformations aren't supported for matching.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "Account discovery is enabled for all provisioning connectors except Microsoft's listed exceptions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/app-provisioning/how-to-account-discovery",
+      "quote": "Account discovery is enabled for all provisioning connectors except those listed below.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Open questions",
+      "type": "availability",
+      "claim": "Group discovery, including group memberships, is in preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/app-provisioning/how-to-account-discovery",
+      "quote": "Group discovery, including group memberships, is currently in preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Generating a discovery report takes at least 30 minutes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/app-provisioning/how-to-account-discovery",
+      "quote": "The discovery takes at least 30 minutes to generate a report.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Cost and licensing: Indirect costs",
+      "type": "behaviour",
+      "claim": "Microsoft's example says a report for 250,000 identities might take 12 hours or more.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/app-provisioning/how-to-account-discovery",
+      "quote": "For example, an application with 250,000 identities might take 12 hours or more to generate a discovery report.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Discovery results can be reviewed in the Microsoft Entra admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/app-provisioning/how-to-account-discovery",
+      "quote": "In addition to reviewing discovered accounts in the Microsoft Entra admin center, you can use Microsoft Graph to programmatically retrieve Account discovery results.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "Microsoft Graph beta identity correlation APIs retrieve discovery reports and identities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/app-provisioning/how-to-account-discovery",
+      "quote": "Use the Microsoft Graph beta API to:\nList identity correlation reports in the tenant.\nRetrieve a specific identity correlation report.\nList the identities included in a report.\nFilter identities by correlation status.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Microsoft MCP Server for Enterprise provides a preview way to investigate discovery reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/app-provisioning/how-to-account-discovery",
+      "quote": "You can use the Microsoft MCP Server for Enterprise to investigate account discovery reports by asking questions in natural language.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; controls[3].note",
+      "type": "behaviour",
+      "claim": "Microsoft publishes Assign-CorrelatedUsers.ps1 to assign discovered users to the enterprise application or access packages.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/app-provisioning/how-to-account-discovery",
+      "quote": "After discovering users in your application, you can assign those users to the enterprise application or an access package. Download the Assign-CorrelatedUsers.ps1 file and run it in PowerShell 7.x to assign users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Application administrators can create app accounts manually after provisioning onboarding.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/app-provisioning/how-to-account-discovery",
+      "quote": "After onboarding to provisioning, application administrators can manually create accounts in the application.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Discovery identifies access outside Entra ID Governance so it can be brought under governance.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Account discovery will help administrators identify access that exists outside of Microsoft Entra ID Governance and bring that access under governance",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "summary; Why it matters; Governance controls; rationale: risk and impact",
+      "type": "behaviour",
+      "claim": "Discovery retrieves a report on administrator request; reviewing it does not itself assign or remove accounts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/app-provisioning/how-to-account-discovery",
+      "quote": "Select Discover identities.\nThe provisioning service retrieves users and groups from the target application and displays them organized by category.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The report displays imported target-app attributes using View attributes and Manage columns.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/app-provisioning/how-to-account-discovery",
+      "quote": "You can find property names in the discovery experience by selecting View attributes for an individual user or by reviewing your provisioning attribute mappings.\nManage columns to view the imported attributes from the target application and the correlation status.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Data exposure; Governance controls",
+      "type": "role",
+      "claim": "Delegated Graph report readers can include Enterprise Application Owner, Global Reader, Reports Reader and Security roles, beyond the discovery-running roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/reportroot-list-correlations?view=graph-rest-beta",
+      "quote": "Enterprise Application Owner\nApplication Administrator\nCloud Application Administrator\nHybrid Identity Administrator\nGlobal Reader\nReports Reader\nSecurity Administrator\nSecurity Operator\nSecurity Reader",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment; Scope: Who; controls[0].note; Governance guidance",
+      "type": "role",
+      "claim": "Discovery requires Application Administrator, Cloud Application Administrator or Hybrid Identity Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/app-provisioning/how-to-account-discovery",
+      "quote": "One of the following roles: Application Administrator, Cloud Application Administrator, or Hybrid Identity Administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Autonomy; Governance controls",
+      "type": "behaviour",
+      "claim": "Assigning unassigned identities to the app brings them under management on subsequent provisioning cycles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/app-provisioning/how-to-account-discovery",
+      "quote": "Assign the appropriate users or groups to the application.\nAfter assignment, the provisioning service manages these identities on subsequent provisioning cycles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Autonomy; Governance controls",
+      "type": "behaviour",
+      "claim": "Provisioning attribute mappings control target attribute values and matching, not just discovery results.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/app-provisioning/customize-application-attributes",
+      "quote": "If you enable user provisioning for a non-Microsoft SaaS application, the Microsoft Entra admin center controls its attribute values through attribute-mappings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Mismatched or outdated attribute values can prevent matching and cause identities to appear local.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/app-provisioning/how-to-account-discovery",
+      "quote": "identities that didn't match due to data quality issues (for example, mismatched or outdated attribute values).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Scope: Prerequisites; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "The target app must implement SCIM pagination under RFC 7644 section 3.4.2.4, and missing support can cause zero results.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/app-provisioning/how-to-account-discovery",
+      "quote": "If your discovery report has zero results, verify that you configured a single direct matching attribute (no expressions) in your attribute mappings. Next, verify with the application vendor that the application supports pagination in accordance with RFC 7644, Section 3.4.2.4.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Scope: Not supported; Risk assessment; Open questions",
+      "type": "availability",
+      "claim": "The listed Adobe, AWS, Cloud sync, cross-tenant/cross-cloud, Freshservice, AD group, HR, LinkedIn, N-able, ServiceNow and Snowflake scenarios do not support discovery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/app-provisioning/how-to-account-discovery",
+      "quote": "Adobe Identity Management, Amazon Web Services (AWS), Cloud sync, Cross-tenant synchronization and cross-cloud synchronization, Freshservice, Group provisioning to Active Directory, HR provisioning (Workday, SAP SuccessFactors, HiBob, and API-driven provisioning),",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Scope: Not supported",
+      "type": "availability",
+      "claim": "ECMA, Google Cloud and Google Workspace support user discovery but not group discovery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/app-provisioning/how-to-account-discovery",
+      "quote": "The following connectors and provisioning scenarios support user discovery, but don't support group discovery at this time: ECMA, Google Cloud, and Google Workspace.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing; summary; Cost and licensing; Scope; controls[0].note",
+      "type": "licensing",
+      "claim": "Account Discovery requires the Microsoft Entra ID Governance add-on or Microsoft Entra Suite, supporting the add-on licensing model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/id-governance/licensing-fundamentals",
+      "quote": "Account Discovery requires the Microsoft Entra ID Governance add-on or Microsoft Entra Suite.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "rationale: cost; front matter: cost",
+      "type": "licensing",
+      "claim": "P1 or P2 alone does not include Account Discovery, so additional Governance or Suite entitlement is needed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/id-governance/licensing-fundamentals",
+      "quote": "Account Discovery requires the Microsoft Entra ID Governance add-on or Microsoft Entra Suite.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.notes; Cost and licensing: Meter; rationale: cost",
+      "type": "absence",
+      "claim": "The feature and licensing pages publish no separate discovery-run price, meter or charge at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'site:learn.microsoft.com Entra account discovery pricing meter charge discovery runs'; read how-to-account-discovery and searched licensing-fundamentals for Account Discovery, meter, price and charge. Only the licence requirement is stated for discovery.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Scope: Clouds",
+      "type": "availability",
+      "claim": "The feature page says Microsoft MCP Server for Enterprise and identity correlation APIs are unavailable in sovereign clouds.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/app-provisioning/how-to-account-discovery",
+      "quote": "Microsoft MCP Server for Enterprise and the identity correlation APIs aren't currently available in sovereign clouds.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[1].note; Scope: Clouds; Open questions",
+      "type": "availability",
+      "claim": "The Graph list API reference marks global service supported and US Government L4, L5 (DOD) and China unsupported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/reportroot-list-correlations?view=graph-rest-beta",
+      "quote": "| Global service | US Government L4 | US Government L5 (DOD) | China operated by 21Vianet |\n| --- | --- | --- | --- |\n| ✅ | ❌ | ❌ | ❌ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The discovery UI path is Microsoft Entra admin center > Identity > Applications > Enterprise applications > application > Provisioning > Discover identities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/app-provisioning/how-to-account-discovery",
+      "quote": "Browse to Identity > Applications > Enterprise applications.\nSelect the application you want to discover identities for.\nIn the left navigation, select Provisioning.\nVerify that the provisioning configuration has valid credentials and a successful test connection.\nSelect Discover identities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[0].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No Graph start-discovery operation or discovery schedule is documented; identityCorrelation lists only read methods.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'site:learn.microsoft.com Entra account discovery start discovery Microsoft Graph API schedule' and '\"account discovery\" \"start\" \"Graph\" identityCorrelation'; read feature page and identityCorrelation Methods: List, Get, List identities. No start or schedule found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The same application Provisioning > Discover identities path provides the report UI.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/app-provisioning/how-to-account-discovery",
+      "quote": "Browse to Identity > Applications > Enterprise applications.\nSelect the application you want to discover identities for.\nIn the left navigation, select Provisioning.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[1].api; Governance guidance; Governance controls table",
+      "type": "command",
+      "claim": "GET /beta/reports/correlations lists tenant identity correlation reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/reportroot-list-correlations?view=graph-rest-beta",
+      "quote": "List the identityCorrelation reports in the tenant.\nGET https://graph.microsoft.com/beta/reports/correlations",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[2].ui; Governance controls table; Governance guidance",
+      "type": "admin-path",
+      "claim": "The matching control is at Entra ID > Enterprise apps > app > Provisioning > Manage > Attribute Mapping > mapping > Match objects using this attribute.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/app-provisioning/customize-application-attributes",
+      "quote": "Under Manage, select Attribute Mapping.\nTo edit an existing mapping, select the pencil icon to the right of the mapping row.\nMatch objects using this attribute – Whether this mapping should be used to uniquely identify users between the source and target systems.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "PUT /v1.0/servicePrincipals/{id}/synchronization/jobs/{jobId}/schema updates the provisioning schema that carries attribute mappings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/synchronization-synchronizationschema-update?view=graph-rest-1.0",
+      "quote": "PUT https://graph.microsoft.com/v1.0/servicePrincipals/{id}/synchronization/jobs/{jobId}/schema",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[2].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The Graph schema update replaces the whole existing synchronization schema.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/synchronization-synchronizationschema-update?view=graph-rest-1.0",
+      "quote": "This method fully replaces the current schema with the one provided in the request.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[2].note",
+      "type": "behaviour",
+      "claim": "Attribute mappings carry matchingPriority to determine matching precedence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/synchronization-attributemapping?view=graph-rest-1.0",
+      "quote": "matchingPriority | Int32 | If higher than 0, this attribute will be used to perform an initial match of the objects between source and target directories.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/graph/api/resources/synchronization-attributemapping?view=graph-rest-1.0 to sources; it documents matchingPriority on attributeMapping."
+    },
+    {
+      "n": 50,
+      "where": "controls[3].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The assignment UI is Microsoft Entra admin center > Identity > Applications > Enterprise applications > application > Users and groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/app-provisioning/how-to-account-discovery",
+      "quote": "Browse to Identity > Applications > Enterprise applications.\nSelect the application you want to discover identities for.\nNavigate to the enterprise application's Users and groups page.\nAssign the appropriate users or groups to the application.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[3].api; Governance controls table",
+      "type": "command",
+      "claim": "pwsh -File '.\\Assign-CorrelatedUsers.ps1' -ServicePrincipalId <service principal id> assigns correlated users to the enterprise application.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/app-provisioning/how-to-account-discovery",
+      "quote": "Assign all correlated users to the enterprise application:\npwsh -File '.\\Assign-CorrelatedUsers.ps1' -ServicePrincipalId \"7A22...\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[3].note",
+      "type": "behaviour",
+      "claim": "The Microsoft assignment script runs in PowerShell 7.x.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/app-provisioning/how-to-account-discovery",
+      "quote": "Download the Assign-CorrelatedUsers.ps1 file and run it in PowerShell 7.x to assign users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[3].note; Risk assessment; Governance guidance",
+      "type": "command",
+      "claim": "The assignment script's -DryRun parameter previews changes without making them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/app-provisioning/how-to-account-discovery",
+      "quote": "-DryRun | Shows what would happen without making any changes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[3].note; Governance guidance",
+      "type": "command",
+      "claim": "The assignment script's -RulesFile parameter selects rules for access-package assignment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/app-provisioning/how-to-account-discovery",
+      "quote": "Assign users to packages based on rules that you define:\npwsh -ExecutionPolicy Bypass -File '.\\Assign-CorrelatedUsers.ps1' -ServicePrincipalId \"7A22...\" -RulesFile \".\\access-package-rules.csv\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance guidance: At rollout",
+      "type": "command",
+      "claim": "The assignment script accepts -OutputFile to record an audit CSV.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/app-provisioning/how-to-account-discovery",
+      "quote": "-OutputFile | Creates a full audit trail as a CSV file with timestamps, actions, and error details.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[1].note; Governance guidance: After rollout",
+      "type": "availability",
+      "claim": "Identity correlation APIs are beta and unsupported for production applications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/app-provisioning/how-to-account-discovery",
+      "quote": "The identity correlation APIs are available on the Microsoft Graph beta endpoint. APIs under the beta endpoint are subject to change and aren't supported for use in production applications.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance controls: final bullet; controls[1].note",
+      "type": "role",
+      "claim": "Graph reads need ProvisioningLog.Read.All and one of the supported directory roles.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/graph/api/reportroot-list-correlations?view=graph-rest-beta",
+      "quote": "| Application | ProvisioningLog.Read.All | AuditLog.Read.All |\nFor delegated access using work or school accounts, the signed-in user must be assigned a supported Microsoft Entra role or a custom role that grants the permissions required for this operation.",
+      "severity": "blocker",
+      "fix": "Replace the final Governance controls bullet with: 'ProvisioningLog.Read.All is the least-privileged permission for delegated and application access; AuditLog.Read.All is also accepted. For delegated work or school access, the signed-in user additionally needs a supported Microsoft Entra role or a custom role granting the operation's permissions.' Keep controls[1].note's least-privileged wording."
+    },
+    {
+      "n": 58,
+      "where": "Why it matters; Governance guidance: After rollout",
+      "type": "applicability",
+      "claim": "Discovered users can be assigned to access packages and those packages can be reviewed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/app-provisioning/how-to-account-discovery",
+      "quote": "Assign existing users to your access packages to govern access going forward, run reviews on the access packages to certify access, and configure lifecycle workflows to automate lifecycle management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance guidance: After rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist's instruction to add access reviews has a corresponding controls-table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'Add access reviews to the access packages that newly assigned users land in.' Table rows cover discovery runs, report retrieval, matching attributes and assignment, but not access reviews.",
+      "severity": "minor",
+      "fix": "Remove the checklist bullet 'Add access reviews to the access packages that newly assigned users land in.': that step has no corresponding controls-table row."
+    },
+    {
+      "n": 60,
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "Account discovery is on as an available capability for eligible supported connectors, rather than requiring a separate feature-enablement switch.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/app-provisioning/how-to-account-discovery",
+      "quote": "Account discovery is enabled for all provisioning connectors except those listed below.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-27T14:20:16.260Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 3,
+      "apiCallsNotOnPage": 1,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=559476",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/app-provisioning/how-to-account-discovery",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/id-governance/licensing-fundamentals",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/identitycorrelation?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/reportroot-list-correlations?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/app-provisioning/customize-application-attributes",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/synchronization-synchronizationschema-update?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Running account discovery and reviewing its report for an application",
+        "docs": "https://learn.microsoft.com/entra/identity/app-provisioning/how-to-account-discovery",
+        "reachable": true,
+        "segments": [
+          "Identity",
+          "Applications",
+          "Enterprise applications",
+          "application",
+          "Provisioning",
+          "Discover identities"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Retrieving account discovery reports by script",
+        "docs": "https://learn.microsoft.com/entra/identity/app-provisioning/how-to-account-discovery",
+        "reachable": true,
+        "segments": [
+          "Identity",
+          "Applications",
+          "Enterprise applications",
+          "application",
+          "Provisioning",
+          "Discover identities"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Retrieving account discovery reports by script",
+        "docs": "https://learn.microsoft.com/graph/api/reportroot-list-correlations?view=graph-rest-beta",
+        "reachable": true,
+        "token": "/beta/reports/correlations",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Which attribute matches app accounts to Microsoft Entra ID users",
+        "docs": "https://learn.microsoft.com/entra/identity/app-provisioning/customize-application-attributes",
+        "reachable": true,
+        "segments": [
+          "Entra ID",
+          "Enterprise apps",
+          "Provisioning",
+          "Manage",
+          "Attribute Mapping",
+          "mapping",
+          "Match objects using this attribute"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Which attribute matches app accounts to Microsoft Entra ID users",
+        "docs": "https://learn.microsoft.com/graph/api/synchronization-synchronizationschema-update?view=graph-rest-1.0",
+        "reachable": true,
+        "token": "/v1.0/servicePrincipals/synchronization",
+        "found": false
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Bringing matched but unassigned identities under provisioning",
+        "docs": "https://learn.microsoft.com/entra/identity/app-provisioning/how-to-account-discovery",
+        "reachable": true,
+        "segments": [
+          "Identity",
+          "Applications",
+          "Enterprise applications",
+          "application",
+          "Users and groups"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Bringing matched but unassigned identities under provisioning",
+        "docs": "https://learn.microsoft.com/entra/identity/app-provisioning/how-to-account-discovery",
+        "reachable": true,
+        "token": "Assign-CorrelatedUsers",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

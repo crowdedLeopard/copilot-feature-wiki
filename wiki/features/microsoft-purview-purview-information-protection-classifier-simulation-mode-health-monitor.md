@@ -89,17 +89,19 @@ changes:
     note: "Corrected after verification: qualified the uploaded-file SIT test with its Exchange Online licence prerequisite, softened the claim about disabled classifiers, and removed the Classifiers sublocation for the simulation option."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 83 statements confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 87 statements not yet confirmed"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-20"
+  status: "verified-with-gaps"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 83
-  confirmed: 83
+  claims: 87
+  confirmed: 86
   unconfirmed: 0
-  contradicted: 0
+  contradicted: 1
   attempts: 0
   hash: "46b0b4fbb7f71ca5cab02ebcbf35ae30"
 ---
@@ -197,4 +199,10 @@ The other two rows are how custom SITs are published and changed today. They are
 risk: Medium. Microsoft's notice says inefficient classifiers may be automatically disabled, which could change what DLP policies and labels detect, and it does not say how admins are told first.
 cost: Low. The roadmap item and Message center post MC1185445 name no licence, meter or price, so the only cost the sources show is admin time to test and tune classifiers; licensing is not yet published.
 impact: Medium. The notice says admins managing Purview Information Protection and custom sensitive information types are affected; end users are not named, though classifier outcomes feed policies that reach them.
+-->
+
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: The checklist's simulation and health-insights controls are represented in the controls table. | Found: Checklist: "Check ... the new simulation option and classifier health insights"; "Simulate each new or changed custom SIT". Table notes: "They are not controls over simulation"; the remaining row concerns tenant availability. | Fix: The At rollout steps to check the simulation option and health insights and to simulate classifiers have no corresponding control row; the availability row does not describe those operations. This is a checklist/table coverage gap, not evidence that a path or API exists.
 -->

@@ -81,18 +81,20 @@ changes:
     note: "Corrected the app availability timing note, the Allow or Block admin path, and the sensitivity label qualification; removed two checklist steps that had no controls-table row."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 71 statements confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 71 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-20"
+  status: "held"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 71
-  confirmed: 71
+  confirmed: 70
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "44d7067fd255867a520a95bd8fb32979"
 ---
 
@@ -192,4 +194,10 @@ AI-generated notes are controlled separately through Loop experiences in Teams: 
 risk: Medium. Facilitator writes shared meeting notes to a .loop file in the initiating user's OneDrive, and Learn lists gaps for those notes (no sensitivity label inheritance, no automatic eDiscovery collection); Learn does not yet describe GCC.
 cost: Medium. The roadmap item says a Microsoft 365 Copilot licence is required, and the service description calls Microsoft 365 Copilot an add-on plan; a Facilitator-specific price or meter is not yet published.
 impact: Medium. Licensed users start Facilitator, but Learn says unlicensed users in the same meeting can see its notes and responses, so everyone who attends affected meetings will notice it.
+-->
+
+<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[1].ui; Governance controls; Governance guidance: At rollout / admin-path: Assign Facilitator availability to intended users and groups through Teams admin center > Teams apps > Manage apps > Facilitator > Users and groups > Select to manage who this app is installed for or available to in your organization > Availability > Edit availability > Available to. | Found: If your organization isn't migrated to unified app management, allow apps and Copilot agents in Teams admin center and under the Integrated apps page in Microsoft 365 admin center. | Fix: Keep the printed Teams admin center path, whose labels and order are documented. Append to controls[1].note and the At rollout availability instruction: 'For tenants not migrated to unified app management, also allow the app under Integrated apps in the Microsoft 365 admin center; migrated tenants can allow it in either admin center.' The prerequisite is documented at https://learn.microsoft.com/microsoftteams/app-centric-management#add-or-modify-app-availability-for-users. | Source: https://learn.microsoft.com/microsoftteams/app-centric-management
 -->

@@ -1,0 +1,942 @@
+{
+  "slug": "microsoft-viva-insights-for-github-copilot-spend-and-usage",
+  "roadmapId": 566470,
+  "title": "Viva Insights: GitHub Copilot spend and usage page in the Consumption Dashboard",
+  "status": "held",
+  "date": "2026-11-27",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-27",
+    "reasons": [
+      "2 blocking findings (claims 39, 60)"
+    ]
+  },
+  "counts": {
+    "claims": 71,
+    "confirmed": 65,
+    "unconfirmed": 1,
+    "contradicted": 5,
+    "blocker": 2,
+    "major": 1,
+    "minor": 5
+  },
+  "summary": "Hold: the briefing says no admin interface is documented for switching the Viva Insights web app off, although Microsoft documents that control and its policy interface. It also promises managers GitHub insights without an extra step despite Learn requiring the GitHub preview to be enabled.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is July CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"July CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap preview date is July CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"July CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "General Availability and Preview are the listed release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The listed platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The record associates the feature with Microsoft Viva and Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Viva\", \"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-07-23T23:27:16.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-07-23T23:27:16\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap specifies scoped access for managers with at least 5 direct reports.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "for managers with at least 5 direct reports (scoped access)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap names Global analysts as an audience.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Global analysts",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap names Microsoft Global administrators as an audience.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Global administrators",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: defaultState; What's changing",
+      "type": "default",
+      "claim": "The roadmap describes the dashboard as enabled by default, reported alongside Learn's preview qualification.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The dashboard is enabled by default to ensure immediate access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: licensing; Cost and licensing; rationale: cost; Open questions",
+      "type": "licensing",
+      "claim": "The licensing model is unknown because no Consumption Dashboard or GitHub-page-specific licence requirement is published.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/environment-requirements",
+      "quote": "With the applicable Viva Insights licensing, your company can get manager and leader insights in the Viva Insights web app, and advanced analysis features as an add-on to the licensing agreement.",
+      "severity": "minor",
+      "fix": "Set licensing.model to included. Replace the licensing-gap statement with: 'Viva Insights requires applicable Viva Insights licensing; Microsoft Copilot plans also include manager, leader and advanced analysis for assigned employees. A requirement specific to the Consumption Dashboard's GitHub page is not published.' Cite https://learn.microsoft.com/viva/insights/advanced/setup-maint/environment-requirements. Narrow the licensing open question and cost rationale to the feature-specific gap; do not imply that nothing is known about product licensing."
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The Consumption Dashboard shows consumption of Copilot Credits and GitHub AI Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
+      "quote": "The Consumption Dashboard in Insights helps your organization understand how Copilot Credits and GitHub AI Credits are consumed across agents, services, and users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: licensing.notes; Why it matters; Cost and licensing; Governance guidance",
+      "type": "cost",
+      "claim": "Dashboard credit usage information is for reference only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
+      "quote": "Credit usage information in this dashboard is for reference only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: licensing.notes; Why it matters; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Official billing and detailed charges for GitHub AI credits are on GitHub.com.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
+      "quote": "For official billing and detailed charges, visit the Microsoft 365 admin center for Copilot Credits or GitHub.com for GitHub AI credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "title; summary; What's changing; Scope",
+      "type": "behaviour",
+      "claim": "The Viva Insights web app Consumption Dashboard has a GitHub tab for GitHub Copilot usage and credit consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
+      "quote": "The Consumption Dashboard is organized into two pages, which you switch between using the tabs near the top of the dashboard:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "summary; What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "The GitHub page reports active GitHub Copilot users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
+      "quote": "This page covers two main types of insights: Active GitHub Copilot users and Total AI credits usage, which is specific to credits used for GitHub Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "summary; What's changing; Cost and licensing",
+      "type": "behaviour",
+      "claim": "The GitHub page reports credits used for GitHub Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
+      "quote": "Total AI credits usage, which is specific to credits used for GitHub Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The GitHub page breaks credit consumption down across employee groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
+      "quote": "how those credits are consumed across different employee groups",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "The GitHub page shows credit distribution across usage-intensity segments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
+      "quote": "This card shows the distribution of credits used for GitHub Copilot across user segments based on their usage intensity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "GitHub feature-level detail includes chat requests by mode.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
+      "quote": "the number of chat requests by mode month to date",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "GitHub feature-level detail includes suggested code completions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
+      "quote": "a graph that shows the number of code completions over the previous 28 days, for both suggested completions and accepted completions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "GitHub feature-level detail includes accepted code completions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
+      "quote": "for both suggested completions and accepted completions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "GitHub usage can be broken down by model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
+      "quote": "This section of the page uses several graphs to show the breakdown of model, language, and chat mode usage for GitHub Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "GitHub usage can be broken down by coding language.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
+      "quote": "the breakdown of model, language, and chat mode usage for GitHub Copilot",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "GitHub usage can be broken down by chat mode.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
+      "quote": "Select Chat mode, Model, or Language to filter the insights by those features.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "summary; What's changing; Scope; rationale: impact",
+      "type": "role",
+      "claim": "Insights Analysts with global partition access can view organisation-wide consumption insights.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
+      "quote": "Insights Analysts with global partition access | Yes, scoped to the entire organization",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "summary; What's changing; Scope; rationale: impact",
+      "type": "role",
+      "claim": "Managers can view consumption insights scoped to their group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
+      "quote": "Managers | Yes, scoped to their group",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "summary; What's changing; Scope; rationale: impact",
+      "type": "role",
+      "claim": "Microsoft 365 Global Administrators can view organisation-wide consumption insights.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
+      "quote": "Microsoft 365 Global Administrators | Yes, scoped to the entire organization",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Scope; Governance controls",
+      "type": "role",
+      "claim": "Consumption insights are unavailable to analysts in non-global partitions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
+      "quote": "Currently, consumption insights are not available to analysts in non-global partitions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing; controls[0].note",
+      "type": "default",
+      "claim": "Learn says consumption insights are enabled for all managers by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
+      "quote": "By default, consumption insights are enabled for all managers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing; controls[1].note; Scope",
+      "type": "availability",
+      "claim": "A manager's team must meet Minimum team size, whose lowest allowed value is five.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/manager-settings",
+      "quote": "Only managers whose team size meets or exceeds the Minimum team size setting can access insights in the Viva Insights web app. The minimum team size must be set to at least five.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing; controls[1].note; Scope",
+      "type": "behaviour",
+      "claim": "Team size includes the manager and both direct and indirect reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/manager-settings",
+      "quote": "Team size includes: The manager; All employees who directly report to the manager; All employees who indirectly report to the manager through the organizational reporting hierarchy",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing; Risk assessment; Scope; Open questions",
+      "type": "availability",
+      "claim": "Learn marks the GitHub page as public preview, unlike the roadmap's Launched status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
+      "quote": "This feature is for public preview customers only. Features in preview might not be complete and could undergo changes before becoming available in the broader release.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[2].ui; What's changing; Governance guidance",
+      "type": "admin-path",
+      "claim": "Learn directs administrators to Privacy settings in the Viva Insights web app to enable the GitHub preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
+      "quote": "To enable this preview feature, go to Privacy settings in the Viva Insights web app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "GitHub data before July 10, 2026 might be under-reported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
+      "quote": "GitHub data prior to July 10, 2026, might be under-reported due to a source issue.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What's changing; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "On days 28 to 31, the GitHub page represents the previous 28 days rather than the full month to date.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
+      "quote": "Unlike the Microsoft 365 services pages, which displays the full month to date, on days 28-31 of the month, the GitHub page only represents data over the previous 28 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "default",
+      "claim": "A manager meeting the team-size requirement sees GitHub insights without any extra step because consumption insights are enabled by default.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
+      "quote": "This feature is for public preview customers only. ... To enable this preview feature, go to Privacy settings in the Viva Insights web app.",
+      "severity": "blocker",
+      "fix": "Replace the unconditional GitHub-access assertions in Why it matters, Data exposure and the risk rationale with: 'Consumption insights are enabled for managers by default, but Learn says the GitHub public preview must be enabled in Privacy settings. Confirm preview enablement as well as manager eligibility before assuming managers can see GitHub figures.' Keep the separately attributed roadmap default."
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "applicability",
+      "claim": "GitHub metrics are suppressed for groups below the minimum group size.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
+      "quote": "To protect individual privacy, metrics aren't shown for groups that are smaller than the minimum group size.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Identification permits named employees to appear in the Consumption Dashboard instead of anonymised metrics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
+      "quote": "Identification lets your organization move from anonymized metrics to known users, surfacing named employees (identified outputs) when added precision is needed and permitted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Data exposure; Governance controls; Governance guidance: After rollout",
+      "type": "applicability",
+      "claim": "The VFAM-managed unified exclusion list can exclude employees from Consumption Dashboard aggregates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+      "quote": "Your organization might want to exclude certain users from being included in the aggregated insights in the Microsoft Copilot Dashboard, Agent Dashboard, Consumption Dashboard",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Data exposure; Governance controls",
+      "type": "behaviour",
+      "claim": "The exclusion list requires its policy to be turned on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+      "quote": "To use an exclusion list, you must turn on the policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "Learn does not document how GitHub Copilot activity is matched to Entra users for this dashboard.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Insights GitHub Copilot data matching Microsoft Entra identity accounts dashboard; \"Viva Insights\" \"GitHub\" \"matching\". Opened ai-cost-dashboard, github-query and copilot-analytics-introduction; no GitHub-to-Entra account-matching procedure.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The page takes no action in GitHub or Microsoft 365.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Viva Insights Consumption Dashboard GitHub page reporting read only actions change GitHub settings. Opened ai-cost-dashboard and manage-settings-copilot-dashboard; they describe reporting, not an explicit guarantee of no actions in either service.",
+      "severity": "major",
+      "fix": "Replace 'No change: the page reports activity and takes no action in GitHub or Microsoft 365' with 'The documented GitHub page provides usage and credit-consumption insights.'"
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Change & support",
+      "type": "availability",
+      "claim": "Access only to the Copilot and Agent dashboards does not confer access to the Consumption Dashboard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
+      "quote": "Currently, consumption insights are only available to the users listed above. The Consumption Dashboard is not available for users who have access to the Microsoft Copilot and Agent Dashboard in the Viva Insights web app",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Change & support; Open questions",
+      "type": "availability",
+      "claim": "Consumption Dashboard access cannot currently be delegated.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
+      "quote": "If you have access to the dashboard, you can't currently delegate access to other people in your company.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The GitHub query documentation says measured employees can lack a Microsoft 365 Copilot licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/analyst/github-query",
+      "quote": "GitHub Copilot usage isn't tied to a Microsoft 365 Copilot license, so the employees you measure can include people who don't have a Microsoft 365 Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[0].note; Scope",
+      "type": "role",
+      "claim": "Viva Insights Administrators and AI admins can configure Manager settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/manager-settings",
+      "quote": "Applies to: Viva Insights Administrator, AI admin",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Scope",
+      "type": "role",
+      "claim": "Microsoft 365 Global Administrators can also manage all the dashboard settings described.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+      "quote": "In addition to the roles described below, all settings can also be managed by Microsoft 365 Global Administrators.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[2].note; Scope; Governance guidance: At rollout",
+      "type": "role",
+      "claim": "Privacy settings is an Insights Administrator page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/user-roles",
+      "quote": "Privacy settings | Manage privacy settings | X",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[0].ui; Governance guidance; Governance controls",
+      "type": "admin-path",
+      "claim": "The manager consumption-access control is in Viva Insights Admin portal > Settings > Manager settings > Grant managers scoped access to Consumption insights.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/manager-settings",
+      "quote": "On the left, select Settings, and then Manager Settings. ... Optionally, select Grant managers scoped access to Consumption insights.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[0].api; Governance controls",
+      "type": "absence",
+      "claim": "No PowerShell or API operation is documented for the Manager settings consumption-access option.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Insights Manager settings consumption insights minimum team size PowerShell Microsoft Graph API; site:learn.microsoft.com/graph \"Viva\" \"manager settings\" consumption minimum team size. Read manager-settings and feature-access-management; no operation for this option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[1].ui; Governance guidance",
+      "type": "admin-path",
+      "claim": "Minimum team size is in Viva Insights Admin portal > Settings > Manager settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/manager-settings",
+      "quote": "On the left, select Settings, then Manager settings. ... Confirm or change the Minimum team size.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[1].api; Governance controls",
+      "type": "absence",
+      "claim": "No PowerShell or API operation is documented for Minimum team size.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Insights Manager settings consumption insights minimum team size PowerShell Microsoft Graph API; site:learn.microsoft.com/graph \"Viva\" \"manager settings\" consumption minimum team size. Read manager-settings and feature-access-management; no team-size operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[2].api; Governance controls",
+      "type": "absence",
+      "claim": "No PowerShell or API equivalent is documented for enabling the GitHub page preview.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Insights GitHub preview Privacy settings enable PowerShell API; site:learn.microsoft.com/powershell \"Viva\" \"Consumption\" \"GitHub\" preview. Read ai-cost-dashboard, privacy-settings and feature-access-management; no GitHub-preview operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[2].note; Governance controls",
+      "type": "absence",
+      "claim": "Learn names Privacy settings but does not publish the GitHub preview option's label.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Viva Insights\" \"Privacy settings\" \"Settings\" GitHub preview. Read ai-cost-dashboard and privacy-settings; the former names the page, while neither gives a GitHub option label.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[3].ui; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The published user-add route is Settings > Microsoft Viva > Viva Insights > Set up and management > Microsoft Copilot Dashboard > Manage access settings for Microsoft Copilot Dashboard > Users > Add.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+      "quote": "Under Microsoft Copilot Dashboard, select Manage access settings for Microsoft Copilot Dashboard. ... At the top, select Users. ... At the bottom, select Add.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[3].api",
+      "type": "absence",
+      "claim": "No automation operation is documented for adding users through the specific web-app access-settings user list.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Insights web app add users access Microsoft Graph API PowerShell access management. Read manage-settings-copilot-dashboard and VFAM references; they document access policies, but no operation for the separate Users > Add list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[4].ui",
+      "type": "absence",
+      "claim": "Microsoft has not documented an admin UI for enabling or disabling the Viva Insights web app.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+      "quote": "The AI admin can turn the Viva Insights web app on or off at the tenant, group, or user level using the Viva Insights web app feature access management control in the Microsoft 365 admin center.",
+      "severity": "blocker",
+      "fix": "Populate controls[4].ui with surface 'Microsoft 365 admin center', path 'Settings > Viva > Settings > Manage feature access > Create a policy > Access setting', and docs https://learn.microsoft.com/viva/control-access-admin-center. Add to its note: 'Select the Viva Insights app and Viva Insights web app feature; choose On or Off, then Everyone or Specific people and groups.' The feature-specific control is confirmed at https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard#enable-or-disable-the-viva-insights-web-app."
+    },
+    {
+      "n": 61,
+      "where": "controls[4].api",
+      "type": "command",
+      "claim": "Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId \"Viva Insights web app\" -Name DisableFeatureForAll -IsFeatureEnabled $false -Everyone creates a tenant-wide disabling policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-vivamodulefeaturepolicy",
+      "quote": "Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId Reflection -Name DisableFeatureForAll -IsFeatureEnabled $false -Everyone",
+      "severity": "minor",
+      "fix": "Keep the call unchanged and add https://learn.microsoft.com/powershell/module/exchangepowershell/add-vivamodulefeaturepolicy to sources for its syntax and parameters. The currently cited settings page supplies the Viva Insights web app FeatureId and disabling-policy values."
+    },
+    {
+      "n": 62,
+      "where": "controls[4].note; Governance controls; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Disabling the Viva Insights web app disables the whole app, including its dashboards, Copilot Analytics reports and analyst tools.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+      "quote": "Turning this control off disables the entire app, which includes the Microsoft Copilot Dashboard, Copilot Analytics reports, and advanced analysis and admin tools.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[3].note",
+      "type": "role",
+      "claim": "AI Administrators manage individual and group access to the Viva Insights web app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+      "quote": "Manage access to the Viva Insights web app for individual users and groups ... Applies to: AI Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[3].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Adding or removing users' web-app access takes effect in 24 hours.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+      "quote": "When you add or remove users to the Viva Insights web app, the change will go into effect in 24 hours.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[0].note; Governance controls",
+      "type": "applicability",
+      "claim": "Manager consumption access requires Copilot insights access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/manager-settings",
+      "quote": "You can't grant managers scoped access to Consumption insights if you don't grant them access to Copilot insights.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Governance controls; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Removing an analyst from the global partition removes consumption access and all other global-partition experiences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
+      "quote": "To remove access to consumption insights for specific analysts, remove them from the global partition. ... If you remove an analyst from the global partition, they lose access to all experiences in the global partition.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Exclusion-list changes can take up to three days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+      "quote": "After you remove users with an exclusion list, it will take up to three days for the changes to take effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Governance guidance: Before rollout",
+      "type": "consistency",
+      "claim": "The checklist asks the reader to check identification, but the controls table has no identification row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Check whether identification is turned on for Copilot Analytics ... Controls table: manager consumption access, Minimum team size, GitHub preview, web-app user access and web-app enablement.",
+      "severity": "minor",
+      "fix": "Remove the checklist bullet beginning 'Check whether identification is turned on for Copilot Analytics'; it names a control absent from the table. Keep the separately supported identification risk statement."
+    },
+    {
+      "n": 69,
+      "where": "Governance guidance: After rollout",
+      "type": "consistency",
+      "claim": "The checklist directs use of the unified exclusion list, but the controls table has no exclusion-list row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Add any employee who asks to be excluded to the unified exclusion list ... Controls table contains no exclusion-list control.",
+      "severity": "minor",
+      "fix": "Remove the After rollout checklist bullet beginning 'Add any employee who asks to be excluded'; the exclusion-list control has no table row. Keep the separately supported exclusion-list explanation."
+    },
+    {
+      "n": 70,
+      "where": "Governance guidance: After rollout",
+      "type": "consistency",
+      "claim": "The checklist directs changing global-partition membership, but the controls table has no partition-membership row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Remove analysts from the global partition if they should not see consumption insights ... Controls table contains no partition-membership control.",
+      "severity": "minor",
+      "fix": "Remove the After rollout checklist bullet beginning 'Remove analysts from the global partition'; that control has no table row. Keep the separately supported explanation of global-partition access."
+    },
+    {
+      "n": 71,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Changes to Manager settings apply after one hour.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/manager-settings",
+      "quote": "Changes to these settings will apply after one hour.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-27T14:20:45.432Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/manager-settings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/insights/advanced/analyst/github-query",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/insights/copilot-analytics-introduction",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/privacy-settings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/user-roles",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=566470",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/insights/advanced/admin/partitions",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether managers can see team-scoped consumption insights, including the GitHub page",
+        "docs": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/manager-settings",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Manager settings",
+          "Grant managers scoped access to Consumption insights"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Minimum team size a manager needs before seeing any insights",
+        "docs": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/manager-settings",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Manager settings",
+          "Minimum team size"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether the GitHub page preview is enabled",
+        "docs": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
+        "reachable": true,
+        "segments": [
+          "Privacy settings"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Which users and groups can open the Viva Insights web app that hosts the Consumption Dashboard",
+        "docs": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Microsoft Viva",
+          "Viva Insights",
+          "Set up and management",
+          "Microsoft Copilot Dashboard",
+          "Manage access settings for Microsoft Copilot Dashboard",
+          "Users",
+          "Add"
+        ],
+        "missing": []
+      },
+      {
+        "index": 4,
+        "side": "api",
+        "governs": "Whether the Viva Insights web app is on for the tenant, groups or users",
+        "docs": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+        "reachable": true,
+        "token": "Add-VivaModuleFeaturePolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

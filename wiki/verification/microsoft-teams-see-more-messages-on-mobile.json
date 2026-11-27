@@ -2,53 +2,47 @@
   "slug": "microsoft-teams-see-more-messages-on-mobile",
   "roadmapId": 568067,
   "title": "Microsoft Teams: more messages on screen in the iOS and Android apps",
-  "status": "held",
+  "status": "verified",
   "date": "2026-11-27",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-27",
-    "reasons": [
-      "2 blocking findings (claims 29, 30)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 35,
-    "confirmed": 31,
-    "unconfirmed": 4,
+    "claims": 39,
+    "confirmed": 39,
+    "unconfirmed": 0,
     "contradicted": 0,
-    "blocker": 2,
-    "major": 2,
-    "minor": 1
+    "blocker": 0,
+    "major": 0,
+    "minor": 0
   },
-  "summary": "The roadmap details and general Teams licensing and device requirements are supported. Hold because the page turns an undocumented rollback control into a definite claim that the service desk cannot revert the layout, and similarly asserts that no admin role is involved. Delivery through an app update is also not established.",
+  "summary": "The briefing passes: its planned behaviour, target date and availability match the roadmap. Microsoft's product documentation supports the licensing and mobile platform requirements; independent searches found no published default or control for this specific layout change.",
   "claims": [
     {
       "n": 1,
-      "where": "summary; What's changing; governance; rationale: risk and impact",
+      "where": "front matter: title, products, roadmapId",
       "type": "record",
-      "claim": "Microsoft plans a streamlined Teams mobile message layout that displays more content on screen.",
+      "claim": "This briefing concerns Microsoft Teams roadmap item 568067, See more messages on mobile.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "We are introducing a more streamlined messaging experience that displays more content on screen while improving readability when using Teams on mobile.",
+      "quote": "\"id\": 568067, \"title\": \"Microsoft Teams: See more messages on mobile\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "What's changing",
+      "where": "summary; What's changing; rationale: risk and impact",
       "type": "record",
-      "claim": "The roadmap describes improved readability.",
+      "claim": "Microsoft plans a streamlined mobile messaging view that displays more content on screen.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "displays more content on screen while improving readability when using Teams on mobile",
+      "quote": "We are introducing a more streamlined messaging experience that displays more content on screen",
       "severity": null,
       "fix": null
     },
@@ -56,18 +50,40 @@
       "n": 3,
       "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap says the updates make conversations easier to scan and the discussion easier to follow.",
+      "claim": "The roadmap describes improved readability.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "These updates make it easier to scan conversations and follow the discussion flow, helping users stay productive and engaged wherever they work.",
+      "quote": "while improving readability when using Teams on mobile.",
       "severity": null,
       "fix": null
     },
     {
       "n": 4,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says the updates make conversations easier to scan.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "These updates make it easier to scan conversations",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says the updates make discussion flow easier to follow.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "and follow the discussion flow",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
       "where": "front matter: status; What's changing",
       "type": "record",
-      "claim": "The feature is In development.",
+      "claim": "The item is In development.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
@@ -75,8 +91,8 @@
       "fix": null
     },
     {
-      "n": 5,
-      "where": "front matter: targetDate; summary; What's changing; Scope; changes",
+      "n": 7,
+      "where": "front matter: targetDate; summary; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap target is February CY2027.",
       "status": "supported",
@@ -86,7 +102,7 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 8,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
       "claim": "The release phase is General Availability.",
@@ -97,7 +113,7 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 9,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "The record lists Worldwide (Standard Multi-Tenant).",
@@ -108,10 +124,10 @@
       "fix": null
     },
     {
-      "n": 8,
-      "where": "title; front matter: platforms; What's changing; Scope; rationale: impact",
+      "n": 10,
+      "where": "front matter: platforms; title; What's changing; Scope",
       "type": "record",
-      "claim": "The listed platforms are Android and iOS, with neither desktop nor web listed.",
+      "claim": "Android is a listed platform.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Android\", \"iOS\"]",
@@ -119,10 +135,21 @@
       "fix": null
     },
     {
-      "n": 9,
+      "n": 11,
+      "where": "front matter: platforms; title; What's changing; Scope",
+      "type": "record",
+      "claim": "iOS is a listed platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"iOS\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
-      "claim": "No preview date is given.",
+      "claim": "The record gives no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -130,7 +157,7 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 13,
       "where": "front matter: roadmapModified",
       "type": "record",
       "claim": "The roadmap modification timestamp is 2026-11-11T00:52:46.",
@@ -141,29 +168,29 @@
       "fix": null
     },
     {
-      "n": 11,
-      "where": "front matter: defaultState; What's changing; Why it matters; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not stated whether the new layout arrives automatically or requires a choice.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams \"568067\" mobile default rollout; Teams \"See more messages on mobile\" licensing rollout default accessibility. Read roadmap, Microsoft Teams client and messaging policies; none states this layout's default.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
+      "n": 14,
       "where": "What's changing",
       "type": "absence",
-      "claim": "Microsoft Learn does not yet describe this specific layout change.",
+      "claim": "Microsoft Learn does not yet describe this specific feature at the time of writing in November 2026.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams \"See more messages on mobile\" licensing rollout default accessibility; Teams \"568067\" mobile default rollout. Read Microsoft Teams client, messaging policies, service description and system requirements; no feature-specific description found.",
+      "quote": "Searched: Teams \"See more messages on mobile\" 568067 layout default rollout text size accessibility. Read returned excerpts and opened messaging policies, client requirements and Teams mobile Intune guidance; none describes this roadmap feature.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 13,
+      "n": 15,
+      "where": "front matter: defaultState; Why it matters; Open questions",
+      "type": "default",
+      "claim": "The default state is unknown: Microsoft has not stated whether users automatically receive or choose this layout.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"mobile\" \"layout\" \"default\" \"568067\". Read roadmap, returned excerpts, messaging policies and Teams mobile Intune guidance; no default for this layout is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
       "where": "What's changing",
       "type": "record",
       "claim": "The roadmap does not say whether users can switch between layouts.",
@@ -174,10 +201,10 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "What's changing",
+      "n": 17,
+      "where": "What's changing; Open questions",
       "type": "record",
-      "claim": "The roadmap does not specify whether chats, channels and meeting chats are all covered.",
+      "claim": "The roadmap does not specify which conversation types the layout covers.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "These updates make it easier to scan conversations and follow the discussion flow, helping users stay productive and engaged wherever they work.",
@@ -185,40 +212,95 @@
       "fix": null
     },
     {
-      "n": 15,
-      "where": "Scope: Rollout",
-      "type": "absence",
-      "claim": "Feature-specific rollout mechanics and an app version are not yet published.",
+      "n": 18,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap describes a display change and describes no change to message access or sharing.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams \"568067\" mobile default rollout; Teams \"See more messages\" \"update\". Read roadmap and Microsoft Teams client; results describe general client servicing, not this feature's staging or app version.",
+      "source": "roadmap record",
+      "quote": "We are introducing a more streamlined messaging experience that displays more content on screen while improving readability when using Teams on mobile.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 16,
+      "n": 19,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The roadmap mentions no sign-in, permission or device change.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "We are introducing a more streamlined messaging experience that displays more content on screen while improving readability when using Teams on mobile.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The roadmap does not mention Intune app protection or Conditional Access policies as affected.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "These updates make it easier to scan conversations and follow the discussion flow, helping users stay productive and engaged wherever they work.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "Intune app protection and Conditional Access policies exist for Teams on iOS and Android.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/app-management/configuration/configure-teams-mobile",
+      "quote": "At a minimum, you'll want to deploy a Conditional Access policy that allows connectivity to Teams for iOS and Android from mobile devices and an Intune app protection policy that ensures the collaboration experience is protected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "record",
+      "claim": "No automated action is described in the roadmap item.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "We are introducing a more streamlined messaging experience that displays more content on screen while improving readability when using Teams on mobile.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
       "where": "Risk assessment: Change & support; Open questions",
       "type": "absence",
-      "claim": "Microsoft has not said how this layout treats device text-size settings.",
+      "claim": "Microsoft has not said how this new layout treats device text-size settings.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams mobile \"See more messages\" layout density default rollout 568067 licence text size; \"Teams\" \"mobile\" \"new layout\" \"text size\". Read system requirements and returned Teams app design excerpts; none describes this layout's text scaling.",
+      "quote": "Searched: \"Teams\" \"mobile\" \"density\" \"text size\"; Teams \"See more messages on mobile\" 568067 layout default rollout text size accessibility. Read returned accessibility and layout excerpts and client requirements; no feature-specific text-size behaviour found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 17,
-      "where": "controls[0].ui and controls[0].api; summary; Risk assessment; Governance controls",
+      "n": 24,
+      "where": "controls[0]; summary; Risk assessment; Governance guidance and controls",
       "type": "absence",
-      "claim": "No admin UI or API control to select the old or new mobile message layout or set its density is documented.",
+      "claim": "No admin UI or automation control is documented for choosing the new mobile message layout or keeping the current one.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams mobile message layout density admin policy PowerShell revert \"568067\". Read Manage messaging policies, Set-CsTeamsMessagingPolicy syntax and searched layout/density/mobile, and Intune configure-teams-mobile; no matching control found.",
+      "quote": "Searched: Teams mobile message layout density revert admin setting messaging policy PowerShell Set-CsTeamsMessagingPolicy. Opened messaging policies, Set-CsTeamsMessagingPolicy and Teams mobile Intune guidance; no control for this layout found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 18,
+      "n": 25,
+      "where": "controls[0].note; Governance controls",
+      "type": "absence",
+      "claim": "Messaging policies and Set-CsTeamsMessagingPolicy list no mobile message layout or density setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams mobile message layout density revert admin setting messaging policy PowerShell Set-CsTeamsMessagingPolicy. Read messaging policy settings and cmdlet syntax; searched the full cmdlet reference for layout, density and mobile; no matching setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
       "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "licensing",
       "claim": "All supported Teams subscription plans are eligible for access to the mobile apps.",
@@ -229,21 +311,10 @@
       "fix": null
     },
     {
-      "n": 19,
-      "where": "Cost and licensing: Licence",
+      "n": 27,
+      "where": "front matter: licensing.model",
       "type": "licensing",
-      "claim": "The service description lists Chat in Teams Business, Enterprise and Education plans.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/teams-service-description",
-      "quote": "| Feature | Teams Business plans | Teams Enterprise plans | GCC | GCC - High | DOD | Education |\n| Chat | Yes | Yes | Yes | Yes | Yes | Yes |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "front matter: licensing.model; Cost and licensing",
-      "type": "licensing",
-      "claim": "The licensing model is included within the supported Teams subscription entitlement for the mobile apps.",
+      "claim": "The licensing model is included, under the Teams subscription entitlement for this new mobile view.",
       "status": "supported",
       "source": "https://learn.microsoft.com/office365/servicedescriptions/teams-service-description",
       "quote": "All supported subscription plans are eligible for access to the Teams web client, desktop clients, and mobile apps. Teams is available as part of qualifying Microsoft 365 offerings and as a standalone SKU.",
@@ -251,21 +322,32 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 28,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "absence",
       "claim": "Microsoft publishes no separate licence or add-on for this layout change.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Teams\" \"mobile\" \"message layout\" \"license\"; Teams \"See more messages on mobile\" licensing rollout default accessibility. Read Teams service description and returned add-on/Premium licensing excerpts; none names this layout as an add-on.",
+      "quote": "Searched: Teams mobile streamlined messaging experience more content screen layout license add-on configuration role rollout. Opened Teams service description; read returned Teams add-on licensing excerpts; no licence specific to this layout found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 22,
+      "n": 29,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The service description lists Chat as available in Teams Business, Enterprise and Education plans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/teams-service-description",
+      "quote": "| Feature | Teams Business plans | Teams Enterprise plans | GCC | GCC - High | DOD | Education |\n| Chat | Yes | Yes | Yes | Yes | Yes | Yes |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
       "where": "Cost and licensing: Meter",
       "type": "record",
-      "claim": "The roadmap describes no meter for this feature.",
+      "claim": "The roadmap item describes no meter for this feature.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "We are introducing a more streamlined messaging experience that displays more content on screen while improving readability when using Teams on mobile.",
@@ -273,10 +355,10 @@
       "fix": null
     },
     {
-      "n": 23,
+      "n": 31,
       "where": "Scope: Devices",
       "type": "availability",
-      "claim": "Teams Android support is limited to the last four major Android versions.",
+      "claim": "Teams mobile support is limited to the last four major Android versions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-client-system-requirements",
       "quote": "Support is limited to the last four major versions of Android.",
@@ -284,10 +366,10 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 32,
       "where": "Scope: Devices",
       "type": "availability",
-      "claim": "Teams iOS support is limited to the two most recent major iOS versions.",
+      "claim": "Teams mobile support is limited to the two most recent major iOS versions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-client-system-requirements",
       "quote": "Support is limited to the two most recent major versions of iOS.",
@@ -295,87 +377,32 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "Risk assessment: Data exposure; rationale: risk",
-      "type": "record",
-      "claim": "The roadmap describes a display change, with no change to message access or sharing described.",
+      "n": 33,
+      "where": "Scope: Rollout",
+      "type": "absence",
+      "claim": "Feature-specific staged rollout mechanics and app version are not yet published.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "We are introducing a more streamlined messaging experience that displays more content on screen while improving readability when using Teams on mobile.",
+      "source": null,
+      "quote": "Searched: Teams \"See more messages on mobile\" 568067 layout default rollout text size accessibility; Teams mobile streamlined messaging experience more content screen layout license add-on configuration role rollout. Read roadmap and returned excerpts; no feature rollout mechanics found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 26,
-      "where": "Risk assessment: Security & identity",
-      "type": "record",
-      "claim": "The roadmap mentions no sign-in, permission or device change and no effect on existing protection policies.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "We are introducing a more streamlined messaging experience that displays more content on screen while improving readability when using Teams on mobile.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "Risk assessment: Security & identity",
-      "type": "applicability",
-      "claim": "Intune app protection and Conditional Access policies exist for Teams on iOS and Android.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/intune/app-management/configuration/configure-teams-mobile",
-      "quote": "At a minimum, you'll want to deploy a Conditional Access policy that allows connectivity to Teams for iOS and Android from mobile devices and an Intune app protection policy that ensures the collaboration experience is protected.",
-      "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/intune/app-management/configuration/configure-teams-mobile to sources for the existing mobile protection policies mentioned in Security & identity."
-    },
-    {
-      "n": 28,
-      "where": "Risk assessment: Autonomy & actions; rationale: risk",
-      "type": "behaviour",
-      "claim": "The feature performs no actions on its own.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: \"Teams\" \"streamlined messaging experience\" mobile update layout revert actions admin role. Read roadmap, Microsoft Teams client and messaging policies; no text establishes an absolute absence of autonomous actions for this feature.",
-      "severity": "major",
-      "fix": "Replace 'No change: the feature performs no actions on its own.' with 'No automated action is described in the roadmap item.' In the risk rationale, replace 'with no new data access, sharing or automated action' with 'with no new data access, sharing or automated action described'."
-    },
-    {
-      "n": 29,
-      "where": "Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "The service desk cannot revert the layout for a user.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Teams mobile message layout density admin policy PowerShell revert \"568067\". Read messaging policies, Set-CsTeamsMessagingPolicy and Intune configure-teams-mobile; no documented rollback found, but none states rollback is impossible.",
-      "severity": "blocker",
-      "fix": "Delete ', so the service desk cannot revert it for a user'. Keep only 'Microsoft Learn documents no admin setting to keep the current layout at the time of writing (November 2026).'"
-    },
-    {
-      "n": 30,
+      "n": 34,
       "where": "Scope: Roles",
-      "type": "role",
-      "claim": "No admin role is involved in this feature.",
-      "status": "unsupported",
+      "type": "absence",
+      "claim": "No feature-specific configuration role is documented.",
+      "status": "supported",
       "source": null,
-      "quote": "Searched: \"Teams\" \"streamlined messaging experience\" mobile update layout revert actions admin role. Read roadmap, messaging policies and Microsoft Teams client; none states that no admin role is involved in this change.",
-      "severity": "blocker",
-      "fix": "Replace the Roles bullet with '**Roles:** no feature-specific configuration role is documented.'"
+      "quote": "Searched: Teams mobile streamlined messaging experience more content screen layout license add-on configuration role rollout. Opened messaging policies, Set-CsTeamsMessagingPolicy and Teams mobile Intune guidance; no configuration role for this layout found.",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 31,
-      "where": "Governance guidance: Before rollout",
+      "n": 35,
+      "where": "Governance controls",
       "type": "behaviour",
-      "claim": "The new layout comes with a Teams mobile app update.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: \"Teams\" \"See more messages\" \"update\"; \"Teams\" \"streamlined messaging experience\" mobile update layout revert actions admin role. Read roadmap and Microsoft Teams client; neither ties this layout's delivery to an app update.",
-      "severity": "major",
-      "fix": "Replace the service-desk bullet with 'Brief the service desk about the planned Teams mobile layout change and that no admin setting to revert it is documented at the time of writing.'"
-    },
-    {
-      "n": 32,
-      "where": "Governance controls: closing paragraph",
-      "type": "applicability",
-      "claim": "Messaging policies in the Teams admin center control which chat features users get.",
+      "claim": "Messaging policies in the Teams admin center control which chat and channel messaging features users get.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/messaging-policies-in-teams",
       "quote": "Messaging policies are used to control which chat and channel messaging features are available to users (owners and members) in Microsoft Teams.",
@@ -383,10 +410,21 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "Governance controls: closing paragraph",
+      "n": 36,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "Set-CsTeamsMessagingPolicy exists in the MicrosoftTeams PowerShell module and updates Teams messaging policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingpolicy",
+      "quote": "Module:\n    - MicrosoftTeams PowerShell module\n\nThis cmdlet updates a Teams messaging policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Immersive reader for messages is a messaging policy setting.",
+      "claim": "Teams messaging policies include an Immersive reader for messages setting.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/messaging-policies-in-teams",
       "quote": "Immersive reader for messages - Turn this setting ON to let users view messages in Microsoft Immersive Reader.",
@@ -394,32 +432,32 @@
       "fix": null
     },
     {
-      "n": 34,
-      "where": "Governance controls: closing paragraph",
+      "n": 38,
+      "where": "Governance controls",
       "type": "command",
-      "claim": "Set-CsTeamsMessagingPolicy belongs to Teams PowerShell and updates messaging policies.",
+      "claim": "Set-CsTeamsMessagingPolicy can control whether users can use Immersive Reader for messages.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingpolicy",
-      "quote": "Module: MicrosoftTeams PowerShell module. This cmdlet updates a Teams messaging policy. Custom policies can then be assigned to users using the Grant-CsTeamsMessagingPolicy cmdlet.",
+      "quote": "-AllowImmersiveReader\n\nDetermines whether a user is allowed to use Immersive Reader for reading conversation messages. Set this to TRUE to allow. Set this FALSE to prohibit.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 35,
-      "where": "Governance controls: closing paragraph",
-      "type": "behaviour",
-      "claim": "Teams messaging policy automation can control access to Immersive Reader for messages.",
+      "n": 39,
+      "where": "rationale: impact",
+      "type": "record",
+      "claim": "The record lists no desktop or web platforms.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingpolicy",
-      "quote": "-AllowImmersiveReader: Determines whether a user is allowed to use Immersive Reader for reading conversation messages. Set this to TRUE to allow. Set this FALSE to prohibit.",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"iOS\"]",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-27T11:53:37.169Z",
+    "at": "2026-11-27T14:20:37.039Z",
     "summary": {
-      "links": 5,
+      "links": 6,
       "unreachable": 0,
       "uiPaths": 0,
       "uiPathsWithMissingWords": 0,
@@ -452,10 +490,22 @@
         "url": "https://learn.microsoft.com/microsoftteams/teams-client-system-requirements",
         "ok": true,
         "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/intune/app-management/configuration/configure-teams-mobile",
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-27",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

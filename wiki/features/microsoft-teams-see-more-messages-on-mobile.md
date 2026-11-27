@@ -37,6 +37,9 @@ sources:
   - title: "Teams client system requirements"
     url: "https://learn.microsoft.com/microsoftteams/teams-client-system-requirements"
     kind: "learn"
+  - title: "Manage Collaboration Experiences in Teams for iOS and Android With Microsoft Intune"
+    url: "https://learn.microsoft.com/intune/app-management/configuration/configure-teams-mobile"
+    kind: "learn"
 videos: []
 related: ["microsoft-teams-emoji-shortcuts-with-autocomplete-on-mobile","microsoft-teams-unblock-users-to-send-message-while-file-is-uploading-in-the-background"]
 controls:
@@ -54,19 +57,23 @@ changes:
     note: "New briefing on the planned denser message layout in Teams on iOS and Android, targeted for February CY2027."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 35 statements contradicted, 4 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-27"
+    note: "Corrected after the independent check: removed the claims that the service desk cannot revert the layout, that no admin role is involved and that the layout arrives with an app update; narrowed the autonomy statement to what the roadmap describes."
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 39 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-27"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 35
-  confirmed: 31
-  unconfirmed: 4
+  claims: 39
+  confirmed: 39
+  unconfirmed: 0
   contradicted: 0
-  attempts: 1
-  hash: "e614ed951b0a4a45c9d2865bf98e3bc0"
+  attempts: 0
+  hash: "6cfe2ab09c73f6d07e258308d0ba4e43"
 ---
 
 ## What's changing
@@ -92,11 +99,11 @@ Microsoft has not stated what happens on arrival: whether every mobile user gets
 - No change described: the item mentions no sign-in, permission or device change. Existing Intune app protection and Conditional Access policies for Teams on iOS and Android are not mentioned as affected.
 
 **Autonomy & actions**
-- No change: the feature performs no actions on its own.
+- No automated action is described in the roadmap item.
 
 **Change & support**
 - Fitting more content on screen changes a layout people are used to; users who rely on larger text or screen readers may notice the change most. Microsoft has not said how the new layout treats device text-size settings.
-- Microsoft Learn documents no admin setting to keep the current layout at the time of writing (November 2026), so the service desk cannot revert it for a user.
+- Microsoft Learn documents no admin setting to keep the current layout at the time of writing (November 2026).
 
 ## Cost and licensing
 
@@ -112,14 +119,14 @@ Microsoft has not stated what happens on arrival: whether every mobile user gets
 - **Cloud:** Worldwide (Standard Multi-Tenant), as the record lists it.
 - **Devices:** Microsoft's [Teams client system requirements](https://learn.microsoft.com/microsoftteams/teams-client-system-requirements) limit support to the last four major versions of Android and the two most recent major versions of iOS.
 - **Rollout:** General Availability, target February CY2027. Rollout mechanics (staged rollout, app version) are not yet published.
-- **Roles:** no admin role is involved, as no admin setting is documented.
+- **Roles:** no feature-specific configuration role is documented.
 
 ## Governance guidance
 
 ### Before rollout
 - Watch Message center for a post on this change that gives the rollout window and whether the new layout is on by default.
 - Update screenshots of Teams chats and channels on iOS and Android in internal training and help pages.
-- Brief the service desk that the new layout comes with the Teams mobile app update and that no admin setting to revert it is documented at the time of writing.
+- Brief the service desk about the planned Teams mobile layout change and that no admin setting to revert it is documented at the time of writing.
 - Prepare a short note for mobile users explaining that the roadmap describes a change to how messages are displayed, with more content on screen.
 
 ### At rollout
@@ -151,18 +158,7 @@ Messaging policies in the Teams admin center and Set-CsTeamsMessagingPolicy in T
 - How does the denser layout behave with device text-size and screen reader settings on iOS and Android?
 
 <!-- rationale
-risk: Low. The roadmap item describes a change to how existing messages are displayed in the Teams mobile app, with no new data access, sharing or automated action.
+risk: Low. The roadmap item describes a change to how existing messages are displayed in the Teams mobile app, with no new data access, sharing or automated action described.
 cost: Low. All supported Teams subscription plans are eligible for the mobile apps; the cost the sources show is the time to brief users and the service desk.
 impact: Medium. People who read Teams messages on iOS and Android see a different message layout; the record lists no desktop or web platforms.
--->
-
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Autonomy & actions; rationale: risk / behaviour: The feature performs no actions on its own. | Found: Searched: "Teams" "streamlined messaging experience" mobile update layout revert actions admin role. Read roadmap, Microsoft Teams client and messaging policies; no text establishes an absolute absence of autonomous actions for this feature. | Fix: Replace 'No change: the feature performs no actions on its own.' with 'No automated action is described in the roadmap item.' In the risk rationale, replace 'with no new data access, sharing or automated action' with 'with no new data access, sharing or automated action described'.
-- [unsupported, blocker] Risk assessment: Change & support / behaviour: The service desk cannot revert the layout for a user. | Found: Searched: Teams mobile message layout density admin policy PowerShell revert "568067". Read messaging policies, Set-CsTeamsMessagingPolicy and Intune configure-teams-mobile; no documented rollback found, but none states rollback is impossible. | Fix: Delete ', so the service desk cannot revert it for a user'. Keep only 'Microsoft Learn documents no admin setting to keep the current layout at the time of writing (November 2026).'
-- [unsupported, blocker] Scope: Roles / role: No admin role is involved in this feature. | Found: Searched: "Teams" "streamlined messaging experience" mobile update layout revert actions admin role. Read roadmap, messaging policies and Microsoft Teams client; none states that no admin role is involved in this change. | Fix: Replace the Roles bullet with '**Roles:** no feature-specific configuration role is documented.'
-- [unsupported, major] Governance guidance: Before rollout / behaviour: The new layout comes with a Teams mobile app update. | Found: Searched: "Teams" "See more messages" "update"; "Teams" "streamlined messaging experience" mobile update layout revert actions admin role. Read roadmap and Microsoft Teams client; neither ties this layout's delivery to an app update. | Fix: Replace the service-desk bullet with 'Brief the service desk about the planned Teams mobile layout change and that no admin setting to revert it is documented at the time of writing.'
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Security & identity / applicability: Intune app protection and Conditional Access policies exist for Teams on iOS and Android. | Found: At a minimum, you'll want to deploy a Conditional Access policy that allows connectivity to Teams for iOS and Android from mobile devices and an Intune app protection policy that ensures the collaboration experience is protected. | Fix: Add https://learn.microsoft.com/intune/app-management/configuration/configure-teams-mobile to sources for the existing mobile protection policies mentioned in Security & identity. | Source: https://learn.microsoft.com/intune/app-management/configuration/configure-teams-mobile
 -->

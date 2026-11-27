@@ -1,0 +1,919 @@
+{
+  "slug": "microsoft-purview-dspm-data-risk-assessments-item-level-investigation-and-remediation",
+  "roadmapId": 557557,
+  "title": "Microsoft Purview DSPM: item-level investigation and remediation of overshared SharePoint items in data risk assessments (GCC, GCC High, DoD)",
+  "status": "held",
+  "date": "2026-11-27",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-27",
+    "reasons": [
+      "1 blocking finding (claim 41)"
+    ]
+  },
+  "counts": {
+    "claims": 66,
+    "confirmed": 64,
+    "unconfirmed": 1,
+    "contradicted": 1,
+    "blocker": 1,
+    "major": 1,
+    "minor": 1
+  },
+  "summary": "Hold: the Entra permissions path omits the Add a permission step needed to reach Microsoft Graph application permissions. The Graph endpoint flagged by the pre-check is valid; the briefing also needs to acknowledge Microsoft's differing role guidance and narrow an unsupported description of DSPM's previous capabilities.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "Roadmap item 557557 is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is April CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"April CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The supplied roadmap record gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "title; front matter: clouds; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists GCC, GCC High and DoD for this item.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Web as the platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-06-04T23:15:54.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-06-04T23:15:54\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "Roadmap item 523202 covers the same item-level investigation and remediation feature for Worldwide.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"id\": 523202; \"title\": \"Microsoft Purview: DSPM data risk assessments: item-level investigation & remediation\"; \"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Roadmap item 523202 is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Record 523202: \"status\": \"Launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Roadmap item 523202 has a March CY2026 target.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Record 523202: \"targetDate\": \"March CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Roadmap item 523202 has a November CY2025 preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Record 523202: \"previewDate\": \"November CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "The cited data risk assessments page does not distinguish between clouds.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: read the complete data-security-posture-management-oversharing page, including its Microsoft 365 limits and prerequisites links; it gives no GCC, GCC High, DoD or Worldwide distinction.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "summary; What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Custom assessments support item-level investigation and remediation of potentially overshared SharePoint items.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-oversharing",
+      "quote": "Item-level scanning and remediation for items that are potentially overshared is applicable to Microsoft 365 only, and currently restricted to SharePoint sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The scan flags items with sharing links for external or anonymous users as potentially overshared.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-oversharing",
+      "quote": "This scan identifies items as potentially overshared if they have a sharing link for external or anonymous users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Item-level insights show applied sensitivity labels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-oversharing",
+      "quote": "also shows any applied sensitivity label and the owner of each item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Item-level insights show each item's owner.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-oversharing",
+      "quote": "also shows any applied sensitivity label and the owner of each item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Item-level scanning is an option in custom assessments rather than the default weekly assessment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-oversharing",
+      "quote": "A default data risk assessment automatically runs weekly for the top 100 SharePoint sites based on usage in your organization ... Microsoft 365 custom assessments optionally support item-level scanning with remediation actions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: defaultState; What's changing; Why it matters; Governance controls; rationale: risk",
+      "type": "default",
+      "claim": "Item-level scanning is admin-opt-in, requiring a registered Entra application and one-time authentication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-oversharing",
+      "quote": "Microsoft 365 custom assessments optionally support item-level scanning with remediation actions when you complete a one-time authentication process. To specify the required settings, you must have a registered Entra application.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Completed custom assessments expose item-level insights on the Potentially overshared items tab.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-oversharing",
+      "quote": "When the scan is complete, open the custom assessment and view item-level insights from the Potentially overshared items tab",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Resolve is an action for an item the administrator decides is not at risk of oversharing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-oversharing",
+      "quote": "Resolve, for example if you decide the item isn't at risk of oversharing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Why it matters; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Apply sensitivity label can label selected unlabeled items or change an item's label.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-oversharing",
+      "quote": "Apply sensitivity label for items that are identified as currently unlabeled or should have a different sensitivity label.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Risk assessment: Change & support; rationale: impact",
+      "type": "behaviour",
+      "claim": "Notify sends an email notification to the site owner.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-oversharing",
+      "quote": "Notify the site owner with an email notification (not customizable).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The notification email is not customizable.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-oversharing",
+      "quote": "Notify the site owner with an email notification (not customizable).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The notification offers a link to the SharePoint site to manage item access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-oversharing",
+      "quote": "It also contains options for them to go to the SharePoint site to manage access to the items from there",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The email links to a read-only Purview view showing only items and sites the recipient owns.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-oversharing",
+      "quote": "or to the Microsoft Purview portal for a read-only view of the item-level scan results that only show items and sites that they own.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Why it matters; Risk assessment: Autonomy & actions; rationale: impact",
+      "type": "behaviour",
+      "claim": "Remove sharing link removes the existing sharing link so it cannot be used to access the item.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-oversharing",
+      "quote": "Remove sharing link to remove the existing sharing link so it can no longer be used to access the item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "Microsoft advises using Remove sharing link sparingly because it could prevent legitimate access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-oversharing",
+      "quote": "This is an action to be used sparingly because it could prevent people from accessing the item legitimately.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Autonomy & actions; Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The site or item owner must set a less permissive sharing link for authorized users after legitimate access is interrupted.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-oversharing",
+      "quote": "In this scenario, the site owner or item owner must then set a less permissive sharing link type for authorized users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Why it matters; Risk assessment; Scope: Limits; controls[1].note; Governance guidance; rationale: impact",
+      "type": "behaviour",
+      "claim": "Item-level scanning currently supports a maximum of 10 SharePoint sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-oversharing",
+      "quote": "A current maximum of 10 SharePoint sites for item-level scanning.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Scope: Limits",
+      "type": "behaviour",
+      "claim": "The maximum is 200,000 items per location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-oversharing",
+      "quote": "A maximum of 200,000 items per location, which applies to both a custom data risk assessment and a default data risk assessment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Scope: Limits; Cost and licensing: Indirect costs; Governance guidance",
+      "type": "behaviour",
+      "claim": "Custom assessment results expire after 30 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-oversharing",
+      "quote": "To rerun a custom data risk assessment, and to see results after the 30-day expiration, use the duplicate option to create a new assessment with the same selections.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Scope: Limits; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Duplicating an assessment creates a new assessment with the same selections to rerun it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-oversharing",
+      "quote": "use the duplicate option to create a new assessment with the same selections.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Scope: Content; Open questions",
+      "type": "availability",
+      "claim": "OneDrive is not currently supported for item-level scanning.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-oversharing",
+      "quote": "OneDrive currently isn't supported for item-level scanning.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Scope: Prerequisite",
+      "type": "behaviour",
+      "claim": "The app's supported account type is Accounts in this organizational directory only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dspm-for-ai-considerations",
+      "quote": "Supported account types: Accounts in this organizational directory only",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "summary; Why it matters; Risk assessment; Scope: Prerequisite; Governance guidance; rationale: risk",
+      "type": "applicability",
+      "claim": "The item-level scanning app needs the Microsoft Graph application permission Files.ReadWrite.All.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dspm-for-ai-considerations",
+      "quote": "API permissions: Microsoft APIs > Microsoft Graph > Application permissions ... Files: Files.ReadWrite.All",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Security & identity; Scope: Prerequisite; Governance guidance",
+      "type": "applicability",
+      "claim": "The app permissions require tenant admin consent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dspm-for-ai-considerations",
+      "quote": "Grant admin consent for your tenant",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Why it matters; Risk assessment; Scope: Prerequisite; Open questions; rationale: risk",
+      "type": "behaviour",
+      "claim": "The Microsoft 365 item-level scanning prerequisites instruct administrators to create a client secret.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dspm-for-ai-considerations",
+      "quote": "Now create a client secret for this app. Copy and securely save the value immediately.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The client secret value is shown only once.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dspm-for-ai-considerations",
+      "quote": "Copy and securely save the value immediately. It will only be shown once.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "The DSPM prerequisite page lists Cloud Application Administrator, Application Administrator or Privileged Role Administrator to create and configure the app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dspm-for-ai-considerations",
+      "quote": "You must have one of the following Entra roles to create and configure the required registered app: Cloud Application Administrator; Application Administrator; Privileged Role Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[0].note; Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "Cloud Application Administrator, Application Administrator or Privileged Role Administrator is the role guidance for configuring and consenting to the app permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dspm-for-ai-considerations",
+      "quote": "You must have one of the following Entra roles to create and configure the required registered app: Cloud Application Administrator; Application Administrator; Privileged Role Administrator",
+      "severity": "minor",
+      "fix": "Add: 'The DSPM prerequisites list these three roles, but the Graph API reference identifies Privileged Role Administrator as the least-privileged supported role for granting Microsoft Graph app roles.' Cite https://learn.microsoft.com/graph/api/serviceprincipal-post-approleassignedto, which states 'Privileged Role Administrator - the least privileged role supported for Microsoft Graph and Azure AD Graph app roles'."
+    },
+    {
+      "n": 41,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "API permissions leads directly to Microsoft APIs > Microsoft Graph > Application permissions without selecting Add a permission.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/entra/identity-platform/quickstart-configure-app-access-web-apis",
+      "quote": "Browse to Entra ID > App registrations, and then select your client application. Select API permissions > Add a permission > Microsoft Graph > Application permissions.",
+      "severity": "blocker",
+      "fix": "Replace the path in controls[0].ui and the rendered table with 'Entra ID > App registrations > app > API permissions > Add a permission > Microsoft Graph > Application permissions'. Set its docs URL to https://learn.microsoft.com/entra/identity-platform/quickstart-configure-app-access-web-apis and add that page to sources. The existing path omits a required button in the middle."
+    },
+    {
+      "n": 42,
+      "where": "controls[0].api; controls[0].note; Governance controls table",
+      "type": "command",
+      "claim": "POST /v1.0/servicePrincipals/{id}/appRoleAssignedTo grants an application permission using principalId, resourceId and appRoleId.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/serviceprincipal-post-approleassignedto",
+      "quote": "POST /servicePrincipals/{id}/appRoleAssignedTo ... App roles that are assigned to service principals are also known as application permissions. ... To grant an app role assignment, you need three identifiers: principalId ... resourceId ... appRoleId",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[1].ui; controls[1].note; Governance guidance: At rollout; Governance controls table",
+      "type": "admin-path",
+      "claim": "The portal route is DSPM > Discover > Data risk assessments > Create custom assessment > Scan level > Item-level, followed by Authenticate.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-oversharing",
+      "quote": "Microsoft Purview portal > DSPM > Discover > Data risk assessments ... select Create custom assessment ... Select Item-level on the Scan level page, and then Authenticate to specify the Entra application information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[1].api; Governance controls",
+      "type": "absence",
+      "claim": "No PowerShell or Microsoft Graph operation for running DSPM data risk assessments is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"data risk assessments\" \"PowerShell\" \"Graph\"', 'site:learn.microsoft.com/powershell \"data risk assessment\"', 'site:learn.microsoft.com/graph \"data risk assessment\"'; read oversharing and DSPM prerequisites pages. No matching assessment operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Scope: Roles; controls[2].governs; controls[2].note; Governance guidance",
+      "type": "role",
+      "claim": "Entra Compliance Administrator, Entra Global Administrator and the Purview Compliance Administrator role group can create data risk assessments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-permissions",
+      "quote": "| Create data risk assessments | ✓ | ✓ | ✓ | ✕ | ✕ | Not applicable |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Data exposure; Scope: Roles; controls[3].governs; controls[3].note",
+      "type": "role",
+      "claim": "The DSPM permissions table lists Content Explorer Content Viewer and Content Explorer List Viewer for viewing file details in assessments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-permissions",
+      "quote": "| View file details for data risk assessments | ✕ | ✕ | ✕ | ✕ | ✕ | Content Explorer Content Viewer  Content Explorer List Viewer |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The documented Purview role-group membership route ends with role group > Edit > Edit members of the role group > Choose users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Go to Settings > Roles and scopes ... Select Role groups. ... On Role groups for Microsoft Purview solutions, select a Microsoft Purview role group ... Select Edit ... On Edit members of the role group, select Choose users or Choose groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "Add-RoleGroupMember -Identity \"<role-group>\" -Member \"<user-UPN>\" adds a user to a role group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+      "quote": "Add-RoleGroupMember [-Identity] <RoleGroupIdParameter> -Member <SecurityPrincipalIdParameter> ... The Identity parameter specifies the role group to add a member to. ... User ID or user principal name (UPN)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[3].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Content Explorer role-group membership is managed through Settings > Roles and scopes > Role groups > Role groups for Microsoft Purview solutions > role group > Edit > Edit members of the role group > Choose users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Go to Settings > Roles and scopes ... Select Role groups. ... On Role groups for Microsoft Purview solutions, select a Microsoft Purview role group ... Select Edit ... On Edit members of the role group, select Choose users or Choose groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[3].api; Governance controls table",
+      "type": "command",
+      "claim": "Add-RoleGroupMember with Identity and Member can add the specified user to a Content Explorer role group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+      "quote": "Use the Add-RoleGroupMember cmdlet to add members to a management role group. ... The Identity parameter specifies the role group to add a member to. ... User ID or user principal name (UPN)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[4].ui; controls[4].api; controls[4].note; Governance controls",
+      "type": "absence",
+      "claim": "No setting to disable an individual assessment remediation action such as Remove sharing link is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"data risk assessments\" \"disable\" \"remediation\"' and 'DSPM data risk assessments item-level scanning licensing price meter disable remediation actions PowerShell Graph API'; read oversharing, DSPM prerequisites and permissions pages. No action-specific disable setting found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The DSPM permissions page does not separately identify assessment remediation actions or state whether view-only roles may perform them.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"DSPM\" \"remediation\" \"permissions\" \"view-only\"'; read the complete DSPM Permissions by activities table. It lists creating assessments, viewing assessments and viewing file details, but no assessment Resolve, Notify, label or remove-link activity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "The documented portal procedure for adding role-group members uses an admin account assigned Role management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Sign in to the Microsoft Purview portal by using credentials for an admin account assigned the Role management role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "front matter: licensing.notes; Cost and licensing: Licence; rationale: cost",
+      "type": "licensing",
+      "claim": "The classic DSPM get-started page states that using DSPM requires Microsoft 365 E5 or Microsoft Purview Suite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-get-started",
+      "quote": "To access and use DSPM, you need a Microsoft 365 E5 or Microsoft Purview Suite (formerly known as Microsoft 365 E5 Compliance) license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "front matter: licensing.notes; Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "Current DSPM prerequisites require a supporting license and refer to the Purview service description.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-considerations",
+      "quote": "You have a supporting license for this Microsoft Purview solution, and your region is supported. For more information, see the Microsoft Purview service description.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is included as an option within licensed DSPM, rather than a separately documented item-level add-on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-considerations",
+      "quote": "You have a supporting license for this Microsoft Purview solution ... For Microsoft 365 custom data risk assessments and item-level scanning, shared with DSPM for AI (classic): Configuration in the Entra admin portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "front matter: licensing.notes; Cost and licensing: Not yet published",
+      "type": "absence",
+      "claim": "No license or price specific to item-level investigation and remediation is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"item-level\" \"data risk assessments\" \"licensing\"' and 'DSPM data risk assessments item-level scanning separate price pay-as-you-go licensing'; read DSPM prerequisites, classic licensing, Purview service description and billing models. No item-level-specific license or price found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Cost and licensing: Meter; rationale: cost",
+      "type": "absence",
+      "claim": "The data risk assessments page publishes no separate item-level scanning charge or meter.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'DSPM data risk assessments item-level scanning separate price pay-as-you-go licensing'; read the complete oversharing page and Purview billing models. Neither identifies a meter or separate charge for this item-level assessment feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Open questions",
+      "type": "behaviour",
+      "claim": "Fabric data risk assessments can authenticate with Federated Credentials.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-oversharing",
+      "quote": "In the Configure Fabric Settings box, enter the authentication values using Federated Credentials (recommended, more secure) or Client Secret.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Risk assessment: Data exposure; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Assessment results can be exported to Excel, CSV, JSON or TSV files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-posture-management-oversharing",
+      "quote": "Both the default and custom data risk assessments provide an Export option that let you save and customize the data into a choice of file formats (Excel, CSV, JSON, TSV).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "This feature turns DSPM from a reporting tool into one that changes content.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: '\"DSPM\" \"reporting\" \"item-level\" \"previously\"'; read current oversharing and classic DSPM get-started documentation. These describe actions and policy creation but do not establish the claimed reporting-only previous state.",
+      "severity": "major",
+      "fix": "Replace 'This turns DSPM from a reporting tool into one that changes content: the assessment can apply labels and delete sharing links on SharePoint items.' with 'The assessment can apply labels and delete sharing links on selected SharePoint items.'"
+    },
+    {
+      "n": 62,
+      "where": "Scope: Prerequisite; Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Application.Read.All is a required Microsoft Graph application permission for the item-level scanning app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dspm-for-ai-considerations",
+      "quote": "API permissions: Microsoft APIs > Microsoft Graph > Application permissions ... Application: Application.Read.All",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Scope: Prerequisite; Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Directory.Read.All is a required Microsoft Graph application permission for the item-level scanning app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dspm-for-ai-considerations",
+      "quote": "API permissions: Microsoft APIs > Microsoft Graph > Application permissions ... Directory: Directory.Read.All",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Scope: Prerequisite; Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "SensitivityLabels.Read.All is a required Microsoft Graph application permission for the item-level scanning app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dspm-for-ai-considerations",
+      "quote": "API permissions: Microsoft APIs > Microsoft Graph > Application permissions ... SensitivityLabels: SensitivityLabels.Read.All",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Scope: Prerequisite; Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "User.Read.All is a required Microsoft Graph application permission for the item-level scanning app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dspm-for-ai-considerations",
+      "quote": "API permissions: Microsoft APIs > Microsoft Graph > Application permissions ... User: User.Read.All",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Why it matters; Risk assessment; Scope: Prerequisite; Governance guidance; rationale: risk",
+      "type": "applicability",
+      "claim": "Sites.ReadWrite.All is a required Microsoft Graph application permission for the item-level scanning app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dspm-for-ai-considerations",
+      "quote": "API permissions: Microsoft APIs > Microsoft Graph > Application permissions ... Sites: Sites.ReadWrite.All",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-27T14:21:01.359Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 3,
+      "apiCallsNotOnPage": 1,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/purview/data-security-posture-management-oversharing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dspm-for-ai-considerations",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/data-security-posture-management-considerations",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/data-security-posture-management-get-started",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/data-security-posture-management-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=523202",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/serviceprincipal-post-approleassignedto",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/purview-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether item-level scanning and remediation can run: the Graph application permissions of the DSPM app",
+        "docs": "https://learn.microsoft.com/purview/dspm-for-ai-considerations",
+        "reachable": true,
+        "segments": [
+          "Identity",
+          "Applications",
+          "App registrations",
+          "API permissions",
+          "Microsoft APIs",
+          "Microsoft Graph",
+          "Application permissions"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether item-level scanning and remediation can run: the Graph application permissions of the DSPM app",
+        "docs": "https://learn.microsoft.com/graph/api/serviceprincipal-post-approleassignedto",
+        "reachable": true,
+        "token": "/v1.0/servicePrincipals/appRoleAssignedTo",
+        "found": false
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Running an item-level scan in a custom data risk assessment",
+        "docs": "https://learn.microsoft.com/purview/data-security-posture-management-oversharing",
+        "reachable": true,
+        "segments": [
+          "DSPM",
+          "Discover",
+          "Data risk assessments",
+          "Create custom assessment",
+          "Scan level",
+          "Item-level"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Who can create data risk assessments (Compliance Administrator role group membership)",
+        "docs": "https://learn.microsoft.com/purview/purview-permissions",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Roles and scopes",
+          "Role groups",
+          "Role groups for Microsoft Purview solutions",
+          "role group",
+          "Edit",
+          "Edit members of the role group",
+          "Choose users"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Who can create data risk assessments (Compliance Administrator role group membership)",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "reachable": true,
+        "token": "Add-RoleGroupMember",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Who can view file details in data risk assessments (Content Explorer role groups)",
+        "docs": "https://learn.microsoft.com/purview/purview-permissions",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Roles and scopes",
+          "Role groups",
+          "Role groups for Microsoft Purview solutions",
+          "role group",
+          "Edit",
+          "Edit members of the role group",
+          "Choose users"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Who can view file details in data risk assessments (Content Explorer role groups)",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "reachable": true,
+        "token": "Add-RoleGroupMember",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

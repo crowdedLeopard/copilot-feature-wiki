@@ -106,18 +106,20 @@ changes:
     note: "Correction: removed a sentence that wrongly said every control acts on individual policies, set action to act-now, and added two source links."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 88 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 87 statements contradicted, 1 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-20"
+  status: "held"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 88
-  confirmed: 86
-  unconfirmed: 0
-  contradicted: 2
-  attempts: 0
+  claims: 87
+  confirmed: 83
+  unconfirmed: 1
+  contradicted: 3
+  attempts: 1
   hash: "45aaa6e1b6bf166cfa940036ce06cad9"
 ---
 
@@ -215,9 +217,15 @@ cost: Low. Auto-labeling policies are listed as included with E5-tier licences, 
 impact: Low. Only tenants with active auto-labeling policies for SharePoint or OneDrive are affected, and Microsoft's notice MC1461154 says no end-user experience changes are expected. Compliance admins will see faster labeling.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] front matter: licensing.notes; Cost and licensing / licensing: The cited auto-labeling page lists service-side auto-labeling with the same four SKUs as client-side auto-labeling. | Found: Check the Client and service-side automatic sensitivity labeling entry in the feature matrix linked below. Client-only entitlements don't establish service-side entitlement. | Fix: Replace the SKU-list sentence in licensing.notes and Cost and licensing with: 'Microsoft Learn directs service-side auto-labeling licensing to the Client and service-side automatic sensitivity labeling feature matrix; that matrix includes Microsoft 365 E5 and Microsoft 365 E5 Information Protection and Governance.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-information-protection-sensitivity-labeling. | Source: https://learn.microsoft.com/purview/apply-sensitivity-label-automatically
+- [unsupported, blocker] front matter: licensing.notes; Cost and licensing / licensing: Standalone Azure Information Protection Premium P2, or a P2-tier add-on to E3 or Business Premium, establishes entitlement to this service-side feature. | Found: Searched: "service-side" "Azure Information Protection Premium P2" auto-labeling licensing. Read the auto-labeling surface table, Purview service-side SKU matrix and AIP service-description excerpt; P2's client-side or generic automatic-classification entries do not establish this entitlement. | Fix: Remove Azure Information Protection Premium P2 from the service-side SKU list and replace 'requires an E5 or P2-tier add-on' with 'requires an eligible subscription or add-on for service-side automatic sensitivity labeling; check the Client and service-side automatic sensitivity labeling matrix.' Link https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-information-protection-sensitivity-labeling.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist asks administrators to check policy conditions, but the controls table only documents location selection for policy scope. | Found: confirm each one's SharePoint and OneDrive locations and conditions still match your intent. / Which SharePoint and OneDrive locations an auto-labeling policy covers | Fix: The first Before rollout checklist step's instruction to check policy conditions has no corresponding controls-table entry; the existing first row covers locations, not conditions.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist asks administrators to check label-encryption settings, but no controls-table row represents those settings. | Found: Check every label used by a SharePoint or OneDrive policy: those that apply encryption need Assign permissions now and User access to content expires set to Never. | Fix: The third Before rollout checklist step, checking Assign permissions now and User access to content expires on sensitivity labels, has no corresponding controls-table entry.
+- [supported, minor] front matter: licensing.notes; Cost and licensing / licensing: Microsoft 365 E5 includes service-side automatic sensitivity labeling. | Found: Microsoft 365 E5/A5/G5 ... | Client and service-side automatic sensitivity labeling | Included | Included | | Fix: Cite the service-side feature matrix at https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-information-protection-sensitivity-labeling. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-information-protection-sensitivity-labeling
+- [supported, minor] front matter: licensing.notes; Cost and licensing / licensing: Microsoft 365 E5 Information Protection and Governance includes service-side automatic sensitivity labeling. | Found: Microsoft 365 E5 Information Protection and Governance ... | Client and service-side automatic sensitivity labeling | Included | Included | | Fix: Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-information-protection-sensitivity-labeling. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-information-protection-sensitivity-labeling
+- [supported, minor] front matter: licensing.notes; Cost and licensing / licensing: Microsoft lists Microsoft 365 E5 Compliance among licenses for automatically applying sensitivity labels to Microsoft 365 assets. | Found: The following Microsoft 365 licenses are required to automatically apply sensitivity labels to your assets in Microsoft 365 and the Microsoft Purview Data Map: ... Microsoft 365 E5/A5/G5 Compliance | Fix: Remove E5 Compliance from the service-side SKU sentence when applying the licensing correction: the cited feature page now directs readers to a service-side matrix naming Microsoft Purview Suite rather than E5 Compliance. If retaining the broader historical entitlement statement, cite https://learn.microsoft.com/purview/data-map-sensitivity-labels-faq#licensing-and-setup and also link the current service-side matrix. | Source: https://learn.microsoft.com/purview/data-map-sensitivity-labels-faq#licensing-and-setup
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist instructs readers to check policy conditions, but the controls table represents locations rather than condition configuration. | Found: confirm each one's SharePoint and OneDrive locations and conditions still match your intent. / Which SharePoint and OneDrive locations an auto-labeling policy covers | Fix: The first Before rollout checklist step's instruction to check policy conditions has no corresponding controls-table entry; the existing first row covers locations, not conditions.
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist instructs readers to check label-encryption settings, but the controls table has no row for those settings. | Found: Check every label used by a SharePoint or OneDrive policy: those that apply encryption need Assign permissions now and User access to content expires set to Never. / Controls rows cover locations, policy mode, monitoring and auditing. | Fix: The third Before rollout checklist step, checking Assign permissions now and User access to content expires on sensitivity labels, has no corresponding controls-table entry.
 -->

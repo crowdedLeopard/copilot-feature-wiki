@@ -1,0 +1,751 @@
+{
+  "slug": "onedrive-respond-to-access-requests-directly-in-the-share-dialog",
+  "roadmapId": 578856,
+  "title": "OneDrive and SharePoint: respond to access requests in the Share dialog",
+  "status": "held",
+  "date": "2026-11-27",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-27",
+    "reasons": [
+      "3 blocking findings (claims 29, 37, 50)"
+    ]
+  },
+  "counts": {
+    "claims": 54,
+    "confirmed": 51,
+    "unconfirmed": 1,
+    "contradicted": 2,
+    "blocker": 3,
+    "major": 0,
+    "minor": 1
+  },
+  "summary": "Hold: the PowerShell reference does not establish that the sharing command implements the files-and-folders control shown beside it, and the audit command omits created requests despite the row promising them. The briefing also overstates uncertainty about external sharing restrictions, which Microsoft documents for SharePoint and OneDrive generally.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap targets January CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "Web is the listed platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is listed.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"Worldwide (Standard Multi-Tenant)\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "GCC is listed.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"GCC\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "GCC High is listed.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"GCC High\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "DoD is listed.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"DoD\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "title; front matter: products; What's changing; Scope",
+      "type": "record",
+      "claim": "The change concerns OneDrive and SharePoint.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"OneDrive\", \"SharePoint\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "Microsoft plans access-request review and responses inside the Share dialog for files, folders and libraries.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Review and respond to access requests inside the Share dialog. When people request access to a file, folder, or library",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "summary; What's changing; Scope; rationale: risk",
+      "type": "record",
+      "claim": "Anyone who can share the requested item will see its pending requests in that item's Share dialog.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "anyone who can share it will see pending requests right in the Share dialog for that item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "record",
+      "claim": "The responder can choose the access level to grant.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "From there, they can choose the level of access to grant",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "Responders can approve or decline individual requests.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "approve or decline requests individually or in bulk",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "summary; What's changing; Risk assessment; rationale: risk",
+      "type": "record",
+      "claim": "Responders can approve or decline requests in bulk.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "approve or decline requests individually or in bulk",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "Responders can message the requester before deciding.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "approve or decline requests individually or in bulk, and message the requester before deciding.",
+      "severity": "minor",
+      "fix": "In the summary, replace 'can approve, decline or message requesters, singly or in bulk' with 'can approve or decline requests singly or in bulk, and message the requester before deciding'. The roadmap attaches bulk operation to approval and denial, not messaging."
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment",
+      "type": "record",
+      "claim": "Requests for more access, including a viewer requesting edit rights, appear alongside new requests.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Requests for more access, such as edit rights for someone who can already view, appear alongside new requests",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: defaultState; What's changing; Why it matters",
+      "type": "default",
+      "claim": "Microsoft has not stated the new dialog experience's default state.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint \"Share dialog\" \"access requests\" \"default\"; OneDrive SharePoint \"Share dialog\" \"access requests\" default license guest settings 578856. Read roadmap, Limit sharing, and Manage sharing settings; none states this experience's default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe this particular Share dialog experience.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Share dialog\" \"pending requests\"; \"SharePoint\" \"access requests\" \"Share dialog\" \"578856\". Read Limit sharing and both access-request troubleshooting pages; results describe existing SharePoint controls or other products, not this experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: licensing.model; Cost and licensing",
+      "type": "licensing",
+      "claim": "The licensing model is included under the existing OneDrive product entitlement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/onedrive-for-business-service-description",
+      "quote": "OneDrive is included in Microsoft 365 and Office 365 plans, in SharePoint plans, and can also be purchased as a standalone plan.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Sharing and collaboration features are listed as available across the six OneDrive plan families.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/onedrive-for-business-service-description",
+      "quote": "| Feature | Stand-alone plans | Small business | Enterprise | Education | Government | Nonprofits |\n| Sharing and collaboration features^3^ | Yes | Yes | Yes | Yes | Yes | Yes |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "OneDrive is included in Microsoft 365, Office 365 and SharePoint plans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/onedrive-for-business-service-description",
+      "quote": "OneDrive is included in Microsoft 365 and Office 365 plans, in SharePoint plans, and can also be purchased as a standalone plan.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft has published no separate licence or add-on specific to this dialog change.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Share dialog\" \"access requests\" \"license\"; OneDrive service descriptions \"access requests\". Read OneDrive service description and its feature-availability table; no feature-specific entitlement was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "Microsoft has published no meter specific to this feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: OneDrive SharePoint \"Share dialog\" \"access requests\" default license guest settings 578856; \"Share dialog\" \"access requests\" \"license\". Read OneDrive service description, including feature availability and licensing terms; no feature meter was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Why it matters; rationale: risk",
+      "type": "role",
+      "claim": "Only site admins and members of the site's Owners group can process the existing Access Requests list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/sharepoint/sharing-and-permissions/request-approval-failed",
+      "quote": "These issues occur because the affected users are not site admins (previously called site collection administrators) or members of the Owners group for the site. Only users with these specific permissions can process requests to the Access Requests list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Scope: Prerequisite; controls[1].note; Governance guidance",
+      "type": "behaviour",
+      "claim": "Disabling site access requests prevents non-members from requesting access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/solutions/microsoft-365-limit-sharing",
+      "quote": "You can prevent users who aren't members of the site from requesting access by turning off access requests.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "The troubleshooting guidance requires a site collection administrator to enable access requests.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/sharepoint/sharing-and-permissions/request-access-to-resource",
+      "quote": "To resolve the errors, enable access requests for the affected site collection. You must be a site collection administrator to enable this feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The owners-only file, folder and site sharing option is at gear icon > Site permissions > Sharing settings > Change how members can share > Only site owners can share files, folders, and the site.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/solutions/microsoft-365-limit-sharing",
+      "quote": "In the site, select the gear icon, and then select **Site permissions**.\n2. Under **Sharing settings**, select **Change how members can share**.\n3. Select **Only site owners can share files, folders, and the site**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-SPOSite -Identity <site-url> -DisableSharingForNonOwners is the automation equivalent of restricting file and folder sharing to site owners.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"DisableSharingForNonOwners\" \"files\" \"folders\"; \"DisableSharingForNonOwners\" \"Only site owners\". Read Set-SPOSite, including Example 4 and the parameter entry, and Limit sharing. The reference documents preventing invitations to the site, not this files-and-folders option.",
+      "severity": "blocker",
+      "fix": "Set controls[0].api to null rather than presenting this call as the equivalent of the file-and-folder sharing option. Remove the cmdlet-specific note and its corresponding explanation in Governance controls; retain the verified UI path."
+    },
+    {
+      "n": 30,
+      "where": "controls[0].note",
+      "type": "behaviour",
+      "claim": "The cmdlet reference says DisableSharingForNonOwners prevents non-owners from inviting new users to the site.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-sposite",
+      "quote": "This parameter prevents non-owners from inviting new users to the site.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[0].note; Governance controls",
+      "type": "applicability",
+      "claim": "The reference's exhaustive list of parameters valid for OneDrive sites excludes DisableSharingForNonOwners.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-sposite",
+      "quote": "For OneDrive for Business site collection, the only valid parameters are Identity, AllowDownloadingNonWebViewableFiles, AllowEditing, ConditionalAccessPolicy, DefaultLinkPermission, DefaultSharingLinkType, DisableCompanyWideSharingLinks",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[0].note",
+      "type": "absence",
+      "claim": "The cmdlet reference does not confirm how its switch governs the new Share dialog.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"DisableSharingForNonOwners\" \"files\" \"folders\"; SharePoint access requests Share dialog 578856. Read Set-SPOSite Example 4 and parameter description; they describe site invitations and do not describe the new dialog.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Allow access requests is at gear icon > Site permissions > Sharing settings > Change how members can share > Allow access requests.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/solutions/microsoft-365-limit-sharing",
+      "quote": "In the site, select the gear icon, and then select **Site permissions**.\n2. Under **Sharing settings**, select **Change how members can share**.\n3. Turn off **Allow access requests**, and then select **Save**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[1].api; Governance controls table",
+      "type": "absence",
+      "claim": "No documented automation operation was found for turning the site's Allow access requests setting on or off.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint \"Allow access requests\" PowerShell API RequestAccessEmail SetUseAccessRequestDefault; \"RequestAccessEnabled\" SharePoint. Read Set-SPOSite and Web.RequestAccessEmail; the latter exposes a string but does not document enabling or disabling requests.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[2]; Governance controls table; Open questions",
+      "type": "absence",
+      "claim": "No tenant-wide UI or automation switch for showing access requests in the Share dialog is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Share dialog\" \"access requests\" \"disable\"; SharePoint PowerShell \"Share dialog\" \"access requests\". Read Limit sharing, Manage sharing settings and Set-SPOSite; none documents a switch for this experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[3].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Audit searches are available at Microsoft Purview portal > Audit > Search.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "Select the **Audit** solution card. If the **Audit** solution card isn't displayed, select **View all solutions** and then select **Audit** from the **Core** section.\n3. On the **Search** page, configure the following search criteria as applicable:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[3].api; Governance controls table",
+      "type": "command",
+      "claim": "The printed Search-UnifiedAuditLog call searches created, accepted and denied access requests as the row describes.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/exchange/search-unifiedauditlog",
+      "quote": "The Operations parameter filters the log entries by operation. The available values for this parameter depend on the RecordType value.",
+      "severity": "blocker",
+      "fix": "Replace the call with 'Search-UnifiedAuditLog -StartDate <ExDateTime> -EndDate <ExDateTime> -Operations AccessRequestCreated,AccessRequestAccepted,AccessRequestDenied'. AccessRequestCreated is documented at https://learn.microsoft.com/purview/audit-log-activities#sharing-and-access-request-activities; the current filter excludes it."
+    },
+    {
+      "n": 38,
+      "where": "controls[3].note; Governance controls",
+      "type": "role",
+      "claim": "Searching requires the Audit Logs or View-Only Audit Logs role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "You must be assigned the *Audit Logs* or *View-Only Audit Logs* roles in the Microsoft Purview portal to search the audit log.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[3].note",
+      "type": "command",
+      "claim": "Search-UnifiedAuditLog runs in Exchange Online PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "The underlying cmdlet used to search the audit log is an Exchange Online cmdlet, which is **Search-UnifiedAuditLog**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment; Governance guidance: After rollout; controls[3]",
+      "type": "behaviour",
+      "claim": "AccessRequestAccepted records an accepted request and the resulting access grant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-activities",
+      "quote": "| Accepted access request | AccessRequestAccepted | An access request to a site, folder, or document was accepted and the requesting user was granted access. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment; Governance guidance: After rollout; controls[3]",
+      "type": "behaviour",
+      "claim": "AccessRequestDenied records a denied request.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-activities",
+      "quote": "| Denied access request | AccessRequestDenied | An access request to a site, folder, or document was denied. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[3].governs",
+      "type": "behaviour",
+      "claim": "The audit log also records created access requests.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-activities",
+      "quote": "| Created access request | AccessRequestCreated | User requests access to a site, folder, or document they don't have permissions to access. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "WebRequestAccessModified records site access-request setting changes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-activities",
+      "quote": "| Modified access request setting | WebRequestAccessModified | The access request settings were modified on a site. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "WebMembersCanShareModified records changes to the Members Can Share setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-activities",
+      "quote": "| Modified 'Members Can Share' setting | WebMembersCanShareModified | The **Members Can Share** setting was modified on a site. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Set-SPOSite requires the SharePoint Online administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-sposite",
+      "quote": "You must be a SharePoint Online administrator and be a site collection administrator to run the cmdlet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Set-SPOSite also requires site collection administrator rights.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-sposite",
+      "quote": "You must be a SharePoint Online administrator and be a site collection administrator to run the cmdlet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Governance controls",
+      "type": "admin-path",
+      "claim": "The two site sharing settings shown are configured inside the site rather than through the SharePoint admin center navigation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/solutions/microsoft-365-limit-sharing",
+      "quote": "In the site, select the gear icon, and then select **Site permissions**.\n2. Under **Sharing settings**, select **Change how members can share**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Governance controls; Risk assessment; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Owners-only sharing restricts member file sharing and routes members' direct-access and Specific people sharing to the site owner for approval.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/solutions/microsoft-365-limit-sharing",
+      "quote": "Site permissions can be restricted so that only site owners can share files and folders. In this case, direct access and *Specific people* link sharing by site members goes to site owner for approval.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not described whether guest requests appear in the new dialog.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint \"access requests\" \"Share dialog\" guests external sharing audit bulk messages. Read roadmap, Limit sharing, Manage sharing settings and audit activity excerpts; none describes guest-request visibility in this dialog.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "Microsoft has not said how tenant external sharing settings apply to guest requests handled in this dialog.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/sharepoint/turn-external-sharing-on-or-off",
+      "quote": "These settings control sharing at the organization level. You can configure more restrictive settings for specific sites if needed.",
+      "severity": "blocker",
+      "fix": "Remove 'or how the tenant's external sharing settings apply to them' from the Security & identity bullet. Retain the narrower statement 'Microsoft has not said whether requests from guests appear in the dialog. Confirm before rollout in tenants that allow guest sharing.' The general sharing restrictions are documented; only this dialog's guest presentation remains unestablished."
+    },
+    {
+      "n": 51,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "No source found says this change alters existing access-request settings.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Share dialog\" \"access requests\" \"disable\"; SharePoint \"Share dialog\" \"access requests\" \"default\". Read roadmap, Limit sharing and both request troubleshooting pages; none announces changes to existing access-request settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "Microsoft has not described how the new dialog presents member-sharing approvals routed to site owners.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Share dialog\" \"pending requests\"; SharePoint access requests Share dialog 578856. Read roadmap and Limit sharing; the latter describes owner approvals but neither explains their presentation in the new dialog.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes grants as decisions made by a person responding in the dialog, not autonomous approvals.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "From there, they can choose the level of access to grant, approve or decline requests individually or in bulk, and message the requester before deciding.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Existing site access requests can be sent by email to the configured approver.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/sharepoint/sharing-and-permissions/request-access-to-resource",
+      "quote": "Requests for access are sent to the email address that's specified in step 5.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-27T14:20:51.918Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=578856",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/solutions/microsoft-365-limit-sharing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/troubleshoot/sharepoint/sharing-and-permissions/request-approval-failed",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/troubleshoot/sharepoint/sharing-and-permissions/request-access-to-resource",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/onedrive-for-business-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-log-activities",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-search",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-sposite",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchange/search-unifiedauditlog",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether site members can share files and folders, or only site owners",
+        "docs": "https://learn.microsoft.com/microsoft-365/solutions/microsoft-365-limit-sharing",
+        "reachable": true,
+        "segments": [
+          "gear icon",
+          "Site permissions",
+          "Sharing settings",
+          "Change how members can share",
+          "Only site owners can share files, folders, and the site"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether site members can share files and folders, or only site owners",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-sposite",
+        "reachable": true,
+        "token": "Set-SPOSite",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether people without access can request access to a site",
+        "docs": "https://learn.microsoft.com/microsoft-365/solutions/microsoft-365-limit-sharing",
+        "reachable": true,
+        "segments": [
+          "gear icon",
+          "Site permissions",
+          "Sharing settings",
+          "Change how members can share",
+          "Allow access requests"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Searching audit records of access requests created, accepted and denied",
+        "docs": "https://learn.microsoft.com/purview/audit-search",
+        "reachable": true,
+        "segments": [
+          "Audit",
+          "Search"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Searching audit records of access requests created, accepted and denied",
+        "docs": "https://learn.microsoft.com/powershell/module/exchange/search-unifiedauditlog",
+        "reachable": true,
+        "token": "Search-UnifiedAuditLog",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

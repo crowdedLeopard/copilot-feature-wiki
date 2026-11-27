@@ -120,10 +120,12 @@ changes:
     note: "Corrected the default state to admin-opt-in because admins must set up usage-based billing and a spending policy first; added the External PSTN calls setting to the caller-type path and the Grant-CsTeamsPersonalAttendantPolicy reference."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 90 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 90 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
@@ -237,8 +239,8 @@ cost: Variable. Public preview uses usage-based billing with Copilot Credits thr
 impact: Medium. Users who turn it on and the people who call them notice it; tenants that used it in Frontier preview lose call screening if no spending is configured.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: At rollout; controls / consistency: Every control the governance checklist tells readers to configure is represented in the controls table. | Found: Checklist: "Switch off Auto-apply new services on the spending policy". The spending-policy table row governs "Spending limits" and contains no Auto-apply new services setting. | Fix: Remove the At rollout checklist bullet beginning "Switch off Auto-apply new services"; that setting has no corresponding control row.
+- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: Every control the governance checklist tells readers to configure appears in the controls table. | Found: Checklist: "Switch off Auto-apply new services on the spending policy". The spending-policy table row governs "Spending limits" and contains no Auto-apply new services setting. | Fix: Remove the At rollout checklist bullet beginning "Switch off Auto-apply new services"; that setting has no corresponding control row.
 -->

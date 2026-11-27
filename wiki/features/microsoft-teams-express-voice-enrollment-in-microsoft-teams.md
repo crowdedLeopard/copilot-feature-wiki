@@ -86,10 +86,12 @@ changes:
     note: "Corrected the checklist step that said transcription depends on enrolled profiles, set licensing to included on the Teams licence requirement, and noted the -VoiceIsolation documentation conflict."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 82 statements not yet confirmed"
+  - date: "2026-11-27"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 82 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-27"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
@@ -199,9 +201,9 @@ cost: Low. The cost shown is admin and communication time; the Learn pages read 
 impact: Medium. Users who opt in notice it, and their profile feeds voice isolation, transcript speaker attribution, meeting-room identification and Microsoft 365 Copilot meeting recaps.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist tells administrators to review enrollment status, delete profiles and check voice isolation, but these controls have no table rows. | Found: Review enrolment status for your users in the Teams admin center, and delete profiles where required; Check that voice isolation and room recognition settings still match your intent. The table contains only express enrollment, active enrollment and room recognition. | Fix: Remove the two After rollout checklist bullets beginning 'Review enrolment status' and 'Check that voice isolation'. Their factual descriptions can remain in Governance controls; those checklist instructions name controls absent from the table.
-- [contradicted, minor] front matter: action / consistency: The action rating is prepare despite a launched change with medium risk and an enrollment policy enabled by default. | Found: action: "prepare"; status: "launched"; risk: "medium"; Microsoft Learn documents the policy as enabled by default, so decide whether to leave it on or turn it off with PowerShell. | Fix: Set action to 'act-now': the assessment scale assigns that rating to a launched medium-risk change that reaches users without administrator action and has an availability decision to take. Individual profile creation remains user-opt-in.
+- [contradicted, minor] Governance guidance: At rollout and After rollout; Governance controls / consistency: The checklist instructs readers to allow a network endpoint, review enrollment status, delete profiles and check voice isolation, but these controls have no table rows. | Found: Allow *.speech.microsoft.com on the network; Review enrolment status for your users in the Teams admin center, and delete profiles where required; Check that voice isolation and room recognition settings still match your intent. Rows cover only enrollment and room recognition. | Fix: Remove the At rollout bullet beginning 'Allow *.speech.microsoft.com' and the After rollout bullets beginning 'Review enrolment status' and 'Check that voice isolation'. Their factual descriptions may remain in Risk assessment and Governance controls; these checklist controls lack table rows.
+- [contradicted, minor] front matter: action / consistency: The prepare action rating understates the decision for a launched, medium-risk feature offered without administrator action. | Found: action: "prepare"; status: "launched"; risk: "medium"; Microsoft Learn documents the policy as enabled by default, so decide whether to leave it on or turn it off with PowerShell. | Fix: Set action to 'act-now': the change is launched, risk is medium, and administrators must decide whether to leave default enrollment availability enabled. Individual profile creation remains user-opt-in.
 -->
