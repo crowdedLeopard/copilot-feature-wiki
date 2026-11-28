@@ -2,39 +2,33 @@
   "slug": "outlook-choose-to-show-unread-or-total-count-for-each-folder",
   "roadmapId": 563807,
   "title": "Outlook: choose unread or total item count for each folder in the folder pane",
-  "status": "held",
+  "status": "verified",
   "date": "2026-11-28",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-28",
-    "reasons": [
-      "1 blocking finding (claim 32)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 32,
-    "confirmed": 31,
+    "claims": 39,
+    "confirmed": 39,
     "unconfirmed": 0,
-    "contradicted": 1,
-    "blocker": 1,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
     "minor": 0
   },
-  "summary": "The roadmap facts and the absence of documented administrator controls check out. The cost rating needs correction: the sources establish Outlook's licensing requirements but do not explicitly establish that this option has no additional cost.",
+  "summary": "The briefing passes: its rollout facts match the roadmap, and its product licensing and prerequisite statements match Microsoft Learn. Targeted searches confirmed the reported gaps in folder-count administration, pricing and cross-client persistence documentation; no correction is required.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing; Scope: Who sets it",
+      "where": "title; summary; What's changing",
       "type": "record",
-      "claim": "Users choose unread count or total item count separately for each folder.",
+      "claim": "The change lets folders in the Outlook folder pane display unread counts or total item counts.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "You can now pick whether each folder in your folder pane shows the unread count or the total item count.",
@@ -43,9 +37,42 @@
     },
     {
       "n": 2,
-      "where": "summary; What's changing; Why it matters; Governance guidance",
+      "where": "summary; tags; What's changing; Scope: Clients",
       "type": "record",
-      "claim": "The choice is made by right-clicking a folder and choosing total or unread count.",
+      "claim": "The roadmap identifies new Outlook for Windows as a client for this change.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "#newoutlookforwindows",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "summary; Scope: Users; Governance guidance",
+      "type": "record",
+      "claim": "The change also covers Outlook's web client.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Outlook\"], \"platforms\": [\"Desktop\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "summary; What's changing; Why it matters; Scope: Who sets it; Governance controls",
+      "type": "record",
+      "claim": "Each user chooses the count separately for each folder.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "You can now pick whether each folder in your folder pane shows the unread count or the total item count.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "summary; What's changing; Why it matters; Risk assessment; Governance guidance",
+      "type": "record",
+      "claim": "The user chooses between unread and total count by right-clicking the folder.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Just right-click any folder and choose whether to show the total or unread count.",
@@ -53,8 +80,8 @@
       "fix": null
     },
     {
-      "n": 3,
-      "where": "What's changing; Open questions",
+      "n": 6,
+      "where": "What's changing; Open questions: initial count",
       "type": "record",
       "claim": "The roadmap says Outlook previously displayed only unread counts.",
       "status": "supported",
@@ -64,10 +91,10 @@
       "fix": null
     },
     {
-      "n": 4,
-      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
+      "n": 7,
+      "where": "What's changing; Risk assessment: Autonomy & actions; rationale: impact",
       "type": "record",
-      "claim": "The roadmap describes a count display choice without changes to other behaviour, data access, sign-in, sharing or automation.",
+      "claim": "The roadmap describes the change as giving users more control over tracking email without changing how anything else works.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "It gives you more control over how you keep track of your email without changing how anything else works.",
@@ -75,7 +102,7 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 8,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is Rolling out.",
@@ -86,7 +113,7 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 9,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target date is October CY2026.",
@@ -97,7 +124,7 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 10,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
       "claim": "The roadmap preview date is September CY2026.",
@@ -108,43 +135,10 @@
       "fix": null
     },
     {
-      "n": 8,
-      "where": "front matter: platforms; summary; What's changing; Scope: Clients",
-      "type": "record",
-      "claim": "The item covers Desktop and Web, with its description identifying new Outlook for Windows.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Desktop\", \"Web\"]; description ends \"#newoutlookforwindows\".",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "Scope: Clients",
-      "type": "record",
-      "claim": "The record does not name classic Outlook for Windows, Outlook for Mac or Outlook mobile.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\"Outlook\"], \"platforms\": [\"Desktop\", \"Web\"]; description ends \"#newoutlookforwindows\".",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "front matter: clouds; Scope: Clouds",
-      "type": "record",
-      "claim": "The record lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 11,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
-      "claim": "The record lists General Availability and Preview as release phases.",
+      "claim": "General Availability is a listed release phase.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
@@ -153,9 +147,97 @@
     },
     {
       "n": 12,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "Preview is a listed release phase.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: platforms; What's changing; Scope: Clients",
+      "type": "record",
+      "claim": "Desktop is a listed platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: platforms; What's changing; Scope: Clients",
+      "type": "record",
+      "claim": "Web is a listed platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: clouds; Scope: Clouds",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is a listed cloud.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: clouds; Scope: Clouds",
+      "type": "record",
+      "claim": "GCC is a listed cloud.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: clouds; Scope: Clouds",
+      "type": "record",
+      "claim": "GCC High is a listed cloud.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: clouds; Scope: Clouds",
+      "type": "record",
+      "claim": "DoD is a listed cloud.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Scope: Clients",
+      "type": "record",
+      "claim": "The roadmap does not name classic Outlook for Windows, Outlook for Mac or Outlook mobile.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Outlook\"], \"platforms\": [\"Desktop\", \"Web\"]; description ends with \"#newoutlookforwindows\".",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-10-06T22:56:31.",
+      "claim": "The roadmap record was modified at 2026-10-06T22:56:31.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2026-10-06T22:56:31\"",
@@ -163,32 +245,54 @@
       "fix": null
     },
     {
-      "n": 13,
-      "where": "front matter: defaultState",
-      "type": "default",
-      "claim": "The option is user-opt-in: each user chooses which count to use, with no documented feature-specific administrator switch.",
+      "n": 21,
+      "where": "What's changing: Microsoft Learn coverage",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe this new Outlook per-folder count feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"new Outlook\" \"unread count\" \"total item count\"; \"new Outlook\" \"total count\" folder pane. Opened release-notes-outlook-new and policy-management; found no feature description. Classic Outlook object-model results concern a different client.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Open questions: initial count",
+      "type": "record",
+      "claim": "The roadmap does not specify which count appears before a user makes a choice.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Just right-click any folder and choose whether to show the total or unread count. Searched: Outlook folder unread total count administrator Set-OwaMailboxPolicy Set-MailboxMessageConfiguration Microsoft Graph; read policy-management and both cmdlet references; no feature switch found.",
+      "quote": "You can now pick whether each folder in your folder pane shows the unread count or the total item count. Until now, Outlook only displayed unread counts",
       "severity": null,
       "fix": null
     },
     {
-      "n": 14,
-      "where": "front matter: licensing.model; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "The licensing model is included, using the published product-level entitlement for an option inside Outlook.",
+      "n": 23,
+      "where": "What's changing; Open questions: persistence",
+      "type": "absence",
+      "claim": "The sources do not say whether a folder-count choice follows the user between clients or is kept per device.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options",
-      "quote": "For example, a Business Standard or Business Premium plan provides access to a Microsoft 365 email address and the desktop versions of Outlook and other Microsoft 365 apps.",
+      "source": null,
+      "quote": "Searched: \"new Outlook\" folder count preference sync mailbox shared Favorites archive; \"Outlook on the web\" \"total item count\" folder preference. Read roadmap, policy-management and folder-related release notes; no count-preference persistence documented.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 15,
-      "where": "front matter: licensing.notes; Cost and licensing",
+      "n": 24,
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "The default state is user-opt-in: the available count choice is used by each user rather than enabled by an administrator.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Just right-click any folder and choose whether to show the total or unread count.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "Using Outlook for Windows with a Microsoft 365 organisational email address requires a plan that includes the desktop Microsoft 365 apps.",
+      "claim": "The licensing model is included: this folder display option belongs to Outlook under the product's existing licence requirements.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options",
       "quote": "To use the Outlook for Windows desktop app (either the classic or new version) with a Microsoft 365 organizational email address, you need to purchase a plan that includes the desktop versions of the Microsoft 365 apps.",
@@ -196,7 +300,18 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 26,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope: Users",
+      "type": "licensing",
+      "claim": "Using new Outlook for Windows with a Microsoft 365 organisational email address needs a plan including the desktop Microsoft 365 apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options",
+      "quote": "To use the Outlook for Windows desktop app (either the classic or new version) with a Microsoft 365 organizational email address, you need to purchase a plan that includes the desktop versions of the Microsoft 365 apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
       "claim": "Business Basic provides access through the web and mobile versions of Outlook.",
@@ -207,10 +322,10 @@
       "fix": null
     },
     {
-      "n": 17,
-      "where": "Cost and licensing",
+      "n": 28,
+      "where": "Cost and licensing: frontline licences",
       "type": "licensing",
-      "claim": "Users with Microsoft 365 frontline licences are required to use the web and mobile versions of Outlook.",
+      "claim": "Users with Microsoft 365 frontline licences are required to use the web and mobile versions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options",
       "quote": "Users with these licenses are required to use the web and mobile versions of Outlook and Microsoft 365 apps.",
@@ -218,109 +333,32 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "n": 29,
+      "where": "front matter: licensing.notes; Cost and licensing",
       "type": "absence",
-      "claim": "Microsoft publishes no separate licence specific to the folder count option.",
+      "claim": "Microsoft has published no separate licence specific to this folder-count option.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: new Outlook unread total item count per folder licensing price meter admin policy default; Outlook on the web folder count admin setting role license charge. Read licensing-options; no feature-specific licence found.",
+      "quote": "Searched: \"new Outlook\" \"folder count\" \"license\" \"price\" \"meter\". Opened licensing-options; it states Outlook's general plan requirements, but names no separate folder-count entitlement.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 19,
-      "where": "Cost and licensing; rationale: cost",
+      "n": 30,
+      "where": "Cost and licensing; rationale: cost; changes: cost correction",
       "type": "absence",
-      "claim": "Microsoft publishes no separate meter for this option.",
+      "claim": "Microsoft has published no separate price, meter or charge for this option.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: new Outlook unread total item count per folder licensing price meter admin policy default; Outlook on the web folder count admin setting role license charge. Read licensing-options and policy-management; no meter for the option found.",
+      "quote": "Searched: \"new Outlook\" \"folder count\" \"license\" \"price\" \"meter\". Opened licensing-options and release-notes-outlook-new; neither publishes a price, meter or charge specific to the per-folder count choice.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 20,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "Microsoft publishes no separate charge for this option.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: new Outlook unread total item count per folder licensing price meter admin policy default; Outlook on the web folder count admin setting role license charge. Read licensing-options; no separate price or charge for the option found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "What's changing",
-      "type": "absence",
-      "claim": "Microsoft Learn does not yet describe this new per-folder count option.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: new Outlook unread total item count per folder licensing price meter admin policy default; new Outlook folder total unread default sync count. Read policy-management; results describe classic Outlook APIs and unrelated count issues, not this new option.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "What's changing; Governance guidance: At rollout; Open questions",
-      "type": "absence",
-      "claim": "The count shown before a user makes a choice is not stated for the new option.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: new Outlook folder total unread default sync count; new Outlook unread total item count per folder licensing price meter admin policy default. Read roadmap and policy-management; roadmap states the prior behaviour, not the new option's initial state.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "What's changing; Governance guidance: At rollout; Open questions",
-      "type": "absence",
-      "claim": "Whether the folder count choice follows the user between clients is not stated.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: new Outlook folder total unread default sync count. Read roadmap, policy-management and search excerpts about folder synchronization; none describes synchronization or storage of this new preference.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "controls[0]; summary; Why it matters; Governance guidance; Governance controls",
-      "type": "absence",
-      "claim": "No tenant administrator UI or automation is documented for enabling or disabling the per-folder count option.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Outlook folder unread total count administrator Set-OwaMailboxPolicy Set-MailboxMessageConfiguration Microsoft Graph. Read policy-management, configure-outlook-web-app-mailbox-policy-properties and full Set-OwaMailboxPolicy syntax; no folder count control found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "controls[1]; Risk assessment: Change & support; Governance controls",
-      "type": "absence",
-      "claim": "No administrator UI or automation is documented for setting a given user's per-folder unread or total count preference.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Outlook folder unread total count administrator Set-OwaMailboxPolicy Set-MailboxMessageConfiguration Microsoft Graph; Outlook on the web folder count admin setting role license charge. Read policy-management and full Set-MailboxMessageConfiguration syntax; no count preference found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "Scope: Who sets it",
-      "type": "absence",
-      "claim": "No administrator role for configuring this feature is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Outlook on the web folder count admin setting role license charge; Outlook folder unread total count administrator Set-OwaMailboxPolicy Set-MailboxMessageConfiguration Microsoft Graph. Read policy-management and mailbox policy properties; no role for this option found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
+      "n": 31,
       "where": "Scope: Users",
-      "type": "behaviour",
-      "claim": "Outlook on the web must be enabled for mailboxes whose users are to receive new Outlook for Windows.",
+      "type": "availability",
+      "claim": "Outlook on the web must be enabled for the mailboxes of users receiving new Outlook for Windows.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/deployment-new-outlook",
       "quote": "As a requirement, Outlook on the web needs to be enabled for users' mailboxes for whom you're planning to deploy new Outlook for Windows.",
@@ -328,10 +366,43 @@
       "fix": null
     },
     {
-      "n": 28,
-      "where": "Governance controls",
+      "n": 32,
+      "where": "Scope: Who sets it",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no admin role for configuring this particular folder-count choice.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"new Outlook\" \"folder\" \"count\" \"admin\" \"policy\" unread total. Opened policy-management and both Exchange cmdlet references; no folder-count administration procedure or corresponding role was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[0]; summary; Why it matters; Governance guidance; Governance controls",
+      "type": "absence",
+      "claim": "No admin UI or API setting is documented to control availability of the per-folder unread-versus-total count option.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook unread total folder count admin Cloud Policy; \"Set-OwaMailboxPolicy\" \"count\" \"unread\". Read policy-management, EAC policy view/create pages, and searched Set-OwaMailboxPolicy for folder/count/unread/total; no matching switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[1]; Risk assessment: Change & support; Governance controls",
+      "type": "absence",
+      "claim": "No admin UI or API setting is documented to select a user's per-folder counts, including in Set-MailboxMessageConfiguration.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook unread total folder count Set-MailboxMessageConfiguration admin setting; \"Set-MailboxMessageConfiguration\" \"count\" \"unread\". Opened policy-management and searched the cmdlet reference for folder/count/unread/total; no count selector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Governance controls: mailbox policy applicability",
       "type": "applicability",
-      "claim": "Most Outlook on the web mailbox policies apply to both Outlook on the web and new Outlook for Windows.",
+      "claim": "Microsoft says most Outlook mailbox policies apply to both Outlook on the web and new Outlook for Windows.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/manage/policy-management",
       "quote": "Most of the mailbox policies apply to both Outlook on the web and new Outlook for Windows, so you can't enable them on one client but not the other.",
@@ -339,52 +410,52 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 36,
       "where": "controls[1].note; Governance controls",
-      "type": "behaviour",
-      "claim": "Set-MailboxMessageConfiguration configures per-mailbox Outlook on the web display settings, some of which also apply to new Outlook.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-mailboxmessageconfiguration",
-      "quote": "These settings are applied in Outlook on the web only. Some settings also apply to the new Outlook client.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "Governance controls",
       "type": "command",
-      "claim": "MailFolderPaneExpanded is a real Set-MailboxMessageConfiguration parameter for an Outlook on the web folder pane setting.",
+      "claim": "Set-MailboxMessageConfiguration configures per-mailbox Outlook on the web settings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-mailboxmessageconfiguration",
-      "quote": "Set-MailboxMessageConfiguration ... [-MailFolderPaneExpanded <Boolean>] ... [-NavigationPaneViewOption <NavigationPaneView>]",
+      "quote": "Use the Set-MailboxMessageConfiguration cmdlet to configure the Outlook on the web settings that are applied to specific mailboxes.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 31,
-      "where": "rationale: impact",
+      "n": 37,
+      "where": "Governance controls: MailFolderPaneExpanded",
+      "type": "command",
+      "claim": "MailFolderPaneExpanded is an existing Set-MailboxMessageConfiguration display-setting parameter.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-mailboxmessageconfiguration",
+      "quote": "The MailFolderPaneExpanded parameter specifies whether the Mail folder pane is expanded by default in Outlook on the web.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
       "type": "record",
-      "claim": "The change is a user-chosen count display difference rather than a roadmap-described change to other behaviour.",
+      "claim": "The roadmap describes a display choice about existing folder items, not new access, sending or sharing capabilities.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "You can now pick whether each folder in your folder pane shows the unread count or the total item count. It gives you more control over how you keep track of your email without changing how anything else works.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The roadmap item describes no change to sign-in, permissions or sharing.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Just right-click any folder and choose whether to show the total or unread count. It gives you more control over how you keep track of your email without changing how anything else works.",
       "severity": null,
       "fix": null
-    },
-    {
-      "n": 32,
-      "where": "front matter: cost; rationale: cost; Cost and licensing",
-      "type": "consistency",
-      "claim": "The cost rating is none despite the absence of an explicit statement that this option is included without additional cost.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "cost: \"none\"; \"None. An option inside Outlook that comes with the licence Outlook already needs\" versus \"Microsoft publishes no separate licence, meter or charge for this option. The only cost the sources show is the time to tell helpdesk staff about it.\"",
-      "severity": "blocker",
-      "fix": "Set cost to low. Replace the cost rationale with: 'Low. The known cost is helpdesk communication time; Microsoft has not published a separate price or meter for this option.' Keep the product-level licensing model included, but do not use the absence of a published charge to assert no additional cost."
     }
   ],
   "precheck": {
-    "at": "2026-11-28T05:26:03.704Z",
+    "at": "2026-11-28T06:57:55.988Z",
     "summary": {
       "links": 7,
       "unreachable": 0,
@@ -434,5 +505,12 @@
     "controlChecks": [],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-28",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

@@ -71,15 +71,17 @@ changes:
     note: "Corrected the role statement: the Manage alerts plus DLP Compliance Management requirement is now stated for the Purview DLP alert management dashboard only."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 56 statements confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 60 statements confirmed"
 version: 3
 verification:
   status: "verified"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 56
-  confirmed: 56
+  claims: 60
+  confirmed: 60
   unconfirmed: 0
   contradicted: 0
   attempts: 0

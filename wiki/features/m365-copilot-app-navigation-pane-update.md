@@ -49,6 +49,18 @@ sources:
   - title: "Create configurationMonitor"
     url: "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-1.0"
     kind: "learn"
+  - title: "Supported Copilot resources for Tenant Configuration Management (preview)"
+    url: "https://learn.microsoft.com/graph/utcm-copilot-resources"
+    kind: "learn"
+  - title: "Supported Agent resources for Tenant Configuration Management (preview)"
+    url: "https://learn.microsoft.com/graph/utcm-agent-resources"
+    kind: "learn"
+  - title: "Supported resources for remediation and applyOnce (preview)"
+    url: "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources"
+    kind: "learn"
+  - title: "Whether users can create and view Copilot Notebooks, and so whether the Notebooks module shows in the Copilot app (Microsoft Graph)"
+    url: "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta&preserve-view=true"
+    kind: "learn"
   - title: "Which users or groups can access and install agents and plugins (Microsoft 365 admin center)"
     url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#user-access"
     kind: "learn"
@@ -61,16 +73,22 @@ controls:
       surface: "Microsoft 365 Apps admin center"
       path: "Customization > Policy Management > policy configuration > Choose the scope > Configure Settings > Create and view Copilot Pages and Copilot Notebooks"
       docs: "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration"
-    api: null
-    note: "Default Enabled; Not configured behaves as Enabled. Scope is All users or a group. Requires the Office Apps admin role."
+    api:
+      kind: "graph"
+      call: "POST /beta/admin/configurationManagement/configurationMonitors"
+      docs: "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta&preserve-view=true"
+    note: "Default Enabled; Not configured behaves as Enabled. UI scope is All users or a group (Office Apps admin role). API: preview applyOnce mode sets microsoft.copilot.copilotpagesnotebooks value 0 or 1, tenant-level policy only."
   - governs: "Which users or groups can access and install agents and plugins"
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
       path: "Agents > Settings > User access"
       docs: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#user-access"
-    api: null
-    note: "Options All users (default), No users, Specific users or groups. Controls agent access, not Agent Builder creation on its own."
+    api:
+      kind: "graph"
+      call: "POST /beta/admin/configurationManagement/configurationMonitors"
+      docs: "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta&preserve-view=true"
+    note: "Options All users (default), No users, Specific users or groups. Not Agent Builder creation on its own. API: preview applyOnce mode sets microsoft.agent.useraccess userAssignmentCategory everyone or noOne."
   - governs: "Turning off agent creation in Agent Builder while keeping agents available"
     scope: "tenant"
     ui: null
@@ -94,19 +112,23 @@ changes:
     note: "Corrected the defaults for Notebooks and agent access (OneDrive and app policy qualifications), narrowed the quick-action statements to the roadmap's description, and raised impact to high."
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 60 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-28"
+    note: "Added the Graph beta applyOnce call (preview) that sets the Notebooks policy, tenant-level only, and agent user access, replacing the statements that no API was documented for either."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 69 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-28"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 57
+  claims: 69
+  confirmed: 69
   unconfirmed: 0
-  contradicted: 3
-  attempts: 2
-  hash: "fd8d9bd0a140fec2892bb098b60c0281"
+  contradicted: 0
+  attempts: 0
+  hash: "5ebc3ace200cf040f8980f44472f38ec"
 ---
 
 ## What's changing
@@ -175,14 +197,16 @@ The roadmap describes quick actions in the navigation pane to create new Noteboo
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether users can create and view Copilot Notebooks, and so whether the Notebooks module shows in the Copilot app</strong><br><small>Group</small><br><small class="controls__note">Default Enabled; Not configured behaves as Enabled. Scope is All users or a group. Requires the Office Apps admin role.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › policy configuration › Choose the scope › Configure Settings › Create and view Copilot Pages and Copilot Notebooks <a href="https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which users or groups can access and install agents and plugins</strong><br><small>Tenant</small><br><small class="controls__note">Options All users (default), No users, Specific users or groups. Controls agent access, not Agent Builder creation on its own.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › User access <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#user-access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether users can create and view Copilot Notebooks, and so whether the Notebooks module shows in the Copilot app</strong><br><small>Group</small><br><small class="controls__note">Default Enabled; Not configured behaves as Enabled. UI scope is All users or a group (Office Apps admin role). API: preview applyOnce mode sets microsoft.copilot.copilotpagesnotebooks value 0 or 1, tenant-level policy only.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › policy configuration › Choose the scope › Configure Settings › Create and view Copilot Pages and Copilot Notebooks <a href="https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta&amp;preserve-view=true" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users or groups can access and install agents and plugins</strong><br><small>Tenant</small><br><small class="controls__note">Options All users (default), No users, Specific users or groups. Not Agent Builder creation on its own. API: preview applyOnce mode sets microsoft.agent.useraccess userAssignmentCategory everyone or noOne.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › User access <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#user-access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta&amp;preserve-view=true" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Turning off agent creation in Agent Builder while keeping agents available</strong><br><small>Tenant</small><br><small class="controls__note">Microsoft states admins can't disable agent creation in Agent Builder separately while keeping agents enabled.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Tenant-wide switch to keep the previous Copilot app navigation layout</strong><br><small>Tenant</small><br><small class="controls__note">The Copilot app experience settings Microsoft documents cover Search, Chat, Agents, Pages and Notebooks, Create and the Copilot key, not the navigation layout.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-No setting governs the navigation layout itself; the rows below govern the features the new shortcuts lead to. Cloud Policy changes take up to 90 minutes to apply where policy configurations already existed, and up to 24 hours where none existed. The Graph copilotPolicySetting API (beta) updates tenant-level Copilot policy settings, but its supported list covers Copilot Chat pinning, open-content access, image generation, web search and Admin Copilot, not Notebooks or agent access. A Graph configurationMonitor runs periodically against tenant configuration and is not documented as changing these settings.
+No setting governs the navigation layout itself; the rows below govern the features the new shortcuts lead to. Cloud Policy changes take up to 90 minutes to apply where policy configurations already existed, and up to 24 hours where none existed. The Graph copilotPolicySetting API (beta) updates tenant-level Copilot policy settings, but its supported list covers Copilot Chat pinning, open-content access, image generation, web search and Admin Copilot, not Notebooks or agent access. A configurationMonitor runs periodically in monitorOnly mode; preview Graph beta applyOnce mode can instead apply a baseline once for the documented microsoft.copilot.copilotpagesnotebooks and microsoft.agent.useraccess resources. Notebook policy automation supports tenant-level policies only and fails if the setting is configured in any group-level policy.
+
+For applyOnce, the calling app needs the delegated ConfigurationMonitoring.ReadWrite.All permission, the Tenant Configuration Management (TCM) service principal needs the delegated CopilotPolicySettings.ReadWrite permission, and the signed-in user needs the **AI Administrator** role. The agent user access resource takes the values everyone or noOne; the **Specific users or groups** option is not among its documented values.
 
 ## Open questions
 
@@ -195,12 +219,4 @@ No setting governs the navigation layout itself; the rows below govern the featu
 risk: Low. The redesign changes where things sit in the app; the Notebook and agent features its shortcuts lead to are already governed by existing Cloud Policy and agent access settings.
 cost: Low. The only cost the sources show is admin and helpdesk time for a layout change; no licence or meter specific to the redesign is published.
 impact: High. The navigation redesign changes the default app experience on Desktop, Mac and Web.
--->
-
-<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api / absence: Microsoft has not documented API automation for the Notebook creation and viewing control. | Found: These resources also support remediation and applyOnce. ... Controls whether users can create and view Copilot Pages and Copilot Notebooks through Microsoft 365 Copilot Chat and Copilot Actions. | Fix: Replace controls[0].api null with graph call 'POST /beta/admin/configurationManagement/configurationMonitors', docs 'https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta&preserve-view=true'. Add note: 'Preview applyOnce mode applies a baseline resource microsoft.copilot.copilotpagesnotebooks, resourceVersion 1, with properties.value "0" to disable or "1" to enable. Supported only for tenant-level policies; fails if the setting is configured in any group-level policy. Requires delegated ConfigurationMonitoring.ReadWrite.All for the calling app, CopilotPolicySettings.ReadWrite for the TCM service principal, and AI Administrator for the signed-in user.' Cite https://learn.microsoft.com/graph/utcm-copilot-resources and https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources. Retain the group-capable UI and state that this API is tenant-only. | Source: https://learn.microsoft.com/graph/utcm-copilot-resources
-- [contradicted, blocker] controls[1].api / absence: Microsoft has not documented API automation for agent user access. | Found: These resources also support remediation and applyOnce. ... userAssignmentCategory ... Specifies whether all users or no users can access agents and plugins. ... everyone, noOne | Fix: Replace controls[1].api null with graph call 'POST /beta/admin/configurationManagement/configurationMonitors', docs 'https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta&preserve-view=true'. Add note: 'Preview applyOnce mode applies a baseline resource microsoft.agent.useraccess, resourceVersion 1, with properties.valueObject.userAssignmentCategory "everyone" or "noOne". Specific-user/group assignment is not in this resource schema. Requires delegated ConfigurationMonitoring.ReadWrite.All for the calling app, CopilotPolicySettings.ReadWrite for the TCM service principal, and AI Administrator for the signed-in user.' Cite https://learn.microsoft.com/graph/utcm-agent-resources and https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources. | Source: https://learn.microsoft.com/graph/utcm-agent-resources
-- [contradicted, blocker] Governance controls / absence: A configurationMonitor is not documented as changing Notebook creation or agent user-access settings. | Found: Create a new configurationMonitor object that runs periodically in the background at a scheduled frequency to detect configuration drift in monitorOnly mode, or applies a desired-state baseline once in applyOnce mode. | Fix: Replace the final sentence with: 'A configurationMonitor runs periodically in monitorOnly mode; preview Graph beta applyOnce mode can instead apply a baseline once for the documented microsoft.copilot.copilotpagesnotebooks and microsoft.agent.useraccess resources. Notebook policy automation supports tenant-level policies only and fails if the setting is configured in any group-level policy.' Cite https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta&preserve-view=true and https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources. | Source: https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta&preserve-view=true
 -->

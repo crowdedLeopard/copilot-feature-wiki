@@ -74,18 +74,20 @@ changes:
     note: "Corrected after the independent check: removed the claim that policies receive the higher ceiling without action, removed visual markings (Learn says auto-labeling does not apply them) and trimmed the checklist."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 62 statements confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 66 statements contradicted, 1 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-21"
+  status: "held"
+  date: "2026-11-28"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 62
-  confirmed: 62
-  unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  claims: 66
+  confirmed: 63
+  unconfirmed: 1
+  contradicted: 2
+  attempts: 1
   hash: "a4b1f35c02e3f551030604cac6932664"
 ---
 
@@ -187,4 +189,16 @@ The increase applies to the aggregate across policies, so narrowing one policy's
 risk: Medium. Auto-labeling policies already turned on can label, and where the label encrypts, protect, up to five times as many files a day, so access and support effects arrive faster than before.
 cost: Low. The Learn page ties service-side auto-labeling to E5-tier licences and lists no meter for the ceiling; the cost is admin time to review policies. A price for the increase is not yet published.
 impact: Low. Administrators and compliance teams running auto-labeling policies notice it first; users notice only where newly labelled files carry encryption.
+-->
+
+<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] front matter: licensing.notes; Cost and licensing: Licence / licensing: The cited Learn licensing table lists Microsoft 365 E5 Compliance as included for service-side auto-labeling. | Found: Service-side auto-labeling (SharePoint, OneDrive, Exchange) ... Check the Client and service-side automatic sensitivity labeling entry in the feature matrix linked below. Client-only entitlements don't establish service-side entitlement. | Fix: Remove E5 Compliance from the asserted service-side entitlement list in licensing.notes and Cost and licensing. Replace the list attribution with: 'The Microsoft Purview service description lists Microsoft 365 E5 and Microsoft 365 E5 Information Protection and Governance as including client and service-side automatic sensitivity labeling.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description. | Source: https://learn.microsoft.com/purview/apply-sensitivity-label-automatically
+- [contradicted, blocker] front matter: licensing.notes; Cost and licensing: Licence / licensing: The cited Learn licensing table lists standalone Azure Information Protection Premium P2 as included for service-side auto-labeling. | Found: Service-side auto-labeling (SharePoint, OneDrive, Exchange) ... Check the Client and service-side automatic sensitivity labeling entry in the feature matrix linked below. Client-only entitlements don't establish service-side entitlement. | Fix: Remove 'Azure Information Protection Premium P2 (standalone)' from the service-side entitlement lists in licensing.notes and Cost and licensing. The cited four-SKU list belongs to client-side labeling; use the verified Microsoft 365 E5 and Microsoft 365 E5 Information Protection and Governance service-side entitlements instead. | Source: https://learn.microsoft.com/purview/apply-sensitivity-label-automatically
+- [unsupported, blocker] Cost and licensing: Licence / licensing: For E3 or Business Premium, the page requires an E5 or P2-tier add-on for service-side auto-labeling. | Found: Searched: Azure Information Protection Premium P2 service-side auto-labeling. Read apply-sensitivity-label-automatically, the Purview service description and Azure Information Protection service description; no P2 add-on route established. | Fix: Replace 'requires an E5 or P2-tier add-on there' with 'requires an eligible subscription or add-on for service-side labeling; check the Client and service-side automatic sensitivity labeling entry in the Microsoft Purview service description.'
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: licensing.model; rationale: cost / licensing: Service-side automatic sensitivity labeling is included within eligible subscriptions rather than having an unpublished entitlement. | Found: | Client and service-side automatic sensitivity labeling | Included | Included | | Fix: Keep licensing.model as included and add https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description to sources for the service-side feature matrix. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
+- [supported, minor] front matter: licensing.notes; Cost and licensing: Licence / licensing: Microsoft 365 E5 includes service-side automatic sensitivity labeling. | Found: | Feature | Microsoft 365 E5/A5/G5, Microsoft Purview Suite/GOV/FLW, Microsoft Defender + Purview Suite FLW, Microsoft 365 E5 Information Protection and Governance | Office 365 E5/A5/G5 | | Client and service-side automatic sensitivity labeling | Included | Included | | Fix: Cite the Microsoft Purview service description feature matrix for the Microsoft 365 E5 service-side entitlement: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
+- [supported, minor] front matter: licensing.notes; Cost and licensing: Licence / licensing: Microsoft 365 E5 Information Protection and Governance includes service-side automatic sensitivity labeling. | Found: | Feature | Microsoft 365 E5/A5/G5, Microsoft Purview Suite/GOV/FLW, Microsoft Defender + Purview Suite FLW, Microsoft 365 E5 Information Protection and Governance | Office 365 E5/A5/G5 | | Client and service-side automatic sensitivity labeling | Included | Included | | Fix: Use the name 'Microsoft 365 E5 Information Protection and Governance' and cite its service-side feature-matrix entry at https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
 -->

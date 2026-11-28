@@ -1,0 +1,999 @@
+{
+  "slug": "diagnostics",
+  "kind": "concept",
+  "roadmapId": null,
+  "title": "Self-help diagnostics: which admin tests explain a broken setting, and who can run them?",
+  "status": "held",
+  "date": "2026-11-28",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-28",
+    "reasons": [
+      "3 blocking findings (claims 7, 11, 16)"
+    ]
+  },
+  "counts": {
+    "claims": 73,
+    "confirmed": 68,
+    "unconfirmed": 2,
+    "contradicted": 3,
+    "blocker": 3,
+    "major": 2,
+    "minor": 5
+  },
+  "summary": "Hold: the table reports automation as undocumented even though Microsoft documents PowerShell equivalents for Information Protection and some Exchange diagnostics. The Graph role requirement also needs its delegated-access qualification, and the data-processing statements must distinguish Microsoft 365 admin center diagnostics from Purview Help-pane diagnostics.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "Purview role-group members can be added through Settings > Roles and scopes > Role groups > Role groups for Microsoft Purview solutions > role group > Edit > Edit members of the role group > Choose users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Go to Settings > Roles and scopes to view and manage compliance and governance roles in your organization. ... Select Role groups. ... On Edit members of the role group, select Choose users or Choose groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "Add-RoleGroupMember -Identity \"<role-group>\" -Member <member> adds a member to a management role group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+      "quote": "Use the Add-RoleGroupMember cmdlet to add members to a management role group. ... The Identity parameter specifies the role group to add a member to. ... The Member parameter specifies who you want to add to the role group.",
+      "severity": "minor",
+      "fix": "Add the Microsoft pages relied on but missing from sources: https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember, https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync, and https://learn.microsoft.com/microsoft-365/copilot/connectors/error-responses. The existing eDiscovery docs link contains the printed Add-RoleGroupMember operation and can remain."
+    },
+    {
+      "n": 3,
+      "where": "controls[0].note",
+      "type": "role",
+      "claim": "Editing Purview role groups requires the Role management role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Sign in to the Microsoft Purview portal by using credentials for an admin account assigned the Role management role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "controls[0].governs",
+      "type": "applicability",
+      "claim": "Membership of qualifying Purview role groups controls access to DLP and Information Protection diagnostics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "A role group is a set of roles that enable users to do their jobs across compliance and governance solutions in the Microsoft Purview portal. ... Compliance Administrator ... Mapped Purview role groups ... Compliance Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Microsoft 365 admin roles are assigned through Roles > Role assignments > role > Assigned > Add users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/add-users/assign-admin-roles",
+      "quote": "To view the administrator roles available for your organization, choose the Microsoft Entra ID, Exchange, Intune, or Billing tab. ... On the Assigned tab, select Add users or Add groups.",
+      "severity": "minor",
+      "fix": "For the Microsoft 365 directory roles discussed here, expand the path to 'Roles > Role assignments > Microsoft Entra ID > role > Assigned > Add users'. The omitted tab selects the list of roles, so this is not a wrong destination."
+    },
+    {
+      "n": 6,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "POST /v1.0/roleManagement/directory/roleAssignments creates a directory role assignment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0",
+      "quote": "POST https://graph.microsoft.com/v1.0/roleManagement/directory/roleAssignments ... \"roleDefinitionId\": \"c2cf284d-6c41-4e6b-afac-4b80928c9034\", \"principalId\": \"f8ca5a85-489a-49a0-b555-0a6d81e56f0d\", \"directoryScopeId\": \"/\"",
+      "severity": "minor",
+      "fix": "Keep the call and add to its note: 'The request body identifies the assigned role with roleDefinitionId and the recipient with principalId; directoryScopeId specifies the scope.'"
+    },
+    {
+      "n": 7,
+      "where": "controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "Creating a directory role assignment through Microsoft Graph requires Privileged Role Administrator at least.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0",
+      "quote": "For delegated access using work or school accounts, the signed-in user must be assigned a supported Microsoft Entra role or a custom role that grants the permissions required for this operation. Privileged Role Administrator is the least privileged role supported for this operation.",
+      "severity": "blocker",
+      "fix": "Replace both role statements with: 'For delegated access using work or school accounts, Privileged Role Administrator is the least privileged supported built-in role; a custom role granting the required permissions is also supported.' The reference also supports application access with RoleManagement.ReadWrite.Directory, so do not state this signed-in-user role requirement for all calls."
+    },
+    {
+      "n": 8,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "Purview DLP file diagnostics are reached through Solutions > Data Loss Prevention > Diagnostics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "You can find these diagnostics on the following portal pages: ... Solutions > Data Loss Prevention > Diagnostics",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "Test-DlpPolicies -workload <workload> -Fileurl <path/direct link> -SendReportTo <smtpaddress> tests which DLP policies match an item.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-test-dlp-policies",
+      "quote": "After you have the site ID and the direct link path, run the cmdlet to test your policies. ... Test-DlpPolicies -workload <workload> -Fileurl <path/direct link> -SendReportTo <smtpaddress>",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "Information Protection diagnostics are reached through Solutions > Information Protection > Diagnostics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "You can find these diagnostics on the following portal pages: ... Solutions > Information Protection > Diagnostics",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "controls[3].api",
+      "type": "absence",
+      "claim": "Automation for label, label-policy, auto-labeling and email-encryption checks is not yet documented.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/test-irmconfiguration",
+      "quote": "Use the Test-IRMConfiguration cmdlet to test Information Rights Management (IRM) configuration and functionality. ... Test-IRMConfiguration -Sender chris@fabrikam.com -Recipient michell@fourthcoffee.com",
+      "severity": "blocker",
+      "fix": "Replace controls[3].api with kind 'powershell', call 'Test-IRMConfiguration -Sender <sender-email-address> -Recipient <recipient-email-address>', docs 'https://learn.microsoft.com/powershell/module/exchangepowershell/test-irmconfiguration'. Append to the existing note: 'This call covers the IRM configuration and functionality check, not all label checks.' The cited Purview diagnostics page explicitly maps email-encryption checks to this cmdlet."
+    },
+    {
+      "n": 12,
+      "where": "controls[3].note; Governance controls",
+      "type": "role",
+      "claim": "Information Protection Solutions-page diagnostics require Compliance Administrator or Security Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "To run the Information Protection diagnostics, you need to have either of the following roles: Compliance Administrator; Security Administrator",
+      "severity": "minor",
+      "fix": "Keep the roles supported by the cited Purview-specific article. Add this qualification in Governance controls and cite https://learn.microsoft.com/troubleshoot/microsoft-365/diagnostics/purview-compliance-diagnostics: 'Microsoft's alternate self-help diagnostics article states that Solutions-page diagnostics require a Microsoft 365 global administrator; the Purview-specific article instead lists Compliance Administrator or Security Administrator for Information Protection and a wider role list for DLP.'"
+    },
+    {
+      "n": 13,
+      "where": "Governance controls: DLP roles",
+      "type": "role",
+      "claim": "DLP Solutions-page diagnostics accept roles including Organization Configuration, View-Only Configuration, Security Reader, DLP Compliance Management and Information Protection Analyst.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "To run the DLP diagnostics, you need to have any of the following roles: ... Organization Configuration; View-Only Configuration; Security Reader; DLP Compliance Management ... Information Protection Analyst",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[3].note; Risks and limits: Gradual rollout",
+      "type": "availability",
+      "claim": "Purview Solutions-page diagnostics are rolling out gradually and might not yet be available in a tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Diagnostics on Solutions pages are being rolled out gradually and might not yet be available in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[4].ui",
+      "type": "admin-path",
+      "claim": "Microsoft 365 Help-pane diagnostics are reached through Help > describe the issue > select an option > Run Tests.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Select the Help icon ... enter a brief description of the issue ... Select one of the listed options ... If the selected option has an associated diagnostic, enter any requested information, and then select Run Tests",
+      "severity": "minor",
+      "fix": "The pre-check's missing phrases are descriptions of documented actions, not invented labels. Keep the route, but add to the note: 'The Exchange diagnostics article describes the entry point as Help & support; the Purview diagnostics article describes the Help icon.' Both cited pages support the experience but use different entry-point labels."
+    },
+    {
+      "n": 16,
+      "where": "controls[4].api",
+      "type": "absence",
+      "claim": "Automation for running the Help-pane diagnostics covered by this Purview, Exchange, SharePoint and Teams row is not yet documented.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/troubleshoot/exchange/administration/self-help-diagnostics",
+      "quote": "However, a subset of these diagnostics can be accessed by using Exchange Online PowerShell or the Exchange admin center (EAC). ... Company Object ... Invoke-ProvisioningCompanyObjectDiagnostic",
+      "severity": "blocker",
+      "fix": "Replace controls[4].api with kind 'powershell', call 'Invoke-ProvisioningCompanyObjectDiagnostic', docs 'https://learn.microsoft.com/powershell/module/exchangepowershell/invoke-provisioningcompanyobjectdiagnostic'. Append to its note: 'Automation shown covers the Exchange company-object diagnostic only, not a general API for the Help pane; see its reference for permissions and limits.' The reference documents this parameterless operation as validating core Microsoft 365 tenant information."
+    },
+    {
+      "n": 17,
+      "where": "summary; What it is",
+      "type": "behaviour",
+      "claim": "Self-help diagnostics are administrator-run tests available in the Microsoft 365 admin center and Microsoft Purview portal to investigate configuration problems.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "You can run diagnostics to identify and resolve issues in Microsoft Purview. ... Microsoft Purview portal ... On Solutions pages ... In the Help pane ... Microsoft 365 admin center ... In the Help pane",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "summary",
+      "type": "role",
+      "claim": "Admin roles decide who can run diagnostics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "To run these diagnostics, you must meet the minimum role requirement that's listed in the table.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What it is: opening paragraph",
+      "type": "behaviour",
+      "claim": "Diagnostics report known issues and provide instructions for fixing them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "The diagnostics offer insights into known issues, and provide instructions to fix the issues.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What it is: opening paragraph",
+      "type": "behaviour",
+      "claim": "Diagnostics do not change the tenant without administrator consent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Although the diagnostics can fix some configuration issues, they don't make changes to your tenant without your consent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What it is: Where they run, Microsoft 365 admin center row",
+      "type": "availability",
+      "claim": "Microsoft 365 admin center diagnostics cover Exchange Online and Outlook, SharePoint and OneDrive, Teams and Purview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/admin/miscellaneous/data-used-by-self-help-diagnostics",
+      "quote": "For a full list of self-help diagnostics by product area, see the following articles: ... SharePoint Online and OneDrive ... Exchange Online and Outlook ... Microsoft Teams ... Microsoft Purview",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What it is: Where they run, Purview Help-pane row",
+      "type": "behaviour",
+      "claim": "Purview Help-pane diagnostics cover areas including archive mailboxes, retention, eDiscovery holds, labels, encryption and DLP.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "The diagnostics in the Help pane cover the following areas in Microsoft Purview: Archive mailboxes; Mailbox retention; eDiscovery holds and searches; Email account security; Sensitivity labels and label policies; Email message encryption; DLP policies",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What it is: Where they run, Purview Help-pane route",
+      "type": "admin-path",
+      "claim": "The Purview Help-pane route starts with Help > Ask a question, then describing the issue, selecting an option and Run Tests.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Select the Help icon ... In the Help and support pane, select Ask a question. ... Select one of the listed options ... select Run Tests to start the diagnostic.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What it is: Where they run, Solutions pages row",
+      "type": "behaviour",
+      "claim": "Purview Solutions-page diagnostics cover sensitivity labels and label policies, email encryption and DLP policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "The diagnostics on Solutions pages currently cover the following areas in Microsoft Purview: Sensitivity labels and label policies; Email message encryption; Data loss prevention (DLP) policies",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What it is: Help-pane text analytics",
+      "type": "behaviour",
+      "claim": "Help-pane diagnostics are offered through text analytics of the problem description.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/exchange/administration/self-help-diagnostics",
+      "quote": "Describe the problem that you want to resolve, and the appropriate diagnostics are surfaced through text analytics of the problem description.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What it is: diagnostic input values",
+      "type": "behaviour",
+      "claim": "Diagnostics request the values needed for the issue, such as a user name, URL or meeting ID.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/admin/miscellaneous/data-used-by-self-help-diagnostics",
+      "quote": "To run a diagnostic, administrators provide specific values that are needed to troubleshoot an issue, such as a user name, URL, or Meeting ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What it is: configuration data scoped to supplied values",
+      "type": "behaviour",
+      "claim": "Microsoft gathers configuration data scoped to supplied values for the Help-pane diagnostics generally described here.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'Purview Help pane diagnostics data compliance boundary processing'; opened Purview self-help diagnostics and data-used-by-self-help-diagnostics. The scoped-data passage explicitly covers diagnostics running in the Microsoft 365 admin center, not both portals.",
+      "severity": "major",
+      "fix": "Replace the final sentence of this paragraph with: 'For diagnostics running in the Microsoft 365 admin center, Microsoft uses the supplied information to gather additional configuration data scoped to those values.'"
+    },
+    {
+      "n": 28,
+      "where": "What it is: Solutions-page diagnostic sequence",
+      "type": "command",
+      "claim": "A Solutions-page diagnostic first runs Check-PurviewConfig to check Purview configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "When you select a diagnostic on a Solutions page, the diagnostic runs the Check-PurviewConfig cmdlet to check your organization's configuration settings in Microsoft Purview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What it is: Solutions-page diagnostic sequence",
+      "type": "behaviour",
+      "claim": "After Check-PurviewConfig, the diagnostic calls the issue-specific cmdlet.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Then, the diagnostic calls the appropriate cmdlet that's listed in the following table to perform checks that are specific to your issue.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What it is: email encryption example",
+      "type": "command",
+      "claim": "The email-encryption diagnostic uses Test-IrmConfiguration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Email encryption isn't working as expected. Are there any issues that affect my licenses or settings? ... Test-IrmConfiguration",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What it is: missing-label example",
+      "type": "command",
+      "claim": "The missing-label diagnostic uses Get-Label.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "A user can't find the sensitivity label they need. Does the label policy apply to them? ... Get-label ... Get-LabelPolicy",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What it is: missing-label example",
+      "type": "command",
+      "claim": "The missing-label diagnostic uses Get-LabelPolicy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "A user can't find the sensitivity label they need. Does the label policy apply to them? ... Get-label ... Get-LabelPolicy",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What it is: DLP file example",
+      "type": "command",
+      "claim": "The SharePoint or OneDrive DLP file-matching diagnostic uses Test-DlpPolicies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "A DLP rule isn't triggering for a file stored in SharePoint or OneDrive. ... Check a file's properties and classification to review whether a DLP rule matched or didn't match. ... Test-DlpPolices",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What it is: auto-labeling file example",
+      "type": "command",
+      "claim": "The SharePoint or OneDrive auto-labeling diagnostic uses Test-DlpPolicies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Autolabeling isn't applied to a SharePoint or OneDrive file. ... Checks a file's properties and classification to determine whether autolabeling was applied. ... Test-DlpPolices",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What it is: uploaded message trace",
+      "type": "behaviour",
+      "claim": "DLP diagnostics can use an uploaded message trace log to review DLP rules applied to Exchange Online messages.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "A DLP rule didn't apply or it was applied unexpectedly to an email message in Exchange Online. ... Upload the message trace log (.csv) to review the DLP rules applied to email messages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What it is: Other uses of the word, Endpoint DLP",
+      "type": "behaviour",
+      "claim": "Endpoint DLP has device-health status information rather than only administrator-run self-help tests.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync#device-attribute-details",
+      "quote": "You need to understand the attributes of an onboarded device. The values for these attributes can provide useful information to help you track the device health.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What it is: Other uses of the word, Copilot connectors",
+      "type": "behaviour",
+      "claim": "Copilot connectors have connection-error views distinct from self-help diagnostic tests.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/error-responses#monitor-errors",
+      "quote": "The Error tab displays: Error codes - Lists the error codes for errors that occurred. Counts - Displays the number of occurrences for each error code. Download log - An option to download a file that lists the errors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Why it matters: policy and user details",
+      "type": "behaviour",
+      "claim": "Qualifying diagnostic users can read policy and user configuration details, including applicable DLP policies and available labels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Checks which DLP policies apply to a user. Diagnostic results include the policy names and where the policies apply. ... Checks which sensitivity labels are available to the user. Diagnostic results include information such as the label names, settings",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Why it matters: Help-pane data handling; What to check",
+      "type": "behaviour",
+      "claim": "Help-pane diagnostics generally send tenant and user configuration outside the compliance boundary for the duration of the run.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'Purview Help pane diagnostics data compliance boundary processing'; opened Purview diagnostics and data-used-by-self-help-diagnostics. The processing and removal statements cover Microsoft 365 admin center diagnostics, not Purview Help-pane diagnostics.",
+      "severity": "major",
+      "fix": "Replace the Why it matters sentence with: 'Diagnostics running in the Microsoft 365 admin center process tenant and user configuration outside the compliance boundary temporarily, and Microsoft says the data is removed after the diagnostic finishes.' In What to check, change 'running Help-pane diagnostics' to 'running diagnostics in the Microsoft 365 admin center'."
+    },
+    {
+      "n": 40,
+      "where": "Why it matters: tenant switch; Open questions",
+      "type": "absence",
+      "claim": "Microsoft does not document a tenant setting that independently switches self-help diagnostics off.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft 365 self-help diagnostics disable tenant setting turn off diagnostics'. Opened Purview diagnostics, Exchange self-help diagnostics and the diagnostic data-processing page; results documented role gates but no tenant switch for these diagnostics.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "Microsoft publishes no licence requirement specific to running self-help diagnostics.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft 365 Purview self-help diagnostics licensing cost price charge' and 'self-help diagnostics licensing prerequisites Microsoft 365 admin center Purview diagnostics free cost'. Read Purview and Exchange diagnostics and Purview service-description excerpts; no diagnostic-specific licence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "Microsoft publishes no charge for running self-help diagnostics.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft 365 Purview self-help diagnostics licensing cost price charge' and 'self-help diagnostics licensing prerequisites Microsoft 365 admin center Purview diagnostics free cost'. Read Purview and Exchange diagnostics and Purview service-description excerpts; no diagnostic-run price.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing: encryption example",
+      "type": "behaviour",
+      "claim": "The email-encryption diagnostic checks licence availability for sensitivity labels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Checks license availability for sensitivity labels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risks and limits: Data leaves the compliance boundary",
+      "type": "behaviour",
+      "claim": "Running a Microsoft 365 admin center diagnostic shows a consent notice about temporary processing and storage outside the compliance boundary.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/admin/miscellaneous/data-used-by-self-help-diagnostics",
+      "quote": "When you run a self-help diagnostic in the Microsoft 365 admin center, a consent notice informs you that tenant and user configuration information will be processed and stored temporarily outside the compliance boundary.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risks and limits: data examples",
+      "type": "behaviour",
+      "claim": "Microsoft 365 admin center diagnostics can retrieve user display names.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/admin/miscellaneous/data-used-by-self-help-diagnostics",
+      "quote": "Examples of tenant-defined or user-defined configuration data that might be retrieved include, but aren't limited to: ... User display names",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risks and limits: data examples",
+      "type": "behaviour",
+      "claim": "Microsoft 365 admin center diagnostics can retrieve email subject lines.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/admin/miscellaneous/data-used-by-self-help-diagnostics",
+      "quote": "Examples of tenant-defined or user-defined configuration data that might be retrieved include, but aren't limited to: ... Email subject lines",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risks and limits: data examples",
+      "type": "behaviour",
+      "claim": "Microsoft 365 admin center diagnostics can retrieve SharePoint site names.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/admin/miscellaneous/data-used-by-self-help-diagnostics",
+      "quote": "Examples of tenant-defined or user-defined configuration data that might be retrieved include, but aren't limited to: ... SharePoint site names",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risks and limits: customer content",
+      "type": "behaviour",
+      "claim": "The Microsoft 365 admin center diagnostic service never accesses customer content such as email messages or documents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/admin/miscellaneous/data-used-by-self-help-diagnostics",
+      "quote": "Customer content such as email messages, documents, and chat conversations is never accessed by the diagnostic service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risks and limits: data removal",
+      "type": "behaviour",
+      "claim": "Data processed for a Microsoft 365 admin center diagnostic is removed when the diagnostic finishes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/admin/miscellaneous/data-used-by-self-help-diagnostics",
+      "quote": "The data that the support systems process is automatically removed after the diagnostic process is finished. This data isn't retained for use beyond the scope of the specific diagnostic that you run.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risks and limits: Some diagnostics offer a fix",
+      "type": "behaviour",
+      "claim": "The grace eDiscovery hold diagnostic can remove a grace eDiscovery hold it finds.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Provides an option to remove any grace eDiscovery hold or invalid retention policy that's found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risks and limits: Some diagnostics offer a fix",
+      "type": "behaviour",
+      "claim": "The grace eDiscovery hold diagnostic can remove an invalid retention policy it finds.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Provides an option to remove any grace eDiscovery hold or invalid retention policy that's found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[4].note; Risks and limits: Sovereign clouds",
+      "type": "availability",
+      "claim": "Help-pane diagnostics are unavailable in GCC High.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Diagnostics in the Help pane aren't available in the following environments: GCC High, DoD, and Microsoft 365 operated by 21Vianet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[4].note; Risks and limits: Sovereign clouds",
+      "type": "availability",
+      "claim": "Help-pane diagnostics are unavailable in DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Diagnostics in the Help pane aren't available in the following environments: GCC High, DoD, and Microsoft 365 operated by 21Vianet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[4].note; Risks and limits: Sovereign clouds",
+      "type": "availability",
+      "claim": "Help-pane diagnostics are unavailable in Microsoft 365 operated by 21Vianet.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Diagnostics in the Help pane aren't available in the following environments: GCC High, DoD, and Microsoft 365 operated by 21Vianet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risks and limits: Sovereign clouds, Exchange alternatives",
+      "type": "behaviour",
+      "claim": "A subset of Exchange diagnostics can be run through Exchange Online PowerShell or the Exchange admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/exchange/administration/self-help-diagnostics",
+      "quote": "However, a subset of these diagnostics can be accessed by using Exchange Online PowerShell or the Exchange admin center (EAC).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Risks and limits: Sovereign clouds, Exchange alternatives",
+      "type": "availability",
+      "claim": "Those Exchange alternatives might be available in GCC High, DoD or Microsoft 365 operated by 21Vianet.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/exchange/administration/self-help-diagnostics",
+      "quote": "These diagnostics might be available for the GCC High and DoD environments, and for Microsoft 365 operated by 21Vianet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[2].note; Risks and limits: Narrow DLP file test",
+      "type": "behaviour",
+      "claim": "Test-DlpPolicies works only for SharePoint and OneDrive items.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-test-dlp-policies",
+      "quote": "Test-DlpPolicies only works for items that are in SharePoint or OneDrive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Risks and limits: Narrow DLP file test",
+      "type": "behaviour",
+      "claim": "Test-DlpPolicies reports only on policies scoped to SharePoint, OneDrive or both.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-test-dlp-policies",
+      "quote": "Test-DlpPolices only reports results for policies that include SharePoint alone, OneDrive alone, or both SharePoint and OneDrive in their scope.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[2].note; Risks and limits: Narrow DLP file test",
+      "type": "behaviour",
+      "claim": "Test-DlpPolicies supports simple conditions, not complex, grouped or nested conditions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-test-dlp-policies",
+      "quote": "Test-DlpPolices works only with simple conditions. It doesn't work with complex, grouped, or nested conditions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Risks and limits: No Microsoft Support help",
+      "type": "behaviour",
+      "claim": "Microsoft Support agents cannot assist with Help-pane diagnostics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Microsoft Support agents can't provide assistance for diagnostics that appear in the Help pane.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Risks and limits: Feedback",
+      "type": "behaviour",
+      "claim": "Help-pane diagnostic issues can be reported through the Feedback link within the diagnostic.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "If you encounter any issues, you can use the Feedback link within the diagnostic to report the issue.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Governance controls: Help-pane minimum roles",
+      "type": "role",
+      "claim": "Help-pane diagnostics each specify a minimum role requirement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "To run these diagnostics, you must meet the minimum role requirement that's listed in the table.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Governance controls: any Microsoft 365 admin role; controls[1].governs",
+      "type": "role",
+      "claim": "Several Help-pane diagnostics accept any Microsoft 365 admin role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Archive mailbox ... Any Microsoft 365 admin role ... Retention policy for a user mailbox ... Any Microsoft 365 admin role ... Compromised account ... Any Microsoft 365 admin role",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Governance controls: mailbox holds",
+      "type": "role",
+      "claim": "The mailbox holds diagnostic requires Compliance admin.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Mailbox holds ... Lists all holds that are applied to a mailbox. ... Compliance admin",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Risks and limits: Some diagnostics offer a fix; Governance controls",
+      "type": "role",
+      "claim": "The grace eDiscovery hold or invalid retention policy diagnostic requires Compliance admin.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Grace eDiscovery hold or invalid retention policy ... Provides an option to remove any grace eDiscovery hold or invalid retention policy that's found. ... Compliance admin",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Governance controls: DLP Help-pane diagnostic",
+      "type": "role",
+      "claim": "The DLP policy and rule configuration Help-pane diagnostic requires Global admin.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "DLP policy and rule configuration ... Checks whether a DLP policy and rule are correctly configured ... Global admin",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Governance controls: sensitivity label Help-pane diagnostic",
+      "type": "role",
+      "claim": "The sensitivity label configuration Help-pane diagnostic requires Global admin.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Sensitivity label configuration ... Checks whether a sensitivity label is correctly configured for use in various workloads. ... Global admin",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Governance controls: Audit Help-pane diagnostic",
+      "type": "role",
+      "claim": "The Validate Audit configuration diagnostic requires Global admin.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Validate Audit configuration ... Validates general Audit Configuration. Checks Audit logs for a user and identifies configuration issues. ... Global Admin",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Governance controls: Test-DlpPolicies connection",
+      "type": "command",
+      "claim": "Test-DlpPolicies requires the ability to connect to Exchange Online PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-test-dlp-policies",
+      "quote": "You must be able to connect to Exchange Online PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Governance controls: Test-DlpPolicies report; What to check",
+      "type": "behaviour",
+      "claim": "Test-DlpPolicies sends its report to the SMTP address specified by -SendReportTo.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-test-dlp-policies",
+      "quote": "The report is sent to the SMTP address specified in the -SendReportTo parameter of the Test-DlpPolicies command.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Open questions: unified audit log",
+      "type": "absence",
+      "claim": "Whether a self-help diagnostic run has a unified audit log activity remains an open question.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview Solutions self-help diagnostics unified audit log diagnostic run activity GCC availability' and 'self-help diagnostic execution audit log Check-PurviewConfig Test-IRMConfiguration unified audit'. Read diagnostic pages and audit-search/export excerpts; no named self-help-run event.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Open questions: Solutions-page data processing",
+      "type": "absence",
+      "claim": "Whether Purview Solutions-page diagnostics process data outside the compliance boundary in the same way as Microsoft 365 admin center diagnostics remains undocumented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview Solutions page Information Protection DLP self-help diagnostics data processing outside compliance boundary'. Read Solutions-page diagnostic excerpts and the Microsoft 365 admin center data-processing page; no equivalent Solutions-page boundary-processing statement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Open questions: Solutions-page sovereign rollout",
+      "type": "absence",
+      "claim": "The date when Solutions-page diagnostics reach GCC, GCC High and DoD tenants remains unpublished.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview Solutions Diagnostics Information Protection DLP GCC GCC High DoD rollout availability date'. Read diagnostic and GCC/GCC High capability-table excerpts; no Solutions-page diagnostic rollout dates were stated.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-28T06:57:53.791Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 5,
+      "uiPathsWithMissingWords": 1,
+      "apiCalls": 3,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/troubleshoot/microsoft-365/admin/miscellaneous/data-used-by-self-help-diagnostics",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/troubleshoot/exchange/administration/self-help-diagnostics",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-test-dlp-policies",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/purview-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/edisc-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/add-users/assign-admin-roles",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Who can run DLP and Information Protection diagnostics in the Purview portal (role-group membership)",
+        "docs": "https://learn.microsoft.com/purview/purview-permissions",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Roles and scopes",
+          "Role groups",
+          "Role groups for Microsoft Purview solutions",
+          "role group",
+          "Edit",
+          "Edit members of the role group",
+          "Choose users"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Who can run DLP and Information Protection diagnostics in the Purview portal (role-group membership)",
+        "docs": "https://learn.microsoft.com/purview/edisc-permissions",
+        "reachable": true,
+        "token": "Add-RoleGroupMember",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Who can run Help-pane diagnostics that require a Microsoft 365 admin role",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/add-users/assign-admin-roles",
+        "reachable": true,
+        "segments": [
+          "Roles",
+          "Role assignments",
+          "role",
+          "Assigned",
+          "Add users"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Who can run Help-pane diagnostics that require a Microsoft 365 admin role",
+        "docs": "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0",
+        "reachable": true,
+        "token": "/v1.0/roleManagement/directory",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Which DLP policies and rules match a SharePoint or OneDrive file",
+        "docs": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "Data Loss Prevention",
+          "Diagnostics"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Which DLP policies and rules match a SharePoint or OneDrive file",
+        "docs": "https://learn.microsoft.com/purview/dlp-test-dlp-policies",
+        "reachable": true,
+        "token": "Test-DlpPolicies",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Label, label policy, auto-labeling and email encryption checks",
+        "docs": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "Information Protection",
+          "Diagnostics"
+        ],
+        "missing": []
+      },
+      {
+        "index": 4,
+        "side": "ui",
+        "governs": "Running a Help-pane diagnostic for Purview, Exchange, SharePoint or Teams",
+        "docs": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+        "reachable": true,
+        "segments": [
+          "Help",
+          "describe the issue",
+          "select an option",
+          "Run Tests"
+        ],
+        "missing": [
+          "describe the issue",
+          "select an option"
+        ]
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

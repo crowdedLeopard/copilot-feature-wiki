@@ -102,15 +102,17 @@ changes:
     note: "Corrected after verification: the documented route now states that the app must integrate with Purview APIs and enforce returned policy actions, and the unsupported Foundry Compliance review checklist step is removed."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 68 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 74 statements not yet confirmed"
 version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 68
-  confirmed: 67
+  claims: 74
+  confirmed: 73
   unconfirmed: 1
   contradicted: 0
   attempts: 0
@@ -209,10 +211,8 @@ cost: Variable. Microsoft's Foundry page requires Purview pay-as-you-go billing,
 impact: Low. Purview admins and Foundry app builders set this up; end users notice only if a policy blocks a prompt.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] What's changing: final sentence / behaviour: The API-based route is separate from the inline enforcement planned on the roadmap. | Found: Searched: Foundry Purview DLP prompt inline roadmap 558565; read ai-azure-foundry and use-the-api. Neither establishes that the roadmap represents a separate mechanism; use-the-api itself documents evaluateInline. | Fix: Remove 'This API-based route is separate from the inline enforcement the roadmap plans.' Keep the preceding verified description of app integration and enforcement.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance guidance: After rollout / applicability: Audit log records can be used to monitor DLP-evaluated activities. | Found: All DLP monitored activities are recorded to the Microsoft 365 Audit log by default and routed to Activity explorer. | Fix: Add https://learn.microsoft.com/purview/dlp-learn-about-dlp to sources for the audit-monitoring checklist step. Retain the existing warning that audit visibility alone does not establish enforcement. | Source: https://learn.microsoft.com/purview/dlp-learn-about-dlp
+- [unsupported, major] What's changing: final sentence / behaviour: This API-based route is separate from the inline enforcement the roadmap plans. | Found: Searched: "Microsoft Foundry" "DLP" "General Availability" user context inline APIs separate mechanism. Read ai-azure-foundry, use-the-api and secure-ai-with-purview excerpts. No source establishes separation; use-the-api itself documents evaluateInline. | Fix: Remove the sentence 'This API-based route is separate from the inline enforcement the roadmap plans.' Retain the preceding description of app integration and enforcement.
 -->

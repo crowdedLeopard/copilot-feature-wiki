@@ -15,10 +15,10 @@ risk: "medium"
 cost: "low"
 impact: "medium"
 defaultState: "unknown"
-action: "prepare"
+action: "act-now"
 licensing:
-  model: "included"
-  notes: "Microsoft's knowledge sources page says SharePoint and OneDrive knowledge requires the signed-in user to have an active Microsoft 365 Copilot licence. No price or meter specific to scanned PDFs is published."
+  model: "mixed"
+  notes: "Microsoft's knowledge sources page says SharePoint and OneDrive knowledge requires the signed-in user to have an active Microsoft 365 Copilot licence; its prerequisites page also lists SharePoint data for declarative agents through usage-based billing in Copilot Credits. No price or meter specific to scanned PDFs is published."
 audiences: ["m365-admin","service-owner","security","maker"]
 tags: ["declarative-agents","m365-copilot","sharepoint","knowledge-grounding","oversharing","restricted-content-discovery","agent-governance"]
 sources:
@@ -27,6 +27,9 @@ sources:
     kind: "roadmap"
   - title: "Add knowledge sources to your declarative agent"
     url: "https://learn.microsoft.com/plugins/knowledge-sources"
+    kind: "learn"
+  - title: "Set Up Your Development Environment for a Microsoft 365 Copilot Plugin"
+    url: "https://learn.microsoft.com/plugins/prerequisites"
     kind: "learn"
   - title: "Create declarative agents by using Microsoft 365 Agents Toolkit and TypeSpec"
     url: "https://learn.microsoft.com/plugins/build-declarative-agents-typespec"
@@ -76,7 +79,7 @@ controls:
     note: "Existing control, not specific to scanned PDFs. Needs a Copilot licence and SharePoint Advanced Management; affects discovery, not permissions; SharePoint sites only, not OneDrive."
 confidence: "medium"
 created: "2026-11-21"
-updated: "2026-11-21"
+updated: "2026-11-28"
 roadmapModified: "2026-08-25T23:13:41"
 changes:
   - date: "2026-11-21"
@@ -89,19 +92,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 59 statements not yet confirmed"
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 60 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-28"
+    note: "Corrected after the independent check: cost wording no longer limits costs to the licence and admin time, added the prerequisites page's Copilot Credits route for SharePoint knowledge, and set action to act-now."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 59 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 3
 verification:
   status: "held"
   date: "2026-11-28"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
+  claims: 59
   confirmed: 57
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "deb2b7a4af4e01a40710943953154624"
+  contradicted: 2
+  attempts: 2
+  hash: "58341c3a134a7aca18af337fbb219df5"
 ---
 
 ## What's changing
@@ -125,7 +132,7 @@ Microsoft has not stated what happens on arrival, so no source says an administr
 - The Agent Builder page says the agent respects existing permissions and sensitivity labels for files already uploaded to SharePoint or OneDrive. Libraries of scans with broad permissions are therefore the exposure; check them with the Restricted Content Discovery row in the controls table.
 
 **Security & identity**
-- SharePoint and OneDrive knowledge requires the signed-in user to hold an active Microsoft 365 Copilot licence, and SharePoint grounding is limited to content that user can access. Microsoft Learn does not describe a separate identity for scanned-content processing.
+- The knowledge sources page says SharePoint and OneDrive knowledge requires the signed-in user to hold an active Microsoft 365 Copilot licence (the prerequisites page also lists a Copilot Credits route; see Cost and licensing), and SharePoint grounding is limited to content that user can access. Microsoft Learn does not describe a separate identity for scanned-content processing.
 
 **Autonomy & actions**
 - No change documented: the roadmap item describes reading scanned content to answer questions, not new actions.
@@ -137,7 +144,9 @@ Microsoft has not stated what happens on arrival, so no source says an administr
 
 Microsoft's knowledge sources page says SharePoint and OneDrive knowledge sources require the signed-in user to have an active Microsoft 365 Copilot licence, and that without one requests fail with the message "Sorry, I wasn’t able to respond". Its table also marks SharePoint as needing a licence or metered usage.
 
-A price, meter or licence specific to scanned-PDF grounding is not yet published, and the roadmap record names none. The only other cost the sources show is admin and maker time to review libraries of scans.
+Microsoft's [prerequisites page](https://learn.microsoft.com/plugins/prerequisites#agent-capabilities-and-licensing-models) also lists declarative-agent SharePoint data as available through usage-based billing in Copilot Credits without a full Copilot licence, which differs from the knowledge sources page's licence-only note.
+
+A price, meter or licence specific to scanned-PDF grounding is not yet published, and the roadmap record names none. Reviewing libraries of scans also creates admin and maker work.
 
 The Graph block endpoint in the controls table needs a Microsoft Agent 365 licence, according to its reference page; the admin centre block action does not carry that statement on its page.
 
@@ -145,7 +154,7 @@ The Graph block endpoint in the controls table needs a Microsoft Agent 365 licen
 
 The roadmap record lists the Worldwide (Standard Multi-Tenant) cloud, the Desktop platform and General Availability as the release phase. It does not list GCC, GCC High or DoD; that is a record fact, not a statement that the feature is unavailable there.
 
-The record scopes the change to newly created declarative agents and to scanned PDFs and image-based documents referenced from SharePoint. Users need an active Microsoft 365 Copilot licence to use SharePoint knowledge in an agent. Microsoft has not stated a rollout mechanism specific to scanned-PDF grounding. The Agent Builder documentation says SharePoint cannot be used as a knowledge source when Restricted SharePoint Search is enabled.
+The record scopes the change to newly created declarative agents and to scanned PDFs and image-based documents referenced from SharePoint. The knowledge sources page says users need an active Microsoft 365 Copilot licence to use SharePoint knowledge in an agent; the prerequisites page also lists a usage-based billing route in Copilot Credits. Microsoft has not stated a rollout mechanism specific to scanned-PDF grounding. The Agent Builder documentation says SharePoint cannot be used as a knowledge source when Restricted SharePoint Search is enabled.
 
 ## Governance guidance
 
@@ -191,16 +200,15 @@ Restricted Content Discovery changes discoverability, not permissions, and the p
 
 <!-- rationale
 risk: Medium. Scanned documents described by the roadmap as previously hard to use become more usable as answer sources, so oversharing in SharePoint libraries holding scans surfaces more readily; the agent pages say existing permissions and sensitivity labels still apply.
-cost: Low. The only cost the sources show is admin time and the Microsoft 365 Copilot licence that SharePoint knowledge already requires; no charge or meter specific to scanned PDFs is published.
+cost: Low. Reviewing scanned-document libraries creates admin and maker work. Microsoft documents SharePoint knowledge through a Copilot licence or metered usage, but no scanned-PDF-specific charge or meter is published.
 impact: Medium. Makers and users of declarative agents grounded in SharePoint libraries of scans, such as contracts, forms and archived records, notice better answers; other users see no change.
 -->
 
 <!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing; rationale: cost / cost: The only costs the sources show are the existing Microsoft 365 Copilot licence and admin or maker time. | Found: The following table ... indicates whether users require a Microsoft 365 Copilot license or metered usage to access agents with that capability or knowledge source. | SharePoint | ✅ | ✅ | Yes | | Fix: Remove 'The only other cost the sources show is admin and maker time to review libraries of scans' and replace it with 'Reviewing libraries of scans also creates admin and maker work.' Replace the cost rationale with 'Low. Reviewing scanned-document libraries creates admin and maker work. Microsoft documents SharePoint knowledge through a Copilot licence or metered usage, but no scanned-PDF-specific charge or meter is published.' Keep the knowledge-sources table attribution and acknowledge the prerequisites page's Copilot Credits route as specified in the licensing correction. | Source: https://learn.microsoft.com/plugins/knowledge-sources
+- [contradicted, blocker] Cost and licensing; licensing.notes; Scope / licensing: The prerequisites page provides a usage-based route to SharePoint-grounded declarative agents without a full Copilot licence. | Found: For agents that use SharePoint files as knowledge sources, the billing policy must be connected to the SharePoint agents service and users must be in the security group assigned to the billing policy. | Fix: Add to the usage-based paragraph: 'For SharePoint-file knowledge, this route requires an Azure subscription and a billing policy configured in the Microsoft 365 admin center, connected to the SharePoint agents service, with users in the security group assigned to that policy.' Cite https://learn.microsoft.com/plugins/prerequisites#agent-capabilities-and-licensing-models. Qualify the corresponding licensing notes and Scope sentence with 'subject to the billing-policy and user-access prerequisites described in Cost and licensing'. | Source: https://learn.microsoft.com/plugins/prerequisites
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] licensing.notes; Risk assessment: Security & identity; Cost and licensing; Scope; rationale: cost / licensing: SharePoint and OneDrive knowledge requires the signed-in user to hold an active Microsoft 365 Copilot licence, as stated on the knowledge sources page. | Found: SharePoint and OneDrive knowledge sources require the signed-in user to have an active Microsoft 365 Copilot license. | Fix: Retain the attribution, but qualify the repeated licence statements with: 'Microsoft's prerequisites page also lists declarative-agent SharePoint data as available through usage-based billing in Copilot Credits without a full Copilot licence, which differs from the knowledge sources page's licence-only note.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/prerequisites#agent-capabilities-and-licensing-models. | Source: https://learn.microsoft.com/plugins/knowledge-sources
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The checklist tells readers to review permissions, scope knowledge and confirm sensitivity labels, but those controls have no table rows. | Found: review their permissions; ask makers to scope them to named sites, libraries or folders; Confirm which sensitivity labels cover the scanned files. Controls table: agent Block; Restricted Content Discovery. | Fix: The Before rollout permission-review, knowledge-scoping and sensitivity-label steps have no corresponding control rows. Do not add rows as part of this correction.
-- [contradicted, minor] front matter: action / consistency: The prepare rating conflicts with the action scale for a launched, medium-risk change with controls and decisions to take now. | Found: status: launched; risk: medium; action: prepare. Newly created declarative agents can now ground their answers in scanned PDFs. Apply the Restricted Content Discovery row ... Block any agent ... | Fix: Set action to act-now: the briefing describes a launched change with medium risk and existing controls and decisions to apply now.
+- [supported, minor] controls[1].ui / admin-path: The SharePoint admin-center path is Sites > Active sites > site > Settings > Restrict content from Microsoft Copilot. | Found: In the SharePoint admin center, expand Sites and select Active sites. Select the site you want to configure. Open the Settings tab, and then turn Restrict content from Microsoft Copilot on. | Fix: Keep the cited path. Add to the row note: 'Microsoft's Copilot readiness guide labels the same setting Restrict content discovery > On.' Cite https://learn.microsoft.com/microsoft-365/copilot/get-ready-copilot-sharepoint-advanced-management#step-3-prevent-accidental-oversharing, which gives that alternative label. | Source: https://learn.microsoft.com/sharepoint/restricted-content-discovery
+- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist tells readers to review permissions, knowledge scoping and sensitivity labels, but these controls have no table rows. | Found: review their permissions; ask makers to scope them to named sites, libraries or folders; Confirm which sensitivity labels cover the scanned files. The table contains only Block and Restricted Content Discovery. | Fix: Remove the checklist instructions to review permissions, scope knowledge and confirm sensitivity labels, leaving the already stated risk discussion intact. These three instructions name controls absent from the table; do not add rows during this correction.
 -->

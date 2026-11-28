@@ -12,7 +12,7 @@ platforms: ["Desktop","Web"]
 targetDate: "October CY2026"
 previewDate: "September CY2026"
 risk: "low"
-cost: "none"
+cost: "low"
 impact: "low"
 defaultState: "user-opt-in"
 action: "none"
@@ -65,19 +65,23 @@ changes:
     note: "New briefing: per-folder choice of unread or total item count in new Outlook for Windows and Outlook on the web, with no documented admin setting."
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 32 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-28"
+    note: "Corrected the cost rating from none to low: the known cost is helpdesk communication time, and Microsoft has not published a separate price or meter for this option."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 39 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-28"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 32
-  confirmed: 31
+  claims: 39
+  confirmed: 39
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "5ddd76a7ff3af876f665932d4f42db2c"
+  contradicted: 0
+  attempts: 0
+  hash: "c13d9911e3477fe396e397db3011a893"
 ---
 
 ## What's changing
@@ -157,12 +161,6 @@ The roadmap item describes this as a choice each user makes per folder. Outlook 
 
 <!-- rationale
 risk: Low. A per-folder display choice in the user's own folder pane; the roadmap item describes no new data access, sharing or automation.
-cost: None. An option inside Outlook that comes with the licence Outlook already needs; Microsoft publishes no separate licence or meter for it.
+cost: Low. The known cost is helpdesk communication time; Microsoft has not published a separate price or meter for this option.
 impact: Low. Only users who right-click a folder and switch its count notice a difference; the roadmap says nothing else changes.
--->
-
-<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: cost; rationale: cost; Cost and licensing / consistency: The cost rating is none despite the absence of an explicit statement that this option is included without additional cost. | Found: cost: "none"; "None. An option inside Outlook that comes with the licence Outlook already needs" versus "Microsoft publishes no separate licence, meter or charge for this option. The only cost the sources show is the time to tell helpdesk staff about it." | Fix: Set cost to low. Replace the cost rationale with: 'Low. The known cost is helpdesk communication time; Microsoft has not published a separate price or meter for this option.' Keep the product-level licensing model included, but do not use the absence of a published charge to assert no additional cost.
 -->

@@ -78,15 +78,17 @@ changes:
     note: "Corrected after verification: removed 'and labels' from the inventory step, whose path covers retention policies only, and aligned the cost rationale with the storage cost in the body."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 64 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 61 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 64
-  confirmed: 64
+  claims: 61
+  confirmed: 61
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -181,10 +183,8 @@ cost: Low. Admin time is needed to design and test policies, and retained conten
 impact: Low. Compliance administrators configure retention policies and labels; file owners would notice only if a policy acted on their files.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Data exposure; Cost and licensing; rationale: cost / behaviour: SharePoint and OneDrive use the Preservation Hold library to store content that needs to be retained. | Found: To store content that needs to be retained, SharePoint and OneDrive create a Preservation Hold library if one doesn't exist for the site. | Fix: Add 'Learn about retention for SharePoint and OneDrive', https://learn.microsoft.com/purview/retention-policies-sharepoint, to sources. | Source: https://learn.microsoft.com/purview/retention-policies-sharepoint
-- [supported, minor] Risk assessment: Data exposure; Cost and licensing; rationale: cost / cost: Content in the Preservation Hold library counts towards the site's storage quota. | Found: For SharePoint and OneDrive, retained items are stored in the site's Preservation Hold library, which is included in the site's storage quota. | Fix: Add 'Common settings for retention policies and retention label policies', https://learn.microsoft.com/purview/retention-settings, to sources. | Source: https://learn.microsoft.com/purview/retention-settings
-- [supported, minor] controls[0].ui; rendered Governance controls table / admin-path: Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy reaches the wizard for configuring the retention-period start. | Found: Sign in to the Microsoft Purview portal > Solutions > Data Lifecycle Management > Policies > Retention policies. ... Select New retention policy to start the Create retention policy configuration | Fix: For the documented static-policy route, extend controls[0].ui.path and its rendered counterpart to 'Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy > Assign admin units > Full directory > Choose the type of retention policy to create > Static > Choose locations > Decide if you want to retain content, delete it, or both'. The cited page gives these wizard steps; the current path stops at the wizard entrance. | Source: https://learn.microsoft.com/purview/create-retention-policies
+- [supported, minor] controls[0].ui; rendered Governance controls table / admin-path: Microsoft Purview portal > Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy opens the wizard containing retention-start settings. | Found: Sign in to the Microsoft Purview portal > Solutions > Data Lifecycle Management > Policies > Retention policies. ... Select New retention policy to start the Create retention policy configuration | Fix: Extend controls[0].ui.path and the rendered path to 'Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy > Assign admin units > Full directory > Choose the type of retention policy to create > Static > Choose locations > Decide if you want to retain content, delete it, or both'. This is the documented static-policy route at https://learn.microsoft.com/purview/create-retention-policies. | Source: https://learn.microsoft.com/purview/create-retention-policies
 -->

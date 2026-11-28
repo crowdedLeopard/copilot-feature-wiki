@@ -111,15 +111,17 @@ changes:
     note: "Corrected after verification: removed the unsupported no-charge and every-analyst statements, the SCU 'no limit' claim and one open question; added the E5/E7 included SCU capacity and the viewing roles as Learn states them."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 81 statements confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 91 statements not yet confirmed"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-21"
+  status: "verified-with-gaps"
+  date: "2026-11-28"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 81
-  confirmed: 81
+  claims: 91
+  confirmed: 91
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -212,4 +214,10 @@ No setting for the unified queue itself is documented, so the controls act on wh
 risk: Medium. Learn says usernames in prioritised alerts are not anonymised on the Triage Agent dashboard when anonymisation is on, and it does not say how the unified queue behaves.
 cost: Variable. No separate charge for the queue is published, but the Triage Agent output it shows consumes security compute units (SCUs) and needs per-seat licensing plus pay-as-you-go billing.
 impact: Medium. Insider Risk Management analysts and investigators get a new alerts page and lose Alert Spotlight and the dashboard toggle; admins decide who sees agent output.
+-->
+
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Risk assessment: Security & identity / behaviour: The agent runs in the security context of the last user who saved its configuration. | Found: Agents run in the security context of the last user that saved the agent configuration. | Fix: Keep the statement and add: 'The separate preview overview instead describes the identity as the administrator who turned on the agent.' Cite https://learn.microsoft.com/purview/copilot-in-purview-agents, whose Identity row says 'Runs as the administrator who turned on the agent.' | Source: https://learn.microsoft.com/purview/copilot-in-purview-triage-irm-agent-get-started
 -->

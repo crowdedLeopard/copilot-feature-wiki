@@ -78,17 +78,19 @@ changes:
     note: "Correction: no longer says global exclusions are the only noise-tuning setting; added the Microsoft 365 Enterprise E5 trial plan, the 500-item limits page and the exclusion entry routes."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 47 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 54 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 47
-  confirmed: 47
+  claims: 54
+  confirmed: 53
   unconfirmed: 0
-  contradicted: 0
+  contradicted: 1
   attempts: 0
   hash: "69aa64a49f7328a0f0929ab22f613d08"
 ---
@@ -188,9 +190,10 @@ cost: Low. Insider Risk Management already needs a supported Microsoft 365 subsc
 impact: Low. Insider Risk Management administrators and analysts notice it, as fewer low-signal Endpoint events appear in activity explorer and scoring. Other users see no change in the roadmap description.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: Global exclusions is reached in Microsoft Purview portal at Settings > Insider Risk Management > Insider risk settings > Global exclusions. | Found: Select Settings in the upper-right corner of the page, then select Insider Risk Management to go to the Insider Risk Management settings. Under Insider risk settings, select Global exclusions. | Fix: The route reaches the correct page but stops before choosing an exclusion. Retain it and give the complete routes in the note: 'Settings > Insider Risk Management > Insider risk settings > Global exclusions > Type > File paths > Individual file paths > Add file paths to exclude'; 'Settings > Insider Risk Management > Insider risk settings > Global exclusions > Type > File types > Individual file types > Add file type'; 'Settings > Insider Risk Management > Insider risk settings > Global exclusions > Type > Keywords > Individual keywords > Exclude these keywords'. Source: https://learn.microsoft.com/purview/insider-risk-management-settings-global-exclusions. | Source: https://learn.microsoft.com/purview/insider-risk-management-settings-global-exclusions
-- [supported, minor] controls[0].note; Governance controls table / admin-path: Keyword entries use Keywords > Individual keywords within Global exclusions. | Found: Individual keywords. To add keywords one at a time, enter a keyword in the Exclude these keywords field, then press Enter. | Fix: Replace 'Keywords > Individual keywords' with 'Keywords > Individual keywords > Exclude these keywords' in the note and rendered table, as documented at https://learn.microsoft.com/purview/insider-risk-management-settings-global-exclusions. | Source: https://learn.microsoft.com/purview/insider-risk-management-settings-global-exclusions
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The Microsoft Purview portal route is Settings > Insider Risk Management > Insider risk settings > Global exclusions. | Found: Select Settings in the upper-right corner of the page, then select Insider Risk Management to go to the Insider Risk Management settings. Under Insider risk settings, select Global exclusions. | Fix: Retain the correct route and complete its note and rendered table with these suffixes after Global exclusions: 'Type > File paths > Individual file paths > Add file paths to exclude'; 'Type > File types > Individual file types > Add file type'; 'Type > Keywords > Individual keywords > Exclude these keywords'. Source: https://learn.microsoft.com/purview/insider-risk-management-settings-global-exclusions. | Source: https://learn.microsoft.com/purview/insider-risk-management-settings-global-exclusions
+- [supported, minor] controls[0].note; Governance controls table / admin-path: Individual keyword entries use Keywords > Individual keywords. | Found: Individual keywords. To add keywords one at a time, enter a keyword in the Exclude these keywords field, then press Enter. | Fix: Replace 'Keywords > Individual keywords' with 'Keywords > Individual keywords > Exclude these keywords' in controls[0].note and the rendered table. Source: https://learn.microsoft.com/purview/insider-risk-management-settings-global-exclusions. | Source: https://learn.microsoft.com/purview/insider-risk-management-settings-global-exclusions
+- [contradicted, minor] front matter: impact; rationale: impact / consistency: Low impact is the rating for a change the rationale says Insider Risk Management administrators and analysts notice. | Found: impact: "low"; rationale: "Insider Risk Management administrators and analysts notice it". SCHEMA defines medium impact as "specific roles such as makers, analysts or one business unit". | Fix: Set impact to 'medium' and replace the rationale with 'Medium. Insider Risk Management administrators and analysts notice fewer low-signal Endpoint events in activity explorer and scoring. Other users see no change in the roadmap description.'
 -->

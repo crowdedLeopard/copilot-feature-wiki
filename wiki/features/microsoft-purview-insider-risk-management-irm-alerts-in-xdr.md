@@ -71,15 +71,17 @@ changes:
     note: "First briefing for this roadmap item: IRM alerts in Defender XDR, targeted for February CY2027 in GCC, GCC High and DoD."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 52 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 56 statements not yet confirmed"
 version: 1
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 52
-  confirmed: 50
+  claims: 56
+  confirmed: 54
   unconfirmed: 1
   contradicted: 1
   attempts: 0
@@ -175,10 +177,12 @@ cost: Low. The only cost the sources show is admin and analyst time; the Learn p
 impact: Medium. Security operations analysts and Insider Risk Management investigators notice it, because alerts appear in Defender incident and alert queues; ordinary users do not.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters / behaviour: Before this change, the alerts were seen only by IRM role groups. | Found: Searched: Insider Risk Management alerts access role groups export previously Defender XDR. Read permissions, integration, share-data and scc-permissions excerpts. They describe present roles and existing export routes, not historical visibility limited to IRM role groups. | Fix: Replace 'Alerts that were seen only by IRM role groups can be correlated with other detections and queried in bulk' with 'IRM alerts can be correlated with other detections and queried in bulk'.
+- [unsupported, major] Why it matters / behaviour: Before this change, IRM alerts were seen only by IRM role groups. | Found: Searched: Insider Risk Management alerts previously only role groups access export historical Defender integration. Read permissions, share-data, integration and scc-permissions results; these describe current permissions and existing exports, not that historical exclusive visibility. | Fix: Replace 'Alerts that were seen only by IRM role groups can be correlated with other detections and queried in bulk' with 'IRM alerts can be correlated with other detections and queried in bulk'.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: Every control the governance checklist asks readers to review or take stock of has a controls-table row. | Found: Identify Microsoft Sentinel automation rules that act on incidents ... Check which Defender and Graph integrations ... would receive IRM alerts. The table contains only Data sharing and IRM role-group membership. | Fix: The Before rollout steps about Sentinel automation rules and Defender/Graph integrations have no matching controls-table rows. Remove those two checklist bullets; retain the existing Sentinel warning and Graph integration explanation in Risk assessment.
+- [supported, minor] controls[0].ui; Governance controls: sharing row / admin-path: The sharing control is reached at Microsoft Purview portal > Settings > Insider Risk Management > Data sharing > Sharing data with other Microsoft security solutions. | Found: In Insider Risk Management settings, select the Data sharing setting. Under the Sharing data with other Microsoft security solutions section, turn on the setting. | Fix: The path reaches the correct section but omits the switch. Extend it to 'Settings > Insider Risk Management > Data sharing > Sharing data with other Microsoft security solutions > Share user risk details with other security solutions'; the switch label is stated at https://learn.microsoft.com/defender-xdr/irm-investigate-alerts-defender, already cited. | Source: https://learn.microsoft.com/purview/insider-risk-management-settings-share-data
+- [supported, minor] controls[1].note; Governance controls / role: The Defender access roles are set and managed in Defender rather than through the IRM role-group control. | Found: There are two ways to manage access to Microsoft Defender XDR: Global Microsoft Entra roles; Custom role access. To review accounts with these roles, view Permissions in the Microsoft Defender portal. | Fix: Replace 'set in Defender, not here' in the row note with 'Microsoft Entra global roles, separate from IRM role-group membership'. Replace 'those are managed in Defender, not in this table' in the prose with 'those are Microsoft Entra global roles, separate from the IRM role-group control in this table'. Cite https://learn.microsoft.com/defender-xdr/m365d-permissions. | Source: https://learn.microsoft.com/defender-xdr/m365d-permissions
+- [contradicted, minor] Governance guidance: Before rollout and After rollout; Governance controls / consistency: Every control the governance checklist asks readers to check or review is represented in the controls table. | Found: Identify Microsoft Sentinel automation rules ... Check which Defender and Graph integrations ... Review who can run advanced hunting queries ... The table contains only Data sharing and IRM role-group membership. | Fix: The Before rollout bullets about Sentinel automation rules and Defender/Graph integrations have no matching table rows. Remove those two bullets; keep their supported explanations in Risk assessment. Narrow the After rollout bullet to 'Review Insider Risk Management Analyst and Investigator role-group membership for advanced hunting access', using the existing role-group row.
 -->

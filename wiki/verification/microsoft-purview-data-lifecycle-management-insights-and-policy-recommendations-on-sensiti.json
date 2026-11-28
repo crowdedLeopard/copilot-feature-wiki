@@ -3,7 +3,7 @@
   "roadmapId": 562343,
   "title": "Microsoft Purview Data Lifecycle Management: insights and retention policy recommendations for sensitive SharePoint and OneDrive data",
   "status": "verified",
-  "date": "2026-11-21",
+  "date": "2026-11-28",
   "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
@@ -14,21 +14,21 @@
   "notes": [],
   "hold": null,
   "counts": {
-    "claims": 45,
-    "confirmed": 45,
+    "claims": 44,
+    "confirmed": 44,
     "unconfirmed": 0,
     "contradicted": 0,
     "blocker": 0,
     "major": 0,
     "minor": 0
   },
-  "summary": "The briefing accurately reports Microsoft's roadmap targets and distinguishes the planned insights from existing retention-policy controls. The documented path, PowerShell call, licences and SharePoint administrator restriction are supported; searches found no documentation establishing the new feature's default, entitlement or controls.",
+  "summary": "The briefing passes: the planned capability and target dates match the roadmap, and the existing retention-policy path, command and role qualifications match Microsoft Learn. It appropriately leaves the new insights' default, access controls and feature-specific licensing unresolved rather than borrowing requirements from neighbouring features.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing",
+      "where": "title; front matter: products; What's changing",
       "type": "record",
-      "claim": "Microsoft plans an insights capability in Microsoft Purview Data Lifecycle Management.",
+      "claim": "The planned capability belongs to Microsoft Purview Data Lifecycle Management.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Microsoft Purview: Data Lifecycle Management - Insights and policy recommendations on sensitive M365 data for better Data Security and Compliance posture",
@@ -37,9 +37,9 @@
     },
     {
       "n": 2,
-      "where": "summary; What's changing; Risk assessment: Data exposure; Scope",
+      "where": "summary; What's changing; Scope; Risk assessment: Data exposure",
       "type": "record",
-      "claim": "The planned insights concern sensitive Microsoft 365 data in OneDrive and SharePoint.",
+      "claim": "Microsoft plans insights on sensitive Microsoft 365 data in OneDrive and SharePoint.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Insights on sensitive M365 data (OneDrive and SharePoint)",
@@ -48,9 +48,9 @@
     },
     {
       "n": 3,
-      "where": "title; summary; What's changing; Why it matters; Risk assessment: Autonomy; rationale: risk",
+      "where": "summary; What's changing; Why it matters; Risk assessment: Autonomy & actions",
       "type": "record",
-      "claim": "The planned capability includes recommendations on retention policies.",
+      "claim": "Microsoft plans recommendations on retention policies.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "and recommendations on retention policies",
@@ -61,7 +61,7 @@
       "n": 4,
       "where": "What's changing; rationale: impact",
       "type": "record",
-      "claim": "The roadmap describes the purpose as helping customers better govern their sensitive data.",
+      "claim": "The roadmap describes the purpose as helping customers better govern sensitive data.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "for customers to better govern their sensitive data.",
@@ -70,17 +70,6 @@
     },
     {
       "n": 5,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The sentence describing insights and retention-policy recommendations is the whole roadmap description.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Insights on sensitive M365 data (OneDrive and SharePoint) and recommendations on retention policies for customers to better govern their sensitive data.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is In development.",
@@ -91,21 +80,10 @@
       "fix": null
     },
     {
-      "n": 7,
-      "where": "front matter: targetDate; What's changing; Open questions",
+      "n": 6,
+      "where": "summary; front matter: previewDate; What's changing; Governance guidance; Open questions",
       "type": "record",
-      "claim": "The roadmap target is February CY2027, not a committed release date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"status\": \"In development\", \"targetDate\": \"February CY2027\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "front matter: previewDate; summary; What's changing; Governance guidance; Open questions",
-      "type": "record",
-      "claim": "The roadmap preview target is January CY2027.",
+      "claim": "The preview target is January CY2027, not a committed rollout date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": \"January CY2027\"",
@@ -113,10 +91,21 @@
       "fix": null
     },
     {
-      "n": 9,
+      "n": 7,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap target is February CY2027, not a commitment.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"February CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
-      "claim": "The release phases listed are General Availability and Preview.",
+      "claim": "The roadmap lists General Availability and Preview as release phases.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
@@ -124,7 +113,7 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 9,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) as the cloud.",
@@ -135,7 +124,7 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 10,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Web as the platform.",
@@ -146,87 +135,65 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap record's modification timestamp is 2026-09-21T23:04:49.",
+      "n": 11,
+      "where": "summary; What's changing; controls[0].note",
+      "type": "absence",
+      "claim": "Learn does not yet describe this planned Data Lifecycle Management insights and recommendations feature.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-09-21T23:04:49\"",
+      "source": null,
+      "quote": "Searched: Purview Data Lifecycle Management sensitive data insights retention policy recommendations licensing enable roles 562343; opened data-lifecycle-management, get-started-with-data-lifecycle-management and DSPM oversharing. DSPM assessments are a different feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "Microsoft has not stated which sensitive data the planned insights draw on.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Data Lifecycle Management\" \"insights\" \"recommendations\" sensitive SharePoint OneDrive default preview; opened data-lifecycle-management and data-security-posture-management-oversharing. Neither describes the planned DLM insights' content.",
       "severity": null,
       "fix": null
     },
     {
       "n": 13,
-      "where": "summary; What's changing; controls[0].note; changes",
+      "where": "What's changing",
       "type": "absence",
-      "claim": "Microsoft Learn does not yet describe this specific insights and recommendations feature.",
+      "claim": "Microsoft has not stated where the planned insights appear in the Microsoft Purview portal.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"562343\" insights recommendations sensitive data; \"Data Lifecycle Management\" \"insights\" \"recommendations\" sensitive data roles settings retention. Opened /purview/data-lifecycle-management and /purview/get-started-with-data-lifecycle-management; results describe other capabilities.",
+      "quote": "Searched: \"Data Lifecycle Management\" insights recommendations enable disable permissions roles PowerShell Graph; opened data-lifecycle-management and create-retention-policies. The DSPM assessment route found in search is not a route for this planned DLM feature.",
       "severity": null,
       "fix": null
     },
     {
       "n": 14,
-      "where": "What's changing; Risk assessment: Data exposure",
+      "where": "What's changing; Risk assessment: Autonomy & actions; Open questions",
       "type": "absence",
-      "claim": "Microsoft has not specified which sensitive data feeds these insights.",
+      "claim": "Microsoft has not stated what a recommendation lets an administrator do, including whether it can be applied in one step.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Data Lifecycle Management\" \"insights\" \"recommendations\" sensitive data roles settings retention. Read the roadmap and opened learn.microsoft.com/purview/data-lifecycle-management; no feature-specific data selection is stated.",
+      "quote": "Searched: purview data lifecycle management insights recommendations sensitive data prerequisites rollout automatic apply retention policies; opened create-retention-policies and DSPM oversharing. No result documents applying this planned DLM feature's recommendations.",
       "severity": null,
       "fix": null
     },
     {
       "n": 15,
-      "where": "What's changing",
-      "type": "absence",
-      "claim": "Microsoft has not specified where these insights appear in the Purview portal.",
+      "where": "front matter: defaultState; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The feature's default state and what happens on arrival are not stated.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Data Lifecycle Management\" \"insights\" \"recommendations\" sensitive data roles settings retention. Opened learn.microsoft.com/purview/data-lifecycle-management and /purview/create-retention-policies; neither gives a portal location for this feature.",
+      "quote": "Searched: \"Data Lifecycle Management\" \"insights\" \"recommendations\" sensitive SharePoint OneDrive default preview; purview data lifecycle management insights recommendations sensitive data prerequisites rollout automatic apply retention policies. Read roadmap and DLM overview/setup; no default stated.",
       "severity": null,
       "fix": null
     },
     {
       "n": 16,
-      "where": "What's changing; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not specified what applying a recommendation does to a retention policy.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Purview Data Lifecycle Management sensitive data insights recommendations prerequisites rollout automatic apply policy. Read roadmap; opened /purview/data-lifecycle-management and /purview/create-retention-policies. No feature-specific application mechanism was documented.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "front matter: defaultState; Why it matters",
-      "type": "default",
-      "claim": "The feature's default state and what happens on arrival are not stated.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Purview Data Lifecycle Management insights recommendations sensitive SharePoint OneDrive enable default roles PowerShell. Read roadmap; opened learn.microsoft.com/purview/data-lifecycle-management and /purview/get-started-with-data-lifecycle-management. No default for this feature is stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "Why it matters; rationale: risk",
-      "type": "absence",
-      "claim": "No source found says this feature changes existing retention behaviour.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Purview Data Lifecycle Management sensitive data insights recommendations prerequisites rollout automatic apply policy. Read roadmap; opened /purview/data-lifecycle-management and /purview/create-retention-policies. No change to existing retention behaviour is attributed to these insights.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
       "where": "Why it matters; Risk assessment: Autonomy & actions",
       "type": "record",
-      "claim": "The roadmap describes recommendations and does not say a policy is created or changed automatically.",
+      "claim": "The roadmap describes recommendations but does not say a policy is created or changed without an administrator.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Insights on sensitive M365 data (OneDrive and SharePoint) and recommendations on retention policies for customers to better govern their sensitive data.",
@@ -234,73 +201,51 @@
       "fix": null
     },
     {
-      "n": 20,
-      "where": "controls[0]; Governance controls; Open questions",
+      "n": 17,
+      "where": "controls[0].ui; controls[0].api; Governance controls; Open questions",
       "type": "absence",
-      "claim": "No UI setting or automation for switching or scoping these insights and recommendations is documented.",
+      "claim": "No tenant switch or role-scoping setting for the planned insights and recommendations is documented in the UI or automation.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Purview \"retention\" \"insights\" \"recommendations\" PowerShell enable disable role; Purview Data Lifecycle Management insights recommendations sensitive SharePoint OneDrive enable default roles PowerShell. Opened /purview/data-lifecycle-management and New-RetentionCompliancePolicy reference.",
+      "quote": "Searched: \"Data Lifecycle Management\" insights recommendations enable disable permissions roles PowerShell Graph; purview retention recommendations sensitive data lifecycle management insights enable disable Security Compliance PowerShell. Read DLM setup, retention-policy and cmdlet references; no setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Risk assessment: Data exposure; Security & identity; Scope; Open questions; rationale: impact",
+      "type": "absence",
+      "claim": "Microsoft has not stated which roles can see these insights or whether retention-policy permissions apply to them.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Data Lifecycle Management\" insights recommendations enable disable permissions roles PowerShell Graph; Purview Data Lifecycle Management sensitive data insights retention policy recommendations licensing enable roles 562343. Read get-started-with-data-lifecycle-management permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Rollout mechanics for the planned insights are not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: purview data lifecycle management insights recommendations sensitive data prerequisites rollout automatic apply retention policies; read roadmap, data-lifecycle-management and get-started-with-data-lifecycle-management. No feature-specific rollout mechanics found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Prerequisites specific to the planned insights are not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: purview data lifecycle management insights recommendations sensitive data prerequisites rollout automatic apply retention policies; read get-started-with-data-lifecycle-management and service description. They document existing capabilities, not this feature's prerequisites.",
       "severity": null,
       "fix": null
     },
     {
       "n": 21,
-      "where": "Risk assessment: Security & identity; Scope; Open questions; rationale: impact",
-      "type": "absence",
-      "claim": "Microsoft has not specified the roles that can see these insights or confirmed retention-policy roles for them.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Purview Data Lifecycle Management insights recommendations sensitive SharePoint OneDrive enable default roles PowerShell. Opened learn.microsoft.com/purview/get-started-with-data-lifecycle-management: role requirements concern retention policies and labels, not these insights.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "Risk assessment: Data exposure",
-      "type": "absence",
-      "claim": "Microsoft has not stated whether the insights require access to underlying content or what detail they display.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Data Lifecycle Management\" \"insights\" \"recommendations\" sensitive data roles settings retention. Opened /purview/data-lifecycle-management and /purview/get-started-with-data-lifecycle-management; content-access guidance is for configuring retention, not viewing these insights.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "absence",
-      "claim": "Microsoft has not stated whether a recommendation can be applied in one step.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Purview Data Lifecycle Management sensitive data insights recommendations prerequisites rollout automatic apply policy. Opened /purview/data-lifecycle-management and /purview/create-retention-policies; results about DSPM one-click policies do not establish this feature's behaviour.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "Scope",
-      "type": "absence",
-      "claim": "Rollout mechanics for this feature are not stated.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Purview Data Lifecycle Management sensitive data insights recommendations prerequisites rollout automatic apply policy. Read roadmap; opened /purview/data-lifecycle-management and /purview/get-started-with-data-lifecycle-management; no feature-specific rollout mechanics are given.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "Scope",
-      "type": "absence",
-      "claim": "Prerequisites specific to these insights and recommendations are not stated.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Purview Data Lifecycle Management sensitive data insights recommendations prerequisites rollout automatic apply policy. Opened /purview/get-started-with-data-lifecycle-management and /purview/data-lifecycle-management; neither lists prerequisites for the planned feature.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "Learn describes retention policies as the cornerstone of Data Lifecycle Management.",
@@ -311,10 +256,10 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 22,
       "where": "What's changing",
       "type": "applicability",
-      "claim": "Retention policies cover Exchange, SharePoint, OneDrive, Teams and Viva Engage.",
+      "claim": "Existing retention policies cover Exchange, SharePoint, OneDrive, Teams and Viva Engage.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-lifecycle-management",
       "quote": "Use these policies for Microsoft 365 workloads that include Exchange, SharePoint, OneDrive, Teams, and Viva Engage.",
@@ -322,7 +267,7 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 23,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "Retention policies can retain content.",
@@ -333,10 +278,10 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "What's changing; Why it matters; Risk assessment: Autonomy; Governance guidance; rationale: risk",
+      "n": 24,
+      "where": "What's changing; Why it matters; Risk assessment: Autonomy & actions; rationale: risk",
       "type": "behaviour",
-      "claim": "A retention policy can be configured to permanently delete content after a specified period.",
+      "claim": "An administrator can configure an existing retention policy to permanently delete content after a specified period.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-lifecycle-management",
       "quote": "Or you can configure the policy to automatically permanently delete the content after a specified period if it's not already deleted.",
@@ -344,10 +289,10 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 25,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Retention policies can combine retention and subsequent deletion.",
+      "claim": "A retention policy can combine retaining content and then deleting it.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/data-lifecycle-management",
       "quote": "You can also combine these two actions for retain and then delete, which is a very typical configuration.",
@@ -355,10 +300,21 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 26,
+      "where": "Risk assessment: Data exposure",
+      "type": "role",
+      "claim": "The person configuring retention policies does not require access to the content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/get-started-with-data-lifecycle-management",
+      "quote": "The person configuring these policies and labels doesn't require access to the content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
       "where": "controls[1].note; Risk assessment: Security & identity; Scope; Governance guidance; Governance controls",
       "type": "role",
-      "claim": "The Compliance Administrator role group is a documented way to grant permission to create and manage retention policies.",
+      "claim": "The Compliance Administrator role group grants permissions to create and manage retention policies.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/get-started-with-data-lifecycle-management",
       "quote": "To grant permissions for this limited administration, we recommend that you add users to the Compliance Administrator admin role group.",
@@ -366,7 +322,7 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 28,
       "where": "controls[1].note; Risk assessment: Security & identity; Scope; Governance guidance; Governance controls",
       "type": "role",
       "claim": "A custom role group with the Retention Management role is an alternative for retention-policy administration.",
@@ -377,10 +333,10 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 29,
       "where": "Risk assessment: Security & identity",
       "type": "role",
-      "claim": "View-Only Retention Management is the documented read-only role.",
+      "claim": "View-Only Retention Management is the read-only role for retention management.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/get-started-with-data-lifecycle-management",
       "quote": "For a read-only role, use View-Only Retention Management.",
@@ -388,29 +344,106 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 30,
       "where": "controls[1].note; Risk assessment: Security & identity; Scope; Governance guidance; Governance controls",
       "type": "role",
-      "claim": "Administrators assigned administrative units cannot configure policies including SharePoint sites; an unrestricted administrator is required.",
+      "claim": "Retention policies including SharePoint sites require an unrestricted administrator, not one assigned administrative units.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/create-retention-policies",
-      "quote": "if you're a restricted administrator assigned one or more adminsitrative units, you won't be able to configure a retention policy that includes SharePoint sites or Exchange public folders. For these locations, you must be an unrestricted administrator.",
+      "quote": "you won't be able to configure a retention policy that includes SharePoint sites or Exchange public folders. For these locations, you must be an unrestricted administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 E5/A5/G5/E3/A3/G3 and Business Premium provide user rights for organisation-wide, location-wide or include/exclude retention policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "For organization-wide, location-wide, or include/exclude retention policies, the following licenses provide user rights: ... Microsoft 365 E5/A5/G5/E3/A3/G3, Business Premium",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "SharePoint Plan 2 also provides user rights where the retention-policy location is SharePoint or OneDrive for Business.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "If the retention policy location is SharePoint or OneDrive for Business, the following licenses also provide user rights: ... SharePoint Plan 2",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "licensing",
+      "claim": "The entitlement for the new insights and recommendations is not yet published; existing retention-policy licence statements do not specify it.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Data Lifecycle Management\" \"insights\" \"recommendations\" licensing pricing billing; Purview Data Lifecycle Management sensitive data insights retention policy recommendations licensing enable roles 562343. Read service description, DLM licensing/setup and purview-billing-models.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft has not published a meter specific to the insights and recommendations.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Data Lifecycle Management\" \"insights\" \"recommendations\" licensing pricing billing; read purview-billing-models and service description. The documented DLM meter covers AI interactions; on-demand classification is separate. Neither states a meter for these planned insights.",
       "severity": null,
       "fix": null
     },
     {
       "n": 35,
-      "where": "Risk assessment: Data exposure",
-      "type": "role",
-      "claim": "The person configuring retention policies does not require access to the content.",
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "Microsoft has not published a price specific to the insights and recommendations.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/get-started-with-data-lifecycle-management",
-      "quote": "These permissions are required only to create, configure, and apply retention policies and retention labels. The person configuring these policies and labels doesn't require access to the content.",
+      "source": null,
+      "quote": "Searched: \"Data Lifecycle Management\" \"insights\" \"recommendations\" licensing pricing billing; read purview-billing-models, service description and get-started-with-data-lifecycle-management. No price for this planned capability found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 36,
+      "where": "controls[1].ui; Governance controls table; Governance guidance; Risk assessment: Change & support",
+      "type": "admin-path",
+      "claim": "Existing retention policies are reached in Microsoft Purview portal through Solutions > Data Lifecycle Management > Policies > Retention policies, with New retention policy starting creation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-retention-policies",
+      "quote": "Sign in to the Microsoft Purview portal > Solutions > Data Lifecycle Management > Policies > Retention policies. ... Select New retention policy to start the Create retention policy configuration, and name your new retention policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[1].api; Governance controls table; Governance guidance: At rollout",
+      "type": "command",
+      "claim": "New-RetentionCompliancePolicy -Name \"<policy name>\" -SharePointLocation \"<site URL>\" creates a retention policy targeting the specified SharePoint site.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy",
+      "quote": "The Name parameter specifies the unique name of the retention policy. ... The SharePointLocation parameter specifies the SharePoint sites to include. You identify the site by its URL value, or you can use the value All to include all sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "A new retention policy is not valid until a rule is added, so scripting also requires New-RetentionComplianceRule.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy",
+      "quote": "Policies are not valid until a rule is added (for retention policies) or a label is added (for retention label policies). For more information, see New-RetentionComplianceRule.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
       "where": "Governance controls",
       "type": "role",
       "claim": "Priority Cleanup Admin is a separate role required for priority cleanup.",
@@ -421,107 +454,63 @@
       "fix": null
     },
     {
-      "n": 37,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "Microsoft 365 E5/A5/G5/E3/A3/G3 and Business Premium are among the licences providing user rights for organisation-wide, location-wide or include/exclude retention policies.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "For organization-wide, location-wide, or include/exclude retention policies, the following licenses provide user rights: Microsoft 365 E5/A5/G5/E3/A3/G3, Business Premium",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "SharePoint Plan 2 also provides user rights when the retention-policy location is SharePoint or OneDrive for Business.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "If the retention policy location is SharePoint or OneDrive for Business, the following licenses also provide user rights: SharePoint Plan 2",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; Open questions; rationale: cost",
-      "type": "licensing",
-      "claim": "The licence entitlement for the planned insights and recommendations is not yet published, so the licensing model is unknown.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Purview Data Lifecycle Management insights retention policy recommendations licensing billing price. Opened Microsoft Purview service description, /purview/get-started-with-data-lifecycle-management and /purview/purview-billing-models; none names an entitlement for these insights.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 40,
-      "where": "Cost and licensing; Open questions; rationale: cost",
-      "type": "absence",
-      "claim": "Microsoft has not published a meter specific to these insights and recommendations.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Purview Data Lifecycle Management insights retention policy recommendations licensing billing price. Opened /purview/purview-billing-models and Microsoft Purview service description; documented DLM metering concerns AI interactions, not these insights.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "Microsoft has not published a price specific to these insights and recommendations.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Purview Data Lifecycle Management insights retention policy recommendations licensing billing price. Opened /purview/purview-billing-models and Microsoft Purview service description; neither gives a price for this feature.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "controls[1].ui; Risk assessment: Change & support; Governance guidance",
-      "type": "admin-path",
-      "claim": "Existing retention policies are reached in Microsoft Purview portal through Solutions > Data Lifecycle Management > Policies > Retention policies, with New retention policy starting creation.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/create-retention-policies",
-      "quote": "Sign in to the Microsoft Purview portal > Solutions > Data Lifecycle Management > Policies > Retention policies. Select New retention policy to start the Create retention policy configuration, and name your new retention policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "controls[1].api; Governance guidance: At rollout",
-      "type": "command",
-      "claim": "New-RetentionCompliancePolicy -Name \"<policy name>\" -SharePointLocation \"<site URL>\" creates an existing retention-policy object targeting a SharePoint site.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy",
-      "quote": "Use the New-RetentionCompliancePolicy cmdlet to create new retention policies and new retention label policies ... The SharePointLocation parameter specifies the SharePoint sites to include. You identify the site by its URL value",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "Governance controls",
-      "type": "command",
-      "claim": "A new retention policy is not valid until a rule is added, and scripting therefore also needs New-RetentionComplianceRule.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy",
-      "quote": "Policies are not valid until a rule is added (for retention policies) or a label is added (for retention label policies). ... The next step is to use the New-RetentionComplianceRule cmdlet to add a rule to the retention policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "controls[1].note; Governance controls",
+      "where": "controls[1].scope; controls[1].note; Governance controls",
       "type": "applicability",
-      "claim": "The second control row describes existing retention-policy creation rather than a control over the new insights.",
+      "claim": "The second row describes existing organisation-level retention-policy creation, not a documented setting over the new insights.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/create-retention-policies",
       "quote": "Use a retention policy to manage the data for your organization by deciding proactively whether to retain content, delete content, or retain and then delete the content.",
       "severity": null,
       "fix": null
+    },
+    {
+      "n": 41,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The supplied roadmap record's modification timestamp is 2026-09-21T23:04:49.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-09-21T23:04:49\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "Microsoft has not described what detail an insight shows.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Data Lifecycle Management\" \"insights\" \"recommendations\" sensitive SharePoint OneDrive default preview; read DLM overview/setup and DSPM oversharing. DSPM documents its own assessment details, not the planned DLM insights.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "Microsoft has not stated whether insights viewers, like retention-policy administrators, need no access to the underlying content.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Data Lifecycle Management\" insights recommendations enable disable permissions roles PowerShell Graph; read get-started-with-data-lifecycle-management permissions and DLM overview. The no-content-access statement concerns configuring policies and labels, not these insights.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Why it matters; rationale: risk",
+      "type": "absence",
+      "claim": "No source says this planned feature changes existing retention behaviour.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: purview data lifecycle management insights recommendations sensitive data prerequisites rollout automatic apply retention policies; read roadmap, data-lifecycle-management, create-retention-policies and DLM setup. No change to existing retention behaviour stated for this feature.",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-21T20:54:40.876Z",
+    "at": "2026-11-28T06:58:08.269Z",
     "summary": {
       "links": 6,
       "unreachable": 0,
@@ -596,6 +585,12 @@
       "date": "2026-11-21",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-21",
+      "status": "verified",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

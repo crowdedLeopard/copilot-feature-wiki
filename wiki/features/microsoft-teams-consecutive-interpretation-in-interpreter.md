@@ -15,7 +15,7 @@ risk: "medium"
 cost: "variable"
 impact: "medium"
 defaultState: "admin-opt-in"
-action: "prepare"
+action: "act-now"
 licensing:
   model: "mixed"
   notes: "The organiser needs a Microsoft 365 base licence, a Teams licence and a Microsoft Copilot licence, and usage is billed in Copilot Credits through the organiser's spending policy. Participants need no Copilot licence to hear it."
@@ -61,6 +61,12 @@ sources:
   - title: "Monthly credit limit for the policy and for each user (Microsoft Graph)"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update"
     kind: "learn"
+  - title: "Add assignedGroup"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/selectedgroupsspendingpolicy-post-assignedgroups"
+    kind: "learn"
+  - title: "Update costManagementAlertSetting"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/costmanagementalertsetting-update"
+    kind: "learn"
 videos: []
 related: ["copilot-credits","spending-policies","meeting-policy","microsoft-teams-ai-interpreter-for-teams-events","microsoft-teams-interpreter-agent-support-in-teams-rooms-on-android"]
 controls:
@@ -93,7 +99,7 @@ controls:
       kind: "graph"
       call: "POST /beta/copilot/costManagement/spendingPolicies/{id}/microsoft.graph.selectedGroupsSpendingPolicy/assignedGroups/$ref"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview"
-    note: "Specific users are added through security groups. Beta API."
+    note: "Specific users are added through security groups. Beta API. The request body sets @odata.id to the group reference URL."
   - governs: "Monthly credit limit for the policy and for each user"
     scope: "group"
     ui:
@@ -105,7 +111,7 @@ controls:
       call: "PATCH /beta/copilot/costManagement/spendingPolicies/{id}"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update"
     note: "The request body sets periodLimit and perUserLimit. Users who hit the limit lose access until credits reset on the first of the month."
-  - governs: "Policy usage alerts and who receives them"
+  - governs: "Policy usage alerts"
     scope: "group"
     ui:
       surface: "Microsoft 365 admin center"
@@ -115,12 +121,12 @@ controls:
       kind: "graph"
       call: "PATCH /beta/copilot/costManagement/spendingPolicies/{id}/emailThresholdSettings"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview"
-    note: "Alerts notify only; they do not stop use. Beta API."
+    note: "Alerts notify only; they do not stop use. Beta API. The request body sets isEnabled and thresholds. This call configures alerts, not recipients; use the admin UI to manage recipients."
   - governs: "Whether a spending policy picks up newly supported services automatically"
     scope: "group"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Copilot > Cost Management > Configuration > + Add spending policy > Select agents and services > Auto-apply new services"
+      path: "Copilot > Cost Management > Configuration > + Add spending policy > Define the policy scope > Identity > Select agents and services > Auto-apply new services"
       docs: "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits"
     api: null
     note: "On by default for spending policies."
@@ -138,19 +144,23 @@ changes:
     note: "New briefing: consecutive interpretation in Teams Interpreter, its Copilot Credits billing and the spending policy and meeting policy controls."
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 113 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-28"
+    note: "Corrected the auto-apply path to include the Identity scope step, narrowed the alerts row to alert settings (recipients are managed separately), removed an unsupported sign-in statement and the Consumption checklist step, and raised the action to act-now."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 108 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-28"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 113
-  confirmed: 107
-  unconfirmed: 2
-  contradicted: 4
-  attempts: 1
-  hash: "a7da72a9c775ae2b17231fb2fe553c9b"
+  claims: 108
+  confirmed: 108
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "a827ed7572f61d6847a6e4c4987748f8"
 ---
 
 ## What's changing
@@ -174,7 +184,7 @@ There is also a meeting-experience change: everyone in the meeting, including ex
 - Interpreted audio reaches every participant, including those without a Copilot licence. Meetings with external guests hear the interpretation too.
 
 **Security & identity**
-- No change to sign-in or identity. The organiser's Copilot licence and spending policy membership decide who can activate it.
+- The organiser's Copilot licence and spending policy membership decide who can activate it.
 
 **Autonomy & actions**
 - The feature acts only after an organiser turns it on for a meeting, and then speaks AI-generated interpretation to the whole meeting. MC1239927 says quality may vary; brief organisers of meetings where exact wording matters.
@@ -216,7 +226,6 @@ There is also a meeting-experience change: everyone in the meeting, including ex
 - Brief organisers of sensitive or external meetings that interpretation is AI-generated and its quality may vary.
 
 ### After rollout
-- Review the **Consumption** tab in **Copilot > Cost management** by service to see what consecutive interpretation is spending and who is using it.
 - Handle credit requests from organisers who reach their per-user limit, and adjust the limit or group membership.
 
 ## Governance controls
@@ -228,10 +237,10 @@ There is also a meeting-experience change: everyone in the meeting, including ex
 <tbody>
 <tr><td data-label="Control"><strong>Whether users can use Interpreter, in both simultaneous and consecutive modes, in meetings</strong><br><small>User</small><br><small class="controls__note">Enabled by default. Does not replace the licence and spending policy prerequisites. Turning it off also removes simultaneous interpretation.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy name&gt; -AIInterpreter Disabled</code> <a href="https://learn.microsoft.com/microsoftteams/interpreter-agent-teams" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether a spending policy covers Teams: Consecutive interpretation</strong><br><small>Group</small><br><small class="controls__note">The request body sets serviceId and state. The serviceId for consecutive interpretation is not given in the reference. Beta API.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › spending policy › Agents and services <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/costManagement/spendingPolicies/{id}/serviceSettings</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-create" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which users and groups a spending policy applies to</strong><br><small>Group</small><br><small class="controls__note">Specific users are added through security groups. Beta API.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › spending policy › Scope <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/costManagement/spendingPolicies/{id}/microsoft.graph.selectedGroupsSpendingPolicy/assignedGroups/$ref</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users and groups a spending policy applies to</strong><br><small>Group</small><br><small class="controls__note">Specific users are added through security groups. Beta API. The request body sets @odata.id to the group reference URL.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › spending policy › Scope <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/costManagement/spendingPolicies/{id}/microsoft.graph.selectedGroupsSpendingPolicy/assignedGroups/$ref</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Monthly credit limit for the policy and for each user</strong><br><small>Group</small><br><small class="controls__note">The request body sets periodLimit and perUserLimit. Users who hit the limit lose access until credits reset on the first of the month.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › spending policy › Spending limits <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/copilot/costManagement/spendingPolicies/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Policy usage alerts and who receives them</strong><br><small>Group</small><br><small class="controls__note">Alerts notify only; they do not stop use. Beta API.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › spending policy › Alerts, and Email alert settings <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/copilot/costManagement/spendingPolicies/{id}/emailThresholdSettings</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether a spending policy picks up newly supported services automatically</strong><br><small>Group</small><br><small class="controls__note">On by default for spending policies.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › + Add spending policy › Select agents and services › Auto-apply new services <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Policy usage alerts</strong><br><small>Group</small><br><small class="controls__note">Alerts notify only; they do not stop use. Beta API. The request body sets isEnabled and thresholds. This call configures alerts, not recipients; use the admin UI to manage recipients.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › spending policy › Alerts, and Email alert settings <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/copilot/costManagement/spendingPolicies/{id}/emailThresholdSettings</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether a spending policy picks up newly supported services automatically</strong><br><small>Group</small><br><small class="controls__note">On by default for spending policies.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › + Add spending policy › Define the policy scope › Identity › Select agents and services › Auto-apply new services <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Turning off consecutive interpretation while keeping simultaneous interpretation</strong><br><small>Tenant</small><br><small class="controls__note">The meeting policy switch covers both modes. Use spending policy coverage to decide who can use consecutive interpretation.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -253,16 +262,10 @@ cost: Variable. Each interpreted meeting consumes Copilot Credits, charged to th
 impact: Medium. Organisers with a Copilot licence in a spending policy can turn it on, and everyone in those meetings hears the interpreted speech.
 -->
 
-<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[4].api: recipient part of governs; Governance controls table / command: The displayed emailThresholdSettings PATCH also configures who receives policy usage alerts. | Found: Recipients can't be sent inline. Manage them through the recipient $ref endpoints (Add recipient and Remove recipient). | Fix: Narrow controls[4].governs and the corresponding table label to 'Policy usage alerts', retaining the existing PATCH. Add to the note: 'This call configures alerts, not recipients; use the admin UI to manage recipients.' The existing UI and recipient advice can remain. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/costmanagementalertsetting-update
-- [contradicted, blocker] controls[5].ui; Governance controls table / admin-path: The add-policy route reaches Auto-apply new services without a policy-scope choice between + Add spending policy and Select agents and services. | Found: complete the following sections ... Define the policy scope ... Select agents and services ... Create and name the policy and then choose Identity as the scope. | Fix: Replace controls[5].ui.path and its rendered table path with 'Copilot > Cost Management > Configuration > + Add spending policy > Define the policy scope > Identity > Select agents and services > Auto-apply new services'. The Identity choice determines the applicable policy workflow. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits
-- [unsupported, major] Risk assessment: Security & identity / behaviour: Consecutive interpretation makes no change to sign-in. | Found: Searched: Teams consecutive interpretation sign-in identity authentication changes. Read Interpreter management and the sign-in-teams search excerpts; neither states that consecutive interpretation leaves sign-in and identity unchanged. | Fix: Remove 'No change to sign-in or identity.' Retain the following sentence about the organiser's licence and spending policy membership.
-- [unsupported, major] Risk assessment: Security & identity / behaviour: Consecutive interpretation makes no change to identity. | Found: Searched: Teams consecutive interpretation sign-in identity authentication changes. Read Interpreter management and sign-in-teams search excerpts; neither documents unchanged identity behaviour for consecutive interpretation. | Fix: Remove 'No change to sign-in or identity.' Retain the documented licence and spending policy prerequisites.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].api; Governance controls table / command: POST /beta/copilot/costManagement/spendingPolicies/{id}/microsoft.graph.selectedGroupsSpendingPolicy/assignedGroups/$ref assigns a group to a policy. | Found: Add assignedGroup | POST /copilot/costManagement/spendingPolicies/{id}/microsoft.graph.selectedGroupsSpendingPolicy/assignedGroups/$ref | Add a group reference to a policy. | Fix: Keep the call. Add to controls[2].note: 'The request body sets @odata.id to the group reference URL.' This is stated at https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/selectedgroupsspendingpolicy-post-assignedgroups; cite that page. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview
-- [supported, minor] controls[4].api; Governance controls table / command: PATCH /beta/copilot/costManagement/spendingPolicies/{id}/emailThresholdSettings configures policy usage alerts. | Found: Update costManagementAlertSetting | PATCH /copilot/costManagement/spendingPolicies/{id}/emailThresholdSettings | Create or update the alert configuration. | Fix: Keep the call and add to controls[4].note: 'The request body sets isEnabled and thresholds.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/costmanagementalertsetting-update, whose example supplies those properties. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview
-- [contradicted, minor] front matter: action; Why it matters / consistency: The prepare action rating understates the immediate decision for tenants whose existing policies automatically add new services during rollout. | Found: action: "prepare"; "A tenant that has already activated a default spending policy for all users should therefore check whether that policy now covers this mode for every Copilot-licensed organiser." | Fix: Set action to 'act-now': rollout is under way on the run date, and existing policies with Auto-apply new services can expose new metered use without another administrator action.
-- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The checklist tells administrators to review Consumption reporting, but the controls table has no corresponding row. | Found: "Review the Consumption tab in Copilot > Cost management by service"; the seven controls rows cover Interpreter, policy services, scope, limits, alerts, automatic services and the missing separate-mode switch. | Fix: The After rollout step to review the Consumption tab has no controls-table row. Remove that checklist bullet to align the checklist with the existing table; do not add a control row.
+- [supported, minor] Scope: Admin roles; Governance controls / role: License administrators can edit spending policies, limits and alerts. | Found: AI administrator and License administrator roles can edit spending policies, manage limits and alerts, and billing methods. ... AI Reader, Global Reader, License Administrator, and other supported reader-based roles ... provide read-only access | Fix: Qualify the License administrator edit-permission statement in Scope and Governance controls with: 'The setup page also lists License Administrator among read-only roles that cannot change spending policies; confirm effective permissions before relying on this role to edit them.' Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup#roles-and-requirements. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup
+- [supported, minor] controls[6]; Governance controls; Open questions / absence: A separate meeting-policy switch that disables consecutive interpretation while preserving simultaneous interpretation is not documented. | Found: Searched: Teams consecutive interpretation disable separately simultaneous AIInterpreter admin center PowerShell; "consecutive interpretation" disable simultaneous spending policy. Opened interpreter-agent-teams, Set-CsTeamsMeetingPolicy and spending-policy docs; no separate meeting-policy switch. | Fix: Change controls[6].governs, including its rendered table label, to 'Separate meeting-policy switch for consecutive interpretation'. Keep both sides null and the existing note about spending-policy coverage; that note and the prose already explain the documented alternative.
+- [supported, minor] What's changing: General Availability rollout / record: Consecutive interpretation is transitioning to General Availability in the notice's rollout window. | Found: Consecutive interpretation in Interpreter for Teams meetings, currently in public preview, is planned to begin rolling out to general availability. | Fix: Add to the rollout paragraph: 'MC1239927 describes consecutive interpretation as currently in public preview ahead of its General Availability rollout.' This preserves the notice's qualification without asserting that preview has ended.
 -->

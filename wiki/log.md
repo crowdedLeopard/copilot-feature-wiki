@@ -1122,3 +1122,12 @@ Append-only record of ingests, compiles and lint passes. One line per event.
 - 2026-11-28 lint: 1024 briefings ok, 0 errors (0 quarantined), 36 warnings, 1020 notes; 1072 checked, 0 awaiting correction, 27 held
 - 2026-11-28 index: 1023 briefings, 1 archived, 48 concepts indexed
 - 2026-11-28 digest: 2026-w48 written (653 updated briefings)
+- 2026-11-28 message-center: 898 posts read (federated credential (GitHub Actions OIDC)), 641 in scope and published, 0 new, 0 changed, 236 outside the topics, 21 withheld by the tenant screen (13 targeted-wording, 3 tenant-word, 1 tenant-domain, 1 email-address, 4 guid); 683 in the ledger, 24 with an act-by date ahead (5s)
+- 2026-11-28 ingest: 2420 roadmap items fetched, 1915 in scope, 0 new, 0 changed, 891 queued for compile (copilot-studio 4, power-platform 2, governance 97, m365-copilot 215, modern-work 573; 0 review due; 0 refresh after a Message Center post), 249 with Message Center posts, 1 duplicate listing(s) covered by another item's page, 0 archived, 0 briefed item(s) missing from the feed (1s)
+- 2026-11-28 source watch: 610 of 2987 Microsoft pages cited by 1071 live pages re-read in 143s (2377 read earlier today), 20 read for the first time, 0 changed, 1 unreachable
+- 2026-11-28 compile: 22 briefings written, 2 concept pages written, 0 rejected by schema, 0 not reached, 24 attempted (copilot, claude-opus-5.5, 2,673 AI credits)
+- 2026-11-28 verify: 48 checked (9 verified, 15 verified with gaps, 14 held, 10 not reached, 4 live page(s) held on re-check (check-expired 4; blockers: licensing 3, command 1, availability 1, absence 1)) on copilot gpt-6.1-sol; stopped early: the run budget of 2000 AI credits was spent (VERIFY_MAX_RUN_CREDITS); 24 page(s) held in total
+- 2026-11-28 spend: 4,644 AI credits this run (2,673 writing, 1,971 checking); 19,527 of 15,000 today over 4 runs; next run not started: today's budget of 15,000 AI credits is spent (COMPILE_DAILY_CREDITS)
+- 2026-11-28 lint: 1034 briefings ok, 0 errors (0 quarantined), 35 warnings, 1032 notes; 1082 checked, 0 awaiting correction, 24 held
+- 2026-11-28 index: 1033 briefings, 1 archived, 48 concepts indexed
+- 2026-11-28 digest: 2026-w48 written (667 updated briefings)

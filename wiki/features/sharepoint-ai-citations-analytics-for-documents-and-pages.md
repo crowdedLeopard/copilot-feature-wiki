@@ -4,7 +4,7 @@ slug: "sharepoint-ai-citations-analytics-for-documents-and-pages"
 roadmapId: 480725
 topic: "modern-work"
 products: ["SharePoint"]
-summary: "SharePoint adds figures on how often its documents, news and pages are cited in Copilot and agent responses, per file and per site. Launched per the roadmap; who sees it, its default and its licensing are not yet published."
+summary: "SharePoint adds figures on how often its documents, news and pages are cited in Copilot and agent responses, per file and per site. Launched per the roadmap; who sees it, its default and licensing specific to it are not yet published."
 status: "launched"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -17,8 +17,8 @@ impact: "medium"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published for citation analytics. The Get started with Copilot in SharePoint page lists analytics on how sites, pages, news and documents are performing among capabilities that require Copilot Credits, but does not mention citations."
+  model: "included"
+  notes: "Access to SharePoint requires a licence that includes SharePoint. Licensing specific to AI citations analytics, including whether it consumes Copilot Credits, is not yet published; the Get started with Copilot in SharePoint page lists analytics on how sites, pages, news and documents are performing as advanced work, but does not mention citations."
 audiences: ["m365-admin","service-owner","change-adoption"]
 tags: ["sharepoint","analytics","m365-copilot","copilot-in-sharepoint","restricted-content-discovery","spending-policies","copilot-credits"]
 sources:
@@ -36,6 +36,9 @@ sources:
     kind: "learn"
   - title: "Update spendingPolicy"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update"
+    kind: "learn"
+  - title: "SharePoint service description"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/sharepoint-online-service-description/sharepoint-online-service-description"
     kind: "learn"
 videos: []
 related: ["m365-copilot-copilot-in-sharepoint","restricted-content-discovery","microsoft-viva-sharepoint-agent-analytics-on-viva-insights","spending-policies"]
@@ -76,19 +79,23 @@ changes:
     note: "New briefing: roadmap-only feature; licensing, default and audience not yet published, with Restricted Content Discovery and the SharePoint spending policy as related controls."
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 50 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-28"
+    note: "Corrected the Restricted Content Discovery statement: it limits Copilot discovery scenarios but not experiences on content already in use. Licensing now cites the SharePoint licence requirement."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 63 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-28"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 50
-  confirmed: 49
-  unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "726ef51c14e3c41be196cc4448f5b7ae"
+  claims: 63
+  confirmed: 62
+  unconfirmed: 1
+  contradicted: 0
+  attempts: 0
+  hash: "2314422b8609a59c0d1f8aae1bfc2d9c"
 ---
 
 ## What's changing
@@ -117,11 +124,11 @@ Microsoft has not stated whether the figures appear for site owners automaticall
 - No change described: the feature reports and, per the roadmap, does not act on content.
 
 **Change & support**
-- Expect site owners to ask why a page is or is not cited. Restricted Content Discovery keeps a site's content out of Microsoft Copilot responses, but it also hides the Copilot button and AI actions on that site, and Microsoft advises using it selectively, so it is not a fix for a page that is cited too often.
+- Expect site owners to ask why a page is or is not cited. Restricted Content Discovery limits discovery of a site's content in organisation-wide search and Microsoft Copilot discovery scenarios, but does not affect experiences using content already in use, such as summarising an open document. It also hides the Copilot button and AI actions on that site, and Microsoft advises using it selectively, so it is not a fix for a page that is cited too often.
 
 ## Cost and licensing
 
-Licensing for AI citations analytics is not yet published; the roadmap item names no licence. The closest published statement is on [Get started with Copilot in SharePoint](https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started): everyday Copilot in SharePoint capabilities are included with the Microsoft 365 Copilot licence, while advanced work requires usage-based billing and consumes Copilot Credits, and "Get analytics on how sites, pages, news, and documents are performing" is listed among the advanced-work capabilities. That page does not mention citations, so whether citation analytics is billed this way is not stated.
+Access to SharePoint requires a licence that includes SharePoint, per the [SharePoint service description](https://learn.microsoft.com/office365/servicedescriptions/sharepoint-online-service-description/sharepoint-online-service-description). Licensing specific to AI citations analytics, including whether it consumes Copilot Credits, is not yet published; the roadmap item names no licence. The closest published statement is on [Get started with Copilot in SharePoint](https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started): everyday Copilot in SharePoint capabilities are included with the Microsoft 365 Copilot licence, while advanced work requires usage-based billing and consumes Copilot Credits, and "Get analytics on how sites, pages, news, and documents are performing" is listed among the advanced-work capabilities. That page does not mention citations, so whether citation analytics is billed this way is not stated.
 
 If it is, the spending-policy row of the controls table applies: advanced work needs a spending policy in the Microsoft 365 admin center that includes **Advanced work in SharePoint**, and the same page says usage-based features pause until the next month when the monthly credit limit is reached. Existing policies might include newly available services automatically if **Allow new agents and services as they become available** is turned on. Otherwise the cost is site-owner and admin time spent reading and acting on the figures.
 
@@ -132,7 +139,7 @@ If it is, the spending-policy row of the controls table applies: advanced work n
 - **Who sees the figures and who configures them:** not yet documented.
 - **Clouds:** Worldwide (Standard Multi-Tenant), as the record lists it.
 - **Platform:** Web.
-- **Prerequisites and licence:** not yet published.
+- **Prerequisites and licence:** access to SharePoint requires a licence that includes SharePoint; prerequisites and licensing specific to citation analytics are not yet published.
 
 ## Governance guidance
 
@@ -175,15 +182,14 @@ Restricted Content Discovery governs which sites' content Microsoft Copilot disc
 
 <!-- rationale
 risk: Low. The roadmap describes reporting on citations in existing Copilot responses and no new access to content; who can see the figures is not yet documented.
-cost: Low. The only cost the sources show is site-owner and admin time. Licensing is not yet published, although the Copilot in SharePoint page bills analytics on site, page, news and document performance in Copilot Credits.
+cost: Low. The only cost the sources show is site-owner and admin time. Licensing specific to citation analytics is not yet published, although the Copilot in SharePoint page bills analytics on site, page, news and document performance in Copilot Credits.
 impact: Medium. Site owners, intranet and knowledge managers are the people who would read citation figures; other users are not described as seeing a change.
 -->
 
-<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Change & support / applicability: Restricted Content Discovery keeps a site's content out of Microsoft Copilot responses. | Found: Restricted Content Discovery doesn't affect experiences that operate on content that's already in use by the user, such as summarizing an open document. | Fix: Replace 'Restricted Content Discovery keeps a site's content out of Microsoft Copilot responses' with 'Restricted Content Discovery limits discovery of a site's content in organization-wide search and Microsoft Copilot discovery scenarios, but does not affect experiences using content already in use, such as summarizing an open document'. Keep the following statement about hiding AI entry points and selective use. Source: https://learn.microsoft.com/sharepoint/restricted-content-discovery. | Source: https://learn.microsoft.com/sharepoint/restricted-content-discovery
+- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: The feature does not act on content. | Found: Searched: SharePoint AI citations analytics acts on content reporting actions automatic changes. Read roadmap; opened Copilot in SharePoint setup and Monitor agent usage. The roadmap describes reporting, but neither it nor these pages expressly rules out actions on content. | Fix: Replace the bullet with 'No change described: the roadmap describes reporting on citations and does not describe actions on content.'
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model; summary; Cost and licensing; Scope; rationale: cost / licensing: The licensing model is unknown because licensing specific to citation analytics is not yet published. | Found: To access SharePoint, users in your organization need to be assigned a license that includes SharePoint. | Fix: Set licensing.model to included for the published product-level entitlement, and cite https://learn.microsoft.com/office365/servicedescriptions/sharepoint-online-service-description/sharepoint-online-service-description. Replace the opening licensing statement with: 'Access to SharePoint requires a license that includes SharePoint. Licensing specific to AI citations analytics, including whether it consumes Copilot Credits, is not yet published.' Keep the distinction from advanced-work performance analytics and do not claim that citation analytics has no additional charge. | Source: https://learn.microsoft.com/office365/servicedescriptions/sharepoint-online-service-description/sharepoint-online-service-description
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: Restricted Content Discovery is under SharePoint admin center > Sites > Active sites > site > Settings > Restrict content from Microsoft Copilot. | Found: In the SharePoint admin center, expand Sites and select Active sites. Select the site you want to configure. Open the Settings tab, and then turn Restrict content from Microsoft Copilot on. | Fix: Keep the path supported by its cited control reference. Add a short note: 'Microsoft's readiness guidance instead labels the final setting Restrict content discovery > On.' Cite https://learn.microsoft.com/sharepoint/get-ready-copilot-sharepoint-advanced-management#step-3-prevent-accidental-oversharing for that differing label. | Source: https://learn.microsoft.com/sharepoint/restricted-content-discovery
+- [supported, minor] Cost and licensing; Governance guidance: Before rollout / behaviour: Existing policies may automatically include new services when Allow new agents and services as they become available is on. | Found: Existing cost management policies might automatically include newly available services if the Allow new agents and services as they become available option is turned on for the policy. | Fix: After this sentence, add: 'The usage-based billing overview calls this setting Auto-apply new services and says it is enabled by default for spending policies.' Cite https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits and add it to sources. | Source: https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started
 -->

@@ -78,18 +78,20 @@ changes:
     note: "Corrected licensing model to not yet published, narrowed the Enhanced personalization statement to saved memories, and removed two unsupported risk statements and the eDiscovery roles checklist step."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 50 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 61 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-21"
+  status: "held"
+  date: "2026-11-28"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 50
-  confirmed: 49
+  claims: 61
+  confirmed: 59
   unconfirmed: 0
-  contradicted: 1
-  attempts: 0
+  contradicted: 2
+  attempts: 1
   hash: "87c7fc80d78c3143a2e5885d17b4c58f"
 ---
 
@@ -179,9 +181,11 @@ cost: Low. The only cost the sources show is admin time and the existing Purview
 impact: Low. Compliance and security administrators notice it. The roadmap describes retention of inactive memory items while the Copilot experience keeps managing active memory, so end users are not described as changed.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[0].api; Governance controls table / command: The displayed New-AppRetentionCompliancePolicy call is the automation that sets the row's retention control. | Found: Use the New-AppRetentionCompliancePolicy to create app retention compliance policies. ... After you create the retention policy, use the New-AppRetentionComplianceRule cmdlet to create a retention rule | Fix: Replace controls[0].api.call and its rendered copy with 'New-AppRetentionComplianceRule -Name "<RuleName>" -Policy "<PolicyName>" -RetentionDuration <days> -RetentionComplianceAction <Keep|Delete|KeepAndDelete>' and set api.docs to https://learn.microsoft.com/powershell/module/exchangepowershell/new-appretentioncompliancerule. Add to the existing note: 'This sets the retention duration and action on an existing policy; create that policy separately with New-AppRetentionCompliancePolicy.' Keep the existing memory-exclusion caveat and policy-creation explanation. The rule reference documents integer days and the three printed action values. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/new-appretentioncompliancepolicy
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The Purview route Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy starts the retention-policy wizard. | Found: Sign in to the Microsoft Purview portal > Solutions > Data Lifecycle Management > Policies > Retention policies. ... Select New retention policy to start the Create retention policy configuration | Fix: For a static policy, extend the path to 'Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy > Choose the type of retention policy to create > Static > Choose locations to apply the policy > Microsoft Copilot experiences > Decide if you want to retain content, delete it, or both', as documented at https://learn.microsoft.com/purview/create-retention-policies. | Source: https://learn.microsoft.com/purview/create-retention-policies
-- [contradicted, minor] Governance guidance: At rollout / consistency: The pilot checklist instructs readers to check an eDiscovery search, but the controls table has no corresponding search row. | Found: check whether versions of inactive memory items appear in an eDiscovery search for item class IPM.Contact. ... Table rows: Retention policy for Microsoft Copilot experiences; Whether Copilot memory can be used (Enhanced personalization control). | Fix: Remove the eDiscovery-search step from the pilot checklist; it names a control that has no row in the controls table. Do not add a row as part of this correction.
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy opens the relevant Purview retention wizard. | Found: Sign in to the Microsoft Purview portal > Solutions > Data Lifecycle Management > Policies > Retention policies. ... Select New retention policy to start the Create retention policy configuration | Fix: Extend the static-policy route to 'Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy > Choose the type of retention policy to create > Static > Choose locations to apply the policy > Microsoft Copilot experiences > Decide if you want to retain content, delete it, or both', as documented at https://learn.microsoft.com/purview/create-retention-policies. The existing route is correct but stops before the location and retention settings. | Source: https://learn.microsoft.com/purview/create-retention-policies
+- [contradicted, minor] Governance guidance: At rollout / consistency: The governance checklist names an eDiscovery-search control that is absent from the controls table. | Found: check whether versions of inactive memory items appear in an eDiscovery search for item class IPM.Contact. ... Table controls: Retention policy for Microsoft Copilot experiences; Whether Copilot memory can be used. | Fix: Replace the pilot bullet with 'Test with a pilot user: create a memory and apply the retention configuration you are evaluating.' This removes the checklist's unrepresented search control without adding a row.
 -->

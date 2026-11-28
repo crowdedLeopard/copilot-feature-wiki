@@ -84,18 +84,20 @@ changes:
     note: "Corrected after the independent check: the Risky Agents policy is on by default per Learn, action is now act-now, and the alert-visibility sentence names unscoped users with alert-investigation permissions."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 61 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 73 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-21"
+  status: "held"
+  date: "2026-11-28"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 61
-  confirmed: 59
+  claims: 73
+  confirmed: 70
   unconfirmed: 0
-  contradicted: 2
-  attempts: 0
+  contradicted: 3
+  attempts: 1
   hash: "bee641d0ea47ecd4fe2ec8b1f2d2be5a"
 ---
 
@@ -189,11 +191,13 @@ cost: Low. The only cost Microsoft's pages show is admin and analyst time plus t
 impact: Low. Insider risk analysts, compliance administrators and the owners of monitored agents notice it; ordinary users and agent users see no change that the sources describe.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost / absence: Microsoft has not published a licence specific to agent monitoring beyond the general Insider Risk Management subscription. | Found: Microsoft Purview security and compliance capabilities for agents on Microsoft Foundry and Entra-connected AI apps will be supported by Microsoft 365 E7 and Agent365 SKUs. | Fix: Replace the unpublished-licence statement with: 'The Purview service description says security and compliance capabilities for agents on Microsoft Foundry and Entra-connected AI apps will be supported by Microsoft 365 E7 and Agent365 SKUs; it describes that support in future tense. A rate or meter specific to Risky Agents monitoring is not yet published.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description. In Open questions, remove 'or licence' from the billing question. In the cost rationale, replace the first clause with 'Budget admin and analyst time; the service description also names future Microsoft 365 E7 and Agent365 support for Foundry and Entra-connected agent workloads.' Do not present these SKUs as a current exclusive requirement. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing; Governance guidance: After rollout / behaviour: The Microsoft Purview portal Usage center shows pay-as-you-go and per-user licensing usage. | Found: The Microsoft Purview Usage center feature is in preview. ... You can view your pay-as-you-go billing usage and your per-user licensing usage for Microsoft Purview capabilities. | Fix: Call it 'the preview Usage center' and cite https://learn.microsoft.com/purview/purview-billing-usage. The setup page establishes that the center exists but the usage page documents what it shows and its preview status. | Source: https://learn.microsoft.com/purview/purview-billing-usage
-- [supported, minor] controls[0].ui; Governance guidance: At rollout; Governance controls / admin-path: Microsoft Purview portal > Insider Risk Management > Policies > Agent policy reaches the agent-policy dashboard. | Found: go to Insider Risk Management > Policies ... Your policies are separated into two categories: User policy and Agent policy. Switch between the two to locate relevant policy details. | Fix: Keep the path and add to controls[0].note: 'This route ends at the agent-policy dashboard; select a policy to see its details.' The cited page says 'You can select the policy to see the health status details'; the printed route does not reach a policy-setting control. | Source: https://learn.microsoft.com/purview/insider-risk-management-policies
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist asks administrators to decide alert-investigation role groups, but the controls table has no permissions row. | Found: Decide which role groups will investigate agent alerts ... [The table contains only Agent policies and unified audit logging.] | Fix: Remove the checklist bullet 'Decide which role groups will investigate agent alerts, and keep scoped analysts away from this work because admin units do not support agent alerts.' Keep the existing role-planning advice in Why it matters; do not add a control row.
-- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist asks administrators to check the Usage center, but the controls table has no usage-monitoring row. | Found: Check the Usage center in the Microsoft Purview portal for any pay-as-you-go usage after agent alerts begin. [No Usage center row appears in the controls table.] | Fix: Remove the After rollout checklist bullet about checking the Usage center; retain the existing usage-checking advice in Cost and licensing. Do not add a control row.
+- [supported, minor] Cost and licensing; Governance guidance: After rollout / behaviour: The Microsoft Purview portal Usage center shows pay-as-you-go and per-user licensing usage. | Found: The Microsoft Purview Usage center feature is in preview. ... You can view your pay-as-you-go billing usage and your per-user licensing usage for Microsoft Purview capabilities. | Fix: Call it 'the preview Usage center' and add https://learn.microsoft.com/purview/purview-billing-usage to sources. | Source: https://learn.microsoft.com/purview/purview-billing-usage
+- [supported, minor] controls[0].ui; Governance guidance: At rollout; Governance controls / admin-path: Microsoft Purview portal > Insider Risk Management > Policies > Agent policy reaches the agent-policy dashboard. | Found: Go to the Insider Risk Management solution. Select Policies in the left navigation. ... Your policies are separated into two categories: User policy and Agent policy. Switch between the two to locate relevant policy details. | Fix: Retain the path and add to controls[0].note: 'This route ends at the agent-policy dashboard; select a policy to see its details.' Apply the same note in the rendered row. | Source: https://learn.microsoft.com/purview/insider-risk-management-policies
+- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist asks readers to decide alert-investigation role groups, but the controls table has no permissions row. | Found: Decide which role groups will investigate agent alerts, and keep scoped analysts away from this work because admin units do not support agent alerts. [The controls table has only Agent policies and unified audit logging.] | Fix: Remove that Before rollout checklist bullet. Retain the role-planning advice in Why it matters; do not add a row.
+- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist asks readers to check the Usage center, but the controls table has no usage-monitoring row. | Found: Check the Usage center in the Microsoft Purview portal for any pay-as-you-go usage after agent alerts begin. [The controls table has no Usage center row.] | Fix: Remove that After rollout checklist bullet. Retain usage-checking advice in Cost and licensing; do not add a row.
 -->

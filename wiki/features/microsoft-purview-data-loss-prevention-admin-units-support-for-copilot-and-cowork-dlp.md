@@ -82,15 +82,17 @@ changes:
     note: "Corrected after verification: restricted administrators' alert visibility now follows their assigned units; role-group unit assignment path now includes the Edit members of the role group step."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 56 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 60 statements not yet confirmed"
 version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 56
-  confirmed: 56
+  claims: 60
+  confirmed: 60
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -193,8 +195,8 @@ cost: Low. Learn lists Microsoft Entra ID P1 or P2 and a qualifying Purview subs
 impact: Low. Only Purview and Entra administrators see the change; users notice only if a newly scoped policy blocks or restricts their Copilot or Cowork interactions.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: The unit-assignment route is Settings > Roles and scopes > Role groups > role group > Edit > Edit members of the role group > Choose users > Assign admin units. | Found: On Role groups for Microsoft Purview solutions, select a Microsoft Purview role group you want to add users to. Select Edit on the control bar. ... On Edit members of the role group, select Choose users or Choose groups. | Fix: Include the omitted page heading in controls[1].ui and its rendered table: 'Settings > Roles and scopes > Role groups > Role groups for Microsoft Purview solutions > role group > Edit > Edit members of the role group > Choose users > Assign admin units'. The cited permissions page gives this heading; member selection and its Select confirmation remain procedural details rather than path labels. | Source: https://learn.microsoft.com/purview/purview-permissions
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: The unit-assignment route is Settings > Roles and scopes > Role groups > role group > Edit > Edit members of the role group > Choose users > Assign admin units. | Found: On Role groups for Microsoft Purview solutions, select a Microsoft Purview role group you want to add users to. Select Edit on the control bar. ... On Edit members of the role group, select Choose users or Choose groups. | Fix: In controls[1].ui and the rendered table, include the omitted heading: 'Settings > Roles and scopes > Role groups > Role groups for Microsoft Purview solutions > role group > Edit > Edit members of the role group > Choose users > Assign admin units'. The cited permissions page documents this heading. | Source: https://learn.microsoft.com/purview/purview-permissions
 -->

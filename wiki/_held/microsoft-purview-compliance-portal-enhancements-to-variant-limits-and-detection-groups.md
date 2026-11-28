@@ -14,7 +14,7 @@ previewDate: "November CY2025"
 risk: "low"
 cost: "low"
 impact: "low"
-defaultState: "on"
+defaultState: "unknown"
 action: "review"
 licensing:
   model: "included"
@@ -70,7 +70,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Insider Risk Management > Settings > Detection groups > Type > Domains > New domain group"
+      path: "Insider Risk Management > Settings > Detection groups > Type > Domains > New domain group > Add domains"
       docs: "https://learn.microsoft.com/purview/insider-risk-management-settings-detection-groups"
     api: null
     note: "Domains shown; file paths, file types, keywords, sensitive info types, SharePoint sites and trainable classifiers follow the same steps with their own type and New button."
@@ -106,26 +106,30 @@ changes:
     note: "Corrected after review: variant control now covers creation only; removed unsupported 'nothing changes' and 'no new data' statements; added the Microsoft 365 E5 licensing source."
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 60 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-28"
+    note: "Corrected after review: default state is now Not stated, as Microsoft has not said what happens on arrival; detection group path extended to the Add domains field; impact rationale narrowed."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 64 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 3
 verification:
   status: "held"
   date: "2026-11-28"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 58
-  unconfirmed: 2
-  contradicted: 0
-  attempts: 2
-  hash: "00b851fb114a57df7fc4237322524726"
+  claims: 64
+  confirmed: 63
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 3
+  hash: "678e4cbfeecc6fc48aeb091c95ca31ee"
 ---
 
 ## What's changing
 
 Microsoft Purview Insider Risk Management raises two limits that govern how far administrators can tune its built-in indicators. The roadmap item states that the variant limit rises from 3 to 10 per indicator, with an overall limit of 100 across all indicators, and that the number of items in one detection group rises from 200 to 500.
 
-A **variant** is a copy of a built-in indicator narrowed by **detection groups**: named lists of domains, file paths, file types, keywords, sensitive info types, SharePoint sites or trainable classifiers. A variant can ignore activity involving the items in the selected groups, or detect only that activity. Detection groups are also used to adjust global exclusions. The policy indicators page now states the new variant limits ("up to ten variants for each built-in indicator and a total of 100 variants across all indicators"), and the detection groups page states that each group can have up to 500 items, with up to 10 groups of each type. Neither page describes a setting to turn the higher limits on.
+A **variant** is a copy of a built-in indicator narrowed by **detection groups**: named lists of domains, file paths, file types, keywords, sensitive info types, SharePoint sites or trainable classifiers. A variant can ignore activity involving the items in the selected groups, or detect only that activity. Detection groups are also used to adjust global exclusions. The policy indicators page now states the new variant limits ("up to ten variants for each built-in indicator and a total of 100 variants across all indicators"), and the detection groups page states that each group can have up to 500 items, with up to 10 groups of each type. Neither page describes a setting to turn the higher limits on. Microsoft has not stated what happens on arrival if no administrator acts.
 
 Microsoft Learn is not consistent at the time of writing (November 2026): the **Limits in Insider Risk Management** page still lists 3 variants per indicator and 200 items in a detection group. The variant option in the portal is labelled **New indicator variant (preview)**.
 
@@ -187,7 +191,7 @@ The Get started page also states that some indicators are available only with Pu
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Creating variants of built-in indicators</strong><br><small>Tenant</small><br><small class="controls__note">Preview label in the portal. Up to 10 variants per built-in indicator and 100 in total, per this page.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Insider Risk Management › Settings › Policy indicators › New indicator variant (preview) <a href="https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Contents of detection groups (up to 500 items each)</strong><br><small>Tenant</small><br><small class="controls__note">Domains shown; file paths, file types, keywords, sensitive info types, SharePoint sites and trainable classifiers follow the same steps with their own type and New button.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Insider Risk Management › Settings › Detection groups › Type › Domains › New domain group <a href="https://learn.microsoft.com/purview/insider-risk-management-settings-detection-groups" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Contents of detection groups (up to 500 items each)</strong><br><small>Tenant</small><br><small class="controls__note">Domains shown; file paths, file types, keywords, sensitive info types, SharePoint sites and trainable classifiers follow the same steps with their own type and New button.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Insider Risk Management › Settings › Detection groups › Type › Domains › New domain group › Add domains <a href="https://learn.microsoft.com/purview/insider-risk-management-settings-detection-groups" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which indicators and variants a policy uses</strong><br><small class="controls__note">Scope is the individual policy. On Indicators, find the built-in indicator, open its variant list and select the required variant checkboxes.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Insider Risk Management › Policies › policy › Edit policy › Indicators <a href="https://learn.microsoft.com/purview/insider-risk-management-best-practices-alert-tuning" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Who can configure Insider Risk Management policies and settings</strong><br><small>Tenant</small><br><small class="controls__note">The Insider Risk Management Admins role group can also configure policies and settings.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and groups › Roles groups › Insider Risk Management › Edit › Choose users <a href="https://learn.microsoft.com/purview/insider-risk-management-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember -Identity &quot;Insider Risk Management&quot; -Member &quot;&lt;user-UPN&gt;&quot;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
@@ -205,15 +209,14 @@ Variants and detection groups are tenant-wide settings: a detection group can se
 <!-- rationale
 risk: Low. The change raises configuration limits only; administrators use variants and detection groups to tailor detections in policies or global exclusions.
 cost: Low. Insider Risk Management comes with the Microsoft 365 subscriptions that include it; no separate charge for the higher limits is published, so the cost is admin time spent tuning variants.
-impact: Low. Only Insider Risk Management administrators who build indicator variants and detection groups notice the higher limits; end users see nothing.
+impact: Low. The higher limits concern administrator configuration of indicator variants and detection groups.
 -->
 
 <!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] front matter: defaultState / default: The higher-limits change is on on arrival without administrator action. | Found: Searched: Insider Risk Management indicator variants higher limits 10 500 enable automatically default. Read the roadmap, policy indicators, detection groups, settings and Get started pages; none states automatic arrival behaviour for this change. | Fix: Set defaultState to "unknown". Add to What's changing: "Microsoft has not stated what happens on arrival if no administrator acts." The documented creation limits and absence of a separate higher-limits switch do not establish automatic rollout behaviour.
+- [contradicted, blocker] Risk assessment: Security & identity / role: Configuring policies and settings is limited to the Insider Risk Management and Insider Risk Management Admins role groups and the listed Entra and Purview administrative roles. | Found: You can enable inline alert customization to allow users assigned to the Insider Risk Management Analysts and Insider Risk Management Investigators role groups to edit policy thresholds and to disable specific indicators. | Fix: Replace the first sentence with 'Members of the Insider Risk Management and Insider Risk Management Admins role groups can configure policies and settings; the Entra and Purview administrative roles listed on the permissions page have the same solution permissions as Insider Risk Management Admins.' This removes the unsupported exclusivity without adding a new control. | Source: https://learn.microsoft.com/purview/insider-risk-management-settings-inline-alert-customization
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; Governance guidance: At rollout / admin-path: Microsoft Purview portal > Insider Risk Management > Settings > Detection groups > Type > Domains > New domain group reaches the page for setting domain group contents. | Found: In Insider Risk Management settings, select Detection groups. In the panel to the right, under Type, select Domains. In the panel to the right, select New domain group. ... In the Add domains field, enter a domain, then press Enter. | Fix: Extend controls[1].ui.path to "Insider Risk Management > Settings > Detection groups > Type > Domains > New domain group > Add domains". The current path reaches the right pane but stops before the field that sets its contents. | Source: https://learn.microsoft.com/purview/insider-risk-management-settings-detection-groups
-- [supported, minor] controls[2].ui / admin-path: Microsoft Purview portal > Insider Risk Management > Policies > policy > Edit policy > Indicators reaches the policy's indicator selection page. | Found: Go to the specific policy on the Policies page, select Edit policy, go to the Indicators page, and then select more indicators. | Fix: Extend controls[2].ui.path to "Insider Risk Management > Policies > policy > Edit policy > Indicators > built-in indicator > variant list > variant checkboxes", following the selection steps at https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators#use-a-variant-in-a-policy. Both supporting pages are already cited. | Source: https://learn.microsoft.com/purview/insider-risk-management-best-practices-alert-tuning
-- [unsupported, minor] rationale: impact / behaviour: Only administrators who build variants and detection groups notice the higher limits; end users see nothing. | Found: Searched: Insider Risk Management variant limits detection group 500 end user experience changes. Read roadmap, policy indicators, detection groups and settings; no passage states that all end users see no change or that only the configuring administrators notice it. | Fix: Replace the impact rationale with "Low. The higher limits concern administrator configuration of indicator variants and detection groups." Keep the rating as an editorial judgement without the categorical end-user assurance.
+- [supported, minor] controls[2].ui / admin-path: Microsoft Purview portal > Insider Risk Management > Policies > policy > Edit policy > Indicators reaches policy indicator selection. | Found: Go to the specific policy on the Policies page, select Edit policy, go to the Indicators page, and then select more indicators. | Fix: Extend the path to 'Insider Risk Management > Policies > policy > Edit policy > Indicators > built-in indicator > variant list > variant checkbox'. Keep the existing note. Add https://learn.microsoft.com/purview/insider-risk-management-policies to sources for the entry route; the already cited policy indicators page documents the variant-list steps. | Source: https://learn.microsoft.com/purview/insider-risk-management-best-practices-alert-tuning
+- [supported, minor] Governance guidance: At rollout / admin-path: Insider Risk Management > Settings > Detection groups reaches detection-group management. | Found: In Insider Risk Management settings, select Detection groups. ... under Type, select Domains. ... select New domain group. ... In the Add domains field, enter a domain, then press Enter. | Fix: Replace the abbreviated path in this bullet with 'Microsoft Purview portal > Insider Risk Management > Settings > Detection groups > Type > Domains > New domain group > Add domains' and change 'Merge split detection groups' to 'Consolidate split domain detection groups' so the advice uses the fully documented domain example already in the table. | Source: https://learn.microsoft.com/purview/insider-risk-management-settings-detection-groups
 -->

@@ -117,15 +117,17 @@ changes:
     note: "Corrected after verification: replaced the claim that Learn does not describe partner data with the documented asset schema fields, narrowed the related open question, and marked two checklist steps as outside the controls table."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 114 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 99 statements not yet confirmed"
 version: 4
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 114
-  confirmed: 112
+  claims: 99
+  confirmed: 97
   unconfirmed: 0
   contradicted: 2
   attempts: 0
@@ -248,9 +250,10 @@ cost: Variable. The Data Security Posture Agent (preview) needs Microsoft 365 E5
 impact: Medium. Security and compliance teams meet a new DSPM experience, and SharePoint site owners can receive item-level notifications; most end users do not notice it.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The audit-record checklist instruction has no corresponding control row, despite the standard requiring one. | Found: Check audit records of automated actions taken by AI agents in DSPM (guidance outside the controls table, which has no audit row). | Fix: Remove the After rollout bullet beginning 'Check audit records of automated actions taken by AI agents in DSPM': labelling it outside the table does not satisfy the checklist-to-controls rule. The table has no audit row; this correction should not add one.
-- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The SCU-consumption checklist instruction has no corresponding control row, despite the standard requiring one. | Found: Compare the Posture Agent's SCU consumption with the budget you agreed (guidance outside the controls table, which has no SCU monitoring row). | Fix: Remove the After rollout bullet beginning 'Compare the Posture Agent's SCU consumption with the budget you agreed': labelling it outside the table does not satisfy the checklist-to-controls rule. The table has no SCU monitoring row; this correction should not add one.
+- [supported, minor] front matter: licensing.notes; Cost and licensing: Not yet published; Open questions / absence: An SCU rate specific to this Posture Agent is not yet published. | Found: Searched: Data Security Posture Agent SCU rate per run pricing. Read agent licensing, Security Copilot inclusion and Purview billing-model excerpts; no fixed agent-specific consumption rate, but inclusion publishes a general $6 USD per-SCU expansion option. | Fix: Replace 'Agent SCU rate: not yet published' with 'A fixed SCU consumption per agent run is not published; consumption depends on analysis complexity.' Use the same distinction in Cost and licensing and Open questions; do not imply that the general SCU price is unpublished.
+- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The instruction to check AI-agent audit records names a monitoring control with no corresponding table row. | Found: Check audit records of automated actions taken by AI agents in DSPM (guidance outside the controls table, which has no audit row). The table contains only Fabric configuration, item-level scanning, agent deactivation and partner integration. | Fix: Remove the After rollout bullet beginning 'Check audit records of automated actions taken by AI agents in DSPM'. Calling it guidance outside the table does not satisfy the checklist-to-controls requirement; do not add a row in this correction.
+- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The instruction to compare agent SCU consumption with a budget names a monitoring control with no corresponding table row. | Found: Compare the Posture Agent's SCU consumption with the budget you agreed (guidance outside the controls table, which has no SCU monitoring row). The table contains no consumption-monitoring control. | Fix: Remove the After rollout bullet beginning 'Compare the Posture Agent's SCU consumption with the budget you agreed'. Calling it guidance outside the table does not satisfy the checklist-to-controls requirement; do not add a row in this correction.
 -->

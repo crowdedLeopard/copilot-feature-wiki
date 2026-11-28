@@ -96,26 +96,30 @@ changes:
     note: "New briefing: PowerShell-only retention policy for Teams call logs, and the late-April 2026 change that removed new call records from Teams chat retention policies."
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 51 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-28"
+    note: "Corrected: removed the claim that nothing else deletes call logs, noted that holds and other retention policies suspend permanent deletion, added Solutions to the portal path, and dropped an untracked checklist item."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 54 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-28"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 51
-  confirmed: 47
-  unconfirmed: 1
-  contradicted: 3
-  attempts: 1
-  hash: "914e378851a22942c15222ab15ecd7c6"
+  claims: 54
+  confirmed: 54
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "2e8bf6f75442737bd25fd39b6eb4b5a8"
 ---
 
 ## What's changing
 
 Microsoft Purview Data Lifecycle Management now supports a retention policy for **Teams call logs**: the call data records (CDRs, also called call detail records) and other call metadata that Teams generates. Microsoft's Learn page says this data can sit in several underlying Teams locations but is targeted as a single workload for retention, and it points to personal call logs and shared call queue logs as examples.
 
-The policy is delete-only in practice. Microsoft states that by default Teams call logs are retained indefinitely, that deletion is the only applicable action, and that the policy can be created and modified only in Security & Compliance PowerShell (`New-AppRetentionCompliancePolicy` with the application value `User:MicrosoftTeamsCallLog`, then `New-AppRetentionComplianceRule`). Once created it appears in the Microsoft Purview portal under **Data Lifecycle Management** > **Policies**, read-only. It applies only to call logs created after the policy is configured and active, and covers call logs from both Teams chats and channels.
+The policy is delete-only in practice. Microsoft states that by default Teams call logs are retained indefinitely, that deletion is the only applicable action, and that the policy can be created and modified only in Security & Compliance PowerShell (`New-AppRetentionCompliancePolicy` with the application value `User:MicrosoftTeamsCallLog`, then `New-AppRetentionComplianceRule`). Once created it appears in the Microsoft Purview portal under **Solutions** > **Data Lifecycle Management** > **Policies**, read-only. It applies only to call logs created after the policy is configured and active, and covers call logs from both Teams chats and channels.
 
 The change also alters existing policies. Before late April 2026, CDRs for Teams chat and channel messages were included in Teams chat retention policies. Now new CDRs are supported only by a call log policy; CDRs already covered by earlier Teams chat policies stay managed by those policies.
 
@@ -123,7 +127,7 @@ The roadmap item is **Launched** (General Availability), with a target of April 
 
 ## Why it matters
 
-The roadmap item names the driver: some countries set a maximum retention period for calling records, and call logs kept indefinitely can breach it. A tenant that used a Teams chat retention policy with a delete action to meet that limit had CDRs deleted under it until late April 2026. Since then, new CDRs fall outside that policy, and Microsoft's stated default for call logs is indefinite retention. Nothing deletes them until an administrator creates the call log policy.
+The roadmap item names the driver: some countries set a maximum retention period for calling records, and call logs kept indefinitely can breach it. A tenant that used a Teams chat retention policy with a delete action to meet that limit had CDRs deleted under it until late April 2026. Since then, new CDRs fall outside that policy, and Microsoft's stated default for call logs is indefinite retention.
 
 Because the policy applies only to call logs created after it is active, each month without it adds records the policy will not reach. For organisations under a statutory maximum, this is a gap to close now rather than at the next policy review. For others, the decision is whether keeping call history indefinitely is acceptable.
 
@@ -137,7 +141,7 @@ Because the policy applies only to call logs created after it is active, each mo
 - The identity question is who can create or lock the policy: Purview role groups govern it (Compliance Administrator, or a custom group with the Retention Management role).
 
 **Autonomy & actions**
-- Once active, the policy permanently deletes call-log records after the set period with no approval step. For call logs, the record moves to the SubstrateHolds folder typically 1-7 days after expiry, stays at least 1 day, then is permanently deleted the next time the timer job runs (typically 1-7 days).
+- Once active, the policy permanently deletes call-log records after the set period with no approval step. For call logs, the record moves to the SubstrateHolds folder typically 1-7 days after expiry, stays at least 1 day, then is permanently deleted the next time the timer job runs (typically 1-7 days). Permanent deletion is suspended while the record is subject to an applicable retention policy that retains it or an eDiscovery hold.
 - Turning on Preservation Lock (`-RestrictiveRetention $true`) is irreversible: the policy can then be extended but not reduced, disabled or turned off.
 
 **Change & support**
@@ -164,18 +168,17 @@ Because the policy applies only to call logs created after it is active, each mo
 
 ### Before rollout
 - Confirm with legal or records owners whether a maximum retention period applies to calling records in each country you operate in, and choose the deletion period in days.
-- List existing Teams chat retention policies with a delete action, and record that they stopped covering new CDRs in late April 2026.
 - Add the people who will run the scripts to the Compliance Administrator role group, or a custom role group with the Retention Management role.
 - Decide before creation whether the policy needs Preservation Lock, since a locked policy cannot be reduced or turned off.
 
 ### At rollout
 - Create the policy in Security & Compliance PowerShell with `New-AppRetentionCompliancePolicy -Applications "User:MicrosoftTeamsCallLog" -ExchangeLocation "All"`.
 - Add the rule with `New-AppRetentionComplianceRule`, setting `-RetentionDuration` in days and `-RetentionComplianceAction Delete`.
-- Check that the policy appears read-only under Data Lifecycle Management > Policies in the Microsoft Purview portal.
+- Check that the policy appears read-only under Solutions > Data Lifecycle Management > Policies in the Microsoft Purview portal.
 
 ### After rollout
 - Record the policy's start date as the earliest creation date of call logs it will delete, and keep that alongside the regulatory requirement it serves.
-- Tell Teams Phone and call queue owners that call-log records older than the period will be deleted, and confirm with a test user what Teams call history then shows.
+- Tell Teams Phone and call queue owners that call-log records older than the period will be deleted, and confirm with a test user what Teams call history then shows. Permanent deletion is suspended while the record is subject to an applicable retention policy that retains it or an eDiscovery hold.
 - Review the policy when retention rules change, using PowerShell, since the portal cannot edit it.
 
 ## Governance controls
@@ -192,7 +195,7 @@ Because the policy applies only to call logs created after it is active, each mo
 </tbody>
 </table>
 
-All three policy controls are set in Security & Compliance PowerShell; Microsoft documents that the call log policy can be created and modified only there, and the Microsoft Purview portal shows it read-only under **Data Lifecycle Management** > **Policies**. Create the policy first, then the rule: the policy decides which mailboxes are in scope, and the rule sets the period and the delete action. Preservation Lock is a parameter of the policy and cannot be undone. Running the cmdlets needs Purview permissions; see [/concepts/role-groups/](/concepts/role-groups/). Existing Teams chat retention policies keep managing the CDRs they already covered but do not govern new ones.
+All three policy controls are set in Security & Compliance PowerShell; Microsoft documents that the call log policy can be created and modified only there, and the Microsoft Purview portal shows it read-only under **Solutions** > **Data Lifecycle Management** > **Policies**. Create the policy first, then the rule: the policy decides which mailboxes are in scope, and the rule sets the period and the delete action. Preservation Lock is a parameter of the policy and cannot be undone. Running the cmdlets needs Purview permissions; see [/concepts/role-groups/](/concepts/role-groups/). Existing Teams chat retention policies keep managing the CDRs they already covered but do not govern new ones.
 
 ## Open questions
 
@@ -204,16 +207,5 @@ All three policy controls are set in Security & Compliance PowerShell; Microsoft
 <!-- rationale
 risk: Medium. Since late April 2026 new call data records are covered only by a separate call log policy, and Microsoft states call logs are kept indefinitely by default, so tenants relying on Teams chat policies to delete them keep new records until they act.
 cost: Low. Retention policies come with licences such as Microsoft 365 E3 and E5 under the Purview service description, and no meter is documented for this location; the cost is admin time to script and test the policy.
-impact: Low. Compliance and Teams administrators act on it; nothing about call logs changes until someone creates a call log retention policy in PowerShell.
--->
-
-<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Why it matters / absence: Nothing deletes call logs until an administrator creates the call-log policy. | Found: Searched: Teams call logs retention deletion eDiscovery hold Litigation Hold permanent deletion; Teams call logs retention licensing Business Basic F3 pay as you go billing meter. Read retention-policies-teams and PSTN usage report excerpts; no universal absence of other deletion routes is stated. | Fix: Remove 'Nothing deletes them until an administrator creates the call log policy.' The preceding sentence already states the documented default without claiming that no other deletion route exists.
-- [contradicted, blocker] Risk assessment: Autonomy & actions; Governance guidance: After rollout / behaviour: The policy permanently deletes expired call-log records at the next timer run, typically 1-7 days later, without qualification. | Found: For all examples that refer to permanent deletion, because of the principles of retention, this action is suspended if the message is subject to another retention policy to retain the item or it's subject to an eDiscovery hold. | Fix: Add to the deletion explanation and qualify the After rollout deletion advice: 'Permanent deletion is suspended while the record is subject to an applicable retention policy that retains it or an eDiscovery hold.' The call-log section explicitly applies Example 3's behaviour and timings; see https://learn.microsoft.com/purview/retention-policies-teams. | Source: https://learn.microsoft.com/purview/retention-policies-teams
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] rationale: impact / consistency: Nothing about call logs changes until somebody creates a PowerShell retention policy. | Found: impact: ... nothing about call logs changes until someone creates a call log retention policy in PowerShell. / The change also alters existing policies. ... Now new CDRs are supported only by a call log policy | Fix: Replace the impact rationale's second clause with 'the configuration work falls to compliance and Teams administrators.' Keep the body statement that new CDRs stopped being covered by Teams chat policies in late April 2026.
-- [supported, minor] What's changing; Governance guidance: At rollout; Governance controls / admin-path: The portal route to view the read-only policy is Data Lifecycle Management > Policies. | Found: Sign in to the Microsoft Purview portal > Solutions > Data Lifecycle Management > Policies > Retention policies. ... it's displayed in Data Lifecycle Management > Policies ... visible but read-only. | Fix: Use 'Microsoft Purview portal > Solutions > Data Lifecycle Management > Policies' wherever the read-only viewing route is printed; Solutions is the omitted navigation heading. | Source: https://learn.microsoft.com/purview/create-retention-policies
-- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist tells readers to list existing Teams chat retention policies, but that control has no table row. | Found: List existing Teams chat retention policies with a delete action / controls: call-log policy, deletion period, Preservation Lock, role-group membership | Fix: Remove the checklist item 'List existing Teams chat retention policies with a delete action, and record that they stopped covering new CDRs in late April 2026.' The body already explains the historical coverage change.
+impact: Low. Compliance and Teams administrators act on it; the configuration work falls to compliance and Teams administrators.
 -->

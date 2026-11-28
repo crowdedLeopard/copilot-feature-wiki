@@ -38,13 +38,13 @@ sources:
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-sensitiveinformationscan"
     kind: "learn"
 videos: []
-related: ["sensitive-information-types","sensitivity-labels","microsoft-purview-recurring-classifier-refresh","microsoft-purview-information-protection-auto-labeling-scale-increase-for-sh-us-government","microsoft-purview-unified-classification-management-experience"]
+related: ["sensitive-information-types","sensitivity-labels","microsoft-purview-information-protection-auto-labeling-scale-increase-for-sh-us-government","microsoft-purview-unified-classification-management-experience"]
 controls:
   - governs: "Which SharePoint sites and OneDrive accounts an on-demand scan covers"
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Information Protection > Classifiers > On-demand classification > New scan"
+      path: "Information Protection > Classifiers > On-demand classification > New scan > Scope and location"
       docs: "https://learn.microsoft.com/purview/on-demand-classification"
     api:
       kind: "powershell"
@@ -55,13 +55,13 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Usage center > Pay-as-you-go"
+      path: "Usage center > Pay-as-you-go > On-Demand Classification"
       docs: "https://learn.microsoft.com/purview/purview-billing-usage"
     api: null
     note: "Usage center is in preview. Viewing the page needs Global Reader, Security Reader or Global Admin. On the Pay-as-you-go page, toggle On-Demand Classification between paused and active."
 confidence: "medium"
 created: "2026-11-21"
-updated: "2026-11-21"
+updated: "2026-11-28"
 roadmapModified: "2026-09-28T22:58:08"
 changes:
   - date: "2026-11-21"
@@ -74,19 +74,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 82 statements not yet confirmed"
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 91 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-28"
+    note: "Corrected after verification: the after-rollout step now compares the Azure bill with the estimate and reviews units in Usage center; removed the Items for review step; extended both control paths to the setting."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 83 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-28"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 91
-  confirmed: 89
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 1
-  hash: "a436d4b1125b9e29a5aad35aa56eaaa3"
+  claims: 83
+  confirmed: 83
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "0bfff88881cf6d7bf65d441b8a32a06d"
 ---
 
 ## What's changing
@@ -150,8 +154,7 @@ Per Learn, a scan can cover all SharePoint sites and OneDrive accounts, specific
 - Check the estimated cost against budget, and edit and rerun the estimation if the scope is wider than intended.
 
 ### After rollout
-- Review the Items for review tab and the policy actions the scan triggered, and export the list if the compliance team needs a record.
-- Compare the billed amount in the Usage center with the estimate, using the Usage center row in the controls table.
+- Compare the billed amount on the Azure bill with the estimate; review consumption units in Usage center using the Usage center row in the controls table.
 - Allow up to seven days before expecting Content Explorer to show newly classified content.
 
 ## Governance controls
@@ -161,8 +164,8 @@ Per Learn, a scan can cover all SharePoint sites and OneDrive accounts, specific
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which SharePoint sites and OneDrive accounts an on-demand scan covers</strong><br><small>Tenant</small><br><small class="controls__note">Compliance Administrator role group runs scans. The portal also offers Data loss prevention &gt; Classifiers as a way in. The cmdlet runs only in Security &amp; Compliance PowerShell.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Information Protection › Classifiers › On-demand classification › New scan <a href="https://learn.microsoft.com/purview/on-demand-classification" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-SensitiveInformationScan -Name &quot;&lt;scan name&gt;&quot; -SharePointLocation All</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-sensitiveinformationscan" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether On-Demand Classification pay-as-you-go usage is paused or active</strong><br><small>Tenant</small><br><small class="controls__note">Usage center is in preview. Viewing the page needs Global Reader, Security Reader or Global Admin. On the Pay-as-you-go page, toggle On-Demand Classification between paused and active.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Usage center › Pay-as-you-go <a href="https://learn.microsoft.com/purview/purview-billing-usage" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which SharePoint sites and OneDrive accounts an on-demand scan covers</strong><br><small>Tenant</small><br><small class="controls__note">Compliance Administrator role group runs scans. The portal also offers Data loss prevention &gt; Classifiers as a way in. The cmdlet runs only in Security &amp; Compliance PowerShell.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Information Protection › Classifiers › On-demand classification › New scan › Scope and location <a href="https://learn.microsoft.com/purview/on-demand-classification" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-SensitiveInformationScan -Name &quot;&lt;scan name&gt;&quot; -SharePointLocation All</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-sensitiveinformationscan" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether On-Demand Classification pay-as-you-go usage is paused or active</strong><br><small>Tenant</small><br><small class="controls__note">Usage center is in preview. Viewing the page needs Global Reader, Security Reader or Global Admin. On the Pay-as-you-go page, toggle On-Demand Classification between paused and active.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Usage center › Pay-as-you-go › On-Demand Classification <a href="https://learn.microsoft.com/purview/purview-billing-usage" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
@@ -183,14 +186,4 @@ The scan itself does not enforce anything; the policies that match the results d
 risk: Medium. Learn says a scan's updated results can trigger active policies, including policies that apply or remove sensitivity labels, so one scan can change many existing files.
 cost: Variable. Learn lists on-demand classification as a pay-as-you-go capability billed per asset classified per scan, through an Azure subscription; the rate for the US Government clouds is not yet published.
 impact: Medium. Admins run the scan, but file owners notice if matching DLP, labelling, retention or insider risk policies then act on their files.
--->
-
-<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Governance guidance: After rollout, second bullet / admin-path: The billed monetary amount can be found in Usage center and compared with the scan estimate. | Found: Searched: Microsoft Purview Usage center pay-as-you-go actual billed amount monetary cost Total Units Used Azure bill. Read purview-billing-usage and purview-billing-models: Usage center documents Total Units Used; charges are on the Azure bill, not a documented monetary display in Usage center. | Fix: Replace the bullet with 'Compare the billed amount on the Azure bill with the estimate; review consumption units in Usage center using the Usage center row in the controls table.' The Azure bill is documented at https://learn.microsoft.com/purview/purview-billing-models and consumption units at https://learn.microsoft.com/purview/purview-billing-usage.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: Microsoft Purview portal > Information Protection > Classifiers > On-demand classification > New scan reaches scan scope configuration. | Found: Go to ... Information Protection > Classifiers > On-demand classification. Select New scan. Follow the instructions in the wizard. ... Scope and location | Fix: Extend controls[0].ui.path and its rendered path to 'Information Protection > Classifiers > On-demand classification > New scan > Scope and location', as documented at https://learn.microsoft.com/purview/on-demand-classification. | Source: https://learn.microsoft.com/purview/on-demand-classification
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: Microsoft Purview portal > Usage center > Pay-as-you-go reaches the page containing the On-Demand Classification paused/active toggle. | Found: To access the Usage center > Pay-as-you-go ... pages ... The pay-as-you-go usage page also lets you toggle the features listed between paused and active states. ... On-Demand Classification | Yes | Yes | Fix: Extend controls[1].ui.path and its rendered path to 'Usage center > Pay-as-you-go > On-Demand Classification', retaining the paused/active toggle note, as documented at https://learn.microsoft.com/purview/purview-billing-usage. | Source: https://learn.microsoft.com/purview/purview-billing-usage
-- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The after-rollout checklist asks readers to review and export scan results through Items for review without a corresponding controls-table row. | Found: Checklist: 'Review the Items for review tab ... and export the list'. Table rows cover only scan scope and the pay-as-you-go pause toggle. | Fix: Remove the checklist instruction to review/export Items for review, or retain it as informational prose outside Governance guidance. This monitoring step has no corresponding table row; do not add a row in this correction.
 -->

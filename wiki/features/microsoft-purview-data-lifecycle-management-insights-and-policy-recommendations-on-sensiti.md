@@ -72,15 +72,17 @@ changes:
     note: "Corrected after verification: licensing model changed to unknown, and the unrestricted-administrator qualification for SharePoint retention policies added to the role guidance."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 45 statements confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 44 statements confirmed"
 version: 2
 verification:
   status: "verified"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 45
-  confirmed: 45
+  claims: 44
+  confirmed: 44
   unconfirmed: 0
   contradicted: 0
   attempts: 0

@@ -1,0 +1,926 @@
+{
+  "slug": "microsoft-viva-copilot-analytics-copilot-configuration-insights-in-the-copilot-dashboard-r",
+  "roadmapId": 551196,
+  "title": "Copilot Dashboard: Copilot configuration recommendations on the Readiness page",
+  "status": "held",
+  "date": "2026-11-28",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-28",
+    "reasons": [
+      "3 blocking findings (claims 25, 50, 58)"
+    ]
+  },
+  "counts": {
+    "claims": 71,
+    "confirmed": 66,
+    "unconfirmed": 1,
+    "contradicted": 4,
+    "blocker": 3,
+    "major": 1,
+    "minor": 6
+  },
+  "summary": "Hold for corrections to the access controls and the email workflow. Microsoft documents feature-access policies on surfaces reported as undocumented, and Contact admin opens admin details rather than the email application; Send email is the additional step.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is April CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"April CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap associates the feature with Microsoft Viva and Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Viva\", \"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-04-30T23:30:16.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-04-30T23:30:16\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "title; summary; What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "The Copilot Dashboard Readiness page now includes tailored Copilot configuration recommendations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes#may-5,-2026",
+      "quote": "The Readiness page now includes tailored recommendations for Copilot configuration settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Scope; controls[1].governs",
+      "type": "behaviour",
+      "claim": "The Copilot Dashboard is hosted in the Viva Insights web app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard",
+      "quote": "If you have access to the Copilot Dashboard, you can find it in the Viva Insights web app. On the left, select Copilot Dashboard.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Learn calls the section Steps to enable Copilot and accelerate your AI transformation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard",
+      "quote": "### Steps to enable Copilot and accelerate your AI transformation",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The section recommends enabling Copilot Chat, getting the most out of Copilot, and activating agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard",
+      "quote": "This section provides actionable recommendations to enable Copilot Chat, get the most out of Copilot, and activate agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Only configuration recommendations relevant to the organization appear.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard",
+      "quote": "The page only shows Copilot- and agent-related configuration recommendations that are relevant to your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Cards are grouped under Build AI momentum with Copilot Chat, Maximize value with Copilot, and Boost productivity with agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard",
+      "quote": "#### Build AI momentum with Copilot Chat; #### Maximize value with Copilot; #### Boost productivity with agents",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing: Copilot Chat cards",
+      "type": "behaviour",
+      "claim": "A card identifies blocked Copilot access in Outlook and the Copilot app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard",
+      "quote": "Users are blocked from using Copilot in Outlook and Copilot app: No one can use Copilot features in Outlook or the Copilot app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing: Copilot Chat cards",
+      "type": "behaviour",
+      "claim": "The desktop-app card concerns users not on Current or Monthly Enterprise Channel.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard",
+      "quote": "Some employees aren't on a supported channel for Copilot updates. Users must be on the Current or Monthly Enterprise Channels to use Copilot in desktop apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing: Copilot Chat cards",
+      "type": "behaviour",
+      "claim": "A card identifies Copilot not being pinned in Microsoft 365 apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard",
+      "quote": "Users can't access Copilot Chat in their Microsoft 365 apps: Copilot isn't pinned in the Microsoft 365 apps for any users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "A card recommends web search to improve Copilot Chat answers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard",
+      "quote": "Improve Copilot answers for Copilot Chat users with web search: Web search gives users accurate and relevant responses enriched by the latest insights from the web.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Cost and licensing: Indirect costs",
+      "type": "behaviour",
+      "claim": "The outstanding-license-requests card recommends assigning unused Copilot licenses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard",
+      "quote": "Users have outstanding Copilot license requests: Users are requesting a Copilot license. Contact your admin to assign unused Copilot licenses to your employees.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Cost and licensing: Indirect costs",
+      "type": "behaviour",
+      "claim": "A card identifies Copilot Chat users as candidates for a Copilot license.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard",
+      "quote": "Consider Copilot Chat users as candidates for a Copilot license: People with high engagement with Copilot Chat are prime candidates for a Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Cost and licensing: Indirect costs",
+      "type": "behaviour",
+      "claim": "A card identifies Microsoft 365 users as candidates for a Copilot license.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard",
+      "quote": "Consider Microsoft 365 users as candidates for a Copilot license: People with high engagement in Microsoft 365, Teams, and Outlook are prime candidates for Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Risk assessment: Security & identity; Governance guidance",
+      "type": "behaviour",
+      "claim": "An agent card identifies blocked Microsoft-built agents and prompts contacting an admin to unblock them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard",
+      "quote": "Agents built by Microsoft are blocked: Some Microsoft agents are blocked. Contact your admin to unblock sharing",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Risk assessment: Security & identity; Governance guidance",
+      "type": "behaviour",
+      "claim": "An agent card identifies disabled installation of organization-built agents and recommends allowing it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard",
+      "quote": "Users can't install agents built by your organization: Agent installation is turned off for agents built by people in your organization. Reach out to your admin to allow users to install these agents",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Open questions: nine documented cards",
+      "type": "behaviour",
+      "claim": "Learn documents nine recommendation cards.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard",
+      "quote": "#### Build AI momentum with Copilot Chat ... Recommendation cards: ... #### Maximize value with Copilot ... Recommendation cards: ... #### Boost productivity with agents ... Available recommendation cards:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing: Contact admin",
+      "type": "behaviour",
+      "claim": "Selecting Contact admin opens the email application with selected admins' aliases prefilled.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard",
+      "quote": "select Contact admin, then review the details and contact information that appears for the admins. Select Send email to open your email software with the selected admins' aliases prefilled in the To line.",
+      "severity": "blocker",
+      "fix": "Replace with: 'Select Contact admin to review admin details and contact information, then select Send email to open your email software with the selected admins' aliases prefilled in the To line.'"
+    },
+    {
+      "n": 26,
+      "where": "Why it matters; Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "The recommendation workflow lets viewers email selected Global admins.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard",
+      "quote": "To ask your Global admin to change these settings, select Contact admin ... Select Send email to open your email software with the selected admins' aliases prefilled in the To line.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The Readiness tab does not comprehensively cover Copilot readiness and eligibility requirements.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard",
+      "quote": "The tab does not provide a comprehensive summary of all readiness and eligibility requirements. See a full set of Copilot requirements.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Dashboard data covers the previous 28 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard",
+      "quote": "Data ... for the readiness, adoption, and impact pages represents data over the previous 28 days. ... Sentiment data ... reflects data for the period of your selected survey duration, not the previous 28 days.",
+      "severity": "minor",
+      "fix": "Replace 'Dashboard data covers the previous 28 days' with 'Readiness, adoption and impact metrics cover the previous 28 days; sentiment data instead covers the selected survey duration.'"
+    },
+    {
+      "n": 29,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Dashboard readiness, adoption and impact data has up to a six-day delay.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard",
+      "quote": "Data in the dashboard for the readiness, adoption, and impact pages represents data over the previous 28 days. There's up to a six-day data delay from the current date.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing: release notes date",
+      "type": "date",
+      "claim": "The release notes announced this feature on May 5, 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes#may-5,-2026",
+      "quote": "## May 5, 2026 ... Copilot configuration insights in the Copilot Dashboard Readiness page [Web] ... Roadmap ID: 551196",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "front matter: defaultState; Why it matters",
+      "type": "default",
+      "claim": "The recommendations are part of the updated Readiness page for existing eligible dashboard viewers without separate admin activation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes#may-5,-2026",
+      "quote": "The Readiness page now includes tailored recommendations for Copilot configuration settings. ... Review the updated Readiness page to see recommended configuration changes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "summary; Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "The documented recommendation cards prompt contacting an admin rather than making configuration changes themselves.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard",
+      "quote": "To ask your Global admin to change these settings, select Contact admin, then review the details and contact information that appears for the admins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "front matter: licensing.model; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The Readiness page is included in all three documented dashboard license tiers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard",
+      "quote": "Yes (at least 50) | All features included: - Readiness page ... Between 1 and 49 | N/A | Included: - Readiness page ... 50 or more | N/A | All features included: - Readiness page",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Dashboard availability requires a Microsoft 365 or Office 365 business or enterprise subscription and an active Exchange Online account.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard",
+      "quote": "The Microsoft Copilot Dashboard in Viva Insights is available to any customer with a Microsoft 365 or Office 365 subscription for business or enterprise, and who has an active Exchange Online account.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Individual dashboard viewers need no paid Viva Insights or Copilot license.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard",
+      "quote": "Users don't need a paid Viva Insights license or a Microsoft Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "Data processing requires at least 50 assigned Viva Insights licenses or one assigned Copilot license.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard",
+      "quote": "A minimum of 50 assigned Viva Insights licenses, or 1 assigned Copilot license (including the Viva Insights service plan), is required for data processing to kick off.",
+      "severity": "minor",
+      "fix": "Add the source's qualification: 'or 1 assigned Copilot licence (including the Viva Insights service plan)'."
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing: Meter",
+      "type": "absence",
+      "claim": "The dashboard page documents no dashboard meter or Copilot Credits charge at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Copilot Dashboard pricing licensing meter Copilot Credits Readiness'; opened dashboard page and read licensing table; reviewed billing search excerpts. No dashboard meter or dashboard credit charge found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Scope: Who sees it; Risk assessment: Data exposure; rationale: impact",
+      "type": "role",
+      "claim": "Global administrators have dashboard access, subject to the stated PIM caveat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard",
+      "quote": "Users who are assigned to the Global administrator role also have access to the Microsoft Copilot Dashboard. ... If you're a Privileged Identity Management (PIM) enabled tenant, global admins might not have access",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Scope: Who sees it; Why it matters; Risk assessment: Data exposure",
+      "type": "role",
+      "claim": "Senior leaders in qualifying tenants with at least 2,500 Entra ID users can receive automatic dashboard access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard",
+      "quote": "Users who are senior leaders within large teams as determined by their Entra ID data manager attribute can automatically view the report. ... The tenant has at least 2,500 users with an Entra ID",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Scope: Who sees it; Risk assessment: Data exposure",
+      "type": "role",
+      "claim": "Viva Insights Analysts with global partition access have automatic dashboard access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard",
+      "quote": "The following types of users also have automatic access to the dashboard: - Viva Insights Analysts with global partition access",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Scope: Who sees it",
+      "type": "role",
+      "claim": "Users with delegate access have dashboard access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard",
+      "quote": "The following types of users also have automatic access to the dashboard: ... Users with delegate access",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Scope: Who sees it",
+      "type": "role",
+      "claim": "Enabled managers have dashboard access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard",
+      "quote": "The following types of users also have automatic access to the dashboard: ... Enabled managers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Data exposure; Scope; rationale: impact",
+      "type": "role",
+      "claim": "Managers cannot open the Readiness page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard",
+      "quote": "Managers do not have access to the readiness page",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Data exposure; Scope",
+      "type": "role",
+      "claim": "Delegates cannot see the recommendations section.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard",
+      "quote": "delegates don't have access to the \"Steps to enable Copilot and accelerate your AI transformation\" section.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Change & support; Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "In PIM-enabled tenants, explicitly adding Global admins can give them dashboard access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard",
+      "quote": "If you want to give global admins access to the Copilot Dashboard, add them explicitly using these steps",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The recommendation section exposes tenant configuration state to eligible viewers, with access managed by the access list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard",
+      "quote": "The page only shows Copilot- and agent-related configuration recommendations that are relevant to your organization. ... Agents built by Microsoft are blocked ... Agent installation is turned off",
+      "severity": "minor",
+      "fix": "Replace the opening of Data exposure with 'The section shows tenant-level configuration state and outstanding Copilot licence requests to eligible viewers.' Change '(control row 2)' to '(control row 1)' for the access list. Keep the existing manager and delegate exclusions."
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The recommendations section shows license-request counts.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'Copilot Dashboard license requests count'; read dashboard Readiness section and search excerpts. Learn documents an outstanding-request card, but no passage states that it displays request counts.",
+      "severity": "major",
+      "fix": "Replace 'and licence-request counts' with 'and outstanding Copilot licence requests'."
+    },
+    {
+      "n": 48,
+      "where": "Scope: Clouds",
+      "type": "availability",
+      "claim": "Learn lists Readiness page access and features as supported in Worldwide, not GCC Moderate or GCC High.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/supported-environments",
+      "quote": "| Feature | WW | GCC-M | GCC-H | ... | Readiness page | ... | Page access and features | Yes | No | No |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Dashboard user access can be granted at Settings > Microsoft Viva > Viva Insights > Set up and management > Microsoft Copilot Dashboard > Manage access settings for Microsoft Copilot Dashboard > Users > Add.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+      "quote": "Go to the Settings tab and select Microsoft Viva, then Viva Insights. ... Set up and management tab. ... Under Microsoft Copilot Dashboard, select Manage access settings for Microsoft Copilot Dashboard. ... select Users ... select Add.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[0].api; Governance controls table",
+      "type": "absence",
+      "claim": "No API or automation is documented for controlling dashboard access for individual users or groups.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/exchange/add-vivamodulefeaturepolicy",
+      "quote": "Policies are used to restrict or grant access to the specified feature for specific users, groups, or the entire tenant. ... -UserIds <String[]> ... -GroupIds <String[]>",
+      "severity": "blocker",
+      "fix": "Replace controls[0].api null with PowerShell 'Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId \"Viva Insights web app\" -Name EnableSelectedUsers -IsFeatureEnabled $true -UserIds <user-UPNs>' and docs https://learn.microsoft.com/powershell/module/exchange/add-vivamodulefeaturepolicy. The cited settings page explicitly places dashboard access under the Viva Insights web app and supports user/group policies for it. Add to the note: 'This policy controls access to the whole Viva Insights web app, not the Readiness page alone; use -GroupIds for groups.'"
+    },
+    {
+      "n": 51,
+      "where": "controls[0].note; Scope: Roles; Governance controls",
+      "type": "role",
+      "claim": "The access settings, web app control and auto-enablement control are documented for AI Administrators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+      "quote": "In addition to the roles described below, all settings can also be managed by Microsoft 365 Global Administrators. ... Applies to: AI Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Selecting Groups instead of Users adds Entra ID groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+      "quote": "To enable access for new groups: ... At the top, select Groups. Search for the Entra ID groups you'd like to add, and select them from the list. ... select Add.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Access-list changes take effect in 24 hours.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+      "quote": "When you add or remove users to the Viva Insights web app, the change will go into effect in 24 hours.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Feature-access policies are created at Settings > Viva > Settings > Manage feature access > Create a policy > app and feature > Access setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/control-access-admin-center",
+      "quote": "select Viva from the settings menu. ... Select the Settings tab and select Manage feature access. ... Select Create a policy. ... select the app and feature ... Select the Access setting option and choose On or Off",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId \"Viva Insights web app\" -Name DisableFeatureForAll -IsFeatureEnabled $false -Everyone disables the web app tenant-wide.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+      "quote": "Example: Turn off the Viva Insights web app for all users in your tenant ... ModuleId : VivaInsights; FeatureId : Viva Insights web app; Name : DisableFeatureForAll; IsFeatureEnabled : false; Everyone",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[1].note; Why it matters; Governance controls",
+      "type": "default",
+      "claim": "The Viva Insights web app is on by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+      "quote": "The Viva Insights web app is on by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[1].governs; controls[1].note; Governance controls",
+      "type": "applicability",
+      "claim": "Disabling the Viva Insights web app disables the dashboard, Copilot Analytics reports and advanced tools.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+      "quote": "turn the Viva Insights web app on or off at the tenant, group, or user level ... Turning this control off disables the entire app, which includes the Microsoft Copilot Dashboard, Copilot Analytics reports, and advanced analysis and admin tools.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "absence",
+      "claim": "No admin UI is documented for dashboard auto-enablement policies.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/viva/feature-access-management",
+      "quote": "Admins with correct permissions in the Microsoft 365 admin center or in PowerShell can create and manage access policies. ... | Copilot Dashboard Auto Enablement | No | Global admin | Viva Insights |",
+      "severity": "blocker",
+      "fix": "Replace controls[2].ui null with surface 'Microsoft 365 admin center', path 'Settings > Viva > Settings > Manage feature access > Create a policy > app and feature > Access setting', docs https://learn.microsoft.com/viva/control-access-admin-center. Add to the note: 'Select the Copilot Dashboard Auto Enablement feature and apply the policy to Everyone; only tenant-level policies take effect.' The feature-access-management table includes this feature in its documented admin-center policy coverage; the feature-specific PowerShell section does not state that UI management is excluded."
+    },
+    {
+      "n": 59,
+      "where": "controls[2].api; Governance controls table; Governance guidance: Before rollout",
+      "type": "command",
+      "claim": "Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId AutoCxoIdentification -Name DisableFeatureForAll -IsFeatureEnabled $false -Everyone disables automatic dashboard enablement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+      "quote": "After you've signed in, you can manage access for your tenant using the Add-VivaModuleFeaturePolicy cmdlet ... ModuleId : VivaInsights; FeatureId : AutoCxoIdentification; Name : DisableFeatureForAll; IsFeatureEnabled : false; Everyone",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[2].note; Governance controls",
+      "type": "default",
+      "claim": "Dashboard auto-enablement is enabled by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+      "quote": "Default state: Enabled ... This control supports tenant-level policies only, not user or group-level policies. ... User- and group-level policies aren't supported for this feature and will not take effect if used.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[2].note; Governance controls",
+      "type": "applicability",
+      "claim": "Auto-enablement policies support only tenant-level scope; user and group policies do not take effect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+      "quote": "This control supports tenant-level policies only, not user or group-level policies. ... User- and group-level policies aren't supported for this feature and will not take effect if used.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[3]; Governance controls; Open questions: hiding recommendations",
+      "type": "absence",
+      "claim": "Microsoft has not documented a separate UI or API switch for the Readiness recommendation cards.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Copilot Dashboard Readiness Steps enable Copilot recommendations hide disable feature access policy'; 'Copilot Dashboard Readiness hide Graph PowerShell recommendations switch'. Read dashboard, settings and VFAM feature table; no separate card switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Governance controls: feature access management role table",
+      "type": "role",
+      "claim": "The general feature-access table lists Global admin for the web app and dashboard auto-enablement features.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/feature-access-management",
+      "quote": "| Copilot Dashboard Auto Enablement | No | Global admin | Viva Insights | ... | Viva Insights web app | No | Global admin | Viva Insights |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Governance controls: PowerShell prerequisites",
+      "type": "command",
+      "claim": "The PowerShell controls use the Exchange Online PowerShell module.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchange/add-vivamodulefeaturepolicy",
+      "quote": "This cmdlet is available only in the Exchange Online PowerShell module version 3.2.0 or later.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Governance controls: PowerShell prerequisites",
+      "type": "command",
+      "claim": "The PowerShell controls require authentication with Connect-ExchangeOnline.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchange/add-vivamodulefeaturepolicy",
+      "quote": "You need to use the Connect-ExchangeOnline cmdlet to authenticate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "VFAM policy creation, updates and deletions have change logs in Microsoft Purview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/feature-access-management",
+      "quote": "For a history of policy creation, updates, and deletions, see the Viva Feature Access Management (VFAM) change logs for your organization in Microsoft Purview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Governance guidance: Before rollout, access-list path",
+      "type": "admin-path",
+      "claim": "The checklist reaches the dashboard access page via Settings > Microsoft Viva > Viva Insights > Set up and management > Manage access settings for Microsoft Copilot Dashboard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+      "quote": "Go to the Settings tab and select Microsoft Viva, then Viva Insights. ... Set up and management tab. ... Under Microsoft Copilot Dashboard, select Manage access settings for Microsoft Copilot Dashboard.",
+      "severity": "minor",
+      "fix": "Use 'Settings > Microsoft Viva > Viva Insights > Set up and management > Microsoft Copilot Dashboard > Manage access settings for Microsoft Copilot Dashboard > Users > Remove selected users' for the checklist's user-removal instruction. The omitted Microsoft Copilot Dashboard step is a heading, not a selection."
+    },
+    {
+      "n": 68,
+      "where": "Governance guidance: After rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist asks readers to review VFAM change logs, but the controls table has no monitoring row for that step.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Review the Viva Feature Access Management change logs in Microsoft Purview for changes to the dashboard policies. ... Which users and groups are given access to the Copilot Dashboard ... Whether senior leaders are given Copilot Dashboard access automatically ... Separate switch for the Readiness page",
+      "severity": "minor",
+      "fix": "Remove the checklist bullet 'Review the Viva Feature Access Management change logs in Microsoft Purview for changes to the dashboard policies.' It has no corresponding controls-table row; do not add a row in this correction."
+    },
+    {
+      "n": 69,
+      "where": "Risk assessment: Security & identity; Governance controls: settings outside the dashboard",
+      "type": "behaviour",
+      "claim": "The settings recommended by the cards are managed outside the Readiness recommendation section.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center",
+      "quote": "Some settings you configure there, and others link to the admin center or policy service where you make the change. ... Agents ... Copilot > Settings > Data access > Agents ... Follow the link ... Allow web search in Copilot cloud policy",
+      "severity": "minor",
+      "fix": "Replace 'the settings stay in their own admin centres' with 'the settings are managed outside the Readiness recommendation section.' Likewise replace 'The cards point to settings in other admin centres' with 'The cards point to settings managed outside the Readiness recommendation section'. Add https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center to sources."
+    },
+    {
+      "n": 70,
+      "where": "Scope: Roles; Governance controls",
+      "type": "role",
+      "claim": "Global Administrators can manage all dashboard settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+      "quote": "In addition to the roles described below, all settings can also be managed by Microsoft 365 Global Administrators.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "controls[1].governs; Governance controls",
+      "type": "applicability",
+      "claim": "The Viva Insights web app control supports tenant-, group- and user-level policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+      "quote": "The AI admin can turn the Viva Insights web app on or off at the tenant, group, or user level using the Viva Insights web app feature access management control",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-28T06:58:07.127Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=551196",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/feature-access-management",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/control-access-admin-center",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchange/add-vivamodulefeaturepolicy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/supported-environments",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which users and groups are given access to the Copilot Dashboard, including the Readiness page",
+        "docs": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Microsoft Viva",
+          "Viva Insights",
+          "Set up and management",
+          "Microsoft Copilot Dashboard",
+          "Manage access settings for Microsoft Copilot Dashboard",
+          "Users",
+          "Add"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether the Viva Insights web app, which hosts the Copilot Dashboard, is on for the tenant, groups or users",
+        "docs": "https://learn.microsoft.com/viva/control-access-admin-center",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Viva",
+          "Settings",
+          "Manage feature access",
+          "Create a policy",
+          "app and feature",
+          "Access setting"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether the Viva Insights web app, which hosts the Copilot Dashboard, is on for the tenant, groups or users",
+        "docs": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+        "reachable": true,
+        "token": "Add-VivaModuleFeaturePolicy",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Whether senior leaders are given Copilot Dashboard access automatically",
+        "docs": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+        "reachable": true,
+        "token": "Add-VivaModuleFeaturePolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

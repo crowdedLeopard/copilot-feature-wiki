@@ -4,7 +4,7 @@ slug: "microsoft-edge-microsoft-edge-can-now-send-work-related-browsing-history-
 roadmapId: 537283
 topic: "m365-copilot"
 products: ["Microsoft Edge","Microsoft Copilot (Microsoft 365)"]
-summary: "Edge shares tenant-approved, work-related browsing history with Microsoft 365 Copilot Search for Copilot-licensed users, on unless the Edge policy is disabled. Decide now whether to keep, or disable, it."
+summary: "Edge shares tenant-approved, work-related browsing history with Microsoft 365 Copilot Search for eligible Copilot-licensed users, on unless the Edge policy is disabled. Decide now whether to keep, or disable, it."
 status: "launched"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -65,19 +65,23 @@ changes:
     note: "New briefing: launched Edge sharing of tenant-approved browsing history with Microsoft 365 Copilot Search, on by default, with its Edge policy."
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 45 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-28"
+    note: "Corrected: removed the claim that administrators cannot check which sites are in scope, and narrowed who has sharing on by default to users with an eligible Microsoft 365 Copilot licence."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 45 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-28"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 45
-  confirmed: 43
-  unconfirmed: 2
+  confirmed: 45
+  unconfirmed: 0
   contradicted: 0
-  attempts: 1
-  hash: "b4870efe50561d9eb8bfc54130e46174"
+  attempts: 0
+  hash: "741b152c1a7bcecf8681abca001d5d61"
 ---
 
 ## What's changing
@@ -90,14 +94,14 @@ The roadmap item is **Launched**, General Availability, with a target of May CY2
 
 ## Why it matters
 
-This is a new flow of browsing data from the endpoint into a Microsoft 365 service, and it starts without an administrator choosing it. In a tenant that has not configured the policy, every Copilot-licensed user signed in to Edge with a work account has sharing switched on unless they turn it off with the toggle in Edge settings. Organisations that treat browsing history as sensitive, or that have works council or privacy commitments about it, need to decide on the policy rather than inherit the default.
+This is a new flow of browsing data from the endpoint into a Microsoft 365 service, and it starts without an administrator choosing it. When the policy is not configured, users signed in to Edge with an Entra ID account and holding an eligible Microsoft 365 Copilot licence have sharing on by default, but can turn it off in Edge settings. Organisations that treat browsing history as sensitive, or that have works council or privacy commitments about it, need to decide on the policy rather than inherit the default.
 
-The weak point is scope. The policy page promises that only tenant-approved, work-related sites are shared, but Microsoft Learn does not document where or how a tenant approves those sites at the time of writing (November 2026). Until that is clear, administrators cannot check from their own configuration which sites are in scope, so the safe options are to disable the policy or to accept the default knowingly.
+The weak point is scope. The policy page promises that only tenant-approved, work-related sites are shared, but Microsoft Learn does not document where or how a tenant approves those sites at the time of writing (November 2026). Until that is clear, the safe options are to disable the policy or to accept the default knowingly.
 
 ## Risk assessment
 
 **Data exposure**
-- Browsing history from tenant-approved, work-related sites is sent to Microsoft 365 Copilot Search and can surface in a user's search results. Microsoft Learn does not document which sites count as approved or how that list is set, so the reach cannot be checked locally. Disabling **ShareBrowsingHistoryWithCopilotSearchAllowed** stops the sharing.
+- Browsing history from tenant-approved, work-related sites is sent to Microsoft 365 Copilot Search and can surface in a user's search results. Microsoft Learn does not document which sites count as approved or how that list is set at the time of writing (November 2026). Disabling **ShareBrowsingHistoryWithCopilotSearchAllowed** stops the sharing.
 - Where the shared history is stored, for how long and whether it can be deleted are not described on the policy page.
 
 **Security & identity**
@@ -168,12 +172,5 @@ The Microsoft 365 Copilot extension for Copilot connectors captures activity fro
 <!-- rationale
 risk: Medium. Browsing history leaves the browser for Copilot Search by default, limited by the policy page to tenant-approved, work-related sites; one Edge policy turns it off, but Learn does not say how sites are approved.
 cost: Low. The policy page makes the feature available to users who already hold an eligible Microsoft 365 Copilot licence; the cost the sources show is admin time to decide and deploy the Edge policy.
-impact: Medium. Users signed in to Edge with an Entra ID account and holding a Microsoft 365 Copilot licence see browsing-history results in Copilot Search without anyone acting.
--->
-
-<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Why it matters; Risk assessment: Data exposure / absence: Administrators cannot check from their own configuration which sites are in scope, and the reach cannot be checked locally. | Found: Searched: 'Edge Copilot Search approve sites administrator UI API Graph tenant browsing history' and 'ShareBrowsingHistoryWithCopilotSearchAllowed sites configure'; read policy, release notes and connector-extension page. None states that local scope inspection is impossible. | Fix: Remove 'administrators cannot check from their own configuration which sites are in scope' from Why it matters and 'so the reach cannot be checked locally' from Risk assessment. Keep the narrower statement that Microsoft Learn does not document how sites are approved at the time of writing (November 2026).
-- [unsupported, blocker] Why it matters; rationale: impact / licensing: Every Copilot-licensed user signed in to Edge with a work account has sharing switched on unless they use the toggle. | Found: Searched: 'Edge Copilot Search eligible licenses browsing history'; read policy and Copilot Search eligibility/licensing excerpts. They require an eligible licence; none states that every Copilot licence is eligible for this Edge feature. | Fix: Replace the second sentence of Why it matters with 'When the policy is not configured, users signed in to Edge with an Entra ID account and holding an eligible Microsoft 365 Copilot licence have sharing on by default, but can turn it off in Edge settings.' In the impact rationale, replace 'holding a Microsoft 365 Copilot licence' with 'holding an eligible Microsoft 365 Copilot licence'. Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/sharebrowsinghistorywithcopilotsearchallowed.
+impact: Medium. Users signed in to Edge with an Entra ID account and holding an eligible Microsoft 365 Copilot licence see browsing-history results in Copilot Search without anyone acting.
 -->

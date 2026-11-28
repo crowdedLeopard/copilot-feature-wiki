@@ -17,8 +17,8 @@ impact: "low"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published: the licence needed to view the report. The Learn report page counts users \"with Microsoft Copilot licenses\" as enabled users and lists roles, not a licence, for viewing reports."
+  model: "included"
+  notes: "The Microsoft Copilot overview describes the usage report as requiring Microsoft 365 (Basic) or Microsoft 365 Copilot (Premium) licenses. The report and reporting-options pages specify viewer roles but do not state whether the administrator personally needs a licence."
 audiences: ["m365-admin","change-adoption","compliance"]
 tags: ["usage-reports","m365-copilot","m365-admin-center","analytics","adoption","copilot-control-system","privacy","reporting-roles","gcc-high","dod"]
 sources:
@@ -37,11 +37,14 @@ sources:
   - title: "Drive adoption with Microsoft Copilot Usage report Organizational Messaging"
     url: "https://learn.microsoft.com/microsoft-365/copilot/track-copilot-adoption"
     kind: "learn"
-  - title: "Update adminReportSettings"
-    url: "https://learn.microsoft.com/graph/api/adminreportsettings-update?view=graph-rest-beta"
+  - title: "Microsoft Copilot overview"
+    url: "https://learn.microsoft.com/copilot/plan/copilot-overview#track-and-increase-copilot-adoption"
     kind: "learn"
   - title: "Whether usernames and display names show in the Copilot usage report (Microsoft 365 admin center)"
     url: "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports#show-user-group-or-site-details-in-usage-reports"
+    kind: "learn"
+  - title: "Whether usernames and display names show in the Copilot usage report (Microsoft Graph)"
+    url: "https://learn.microsoft.com/graph/api/adminreportsettings-update?view=graph-rest-beta"
     kind: "learn"
 videos: []
 related: ["m365-copilot-m365-admin-center-usage-reports-copilot-chat-for-gcc-gcc-high-and-dod","m365-copilot-new-m365-copilot-usage-reports-for-copilot-search-connectors-and-agents-for-u","auditing","microsoft-viva-insights-and-copilot-analytics-in-gcc-and-gcc-high"]
@@ -59,7 +62,7 @@ controls:
     note: "Setting applies to all Microsoft 365 usage reports, not only Copilot. Global administrators can change it. The request body sets displayConcealedNames."
 confidence: "medium"
 created: "2026-11-21"
-updated: "2026-11-21"
+updated: "2026-11-28"
 roadmapModified: "2026-08-21T22:00:23"
 changes:
   - date: "2026-11-21"
@@ -72,19 +75,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 63 statements not yet confirmed"
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 73 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-28"
+    note: "Correction: licensing model set to included, citing the Microsoft Copilot overview's statement of the licences the usage report requires; narrowed the remaining gap to whether the viewing administrator needs a licence."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 65 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-28"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 73
-  confirmed: 72
+  claims: 65
+  confirmed: 65
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "377799aec0bc5f0a0d3ce07c7383bb3a"
+  contradicted: 0
+  attempts: 0
+  hash: "e9a4c9a67c7becbdb6bf68d9f3433281"
 ---
 
 ## What's changing
@@ -105,7 +112,7 @@ The user-level table is the part to govern. Microsoft Learn says usernames, disp
 
 **Data exposure**
 
-- The user-level table lists a user principal name, display name, prompt counts and last-activity dates per Copilot app. Microsoft Learn says this information is hidden by default; if the org setting is switched to show names, individual usage becomes readable by the roles that can open the report.
+- The user-level table lists a user principal name, display name, prompt counts and last-activity dates per Copilot app. Microsoft Learn says identifying information, such as usernames and display names, is hidden by default; if the org setting is switched to show names, individual usage becomes readable by the roles that can open the report.
 - The report page notes that the table covers users who held a Copilot licence at any point in the past 180 days, so former licence holders can still appear.
 
 **Security & identity**
@@ -123,7 +130,7 @@ The user-level table is the part to govern. Microsoft Learn says usernames, disp
 
 ## Cost and licensing
 
-Microsoft Learn's report page counts users "with Microsoft Copilot licenses" as enabled users, so the report is about Microsoft 365 Copilot licence holders. The licence an administrator needs in order to view the report is not yet published: the report page and the Copilot reporting options page list roles (for example AI Administrator) and name no licence.
+The [Microsoft Copilot overview](https://learn.microsoft.com/copilot/plan/copilot-overview#track-and-increase-copilot-adoption) describes the Microsoft Copilot usage report as requiring Microsoft 365 (Basic) or Microsoft 365 Copilot (Premium) licenses. Microsoft Learn's report page counts users "with Microsoft Copilot licenses" as enabled users, so the report is about Microsoft 365 Copilot licence holders. The report page and the Copilot reporting options page list roles (for example AI Administrator) for viewing the report and do not state whether the administrator personally needs a licence.
 
 No meter or charge for the report is documented at the time of writing (November 2026). The cost the sources show is indirect: administrator time to read and export the report, and any time spent reconciling it with other reporting. The Learn page describes a **Recommendations** card that points to the Microsoft Copilot Dashboard in Viva Insights, which is a separate product and not covered here.
 
@@ -175,15 +182,12 @@ Access to the report itself is set by the Microsoft Entra roles listed in Scope,
 
 <!-- rationale
 risk: Low. The roadmap describes Copilot activity reporting, and Microsoft Learn says usernames and display names are hidden in usage reports by default until an administrator changes the org setting.
-cost: Low. The only cost the sources show is administrator time to read the report. Microsoft Learn names roles, not a licence, for viewing it, and no meter is documented for it at the time of writing (November 2026).
+cost: Low. The only cost the sources show is administrator time to read the report. The report and reporting-options pages name roles, not a licence, for viewing it, and no meter is documented for it at the time of writing (November 2026).
 impact: Low. Administrators and report readers see the report. The roadmap item describes it as a report, not a change to Copilot behaviour.
 -->
 
-<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model / licensing: The report's licensing model is unknown because the administrator's viewing licence is not published. | Found: the Microsoft Copilot usage report ... focuses on usage of Microsoft Copilot within Microsoft 365 apps such as Teams, Outlook, Word, Excel, and PowerPoint (requires Microsoft 365 (Basic) or Microsoft 365 Copilot (Premium) licenses). | Fix: Set licensing.model to 'included'. Replace licensing.notes with: 'The Microsoft Copilot overview describes the usage report as requiring Microsoft 365 (Basic) or Microsoft 365 Copilot (Premium) licenses (https://learn.microsoft.com/copilot/plan/copilot-overview#track-and-increase-copilot-adoption). The report and reporting-options pages specify viewer roles but do not state whether the administrator personally needs a licence.' Add that overview URL to sources. Keep the narrower viewer-licence open question; do not equate it with unknown entitlement to the report. | Source: https://learn.microsoft.com/copilot/plan/copilot-overview#track-and-increase-copilot-adoption
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Data exposure, first bullet / default: Microsoft Learn says user-specific information in the table is hidden by default. | Found: The organization setting that hides or shows this information applies to the following properties: ... User IDs, Usernames, and User principal names | Fix: Replace 'Microsoft Learn says this information is hidden by default' with 'Microsoft Learn says identifying information, such as usernames and display names, is hidden by default'. This avoids suggesting that concealment hides the prompt counts and activity dates named in the preceding sentence. | Source: https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports
-- [supported, minor] Scope: report navigation / admin-path: The report is reached through Microsoft 365 admin center > Reports > Usage > Microsoft Copilot > Copilot > Usage tab. | Found: On the Usage page, under Reports, select Microsoft Copilot, and then select Copilot. ... On the report page, select the Usage tab | Fix: Keep the existing route and append: 'The Copilot reporting options overview gives an alternative route: Reports > Usage > Microsoft Copilot > Usage (https://learn.microsoft.com/copilot/manage/copilot-admin-reports#microsoft-365-admin-center-reports).' Both cited pages were read and give these different routes. | Source: https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-usage
+- [supported, minor] Scope / admin-path: The report opens through Microsoft 365 admin center > Reports > Usage > Microsoft Copilot > Copilot, then the Usage tab. | Found: On the Usage page, under Reports, select Microsoft Copilot, and then select Copilot. On the report page, select the Usage tab to view adoption and usage metrics. | Fix: Include the non-selectable Reports heading on the Usage page: 'Microsoft 365 admin center > Reports > Usage > Reports > Microsoft Copilot > Copilot > Usage', as documented at https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-usage. | Source: https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-usage
 -->

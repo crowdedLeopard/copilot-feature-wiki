@@ -60,12 +60,12 @@ controls:
     ui:
       surface: "Microsoft 365 Apps admin center"
       path: "Customization > Policy Management > policy configuration > Choose the scope > Configure Settings > Allow the use of connected experiences in Office that analyze content"
-      docs: "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy"
+      docs: "https://learn.microsoft.com/microsoft-365-apps/privacy/mac-privacy-preferences"
     api:
       kind: "other"
       call: "Preference domain com.microsoft.office, key OfficeExperiencesAnalyzingContentPreference set to FALSE"
       docs: "https://learn.microsoft.com/microsoft-365-apps/privacy/mac-privacy-preferences"
-    note: "Existing control. Removes Copilot features from Excel, OneNote, Outlook, PowerPoint and Word, not only this feature. Cloud Policy needs the Office Apps admin role; the Mac key is enforced by configuration profile or MDM."
+    note: "Existing control. Removes Copilot features from Excel, OneNote, Outlook, PowerPoint and Word, not only this feature. The Cloud Policy overview recommends Office Apps Administrator; the Mac key is enforced by configuration profile or MDM."
   - governs: "Separate switch for conversational drafting in Outlook for Mac"
     scope: "tenant"
     ui: null
@@ -80,19 +80,23 @@ changes:
     note: "First briefing for the Mac and Worldwide item; the web item for GCC, GCC High and DoD is roadmap 573280."
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 63 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-28"
+    note: "Corrected after the independent check: removed the unsupported claim about unchanged data reach and the 'only device-level control' claim, pointed the Cloud Policy path to the Mac privacy page, and qualified the Cloud Policy roles."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 60 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-28"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 63
+  claims: 60
   confirmed: 60
-  unconfirmed: 2
-  contradicted: 1
-  attempts: 1
-  hash: "f2205c197e37a5ccc680bf9d0decbd3f"
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "aa7fd7f3d19de82868c90c6759c541c7"
 ---
 
 ## What's changing
@@ -105,7 +109,7 @@ This item (552595) covers Outlook on **Mac** in **Worldwide (Standard Multi-Tena
 
 ## Why it matters
 
-This changes how Mac users write mail with Copilot rather than what Copilot can reach: the roadmap describes a new way of working on a draft, not a new data source. Microsoft has not stated whether the feature is on for users when it arrives, and the record shows it rolling out, so plan on Mac users meeting it without an announcement from IT.
+The roadmap describes a new way of working on an email draft but does not specify this feature's data sources. Microsoft has not stated whether the feature is on for users when it arrives, and the record shows it rolling out, so plan on Mac users meeting it without an announcement from IT.
 
 The decisions are about expectations and scope. Users need to know that they remain responsible for every email Copilot helps write, and the service desk needs to know which platform and cloud this item covers. Organisations that do not want Copilot in Office for Mac at all already have a documented route: turning off connected experiences that analyse content, which removes Copilot features from Outlook and the other Office apps together, not from this feature alone.
 
@@ -122,7 +126,7 @@ The decisions are about expectations and scope. Users need to know that they rem
 
 **Change & support**
 - Expect questions from Mac users who see a different drafting experience from colleagues on Windows or the web, and confusion with item 573280 for government clouds.
-- The only documented device-level control turns off Copilot features across Excel, OneNote, Outlook, PowerPoint and Word together, so using it to remove this feature also removes the rest.
+- The content-analysis control in the table turns off Copilot features across Excel, OneNote, Outlook, PowerPoint and Word together, so using it to remove this feature also removes the rest.
 
 ## Cost and licensing
 
@@ -138,7 +142,7 @@ The decisions are about expectations and scope. Users need to know that they rem
 
 **Users.** Licence tier not yet published (see Cost and licensing).
 
-**Roles.** Microsoft's Copilot settings page says creating Cloud Policy settings for Microsoft 365 apps requires the Office Apps admin role. Mac preferences are deployed through a configuration profile or MDM server.
+**Roles.** The Copilot settings page names the Office Apps admin role; the Cloud Policy overview also lists Security Administrator and Global Administrator as supported roles and recommends Office Apps Administrator. Mac preferences are deployed through a configuration profile or MDM server.
 
 **Out of scope.** Outlook on the web in GCC, GCC High and DoD is roadmap item 573280. Rollout mechanics and minimum Outlook for Mac version are not stated.
 
@@ -164,12 +168,12 @@ The decisions are about expectations and scope. Users need to know that they rem
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether Copilot features, including in Outlook, are available via connected experiences that analyse content</strong><br><small>Group</small><br><small class="controls__note">Existing control. Removes Copilot features from Excel, OneNote, Outlook, PowerPoint and Word, not only this feature. Cloud Policy needs the Office Apps admin role; the Mac key is enforced by configuration profile or MDM.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › policy configuration › Choose the scope › Configure Settings › Allow the use of connected experiences in Office that analyze content <a href="https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Preference domain com.microsoft.office, key OfficeExperiencesAnalyzingContentPreference set to FALSE</code> <a href="https://learn.microsoft.com/microsoft-365-apps/privacy/mac-privacy-preferences" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether Copilot features, including in Outlook, are available via connected experiences that analyse content</strong><br><small>Group</small><br><small class="controls__note">Existing control. Removes Copilot features from Excel, OneNote, Outlook, PowerPoint and Word, not only this feature. The Cloud Policy overview recommends Office Apps Administrator; the Mac key is enforced by configuration profile or MDM.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › policy configuration › Choose the scope › Configure Settings › Allow the use of connected experiences in Office that analyze content <a href="https://learn.microsoft.com/microsoft-365-apps/privacy/mac-privacy-preferences" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Preference domain com.microsoft.office, key OfficeExperiencesAnalyzingContentPreference set to FALSE</code> <a href="https://learn.microsoft.com/microsoft-365-apps/privacy/mac-privacy-preferences" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Separate switch for conversational drafting in Outlook for Mac</strong><br><small>Tenant</small><br><small class="controls__note">The Copilot settings page and the Outlook for Mac preferences reference list no such setting at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-The connected-experiences setting is a general control, not a switch for this feature: Microsoft's privacy page says that turning it off makes Copilot features unavailable in Excel, OneNote, Outlook, PowerPoint and Word on Windows, Mac, iOS and Android. The Mac preference and the Cloud Policy setting carry the same name; Microsoft's Mac page says either can be used. Microsoft's Mac page says users signed in with a work or school account can't turn this setting off themselves. Cloud Policy requires the Office Apps admin role. Microsoft documents no setting that turns conversational drafting in Outlook for Mac on or off on its own at the time of writing (November 2026).
+The connected-experiences setting is a general control, not a switch for this feature: Microsoft's privacy page says that turning it off makes Copilot features unavailable in Excel, OneNote, Outlook, PowerPoint and Word on Windows, Mac, iOS and Android, when running the most current version of those apps. The Mac preference and the Cloud Policy setting carry the same name; Microsoft's Mac page says either can be used. Microsoft's Mac page says users signed in with a work or school account can't turn this setting off themselves. The Copilot settings page names the Office Apps admin role; the Cloud Policy overview also lists Security Administrator and Global Administrator as supported roles and recommends Office Apps Administrator. Microsoft documents no setting that turns conversational drafting in Outlook for Mac on or off on its own at the time of writing (November 2026).
 
 ## Open questions
 
@@ -184,13 +188,8 @@ cost: Low. Microsoft lists email drafting in Outlook among the Microsoft 365 Cop
 impact: Medium. Outlook for Mac users in Worldwide tenants who use Copilot notice a new way of composing mail; Windows, web and government-cloud users are not covered by this item.
 -->
 
-<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters: first sentence / behaviour: This changes how Mac users write mail rather than what Copilot can reach. | Found: Searched: 'Outlook conversationally Copilot emails', 'Copilot Outlook Mac conversational draft edit format 552595 admin switch default licensing'; read roadmap, requirements, privacy and Chat with Copilot in Outlook. No source establishes unchanged data reach for this feature. | Fix: Replace the first sentence with: 'The roadmap describes a new way of working on an email draft but does not specify this feature's data sources.'
-- [contradicted, blocker] Risk assessment: Change & support, second bullet / applicability: The content-analysis setting is the only documented device-level control that turns off Copilot features across those apps. | Found: There's also a privacy control that turns off all connected experiences, including connected experiences that analyze your content. If you use that privacy control, Microsoft Copilot features won't be available in the apps and on the devices described above. | Fix: Replace 'The only documented device-level control' with 'The content-analysis control in the table'. Keep the existing explanation that using it removes Copilot across the listed apps; do not add a control row. | Source: https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy
-- [unsupported, blocker] controls[0].ui; Governance controls table / admin-path: The linked Cloud Policy overview documents the control-specific end of the printed route to Allow the use of connected experiences in Office that analyze content. | Found: Searched: 'Allow the use of connected experiences in Office that analyze content Configure Settings'; read overview-cloud-policy and mac-privacy-preferences. The overview gives generic Configure Settings navigation but does not name the control; the Mac page names it. | Fix: Change controls[0].ui.docs and the corresponding table link to https://learn.microsoft.com/microsoft-365-apps/privacy/mac-privacy-preferences, which documents the named Cloud Policy setting. Keep the Cloud Policy overview in sources for the navigation portion of the route.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].note; Scope: Roles; Governance controls / role: The Copilot settings page says creating Cloud Policy settings requires the Office Apps admin role. | Found: For example, creating Cloud Policy settings for Microsoft 365 apps requires the Office Apps admin role. | Fix: Qualify the role statement: 'The Copilot settings page names the Office Apps admin role; the Cloud Policy overview also lists Security Administrator and Global Administrator as supported roles and recommends Office Apps Administrator.' Cite https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy. | Source: https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center
-- [supported, minor] Governance controls: first paragraph / applicability: This privacy control affects Copilot in those apps on Windows, Mac, iOS and Android. | Found: This applies to when you're running the most current version of these apps on Windows, Mac, iOS, or Android devices. | Fix: Add 'when running the most current version of those apps' to the Windows, Mac, iOS and Android applicability sentence, matching https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy. | Source: https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy
+- [supported, minor] controls[0].ui; Governance controls: table / admin-path: The content-analysis policy is reached in Microsoft 365 Apps admin center through Customization > Policy Management > policy configuration > Choose the scope > Configure Settings > Allow the use of connected experiences in Office that analyze content. | Found: You can also use Cloud Policy and these five policy settings: ... Allow the use of connected experiences in Office that analyze content | Fix: Add https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration to sources for the shared editing route: Customization > Policy Management > an existing policy configuration > Choose the scope > Configure Settings. Keep controls[0].ui.docs as the Mac privacy page, which documents this policy's own label. | Source: https://learn.microsoft.com/microsoft-365-apps/privacy/mac-privacy-preferences
 -->

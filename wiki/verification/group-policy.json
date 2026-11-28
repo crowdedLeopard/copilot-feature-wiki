@@ -1,0 +1,1188 @@
+{
+  "slug": "group-policy",
+  "kind": "concept",
+  "roadmapId": null,
+  "title": "Group Policy: which settings reach Windows users and computers in Active Directory, and who sets them",
+  "status": "held",
+  "date": "2026-11-28",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-28",
+    "reasons": [
+      "3 blocking findings (claims 7, 13, 59)"
+    ]
+  },
+  "counts": {
+    "claims": 83,
+    "confirmed": 76,
+    "unconfirmed": 2,
+    "contradicted": 5,
+    "blocker": 3,
+    "major": 2,
+    "minor": 5
+  },
+  "summary": "Hold: the page makes the Central Store mandatory even though Microsoft documents local template storage as an alternative. The domain editor refresh path omits Policies, and the timing statements omit distinctions between Active Directory and SYSVOL replication and exceptions to Office restart requirements.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "In Group Policy Management Console, Site, domain or OU > Link an Existing GPO links an existing GPO.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows-server/identity/ad-ds/manage/group-policy/group-policy-management-console",
+      "quote": "Right-click a site, domain, or OU item, and then select Link an Existing GPO.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "New-GPO -Name <GPO name> | New-GPLink -Target <distinguished name of site, domain or OU> -LinkEnabled Yes creates and links a GPO.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/grouppolicy/new-gplink?view=windowsserver2025-ps",
+      "quote": "New-GPO -Name \"MyGPO\" | New-GPLink -Target \"ou=MyOU,dc=contoso,dc=com\" -LinkEnabled Yes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Group Policy Management Editor > Computer Configuration > Policies > Administrative Templates > Microsoft Edge reaches the Edge policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/configure-microsoft-edge",
+      "quote": "To configure a mandatory policy, open the Group Policy Editor and go to (Computer Configuration or User Configuration) > Policies > Administrative Templates > Microsoft Edge.",
+      "severity": "minor",
+      "fix": "The path stops at the policy list. Extend it to 'Computer Configuration > Policies > Administrative Templates > Microsoft Edge > policy', with a lower-case placeholder for the policy selected, as described by https://learn.microsoft.com/windows-server/identity/ad-ds/manage/group-policy/group-policy-management-console."
+    },
+    {
+      "n": 4,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "Set-GPRegistryValue -Name <GPO name> -Key <registry key> -ValueName <value name> -Value <value> -Type <type> configures registry-based policy in a GPO.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/grouppolicy/set-gpregistryvalue?view=windowsserver2025-ps",
+      "quote": "One or more registry values by passing the Key, ValueName, Value, and Type parameters.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "Group Policy Management Console > Group Policy Objects > GPO > Scope > Security Filtering reaches security filtering.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/windows-server/group-policy/cannot-apply-user-gpo-when-computer-objects-dont-have-read-permissions",
+      "quote": "In GPMC, on the Scope tab for the GPO, you add contoso_user_group to the Security Filtering list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "Set-GPPermission -Name <GPO name> -PermissionLevel GpoApply -TargetName <group name> -TargetType Group grants a group GPO application permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/grouppolicy/set-gppermission?view=windowsserver2025-ps",
+      "quote": "Set-GPPermission\n    [-Name] <String>\n    -PermissionLevel <GPPermissionType>\n    -TargetName <String>\n    -TargetType <PermissionTrusteeType>",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "In Group Policy Management Editor, Computer Configuration > Administrative Templates > System > Group Policy > Set Group Policy refresh interval for computers is the domain GPO route.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/defender-endpoint/evaluate-mdav-using-gp",
+      "quote": "Go to Computer Configuration > Policies > Administrative Templates > Windows Components > Microsoft Defender Antivirus.",
+      "severity": "blocker",
+      "fix": "Replace the path with 'Computer Configuration > Policies > Administrative Templates > System > Group Policy > Set Group Policy refresh interval for computers'. The cited CSP maps the setting to System > Group Policy; the domain editor hierarchy in https://learn.microsoft.com/defender-endpoint/evaluate-mdav-using-gp includes Policies between Computer Configuration and Administrative Templates."
+    },
+    {
+      "n": 8,
+      "where": "controls[3].api",
+      "type": "command",
+      "claim": "./Device/Vendor/MSFT/Policy/Config/ADMX_GroupPolicy/GroupPolicyRefreshRate configures computer background Group Policy refresh through MDM.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows/client-management/mdm/policy-csp-admx-grouppolicy",
+      "quote": "./Device/Vendor/MSFT/Policy/Config/ADMX_GroupPolicy/GroupPolicyRefreshRate",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "controls[4].ui",
+      "type": "admin-path",
+      "claim": "Microsoft Intune admin center > Devices > Manage devices > Configuration > Import ADMX > Import starts importing templates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/settings-catalog/import-custom-admx-templates",
+      "quote": "Select Devices > Manage devices > Configuration > Import ADMX tab > Import:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "controls[4].api",
+      "type": "command",
+      "claim": "POST /beta/deviceManagement/groupPolicyUploadedDefinitionFiles uploads an ADMX definition file.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/intune-grouppolicy-grouppolicyuploadeddefinitionfile-create?view=graph-rest-beta",
+      "quote": "POST https://graph.microsoft.com/beta/deviceManagement/groupPolicyUploadedDefinitionFiles\ncontent | Binary | The contents of the uploaded ADMX file.",
+      "severity": "minor",
+      "fix": "Keep the call and add to the row note: 'The request body sets content to the ADMX file contents and groupPolicyUploadedLanguageFiles to its associated ADML files.' Both properties are documented at the existing Graph reference URL."
+    },
+    {
+      "n": 11,
+      "where": "controls[0].note; Governance controls: Roles",
+      "type": "role",
+      "claim": "By default only domain administrators and enterprise administrators can link GPOs to domains and OUs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/grouppolicy/new-gplink?view=windowsserver2025-ps",
+      "quote": "By default, only domain administrators and enterprise administrators have this privilege for domains and OUs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "controls[1].note",
+      "type": "behaviour",
+      "claim": "Set-GPRegistryValue configures the registry value that the client receives when the GPO applies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/grouppolicy/set-gpregistryvalue?view=windowsserver2025-ps",
+      "quote": "The policy setting configures keys or values in the registry on the client computer when the GPO is applied.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[1].note; Why it matters; Risks and limits: Out-of-date Central Store",
+      "type": "behaviour",
+      "claim": "The template must be in the Central Store before a new setting can appear in the editor.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/deployedge/configure-microsoft-edge",
+      "quote": "Alternatively, add these rules and settings to the Policy Definition template folder on individual computers and then configure the specific policies you want to set.",
+      "severity": "blocker",
+      "fix": "Replace the row note's last sentence with 'Install the templates in the Central Store, or in the Policy Definition template folder on individual computers.' Narrow the corresponding Why it matters and Risks and limits sentences to 'When using a Central Store, copy updated templates into it before configuring newly added policies.' Microsoft documents the alternative at https://learn.microsoft.com/deployedge/configure-microsoft-edge."
+    },
+    {
+      "n": 14,
+      "where": "controls[2].note; What it is: Security filtering",
+      "type": "default",
+      "claim": "Authenticated Users has Read and Apply group policy permissions on all domain GPOs by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/windows-server/group-policy/cannot-apply-user-gpo-when-computer-objects-dont-have-read-permissions",
+      "quote": "By default, the Authenticated Users group has Read and Apply group policy permissions for all GPOs in the domain.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[2].note; Risks and limits: Narrowing security filtering; What to check",
+      "type": "behaviour",
+      "claim": "Computer accounts need Read on GPOs that apply to signed-in users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/windows-server/group-policy/cannot-apply-user-gpo-when-computer-objects-dont-have-read-permissions",
+      "quote": "the computer account has to have Read permissions for GPOs that apply to the signed-in user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[3].note",
+      "type": "behaviour",
+      "claim": "The computer Group Policy refresh interval setting accepts 0 to 64,800 minutes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows/client-management/mdm/policy-csp-admx-grouppolicy",
+      "quote": "If you enable this setting, you can specify an update rate from 0 to 64,800 minutes (45 days).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[4].note; Risks and limits: Intune import limits; Open questions",
+      "type": "availability",
+      "claim": "Importing custom ADMX files into Intune is in public preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/settings-catalog/import-custom-admx-templates",
+      "quote": "This feature is in public preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[4].note; Governance controls: Roles",
+      "type": "role",
+      "claim": "Intune's import instructions require the Policy and Profile Manager built-in role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/settings-catalog/import-custom-admx-templates",
+      "quote": "Sign in to the Microsoft Intune admin center with an account that has the Policy and Profile Manager built-in role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[4].note; Risks and limits: Intune import limits; Open questions",
+      "type": "behaviour",
+      "claim": "Intune allows up to 20 uploaded ADMX files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/settings-catalog/import-custom-admx-templates",
+      "quote": "You can upload up to 20 ADMX files.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[4].note; Risks and limits: Intune import limits",
+      "type": "behaviour",
+      "claim": "Each ADMX file uploaded to Intune must be 1 MB or smaller.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/settings-catalog/import-custom-admx-templates",
+      "quote": "Each file must be 1 MB or smaller.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[4].note; Risks and limits: Intune import limits; Open questions",
+      "type": "behaviour",
+      "claim": "Intune ADMX import supports only en-us ADML files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/settings-catalog/import-custom-admx-templates",
+      "quote": "Only en-us ADML files are supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "summary; What it is",
+      "type": "behaviour",
+      "claim": "Group Policy is a Windows feature for centralized configuration of operating systems, applications and user settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows-server/identity/ad-ds/manage/group-policy/group-policy-overview",
+      "quote": "Group Policy is a feature of Windows that provides centralized management and configuration of operating systems, applications, and user settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "Administrators store domain Group Policy settings in a Group Policy Object.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows-server/identity/ad-ds/manage/group-policy/group-policy-overview",
+      "quote": "When you use Group Policy with Active Directory (AD), you store Group Policy settings in a Group Policy Object (GPO).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What it is: The GPO",
+      "type": "behaviour",
+      "claim": "The Group Policy container component is stored in the domain partition of Active Directory.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows-server/identity/ad-ds/manage/group-policy/group-policy-overview",
+      "quote": "The Group Policy container is stored in the domain partition of Active Directory",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What it is: The GPO",
+      "type": "behaviour",
+      "claim": "The Group Policy template component is stored in SYSVOL on each domain controller.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows-server/identity/ad-ds/manage/group-policy/group-policy-overview",
+      "quote": "the Group Policy template is located in the SYSVOL folder on each domain controller (DC).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What it is: The GPO",
+      "type": "behaviour",
+      "claim": "GPO settings are categorized as computer settings and user settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows-server/identity/ad-ds/manage/group-policy/group-policy-overview",
+      "quote": "Policy settings are categorized into those that apply to a computer and those that apply to a user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What it is: The GPO",
+      "type": "behaviour",
+      "claim": "Client-side extensions apply GPO settings, including registry updates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows-server/identity/ad-ds/manage/group-policy/group-policy-overview",
+      "quote": "A Client-side extension (CSE) applies the specific settings dictated by the GPOs, managing tasks like registry updates and security configurations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "summary; What it is: Links and precedence; mechanism table",
+      "type": "behaviour",
+      "claim": "Linking GPOs to Active Directory sites, domains and OUs determines which users and computers are in scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows-server/identity/ad-ds/manage/group-policy/group-policy-scope",
+      "quote": "By linking a GPO to a site, domain, or OU, you control which users and computers within those containers receive the policy settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What it is: Links and precedence",
+      "type": "behaviour",
+      "claim": "A GPO cannot be linked directly to a user object.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows-server/identity/ad-ds/manage/group-policy/group-policy-scope",
+      "quote": "You can't link a GPO directly to a user object.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What it is: Links and precedence",
+      "type": "behaviour",
+      "claim": "GPO processing proceeds in local, site, domain and OU order.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows-server/identity/ad-ds/manage/group-policy/group-policy-processing",
+      "quote": "1. The local GPO is applied.\n2. GPOs linked to sites are applied.\n3. GPOs linked to domains are applied.\n4. GPOs linked to organizational units (OUs) are applied.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What it is: Links and precedence",
+      "type": "behaviour",
+      "claim": "Settings from GPOs linked to Active Directory containers override local policy settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows-server/identity/ad-ds/manage/group-policy/group-policy-processing",
+      "quote": "Policy settings from GPOs linked to AD containers override local policy settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What it is: Links and precedence; Risks and limits: Precedence surprises",
+      "type": "behaviour",
+      "claim": "Within one container, the lowest GPO link order has precedence by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows-server/identity/ad-ds/manage/group-policy/group-policy-processing",
+      "quote": "The GPO link with the lowest link order in the Group Policy Object Links list has precedence by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What it is: Links and precedence; Governance controls: Enforced and Block Inheritance",
+      "type": "behaviour",
+      "claim": "Enforced is a GPO link property that takes precedence over Block Inheritance on a lower container.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows-server/identity/ad-ds/manage/group-policy/group-policy-processing",
+      "quote": "Enforced is a link property and takes precedence over block policy inheritance, a container property.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What it is: Security filtering; Why it matters",
+      "type": "default",
+      "claim": "By default a linked GPO reaches user and computer objects in its container, with security filtering available to narrow the scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
+      "quote": "By default, a setting is applied to all user and computer objects within the container to which it's linked, but you can use security filtering to narrow the scope of the policy's application to a subset of users or computers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What it is: Administrative Templates",
+      "type": "behaviour",
+      "claim": "Administrative Templates comprise .admx files and language-specific .adml files for registry-based policy settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/windows-client/group-policy/create-and-manage-central-store",
+      "quote": "Administrative Templates files are divided into .admx files and language-specific .adml files for use by Group Policy administrators.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What it is: Administrative Templates",
+      "type": "behaviour",
+      "claim": "Microsoft publishes Windows Administrative Templates packages.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/windows-client/group-policy/create-and-manage-central-store",
+      "quote": "Administrative Templates (.admx) for Windows 11 2025 Update (25H2)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What it is: Administrative Templates",
+      "type": "behaviour",
+      "claim": "Microsoft Office has separate ADMX/L files for each release.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/windows-client/group-policy/create-and-manage-central-store",
+      "quote": "Microsoft Office has a separate set of ADMX/L files for each release.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What it is: Administrative Templates",
+      "type": "behaviour",
+      "claim": "Microsoft Edge has its own Administrative Templates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/configure-microsoft-edge",
+      "quote": "There are two administrative templates for Microsoft Edge",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What it is: Administrative Templates; summary",
+      "type": "applicability",
+      "claim": "Office Administrative Templates include Microsoft 365 Apps policy settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/updates/configure-update-settings-microsoft-365-apps",
+      "quote": "To use Group Policy, download the most current Administrative Template files (ADMX/ADML) for Office, which include the policy settings for Microsoft 365 Apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "What it is: Administrative Templates",
+      "type": "behaviour",
+      "claim": "The domain Central Store is located in SYSVOL.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/windows-client/group-policy/create-and-manage-central-store",
+      "quote": "you must create a Central Store in the sysvol folder on a Windows domain controller.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "What it is: Administrative Templates",
+      "type": "behaviour",
+      "claim": "Central Store files replicate to all domain controllers in the domain.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/windows-client/group-policy/create-and-manage-central-store",
+      "quote": "The files that are in the Central Store are replicated to all domain controllers in the domain.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "What it is: Administrative Templates",
+      "type": "behaviour",
+      "claim": "Edge policy registry settings can be found under HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/configure-microsoft-edge",
+      "quote": "These policy settings are located at this registry path: HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "What it is: Timing",
+      "type": "behaviour",
+      "claim": "Group Policy settings apply at computer startup and user sign-in.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows-server/identity/ad-ds/manage/group-policy/group-policy-overview",
+      "quote": "Policy settings are applied at computer startup and user sign in.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "What it is: Timing",
+      "type": "default",
+      "claim": "Clients and servers check for GPO changes every 90 minutes with a random offset of up to 30 minutes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows-server/identity/ad-ds/manage/group-policy/group-policy-processing",
+      "quote": "By default, clients and servers check for changes to GPOs every 90 minutes using a randomized offset of up to 30 minutes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "What it is: Timing",
+      "type": "default",
+      "claim": "Domain controllers check for computer policy changes every five minutes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows-server/identity/ad-ds/manage/group-policy/group-policy-processing",
+      "quote": "Domain controllers check for computer policy changes every five minutes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "What it is: mechanism table",
+      "type": "applicability",
+      "claim": "Cloud Policy service reaches Microsoft 365 Apps users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+      "quote": "Cloud Policy service for Microsoft 365 lets you enforce policy settings for Microsoft 365 Apps for enterprise on a user's device",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "What it is: mechanism table; controls[4].governs",
+      "type": "applicability",
+      "claim": "Intune imported ADMX templates provide settings for managed Windows devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/settings-catalog/import-custom-admx-templates",
+      "quote": "After you import them, you can create a device configuration policy that uses these settings, and then assign the policy to your managed devices.\nThis feature applies to:\n- Windows",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Why it matters; summary",
+      "type": "applicability",
+      "claim": "An Edge Administrative Templates policy controls Copilot's use of page content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext#windows-information-and-settings",
+      "quote": "GP name: Control Copilot access to Microsoft Edge page content, browsing history, and video transcript for Entra account user profiles when using Copilot in the Microsoft Edge sidepane\nGP path (Mandatory): Administrative Templates/Microsoft Edge\nGP ADMX file name: MSEdge.admx",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Why it matters",
+      "type": "applicability",
+      "claim": "Edge tab organization is governed by an Administrative Templates policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/tabservicesenabled#supported-versions",
+      "quote": "GP unique name: TabServicesEnabled\nGP name: Enable tab organization suggestions\nGP path (Mandatory): Administrative Templates/Microsoft Edge\nGP ADMX file name: MSEdge.admx",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Why it matters; summary",
+      "type": "applicability",
+      "claim": "OneDrive folder exclusions are available as Group Policy settings through its Administrative Templates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
+      "quote": "(EnableODIgnoreFolderListFromGPO) Exclude specific kinds of folders from being uploaded\nInstalling the sync app downloads the .adml and .admx files.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Why it matters; Risks and limits: Out-of-date Central Store",
+      "type": "behaviour",
+      "claim": "SYSVOL is not automatically updated with new .admx or .adml files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/windows-client/group-policy/create-and-manage-central-store",
+      "quote": "the sysvol folder isn't automatically updated to include the new .admx or .adml files.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "Microsoft's Group Policy documentation does not publish a separate Group Policy licence, price or meter.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Group Policy separate licensing price meter GPMC Windows Server'; '\"Group Policy\" \"licensing\" \"price\"'. Read Group Policy overview and GPMC prerequisites; results concern Windows features, AGPM or RDS licensing, not a separate Group Policy charge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "GPMC is included with Windows Server and Remote Server Administration Tools.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows-server/identity/ad-ds/manage/group-policy/group-policy-management-console",
+      "quote": "The GPMC is included with Windows Server and the Remote Server Administration Tools.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "Domain Group Policy depends on domain controllers that store the AD and SYSVOL components.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows-server/identity/ad-ds/manage/group-policy/group-policy-overview",
+      "quote": "GPOs are stored in both AD and the SYSVOL folder on each DC, facilitating centralized administration and policy enforcement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Microsoft Graph API for Intune requires an active Intune licence for the tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/intune-grouppolicy-grouppolicyuploadeddefinitionfile-create?view=graph-rest-beta",
+      "quote": "The Microsoft Graph API for Intune requires an active Intune license for the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Risks and limits: Out-of-date Central Store",
+      "type": "behaviour",
+      "claim": "Windows ADMX download packages are supported only for Central Store use, not replacement of C:\\Windows\\PolicyDefinitions files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/windows-client/group-policy/create-and-manage-central-store",
+      "quote": "Use the ADMX download packages in only the Central Store scenario. Replacing files in c:\\Windows\\PolicyDefinitions isn't supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Risks and limits: Changes are not immediate",
+      "type": "behaviour",
+      "claim": "GPO changes must replicate to the appropriate domain controller before clients can receive them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows-server/identity/ad-ds/manage/group-policy/group-policy-processing",
+      "quote": "changes to the GPO must first replicate to the appropriate domain controller.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Risks and limits: Changes are not immediate",
+      "type": "behaviour",
+      "claim": "GPO changes replicate within a site every 15 minutes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows-server/identity/ad-ds/manage/group-policy/group-policy-processing",
+      "quote": "Distributed File System Replication (DFSR) controls the replication of the SYSVOL folder. Within sites, replication occurs every 15 minutes.",
+      "severity": "minor",
+      "fix": "Replace '(every 15 minutes within a site)' with '(the cited processing page says AD replication typically takes less than a minute within a site, while SYSVOL replication occurs every 15 minutes)'. This preserves the distinction explicitly documented at https://learn.microsoft.com/windows-server/identity/ad-ds/manage/group-policy/group-policy-processing."
+    },
+    {
+      "n": 59,
+      "where": "Risks and limits: Changes are not immediate",
+      "type": "behaviour",
+      "claim": "Office apps apply new policy only after they restart.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+      "quote": "Some policies related to privacy controls will apply without restarting any Office apps.",
+      "severity": "blocker",
+      "fix": "Replace the sentence with 'Office policy changes generally take effect after the apps restart, but some privacy-control policies apply without restarting Office apps.' Cite the existing Cloud Policy overview URL."
+    },
+    {
+      "n": 60,
+      "where": "Why it matters; Risks and limits: Cloud Policy wins",
+      "type": "behaviour",
+      "claim": "Cloud Policy settings take precedence over the same Microsoft 365 Apps settings delivered by Group Policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+      "quote": "policy settings implemented by using Cloud Policy take precedence over policy settings implemented by using Group Policy on Windows Server",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Risks and limits: Edge recommended policies",
+      "type": "behaviour",
+      "claim": "Mandatory Edge policies prevent users changing the policy settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/configure-microsoft-edge",
+      "quote": "Mandatory policies override user preferences and prevent the user from changing the policy settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Risks and limits: Edge recommended policies",
+      "type": "behaviour",
+      "claim": "Recommended Edge policies provide a default that users can override.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/configure-microsoft-edge",
+      "quote": "Recommended policies provide a default setting that the user can override.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Governance controls: Roles",
+      "type": "role",
+      "claim": "Editing a GPO needs Edit settings, delete and modify security permissions on it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows-server/identity/ad-ds/manage/group-policy/group-policy-management-console",
+      "quote": "Have Edit settings, delete, and modify security permissions on the GPO.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Governance controls: Enforced and Block Inheritance",
+      "type": "behaviour",
+      "claim": "GPMC indicates an enforced GPO link with a padlock icon.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows-server/identity/ad-ds/manage/group-policy/group-policy-scope",
+      "quote": "In the GPMC, an enforced link is indicated by a padlock icon on the linked policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Governance controls: Enforced and Block Inheritance",
+      "type": "command",
+      "claim": "Set-GPLink -Enforced Yes sets the Enforced property on a GPO link.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/grouppolicy/set-gplink?view=windowsserver2025-ps",
+      "quote": "Set-GPLink -Guid 77c5285d-952e-4559-94ef-a02f5c107799 -Target \"Test-Site\" -Enforced Yes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Governance controls: Enforced and Block Inheritance",
+      "type": "command",
+      "claim": "Set-GPInheritance blocks inheritance on a domain or OU.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/grouppolicy/set-gpinheritance?view=windowsserver2025-ps",
+      "quote": "The Set-GPInheritance cmdlet blocks or unblocks inheritance for a specified domain or organizational unit (OU).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Governance controls: Refreshing and checking",
+      "type": "command",
+      "claim": "gpupdate.exe triggers Group Policy refresh on the local computer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows-server/identity/ad-ds/manage/group-policy/group-policy-processing",
+      "quote": "Running gpupdate.exe triggers a policy refresh for the computer on which the command is run.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Governance controls: Refreshing and checking",
+      "type": "command",
+      "claim": "Invoke-GPUpdate triggers Group Policy refresh from PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows-server/identity/ad-ds/manage/group-policy/group-policy-processing",
+      "quote": "Use the Invoke-GPUpdate PowerShell cmdlet. You can use this cmdlet to trigger a refresh of the local computer or to trigger a refresh of a remote computer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Governance controls: Refreshing and checking",
+      "type": "admin-path",
+      "claim": "In GPMC, right-clicking an OU and selecting Group Policy Update triggers an OU-level refresh.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows-server/identity/ad-ds/manage/group-policy/group-policy-processing",
+      "quote": "Use the GPMC to trigger a group policy refresh at the OU level by right clicking on the OU and selecting Group Policy Update.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Governance controls: Refreshing and checking; What to check",
+      "type": "command",
+      "claim": "gpresult reports the Resultant Set of Policy that was applied.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows-server/administration/windows-commands/gpresult",
+      "quote": "The gpresult command displays the resulting set of policy settings that were enforced on the computer for the specified user when the user signed in.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Governance controls: Refreshing and checking",
+      "type": "command",
+      "claim": "Get-GPResultantSetOfPolicy reports RSoP logging results.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/grouppolicy/get-gpresultantsetofpolicy?view=windowsserver2025-ps",
+      "quote": "The Get-GPResultantSetOfPolicy cmdlet gets and writes the Resultant Set of Policy (RSoP) information for a user, a computer, or both to a file.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Governance controls: Refreshing and checking",
+      "type": "behaviour",
+      "claim": "RSoP modeling requires GPMC rather than Get-GPResultantSetOfPolicy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/grouppolicy/get-gpresultantsetofpolicy?view=windowsserver2025-ps",
+      "quote": "This cmdlet provides only the logging results for a specified computer and user. You must use the GPMC to generate RSoP modeling information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Governance controls: Refreshing and checking; What to check",
+      "type": "command",
+      "claim": "Get-GPOReport reports GPO links, security filtering, WMI filtering, delegation and settings, including across all domain GPOs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/grouppolicy/get-gporeport?view=windowsserver2025-ps",
+      "quote": "The information that is reported for each GPO includes: details, links, security filtering, Windows Management Instrumentation (WMI) filtering, delegation, and computer and user configurations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Governance controls: Refreshing and checking; What to check",
+      "type": "admin-path",
+      "claim": "edge://policy shows the Edge policies applied to the device.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/configure-microsoft-edge",
+      "quote": "On a target client device, open Microsoft Edge and go to edge://policy to see all policies that are applied.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Open questions: Administrative Templates index",
+      "type": "absence",
+      "claim": "Microsoft does not publish one cross-product index of the first Administrative Templates release containing each Copilot-related Edge, Office or OneDrive policy.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Administrative Templates release first version policy index Copilot Edge Office OneDrive'; '\"Administrative Templates\" \"Copilot\" \"version\" \"index\"'. Read Central Store, Office update settings, Edge policy excerpts and product release-note excerpts; no cross-product index found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "Open questions: Administrative Templates index",
+      "type": "behaviour",
+      "claim": "Administrators have to track the first template release for each Copilot-related policy through each product's release notes.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Administrative Templates release first version policy index Copilot Edge Office OneDrive'. Read Central Store and Office template guidance, Edge policy reference and Edge/OneDrive release-note excerpts. No text makes release notes the required or exhaustive route.",
+      "severity": "major",
+      "fix": "Remove 'Administrators currently have to track this through each product's release notes.' Retain the narrower question about the absence of a cross-product template-release index."
+    },
+    {
+      "n": 77,
+      "where": "Open questions: Intune and GPO Edge conflict",
+      "type": "absence",
+      "claim": "The pages cited for this concept do not state which value wins when Intune and a GPO set the same Edge policy on a hybrid-joined device.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Edge Intune Group Policy precedence same policy hybrid joined MDM'; '\"Edge\" \"MDMWinsOverGP\" policy conflict'. Read configure-edge-with-intune and ControlPolicyConflict excerpts. No definitive Edge-specific precedence for this case in the concept's cited pages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "What to check: Cloud Policy",
+      "type": "consistency",
+      "claim": "The checklist names a Cloud Policy control that has no row in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Check whether Cloud Policy also sets any Microsoft 365 Apps policy you manage through a GPO. / The controls table covers GPO linking, Edge settings, security filtering, refresh intervals and Intune ADMX import, but not Cloud Policy.",
+      "severity": "minor",
+      "fix": "Remove the Cloud Policy checklist bullet; retain the existing Cloud Policy concept link and precedence explanation. This resolves the unmatched checklist control without adding an unverified row."
+    },
+    {
+      "n": 79,
+      "where": "sources; Why it matters; What it is: Security filtering",
+      "type": "consistency",
+      "claim": "Microsoft sources that support the named product examples are missing from the concept's sources list.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Copilot's use of Edge page content, Edge tab organisation and OneDrive folder exclusions are all published as Administrative Templates policies. / The sources list contains no individual Edge policy reference or OneDrive policy reference.",
+      "severity": "minor",
+      "fix": "Add these Microsoft sources, together as one citation correction: https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext ; https://learn.microsoft.com/deployedge/microsoft-edge-policies/tabservicesenabled ; https://learn.microsoft.com/sharepoint/use-group-policy . These support the Edge and OneDrive examples and the default-scope statement."
+    },
+    {
+      "n": 80,
+      "where": "What it is: Administrative Templates",
+      "type": "behaviour",
+      "claim": "Most settings named in Microsoft 365 briefings are registry-based Administrative Templates policies.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'Microsoft 365 Group Policy most policies registry based Administrative Templates Edge Office OneDrive'. Read Edge configuration, Office update settings and OneDrive policy guidance. These establish examples, not a majority of the wiki's briefing settings.",
+      "severity": "major",
+      "fix": "Replace 'Most settings named in Microsoft 365 briefings are registry-based policies described by Administrative Templates' with 'Administrative Templates describe registry-based policies'. The existing Central Store source supports the narrower statement."
+    },
+    {
+      "n": 81,
+      "where": "Risks and limits: Narrowing security filtering",
+      "type": "behaviour",
+      "claim": "Removing Authenticated Users from Security Filtering removes both Read and Apply group policy permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/windows-server/group-policy/cannot-apply-user-gpo-when-computer-objects-dont-have-read-permissions",
+      "quote": "This action removes both the Read and the Apply group policy permissions from the group and all its members.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 82,
+      "where": "Why it matters",
+      "type": "default",
+      "claim": "Group Policy is inherited and cumulative by default, reaching a container and its children.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows-server/identity/ad-ds/manage/group-policy/group-policy-processing",
+      "quote": "By default, Group Policy is inherited and cumulative, and it affects all computers and users in an Active Directory (AD) container and its children.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 83,
+      "where": "Why it matters; Risks and limits: Precedence surprises",
+      "type": "behaviour",
+      "claim": "A higher-precedence GPO can replace the same setting supplied by another GPO.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows-server/identity/ad-ds/manage/group-policy/group-policy-processing",
+      "quote": "The sequence of GPO processing is crucial because each subsequent policy application can override settings applied by earlier policies.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-28T06:57:57.075Z",
+    "summary": {
+      "links": 21,
+      "unreachable": 0,
+      "uiPaths": 5,
+      "uiPathsWithMissingWords": 1,
+      "apiCalls": 5,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/windows-server/identity/ad-ds/manage/group-policy/group-policy-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/windows-server/identity/ad-ds/manage/group-policy/group-policy-processing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/windows-server/identity/ad-ds/manage/group-policy/group-policy-scope",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/windows-server/identity/ad-ds/manage/group-policy/group-policy-management-console",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/troubleshoot/windows-client/group-policy/create-and-manage-central-store",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/troubleshoot/windows-server/group-policy/cannot-apply-user-gpo-when-computer-objects-dont-have-read-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/configure-microsoft-edge",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-apps/updates/configure-update-settings-microsoft-365-apps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/intune/device-configuration/settings-catalog/import-custom-admx-templates",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/windows/client-management/mdm/policy-csp-admx-grouppolicy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/grouppolicy/set-gpregistryvalue?view=windowsserver2025-ps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/grouppolicy/new-gplink?view=windowsserver2025-ps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/grouppolicy/set-gplink?view=windowsserver2025-ps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/grouppolicy/set-gppermission?view=windowsserver2025-ps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/grouppolicy/set-gpinheritance?view=windowsserver2025-ps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/grouppolicy/get-gpresultantsetofpolicy?view=windowsserver2025-ps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/grouppolicy/get-gporeport?view=windowsserver2025-ps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/windows-server/administration/windows-commands/gpresult",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/intune-grouppolicy-grouppolicyuploadeddefinitionfile-create?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/defender-endpoint/evaluate-mdav-using-gp",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which sites, domains or OUs a GPO's settings apply to",
+        "docs": "https://learn.microsoft.com/windows-server/identity/ad-ds/manage/group-policy/group-policy-management-console",
+        "reachable": true,
+        "segments": [
+          "Site, domain or OU",
+          "Link an Existing GPO"
+        ],
+        "missing": [
+          "Site, domain or OU"
+        ]
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Which sites, domains or OUs a GPO's settings apply to",
+        "docs": "https://learn.microsoft.com/powershell/module/grouppolicy/new-gplink?view=windowsserver2025-ps",
+        "reachable": true,
+        "token": "New-GPO",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which Administrative Templates setting a GPO configures, for example a Microsoft Edge policy",
+        "docs": "https://learn.microsoft.com/deployedge/configure-microsoft-edge",
+        "reachable": true,
+        "segments": [
+          "Computer Configuration",
+          "Policies",
+          "Administrative Templates",
+          "Microsoft Edge"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which Administrative Templates setting a GPO configures, for example a Microsoft Edge policy",
+        "docs": "https://learn.microsoft.com/powershell/module/grouppolicy/set-gpregistryvalue?view=windowsserver2025-ps",
+        "reachable": true,
+        "token": "Set-GPRegistryValue",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Which users, groups or computers in a linked container apply a GPO (security filtering)",
+        "docs": "https://learn.microsoft.com/troubleshoot/windows-server/group-policy/cannot-apply-user-gpo-when-computer-objects-dont-have-read-permissions",
+        "reachable": true,
+        "segments": [
+          "Group Policy Objects",
+          "GPO",
+          "Scope",
+          "Security Filtering"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Which users, groups or computers in a linked container apply a GPO (security filtering)",
+        "docs": "https://learn.microsoft.com/powershell/module/grouppolicy/set-gppermission?view=windowsserver2025-ps",
+        "reachable": true,
+        "token": "Set-GPPermission",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "How often computers refresh Group Policy in the background",
+        "docs": "https://learn.microsoft.com/windows/client-management/mdm/policy-csp-admx-grouppolicy",
+        "reachable": true,
+        "segments": [
+          "Computer Configuration",
+          "Administrative Templates",
+          "System",
+          "Group Policy",
+          "Set Group Policy refresh interval for computers"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "How often computers refresh Group Policy in the background",
+        "docs": "https://learn.microsoft.com/windows/client-management/mdm/policy-csp-admx-grouppolicy",
+        "reachable": true,
+        "token": "./Device/Vendor/MSFT/Policy/Config/ADMX_GroupPolicy/GroupPolicyRefreshRate",
+        "found": true
+      },
+      {
+        "index": 4,
+        "side": "ui",
+        "governs": "Which custom or partner ADMX templates Intune can deploy to managed Windows devices",
+        "docs": "https://learn.microsoft.com/intune/device-configuration/settings-catalog/import-custom-admx-templates",
+        "reachable": true,
+        "segments": [
+          "Devices",
+          "Manage devices",
+          "Configuration",
+          "Import ADMX",
+          "Import"
+        ],
+        "missing": []
+      },
+      {
+        "index": 4,
+        "side": "api",
+        "governs": "Which custom or partner ADMX templates Intune can deploy to managed Windows devices",
+        "docs": "https://learn.microsoft.com/graph/api/intune-grouppolicy-grouppolicyuploadeddefinitionfile-create?view=graph-rest-beta",
+        "reachable": true,
+        "token": "/beta/deviceManagement/groupPolicyUploadedDefinitionFiles",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}
