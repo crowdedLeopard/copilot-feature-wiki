@@ -2,33 +2,50 @@
   "slug": "microsoft-purview-compliance-portal-information-protection-scan-existing-files-in-sharepoi",
   "roadmapId": 499076,
   "title": "Microsoft Purview: scan existing SharePoint and OneDrive files for sensitive information (GCC, GCC High, DoD)",
-  "status": "verified-with-gaps",
-  "date": "2026-11-21",
+  "status": "held",
+  "date": "2026-11-28",
   "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 0,
+  "attempts": 1,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "pass",
+  "verifierVerdict": "hold",
   "notes": [],
-  "hold": null,
-  "counts": {
-    "claims": 82,
-    "confirmed": 82,
-    "unconfirmed": 0,
-    "contradicted": 0,
-    "blocker": 0,
-    "major": 0,
-    "minor": 2
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-28",
+    "reasons": [
+      "1 blocking finding (claim 88)"
+    ]
   },
-  "summary": "The briefing passes: its roadmap facts, scan behaviour, billing model and PowerShell call are supported by the sources checked. The two portal paths reach the correct pages but should include the final scope setting and pause toggle. Government-cloud behaviour and pricing remain appropriately qualified rather than presented as confirmed.",
+  "counts": {
+    "claims": 91,
+    "confirmed": 89,
+    "unconfirmed": 1,
+    "contradicted": 1,
+    "blocker": 1,
+    "major": 0,
+    "minor": 3
+  },
+  "summary": "Hold: the checklist sends administrators to Usage center to compare the billed amount, but Microsoft documents consumption units there and charges on the Azure bill. The roadmap facts, scan settings, commands and billing meter are supported; two control paths also stop short of their settings.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing",
+      "where": "title; front matter: products",
       "type": "record",
-      "claim": "Microsoft plans administrator scanning of existing SharePoint and OneDrive for Business files at rest for sensitive data.",
+      "claim": "The item concerns Microsoft Purview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Purview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "Microsoft plans to enable admins to scan existing files at rest in SharePoint or OneDrive for Business for sensitive data.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "This new capability will enable admins to scan existing files at rest in SharePoint or OneDrive for business for sensitive data.",
@@ -36,8 +53,8 @@
       "fix": null
     },
     {
-      "n": 2,
-      "where": "title; front matter: clouds; What's changing; Scope",
+      "n": 3,
+      "where": "title; summary; front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists GCC, GCC High and DoD.",
       "status": "supported",
@@ -47,7 +64,7 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 4,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap platform is Web.",
@@ -58,10 +75,10 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 5,
       "where": "front matter: releasePhase; What's changing; Scope; Open questions",
       "type": "record",
-      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "claim": "The release phases are General Availability and Preview.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
@@ -69,7 +86,7 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 6,
       "where": "front matter: status; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap status is In development.",
@@ -80,7 +97,7 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 7,
       "where": "summary; front matter: targetDate; What's changing; Why it matters; Scope; Open questions",
       "type": "record",
       "claim": "March CY2027 is the roadmap target, not a committed delivery date.",
@@ -91,10 +108,10 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 8,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The record supplies no preview date.",
+      "claim": "The record gives no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -102,7 +119,7 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 9,
       "where": "What's changing",
       "type": "record",
       "claim": "The record has no more-info link.",
@@ -113,32 +130,10 @@
       "fix": null
     },
     {
-      "n": 9,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-09-28T22:58:08.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-09-28T22:58:08\"",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 10,
-      "where": "front matter: products",
-      "type": "record",
-      "claim": "The roadmap product is Microsoft Purview.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Purview\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Learn's on-demand classification identifies and classifies sensitive historical content in SharePoint, OneDrive and endpoints.",
+      "claim": "Learn describes on-demand classification as identifying and classifying sensitive historical content in SharePoint, OneDrive and endpoints.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/on-demand-classification",
       "quote": "Microsoft Purview on-demand classification identifies and classifies sensitive content in historical data stored in SharePoint, OneDrive, and endpoints.",
@@ -146,87 +141,87 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "Why it matters",
-      "type": "behaviour",
-      "claim": "On-demand classification extends coverage to files that have never been classified.",
+      "n": 11,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "Microsoft does not explicitly link roadmap item 499076 to the cited on-demand classification page.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/on-demand-classification",
-      "quote": "On-demand classification extends the classification capabilities to files that aren't classified or modified for a long time, files that are never classified, or files that need updated classification on previously classified files.",
+      "source": null,
+      "quote": "Searched: on-demand classification GCC GCC High DoD availability default automatic rollout 499076; read the roadmap record and on-demand-classification page. Neither supplies the link.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Open questions; front matter: confidence",
+      "type": "absence",
+      "claim": "The cited scan page does not specify cloud coverage or confirm its behaviour for GCC, GCC High or DoD.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: on-demand classification GCC GCC High DoD availability default automatic rollout 499076; read on-demand-classification and GCC/GCC High deployment search excerpts. No feature-specific cloud statement found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 13,
-      "where": "Why it matters",
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "On-demand classification covers files needing updated classification.",
+      "claim": "An administrator creates a scan through a wizard.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/on-demand-classification",
-      "quote": "files that need updated classification on previously classified files.",
+      "quote": "Select New scan. Follow the instructions in the wizard.",
       "severity": null,
       "fix": null
     },
     {
       "n": 14,
-      "where": "What's changing; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not explicitly linked roadmap item 499076 to the Learn on-demand classification page.",
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "A scan can cover all SharePoint sites and OneDrive accounts.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: on-demand classification GCC GCC High DoD availability licensing pricing default enabled rollout 499076. Read the roadmap record and on-demand-classification; neither links the item to that capability.",
+      "source": "https://learn.microsoft.com/purview/on-demand-classification",
+      "quote": "You can choose to scan all SharePoint sites and OneDrive accounts, only specific ones, or skip certain sites and accounts from the scan.",
       "severity": null,
       "fix": null
     },
     {
       "n": 15,
-      "where": "What's changing; Scope; Open questions",
-      "type": "absence",
-      "claim": "The scan documentation does not confirm its described behaviour and settings for GCC, GCC High or DoD.",
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "A scan can be restricted to specific SharePoint sites and OneDrive accounts.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"on-demand classification\" \"GCC High\" licensing availability; \"on-demand classification\" \"GCC\" pricing. Read on-demand-classification and government deployment search excerpts; no explicit government-cloud coverage for this scan found.",
+      "source": "https://learn.microsoft.com/purview/on-demand-classification",
+      "quote": "You can choose to scan all SharePoint sites and OneDrive accounts, only specific ones, or skip certain sites and accounts from the scan.",
       "severity": null,
       "fix": null
     },
     {
       "n": 16,
-      "where": "front matter: defaultState; Why it matters",
-      "type": "absence",
-      "claim": "Microsoft has not stated this government-cloud change's default or what happens on arrival.",
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "A scan can exclude selected sites and accounts.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"on-demand classification\" \"default\" SharePoint rollout; on-demand classification GCC GCC High DoD availability licensing pricing default enabled rollout 499076. Read the record and scan page; neither states the government rollout default.",
+      "source": "https://learn.microsoft.com/purview/on-demand-classification",
+      "quote": "You can choose to scan all SharePoint sites and OneDrive accounts, only specific ones, or skip certain sites and accounts from the scan.",
       "severity": null,
       "fix": null
     },
     {
       "n": 17,
-      "where": "What's changing; Scope; Governance guidance",
+      "where": "What's changing; Governance guidance: Before rollout",
       "type": "behaviour",
-      "claim": "The scan wizard permits all SharePoint sites and OneDrive accounts, specific ones, or exclusions.",
+      "claim": "The wizard lets the administrator choose classifiers.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/on-demand-classification",
-      "quote": "Scope and location - You can choose to scan all SharePoint sites and OneDrive accounts, only specific ones, or skip certain sites and accounts from the scan.",
+      "quote": "During this process, you define the following settings: ... Classifiers to scan for",
       "severity": null,
       "fix": null
     },
     {
       "n": 18,
-      "where": "What's changing; Governance guidance",
+      "where": "What's changing; Governance guidance: Before rollout",
       "type": "behaviour",
-      "claim": "The wizard lets the administrator select classifiers.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/on-demand-classification",
-      "quote": "Follow the instructions in the wizard. During this process, you define the following settings: ... Classifiers to scan for",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "What's changing; Governance guidance",
-      "type": "behaviour",
-      "claim": "The wizard lets the administrator set the last-modified date range.",
+      "claim": "The wizard lets the administrator choose a last-modified date range.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/on-demand-classification",
       "quote": "File last modified date range you want to scan",
@@ -234,7 +229,7 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 19,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "The wizard lets the administrator choose file extensions.",
@@ -245,32 +240,32 @@
       "fix": null
     },
     {
-      "n": 21,
-      "where": "What's changing",
+      "n": 20,
+      "where": "What's changing; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Estimation begins after the wizard and precedes classification.",
+      "claim": "Estimation begins after completion of the scan wizard, before classification.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/on-demand-classification",
-      "quote": "After you complete the wizard, the estimation process begins. The estimation duration depends on the scope of the scan.",
+      "quote": "After you complete the wizard, the estimation process begins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The administrator selects Start classification after reviewing estimation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/on-demand-classification",
+      "quote": "Select View estimation. ... Select Start classification.",
       "severity": null,
       "fix": null
     },
     {
       "n": 22,
-      "where": "What's changing; Governance guidance: At rollout",
-      "type": "admin-path",
-      "claim": "The administrator selects Start classification after reviewing the estimate.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/on-demand-classification",
-      "quote": "From the On-demand classification list view, select the scan you created. ... Select View estimation. ... Select Start classification.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
       "where": "What's changing",
       "type": "default",
-      "claim": "The default scan date range includes items created or modified within the past year.",
+      "claim": "A scan's default date range covers items created or modified within the past year.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/on-demand-classification",
       "quote": "By default, the scan includes all items created or modified within the past year, across all supported file extensions.",
@@ -278,7 +273,7 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 23,
       "where": "What's changing",
       "type": "default",
       "claim": "A scan includes all supported file extensions by default.",
@@ -289,10 +284,10 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 24,
       "where": "What's changing",
       "type": "default",
-      "claim": "A scan includes every available tenant classifier by default.",
+      "claim": "A scan includes every available classifier configured in the tenant by default.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/on-demand-classification",
       "quote": "It also includes every available classifier configured in your tenant.",
@@ -300,10 +295,10 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 25,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "When choosing specific classifiers, a scan can select up to 50 at a time.",
+      "claim": "When selecting specific classifiers, a scan can select up to 50 at a time.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/on-demand-classification",
       "quote": "If you choose to scan for specific classifiers, you can select up to 50 at a time.",
@@ -311,8 +306,8 @@
       "fix": null
     },
     {
-      "n": 27,
-      "where": "What's changing; Governance controls",
+      "n": 26,
+      "where": "What's changing; Why it matters",
       "type": "behaviour",
       "claim": "On-demand classification updates classification results.",
       "status": "supported",
@@ -322,21 +317,21 @@
       "fix": null
     },
     {
-      "n": 28,
-      "where": "What's changing; Why it matters; Governance controls; rationale: risk",
-      "type": "applicability",
-      "claim": "Matching policies determine resulting actions and updated results can trigger active policies.",
+      "n": 27,
+      "where": "What's changing; Why it matters; Governance controls",
+      "type": "behaviour",
+      "claim": "Matching policies, rather than the scan itself, determine resulting enforcement actions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/on-demand-classification",
-      "quote": "On-demand classification updates classification results; matching policies determine any resulting actions. For SharePoint and OneDrive, updated results can trigger active policies, including policies that apply or remove sensitivity labels.",
+      "quote": "On-demand classification updates classification results; matching policies determine any resulting actions.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 29,
+      "n": 28,
       "where": "Risk assessment: Autonomy & actions; rationale: risk",
       "type": "applicability",
-      "claim": "SharePoint and OneDrive scan results can trigger policies that apply or remove sensitivity labels.",
+      "claim": "Updated SharePoint and OneDrive results can trigger active policies that apply or remove sensitivity labels.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/on-demand-classification",
       "quote": "For SharePoint and OneDrive, updated results can trigger active policies, including policies that apply or remove sensitivity labels.",
@@ -344,7 +339,7 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 29,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "On-demand classification is not an auto-labeling simulation.",
@@ -355,10 +350,21 @@
       "fix": null
     },
     {
+      "n": 30,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "On-demand classification extends coverage to never-classified files or files needing updated classification.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/on-demand-classification",
+      "quote": "On-demand classification extends the classification capabilities to files that aren't classified or modified for a long time, files that are never classified, or files that need updated classification on previously classified files.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 31,
       "where": "Why it matters",
       "type": "behaviour",
-      "claim": "Microsoft says on-demand classification helps reduce AI surfacing of unlabeled or unprotected information.",
+      "claim": "Learn says the capability helps reduce AI tools surfacing unlabelled or unprotected information.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/on-demand-classification",
       "quote": "Reduce the risk of AI tools surfacing unlabeled or unprotected information.",
@@ -367,20 +373,20 @@
     },
     {
       "n": 32,
-      "where": "Risk assessment: Data exposure; Governance controls; rationale: impact",
-      "type": "applicability",
-      "claim": "Scanned SharePoint and OneDrive files are evaluated against DLP policies.",
+      "where": "front matter: defaultState; Why it matters",
+      "type": "absence",
+      "claim": "Microsoft has not stated the feature's arrival default for the US Government release.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/on-demand-classification",
-      "quote": "Each file, once scanned, is evaluated against Data Loss Prevention (DLP), Information Protection (MIP), Data Lifecycle Management (DLM), and Insider Risk Management (IRM) policies, triggering appropriate actions as per matching policies.",
+      "source": null,
+      "quote": "Searched: on-demand classification GCC GCC High DoD availability default automatic rollout 499076; on-demand classification GCC default. Read roadmap, scan page and GCC/GCC High deployment excerpts; no arrival-default statement for this release.",
       "severity": null,
       "fix": null
     },
     {
       "n": 33,
-      "where": "Risk assessment: Data exposure; Governance controls; rationale: impact",
+      "where": "Risk assessment: Data exposure; rationale: impact; Governance controls",
       "type": "applicability",
-      "claim": "Scanned SharePoint and OneDrive files are evaluated against Information Protection policies.",
+      "claim": "Each scanned SharePoint or OneDrive file is evaluated against DLP policies.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/on-demand-classification",
       "quote": "Each file, once scanned, is evaluated against Data Loss Prevention (DLP), Information Protection (MIP), Data Lifecycle Management (DLM), and Insider Risk Management (IRM) policies, triggering appropriate actions as per matching policies.",
@@ -389,9 +395,9 @@
     },
     {
       "n": 34,
-      "where": "Risk assessment: Data exposure; Governance controls; rationale: impact",
+      "where": "Risk assessment: Data exposure; rationale: impact; Governance controls",
       "type": "applicability",
-      "claim": "Scanned SharePoint and OneDrive files are evaluated against Data Lifecycle Management policies.",
+      "claim": "Each scanned SharePoint or OneDrive file is evaluated against Information Protection policies.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/on-demand-classification",
       "quote": "Each file, once scanned, is evaluated against Data Loss Prevention (DLP), Information Protection (MIP), Data Lifecycle Management (DLM), and Insider Risk Management (IRM) policies, triggering appropriate actions as per matching policies.",
@@ -400,9 +406,9 @@
     },
     {
       "n": 35,
-      "where": "Risk assessment: Data exposure; Governance controls; rationale: impact",
+      "where": "Risk assessment: Data exposure; rationale: impact; Governance controls",
       "type": "applicability",
-      "claim": "Scanned SharePoint and OneDrive files are evaluated against Insider Risk Management policies.",
+      "claim": "Each scanned SharePoint or OneDrive file is evaluated against Data Lifecycle Management policies.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/on-demand-classification",
       "quote": "Each file, once scanned, is evaluated against Data Loss Prevention (DLP), Information Protection (MIP), Data Lifecycle Management (DLM), and Insider Risk Management (IRM) policies, triggering appropriate actions as per matching policies.",
@@ -411,20 +417,20 @@
     },
     {
       "n": 36,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "New classification results are reflected in Content Explorer.",
+      "where": "Risk assessment: Data exposure; rationale: impact; Governance controls",
+      "type": "applicability",
+      "claim": "Each scanned SharePoint or OneDrive file is evaluated against Insider Risk Management policies.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/on-demand-classification",
-      "quote": "Content Explorer updates within seven days of scanning to reflect newly classified content.",
+      "quote": "Each file, once scanned, is evaluated against Data Loss Prevention (DLP), Information Protection (MIP), Data Lifecycle Management (DLM), and Insider Risk Management (IRM) policies, triggering appropriate actions as per matching policies.",
       "severity": null,
       "fix": null
     },
     {
       "n": 37,
-      "where": "Risk assessment: Data exposure; Governance guidance: After rollout",
-      "type": "date",
-      "claim": "Content Explorer updates within seven days of scanning.",
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Newly classified content is reflected in Content Explorer.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/on-demand-classification",
       "quote": "Content Explorer updates within seven days of scanning to reflect newly classified content.",
@@ -433,7 +439,18 @@
     },
     {
       "n": 38,
-      "where": "controls[0].note; Risk assessment: Security & identity; Governance controls",
+      "where": "Risk assessment: Data exposure; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Content Explorer updates within seven days of scanning.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/on-demand-classification",
+      "quote": "Content Explorer updates within seven days of scanning to reflect newly classified content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Security & identity; controls[0].note; Governance controls",
       "type": "role",
       "claim": "Running a scan requires membership in the Compliance Administrator role group.",
       "status": "supported",
@@ -443,40 +460,40 @@
       "fix": null
     },
     {
-      "n": 39,
-      "where": "Risk assessment: Data exposure; Governance controls",
-      "type": "role",
-      "claim": "Content Explorer List Viewer is one of the role groups allowed to view classification results.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/on-demand-classification",
-      "quote": "To view classification results, you must be a member of one of these role groups: Content Explorer Content Viewer; Content Explorer List Viewer",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 40,
-      "where": "Risk assessment: Data exposure; Governance controls",
-      "type": "role",
-      "claim": "Content Explorer Content Viewer is one of the role groups allowed to view classification results.",
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "Learn names no narrower role for running the scan.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/on-demand-classification",
-      "quote": "To view classification results, you must be a member of one of these role groups: Content Explorer Content Viewer; Content Explorer List Viewer",
+      "source": null,
+      "quote": "Searched: on-demand classification run scan permissions role Compliance Administrator narrower role. Read scan page and endpoint prerequisites/classifiers overview excerpts; the scan-specific running requirement names Compliance Administrator.",
       "severity": null,
       "fix": null
     },
     {
       "n": 41,
-      "where": "Risk assessment: Security & identity",
-      "type": "absence",
-      "claim": "The scan page names no narrower role for running this scan.",
+      "where": "Risk assessment: Data exposure; Governance controls",
+      "type": "role",
+      "claim": "Content Explorer Content Viewer is a documented role group for viewing classification results.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: on-demand classification permissions run scan Compliance Administrator narrower role. Read scan Permissions and classifiers overview search excerpts; the scan page names only Compliance Administrator, and the overview's other roles concern Classifiers page access.",
+      "source": "https://learn.microsoft.com/purview/on-demand-classification",
+      "quote": "To view classification results, you must be a member of one of these role groups: Content Explorer Content Viewer; Content Explorer List Viewer",
       "severity": null,
       "fix": null
     },
     {
       "n": 42,
+      "where": "Risk assessment: Data exposure; Governance controls",
+      "type": "role",
+      "claim": "Content Explorer List Viewer is a documented role group for viewing classification results.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/on-demand-classification",
+      "quote": "To view classification results, you must be a member of one of these role groups: Content Explorer Content Viewer; Content Explorer List Viewer",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
       "claim": "A policy being tested can remain in simulation while other active policies act on the same files.",
@@ -487,10 +504,10 @@
       "fix": null
     },
     {
-      "n": 43,
+      "n": 44,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Selecting specific classifiers updates only their classification results for scanned files.",
+      "claim": "When specific classifiers are selected, only their classification results are updated for scanned files.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/on-demand-classification",
       "quote": "If you select specific classifiers during a scan, only those classifiers have their classification results updated for the scanned files.",
@@ -498,10 +515,10 @@
       "fix": null
     },
     {
-      "n": 44,
+      "n": 45,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Other classifiers may remain unevaluated and may not trigger their associated policies.",
+      "claim": "Other classifiers might remain unevaluated and not trigger associated policies.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/on-demand-classification",
       "quote": "Other classifiers present in the files might remain unevaluated and might not trigger their associated policies.",
@@ -509,10 +526,10 @@
       "fix": null
     },
     {
-      "n": 45,
+      "n": 46,
       "where": "Risk assessment: Change & support; Governance guidance: At rollout",
-      "type": "admin-path",
-      "claim": "The scan can be edited and estimation rerun before starting classification.",
+      "type": "behaviour",
+      "claim": "The administrator can edit the scan and rerun estimation before starting classification.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/on-demand-classification",
       "quote": "After reviewing the estimates, you can edit the scan to narrow or expand the scope. Select Edit scan and rerun the estimation scan.",
@@ -520,10 +537,10 @@
       "fix": null
     },
     {
-      "n": 46,
+      "n": 47,
       "where": "Risk assessment: Change & support; Governance controls",
-      "type": "admin-path",
-      "claim": "Cancel Scan cancels an in-progress scan in the portal.",
+      "type": "behaviour",
+      "claim": "An in-progress scan can be cancelled using Cancel Scan in the portal.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/on-demand-classification",
       "quote": "On the Estimation overview tab, review scan results, including progress, items found, and estimated cost. To cancel in-progress scans, select Cancel Scan.",
@@ -531,9 +548,9 @@
       "fix": null
     },
     {
-      "n": 47,
+      "n": 48,
       "where": "Risk assessment: Change & support",
-      "type": "date",
+      "type": "behaviour",
       "claim": "Classification can start up to 30 days after estimation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/on-demand-classification",
@@ -542,10 +559,10 @@
       "fix": null
     },
     {
-      "n": 48,
+      "n": 49,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Minimizing the estimation-to-classification gap gives more accurate final counts and costs.",
+      "claim": "A shorter gap between estimation and classification improves count and cost accuracy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/on-demand-classification",
       "quote": "Classification can start up to 30 days after estimation, but minimizing the gap ensures greater accuracy in final counts and costs.",
@@ -553,10 +570,10 @@
       "fix": null
     },
     {
-      "n": 49,
+      "n": 50,
       "where": "Risk assessment: Change & support; Cost and licensing",
       "type": "behaviour",
-      "claim": "Only one active scan processes an overlapping location; other scans mark it skipped.",
+      "claim": "Only one active scan processes an overlapping location, and the others mark it skipped.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/on-demand-classification",
       "quote": "If a location is in scope of multiple active scans, only one scan processes it successfully and marks it skipped for others.",
@@ -564,18 +581,18 @@
       "fix": null
     },
     {
-      "n": 50,
+      "n": 51,
       "where": "front matter: licensing.model",
       "type": "licensing",
-      "claim": "Consumption is a documented billing model for on-demand classification.",
+      "claim": "Consumption is a documented licensing model for on-demand classification.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-billing-models",
-      "quote": "Other Microsoft Purview solutions that use pay-as-you-go pricing ... On-demand classification ... Asset, based on the number classified per scan",
+      "quote": "The pay-as-you-go billing model is a consumption billing model. ... Other Microsoft Purview solutions that use pay-as-you-go pricing ... On-demand classification",
       "severity": null,
       "fix": null
     },
     {
-      "n": 51,
+      "n": 52,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
       "claim": "The scan page says the feature uses pay-as-you-go billing, per-user licensing, or both.",
@@ -586,21 +603,32 @@
       "fix": null
     },
     {
-      "n": 52,
-      "where": "summary; front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "n": 53,
+      "where": "summary; Cost and licensing; Why it matters",
       "type": "cost",
-      "claim": "SharePoint and OneDrive on-demand classification is metered per asset classified per scan.",
+      "claim": "The billing models page lists pay-as-you-go on-demand classification for SharePoint and OneDrive scans.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-billing-models",
-      "quote": "On-demand classification | Applies when you run a scan to identify and classify sensitive content in data stored in SharePoint and OneDrive | Asset, based on the number classified per scan",
+      "quote": "On-demand classification | Applies when you run a scan to identify and classify sensitive content in data stored in SharePoint and OneDrive",
       "severity": null,
       "fix": null
     },
     {
-      "n": 53,
+      "n": 54,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "The meter is assets classified per scan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "On-demand classification ... Asset, based on the number classified per scan",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
       "where": "Cost and licensing; rationale: cost",
       "type": "cost",
-      "claim": "Pay-as-you-go billing is Azure based.",
+      "claim": "Pay-as-you-go billing uses Azure-based billing mechanisms.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-billing-models",
       "quote": "The billing mechanisms are Azure based, so you must associate your Microsoft 365 tenant with an active Azure subscription.",
@@ -608,7 +636,7 @@
       "fix": null
     },
     {
-      "n": 54,
+      "n": 56,
       "where": "Cost and licensing; Governance guidance: Before rollout; rationale: cost",
       "type": "licensing",
       "claim": "Pay-as-you-go requires associating the Microsoft 365 tenant with an active Azure subscription.",
@@ -619,10 +647,10 @@
       "fix": null
     },
     {
-      "n": 55,
+      "n": 57,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "The Azure bill for pay-as-you-go charges is generated at month end.",
+      "claim": "An Azure bill is generated at the end of the month.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-billing-models",
       "quote": "An Azure bill is generated at the end of the month for the total number of pay-as-you-go charges across all Microsoft solutions.",
@@ -630,21 +658,21 @@
       "fix": null
     },
     {
-      "n": 56,
-      "where": "Cost and licensing; Governance guidance: After rollout",
+      "n": 58,
+      "where": "Cost and licensing",
       "type": "behaviour",
-      "claim": "Pay-as-you-go usage is visible in the Microsoft Purview portal's Usage center.",
+      "claim": "Pay-as-you-go usage is visible in Usage center in the Microsoft Purview portal.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-billing-usage",
-      "quote": "The Usage center in the Microsoft Purview portal helps you understand and manage your usage for both billing models. You can view your pay-as-you-go billing usage and your per-user licensing usage for Microsoft Purview capabilities.",
+      "quote": "The Usage center in the Microsoft Purview portal helps you understand and manage your usage for both billing models. You can view your pay-as-you-go billing usage",
       "severity": null,
       "fix": null
     },
     {
-      "n": 57,
+      "n": 59,
       "where": "Cost and licensing; Governance guidance: At rollout",
-      "type": "cost",
-      "claim": "Estimation shows an estimated cost before classification starts.",
+      "type": "behaviour",
+      "claim": "Estimation shows an estimated cost before classification is started.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/on-demand-classification",
       "quote": "On the Estimation overview tab, review scan results, including progress, items found, and estimated cost.",
@@ -652,10 +680,10 @@
       "fix": null
     },
     {
-      "n": 58,
+      "n": 60,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "Actual billed amounts may be lower than estimates when items or locations are skipped.",
+      "claim": "The actual billed amount can be lower than the estimate when items or locations are skipped.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/on-demand-classification",
       "quote": "The actual billed amount may be lower than the estimated cost if some items or locations are skipped during the scan.",
@@ -663,35 +691,13 @@
       "fix": null
     },
     {
-      "n": 59,
-      "where": "Cost and licensing",
-      "type": "behaviour",
-      "claim": "Empty files can be skipped to avoid unnecessary billing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/on-demand-classification",
-      "quote": "Items can be skipped if they are empty files (excluded to avoid unnecessary billing), if the scan is canceled, or if the subscription expires before completion.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 60,
-      "where": "Cost and licensing",
-      "type": "behaviour",
-      "claim": "Items can be skipped when the scan is canceled.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/on-demand-classification",
-      "quote": "Items can be skipped if they are empty files (excluded to avoid unnecessary billing), if the scan is canceled, or if the subscription expires before completion.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 61,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "Classifier selection affects file volume, rather than creating a per-classifier charge.",
+      "claim": "Empty files can be skipped to avoid unnecessary billing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/on-demand-classification",
-      "quote": "The classifiers selected for an on-demand scan influence how many files are identified for processing. Scan cost is determined by the total number of files scanned—not the number of classifiers.",
+      "quote": "Items can be skipped if they are empty files (excluded to avoid unnecessary billing)",
       "severity": null,
       "fix": null
     },
@@ -699,10 +705,10 @@
       "n": 62,
       "where": "Cost and licensing",
       "type": "behaviour",
-      "claim": "For tenants using EDM classifiers, on-demand scans rescan previously classified files.",
+      "claim": "Cancellation can cause scan items to be skipped.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/on-demand-classification",
-      "quote": "Tenants using EDM classifiers should be aware that On-Demand Classification scans (including estimation and classification) rescan previously classified files, which can increase overall scan costs.",
+      "quote": "Items can be skipped ... if the scan is canceled",
       "severity": null,
       "fix": null
     },
@@ -710,10 +716,10 @@
       "n": 63,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "EDM-related rescanning can increase overall scan costs.",
+      "claim": "Classifier selection affects the number of files processed rather than creating a per-classifier charge.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/on-demand-classification",
-      "quote": "Tenants using EDM classifiers should be aware that On-Demand Classification scans (including estimation and classification) rescan previously classified files, which can increase overall scan costs.",
+      "quote": "The classifiers selected for an on-demand scan influence how many files are identified for processing. Scan cost is determined by the total number of files scanned—not the number of classifiers.",
       "severity": null,
       "fix": null
     },
@@ -721,29 +727,73 @@
       "n": 64,
       "where": "Cost and licensing",
       "type": "behaviour",
-      "claim": "Each SharePoint and OneDrive scan can process up to 150,000 locations.",
+      "claim": "Scans using EDM classifiers rescan previously classified files.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/on-demand-classification",
-      "quote": "Applies to SharePoint and OneDrive ... Each scan can process up to 150,000 locations and 100 million files. The system enforces these limits based on scan estimation results.",
+      "quote": "Tenants using EDM classifiers should be aware that On-Demand Classification scans (including estimation and classification) rescan previously classified files",
       "severity": null,
       "fix": null
     },
     {
       "n": 65,
       "where": "Cost and licensing",
-      "type": "behaviour",
-      "claim": "Each SharePoint and OneDrive scan can process up to 100 million files.",
+      "type": "cost",
+      "claim": "EDM rescanning can increase overall scan cost.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/on-demand-classification",
-      "quote": "Applies to SharePoint and OneDrive ... Each scan can process up to 150,000 locations and 100 million files. The system enforces these limits based on scan estimation results.",
+      "quote": "rescan previously classified files, which can increase overall scan costs.",
       "severity": null,
       "fix": null
     },
     {
       "n": 66,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost; Open questions",
+      "type": "absence",
+      "claim": "No rate specific to GCC, GCC High and DoD was published in the Microsoft text checked.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Purview on-demand classification GCC government pricing licensing rate. Read billing models, scan page and Azure Purview pricing via Learn fetch; no GCC/GCC High/DoD-specific numerical rate found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "The pages read do not publish a licence statement specific to this scan in GCC, GCC High or DoD.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Purview on-demand classification GCC government pricing licensing rate; on-demand classification licensing G5. Read scan, billing models, Microsoft 365 security licensing guidance and government deployment excerpts; no scan-specific government entitlement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "Each SharePoint and OneDrive scan can process up to 150,000 locations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/on-demand-classification",
+      "quote": "Each scan can process up to 150,000 locations and 100 million files. The system enforces these limits based on scan estimation results.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "Each SharePoint and OneDrive scan can process up to 100 million files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/on-demand-classification",
+      "quote": "Each scan can process up to 150,000 locations and 100 million files. The system enforces these limits based on scan estimation results.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
       "where": "Scope",
-      "type": "applicability",
-      "claim": "Adaptive scopes for SharePoint on-demand classification can use site URL, name or metadata.",
+      "type": "behaviour",
+      "claim": "Adaptive scopes define SharePoint scan scope dynamically using site attributes such as URL, name or metadata.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/on-demand-classification",
       "quote": "Adaptive scopes for SharePoint on-demand classification let administrators define scan scope dynamically based on site attributes (such as URL, name, or metadata) instead of selecting sites manually.",
@@ -751,10 +801,10 @@
       "fix": null
     },
     {
-      "n": 67,
+      "n": 71,
       "where": "Scope",
       "type": "applicability",
-      "claim": "Administrative units limit administrators to creating and managing scans for sites within their assigned units.",
+      "claim": "Administrative units limit administrators to creating and managing SharePoint scans for sites in their assigned units.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/on-demand-classification",
       "quote": "Administrators can create and manage scans only for sites within their assigned AUs, and access to scan configuration and results is limited to AU-scoped admins.",
@@ -762,10 +812,10 @@
       "fix": null
     },
     {
-      "n": 68,
+      "n": 72,
       "where": "Scope",
-      "type": "applicability",
-      "claim": "Learn also documents the wizard for Windows 10/11 endpoints, which the roadmap description does not mention.",
+      "type": "behaviour",
+      "claim": "Learn describes endpoint scanning through the same wizard and provides Windows 10/11 endpoint considerations.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/on-demand-classification",
       "quote": "For endpoint devices, you can scope the scan by users. ... Applies to Windows 10/11 endpoints",
@@ -773,54 +823,32 @@
       "fix": null
     },
     {
-      "n": 69,
+      "n": 73,
       "where": "controls[0].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "Microsoft Purview portal > Information Protection > Classifiers > On-demand classification > New scan reaches the wizard for scan location scope.",
+      "claim": "Microsoft Purview portal > Information Protection > Classifiers > On-demand classification > New scan reaches scan scope configuration.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/on-demand-classification",
       "quote": "Go to ... Information Protection > Classifiers > On-demand classification. Select New scan. Follow the instructions in the wizard. ... Scope and location",
       "severity": "minor",
-      "fix": "Extend controls[0].ui.path and the rendered table path to 'Information Protection > Classifiers > On-demand classification > New scan > Scope and location', using https://learn.microsoft.com/purview/on-demand-classification."
+      "fix": "Extend controls[0].ui.path and its rendered path to 'Information Protection > Classifiers > On-demand classification > New scan > Scope and location', as documented at https://learn.microsoft.com/purview/on-demand-classification."
     },
     {
-      "n": 70,
+      "n": 74,
       "where": "controls[0].api; Governance controls table",
       "type": "command",
       "claim": "New-SensitiveInformationScan -Name \"<scan name>\" -SharePointLocation All creates an on-demand scan scoped to all SharePoint sites.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-sensitiveinformationscan",
-      "quote": "New-SensitiveInformationScan \"SharePoint scan\" -SharePointLocation All ... The SharePointLocation parameter specifies the SharePoint sites to include in the scan. You identify the site by its URL value, or you can use the value All to include all sites.",
+      "quote": "Use the New-SensitiveInformationScan cmdlet to create new on-demand classification scans. ... The SharePointLocation parameter specifies the SharePoint sites to include in the scan. ... you can use the value All to include all sites.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 71,
-      "where": "controls[0].note; Governance controls",
-      "type": "command",
-      "claim": "The cmdlet is available only in Security & Compliance PowerShell.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-sensitiveinformationscan",
-      "quote": "This cmdlet is available only in Security & Compliance PowerShell.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 72,
-      "where": "Governance controls",
-      "type": "role",
-      "claim": "Using the cmdlet requires assigned Security & Compliance PowerShell permissions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-sensitiveinformationscan",
-      "quote": "To use this cmdlet in Security & Compliance PowerShell, you need to be assigned permissions.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 73,
+      "n": 75,
       "where": "controls[0].note; Governance controls table",
       "type": "admin-path",
-      "claim": "Data loss prevention > Classifiers is an alternative way into on-demand classification.",
+      "claim": "Data loss prevention > Classifiers provides an alternative entry to on-demand classification in the Purview portal.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/on-demand-classification",
       "quote": "Go to Data loss prevention > Classifiers > On-demand classification or Information Protection > Classifiers > On-demand classification.",
@@ -828,20 +856,53 @@
       "fix": null
     },
     {
-      "n": 74,
-      "where": "controls[1].ui; controls[1].note; Governance controls table",
+      "n": 76,
+      "where": "controls[0].note; Governance controls table and prose",
+      "type": "command",
+      "claim": "New-SensitiveInformationScan is available only in Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-sensitiveinformationscan",
+      "quote": "This cmdlet is available only in Security & Compliance PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Permissions must be assigned before using the cmdlet in Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-sensitiveinformationscan",
+      "quote": "To use this cmdlet in Security & Compliance PowerShell, you need to be assigned permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "controls[1].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "Microsoft Purview portal > Usage center > Pay-as-you-go reaches the page with the On-Demand Classification paused/active toggle.",
+      "claim": "Microsoft Purview portal > Usage center > Pay-as-you-go reaches the page containing the On-Demand Classification paused/active toggle.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-billing-usage",
       "quote": "To access the Usage center > Pay-as-you-go ... pages ... The pay-as-you-go usage page also lets you toggle the features listed between paused and active states. ... On-Demand Classification | Yes | Yes",
       "severity": "minor",
-      "fix": "Extend controls[1].ui.path and the rendered table path to 'Usage center > Pay-as-you-go > On-Demand Classification', retaining the note that its toggle selects paused or active, as documented at https://learn.microsoft.com/purview/purview-billing-usage."
+      "fix": "Extend controls[1].ui.path and its rendered path to 'Usage center > Pay-as-you-go > On-Demand Classification', retaining the paused/active toggle note, as documented at https://learn.microsoft.com/purview/purview-billing-usage."
     },
     {
-      "n": 75,
-      "where": "controls[1].note; Governance controls",
-      "type": "availability",
+      "n": 79,
+      "where": "controls[1].api; Governance controls table",
+      "type": "absence",
+      "claim": "Microsoft has not documented automation for the Usage center On-Demand Classification paused/active toggle.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Purview Usage center pause On-Demand Classification PowerShell API Set billing scan in progress; On-Demand Classification pause API Graph PowerShell Usage center. Read billing usage and scan-command excerpts; no toggle operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "controls[1].note; Governance controls table and prose",
+      "type": "behaviour",
       "claim": "Usage center is in preview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-billing-usage",
@@ -850,10 +911,10 @@
       "fix": null
     },
     {
-      "n": 76,
-      "where": "controls[1].note; Governance controls",
+      "n": 81,
+      "where": "controls[1].note; Governance controls table and prose",
       "type": "role",
-      "claim": "Accessing Usage center's Pay-as-you-go page requires Global Reader, Security Reader or Global Admin.",
+      "claim": "Global Reader is one of the roles allowed to access Usage center's Pay-as-you-go page.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-billing-usage",
       "quote": "To access the Usage center > Pay-as-you-go and Usage center > Premium usage pages, the account you use must have one of the following roles: Global Reader; Security Reader; Global Admin",
@@ -861,43 +922,54 @@
       "fix": null
     },
     {
-      "n": 77,
-      "where": "controls[1].api; Governance controls table",
-      "type": "absence",
-      "claim": "No API or PowerShell equivalent for the Usage center's On-Demand Classification billing pause toggle is documented.",
+      "n": 82,
+      "where": "controls[1].note; Governance controls table and prose",
+      "type": "role",
+      "claim": "Security Reader is one of the roles allowed to access Usage center's Pay-as-you-go page.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Purview Usage center pause On-Demand Classification PowerShell API paused active scan in progress; \"On-Demand Classification\" \"pause\" API PowerShell billing. Read billing-usage and relevant scan excerpts; no equivalent operation found.",
+      "source": "https://learn.microsoft.com/purview/purview-billing-usage",
+      "quote": "To access the Usage center > Pay-as-you-go and Usage center > Premium usage pages, the account you use must have one of the following roles: Global Reader; Security Reader; Global Admin",
       "severity": null,
       "fix": null
     },
     {
-      "n": 78,
+      "n": 83,
+      "where": "controls[1].note; Governance controls table and prose",
+      "type": "role",
+      "claim": "Global Admin is one of the roles allowed to access Usage center's Pay-as-you-go page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-usage",
+      "quote": "To access the Usage center > Pay-as-you-go and Usage center > Premium usage pages, the account you use must have one of the following roles: Global Reader; Security Reader; Global Admin",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 84,
+      "where": "controls[1].note; Governance controls table and prose",
+      "type": "behaviour",
+      "claim": "On-Demand Classification is listed as pausable and can be toggled between paused and active.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-usage",
+      "quote": "The pay-as-you-go usage page also lets you toggle the features listed between paused and active states. ... On-Demand Classification | Yes | Yes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 85,
       "where": "Governance controls; Open questions",
       "type": "absence",
-      "claim": "The Usage center page does not describe the effect of pausing on a scan already in progress.",
+      "claim": "The Usage center page does not explain what pausing does to an in-progress on-demand scan.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Microsoft Purview Usage center pause On-Demand Classification PowerShell API paused active scan in progress. Read purview-billing-usage in full and on-demand-classification; neither explains this pause's effect on an in-progress scan.",
+      "quote": "Searched: Microsoft Purview Usage center pause On-Demand Classification PowerShell API Set billing scan in progress. Read billing usage and on-demand-classification; the former documents the toggle, the latter Cancel Scan, but neither explains this interaction.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 79,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "The scan itself updates classification rather than enforcing policy actions directly.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/on-demand-classification",
-      "quote": "On-demand classification updates classification results; matching policies determine any resulting actions.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 80,
+      "n": 86,
       "where": "Governance guidance: After rollout",
-      "type": "admin-path",
-      "claim": "Items found by a scan can be reviewed on its Items for review tab.",
+      "type": "behaviour",
+      "claim": "The Items for review tab lets administrators review items found during a scan.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/on-demand-classification",
       "quote": "On the Items for review tab, review specific items found during the scan.",
@@ -905,7 +977,7 @@
       "fix": null
     },
     {
-      "n": 81,
+      "n": 87,
       "where": "Governance guidance: After rollout",
       "type": "behaviour",
       "claim": "The scan's Items for review results can be exported.",
@@ -916,19 +988,52 @@
       "fix": null
     },
     {
-      "n": 82,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost; Open questions",
-      "type": "absence",
-      "claim": "The pages checked publish no rate or scan licence statement specific to GCC, GCC High and DoD.",
-      "status": "supported",
+      "n": 88,
+      "where": "Governance guidance: After rollout, second bullet",
+      "type": "admin-path",
+      "claim": "The billed monetary amount can be found in Usage center and compared with the scan estimate.",
+      "status": "unsupported",
       "source": null,
-      "quote": "Searched: \"on-demand classification\" \"GCC\" pricing; \"on-demand classification\" \"GCC High\" licensing availability. Read scan, billing-models and Azure Purview pricing; no cloud-specific scan licence or numeric government rate found. Pricing returns $-/10K Assets.",
+      "quote": "Searched: Microsoft Purview Usage center pay-as-you-go actual billed amount monetary cost Total Units Used Azure bill. Read purview-billing-usage and purview-billing-models: Usage center documents Total Units Used; charges are on the Azure bill, not a documented monetary display in Usage center.",
+      "severity": "blocker",
+      "fix": "Replace the bullet with 'Compare the billed amount on the Azure bill with the estimate; review consumption units in Usage center using the Usage center row in the controls table.' The Azure bill is documented at https://learn.microsoft.com/purview/purview-billing-models and consumption units at https://learn.microsoft.com/purview/purview-billing-usage."
+    },
+    {
+      "n": 89,
+      "where": "Governance guidance: After rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The after-rollout checklist asks readers to review and export scan results through Items for review without a corresponding controls-table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'Review the Items for review tab ... and export the list'. Table rows cover only scan scope and the pay-as-you-go pause toggle.",
+      "severity": "minor",
+      "fix": "Remove the checklist instruction to review/export Items for review, or retain it as informational prose outside Governance guidance. This monitoring step has no corresponding table row; do not add a row in this correction."
+    },
+    {
+      "n": 90,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The roadmap item does not mention Windows endpoint scanning.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This new capability will enable admins to scan existing files at rest in SharePoint or OneDrive for business for sensitive data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 91,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The scan page points to Microsoft 365 licensing guidance for licence requirements.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/on-demand-classification",
+      "quote": "SKU and subscriptions licensing ... For information on licensing, see ... Microsoft 365 Enterprise Plans ... Microsoft 365 Service Descriptions",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-21T20:02:37.351Z",
+    "at": "2026-11-28T05:26:24.392Z",
     "summary": {
       "links": 5,
       "unreachable": 0,
@@ -1009,6 +1114,12 @@
       "date": "2026-11-21",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-21",
+      "status": "verified-with-gaps",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

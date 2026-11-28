@@ -4,10 +4,10 @@
   "title": "Microsoft 365 Copilot app: redesigned navigation pane with longer chat history and quick create for Notebooks and agents",
   "status": "held",
   "date": "2026-11-28",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "hold",
@@ -16,25 +16,36 @@
     "reason": "failed",
     "since": "2026-11-28",
     "reasons": [
-      "2 blocking findings (claims 30, 38)"
+      "3 blocking findings (claims 32, 41, 60)"
     ]
   },
   "counts": {
-    "claims": 64,
-    "confirmed": 59,
-    "unconfirmed": 2,
+    "claims": 60,
+    "confirmed": 57,
+    "unconfirmed": 0,
     "contradicted": 3,
-    "blocker": 2,
-    "major": 2,
-    "minor": 2
+    "blocker": 3,
+    "major": 0,
+    "minor": 0
   },
-  "summary": "The roadmap details and both admin paths are supported. The briefing overstates what the default settings make available: agent access remains subject to app policies and user assignments, and disabling OneDrive creation prevents Notebook creation even when its Cloud Policy is enabled. The one-click creation claim and assertion that the redesign leaves access unchanged are not documented.",
+  "summary": "Hold: Microsoft documents preview Graph automation for both Notebook creation policy and agent user access, contrary to the table's claims that neither has automation. The statement that configuration monitors cannot change these settings also overlooks their preview applyOnce mode; the roadmap facts and cited admin paths are supported.",
   "claims": [
     {
       "n": 1,
+      "where": "front matter: products; title; summary",
+      "type": "record",
+      "claim": "This change belongs to Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Copilot (Microsoft 365): App Navigation Pane Update",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
       "where": "title; summary; What's changing",
       "type": "record",
-      "claim": "The Microsoft 365 Copilot app has a simpler, reorganised navigation pane.",
+      "claim": "The app has a simpler, reorganised navigation pane.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "The Microsoft 365 Copilot app now has a simpler, cleaner navigation.",
@@ -42,7 +53,7 @@
       "fix": null
     },
     {
-      "n": 2,
+      "n": 3,
       "where": "title; summary; What's changing; Why it matters; Governance guidance",
       "type": "record",
       "claim": "The navigation update expands chat history.",
@@ -53,21 +64,10 @@
       "fix": null
     },
     {
-      "n": 3,
-      "where": "title; summary; What's changing; Governance guidance",
-      "type": "record",
-      "claim": "The navigation update includes quick actions to create new Notebooks.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "quick actions to create new Notebooks and Agents",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 4,
-      "where": "title; summary; What's changing; Risk assessment; Governance guidance",
+      "where": "title; summary; What's changing; Why it matters; Governance guidance",
       "type": "record",
-      "claim": "The navigation update includes quick actions to create new agents.",
+      "claim": "The navigation offers quick actions to create new Notebooks.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "quick actions to create new Notebooks and Agents",
@@ -76,9 +76,20 @@
     },
     {
       "n": 5,
+      "where": "title; summary; What's changing; Why it matters; Risk assessment; Governance guidance",
+      "type": "record",
+      "claim": "The navigation offers quick actions to create new agents.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "quick actions to create new Notebooks and Agents",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
       "where": "What's changing; Governance guidance",
       "type": "record",
-      "claim": "The update groups features to help users find them faster.",
+      "claim": "The update groups features to make them easier to find.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "intuitive feature grouping so users can find what they need faster",
@@ -86,10 +97,10 @@
       "fix": null
     },
     {
-      "n": 6,
-      "where": "front matter: platforms; summary; What's changing; Scope; rationale: impact",
+      "n": 7,
+      "where": "summary; front matter: platforms; What's changing; Scope; rationale: impact",
       "type": "record",
-      "claim": "The roadmap lists Desktop, Mac and Web.",
+      "claim": "The listed platforms are Desktop, Mac and Web.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Desktop\", \"Mac\", \"Web\"]",
@@ -97,8 +108,8 @@
       "fix": null
     },
     {
-      "n": 7,
-      "where": "front matter: status; summary; What's changing",
+      "n": 8,
+      "where": "summary; front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is Launched.",
       "status": "supported",
@@ -108,7 +119,7 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 9,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target is December CY2025.",
@@ -119,10 +130,10 @@
       "fix": null
     },
     {
-      "n": 9,
+      "n": 10,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap lists General Availability and Targeted Release.",
+      "claim": "The release phases are General Availability and Targeted Release.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
@@ -130,10 +141,10 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 11,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the record.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -141,10 +152,10 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 12,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap supplies no preview date.",
+      "claim": "The record gives no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -152,10 +163,10 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 13,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap record was modified at 2026-05-18T22:30:51.",
+      "claim": "The record was modified at 2026-05-18T22:30:51.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2026-05-18T22:30:51\"",
@@ -163,10 +174,10 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 14,
       "where": "front matter: defaultState; What's changing; rationale: impact",
       "type": "default",
-      "claim": "The redesign is on as part of the existing app rather than an administrator-enabled capability.",
+      "claim": "The redesign is already part of the app with no admin enablement step stated, supporting defaultState on.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "The Microsoft 365 Copilot app now has a simpler, cleaner navigation.",
@@ -174,414 +185,18 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "What's changing; Open questions",
-      "type": "absence",
-      "claim": "Microsoft Learn does not describe roadmap item 518222 itself.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Copilot navigation pane 518222 516570 redesign admin settings Notebooks agents licensing. Opened previous-year-release-notes and searched its full text for 518222 (absent); related entry names 516570. Search also returned a later redesign, 561488.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 15,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The related release-note entry is Streamlined Copilot chat navigation with expanded history, under roadmap ID 516570.",
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The redesign is an included option within the licensed Copilot app rather than a separately licensed product.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes",
-      "quote": "**Streamlined Copilot chat navigation with expanded history** [Windows, Web]\n**Roadmap ID:**[516570]",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
+      "quote": "Requirements vary based on the Copilot experience and Microsoft 365 app that your users access.",
       "severity": null,
       "fix": null
     },
     {
       "n": 16,
-      "where": "What's changing",
-      "type": "date",
-      "claim": "The related entry appears in the December 23, 2025 update.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes",
-      "quote": "## December 23, 2025\nUpdates released between December 10, 2025, and December 23, 2025.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "What's changing",
-      "type": "availability",
-      "claim": "The related release-note entry lists Windows and Web.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes",
-      "quote": "**Streamlined Copilot chat navigation with expanded history** [Windows, Web]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The related change highlights key agents.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes",
-      "quote": "The Copilot navigation pane highlights key agents",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The related change removes clutter.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes",
-      "quote": "The Copilot navigation pane highlights key agents, removes clutter",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The related change expands visible history beyond a previous limit of five recent chats.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes",
-      "quote": "expands visible chat history beyond the previous limit of five recent chats",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The related change makes chat search more prominent.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes",
-      "quote": "Chat search is also more prominent for faster access to specific threads.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Microsoft 365 Copilot has been renamed Microsoft Copilot.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
-      "quote": "Microsoft 365 Copilot is now named Microsoft Copilot, and Microsoft 365 Copilot Chat is now named Microsoft Copilot Chat.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "Why it matters",
-      "type": "behaviour",
-      "claim": "The quick actions put Notebook and agent creation one click from the navigation.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Copilot app navigation pane 518222 quick actions create Notebook agent one click hidden disabled; \"Microsoft 365 Copilot\" \"navigation\" \"quick actions\". Read roadmap, previous-year-release-notes and Agent Builder sharing page; none states a one-click creation flow for this update.",
-      "severity": "major",
-      "fix": "Replace the sentence with: 'The roadmap describes quick actions in the navigation pane to create new Notebooks and agents.'"
-    },
-    {
-      "n": 24,
-      "where": "Why it matters",
-      "type": "behaviour",
-      "claim": "The new quick actions do not change who may use Notebooks or agents.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Copilot app navigation pane 518222 quick actions create Notebook agent one click hidden disabled. Read roadmap, cpcn-admin-configuration, agent-settings and agent-builder-share-manage-agents; they document existing controls, not an unchanged-access guarantee for this update.",
-      "severity": "major",
-      "fix": "Replace 'They do not change who may use those features: the existing Cloud Policy setting for Copilot Notebooks and the agent User access setting still decide that' with 'Microsoft documents existing Cloud Policy controls for Copilot Notebooks and the User access setting for agent access.'"
-    },
-    {
-      "n": 25,
-      "where": "controls[0].governs; Why it matters; Scope; Governance guidance; rationale: risk",
-      "type": "applicability",
-      "claim": "Cloud Policy governs creation and use of Copilot Notebooks in the app.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
-      "quote": "IT administrators can control creation and use of Copilot Pages and Copilot Notebooks through Cloud Policy settings.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The Notebook policy is reached in the Microsoft 365 Apps admin center through Customization > Policy Management > policy configuration > Choose the scope > Configure Settings > Create and view Copilot Pages and Copilot Notebooks.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
-      "quote": "Select Customization from the left pane. Select Policy Management. Create a new policy configuration or edit an existing one. From the Choose the scope dropdown list ... In Configure Settings ... For Create and view Copilot Pages and Copilot Notebooks",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "controls[0].scope; controls[0].note; Governance controls table",
-      "type": "applicability",
-      "claim": "The Cloud Policy can be scoped to All users or a group.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
-      "quote": "From the Choose the scope dropdown list, choose either All users or select the group for which you want to apply the policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "controls[0].note; Governance controls table; Why it matters",
-      "type": "default",
-      "claim": "The Create and view Copilot Pages and Copilot Notebooks policy defaults to Enabled.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
-      "quote": "| Copilot Pages and Copilot Notebooks creation | Cloud Policy: Create and view Copilot Pages and Copilot Notebooks | Enabled |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "controls[0].note; Governance controls table",
-      "type": "default",
-      "claim": "Not configured has the same enabling behaviour as Enabled for the Notebook creation policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
-      "quote": "Enabled: Copilot Pages and Copilot Notebooks creation and integration are available to the users. Not configured: Copilot Pages and Copilot Notebooks creation and integration are available to the users.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "Why it matters",
-      "type": "availability",
-      "claim": "A tenant using the policy defaults has Notebooks available.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
-      "quote": "If your organization disabled the creation of OneDrive, regardless of the setting noted here, these people in your organization can't create Copilot Pages or Copilot Notebooks.",
-      "severity": "blocker",
-      "fix": "Replace 'Notebooks are available' with 'the Notebooks creation policy is Enabled by default, although users whose OneDrive creation is disabled cannot create Copilot Pages or Copilot Notebooks'. The qualification is at https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration."
-    },
-    {
-      "n": 31,
-      "where": "controls[0].governs; Risk assessment; Open questions",
-      "type": "behaviour",
-      "claim": "Disabling Notebook creation through Cloud Policy hides the Notebooks module in the Copilot app.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
-      "quote": "When creation is disabled, users are unable to create new Copilot Pages or Notebooks. The Pages module is visible in the Microsoft Copilot app, but the Notebooks module is hidden, preventing users from accessing existing Notebooks through the Copilot App.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "controls[0].note; Scope; Governance controls table",
-      "type": "role",
-      "claim": "Creating Cloud Policy settings for Microsoft 365 apps requires the Office Apps admin role.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center",
-      "quote": "For example, creating Cloud Policy settings for Microsoft 365 apps requires the Office Apps admin role.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "Scope",
-      "type": "role",
-      "claim": "An appropriate role such as AI Administrator can manage Copilot settings in the Microsoft 365 admin center.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center",
-      "quote": "To manage Copilot settings in the Microsoft 365 admin center, use an appropriate admin role, such as AI Administrator.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "controls[1].ui; Risk assessment; Governance guidance; Governance controls table",
-      "type": "admin-path",
-      "claim": "The agent User access control is at Microsoft 365 admin center > Agents > Settings > User access.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#user-access",
-      "quote": "Open the Microsoft 365 admin center in your browser. Select Agents > Settings > User access to manage your organization's agents and plugins.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "controls[1].governs; controls[1].scope; Why it matters; Risk assessment; rationale: risk",
-      "type": "applicability",
-      "claim": "User access governs which users or groups in the tenant can access and install agents and plugins.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#user-access",
-      "quote": "Use User access to control how members of your organization access and install agents and plugins.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "controls[1].note; Governance controls table",
-      "type": "behaviour",
-      "claim": "User access offers All users, No users and Specific users or groups.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#user-access",
-      "quote": "The setting has three options: All users ... No users ... Specific users or groups",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "controls[1].note; Why it matters; Governance controls table",
-      "type": "default",
-      "claim": "All users is the default User access option.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#user-access",
-      "quote": "All users - This option is the default.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "Why it matters",
-      "type": "availability",
-      "claim": "Under the default setting all users can access agents.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#user-access",
-      "quote": "All users - This option is the default. It means that all users in the organization can access agents and plugins, subject to the existing app policies and user assignments.",
-      "severity": "blocker",
-      "fix": "Replace 'all users can access agents' with 'all users can access agents subject to existing app policies and user assignments', as qualified at https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#user-access."
-    },
-    {
-      "n": 39,
-      "where": "controls[2].ui; controls[2].api; controls[2].note; Risk assessment; Governance controls table",
-      "type": "absence",
-      "claim": "No separate admin UI or API control disables Agent Builder creation while keeping agents enabled.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Agent Builder disable creation separately agents enabled administration API. Opened agent-builder-share-manage-agents; it explicitly says admins can't disable Agent Builder creation separately while keeping agents enabled. Search also returned the same statement in Agent Builder overview.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "Risk assessment",
-      "type": "behaviour",
-      "claim": "Creating agents in Agent Builder is a core Copilot capability when agents are enabled.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/plugins/agent-builder-share-manage-agents",
-      "quote": "Creating agents in Agent Builder is a core Copilot capability when agents are enabled.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "controls[1].note; Governance controls table",
-      "type": "applicability",
-      "claim": "User access controls agent and plugin access, not Agent Builder creation independently.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/plugins/agent-builder-share-manage-agents",
-      "quote": "This setting controls agent and plugin access, not Agent Builder creation independently.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "controls[0].api; Governance controls table",
-      "type": "absence",
-      "claim": "Microsoft documents no automation operation for the Create and view Copilot Pages and Copilot Notebooks policy.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Copilot Notebooks\" \"Cloud Policy\" \"API\" PowerShell create view; \"Copilot Notebooks\" \"Cloud Policy\" Graph API update policy. Opened cpcn-admin-configuration and copilotPolicySetting resource/update references; no operation sets this policy and the supported identifier list omits it.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "controls[1].api; Governance controls table",
-      "type": "absence",
-      "claim": "Microsoft documents no Graph or PowerShell operation for the agent User access setting.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Graph beta Copilot agents \"User access\" settings update all users no users PowerShell; \"copilot\" \"agent\" \"User access\" \"API\" settings. Opened agent-settings and copilotPolicySetting resource/update references; no operation changes User access.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "controls[3].ui; controls[3].api; What's changing; Risk assessment; Governance controls",
-      "type": "absence",
-      "claim": "Microsoft documents no tenant-wide UI or API switch to keep the previous Copilot app navigation layout.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot app navigation pane 518222 previous layout admin disable switch; \"Copilot\" \"navigation pane\" \"previous\" admin layout. Opened configure-copilot-admin-center, previous-year-release-notes and copilotPolicySetting resource; none documents a previous-layout control.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "controls[3].note; Governance controls table",
-      "type": "behaviour",
-      "claim": "The documented Copilot app experience table covers Search, Chat, Agents, Pages and Notebooks, Create and the Copilot key.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center",
-      "quote": "## Configure the Microsoft Copilot app experience\nSearch ... Chat ... Agents ... Pages and Notebooks ... Create ... Copilot key",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "Risk assessment; Open questions",
-      "type": "absence",
-      "claim": "Microsoft does not document whether this update's create-agent quick action opens Agent Builder or is hidden for users denied agent access.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot app navigation pane 518222 quick actions create Notebook agent one click hidden disabled; \"Microsoft 365 Copilot\" \"navigation\" \"quick actions\". Opened agent-builder-share-manage-agents, agent-settings and previous-year-release-notes; no passage specifies this shortcut's routing or hiding.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "Risk assessment; Open questions",
-      "type": "absence",
-      "claim": "Microsoft does not document how this update's create-Notebook quick action appears when Notebook creation is disabled.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot app navigation pane 518222 quick actions create Notebook agent one click hidden disabled; \"Microsoft 365 Copilot\" \"navigation\" \"quick actions\". Opened cpcn-admin-configuration and previous-year-release-notes; the policy page describes module hiding, not this quick action.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
-      "where": "Risk assessment: Data exposure",
-      "type": "record",
-      "claim": "The roadmap description does not describe new data access.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Key updates include an expanded chat history, quick actions to create new Notebooks and Agents, and intuitive feature grouping so users can find what they need faster and unlock more AI value.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "Risk assessment: Security & identity",
-      "type": "record",
-      "claim": "The roadmap description does not describe new sign-in, identity or permissions.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "The Microsoft 365 Copilot app now has a simpler, cleaner navigation. Key updates include an expanded chat history, quick actions to create new Notebooks and Agents, and intuitive feature grouping",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
-      "where": "front matter: licensing.model; licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "The navigation redesign is included as a new view inside the licensed Copilot app experiences.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
-      "quote": "Microsoft Copilot: Users need a Microsoft Copilot license and a qualifying prerequisite license. Microsoft Copilot Chat: Microsoft Copilot Chat is available to users with an eligible Microsoft 365 subscription.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 51,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
       "claim": "Microsoft Copilot Chat is available to users with an eligible Microsoft 365 subscription.",
@@ -592,54 +207,428 @@
       "fix": null
     },
     {
-      "n": 52,
+      "n": 17,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
       "claim": "Licensed Microsoft Copilot capabilities require a Microsoft Copilot licence and a qualifying prerequisite licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
-      "quote": "Microsoft Copilot license: Required for licensed Microsoft Copilot capabilities. Users need a Microsoft Copilot license and a qualifying prerequisite license.",
+      "quote": "Users need a Microsoft Copilot license and a qualifying prerequisite license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "A licence specific to this navigation redesign is not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Copilot app navigation pane redesign 518222 licensing price meter. Opened Microsoft Copilot requirements and 2025 release notes; results describe other redesigns and product licensing, not a redesign-specific licence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Cost and licensing: Meter; rationale: cost",
+      "type": "absence",
+      "claim": "No meter is documented for this navigation change.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Copilot app navigation pane redesign 518222 licensing price meter. Read Copilot controls for management licensing excerpt; opened requirements and 2025 release notes. No navigation-redesign meter was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn does not describe roadmap item 518222 itself.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Copilot app 518222 navigation pane previous layout admin disable rollback default quick actions Notebook Agent Builder. Searched all fetched 2025 release notes for 518222: no match; results identify other roadmap IDs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The cited related navigation release note is attributed to roadmap ID 516570, not this item.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes",
+      "quote": "Streamlined Copilot chat navigation with expanded history ... Roadmap ID: 516570",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "The related release note lists Windows and Web.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes",
+      "quote": "Streamlined Copilot chat navigation with expanded history [Windows, Web]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "The related release note appears in the December 23, 2025 update.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes",
+      "quote": "December 23, 2025 ... Updates released between December 10, 2025, and December 23, 2025.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The related release note says the pane highlights key agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes",
+      "quote": "The Copilot navigation pane highlights key agents",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The related release note says the pane removes clutter.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes",
+      "quote": "The Copilot navigation pane highlights key agents, removes clutter",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The related release note says visible history expands beyond the previous limit of five recent chats.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes",
+      "quote": "expands visible chat history beyond the previous limit of five recent chats",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The related release note says chat search becomes more prominent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes",
+      "quote": "Chat search is also more prominent for faster access to specific threads.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Microsoft 365 Copilot has been renamed Microsoft Copilot in current Learn documentation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
+      "quote": "Microsoft 365 Copilot is now named Microsoft Copilot, and Microsoft 365 Copilot Chat is now named Microsoft Copilot Chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[3]; What's changing; Risk assessment; Governance controls",
+      "type": "absence",
+      "claim": "No tenant UI or API control to keep the previous navigation layout is documented as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Copilot app 518222 navigation pane previous layout admin disable rollback default quick actions Notebook Agent Builder. Opened configure-copilot-admin-center and copilotPolicySetting; neither documents a previous-layout switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[3].note",
+      "type": "behaviour",
+      "claim": "The documented app-experience settings cover Search, Chat, Agents, Pages and Notebooks, Create and the Copilot key, not a layout rollback.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center",
+      "quote": "App feature ... Search ... Chat ... Agents ... Pages and Notebooks ... Create ... Copilot key",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[0].ui; Governance guidance",
+      "type": "admin-path",
+      "claim": "The Notebook policy is at Microsoft 365 Apps admin center > Customization > Policy Management > policy configuration > Choose the scope > Configure Settings > Create and view Copilot Pages and Copilot Notebooks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "Select Customization ... Select Policy Management ... Create a new policy configuration or edit an existing one ... Choose the scope ... In Configure Settings ... Create and view Copilot Pages and Copilot Notebooks",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[0].api",
+      "type": "absence",
+      "claim": "Microsoft has not documented API automation for the Notebook creation and viewing control.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+      "quote": "These resources also support remediation and applyOnce. ... Controls whether users can create and view Copilot Pages and Copilot Notebooks through Microsoft 365 Copilot Chat and Copilot Actions.",
+      "severity": "blocker",
+      "fix": "Replace controls[0].api null with graph call 'POST /beta/admin/configurationManagement/configurationMonitors', docs 'https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta&preserve-view=true'. Add note: 'Preview applyOnce mode applies a baseline resource microsoft.copilot.copilotpagesnotebooks, resourceVersion 1, with properties.value \"0\" to disable or \"1\" to enable. Supported only for tenant-level policies; fails if the setting is configured in any group-level policy. Requires delegated ConfigurationMonitoring.ReadWrite.All for the calling app, CopilotPolicySettings.ReadWrite for the TCM service principal, and AI Administrator for the signed-in user.' Cite https://learn.microsoft.com/graph/utcm-copilot-resources and https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources. Retain the group-capable UI and state that this API is tenant-only."
+    },
+    {
+      "n": 33,
+      "where": "controls[0].governs; Why it matters; rationale: risk",
+      "type": "applicability",
+      "claim": "Cloud Policy governs Copilot Notebook creation and use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "IT administrators can control creation and use of Copilot Pages and Copilot Notebooks through Cloud Policy settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[0].note; Why it matters",
+      "type": "default",
+      "claim": "The Notebook creation policy is Enabled by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "Copilot Pages and Copilot Notebooks creation | Cloud Policy: Create and view Copilot Pages and Copilot Notebooks | Enabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[0].note",
+      "type": "default",
+      "claim": "Not configured makes Notebook creation and integration available, like Enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "Not configured: Copilot Pages and Copilot Notebooks creation and integration are available to the users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[0].scope; controls[0].note",
+      "type": "applicability",
+      "claim": "The Cloud Policy UI can scope this policy to All users or a group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "From the Choose the scope dropdown list, choose either All users or select the group for which you want to apply the policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[0].note; Scope: Roles",
+      "type": "role",
+      "claim": "Creating Cloud Policy settings for Microsoft 365 apps requires the Office Apps admin role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center",
+      "quote": "creating Cloud Policy settings for Microsoft 365 apps requires the Office Apps admin role",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Users whose OneDrive creation is disabled cannot create Copilot Pages or Notebooks regardless of this policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "If your organization disabled the creation of OneDrive, regardless of the setting noted here, these people in your organization can't create Copilot Pages or Copilot Notebooks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[0].governs; Risk assessment; Open questions",
+      "type": "behaviour",
+      "claim": "When creation is disabled, the Notebooks module is hidden in the Copilot app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "The Pages module is visible in the Microsoft Copilot app, but the Notebooks module is hidden, preventing users from accessing existing Notebooks through the Copilot App.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[1].ui; Risk assessment; Governance guidance",
+      "type": "admin-path",
+      "claim": "Agent user access is at Microsoft 365 admin center > Agents > Settings > User access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#user-access",
+      "quote": "Select Agents > Settings > User access to manage your organization's agents and plugins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[1].api",
+      "type": "absence",
+      "claim": "Microsoft has not documented API automation for agent user access.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
+      "quote": "These resources also support remediation and applyOnce. ... userAssignmentCategory ... Specifies whether all users or no users can access agents and plugins. ... everyone, noOne",
+      "severity": "blocker",
+      "fix": "Replace controls[1].api null with graph call 'POST /beta/admin/configurationManagement/configurationMonitors', docs 'https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta&preserve-view=true'. Add note: 'Preview applyOnce mode applies a baseline resource microsoft.agent.useraccess, resourceVersion 1, with properties.valueObject.userAssignmentCategory \"everyone\" or \"noOne\". Specific-user/group assignment is not in this resource schema. Requires delegated ConfigurationMonitoring.ReadWrite.All for the calling app, CopilotPolicySettings.ReadWrite for the TCM service principal, and AI Administrator for the signed-in user.' Cite https://learn.microsoft.com/graph/utcm-agent-resources and https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources."
+    },
+    {
+      "n": 42,
+      "where": "controls[1].governs; Why it matters; Risk assessment; rationale: risk",
+      "type": "applicability",
+      "claim": "User access governs which users or groups can access and install agents and plugins tenant-wide.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#user-access",
+      "quote": "Use User access to control how members of your organization access and install agents and plugins. ... Select Save to update your Copilot agent and plugin settings for your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[1].note; Why it matters",
+      "type": "default",
+      "claim": "All users is the agent-access default, subject to existing app policies and user assignments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#user-access",
+      "quote": "All users - This option is the default. It means that all users in the organization can access agents and plugins, subject to the existing app policies and user assignments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[1].note",
+      "type": "behaviour",
+      "claim": "Agent user access also offers No users and Specific users or groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#user-access",
+      "quote": "No users - This option means that no users in the organization can access agents and plugins. ... Specific users or groups - This option lets you select specific users or groups",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[1].note",
+      "type": "applicability",
+      "claim": "User access does not independently control Agent Builder creation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/agent-builder-share-manage-agents",
+      "quote": "This setting controls agent and plugin access, not Agent Builder creation independently.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Creating agents in Agent Builder is a core Copilot capability when agents are enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/agent-builder-share-manage-agents",
+      "quote": "Creating agents in Agent Builder is a core Copilot capability when agents are enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[2].ui; controls[2].api",
+      "type": "absence",
+      "claim": "No separate UI or API switch is documented to disable Agent Builder creation while retaining agent availability.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Agents Settings User access All users No users Microsoft Graph PowerShell API Agent Builder disable creation separately. Opened Agent Builder share/manage and TCM Agent resources; neither supplies a separate creation switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[2].note; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Microsoft states admins cannot disable Agent Builder creation separately while keeping agents enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/agent-builder-share-manage-agents",
+      "quote": "Admins can't disable agent creation in Agent Builder separately while keeping agents enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Autonomy & actions; Open questions",
+      "type": "absence",
+      "claim": "Whether this item's create-agent shortcut opens Agent Builder is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Copilot app 518222 navigation pane previous layout admin disable rollback default quick actions Notebook Agent Builder. Opened 2025 release notes and Agent Builder share/manage; no description ties this item's shortcut to Agent Builder.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Change & support; Open questions",
+      "type": "absence",
+      "claim": "The create-Notebook quick action's presentation when Notebook creation is disabled is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Copilot app 518222 navigation pane previous layout admin disable rollback default quick actions Notebook Agent Builder. Opened cpcn-admin-configuration and 2025 release notes; policy text describes the module, not this quick action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Scope: Roles",
+      "type": "role",
+      "claim": "An appropriate role such as AI Administrator can manage Copilot settings in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center",
+      "quote": "To manage Copilot settings in the Microsoft 365 admin center, use an appropriate admin role, such as AI Administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Scope: Users",
+      "type": "availability",
+      "claim": "The features users see depend on licensing and tenant controls for agents and Notebooks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center",
+      "quote": "Copilot capabilities and the controls that are available to manage them vary by license and service. ... Some controls that affect what users see in the Microsoft Copilot app are managed outside Copilot > Settings.",
       "severity": null,
       "fix": null
     },
     {
       "n": 53,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "Microsoft has not published a licence specific to the navigation redesign.",
+      "where": "Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The roadmap describes navigation and history changes, not new data access.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot navigation pane update 518222 licensing pricing meter subscription. Opened microsoft-copilot-requirements and previous-year-release-notes; requirements cover the Copilot experiences generally and name no navigation-redesign entitlement.",
+      "source": "roadmap record",
+      "quote": "Key updates include an expanded chat history, quick actions to create new Notebooks and Agents, and intuitive feature grouping",
       "severity": null,
       "fix": null
     },
     {
       "n": 54,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "No meter is documented for the navigation redesign.",
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The roadmap describes no new sign-in, identity or permission mechanism.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot navigation pane update 518222 licensing pricing meter subscription. Opened microsoft-copilot-requirements, previous-year-release-notes and pay-as-you-go-overview; the latter bills supported AI services and agent usage, not navigation layout.",
+      "source": "roadmap record",
+      "quote": "The Microsoft 365 Copilot app now has a simpler, cleaner navigation. Key updates include an expanded chat history, quick actions to create new Notebooks and Agents, and intuitive feature grouping",
       "severity": null,
       "fix": null
     },
     {
       "n": 55,
-      "where": "Scope",
-      "type": "behaviour",
-      "claim": "Users' available app features depend on licences and tenant controls for agents and Notebooks.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
-      "quote": "Chat experiences in Word, Excel, and PowerPoint vary depending on the user's license and tenant configuration. ... The availability of a specific experience can also depend on the app, license, and tenant configuration.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
       "where": "Governance controls",
-      "type": "date",
-      "claim": "Cloud Policy changes take up to 90 minutes to be reflected when policy configurations already existed.",
+      "type": "behaviour",
+      "claim": "Cloud Policy changes can take up to 90 minutes when policy configurations already existed.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
       "quote": "If there were existing policy configurations before the change, the change takes up to 90 minutes to be reflected.",
@@ -647,10 +636,10 @@
       "fix": null
     },
     {
-      "n": 57,
+      "n": 56,
       "where": "Governance controls",
-      "type": "date",
-      "claim": "Cloud Policy changes take up to 24 hours to be reflected when no policy configurations existed.",
+      "type": "behaviour",
+      "claim": "Cloud Policy changes can take up to 24 hours when no policy configurations existed.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
       "quote": "If there were no policy configurations before the change, the change takes up to 24 hours to be reflected.",
@@ -658,13 +647,24 @@
       "fix": null
     },
     {
-      "n": 58,
+      "n": 57,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "The beta copilotPolicySetting API updates tenant-level Copilot policy settings.",
+      "claim": "The beta copilotPolicySetting API can update tenant-level policies.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/resources/copilotpolicysetting",
-      "quote": "APIs under the /beta version are subject to change. ... only tenant-level policies are supported. User-level and group-level policies aren't supported. ... Update the properties of a copilotPolicySetting object.",
+      "quote": "only tenant-level policies are supported ... Update the properties of a copilotPolicySetting object. ... This API is currently in preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "The copilotPolicySetting supported identifiers cover chat pinning, open-content access, image generation, web search and Admin Copilot, not Notebook creation or agent user access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/resources/copilotpolicysetting",
+      "quote": "Only these values are accepted ... microsoft.copilot.copilotchatpinning ... blockaccesstoopenfiles ... imagegeneration ... allowwebsearch ... allowinadmincenters",
       "severity": null,
       "fix": null
     },
@@ -672,73 +672,29 @@
       "n": 59,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "The copilotPolicySetting supported list covers Chat pinning, open-content access, image generation, web search and Admin Copilot, not Notebooks or agent User access.",
+      "claim": "A Graph configurationMonitor can run periodically against tenant configuration.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/resources/copilotpolicysetting",
-      "quote": "Only these values are accepted as the {id} path parameter. ... Pin Microsoft 365 Copilot Chat ... Block Copilot Access to Open Content ... Control access to Designer Image Generation ... Allow web search in Copilot ... Control Admin Copilot availability in Microsoft 365 Admin Center",
+      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-1.0",
+      "quote": "Create a new configurationMonitor object that runs periodically in the background at a scheduled frequency.",
       "severity": null,
       "fix": null
     },
     {
       "n": 60,
       "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "A Graph configurationMonitor runs periodically in the background.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-1.0",
-      "quote": "Create a new configurationMonitor object that runs periodically in the background at a scheduled frequency.",
-      "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-1.0 to sources for the configurationMonitor sentence."
-    },
-    {
-      "n": 61,
-      "where": "Governance controls",
       "type": "absence",
-      "claim": "configurationMonitor is not documented as changing the Notebook or agent access settings.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"configurationMonitor\" \"Copilot\" \"Cloud Policy\" update. Opened configurationmanagement-post-configurationmonitors and read configurationmonitor-update search excerpts; they create or update the monitor and its baseline, not the underlying Notebook or User access policies.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 62,
-      "where": "front matter: cost; Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "The known cost of this layout change is indirect admin and helpdesk effort, rated low, with no redesign-specific licence or meter published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot navigation pane update 518222 licensing pricing meter subscription. Read roadmap, microsoft-copilot-requirements and pay-as-you-go-overview; no redesign-specific charge is published. Updating guidance is the wiki's analysis, consistent with the low cost scale.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 63,
-      "where": "front matter: impact; rationale: impact",
-      "type": "consistency",
-      "claim": "An impact rating of medium fits a default navigation change seen by everyone who uses the app.",
+      "claim": "A configurationMonitor is not documented as changing Notebook creation or agent user-access settings.",
       "status": "contradicted",
-      "source": "page",
-      "quote": "impact: \"medium\"; \"Everyone who uses the Microsoft 365 Copilot app on Desktop, Mac or Web sees a new layout\". The standard defines high as \"most users, or a change to default behaviour\" and medium as specific roles or one business unit.",
-      "severity": "minor",
-      "fix": "Set impact to 'high' and replace the impact rationale with: 'High. The navigation redesign changes the default app experience on Desktop, Mac and Web.'"
-    },
-    {
-      "n": 64,
-      "where": "What's changing; summary",
-      "type": "record",
-      "claim": "The roadmap describes the update as already part of the app and specifies no administrator step.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "The Microsoft 365 Copilot app now has a simpler, cleaner navigation. Key updates include an expanded chat history, quick actions to create new Notebooks and Agents, and intuitive feature grouping so users can find what they need faster and unlock more AI value.",
-      "severity": null,
-      "fix": null
+      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta&preserve-view=true",
+      "quote": "Create a new configurationMonitor object that runs periodically in the background at a scheduled frequency to detect configuration drift in monitorOnly mode, or applies a desired-state baseline once in applyOnce mode.",
+      "severity": "blocker",
+      "fix": "Replace the final sentence with: 'A configurationMonitor runs periodically in monitorOnly mode; preview Graph beta applyOnce mode can instead apply a baseline once for the documented microsoft.copilot.copilotpagesnotebooks and microsoft.agent.useraccess resources. Notebook policy automation supports tenant-level policies only and fails if the setting is configured in any group-level policy.' Cite https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta&preserve-view=true and https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources."
     }
   ],
   "precheck": {
-    "at": "2026-11-28T03:50:36.216Z",
+    "at": "2026-11-28T05:26:01.093Z",
     "summary": {
-      "links": 9,
+      "links": 10,
       "unreachable": 0,
       "uiPaths": 2,
       "uiPathsWithMissingWords": 0,
@@ -788,6 +744,11 @@
         "status": 200
       },
       {
+        "url": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
         "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#user-access",
         "ok": true,
         "status": 200
@@ -826,5 +787,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-28",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

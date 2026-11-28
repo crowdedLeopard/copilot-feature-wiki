@@ -71,15 +71,17 @@ changes:
     note: "First briefing: documents the People Skills removal and deletion control, who can use it, what it deletes and its timings."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 59 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 60 statements not yet confirmed"
 version: 1
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 59
-  confirmed: 57
+  claims: 60
+  confirmed: 58
   unconfirmed: 0
   contradicted: 2
   attempts: 0
@@ -184,10 +186,10 @@ cost: Low. Microsoft's People Skills overview says the service comes with Micros
 impact: Low. Only administrators see the control and nothing changes until it is used. If it is used, users lose skills on profile cards and in Copilot and Viva skills experiences.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: The Microsoft 365 admin center route Settings > Viva > Settings > Feature access management > People Skills reaches the user experiences policy control. | Found: Navigate to Settings in the left rail of the Microsoft 365 admin center Select Viva Select Settings and then Select Feature access management Once you're in Feature access management, select People Skills | Fix: Extend controls[1].ui.path and the rendered path to 'Settings > Viva > Settings > Feature access management > People Skills > Apps and services: People Skills > Feature: People Skills user experiences > Access setting'. The current path stops on the correct page; the cited page then instructs selecting the app, feature and access setting. | Source: https://learn.microsoft.com/copilot/manage/people-skills-sharing-inferencing-controls
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The checklist tells administrators to use the export option, but the controls table has no export row. | Found: Export anything you need to keep, using the import or export option on the manage page. / The controls table contains only permanent removal and People Skills user experiences. | Fix: Remove the 'Export anything you need to keep, using the import or export option on the manage page, which covers the custom skills library and confirmed user skills' bullet from Governance guidance: Before rollout; the existing Risk assessment export advice can remain. Do not add a control row.
-- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The checklist tells administrators to search the audit log, but the controls table has no audit row. | Found: Search the audit log for the People Skills activities TenantSkillsLibraryDeleted, UserDataDeleted and TenantOffboardCompleted. / The controls table contains only permanent removal and People Skills user experiences. | Fix: Remove the 'Search the audit log for the People Skills activities TenantSkillsLibraryDeleted, UserDataDeleted and TenantOffboardCompleted, and note which appear for your run' bullet, including its concept link, from Governance guidance: After rollout; retain the documented operation names in Open questions. Do not add a control row.
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: Settings > Viva > Settings > Feature access management > People Skills reaches the page holding the user-experiences policy control. | Found: Select Feature access management ... select People Skills ... Click on Add policy ... Select People Skills in Apps and services ... Select the Feature ... People Skills user experiences ... Select your Access setting | Fix: Extend controls[1].ui.path and the rendered path to 'Settings > Viva > Settings > Feature access management > People Skills > Add policy > Apps and services: People Skills > Feature: People Skills user experiences > Access setting'. The printed path stops early on the correct page; this is the remaining route documented at https://learn.microsoft.com/copilot/manage/people-skills-sharing-inferencing-controls. | Source: https://learn.microsoft.com/copilot/manage/people-skills-sharing-inferencing-controls
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The governance checklist directs administrators to export skills, but the controls table has no export row. | Found: Export anything you need to keep, using the import or export option on the manage page ... / Table controls: Permanent removal ...; Whether People Skills user experiences are on ... | Fix: Remove the 'Export anything you need to keep, using the import or export option on the manage page, which covers the custom skills library and confirmed user skills' bullet from Governance guidance: Before rollout. Retain the existing export advice in Risk assessment; do not add a control row.
+- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The governance checklist directs administrators to search the audit log, but the controls table has no audit row. | Found: Search the audit log for the People Skills activities TenantSkillsLibraryDeleted, UserDataDeleted and TenantOffboardCompleted ... / Table controls: Permanent removal ...; Whether People Skills user experiences are on ... | Fix: Remove the 'Search the audit log for the People Skills activities TenantSkillsLibraryDeleted, UserDataDeleted and TenantOffboardCompleted, and note which appear for your run' bullet, including its concept link, from Governance guidance: After rollout. Retain the documented operation names in Open questions; do not add a control row.
 -->

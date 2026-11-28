@@ -87,18 +87,20 @@ changes:
     note: "Corrected after the independent check: accuracy wording now matches the roadmap, added the Restricted SharePoint Search prerequisite, and removed unsupported identity and prior-inability statements."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 59 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 60 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-21"
+  status: "held"
+  date: "2026-11-28"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 59
+  claims: 60
   confirmed: 57
   unconfirmed: 0
-  contradicted: 2
-  attempts: 0
+  contradicted: 3
+  attempts: 1
   hash: "deb2b7a4af4e01a40710943953154624"
 ---
 
@@ -193,10 +195,12 @@ cost: Low. The only cost the sources show is admin time and the Microsoft 365 Co
 impact: Medium. Makers and users of declarative agents grounded in SharePoint libraries of scans, such as contracts, forms and archived records, notice better answers; other users see no change.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Cost and licensing; rationale: cost / cost: The only costs the sources show are the existing Microsoft 365 Copilot licence and admin or maker time. | Found: The following table ... indicates whether users require a Microsoft 365 Copilot license or metered usage to access agents with that capability or knowledge source. | SharePoint | ✅ | ✅ | Yes | | Fix: Remove 'The only other cost the sources show is admin and maker time to review libraries of scans' and replace it with 'Reviewing libraries of scans also creates admin and maker work.' Replace the cost rationale with 'Low. Reviewing scanned-document libraries creates admin and maker work. Microsoft documents SharePoint knowledge through a Copilot licence or metered usage, but no scanned-PDF-specific charge or meter is published.' Keep the knowledge-sources table attribution and acknowledge the prerequisites page's Copilot Credits route as specified in the licensing correction. | Source: https://learn.microsoft.com/plugins/knowledge-sources
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.notes; Risk assessment; Cost and licensing; Scope / licensing: The knowledge sources page says SharePoint and OneDrive grounding requires the signed-in user to have an active Microsoft 365 Copilot licence. | Found: SharePoint and OneDrive knowledge sources require the signed-in user to have an active Microsoft 365 Copilot license. | Fix: Keep the attribution to the knowledge sources page, but add: 'Microsoft's prerequisites page also documents declarative agents using SharePoint data through pay-as-you-go billing in Copilot Credits, without a full Copilot licence.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/prerequisites#agent-capabilities-and-licensing-models. Qualify the repeated unconditional user-licence statements with this disagreement. | Source: https://learn.microsoft.com/plugins/knowledge-sources
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The checklist asks readers to review permissions, scope knowledge and confirm sensitivity labels, but none has a corresponding control row. | Found: review their permissions; ask makers to scope them to named sites, libraries or folders; Confirm which sensitivity labels cover the scanned files. Table rows: agent Block; Restricted Content Discovery. | Fix: The Before rollout permission-review, knowledge-scoping and sensitivity-label steps have no corresponding control rows. Do not add rows as part of this correction.
-- [contradicted, minor] front matter: action / consistency: The prepare action rating describes a launched, medium-risk change with existing controls and decisions to take now. | Found: status: launched; risk: medium; action: prepare. Newly created declarative agents can now ground their answers in scanned PDFs. Apply the Restricted Content Discovery row ... Block any agent ... | Fix: Set action to act-now: the page describes a launched change, rates its risk medium and identifies decisions and existing controls to apply now.
+- [supported, minor] licensing.notes; Risk assessment: Security & identity; Cost and licensing; Scope; rationale: cost / licensing: SharePoint and OneDrive knowledge requires the signed-in user to hold an active Microsoft 365 Copilot licence, as stated on the knowledge sources page. | Found: SharePoint and OneDrive knowledge sources require the signed-in user to have an active Microsoft 365 Copilot license. | Fix: Retain the attribution, but qualify the repeated licence statements with: 'Microsoft's prerequisites page also lists declarative-agent SharePoint data as available through usage-based billing in Copilot Credits without a full Copilot licence, which differs from the knowledge sources page's licence-only note.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/prerequisites#agent-capabilities-and-licensing-models. | Source: https://learn.microsoft.com/plugins/knowledge-sources
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The checklist tells readers to review permissions, scope knowledge and confirm sensitivity labels, but those controls have no table rows. | Found: review their permissions; ask makers to scope them to named sites, libraries or folders; Confirm which sensitivity labels cover the scanned files. Controls table: agent Block; Restricted Content Discovery. | Fix: The Before rollout permission-review, knowledge-scoping and sensitivity-label steps have no corresponding control rows. Do not add rows as part of this correction.
+- [contradicted, minor] front matter: action / consistency: The prepare rating conflicts with the action scale for a launched, medium-risk change with controls and decisions to take now. | Found: status: launched; risk: medium; action: prepare. Newly created declarative agents can now ground their answers in scanned PDFs. Apply the Restricted Content Discovery row ... Block any agent ... | Fix: Set action to act-now: the briefing describes a launched change with medium risk and existing controls and decisions to apply now.
 -->

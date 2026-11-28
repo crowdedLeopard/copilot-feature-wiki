@@ -118,15 +118,17 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 98 statements confirmed"
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 108 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 100 statements not yet confirmed"
 version: 5
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 108
-  confirmed: 108
+  claims: 100
+  confirmed: 100
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -231,8 +233,9 @@ cost: Variable. Microsoft 365 Backup is pay-as-you-go at a list price of $0.15/G
 impact: Low. Backup administrators notice it; the notice names admins managing Microsoft 365 Backup policies as the affected group.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Security & identity; Scope / role: Learn describes the Microsoft 365 Backup Administrator as able to control the entire tool. | Found: the Microsoft 365 Backup Administrator, that can control the entire tool. | Microsoft 365 Backup Administrator | ✓ | ✓ | ✓ |  | | Fix: Replace 'can control the entire tool' and 'for the whole tool' with 'can manage SharePoint, OneDrive and Exchange backups'. The current roles table at https://learn.microsoft.com/microsoft-365/backup/backup-setup leaves Entra outside this role, although its preceding prose still says 'entire tool'; this does not change access to the three workloads in this briefing. | Source: https://learn.microsoft.com/microsoft-365/backup/backup-setup
+- [supported, minor] controls[2].ui; rendered controls table / admin-path: The notification control is at Microsoft 365 admin center > Settings > Microsoft 365 Backup > Email notifications. | Found: Go to the Email notifications option on the Microsoft 365 Backup home page. Turn on notifications. Add users, distribution lists, or security groups (only email enabled) to the Backup Notification List. | Fix: Extend controls[2].ui.path and its rendered counterpart to 'Settings > Microsoft 365 Backup > Email notifications > Backup Notification List'. Add to the note: 'Turn on notifications and select the optional checkbox to also receive routine event notifications.' The steps are at https://learn.microsoft.com/microsoft-365/backup/backup-setup#enable-email-notifications. | Source: https://learn.microsoft.com/microsoft-365/backup/backup-setup
+- [supported, minor] Risk assessment: Security & identity; Scope / role: Learn describes the Microsoft 365 Backup Administrator as able to control the entire tool. | Found: the Microsoft 365 Backup Administrator, that can control the entire tool. | Microsoft 365 Backup Administrator | ✓ | ✓ | ✓ |  | | Fix: Replace 'can control the entire tool' and 'for the whole tool' with 'can manage SharePoint, OneDrive and Exchange backups'. The roles table at https://learn.microsoft.com/microsoft-365/backup/backup-setup excludes Entra from this role, although the preceding prose still says 'entire tool'. | Source: https://learn.microsoft.com/microsoft-365/backup/backup-setup
 -->

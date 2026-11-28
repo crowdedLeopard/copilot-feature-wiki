@@ -85,18 +85,20 @@ changes:
     note: "Corrected the arrival wording: Learn's release notes describe gradual rollout within a tenant, and the feature-specific default state is still not stated."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 49 statements confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 52 statements contradicted, 1 unconfirmed; taken offline until corrected"
 version: 3
 verification:
-  status: "verified"
-  date: "2026-11-21"
+  status: "held"
+  date: "2026-11-28"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 49
-  confirmed: 49
-  unconfirmed: 0
+  claims: 52
+  confirmed: 51
+  unconfirmed: 1
   contradicted: 0
-  attempts: 0
+  attempts: 1
   hash: "98fcac5582708a1ef63e56375ef68970"
 ---
 
@@ -192,4 +194,12 @@ Restricted Content Discovery works at site level, changes discoverability and no
 risk: Low. Learn says Copilot presents only data each person can already access, so no new permission is granted, but a file name in a prompt now draws overshared content into a deck.
 cost: Low. The release note names no licence or meter for this feature, so the cost the sources show is admin time; entitlement specific to this feature is not yet published.
 impact: Low. Only people who create presentations with Copilot in PowerPoint on Mac notice it, as a new way to name source files in a prompt.
+-->
+
+<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [unsupported, blocker] Why it matters / default: No admin action is forced. | Found: Searched: Copilot PowerPoint Agent Mode licensing reference files requirements admin controls. Read the roadmap and feature release note; neither states that no administrator action is required. | Fix: Replace 'No admin action is forced' with 'Neither the roadmap record nor the feature release note specifies required admin action'. This reports the documentation gap without asserting what rollout requires.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].ui; Governance controls / admin-path: The SharePoint admin center path is Sites > Active sites > site > Settings > Restrict content from Microsoft Copilot. | Found: In the SharePoint admin center, expand Sites and select Active sites. Select the site you want to configure. Open the Settings tab, and then turn Restrict content from Microsoft Copilot on. | Fix: Keep the path supported by its cited page. Add: 'Microsoft's Copilot readiness guidance instead labels this setting Restrict content discovery.' Cite https://learn.microsoft.com/microsoft-365/copilot/get-ready-copilot-sharepoint-advanced-management#step-3-prevent-accidental-oversharing, which says 'Under Restrict content discovery, select On'. | Source: https://learn.microsoft.com/sharepoint/restricted-content-discovery
 -->

@@ -73,15 +73,17 @@ changes:
     note: "Corrected after verification: default state is now user-opt-in, rollout text cites the release notes' safe deployment model, and connected-experiences privacy controls are described as documented."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 52 statements confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 57 statements confirmed"
 version: 2
 verification:
   status: "verified"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 52
-  confirmed: 52
+  claims: 57
+  confirmed: 57
   unconfirmed: 0
   contradicted: 0
   attempts: 0

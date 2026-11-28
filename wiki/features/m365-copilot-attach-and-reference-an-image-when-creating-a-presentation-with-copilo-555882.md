@@ -43,6 +43,9 @@ sources:
   - title: "Data, Privacy, and Security for Microsoft Copilot"
     url: "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy"
     kind: "learn"
+  - title: "Required configuration for Copilot guidance for Sensitive and Regulated customers"
+    url: "https://learn.microsoft.com/compliance/anz/blueprint-copilot-reqconfig"
+    kind: "learn"
 videos: []
 related: ["m365-copilot-attach-and-reference-an-image-when-creating-a-presentation-with-copilo-555881","m365-copilot-attach-and-reference-an-image-when-creating-a-presentation-with-copilot-in-po","m365-copilot-reference-files-saved-in-sharepoint-libraries-and-onedrive-folders-whe-555894","powerpoint-async-notifications-for-powerpoint-agent-web"]
 controls:
@@ -59,7 +62,7 @@ controls:
     note: "Role: at least License Administrator or User Administrator. Licence control only; it does not switch image attachment on or off separately."
 confidence: "medium"
 created: "2026-11-21"
-updated: "2026-11-21"
+updated: "2026-11-28"
 roadmapModified: "2026-08-19T22:58:06"
 changes:
   - date: "2026-11-21"
@@ -68,19 +71,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 49 statements not yet confirmed"
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 49 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-28"
+    note: "Corrected: replaced the open question on connected experiences with Microsoft's documented Analyze Content and Cloud Policy requirement, reworded the privacy page's device scope, and replaced the browser-cookie checklist step."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 52 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-28"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 49
-  confirmed: 47
+  claims: 52
+  confirmed: 52
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "8a4775974cb9064938d81222edce2849"
+  contradicted: 0
+  attempts: 0
+  hash: "6a41a07d4067c9741e1e81c5ad3e27ba"
 ---
 
 ## What's changing
@@ -132,7 +139,7 @@ Users need Copilot in PowerPoint, which Microsoft's overview ties to the Microso
 ### Before rollout
 
 - Confirm which users hold the Microsoft 365 Copilot licence that gives them Copilot in PowerPoint, using the licence row in the controls table.
-- Check that browser policy allows third-party cookies for PowerPoint for the web, because Microsoft's requirements page says Copilot needs them there.
+- Confirm that Copilot works in PowerPoint for the web before communicating the feature.
 - Decide what staff may attach to a Copilot prompt, and add images to your existing guidance on what can be shared with Copilot.
 
 ### At rollout
@@ -158,7 +165,9 @@ Users need Copilot in PowerPoint, which Microsoft's overview ties to the Microso
 
 The table documents Copilot licence assignment, not a feature-specific switch for image attachment. Assigning licences needs at least the License Administrator or User Administrator role, per Microsoft's licence page. The licence decides who has Copilot in PowerPoint; it does not switch image attachment on or off by itself.
 
-Microsoft's privacy page says that if you turn off connected experiences that analyze your content on devices in your organisation, Microsoft Copilot features won't be available to your users in PowerPoint and the other apps it lists, and it names Windows, Mac, iOS and Android devices. See [Data, Privacy, and Security for Microsoft Copilot](https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy). The page does not name the web in that sentence.
+Microsoft's privacy page says that if you turn off connected experiences that analyze your content on devices in your organisation, Microsoft Copilot features won't be available to your users in PowerPoint and the other apps it lists, and says this applies when running the most current version of these apps on Windows, Mac, iOS or Android devices. See [Data, Privacy, and Security for Microsoft Copilot](https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy). The page does not name the web in that sentence.
+
+Microsoft's sensitive and regulated customer guidance says Copilot requires the Analyze Content connected experience category and that web experiences are controlled exclusively by Cloud Policy. See [Required configuration for Copilot guidance for Sensitive and Regulated customers](https://learn.microsoft.com/compliance/anz/blueprint-copilot-reqconfig#connected-experiences).
 
 Microsoft's release note for this feature describes no administrator setting for image attachment.
 
@@ -167,19 +176,9 @@ Microsoft's release note for this feature describes no administrator setting for
 - Is image referencing available to users with the Microsoft 365 Copilot (Basic) licence, or only to users with the add-on licence? Watch Microsoft's Copilot overview and the release notes.
 - Is the attach-an-image behaviour in the release note the same as what the roadmap calls Agent Mode in PowerPoint? Watch the Learn release notes for a feature page.
 - Does Microsoft plan an administrator control for attaching images in Copilot in PowerPoint? Watch Message center and the Learn Copilot admin pages.
-- Do the privacy controls for connected experiences that analyze content also apply to Copilot in PowerPoint for the web? Watch the privacy page for the platforms it lists.
 
 <!-- rationale
 risk: Low. A user chooses whether to attach an image, and Microsoft's release note says the update does not alter security or privacy controls. What users choose to attach is the remaining exposure.
 cost: Low. Learn names no separate price or meter for image referencing; the known cost is the Microsoft 365 Copilot licence users already need for the full Copilot experience in PowerPoint, plus communication time.
 impact: Low. Only licensed users who attach an image to a Copilot prompt in PowerPoint for the web notice the change; no source says existing behaviour changes for anyone else.
--->
-
-<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Open questions: connected experiences / absence: Whether analyze-content connected-experience controls also apply to Copilot in PowerPoint for the web remains undocumented. | Found: Microsoft Copilot requires the Analyze Content connected experience category in Office to be enabled for Copilot to work in Microsoft 365 Apps, including Microsoft Teams. The web experiences and modern apps are controlled exclusively by the Cloud Policy. | Fix: Replace the final Open questions bullet with: 'Microsoft's sensitive and regulated customer guidance says Copilot requires the Analyze Content connected experience category and that web experiences are controlled exclusively by Cloud Policy.' Cite and add to sources https://learn.microsoft.com/compliance/anz/blueprint-copilot-reqconfig#connected-experiences. Retain the narrower, accurate observation about the cited privacy sentence. | Source: https://learn.microsoft.com/compliance/anz/blueprint-copilot-reqconfig#connected-experiences
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance controls / availability: The privacy page names Windows, Mac, iOS and Android devices for the analyze-content control. | Found: This applies to when you're running the most current version of these apps on Windows, Mac, iOS, or Android devices. | Fix: Replace 'and it names Windows, Mac, iOS and Android devices' with 'and says this applies when running the most current version of these apps on Windows, Mac, iOS or Android devices'. | Source: https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The browser-policy check in the checklist has no corresponding controls-table row. | Found: Check that browser policy allows third-party cookies for PowerPoint for the web. The sole controls row governs which users hold the Microsoft 365 Copilot licence. | Fix: Replace the Before rollout browser-policy bullet with 'Confirm that Copilot works in PowerPoint for the web before communicating the feature.' Retain the documented third-party-cookie prerequisite in Scope; do not add a control row.
 -->

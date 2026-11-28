@@ -1,0 +1,612 @@
+{
+  "slug": "microsoft-purview-file-creation-modification-conditions-in-dlp-for-sharepoint-onedrive-and",
+  "roadmapId": 557590,
+  "title": "Microsoft Purview DLP: file creation and modification date conditions for SharePoint and OneDrive",
+  "status": "held",
+  "date": "2026-11-28",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-28",
+    "reasons": [
+      "3 blocking findings (claims 15, 21, 36)"
+    ]
+  },
+  "counts": {
+    "claims": 44,
+    "confirmed": 38,
+    "unconfirmed": 4,
+    "contradicted": 2,
+    "blocker": 3,
+    "major": 2,
+    "minor": 4
+  },
+  "summary": "Hold: the documentation does not establish the assurance that existing policies remain unchanged on arrival, and the page incorrectly makes Information Protection Admin a mandatory role. The documented DLP conditions and roadmap dates are accurate, but missing auto-labeling documentation should not be presented as proof that the capability cannot be used.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "The change adds file creation-date conditions to Purview DLP for SharePoint and OneDrive.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "File Creation and File Modification conditions in Microsoft Purview DLP for SharePoint and OneDrive and AutoLabelling will give organizations more precise control over DLP policy definition.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "The change adds last-modification-date conditions to Purview DLP for SharePoint and OneDrive.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "These conditions allow admins to configure policies based on when the files were created or last modified, enabling policies that target newly created documents, recently edited files, or older content that may require stricter governance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; Scope; controls[1].note; Open questions",
+      "type": "record",
+      "claim": "The roadmap item also names auto-labeling.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Purview: File Creation/Modification conditions in DLP for Sharepoint/OneDrive and AutoLabelling",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The recorded release phases are General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The preview date is March CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"March CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The target date is April CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"April CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; controls[0].note; Scope",
+      "type": "availability",
+      "claim": "The reference lists Document creation date is on or after for SharePoint and OneDrive, not Exchange, Teams or endpoints.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
+      "quote": "Conditions SharePoint supports ... Document creation date is on or after ... Conditions OneDrive accounts support ... Document creation date is on or after",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; controls[0].note; Scope",
+      "type": "availability",
+      "claim": "The reference lists Document creation date is on or before for SharePoint and OneDrive, not Exchange, Teams or endpoints.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
+      "quote": "Conditions SharePoint supports ... Document creation date is on or before ... Conditions OneDrive accounts support ... Document creation date is on or before",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; controls[0].note; Scope; Risk assessment",
+      "type": "availability",
+      "claim": "The reference lists Document modification date is on or after for SharePoint and OneDrive, not Exchange, Teams or endpoints.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
+      "quote": "Conditions SharePoint supports ... Document modification date is on or after ... Conditions OneDrive accounts support ... Document modification date is on or after",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; controls[0].note; Scope",
+      "type": "availability",
+      "claim": "The reference lists Document modification date is on or before for SharePoint and OneDrive, not Exchange, Teams or endpoints.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
+      "quote": "Conditions SharePoint supports ... Document modification date is on or before ... Conditions OneDrive accounts support ... Document modification date is on or before",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "A DLP rule can combine content checks with date conditions to target a date window.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
+      "quote": "You can identify this type of data by grouping conditions and using logical operators (AND, OR) between the groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The default is admin-opt-in: nothing changes in existing policies until an administrator adds a date condition.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Purview DLP file creation modification date conditions default existing policies administrator enable. Read roadmap, DLP policy reference, creation guide and default Office 365 DLP policy excerpt; none states these predicates' arrival default.",
+      "severity": "blocker",
+      "fix": "Set defaultState to 'unknown'. Replace the no-change assurances in the summary, What's changing, Why it matters and risk rationale with 'Microsoft has not stated what happens on arrival; no source says existing policy behaviour changes.' Keep action 'review'."
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The migration guide maps Created date to Document created date as a partial equivalent for SharePoint and OneDrive only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-cloud-apps/migrate-file-policies-to-purview",
+      "quote": "| Created date | Document created date | Partial equivalent | SharePoint and OneDrive only. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The migration guide maps Last modified date to Document last modified date as a partial equivalent for SharePoint and OneDrive only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-cloud-apps/migrate-file-policies-to-purview",
+      "quote": "| Last modified date | Document last modified date | Partial equivalent | SharePoint and OneDrive only. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[0].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "The printed Microsoft Purview portal path reaches Add condition in a custom advanced DLP rule for SharePoint or OneDrive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine",
+      "quote": "On the Define policy settings page, make sure the Create or customize advanced DLP rules option is selected. ... Select + Create rule. ... Under Conditions, select Add condition",
+      "severity": "minor",
+      "fix": "Replace the path with 'Data loss prevention > Policies > Create policy > Enterprise applications & devices > Custom > Custom policy > SharePoint sites > Define policy settings > Create or customize advanced DLP rules > Create rule > Conditions > Add condition'. The omitted Define policy settings heading is on the cited guide; retain the OneDrive location note."
+    },
+    {
+      "n": 19,
+      "where": "What's changing; controls[1].note",
+      "type": "behaviour",
+      "claim": "The auto-labeling article lists Document created by as the one other advanced-rule condition for SharePoint and OneDrive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "If your location is SharePoint sites or OneDrive accounts and you selected Advanced rules, there is one other condition that you can select: - Document created by",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[1].ui and .api; summary; What's changing; Scope; Open questions",
+      "type": "absence",
+      "claim": "Learn does not document creation- or modification-date controls for SharePoint and OneDrive sensitivity auto-labeling.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview auto-labeling creation modification date conditions; New-AutoSensitivityLabelRule date SharePoint condition. Opened apply-sensitivity-label-automatically and New-AutoSensitivityLabelRule; neither documents these date predicates or their automation syntax.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Change & support",
+      "type": "availability",
+      "claim": "Auto-labeling policies cannot yet be built on these dates according to the documentation.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Purview auto-labeling creation modification date conditions; New-AutoSensitivityLabelRule date SharePoint condition. Read auto-labeling article and cmdlet reference; neither states that date-based policies cannot be built.",
+      "severity": "blocker",
+      "fix": "Replace 'Auto-labeling policies cannot yet be built on these dates according to the documentation' with 'Microsoft Learn does not yet document these date conditions for auto-labeling policies'. Replace the instruction that plans 'need to wait' with 'confirm availability before relying on them'."
+    },
+    {
+      "n": 22,
+      "where": "Why it matters; Risk assessment: Data exposure; Governance guidance",
+      "type": "behaviour",
+      "claim": "A rule constrained to modification dates on or after a cut-off excludes older modification dates from matching that condition.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
+      "quote": "Document modification date is on or after ... Conditions are where you define what you want the rule to look for and the context in which those items are being used.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "A rule restricted by modification date does not evaluate older files.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Document modification date background relative DLP. Read DLP policy reference, Rules and Conditions. It lists a match predicate, not a mechanism that skips evaluating older files; classification and rule matching are described separately.",
+      "severity": "major",
+      "fix": "Replace 'does not evaluate older files under that rule' with 'does not match files whose modification date is before the cut-off'."
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Learn does not explain whether these modification-date conditions count background updates.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Document modification date background relative DLP; Purview DLP file creation modification date conditions licensing meter price background updates timestamp. Read DLP policy reference and search excerpts; no background-update semantics provided.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The conditions add no new identity, permission or sharing mechanism.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Purview DLP document date conditions identity permissions. Read DLP policy reference and roadmap; search returned general Purview permissions and other DLP controls, but no statement establishing this feature-specific no-change assurance.",
+      "severity": "major",
+      "fix": "Replace the bullet with 'The roadmap describes date predicates within DLP rules, not a new identity or sharing mechanism.' This confines the statement to what the roadmap describes rather than asserting an undocumented absence."
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Autonomy & actions; rationale: impact",
+      "type": "behaviour",
+      "claim": "Matched date-conditioned rules can invoke configured actions such as access restrictions or file quarantine.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine",
+      "quote": "The features described in this article are in preview. ... Under Actions, select Add an action > Restrict access or encrypt the content in Microsoft 365 locations. ... Select Block everyone and move file to quarantine location.",
+      "severity": "minor",
+      "fix": "Change 'such as restricting access or quarantine' to 'such as restricting access or the preview file quarantine action, which requires an E5 licence'. The preview is stated in the cited creation guide and the E5 qualification at https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-get-started."
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "DLP alerts for SharePoint and OneDrive events expose the matched file's creation time.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-alerts-get-started",
+      "quote": "| file created | time of creation of the file that matched the DLP policy | SharePoint and OneDrive events |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "DLP alerts for SharePoint and OneDrive events expose the matched file's last-modification time.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-alerts-get-started",
+      "quote": "| file last modified | the last time that the file that matched the DLP policy was changed | SharePoint and OneDrive events |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "front matter: licensing.model and notes; rationale: cost",
+      "type": "licensing",
+      "claim": "The licensing model is included within the licences for DLP for SharePoint Online and OneDrive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft Purview Data Loss Prevention: Data Loss Prevention (DLP) for Exchange Online, SharePoint Online, and OneDrive for Business ... Which licenses provide the rights for a user to benefit from the service? ... Microsoft 365 E5/A5/G5/E3/A3/G3",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing: Licence; front matter: licensing.notes",
+      "type": "licensing",
+      "claim": "The service description lists all the Microsoft 365, standalone Plan 2, Office 365 and Purview Suite plans reproduced in the licensing paragraph.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft 365 E5/A5/G5/E3/A3/G3, Microsoft 365 Business Premium, SharePoint Online Plan 2, OneDrive for Business (Plan 2), Exchange Online Plan 2; Office 365 E5/A5/G5/E3/A3/G3; Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "Owners and members of a SharePoint site need the required licence when a Purview policy is used on that site.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "For shared locations, such as SharePoint sites, Microsoft 365 Groups, and Teams channel messages, users with the owner or member role must have the required license assigned when a Purview policy or feature is used on the site, mailbox, or Team.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: licensing.notes; Cost and licensing: Meter",
+      "type": "absence",
+      "claim": "Microsoft publishes no separate licence specifically for these DLP date conditions.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview DLP file creation modification date conditions licensing meter price background updates timestamp. Read Microsoft Purview service description, DLP policy reference and Purview billing models; no date-condition-specific licence is named.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Cost and licensing: Meter; rationale: cost",
+      "type": "absence",
+      "claim": "No separate charge or meter is documented for these DLP date conditions.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview DLP file creation modification date conditions licensing meter price background updates timestamp. Read service description and Purview billing models, including pay-as-you-go capability tables; neither names a meter or separate charge for these predicates.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Scope: Roles",
+      "type": "role",
+      "claim": "Information Protection Admin can create, edit and delete DLP policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/scc-permissions",
+      "quote": "Information Protection Admin | Create, edit, and delete DLP policies, sensitivity labels and their policies, and all classifier types.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Scope: Roles; Governance controls",
+      "type": "role",
+      "claim": "The Information Protection Admin role is assigned to Compliance Administrator and Information Protection Admins role groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/scc-permissions",
+      "quote": "Information Protection Admin ... Compliance Administrator  Compliance Data Administrator  Data Security Management  Information Protection  Information Protection Admins",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[0].note; Governance controls",
+      "type": "role",
+      "claim": "Creating and editing the DLP policies requires Information Protection Admin or a role group that holds it.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/defender-office-365/scc-permissions",
+      "quote": "DLP Compliance Management | View and edit settings and reports for data loss prevention (DLP) policies. | Compliance Administrator  Compliance Data Administrator  Organization Management  Security Administrator",
+      "severity": "blocker",
+      "fix": "Replace 'Requires the Information Protection Admin role' in the row note with 'The Information Protection Admin role can manage DLP policies'. Replace the final governance-controls sentence with 'The Information Protection Admin role can create, edit and delete DLP policies; it is included in the Compliance Administrator role group.' This removes the false exclusive requirement while preserving the verified role guidance."
+    },
+    {
+      "n": 37,
+      "where": "Scope: Prerequisites; controls[0].note",
+      "type": "applicability",
+      "claim": "These conditions belong in advanced DLP rules for policies with SharePoint sites or OneDrive accounts selected as locations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine",
+      "quote": "Choose where to apply the policy. Select only the following locations: SharePoint sites OneDrive accounts ... make sure the Create or customize advanced DLP rules option is selected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Microsoft Purview portal > Data loss prevention > Policies > Create policy is the entry route to creating the custom policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine",
+      "quote": "Sign in to the Microsoft Purview portal. Open the Data loss prevention solution and go to Policies. Select Create policy.",
+      "severity": "minor",
+      "fix": "Replace the abbreviated parenthetical path with 'use the full custom-policy and advanced-rule route in the date-condition controls row'. The printed route stops at the creation entry point rather than the date control."
+    },
+    {
+      "n": 39,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "A new policy can be left turned off while it is prepared and tested.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine",
+      "quote": "For this policy creation procedure, accept the default include and exclude values and leave the policy turned off. Change these values when you deploy the policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "DLP alerts are reached at Microsoft Purview portal > Data loss prevention > Alerts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-get-started",
+      "quote": "Open the Microsoft Purview portal and go to Data loss prevention > Alerts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "New-DlpComplianceRule has an AdvancedRule parameter that takes JSON condition syntax.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule",
+      "quote": "The AdvancedRule parameter uses complex rule syntax that supports multiple AND, OR, and NOT operators and nested groups. This parameter uses JSON syntax",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Governance guidance versus controls",
+      "type": "consistency",
+      "claim": "The checklist tells readers to check DLP role assignments, policy state and alerts, but the controls table has no rows for those controls.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Confirm who holds the Information Protection Admin role ... leaving the policy turned off until tested ... Review DLP alerts ... Table rows: DLP creation/modification-date matching; auto-labeling creation/modification-date matching.",
+      "severity": "minor",
+      "fix": "The 'Confirm who holds the Information Protection Admin role', policy-off instruction and 'Review DLP alerts' checklist steps have no corresponding control rows. Remove those checklist instructions; retain the role and alert facts in the existing Scope and Risk assessment prose."
+    },
+    {
+      "n": 43,
+      "where": "controls[0].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No dedicated DLP creation/modification-date parameter or date-condition AdvancedRule syntax is documented in the automation references.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview DLP Document creation date PowerShell AdvancedRule. Read New-DlpComplianceRule and Set-DlpComplianceRule excerpts; searched reference text for creation, modification, CreatedDate and ModifiedDate. No date-predicate syntax documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "Whether the date predicates accept relative windows or only fixed dates is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Document modification date background relative DLP. Read DLP policy reference and relative-date adaptive-scope search excerpts; the latter explicitly concern scope membership, not individual document age, and no predicate window syntax was found.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-28T05:26:11.275Z",
+    "summary": {
+      "links": 11,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=557590",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-policy-reference",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/defender-cloud-apps/migrate-file-policies-to-purview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-autosensitivitylabelrule",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-get-started",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-alerts-get-started",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/defender-office-365/scc-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether a SharePoint or OneDrive DLP rule matches files by creation or modification date",
+        "docs": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine",
+        "reachable": true,
+        "segments": [
+          "Data loss prevention",
+          "Policies",
+          "Create policy",
+          "Enterprise applications & devices",
+          "Custom",
+          "Custom policy",
+          "SharePoint sites",
+          "Create or customize advanced DLP rules",
+          "Create rule",
+          "Conditions",
+          "Add condition"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

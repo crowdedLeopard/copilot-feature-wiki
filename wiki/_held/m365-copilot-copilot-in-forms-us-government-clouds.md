@@ -49,6 +49,18 @@ sources:
   - title: "The Copilot Suggestions in Microsoft Forms are disruptive and unwanted. - Microsoft Q&A"
     url: "https://learn.microsoft.com/answers/a/12621246"
     kind: "docs"
+  - title: "Microsoft Copilot requirements"
+    url: "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements"
+    kind: "learn"
+  - title: "Archived Release Notes for Microsoft 365 Copilot"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/release-notes-archive#february,-2024"
+    kind: "learn"
+  - title: "2025 Release Notes for Microsoft 365 Copilot"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes#may-29,-2025"
+    kind: "learn"
+  - title: "Evolving the Copilot experience in Microsoft Forms"
+    url: "https://techcommunity.microsoft.com/blog/microsoftformsblog/evolving-the-copilot-experience-in-microsoft-forms/4534667"
+    kind: "blog"
 videos: []
 related: ["m365-copilot-copilot-in-powerpoint-for-government-clouds","m365-copilot-mcp-based-agent-enablement-for-u-s-government-clouds"]
 controls:
@@ -59,7 +71,7 @@ controls:
     note: "Existing Forms controls (Conditional Access on the Microsoft Forms cloud app, Forms admin settings) do not name Copilot in Forms."
 confidence: "medium"
 created: "2026-11-21"
-updated: "2026-11-21"
+updated: "2026-11-28"
 roadmapModified: "2026-10-12T23:01:05"
 changes:
   - date: "2026-11-21"
@@ -72,19 +84,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 52 statements not yet confirmed"
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 56 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-28"
+    note: "Corrected after the independent check: the Scope gap now covers only government-cloud-specific prerequisites, and sources for drafting inputs and the commercial Forms Copilot rollout were added."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 53 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 3
 verification:
   status: "held"
   date: "2026-11-28"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 56
-  confirmed: 55
+  claims: 53
+  confirmed: 50
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "362bea1054dc00b850c55e7d57834a53"
+  contradicted: 3
+  attempts: 2
+  hash: "5369e0980d5116bc0be2ce301c08c4c5"
 ---
 
 ## What's changing
@@ -128,7 +144,7 @@ No meter or credit rate for Copilot in Forms is published. Indirect cost is admi
 
 The roadmap item covers GCC, GCC High and DoD, on the Web platform, at General Availability, with status Rolling out and a target of September CY2026.
 
-The Microsoft Copilot service description does not list a Forms row in its feature availability table for the US Government clouds. Whether availability differs between GCC, GCC High and DoD is not stated by Microsoft Learn; the roadmap item lists all three. The roles that manage Copilot in Forms and any prerequisites are not yet documented.
+The Microsoft Copilot service description does not list a Forms row in its feature availability table for the US Government clouds. Whether availability differs between GCC, GCC High and DoD is not stated by Microsoft Learn; the roadmap item lists all three. The roles that manage Copilot in Forms and any government-cloud-specific prerequisites are not yet documented.
 
 ## Governance guidance
 
@@ -177,9 +193,9 @@ impact: Medium. Form owners, such as survey owners, HR and communications teams,
 <!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Scope / absence: Any prerequisites for Copilot in Forms are not yet documented. | Found: Requirements vary based on the Copilot experience and Microsoft 365 app that your users access. Users must have a work or school account in Microsoft Entra ID. | Fix: Replace 'The roles that manage Copilot in Forms and any prerequisites are not yet documented.' with 'The roles that manage Copilot in Forms and any government-cloud-specific prerequisites are not yet documented.' General Copilot requirements are published at https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements; the application card at https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-application-card explicitly includes Microsoft Copilot in Microsoft Forms. | Source: https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements
+- [contradicted, blocker] front matter: licensing.model and notes; summary; Cost and licensing; Why it matters; rationale: cost / licensing: Licensing is unknown because Microsoft has not published which licence covers Copilot in Forms in government clouds. | Found: There is an input length limit and frequency limit to avoid abusing the system and a valid Microsoft Copilot license is required to use the Copilot in Forms feature. | Fix: Set licensing.model to add-on. Replace the blanket unpublished-licensing statements with: 'The Forms FAQ requires a valid Microsoft Copilot licence. Microsoft offers that licence as an add-on in GCC, GCC High and DoD. The Copilot overview separately lists Forms question drafting under Microsoft 365 Copilot (Basic), without the add-on; the government-cloud feature-by-feature split is not specified.' Cite https://support.microsoft.com/office/frequently-asked-questions-about-copilot-in-forms-c9941b72-b32e-4c7e-9af9-e603929bb1d2 and https://learn.microsoft.com/copilot/plan/copilot-license-options alongside the existing overview. | Source: https://support.microsoft.com/office/frequently-asked-questions-about-copilot-in-forms-c9941b72-b32e-4c7e-9af9-e603929bb1d2
+- [contradicted, blocker] Scope / absence: The roles that manage Copilot in Forms are not documented. | Found: Assign the AI Administrator role to users who need to do the following tasks: 1. Manage all aspects of Microsoft Copilot | Fix: Replace the role absence with: 'Microsoft documents AI Administrator as a role for managing all aspects of Microsoft Copilot; no Forms-specific availability switch is documented.' Cite https://learn.microsoft.com/entra/identity/role-based-access-control/permissions-reference#ai-administrator. Keep the separate government-cloud-specific prerequisite gap. | Source: https://learn.microsoft.com/entra/identity/role-based-access-control/permissions-reference#ai-administrator
+- [contradicted, blocker] front matter: cost; Cost and licensing; rationale: cost / consistency: A low cost rating and rationale that only admin time is known conflict with the published Copilot licence requirement and add-on model. | Found: Briefing: 'The only cost the sources show is admin time and licence checking'. Forms FAQ: 'a valid Microsoft Copilot license is required to use the Copilot in Forms feature.' Service description: 'Microsoft 365 Copilot is an add-on plan'. | Fix: Set cost to medium. Replace the cost rationale with: 'Medium. The Forms FAQ requires a valid Microsoft Copilot licence, offered as an add-on in government clouds, so form owners without it may need licensing. The overview separately lists Basic question drafting; the government-cloud feature split remains unspecified.' Keep admin time as an indirect cost and the absence of a government Forms meter as a separate narrow statement. | Source: https://support.microsoft.com/office/frequently-asked-questions-about-copilot-in-forms-c9941b72-b32e-4c7e-9af9-e603929bb1d2
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters / behaviour: Drafting a form with Copilot works from user-entered prompts. | Found: Use natural language to describe the form you need, and Copilot will generate it for you. | Fix: Add https://learn.microsoft.com/microsoft-365/copilot/release-notes-archive#february,-2024 to sources for the statement that drafting works from what a user types. | Source: https://learn.microsoft.com/microsoft-365/copilot/release-notes-archive#february,-2024
-- [supported, minor] Why it matters / behaviour: Copilot form drafting can use material the user references. | Found: When creating a form with Copilot, users can now reference existing documents such as Word, Excel, and PowerPoint. Users can also reference an existing form by pasting the form's URL into the prompt box. | Fix: Add https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes#may-29,-2025 to sources for the referenced-input description. | Source: https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes#may-29,-2025
-- [supported, minor] Risk assessment: Autonomy & actions; Cost and licensing / availability: The separately documented new Forms Copilot chat experience is a commercial rollout, not a statement of government-cloud entitlement. | Found: The new Copilot in Forms is rolling out to worldwide users now, and will be available to users with Microsoft 365 commercial Copilot licenses. | Fix: Add https://techcommunity.microsoft.com/blog/microsoftformsblog/evolving-the-copilot-experience-in-microsoft-forms/4534667 to sources for the commercial scope of the separate Forms Copilot chat experience. | Source: https://techcommunity.microsoft.com/blog/microsoftformsblog/evolving-the-copilot-experience-in-microsoft-forms/4534667
+- [supported, minor] front matter: licensing.notes; Cost and licensing / licensing: The Copilot overview lists Forms question drafting among Microsoft 365 Copilot (Basic) in-app capabilities. | Found: Microsoft 365 Copilot (Basic) refers to users without the Copilot add-on license ... In-app features you can use: ... Forms: Draft questions to create surveys, polls and other forms | Fix: Add: 'The Forms FAQ separately says a valid Microsoft Copilot licence is required for Copilot in Forms, so these Microsoft pages do not describe the drafting entitlement consistently.' Cite https://support.microsoft.com/office/frequently-asked-questions-about-copilot-in-forms-c9941b72-b32e-4c7e-9af9-e603929bb1d2. Do not treat the Basic listing as proof that government-cloud drafting needs no add-on. | Source: https://learn.microsoft.com/copilot/plan/copilot-overview
 -->

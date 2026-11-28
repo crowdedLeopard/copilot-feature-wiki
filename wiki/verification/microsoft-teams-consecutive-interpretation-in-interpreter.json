@@ -1,0 +1,1481 @@
+{
+  "slug": "microsoft-teams-consecutive-interpretation-in-interpreter",
+  "roadmapId": 557180,
+  "title": "Microsoft Teams: consecutive interpretation in Interpreter, billed in Copilot Credits",
+  "status": "held",
+  "date": "2026-11-28",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-28",
+    "reasons": [
+      "2 blocking findings (claims 62, 64)"
+    ]
+  },
+  "counts": {
+    "claims": 113,
+    "confirmed": 107,
+    "unconfirmed": 2,
+    "contradicted": 4,
+    "blocker": 2,
+    "major": 2,
+    "minor": 4
+  },
+  "summary": "Hold for two governance corrections: the new-policy navigation omits the Identity scope choice, and the alert API shown cannot change recipients. The rollout, billing estimates and principal licensing requirements are supported; the statement that sign-in and identity are unchanged is not documented.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Rolling out.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Rolling out\", \"statusKey\": \"rolling-out\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phases are General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Android, Desktop, iOS and Mac.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is May CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"May CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap products are Microsoft Teams and Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Teams\", \"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-05-01T21:45:13.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-05-01T21:45:13\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "title; front matter: roadmapId",
+      "type": "record",
+      "claim": "Roadmap item 557180 concerns consecutive interpretation in Teams Interpreter.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"id\": 557180, \"title\": \"Microsoft Teams: Consecutive interpretation in Interpreter\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing: rollout paragraph",
+      "type": "record",
+      "claim": "MC1239927 was updated in November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1239927",
+      "quote": "Updated November 16, 2026: We have updated the timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing: rollout paragraph",
+      "type": "record",
+      "claim": "MC1239927 gives early May 2026 for the start of Targeted Release rollout.",
+      "status": "supported",
+      "source": "Message Center post MC1239927",
+      "quote": "Targeted Release: Rollout begins in early May 2026 (previously early April)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing: rollout paragraph",
+      "type": "record",
+      "claim": "MC1239927 gives late May 2026 as the expected completion of Targeted Release rollout.",
+      "status": "supported",
+      "source": "Message Center post MC1239927",
+      "quote": "and is expected to complete by late May 2026 (previously mid-April).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing: rollout paragraph",
+      "type": "record",
+      "claim": "MC1239927 gives mid-November 2026 for the start of Worldwide General Availability rollout.",
+      "status": "supported",
+      "source": "Message Center post MC1239927",
+      "quote": "General Availability (Worldwide): Rollout begins in mid-November 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing: rollout paragraph",
+      "type": "record",
+      "claim": "MC1239927 gives early December 2026 as the expected completion of Worldwide General Availability rollout.",
+      "status": "supported",
+      "source": "Message Center post MC1239927",
+      "quote": "and is expected to complete by early December 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing: rollout paragraph",
+      "type": "record",
+      "claim": "The supplied Message Center notice sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1239927",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing: first paragraph",
+      "type": "behaviour",
+      "claim": "Interpreter has simultaneous and consecutive interpretation modes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "Interpreter offers two modes: simultaneous interpretation and consecutive interpretation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing: first paragraph",
+      "type": "record",
+      "claim": "The existing simultaneous mode is a personal listening experience and is unchanged.",
+      "status": "supported",
+      "source": "Message Center post MC1239927",
+      "quote": "The existing simultaneous interpretation mode in Interpreter for Teams meetings and Rooms, which is generally available, hasn't changed. It's still a personal listening experience",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "summary; What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Consecutive interpretation waits until the speaker finishes before interpreting the statement.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Interpretation happens after each speaker finishes talking, creating a turn-based flow",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "summary; What's changing; Why it matters; rationale: impact",
+      "type": "record",
+      "claim": "All meeting participants hear the same AI-generated spoken interpretation.",
+      "status": "supported",
+      "source": "Message Center post MC1239927",
+      "quote": "Consecutive interpretation waits for each speaker to finish, then provides AI-generated spoken interpretation so that all participants hear the same interpreted speech.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing: first paragraph",
+      "type": "record",
+      "claim": "Consecutive interpretation supports a conversation across two languages.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "creating a turn-based flow that supports interactive discussions across two languages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing: organiser path; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "MC1239927 gives More > Interpreter > Consecutive interpretation (uses credits) as the organiser's meeting path.",
+      "status": "supported",
+      "source": "Message Center post MC1239927",
+      "quote": "In a meeting, an eligible organizer can select More > Interpreter > Consecutive interpretation (uses credits), then choose the two spoken languages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing: first paragraph",
+      "type": "behaviour",
+      "claim": "The organiser chooses the two spoken languages.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "The organizer selects two languages for the shared conversation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "title; summary; What's changing; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Consecutive interpretation consumes Copilot Credits through usage-based billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "Consecutive interpretation is a usage-based billing experience that consumes Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Cost and licensing: Licence",
+      "type": "cost",
+      "claim": "Consecutive interpretation is billed separately from simultaneous interpretation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "Consecutive interpretation is a distinct mode from simultaneous interpretation and is billed separately.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "licensing.notes; What's changing; Cost and licensing; Governance guidance; rationale: cost",
+      "type": "cost",
+      "claim": "Consecutive interpretation charges the eligible organiser's applicable billing policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "The eligible meeting organizer's applicable billing policy is charged for consecutive interpretation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "licensing.notes; Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "The organiser needs an eligible Microsoft 365 base licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "The following list contains the prerequisites for meeting organizers to activate consecutive interpretation in Teams meetings: ... An eligible Microsoft 365 base license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "licensing.notes; Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "The organiser needs an eligible Teams licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "An eligible Microsoft Teams license. Teams licenses might be included in your Microsoft 365 subscription, or you might need to purchase a separate Teams license if you have Microsoft 365 (no Teams) licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "summary; licensing.notes; Cost and licensing: Licence; Risk assessment; Scope",
+      "type": "licensing",
+      "claim": "The organiser activating consecutive interpretation needs a Microsoft Copilot licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "A Microsoft Copilot license. The experience is activated by a meeting organizer, who requires Microsoft Copilot (Premium) as a prerequisite, with Copilot Credits usage-based billing enabled through the applicable spending policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "summary; licensing.notes; What's changing; Risk assessment; Governance controls",
+      "type": "record",
+      "claim": "An administrator must configure spending policy coverage before an eligible organiser can enable the experience and incur usage charges.",
+      "status": "supported",
+      "source": "Message Center post MC1239927",
+      "quote": "Usage charges can begin after an administrator configures a spending policy and an eligible meeting organizer turns on the experience for their meeting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "licensing.notes; What's changing; Risk assessment: Data exposure",
+      "type": "licensing",
+      "claim": "Participants do not need a Copilot licence to hear consecutive interpretation once an eligible organiser activates it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "Once activated by an eligible meeting organizer, consecutive interpretation provides interpreted audio for all meeting participants regardless of whether they have a Microsoft Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "The default state is admin-opt-in because use requires administrator-configured spending policies.",
+      "status": "supported",
+      "source": "Message Center post MC1239927",
+      "quote": "You will need to set up spending policies to enable consecutive interpretation for eligible meeting organizers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is mixed: a Copilot licence prerequisite plus consumption billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "The experience is activated by a meeting organizer, who requires Microsoft Copilot (Premium) as a prerequisite, with Copilot Credits usage-based billing enabled through the applicable spending policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "The cost rating is variable because this is metered in Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "Consecutive interpretation is a usage-based billing experience that consumes Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[0].note; controls[6].note; Why it matters; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "The AIInterpreter meeting policy switch controls both simultaneous and consecutive interpretation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "The org-wide -AIInterpreter parameter controls whether your users can use simultaneous or consecutive interpretation during meetings in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[0].note; Why it matters",
+      "type": "default",
+      "claim": "AIInterpreter is enabled by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "This parameter is enabled by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[0].note; Why it matters; Governance controls",
+      "type": "applicability",
+      "claim": "Enabling the meeting policy does not replace consecutive interpretation's licensing and spending policy prerequisites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "Turning on Interpreter through this policy doesn't replace the licensing and Copilot Credits spending policy prerequisites for consecutive interpretation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[0].api; Governance controls table; Governance guidance: Before rollout",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -AIInterpreter Disabled disables Interpreter in meetings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "To turn off Interpreter for your entire organization, use the following script: Set-CsTeamsMeetingPolicy -Identity <policy name> -AIInterpreter Disabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[0].ui; Governance controls",
+      "type": "absence",
+      "claim": "An administrator UI for the Interpreter meeting policy switch is not documented; PowerShell must be used.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams admin center UI AIInterpreter consecutive interpretation disable mode separately simultaneous meeting policy. Opened Interpreter management and Set-CsTeamsMeetingPolicy; read meeting-policies-overview search excerpt. Interpreter management explicitly requires PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[0].scope; Governance controls table",
+      "type": "applicability",
+      "claim": "The meeting policy can govern users assigned to it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "The Set-CsTeamsMeetingPolicy cmdlet allows administrators to update existing meeting policies that can be assigned to particular users to control Teams features related to meetings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[1].ui; Governance controls table; Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "Service coverage is edited at Microsoft 365 admin center > Copilot > Cost Management > Configuration > spending policy > Agents and services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "go to Copilot > Cost Management. ... Select the Configuration tab. ... Select the spending policy you want to edit. ... The spending policy details fly-out opens ... Agents and services",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "POST /beta/copilot/costManagement/spendingPolicies/{id}/serviceSettings adds a governed service to a policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-create",
+      "quote": "Create a new spendingPolicyServiceSetting object to add a service to an existing spending policy. ... POST https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/3f9e2c1a-0000-0000-0000-00000000c21b/serviceSettings",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[1].note; Governance controls",
+      "type": "command",
+      "claim": "The service-settings request body sets serviceId.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-create",
+      "quote": "Required properties are serviceId and state.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[1].note",
+      "type": "command",
+      "claim": "The service-settings request body sets state to govern or exclude the service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/resources/spendingpolicyservicesetting",
+      "quote": "state ... Whether the service is governed (enabled) or excluded (disabled). Required on create.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[1].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The service-settings reference does not give the serviceId for consecutive interpretation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: spendingPolicyServiceSetting consecutive interpretation serviceId autoApplyNewServices API. Opened service-setting resource and Create spendingPolicyServiceSetting; neither identifies an interpretation serviceId. Examples name cowork, workIQ and researcherCritiqueAndCouncil.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance controls: final paragraph",
+      "type": "command",
+      "claim": "The service-setting resource names cowork and workIQ as serviceId examples.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/resources/spendingpolicyservicesetting",
+      "quote": "The key identifying a governed service category, such as cowork or workIQ. Multiple billable services can share a category.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Policy scope is edited at Microsoft 365 admin center > Copilot > Cost Management > Configuration > spending policy > Scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "go to Copilot > Cost Management. ... Select the Configuration tab. ... Select the spending policy you want to edit. ... The spending policy details fly-out opens ... Scope",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "POST /beta/copilot/costManagement/spendingPolicies/{id}/microsoft.graph.selectedGroupsSpendingPolicy/assignedGroups/$ref assigns a group to a policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
+      "quote": "Add assignedGroup | POST /copilot/costManagement/spendingPolicies/{id}/microsoft.graph.selectedGroupsSpendingPolicy/assignedGroups/$ref | Add a group reference to a policy.",
+      "severity": "minor",
+      "fix": "Keep the call. Add to controls[2].note: 'The request body sets @odata.id to the group reference URL.' This is stated at https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/selectedgroupsspendingpolicy-post-assignedgroups; cite that page."
+    },
+    {
+      "n": 48,
+      "where": "controls[2].note; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Specific users are included in spending policies through security groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "At this time, you can only support specific users and resource accounts through security groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[3].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Policy and user limits are edited at Microsoft 365 admin center > Copilot > Cost Management > Configuration > spending policy > Spending limits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "go to Copilot > Cost Management. ... Select the Configuration tab. ... Select the spending policy you want to edit. ... The spending policy details fly-out opens ... Spending limits",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[3].api; Governance controls table",
+      "type": "command",
+      "claim": "PATCH /beta/copilot/costManagement/spendingPolicies/{id} updates policy consumption limits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "The following properties can be updated: displayName, periodLimit, perUserLimit, and billingMethods. ... PATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/3f9e2c1a-0000-0000-0000-00000000c21b",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[3].note",
+      "type": "command",
+      "claim": "periodLimit is an updatable request-body property.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "The following properties can be updated: displayName, periodLimit, perUserLimit, and billingMethods.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[3].note",
+      "type": "command",
+      "claim": "perUserLimit is an updatable request-body property.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "The following properties can be updated: displayName, periodLimit, perUserLimit, and billingMethods.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[3].governs; Cost and licensing: Limits; Governance guidance",
+      "type": "cost",
+      "claim": "A spending policy can impose a monthly credit consumption limit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "Limited monthly budget: When you select a limited monthly budget, you limit the number of credits that this policy can spend each month.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[3].governs; Cost and licensing: Limits; Governance guidance",
+      "type": "cost",
+      "claim": "A spending policy can optionally impose a monthly credit limit per user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "Select monthly budget limits for users (optional). Use the toggle to select this option and to set a monthly limit for users to prevent a single person from spending all available credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[3].note; Risk assessment: Change & support; rationale: risk",
+      "type": "cost",
+      "claim": "Users hitting a policy limit lose access to agents and services for the rest of the month.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "When users hit the limit, they lose access to agents and services for the rest of the month until credits reset on the first of the month.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[3].note",
+      "type": "date",
+      "claim": "Monthly consumption limits reset on the first of the month.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/resources/spendingpolicy",
+      "quote": "A period is a UTC calendar month: consumption is counted month-to-date and resets at 00:00 UTC on the first of each month.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Cost and licensing: Limits",
+      "type": "cost",
+      "claim": "The manage page asks for at least 2,000 credits per user per month.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "Monthly budget limit for users: Set at least 2,000 credits per user per month",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Cost and licensing: Limits",
+      "type": "cost",
+      "claim": "Policies use prepaid credits before pay-as-you-go.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "The policy always uses prepaid credits first, whether through capacity packs or through pre-purchase plans, before moving to pay-as-you-go.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Cost and licensing: Limits",
+      "type": "cost",
+      "claim": "Pay-as-you-go usage is charged through the policy's billing method.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+      "quote": "Copilot credits are billed to the subscription that you select in the billing method. ... When credits run out for that subscription, usage automatically continues on a pay-as-you-go basis.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[4].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Alerts and recipients are edited at Microsoft 365 admin center > Copilot > Cost Management > Configuration > spending policy > Alerts, and Email alert settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "go to Copilot > Cost Management. ... Select the Configuration tab. ... Select the spending policy you want to edit. ... The spending policy details fly-out opens ... Alerts, and Email alert settings",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[4].api; Governance controls table",
+      "type": "command",
+      "claim": "PATCH /beta/copilot/costManagement/spendingPolicies/{id}/emailThresholdSettings configures policy usage alerts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
+      "quote": "Update costManagementAlertSetting | PATCH /copilot/costManagement/spendingPolicies/{id}/emailThresholdSettings | Create or update the alert configuration.",
+      "severity": "minor",
+      "fix": "Keep the call and add to controls[4].note: 'The request body sets isEnabled and thresholds.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/costmanagementalertsetting-update, whose example supplies those properties."
+    },
+    {
+      "n": 62,
+      "where": "controls[4].api: recipient part of governs; Governance controls table",
+      "type": "command",
+      "claim": "The displayed emailThresholdSettings PATCH also configures who receives policy usage alerts.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/costmanagementalertsetting-update",
+      "quote": "Recipients can't be sent inline. Manage them through the recipient $ref endpoints (Add recipient and Remove recipient).",
+      "severity": "blocker",
+      "fix": "Narrow controls[4].governs and the corresponding table label to 'Policy usage alerts', retaining the existing PATCH. Add to the note: 'This call configures alerts, not recipients; use the admin UI to manage recipients.' The existing UI and recipient advice can remain."
+    },
+    {
+      "n": 63,
+      "where": "controls[4].note; Governance controls table",
+      "type": "applicability",
+      "claim": "Alerts only notify and do not stop use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
+      "quote": "Configure notify-only threshold alerts and manage their recipients.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[5].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The add-policy route reaches Auto-apply new services without a policy-scope choice between + Add spending policy and Select agents and services.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "complete the following sections ... Define the policy scope ... Select agents and services ... Create and name the policy and then choose Identity as the scope.",
+      "severity": "blocker",
+      "fix": "Replace controls[5].ui.path and its rendered table path with 'Copilot > Cost Management > Configuration > + Add spending policy > Define the policy scope > Identity > Select agents and services > Auto-apply new services'. The Identity choice determines the applicable policy workflow."
+    },
+    {
+      "n": 65,
+      "where": "controls[5].note; Why it matters",
+      "type": "default",
+      "claim": "Auto-apply new services is on by default for spending policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "By default, the Auto-apply new services toggle is selected for spending policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[5].governs; Why it matters; Governance guidance; Open questions",
+      "type": "applicability",
+      "claim": "Auto-apply new services automatically adds newly supported services and agents to a spending policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "When a spending policy has Auto-apply new services turned on, newly supported Microsoft Copilot services and agents are automatically added to the policy as they become available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Why it matters; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Teams: Consecutive interpretation is a supported service managed by usage-based billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits",
+      "quote": "Services managed by usage-based billing in the Microsoft admin center now include: ... Teams: Consecutive interpretation",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Why it matters: default-policy discussion; Open questions",
+      "type": "default",
+      "claim": "The default spending policy setup can cover all users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+      "quote": "The default setup targets your entire organization and all users. Optionally, you can customize the default spending policy to specific groups or change the services it governs",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "controls[5].api; Governance controls table",
+      "type": "absence",
+      "claim": "An API setting for Auto-apply new services is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'spendingPolicyServiceSetting consecutive interpretation serviceId autoApplyNewServices API'. Opened spendingPolicy, Update spendingPolicy and Cost Management overview; no auto-apply property or operation is documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "controls[6].ui and controls[6].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No separate UI or API setting is documented that disables consecutive interpretation while retaining simultaneous interpretation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Teams admin center UI AIInterpreter consecutive interpretation disable mode separately simultaneous meeting policy'. Opened Interpreter management and Set-CsTeamsMeetingPolicy; no separate consecutive-mode switch is documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Interpreter uses Azure Cognitive Services for speech-to-speech translation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "Interpreter performs real-time speech-to-speech (STS) translation using Azure Cognitive Services",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "A bot transmits meeting audio for cloud-based processing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "A bot transmits meeting audio for cloud-based processing and returns translations instantly.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "The documented data, security and privacy information applies to both interpretation modes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "The following information applies to both simultaneous and consecutive interpretation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Voice simulation is only available in simultaneous mode, not consecutive mode.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "Voice simulation is available only with simultaneous interpretation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "availability",
+      "claim": "External guests participating in the meeting also hear consecutive interpretation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "consecutive interpretation provides interpreted audio for all meeting participants regardless of whether they have a Microsoft Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Consecutive interpretation makes no change to sign-in.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Teams consecutive interpretation sign-in identity authentication changes. Read Interpreter management and the sign-in-teams search excerpts; neither states that consecutive interpretation leaves sign-in and identity unchanged.",
+      "severity": "major",
+      "fix": "Remove 'No change to sign-in or identity.' Retain the following sentence about the organiser's licence and spending policy membership."
+    },
+    {
+      "n": 77,
+      "where": "Scope: Who can activate it; Risk assessment: Change & support; Open questions",
+      "type": "role",
+      "claim": "Learn says only the meeting organiser can activate consecutive interpretation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "Only the meeting organizer can turn on consecutive interpretation, using Teams desktop.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "Scope: Who can activate it",
+      "type": "availability",
+      "claim": "Learn specifies Teams desktop for activation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "Only the meeting organizer can turn on consecutive interpretation, using Teams desktop.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "Scope: Who can activate it; Risk assessment: Change & support; Open questions",
+      "type": "role",
+      "claim": "The Copilot Credits Guide permits organisers or co-organisers to activate the experience, unlike the cited Learn page.",
+      "status": "supported",
+      "source": "https://www.microsoft.com/licensing/guidance/CopilotCreditsGuide",
+      "quote": "Only the organizer or co-organizers of a meeting are able to activate Consecutive Interpretation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "Scope: Who can activate it",
+      "type": "licensing",
+      "claim": "The guide also requires the activator to have a Copilot licence and usage-based billing.",
+      "status": "supported",
+      "source": "https://www.microsoft.com/licensing/guidance/CopilotCreditsGuide",
+      "quote": "The activator in the meeting must have the below: Microsoft Teams; Microsoft Copilot USL; Copilot Credits Usage-Based Billing enabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
+      "where": "Scope: Meetings",
+      "type": "availability",
+      "claim": "Consecutive interpretation is supported only in Teams meetings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "Consecutive interpretation is supported in Teams meetings only, not calls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 82,
+      "where": "Scope: Meetings",
+      "type": "availability",
+      "claim": "Consecutive interpretation is not supported in calls.",
+      "status": "supported",
+      "source": "Message Center post MC1239927",
+      "quote": "not currently supported in Teams Events, calls or Teams Rooms.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 83,
+      "where": "Scope: Meetings",
+      "type": "availability",
+      "claim": "MC1239927 says consecutive interpretation is not currently supported in Teams Events.",
+      "status": "supported",
+      "source": "Message Center post MC1239927",
+      "quote": "not currently supported in Teams Events, calls or Teams Rooms.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 84,
+      "where": "Scope: Meetings",
+      "type": "availability",
+      "claim": "MC1239927 says consecutive interpretation is not currently supported in Teams Rooms.",
+      "status": "supported",
+      "source": "Message Center post MC1239927",
+      "quote": "not currently supported in Teams Events, calls or Teams Rooms.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 85,
+      "where": "Scope: Meetings; Governance guidance: At rollout",
+      "type": "availability",
+      "claim": "Learn gives a maximum of 50 participants for consecutive interpretation's small-group discussions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "Consecutive interpretation is designed for small-group discussions with a maximum of 50 meeting participants, ideally with 10–15 participants.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 86,
+      "where": "Scope: Meetings",
+      "type": "behaviour",
+      "claim": "Learn describes 10 to 15 participants as ideal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "ideally with 10–15 participants.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 87,
+      "where": "Scope: Platforms",
+      "type": "record",
+      "claim": "MC1239927 lists Windows, Mac and web.",
+      "status": "supported",
+      "source": "Message Center post MC1239927",
+      "quote": "Available in Teams meetings on Windows, Mac and web",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 88,
+      "where": "Scope: Platforms",
+      "type": "availability",
+      "claim": "Learn says participants can listen on Teams desktop or mobile.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "Participants can listen on Teams desktop or mobile.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 89,
+      "where": "Scope: Platforms",
+      "type": "availability",
+      "claim": "Mobile participants cannot activate consecutive interpretation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "Mobile participants can't turn it on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 90,
+      "where": "Scope: Languages",
+      "type": "availability",
+      "claim": "Learn lists nine Interpreter languages, including Chinese (Mandarin).",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "Interpreter supports the following languages for speaking and listening: Chinese (Mandarin), English, French, German, Italian, Japanese, Korean, Portuguese, Spanish.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 91,
+      "where": "Scope: Languages",
+      "type": "availability",
+      "claim": "The guide lists ten languages for consecutive interpretation, including Simplified and Traditional Chinese.",
+      "status": "supported",
+      "source": "https://www.microsoft.com/licensing/guidance/CopilotCreditsGuide",
+      "quote": "This experience supports bilingual conversations across 10 languages: English, French, German, Italian, Japanese, Korean, Portuguese, Spanish, Simplified Chinese, and Traditional Chinese.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 92,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "Credits accrue while consecutive interpretation is active, primarily according to interpreted meeting duration.",
+      "status": "supported",
+      "source": "https://www.microsoft.com/licensing/guidance/CopilotCreditsGuide",
+      "quote": "Copilot Credits are consumed while consecutive interpretation is active, primarily based on the duration of the interpreted meeting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 93,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "Attendees are not billed for consecutive interpretation.",
+      "status": "supported",
+      "source": "https://www.microsoft.com/licensing/guidance/CopilotCreditsGuide",
+      "quote": "Credits are billed through the organizer’s applicable billing policy; attendees are not billed for use of the feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 94,
+      "where": "Cost and licensing: Meter; rationale: cost",
+      "type": "cost",
+      "claim": "The guide estimates 160 to 260 Copilot Credits for a 30-minute interpreted meeting.",
+      "status": "supported",
+      "source": "https://www.microsoft.com/licensing/guidance/CopilotCreditsGuide",
+      "quote": "Standard Meeting 30 min ... Est Credits 160 - 260 Copilot Credits",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 95,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "The guide estimates 190 to 320 Copilot Credits for a 45-minute interpreted meeting.",
+      "status": "supported",
+      "source": "https://www.microsoft.com/licensing/guidance/CopilotCreditsGuide",
+      "quote": "Longer Conversations 45 min ... Est Credits 190 - 320 Copilot Credits",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 96,
+      "where": "Cost and licensing: Meter; Limits: worked example",
+      "type": "cost",
+      "claim": "The guide estimates 300 to 400 Copilot Credits for a 60-minute interpreted meeting.",
+      "status": "supported",
+      "source": "https://www.microsoft.com/licensing/guidance/CopilotCreditsGuide",
+      "quote": "Extended Discussion 60 min ... Est Credits 300 - 400 Copilot Credits",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 97,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "The guide's meeting estimates are rough planning estimates, not guaranteed consumption.",
+      "status": "supported",
+      "source": "https://www.microsoft.com/licensing/guidance/CopilotCreditsGuide",
+      "quote": "These figures are rough planning estimates. Actual Credits may vary with meeting duration and conversation flow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 98,
+      "where": "Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "The 20 monthly interpreted-audio hours included with a Copilot licence belong to simultaneous interpretation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "Simultaneous interpretation ... 20 hours of interpretation is included per user per month with a Microsoft Copilot license. Access beyond the hours included is subject to available capacity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 99,
+      "where": "Scope: Admin roles",
+      "type": "role",
+      "claim": "Global administrator or Billing administrator can activate usage-based billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+      "quote": "Sign in to the Microsoft 365 admin center with one of the following administrator roles: Global administrator; Billing administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 100,
+      "where": "Governance controls: final paragraph",
+      "type": "role",
+      "claim": "Creating a spending policy requires Global administrator or Billing administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
+      "quote": "Creating a spending policy also requires the Billing Administrator or Global Administrator directory role at runtime.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 101,
+      "where": "Scope: Admin roles; Governance controls",
+      "type": "role",
+      "claim": "AI administrator and License administrator can edit spending policies, limits and alerts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+      "quote": "AI administrator and License administrator roles can edit spending policies, manage limits and alerts, and billing methods.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 102,
+      "where": "Scope: Admin roles",
+      "type": "role",
+      "claim": "AI administrator and License administrator cannot create spending policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+      "quote": "AI administrator and License administrator roles ... However, they can't create spending policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 103,
+      "where": "Governance controls: final paragraph",
+      "type": "applicability",
+      "claim": "For overlapping policies governing the same service, the highest per-user limit is the first policy-selection criterion.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "If a user is in more than one policy for the same service, the system assigns the user a policy based on the following order: 1. Highest per-user limit 2. If tied, the largest overall policy limit 3. If still tied, the most recently created policy",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 104,
+      "where": "Governance controls: final paragraph",
+      "type": "applicability",
+      "claim": "The selected policy applies in full rather than combining settings from other policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "The chosen policy applies in full and settings from other policies aren't combined.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 105,
+      "where": "controls[1-4].notes; Governance controls",
+      "type": "command",
+      "claim": "The displayed Cost Management Graph API operations are beta.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
+      "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 106,
+      "where": "Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "Consumption reporting is available at Microsoft 365 admin center > Copilot > Cost management > Consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits",
+      "quote": "In the Microsoft admin center, Copilot > Cost management, admins can monitor Copilot Credit consumption ... The Consumption tab enables detailed analysis by spending policy, user, group, agent, or service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 107,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Consumption reporting can be analysed by service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits",
+      "quote": "The Consumption tab enables detailed analysis by spending policy, user, group, agent, or service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 108,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Consumption reporting can identify users generating usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits",
+      "quote": "In the Users view, administrators can review daily credit usage and credits spent by spending policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 109,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Users reaching a policy limit can request more credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "When users reach their limit within a policy, they can request more credits but they don't default to other policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 110,
+      "where": "front matter: action; Why it matters",
+      "type": "consistency",
+      "claim": "The prepare action rating understates the immediate decision for tenants whose existing policies automatically add new services during rollout.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "action: \"prepare\"; \"A tenant that has already activated a default spending policy for all users should therefore check whether that policy now covers this mode for every Copilot-licensed organiser.\"",
+      "severity": "minor",
+      "fix": "Set action to 'act-now': rollout is under way on the run date, and existing policies with Auto-apply new services can expose new metered use without another administrator action."
+    },
+    {
+      "n": 111,
+      "where": "Governance guidance: After rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist tells administrators to review Consumption reporting, but the controls table has no corresponding row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "\"Review the Consumption tab in Copilot > Cost management by service\"; the seven controls rows cover Interpreter, policy services, scope, limits, alerts, automatic services and the missing separate-mode switch.",
+      "severity": "minor",
+      "fix": "The After rollout step to review the Consumption tab has no controls-table row. Remove that checklist bullet to align the checklist with the existing table; do not add a control row."
+    },
+    {
+      "n": 112,
+      "where": "Why it matters; Risk assessment: Autonomy & actions; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "MC1239927 says interpretation quality may vary with audio quality, speech patterns, network conditions and language pair.",
+      "status": "supported",
+      "source": "Message Center post MC1239927",
+      "quote": "Interpretation quality may vary depending on audio quality, participant speech patterns, network conditions, and language pair.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 113,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Consecutive interpretation makes no change to identity.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Teams consecutive interpretation sign-in identity authentication changes. Read Interpreter management and sign-in-teams search excerpts; neither documents unchanged identity behaviour for consecutive interpretation.",
+      "severity": "major",
+      "fix": "Remove 'No change to sign-in or identity.' Retain the documented licence and spending policy prerequisites."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-28T05:26:12.531Z",
+    "summary": {
+      "links": 13,
+      "unreachable": 0,
+      "uiPaths": 5,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 5,
+      "apiCallsNotOnPage": 2,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=557180",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1239927",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/licensing/guidance/CopilotCreditsGuide",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/resources/spendingpolicy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/resources/spendingpolicyservicesetting",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-create",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether users can use Interpreter, in both simultaneous and consecutive modes, in meetings",
+        "docs": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+        "reachable": true,
+        "token": "Set-CsTeamsMeetingPolicy",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether a spending policy covers Teams: Consecutive interpretation",
+        "docs": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Cost Management",
+          "Configuration",
+          "spending policy",
+          "Agents and services"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether a spending policy covers Teams: Consecutive interpretation",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-create",
+        "reachable": true,
+        "token": "/beta/copilot/costManagement",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Which users and groups a spending policy applies to",
+        "docs": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Cost Management",
+          "Configuration",
+          "spending policy",
+          "Scope"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Which users and groups a spending policy applies to",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
+        "reachable": true,
+        "token": "/beta/copilot/costManagement",
+        "found": false
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Monthly credit limit for the policy and for each user",
+        "docs": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Cost Management",
+          "Configuration",
+          "spending policy",
+          "Spending limits"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Monthly credit limit for the policy and for each user",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+        "reachable": true,
+        "token": "/beta/copilot/costManagement",
+        "found": true
+      },
+      {
+        "index": 4,
+        "side": "ui",
+        "governs": "Policy usage alerts and who receives them",
+        "docs": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Cost Management",
+          "Configuration",
+          "spending policy",
+          "Alerts, and Email alert settings"
+        ],
+        "missing": []
+      },
+      {
+        "index": 4,
+        "side": "api",
+        "governs": "Policy usage alerts and who receives them",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
+        "reachable": true,
+        "token": "/beta/copilot/costManagement",
+        "found": false
+      },
+      {
+        "index": 5,
+        "side": "ui",
+        "governs": "Whether a spending policy picks up newly supported services automatically",
+        "docs": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Cost Management",
+          "Configuration",
+          "+ Add spending policy",
+          "Select agents and services",
+          "Auto-apply new services"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

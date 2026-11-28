@@ -70,18 +70,20 @@ changes:
     note: "Correction: replaced the claim that the report takes no action and end users see no change; reworded one control note and removed two checklist steps that had no controls-table row."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 63 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 73 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-21"
+  status: "held"
+  date: "2026-11-28"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 63
-  confirmed: 63
+  claims: 73
+  confirmed: 72
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "377799aec0bc5f0a0d3ce07c7383bb3a"
 ---
 
@@ -177,8 +179,11 @@ cost: Low. The only cost the sources show is administrator time to read the repo
 impact: Low. Administrators and report readers see the report. The roadmap item describes it as a report, not a change to Copilot behaviour.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] front matter: licensing.model / licensing: The report's licensing model is unknown because the administrator's viewing licence is not published. | Found: the Microsoft Copilot usage report ... focuses on usage of Microsoft Copilot within Microsoft 365 apps such as Teams, Outlook, Word, Excel, and PowerPoint (requires Microsoft 365 (Basic) or Microsoft 365 Copilot (Premium) licenses). | Fix: Set licensing.model to 'included'. Replace licensing.notes with: 'The Microsoft Copilot overview describes the usage report as requiring Microsoft 365 (Basic) or Microsoft 365 Copilot (Premium) licenses (https://learn.microsoft.com/copilot/plan/copilot-overview#track-and-increase-copilot-adoption). The report and reporting-options pages specify viewer roles but do not state whether the administrator personally needs a licence.' Add that overview URL to sources. Keep the narrower viewer-licence open question; do not equate it with unknown entitlement to the report. | Source: https://learn.microsoft.com/copilot/plan/copilot-overview#track-and-increase-copilot-adoption
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Scope: report navigation / admin-path: The report is reached through Microsoft 365 admin center > Reports > Usage > Microsoft Copilot > Copilot > Usage tab. | Found: On the Usage page, under Reports, select Microsoft Copilot, and then select Copilot. ... select the Usage tab. Reporting options instead says: Select Microsoft Copilot > Readiness or Usage. | Fix: Keep the existing route and append: 'The Copilot reporting options overview gives an alternative route: Reports > Usage > Microsoft Copilot > Usage (https://learn.microsoft.com/copilot/manage/copilot-admin-reports#microsoft-365-admin-center-reports).' | Source: https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-usage
+- [supported, minor] Risk assessment: Data exposure, first bullet / default: Microsoft Learn says user-specific information in the table is hidden by default. | Found: The organization setting that hides or shows this information applies to the following properties: ... User IDs, Usernames, and User principal names | Fix: Replace 'Microsoft Learn says this information is hidden by default' with 'Microsoft Learn says identifying information, such as usernames and display names, is hidden by default'. This avoids suggesting that concealment hides the prompt counts and activity dates named in the preceding sentence. | Source: https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports
+- [supported, minor] Scope: report navigation / admin-path: The report is reached through Microsoft 365 admin center > Reports > Usage > Microsoft Copilot > Copilot > Usage tab. | Found: On the Usage page, under Reports, select Microsoft Copilot, and then select Copilot. ... On the report page, select the Usage tab | Fix: Keep the existing route and append: 'The Copilot reporting options overview gives an alternative route: Reports > Usage > Microsoft Copilot > Usage (https://learn.microsoft.com/copilot/manage/copilot-admin-reports#microsoft-365-admin-center-reports).' Both cited pages were read and give these different routes. | Source: https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-usage
 -->

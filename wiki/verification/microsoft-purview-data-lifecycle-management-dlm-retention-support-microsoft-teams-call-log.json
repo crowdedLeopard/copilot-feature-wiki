@@ -1,0 +1,714 @@
+{
+  "slug": "microsoft-purview-data-lifecycle-management-dlm-retention-support-microsoft-teams-call-log",
+  "roadmapId": 559261,
+  "title": "Microsoft Purview: retention policies to delete Microsoft Teams call logs",
+  "status": "held",
+  "date": "2026-11-28",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [
+    "claim 48: severity blocker on a rationale: impact rating lowered to minor; ratings are judgements and cannot hold a page"
+  ],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-28",
+    "reasons": [
+      "2 blocking findings (claims 36, 40)"
+    ]
+  },
+  "counts": {
+    "claims": 51,
+    "confirmed": 47,
+    "unconfirmed": 1,
+    "contradicted": 3,
+    "blocker": 2,
+    "major": 0,
+    "minor": 3
+  },
+  "summary": "Hold: the deletion explanation omits the holds that can suspend permanent deletion, so a configured period is not an unconditional compliance deadline. The impact rationale also says nothing changes without administrator action, despite the documented removal of new call records from existing Teams chat policies.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is April CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"April CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The record supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "Why it matters",
+      "type": "record",
+      "claim": "The roadmap identifies countries' maximum retention periods for calling logs as a compliance driver.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "regulatory requirements in various countries specify maximum retention periods for calling-related logs. This discrepancy creates a compliance gap",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap description also mentions administrators wanting to retain data longer.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "tenant administrators may prefer to retain data for longer periods to improve the user experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "title; summary; What's changing",
+      "type": "behaviour",
+      "claim": "Purview supports a separate retention policy for Teams call logs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-retention-policies",
+      "quote": "This separate retention policy for call logs can be created and modified only by using PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Teams call logs include CDRs, also called call detail records or call records, and other call metadata.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention-policies-teams",
+      "quote": "including call data records (CDRs, sometimes also known as call detail records or just call records) and other call metadata.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Call-log data can occupy multiple underlying Teams locations but is targeted as one retention workload.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention-policies-teams",
+      "quote": "This data can be stored across multiple underlying locations used by Teams, but can be targeted as a single workload for retention purposes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Learn identifies personal call logs as an example.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention-policies-teams",
+      "quote": "Personal call logs - View your call history in Microsoft Teams",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Learn identifies shared call queue logs as an example.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention-policies-teams",
+      "quote": "Shared call queue logs - View call history in the Queues app in Microsoft Teams",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "default",
+      "claim": "Teams call logs are retained indefinitely by default, including records outside the new policy's coverage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention-policies-teams",
+      "quote": "By default, Teams call logs are retained indefinitely. Use a retention policy for call logs if you need to delete this data for compliance reasons.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; controls[1].note",
+      "type": "behaviour",
+      "claim": "Deletion is the only applicable retention action for call logs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention-policies-teams",
+      "quote": "the call-related records in call logs can't be edited or deleted by users, and because deletion is the only applicable action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "summary; What's changing; Scope; Governance controls",
+      "type": "behaviour",
+      "claim": "Creating and modifying the call-log policy requires Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-retention-policies",
+      "quote": "This separate retention policy for call logs can be created and modified only by using PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; controls[0].note; Scope; Governance controls",
+      "type": "behaviour",
+      "claim": "The created policy is visible but read-only in the Microsoft Purview portal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-retention-policies",
+      "quote": "After you create the retention policy for Teams call logs, it's displayed in Data Lifecycle Management > Policies in the Microsoft Purview portal, where it's visible but read-only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; controls[0].note; Why it matters; Scope; Governance guidance",
+      "type": "applicability",
+      "claim": "The policy reaches only call logs created after it is configured and active, not older gap records.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-retention-policies",
+      "quote": "The policy applies only to new call logs that are created after the policy is configured and active.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Scope",
+      "type": "applicability",
+      "claim": "The call-log policy includes logs from Teams chats and Teams channels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-retention-policies",
+      "quote": "The policy includes call logs for both Teams chat and Teams channels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Why it matters; Governance guidance",
+      "type": "date",
+      "claim": "Before late April 2026, chat and channel CDRs were included in Teams chat retention policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-retention-policies",
+      "quote": "Prior to supporting the retention of Teams call logs in late April 2026, CDRs for Teams chat and Teams channels were included in retention policies for the Teams chat location.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "summary; What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "applicability",
+      "claim": "New CDRs are now supported only by a Teams call-log policy, not existing Teams chat policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-retention-policies",
+      "quote": "Going forward, new CDRs are supported only when you create a retention policy for Teams call logs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Governance controls",
+      "type": "applicability",
+      "claim": "CDRs already included in earlier Teams chat retention policies remain managed by those policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-retention-policies",
+      "quote": "CDRs included in previous Teams chat retention policies continue to be managed by those same policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[0].api; rendered table; Governance guidance",
+      "type": "command",
+      "claim": "New-AppRetentionCompliancePolicy with Name, Applications User:MicrosoftTeamsCallLog and ExchangeLocation All creates the policy targeting all mailboxes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-appretentioncompliancepolicy",
+      "quote": "\"User:MicrosoftTeamsCallLog\"; The ExchangeLocation parameter specifies the mailboxes to include in the policy. Valid values are: ... The value All for all mailboxes. You can only use this value by itself.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[1].api; rendered table; Governance guidance",
+      "type": "command",
+      "claim": "New-AppRetentionComplianceRule with Name, Policy, RetentionDuration in days and RetentionComplianceAction Delete sets the deletion rule.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-appretentioncompliancerule",
+      "quote": "The RetentionDuration parameter specifies the hold duration for the retention rule. Valid values are: An integer: The hold duration in days. ... The RetentionComplianceAction parameter specifies the retention action for the rule. Valid values are: Delete",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[2].api; rendered table; Risk assessment",
+      "type": "command",
+      "claim": "New-AppRetentionCompliancePolicy with Name, Applications User:MicrosoftTeamsCallLog and RestrictiveRetention $true enables Preservation Lock.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-appretentioncompliancepolicy",
+      "quote": "The RestrictiveRetention parameter specifies whether Preservation Lock is enabled for the policy. Valid values are: $true: Preservation Lock is enabled for the policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[0].ui; rendered table",
+      "type": "absence",
+      "claim": "There is no documented portal control to create or configure the call-log policy.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams call logs retention policy portal create modify Preservation Lock RestrictiveRetention delete only. Opened create-retention-policies: creation and modification are PowerShell-only; the portal is read-only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[1].ui; rendered table",
+      "type": "absence",
+      "claim": "There is no documented portal control to set the call-log deletion period.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams call logs retention policy portal create modify Preservation Lock RestrictiveRetention delete only. Opened create-retention-policies and new-appretentioncompliancerule; the portal is read-only and PowerShell sets the duration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[2].ui; rendered table",
+      "type": "absence",
+      "claim": "There is no documented portal control to apply Preservation Lock.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams call logs retention policy portal create modify Preservation Lock RestrictiveRetention delete only; Preservation Lock delete-only. Opened retention-preservation-lock: enabling this feature is not available in the UI.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[3].ui; rendered table",
+      "type": "admin-path",
+      "claim": "The printed Settings > Roles and scopes > Role groups > Role groups for Microsoft Purview solutions > role group > Edit > Edit members of the role group > Choose users path adds users to a Purview role group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "On Role groups for Microsoft Purview solutions, select a Microsoft Purview role group you want to add users to. Select Edit on the control bar. ... On Edit members of the role group, select Choose users or Choose groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[3].api; rendered table",
+      "type": "command",
+      "claim": "Add-RoleGroupMember -Identity <role-group> -Member <user-UPN> grants membership and the group's effective permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+      "quote": "When you add a member to a role group, the member is given the effective permissions provided by the management roles assigned to the role group. ... User ID or user principal name (UPN)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[3].note; Risk assessment; Scope; Governance guidance",
+      "type": "role",
+      "claim": "Compliance Administrator role-group members can create and manage retention policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/get-started-with-data-lifecycle-management",
+      "quote": "Members of your compliance team who will create and manage retention policies and retention labels need permissions to the Microsoft Purview portal. ... we recommend that you add users to the Compliance Administrator admin role group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[3].note; Risk assessment; Scope; Governance guidance",
+      "type": "role",
+      "claim": "A custom role group with Retention Management can instead manage retention policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/get-started-with-data-lifecycle-management",
+      "quote": "Alternatively to using this default role, you can create a new role group and add the Retention Management role to this group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[3].note; rendered table",
+      "type": "role",
+      "claim": "View-Only Retention Management provides read-only access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/get-started-with-data-lifecycle-management",
+      "quote": "For a read-only role, use View-Only Retention Management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[2].note; Risk assessment; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "Preservation Lock is irreversible and prevents disabling or turning off the policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-appretentioncompliancepolicy",
+      "quote": "No one -- including an administrator -- can turn off the policy or make it less restrictive. ... After a policy is locked, no one can turn off or disable it, or remove apps from the policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[2].note; Risk assessment",
+      "type": "behaviour",
+      "claim": "A locked policy can be increased or extended but not reduced.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-appretentioncompliancepolicy",
+      "quote": "A locked policy can be increased or extended, but it can't be reduced, disabled, or turned off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "Nothing deletes call logs until an administrator creates the call-log policy.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Teams call logs retention deletion eDiscovery hold Litigation Hold permanent deletion; Teams call logs retention licensing Business Basic F3 pay as you go billing meter. Read retention-policies-teams and PSTN usage report excerpts; no universal absence of other deletion routes is stated.",
+      "severity": "blocker",
+      "fix": "Remove 'Nothing deletes them until an administrator creates the call log policy.' The preceding sentence already states the documented default without claiming that no other deletion route exists."
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The configured deletion process runs automatically rather than requiring an approval for each record.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention-policies-teams",
+      "quote": "The record is retained there for at least 1 day and then permanently deleted the next time the timer job runs (typically between 1-7 days).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Expired call-related records move to SubstrateHolds typically 1-7 days after expiry.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention-policies-teams",
+      "quote": "At the end of the retention period, the call-related record is moved to the SubstrateHolds folder. This action typically takes between 1-7 days from the expiry date.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Call-related records remain in SubstrateHolds for at least one day.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention-policies-teams",
+      "quote": "The record is retained there for at least 1 day",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The policy permanently deletes expired call-log records at the next timer run, typically 1-7 days later, without qualification.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/retention-policies-teams",
+      "quote": "For all examples that refer to permanent deletion, because of the principles of retention, this action is suspended if the message is subject to another retention policy to retain the item or it's subject to an eDiscovery hold.",
+      "severity": "blocker",
+      "fix": "Add to the deletion explanation and qualify the After rollout deletion advice: 'Permanent deletion is suspended while the record is subject to an applicable retention policy that retains it or an eDiscovery hold.' The call-log section explicitly applies Example 3's behaviour and timings; see https://learn.microsoft.com/purview/retention-policies-teams."
+    },
+    {
+      "n": 41,
+      "where": "front matter: licensing.model; licensing.notes; rationale: cost",
+      "type": "licensing",
+      "claim": "The feature is included under the service description's organisation-wide and location-wide retention-policy user rights, such as Microsoft 365 E3/E5 and Business Premium.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "For organization-wide, location-wide, or include/exclude retention policies, the following licenses provide user rights: Microsoft 365 E5/A5/G5/E3/A3/G3, Business Premium",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "The additional user-rights licences listed in the paragraph match the retention-policy licensing list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft Purview Suite/EDU/GOV/FLW; Microsoft Defender + Purview Suite FLW; Microsoft 365 E5/A5/F5/G5 Information Protection and Governance; Office 365 E5/A5/G5/E3/A3/G3",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "For user-associated locations such as mailboxes and Teams chats, users must have the required licence assigned.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Exchange user mailboxes, OneDrive accounts, Teams chats, and devices are associated with a user account, so the user must have the required license assigned when a Purview policy or feature is used in these locations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing; Governance controls",
+      "type": "behaviour",
+      "claim": "The policy sets mailbox scope first, and a subsequent rule sets the duration and deletion action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-retention-policies",
+      "quote": "the following command creates a Teams call log retention policy for all mailboxes: ... Then use the New-AppRetentionComplianceRule cmdlet to create a retention rule that specifies the retention duration and action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "The service description does not name call logs in its location-specific licence lists or establish whether the additional Teams-specific plans cover call logs.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams call logs retention licensing Business Basic F3 pay as you go billing meter; \"Teams call logs\" \"licensing\" \"retention\". Read the service description's retention-policy lists and searched its text for call logs; only chats, channels and private channels are named.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "The Get started page requires retention-policy pay-as-you-go setup for Microsoft Copilot experiences, Enterprise AI apps and Other AI apps, not Teams call logs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/get-started-with-data-lifecycle-management",
+      "quote": "You must set up pay-as-you-go billing to create retention policies that include the locations Microsoft Copilot experiences, Enterprise AI apps, and Other AI apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing: Meter; rationale: cost",
+      "type": "absence",
+      "claim": "No meter is documented specifically for Teams call-log retention in November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams call logs retention licensing Business Basic F3 pay as you go billing meter. Opened get-started-with-data-lifecycle-management, the service description and purview-billing-models; the DLM meter covers AI interactions, with no call-log meter listed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "rationale: impact",
+      "type": "consistency",
+      "claim": "Nothing about call logs changes until somebody creates a PowerShell retention policy.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "impact: ... nothing about call logs changes until someone creates a call log retention policy in PowerShell. / The change also alters existing policies. ... Now new CDRs are supported only by a call log policy",
+      "severity": "minor",
+      "fix": "Replace the impact rationale's second clause with 'the configuration work falls to compliance and Teams administrators.' Keep the body statement that new CDRs stopped being covered by Teams chat policies in late April 2026."
+    },
+    {
+      "n": 49,
+      "where": "What's changing; Governance guidance: At rollout; Governance controls",
+      "type": "admin-path",
+      "claim": "The portal route to view the read-only policy is Data Lifecycle Management > Policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-retention-policies",
+      "quote": "Sign in to the Microsoft Purview portal > Solutions > Data Lifecycle Management > Policies > Retention policies. ... it's displayed in Data Lifecycle Management > Policies ... visible but read-only.",
+      "severity": "minor",
+      "fix": "Use 'Microsoft Purview portal > Solutions > Data Lifecycle Management > Policies' wherever the read-only viewing route is printed; Solutions is the omitted navigation heading."
+    },
+    {
+      "n": 50,
+      "where": "Governance guidance: Before rollout",
+      "type": "consistency",
+      "claim": "The checklist tells readers to list existing Teams chat retention policies, but that control has no table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "List existing Teams chat retention policies with a delete action / controls: call-log policy, deletion period, Preservation Lock, role-group membership",
+      "severity": "minor",
+      "fix": "Remove the checklist item 'List existing Teams chat retention policies with a delete action, and record that they stopped covering new CDRs in late April 2026.' The body already explains the historical coverage change."
+    },
+    {
+      "n": 51,
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "The new call-log retention control is admin-opt-in: an administrator must configure a policy to enforce its deletion settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention-policies-teams",
+      "quote": "By default, Teams call logs are retained indefinitely. Use a retention policy for call logs if you need to delete this data for compliance reasons.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-28T05:26:02.238Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 4,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/purview/retention-policies-teams",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/create-retention-policies",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/get-started-with-data-lifecycle-management",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/purview-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=559261",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-appretentioncompliancepolicy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-appretentioncompliancerule",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether new Teams call logs are deleted by a retention policy",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-appretentioncompliancepolicy",
+        "reachable": true,
+        "token": "New-AppRetentionCompliancePolicy",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "How many days call logs are kept before deletion",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-appretentioncompliancerule",
+        "reachable": true,
+        "token": "New-AppRetentionComplianceRule",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Whether the call log policy is locked against being turned off or shortened (Preservation Lock)",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-appretentioncompliancepolicy",
+        "reachable": true,
+        "token": "New-AppRetentionCompliancePolicy",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Who can create and change retention policies",
+        "docs": "https://learn.microsoft.com/purview/purview-permissions",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Roles and scopes",
+          "Role groups",
+          "Role groups for Microsoft Purview solutions",
+          "role group",
+          "Edit",
+          "Edit members of the role group",
+          "Choose users"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Who can create and change retention policies",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "reachable": true,
+        "token": "Add-RoleGroupMember",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

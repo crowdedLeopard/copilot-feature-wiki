@@ -53,15 +53,17 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 48 statements not yet confirmed"
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 45 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 47 statements not yet confirmed"
 version: 1
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-26"
+  date: "2026-11-28"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 45
-  confirmed: 45
+  claims: 47
+  confirmed: 47
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -162,9 +164,9 @@ cost: Low. The only cost the sources show is admin and communications time; Micr
 impact: High. It changes the default view of every community for all Viva Engage users in the organisation, so anyone who relied on the old default will notice.
 -->
 
-<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Scope; Governance guidance: After rollout / date: Microsoft expects rollout to finish by the end of November 2026, although the after-rollout checklist treats that timing as firm. | Found: expect to complete by the end of November 2026 (previously end of October). | Fix: Replace 'Check that internal guidance matches the experience once the rollout completes at the end of November 2026.' with 'Check that internal guidance matches the experience once the rollout completes, which Microsoft expects by the end of November 2026.'
-- [supported, minor] front matter: licensing.model and notes; Cost and licensing; Open questions; rationale: cost / licensing: The licensing model is unknown because no licence specific to this feed-default change is published. | Found: Viva Engage Core or Yammer enterprise | Engage core experiences and the Answers in Viva core experiences Examples: Communities, storyline | Microsoft 365 | Fix: Set licensing.model to 'included' and add https://learn.microsoft.com/viva/engage/setup to sources. Replace licensing.notes and the opening Cost and licensing explanation with: 'Communities are part of Viva Engage Core, which comes with Microsoft 365. If Viva Engage licensing is enforced, each user needs a Microsoft 365 license and a Viva Engage Core Service Plan; without enforcement, users can still access the Core experience. No licence specific to this feed-default change is published.' Replace the licensing open question with 'Will Microsoft publish any licensing requirement specific to this feed-default change?' In the cost rationale, replace the licensing-gap clause with 'Communities are included in Viva Engage Core through Microsoft 365; no licence specific to this feed-default change is published.' | Source: https://learn.microsoft.com/viva/engage/setup
+- [supported, minor] What's changing; Scope; Governance guidance: After rollout / date: Rollout completion is expected by the end of November 2026, but the after-rollout checklist treats it as certain. | Found: expect to complete by the end of November 2026 (previously end of October). | Fix: Replace 'Check that internal guidance matches the experience once the rollout completes at the end of November 2026.' with 'Check that internal guidance matches the experience once the rollout completes, which Microsoft expects by the end of November 2026.'
+- [supported, minor] front matter: licensing.model and notes; Cost and licensing; Open questions; rationale: cost / licensing: The licensing model is unknown because Microsoft has published no licence specific to this feed-default change. | Found: Viva Engage Core or Yammer enterprise | Engage core experiences and the Answers in Viva core experiences Examples: Communities, storyline | Microsoft 365 | Fix: Set licensing.model to 'included' and add https://learn.microsoft.com/viva/engage/setup to sources. Replace licensing.notes and the opening Cost and licensing explanation with: 'Communities are part of Viva Engage Core, which comes with Microsoft 365. If Viva Engage licensing is enforced, each user needs a Microsoft 365 license and a Viva Engage Core Service Plan; without enforcement, users can still access the Core experience. No licence specific to this feed-default change is published.' Replace the licensing open question with 'Will Microsoft publish any licensing requirement specific to this feed-default change?' In the cost rationale, replace the licensing-gap clause with 'Communities are included in Viva Engage Core through Microsoft 365; no licence specific to this feed-default change is published.' | Source: https://learn.microsoft.com/viva/engage/setup
 -->

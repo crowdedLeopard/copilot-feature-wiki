@@ -92,15 +92,17 @@ changes:
     note: "Corrected: removed the claim that no tool visibility setting exists (Service Agent has organization and profile overrides), set licensing to included with the Microsoft Copilot licence, and removed an uncontrolled checklist step."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 78 statements confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 77 statements confirmed"
 version: 3
 verification:
   status: "verified"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 78
-  confirmed: 78
+  claims: 77
+  confirmed: 77
   unconfirmed: 0
   contradicted: 0
   attempts: 0

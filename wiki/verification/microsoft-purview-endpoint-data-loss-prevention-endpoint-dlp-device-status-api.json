@@ -1,0 +1,867 @@
+{
+  "slug": "microsoft-purview-endpoint-data-loss-prevention-endpoint-dlp-device-status-api",
+  "roadmapId": 559027,
+  "title": "Microsoft Purview Endpoint DLP: device status data by query instead of export (GCC, GCC High and DoD)",
+  "status": "held",
+  "date": "2026-11-28",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-28",
+    "reasons": [
+      "4 blocking findings (claims 35, 38, 55, 59)"
+    ]
+  },
+  "counts": {
+    "claims": 65,
+    "confirmed": 61,
+    "unconfirmed": 1,
+    "contradicted": 3,
+    "blocker": 4,
+    "major": 0,
+    "minor": 3
+  },
+  "summary": "Hold: the access guidance overstates what Entra roles can see and incorrectly says Defender custom roles have no documented API. The licensing guidance also needs the government-cloud requirements, and the sources do not establish an on-by-default rollout.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; front matter: products",
+      "type": "record",
+      "claim": "This is a Microsoft Purview Endpoint DLP device status API change.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"title\": \"Microsoft Purview: Endpoint Data Loss Prevention - Endpoint DLP Device Status API\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "Roadmap item 559027 is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [ \"General Availability\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is April CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"April CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The record supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "title; summary; front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [ \"GCC\", \"GCC High\", \"DoD\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [ \"Web\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2026-05-06T23:15:10.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-05-06T23:15:10\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Why it matters",
+      "type": "record",
+      "claim": "The roadmap describes an API that retrieves the exported device health details for BI tools, dashboards and workflows.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Provides access to the same device health details currently available through the export function on the device onboarding page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Endpoint DLP device attribute data can be queried with KQL in the Defender portal's DeviceInfo table and integrated into reporting platforms.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "With the DeviceInfo table, you can: Query device attribute data using KQL; Retrieve up-to-date information without manual exports; Analyze device status across your environment; Integrate device data into custom dashboards and third-party reporting platforms",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Previously, device attribute data could be obtained manually using Export on Purview's Device onboarding page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "Previously, you could get device attribute data manually through the Export functionality on the Device onboarding page in the Microsoft Purview portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Learn does not use the name device status API for the documented DlpInfo capability.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Endpoint DLP\" \"device status API\"'; read purview/dlp-edlp-tshoot-sync, defender-xdr/advanced-hunting-deviceinfo-table and graph/api/security-security-runhuntingquery; these describe DlpInfo and hunting queries, not a named device status API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "DlpInfo contains JSON device information, with the eight properties listed in the briefing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "DlpInfo JSON properties: IsDlpConfigurationValid, DlpPolicyLastModifiedTimeUTC, IsDlpEnabled, IsDefenderRealTimeProtectionEnabled, IsDefenderBehaviorMonitoringEnabled, HasDlpACBandwidthExceeded, HasDlpValidUpn, DlpUpn.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "IsDlpConfigurationValid reports whether device configuration health is valid.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "IsDlpConfigurationValid | boolean | Indicates whether the device configuration health is valid.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "DlpPolicyLastModifiedTimeUTC is a DlpInfo property describing the latest associated DLP policy modification time.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "DlpPolicyLastModifiedTimeUTC | datetime | Timestamp of the most recent DLP policy modification associated with the device, in Coordinated Universal Time (UTC).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "IsDlpEnabled indicates whether Endpoint DLP is enabled on the device.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "IsDlpEnabled | boolean | Indicates whether Endpoint DLP is enabled on the device.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "IsDefenderRealTimeProtectionEnabled is a DlpInfo property describing Defender real-time protection enablement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "IsDefenderRealTimeProtectionEnabled | boolean | Indicates whether Microsoft Defender Real-time Protection is enabled on the device.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "IsDefenderBehaviorMonitoringEnabled is a DlpInfo property describing Defender behavior monitoring enablement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "IsDefenderBehaviorMonitoringEnabled | boolean | Indicates whether Microsoft Defender Behavior Monitoring is enabled on the device.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "HasDlpACBandwidthExceeded indicates that the device exceeded the Advanced Classification bandwidth threshold.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "HasDlpACBandwidthExceeded | boolean | Indicates whether the device has exceeded the DLP Advanced Classification bandwidth threshold.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "HasDlpValidUpn indicates whether the device has a valid associated UPN.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "HasDlpValidUpn | boolean | Indicates whether the device is associated with a valid user principal name (UPN).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "DlpUpn exposes the user principal name associated with the device.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "DlpUpn | string | User principal name (UPN) associated with the device.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; controls[1].note",
+      "type": "behaviour",
+      "claim": "DlpInfo values correspond to the information on the DLP device onboarding page, including configuration and policy synchronization status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "The JSON object can be used to query and report on device configuration status, policy synchronization status, Endpoint DLP enablement, and other configuration details for onboarded devices. These values correspond to the device information available in the DLP device onboarding page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The DeviceInfo reference lists DlpInfo as a table column.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-deviceinfo-table",
+      "quote": "DlpInfo | string | Properties related to Endpoint Data Loss Prevention (DLP).*",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Scope: Clouds",
+      "type": "record",
+      "claim": "Roadmap item 542792 lists the same device status API feature for Worldwide.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Record 542792: \"title\": \"Microsoft Purview: Endpoint Data Loss Prevention-Endpoint DLP Device Status API\"; \"clouds\": [ \"Worldwide (Standard Multi-Tenant)\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Roadmap item 542792 is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Record 542792: \"status\": \"Launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Roadmap item 542792 has a March CY2026 target.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Record 542792: \"targetDate\": \"March CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "Graph runHuntingQuery is documented as available in US Government L4 and L5 (DOD).",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/security-security-runhuntingquery",
+      "quote": "Global service | US Government L4 | US Government L5 (DOD) | China operated by 21Vianet: ✅ | ✅ | ✅ | ❌",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[0].ui; Governance controls table row 1",
+      "type": "admin-path",
+      "claim": "Advanced hunting is reached in the Microsoft Defender portal through Investigation & response > Hunting > Advanced hunting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "Go to the Microsoft Defender portal. Navigate to Investigation & response > Hunting > Advanced hunting. Query the DeviceInfo table. Expand the DlpInfo column to view Endpoint DLP device details.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[0].api; Governance controls table row 1; What's changing",
+      "type": "command",
+      "claim": "POST /v1.0/security/runHuntingQuery runs KQL against the advanced hunting schema, providing the query route for DeviceInfo.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/security-security-runhuntingquery",
+      "quote": "This method includes a query in Kusto Query Language (KQL). It specifies a data table in the advanced hunting schema. POST https://graph.microsoft.com/v1.0/security/runHuntingQuery",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[0].note; Risk assessment: Security & identity",
+      "type": "command",
+      "claim": "The Query request-body property carries the hunting KQL, rather than restricting the call to DlpInfo.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/security-security-runhuntingquery",
+      "quote": "Query | String | Required. The hunting query in Kusto Query Language (KQL).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[0].note; Risk assessment: Security & identity; Scope: Who can query",
+      "type": "role",
+      "claim": "ThreatHunting.Read.All is the least-privileged delegated work-or-school and application permission for runHuntingQuery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/security-security-runhuntingquery",
+      "quote": "Delegated (work or school account) | ThreatHunting.Read.All | ThreatHunting.ReadWrite.All; Application | ThreatHunting.Read.All | ThreatHunting.ReadWrite.All",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[1].ui; Governance guidance: Before rollout; Governance controls table row 2",
+      "type": "admin-path",
+      "claim": "Purview Settings > Device onboarding > Devices leads to per-device configuration and policy sync status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "Sign in to the Microsoft Purview portal > Settings (gear icon in the upper right corner) > Device onboarding > Devices. Select a device to open the details pane for more information on the configuration status.",
+      "severity": "minor",
+      "fix": "Extend controls[1].ui.path and its rendered table path to 'Settings > Device onboarding > Devices > device'; say in the note that the selected device's details pane shows configuration and policy sync status. Keep the device-count comparison path unchanged."
+    },
+    {
+      "n": 33,
+      "where": "controls[1].api; Governance controls table row 2",
+      "type": "command",
+      "claim": "POST /v1.0/security/runHuntingQuery is the same read-only query route for the DlpInfo values corresponding to Purview device status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/security-security-runhuntingquery",
+      "quote": "Queries a specified set of event, activity, or entity data supported by Microsoft 365 Defender. POST https://graph.microsoft.com/v1.0/security/runHuntingQuery",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[2].ui; Governance controls table row 3",
+      "type": "admin-path",
+      "claim": "A Defender custom role is configured through Permissions > Microsoft Defender XDR > Roles > Create custom role > Choose permissions > Security operations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/create-custom-rbac-roles",
+      "quote": "On the Permissions page, under Microsoft Defender XDR, select Roles > Create custom role. On the Choose permissions page, select each of the following as needed to configure permissions for that area: Security operations",
+      "severity": "minor",
+      "fix": "The path stops at the permission group. Extend it to 'Permissions > Microsoft Defender XDR > Roles > Create custom role > Choose permissions > Security operations > Security data > Security data basics (read)'. Cite https://learn.microsoft.com/defender-xdr/custom-permissions-details as the reference for those final permission labels; retain the existing endpoint-RBAC qualification."
+    },
+    {
+      "n": 35,
+      "where": "controls[2].api; Governance controls table row 3; Governance controls: final bullet",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no API for Defender unified RBAC custom roles.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/graph/api/rbacapplicationmultiple-post-roleassignments?view=graph-rest-beta",
+      "quote": "The following RBAC providers are currently supported: Cloud PC; device management (Intune); Defender (Microsoft Defender XDR). To create role assignment for a Defender provider: POST /roleManagement/defender/roleAssignments",
+      "severity": "blocker",
+      "fix": "Replace controls[2].api with kind 'graph', call 'POST /beta/roleManagement/defender/roleAssignments', and docs 'https://learn.microsoft.com/graph/api/rbacapplicationmultiple-post-roleassignments?view=graph-rest-beta'. Add to the note: 'Assigns an existing role: principalIds identifies the recipients, roleDefinitionId identifies the role, and directoryScopeIds or appScopeIds supplies the scope. This beta API is subject to change and is not supported for production applications.' Replace the final no-API bullet with 'Microsoft Graph beta documents Defender role assignments through POST /beta/roleManagement/defender/roleAssignments; production use of beta APIs is not supported.' Cite the operation and https://learn.microsoft.com/graph/api/resources/unifiedroleassignmentmultiple?view=graph-rest-beta. Note that the operation page explicitly lists Defender while the resource page's provider summary lists only Cloud PC and Intune. Keep the rendered row consistent."
+    },
+    {
+      "n": 36,
+      "where": "controls[2].note; Governance controls table row 3",
+      "type": "role",
+      "claim": "Advanced hunting access to Alerts & behaviors tables uses Security operations > Security data > Security data basics (read).",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-overview",
+      "quote": "Advanced Hunting access (Alerts & behaviors tables): Membership assigned with the Security operations > Security data > Security data basics (read) URBAC permission.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[2].note; Risk assessment: Data exposure; Scope: Who can query",
+      "type": "applicability",
+      "claim": "Advanced hunting access to endpoint data follows Defender for Endpoint RBAC settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-overview",
+      "quote": "Your access to endpoint data is determined by role-based access control (RBAC) settings in Microsoft Defender for Endpoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Data exposure; Governance controls: Entra roles bullet",
+      "type": "role",
+      "claim": "Global Administrator, Security Administrator, Security Reader and Global Reader grant full access to all advanced hunting data whatever custom roles say.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/defender-xdr/m365d-permissions",
+      "quote": "If your access hasn't been scoped to a specific set of devices in the Defender for Endpoint, you'll have full access to data in Microsoft Defender XDR. However, once your account is scoped, you'll only see data about the devices in your scope.",
+      "severity": "blocker",
+      "fix": "Replace both full-access statements with: 'Global Administrator, Security Administrator, Security Reader and Global Reader provide Advanced hunting read access; endpoint data remains subject to Defender for Endpoint RBAC device scope. An account scoped to specific devices sees only those devices.' Cite https://learn.microsoft.com/defender-xdr/m365d-permissions. The cited advanced-hunting overview itself qualifies its full-read wording with endpoint RBAC; do not retain 'whatever custom roles say'."
+    },
+    {
+      "n": 39,
+      "where": "Governance controls: device groups bullet",
+      "type": "applicability",
+      "claim": "Defender for Endpoint device groups govern per-device visibility alongside unified RBAC, including the endpoint device information being queried.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/create-custom-rbac-roles",
+      "quote": "Microsoft Defender for Endpoint device groups continue to govern per-device visibility and actions alongside unified RBAC. When you create or import URBAC roles, device group assignments determine which devices assigned users can see and act on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Governance controls: first bullet",
+      "type": "role",
+      "claim": "At least Security Administrator in Entra ID is one qualifying role for creating Defender unified RBAC custom roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/create-custom-rbac-roles",
+      "quote": "To create custom roles in Microsoft Defender unified RBAC, you must be assigned one of the following roles or permissions: At leastSecurity Administrator in Microsoft Entra ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Governance controls: first bullet",
+      "type": "role",
+      "claim": "All Authorization permissions in Defender unified RBAC are the alternative prerequisite for creating custom roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/create-custom-rbac-roles",
+      "quote": "All Authorization permissions assigned in Microsoft Defender Unified RBAC.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Governance controls: first bullet",
+      "type": "applicability",
+      "claim": "The portal enforces configured custom roles and assignments after unified RBAC activation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/create-custom-rbac-roles",
+      "quote": "For the Microsoft Defender portal to start enforcing the permissions and assignments configured in your new or imported roles, you need to activate the new Microsoft Defender unified RBAC model.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "A Defender custom role assignment can select Microsoft Defender for Endpoint as its data source.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/create-custom-rbac-roles",
+      "quote": "Data sources: Select the Data sources drop down and then select the services where the assigned users will have the selected permissions. If you assigned read-only permissions for a single data source, such as Microsoft Defender for Endpoint",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Scope: Prerequisite",
+      "type": "behaviour",
+      "claim": "The Advanced hunting page instructs administrators to turn on Microsoft Defender to use Advanced hunting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-overview",
+      "quote": "To use advanced hunting, turn on Microsoft Defender.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The DeviceInfo reference warns that queries do not work or return results if the supplying service has not been deployed in Defender.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-deviceinfo-table",
+      "quote": "This advanced hunting table is populated by records from various Microsoft services. If your organization hasn't deployed the service in Microsoft Defender, queries that use the table aren't going to work or return any results.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "DeviceInfo is updated continuously.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-deviceinfo-table",
+      "quote": "The DeviceInfo table is updated continuously",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Each DeviceInfo update contains the device's full current data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-deviceinfo-table",
+      "quote": "all updates contain the full current device data for that device.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Governance guidance: At rollout; Risk assessment: Change & support",
+      "type": "command",
+      "claim": "The DeviceInfo sample obtains the latest device state using arg_max of ingestion time grouped by DeviceId.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-deviceinfo-table",
+      "quote": "You can use the following sample query to get the latest state of a device: DeviceInfo | extend IngestionTime = ingestion_time() | where DeviceName == \"example\" and isnotempty(OSPlatform) | summarize arg_max(IngestionTime, *) by DeviceId",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "A portal query can return at most 100,000 rows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-overview",
+      "quote": "Result set | 100,000 rows | Every query | Each query can return up to 100,000 records.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "A portal query times out after 10 minutes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-overview",
+      "quote": "Each query can run for up to 10 minutes. If it doesn't complete within 10 minutes, the service displays an error.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Change & support; Open questions: API quotas",
+      "type": "behaviour",
+      "claim": "Advanced hunting API queries have a separate set of quotas and parameters.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-overview",
+      "quote": "A separate set of quotas and parameters apply to advanced hunting queries performed through the API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Scope: Retention",
+      "type": "behaviour",
+      "claim": "Advanced hunting supports up to 30 days of native Defender retention by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-overview",
+      "quote": "Advanced hunting supports up to 30 days of native Defender data retention by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Scope: Retention",
+      "type": "behaviour",
+      "claim": "runHuntingQuery defaults to a 30-day lookback when its optional Timespan is not provided.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/security-security-runhuntingquery",
+      "quote": "Timespan | String | Optional. The interval of time over which to query data, in ISO 8601 format. The default value is 30 days, meaning if no startTime is specified, the query looks back 30 days from now.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "front matter: licensing.model; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The reporting capability is included in the licensing of the Defender product it belongs to.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/prerequisites",
+      "quote": "Any of these licenses give you access to Microsoft Defender features via the Microsoft Defender portal without any additional cost:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "front matter: licensing.notes; Cost and licensing: Licence; rationale: cost",
+      "type": "licensing",
+      "claim": "For this GCC, GCC High and DoD briefing, the general Defender prerequisite licences, including Microsoft 365 E5 or A5, are the applicable entitlement guidance without government qualification.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/defender-xdr/usgov",
+      "quote": "Microsoft Defender for US Government customers requires one of the following Microsoft volume licensing offers: GCC | GCC High | DoD: Microsoft 365 GCC G5 | Microsoft 365 E5 for GCC High | Microsoft 365 G5 for DOD",
+      "severity": "blocker",
+      "fix": "Keep licensing.model 'included', but replace the entitlement guidance in licensing.notes and the Licence paragraph with: 'Microsoft Defender for US Government requires a qualifying government volume licence; examples are Microsoft 365 GCC G5 for GCC, Microsoft 365 E5 for GCC High, and Microsoft 365 G5 for DOD. The general Defender prerequisites page states that listed licences provide Defender portal features without additional cost.' Cite https://learn.microsoft.com/defender-xdr/usgov and add it to sources. Replace the cost rationale's unqualified E5 example with 'a qualifying government Defender licence'. Retain the separate statement directing Endpoint DLP licensing to its service descriptions."
+    },
+    {
+      "n": 56,
+      "where": "Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "The Endpoint DLP getting-started page directs readers to Microsoft 365 Enterprise Plans and service descriptions for licensing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-getting-started",
+      "quote": "SKU/subscriptions licensing: For information on licensing, see Microsoft 365 Enterprise Plans; Microsoft 365 Service Descriptions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "front matter: licensing.notes; Cost and licensing: Meter",
+      "type": "absence",
+      "claim": "Microsoft publishes no separate licence, price or meter specifically for the DlpInfo column or this device-status reporting use.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Endpoint DLP DlpInfo device status API separate licensing billing pricing', 'Microsoft Defender Advanced hunting reporting API pricing license meter billing DlpInfo'; read Purview troubleshooting, DeviceInfo, Defender prerequisites, runHuntingQuery and Defender US Government licensing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Scope: Devices",
+      "type": "availability",
+      "claim": "The troubleshooting page covers Windows and macOS devices successfully onboarded to Purview DLP.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "Determining the device configuration and policy sync status values for Windows devices and macOS devices that are successfully onboarded into Microsoft Purview Data Loss Prevention (DLP).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "The new capability arrives on by default.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'DlpInfo DeviceInfo enable disable default Endpoint DLP device status API licensing price meter', '\"DlpInfo\" \"switch\" \"default\"'; read roadmap 559027, Purview troubleshooting, DeviceInfo and Advanced hunting overview. A schema column does not state the rollout default.",
+      "severity": "blocker",
+      "fix": "Set defaultState to 'unknown'. Add 'Microsoft has not stated the rollout default for this capability.' Keep the documented availability and query instructions, but do not treat the column's presence in the schema as evidence of an automatic rollout."
+    },
+    {
+      "n": 60,
+      "where": "summary: Nothing to switch on",
+      "type": "absence",
+      "claim": "There is no separate switch to enable the DlpInfo reporting column.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"DlpInfo\" \"enable\" \"Advanced hunting\"', '\"DlpInfo\" \"switch\" \"default\"'; read Purview troubleshooting, DeviceInfo and Advanced hunting overview. No DlpInfo-specific enablement switch was documented; Advanced hunting separately requires turning on Defender.",
+      "severity": "minor",
+      "fix": "Replace 'Nothing to switch on; decide who may read the data.' with 'No separate DlpInfo enablement switch is documented; Advanced hunting requires Microsoft Defender to be enabled. Review who may read the data.' This avoids implying that an unprovisioned tenant needs no setup."
+    },
+    {
+      "n": 61,
+      "where": "Why it matters; Risk assessment: Autonomy & actions; rationale: risk and impact",
+      "type": "behaviour",
+      "claim": "The documented operation queries existing data rather than changing devices, policies or onboarding.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/security-security-runhuntingquery",
+      "quote": "Queries a specified set of event, activity, or entity data supported by Microsoft 365 Defender to proactively look for specific threats in your environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Why it matters; Scope: Who can query; rationale: risk",
+      "type": "applicability",
+      "claim": "The DlpInfo endpoint data is accessible through existing Advanced hunting endpoint-data access and through applications authorized for Graph hunting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/security-security-runhuntingquery",
+      "quote": "This method is for advanced hunting in Microsoft 365 Defender. It specifies a data table in the advanced hunting schema. Application | ThreatHunting.Read.All | ThreatHunting.ReadWrite.All",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The valid-user device attribute incorporates whether the user has an Entra account and is in scope of a device-targeted DLP policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "Valid user | This indicates if the currently logged on user has a corresponding Entra ID account and is in scope of a DLP policy that's targeted at Devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Open questions: other device attributes",
+      "type": "behaviour",
+      "claim": "The onboarding page includes Last seen and Defender engine version, which are not named properties in the documented eight-property DlpInfo object.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "Last seen | The most recent time that the device was determined to be online. Defender engine version | The version of the antivirus engine on the device.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Governance guidance: Before rollout",
+      "type": "command",
+      "claim": "DeviceInfo | where DlpInfo != \"\" | project DlpInfo is the documented example query.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "DeviceInfo | where DlpInfo != \"\" | project DlpInfo",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-28T05:26:09.032Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=559027",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/defender-xdr/advanced-hunting-deviceinfo-table",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/security-security-runhuntingquery",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/defender-xdr/advanced-hunting-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/defender-xdr/prerequisites",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/defender-xdr/create-custom-rbac-roles",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/endpoint-dlp-getting-started",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Querying Endpoint DLP device status (the DlpInfo column)",
+        "docs": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+        "reachable": true,
+        "segments": [
+          "Investigation & response",
+          "Hunting",
+          "Advanced hunting"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Querying Endpoint DLP device status (the DlpInfo column)",
+        "docs": "https://learn.microsoft.com/graph/api/security-security-runhuntingquery",
+        "reachable": true,
+        "token": "/v1.0/security/runHuntingQuery",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Per-device configuration status and policy sync status in Purview",
+        "docs": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Device onboarding",
+          "Devices"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Per-device configuration status and policy sync status in Purview",
+        "docs": "https://learn.microsoft.com/graph/api/security-security-runhuntingquery",
+        "reachable": true,
+        "token": "/v1.0/security/runHuntingQuery",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Which analysts can run Advanced hunting queries on Defender data",
+        "docs": "https://learn.microsoft.com/defender-xdr/create-custom-rbac-roles",
+        "reachable": true,
+        "segments": [
+          "Permissions",
+          "Microsoft Defender XDR",
+          "Roles",
+          "Create custom role",
+          "Choose permissions",
+          "Security operations"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

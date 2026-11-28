@@ -13,7 +13,7 @@ targetDate: "December CY2025"
 previewDate: null
 risk: "low"
 cost: "low"
-impact: "medium"
+impact: "high"
 defaultState: "on"
 action: "none"
 licensing:
@@ -45,6 +45,9 @@ sources:
     kind: "learn"
   - title: "copilotPolicySetting resource type"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/resources/copilotpolicysetting"
+    kind: "learn"
+  - title: "Create configurationMonitor"
+    url: "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-1.0"
     kind: "learn"
   - title: "Which users or groups can access and install agents and plugins (Microsoft 365 admin center)"
     url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#user-access"
@@ -87,19 +90,23 @@ changes:
     note: "New briefing: launched navigation redesign in the Microsoft 365 Copilot app, with the Notebook and agent access controls its new shortcuts lead to."
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 64 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-28"
+    note: "Corrected the defaults for Notebooks and agent access (OneDrive and app policy qualifications), narrowed the quick-action statements to the roadmap's description, and raised impact to high."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 60 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-28"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 64
-  confirmed: 59
-  unconfirmed: 2
+  claims: 60
+  confirmed: 57
+  unconfirmed: 0
   contradicted: 3
-  attempts: 1
-  hash: "dde596c420cf60521053d05e3d45f71d"
+  attempts: 2
+  hash: "fd8d9bd0a140fec2892bb098b60c0281"
 ---
 
 ## What's changing
@@ -116,7 +123,7 @@ The roadmap status is Launched, with a target of December CY2025, in the General
 
 This is a layout change, so the main effect is on support and training: screenshots, how-to guides and helpdesk scripts that point users to the old navigation are out of date, and users see a longer list of past chats in the pane.
 
-The quick actions put Notebook and agent creation one click from the navigation. They do not change who may use those features: the existing Cloud Policy setting for Copilot Notebooks and the agent **User access** setting still decide that. A tenant that has never looked at those settings is running at their defaults, under which Notebooks are available and all users can access agents, so the new shortcuts are a reasonable prompt to confirm those choices are deliberate.
+The roadmap describes quick actions in the navigation pane to create new Notebooks and agents. Microsoft documents existing Cloud Policy controls for Copilot Notebooks and the **User access** setting for agent access. A tenant that has never looked at those settings is running at their defaults: the Notebooks creation policy is Enabled by default, although users whose OneDrive creation is disabled cannot create Copilot Pages or Copilot Notebooks, and all users can access agents subject to existing app policies and user assignments. The new shortcuts are a reasonable prompt to confirm those choices are deliberate.
 
 ## Risk assessment
 
@@ -187,17 +194,13 @@ No setting governs the navigation layout itself; the rows below govern the featu
 <!-- rationale
 risk: Low. The redesign changes where things sit in the app; the Notebook and agent features its shortcuts lead to are already governed by existing Cloud Policy and agent access settings.
 cost: Low. The only cost the sources show is admin and helpdesk time for a layout change; no licence or meter specific to the redesign is published.
-impact: Medium. Everyone who uses the Microsoft 365 Copilot app on Desktop, Mac or Web sees a new layout, but the roadmap describes no capability added or removed.
+impact: High. The navigation redesign changes the default app experience on Desktop, Mac and Web.
 -->
 
 <!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters / behaviour: The quick actions put Notebook and agent creation one click from the navigation. | Found: Searched: Copilot app navigation pane 518222 quick actions create Notebook agent one click hidden disabled; "Microsoft 365 Copilot" "navigation" "quick actions". Read roadmap, previous-year-release-notes and Agent Builder sharing page; none states a one-click creation flow for this update. | Fix: Replace the sentence with: 'The roadmap describes quick actions in the navigation pane to create new Notebooks and agents.'
-- [unsupported, major] Why it matters / behaviour: The new quick actions do not change who may use Notebooks or agents. | Found: Searched: Copilot app navigation pane 518222 quick actions create Notebook agent one click hidden disabled. Read roadmap, cpcn-admin-configuration, agent-settings and agent-builder-share-manage-agents; they document existing controls, not an unchanged-access guarantee for this update. | Fix: Replace 'They do not change who may use those features: the existing Cloud Policy setting for Copilot Notebooks and the agent User access setting still decide that' with 'Microsoft documents existing Cloud Policy controls for Copilot Notebooks and the User access setting for agent access.'
-- [contradicted, blocker] Why it matters / availability: A tenant using the policy defaults has Notebooks available. | Found: If your organization disabled the creation of OneDrive, regardless of the setting noted here, these people in your organization can't create Copilot Pages or Copilot Notebooks. | Fix: Replace 'Notebooks are available' with 'the Notebooks creation policy is Enabled by default, although users whose OneDrive creation is disabled cannot create Copilot Pages or Copilot Notebooks'. The qualification is at https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration. | Source: https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration
-- [contradicted, blocker] Why it matters / availability: Under the default setting all users can access agents. | Found: All users - This option is the default. It means that all users in the organization can access agents and plugins, subject to the existing app policies and user assignments. | Fix: Replace 'all users can access agents' with 'all users can access agents subject to existing app policies and user assignments', as qualified at https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#user-access. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#user-access
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance controls / behaviour: A Graph configurationMonitor runs periodically in the background. | Found: Create a new configurationMonitor object that runs periodically in the background at a scheduled frequency. | Fix: Add https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-1.0 to sources for the configurationMonitor sentence. | Source: https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-1.0
-- [contradicted, minor] front matter: impact; rationale: impact / consistency: An impact rating of medium fits a default navigation change seen by everyone who uses the app. | Found: impact: "medium"; "Everyone who uses the Microsoft 365 Copilot app on Desktop, Mac or Web sees a new layout". The standard defines high as "most users, or a change to default behaviour" and medium as specific roles or one business unit. | Fix: Set impact to 'high' and replace the impact rationale with: 'High. The navigation redesign changes the default app experience on Desktop, Mac and Web.'
+- [contradicted, blocker] controls[0].api / absence: Microsoft has not documented API automation for the Notebook creation and viewing control. | Found: These resources also support remediation and applyOnce. ... Controls whether users can create and view Copilot Pages and Copilot Notebooks through Microsoft 365 Copilot Chat and Copilot Actions. | Fix: Replace controls[0].api null with graph call 'POST /beta/admin/configurationManagement/configurationMonitors', docs 'https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta&preserve-view=true'. Add note: 'Preview applyOnce mode applies a baseline resource microsoft.copilot.copilotpagesnotebooks, resourceVersion 1, with properties.value "0" to disable or "1" to enable. Supported only for tenant-level policies; fails if the setting is configured in any group-level policy. Requires delegated ConfigurationMonitoring.ReadWrite.All for the calling app, CopilotPolicySettings.ReadWrite for the TCM service principal, and AI Administrator for the signed-in user.' Cite https://learn.microsoft.com/graph/utcm-copilot-resources and https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources. Retain the group-capable UI and state that this API is tenant-only. | Source: https://learn.microsoft.com/graph/utcm-copilot-resources
+- [contradicted, blocker] controls[1].api / absence: Microsoft has not documented API automation for agent user access. | Found: These resources also support remediation and applyOnce. ... userAssignmentCategory ... Specifies whether all users or no users can access agents and plugins. ... everyone, noOne | Fix: Replace controls[1].api null with graph call 'POST /beta/admin/configurationManagement/configurationMonitors', docs 'https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta&preserve-view=true'. Add note: 'Preview applyOnce mode applies a baseline resource microsoft.agent.useraccess, resourceVersion 1, with properties.valueObject.userAssignmentCategory "everyone" or "noOne". Specific-user/group assignment is not in this resource schema. Requires delegated ConfigurationMonitoring.ReadWrite.All for the calling app, CopilotPolicySettings.ReadWrite for the TCM service principal, and AI Administrator for the signed-in user.' Cite https://learn.microsoft.com/graph/utcm-agent-resources and https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources. | Source: https://learn.microsoft.com/graph/utcm-agent-resources
+- [contradicted, blocker] Governance controls / absence: A configurationMonitor is not documented as changing Notebook creation or agent user-access settings. | Found: Create a new configurationMonitor object that runs periodically in the background at a scheduled frequency to detect configuration drift in monitorOnly mode, or applies a desired-state baseline once in applyOnce mode. | Fix: Replace the final sentence with: 'A configurationMonitor runs periodically in monitorOnly mode; preview Graph beta applyOnce mode can instead apply a baseline once for the documented microsoft.copilot.copilotpagesnotebooks and microsoft.agent.useraccess resources. Notebook policy automation supports tenant-level policies only and fails if the setting is configured in any group-level policy.' Cite https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta&preserve-view=true and https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources. | Source: https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta&preserve-view=true
 -->

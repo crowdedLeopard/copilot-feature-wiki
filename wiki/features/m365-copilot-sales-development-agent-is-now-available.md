@@ -136,15 +136,17 @@ changes:
     note: "Corrected after verification: added the beta Graph activation call to the activation row, completed the Frontier and AI-provider admin paths, and noted that the send-time settings have no row in the controls table."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 122 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 104 statements not yet confirmed"
 version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 122
-  confirmed: 121
+  claims: 104
+  confirmed: 103
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -252,9 +254,9 @@ cost: Variable. Microsoft publishes Copilot Credit billing for the agent's resou
 impact: Medium. Sales managers who create instances and the prospects who receive outreach notice it; admins choose which users or groups can create instances.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].ui; controls[2].note; Governance controls / admin-path: The printed Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Anthropic > Choose who can access Anthropic models for Copilot and generative AI experiences path reaches the provider audience control. | Found: under Available subprocessors for your organization, select Anthropic ... Under Choose who can access Anthropic models for Copilot and generative AI experiences, select your users or groups | Fix: Include the omitted heading: Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Available subprocessors for your organization > Anthropic > Choose who can access Anthropic models for Copilot and generative AI experiences. The cited page also confirms AI Administrator or Global Administrator. | Source: https://learn.microsoft.com/microsoft-365/copilot/connect-to-ai-subprocessor
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist refers to send-time settings that have no controls-table row, as the prose acknowledges. | Found: Agree with sales leaders the outreach rules to apply ... the send-time guide documents configurable days and hours ... The send-time settings that the Before rollout checklist refers to ... have no row in this table. | Fix: Remove the Before rollout bullet beginning 'Agree with sales leaders the outreach rules to apply' and the final Governance controls sentence about its missing row. Keep the verified send-time comparison in Risk assessment; do not add a control row.
+- [supported, minor] controls[2].ui; controls[2].note; Governance controls / admin-path: The printed Anthropic path reaches its audience control. | Found: You must be a member of the AI Administrator or Global Administrator role ... under Available subprocessors for your organization, select Anthropic ... Under Choose who can access Anthropic models for Copilot and generative AI experiences, select your users or groups | Fix: Include the omitted heading in controls[2].ui.path and its rendered table path: 'Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Available subprocessors for your organization > Anthropic > Choose who can access Anthropic models for Copilot and generative AI experiences'. | Source: https://learn.microsoft.com/microsoft-365/copilot/connect-to-ai-subprocessor
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist refers to send-time settings that have no controls-table row. | Found: Agree with sales leaders the outreach rules to apply ... the send-time guide documents configurable days and hours ... The send-time settings that the Before rollout checklist refers to ... have no row in this table. | Fix: Remove the Before rollout bullet beginning 'Agree with sales leaders the outreach rules to apply' and the final Governance controls sentence about its missing row. Keep the documented send-time comparison in Risk assessment; do not add a control row.
 -->

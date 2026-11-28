@@ -82,15 +82,17 @@ changes:
     note: "Correction: MCP plugins are custom actions, so Learn's government restriction on authenticated custom actions covers them; removed the related open question and the unsupported User access checklist bullet."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 80 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 71 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 80
-  confirmed: 80
+  claims: 71
+  confirmed: 71
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -189,8 +191,8 @@ cost: Low. Learn's agent licensing table lists MCP Apps (interactive UI widgets)
 impact: Low. Only people who use an agent that implements widgets see them, and developers must build those agents first. The roadmap says administrators keep managing these agents in the Microsoft 365 admin center.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance controls / default: All users is the default for the agent and plugin User access setting. | Found: All users - This option is the default. It means that all users in the organization can access agents and plugins, subject to the existing app policies and user assignments. | Fix: Replace the last sentence of the User access paragraph with: "The page names All users as the default for that setting, subject to existing app policies and user assignments." This qualification is stated at https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings
+- [supported, minor] Governance controls / User access default / default: All users is the default for the agent and plugin User access setting. | Found: All users - This option is the default. It means that all users in the organization can access agents and plugins, subject to the existing app policies and user assignments. | Fix: Replace the last sentence of the User access paragraph with: "The page names All users as the default for that setting, subject to existing app policies and user assignments." The qualification is documented at https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings
 -->

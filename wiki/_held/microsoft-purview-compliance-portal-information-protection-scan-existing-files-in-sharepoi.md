@@ -72,18 +72,20 @@ changes:
     note: "Corrected after verification: reworded the opening of Why it matters, narrowed the billing-skips sentence to Learn's wording, added the pause toggle to the Usage center row note and removed two checklist steps that had no controls row."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 82 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 91 statements contradicted, 1 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-21"
+  status: "held"
+  date: "2026-11-28"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 82
-  confirmed: 82
-  unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  claims: 91
+  confirmed: 89
+  unconfirmed: 1
+  contradicted: 1
+  attempts: 1
   hash: "a436d4b1125b9e29a5aad35aa56eaaa3"
 ---
 
@@ -183,9 +185,12 @@ cost: Variable. Learn lists on-demand classification as a pay-as-you-go capabili
 impact: Medium. Admins run the scan, but file owners notice if matching DLP, labelling, retention or insider risk policies then act on their files.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [unsupported, blocker] Governance guidance: After rollout, second bullet / admin-path: The billed monetary amount can be found in Usage center and compared with the scan estimate. | Found: Searched: Microsoft Purview Usage center pay-as-you-go actual billed amount monetary cost Total Units Used Azure bill. Read purview-billing-usage and purview-billing-models: Usage center documents Total Units Used; charges are on the Azure bill, not a documented monetary display in Usage center. | Fix: Replace the bullet with 'Compare the billed amount on the Azure bill with the estimate; review consumption units in Usage center using the Usage center row in the controls table.' The Azure bill is documented at https://learn.microsoft.com/purview/purview-billing-models and consumption units at https://learn.microsoft.com/purview/purview-billing-usage.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: Microsoft Purview portal > Information Protection > Classifiers > On-demand classification > New scan reaches the wizard for scan location scope. | Found: Go to ... Information Protection > Classifiers > On-demand classification. Select New scan. Follow the instructions in the wizard. ... Scope and location | Fix: Extend controls[0].ui.path and the rendered table path to 'Information Protection > Classifiers > On-demand classification > New scan > Scope and location', using https://learn.microsoft.com/purview/on-demand-classification. | Source: https://learn.microsoft.com/purview/on-demand-classification
-- [supported, minor] controls[1].ui; controls[1].note; Governance controls table / admin-path: Microsoft Purview portal > Usage center > Pay-as-you-go reaches the page with the On-Demand Classification paused/active toggle. | Found: To access the Usage center > Pay-as-you-go ... pages ... The pay-as-you-go usage page also lets you toggle the features listed between paused and active states. ... On-Demand Classification | Yes | Yes | Fix: Extend controls[1].ui.path and the rendered table path to 'Usage center > Pay-as-you-go > On-Demand Classification', retaining the note that its toggle selects paused or active, as documented at https://learn.microsoft.com/purview/purview-billing-usage. | Source: https://learn.microsoft.com/purview/purview-billing-usage
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: Microsoft Purview portal > Information Protection > Classifiers > On-demand classification > New scan reaches scan scope configuration. | Found: Go to ... Information Protection > Classifiers > On-demand classification. Select New scan. Follow the instructions in the wizard. ... Scope and location | Fix: Extend controls[0].ui.path and its rendered path to 'Information Protection > Classifiers > On-demand classification > New scan > Scope and location', as documented at https://learn.microsoft.com/purview/on-demand-classification. | Source: https://learn.microsoft.com/purview/on-demand-classification
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: Microsoft Purview portal > Usage center > Pay-as-you-go reaches the page containing the On-Demand Classification paused/active toggle. | Found: To access the Usage center > Pay-as-you-go ... pages ... The pay-as-you-go usage page also lets you toggle the features listed between paused and active states. ... On-Demand Classification | Yes | Yes | Fix: Extend controls[1].ui.path and its rendered path to 'Usage center > Pay-as-you-go > On-Demand Classification', retaining the paused/active toggle note, as documented at https://learn.microsoft.com/purview/purview-billing-usage. | Source: https://learn.microsoft.com/purview/purview-billing-usage
+- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The after-rollout checklist asks readers to review and export scan results through Items for review without a corresponding controls-table row. | Found: Checklist: 'Review the Items for review tab ... and export the list'. Table rows cover only scan scope and the pay-as-you-go pause toggle. | Fix: Remove the checklist instruction to review/export Items for review, or retain it as informational prose outside Governance guidance. This monitoring step has no corresponding table row; do not add a row in this correction.
 -->

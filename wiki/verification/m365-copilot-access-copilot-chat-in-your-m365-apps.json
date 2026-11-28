@@ -1,0 +1,789 @@
+{
+  "slug": "m365-copilot-access-copilot-chat-in-your-m365-apps",
+  "roadmapId": 494830,
+  "title": "Microsoft Copilot Chat: side pane in Word, Excel, PowerPoint, Outlook and OneNote for commercial Microsoft 365 users",
+  "status": "held",
+  "date": "2026-11-28",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-28",
+    "reasons": [
+      "5 blocking findings (claims 9, 11, 48, 51, 57)"
+    ]
+  },
+  "counts": {
+    "claims": 57,
+    "confirmed": 51,
+    "unconfirmed": 2,
+    "contradicted": 4,
+    "blocker": 5,
+    "major": 0,
+    "minor": 4
+  },
+  "summary": "Hold: Microsoft documents a separate Copilot Chat side-pane policy, so the briefing wrongly tells administrators that disabling broader connected experiences is the only documented route. Its universal availability and default claims also go beyond the evidence, and its group-access advice omits that existing admin deployments remain honoured.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary; What's changing; Scope: Users; rationale: impact",
+      "type": "record",
+      "claim": "The roadmap describes access to Copilot Chat from Microsoft 365 app side panes with a commercial Microsoft 365 or Microsoft 365 Copilot licence.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Easily access Copilot Chat from the side pane in your Microsoft 365 apps with a commercial Microsoft 365 license or a Microsoft 365 Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "title; What's changing; Scope: Apps",
+      "type": "record",
+      "claim": "The roadmap lists Word, Excel, PowerPoint, Outlook and OneNote as products for this change.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\", \"Excel\", \"Word\", \"PowerPoint\", \"Outlook\", \"OneNote\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap item is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is July CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"July CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope: Platforms",
+      "type": "record",
+      "claim": "The roadmap lists Desktop and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: clouds; What's changing; Scope: Cloud",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in this roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: defaultState; Why it matters",
+      "type": "default",
+      "claim": "The app side-pane change is on by default and users should already find it there unless an administrator acted.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Copilot Chat Word Excel PowerPoint OneNote side pane default enabled; Copilot Chat side pane enabled by default. Read requirements, overview, manage-copilot-chat, privacy controls and utcm-copilot-resources; none states this side-pane rollout default.",
+      "severity": "blocker",
+      "fix": "Set defaultState to unknown. Replace 'so unless an administrator has acted, expect users to find it already there' with 'Microsoft has not stated the default state of this side-pane change in the sources cited here'. Availability to eligible subscribers does not itself establish its rollout default."
+    },
+    {
+      "n": 10,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Copilot Chat (Basic) is included with eligible Microsoft 365 licences, supporting the included licensing model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Copilot Chat (Basic) is the standalone baseline experience included with eligible Microsoft 365 licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "Cost and licensing: Licence; front matter: licensing.notes",
+      "type": "licensing",
+      "claim": "The License options page establishes the eligible Copilot Chat baseline plans, including Microsoft 365 E3/E5 and Office 365 E3/E5.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Copilot Chat included eligible subscriptions Microsoft 365 E3 E5 Office 365 E3 E5. Read license-options, requirements, overview, service description and E3/E5/E7 comparison; the licence table lists add-on prerequisites, not Chat baseline eligibility.",
+      "severity": "blocker",
+      "fix": "Replace the eligible-plans sentence with 'The License options page lists Microsoft 365 E3 and E5 and Office 365 E3 and E5 as qualifying prerequisite licences for Microsoft Copilot.' In licensing.notes, remove ', listed on the License options page'. Do not present the add-on prerequisite table as a published Copilot Chat tier entitlement table."
+    },
+    {
+      "n": 12,
+      "where": "front matter: licensing.notes; Cost and licensing: Licence; Scope: Users",
+      "type": "licensing",
+      "claim": "The full in-app experience comes with the Microsoft 365 Copilot add-on licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "You have the Microsoft 365 Copilot add-on license with access to the full experience of Copilot in Word, Excel, PowerPoint, and OneNote.",
+      "severity": "minor",
+      "fix": "Replace 'The full in-app experience needs the Microsoft 365 Copilot add-on licence' and the corresponding cost sentence with 'The overview describes the full in-app experience as Microsoft 365 Copilot (Premium); the License options page says Microsoft Copilot is included with Microsoft 365 E7 or available as an add-on for eligible plans.' Cite https://learn.microsoft.com/copilot/plan/copilot-license-options, which the page already lists."
+    },
+    {
+      "n": 13,
+      "where": "What's changing: second paragraph",
+      "type": "licensing",
+      "claim": "Microsoft 365 Copilot (Basic) users do not have the add-on but can use Copilot in Word, Excel, PowerPoint and OneNote.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "You don't have the Microsoft 365 Copilot add-on license but can use Copilot in Word, Excel, PowerPoint, and OneNote.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing: third paragraph",
+      "type": "licensing",
+      "claim": "The overview describes Copilot Chat (Basic) users as lacking Copilot access in Word, Excel, PowerPoint and OneNote.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "You don't have the Microsoft 365 Copilot add-on license and don't have access to Copilot in Word, Excel, PowerPoint, and OneNote.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing: third paragraph; Open questions: first bullet",
+      "type": "absence",
+      "claim": "Microsoft does not publish a mapping of eligible base licences to the two Basic tiers in the sources checked.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Chat Basic licenses Word E3; Copilot Chat side pane licensing Basic eligible licenses. Read overview, requirements, license-options, service description and E3/E5/E7 comparison; no base-SKU mapping to the two Basic tiers was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing: second paragraph; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The overview lists drafting and summarising documents as Word capabilities for Microsoft 365 Copilot (Basic).",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Word: Draft, rewrite, and summarize documents",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing: second paragraph; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The overview lists data analysis in Excel for Microsoft 365 Copilot (Basic).",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Excel: Analyze data, generate insights, create formulas and visuals",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing: second paragraph; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The overview lists email drafting in Outlook for Microsoft 365 Copilot (Basic).",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Outlook: Draft emails, summarize threads, and use the coaching tips to improve clarity, sentiment and tone",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing: second paragraph; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The Basic Copilot Chat experiences ground responses in public web data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Copilot Chat (Basic) and Microsoft 365 Copilot (Basic) responses are grounded in data from the public web.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing: second paragraph; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Basic users cannot use organisational data through Microsoft Graph when interacting with Copilot Chat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Copilot Chat (Basic) and Microsoft 365 Copilot (Basic) can't use organizational data via Microsoft Graph when interacting with Copilot Chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing: second paragraph; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Basic users can supply organisational content by uploading a file with their prompt.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Copilot Chat (Basic) and Microsoft 365 Copilot (Basic) users can provide organizational content as part of their prompt by manually uploading a file directly",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Users without a Copilot licence can ask Copilot about content in an open document in an eligible Microsoft 365 app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources#blockaccesstoopenfiles-resource-type",
+      "quote": "Controls whether users can ask Copilot questions about the file currently open in an eligible Microsoft 365 app, such as requesting summaries, key action items, or rewrites. This policy applies only to users without a Microsoft 365 Copilot license.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/graph/utcm-copilot-resources#blockaccesstoopenfiles-resource-type for the open-document premise. The cited overview's explicit open-content examples are Teams and Outlook, not Word."
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Cost and licensing: Limits",
+      "type": "behaviour",
+      "claim": "Some features in the Basic experiences are subject to fair use limits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Some features are subject to fair use limits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Data exposure; Scope: Prerequisite; governance: At rollout; rationale: risk",
+      "type": "behaviour",
+      "claim": "The Basic experiences receive Enterprise Data Protection when users sign in with Microsoft Entra work or school accounts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Copilot Chat (Basic), Microsoft 365 Copilot (Basic), and Microsoft 365 Copilot (Premium) are protected by Enterprise Data Protection (EDP) when you sign in with Microsoft Entra accounts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Allow web search in Copilot manages web grounding for Copilot Chat across all licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Manage web search grounding by using the Allow web search in Copilot policy. This policy applies to Copilot Chat experiences across all licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Microsoft lists Copilot Chat entry points for users signed in with personal Microsoft accounts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Entry points for users signed in with a personal account (MSA): ... Copilot Chat in Outlook and Teams ... Copilot Chat agents for Word, Excel, and PowerPoint",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "Microsoft points administrators to Tenant Restrictions v2 for controlling personal-account sign-in to Microsoft 365 apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "You can manage whether your users can sign in to Microsoft 365 apps using a personal account (MSA). For more information, see use tenant restrictions V2.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Security & identity; Scope: Admin roles; controls[1-2].note; Governance controls",
+      "type": "role",
+      "claim": "The Integrated Apps page says its controls are available only to Global Administrators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+      "quote": "The following controls on the integrated apps portal in the Microsoft 365 Admin Center are only available to Global Admins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Scope: Admin roles",
+      "type": "role",
+      "claim": "AI Administrator manages Copilot and AI features across the Copilot Chat tiers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "you can assign the AI Administrator role, which provides least-privilege access to manage Copilot and AI features across Copilot Chat (Basic), Microsoft 365 Copilot (Basic), and Microsoft 365 Copilot (Premium)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Change & support; rationale: cost",
+      "type": "date",
+      "claim": "Additional fair use limits began November 2, 2026 for organisations with 2,000 or fewer Microsoft 365 seats.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/partner-center/announcements/2026-november",
+      "quote": "Starting November 2, 2026, for organizations with 2,000 or fewer Microsoft 365 seats",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Change & support",
+      "type": "date",
+      "claim": "The additional fair use limits began November 9, 2026 for larger organisations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/partner-center/announcements/2026-november",
+      "quote": "and beginning November 9, 2026, for larger organizations, Microsoft is introducing fair use limits for additional Copilot Chat features and capabilities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Change & support; Cost and licensing: Limits",
+      "type": "behaviour",
+      "claim": "Microsoft manages the fair use limits and administrators cannot view or adjust them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/partner-center/announcements/2026-november",
+      "quote": "Microsoft sets and manages these limits. Admins can't view or adjust them",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Cost and licensing: Limits",
+      "type": "absence",
+      "claim": "Microsoft does not publish specific fair use limits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/partner-center/announcements/2026-november",
+      "quote": "Microsoft doesn't publish specific limits because they're subject to change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing: Meter",
+      "type": "absence",
+      "claim": "No meter is documented for ordinary chatting in the app side pane.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Chat Microsoft 365 apps side pane pricing chat meter pay as you go. Read overview and Learn excerpts from PAYG meters, PAYG overview and the Copilot Business billing FAQ; these describe agent or advanced-experience meters, not ordinary side-pane chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "The overview describes access to custom or other agents from Copilot Chat as separate pay-as-you-go access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Declarative agents that are grounded in instructions and public websites are included with Copilot Chat. Access to custom or other agents is pay-as-you-go only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "Group Policy Management exposes the content-analysis connected-experiences setting under User Configuration > Policies > Administrative Templates > Microsoft Office 2016 > Privacy > Trust Center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls",
+      "quote": "If you're using the Group Policy Management tool, all these policy settings are located under User Configuration\\Policies\\Administrative Templates\\Microsoft Office 2016\\Privacy\\Trust Center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[0].api; controls[0].note",
+      "type": "command",
+      "claim": "The registry setting at HKCU\\Software\\Policies\\Microsoft\\office\\16.0\\common\\privacy named usercontentdisabled takes DWORD 2 to disable content-analysing connected experiences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls",
+      "quote": "Allow the use of connected experiences in Office that analyze content | UserContentDisabled | 1=Enabled 2=Disabled ... [HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\office\\16.0\\common\\privacy]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[0].governs; Why it matters; Risk assessment: Change & support; Governance controls",
+      "type": "applicability",
+      "claim": "Disabling content-analysing connected experiences makes Copilot features unavailable in Excel, OneNote, Outlook, PowerPoint and Word on the documented device platforms.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy",
+      "quote": "If you turn off connected experiences that analyze your content on devices in your organization, Microsoft Copilot features won't be available to your users in the following apps: ... Excel ... OneNote ... Outlook ... PowerPoint ... Word",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[0].note; Why it matters; Risk assessment: Change & support; governance: At rollout",
+      "type": "behaviour",
+      "claim": "The content-analysis policy also disables other connected experiences, not just Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls",
+      "quote": "These are experiences that use your Office content to provide you with design recommendations, editing suggestions, data insights, and similar features. For example, PowerPoint Designer or Translator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[0].note; governance: Before rollout",
+      "type": "applicability",
+      "claim": "The connected-experiences policy can be configured using Cloud Policy as well as Group Policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls",
+      "quote": "These policy settings can be implemented by using either Group Policy or Cloud Policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[0].scope; Governance controls: third bullet",
+      "type": "applicability",
+      "claim": "The shown registry and Group Policy settings apply per user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls",
+      "quote": "User Configuration\\Policies\\Administrative Templates ... HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\office\\16.0\\common\\privacy ... configure privacy settings for the user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "An administrator can block an app at Microsoft 365 admin center > Settings > Integrated Apps > Available Apps > app > Block app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+      "quote": "Select Settings, and then select Integrated Apps. ... Select the Available Apps list. ... Select an app from the Available Apps list to open the overview pane. ... Select Block app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[1-2].governs; Why it matters; Governance controls: second bullet",
+      "type": "applicability",
+      "claim": "Integrated Apps manages the Copilot app in Outlook and the Microsoft Copilot app, with its Copilot settings applying to both Copilot and Copilot Chat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+      "quote": "On the Integrated Apps page, the CoPilot app settings apply to both Microsoft Copilot and the Copilot Chat apps. Any changes made to this app from the integrated apps portal apply to both.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[1].scope and note; Governance controls: second bullet",
+      "type": "applicability",
+      "claim": "Blocking the Copilot app is tenant-wide and also blocks Microsoft 365 Copilot licence holders.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/manage-copilot-chat",
+      "quote": "If you block the Copilot app using the Integrated app control, you block the Copilot app tenant-wide across the Microsoft Copilot app, Outlook, and the web, including for users assigned a Microsoft 365 Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[1].api and note",
+      "type": "absence",
+      "claim": "No documented automation was found for blocking the built-in Copilot app, and the copilotPackage block reference does not establish applicability to that app.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Integrated Apps block built-in app Graph API; Integrated apps PowerShell Copilot block. Read manage-copilot-chat, integrated-apps, copilotpackage-block and configure-copilot-admin-center; package block covers packages, not explicitly the built-in Copilot app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[1].note",
+      "type": "behaviour",
+      "claim": "The cited Graph copilotPackage block API is a beta API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "The specific-user/group availability option is reached at Settings > Integrated Apps > Available Apps > app > Users > Specific users/group in the organization can install.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+      "quote": "Select Settings, then select Integrated Apps. ... Select the Available Apps list. ... select the app ... select the Users tab ... Specific users/group in the organization can install",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[2].governs; governance: At rollout, first bullet",
+      "type": "applicability",
+      "claim": "Setting Specific users/group in the organization can install determines which users can use the Copilot app without qualification.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+      "quote": "The availability setting of an app doesn't impact any admin deployed apps. The availability setting only allows you to control which end users can install and use these apps on their own. Any previous admin deployments made are still be honored.",
+      "severity": "blocker",
+      "fix": "Change controls[2].governs to 'Which users can self-install and use the Copilot app in Outlook and the Microsoft Copilot app'. Add to its note and the At rollout bullet: 'The availability setting does not override admin-deployed apps; previous admin deployments remain honoured.'"
+    },
+    {
+      "n": 49,
+      "where": "controls[2].note",
+      "type": "applicability",
+      "claim": "Microsoft suggests assigning a group containing only licensed users to restrict self-installation of the Copilot app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/manage-copilot-chat",
+      "quote": "To prevent the Copilot app from being available in the App store for unlicensed users, select Specific users/group in the organization can install and assign a group that includes only licensed users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[2].api",
+      "type": "absence",
+      "claim": "No documented Graph or PowerShell operation was found for this Copilot app self-installation availability setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Integrated Apps availability users groups Microsoft Graph API PowerShell; Integrated apps availability Graph Copilot. Read integrated-apps, manage-copilot-chat, configure-copilot-admin-center and package-block; no operation for this availability option was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[3].ui and api; Why it matters; Governance controls: first bullet; Open questions: second bullet",
+      "type": "absence",
+      "claim": "Microsoft documents no separate administrator setting for Copilot Chat in the Microsoft 365 app side pane.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources#copilotchatsidepane-resource-type",
+      "quote": "Shows or hides Microsoft 365 Copilot Chat entry points in Microsoft 365 apps for users without a Microsoft 365 Copilot license. 0 disables the setting; 1 enables the setting. This policy doesn't apply to licensed users.",
+      "severity": "blocker",
+      "fix": "Remove controls[3] and the claim that there is no separate setting, including the corresponding open question. Replace the absence and only-broad-policy statements with: 'Microsoft documents a Copilot Chat side-pane Office Cloud Policy setting for users without a Microsoft 365 Copilot licence. The microsoft.copilot.copilotchatsidepane resource uses string value \"0\" to disable and \"1\" to enable it; it does not apply to licensed users. Tenant Configuration Management support is preview and limited to tenant-level policies, with no group-level policy configuring the target setting.' Cite https://learn.microsoft.com/graph/utcm-copilot-resources and https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources. Keep the broad connected-experiences control described as an existing alternative, not the only documented route."
+    },
+    {
+      "n": 52,
+      "where": "Governance controls: first bullet",
+      "type": "availability",
+      "claim": "The privacy article documents the Copilot-removal effect for current app versions on Windows, Mac, iOS and Android.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy",
+      "quote": "This applies to when you're running the most current version of these apps on Windows, Mac, iOS, or Android devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance controls: first bullet; Open questions: third bullet",
+      "type": "absence",
+      "claim": "The cited Copilot privacy article does not list Office for the web for this content-analysis policy's Copilot-removal effect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy",
+      "quote": "This applies to when you're running the most current version of these apps on Windows, Mac, iOS, or Android devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance guidance: After rollout, first bullet",
+      "type": "admin-path",
+      "claim": "The Copilot Chat usage report is reached at Microsoft 365 admin center > Reports > Usage > Microsoft Copilot > Copilot Chat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-copilot-usage",
+      "quote": "In the navigation menu, select Reports. ... Select Usage. ... On the Usage page, under Reports, select Microsoft Copilot, and then select Copilot Chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance guidance: After rollout, first bullet",
+      "type": "applicability",
+      "claim": "The Copilot Chat usage report covers users without a Copilot licence interacting in Word, Excel, PowerPoint and OneNote.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-copilot-usage",
+      "quote": "The report currently supports only users without a Microsoft Copilot license who interact with Copilot Chat in Teams, Outlook, m365.cloud.microsoft/chat, Microsoft Copilot (app), Microsoft Edge, Word, Excel, PowerPoint, and OneNote.",
+      "severity": "minor",
+      "fix": "Add to the report sentence: 'The report-specific page says this currently covers only users without a Copilot licence, although the Copilot overview describes the Chat usage report as applying to all licences.' Both https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-copilot-usage and https://learn.microsoft.com/copilot/plan/copilot-overview are already cited."
+    },
+    {
+      "n": 56,
+      "where": "Governance guidance: After rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist tells administrators to use a reporting control that has no row in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "After rollout: 'Open the Copilot Chat usage report ...' Controls table: connected experiences, Copilot app blocking, Copilot app self-installation availability, and an absent side-pane switch; no usage-report row.",
+      "severity": "minor",
+      "fix": "Remove the instruction to open the usage report from the governance checklist; retain its verified description outside the checklist if desired. Do not add a new control row in this correction."
+    },
+    {
+      "n": 57,
+      "where": "Why it matters: first paragraph; summary; rationale: impact",
+      "type": "availability",
+      "claim": "Copilot Chat in Word, Excel, PowerPoint and OneNote reaches the whole eligible licensed workforce, rather than depending on its Basic tier and tenant configuration.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Chat experiences in Microsoft 365 apps vary depending on your tenant configuration and license. ... You don't have the Microsoft 365 Copilot add-on license and don't have access to Copilot in Word, Excel, PowerPoint, and OneNote.",
+      "severity": "blocker",
+      "fix": "Replace 'the whole licensed workforce' with 'users entitled to an in-app Copilot experience, including some users without the Copilot add-on'. Replace the summary's opening sentence with 'The launched roadmap item describes Copilot Chat side panes for commercial Microsoft 365 users; current Learn documentation says in-app access depends on licence and tenant configuration.' Replace the impact rationale's universal-access sentence with 'High. The roadmap describes access beyond Copilot add-on licence holders, while current Learn documentation distinguishes Basic users with and without in-app access.' Keep the documented tier caveat alongside the roadmap description wherever availability is stated."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-28T05:25:57.863Z",
+    "summary": {
+      "links": 11,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 1,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=494830",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/manage/manage-copilot-chat",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/copilot-license-options",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-copilot-usage",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/partner-center/announcements/2026-november",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Copilot features in Word, Excel, PowerPoint, Outlook and OneNote (connected experiences that analyse content)",
+        "docs": "https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls",
+        "reachable": true,
+        "segments": [
+          "User Configuration",
+          "Policies",
+          "Administrative Templates",
+          "Microsoft Office 2016",
+          "Privacy",
+          "Trust Center",
+          "Allow the use of connected experiences in Office that analyze content"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Copilot features in Word, Excel, PowerPoint, Outlook and OneNote (connected experiences that analyse content)",
+        "docs": "https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls",
+        "reachable": true,
+        "token": "Registry: HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\office\\16.0\\common\\privacy",
+        "found": false
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether the Copilot app (Copilot Chat in Outlook and the Microsoft Copilot app) is blocked for the whole organisation",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Integrated Apps",
+          "Available Apps",
+          "Block app"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Which users can install and use the Copilot app in Outlook and the Microsoft Copilot app",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Integrated Apps",
+          "Available Apps",
+          "Users",
+          "Specific users/group in the organization can install"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

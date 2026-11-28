@@ -102,15 +102,17 @@ changes:
     note: "Corrected: Windows file path exclusions can be set with Set-PolicyConfig -EndpointDlpGlobalSettings (PathExclusion); removed the DLP-rule test step that had no controls row."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 73 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 79 statements not yet confirmed"
 version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 73
-  confirmed: 73
+  claims: 79
+  confirmed: 79
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -218,10 +220,10 @@ cost: Variable. Learn says OCR needs Microsoft Syntex pay-as-you-go billing and 
 impact: Low. Administrators decide whether to enable OCR; users on onboarded Windows devices would notice only where an existing Endpoint DLP rule matches sensitive text found in an image.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: Tenant OCR configuration is at Microsoft Purview portal > Settings > Optical character recognition (OCR). | Found: Sign in to the Microsoft Purview portal. Select Settings. Select Optical character recognition (OCR) to enter your OCR configuration settings. Select the locations where you want to scan images. Select the groups that you want included or excluded from OCR scans. | Fix: The path reaches the correct configuration page. Extend it to 'Settings > Optical character recognition (OCR) > locations > groups' to include the documented selections, using https://learn.microsoft.com/purview/ocr-learn-about. | Source: https://learn.microsoft.com/purview/ocr-learn-about
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: The bandwidth setting is under Microsoft Purview portal > Data loss prevention > Overview > Data loss prevention settings > Endpoint settings > Advanced classification scanning and protection. | Found: go to Data loss prevention > Overview > Data loss prevention settings > Endpoint settings. If bandwidth usage isn't a concern, select Do not limit bandwidth. Unlimited to allow unlimited bandwidth use. | Fix: The path reaches the correct section. For the documented unlimited option, extend it to 'Data loss prevention > Overview > Data loss prevention settings > Endpoint settings > Advanced classification scanning and protection > Do not limit bandwidth. Unlimited', per https://learn.microsoft.com/purview/dlp-configure-endpoint-settings. | Source: https://learn.microsoft.com/purview/dlp-configure-endpoint-settings
-- [supported, minor] What's changing / behaviour: Learn documents OCR scanning as an existing Purview capability. | Found: By using optical character recognition (OCR) scanning, Microsoft Purview can scan images for sensitive information. OCR scanning is an optional feature that you must enable at the tenant level. | Fix: Add: 'The Communication Compliance documentation still calls the separate Purview OCR settings preview, although the general OCR page does not mark them that way.' Cite https://learn.microsoft.com/purview/communication-compliance-policies#policy-settings, which says 'Microsoft Purview includes OCR (preview) settings' for its DLP and related solutions. Keep the roadmap General Availability phase unchanged. | Source: https://learn.microsoft.com/purview/ocr-learn-about
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: Tenant OCR configuration is at Microsoft Purview portal > Settings > Optical character recognition (OCR). | Found: Select Settings. Select Optical character recognition (OCR) to enter your OCR configuration settings. Select the locations where you want to scan images. Select the groups that you want included or excluded from OCR scans. | Fix: The path reaches the correct configuration page. Extend it to 'Settings > Optical character recognition (OCR) > locations > groups' to include the documented selections, using https://learn.microsoft.com/purview/ocr-learn-about. | Source: https://learn.microsoft.com/purview/ocr-learn-about
+- [supported, minor] controls[1].ui; Governance controls table; Governance guidance / admin-path: The bandwidth control is under Purview > Data loss prevention > Overview > Data loss prevention settings > Endpoint settings > Advanced classification scanning and protection. | Found: go to Data loss prevention > Overview > Data loss prevention settings > Endpoint settings. ... Advanced classification scanning and protection ... If bandwidth usage isn't a concern, select Do not limit bandwidth. Unlimited | Fix: The path reaches the correct section. For the documented unlimited option, extend it to 'Data loss prevention > Overview > Data loss prevention settings > Endpoint settings > Advanced classification scanning and protection > Do not limit bandwidth. Unlimited', per https://learn.microsoft.com/purview/dlp-configure-endpoint-settings. | Source: https://learn.microsoft.com/purview/dlp-configure-endpoint-settings
+- [supported, minor] What's changing / behaviour: General Learn documentation describes Purview OCR as an existing capability without a preview label. | Found: By using optical character recognition (OCR) scanning, Microsoft Purview can scan images for sensitive information. OCR scanning is an optional feature that you must enable at the tenant level. | Fix: Add to What's changing: 'The Communication Compliance documentation still calls the separate Purview OCR settings preview, although the general OCR page does not mark them that way.' Cite https://learn.microsoft.com/purview/communication-compliance-policies#policy-settings, which says 'Microsoft Purview includes OCR (preview) settings' for DLP and related solutions. Keep the roadmap General Availability phase unchanged. | Source: https://learn.microsoft.com/purview/ocr-learn-about
 -->

@@ -70,10 +70,12 @@ changes:
     note: "Corrected after the independent check: per-user table description, read-only wording replaced, Reports heading added to the path, user-coverage disagreement noted, two checklist bullets removed."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 68 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 68 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
@@ -173,9 +175,9 @@ cost: Low. The only cost the sources show is admin time to read the report; no l
 impact: Low. Administrators and report readers see the new report; end users notice nothing.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing: entry points; Scope: Users / behaviour: The report article lists Edge, Microsoft Copilot (app), Teams, Outlook, m365.cloud.microsoft/chat, Word, Excel, PowerPoint and OneNote as entry points. | Found: The report currently supports only users without a Microsoft Copilot license who interact with Copilot Chat in Teams, Outlook, m365.cloud.microsoft/chat, Microsoft Copilot (app), Microsoft Edge, Word, Excel, PowerPoint, and OneNote. | Fix: After the entry-point list in Scope, add: 'This is the report article's general entry-point list, not a government-cloud availability list: Microsoft's service description says Copilot Chat is not available in the Edge sidebar in GCC, GCC High or DoD.' Cite https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot#feature-availability, which states: 'Microsoft Copilot Chat isn't available in the Edge sidebar for GCC/GCCH/DoD cloud environments.' | Source: https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-copilot-usage
-- [supported, minor] Open questions: reporting window / behaviour: The overview lists 7, 30, 90 and 180 days, presented by the briefing as an unresolved reporting-window discrepancy. | Found: Usage reports are generally available for the last 7, 30, 90, and 180 days. For details about specific report availability, see the individual usage report articles. | Fix: Remove the final Open questions bullet. The overview explicitly defers specific report availability to the individual article, so its general 30-day list does not require a correction before using the report article's documented 7, 28, 90 or 180-day periods. | Source: https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports
+- [supported, minor] What's changing: entry points; Scope: Users / behaviour: The report article lists Edge, Microsoft Copilot (app), Teams, Outlook, m365.cloud.microsoft/chat, Word, Excel, PowerPoint and OneNote as entry points. | Found: The report currently supports only users without a Microsoft Copilot license who interact with Copilot Chat in Teams, Outlook, m365.cloud.microsoft/chat, Microsoft Copilot (app), Microsoft Edge, Word, Excel, PowerPoint, and OneNote. | Fix: After the list in Scope: Users, add: 'This is the report article's general entry-point list, not a government-cloud availability list. Microsoft's service description says Copilot Chat is not available in the Edge sidebar in GCC, GCC High or DoD, and is not currently available in Web apps for M365 Copilot (Basic) users in those clouds.' Cite and add to sources https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot#feature-availability. | Source: https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-copilot-usage
+- [supported, minor] Open questions: reporting window / behaviour: The usage reports overview lists 7, 30, 90 and 180 days, presented as an unresolved discrepancy with this report's periods. | Found: Usage reports are generally available for the last 7, 30, 90, and 180 days. For details about specific report availability, see the individual usage report articles. | Fix: Replace the final Open questions bullet with: 'The report article documents 7, 28, 90 or 180-day views, while Microsoft's Copilot overview describes this same report as having 7, 30, 90 or 180-day views. Watch those two pages for clarification.' Link 'Copilot overview' to https://learn.microsoft.com/copilot/plan/copilot-overview#track-and-increase-copilot-adoption. The usage reports overview's general periods explicitly defer to individual report articles; the specific Copilot overview is the source that actually disagrees. | Source: https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports
 -->
