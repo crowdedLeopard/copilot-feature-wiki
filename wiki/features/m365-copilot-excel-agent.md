@@ -86,15 +86,17 @@ changes:
     note: "Corrected after the independent check: licensing model, cost rating and rationale, summary wording on the roadmap's licence statement, an oversharing bullet, the Excel Agent identification, and the Block control note."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 70 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 75 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 70
-  confirmed: 68
+  claims: 75
+  confirmed: 73
   unconfirmed: 1
   contradicted: 1
   attempts: 0
@@ -205,10 +207,10 @@ cost: Medium. Budgeting on Learn's stricter entitlement statement may require pa
 impact: Medium. Licensed Copilot users see the agent in the Tools menu and under All Agents when Anthropic models are enabled for the tenant, so analysts and finance users notice it first.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Change & support; Governance guidance: At rollout / behaviour: Excel Agent can be visible in the agent store while unusable because Anthropic is disabled. | Found: Searched: Excel Agent agent store unavailable Anthropic; opened wordexcelppt-agents and faq-wordexcelppt-agents; read agent-store search excerpts. The visibility passage names Office Agent, not Excel Agent; no passage establishes the same store behaviour for Excel Agent. | Fix: Use the documented name rather than identifying the store entry as Excel Agent: replace the risk bullet's first sentence with 'Learn says Office Agent might still appear in the agent store when Anthropic models are disabled, but users cannot access or use it.' Replace the help-desk checklist bullet with 'Brief the help desk that Learn says Office Agent can remain visible in the agent store when Anthropic models are disabled, without being usable.'
+- [unsupported, major] Risk assessment: Change & support; Governance guidance: At rollout / behaviour: Excel Agent can remain visible in the agent store when Anthropic is disabled, without being usable. | Found: Searched: Excel Agent agent store Anthropic disabled visible All agents block Microsoft installed Graph copilot package; opened wordexcelppt-agents and faq-wordexcelppt-agents; read copilot-agent-store excerpts. The visibility passage names Office Agent, not Excel Agent. | Fix: Replace the risk bullet's first sentence with 'Learn says Office Agent might still appear in the agent store when Anthropic models are disabled, but users cannot access or use it.' Replace the help-desk checklist bullet with 'Brief the help desk that Learn says Office Agent can remain visible in the agent store when Anthropic models are disabled, without being usable.'
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist asks readers to take stock of licence assignments without a corresponding controls-table row. | Found: Check which users hold a paid Microsoft 365 Copilot licence ... Controls table: Anthropic tenant availability; Anthropic user/group access; organisation-wide agent blocking. | Fix: Remove the checklist bullet 'Check which users hold a paid Microsoft 365 Copilot licence, since Learn ties the agents to that licence.' The licensing requirement remains documented in Cost and licensing; do not add a control row.
+- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist asks admins to check licence assignments without a corresponding controls-table row. | Found: Check which users hold a paid Microsoft 365 Copilot licence ... Controls table: Anthropic tenant availability; Anthropic user/group access; organisation-wide agent blocking. | Fix: Remove the checklist bullet 'Check which users hold a paid Microsoft 365 Copilot licence, since Learn ties the agents to that licence.' Keep the licensing requirement in Cost and licensing; do not add a control row.
 -->

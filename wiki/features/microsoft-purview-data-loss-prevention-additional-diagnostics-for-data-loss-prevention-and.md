@@ -92,13 +92,13 @@ controls:
     scope: "other"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Solutions > Information Protection > Policies > Auto-labeling policies > policy > View details"
+      path: "Solutions > Information Protection > Policies > Auto-labeling policies > policy > View details > Labeling failures"
       docs: "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/sensitivity-labels/auto-labeling-failures-sharepoint-onedrive"
     api:
       kind: "powershell"
       call: "Get-AutoSensitivityLabelPolicy -Identity \"<policy name>\" -IncludeProgressFeedback"
       docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/get-autosensitivitylabelpolicy"
-    note: "Existing policy-level view that complements the new file diagnostic. Cmdlet is in Security & Compliance PowerShell."
+    note: "The portal shows file failures. The cmdlet reports labelling progress only (files to be labeled, labeled in the last 7 days, total labeled); it documents no file-failure details. Security & Compliance PowerShell."
 confidence: "high"
 created: "2026-11-28"
 updated: "2026-11-28"
@@ -108,19 +108,23 @@ changes:
     note: "New briefing: Purview portal diagnostics for DLP in SharePoint, OneDrive and Exchange and for auto-labeling, with the roles that run them and the Test-DlpPolicies equivalent."
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 69 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-28"
+    note: "Corrected: Microsoft Entra role assignments, not only Purview role groups, grant diagnostic access; Get-AutoSensitivityLabelPolicy reports labelling progress, not file failures; failure path now ends at Labeling failures."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 77 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-28"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 69
-  confirmed: 67
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 1
-  hash: "75ff17ce190a7c33ce00245a001e53b8"
+  claims: 77
+  confirmed: 77
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "eff25c9c1324f4fed5a95871b2caca93"
 ---
 
 ## What's changing
@@ -140,7 +144,7 @@ The diagnostics are on-demand: an administrator with one of the listed roles cho
 ## Risk assessment
 
 **Data exposure**
-- The file checks report classification results and matching policies for whatever file path the operator enters. Holders of read-only roles on the DLP list, such as **Security Reader** or **View-Only DLP Compliance Management**, get this view. Role group membership (first row of the controls table) decides who that is.
+- The file checks report classification results and matching policies for whatever file path the operator enters. Holders of read-only roles on the DLP list, such as **Security Reader** or **View-Only DLP Compliance Management**, get this view. Purview role group membership is one route to these permissions; Microsoft Entra assignments of the listed roles also grant access.
 - The Exchange Online check needs a message trace export, and the Outlook on the web policy-tip check needs a HAR file exported from the browser's Developer Tools. Treat both files as sensitive while they are handled.
 
 **Security & identity**
@@ -178,7 +182,7 @@ No meter or charge for running a diagnostic is documented at the time of writing
 - Run the SharePoint or OneDrive DLP check against a known test file and compare it with a `Test-DlpPolicies` report for the same file.
 
 ### After rollout
-- Use the auto-labeling diagnostic alongside the policy's **View details** failure list when a file is not labelled.
+- Use the auto-labeling diagnostic alongside the policy's **View details > Labeling failures** list when a file is not labelled.
 - Update the DLP support runbook to start with the portal diagnostic and keep `Test-DlpPolicies` for scripted checks.
 
 ## Governance controls
@@ -191,11 +195,11 @@ No meter or charge for running a diagnostic is documented at the time of writing
 <tr><td data-label="Control"><strong>Who holds the Purview roles that open the DLP and Information Protection diagnostics</strong><br><small>Tenant</small><br><small class="controls__note">Needs the Role Management role. The diagnostics Learn page lists the roles that run each set.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and scopes › Role groups › Role groups for Microsoft Purview solutions › role group › Edit › Edit members of the role group › Choose users <a href="https://learn.microsoft.com/purview/purview-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember -Identity &quot;&lt;role-group&gt;&quot; -Member &quot;&lt;user-UPN&gt;&quot;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which DLP policies and rules match a SharePoint or OneDrive file</strong><br><small class="controls__note">Read-only check. The Exchange Online message trace check is on the same portal page. The cmdlet reports only on policies scoped to SharePoint, OneDrive or both.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Data Loss Prevention › Diagnostics <a href="https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Test-DlpPolicies -workload &lt;workload&gt; -Fileurl &lt;path/direct link&gt; -SendReportTo &lt;smtpaddress&gt;</code> <a href="https://learn.microsoft.com/purview/dlp-test-dlp-policies" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether a SharePoint or OneDrive file met auto-labeling conditions</strong><br><small class="controls__note">Needs Compliance Administrator or Security Administrator. Learn names this cmdlet for the auto-labeling check; the cmdlet's own page describes DLP policy results.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Information Protection › Diagnostics <a href="https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Test-DlpPolicies -workload &lt;workload&gt; -Fileurl &lt;path/direct link&gt; -SendReportTo &lt;smtpaddress&gt;</code> <a href="https://learn.microsoft.com/purview/dlp-test-dlp-policies" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Labelling progress and failures for an auto-labeling policy</strong><br><small class="controls__note">Existing policy-level view that complements the new file diagnostic. Cmdlet is in Security &amp; Compliance PowerShell.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Information Protection › Policies › Auto-labeling policies › policy › View details <a href="https://learn.microsoft.com/troubleshoot/microsoft-365/purview/sensitivity-labels/auto-labeling-failures-sharepoint-onedrive" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Get-AutoSensitivityLabelPolicy -Identity &quot;&lt;policy name&gt;&quot; -IncludeProgressFeedback</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/get-autosensitivitylabelpolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Labelling progress and failures for an auto-labeling policy</strong><br><small class="controls__note">The portal shows file failures. The cmdlet reports labelling progress only (files to be labeled, labeled in the last 7 days, total labeled); it documents no file-failure details. Security &amp; Compliance PowerShell.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Information Protection › Policies › Auto-labeling policies › policy › View details › Labeling failures <a href="https://learn.microsoft.com/troubleshoot/microsoft-365/purview/sensitivity-labels/auto-labeling-failures-sharepoint-onedrive" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Get-AutoSensitivityLabelPolicy -Identity &quot;&lt;policy name&gt;&quot; -IncludeProgressFeedback</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/get-autosensitivitylabelpolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-Access to the diagnostics follows from the roles each set requires, so role group membership is the deciding control. Managing role group members in the Purview portal needs an account with the *Role Management* role. `Test-DlpPolicies` needs a connection to Exchange Online PowerShell and sends its report by email to the address given in `-SendReportTo`, so choose a monitored compliance mailbox.
+Access to the diagnostics follows from the roles each set requires; review both Purview role group membership and Microsoft Entra assignments of those roles. Managing role group members in the Purview portal needs an account with the *Role Management* role. `Test-DlpPolicies` needs a connection to Exchange Online PowerShell and sends its report by email to the address given in `-SendReportTo`, so choose a monitored compliance mailbox.
 
 ## Open questions
 
@@ -210,11 +214,9 @@ cost: Low. No licence or meter specific to the diagnostics is published; they si
 impact: Low. Only administrators holding the listed Purview roles see and run the diagnostics; end users notice nothing.
 -->
 
-<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] controls[3].api; controls[3].governs; Governance controls table / command: Get-AutoSensitivityLabelPolicy -Identity "<policy name>" -IncludeProgressFeedback provides labeling failure results for the policy. | Found: Searched: Get-AutoSensitivityLabelPolicy IncludeProgressFeedback labeling failures report. Opened get-autosensitivitylabelpolicy, apply-sensitivity-label-automatically, and auto-labeling-failures-sharepoint-onedrive. The command reference documents progress counts, not file-failure results. | Fix: Keep the command, but qualify controls[3].note and its rendered table note: 'The portal shows file failures. The cmdlet reports labeling progress only: files to be labeled, files labeled in the last 7 days, and total files labeled for enabled policies; file-failure details are not documented for this switch. Cmdlet is in Security & Compliance PowerShell.' See https://learn.microsoft.com/powershell/module/exchangepowershell/get-autosensitivitylabelpolicy.
-- [contradicted, blocker] Risk assessment: Data exposure; Governance controls / applicability: Purview role group membership is the deciding control for who holds the roles that allow diagnostic access. | Found: If you assign both an Entra role and a scoped Microsoft Purview role group assignment to a user or group ... the Entra role takes precedence at runtime. As a result, the user's effective permissions are unscoped | Fix: Replace 'Role group membership (first row of the controls table) decides who that is' with 'Purview role group membership is one route to these permissions; Microsoft Entra assignments of the listed roles also grant access.' Replace 'Access to the diagnostics follows from the roles each set requires, so role group membership is the deciding control' with 'Access to the diagnostics follows from the roles each set requires; review both Purview role group membership and Microsoft Entra assignments of those roles.' The existing cited permissions page documents the Entra mappings and precedence. | Source: https://learn.microsoft.com/purview/purview-permissions
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[3].ui; Governance controls table; Governance guidance: After rollout / admin-path: Solutions > Information Protection > Policies > Auto-labeling policies > policy > View details reaches the auto-labeling failure view. | Found: Select Solutions > Information Protection > Policies > Auto-labeling policies. ... select View details in the policy details panel. ... Select Labeling failures to see failed label applications, or Label removal failures for a policy that removes labels. | Fix: For label-application failures, extend controls[3].ui.path to 'Solutions > Information Protection > Policies > Auto-labeling policies > policy > View details > Labeling failures'. In the After rollout bullet, replace 'the policy's View details failure list' with 'the policy's View details > Labeling failures list'. The cited page also documents Label removal failures for removal policies. | Source: https://learn.microsoft.com/troubleshoot/microsoft-365/purview/sensitivity-labels/auto-labeling-failures-sharepoint-onedrive
+- [supported, minor] controls[0].ui; Governance guidance: Before rollout / admin-path: Purview role-group membership is managed through Settings > Roles and scopes > Role groups > Role groups for Microsoft Purview solutions > role group > Edit > Edit members of the role group > Choose users. | Found: Select Role groups. On Role groups for Microsoft Purview solutions, select a Microsoft Purview role group you want to add users to. Select Edit on the control bar. On Edit members of the role group, select Choose users or Choose groups. | Fix: The control row is correct. In Before rollout, expand the shortened route to 'Settings > Roles and scopes > Role groups > Role groups for Microsoft Purview solutions > role group > Edit > Edit members of the role group > Choose users', matching the existing row and https://learn.microsoft.com/purview/purview-permissions. | Source: https://learn.microsoft.com/purview/purview-permissions
+- [supported, minor] Why it matters; Risk assessment: Data exposure; rationale: risk / role: The accepted roles include read-only Security Reader and View-Only DLP Compliance Management, allowing diagnostic access without DLP policy-editing permissions. | Found: Security Reader | View the configuration and reports for Security features. ... View-Only DLP Compliance Management | View the settings and reports for data loss prevention (DLP) policies. | Fix: Add https://learn.microsoft.com/defender-office-365/scc-permissions to sources as 'Roles and role groups in Microsoft Defender for Office 365 and Microsoft Purview'; it documents the read-only permission scopes used in the risk explanation. | Source: https://learn.microsoft.com/defender-office-365/scc-permissions
 -->

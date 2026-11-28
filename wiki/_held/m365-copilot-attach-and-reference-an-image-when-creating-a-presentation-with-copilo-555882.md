@@ -66,18 +66,20 @@ changes:
     note: "New briefing for the Web roadmap item 555882; Desktop (555881) and Mac (555890) are tracked as separate items."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 49 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 49 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 1
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-21"
+  status: "held"
+  date: "2026-11-28"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 49
-  confirmed: 48
+  confirmed: 47
   unconfirmed: 0
-  contradicted: 1
-  attempts: 0
+  contradicted: 2
+  attempts: 1
   hash: "8a4775974cb9064938d81222edce2849"
 ---
 
@@ -173,10 +175,11 @@ cost: Low. Learn names no separate price or meter for image referencing; the kno
 impact: Low. Only licensed users who attach an image to a Copilot prompt in PowerPoint for the web notice the change; no source says existing behaviour changes for anyone else.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Open questions: connected experiences / absence: Whether analyze-content connected-experience controls also apply to Copilot in PowerPoint for the web remains undocumented. | Found: Microsoft Copilot requires the Analyze Content connected experience category in Office to be enabled for Copilot to work in Microsoft 365 Apps, including Microsoft Teams. The web experiences and modern apps are controlled exclusively by the Cloud Policy. | Fix: Replace the final Open questions bullet with: 'Microsoft's sensitive and regulated customer guidance says Copilot requires the Analyze Content connected experience category and that web experiences are controlled exclusively by Cloud Policy.' Cite and add to sources https://learn.microsoft.com/compliance/anz/blueprint-copilot-reqconfig#connected-experiences. Retain the narrower, accurate observation about the cited privacy sentence. | Source: https://learn.microsoft.com/compliance/anz/blueprint-copilot-reqconfig#connected-experiences
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance controls / availability: The privacy page names Windows, Mac, iOS and Android for this connected-experience control. | Found: This applies to when you're running the most current version of these apps on Windows, Mac, iOS, or Android devices. | Fix: Replace 'and it names Windows, Mac, iOS and Android devices' with 'and says this applies when running the most current version of these apps on Windows, Mac, iOS or Android devices'. | Source: https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy
-- [supported, minor] Governance controls; Open questions: connected experiences / absence: The cited privacy page's analyze-content sentence does not name the web. | Found: This applies to when you're running the most current version of these apps on Windows, Mac, iOS, or Android devices. | Fix: Keep the accurate observation about the cited sentence, but replace the final Open questions bullet with: 'Microsoft's sensitive and regulated customer guidance says Copilot requires the Analyze Content connected experience category and that web experiences are controlled exclusively by Cloud Policy.' Cite and add to sources https://learn.microsoft.com/compliance/anz/blueprint-copilot-reqconfig#connected-experiences. That page states: 'The web experiences and modern apps are controlled exclusively by the Cloud Policy.' | Source: https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist tells administrators to check browser policy, but the controls table has no corresponding browser-policy row. | Found: Check that browser policy allows third-party cookies for PowerPoint for the web. The table's sole row governs which users hold the Microsoft 365 Copilot licence. | Fix: Replace the Before rollout browser-policy bullet with 'Confirm that Copilot works in PowerPoint for the web before communicating the feature.' Retain the documented third-party-cookie prerequisite in Scope; do not add an unverified control row.
+- [supported, minor] Governance controls / availability: The privacy page names Windows, Mac, iOS and Android devices for the analyze-content control. | Found: This applies to when you're running the most current version of these apps on Windows, Mac, iOS, or Android devices. | Fix: Replace 'and it names Windows, Mac, iOS and Android devices' with 'and says this applies when running the most current version of these apps on Windows, Mac, iOS or Android devices'. | Source: https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The browser-policy check in the checklist has no corresponding controls-table row. | Found: Check that browser policy allows third-party cookies for PowerPoint for the web. The sole controls row governs which users hold the Microsoft 365 Copilot licence. | Fix: Replace the Before rollout browser-policy bullet with 'Confirm that Copilot works in PowerPoint for the web before communicating the feature.' Retain the documented third-party-cookie prerequisite in Scope; do not add a control row.
 -->

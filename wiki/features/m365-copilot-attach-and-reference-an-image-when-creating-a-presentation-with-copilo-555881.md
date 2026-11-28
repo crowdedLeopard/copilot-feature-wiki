@@ -73,15 +73,17 @@ changes:
     note: "Corrected the controls note: the table documents licence assignment, not a feature-specific switch, and Microsoft's privacy page lists connected-experience controls that affect Copilot in PowerPoint."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 55 statements confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 51 statements confirmed"
 version: 2
 verification:
   status: "verified"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 55
-  confirmed: 55
+  claims: 51
+  confirmed: 51
   unconfirmed: 0
   contradicted: 0
   attempts: 0

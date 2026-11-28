@@ -79,15 +79,17 @@ changes:
     note: "Corrected after the independent check: cost raised to medium (add-on licence), source-access wording now follows Microsoft's privacy page, and two checklist items without controls-table rows were removed."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 71 statements confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 75 statements not yet confirmed"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-21"
+  status: "verified-with-gaps"
+  date: "2026-11-28"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 71
-  confirmed: 71
+  claims: 75
+  confirmed: 75
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -176,4 +178,10 @@ Brand kit access is governed by two Microsoft 365 Apps admin center policies, En
 risk: Medium. The roadmap says Copilot draws on users' files, meetings and emails to build slides, and Microsoft has not stated a default or a switch specific to this feature, so the licence is the lever.
 cost: Medium. Users who do not already hold Microsoft 365 Copilot need the add-on licence; existing licensed users have admin and adoption costs. The cited pages document no separate PowerPoint-specific charge or meter.
 impact: Medium. Licensed GCC users who build decks, plus brand managers, will notice it; unlicensed users are not named as in scope by the roadmap.
+-->
+
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] summary; controls[0].note; rationale: risk / absence: No admin switch specific to this Copilot in PowerPoint rollout is documented, leaving licence assignment as the stated entitlement control. | Found: Searched: 'Copilot in PowerPoint GCC government clouds default enabled admin disable switch policy Microsoft Graph'; 'Copilot in PowerPoint admin switch Graph'; 'PowerPoint Copilot policy edit disable'. Read Copilot settings, requirements, privacy and Chat management; no feature-specific switch foun | Fix: Replace the summary sentence 'No admin switch for it is documented; the licence is the control.' with 'No feature-specific admin switch is documented; licence assignment controls entitlement.' The cited privacy page documents broader connected-experience controls affecting PowerPoint, so avoid implying licence assignment is the only possible availability control.
 -->

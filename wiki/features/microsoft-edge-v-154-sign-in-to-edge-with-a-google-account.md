@@ -28,6 +28,9 @@ sources:
   - title: "RestrictSigninToPattern"
     url: "https://learn.microsoft.com/deployedge/microsoft-edge-policies/restrictsignintopattern"
     kind: "learn"
+  - title: "Configure Microsoft Edge policy settings on Windows devices"
+    url: "https://learn.microsoft.com/deployedge/configure-microsoft-edge"
+    kind: "learn"
   - title: "Archived release notes for Microsoft Edge Stable Channel"
     url: "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-archive-stable-channel"
     kind: "learn"
@@ -44,7 +47,7 @@ controls:
     scope: "other"
     ui:
       surface: "Group Policy (Administrative Templates)"
-      path: "Administrative Templates > Microsoft Edge > Identity and sign-in > Enable sign-in to Microsoft Edge using non-Microsoft accounts"
+      path: "Computer Configuration > Policies > Administrative Templates > Microsoft Edge > Identity and sign-in > Enable sign-in to Microsoft Edge using non-Microsoft accounts"
       docs: "https://learn.microsoft.com/deployedge/microsoft-edge-policies/nonmicrosoftaccountsigninenabled"
     api:
       kind: "other"
@@ -55,13 +58,13 @@ controls:
     scope: "other"
     ui:
       surface: "Group Policy (Administrative Templates)"
-      path: "Administrative Templates > Microsoft Edge > Restrict which accounts can be used to sign in to Microsoft Edge"
+      path: "Computer Configuration > Policies > Administrative Templates > Microsoft Edge > Restrict which accounts can be used to sign in to Microsoft Edge"
       docs: "https://learn.microsoft.com/deployedge/microsoft-edge-policies/restrictsignintopattern"
     api:
       kind: "other"
       call: "Registry value RestrictSigninToPattern (REG_SZ) under SOFTWARE\\Policies\\Microsoft\\Edge"
       docs: "https://learn.microsoft.com/deployedge/microsoft-edge-policies/restrictsignintopattern"
-    note: "Regular-expression pattern; non-matching profiles are signed out. The page does not say whether it covers Google or Apple accounts."
+    note: "Regular-expression pattern; non-matching profiles are signed out. The policy determines which accounts can be used during the Sync opt-in flow."
 confidence: "high"
 created: "2026-11-28"
 updated: "2026-11-28"
@@ -71,19 +74,23 @@ changes:
     note: "New briefing: Google account sign-in in Edge 154, on by default, and the NonMicrosoftAccountSignInEnabled policy that turns it off."
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 42 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-28"
+    note: "Corrected both Group Policy paths to start at Computer Configuration > Policies; reworded the Autonomy & actions line and the RestrictSigninToPattern caveat to what the sources state."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 49 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-28"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 42
-  confirmed: 39
+  claims: 49
+  confirmed: 48
   unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "72796a749e83a1e97853b640973592ba"
+  contradicted: 0
+  attempts: 0
+  hash: "ee8d076917e130b8e3f844596e04f966"
 ---
 
 ## What's changing
@@ -107,10 +114,10 @@ Microsoft has not described what a Google-signed-in Edge profile synchronises or
 
 **Security & identity**
 - The policy is device-wide (the page lists Per Profile: No) and also applies to a profile signed in with a Microsoft account, so one setting covers every profile on the device.
-- `RestrictSigninToPattern` already limits which account usernames can sign in to Edge, but its page does not say whether it applies to Google or Apple accounts; do not rely on it alone.
+- `RestrictSigninToPattern` already limits which account usernames can sign in to Edge. The policy determines which accounts can be used during the Sync opt-in flow.
 
 **Autonomy & actions**
-- No change: the feature adds a sign-in option and takes no action on its own.
+- The roadmap describes a Google account sign-in option in the profile menu and Edge sign-in screen.
 
 **Change & support**
 - Users will see Google (and, per the policy page, Apple) sign-in buttons in the profile flyout. Disabling the policy hides them; expect help desk questions either way.
@@ -153,14 +160,14 @@ The cost Microsoft's pages show is indirect: admin time to decide on the policy,
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether users can sign in to Edge with non-Microsoft accounts such as Google</strong><br><small class="controls__note">Allowed when enabled or not configured; Disabled hides Google and Apple sign-in. Per device, not per profile; dynamic refresh. macOS preference key NonMicrosoftAccountSignInEnabled.</small></td><td data-label="Admin UI"><strong>Group Policy (Administrative Templates)</strong><br>Administrative Templates › Microsoft Edge › Identity and sign-in › Enable sign-in to Microsoft Edge using non-Microsoft accounts <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/nonmicrosoftaccountsigninenabled" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Registry value NonMicrosoftAccountSignInEnabled (REG_DWORD) under SOFTWARE\Policies\Microsoft\Edge</code> <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/nonmicrosoftaccountsigninenabled" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which account usernames can sign in to Edge (existing control)</strong><br><small class="controls__note">Regular-expression pattern; non-matching profiles are signed out. The page does not say whether it covers Google or Apple accounts.</small></td><td data-label="Admin UI"><strong>Group Policy (Administrative Templates)</strong><br>Administrative Templates › Microsoft Edge › Restrict which accounts can be used to sign in to Microsoft Edge <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/restrictsignintopattern" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Registry value RestrictSigninToPattern (REG_SZ) under SOFTWARE\Policies\Microsoft\Edge</code> <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/restrictsignintopattern" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether users can sign in to Edge with non-Microsoft accounts such as Google</strong><br><small class="controls__note">Allowed when enabled or not configured; Disabled hides Google and Apple sign-in. Per device, not per profile; dynamic refresh. macOS preference key NonMicrosoftAccountSignInEnabled.</small></td><td data-label="Admin UI"><strong>Group Policy (Administrative Templates)</strong><br>Computer Configuration › Policies › Administrative Templates › Microsoft Edge › Identity and sign-in › Enable sign-in to Microsoft Edge using non-Microsoft accounts <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/nonmicrosoftaccountsigninenabled" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Registry value NonMicrosoftAccountSignInEnabled (REG_DWORD) under SOFTWARE\Policies\Microsoft\Edge</code> <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/nonmicrosoftaccountsigninenabled" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which account usernames can sign in to Edge (existing control)</strong><br><small class="controls__note">Regular-expression pattern; non-matching profiles are signed out. The policy determines which accounts can be used during the Sync opt-in flow.</small></td><td data-label="Admin UI"><strong>Group Policy (Administrative Templates)</strong><br>Computer Configuration › Policies › Administrative Templates › Microsoft Edge › Restrict which accounts can be used to sign in to Microsoft Edge <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/restrictsignintopattern" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Registry value RestrictSigninToPattern (REG_SZ) under SOFTWARE\Policies\Microsoft\Edge</code> <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/restrictsignintopattern" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 `NonMicrosoftAccountSignInEnabled` is the control for this feature. Left unconfigured it allows non-Microsoft sign-in; only the Disabled value removes it. It is a mandatory policy, applies to the whole device rather than one profile, and refreshes without a browser restart. On macOS the same name is used as the preference key.
 
-`RestrictSigninToPattern` is an existing control for which account usernames may sign in to Edge. Its page does not mention non-Microsoft accounts, so treat it as complementary, not a replacement. Signed-in profiles that do not match its pattern are signed out once it is enabled.
+`RestrictSigninToPattern` is an existing control for which account usernames may sign in to Edge. The policy determines which accounts can be used during the Sync opt-in flow. Signed-in profiles that do not match its pattern are signed out once it is enabled.
 
 ## Open questions
 
@@ -175,13 +182,10 @@ cost: Low. The known cost is admin time to decide on and deploy one browser poli
 impact: Medium. The Google sign-in option appears in the profile menu and sign-in screen for Edge users on Windows and macOS, but only users who choose it change how they use the browser.
 -->
 
-<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].ui; Governance controls: table / admin-path: The full Group Policy route begins Administrative Templates > Microsoft Edge > Identity and sign-in > Enable sign-in to Microsoft Edge using non-Microsoft accounts. | Found: To configure a mandatory policy, open the Group Policy Editor and go to (Computer Configuration or User Configuration) > Policies > Administrative Templates > Microsoft Edge. | Fix: Replace controls[0].ui.path and its rendered table path with 'Computer Configuration > Policies > Administrative Templates > Microsoft Edge > Identity and sign-in > Enable sign-in to Microsoft Edge using non-Microsoft accounts'. Cite https://learn.microsoft.com/deployedge/configure-microsoft-edge for the navigation prefix; the existing policy reference supplies the remaining steps. | Source: https://learn.microsoft.com/deployedge/configure-microsoft-edge
-- [contradicted, blocker] controls[1].ui; Governance controls: table / admin-path: The full Group Policy route begins Administrative Templates > Microsoft Edge > Restrict which accounts can be used to sign in to Microsoft Edge. | Found: To configure a mandatory policy, open the Group Policy Editor and go to (Computer Configuration or User Configuration) > Policies > Administrative Templates > Microsoft Edge. | Fix: Replace controls[1].ui.path and its rendered table path with 'Computer Configuration > Policies > Administrative Templates > Microsoft Edge > Restrict which accounts can be used to sign in to Microsoft Edge'. Cite https://learn.microsoft.com/deployedge/configure-microsoft-edge for the navigation prefix; the existing policy reference supplies the remaining steps. | Source: https://learn.microsoft.com/deployedge/configure-microsoft-edge
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: The feature takes no action on its own. | Found: Searched: Microsoft Edge Google account sign-in automatic actions autonomous NonMicrosoftAccountSignInEnabled. Read the policy, Stable Google sign-in release notes and identity/privacy excerpts; none states the complete absence of automatic actions for Google sign-in. | Fix: Replace 'No change: the feature adds a sign-in option and takes no action on its own.' with 'The roadmap describes a Google account sign-in option in the profile menu and Edge sign-in screen.'
+- [unsupported, major] Risk assessment: Data exposure; Why it matters / behaviour: A user signed in with a Google account has a browser identity outside the tenant. | Found: Searched: Microsoft Edge Google account identity personal account tenant non Microsoft sign in. Read NonMicrosoftAccountSignInEnabled, privacy Sign in and Identity, and Edge for Business; they do not establish the Google-signed-in profile's relationship to the tenant. | Fix: Replace 'A user signed in with a Google account has a browser identity outside the tenant' with 'Google account sign-in is a non-Microsoft account sign-in option', supported by https://learn.microsoft.com/deployedge/microsoft-edge-policies/nonmicrosoftaccountsigninenabled. Keep treating the profile as unmanaged explicitly as advice, not a documented tenant-boundary mechanism.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].note; Risk assessment: Security & identity; Governance controls / absence: The RestrictSigninToPattern page does not explicitly name Google or Apple accounts, so its applicability should not be relied on alone. | Found: Determines which accounts can be used to sign in to the Microsoft Edge account that's chosen during the Sync opt-in flow. ... If you don't configure this policy or leave it blank, users can use any account to sign in to Microsoft Edge. | Fix: Replace controls[1].note's final sentence and the matching prose caveat with 'The policy determines which accounts can be used during the Sync opt-in flow.' The reference states this general reach without restricting it to Microsoft accounts: https://learn.microsoft.com/deployedge/microsoft-edge-policies/restrictsignintopattern. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/restrictsignintopattern
-- [supported, minor] Governance guidance: Before rollout; After rollout / admin-path: edge://policy shows applied browser policies for checking these settings. | Found: On a target client device, open Microsoft Edge and go to edge://policy to see all policies that are applied. | Fix: Add https://learn.microsoft.com/deployedge/configure-microsoft-edge, titled 'Configure Microsoft Edge policy settings on Windows devices', to sources for the edge://policy checks. | Source: https://learn.microsoft.com/deployedge/configure-microsoft-edge
+- [supported, minor] What's changing; Scope: Accounts; Open questions: Apple announcement / applicability: The policy documentation covers Apple accounts as well as Google accounts, whereas this roadmap item names Google. | Found: This policy controls whether users can sign in to Microsoft Edge using non-Microsoft accounts, such as Google or Apple accounts. | Fix: Remove the Open questions bullet beginning 'The policy page already names Apple accounts'. The cited Stable archive already announces Apple account sign-in in version 157.0.4341.42, November 05, 2026, and identifies NonMicrosoftAccountSignInEnabled as its control: https://learn.microsoft.com/deployedge/microsoft-edge-relnote-archive-stable-channel. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/nonmicrosoftaccountsigninenabled
 -->

@@ -18,7 +18,7 @@ defaultState: "on"
 action: "prepare"
 licensing:
   model: "add-on"
-  notes: "MC1311974 names users assigned a Microsoft Copilot licence (the renamed Microsoft 365 Copilot add-on) as affected. Microsoft's overview also says Microsoft 365 Copilot (Basic) users can create presentations in PowerPoint; whether they get this option is not stated."
+  notes: "MC1311974 names users assigned a Microsoft Copilot licence (the renamed Microsoft 365 Copilot add-on) as affected. Microsoft's overview also says Microsoft 365 Copilot (Basic) users can create presentations in PowerPoint; whether they get this option is not stated. The current licence-options page also says Microsoft Copilot is available with Microsoft 365 E7."
 audiences: ["m365-admin","service-owner","change-adoption"]
 tags: ["powerpoint","m365-copilot","copilot","microsoft-365-apps","cloud-policy","licensing"]
 sources:
@@ -31,6 +31,12 @@ sources:
   - title: "Microsoft Copilot overview"
     url: "https://learn.microsoft.com/copilot/plan/copilot-overview"
     kind: "learn"
+  - title: "License options for Microsoft Copilot"
+    url: "https://learn.microsoft.com/copilot/plan/copilot-license-options"
+    kind: "learn"
+  - title: "2025 Microsoft 365 Copilot release notes"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes#july-22,-2025"
+    kind: "learn"
   - title: "Data, Privacy, and Security for Microsoft Copilot"
     url: "https://learn.microsoft.com/copilot/microsoft-365/microsoft-365-copilot-privacy"
     kind: "learn"
@@ -39,6 +45,9 @@ sources:
     kind: "learn"
   - title: "Overview of Cloud Policy service for Microsoft 365"
     url: "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy"
+    kind: "learn"
+  - title: "Required configuration for Copilot guidance for Sensitive and Regulated customers"
+    url: "https://learn.microsoft.com/compliance/anz/blueprint-copilot-reqconfig#connected-experiences"
     kind: "learn"
   - title: "Manage Copilot Chat"
     url: "https://learn.microsoft.com/copilot/manage/manage-copilot-chat"
@@ -56,7 +65,7 @@ controls:
     scope: "group"
     ui:
       surface: "Microsoft 365 Apps admin center"
-      path: "Customization > Policy Management > policy configuration > Choose the scope > Configure Settings > Allow the use of connected experiences in Office that analyze content"
+      path: "Customization > Policy Management > Create > Choose the scope > Configure Settings > Allow the use of connected experiences in Office that analyze content"
       docs: "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy"
     api:
       kind: "other"
@@ -83,26 +92,30 @@ changes:
     note: "New briefing: Copilot create option on PowerPoint Home for Windows, on by default for Microsoft Copilot licence holders per MC1311974."
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 55 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-28"
+    note: "Corrected the Cloud Policy path to the Create route, replaced the claim that Learn had no page with the July 2025 release note, narrowed the identity statement, noted E7 licensing and the Group Policy precedence conflict, and removed the usage-report step."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 54 statements contradicted, 1 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-28"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 55
-  confirmed: 50
-  unconfirmed: 2
-  contradicted: 3
-  attempts: 1
-  hash: "7a0041c1b69c68fab467350c3e6e0c0a"
+  claims: 54
+  confirmed: 53
+  unconfirmed: 1
+  contradicted: 0
+  attempts: 2
+  hash: "efab29bb25f8a4f267c9c3770fa50d0b"
 ---
 
 ## What's changing
 
 PowerPoint for Windows adds an option on PowerPoint Home, in the File menu, to create a presentation with Copilot, so users can start a Copilot draft without first opening a new file.
 
-Microsoft's notice MC1311974 says users will find the new option on PowerPoint Home, that the experience is available immediately when PowerPoint is opened, and that the feature is enabled by default for eligible users. It says existing Microsoft 365 and Copilot policies are respected and that no admin configuration changes are required. Microsoft Learn does not have a page for this entry point yet, so what follows about its behaviour comes from the roadmap item and the notice.
+Microsoft's notice MC1311974 says users will find the new option on PowerPoint Home, that the experience is available immediately when PowerPoint is opened, and that the feature is enabled by default for eligible users. It says existing Microsoft 365 and Copilot policies are respected and that no admin configuration changes are required. Microsoft Learn's [22 July 2025 release notes](https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes#july-22,-2025) already describe creating presentations from the Windows start or File menus; MC1311974 describes the PowerPoint Home rollout beginning in late May 2026.
 
 The roadmap item (560694) lists the feature for Desktop in the Worldwide (Standard Multi-Tenant) cloud, at General Availability, with status Rolling out and a target of May CY2026. MC1311974 says General Availability rollout begins in late May 2026, and sets no act-by date. Microsoft lists the same feature for Mac under roadmap item 560536 and for PowerPoint on the web under 560537; this page covers the Windows desktop app only.
 
@@ -118,7 +131,7 @@ The practical effect is on support and adoption: expect more first drafts starte
 - Microsoft's privacy page says Microsoft Copilot accesses content and context through Microsoft Graph that the user has permission to access. MC1311974 says existing Microsoft 365 and Copilot policies are respected; it does not say what content a presentation started from PowerPoint Home can draw on beyond the user's prompt.
 
 **Security & identity**
-- No change described: the option runs as the signed-in user, and Microsoft's overview says prompts and responses are covered by Enterprise Data Protection when users sign in with Microsoft Entra accounts.
+- No change described: Microsoft's privacy page says Microsoft Copilot presents only data that each individual can access, using the same underlying controls for data access used in other Microsoft 365 services, and Microsoft's overview says prompts and responses are covered by Enterprise Data Protection when users sign in with Microsoft Entra accounts.
 
 **Autonomy & actions**
 - Copilot drafts a presentation that the user then reviews; nothing in the notice describes Copilot acting outside the new file.
@@ -128,7 +141,7 @@ The practical effect is on support and adoption: expect more first drafts starte
 
 ## Cost and licensing
 
-MC1311974 says the users affected are those on PowerPoint for Windows who are assigned a Microsoft Copilot licence. Microsoft's Copilot Chat management page notes that Microsoft 365 Copilot is now named Microsoft Copilot, and the [Microsoft Copilot overview](https://learn.microsoft.com/copilot/plan/copilot-overview) describes Microsoft 365 Copilot (Premium) as the add-on licence with the full Copilot experience in Word, Excel, PowerPoint and OneNote.
+MC1311974 says the users affected are those on PowerPoint for Windows who are assigned a Microsoft Copilot licence. Microsoft's Copilot Chat management page notes that Microsoft 365 Copilot is now named Microsoft Copilot, and the [Microsoft Copilot overview](https://learn.microsoft.com/copilot/plan/copilot-overview) describes Microsoft 365 Copilot (Premium) as the add-on licence with the full Copilot experience in Word, Excel, PowerPoint and OneNote. The current [licence-options page](https://learn.microsoft.com/copilot/plan/copilot-license-options) also says Microsoft Copilot is available with Microsoft 365 E7.
 
 The same overview says Microsoft 365 Copilot (Basic) users, who do not have the add-on licence, can use Copilot in PowerPoint to create presentations from prompts or existing content, and that some features are subject to fair use limits. Microsoft has not said whether the PowerPoint Home option reaches Basic users.
 
@@ -155,7 +168,6 @@ No separate price, meter or spending control for this option is published. The i
 - Point users to your organisation's guidance on reviewing Copilot-generated content before sharing it.
 
 ### After rollout
-- Review the Microsoft Copilot usage report, which Microsoft says covers Copilot use in apps including PowerPoint, to see whether in-app adoption changes.
 - Watch Message center for updates to MC1311974 and for a Learn page describing what the Home option draws on.
 
 ## Governance controls
@@ -165,7 +177,7 @@ No separate price, meter or spending control for this option is published. The i
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether Copilot features, including this option, are available in PowerPoint and other Office apps</strong><br><small>Group</small><br><small class="controls__note">Turns off all connected experiences that analyze content, not only Copilot. Office Apps Administrator recommended. The page lists 1=Enabled, 2=Disabled.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › policy configuration › Choose the scope › Configure Settings › Allow the use of connected experiences in Office that analyze content <a href="https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Registry: HKEY_CURRENT_USER\Software\Policies\Microsoft\office\16.0\common\privacy usercontentdisabled=dword:00000002</code> <a href="https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether Copilot features, including this option, are available in PowerPoint and other Office apps</strong><br><small>Group</small><br><small class="controls__note">Turns off all connected experiences that analyze content, not only Copilot. Office Apps Administrator recommended. The page lists 1=Enabled, 2=Disabled.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › Create › Choose the scope › Configure Settings › Allow the use of connected experiences in Office that analyze content <a href="https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Registry: HKEY_CURRENT_USER\Software\Policies\Microsoft\office\16.0\common\privacy usercontentdisabled=dword:00000002</code> <a href="https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which users hold a Microsoft Copilot licence, the users MC1311974 says get the option</strong><br><small>User</small><br><small class="controls__note">License Administrator or User Administrator at least. Removes the whole add-on experience, not just this option.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Users › Active users › user › Licenses and Apps › Licenses <a href="https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = &quot;&lt;SkuId&gt;&quot;} -RemoveLicenses @()</code> <a href="https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
@@ -173,7 +185,7 @@ No separate price, meter or spending control for this option is published. The i
 MC1311974 says no admin configuration changes are required and names no setting specific to the PowerPoint Home option, so the controls in the table are the existing ones that decide who gets Copilot in PowerPoint at all.
 
 - The connected-experiences policy is broad: turning it off removes every Office connected experience that analyzes content, not only Copilot. Microsoft's privacy page says Copilot features are then unavailable in Excel, OneNote, Outlook, PowerPoint and Word.
-- Cloud Policy settings apply after the Office app restarts, and Cloud Policy takes precedence over Group Policy where both are set.
+- Cloud Policy settings normally apply when Office apps restart; some privacy-control policies apply without restarting. The Cloud Policy overview says Cloud Policy takes precedence over Group Policy; Microsoft's [sensitive-and-regulated-customer guidance](https://learn.microsoft.com/compliance/anz/blueprint-copilot-reqconfig#connected-experiences) instead says Group Policy takes precedence for Win32 Office apps and advises keeping the policies aligned.
 - Removing a Microsoft Copilot licence removes the whole add-on experience, not just this option, and Microsoft 365 Copilot (Basic) users keep in-app Copilot according to the overview page.
 
 ## Open questions
@@ -186,19 +198,13 @@ MC1311974 says no admin configuration changes are required and names no setting 
 <!-- rationale
 risk: Low. This is a new entry point to Copilot in PowerPoint, and Microsoft's notice MC1311974 says existing Microsoft 365 and Copilot policies are respected; it adds no new data access that Microsoft describes.
 cost: Low. Microsoft's notice scopes the option to users assigned a Microsoft Copilot licence, so the visible cost is telling users about it; no separate price or meter for this option is published.
-impact: Medium. Users of PowerPoint for Windows who hold a Microsoft Copilot licence see a new option on PowerPoint Home; other users and admins notice nothing.
+impact: Medium. Users of PowerPoint for Windows who hold a Microsoft Copilot licence see a new option on PowerPoint Home.
 -->
 
 <!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing / absence: Microsoft Learn does not have a page describing this Windows opening-screen or File-menu entry point yet. | Found: You can quickly begin a new presentation using Microsoft 365 Copilot from the PowerPoint start menu or file menu. Copilot is easily accessible when you open PowerPoint or click the File tab, helping to simplify your workflow. | Fix: Replace the documentation-absence sentence with: 'Microsoft Learn's July 22, 2025 release notes already describe creating presentations from the Windows start or File menus; MC1311974 describes the PowerPoint Home rollout beginning in late May 2026.' Cite https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes#july-22,-2025. Do not infer that the two announcements describe an identical rollout. | Source: https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes#july-22,-2025
-- [unsupported, major] Risk assessment: Security & identity / behaviour: The PowerPoint Home option runs as the signed-in user. | Found: Searched: PowerPoint Home create Copilot signed in user review generated presentation policy disable entry point. Read Copilot privacy, overview, requirements excerpt and Create a new presentation with Copilot in PowerPoint; these establish user permissions, not this option's execution identity. | Fix: Replace 'the option runs as the signed-in user' with 'Microsoft Copilot respects the current user's data-access permissions', supported by https://learn.microsoft.com/copilot/microsoft-365/microsoft-365-copilot-privacy.
-- [contradicted, blocker] controls[0].ui / admin-path: The Cloud Policy route is Customization > Policy Management > policy configuration > Choose the scope > Configure Settings > Allow the use of connected experiences in Office that analyze content. | Found: On the Policy configurations page, select Create. On the Choose the scope page, determine whether the policy configuration applies to all users, specific groups On the Configure Settings page, select the policies that you want to include in the policy configuration. | Fix: Use the documented creation route: 'Customization > Policy Management > Create > Choose the scope > Configure Settings > Allow the use of connected experiences in Office that analyze content'. The current route substitutes selecting an existing configuration for Create; the cited page documents Choose the scope and Configure Settings in the creation wizard. The privacy-controls page already cited supplies the policy name. | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy
+- [unsupported, blocker] controls[0].ui; Governance controls: table / admin-path: The Cloud Policy overview documents the control at Customization > Policy Management > Create > Choose the scope > Configure Settings > Allow the use of connected experiences in Office that analyze content. | Found: Searched: named analyze-content policy with "Configure Settings" "Cloud Policy". Read Cloud Policy overview and manage-privacy-controls. The route is supported jointly, but the linked overview does not name or document the setting at its last step. | Fix: Keep the path, but replace controls[0].ui.docs and the corresponding table link with https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls#policy-setting-for-connected-experiences-that-analyze-your-content. That page documents the setting and its availability through Cloud Policy; retain the Cloud Policy overview in sources for the route into the wizard.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model; licensing.notes; Cost and licensing / licensing: Microsoft 365 Copilot (Premium) is an add-on licence providing the full experience in Word, Excel, PowerPoint and OneNote. | Found: You have the Microsoft 365 Copilot add-on license with access to the full experience of Copilot in Word, Excel, PowerPoint, and OneNote. | Fix: Keep the cited add-on description, but add to licensing.notes and Cost and licensing: 'The current licence-options page also says Microsoft Copilot is available with Microsoft 365 E7.' Cite https://learn.microsoft.com/copilot/plan/copilot-license-options, which states 'Microsoft Copilot is available with Microsoft 365 E7 or as an add-on'. | Source: https://learn.microsoft.com/copilot/plan/copilot-overview
-- [supported, minor] Governance controls / behaviour: Cloud Policy settings apply after the Office app restarts. | Found: Policies from Cloud Policy are applied only when the Office app is restarted. Some policies related to privacy controls will apply without restarting any Office apps. | Fix: Replace the restart clause with: 'Cloud Policy settings normally apply when Office apps restart; some privacy-control policies apply without restarting.' Keep the existing Cloud Policy citation. | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy
-- [supported, minor] Governance controls / behaviour: Cloud Policy takes precedence over Group Policy when both are configured. | Found: policy settings implemented by using Cloud Policy take precedence over policy settings implemented by using Group Policy on Windows Server | Fix: Replace the precedence clause with: 'The Cloud Policy overview says Cloud Policy takes precedence over Group Policy; Microsoft's sensitive-and-regulated-customer guidance instead says Group Policy takes precedence for Win32 Office apps and advises keeping the policies aligned.' Cite https://learn.microsoft.com/compliance/anz/blueprint-copilot-reqconfig#connected-experiences, whose search excerpt states that conflicting precedence. | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy
-- [unsupported, minor] rationale: impact / behaviour: Other users and administrators notice nothing from the change. | Found: Searched: PowerPoint Home Copilot option other users not licensed visible. Read MC1311974, overview and creation support page. The notice names affected users but does not guarantee no visible effect or support impact for everyone else. | Fix: Remove '; other users and admins notice nothing' from the impact rationale. Keep the sentence identifying licensed PowerPoint for Windows users as the affected audience.
-- [contradicted, minor] Governance guidance: After rollout; controls / consistency: The checklist tells readers to review the Microsoft Copilot usage report, but that monitoring control has no controls-table row. | Found: After rollout: 'Review the Microsoft Copilot usage report'. The controls table lists only connected-experiences availability and licence assignment. | Fix: The 'Review the Microsoft Copilot usage report' checklist step has no matching table row. Remove that checklist bullet for this correction rather than adding an unverified control row.
+- [supported, minor] Governance controls / behaviour: The Cloud Policy overview says Cloud Policy takes precedence over Group Policy. | Found: policy settings implemented by using Cloud Policy take precedence over policy settings implemented by using Group Policy on Windows Server | Fix: Replace the precedence comparison with: "The Cloud Policy overview says Cloud Policy takes precedence over Group Policy on Windows Server; Microsoft's sensitive-and-regulated-customer guidance says Group Policy takes precedence for Win32 Office apps where both are in use and advises keeping the policies aligned." Retain both existing citations. | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy
 -->

@@ -22,7 +22,7 @@ licensing:
 audiences: ["security","compliance","m365-admin","service-owner"]
 tags: ["purview","dlp","m365-copilot","copilot-chat","sensitive-information-types","oversharing","cowork","role-groups"]
 sources:
-  - title: "Learn about using Microsoft Purview Data Loss Prevention to protect interactions with Microsoft 365 Copilot, Copilot Chat, and Cowork"
+  - title: "Microsoft Purview DLP for Microsoft 365 Copilot and Cowork"
     url: "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about"
     kind: "learn"
   - title: "Learn about the default data loss prevention policy for Microsoft 365 Copilot location"
@@ -33,6 +33,9 @@ sources:
     kind: "learn"
   - title: "New-DlpComplianceRule"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule"
+    kind: "learn"
+  - title: "Microsoft Purview DSPM Sensitive Information Policy Deployment Guide for Education"
+    url: "https://learn.microsoft.com/microsoft-365/education/guide/1-reference/purview-data-security-posture-management-education"
     kind: "learn"
   - title: "Microsoft 365 Roadmap 515945"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=515945"
@@ -53,7 +56,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Data Loss Prevention > Policies > + Create policy > Custom > Custom policy > Locations > Microsoft Copilot, Copilot Chat, and Copilot Cowork > Prevent Copilot and Cowork from processing content > Processing prompts"
+      path: "Data Loss Prevention > Policies > + Create policy > Custom > Custom policy > Locations > Microsoft Copilot, Copilot Chat, and Copilot Cowork > rule > Prevent Copilot and Cowork from processing content > Processing prompts"
       docs: "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about"
     api: null
     note: "Rule uses the Content contains > Sensitive information types condition. Learn marks blocking SITs in prompts as preview and rolling out."
@@ -88,19 +91,23 @@ changes:
     note: "New briefing: Purview DLP rule action that stops Microsoft 365 Copilot answering prompts containing sensitive information types, launched on the roadmap for the Worldwide cloud."
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 76 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-28"
+    note: "Corrected after the independent check: the Autonomy bullet now states the documented outcome, pre-built agent coverage is cited to Microsoft's education guide, the Incident reports and compliance-URL checklist steps are removed, and the rule step is added to the Processing prompts path."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 82 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-28"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 76
-  confirmed: 71
-  unconfirmed: 1
-  contradicted: 4
-  attempts: 1
-  hash: "09b9da5802bb33a7a3a2b104b4a6c094"
+  claims: 82
+  confirmed: 82
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "e2cd38e8addbf6450414a31b67745749"
 ---
 
 ## What's changing
@@ -133,7 +140,7 @@ The decision for a service owner is therefore which SITs must never reach Copilo
 
 **Autonomy & actions**
 
-- No change: the rule only withholds a response; it takes no other action on the user's data.
+- The prompt-processing action prevents a response and internal or web searches.
 
 **Change & support**
 
@@ -150,7 +157,7 @@ A price or meter specific to the Processing prompts action is not yet published.
 
 ## Scope
 
-**Users:** people who prompt Microsoft 365 Copilot and Copilot Chat; Learn also lists Cowork and Copilot in Word, Excel and PowerPoint. The roadmap item names pre-built agents in Microsoft 365 Copilot, which the Learn page does not mention.
+**Users:** people who prompt Microsoft 365 Copilot and Copilot Chat; Learn also lists Cowork and Copilot in Word, Excel and PowerPoint. The roadmap names pre-built agents, and Microsoft's [education deployment guide](https://learn.microsoft.com/microsoft-365/education/guide/1-reference/purview-data-security-posture-management-education) documents Processing prompts protection for Microsoft Copilot and prebuilt agents, although the Copilot DLP feature page does not name them.
 
 **Roles:** Learn lists Microsoft Entra AI Admin, Purview Data Security AI Admin, Purview Data Security AI Admins, Purview Compliance Administrator, Purview Compliance Data Administrator, Purview Information Protection, Purview Information Protection Admin, Purview Security Administrator and Microsoft Entra Global Admin. Editing the default policy needs **DLP Compliance Management** permissions.
 
@@ -168,9 +175,7 @@ A price or meter specific to the Processing prompts action is not yet published.
 
 ### At rollout
 
-- Turn on **Incident reports** for the Copilot policy and add the security team as recipients, as Microsoft recommends.
 - Review simulation alerts, then switch the policy mode to enforce (Turn the policy on immediately, or Set-DlpCompliancePolicy -Mode Enable).
-- Set a compliance URL in the rule's policy tips so the block message links to your own guidance page.
 - Allow up to four hours after a change before testing it.
 
 ### After rollout
@@ -185,7 +190,7 @@ A price or meter specific to the Processing prompts action is not yet published.
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether Copilot answers prompts that contain chosen sensitive information types</strong><br><small>Tenant</small><br><small class="controls__note">Rule uses the Content contains &gt; Sensitive information types condition. Learn marks blocking SITs in prompts as preview and rolling out.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data Loss Prevention › Policies › + Create policy › Custom › Custom policy › Locations › Microsoft Copilot, Copilot Chat, and Copilot Cowork › Prevent Copilot and Cowork from processing content › Processing prompts <a href="https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether Copilot answers prompts that contain chosen sensitive information types</strong><br><small>Tenant</small><br><small class="controls__note">Rule uses the Content contains &gt; Sensitive information types condition. Learn marks blocking SITs in prompts as preview and rolling out.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data Loss Prevention › Policies › + Create policy › Custom › Custom policy › Locations › Microsoft Copilot, Copilot Chat, and Copilot Cowork › rule › Prevent Copilot and Cowork from processing content › Processing prompts <a href="https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether a Copilot DLP policy, including the default one, blocks or only simulates</strong><br><small>Tenant</small><br><small class="controls__note">Editing the default policy needs DLP Compliance Management permissions. -Mode TestWithNotifications or TestWithoutNotifications keeps it in simulation.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data Loss prevention › Policies › policy › Edit › Policy mode › Turn the policy on immediately <a href="https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-default-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-DlpCompliancePolicy -Identity &quot;&lt;policy&gt;&quot; -Mode Enable</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancepolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Who can create or edit DLP policies for the Copilot location (Purview role-group membership)</strong><br><small>Tenant</small><br><small class="controls__note">The Copilot DLP page lists Purview Data Security AI Admins among the role groups that can create or edit these policies. Needs the Role management role.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and scopes › Role groups › Role groups for Microsoft Purview solutions › role group › Edit › Edit members of the role group › Choose users <a href="https://learn.microsoft.com/purview/purview-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember -Identity &quot;&lt;role-group&gt;&quot; -Member &quot;&lt;user-UPN&gt;&quot;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
@@ -199,7 +204,6 @@ The Learn page for this location says DLP alerts and DLP notifications are suppo
 
 ## Open questions
 
-- Does the Processing prompts action cover the pre-built agents in Microsoft 365 Copilot that the roadmap item names? Watch the Learn page for the Copilot DLP location.
 - When will Learn drop the preview label for blocking SITs in prompts, given the roadmap item says Launched and General Availability?
 - Which -RestrictAccess setting value, if any, scripts the Processing prompts action? Watch the New-DlpComplianceRule reference.
 - Will DLP evaluate files uploaded into prompts? Learn says it does not today.
@@ -210,15 +214,8 @@ cost: Low. The Microsoft Purview service description lists DLP to safeguard prom
 impact: Low. Administrators configure it; users notice only when an enforced rule matches their typed prompt and Copilot replies that the request can't be completed.
 -->
 
-<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: The rule takes no other action on the user's data. | Found: Searched: 'Purview Copilot prompt blocking modifies deletes user data'. Read the Copilot DLP feature and default-policy pages and Copilot privacy search excerpts; none states this exhaustive no-other-action claim. | Fix: Replace the bullet with 'The prompt-processing action prevents a response and internal or web searches.' This is the documented outcome at https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about.
-- [contradicted, blocker] Open questions: pre-built agents / absence: Whether Processing prompts covers pre-built Copilot agents remains an open documentation question. | Found: This phase creates the enforceable DLP policy that protects Microsoft Copilot and prebuilt agents from processing sensitive prompts or sensitive labeled content. Protection pattern A: Set the action to Prevent Copilot from processing content > Processing prompts. | Fix: Remove this open question. Replace the second sentence of Scope: Users with 'The roadmap names pre-built agents, and Microsoft's education deployment guide documents Processing prompts protection for Microsoft Copilot and prebuilt agents, although the Copilot DLP feature page does not name them.' Cite https://learn.microsoft.com/microsoft-365/education/guide/1-reference/purview-data-security-posture-management-education. | Source: https://learn.microsoft.com/microsoft-365/education/guide/1-reference/purview-data-security-posture-management-education
-- [contradicted, blocker] Governance guidance: At rollout, compliance URL / applicability: A rule's policy-tip compliance URL makes the block message link to the organisation's guidance without a Cowork exception. | Found: When the rule blocks an interaction, the Learn about access restrictions link opens the page that you specified. Customizing the link in Copilot policy tips isn't yet supported for Cowork. | Fix: Replace the bullet with 'For Copilot, set a compliance URL in the rule's policy tips so the block message links to your own guidance page; customising this link is not yet supported for Cowork.' The exception is documented at https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about#customize-the-link-in-copilot-policy-tips. | Source: https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Scope: Limits / availability: Administrative unit scoping is in preview and rolling out for this location. | Found: Administrative unit support for this location, including Cowork, is in preview and is rolling out. The option might not yet be available in your tenant. | Fix: Add the qualification 'Microsoft's education deployment guide instead says the policy location does not support Administrative Units.' Cite https://learn.microsoft.com/microsoft-365/education/guide/1-reference/purview-data-security-posture-management-education, whose Known limitations section states that conflicting restriction. | Source: https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The printed Purview path reaches the Copilot policy location and its Processing prompts rule action. | Found: Go to Data Loss Prevention > Policies and select + Create policy. Select the Custom template, then Custom policy. On the Locations page, set the Microsoft Copilot, Copilot Chat, and Copilot Cowork location to on. Add a rule | Fix: Make the omitted rule target explicit: 'Data Loss Prevention > Policies > + Create policy > Custom > Custom policy > Locations > Microsoft Copilot, Copilot Chat, and Copilot Cowork > rule > Prevent Copilot and Cowork from processing content > Processing prompts'. The cited page says to add a rule before setting its action. | Source: https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about
-- [contradicted, minor] Governance guidance: At rollout; controls / consistency: The checklist tells administrators to enable Incident reports, but no controls-table row covers that setting. | Found: Turn on Incident reports for the Copilot policy; controls rows cover prompt processing, policy mode and role-group membership, not Incident reports. | Fix: Remove the Incident reports instruction from the checklist. It has no corresponding controls row; do not add a row as part of this correction.
-- [contradicted, minor] Governance guidance: At rollout; controls / consistency: The checklist tells administrators to set the policy-tip compliance URL, but no controls-table row covers that setting. | Found: Set a compliance URL in the rule's policy tips; controls rows cover prompt processing, policy mode and role-group membership, not the compliance URL. | Fix: Remove the compliance-URL instruction from the checklist instead of adding a new controls row. Removing it also resolves its missing Cowork qualification.
+- [supported, minor] Scope: Limits / availability: Administrative-unit scoping at the Copilot location is in preview and rolling out. | Found: Administrative unit support for this location, including Cowork, is in preview and is rolling out. The option might not yet be available in your tenant. | Fix: Append to the administrative-unit sentence: 'The cited education deployment guide still says this location does not support administrative units, whereas the Copilot DLP feature page documents preview support.' The conflicting guide is https://learn.microsoft.com/microsoft-365/education/guide/1-reference/purview-data-security-posture-management-education and says 'The policy location doesn't support Administrative Units.' | Source: https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about
 -->

@@ -1,0 +1,842 @@
+{
+  "slug": "microsoft-purview-compliance-portal-enhancements-to-variant-limits-and-detection-groups",
+  "roadmapId": 511798,
+  "title": "Microsoft Purview Insider Risk Management: more indicator variants and larger detection groups",
+  "status": "held",
+  "date": "2026-11-28",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-28",
+    "reasons": [
+      "2 blocking findings (claims 34, 56)"
+    ]
+  },
+  "counts": {
+    "claims": 61,
+    "confirmed": 56,
+    "unconfirmed": 3,
+    "contradicted": 2,
+    "blocker": 2,
+    "major": 2,
+    "minor": 3
+  },
+  "summary": "Hold: the variant control sends administrators to create a new variant even when it says it covers editing an existing one. The higher limits and roadmap details are supported, but Microsoft does not explicitly support the assurances that existing configurations remain unchanged, no new data is read, and nothing acts autonomously.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; front matter: products; What's changing",
+      "type": "record",
+      "claim": "The change concerns Microsoft Purview Insider Risk Management.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Purview Insider Risk Management variant limit is being increased from 3 to 10 per indicator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target date is December CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"December CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is November CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"November CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing; Open questions",
+      "type": "record",
+      "claim": "The record lists General Availability and Preview as release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the record's cloud list, and US Government clouds are not listed.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists Web as the platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-05-14T23:15:59.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-05-14T23:15:59\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Why it matters; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "The roadmap describes increasing the variant limit from three to ten per indicator.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "variant limit is being increased from 3 to 10 per indicator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes an overall limit of 100 variants across all indicators.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "an overall limit of 100 across all indicators",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Why it matters; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "The roadmap describes increasing items in one detection group from 200 to 500.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "the number of items in one detection group is being increased from 200 to 500.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "summary; What's changing; Scope; controls[0].note",
+      "type": "behaviour",
+      "claim": "The policy indicators page currently permits up to ten variants per built-in indicator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "You can create up to ten variants for each built-in indicator and a total of 100 variants across all indicators.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "summary; What's changing; Scope; controls[0].note",
+      "type": "behaviour",
+      "claim": "The policy indicators page currently permits 100 variants in total across all indicators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "You can create up to ten variants for each built-in indicator and a total of 100 variants across all indicators.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "summary; What's changing; Scope; controls[1]; Governance guidance",
+      "type": "behaviour",
+      "claim": "The detection groups page currently permits up to 500 items in each detection group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-detection-groups",
+      "quote": "You can create up to 10 domain detection groups, and each group can have up to 500 items.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "The detection groups page permits up to ten detection groups of each supported type.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-detection-groups",
+      "quote": "You can create up to 10 domain detection groups ... You can create up to 10 file path detection groups ... You can create up to 10 trainable classifier detection groups",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "A variant is a copy of a built-in indicator that can be modified with detection-group exclusions or inclusions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "A variant inherits all the properties of the built-in indicator. You can modify the variant with exclusions or inclusions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; controls[1].note",
+      "type": "behaviour",
+      "claim": "Detection groups support domains, file paths, file types, keywords, sensitive info types, SharePoint sites and trainable classifiers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-detection-groups",
+      "quote": "Insider Risk Management currently supports seven detection types: Domains File paths File types Keywords Sensitive info types SharePoint sites Trainable classifiers",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Why it matters; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "A variant can ignore activity involving items in selected detection groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "Ignore activity involving items in selected groups. Select this option if you want to capture everything except for a few exclusions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "A variant can detect only activity involving items in selected detection groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "Only detect activity involving items in selected groups. Select this option if you want to specify inclusions to capture.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Why it matters; Governance controls; Governance guidance",
+      "type": "applicability",
+      "claim": "Detection groups can be used in global exclusions to exclude activity from policy scoring.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-detection-groups",
+      "quote": "You can exclude items from being scored by Insider Risk Management policies by using the Global exclusions setting. These types of exclusions apply to every trigger and indicator for all policies that you create within a tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "The Limits in Insider Risk Management page still lists three variants per indicator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-limits",
+      "quote": "| Maximum number of variants per indicator. | 3 |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "The Limits in Insider Risk Management page still lists 200 items per detection group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-limits",
+      "quote": "| Maximum number of items in a detection group | 200 |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; controls[0].note; Open questions",
+      "type": "behaviour",
+      "claim": "The documented portal button is labelled New indicator variant (preview).",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "Select New indicator variant (preview). This step opens the New indicator variant (preview) pane on the right side of the screen.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Microsoft suggests using the built-in indicator and its variant in the same policy and comparing captured activities before using only the variant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "You can then observe the activities that each indicator captures in alerts and then use only the variant indicator after making sure everything is detected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Variants do not support sequences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "Variants don't support sequences, cumulative exfiltration activities, the risk score booster, or real-time analytics for the detections group preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Variants do not support cumulative exfiltration activities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "Variants don't support sequences, cumulative exfiltration activities, the risk score booster, or real-time analytics for the detections group preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Variants do not support the risk score booster.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "Variants don't support sequences, cumulative exfiltration activities, the risk score booster, or real-time analytics for the detections group preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Variants do not support real-time analytics in the documented detection-group preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "Variants don't support sequences, cumulative exfiltration activities, the risk score booster, or real-time analytics for the detections group preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Recommended thresholds are not provided for variants of built-in indicators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "Insider Risk Management doesn't provide recommended thresholds for custom indicators or variants of built-in indicators.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "One variant can use up to five detection groups of a single type.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "For a single variant, you can add up to five detection groups of a single type.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Some built-in indicators, including Microsoft Defender for Endpoint indicators, do not support variants.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "Some built-in indicators (Microsoft Defender for Endpoint indicators, for example) don't support variants.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Security & identity; Scope; controls[3].note; Governance guidance",
+      "type": "role",
+      "claim": "Insider Risk Management and Insider Risk Management Admins can configure policies and settings, as can the Entra and Purview roles listed on the permissions page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "| Configure policies and settings | Yes | Yes | No | No | No | No | Members of the following roles can assign users to Insider Risk Management role groups and have the same solution permissions included with the Insider Risk Management Admins role group",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Role-group permissions may take up to 30 minutes to apply.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "After configuring your role groups, it might take up to 30 minutes for the role group permissions to apply to assigned users across your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "Insider Risk Management > Settings > Policy indicators > New indicator variant (preview) is the route for creating and editing variants.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "To edit an existing variant, complete the following steps: 1. Select the blue text at the end of the indicator description text. ... 2. In the View/edit indicators page, select Edit.",
+      "severity": "blocker",
+      "fix": "Change controls[0].governs and the matching table label to 'Creating variants of built-in indicators'. Keep the existing creation path; New indicator variant (preview) creates a variant and is not the documented route for editing an existing one."
+    },
+    {
+      "n": 35,
+      "where": "controls[1].ui; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The domain-group creation route is Microsoft Purview portal > Insider Risk Management > Settings > Detection groups > Type > Domains > New domain group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-detection-groups",
+      "quote": "In Insider Risk Management settings, select Detection groups. In the panel to the right, under Type, select Domains. In the panel to the right, select New domain group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[1].note",
+      "type": "admin-path",
+      "claim": "The other six detection-group types use the same navigation pattern with their respective type and New button.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-detection-groups",
+      "quote": "In Insider Risk Management settings, select Detection groups. In the panel to the right, under Type, select File paths. In the panel to the right, select New file path group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "The policy indicator-selection route is Microsoft Purview portal > Insider Risk Management > Policies > policy > Edit policy > Indicators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-best-practices-alert-tuning",
+      "quote": "Go to the specific policy on the Policies page, select Edit policy, go to the Indicators page, and then select more indicators.",
+      "severity": "minor",
+      "fix": "Keep the path, which ends on the right page, and expand controls[2].note to 'Scope is the individual policy. On Indicators, find the built-in indicator, open its variant list and select the required variant checkboxes.' These final steps are documented at https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators#use-a-variant-in-a-policy, which is already cited."
+    },
+    {
+      "n": 38,
+      "where": "controls[2].note; Governance controls",
+      "type": "behaviour",
+      "claim": "A policy's Indicators page lists variants under their built-in indicator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "Find the built-in indicator that includes one or more variants. ... Open the list to see the variants.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "Role membership is configured in Microsoft Purview portal > Settings > Roles and groups > Roles groups > Insider Risk Management > Edit > Choose users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "Select Settings in the upper-right corner of the page, select Roles and groups, then select Roles groups in the left navigation pane. Select the Insider Risk Management role group, then select Edit. Select Choose users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[3].api",
+      "type": "command",
+      "claim": "Add-RoleGroupMember -Identity \"Insider Risk Management\" -Member \"<user-UPN>\" adds a user to the role group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+      "quote": "Use the Add-RoleGroupMember cmdlet to add members to a management role group. The Identity parameter specifies the role group to add a member to. ... User ID or user principal name (UPN)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[0].scope; controls[1].scope; Governance controls",
+      "type": "applicability",
+      "claim": "Variant and detection-group settings are tenant-wide settings rather than settings owned by one policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings",
+      "quote": "Insider Risk Management settings apply to all Insider Risk Management policies, regardless of the template you choose when creating a policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "A detection group can be used by variants and global exclusions, so a shared group's contents can affect multiple policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-detection-groups",
+      "quote": "To use a detection group as part of a global exclusion, create the detection group as described in this article, then select it in the Global exclusions settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Governance controls; rationale: risk",
+      "type": "behaviour",
+      "claim": "A variant must be selected in a policy before that policy uses it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "To use an indicator variant in a policy ... Go to the Indicators page of the policy workflow. ... If you select one or more checkboxes in the variant list, the first-level checkbox for the built-in indicator becomes a solid blue checkbox.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Variants added to policies generate alerts on the dashboard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "When you add variants to policies, the dashboard generates alerts. An investigator can view more details in the Activity explorer and User activity tabs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[0].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no PowerShell or API operation for creating indicator variants at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'InsiderRiskEntityList New-InsiderRiskEntityList Set-InsiderRiskPolicy PowerShell reference'; the indicator-variants PowerShell/API query. Opened policy-indicators and settings; no variant creation call found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[1].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no PowerShell or API operation for creating detection groups at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Insider Risk Management PowerShell API create update policy indicator detection groups automation Microsoft Graph'; the InsiderRiskEntityList reference query. Opened detection-groups and settings; no detection-group creation call found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[2].api",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no automation operation for selecting a policy's indicators and variants.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'site:learn.microsoft.com/powershell Insider Risk Management policy indicators variants Set-InsiderRiskPolicy detection group'; the policy-indicator Graph/API query. Opened alert-tuning and policy-indicators; no selection call found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "summary; What's changing",
+      "type": "absence",
+      "claim": "No separate setting to enable the higher variant and detection-group limits is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Insider Risk Management indicator variants detection groups higher limits enable automatic default existing policies unchanged new data'. Opened policy-indicators, detection-groups, settings and configure; none describes a separate higher-limits enablement switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No licence or separate charge specific to these higher limits is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Insider Risk Management indicator variants detection groups licensing price pay as you go variant billing'. Opened plan, configure, policy-indicators, detection-groups, Purview billing models and Purview service description; no separate higher-limits entitlement or charge found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "A variant-specific incremental billing rule for pay-as-you-go indicators is not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Insider Risk Management indicator variants detection groups licensing price pay as you go variant billing'. Opened configure, policy-indicators and Purview billing models. Processing units and billable indicator classes are documented; variant-specific incremental billing is not.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "The higher configuration limits are available to their intended administrators without a separate higher-limits enablement step.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "You can create up to ten variants for each built-in indicator and a total of 100 variants across all indicators.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The higher limits are an included option within licensed Insider Risk Management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "| Feature | Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, and Microsoft 365 E5/A5/F5/G5 Insider Risk Management | ... | Insider Risk Management | Included |",
+      "severity": "minor",
+      "fix": "Keep licensing.model as included. Add 'Insider Risk Management is included in Microsoft 365 E5, among the plans listed in Microsoft's service description' to the licensing notes and Cost and licensing, and cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description. Preserve the narrower statements about unpublished limit-specific licensing and pay-as-you-go indicators."
+    },
+    {
+      "n": 53,
+      "where": "licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Some Insider Risk Management indicators require Purview pay-as-you-go billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "Some indicators included in Insider Risk Management are only available if you enable the pay-as-you-go billing model for your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft offers Insider Risk Management within a selection of Microsoft 365 subscriptions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-plan",
+      "quote": "Microsoft offers Insider Risk Management as part of a wide selection of Microsoft 365 licensing subscriptions. For details, see the Getting started with Insider Risk Management article.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Cost and licensing",
+      "type": "record",
+      "claim": "The roadmap item names no licence.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Purview Insider Risk Management variant limit is being increased from 3 to 10 per indicator and an overall limit of 100 across all indicators. Along with this, the number of items in one detection group is being increased from 200 to 500.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "summary; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "Detections change only when an administrator uses the extra capacity, and otherwise existing policies, variants and groups carry on unchanged.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'Insider Risk Management variants new data collected existing policies unchanged automatically higher limits'; the higher-limits enable/default query. Opened policy-indicators, detection-groups and settings; no unchanged-existing-configurations statement found.",
+      "severity": "blocker",
+      "fix": "Replace the summary's second sentence with 'Administrators can use the extra room to tune detections; no separate higher-limits switch is documented.' Replace 'If nobody acts, existing policies, variants and groups carry on as configured' with 'No source says existing behaviour changes merely because these limits rise.' In the risk rationale, replace the unconditional 'detections change when' clause with 'administrators use variants and detection groups to tailor detections in policies or global exclusions'."
+    },
+    {
+      "n": 57,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The feature reads no new data.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'Insider Risk Management detection groups indicator variants read data collection autonomous actions no changes limits'; the new-data/existing-policies query. Opened policy-indicators, detection-groups and settings; no no-new-data statement found.",
+      "severity": "major",
+      "fix": "Remove 'No change: the feature reads no new data.' Keep the documented statement that variants and detection groups change the scope of existing indicators."
+    },
+    {
+      "n": 58,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Variants and detection groups change which activities existing indicators capture through exclusions or inclusions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "A variant inherits all the properties of the built-in indicator. You can modify the variant with exclusions or inclusions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Nothing acts on its own as a result of this change.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'Insider Risk Management detection groups indicator variants read data collection autonomous actions no changes limits'. Opened policy-indicators, detection-groups, settings and alert-tuning; no passage states that this change introduces no autonomous actions.",
+      "severity": "major",
+      "fix": "Replace the Autonomy & actions bullet with 'When variants are added to policies, the dashboard generates alerts.' Remove 'No change' and 'nothing acts on its own'."
+    },
+    {
+      "n": 60,
+      "where": "Governance guidance: After rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "Every control the governance checklist asks readers to check is represented in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Compare alert volume ... on the Alerts dashboard ... Review detection groups ... in global exclusions each quarter. The table covers variant creation, detection-group contents, policy indicators and role membership, but not the Alerts dashboard or global exclusions.",
+      "severity": "minor",
+      "fix": "The After rollout steps name Alerts dashboard monitoring and global-exclusion review without corresponding control rows. Do not add rows in this correction; remove 'on the Alerts dashboard' and 'and in global exclusions' from those checklist steps."
+    },
+    {
+      "n": 61,
+      "where": "licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The Get started page links administrators to the subscription requirements for Insider Risk Management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "For more information about subscriptions and licensing, see the subscription requirements for Insider Risk Management.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-28T03:50:29.223Z",
+    "summary": {
+      "links": 10,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-settings-detection-groups",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-limits",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-settings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-plan",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-best-practices-alert-tuning",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=511798",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Creating and editing variants of built-in indicators",
+        "docs": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+        "reachable": true,
+        "segments": [
+          "Insider Risk Management",
+          "Settings",
+          "Policy indicators",
+          "New indicator variant"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Contents of detection groups (up to 500 items each)",
+        "docs": "https://learn.microsoft.com/purview/insider-risk-management-settings-detection-groups",
+        "reachable": true,
+        "segments": [
+          "Insider Risk Management",
+          "Settings",
+          "Detection groups",
+          "Type",
+          "Domains",
+          "New domain group"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Which indicators and variants a policy uses",
+        "docs": "https://learn.microsoft.com/purview/insider-risk-management-best-practices-alert-tuning",
+        "reachable": true,
+        "segments": [
+          "Insider Risk Management",
+          "Policies",
+          "Edit policy",
+          "Indicators"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Who can configure Insider Risk Management policies and settings",
+        "docs": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Roles and groups",
+          "Roles groups",
+          "Insider Risk Management",
+          "Edit",
+          "Choose users"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Who can configure Insider Risk Management policies and settings",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "reachable": true,
+        "token": "Add-RoleGroupMember",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

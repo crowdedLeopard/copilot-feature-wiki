@@ -17,7 +17,7 @@ impact: "medium"
 defaultState: "on"
 action: "act-now"
 licensing:
-  model: "mixed"
+  model: "included"
   notes: "Copilot in Excel is available to users without the Microsoft 365 Copilot add-on licence (Microsoft 365 Copilot (Basic)) and in full to users with it (Premium). Microsoft has not published which of these includes Excel canvas."
 audiences: ["m365-admin","compliance","change-adoption","end-user"]
 tags: ["excel","m365-copilot","microsoft-365-apps","privacy","group-policy","sensitivity-labels","auditing"]
@@ -42,6 +42,9 @@ sources:
     kind: "learn"
   - title: "Manage sensitivity labels in Office apps"
     url: "https://learn.microsoft.com/purview/sensitivity-labels-office-apps"
+    kind: "learn"
+  - title: "Minimum versions for sensitivity labels in Microsoft 365 Apps"
+    url: "https://learn.microsoft.com/purview/sensitivity-labels-versions"
     kind: "learn"
   - title: "Audit logs for Copilot and AI applications"
     url: "https://learn.microsoft.com/purview/audit-copilot"
@@ -77,14 +80,14 @@ controls:
       call: "Registry value UserContentDisabled set to 2 (Disabled) under HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\office\\16.0\\common\\privacy"
       docs: "https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls"
     note: "When disabled, Microsoft Copilot features are not available in Excel, OneNote, Outlook, PowerPoint and Word. If not configured, these experiences are available."
-  - governs: "Whether workbooks with a given sensitivity label are excluded from Copilot in Excel"
+  - governs: "Whether workbooks with a given sensitivity label are excluded from Copilot in Excel on supported clients"
     scope: "other"
     ui: null
     api:
       kind: "powershell"
       call: "Set-Label -Identity <label GUID> -AdvancedSettings @{BlockContentAnalysisServices=\"True\"}"
       docs: "https://learn.microsoft.com/purview/sensitivity-labels-office-apps"
-    note: "Not available in the Microsoft Purview portal. Labelled content stays available to Copilot in Teams and Copilot Chat."
+    note: "Not in the Microsoft Purview portal. Not available for Excel for the web; on Windows, rolling out to Current Channel and Monthly Enterprise Channel version 2606 and later."
   - governs: "Searching audit records of Copilot interactions, including those in Excel"
     scope: "tenant"
     ui:
@@ -105,19 +108,23 @@ changes:
     note: "New briefing: Excel canvas rolling out per MC1485411, with the Copilot in Excel privacy, label and audit controls that govern it."
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 57 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-28"
+    note: "Corrected: the label setting is now qualified as not available for Excel for the web and still rolling out to Windows version 2606 and later; licensing model set to included; minor wording fixes."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 68 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-28"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 57
-  confirmed: 55
+  claims: 68
+  confirmed: 67
   unconfirmed: 1
-  contradicted: 1
-  attempts: 1
-  hash: "ea2e27a11b5d17649c46a63815618490"
+  contradicted: 0
+  attempts: 0
+  hash: "8929e5fa3439213981431ebdf6d72d8c"
 ---
 
 ## What's changing
@@ -132,12 +139,13 @@ The roadmap item is **Rolling out**, with a target of September CY2026, for Exce
 
 Excel canvas changes how workbook data leaves the grid: a user who could already ask Copilot to analyse a sheet now gets a polished report that keeps itself current. Expect such reports to be screenshotted, presented and forwarded as if they were checked dashboards. Microsoft's Copilot privacy page warns that generative AI responses aren't guaranteed to be 100% factual, so the insight text on a canvas carries the same caveat as any Copilot answer, but it now arrives in a format that looks finished.
 
-If nobody acts, the capability reaches users who already have Copilot in Excel, according to MC1485411, which describes no admin step. There is no Excel canvas switch of its own documented; the levers are the controls that already govern Copilot in Excel: the connected-experiences privacy policy on Windows, the sensitivity label setting that keeps labelled files away from Copilot in Office apps, and the Copilot audit records.
+If nobody acts, the capability reaches users who already have Copilot in Excel, according to MC1485411, which describes no admin step. There is no Excel canvas switch of its own documented; the levers are the controls that already govern Copilot in Excel: the connected-experiences privacy policy on Windows, the sensitivity label setting that keeps labelled files away from Copilot in Office apps on supported client versions (it is not available for Excel for the web), and the Copilot audit records.
 
 ## Risk assessment
 
 **Data exposure**
-- The canvas is built from workbook data the user can already open, per the roadmap item. A label with the BlockContentAnalysisServices advanced setting excludes labelled content from Microsoft 365 Copilot in Word, Excel, PowerPoint and Outlook, which keeps those workbooks out of Copilot in Excel; the Purview page notes that the same content remains available to Copilot in Teams and Copilot Chat.
+- The roadmap describes a canvas built from workbook data. Microsoft's [Copilot privacy page](https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy) states that Copilot only surfaces organisational data to which the user has at least view permissions.
+- A label with the BlockContentAnalysisServices advanced setting excludes labelled content from Microsoft 365 Copilot in Word, Excel, PowerPoint and Outlook; the Purview page notes that the same content remains available to Copilot in Teams and Copilot Chat. This setting depends on supported client versions and is not available for Excel for the web. For Windows, preventing all connected experiences that analyse content is rolling out to Current Channel version 2606 and later and Monthly Enterprise Channel version 2606 and later ([minimum versions for sensitivity labels](https://learn.microsoft.com/purview/sensitivity-labels-versions)).
 - Where a canvas is stored, and who can see it when the workbook is shared, is not described by Microsoft (see Open questions).
 
 **Security & identity**
@@ -169,12 +177,12 @@ If nobody acts, the capability reaches users who already have Copilot in Excel, 
 ## Governance guidance
 
 ### Before rollout
-- Decide which sensitivity labels should exclude their workbooks from Copilot in Office apps, and set the BlockContentAnalysisServices advanced setting on those labels with Set-Label in Security & Compliance PowerShell.
+- Decide which sensitivity labels should exclude their workbooks from Copilot in Office apps, and set the BlockContentAnalysisServices advanced setting on those labels with Set-Label in Security & Compliance PowerShell. This setting depends on supported client versions and is not available for Excel for the web; for Windows it is rolling out to Current Channel version 2606 and later and Monthly Enterprise Channel version 2606 and later.
 - Check whether Group Policy or the registry already disables *Allow the use of connected experiences in Office that analyze content* for any user groups, because that also removes Copilot, and with it Excel canvas, from Excel on Windows.
 - Brief the owners of finance and HR workbooks that a canvas refreshes itself when the data changes.
 
 ### At rollout
-- Notify Copilot in Excel users of the new report capability and that its generated insights need checking before reuse, as MC1485411 recommends.
+- Notify Copilot in Excel users of the new report capability, as MC1485411 recommends. Tell users to check generated insights before reuse.
 - Update internal Copilot in Excel training and adoption material to cover canvases.
 
 ### After rollout
@@ -190,14 +198,14 @@ If nobody acts, the capability reaches users who already have Copilot in Excel, 
 <tbody>
 <tr><td data-label="Control"><strong>Tenant-wide switch for Excel canvas alone</strong><br><small>Tenant</small><br><small class="controls__note">Microsoft documents no Excel canvas-specific setting at the time of writing (November 2026). Use the Copilot in Excel controls below.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether Copilot features, Excel canvas included, are available in Excel on Windows</strong><br><small>User</small><br><small class="controls__note">When disabled, Microsoft Copilot features are not available in Excel, OneNote, Outlook, PowerPoint and Word. If not configured, these experiences are available.</small></td><td data-label="Admin UI"><strong>Group Policy Management</strong><br>User Configuration › Policies › Administrative Templates › Microsoft Office 2016 › Privacy › Trust Center › Allow the use of connected experiences in Office that analyze content <a href="https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Registry value UserContentDisabled set to 2 (Disabled) under HKEY_CURRENT_USER\Software\Policies\Microsoft\office\16.0\common\privacy</code> <a href="https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether workbooks with a given sensitivity label are excluded from Copilot in Excel</strong><br><small class="controls__note">Not available in the Microsoft Purview portal. Labelled content stays available to Copilot in Teams and Copilot Chat.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-Label -Identity &lt;label GUID&gt; -AdvancedSettings @{BlockContentAnalysisServices=&quot;True&quot;}</code> <a href="https://learn.microsoft.com/purview/sensitivity-labels-office-apps" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether workbooks with a given sensitivity label are excluded from Copilot in Excel on supported clients</strong><br><small class="controls__note">Not in the Microsoft Purview portal. Not available for Excel for the web; on Windows, rolling out to Current Channel and Monthly Enterprise Channel version 2606 and later.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-Label -Identity &lt;label GUID&gt; -AdvancedSettings @{BlockContentAnalysisServices=&quot;True&quot;}</code> <a href="https://learn.microsoft.com/purview/sensitivity-labels-office-apps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Searching audit records of Copilot interactions, including those in Excel</strong><br><small>Tenant</small><br><small class="controls__note">Needs a role that can search audit logs, such as Audit Reader. Records from Excel carry the AppHost value Excel.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Audit › Search › Workloads › Copilot <a href="https://learn.microsoft.com/copilot/manage/copilot-admin-reports" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Search-UnifiedAuditLog -StartDate &lt;date&gt; -EndDate &lt;date&gt; -Operations CopilotInteraction</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 - Microsoft documents no switch specific to Excel canvas at the time of writing (November 2026). Every control in the table governs Copilot in Excel as a whole, so using one affects Copilot features in Excel generally, not only canvases.
-- The connected-experiences policy can also be deployed through [Cloud Policy](https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy) instead of Group Policy. Microsoft's Copilot privacy page states its effect on Copilot for Excel on Windows, Mac, iOS and Android. For Office for the web, Microsoft's product list gives one privacy control, *Allow the use of additional optional connected experiences in Office*, and the analyse-content policy is not among the controls it lists for Excel for the web.
-- The label setting has no Microsoft Purview portal option; it is set only in Security & Compliance PowerShell. Labelled content stays available to Copilot in Teams and Copilot Chat.
+- The connected-experiences policy can also be deployed through [Cloud Policy](https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy) instead of Group Policy. Microsoft's Copilot privacy page states its effect on Copilot for Excel on Windows, Mac, iOS and Android when running the most current version of these apps. For Office for the web, Microsoft's product list gives one privacy control, *Allow the use of additional optional connected experiences in Office*, and the analyse-content policy is not among the controls it lists for Excel for the web.
+- The label setting has no Microsoft Purview portal option; it is set only in Security & Compliance PowerShell. It is not available for Excel for the web. Labelled content stays available to Copilot in Teams and Copilot Chat.
 - Searching the audit log needs a role such as Audit Reader. Copilot in Excel usage also appears in the [Microsoft Copilot usage report](https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-usage), which counts all Copilot in Excel features.
 
 ## Open questions
@@ -214,13 +222,8 @@ cost: Low. The known cost is user communication and training. Copilot in Excel c
 impact: Medium. Microsoft says it affects users with access to Copilot in Excel. Analysts and report owners who build summaries from workbooks are the people most likely to notice it.
 -->
 
-<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[2].governs/note; Risk assessment: Data exposure; Why it matters; Governance guidance / applicability: BlockContentAnalysisServices excludes labelled workbooks from Copilot in Excel without a client or version restriction. | Found: Prevent all connected experiences that analyze content | Rolling out to Current Channel: 2606+ Rolling out to Monthly Enterprise Channel: 2606+ | Rolling out: 16.110+ | Rolling out: 2.111+ | Rolling out: 16.0.20026+ | Not available | Fix: Qualify the label-control row and its applicability statements with: 'This setting depends on supported client versions and is not available for Excel for the web. For Windows, preventing all connected experiences that analyse content is rolling out to Current Channel version 2606 and later and Monthly Enterprise Channel version 2606 and later.' Cite https://learn.microsoft.com/purview/sensitivity-labels-versions. Do not present the label setting as a control for web canvases. | Source: https://learn.microsoft.com/purview/sensitivity-labels-versions
-- [unsupported, blocker] front matter: licensing.model / licensing: Excel canvas has a mixed licensing model. | Found: Searched: "Excel canvas" license Basic Premium pricing. Read Copilot overview, roadmap and MC1485411; the overview documents alternative general Copilot experiences, not a combination of entitlement models for Excel canvas. | Fix: Set licensing.model to 'included' for a new option within the licensed Copilot in Excel product, retaining the notes naming Microsoft 365 Copilot (Basic) and Microsoft 365 Copilot (Premium) and explicitly stating that Microsoft has not published which tier includes Excel canvas. Do not classify the unresolved canvas entitlement as mixed.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance controls: connected-experiences policy / applicability: The Copilot privacy page describes the analyse-content control's effect for Excel on Windows, Mac, iOS and Android. | Found: This applies to when you're running the most current version of these apps on Windows, Mac, iOS, or Android devices. | Fix: Add 'when running the most current version of these apps' to the sentence describing the policy's effect across Windows, Mac, iOS and Android. | Source: https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy
-- [supported, minor] Risk assessment: Data exposure / behaviour: Canvas uses workbook data the user can already access, attributed to the roadmap item. | Found: Microsoft Copilot only surfaces organizational data to which individual users have at least view permissions. | Fix: Replace the sentence with: 'The roadmap describes a canvas built from workbook data. Microsoft's Copilot privacy page states that Copilot only surfaces organisational data to which the user has at least view permissions.' Cite https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy rather than attributing the permissions rule to the roadmap. | Source: https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy
-- [supported, minor] Governance guidance: At rollout / record: MC1485411 recommends telling users to check generated insights before reuse. | Found: We recommend that you notify users about this new capability and update any internal training or adoption materials related to Copilot in Microsoft Excel. | Fix: Replace the bullet with: 'Notify Copilot in Excel users of the new report capability, as MC1485411 recommends. Tell users to check generated insights before reuse.' The second sentence is the wiki's advice, not an additional recommendation from this notice.
+- [unsupported, major] Risk assessment: Security & identity / behaviour: The roadmap and MC1485411 present canvas as used by the signed-in user on their own workbook. | Found: Searched: Copilot Excel signed-in identity permissions current workbook; Copilot Excel signed in workbook analyze data user. Read roadmap, MC1485411, Copilot privacy and audit-copilot; the records do not specify this identity or workbook-ownership mechanism. | Fix: Replace the Security & identity bullet with: 'No identity change is described in the roadmap item or MC1485411; both present Excel canvas as part of Copilot in Excel.'
 -->

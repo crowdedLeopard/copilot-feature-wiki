@@ -63,15 +63,17 @@ changes:
     note: "First briefing for this item: the roadmap describes local inferencing in five countries, and Microsoft Learn documents no admin setting, default or licence detail yet."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 33 statements confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 39 statements confirmed"
 version: 1
 verification:
   status: "verified"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 33
-  confirmed: 33
+  claims: 39
+  confirmed: 39
   unconfirmed: 0
   contradicted: 0
   attempts: 0

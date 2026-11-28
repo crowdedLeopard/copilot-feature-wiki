@@ -82,15 +82,17 @@ changes:
     note: "Corrected after the independent check: scoped the Known issues limits to SDK-built agents, set cost to variable, and updated the summary, usage-billing wording and open questions."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 83 statements confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 85 statements confirmed"
 version: 2
 verification:
   status: "verified"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 83
-  confirmed: 83
+  claims: 85
+  confirmed: 85
   unconfirmed: 0
   contradicted: 0
   attempts: 0

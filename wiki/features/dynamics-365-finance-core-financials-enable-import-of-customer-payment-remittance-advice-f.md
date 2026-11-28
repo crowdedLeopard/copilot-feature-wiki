@@ -4,7 +4,7 @@ slug: "dynamics-365-finance-core-financials-enable-import-of-customer-payment-re
 roadmapId: 576741
 topic: "m365-copilot"
 products: ["Microsoft Copilot (Microsoft 365)","Dynamics 365 Finance"]
-summary: "Microsoft plans AI import and matching of customer remittance advice in Dynamics 365 Finance, feeding payment journals and settlement. Preview March 2027. Controls, default and licence are not yet documented."
+summary: "Microsoft plans AI import and matching of customer remittance advice in Dynamics 365 Finance, feeding payment journals and settlement. Preview targeted for March CY2027. Controls, default and licence are not yet documented."
 status: "in-development"
 releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -28,6 +28,9 @@ sources:
   - title: "Overview of Copilot capabilities in finance and operations apps"
     url: "https://learn.microsoft.com/dynamics365/fin-ops-core/fin-ops/copilot/copilot-for-finance-operations"
     kind: "learn"
+  - title: "Customer payment overview"
+    url: "https://learn.microsoft.com/dynamics365/finance/cash-bank-management/tasks/customer-payment-overview"
+    kind: "learn"
 videos: []
 related: ["dynamics-365-finance-business-performance-mcp-for-erp-analytics"]
 controls:
@@ -38,7 +41,7 @@ controls:
     note: "No setting, role or admin centre path is documented. The roadmap says only that admins, makers or marketers enable it for end users."
 confidence: "low"
 created: "2026-11-21"
-updated: "2026-11-21"
+updated: "2026-11-28"
 roadmapModified: "2026-10-16T19:08:26"
 changes:
   - date: "2026-11-21"
@@ -47,19 +50,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 47 statements not yet confirmed"
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 47 statements contradicted, 3 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-28"
+    note: "Corrected the Data exposure bullet, which stated what remittance advice usually contains; it now advises inspecting your own samples. Reworded the preview date in the summary and added the customer payment overview as a source."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 46 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-28"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 47
-  confirmed: 44
-  unconfirmed: 3
+  claims: 46
+  confirmed: 46
+  unconfirmed: 0
   contradicted: 0
-  attempts: 1
-  hash: "c142bd05c3e86b99a0cdaf21611867d8"
+  attempts: 0
+  hash: "22a44c1157a353c0fb27a7d07320e846"
 ---
 
 ## What's changing
@@ -80,7 +87,7 @@ Microsoft has not stated what happens on arrival, so base your plan on the roadm
 
 **Data exposure**
 
-- Remittance advice usually carries customer names, invoice references and payment amounts. The roadmap says the documents are imported, scanned and mapped by AI in the integrated Power Platform environment; where that data is processed and stored is not yet documented.
+- Treat imported remittance documents as sensitive financial data and inspect your samples for customer identifiers, invoice references and payment amounts before testing. The roadmap says the documents are imported, scanned and mapped by AI in the integrated Power Platform environment; where that data is processed and stored is not yet documented.
 
 **Security & identity**
 
@@ -150,14 +157,8 @@ cost: Low. The only cost the sources show is admin and finance-team time; the li
 impact: Medium. The roadmap says admins, makers or marketers enable it for end users; in practice the accounts receivable team that handles customer payments is the group that would notice.
 -->
 
-<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Data exposure / behaviour: Customer remittance advice usually carries customer names. | Found: Searched: "remittance advice" "customer name"; remittance advice contains invoice numbers payment amounts customer names document. Read Business Central remittance excerpts, Document Intelligence invoice excerpt and EY payment-processing page; none states this generalisation about remittance advice. | Fix: Replace the document-contents sentence with 'Treat imported remittance documents as sensitive financial data and inspect your samples for customer identifiers, invoice references and payment amounts before testing.'
-- [unsupported, major] Risk assessment: Data exposure / behaviour: Customer remittance advice usually carries invoice references. | Found: Searched: "remittance advice" "amount" "invoice"; remittance advice contains invoice numbers payment amounts customer names document. Read British Business Central advice, Azure payment and EY excerpts; vendor-report contents and payment instructions do not state usual customer-remittance contents. | Fix: Use the same replacement for the document-contents sentence: 'Treat imported remittance documents as sensitive financial data and inspect your samples for customer identifiers, invoice references and payment amounts before testing.'
-- [unsupported, major] Risk assessment: Data exposure / behaviour: Customer remittance advice usually carries payment amounts. | Found: Searched: "remittance advice" "amount" "invoice"; remittance advice contains invoice numbers payment amounts customer names document. Read NAV remittance-report hotfix, remittance-table and EY excerpts; these do not establish usual contents of customer remittance documents. | Fix: Use the same replacement for the document-contents sentence: 'Treat imported remittance documents as sensitive financial data and inspect your samples for customer identifiers, invoice references and payment amounts before testing.'
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] summary; front matter: previewDate; What's changing; Risk assessment; Scope; Governance guidance / record: Preview is targeted for March CY2027. | Found: "previewDate": "March CY2027" | Fix: Replace 'Preview March 2027.' in the summary with 'Preview targeted for March CY2027.'
-- [supported, minor] front matter: licensing.model and licensing.notes; summary; Cost and licensing; rationale: cost / licensing: The licensing model is unknown because no licence specific to this planned feature is published. | Found: Customers must acquire and assign appropriate subscription licenses for their users in the Microsoft 365 admin center, following Microsoft's product terms. | Fix: Set licensing.model to 'included'. Replace licensing.notes with 'Dynamics 365 Finance requires appropriate subscription licences determined by users' assigned security roles. A licence or additional entitlement specific to this planned remittance import feature is not yet published.' Cite https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/sysadmin/stay-compliant-user-license-requirement. Keep the feature-specific price and meter uncertainty. | Source: https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/sysadmin/stay-compliant-user-license-requirement
-- [supported, minor] Why it matters / behaviour: Customer payment journals feed payment postings and settlement of invoices. | Found: Click Settle transactions to mark invoices that were paid. You're not required to settle the payment to any invoices. If this is a prepayment or if you don't know what invoice was paid, you can enter and post the payment. | Fix: Add https://learn.microsoft.com/dynamics365/finance/cash-bank-management/tasks/customer-payment-overview to sources for the journal-posting and invoice-settlement background. | Source: https://learn.microsoft.com/dynamics365/finance/cash-bank-management/tasks/customer-payment-overview
+- [supported, minor] front matter: licensing.model; licensing.notes; summary; Cost and licensing / licensing: Licensing is unknown because no licence specific to this feature has been published. | Found: Customers must acquire and assign appropriate subscription licenses for their users in the Microsoft 365 admin center, following Microsoft's product terms. | Fix: Set licensing.model to included. Replace licensing.notes and the first sentence of Cost and licensing with: 'Dynamics 365 Finance users need appropriate subscription licences based on their assigned security roles. Licence requirements, meters and prices specific to this feature are not yet published.' Cite https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/sysadmin/stay-compliant-user-license-requirement. Replace the summary's last sentence with: 'Feature-specific controls, default and additional licensing requirements are not yet documented.' Do not infer that AI processing has no additional charge. | Source: https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/sysadmin/stay-compliant-user-license-requirement
 -->

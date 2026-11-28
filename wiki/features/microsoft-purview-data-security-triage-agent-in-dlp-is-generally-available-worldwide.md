@@ -60,7 +60,7 @@ controls:
       docs: "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started"
     api: null
     note: "Also deployable from Defender XDR, but managed only in Purview. One instance per tenant."
-  - governs: "Schedule, alert timeframe, policy scope and Teams reminders the agent uses"
+  - governs: "Automatic versus manual execution, alert timeframe, policy scope and Teams reminders the agent uses"
     scope: "agent"
     ui:
       surface: "Microsoft Purview portal"
@@ -104,19 +104,23 @@ changes:
     note: "New briefing on the general availability of the Data Security Triage Agent for DLP alerts, with SCU costs and Purview portal controls."
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 5 of 109 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-28"
+    note: "Corrected: Microsoft sets the run schedule (admins choose automatic or manual runs); added the Teams app prerequisite for remediation reminders; corrected the role for changing overage SCUs; agent-identity roles now apply only when agent identity is used."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 109 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-28"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 109
-  confirmed: 104
+  confirmed: 108
   unconfirmed: 0
-  contradicted: 5
-  attempts: 1
-  hash: "fe38ebd37f993f0d4678b470800d3586"
+  contradicted: 1
+  attempts: 0
+  hash: "eb55f52e3a2f81bdf3e85868ed014921"
 ---
 
 ## What's changing
@@ -146,7 +150,7 @@ Nothing happens until someone with the setup roles deploys it. The cost question
 
 **Autonomy & actions**
 - On a schedule Microsoft sets, the agent categorises alerts without review. Analysts can give feedback and custom instructions (preview) that raise or lower priority, which changes future triage for the policy or all policies.
-- With **Remediation reminders in Microsoft Teams** (preview) on, the agent messages the last modifier of SharePoint and OneDrive files in Needs attention alerts, and enabling the setting also enables the bot in Teams for the tenant. One-click setup leaves it off.
+- With **Remediation reminders in Microsoft Teams** (preview) on, the agent messages the last modifier of SharePoint and OneDrive files in Needs attention alerts, provided the Microsoft Teams admin center allows the Data Security Triage Agent app to send messages to users; reminders are not sent when the tenant blocks deployment of new Teams apps. Enabling the setting also enables the bot in Teams for the tenant. One-click setup leaves it off.
 
 **Change & support**
 - Alerts the agent cannot handle land in **Not categorized**, and alerts from simulation-mode policies are not triaged at all; analysts still work those by hand.
@@ -159,7 +163,7 @@ Nothing happens until someone with the setup roles deploys it. The cost question
 
 **Microsoft 365 E5 and E7.** Microsoft Learn states these customers have 400 SCUs each month for every 1,000 paid user licences, up to 10,000 SCUs a month at no additional cost, and that the allowance resets monthly. Usage beyond it will be throttled at a future date, with an option then to buy more at $6 USD per SCU pay-as-you-go.
 
-**Other tenants.** Provisioned SCUs are billed per hour; when they run out, Security Copilot requests stop unless another capacity type is available. Overage capacity can be set to a maximum or unlimited in the Security Copilot portal settings (**Number of overage units**), which decides whether triage carries on into overage billing.
+**Other tenants.** Provisioned SCUs are billed per hour; when they run out, Security Copilot requests stop unless another capacity type is available. Overage capacity can be set to a maximum or unlimited in the Security Copilot portal settings (Settings > Owner settings > Number of overage units > Change), which decides whether triage carries on into overage billing.
 
 **Remediation reminders** cost nothing extra beyond the SCUs used to triage the alert, according to the get-started page.
 
@@ -177,10 +181,9 @@ Nothing happens until someone with the setup roles deploys it. The cost question
 ### Before rollout
 - Decide who may deploy the agent, and keep the setup roles in Purview role groups to that group (Settings > Roles and scopes > Role groups).
 - Check SCU headroom in the agent's usage monitoring before choosing a 30-day look-back; consider **Only triage new alerts** for the first run.
-- Choose agent identity rather than a user identity, so triage activity is not tied to one admin's account; see /concepts/agent-identity/.
 
 ### At rollout
-- Deploy from Purview (Agents > Explore agents > View Details > Setup) and set the alert timeframe, schedule and policy scope deliberately rather than through the one-click banner.
+- Deploy from Purview (Agents > Explore agents > Triage agent in Data Loss Prevention > View Details > Setup) and set the alert timeframe, automatic versus manual execution and policy scope deliberately rather than through the one-click banner.
 - Leave **Remediation reminders in Microsoft Teams** off until the Teams app permissions and user communication are agreed.
 
 ### After rollout
@@ -196,14 +199,14 @@ Nothing happens until someone with the setup roles deploys it. The cost question
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether the DLP triage agent is deployed in the tenant</strong><br><small>Tenant</small><br><small class="controls__note">Also deployable from Defender XDR, but managed only in Purview. One instance per tenant.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Agents › Explore agents › Triage agent in Data Loss Prevention › View Details › Setup <a href="https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Schedule, alert timeframe, policy scope and Teams reminders the agent uses</strong><br><small>Agent</small><br><small class="controls__note">Remediation reminders and reminder duration are preview.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Agents › Explore agents › Go to agent › Edit agent › Agent configuration <a href="https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Automatic versus manual execution, alert timeframe, policy scope and Teams reminders the agent uses</strong><br><small>Agent</small><br><small class="controls__note">Remediation reminders and reminder duration are preview.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Agents › Explore agents › Go to agent › Edit agent › Agent configuration <a href="https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether the agent keeps triaging alerts</strong><br><small>Agent</small><br><small class="controls__note">Deactivation stops triage without removing the agent.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Agents › Explore agents › Go to agent › ellipses (three dots) › Deactivate agent <a href="https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Security compute unit consumption by the agent</strong><br><small>Agent</small><br><small class="controls__note">Monitoring only; it does not limit consumption.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Agents › Explore agents › View agent › Edit agent › Usage monitoring <a href="https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Who holds the Purview roles needed to set up or use the agent</strong><br><small>Tenant</small><br><small class="controls__note">Covers the Purview roles only; Security Copilot Contributor is managed in Security Copilot. Needs the Role management role.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and scopes › Role groups › Role groups for Microsoft Purview solutions › role group › Edit › Edit members of the role group › Choose users <a href="https://learn.microsoft.com/purview/purview-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember -Identity &quot;&lt;role-group&gt;&quot; -Member &quot;&lt;user-UPN&gt;&quot;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-Deactivating the agent stops triage but keeps it and its alert timeframe reference point; **Remove agent** on the same menu deletes it. The agent's identity can be changed later in its deployment configuration. Microsoft Learn documents no PowerShell, Graph or other API for deploying, configuring or deactivating this agent at the time of writing (November 2026). The setup roles span two systems: Purview role groups (scriptable with Add-RoleGroupMember) and **Security Copilot Contributor**, which is managed in Security Copilot. Overage SCU limits are set in Security Copilot, not in Purview, and need the Azure capacity owner or contributor role.
+Deactivating the agent stops triage but keeps it and its alert timeframe reference point; **Remove agent** on the same menu deletes it. The agent's identity can be changed later in its deployment configuration. Microsoft Learn documents no PowerShell, Graph or other API for deploying, configuring or deactivating this agent at the time of writing (November 2026). The setup roles span two systems: Purview role groups (scriptable with Add-RoleGroupMember) and **Security Copilot Contributor**, which is managed in Security Copilot. Overage SCU limits are set in Security Copilot, not in Purview, and require an Azure capacity owner or contributor who is also a Security Copilot owner.
 
 ## Open questions
 
@@ -213,21 +216,16 @@ Deactivating the agent stops triage but keeps it and its alert timeframe referen
 - When will E5 and E7 usage beyond the included SCUs be throttled, and what happens to scheduled triage then? Watch Message center for the 30-day notice Microsoft promises.
 
 <!-- rationale
-risk: Medium. Once deployed, the agent runs under its own Microsoft Entra agent identity with roles that let it read and download the content behind DLP alerts, and any admin or analyst with the setup roles can deploy it from a banner.
+risk: Medium. When deployed using its own Microsoft Entra agent identity, the agent receives roles that let it read and download the content behind DLP alerts, and any admin or analyst with the setup roles can deploy it from a banner.
 cost: Variable. The agent consumes Security Copilot security compute units (SCUs), and the number depends on how many alerts it processes and of which type; Microsoft 365 E5 and E7 include a monthly SCU allowance.
 impact: Low. DLP analysts and administrators see a new Triage Agent view of the alert queue; end users are reached only if the preview Teams remediation reminders are switched on.
 -->
 
-<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].governs; Governance guidance: At rollout / applicability: Administrators can set the agent's schedule in Agent configuration. | Found: Choose to **Run automatically based on a set schedule**. If you don't choose this option, you must run the agent manually one at a time. Microsoft sets the schedule and it isn't configurable by organizations. | Fix: Replace 'Schedule' in controls[1].governs and its rendered row with 'Automatic versus manual execution'. Replace 'set the alert timeframe, schedule and policy scope deliberately' with 'set the alert timeframe, automatic versus manual execution and policy scope deliberately'. | Source: https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started
-- [contradicted, blocker] Risk assessment: Autonomy & actions / behaviour: Turning on remediation reminders sends Teams messages to the last modifier of SharePoint or OneDrive files in Needs attention alerts. | Found: To use the Remediation Capability of the Triage Agent in Data Loss Prevention, you must configure the Microsoft Teams Admin Center to allow the Data Security Triage Agent app to send messages to users. | Fix: Add to that sentence: 'provided the Microsoft Teams admin center allows the Data Security Triage Agent app to send messages to users; reminders are not sent when the tenant blocks deployment of new Teams apps.' The cited get-started page states this prerequisite. | Source: https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started
-- [contradicted, blocker] Governance controls: final sentence / role: Changing overage limits in Security Copilot requires the Azure capacity owner or contributor role. | Found: **Azure portal required role:** Azure capacity owner or contributor. **Security Copilot portal required role:** Azure capacity owner or contributor who are also Security Copilot owners. | Fix: Replace the final sentence with: 'Overage SCU limits are set in Security Copilot, not in Purview, and require an Azure capacity owner or contributor who is also a Security Copilot owner.' | Source: https://learn.microsoft.com/copilot/security/manage-usage
-- [contradicted, blocker] rationale: risk; What's changing / consistency: The risk rationale says every deployed agent runs under its own Entra agent identity, while the body also permits a user identity. | Found: Once deployed, the agent runs under its own Microsoft Entra agent identity It can run under a dedicated Microsoft Entra agent identity (recommended) or under the identity of the person who set it up. | Fix: Replace 'Once deployed, the agent runs under its own Microsoft Entra agent identity with roles that let it read and download the content behind DLP alerts' with 'When deployed using its own Microsoft Entra agent identity, the agent receives roles that let it read and download the content behind DLP alerts'.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Autonomy & actions / behaviour: Preview custom instructions can raise or lower alert priority. | Found: ### Custom instructions (Preview) Raising or lowering the alert’s priority if the content matches your custom instruction. | Fix: After the custom-instructions sentence add: 'The agents overview page describes custom instructions as raising priority only, while the DLP get-started page describes raising or lowering it.' Both pages are already cited. | Source: https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started
-- [supported, minor] Cost and licensing; Governance controls / admin-path: Overage units are set in Security Copilot Settings under Number of overage units. | Found: Sign in to Security Copilot (https://securitycopilot.microsoft.com) and go to **Settings**. Through the owner settings page: Under **Security compute units** or **Number of overage units**, select **Change**. | Fix: Replace the parenthetical '(Number of overage units)' with '(Settings > Owner settings > Number of overage units > Change)' to finish the route at the control documented on the cited usage page. | Source: https://learn.microsoft.com/copilot/security/manage-usage
-- [supported, minor] Governance guidance: At rollout / admin-path: Purview deployment can be reached through Agents > Explore agents > View Details > Setup. | Found: On the card for the Triage agent in Data Loss Prevention, select **View Details** to open a page that shows the details about the agent. 5. Select **Setup** | Fix: Replace this prose path with 'Agents > Explore agents > Triage agent in Data Loss Prevention > View Details > Setup', matching controls[0].ui. | Source: https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist tells readers to choose agent identity, but the controls table has no identity-selection control. | Found: Choose agent identity rather than a user identity Whether the DLP triage agent is deployed in the tenant Schedule, alert timeframe, policy scope and Teams reminders the agent uses | Fix: Remove the 'Choose agent identity rather than a user identity' checklist bullet; retain the documented identity choices and recommendation already explained in What's changing and Risk assessment.
+- [supported, minor] What's changing; Risk assessment: Security & identity / behaviour: The agent can run using a dedicated Microsoft Entra agent identity. | Found: Create and use agent identity (recommended): Create a separate Microsoft Entra agent identity for the agent. Associate all agent activities with this agent identity. | Fix: Add to the existing source-disagreement paragraph: 'The older preview page also says the DLP agent runs as the administrator who enabled it and that authentication expires after 90 days, whereas the get-started page now documents an agent-identity option.' The older statement is at https://learn.microsoft.com/purview/copilot-in-purview-agents; the new option is at https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started. | Source: https://learn.microsoft.com/purview/copilot-in-purview-agents-overview
+- [supported, minor] Scope: Who uses it / role: Each function requires one role from each group listed for it on the get-started page. | Found: For admins (any one from each group): ... For analysts (any one from each group): ... The account you use to view results ... must be assigned the roles (any one from each group) | Fix: Add after the role statement: 'The older preview page gives a different DLP role list: Insider Risk Management Analysts, Insider Risk Management Investigators or Insider Risk Management for viewing, plus Purview Content Analyst for management; the get-started page gives the function-specific groups referenced here.' Cite https://learn.microsoft.com/purview/copilot-in-purview-agents for the older list. | Source: https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started
+- [contradicted, minor] Governance guidance: At rollout; Governance controls table / consistency: The checklist's instruction to agree Teams app permissions has a corresponding controls-table row. | Found: Leave Remediation reminders in Microsoft Teams off until the Teams app permissions and user communication are agreed. | The five control rows cover deployment, agent configuration, deactivation, SCU monitoring and Purview role groups; none covers Teams app permissions. | Fix: Identify the missing control in Governance controls with: 'The checklist also calls for checking Teams app permissions; those permissions are not represented in this table.' Do not add a control row as part of this correction.
+- [supported, minor] Risk assessment: Autonomy & actions / behaviour: Custom instructions can raise or lower alert priority. | Found: Raising or lowering the alert’s priority if the content matches your custom instruction. | Fix: Add to the existing source-disagreement paragraph: 'The overview describes custom instructions as content-only and raising priority, while the get-started page describes content- and metadata-based instructions that can raise or lower priority.' The differing overview is https://learn.microsoft.com/purview/copilot-in-purview-agents-overview; the current detailed description is https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started. | Source: https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started
 -->

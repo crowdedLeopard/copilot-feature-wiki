@@ -4,72 +4,81 @@
   "title": "PowerPoint for Windows: create a presentation with Copilot from PowerPoint Home",
   "status": "held",
   "date": "2026-11-28",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "hold",
-  "notes": [
-    "claim 49: severity major on a rationale: impact rating lowered to minor; ratings are judgements and cannot hold a page"
-  ],
+  "notes": [],
   "hold": {
     "reason": "failed",
     "since": "2026-11-28",
     "reasons": [
-      "2 blocking findings (claims 19, 37)"
+      "1 blocking finding (claim 39)"
     ]
   },
   "counts": {
-    "claims": 55,
-    "confirmed": 50,
-    "unconfirmed": 2,
-    "contradicted": 3,
-    "blocker": 2,
-    "major": 1,
-    "minor": 5
+    "claims": 54,
+    "confirmed": 53,
+    "unconfirmed": 1,
+    "contradicted": 0,
+    "blocker": 1,
+    "major": 0,
+    "minor": 1
   },
-  "summary": "Hold: the Cloud Policy route mixes selecting an existing configuration with the creation wizard and omits the Create step needed for that route. The claim that Microsoft Learn does not describe starting presentations from PowerPoint's opening or File menus is also incorrect; the default, rollout notice, licence-assignment command and registry setting are supported.",
+  "summary": "Hold: the connected-experiences control links to a Cloud Policy overview that does not document the named setting. The route and registry setting are supported across the cited Microsoft pages, but the control link must point to the setting's documentation. The policy-precedence comparison also needs to retain the overview's Windows Server qualification.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing; Governance guidance; rationale: impact",
+      "where": "title; summary; What's changing; Scope; rationale: impact",
       "type": "record",
-      "claim": "PowerPoint for Windows gains a create-with-Copilot option on PowerPoint Home in the File menu, without first opening a new file.",
+      "claim": "The feature adds presentation creation with Copilot directly from PowerPoint Home in the File menu.",
       "status": "supported",
-      "source": "Message Center post MC1311974",
-      "quote": "We're improving how users get started with Copilot in PowerPoint for Windows by enabling presentation creation powered by Copilot directly from PowerPoint Home in the File menu.",
+      "source": "roadmap record",
+      "quote": "You can now create a presentation with Copilot in PowerPoint straight from the PowerPoint Home in file menu.",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "summary; licensing.notes; What's changing; Scope; controls[1].governs",
+      "where": "title; summary; What's changing; Scope; rationale: impact",
       "type": "record",
-      "claim": "MC1311974 identifies PowerPoint for Windows users assigned a Microsoft Copilot licence as affected.",
+      "claim": "This briefing's rollout affects users of PowerPoint for Windows.",
       "status": "supported",
       "source": "Message Center post MC1311974",
-      "quote": "Who is affected:\n\n  - Users on PowerPoint for Windows\n  - Users who are assigned a Microsoft Copilot license",
+      "quote": "Who is affected:\n  - Users on PowerPoint for Windows",
       "severity": null,
       "fix": null
     },
     {
       "n": 3,
-      "where": "front matter: defaultState; summary; What's changing; Why it matters; Governance guidance",
-      "type": "default",
-      "claim": "The option is on by default for eligible users, without an administrator enabling it.",
+      "where": "summary; licensing.notes; Cost and licensing; Scope; controls[1].governs; rationale: cost and impact",
+      "type": "record",
+      "claim": "MC1311974 identifies users assigned a Microsoft Copilot licence as affected.",
       "status": "supported",
       "source": "Message Center post MC1311974",
-      "quote": "The feature is enabled by default for eligible users.\n  - Existing Microsoft 365 and Copilot policies are respected; no admin configuration changes are required.",
+      "quote": "Who is affected:\n  - Users on PowerPoint for Windows\n  - Users who are assigned a Microsoft Copilot license",
       "severity": null,
       "fix": null
     },
     {
       "n": 4,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Users can start a Copilot presentation draft without first opening a new file.",
+      "status": "supported",
+      "source": "Message Center post MC1311974",
+      "quote": "helping users move from idea to first draft faster without needing to open a new file.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
       "where": "What's changing; Why it matters",
       "type": "record",
-      "claim": "The notice says the experience is available immediately when PowerPoint is opened.",
+      "claim": "The experience is available immediately when PowerPoint is opened.",
       "status": "supported",
       "source": "Message Center post MC1311974",
       "quote": "The experience is available immediately when PowerPoint is opened.",
@@ -77,43 +86,54 @@
       "fix": null
     },
     {
-      "n": 5,
-      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
-      "type": "record",
-      "claim": "MC1311974 says existing Microsoft 365 and Copilot policies are respected.",
-      "status": "supported",
-      "source": "Message Center post MC1311974",
-      "quote": "Existing Microsoft 365 and Copilot policies are respected; no admin configuration changes are required.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 6,
-      "where": "What's changing; Why it matters; Governance controls",
-      "type": "record",
-      "claim": "MC1311974 says no admin configuration changes are required.",
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; Risk assessment; Governance guidance",
+      "type": "default",
+      "claim": "The feature is on by default for eligible users without an administrator enabling it.",
       "status": "supported",
       "source": "Message Center post MC1311974",
-      "quote": "Existing Microsoft 365 and Copilot policies are respected; no admin configuration changes are required.",
+      "quote": "The feature is enabled by default for eligible users.\nExisting Microsoft 365 and Copilot policies are respected; no admin configuration changes are required.",
       "severity": null,
       "fix": null
     },
     {
       "n": 7,
-      "where": "summary; Why it matters",
+      "where": "What's changing; Risk assessment; rationale: risk",
       "type": "record",
-      "claim": "Microsoft's notice requires no administrator action.",
+      "claim": "Existing Microsoft 365 and Copilot policies are respected.",
       "status": "supported",
       "source": "Message Center post MC1311974",
-      "quote": "[What you can do to prepare:]\n\n  - No action is required.",
+      "quote": "Existing Microsoft 365 and Copilot policies are respected; no admin configuration changes are required.",
       "severity": null,
       "fix": null
     },
     {
       "n": 8,
+      "where": "summary; What's changing; Why it matters; Governance controls",
+      "type": "record",
+      "claim": "Microsoft says no admin configuration changes are required.",
+      "status": "supported",
+      "source": "Message Center post MC1311974",
+      "quote": "Existing Microsoft 365 and Copilot policies are respected; no admin configuration changes are required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "Why it matters; Governance controls",
+      "type": "record",
+      "claim": "The notice does not require administrators to take action.",
+      "status": "supported",
+      "source": "Message Center post MC1311974",
+      "quote": "[What you can do to prepare:]\n  - No action is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
       "where": "Cost and licensing; Governance guidance: At rollout",
       "type": "record",
-      "claim": "MC1311974 suggests informing users about the capability.",
+      "claim": "Microsoft suggests informing users about the new capability.",
       "status": "supported",
       "source": "Message Center post MC1311974",
       "quote": "Consider informing users about this new Copilot capability.",
@@ -121,10 +141,10 @@
       "fix": null
     },
     {
-      "n": 9,
+      "n": 11,
       "where": "front matter: status; What's changing; Scope",
       "type": "record",
-      "claim": "Roadmap item 560694 has status Rolling out.",
+      "claim": "The roadmap status is Rolling out.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"Rolling out\", \"statusKey\": \"rolling-out\"",
@@ -132,7 +152,7 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 12,
       "where": "front matter: targetDate; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap target is May CY2026.",
@@ -143,10 +163,10 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 13,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap supplies no preview date.",
+      "claim": "The roadmap record gives no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -154,7 +174,7 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 14,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap release phase is General Availability.",
@@ -165,18 +185,7 @@
       "fix": null
     },
     {
-      "n": 13,
-      "where": "front matter: clouds; What's changing; Scope",
-      "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
+      "n": 15,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Desktop as the platform.",
@@ -187,7 +196,18 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 16,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
       "where": "What's changing; Scope",
       "type": "record",
       "claim": "MC1311974 says General Availability rollout begins in late May 2026.",
@@ -198,21 +218,21 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 18,
       "where": "What's changing",
       "type": "record",
       "claim": "MC1311974 sets no act-by date.",
       "status": "supported",
       "source": "Message Center post MC1311974",
-      "quote": "Act by: none",
+      "quote": "Act by: none\n[What you can do to prepare:]\n  - No action is required.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 17,
+      "n": 19,
       "where": "What's changing; Scope",
       "type": "record",
-      "claim": "Microsoft lists the corresponding PowerPoint Home feature for Mac under roadmap item 560536.",
+      "claim": "Microsoft lists the PowerPoint Home feature for Mac under roadmap item 560536.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"id\": 560536; \"description\": \"You can now create a presentation with Copilot in PowerPoint straight from the PowerPoint Home in file menu.\"; \"platforms\": [\"Mac\"]",
@@ -220,10 +240,10 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 20,
       "where": "What's changing; Scope",
       "type": "record",
-      "claim": "Microsoft lists the corresponding PowerPoint web entry point under roadmap item 560537.",
+      "claim": "Microsoft lists presentation creation directly from the PowerPoint web app under roadmap item 560537.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"id\": 560537; \"description\": \"You can now create a presentation with Copilot in PowerPoint just as you open the PowerPoint web app.\"; \"platforms\": [\"Web\"]",
@@ -231,21 +251,21 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 21,
       "where": "What's changing",
-      "type": "absence",
-      "claim": "Microsoft Learn does not have a page describing this Windows opening-screen or File-menu entry point yet.",
-      "status": "contradicted",
+      "type": "date",
+      "claim": "The 22 July 2025 release notes already describe creating presentations from PowerPoint's Windows start or File menus.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes#july-22,-2025",
-      "quote": "You can quickly begin a new presentation using Microsoft 365 Copilot from the PowerPoint start menu or file menu. Copilot is easily accessible when you open PowerPoint or click the File tab, helping to simplify your workflow.",
-      "severity": "blocker",
-      "fix": "Replace the documentation-absence sentence with: 'Microsoft Learn's July 22, 2025 release notes already describe creating presentations from the Windows start or File menus; MC1311974 describes the PowerPoint Home rollout beginning in late May 2026.' Cite https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes#july-22,-2025. Do not infer that the two announcements describe an identical rollout."
+      "quote": "## July 22, 2025\nCreate a presentation with Microsoft 365 Copilot from menus [Windows]\nYou can quickly begin a new presentation using Microsoft 365 Copilot from the PowerPoint start menu or file menu.",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 20,
+      "n": 22,
       "where": "Why it matters",
       "type": "behaviour",
-      "claim": "Creating presentations from prompts is already an in-app PowerPoint Copilot capability described by Microsoft's overview.",
+      "claim": "Creating presentations from prompts is an existing Copilot capability in PowerPoint.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
       "quote": "PowerPoint: Create presentations from prompts or existing content, summarize presentations or edit presentations (add images, apply deck-wide formatting changes)",
@@ -253,65 +273,43 @@
       "fix": null
     },
     {
-      "n": 21,
-      "where": "controls[0].governs; Why it matters; Risk assessment: Change & support; Scope; Governance controls",
-      "type": "applicability",
-      "claim": "Disabling connected experiences that analyze content makes Copilot features unavailable in PowerPoint, including this Windows option.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/microsoft-365/microsoft-365-copilot-privacy",
-      "quote": "If you turn off connected experiences that analyze your content on devices in your organization, Microsoft Copilot features won't be available to your users in the following apps:\n\n- Excel\n- OneNote\n- Outlook\n- PowerPoint\n- Word",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "The PowerPoint Home option runs as the signed-in user.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: PowerPoint Home create Copilot signed in user review generated presentation policy disable entry point. Read Copilot privacy, overview, requirements excerpt and Create a new presentation with Copilot in PowerPoint; these establish user permissions, not this option's execution identity.",
-      "severity": "major",
-      "fix": "Replace 'the option runs as the signed-in user' with 'Microsoft Copilot respects the current user's data-access permissions', supported by https://learn.microsoft.com/copilot/microsoft-365/microsoft-365-copilot-privacy."
-    },
-    {
       "n": 23,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Microsoft Copilot accesses content and context through Microsoft Graph within the user's access permissions.",
+      "claim": "Microsoft Copilot accesses content and context through Microsoft Graph.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/microsoft-365/microsoft-365-copilot-privacy",
-      "quote": "Microsoft Copilot accesses content and context through Microsoft Graph.\n\nMicrosoft Copilot only surfaces organizational data to which individual users have at least view permissions.",
+      "quote": "Microsoft Copilot accesses content and context through Microsoft Graph.",
       "severity": null,
       "fix": null
     },
     {
       "n": 24,
-      "where": "Risk assessment: Security & identity",
+      "where": "Risk assessment: Data exposure; Security & identity",
       "type": "behaviour",
-      "claim": "Microsoft's overview says prompts and responses receive Enterprise Data Protection when users sign in with Microsoft Entra accounts.",
+      "claim": "Microsoft Copilot presents only data each individual can access, using existing Microsoft 365 data-access controls.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
-      "quote": "Copilot Chat (Basic), Microsoft 365 Copilot (Basic), and Microsoft 365 Copilot (Premium) are protected by Enterprise Data Protection (EDP) when you sign in with Microsoft Entra accounts.",
+      "source": "https://learn.microsoft.com/copilot/microsoft-365/microsoft-365-copilot-privacy",
+      "quote": "Microsoft Copilot presents only data that each individual can access using the same underlying controls for data access used in other Microsoft 365 services.",
       "severity": null,
       "fix": null
     },
     {
       "n": 25,
-      "where": "Risk assessment: Data exposure",
-      "type": "record",
-      "claim": "MC1311974 does not specify the source content a presentation started from PowerPoint Home can draw on.",
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Prompts and responses are covered by Enterprise Data Protection when users sign in with Microsoft Entra accounts.",
       "status": "supported",
-      "source": "Message Center post MC1311974",
-      "quote": "Users will find a new option on PowerPoint Home (File menu) to create a presentation using Copilot.\n\nExisting Microsoft 365 and Copilot policies are respected; no admin configuration changes are required.",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Copilot Chat (Basic), Microsoft 365 Copilot (Basic), and Microsoft 365 Copilot (Premium) are protected by Enterprise Data Protection (EDP) when you sign in with Microsoft Entra accounts. With EDP, prompts and responses are protected",
       "severity": null,
       "fix": null
     },
     {
       "n": 26,
-      "where": "Risk assessment: Autonomy & actions",
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Copilot provides a presentation draft for the user to review rather than fully automating the task.",
+      "claim": "Copilot provides presentation drafts for users to review rather than fully automating the task.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/microsoft-365/microsoft-365-copilot-privacy",
       "quote": "Our Microsoft Copilot capabilities provide useful drafts and summaries to help you achieve more while giving you a chance to review the generated AI rather than fully automating these tasks.",
@@ -320,17 +318,28 @@
     },
     {
       "n": 27,
-      "where": "Risk assessment: Autonomy & actions",
+      "where": "Risk assessment: Data exposure",
       "type": "record",
-      "claim": "The notice does not describe Copilot acting outside the new file.",
+      "claim": "The supplied notice does not specify what source content the Home workflow can draw on beyond a prompt.",
       "status": "supported",
       "source": "Message Center post MC1311974",
-      "quote": "Users will find a new option on PowerPoint Home (File menu) to create a presentation using Copilot.\n\nExisting Microsoft 365 and Copilot policies are respected; no admin configuration changes are required.",
+      "quote": "Users will find a new option on PowerPoint Home (File menu) to create a presentation using Copilot.\nExisting Microsoft 365 and Copilot policies are respected; no admin configuration changes are required.",
       "severity": null,
       "fix": null
     },
     {
       "n": 28,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Nothing in MC1311974 describes Copilot acting outside the new presentation file.",
+      "status": "supported",
+      "source": "Message Center post MC1311974",
+      "quote": "enabling presentation creation powered by Copilot directly from PowerPoint Home in the File menu. This update reduces friction at the start of the workflow, helping users move from idea to first draft faster without needing to open a new file.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
       "where": "licensing.notes; Cost and licensing",
       "type": "licensing",
       "claim": "Microsoft 365 Copilot is now named Microsoft Copilot.",
@@ -341,24 +350,13 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "front matter: licensing.model; licensing.notes; Cost and licensing",
+      "n": 30,
+      "where": "front matter: licensing.model and notes; Cost and licensing",
       "type": "licensing",
-      "claim": "Microsoft 365 Copilot (Premium) is an add-on licence providing the full experience in Word, Excel, PowerPoint and OneNote.",
+      "claim": "Microsoft 365 Copilot (Premium) is an add-on licensed full experience in Word, Excel, PowerPoint and OneNote.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
       "quote": "You have the Microsoft 365 Copilot add-on license with access to the full experience of Copilot in Word, Excel, PowerPoint, and OneNote.",
-      "severity": "minor",
-      "fix": "Keep the cited add-on description, but add to licensing.notes and Cost and licensing: 'The current licence-options page also says Microsoft Copilot is available with Microsoft 365 E7.' Cite https://learn.microsoft.com/copilot/plan/copilot-license-options, which states 'Microsoft Copilot is available with Microsoft 365 E7 or as an add-on'."
-    },
-    {
-      "n": 30,
-      "where": "licensing.notes; Cost and licensing; Governance controls",
-      "type": "licensing",
-      "claim": "Microsoft 365 Copilot (Basic) users do not have the Copilot add-on licence but can use in-app Copilot.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
-      "quote": "You don't have the Microsoft 365 Copilot add-on license but can use Copilot in Word, Excel, PowerPoint, and OneNote.",
       "severity": null,
       "fix": null
     },
@@ -366,18 +364,40 @@
       "n": 31,
       "where": "licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "The overview lists creating PowerPoint presentations from prompts or existing content for Basic users.",
+      "claim": "Microsoft Copilot is also available with Microsoft 365 E7.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
-      "quote": "Microsoft 365 Copilot (Basic) license and experience\n\nPowerPoint: Create presentations from prompts or existing content, summarize presentations or edit presentations (add images, apply deck-wide formatting changes)",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-license-options",
+      "quote": "Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible commercial, US Government, and education subscription plans.",
       "severity": null,
       "fix": null
     },
     {
       "n": 32,
+      "where": "licensing.notes; Cost and licensing; Governance controls",
+      "type": "licensing",
+      "claim": "Microsoft 365 Copilot (Basic) users have in-app Copilot access without the Copilot add-on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "You don't have the Microsoft 365 Copilot add-on license but can use Copilot in Word, Excel, PowerPoint, and OneNote.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "licensing.notes; Cost and licensing",
+      "type": "behaviour",
+      "claim": "Microsoft 365 Copilot (Basic) includes creating PowerPoint presentations from prompts or existing content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Microsoft 365 Copilot (Basic) license and experience\nIn-app features you can use:\nPowerPoint: Create presentations from prompts or existing content, summarize presentations or edit presentations",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Some Basic features are subject to fair use limits.",
+      "claim": "Some Microsoft 365 Copilot (Basic) features are subject to fair use limits.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
       "quote": "Microsoft 365 Copilot (Basic) refers to users without the Copilot add-on license, but who have access to Copilot capabilities inside apps (for example, Word or Excel). It doesn't include full chat integration. Some features are subject to fair use limits.",
@@ -385,87 +405,98 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 35,
       "where": "licensing.notes; Cost and licensing; Open questions",
       "type": "absence",
       "claim": "Microsoft has not stated whether Basic users receive this Windows PowerPoint Home option.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: PowerPoint Home Copilot Basic Windows file menu license requirement; Copilot PowerPoint Home Windows create presentation Basic Premium May 2026. Read overview, licence options, release notes and support creation page; explicit Basic Home coverage found is for web, not Windows.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "Microsoft publishes no price specific to this entry-point option.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot PowerPoint create presentation pricing billing credits entry point Home; Copilot PowerPoint Home create presentation separate pricing Copilot Credits. Read overview, licence options, usage-based billing overview and support creation page; no entry-point-specific price found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "Microsoft publishes no meter specific to the PowerPoint Home entry point.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot PowerPoint Home create presentation separate pricing Copilot Credits; Copilot PowerPoint create presentation pricing billing credits entry point Home. Read usage-based billing overview, overview and support creation page; no meter specific to this entry point found.",
+      "quote": "Searched: \"PowerPoint Home\" \"Windows\" \"Basic\" \"Copilot\"; \"PowerPoint Home\" \"Copilot\" \"Basic\" license. Read Copilot overview, license options and release-note excerpts; Basic/Premium Home availability found only for the separate web feature.",
       "severity": null,
       "fix": null
     },
     {
       "n": 36,
-      "where": "Cost and licensing",
+      "where": "Cost and licensing; rationale: cost",
       "type": "absence",
-      "claim": "Microsoft publishes no spending control specific to this entry-point option.",
+      "claim": "No separate price for this PowerPoint Home option is published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: PowerPoint Home policy price meter; Copilot PowerPoint create presentation pricing billing credits entry point Home. Read usage-based billing overview and overview; general service spending policies are documented, but no control specific to this entry point was found.",
+      "quote": "Searched: \"PowerPoint\" \"presentation\" \"Copilot\" \"price\" \"meter\" \"Home\"; PowerPoint Home Copilot price meter spending policy presentation creation. Read Copilot overview, license options and presentation release-note excerpts; no option-specific price stated.",
       "severity": null,
       "fix": null
     },
     {
       "n": 37,
-      "where": "controls[0].ui",
-      "type": "admin-path",
-      "claim": "The Cloud Policy route is Customization > Policy Management > policy configuration > Choose the scope > Configure Settings > Allow the use of connected experiences in Office that analyze content.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
-      "quote": "On the Policy configurations page, select Create.\n\nOn the Choose the scope page, determine whether the policy configuration applies to all users, specific groups\n\nOn the Configure Settings page, select the policies that you want to include in the policy configuration.",
-      "severity": "blocker",
-      "fix": "Use the documented creation route: 'Customization > Policy Management > Create > Choose the scope > Configure Settings > Allow the use of connected experiences in Office that analyze content'. The current route substitutes selecting an existing configuration for Create; the cited page documents Choose the scope and Configure Settings in the creation wizard. The privacy-controls page already cited supplies the policy name."
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No separate meter for this PowerPoint Home option is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"PowerPoint\" \"presentation\" \"Copilot\" \"price\" \"meter\" \"Home\"; PowerPoint Home Copilot price meter spending policy presentation creation. Read Copilot overview, license options and release-note excerpts; no meter specific to this entry point stated.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 38,
-      "where": "controls[0].api",
-      "type": "command",
-      "claim": "Setting usercontentdisabled to DWORD 2 under HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\office\\16.0\\common\\privacy disables the analyze-content policy.",
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No spending control specific to this PowerPoint Home option is published.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls",
-      "quote": "Allow the use of connected experiences in Office that analyze content | UserContentDisabled | 1=Enabled  2=Disabled\n\n[HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\office\\16.0\\common\\privacy]\n\"usercontentdisabled\"=dword:00000001",
+      "source": null,
+      "quote": "Searched: PowerPoint Home Copilot price meter spending policy presentation creation; PowerPoint Home create presentation Copilot 560694 Basic users policy hide entry point price meter spending control. Read Copilot overview and license options; no entry-point spending control stated.",
       "severity": null,
       "fix": null
     },
     {
       "n": 39,
-      "where": "controls[0].note; Governance controls",
-      "type": "behaviour",
-      "claim": "The analyze-content policy controls the category of connected experiences, not only Copilot.",
+      "where": "controls[0].ui; Governance controls: table",
+      "type": "admin-path",
+      "claim": "The Cloud Policy overview documents the control at Customization > Policy Management > Create > Choose the scope > Configure Settings > Allow the use of connected experiences in Office that analyze content.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: named analyze-content policy with \"Configure Settings\" \"Cloud Policy\". Read Cloud Policy overview and manage-privacy-controls. The route is supported jointly, but the linked overview does not name or document the setting at its last step.",
+      "severity": "blocker",
+      "fix": "Keep the path, but replace controls[0].ui.docs and the corresponding table link with https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls#policy-setting-for-connected-experiences-that-analyze-your-content. That page documents the setting and its availability through Cloud Policy; retain the Cloud Policy overview in sources for the route into the wizard."
+    },
+    {
+      "n": 40,
+      "where": "controls[0].api; controls[0].note; Governance controls: table",
+      "type": "command",
+      "claim": "Setting usercontentdisabled to DWORD 2 under HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\office\\16.0\\common\\privacy disables the analyze-content policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls",
-      "quote": "These are experiences that use your Office content to provide you with design recommendations, editing suggestions, data insights, and similar features. For example, PowerPoint Designer or Translator.",
+      "quote": "Allow the use of connected experiences in Office that analyze content | UserContentDisabled | 1=Enabled 2=Disabled\n[HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\office\\16.0\\common\\privacy]\n\"usercontentdisabled\"=dword:00000001",
       "severity": null,
       "fix": null
     },
     {
-      "n": 40,
-      "where": "controls[0].note; Scope: Roles",
+      "n": 41,
+      "where": "controls[0].governs; Why it matters; Risk assessment; Scope; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "Turning off connected experiences that analyze content makes Copilot unavailable in PowerPoint and the other listed Office apps on current Windows, Mac, iOS and Android versions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/microsoft-365/microsoft-365-copilot-privacy",
+      "quote": "Microsoft Copilot features won't be available to your users in the following apps:\n- Excel\n- OneNote\n- Outlook\n- PowerPoint\n- Word\nThis applies to when you're running the most current version of these apps on Windows, Mac, iOS, or Android devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The analyze-content policy controls the whole category of connected experiences, not only Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls",
+      "quote": "You can use the Allow the use of connected experiences in Office that analyze content policy setting to control whether these types of connected experiences are available to your users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[0].note; Scope",
       "type": "role",
-      "claim": "Office Apps Administrator is Microsoft's recommended role for Cloud Policy.",
+      "claim": "Office Apps Administrator is the recommended role for Cloud Policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
       "quote": "Office Apps Administrator (Recommended) | This role can manage Office apps cloud services, including policy and settings management",
@@ -473,32 +504,32 @@
       "fix": null
     },
     {
-      "n": 41,
-      "where": "controls[1].ui",
+      "n": 44,
+      "where": "controls[1].ui; Governance controls: table",
       "type": "admin-path",
-      "claim": "Licence assignment is under Microsoft 365 admin center > Users > Active users > user > Licenses and Apps > Licenses.",
+      "claim": "The licence-assignment control is in Microsoft 365 admin center at Users > Active users > user > Licenses and Apps > Licenses.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
-      "quote": "In the admin center, go to the Users > Active users page.\nSelect the row of the user that you want to assign a license to.\nIn the right pane, select Licenses and Apps.\nExpand the Licenses section, select the boxes for the licenses that you want to assign",
+      "quote": "go to the Users > Active users page. Select the row of the user ... In the right pane, select Licenses and Apps. Expand the Licenses section, select the boxes for the licenses that you want to assign",
       "severity": null,
       "fix": null
     },
     {
-      "n": 42,
-      "where": "controls[1].api",
+      "n": 45,
+      "where": "controls[1].api; Governance controls: table",
       "type": "command",
-      "claim": "Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @() assigns the selected licence to the user.",
+      "claim": "Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @() assigns the chosen product licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
-      "quote": "To assign a license to a user, use the following command in PowerShell.\n\nSet-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @()",
+      "quote": "To assign a license to a user, use the following command in PowerShell.\nSet-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @()",
       "severity": null,
       "fix": null
     },
     {
-      "n": 43,
-      "where": "controls[1].note; Scope: Roles",
+      "n": 46,
+      "where": "controls[1].note; Scope",
       "type": "role",
-      "claim": "At least License Administrator or User Administrator is required for licence assignment.",
+      "claim": "Licence assignment requires at least License Administrator or User Administrator.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
       "quote": "You must be at least a License or User Administrator to assign licenses.",
@@ -506,142 +537,98 @@
       "fix": null
     },
     {
-      "n": 44,
-      "where": "controls[1].note; Governance controls",
-      "type": "licensing",
-      "claim": "Removing the Copilot add-on affects entitlement to the full add-on experience rather than only the PowerPoint Home option.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
-      "quote": "Microsoft 365 Copilot (Premium) is the full add-on licensed experience\n\nYou have the Microsoft 365 Copilot add-on license with access to the full experience of Copilot in Word, Excel, PowerPoint, and OneNote.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "Governance guidance: Before rollout; Governance controls",
-      "type": "record",
-      "claim": "MC1311974 names no setting specific to the PowerPoint Home option.",
-      "status": "supported",
-      "source": "Message Center post MC1311974",
-      "quote": "Existing Microsoft 365 and Copilot policies are respected; no admin configuration changes are required.\n\n[What you can do to prepare:]\n\n  - No action is required.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Cloud Policy settings apply after the Office app restarts.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
-      "quote": "Policies from Cloud Policy are applied only when the Office app is restarted.\n\nSome policies related to privacy controls will apply without restarting any Office apps.",
-      "severity": "minor",
-      "fix": "Replace the restart clause with: 'Cloud Policy settings normally apply when Office apps restart; some privacy-control policies apply without restarting.' Keep the existing Cloud Policy citation."
-    },
-    {
       "n": 47,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Cloud Policy takes precedence over Group Policy when both are configured.",
+      "claim": "Cloud Policy settings normally apply when Office apps restart.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
-      "quote": "policy settings implemented by using Cloud Policy take precedence over policy settings implemented by using Group Policy on Windows Server",
-      "severity": "minor",
-      "fix": "Replace the precedence clause with: 'The Cloud Policy overview says Cloud Policy takes precedence over Group Policy; Microsoft's sensitive-and-regulated-customer guidance instead says Group Policy takes precedence for Win32 Office apps and advises keeping the policies aligned.' Cite https://learn.microsoft.com/compliance/anz/blueprint-copilot-reqconfig#connected-experiences, whose search excerpt states that conflicting precedence."
+      "quote": "Policies from Cloud Policy are applied only when the Office app is restarted. The behavior is the same as with Group Policy.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 48,
-      "where": "Governance guidance: After rollout",
+      "where": "Governance controls",
       "type": "behaviour",
-      "claim": "The Microsoft Copilot usage report covers in-app usage including PowerPoint.",
+      "claim": "Some privacy-control policies apply without restarting Office apps.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
-      "quote": "the Microsoft Copilot usage report focuses on usage of Microsoft Copilot within Microsoft 365 apps such as Teams, Outlook, Word, Excel, and PowerPoint",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+      "quote": "Some policies related to privacy controls will apply without restarting any Office apps.",
       "severity": null,
       "fix": null
     },
     {
       "n": 49,
-      "where": "rationale: impact",
+      "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Other users and administrators notice nothing from the change.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: PowerPoint Home Copilot option other users not licensed visible. Read MC1311974, overview and creation support page. The notice names affected users but does not guarantee no visible effect or support impact for everyone else.",
+      "claim": "The Cloud Policy overview says Cloud Policy takes precedence over Group Policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+      "quote": "policy settings implemented by using Cloud Policy take precedence over policy settings implemented by using Group Policy on Windows Server",
       "severity": "minor",
-      "fix": "Remove '; other users and admins notice nothing' from the impact rationale. Keep the sentence identifying licensed PowerPoint for Windows users as the affected audience."
+      "fix": "Replace the precedence comparison with: \"The Cloud Policy overview says Cloud Policy takes precedence over Group Policy on Windows Server; Microsoft's sensitive-and-regulated-customer guidance says Group Policy takes precedence for Win32 Office apps where both are in use and advises keeping the policies aligned.\" Retain both existing citations."
     },
     {
       "n": 50,
-      "where": "rationale: risk",
-      "type": "record",
-      "claim": "Microsoft's notice describes a new entry point and does not describe additional data access.",
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The sensitive-and-regulated-customer guidance says Group Policy takes precedence for Win32 Office apps where both policy mechanisms are used.",
       "status": "supported",
-      "source": "Message Center post MC1311974",
-      "quote": "This update reduces friction at the start of the workflow, helping users move from idea to first draft faster without needing to open a new file.\n\nExisting Microsoft 365 and Copilot policies are respected",
+      "source": "https://learn.microsoft.com/compliance/anz/blueprint-copilot-reqconfig#connected-experiences",
+      "quote": "Rich client Office applications (Win32 apps) are controlled by both Group Policy and Cloud Policy, with Group Policy taking precedence where both are in use.",
       "severity": null,
       "fix": null
     },
     {
       "n": 51,
-      "where": "Governance guidance: After rollout; controls",
-      "type": "consistency",
-      "claim": "The checklist tells readers to review the Microsoft Copilot usage report, but that monitoring control has no controls-table row.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "After rollout: 'Review the Microsoft Copilot usage report'. The controls table lists only connected-experiences availability and licence assignment.",
-      "severity": "minor",
-      "fix": "The 'Review the Microsoft Copilot usage report' checklist step has no matching table row. Remove that checklist bullet for this correction rather than adding an unverified control row."
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Microsoft's sensitive-and-regulated-customer guidance advises keeping Group Policy and Cloud Policy aligned.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/compliance/anz/blueprint-copilot-reqconfig#connected-experiences",
+      "quote": "For organizations that use a combination of Group Policy and Cloud Policy, keep these policies aligned to avoid confusion.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 52,
-      "where": "Scope: Prerequisite",
-      "type": "availability",
-      "claim": "The analyze-content privacy restriction covers current PowerPoint versions on Windows, Mac, iOS and Android.",
+      "where": "controls[1].note; Governance controls",
+      "type": "licensing",
+      "claim": "Removing the Microsoft Copilot add-on removes access to its licensed experience as a whole, not just the PowerPoint Home option.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/microsoft-365/microsoft-365-copilot-privacy",
-      "quote": "This applies to when you're running the most current version of these apps on Windows, Mac, iOS, or Android devices.",
+      "source": "https://learn.microsoft.com/compliance/anz/blueprint-copilot-reqconfig#license-assignment",
+      "quote": "The Microsoft Copilot user subscription license ... contains eight separate components ... If you remove the license from a user, the user loses access to Copilot.",
       "severity": null,
       "fix": null
     },
     {
       "n": 53,
-      "where": "Governance guidance: Before rollout",
-      "type": "behaviour",
-      "claim": "The analyze-content policy can be implemented with Group Policy or Cloud Policy.",
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "record",
+      "claim": "MC1311974 names no separate admin switch for this Home entry point.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls",
-      "quote": "The following are the five new policy settings:\n\n- Allow the use of connected experiences in Office that analyze content\n\nThese policy settings can be implemented by using either Group Policy or Cloud Policy.",
+      "source": "Message Center post MC1311974",
+      "quote": "Users will find a new option on PowerPoint Home (File menu) to create a presentation using Copilot.\nExisting Microsoft 365 and Copilot policies are respected; no admin configuration changes are required.",
       "severity": null,
       "fix": null
     },
     {
       "n": 54,
-      "where": "front matter: products",
+      "where": "rationale: risk; Risk assessment",
       "type": "record",
-      "claim": "The roadmap products are PowerPoint and Microsoft Copilot (Microsoft 365).",
+      "claim": "MC1311974 describes no new data access added by this entry point.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\"PowerPoint\", \"Microsoft Copilot (Microsoft 365)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-06-01T23:15:29.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-06-01T23:15:29\"",
+      "source": "Message Center post MC1311974",
+      "quote": "enabling presentation creation powered by Copilot directly from PowerPoint Home in the File menu.\nExisting Microsoft 365 and Copilot policies are respected; no admin configuration changes are required.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-28T02:20:24.335Z",
+    "at": "2026-11-28T03:50:39.765Z",
     "summary": {
-      "links": 9,
+      "links": 12,
       "unreachable": 0,
       "uiPaths": 2,
       "uiPathsWithMissingWords": 1,
@@ -666,6 +653,16 @@
         "status": 200
       },
       {
+        "url": "https://learn.microsoft.com/copilot/plan/copilot-license-options",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes#july-22,-2025",
+        "ok": true,
+        "status": 200
+      },
+      {
         "url": "https://learn.microsoft.com/copilot/microsoft-365/microsoft-365-copilot-privacy",
         "ok": true,
         "status": 200
@@ -677,6 +674,11 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/compliance/anz/blueprint-copilot-reqconfig#connected-experiences",
         "ok": true,
         "status": 200
       },
@@ -706,7 +708,7 @@
         "segments": [
           "Customization",
           "Policy Management",
-          "policy configuration",
+          "Create",
           "Choose the scope",
           "Configure Settings",
           "Allow the use of connected experiences in Office that analyze content"
@@ -750,5 +752,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-28",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

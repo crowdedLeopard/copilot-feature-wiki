@@ -102,19 +102,23 @@ changes:
     note: "First briefing for the Worldwide roadmap item: the Recall restriction in Endpoint DLP rules, the Windows DLP provider policy, prerequisites and licensing."
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 68 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-28"
+    note: "Corrected the risk assessment: the feature can audit snapshot events as well as exclude content, and removed the unsupported claim that each configuration half fails silently."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 74 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-28"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 68
-  confirmed: 66
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 1
-  hash: "2640516cae0377e5b63774ea85caf4b6"
+  claims: 74
+  confirmed: 74
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "8b0cab4d3e437d1666817df4b8343012"
 ---
 
 ## What's changing
@@ -145,10 +149,10 @@ It matters only where Recall is allowed. The Manage Recall page says Recall is d
 - The policy CSP page says the setting applies to Enterprise and Education client SKUs only; Pro is not listed.
 
 **Autonomy & actions**
-- No change: the feature takes no action beyond leaving content out of snapshots. The Manage Recall page says IT admins cannot start saving snapshots for users.
+- The feature can audit sensitive-content snapshot events or exclude sensitive content from snapshots. The Manage Recall page says IT admins cannot start saving snapshots for users.
 
 **Change & support**
-- Purview administrators write the rule; Intune or Group Policy administrators set the device policies. Each half fails silently without the other.
+- Purview administrators write the rule; Intune or Group Policy administrators set the device policies.
 - The Learn page sets minimum Windows, anti-malware, Teams and Office versions and requires Microsoft Edge for Business. A device below them is a likely cause of missing events.
 
 ## Cost and licensing
@@ -216,13 +220,4 @@ The **Set-DlpComplianceRule** cmdlet's **EndpointDlpRestrictions** parameter set
 risk: Medium. Where an organisation allows Recall and users opt in, snapshots can hold windows with labelled or SIT-matching content until a DLP rule set to Block and the Windows DLP provider policy are both in place.
 cost: Low. Endpoint DLP is included in Microsoft 365 E5 and the other plans the Purview service description lists; no meter is documented for the Recall restriction. The known cost is Purview and Intune admin time.
 impact: Low. Administrators configure it, and only opted-in Recall users on onboarded Copilot+ PCs would find sensitive windows left out of their snapshots.
--->
-
-<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Autonomy & actions / behaviour: The feature takes no action beyond leaving content out of snapshots. | Found: If you select Audit only, then the user doesn't see any notification when a snapshot is taken that contains sensitive information. However, the event is logged in the DLP reports. | Fix: Replace 'No change: the feature takes no action beyond leaving content out of snapshots.' with 'The feature can audit sensitive-content snapshot events or exclude sensitive content from snapshots.' This also resolves the conflict with the page's Audit only description. Source: https://learn.microsoft.com/purview/dlp-recall-get-started. | Source: https://learn.microsoft.com/purview/dlp-recall-get-started
-- [unsupported, major] Risk assessment: Change & support / behaviour: Each configuration half fails silently without the other. | Found: Searched: Recall DLP provider policy missing DLP rule fails silently audit action; Recall DLP no policy snapshot. Read dlp-recall-get-started, Manage Recall and DLP Provider API error-handling excerpts. Sources require configuration but do not state both missing-half cases fail silently. | Fix: Remove 'Each half fails silently without the other.' The preceding sentence and documented requirement for both configuration layers can remain.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].note; Risk assessment: Security & identity; Scope; Governance guidance / availability: The provider policy is device-scoped and applies only to Enterprise and Education client SKUs, not Pro. | Found: This setting applies to Enterprise and Education client SKUs only. | Fix: Qualify the existing Enterprise/Education statement with: 'The same CSP page's editions table also marks IoT Enterprise / IoT Enterprise LTSC as supported, although its explanatory text says Enterprise and Education only.' Cite https://learn.microsoft.com/windows/client-management/mdm/policy-csp-windowsai#setdatalosspreventionprovider. | Source: https://learn.microsoft.com/windows/client-management/mdm/policy-csp-windowsai
 -->

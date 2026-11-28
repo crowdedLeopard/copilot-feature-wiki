@@ -25,6 +25,12 @@ sources:
   - title: "Microsoft 365 Roadmap 560536"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=560536"
     kind: "roadmap"
+  - title: "Microsoft 365 Roadmap 560694"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=560694"
+    kind: "roadmap"
+  - title: "Microsoft 365 Roadmap 560537"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=560537"
+    kind: "roadmap"
   - title: "MC1311973: PowerPoint for Mac: Create a presentation with Copilot directly from PowerPoint Home"
     url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1311973"
     kind: "message-center"
@@ -46,6 +52,12 @@ sources:
   - title: "Configure Microsoft Copilot settings in the Microsoft 365 admin center"
     url: "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center"
     kind: "learn"
+  - title: "Add a property list file to macOS devices using Microsoft Intune"
+    url: "https://learn.microsoft.com/intune/device-configuration/templates/configure-preference-file-macos"
+    kind: "learn"
+  - title: "Update macOSCustomAppConfiguration"
+    url: "https://learn.microsoft.com/graph/api/intune-deviceconfig-macoscustomappconfiguration-update?view=graph-rest-beta"
+    kind: "learn"
   - title: "Which users hold a Microsoft 365 Copilot licence (Microsoft 365 admin center)"
     url: "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users"
     kind: "learn"
@@ -64,18 +76,21 @@ controls:
     scope: "group"
     ui:
       surface: "Microsoft 365 Apps admin center"
-      path: "Customization > Policy Management > Create > Choose the scope > Configure Settings > Allow the use of connected experiences in Office that analyze content"
+      path: "Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings > Allow the use of connected experiences in Office that analyze content"
       docs: "https://learn.microsoft.com/microsoft-365-apps/privacy/mac-privacy-preferences"
     api: null
-    note: "Office Apps admin role. Also covers other connected experiences that analyse content, such as PowerPoint Designer. The Cloud Policy steps are on the Cloud Policy overview."
+    note: "Office Apps Administrator is the recommended role; Security Administrator and Global Administrator are also supported. Also covers other experiences that analyse content, such as PowerPoint Designer."
   - governs: "Connected experiences that analyse content on managed Macs"
     scope: "other"
-    ui: null
+    ui:
+      surface: "Microsoft Intune admin center"
+      path: "Devices > Manage devices > Configuration > Create > New policy > macOS > Templates > Preference file > Create > Basics > Configuration settings > Property list file"
+      docs: "https://learn.microsoft.com/intune/device-configuration/templates/configure-preference-file-macos"
     api:
-      kind: "other"
-      call: "com.microsoft.office OfficeExperiencesAnalyzingContentPreference FALSE (Configuration Profile or MDM)"
-      docs: "https://learn.microsoft.com/microsoft-365-apps/privacy/mac-privacy-preferences"
-    note: "Device preference; when enforced, users can't change it. FALSE makes Copilot features unavailable in certain apps, PowerPoint among them."
+      kind: "graph"
+      call: "PATCH /beta/deviceManagement/deviceConfigurations/{deviceConfigurationId}"
+      docs: "https://learn.microsoft.com/graph/api/intune-deviceconfig-macoscustomappconfiguration-update?view=graph-rest-beta"
+    note: "Intune-enrolled, MDM-managed Macs; Policy and Profile Manager role. Domain com.microsoft.office, OfficeExperiencesAnalyzingContentPreference Boolean FALSE. Graph: beta API, needs an active Intune licence."
   - governs: "Which users hold a Microsoft 365 Copilot licence"
     scope: "user"
     ui:
@@ -96,19 +111,23 @@ changes:
     note: "New briefing for the PowerPoint for Mac Home entry point to Copilot presentation creation, with MC1311973 and the Mac connected-experiences control."
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 53 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-28"
+    note: "Corrected the managed-Mac control: added the Intune admin center preference-file path and the Graph beta update call in place of the preference tuple; added the full Cloud Policy path and its supported roles."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 67 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-28"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 53
-  confirmed: 51
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 1
-  hash: "84c27b46635c88d360475705d3e19e09"
+  claims: 67
+  confirmed: 67
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "f5686c6ad285fa1d39848cefa5bdab31"
 ---
 
 ## What's changing
@@ -154,7 +173,7 @@ If nobody acts, the option appears for eligible users as it rolls out. For organ
 - **Platform:** Mac (this item). Desktop and web are covered by items 560694 and 560537.
 - **Clouds:** Worldwide (Standard Multi-Tenant), as the record lists them.
 - **Rollout:** General Availability; MC1311973 says rollout begins in late May 2026.
-- **Roles:** creating Cloud Policy settings for Microsoft 365 apps requires the **Office Apps admin** role; Copilot settings in the Microsoft 365 admin center use a role such as **AI Administrator**.
+- **Roles:** Office Apps Administrator is the recommended role for Cloud Policy; the [Cloud Policy overview](https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy) also lists Security Administrator and Global Administrator as supported roles. Copilot settings in the Microsoft 365 admin center use a role such as **AI Administrator**.
 
 ## Governance guidance
 
@@ -179,13 +198,13 @@ If nobody acts, the option appears for eligible users as it rolls out. For organ
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether the Copilot option on PowerPoint Home can be hidden on its own</strong><br><small>Tenant</small><br><small class="controls__note">Microsoft Learn documents no setting for this entry point at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether Copilot features, including this option, are available in PowerPoint and other Office apps on Mac</strong><br><small>Group</small><br><small class="controls__note">Office Apps admin role. Also covers other connected experiences that analyse content, such as PowerPoint Designer. The Cloud Policy steps are on the Cloud Policy overview.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › Create › Choose the scope › Configure Settings › Allow the use of connected experiences in Office that analyze content <a href="https://learn.microsoft.com/microsoft-365-apps/privacy/mac-privacy-preferences" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Connected experiences that analyse content on managed Macs</strong><br><small class="controls__note">Device preference; when enforced, users can't change it. FALSE makes Copilot features unavailable in certain apps, PowerPoint among them.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>API</strong><br><code>com.microsoft.office OfficeExperiencesAnalyzingContentPreference FALSE (Configuration Profile or MDM)</code> <a href="https://learn.microsoft.com/microsoft-365-apps/privacy/mac-privacy-preferences" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether Copilot features, including this option, are available in PowerPoint and other Office apps on Mac</strong><br><small>Group</small><br><small class="controls__note">Office Apps Administrator is the recommended role; Security Administrator and Global Administrator are also supported. Also covers other experiences that analyse content, such as PowerPoint Designer.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › Policy configurations › Create › Start with the basics › Choose the scope › Configure Settings › Allow the use of connected experiences in Office that analyze content <a href="https://learn.microsoft.com/microsoft-365-apps/privacy/mac-privacy-preferences" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Connected experiences that analyse content on managed Macs</strong><br><small class="controls__note">Intune-enrolled, MDM-managed Macs; Policy and Profile Manager role. Domain com.microsoft.office, OfficeExperiencesAnalyzingContentPreference Boolean FALSE. Graph: beta API, needs an active Intune licence.</small></td><td data-label="Admin UI"><strong>Microsoft Intune admin center</strong><br>Devices › Manage devices › Configuration › Create › New policy › macOS › Templates › Preference file › Create › Basics › Configuration settings › Property list file <a href="https://learn.microsoft.com/intune/device-configuration/templates/configure-preference-file-macos" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/deviceManagement/deviceConfigurations/{deviceConfigurationId}</code> <a href="https://learn.microsoft.com/graph/api/intune-deviceconfig-macoscustomappconfiguration-update?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which users hold a Microsoft 365 Copilot licence</strong><br><small>User</small><br><small class="controls__note">Decides the Premium tier. Not documented as removing this option from Microsoft 365 Copilot (Basic) users.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Users › Active users › user › Licenses and Apps › Licenses <a href="https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = &quot;&lt;SkuId&gt;&quot;} -RemoveLicenses @()</code> <a href="https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-Microsoft Learn documents no setting for the PowerPoint Home entry point itself at the time of writing (November 2026). The connected-experiences control is broad: it covers experiences that analyse content, such as PowerPoint Designer, and makes Copilot features unavailable in Excel, OneNote, Outlook, PowerPoint and Word. When the Mac preference is enforced through a configuration profile or MDM, users cannot change it. The licence row decides who has the Microsoft 365 Copilot add-on; it is not documented as removing this option from Microsoft 365 Copilot (Basic) users.
+Microsoft Learn documents no setting for the PowerPoint Home entry point itself at the time of writing (November 2026). The connected-experiences control is broad: it covers experiences that analyse content, such as PowerPoint Designer, and makes Copilot features unavailable in Excel, OneNote, Outlook, PowerPoint and Word. When the Mac preference is enforced through a configuration profile or MDM, users cannot change it. The Graph call updates an existing Intune macOSCustomAppConfiguration; its request body sets bundleId to com.microsoft.office and configurationXml to the UTF-8 encoded preference XML containing OfficeExperiencesAnalyzingContentPreference with Boolean FALSE. The licence row decides who has the Microsoft 365 Copilot add-on; it is not documented as removing this option from Microsoft 365 Copilot (Basic) users.
 
 ## Open questions
 
@@ -199,14 +218,8 @@ cost: Low. No new licence or meter is documented for this entry point; the only 
 impact: Medium. It appears by default on PowerPoint Home for eligible PowerPoint for Mac users, a defined group rather than the whole organisation.
 -->
 
-<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[2].ui; Governance controls table / absence: Microsoft has not documented an admin UI for deploying the Mac content-analysis preference. | Found: Select Devices > Manage devices > Configuration > Create > New policy. Platform: Select macOS. Profile type: Select Templates > Preference file. In Configuration settings, configure your settings: Preference domain name; Property list file. | Fix: Replace controls[2].ui null with surface 'Microsoft Intune admin center', path 'Devices > Manage devices > Configuration > Create > New policy > macOS > Templates > Preference file > Create > Basics > Configuration settings > Property list file', and docs https://learn.microsoft.com/intune/device-configuration/templates/configure-preference-file-macos. In the note state: 'For Intune-enrolled, MDM-managed Macs; Policy and Profile Manager role. Set Preference domain name to com.microsoft.office and upload preference XML setting OfficeExperiencesAnalyzingContentPreference to Boolean FALSE.' Cite that page and the existing Mac privacy-preferences reference. | Source: https://learn.microsoft.com/intune/device-configuration/templates/configure-preference-file-macos
-- [unsupported, blocker] controls[2].api; Governance controls table / command: com.microsoft.office OfficeExperiencesAnalyzingContentPreference FALSE (Configuration Profile or MDM) is an automation call that sets this control. | Found: Searched: OfficeExperiencesAnalyzingContentPreference defaults; OfficeExperiencesAnalyzingContentPreference Intune. Read Mac privacy preferences, Intune preference-file guidance and Graph macOSCustomAppConfiguration update. The printed tuple is not an operation. | Fix: Replace controls[2].api with kind 'graph', call 'PATCH /beta/deviceManagement/deviceConfigurations/{deviceConfigurationId}', and docs https://learn.microsoft.com/graph/api/intune-deviceconfig-macoscustomappconfiguration-update?view=graph-rest-beta. Add to its note: 'For an existing assigned Intune macOSCustomAppConfiguration, the request body sets bundleId to com.microsoft.office and configurationXml to the UTF-8 preference XML containing OfficeExperiencesAnalyzingContentPreference with Boolean FALSE. This is an Intune beta API and requires an active Intune licence.' Retain the verified enforcement explanation; remove the domain/key/value tuple from the call.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Scope / record: The same Home feature is listed for Desktop under roadmap item 560694. | Found: 560694: You can now create a presentation with Copilot in PowerPoint straight from the PowerPoint Home in file menu. "platforms": ["Desktop"] | Fix: Add the source 'Microsoft 365 Roadmap 560694' at https://www.microsoft.com/microsoft-365/roadmap?id=560694 for the Desktop item and its status.
-- [supported, minor] What's changing; Scope / record: Roadmap item 560537 covers starting Copilot presentation creation when opening the PowerPoint web app. | Found: 560537: You can now create a presentation with Copilot in PowerPoint just as you open the PowerPoint web app. "platforms": ["Web"] | Fix: Add the source 'Microsoft 365 Roadmap 560537' at https://www.microsoft.com/microsoft-365/roadmap?id=560537 for the Web item and its roadmap status.
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: Cloud Policy reaches the named content-analysis setting through Customization, Policy Management, Create, Choose the scope and Configure Settings. | Found: Under Customization, select Policy Management. On the Policy configurations page, select Create. On the Start with the basics page, enter a name (required) and a description (optional), then select Next. | Fix: Use 'Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings > Allow the use of connected experiences in Office that analyze content'. Both cited pages were read: the Cloud Policy overview supplies the route; mac-privacy-preferences supplies the setting and links to that route. The omitted page headings and basic fields are not blocking choices. | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy
-- [supported, minor] controls[1].note; Scope: Roles / role: Creating Cloud Policy settings requires the Office Apps admin role. | Found: For example, creating Cloud Policy settings for Microsoft 365 apps requires the Office Apps admin role. | Fix: Replace the exclusive role requirement with 'Office Apps Administrator is the recommended role for Cloud Policy; the Cloud Policy overview also lists Security Administrator and Global Administrator as supported roles.' Cite https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy, whose Supported built-in admin roles table lists all three; retain the Copilot settings page as the source of the differing wording. | Source: https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center
+- [supported, minor] controls[2].api; Governance controls table / command: PATCH /beta/deviceManagement/deviceConfigurations/{deviceConfigurationId} updates the existing Intune macOSCustomAppConfiguration used for the preference. | Found: Update the properties of a macOSCustomAppConfiguration object. [...] PATCH https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations/{deviceConfigurationId} [...] bundleId [...] configurationXml | Fix: Append to controls[2].note: 'The Graph request body sets bundleId to com.microsoft.office and configurationXml to the UTF-8 encoded preference XML containing OfficeExperiencesAnalyzingContentPreference with Boolean FALSE.' These properties are documented at https://learn.microsoft.com/graph/api/intune-deviceconfig-macoscustomappconfiguration-update?view=graph-rest-beta and already explained in the prose. | Source: https://learn.microsoft.com/graph/api/intune-deviceconfig-macoscustomappconfiguration-update?view=graph-rest-beta
 -->

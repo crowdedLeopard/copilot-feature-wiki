@@ -94,15 +94,17 @@ changes:
     note: "Corrected after the independent check: removed the claim that no source says existing behaviour changes, cited Purview's label inheritance page, and moved the action from review to prepare."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 76 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 79 statements not yet confirmed"
 version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 76
-  confirmed: 76
+  claims: 79
+  confirmed: 79
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -203,8 +205,8 @@ cost: Low. Learn says Copilot Notebooks need a Microsoft Copilot or Copilot Chat
 impact: Medium. Users who build notebooks and listen to audio overviews will notice new formats and episodes; the roadmap lists Desktop and Web, and admins notice only through label and governance questions.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].api; controls[0].note; Governance controls table / command: POST /beta/admin/configurationManagement/configurationMonitors can apply the Notebooks setting through a preview applyOnce baseline. | Found: POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors ... mode ... The possible values are: monitorOnly, applyOnce, unknownFutureValue. | Fix: In controls[0].note and the rendered row note, replace 'API: preview TCM applyOnce, resourceType microsoft.copilot.copilotpagesnotebooks, value 0 or 1.' with 'API: preview TCM; request body sets mode to applyOnce and baseline.resources[].resourceType to microsoft.copilot.copilotpagesnotebooks, resourceVersion to 1, and properties.value to the string 0 (disable) or 1 (enable).' Keep the call unchanged. References: https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta and https://learn.microsoft.com/graph/utcm-copilot-resources. | Source: https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta
+- [supported, minor] controls[0].api; controls[0].note; Governance controls table / command: POST /beta/admin/configurationManagement/configurationMonitors can apply the Notebooks creation setting through preview TCM applyOnce. | Found: POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors ... mode ... The possible values are: monitorOnly, applyOnce, unknownFutureValue. | Fix: Keep the call unchanged. In controls[0].note and the rendered row note, replace 'API: preview TCM applyOnce, resourceType microsoft.copilot.copilotpagesnotebooks, value 0 or 1.' with 'API: preview TCM; request body sets mode to applyOnce and baseline.resources[].resourceType to microsoft.copilot.copilotpagesnotebooks, resourceVersion to 1, and properties.value to the string 0 (disable) or 1 (enable).' References: https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta and https://learn.microsoft.com/graph/utcm-copilot-resources. | Source: https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta
 -->

@@ -46,9 +46,6 @@ sources:
   - title: "Microsoft 365 Copilot release notes"
     url: "https://learn.microsoft.com/microsoft-365/copilot/release-notes"
     kind: "learn"
-  - title: "Whether Researcher, and with it every export format, is available in the organisation (Microsoft Graph)"
-    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
-    kind: "learn"
   - title: "Whether users can create Copilot Pages, including Researcher's Pages output (Microsoft Graph)"
     url: "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta"
     kind: "learn"
@@ -61,13 +58,10 @@ controls:
       surface: "Microsoft 365 admin center"
       path: "Agents > All agents > agent > Block"
       docs: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions"
-    api:
-      kind: "graph"
-      call: "POST /beta/copilot/admin/catalog/packages/{id}/block"
-      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
-    note: "For Researcher the Edit users panel is disabled; Block applies tenant-wide. The Graph call blocks a Copilot package by id and needs a Microsoft Agent 365 licence (beta)."
+    api: null
+    note: "For Researcher the Edit users panel is disabled; Block applies tenant-wide. Automation for this Researcher-specific action is not yet documented at the time of writing (November 2026)."
   - governs: "Whether users can create Copilot Pages, including Researcher's Pages output"
-    scope: "group"
+    scope: "other"
     ui:
       surface: "Microsoft 365 Apps admin center"
       path: "Customization > Policy Management > policy configuration > Choose the scope > Configure Settings > Create and view Copilot Pages and Copilot Notebooks"
@@ -76,7 +70,7 @@ controls:
       kind: "graph"
       call: "POST /beta/admin/configurationManagement/configurationMonitors"
       docs: "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta"
-    note: "Preview API. Not configured leaves creation on. It applies a baseline in applyOnce mode; resource copilotpagesnotebooks, value 0 disables. Also governs Copilot Notebooks."
+    note: "Preview API. UI: all users or a group. API: tenant-level policies only. Body: mode applyOnce, resource copilotpagesnotebooks, value \"0\" disables. Also governs Copilot Notebooks."
   - governs: "Per-format switch for Researcher exports to PowerPoint, PDF, Infographic and Audio Overview"
     scope: "tenant"
     ui: null
@@ -91,19 +85,23 @@ changes:
     note: "New briefing: Researcher export formats, the tenant-wide Researcher block, the Copilot Pages policy, and the FAQ's conflicting 'to be released soon' answer."
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 61 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-28"
+    note: "Corrected: removed the unconfirmed Graph automation for blocking Researcher, limited the Copilot Pages API to tenant-level policies, added the OneDrive exception to the default, and qualified admin access to Researcher sessions."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 62 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-28"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 61
-  confirmed: 57
-  unconfirmed: 1
-  contradicted: 3
-  attempts: 1
-  hash: "3c2164f426d07abe5902d25c8dfa547d"
+  claims: 62
+  confirmed: 62
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "48e82410c5ad5d0ebc0d4f3cedd270fa"
 ---
 
 ## What's changing
@@ -135,7 +133,7 @@ If nobody acts, users who have Researcher get the new formats as options inside 
 
 **Change & support**
 - Users who already export to Word or Pages will meet a redesigned flow (roadmap).
-- Microsoft states that the content of Researcher sessions isn't directly accessible to admins or compliance tools, so confirm whether exported files land where your eDiscovery holds reach before relying on them in an investigation.
+- Microsoft states that, by default, Researcher session content is not directly accessible to admins or compliance tools; if a user explicitly submits feedback containing session data, that feedback might be stored. Confirm whether exported files land where your eDiscovery holds reach before relying on them in an investigation.
 
 ## Cost and licensing
 
@@ -151,7 +149,7 @@ If nobody acts, users who have Researcher get the new formats as options inside 
 - **Formats:** PowerPoint, PDF, Infographic and Audio Overview (new); Word and Pages (updated experience).
 - **Cloud:** Worldwide (Standard Multi-Tenant), as the roadmap record lists it. The Researcher FAQ answers "Is Researcher agent available in Sovereign Clouds?" with "To be released soon".
 - **Platform:** Web, per the roadmap record.
-- **Admin roles:** blocking Researcher is done in the Microsoft 365 admin center. The Graph block call takes the CopilotPackages.ReadWrite.All delegated permission and needs a Microsoft Agent 365 licence; applying the Copilot Pages setting through Tenant Configuration Management needs the AI Administrator role.
+- **Admin roles:** blocking Researcher is done in the Microsoft 365 admin center; applying the Copilot Pages setting through Tenant Configuration Management needs the AI Administrator role.
 
 ## Governance guidance
 
@@ -175,14 +173,16 @@ If nobody acts, users who have Researcher get the new formats as options inside 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether Researcher, and with it every export format, is available in the organisation</strong><br><small>Tenant</small><br><small class="controls__note">For Researcher the Edit users panel is disabled; Block applies tenant-wide. The Graph call blocks a Copilot package by id and needs a Microsoft Agent 365 licence (beta).</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether users can create Copilot Pages, including Researcher's Pages output</strong><br><small>Group</small><br><small class="controls__note">Preview API. Not configured leaves creation on. It applies a baseline in applyOnce mode; resource copilotpagesnotebooks, value 0 disables. Also governs Copilot Notebooks.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › policy configuration › Choose the scope › Configure Settings › Create and view Copilot Pages and Copilot Notebooks <a href="https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether Researcher, and with it every export format, is available in the organisation</strong><br><small>Tenant</small><br><small class="controls__note">For Researcher the Edit users panel is disabled; Block applies tenant-wide. Automation for this Researcher-specific action is not yet documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether users can create Copilot Pages, including Researcher's Pages output</strong><br><small class="controls__note">Preview API. UI: all users or a group. API: tenant-level policies only. Body: mode applyOnce, resource copilotpagesnotebooks, value &quot;0&quot; disables. Also governs Copilot Notebooks.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › policy configuration › Choose the scope › Configure Settings › Create and view Copilot Pages and Copilot Notebooks <a href="https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Per-format switch for Researcher exports to PowerPoint, PDF, Infographic and Audio Overview</strong><br><small>Tenant</small><br><small class="controls__note">Microsoft Learn documents no such setting at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-- Agent-wide switches do not cover Researcher: Microsoft says it remains accessible in Microsoft Copilot Chat under **Tools** even when Copilot agents are disabled for some or all users. For Researcher the **Edit users** panel is disabled, so the Block action applies to the entire tenant.
+- The Researcher FAQ says agent-wide switches do not remove Researcher: Microsoft says it remains accessible in Microsoft Copilot Chat under **Tools** even when Copilot agents are disabled for some or all users. For Researcher the **Edit users** panel is disabled, so the Block action applies to the entire tenant.
 - The Copilot Pages policy governs Copilot Pages and Copilot Notebooks together, for all users or a group. A change takes up to 90 minutes to apply where a policy configuration already existed, and up to 24 hours where none did.
+- Not configured leaves creation available except for users whose OneDrive creation is disabled; those users cannot create Copilot Pages or Copilot Notebooks regardless of this policy ([Admin policies for Copilot Pages and Copilot Notebooks](https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration)).
+- Through the Graph API the Copilot Pages setting is supported in tenant-level policies only; the operation fails if this setting is configured in any group-level policy in the Microsoft 365 Apps admin center ([Supported Copilot resources for Tenant Configuration Management](https://learn.microsoft.com/graph/utcm-copilot-resources)).
 - Microsoft Learn documents no setting for individual Researcher export formats at the time of writing (November 2026).
 
 ## Open questions
@@ -199,14 +199,11 @@ cost: None. Researcher is part of the core default experience for Microsoft Copi
 impact: Medium. Researcher users notice new export options and a redesigned Word and Pages flow; people without Researcher see nothing.
 -->
 
-<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] controls[0].api; Governance controls table; Scope: Admin roles / command: POST /beta/copilot/admin/catalog/packages/{id}/block is automation for the Researcher tenant-wide Block control. | Found: Searched: Researcher agent Copilot package block Graph packages Researcher first party; Microsoft Copilot Package Management API first party Researcher Analyst catalog. Opened copilotpackage-block, package/overview, agent-actions and faq-researcher; no Researcher-to-package mapping. | Fix: Set controls[0].api to null and remove its Graph sentence from the row note and Scope. Keep the verified UI control. Replace the row note with 'For Researcher the Edit users panel is disabled; Block applies tenant-wide. Automation for this Researcher-specific action is not yet documented at the time of writing (November 2026).' The cited API exists for Copilot packages but does not establish that Researcher is a package it can block.
-- [contradicted, blocker] controls[1].api and scope; Governance controls table / command: POST /beta/admin/configurationManagement/configurationMonitors applies the Pages control with the group scope shown in the row. | Found: TCM supports these settings only in tenant-level policies in the Microsoft 365 Apps admin center. Before using TCM, ensure that the target setting isn't configured in any group-level policy in that admin center. If it is, monitoring, snapshots, remediation, and applyOnce fail for that resource. | Fix: Keep the API call, set controls[1].scope to 'other', and qualify the note with 'UI: all users or a group. API: tenant-level policies only; the operation fails if this setting is configured in any group-level policy. The request body sets mode to applyOnce and supplies baseline.resources with resourceType microsoft.copilot.copilotpagesnotebooks, resourceVersion 1 and properties.value "0" to disable.' Cite https://learn.microsoft.com/graph/utcm-copilot-resources for this qualification. | Source: https://learn.microsoft.com/graph/utcm-copilot-resources
-- [contradicted, blocker] controls[1].note; Governance controls table / default: Not configured leaves Copilot Pages and Notebooks creation available. | Found: If your organization disabled the creation of OneDrive, regardless of the setting noted here, these people in your organization can't create Copilot Pages or Copilot Notebooks. | Fix: Replace 'Not configured leaves creation on' with 'Not configured leaves creation available except for users whose OneDrive creation is disabled; those users cannot create Copilot Pages or Copilot Notebooks regardless of this policy.' | Source: https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration
-- [contradicted, blocker] Risk assessment: Change & support / behaviour: Researcher session content is not directly accessible to admins or compliance tools. | Found: By default, no. The content of Researcher sessions isn't directly accessible to admins or compliance tools. ... The only exception is if a user explicitly submits feedback that includes the session data; such feedback might be stored. | Fix: Replace the factual premise with 'Microsoft states that, by default, Researcher session content is not directly accessible to admins or compliance tools; if a user explicitly submits feedback containing session data, that feedback might be stored.' Keep the existing advice about checking exported files and eDiscovery holds. | Source: https://learn.microsoft.com/copilot/manage/faq-researcher
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Scope: Cloud / availability: The Researcher FAQ answers the sovereign-cloud availability question with 'To be released soon'. | Found: Is Researcher agent available in Sovereign Clouds? ... To be released soon. | Fix: After this sentence add 'The Microsoft Copilot service description differs: its Researcher row lists availability in GCC and GCCH, and "Not currently available" in DoD.' Cite https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot. Keep the output-formats roadmap scope separate from this product-level availability. | Source: https://learn.microsoft.com/copilot/manage/faq-researcher
-- [supported, minor] Governance controls: Agent-wide switches / applicability: The FAQ says Researcher remains available under Tools even when Copilot agents are disabled for some or all users. | Found: This tool will remain accessible in Microsoft Copilot Chat under Tools, even when Copilot agents are disabled for some or all users in Microsoft 365 admin center. | Fix: Replace the unqualified opening 'Agent-wide switches do not cover Researcher' with 'The Researcher FAQ says agent-wide switches do not remove Researcher.' After the FAQ statement add 'The Agent installation page differs: it says disabling or restricting Copilot extensibility applies to Microsoft-deployed as well as non-Microsoft-deployed agents.' Both sources are already cited; retain the verified tenant-wide Block guidance. | Source: https://learn.microsoft.com/copilot/manage/faq-researcher
+- [supported, minor] Scope: Cloud / availability: The Researcher FAQ answers the sovereign-cloud availability question with 'To be released soon'. | Found: Is Researcher agent available in Sovereign Clouds? To be released soon. | Fix: Append: 'The Microsoft Copilot service description instead lists Researcher as available in GCC and GCCH, but not currently available in DoD; this is Researcher availability, not confirmation of these export formats.' Cite https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot. | Source: https://learn.microsoft.com/copilot/manage/faq-researcher
+- [supported, minor] Governance controls: agent-wide switches / applicability: The Researcher FAQ says Researcher remains accessible under Tools even when Copilot agents are disabled for some or all users. | Found: This tool will remain accessible in Microsoft Copilot Chat under Tools, even when Copilot agents are disabled for some or all users in Microsoft 365 admin center. | Fix: Append: 'The Agent installation page gives a conflicting statement: disabling or restricting Copilot extensibility applies to both non-Microsoft-deployed and Microsoft-deployed agents.' Cite https://learn.microsoft.com/copilot/manage/copilot-agent-install and retain the independently documented Researcher-specific Block action. | Source: https://learn.microsoft.com/copilot/manage/faq-researcher
+- [supported, minor] Risk assessment: Data exposure / behaviour: Copilot Pages are stored in a user-owned SharePoint Embedded container. | Found: Copilot Pages (.page files) and Copilot Notebooks are stored in the same user-owned SharePoint Embedded container used by Loop My workspace. | Fix: Replace the storage clause with: 'The admin-policy page says Copilot Pages use a user-owned SharePoint Embedded container, but the storage page says Pages and Notebooks now use OneDrive for Business; only items created before November 2025 remain in the legacy container.' Cite https://learn.microsoft.com/microsoft-365/loop/cpcn-storage alongside the existing policy-page citation. | Source: https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration
+- [supported, minor] Cost and licensing: Indirect costs / cost: Copilot Pages storage counts toward the organisation's overall SharePoint quota. | Found: Storage counts toward your organization's overall SharePoint quota. | Fix: Replace with: 'The admin-policy page says storage counts toward the organisation's SharePoint quota, but the storage page says current Pages and Notebooks count against the user's OneDrive limit; the SharePoint quota applies to legacy items created before November 2025.' Cite https://learn.microsoft.com/microsoft-365/loop/cpcn-storage alongside the existing policy-page citation. | Source: https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration
 -->

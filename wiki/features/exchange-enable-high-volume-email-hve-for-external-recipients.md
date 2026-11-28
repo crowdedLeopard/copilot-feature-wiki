@@ -66,16 +66,18 @@ changes:
     note: "Corrected after verification: removed the claim that the billing policy is the only documented control, and dropped a usage-monitoring checklist step that had no controls row."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 51 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 57 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 51
-  confirmed: 51
-  unconfirmed: 0
+  claims: 57
+  confirmed: 56
+  unconfirmed: 1
   contradicted: 0
   attempts: 0
   hash: "d2fda50b11fff9859775e71b49eaacc2"
@@ -167,8 +169,10 @@ cost: Variable. The roadmap says billing will be per external recipient; HVE is 
 impact: Low. Admins and the owners of the apps and devices that send through HVE accounts notice it; ordinary users see no change.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: HVE mail is sent with no person approving each message. | Found: Searched: High Volume Email HVE automatic sending human approval per message approval workflow. Read HVE management and its search excerpts; automated messaging is documented, but the absence of per-message human approval is not stated. | Fix: Remove 'with no person approving each message' from the Autonomy & actions bullet. Keep the documented application/device sending and the analysis about misconfigured applications creating sends and charges.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: Exchange admin center > Mail flow > High Volume Email > account > Billing policies reaches the billing-policy assignment page. | Found: In the left navigation, select Mail flow, and then select High Volume Email. Select an HVE account from the list to open the account details. When you open an account, two tabs are available – General and Billing policies. | Fix: Keep the documented path and add to controls[1].note: 'On the Billing policies tab, select a different billing policy from the drop-down menu.' Apply the same addition to the rendered row note, as documented at https://learn.microsoft.com/exchange/mail-flow-best-practices/high-volume-mails-m365. | Source: https://learn.microsoft.com/exchange/mail-flow-best-practices/high-volume-mails-m365
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: Exchange admin center > Mail flow > High Volume Email > account > Billing policies reaches billing-policy assignment. | Found: In the left navigation, select Mail flow, and then select High Volume Email. ... Select an HVE account from the list to open the account details. ... When you open an account, two tabs are available – General and Billing policies. | Fix: Keep the documented path and append to controls[1].note and the corresponding rendered row note: 'On the Billing policies tab, select a different billing policy from the drop-down menu.' This is documented at https://learn.microsoft.com/exchange/mail-flow-best-practices/high-volume-mails-m365. | Source: https://learn.microsoft.com/exchange/mail-flow-best-practices/high-volume-mails-m365
 -->

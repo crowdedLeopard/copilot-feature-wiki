@@ -80,15 +80,17 @@ changes:
     note: "Corrected after the independent check: the governance notes no longer call the creation setting the only Cloud Policy setting Learn documents for Notebooks; Learn also lists a code-preview setting."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 65 statements confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 68 statements confirmed"
 version: 3
 verification:
   status: "verified"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 65
-  confirmed: 65
+  claims: 68
+  confirmed: 68
   unconfirmed: 0
   contradicted: 0
   attempts: 0

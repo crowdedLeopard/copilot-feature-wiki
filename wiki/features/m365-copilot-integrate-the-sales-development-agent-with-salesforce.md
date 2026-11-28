@@ -100,15 +100,17 @@ changes:
     note: "Corrected after the independent check: the organisation-wide block is now described as restricting access to the agent, not as a way to stop a running agent."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 97 statements confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 91 statements not yet confirmed"
 version: 3
 verification:
-  status: "verified"
-  date: "2026-11-21"
+  status: "verified-with-gaps"
+  date: "2026-11-28"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 97
-  confirmed: 97
+  claims: 91
+  confirmed: 91
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -213,4 +215,10 @@ The Graph package calls need a Microsoft Agent 365 licence and are beta APIs. Th
 risk: High. The agent runs autonomously once launched and, through the Salesforce MCP server, can change Lead status and owner and create Task records; the integration is documented as a preview.
 cost: Variable. Microsoft publishes Copilot Credit billing for Sales Development Agent resources beginning December 1, 2026, including 100 Copilot Credits per agent per month plus consumption billing for agent activity; Salesforce licensing is also required.
 impact: Low. Only the sales managers who create agent instances and the Salesforce users who authorise the connection work with it directly; admins notice it through activation and blocking.
+-->
+
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The audience control is reached through Microsoft 365 admin center > Agents > All Agents > Sales Development (Frontier) > Activate. | Found: In the Microsoft 365 admin center, go to Agents > All Agents. Search for Sales Development (Frontier), and then select Activate. Choose the users or groups that can create Sales Development agent instances. | Fix: Extend controls[0].ui.path and its rendered copy to 'Agents > All Agents > Sales Development (Frontier) > Activate > users or groups'. In the row note add: 'Choose the users or groups that can create instances, then apply a policy template that allows instance creation and includes Microsoft Teams.' See https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent. | Source: https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent
 -->

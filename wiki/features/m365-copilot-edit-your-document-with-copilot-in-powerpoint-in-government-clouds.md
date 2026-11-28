@@ -81,15 +81,17 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 65 statements not yet confirmed"
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 66 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 78 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 66
-  confirmed: 66
+  claims: 78
+  confirmed: 78
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -184,8 +186,11 @@ cost: Medium. Microsoft documents Microsoft Copilot as an add-on licence in DoD 
 impact: Medium. Licensed Copilot users in DoD tenants who build or revise decks will notice it; users without the add-on licence will not.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Autonomy & actions / behaviour: A single prompt can make multi-slide content changes and presentation-wide layout and template-style changes. | Found: Complex reasoning and audience adaptation: "Update slides 4-6 for a UK audience." Ask it to reformat your presentation to match the branded template style, applying consistent colors, fonts, and layouts throughout | Fix: Cite https://support.microsoft.com/topic/008f17aa-8e5f-4cda-ba6c-0588000bdad7 after the sentence about one prompt changing multiple slides and add it to sources. Retain the DoD availability caveat. | Source: https://support.microsoft.com/topic/008f17aa-8e5f-4cda-ba6c-0588000bdad7
+- [supported, minor] Risk assessment: Data exposure / behaviour: Copilot uses the context of the open presentation. | Found: It understands document context, can perform multi-step tasks, and generates or edits content directly within PowerPoint | Fix: Cite https://support.microsoft.com/topic/008f17aa-8e5f-4cda-ba6c-0588000bdad7 after the statement that Copilot reads and rewrites the open deck, and add that article to sources. Retain the DoD availability caveat. | Source: https://support.microsoft.com/topic/008f17aa-8e5f-4cda-ba6c-0588000bdad7
+- [supported, minor] Risk assessment: Autonomy & actions / behaviour: One prompt can change text across multiple slides. | Found: Complex reasoning and audience adaptation: "Update slides 4-6 for a UK audience." | Fix: Cite https://support.microsoft.com/topic/008f17aa-8e5f-4cda-ba6c-0588000bdad7 after the sentence about one prompt changing multiple slides and add that article to sources. Retain the DoD availability caveat. | Source: https://support.microsoft.com/topic/008f17aa-8e5f-4cda-ba6c-0588000bdad7
+- [supported, minor] Risk assessment: Autonomy & actions / behaviour: One prompt can change layouts across a presentation. | Found: Ask it to reformat your presentation to match the branded template style, applying consistent colors, fonts, and layouts throughout | Fix: Cite https://support.microsoft.com/topic/008f17aa-8e5f-4cda-ba6c-0588000bdad7 after the sentence about one prompt changing multiple slides and add that article to sources. Retain the DoD availability caveat. | Source: https://support.microsoft.com/topic/008f17aa-8e5f-4cda-ba6c-0588000bdad7
+- [supported, minor] Risk assessment: Autonomy & actions / behaviour: One prompt can change presentation templates, in the sense of applying their branded styling. | Found: Ask it to reformat your presentation to match the branded template style, applying consistent colors, fonts, and layouts throughout | Fix: Replace the sentence with 'A single prompt can change text across multiple slides and apply presentation-wide layout and branded template styling; the brand compliance check is the roadmap's description.' Cite https://support.microsoft.com/topic/008f17aa-8e5f-4cda-ba6c-0588000bdad7 and add it to sources. | Source: https://support.microsoft.com/topic/008f17aa-8e5f-4cda-ba6c-0588000bdad7
 -->

@@ -82,16 +82,18 @@ changes:
     note: "Corrected after the independent check: replaced the unsupported claim that the Cloud Policy setting cannot allow documents while excluding images with a statement that the admin and TCM resource pages document no file-type selector."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 64 statements confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 75 statements not yet confirmed"
 version: 3
 verification:
-  status: "verified"
-  date: "2026-11-21"
+  status: "verified-with-gaps"
+  date: "2026-11-28"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 64
-  confirmed: 64
-  unconfirmed: 0
+  claims: 75
+  confirmed: 74
+  unconfirmed: 1
   contradicted: 0
   attempts: 0
   hash: "b56e0c41c7ac4e7f46557357c14551d8"
@@ -192,4 +194,10 @@ The automation for the Cloud Policy setting is the preview Tenant Configuration 
 risk: Medium. Images users add, including screenshots and photographs, become grounding context for generated presentations and reports, and Microsoft's notice says no new admin controls come with the rollout.
 cost: Low. Copilot Notebooks needs the Microsoft Copilot or Copilot Chat licence; no separate licence or meter for image references is documented, so the known cost is user communication.
 impact: Medium. People who use Copilot Notebooks notice it; Microsoft's notice names users with access to Copilot Notebooks as the affected group.
+-->
+
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [unsupported, major] Risk assessment: Data exposure, first bullet / behaviour: The user's own sharing of a generated output decides who sees it. | Found: Searched: Microsoft 365 Copilot generated Word PowerPoint files share access permissions sensitivity labels sharing settings; opened cpcn-permission. Read architecture-data-protection-auditing and ai-m365-copilot excerpts: inherited protection is documented, not this blanket audience claim. | Fix: Remove ', and the user's own sharing of that output decides who sees it' from the first Data exposure bullet. Retain the supported analysis that sensitive image content can appear in a generated presentation, report or brief.
 -->

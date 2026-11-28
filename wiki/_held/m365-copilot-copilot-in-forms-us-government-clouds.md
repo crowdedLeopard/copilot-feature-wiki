@@ -70,18 +70,20 @@ changes:
     note: "Corrected after the independent check: licensing model set to not yet published, the government-cloud data-boundary statement no longer caveated, and the unwanted-use sentence now says no separate Copilot off switch is documented."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 52 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 56 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-21"
+  status: "held"
+  date: "2026-11-28"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 52
-  confirmed: 52
+  claims: 56
+  confirmed: 55
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "362bea1054dc00b850c55e7d57834a53"
 ---
 
@@ -172,10 +174,12 @@ cost: Low. The only cost the sources show is admin time and licence checking; wh
 impact: Medium. Form owners, such as survey owners, HR and communications teams, are the potential audience for the new options; Microsoft has not stated the government-cloud eligibility or arrival default.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Scope / absence: Any prerequisites for Copilot in Forms are not yet documented. | Found: Requirements vary based on the Copilot experience and Microsoft 365 app that your users access. Users must have a work or school account in Microsoft Entra ID. | Fix: Replace 'The roles that manage Copilot in Forms and any prerequisites are not yet documented.' with 'The roles that manage Copilot in Forms and any government-cloud-specific prerequisites are not yet documented.' General Copilot requirements are published at https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements; the application card at https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-application-card explicitly includes Microsoft Copilot in Microsoft Forms. | Source: https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters / behaviour: Drafting works from what a user types. | Found: Users can also reference an existing form by pasting the form's URL into the prompt box. | Fix: Add https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes#may-29,-2025 to sources for the drafting-input description. | Source: https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes#may-29,-2025
-- [supported, minor] Why it matters / behaviour: Drafting can use material the user references. | Found: When creating a form with Copilot, users can now reference existing documents such as Word, Excel, and PowerPoint. Users can also reference an existing form by pasting the form's URL into the prompt box. | Fix: Add https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes#may-29,-2025 to sources for the referenced-input description. | Source: https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes#may-29,-2025
-- [supported, minor] Why it matters; Risk assessment: Data exposure / behaviour: Copilot's results analysis uses the responses collected by a form. | Found: Copilot works alongside your form to deliver tailored suggestions and refinements, help configure settings, prepare your form for distribution, and turn responses into clear, actionable insights | Fix: Add https://techcommunity.microsoft.com/blog/microsoftformsblog/evolving-the-copilot-experience-in-microsoft-forms/4534667 to sources for the description of responses used in results analysis. | Source: https://techcommunity.microsoft.com/blog/microsoftformsblog/evolving-the-copilot-experience-in-microsoft-forms/4534667
+- [supported, minor] Why it matters / behaviour: Drafting a form with Copilot works from user-entered prompts. | Found: Use natural language to describe the form you need, and Copilot will generate it for you. | Fix: Add https://learn.microsoft.com/microsoft-365/copilot/release-notes-archive#february,-2024 to sources for the statement that drafting works from what a user types. | Source: https://learn.microsoft.com/microsoft-365/copilot/release-notes-archive#february,-2024
+- [supported, minor] Why it matters / behaviour: Copilot form drafting can use material the user references. | Found: When creating a form with Copilot, users can now reference existing documents such as Word, Excel, and PowerPoint. Users can also reference an existing form by pasting the form's URL into the prompt box. | Fix: Add https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes#may-29,-2025 to sources for the referenced-input description. | Source: https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes#may-29,-2025
+- [supported, minor] Risk assessment: Autonomy & actions; Cost and licensing / availability: The separately documented new Forms Copilot chat experience is a commercial rollout, not a statement of government-cloud entitlement. | Found: The new Copilot in Forms is rolling out to worldwide users now, and will be available to users with Microsoft 365 commercial Copilot licenses. | Fix: Add https://techcommunity.microsoft.com/blog/microsoftformsblog/evolving-the-copilot-experience-in-microsoft-forms/4534667 to sources for the commercial scope of the separate Forms Copilot chat experience. | Source: https://techcommunity.microsoft.com/blog/microsoftformsblog/evolving-the-copilot-experience-in-microsoft-forms/4534667
 -->

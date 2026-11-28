@@ -3,102 +3,30 @@
   "kind": "concept",
   "roadmapId": null,
   "title": "Sensitive information types: how does Purview recognise sensitive data?",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-28",
-  "version": 2,
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 2,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-27",
-    "reasons": [
-      "2 blocking findings (claims 58, 59)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 117,
-    "confirmed": 115,
+    "claims": 121,
+    "confirmed": 121,
     "unconfirmed": 0,
-    "contradicted": 2,
-    "blocker": 2,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
     "minor": 2
   },
-  "summary": "Hold: the description of DLP conditions extends confidence levels and instance counts to every content type, including sensitivity and retention labels. Microsoft says those labels are checked only for their presence; the confidence and instance-count settings described here belong to SIT matches. The six control surfaces are supported, with minor navigation and citation corrections.",
+  "summary": "The sensitive information type definitions, limits, licensing statements and control calls are supported by Microsoft documentation. The DLP navigation needs its omitted headings and scope-selection step restored, and two supporting Microsoft pages should be added to the sources.",
   "claims": [
     {
       "n": 1,
-      "where": "controls[0].ui",
-      "type": "admin-path",
-      "claim": "Custom SITs are created in the Microsoft Purview portal at Information Protection > Classifiers > Sensitive info types > Create sensitive info type.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/sit-create-a-custom-sensitive-information-type",
-      "quote": "In the Microsoft Purview portal, navigate to Information Protection > Classifiers > Sensitive info types and choose Create sensitive info type.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 2,
-      "where": "controls[0].api",
-      "type": "command",
-      "claim": "New-DlpSensitiveInformationTypeRulePackage -FileData ([System.IO.File]::ReadAllBytes('<path to Unicode XML file>')) imports the XML rule package defining custom SITs.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpsensitiveinformationtyperulepackage",
-      "quote": "The FileData parameter specifies the sensitive information type rule package that you want to import. A valid value for this parameter requires you to read the file to a byte-encoded object using the following syntax: ([System.IO.File]::ReadAllBytes('<Path>\\<FileName>')).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
-      "where": "controls[1].ui",
-      "type": "admin-path",
-      "claim": "The printed DLP policy-creation route reaches the Sensitive info types condition in the Microsoft Purview portal.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine",
-      "quote": "On the Define policy settings page, make sure the Create or customize advanced DLP rules option is selected. ... Select + Create rule. ... Under Conditions, select Add condition > Content contains > Add > Sensitive info types.",
-      "severity": "minor",
-      "fix": "Use this path in both the front matter and rendered table: Data loss prevention > Policies > Create policy > Enterprise applications & devices > Categories > Custom > Regulations > Custom policy > Admin units > Full directory > locations > Define policy settings > Create or customize advanced DLP rules > + Create rule > Conditions > Add condition > Content contains > Add > Sensitive info types. Here 'locations' is the scope the administrator selects; the cited example selects SharePoint sites and OneDrive accounts."
-    },
-    {
-      "n": 4,
-      "where": "controls[1].api",
-      "type": "command",
-      "claim": "New-DlpComplianceRule -Name <rule name> -Policy <policy name> -ContentContainsSensitiveInformation <hashtable> creates a DLP rule with specified SIT match conditions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule",
-      "quote": "New-DlpComplianceRule -Name \"SocialSecurityRule\" -Policy \"USFinancialChecks\" -ContentContainsSensitiveInformation @{Name=\"U.S. Social Security Number (SSN)\"} -BlockAccess $True",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "controls[2].ui",
-      "type": "admin-path",
-      "claim": "The tenant SIT inventory is on Microsoft Purview portal > Information Protection > Classifiers > Sensitive info types.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/sit-create-a-custom-sensitive-information-type",
-      "quote": "The Sensitive info types tab of the Classifiers page, lists all of the sensitive information types.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "controls[2].api",
-      "type": "command",
-      "claim": "Get-DlpSensitiveInformationType -Identity \"<SIT name>\" reads the properties of a named tenant SIT rather than changing it.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/get-dlpsensitiveinformationtype",
-      "quote": "Get-DlpSensitiveInformationType -Identity \"Credit Card Number\" | Format-List ... This example lists all the properties of the sensitive information type named \"Credit Card Number\".",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
       "where": "summary; What it is",
       "type": "behaviour",
       "claim": "SITs are pattern-based classifiers in Microsoft Purview.",
@@ -109,7 +37,7 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 2,
       "where": "What it is",
       "type": "behaviour",
       "claim": "SITs detect social security numbers.",
@@ -120,7 +48,7 @@
       "fix": null
     },
     {
-      "n": 9,
+      "n": 3,
       "where": "summary; What it is",
       "type": "behaviour",
       "claim": "SITs detect credit card numbers.",
@@ -131,7 +59,7 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 4,
       "where": "What it is",
       "type": "behaviour",
       "claim": "SITs detect bank account numbers.",
@@ -142,21 +70,21 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 5,
       "where": "summary",
       "type": "behaviour",
-      "claim": "SITs can detect national identity numbers.",
+      "claim": "SITs detect national ID numbers.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
-      "quote": "Argentina national identity (DNI) number ... The regular expression Regex_argentina_national_id finds content that matches the pattern.",
+      "quote": "Argentina national identity (DNI) number",
       "severity": null,
       "fix": null
     },
     {
-      "n": 12,
+      "n": 6,
       "where": "What it is",
       "type": "behaviour",
-      "claim": "Microsoft supplies a large number of preconfigured SITs.",
+      "claim": "Microsoft provides a large number of preconfigured SITs.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
       "quote": "Microsoft provides a large number of preconfigured SITs or you can create your own.",
@@ -164,7 +92,7 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 7,
       "where": "What it is",
       "type": "behaviour",
       "claim": "Administrators can create their own SITs.",
@@ -175,10 +103,10 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 8,
       "where": "What it is: Parts of a SIT",
       "type": "behaviour",
-      "claim": "A SIT has a name.",
+      "claim": "Each SIT has a name.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
       "quote": "Name: Indicates how the sensitive information type is referred to.",
@@ -186,10 +114,10 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 9,
       "where": "What it is: Parts of a SIT",
       "type": "behaviour",
-      "claim": "A SIT has a description.",
+      "claim": "Each SIT has a description.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
       "quote": "Description: Explanation of what the sensitive information type is looking for.",
@@ -197,7 +125,7 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 10,
       "where": "What it is: Parts of a SIT",
       "type": "behaviour",
       "claim": "A SIT has one or more patterns.",
@@ -208,21 +136,10 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 11,
       "where": "What it is: Parts of a SIT",
       "type": "behaviour",
-      "claim": "A pattern has a primary element.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
-      "quote": "Pattern: Defines what a SIT detects. It consists of the following components: primary element, supporting elements, confidence level, and proximity.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "What it is: Parts of a SIT",
-      "type": "behaviour",
-      "claim": "A primary element may be a regular expression with or without checksum validation.",
+      "claim": "A pattern's primary element can be a regular expression.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
       "quote": "It can be a regular expression with or without a checksum validation, a keyword list, a keyword dictionary, or a function.",
@@ -230,10 +147,21 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 12,
       "where": "What it is: Parts of a SIT",
       "type": "behaviour",
-      "claim": "A primary element may be a keyword list.",
+      "claim": "A primary regular expression can have or omit checksum validation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
+      "quote": "It can be a regular expression with or without a checksum validation",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What it is: Parts of a SIT",
+      "type": "behaviour",
+      "claim": "A primary element can be a keyword list.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
       "quote": "It can be a regular expression with or without a checksum validation, a keyword list, a keyword dictionary, or a function.",
@@ -241,10 +169,10 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 14,
       "where": "What it is: Parts of a SIT",
       "type": "behaviour",
-      "claim": "A primary element may be a keyword dictionary.",
+      "claim": "A primary element can be a keyword dictionary.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
       "quote": "It can be a regular expression with or without a checksum validation, a keyword list, a keyword dictionary, or a function.",
@@ -252,10 +180,10 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 15,
       "where": "What it is: Parts of a SIT",
       "type": "behaviour",
-      "claim": "A primary element may be a function.",
+      "claim": "A primary element can be a function.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
       "quote": "It can be a regular expression with or without a checksum validation, a keyword list, a keyword dictionary, or a function.",
@@ -263,7 +191,7 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 16,
       "where": "What it is: Parts of a SIT",
       "type": "behaviour",
       "claim": "Supporting elements are optional.",
@@ -274,18 +202,18 @@
       "fix": null
     },
     {
-      "n": 23,
+      "n": 17,
       "where": "What it is: Parts of a SIT",
       "type": "behaviour",
-      "claim": "Supporting elements supply corroborating evidence.",
+      "claim": "Supporting elements provide corroborating evidence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
-      "quote": "An element that acts as corroborative evidence. When included, supporting elements help increase the confidence level with respect to the accuracy of detected matches.",
+      "quote": "An element that acts as corroborative evidence.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 24,
+      "n": 18,
       "where": "What it is: Parts of a SIT",
       "type": "behaviour",
       "claim": "A pattern has a confidence level.",
@@ -296,10 +224,10 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 19,
       "where": "What it is: Parts of a SIT",
       "type": "behaviour",
-      "claim": "Proximity measures how many characters may separate supporting and primary elements.",
+      "claim": "Proximity limits the character distance between supporting and primary elements.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
       "quote": "Specifies how close a supporting element is to a primary element, in terms of the number of characters between them.",
@@ -307,7 +235,7 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 20,
       "where": "What it is: Confidence levels",
       "type": "behaviour",
       "claim": "Low confidence has a value of 65.",
@@ -318,7 +246,7 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 21,
       "where": "What it is: Confidence levels",
       "type": "behaviour",
       "claim": "Medium confidence has a value of 75.",
@@ -329,7 +257,7 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 22,
       "where": "What it is: Confidence levels",
       "type": "behaviour",
       "claim": "High confidence has a value of 85.",
@@ -340,10 +268,10 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 23,
       "where": "What it is: Confidence levels",
       "type": "behaviour",
-      "claim": "Low confidence returns low, medium and high matches.",
+      "claim": "Low confidence returns low, medium and high confidence matches, finding the most matches.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
       "quote": "Low confidence returns all low, medium, and high confidence matches.",
@@ -351,8 +279,8 @@
       "fix": null
     },
     {
-      "n": 30,
-      "where": "What it is: Confidence levels; Risks and limits",
+      "n": 24,
+      "where": "What it is: Confidence levels; Risks and limits: Wrong confidence level",
       "type": "behaviour",
       "claim": "Low confidence produces the most false positives.",
       "status": "supported",
@@ -362,7 +290,7 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 25,
       "where": "What it is: Confidence levels",
       "type": "behaviour",
       "claim": "High confidence produces the fewest false positives.",
@@ -373,8 +301,8 @@
       "fix": null
     },
     {
-      "n": 32,
-      "where": "What it is: Confidence levels; Risks and limits",
+      "n": 26,
+      "where": "What it is: Confidence levels; Risks and limits: Wrong confidence level",
       "type": "behaviour",
       "claim": "High confidence produces the most false negatives.",
       "status": "supported",
@@ -384,10 +312,10 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "What it is: Built-in category",
+      "n": 27,
+      "where": "What it is: Category table, Built-in",
       "type": "behaviour",
-      "claim": "Built-in SITs are created by Microsoft.",
+      "claim": "Microsoft creates built-in SITs.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
       "quote": "Microsoft created these SITs and they show up in the Purview portal by default.",
@@ -395,8 +323,8 @@
       "fix": null
     },
     {
-      "n": 34,
-      "where": "What it is: Built-in category; Risks and limits",
+      "n": 28,
+      "where": "What it is: Category table, Built-in; Risks and limits",
       "type": "behaviour",
       "claim": "Built-in SITs cannot be edited.",
       "status": "supported",
@@ -406,10 +334,10 @@
       "fix": null
     },
     {
-      "n": 35,
-      "where": "What it is: Built-in category; Risks and limits",
+      "n": 29,
+      "where": "What it is: Category table, Built-in; Risks and limits",
       "type": "behaviour",
-      "claim": "Copyable built-in SITs can serve as templates for custom SITs.",
+      "claim": "Copyable built-in SITs can be used as templates to create custom SITs.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
       "quote": "These SITs can't be edited, but you can use them as templates by copying them to create custom sensitive information types.",
@@ -417,8 +345,8 @@
       "fix": null
     },
     {
-      "n": 36,
-      "where": "What it is: Named entity category",
+      "n": 30,
+      "where": "What it is: Category table, Named entity",
       "type": "behaviour",
       "claim": "Named entity SITs detect person names.",
       "status": "supported",
@@ -428,8 +356,8 @@
       "fix": null
     },
     {
-      "n": 37,
-      "where": "What it is: Named entity category",
+      "n": 31,
+      "where": "What it is: Category table, Named entity",
       "type": "behaviour",
       "claim": "Named entity SITs detect physical addresses.",
       "status": "supported",
@@ -439,8 +367,8 @@
       "fix": null
     },
     {
-      "n": 38,
-      "where": "What it is: Named entity category",
+      "n": 32,
+      "where": "What it is: Category table, Named entity",
       "type": "behaviour",
       "claim": "Named entity SITs detect medical terms.",
       "status": "supported",
@@ -450,8 +378,8 @@
       "fix": null
     },
     {
-      "n": 39,
-      "where": "What it is: Named entity category",
+      "n": 33,
+      "where": "What it is: Category table, Named entity",
       "type": "behaviour",
       "claim": "Named entity SITs cannot be edited.",
       "status": "supported",
@@ -461,8 +389,8 @@
       "fix": null
     },
     {
-      "n": 40,
-      "where": "What it is: Named entity category; Risks and limits",
+      "n": 34,
+      "where": "What it is: Category table, Named entity; Risks and limits",
       "type": "behaviour",
       "claim": "Named entity SITs cannot be copied.",
       "status": "supported",
@@ -472,10 +400,10 @@
       "fix": null
     },
     {
-      "n": 41,
-      "where": "What it is: Named entity category",
+      "n": 35,
+      "where": "What it is: Category table, Named entity",
       "type": "behaviour",
-      "claim": "Bundled named entity SITs detect all possible matches within a class such as All physical addresses.",
+      "claim": "Bundled named entity SITs match every case in a class, such as All physical addresses.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
       "quote": "Bundled named entity SITs detect all possible matches in a class, such as All physical addresses.",
@@ -483,19 +411,30 @@
       "fix": null
     },
     {
-      "n": 42,
-      "where": "What it is: Custom category",
+      "n": 36,
+      "where": "What it is: Category table, Custom",
       "type": "behaviour",
-      "claim": "Custom SITs can be fully defined by their creator or copied from a built-in SIT and modified.",
+      "claim": "Custom SITs can be fully defined by their creator.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
-      "quote": "you can create your own custom sensitive information types that you fully define or you can copy one of the built-in ones and modify it.",
+      "quote": "you can create your own custom sensitive information types that you fully define",
       "severity": null,
       "fix": null
     },
     {
-      "n": 43,
-      "where": "What it is: EDM category",
+      "n": 37,
+      "where": "What it is: Category table, Custom; Risks and limits",
+      "type": "behaviour",
+      "claim": "A custom SIT can be a modified copy of a built-in SIT.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
+      "quote": "you can copy one of the built-in ones and modify it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What it is: Category table, Exact data match",
       "type": "behaviour",
       "claim": "EDM SITs are created from scratch.",
       "status": "supported",
@@ -505,10 +444,10 @@
       "fix": null
     },
     {
-      "n": 44,
-      "where": "What it is: EDM category",
+      "n": 39,
+      "where": "What it is: Category table, Exact data match",
       "type": "behaviour",
-      "claim": "EDM SITs detect exact values defined in a sensitive-information database.",
+      "claim": "EDM SITs match exact values defined in a database of sensitive information.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
       "quote": "You use them to detect items that have exact values, which you define in a database of sensitive information.",
@@ -516,131 +455,131 @@
       "fix": null
     },
     {
-      "n": 45,
+      "n": 40,
       "where": "summary; What it is: Where SITs are used; Why it matters",
       "type": "applicability",
-      "claim": "SITs are used by Microsoft Purview DLP policies.",
+      "claim": "SITs are used in Microsoft Purview DLP policies.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
-      "quote": "Sensitive information types are used in ... Microsoft Purview Data Loss Prevention policies",
+      "quote": "Sensitive information types are used in\n\n- Microsoft Purview Data Loss Prevention policies",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "summary; What it is: Where SITs are used; Why it matters",
+      "type": "applicability",
+      "claim": "SITs are used with sensitivity labels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
+      "quote": "Sensitive information types are used in\n\n- Microsoft Purview Data Loss Prevention policies\n- Sensitivity labels",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "What it is: Where SITs are used; Why it matters",
+      "type": "applicability",
+      "claim": "SITs are used with retention labels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
+      "quote": "Sensitive information types are used in\n\n- Microsoft Purview Data Loss Prevention policies\n- Sensitivity labels\n- Retention labels",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "What it is: Where SITs are used",
+      "type": "applicability",
+      "claim": "SITs are used in Insider Risk Management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
+      "quote": "- Insider risk management",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "What it is: Where SITs are used",
+      "type": "applicability",
+      "claim": "SITs are used in Communication Compliance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
+      "quote": "- Communication compliance",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "What it is: Where SITs are used",
+      "type": "applicability",
+      "claim": "SITs are used in auto-labeling policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
+      "quote": "- Auto-labeling policies",
       "severity": null,
       "fix": null
     },
     {
       "n": 46,
-      "where": "summary; What it is: Where SITs are used; Why it matters",
+      "where": "What it is: Where SITs are used",
       "type": "applicability",
-      "claim": "SITs are used by sensitivity labels.",
+      "claim": "SITs are used in Microsoft Priva.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
-      "quote": "Sensitive information types are used in ... Sensitivity labels",
+      "quote": "- Microsoft Priva",
       "severity": null,
       "fix": null
     },
     {
       "n": 47,
-      "where": "What it is: Where SITs are used; Why it matters",
-      "type": "applicability",
-      "claim": "SITs are used by retention labels.",
+      "where": "What it is: Where SITs are used",
+      "type": "behaviour",
+      "claim": "A DLP rule's Content contains condition can select SITs.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
-      "quote": "Sensitive information types are used in ... Retention labels",
+      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
+      "quote": "All locations support the Content contains condition. You can select multiple instances of each content type",
       "severity": null,
       "fix": null
     },
     {
       "n": 48,
       "where": "What it is: Where SITs are used",
-      "type": "applicability",
-      "claim": "SITs are used by Insider Risk Management.",
+      "type": "behaviour",
+      "claim": "Content contains offers sensitivity labels alongside SITs.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
-      "quote": "Sensitive information types are used in ... Insider risk management",
+      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
+      "quote": "The rule will only look for the presence of any sensitivity labels and retention labels you pick.",
       "severity": null,
       "fix": null
     },
     {
       "n": 49,
       "where": "What it is: Where SITs are used",
-      "type": "applicability",
-      "claim": "SITs are used by Communication Compliance.",
+      "type": "behaviour",
+      "claim": "Content contains offers retention labels alongside SITs.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
-      "quote": "Sensitive information types are used in ... Communication compliance",
+      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
+      "quote": "The rule will only look for the presence of any sensitivity labels and retention labels you pick.",
       "severity": null,
       "fix": null
     },
     {
       "n": 50,
       "where": "What it is: Where SITs are used",
-      "type": "applicability",
-      "claim": "SITs are used by auto-labeling policies.",
+      "type": "behaviour",
+      "claim": "Content contains offers trainable classifiers alongside SITs.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
-      "quote": "Sensitive information types are used in ... Auto-labeling policies",
+      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
+      "quote": "- sensitive information types\n- sensitivity labels\n- retention labels\n- Trainable Classifiers",
       "severity": null,
       "fix": null
     },
     {
       "n": 51,
-      "where": "What it is: Where SITs are used",
-      "type": "applicability",
-      "claim": "SITs are used by Microsoft Priva.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
-      "quote": "Sensitive information types are used in ... Microsoft Priva",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
-      "where": "What it is: Where SITs are used",
+      "where": "summary; What it is: Where SITs are used; Why it matters; What to check",
       "type": "behaviour",
-      "claim": "The DLP Content contains condition allows selection of SITs.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
-      "quote": "All locations support the Content contains condition. You can select multiple instances of each content type ... sensitive information types",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "What it is: Where SITs are used",
-      "type": "behaviour",
-      "claim": "The DLP Content contains condition allows selection of sensitivity labels.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
-      "quote": "All locations support the Content contains condition. You can select multiple instances of each content type ... sensitivity labels",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "What it is: Where SITs are used",
-      "type": "behaviour",
-      "claim": "The DLP Content contains condition allows selection of retention labels.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
-      "quote": "All locations support the Content contains condition. You can select multiple instances of each content type ... retention labels",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
-      "where": "What it is: Where SITs are used",
-      "type": "behaviour",
-      "claim": "The DLP Content contains condition allows selection of trainable classifiers.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
-      "quote": "All locations support the Content contains condition. You can select multiple instances of each content type ... Trainable Classifiers",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "summary; controls[1]; What it is; Why it matters; What to check",
-      "type": "behaviour",
-      "claim": "A DLP rule can specify the confidence level for its SIT matches.",
+      "claim": "Each SIT in a DLP rule has a confidence level that the administrator can choose.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
       "quote": "SITs have a predefined confidence level which you can alter if needed.",
@@ -648,10 +587,10 @@
       "fix": null
     },
     {
-      "n": 57,
-      "where": "controls[1]; What it is; Why it matters; What to check",
+      "n": 52,
+      "where": "What it is: Where SITs are used; Why it matters; What to check",
       "type": "behaviour",
-      "claim": "A DLP rule can specify an instance-count range for its SIT matches.",
+      "claim": "Each SIT in a DLP rule has an instance count condition.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sit-limits",
       "quote": "For a scanned item to satisfy the rule criteria, the number of unique instances of a SIT in any single item must fall between the min and max values. This is called the Instance count.",
@@ -659,32 +598,10 @@
       "fix": null
     },
     {
-      "n": 58,
-      "where": "What it is: Where SITs are used",
-      "type": "behaviour",
-      "claim": "Each content type selected in Content contains, including sensitivity and retention labels, has a confidence level.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
-      "quote": "The rule will only look for the presence of any sensitivity labels and retention labels you pick. SITs have a predefined confidence level which you can alter if needed.",
-      "severity": "blocker",
-      "fix": "Replace the final sentence of Where SITs are used with: 'In a DLP rule, the Content contains condition picks SITs alongside sensitivity labels, retention labels and trainable classifiers. For each SIT, you can choose a confidence level and an instance count.'"
-    },
-    {
-      "n": 59,
-      "where": "What it is: Where SITs are used",
-      "type": "behaviour",
-      "claim": "Each content type selected in Content contains, including sensitivity and retention labels, has an instance count.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
-      "quote": "The rule will only look for the presence of any sensitivity labels and retention labels you pick. ... SITs have two different ways of defining the maximum unique instance count parameters.",
-      "severity": "blocker",
-      "fix": "Replace the final sentence of Where SITs are used with: 'In a DLP rule, the Content contains condition picks SITs alongside sensitivity labels, retention labels and trainable classifiers. For each SIT, you can choose a confidence level and an instance count.'"
-    },
-    {
-      "n": 60,
+      "n": 53,
       "where": "Why it matters",
       "type": "behaviour",
-      "claim": "DLP actions such as blocking and alerting are decided by the rule using a SIT rather than by the SIT definition.",
+      "claim": "A rule using a SIT determines whether to block, rather than the SIT itself.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule",
       "quote": "DLP rules define sensitive information to be protected and the actions to take on rule matches.",
@@ -692,21 +609,43 @@
       "fix": null
     },
     {
-      "n": 61,
+      "n": 54,
       "where": "Why it matters",
       "type": "behaviour",
-      "claim": "Configured sensitivity-label conditions can cause a label to be applied automatically.",
+      "claim": "Labeling rules use SIT conditions to determine whether to apply a label.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/sensitivity-labels",
-      "quote": "Apply the label automatically to files and emails, or recommend a label. Choose how to identify sensitive information that you want labeled, and the label can be applied automatically",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "So you can, for example, automatically apply a Highly Confidential label to any content that contains customers' personal information, such as credit card numbers, social security numbers, or passport numbers:",
       "severity": null,
       "fix": null
     },
     {
-      "n": 62,
+      "n": 55,
       "where": "Why it matters",
       "type": "behaviour",
-      "claim": "The same SIT can return different results in Exchange email, SharePoint and OneDrive files, and files on managed devices.",
+      "claim": "Retention labeling policies determine retention actions for content matching SIT conditions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/apply-retention-labels-automatically",
+      "quote": "Automatically apply a retention label to retain or delete content",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "DLP rules determine whether a match generates an alert.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine",
+      "quote": "Make sure the Send an alert to admins when a rule match occurs toggle is set to On.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "The same SIT can produce different detection results in Exchange, SharePoint and OneDrive, and Endpoint DLP.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
       "quote": "The same sensitive information type can produce different results depending on where content is evaluated—for example, email in transit (Exchange), files at rest (SharePoint and OneDrive), and files on managed devices (Endpoint DLP).",
@@ -714,10 +653,10 @@
       "fix": null
     },
     {
-      "n": 63,
+      "n": 58,
       "where": "Why it matters; Risks and limits: Endpoint DLP",
       "type": "behaviour",
-      "claim": "Endpoint DLP classifies files against all tenant SITs, including custom SITs unused in DLP policies.",
+      "claim": "Endpoint DLP classifies files against every SIT in the tenant, including unused custom SITs.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
       "quote": "Endpoint DLP classifies files based on all sensitive information types available in the tenant, including custom sensitive information types, regardless of their utilization in any DLP policies.",
@@ -725,10 +664,10 @@
       "fix": null
     },
     {
-      "n": 64,
+      "n": 59,
       "where": "Why it matters; Risks and limits: Endpoint DLP",
       "type": "behaviour",
-      "claim": "Poorly tuned SITs that match many files can cause excessive classification traffic.",
+      "claim": "Poorly tuned SITs can cause excessive Endpoint DLP classification traffic.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
       "quote": "This can cause excessive classification traffic if the sensitive information types aren't well tuned and end up matching many files.",
@@ -736,10 +675,10 @@
       "fix": null
     },
     {
-      "n": 65,
+      "n": 60,
       "where": "Cost and licensing; Open questions",
       "type": "licensing",
-      "claim": "Credential scanning SITs require an E5 licence.",
+      "claim": "An E5 licence is required for credential scanning SITs.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
       "quote": "E5 license is required to make use of credential scanning SITs.",
@@ -747,65 +686,54 @@
       "fix": null
     },
     {
-      "n": 66,
+      "n": 61,
       "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "The SIT overview explicitly states the E5 credential-scanning licence requirement.",
+      "type": "behaviour",
+      "claim": "The overview's licensing guidance names the E5 requirement for credential scanning SITs.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
-      "quote": "Licensing ... E5 license is required to make use of credential scanning SITs.",
+      "quote": "Licensing\n\nE5 license is required to make use of credential scanning SITs.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 67,
+      "n": 62,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "The custom SIT page refers readers to Microsoft 365 Enterprise Plans and service-description licensing guidance.",
+      "claim": "The custom SIT page refers licensing readers to Microsoft 365 Enterprise Plans and security and compliance licensing guidance.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sit-create-a-custom-sensitive-information-type",
-      "quote": "For information on licensing, see ... Microsoft 365 Enterprise Plans ... Microsoft 365 Service Descriptions",
+      "quote": "For information on licensing, see\n\n- Microsoft 365 Enterprise Plans\n- Microsoft 365 Service Descriptions",
       "severity": null,
       "fix": null
     },
     {
-      "n": 68,
+      "n": 63,
       "where": "Cost and licensing",
       "type": "absence",
-      "claim": "The SIT pages state no per-SIT price.",
+      "claim": "The SIT pages state no per-SIT price or meter.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'sensitive information types per SIT price meter licensing'; opened the SIT overview, custom creation and limits pages, and Purview service description. They name licences and configuration limits, not a per-SIT price.",
+      "quote": "Searched: \"sensitive information types\" \"price\" \"meter\" licensing. Read the SIT overview, custom creation, limits, testing, PowerShell creation and removal pages; no per-SIT price or meter stated.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 69,
+      "n": 64,
       "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "The SIT pages state no per-SIT consumption meter.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'sensitive information types per SIT price meter licensing'; opened the SIT overview, custom creation and limits pages, and Purview service description. No meter charging for each SIT is stated; this does not establish that consuming solutions are unmetered.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 70,
-      "where": "Cost and licensing; Open questions",
       "type": "licensing",
-      "claim": "Solutions consuming SITs have their own service licensing requirements.",
+      "claim": "Licensing of the solutions using SITs is governed by the respective solution's licensing documentation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "Though some tenant services are currently not capable of limiting benefits to specific users, appropriate subscription licenses are required for use of each online service.",
+      "quote": "This means the administrator creating and managing Information Protection features must have the appropriate licenses for the following subscription plans to configure the functionality.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 71,
+      "n": 65,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "The Test SIT option requires at least one Exchange Online licence in the tenant.",
+      "claim": "Using Test SIT requires at least one Exchange Online licence in the tenant.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
       "quote": "To test any custom or default SIT tenant, there must be at least one Exchange Online license added to the tenant. Otherwise, the Test SIT option will be greyed out when any SIT is selected.",
@@ -813,29 +741,29 @@
       "fix": null
     },
     {
-      "n": 72,
+      "n": 66,
       "where": "Risks and limits: Built-in SITs are not editable",
       "type": "behaviour",
-      "claim": "The U.S. driver's license number SIT cannot be copied.",
+      "claim": "U.S. driver's license number is among the SITs Microsoft says cannot be copied.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sit-create-a-custom-sensitive-information-type",
-      "quote": "These SITs can't be copied: ... U.S. driver's license number",
+      "quote": "- U.S. driver's license number",
       "severity": null,
       "fix": null
     },
     {
-      "n": 73,
+      "n": 67,
       "where": "Risks and limits: Built-in SITs are not editable",
       "type": "behaviour",
-      "claim": "The EU passport number SIT cannot be copied.",
+      "claim": "EU passport number is among the SITs Microsoft says cannot be copied.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sit-create-a-custom-sensitive-information-type",
-      "quote": "These SITs can't be copied: ... EU passport number",
+      "quote": "These SITs can't be copied:\n\n- Canada driver's license number\n- EU driver's license number\n- EU national identification number\n- EU passport number",
       "severity": null,
       "fix": null
     },
     {
-      "n": 74,
+      "n": 68,
       "where": "Risks and limits: Custom regular expressions are restricted",
       "type": "behaviour",
       "claim": "Custom SIT regex patterns must not use positional anchors such as ^ and $.",
@@ -846,21 +774,21 @@
       "fix": null
     },
     {
-      "n": 75,
+      "n": 69,
       "where": "Risks and limits: Custom regular expressions are restricted",
       "type": "behaviour",
-      "claim": "Multiple top-level capturing groups are blocked during validation.",
+      "claim": "Multiple top-level capturing groups are blocked during custom SIT regex validation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sit-create-a-custom-sensitive-information-type",
-      "quote": "Use one primary capturing group (the only capturing group) ... Multiple capturing groups separated by | at the top level are not supported and are blocked during validation.",
+      "quote": "Multiple capturing groups separated by | at the top level are not supported and are blocked during validation.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 76,
+      "n": 70,
       "where": "Risks and limits: Custom regular expressions are restricted",
       "type": "behaviour",
-      "claim": "Microsoft Customer Service & Support cannot assist with creating custom classifications or regex patterns.",
+      "claim": "Microsoft Customer Service & Support cannot assist with creating custom classifications.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sit-create-a-custom-sensitive-information-type",
       "quote": "Microsoft Customer Service & Support can't assist with creating custom classifications or regular expression patterns.",
@@ -868,13 +796,79 @@
       "fix": null
     },
     {
+      "n": 71,
+      "where": "Risks and limits: Custom regular expressions are restricted",
+      "type": "behaviour",
+      "claim": "Microsoft Customer Service & Support cannot assist with creating custom regular expression patterns.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-create-a-custom-sensitive-information-type",
+      "quote": "Microsoft Customer Service & Support can't assist with creating custom classifications or regular expression patterns.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Risks and limits: Published limits",
+      "type": "behaviour",
+      "claim": "The published maximum for custom SITs created through the portal is 500.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-limits",
+      "quote": "| Maximum number of custom SITs created through the Microsoft Purview portal | 500 |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Risks and limits: Published limits",
+      "type": "behaviour",
+      "claim": "The published maximum number of rule packages is 10.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-limits",
+      "quote": "| Maximum number of rule packages | 10 |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Risks and limits: Published limits",
+      "type": "behaviour",
+      "claim": "The published maximum is 50 SITs per rule package.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-limits",
+      "quote": "| Maximum number of SITs per rule package | 50 |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Risks and limits: Published limits",
+      "type": "behaviour",
+      "claim": "The published maximum size of a rule package is 150KB.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-limits",
+      "quote": "| Maximum size of a rule package | 150KB |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "Risks and limits: Published limits",
+      "type": "behaviour",
+      "claim": "The maximum regex length is 1024 characters.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-limits",
+      "quote": "| Maximum length of regular expression | 1024 characters |",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 77,
       "where": "Risks and limits: Published limits",
       "type": "behaviour",
-      "claim": "The portal supports a maximum of 500 custom SITs.",
+      "claim": "The maximum number of distinct regexes per SIT is 20.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sit-limits",
-      "quote": "Maximum number of custom SITs created through the Microsoft Purview portal | 500",
+      "quote": "| Maximum number of distinct regexes per SIT | 20 |",
       "severity": null,
       "fix": null
     },
@@ -882,10 +876,10 @@
       "n": 78,
       "where": "Risks and limits: Published limits",
       "type": "behaviour",
-      "claim": "The maximum number of rule packages is 10.",
+      "claim": "A keyword list has a maximum of 2048 terms.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sit-limits",
-      "quote": "Maximum number of rule packages | 10",
+      "quote": "| Maximum number of terms in keyword list | 2048 |",
       "severity": null,
       "fix": null
     },
@@ -893,10 +887,10 @@
       "n": 79,
       "where": "Risks and limits: Published limits",
       "type": "behaviour",
-      "claim": "A rule package can contain at most 50 SITs.",
+      "claim": "A keyword-list term has a maximum length of 50 characters.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sit-limits",
-      "quote": "Maximum number of SITs per rule package | 50",
+      "quote": "| Maximum length for a given term in a keyword list | 50 characters |",
       "severity": null,
       "fix": null
     },
@@ -904,62 +898,7 @@
       "n": 80,
       "where": "Risks and limits: Published limits",
       "type": "behaviour",
-      "claim": "A rule package has a maximum size of 150KB.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/sit-limits",
-      "quote": "Maximum size of a rule package | 150KB",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 81,
-      "where": "Risks and limits: Published limits",
-      "type": "behaviour",
-      "claim": "A regular expression has a maximum length of 1024 characters.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/sit-limits",
-      "quote": "Maximum length of regular expression | 1024 characters",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 82,
-      "where": "Risks and limits: Published limits",
-      "type": "behaviour",
-      "claim": "A SIT can have at most 20 distinct regular expressions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/sit-limits",
-      "quote": "Maximum number of distinct regexes per SIT | 20",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 83,
-      "where": "Risks and limits: Published limits",
-      "type": "behaviour",
-      "claim": "A keyword list can contain at most 2048 terms.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/sit-limits",
-      "quote": "Maximum number of terms in keyword list | 2048",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 84,
-      "where": "Risks and limits: Published limits",
-      "type": "behaviour",
-      "claim": "A keyword-list term can have at most 50 characters.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/sit-limits",
-      "quote": "Maximum length for a given term in a keyword list | 50 characters",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 85,
-      "where": "Risks and limits: Published limits",
-      "type": "behaviour",
-      "claim": "Microsoft asks customers needing more than 500 custom SITs to raise a support ticket.",
+      "claim": "Microsoft asks for a support ticket if more than 500 custom SITs are needed.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sit-limits",
       "quote": "If you have a business need to create more than 500 custom SITs, please raise a support ticket.",
@@ -967,21 +906,21 @@
       "fix": null
     },
     {
-      "n": 86,
+      "n": 81,
       "where": "Risks and limits: New SITs and existing SharePoint or OneDrive content",
       "type": "behaviour",
       "claim": "Existing SharePoint and OneDrive content must be recrawled to identify a new custom SIT.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sit-create-a-custom-sensitive-information-type",
-      "quote": "Microsoft 365 uses the search crawler to identify and classify sensitive information in SharePoint and OneDrive sites. To identify your new custom sensitive information type in existing content, the content must be recrawled.",
+      "quote": "To identify your new custom sensitive information type in existing content, the content must be recrawled.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 87,
+      "n": 82,
       "where": "Risks and limits: New SITs and existing SharePoint or OneDrive content",
       "type": "behaviour",
-      "claim": "Content crawling follows a schedule.",
+      "claim": "Crawling follows a schedule.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sit-create-a-custom-sensitive-information-type",
       "quote": "Content is crawled based on a schedule, but you can manually recrawl content for a site collection, list, or library.",
@@ -989,10 +928,10 @@
       "fix": null
     },
     {
-      "n": 88,
+      "n": 83,
       "where": "Risks and limits: New SITs and existing SharePoint or OneDrive content",
       "type": "behaviour",
-      "claim": "An administrator can request a manual recrawl.",
+      "claim": "Administrators can request a manual recrawl.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sit-create-a-custom-sensitive-information-type",
       "quote": "Content is crawled based on a schedule, but you can manually recrawl content for a site collection, list, or library.",
@@ -1000,7 +939,7 @@
       "fix": null
     },
     {
-      "n": 89,
+      "n": 84,
       "where": "Risks and limits: Endpoint DLP",
       "type": "applicability",
       "claim": "Using a bundled named entity SIT in an endpoint DLP policy requires Advanced classification scanning and protection.",
@@ -1011,10 +950,10 @@
       "fix": null
     },
     {
-      "n": 90,
+      "n": 85,
       "where": "Risks and limits: Deleting a SIT in use",
       "type": "behaviour",
-      "claim": "Microsoft advises checking that no DLP policy or Exchange mail flow rule references a custom SIT before removing it.",
+      "claim": "DLP policies and Exchange mail flow rules can reference custom SITs, and references should be checked before removal.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sit-remove-a-custom-sensitive-information-type-in-powershell",
       "quote": "Before your remove a custom sensitive information type, verify that no DLP policies or Exchange mail flow rules (also known as transport rules) still reference the sensitive information type.",
@@ -1022,241 +961,131 @@
       "fix": null
     },
     {
-      "n": 91,
-      "where": "controls[0].note; Governance controls",
+      "n": 86,
+      "where": "controls[0].ui",
       "type": "admin-path",
-      "claim": "To copy a SIT in the portal, select it from Sensitive info types and choose Copy on its overview page.",
+      "claim": "Custom SIT creation is reached in Microsoft Purview at Information Protection > Classifiers > Sensitive info types > Create sensitive info type.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sit-create-a-custom-sensitive-information-type",
-      "quote": "Information Protection > Classifiers > Sensitive info types and select the sensitive information type that you want to copy. The overview page for the sensitive information type opens. Choose Copy.",
+      "quote": "In the Microsoft Purview portal, navigate to Information Protection > Classifiers > Sensitive info types and choose Create sensitive info type.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 87,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "New-DlpSensitiveInformationTypeRulePackage -FileData ([System.IO.File]::ReadAllBytes('<path to Unicode XML file>')) imports a custom SIT rule package.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpsensitiveinformationtyperulepackage",
+      "quote": "New-DlpSensitiveInformationTypeRulePackage -FileData ([System.IO.File]::ReadAllBytes('C:\\My Documents\\External Sensitive Info Type Rule Collection.xml'))",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 88,
+      "where": "controls[0].note; Governance controls: first table row",
+      "type": "admin-path",
+      "claim": "To copy a SIT, select it under Sensitive info types and choose Copy on its overview page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-create-a-custom-sensitive-information-type",
+      "quote": "The overview page for the sensitive information type opens. Choose Copy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 89,
+      "where": "controls[0].note; Governance controls: first table row",
+      "type": "behaviour",
+      "claim": "A SIT with 10 text processors cannot be copied directly in the UI and must be copied using PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-create-a-custom-sensitive-information-type",
+      "quote": "When you have 10 text processors or restricted text processors, such as keyword lists, regex, keyword dictionaries, or functions, you won't be able to copy the SIT from the UI directly. Instead, you need to use PowerShell for this task.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 90,
+      "where": "controls[0].note; Governance controls: first table row",
+      "type": "behaviour",
+      "claim": "A SIT with restricted text processors cannot be copied directly in the UI and must be copied using PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-create-a-custom-sensitive-information-type",
+      "quote": "When you have 10 text processors or restricted text processors, such as keyword lists, regex, keyword dictionaries, or functions, you won't be able to copy the SIT from the UI directly. Instead, you need to use PowerShell for this task.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 91,
+      "where": "controls[0].api; controls[0].note",
+      "type": "behaviour",
+      "claim": "PowerShell custom SIT creation imports an XML rule package saved with Unicode encoding.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-create-a-custom-sensitive-information-type-in-scc-powershell",
+      "quote": "Save it as an .xml file with Unicode encoding.",
       "severity": null,
       "fix": null
     },
     {
       "n": 92,
-      "where": "controls[0].note; Governance controls",
-      "type": "behaviour",
-      "claim": "SITs with 10 text processors cannot be copied directly through the UI and require PowerShell.",
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "The printed Purview DLP policy creation route reaches a rule's Content contains > Add > Sensitive info types control.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/sit-create-a-custom-sensitive-information-type",
-      "quote": "When you have 10 text processors or restricted text processors, such as keyword lists, regex, keyword dictionaries, or functions, you won't be able to copy the SIT from the UI directly. Instead, you need to use PowerShell for this task.",
-      "severity": null,
-      "fix": null
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine",
+      "quote": "Under Conditions, select Add condition > Content contains > Add > Sensitive info types.",
+      "severity": "minor",
+      "fix": "Set controls[1].ui.path and the matching table path to 'Data loss prevention > Policies > Create policy > Enterprise applications & devices > Categories > Custom > Regulations > Custom policy > Admin units > locations > Define policy settings > Create or customize advanced DLP rules > + Create rule > Conditions > Add condition > Content contains > Add > Sensitive info types'. Here 'locations' is the policy-scope selection step. These omitted headings and scope choices are on https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine; the existing selectable labels are correct and in order."
     },
     {
       "n": 93,
-      "where": "controls[0].note; Governance controls",
-      "type": "behaviour",
-      "claim": "SITs with restricted text processors cannot be copied directly through the UI and require PowerShell.",
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "New-DlpComplianceRule -Name <rule name> -Policy <policy name> -ContentContainsSensitiveInformation <hashtable> creates a DLP rule matching specified SITs.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/sit-create-a-custom-sensitive-information-type",
-      "quote": "When you have 10 text processors or restricted text processors, such as keyword lists, regex, keyword dictionaries, or functions, you won't be able to copy the SIT from the UI directly. Instead, you need to use PowerShell for this task.",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule",
+      "quote": "New-DlpComplianceRule -Name \"SocialSecurityRule\" -Policy \"USFinancialChecks\" -ContentContainsSensitiveInformation @{Name=\"U.S. Social Security Number (SSN)\"} -BlockAccess $True",
       "severity": null,
       "fix": null
     },
     {
       "n": 94,
-      "where": "Governance controls: permissions",
-      "type": "role",
-      "claim": "Creating custom SITs in the portal requires assigned Purview permissions through role groups.",
+      "where": "controls[1].note",
+      "type": "command",
+      "claim": "The DLP cmdlet reference uses a hashtable that names the SIT.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-permissions",
-      "quote": "Sensitive Information Types - Custom ... The Microsoft Purview portal includes default role groups for tasks and functions for each compliance and governance solution that you need to assign people to.",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule",
+      "quote": "For example, @(@{Name=\"U.S. Social Security Number (SSN)\"; minCount=\"2\"},@{Name=\"Credit Card Number\"}).",
       "severity": null,
       "fix": null
     },
     {
       "n": 95,
-      "where": "Governance controls: permissions",
-      "type": "role",
-      "claim": "Copying custom SITs in the portal requires assigned Purview permissions through role groups.",
+      "where": "controls[2].ui; What to check",
+      "type": "admin-path",
+      "claim": "The tenant's SIT inventory is under Microsoft Purview > Information Protection > Classifiers > Sensitive info types.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-permissions",
-      "quote": "You can limit users to perform only specific tasks that you explicitly grant them access to. ... Sensitive Information Types - Custom ... The Microsoft Purview portal includes default role groups for tasks and functions for each compliance and governance solution",
+      "source": "https://learn.microsoft.com/purview/sit-create-a-custom-sensitive-information-type",
+      "quote": "The Sensitive info types tab of the Classifiers page, lists all of the sensitive information types.",
       "severity": null,
       "fix": null
     },
     {
       "n": 96,
-      "where": "Governance controls: permissions",
-      "type": "role",
-      "claim": "Testing SITs in the portal requires membership in one of the documented Purview role groups.",
+      "where": "controls[2].api; What to check",
+      "type": "command",
+      "claim": "Get-DlpSensitiveInformationType lists the organization's SITs and -Identity \"<SIT name>\" retrieves a named SIT's properties.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/sit-test-a-sit",
-      "quote": "The account you use must be assigned one of these role groups in the Microsoft Purview portal:",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/get-dlpsensitiveinformationtype",
+      "quote": "Get-DlpSensitiveInformationType -Identity \"Credit Card Number\" | Format-List\n\nThis example lists all the properties of the sensitive information type named \"Credit Card Number\".",
       "severity": null,
       "fix": null
     },
     {
       "n": 97,
-      "where": "Governance controls: permissions",
-      "type": "role",
-      "claim": "Compliance Administrator is a documented Purview role group for SIT testing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/sit-test-a-sit",
-      "quote": "The account you use must be assigned one of these role groups in the Microsoft Purview portal: ... Compliance Administrator",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 98,
-      "where": "Governance controls: permissions",
-      "type": "role",
-      "claim": "Compliance Data Administrator is a documented Purview role group for SIT testing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/sit-test-a-sit",
-      "quote": "The account you use must be assigned one of these role groups in the Microsoft Purview portal: ... Compliance Data Administrator",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 99,
-      "where": "Governance controls: permissions",
-      "type": "role",
-      "claim": "Security Administrator is a documented Purview role group for SIT testing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/sit-test-a-sit",
-      "quote": "The account you use must be assigned one of these role groups in the Microsoft Purview portal: ... Security Administrator",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 100,
-      "where": "Governance controls: permissions",
-      "type": "role",
-      "claim": "Communication Compliance Admins is a documented Purview role group for SIT testing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/sit-test-a-sit",
-      "quote": "The account you use must be assigned one of these role groups in the Microsoft Purview portal: ... Communication Compliance Admins",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 101,
-      "where": "Governance controls: permissions",
-      "type": "role",
-      "claim": "Information Protection Admins is a documented Purview role group for SIT testing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/sit-test-a-sit",
-      "quote": "The account you use must be assigned one of these role groups in the Microsoft Purview portal: ... Information Protection Admins",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 102,
-      "where": "Governance controls: permissions",
-      "type": "role",
-      "claim": "Information Protection Investigators is a documented Purview role group for SIT testing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/sit-test-a-sit",
-      "quote": "The account you use must be assigned one of these role groups in the Microsoft Purview portal: ... Information Protection Investigators",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 103,
-      "where": "Governance controls: permissions",
-      "type": "role",
-      "claim": "Organization Management is a documented Purview role group for SIT testing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/sit-test-a-sit",
-      "quote": "The account you use must be assigned one of these role groups in the Microsoft Purview portal: ... Organization Management",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 104,
-      "where": "Governance controls: permissions",
-      "type": "role",
-      "claim": "SIT testing additionally requires a documented Exchange role or role group.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/sit-test-a-sit",
-      "quote": "The account you use to perform tests of SITs must be assigned one of these roles in the Microsoft Purview and one of these roles or role groups in Exchange.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 105,
-      "where": "Governance controls: permissions",
-      "type": "role",
-      "claim": "The cited Security & Compliance PowerShell cmdlets require assigned permissions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/get-dlpsensitiveinformationtype",
-      "quote": "To use this cmdlet in Security & Compliance PowerShell, you need to be assigned permissions.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 106,
-      "where": "Governance controls: removal",
-      "type": "behaviour",
-      "claim": "An individual custom SIT can be removed through PowerShell by editing and re-importing its containing rule package.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/sit-remove-a-custom-sensitive-information-type-in-powershell",
-      "quote": "Export the custom rule package containing the custom sensitive information type. Remove the sensitive information type from the XML file, and then import the updated XML file back into the existing custom rule package.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 107,
-      "where": "Governance controls: removal",
-      "type": "command",
-      "claim": "Remove-DlpSensitiveInformationTypeRulePackage -Identity \"<rule package>\" removes the specified custom rule package.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/sit-remove-a-custom-sensitive-information-type-in-powershell",
-      "quote": "Remove-DlpSensitiveInformationTypeRulePackage -Identity \"RulePackageIdentity\" ... You can use the Name value (for any language) or the RulePack id (GUID) value to identify the rule package.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 108,
-      "where": "Governance controls: removal",
-      "type": "behaviour",
-      "claim": "Removing a custom rule package removes all the custom SITs it contains.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/sit-remove-a-custom-sensitive-information-type-in-powershell",
-      "quote": "Remove a custom rule package and all custom sensitive information types that it contains",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 109,
-      "where": "Governance controls: Microsoft Graph; Open questions",
-      "type": "absence",
-      "claim": "Microsoft Graph documents the sensitiveType resource only under beta, not v1.0.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Microsoft Graph sensitiveType resource v1.0 beta'; read the beta resource (Methods: None). Opened the v1.0 resource URL: redirected to beta with viewFallbackFrom=graph-rest-1.0; page metadata lists only graph-rest-beta.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 110,
-      "where": "Governance controls: Sensitivity labels",
-      "type": "behaviour",
-      "claim": "Sensitivity labels are a separate mechanism from SIT pattern detection.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/sensitivity-labels",
-      "quote": "After you apply a sensitivity label to content, such as an email, meeting invite, document, or Loop page, the label enforces any configured protection settings on the content.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 111,
-      "where": "What to check",
-      "type": "behaviour",
-      "claim": "Custom SITs have a Publisher value other than Microsoft Corporation.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/sit-create-a-custom-sensitive-information-type-in-scc-powershell",
-      "quote": "For custom sensitive information types, the Publisher property value will be something other than Microsoft Corporation.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 112,
       "where": "controls[2].note; What to check",
       "type": "behaviour",
-      "claim": "RecommendedConfidence is the recommended confidence level returned for a SIT.",
+      "claim": "RecommendedConfidence gives a SIT's default or recommended confidence level.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/get-dlpsensitiveinformationtype",
       "quote": "The RecommendedConfidence property of the returned objects contains a value that represents the default (or recommended) confidence level that should be used with the corresponding sensitive information type.",
@@ -1264,10 +1093,230 @@
       "fix": null
     },
     {
-      "n": 113,
-      "where": "What to check",
+      "n": 98,
+      "where": "controls[2].note",
       "type": "behaviour",
-      "claim": "The minimum SIT instance-count field accepts values from 1 to 500.",
+      "claim": "The SIT inventory operation is read-only rather than a setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/get-dlpsensitiveinformationtype",
+      "quote": "Use the Get-DlpSensitiveInformationType cmdlet to list the sensitive information types that are defined for your organization in the Microsoft Purview compliance portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 99,
+      "where": "Governance controls: permissions paragraph",
+      "type": "role",
+      "claim": "Creating custom SITs in the portal requires Purview role-group permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "The Microsoft Purview portal includes default role groups for tasks and functions for each compliance and governance solution that you need to assign people to.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 100,
+      "where": "Governance controls: permissions paragraph",
+      "type": "role",
+      "claim": "Copying SITs in the portal requires Purview role-group permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "The Microsoft Purview portal includes default role groups for tasks and functions for each compliance and governance solution that you need to assign people to.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 101,
+      "where": "Governance controls: permissions paragraph",
+      "type": "role",
+      "claim": "Testing SITs in the portal requires membership of one of the listed Purview role groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-test-a-sit",
+      "quote": "The account you use must be assigned one of these role groups in the Microsoft Purview portal:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 102,
+      "where": "Governance controls: permissions paragraph",
+      "type": "role",
+      "claim": "Compliance Administrator is one of the Purview role groups listed for testing SITs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-test-a-sit",
+      "quote": "- Compliance Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 103,
+      "where": "Governance controls: permissions paragraph",
+      "type": "role",
+      "claim": "Compliance Data Administrator is one of the Purview role groups listed for testing SITs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-test-a-sit",
+      "quote": "- Compliance Data Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 104,
+      "where": "Governance controls: permissions paragraph",
+      "type": "role",
+      "claim": "Security Administrator is one of the Purview role groups listed for testing SITs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-test-a-sit",
+      "quote": "- Security Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 105,
+      "where": "Governance controls: permissions paragraph",
+      "type": "role",
+      "claim": "Communication Compliance Admins is one of the Purview role groups listed for testing SITs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-test-a-sit",
+      "quote": "- Communication Compliance Admins",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 106,
+      "where": "Governance controls: permissions paragraph",
+      "type": "role",
+      "claim": "Information Protection Admins is one of the Purview role groups listed for testing SITs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-test-a-sit",
+      "quote": "- Information Protection Admins",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 107,
+      "where": "Governance controls: permissions paragraph",
+      "type": "role",
+      "claim": "Information Protection Investigators is one of the Purview role groups listed for testing SITs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-test-a-sit",
+      "quote": "- Information Protection Investigators",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 108,
+      "where": "Governance controls: permissions paragraph",
+      "type": "role",
+      "claim": "Organization Management is one of the Purview role groups listed for testing SITs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-test-a-sit",
+      "quote": "- Organization Management",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 109,
+      "where": "Governance controls: permissions paragraph",
+      "type": "role",
+      "claim": "SIT testing additionally requires one of the listed Exchange roles or role groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-test-a-sit",
+      "quote": "The account you use to perform tests of SITs must be assigned one of these roles in the Microsoft Purview and one of these roles or role groups in Exchange.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 110,
+      "where": "Governance controls: permissions paragraph",
+      "type": "role",
+      "claim": "Security & Compliance PowerShell cmdlets require assigned permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpsensitiveinformationtyperulepackage",
+      "quote": "To use this cmdlet in Security & Compliance PowerShell, you need to be assigned permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 111,
+      "where": "Governance controls: removal paragraph",
+      "type": "behaviour",
+      "claim": "Removing an individual custom SIT using PowerShell entails editing and re-importing its existing rule package.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-remove-a-custom-sensitive-information-type-in-powershell",
+      "quote": "Export the custom rule package containing the custom sensitive information type. Remove the sensitive information type from the XML file, and then import the updated XML file back into the existing custom rule package.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 112,
+      "where": "Governance controls: removal paragraph",
+      "type": "command",
+      "claim": "Remove-DlpSensitiveInformationTypeRulePackage -Identity \"<rule package>\" removes the specified custom rule package.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-remove-a-custom-sensitive-information-type-in-powershell",
+      "quote": "Remove-DlpSensitiveInformationTypeRulePackage -Identity \"RulePackageIdentity\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 113,
+      "where": "Governance controls: removal paragraph",
+      "type": "behaviour",
+      "claim": "Removing a custom rule package deletes all custom SITs it contains.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-remove-a-custom-sensitive-information-type-in-powershell",
+      "quote": "Remove a custom rule package and all custom sensitive information types that it contains",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 114,
+      "where": "Governance controls: Graph paragraph; Open questions",
+      "type": "behaviour",
+      "claim": "Microsoft Graph documents a sensitiveType resource under /beta/.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/sensitivetype?view=graph-rest-beta",
+      "quote": "Represents information about a sensitive information type (SIT) used to classify content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 115,
+      "where": "Governance controls: Graph paragraph",
+      "type": "absence",
+      "claim": "The sensitiveType resource is documented only under the beta Graph version.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"sensitiveType\" \"v1.0\" Microsoft Graph. Read the sensitiveType beta resource reference (Methods: None) and Graph search results; no v1.0 sensitiveType resource reference found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 116,
+      "where": "Governance controls: final sentence",
+      "type": "behaviour",
+      "claim": "Sensitivity labels are a mechanism distinct from sensitive information type detectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
+      "quote": "DLP policies detect sensitive items by matching them to a sensitive information type (SIT), or to a sensitivity label or a retention label.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 117,
+      "where": "What to check: inventory",
+      "type": "behaviour",
+      "claim": "Custom SITs have a Publisher property value other than Microsoft Corporation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-remove-a-custom-sensitive-information-type-in-powershell",
+      "quote": "For custom sensitive information types, the Publisher property value will be something other than \"Microsoft Corporation\".",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 118,
+      "where": "What to check: instance counts",
+      "type": "behaviour",
+      "claim": "The SIT instance count minimum supports 1 to 500.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sit-limits",
       "quote": "The min field supports values of 1 to 500.",
@@ -1275,54 +1324,43 @@
       "fix": null
     },
     {
-      "n": 114,
-      "where": "What to check",
+      "n": 119,
+      "where": "What to check: instance counts",
       "type": "behaviour",
-      "claim": "The maximum SIT instance-count field accepts numeric values from 1 to 500.",
+      "claim": "A numeric SIT instance count maximum supports 1 to 500.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sit-limits",
-      "quote": "1 to 500 - Use a value between 1 and 500 when you want to set a specific upper limit of 500 or less on the number of instances of a SIT in an item.",
+      "quote": "Use a value between 1 and 500 when you want to set a specific upper limit of 500 or less on the number of instances of a SIT in an item.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 115,
-      "where": "What to check",
+      "n": 120,
+      "where": "What to check: instance counts",
       "type": "behaviour",
-      "claim": "The maximum SIT instance-count field also accepts Any.",
+      "claim": "The SIT instance count maximum also accepts Any.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sit-limits",
-      "quote": "Any - Use Any when you want to ensure that the unique instance count criterion is satisfied when an undefined number of unique instances of a SIT are found in a scanned item",
+      "quote": "Use Any when you want to ensure that the unique instance count criterion is satisfied when an undefined number of unique instances of a SIT are found in a scanned item",
       "severity": null,
       "fix": null
     },
     {
-      "n": 116,
-      "where": "sources; Governance controls; Why it matters",
+      "n": 121,
+      "where": "Why it matters; Cost and licensing: supporting sources",
       "type": "behaviour",
-      "claim": "Some verified permissions, sensitivity-label and retention-action statements rely on Microsoft pages absent from the page's sources.",
+      "claim": "Microsoft documents SIT-conditioned sensitivity labeling and solution-specific licensing, but the page omits those supporting pages from its sources.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-permissions",
-      "quote": "The Microsoft Purview portal includes default role groups for tasks and functions for each compliance and governance solution that you need to assign people to.",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "When you select the Sensitive info types option, you see the same list of sensitive information types as when you create a data loss prevention (DLP) policy.",
       "severity": "minor",
-      "fix": "Add these sources together: https://learn.microsoft.com/purview/purview-permissions (Permissions in the Microsoft Purview portal); https://learn.microsoft.com/purview/sensitivity-labels (Learn about sensitivity labels); https://learn.microsoft.com/purview/apply-retention-labels-automatically (Automatically apply a retention label to retain or delete content)."
-    },
-    {
-      "n": 117,
-      "where": "Why it matters",
-      "type": "behaviour",
-      "claim": "A retention-label policy can apply a retention label based on sensitive-information match conditions rather than the SIT itself specifying retention.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/apply-retention-labels-automatically",
-      "quote": "After you select a policy template, you can add or remove any types of sensitive information, and you can change the confidence level and instance count. ... these options have been changed so that a retention label will be auto-applied only when:",
-      "severity": null,
-      "fix": null
+      "fix": "Add these two supporting pages to sources: https://learn.microsoft.com/purview/apply-sensitivity-label-automatically and https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description. They support the labeling-action and solution-licensing statements; no additional product or licensing detail is needed."
     }
   ],
   "precheck": {
-    "at": "2026-11-28T02:20:22.240Z",
+    "at": "2026-11-28T03:50:28.598Z",
     "summary": {
-      "links": 13,
+      "links": 14,
       "unreachable": 0,
       "uiPaths": 3,
       "uiPathsWithMissingWords": 0,
@@ -1392,7 +1430,12 @@
         "status": 200
       },
       {
-        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "url": "https://learn.microsoft.com/purview/purview-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/apply-retention-labels-automatically",
         "ok": true,
         "status": 200
       }
@@ -1488,6 +1531,12 @@
       "date": "2026-11-27",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-28",
+      "status": "held",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

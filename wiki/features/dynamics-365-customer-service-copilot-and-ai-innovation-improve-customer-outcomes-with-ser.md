@@ -46,8 +46,14 @@ sources:
   - title: "copilotPackage: block"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
     kind: "learn"
+  - title: "Customer Service Copilot tool privilege reference"
+    url: "https://learn.microsoft.com/dynamics365/customer-service/develop/customer-service-tool-privilege-reference"
+    kind: "learn"
+  - title: "Package Management API overview"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview"
+    kind: "learn"
 videos: []
-related: ["m365-copilot-service-agent-in-m365-your-dedicated-service-specialist","dynamics-365-customer-service-copilot-and-ai-innovation-view-next-best-actions-with-custom","work-iq"]
+related: ["m365-copilot-service-agent-in-m365-your-dedicated-service-specialist","work-iq"]
 controls:
   - governs: "Which users the Service app is installed to and available to"
     scope: "user"
@@ -75,7 +81,7 @@ controls:
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Copilot > Settings > Power Apps > Chat Agent > Microsoft Copilot > environment > Edit Setting"
+      path: "Copilot > Settings > Power Apps > Chat Agent > Microsoft Copilot > environment > Edit Setting > On"
       docs: "https://learn.microsoft.com/power-apps/maker/model-driven-apps/add-microsoft-365-copilot"
     api: null
     note: "Power Platform administrators. Makers can also turn it on for one model-driven app or, through an environment value, for every model-driven app in the environment."
@@ -89,7 +95,7 @@ controls:
     note: "A prerequisite of Microsoft Copilot in model-driven apps. The path is read on the finance and operations Cowork plugin page, which describes the same setting."
 confidence: "medium"
 created: "2026-11-21"
-updated: "2026-11-21"
+updated: "2026-11-28"
 roadmapModified: "2026-10-16T19:09:27"
 changes:
   - date: "2026-11-21"
@@ -98,19 +104,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 86 statements not yet confirmed"
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 101 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-28"
+    note: "Corrected the write-action guard to the Dataverse privileges each Service Agent tool requires, completed the environment setting path, and removed checklist items that had no control row."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 106 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-28"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 101
-  confirmed: 99
+  claims: 106
+  confirmed: 106
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "20b937c7c0d50594fb79d8f5a49ed372"
+  contradicted: 0
+  attempts: 0
+  hash: "7e23abc05f5927f8eb156bc528eaa3d5"
 ---
 
 ## What's changing
@@ -140,7 +150,7 @@ Microsoft's configuration page says an administrator enables Service Agent and g
 - Installing the Service app from Microsoft Marketplace needs permissions equivalent to the tenant administrator and a paid licence for using its capabilities, so plan who performs the installation.
 
 **Autonomy & actions**
-- Service Agent can update case priority, add notes, create child cases and resolve a case when a representative asks, and can send a drafted email after the representative reviews it. These are changes to live case data, so treat the Dynamics 365 security privileges on the case table as the guard on write actions.
+- Service Agent can update case priority, add notes, create child cases and resolve a case when a representative asks, and can send a drafted email after the representative reviews it. These are changes to live case data, so treat the Dataverse security privileges required by each tool as the guard on write actions ([Customer Service Copilot tool privilege reference](https://learn.microsoft.com/dynamics365/customer-service/develop/customer-service-tool-privilege-reference)).
 - Microsoft's Service app page says the package gives no separate administrator targeting for individual Service components, so deployment is controlled at app level.
 
 **Change & support**
@@ -171,9 +181,8 @@ Not yet published: the Service Agent pages publish no separate price, meter or c
 
 ### Before rollout
 - Check whether the Service app is already installed and assigned: the Service entry in the Microsoft 365 admin center agent registry, where the Learn page says it might already be installed because Customer Service licences install it automatically.
-- Review Dynamics 365 security roles for representatives, since they decide which records, tools and actions Service Agent can reach.
 - Confirm licences for the intended group: Dynamics 365 Enterprise or Premium, and Microsoft 365 Copilot where full Work IQ capabilities are wanted.
-- Confirm with the Dynamics 365 administrator which environment representatives should select under **Sources**, and check Dataverse capacity before turning on Dataverse Search.
+- Confirm with the Dynamics 365 administrator which environment representatives should select under **Sources**.
 
 ### At rollout
 - Set **Installed to** and **Available to** on the Service app's **Users** tab to the same pilot group; the two scopes are independent, so changing only **Available to** does not narrow a wider installation.
@@ -182,7 +191,6 @@ Not yet published: the Service Agent pages publish no separate price, meter or c
 
 ### After rollout
 - Check that excluded users cannot reach the app, looking at overlapping group memberships and organisation-wide installations.
-- Watch Dataverse capacity in the environments where Microsoft Copilot is on.
 - Use **Block** on the Service app to stop installation and use across the organisation if a problem appears, remembering that it removes the app from users who already installed it.
 
 ## Governance controls
@@ -194,7 +202,7 @@ Not yet published: the Service Agent pages publish no separate price, meter or c
 <tbody>
 <tr><td data-label="Control"><strong>Which users the Service app is installed to and available to</strong><br><small>User</small><br><small class="controls__note">Needs a Microsoft Agent 365 licence for the API. Beta. Request body sets availableTo and deployedTo. Confirm the Service app is listed as a package in your tenant. Installed to is edited on the same Users tab.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › Registry › Service › Users › Available to <a href="https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether the Service app is blocked for the organisation</strong><br><small>Tenant</small><br><small class="controls__note">Blocking removes the app from users who already installed it. API needs a Microsoft Agent 365 licence and is in beta; confirm the Service app is listed as a package in your tenant.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › Registry › Service › Block <a href="https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether Microsoft Copilot is on in an environment or environment group</strong><br><small>Environment</small><br><small class="controls__note">Power Platform administrators. Makers can also turn it on for one model-driven app or, through an environment value, for every model-driven app in the environment.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Copilot › Settings › Power Apps › Chat Agent › Microsoft Copilot › environment › Edit Setting <a href="https://learn.microsoft.com/power-apps/maker/model-driven-apps/add-microsoft-365-copilot" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether Microsoft Copilot is on in an environment or environment group</strong><br><small>Environment</small><br><small class="controls__note">Power Platform administrators. Makers can also turn it on for one model-driven app or, through an environment value, for every model-driven app in the environment.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Copilot › Settings › Power Apps › Chat Agent › Microsoft Copilot › environment › Edit Setting › On <a href="https://learn.microsoft.com/power-apps/maker/model-driven-apps/add-microsoft-365-copilot" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether Dataverse data is available to Microsoft Copilot for the tenant</strong><br><small>Tenant</small><br><small class="controls__note">A prerequisite of Microsoft Copilot in model-driven apps. The path is read on the finance and operations Cowork plugin page, which describes the same setting.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › Dataverse data available in Microsoft Copilot <a href="https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -207,7 +215,6 @@ None of these controls limits individual Service components or write actions. Dy
 
 ## Open questions
 
-- Where does an administrator configure the tools representatives can use in Service Agent? The configuration page mentions it without giving steps; watch the Learn page [Enable Service Agent in Microsoft Copilot](https://learn.microsoft.com/dynamics365/customer-service/administer/configure-service-agent).
 - Does Service Agent cover the cross-case trends and operational signals for supervisors that the roadmap describes, and which tools or licences provide them?
 - Is a Copilot Credit or other meter charged for Service Agent use? Watch the Dynamics 365 Licensing Guide and the Service Agent pages.
 - Does the Service app appear as a package that the Agent 365 Package Management API can block and scope in a given tenant?
@@ -219,14 +226,8 @@ cost: Medium. Dynamics 365 Customer Service users need a Dynamics 365 Enterprise
 impact: Medium. The audience is customer service representatives, leads and supervisors, a specific set of roles rather than most users in a tenant.
 -->
 
-<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Autonomy & actions / applicability: Dynamics 365 security privileges on the case table are the guard on the described write actions, including notes and emails. | Found: create_note | prvCreateNote ... send_email | prvCreateActivity, prvReadActivity ... close_case | prvReadIncident, prvWriteIncident, prvCreateActivity | Fix: Replace 'treat the Dynamics 365 security privileges on the case table as the guard on write actions' with 'treat the Dataverse security privileges required by each tool as the guard on write actions'. Cite https://learn.microsoft.com/dynamics365/customer-service/develop/customer-service-tool-privilege-reference. Case-table privileges alone do not govern note creation or email sending. | Source: https://learn.microsoft.com/dynamics365/customer-service/develop/customer-service-tool-privilege-reference
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].ui; Governance controls; Governance guidance: At rollout / admin-path: Environment enablement is reached through Power Platform admin center > Copilot > Settings > Power Apps > Chat Agent > Microsoft Copilot > environment > Edit Setting. | Found: go to Copilot > Settings. Under Power Apps, expand Chat Agent and choose Microsoft Copilot. ... Select an environment group or an environment name, then select Edit Setting. ... Select On | Fix: Set controls[2].ui.path to 'Copilot > Settings > Power Apps > Chat Agent > Microsoft Copilot > environment > Edit Setting > On'. The current path reaches the setting pane but stops before its enabling option. | Source: https://learn.microsoft.com/power-apps/maker/model-driven-apps/add-microsoft-365-copilot
-- [supported, minor] controls[3].ui; controls[3].note; Governance controls; Governance guidance: At rollout / admin-path: The cited ERP page gives Microsoft 365 admin center > Copilot > Settings > Dataverse data available in Microsoft Copilot. | Found: Go to the Microsoft 365 Admin Center. Navigate to Copilot > Settings. Enable Dataverse data available in Microsoft Copilot. | Fix: Keep this path attributed to the cited ERP page. Add to controls[3].note: 'Microsoft pages disagree on the label: the linked Dataverse setup page gives Copilot > Settings > Business Applications data in Work IQ available to Copilot > All users or Specific groups.' Cite https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-intelligence#enable-microsoft-365-admin-center-copilot-dataverse-settings. | Source: https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp
-- [supported, minor] Governance controls / behaviour: The Package Management API describes agents and tools as packages. | Found: A package represents an agent or a tool, such as a plugin, MCP server, or skill, in the organization catalog. | Fix: Add https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview to sources for the existing statement about agents and tools being packages. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview
-- [supported, minor] Governance controls; Open questions: tool configuration / absence: The cited enablement page mentions tool configuration without giving its steps. | Found: Searched: Service Agent configure tools administrator tool configuration Dataverse table. Opened configure-service-agent: it mentions tools without steps. Opened configure-service-agent-experiences: it documents maker mode and tool visibility, so the gap is only in the cited page. | Fix: Retain the narrow statement about the enablement page, but replace the first Open questions bullet with 'Microsoft documents tool configuration in maker mode in Configure Service Agent experiences.' Cite https://learn.microsoft.com/dynamics365/customer-service/administer/configure-service-agent-experiences, which documents entering maker mode, choosing Organization, Application profile or User scope, and configuring tool visibility. Do not imply the procedure is unpublished.
-- [contradicted, minor] Governance guidance: Before rollout and After rollout; Governance controls / consistency: The checklist tells readers to review security roles and Dataverse capacity without corresponding control rows. | Found: Checklist: 'Review Dynamics 365 security roles for representatives', 'check Dataverse capacity before turning on Dataverse Search', 'Watch Dataverse capacity'. Table: Service assignment, Service blocking, environment Microsoft Copilot and tenant Dataverse availability only. | Fix: Remove the checklist instructions 'Review Dynamics 365 security roles for representatives', 'check Dataverse capacity before turning on Dataverse Search' and 'Watch Dataverse capacity'. Keep the verified security-role and capacity discussion in the body. Do not add control rows in this correction.
+- [supported, minor] controls[3].ui; Governance controls; Governance guidance: At rollout / admin-path: The tenant Dataverse setting is at Microsoft 365 admin center > Copilot > Settings > Dataverse data available in Microsoft Copilot. | Found: Navigate to Copilot > Settings. ... Enable Dataverse data available in Microsoft Copilot. | Fix: Keep the path supported by the cited ERP page, but add to controls[3].note: 'The Business Applications in Work IQ default settings page instead gives Copilot > Settings > View all > Business Applications data in Work IQ available to Copilot > All users or Specific groups.' Cite https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings#cascading-control-settings in sources. | Source: https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp
 -->

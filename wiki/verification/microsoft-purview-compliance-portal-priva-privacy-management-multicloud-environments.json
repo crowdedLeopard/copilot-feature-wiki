@@ -1,0 +1,1051 @@
+{
+  "slug": "microsoft-purview-compliance-portal-priva-privacy-management-multicloud-environments",
+  "roadmapId": 398711,
+  "title": "Microsoft Priva Privacy Risk Management: data overexposure policies for Azure SQL, Azure Data Lake Storage and Amazon S3",
+  "status": "held",
+  "date": "2026-11-28",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-28",
+    "reasons": [
+      "4 blocking findings (claims 12, 32, 44, 66)"
+    ]
+  },
+  "counts": {
+    "claims": 73,
+    "confirmed": 67,
+    "unconfirmed": 3,
+    "contradicted": 3,
+    "blocker": 4,
+    "major": 1,
+    "minor": 4
+  },
+  "summary": "Hold: the sources do not establish the multicloud feature's arrival default, and the auditing default omits documented exceptions. The custom-policy route also skips the Create button that opens the wizard, and the claimed permission prerequisite for detecting matches is not documented.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; front matter: products, roadmapId",
+      "type": "record",
+      "claim": "Roadmap item 398711 concerns Microsoft Priva Privacy Risk Management multicloud environments under Microsoft Purview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"id\": 398711; \"title\": \"Microsoft Purview compliance portal: Priva Privacy Management – Multicloud environments\"; \"products\": [\"Microsoft Purview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap item is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The record lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap general availability target is January CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is June CY2024.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"June CY2024\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-05-14T23:15:59.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-05-14T23:15:59\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "summary; What's changing; Scope; changes",
+      "type": "record",
+      "claim": "The roadmap describes overexposure policies extending to Azure SQL, Azure Data Lake Storage and Amazon S3.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Priva Privacy Risk Management extends its overexposure policies into data contained in Azure SQL, Azure Data Lake Storage, and Amazon S3.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Why it matters; rationale: risk",
+      "type": "record",
+      "claim": "Organisations can create policies specifying the data sources, databases or storage buckets in scope.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Organizations can create privacy policies that specify which data sources, databases, or storage buckets are in scope",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing; Risk assessment: Autonomy & actions; rationale: impact",
+      "type": "record",
+      "claim": "The roadmap says Priva automatically notifies data asset owners when matches are detected.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Priva will automatically notify data asset owners when matches are detected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "The multicloud extension is admin-opt-in on arrival.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Priva multicloud default existing policies. Read the roadmap, Priva setup, overexposure policy and general policies pages. They document creating policies and template test mode, not the extension's arrival default or treatment of existing policies.",
+      "severity": "blocker",
+      "fix": "Set defaultState to \"unknown\". Add: \"Microsoft has not stated the multicloud extension's arrival default or whether existing policies gain these sources automatically.\" Do not infer the feature default from a newly created template policy's test mode."
+    },
+    {
+      "n": 13,
+      "where": "front matter: licensing.model, licensing.notes; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "Priva Privacy Risk Management requires an add-on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-priva-service-description",
+      "quote": "Priva Risk Management must be added on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "The listed eligible plans are Office 365 A1/E1/G1/E3/A5/E5 and Microsoft 365 A3/E3/G3/A5/E5/G5.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-priva-service-description",
+      "quote": "Priva is available as an addition to organizations with the following subscriptions: Office 365 A1/E1/G1/E3/A5/E5; Microsoft 365 A3/E3/G3/A5/E5/G5",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "Cost and licensing: Licence; Governance guidance: Before rollout",
+      "type": "licensing",
+      "claim": "Microsoft recommends acquiring licences for every user intended to benefit from and be protected by the service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-priva-service-description",
+      "quote": "We recommend that licenses be acquired for any user that you intend to benefit from and protect with the service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: licensing.notes; Cost and licensing: Meters",
+      "type": "licensing",
+      "claim": "The Amazon S3 Multicloud Scanning Connector is a separate add-on governed by the Azure agreement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/register-scan-amazon-s3",
+      "quote": "The Multicloud Scanning Connector for Microsoft Purview is a separate add-on to Microsoft Purview. The terms and conditions ... are contained in the agreement under which you obtained Microsoft Azure Services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: licensing.notes; Cost and licensing: Not yet published",
+      "type": "absence",
+      "claim": "No price or meter specific to Priva multicloud policies is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Priva multicloud Azure SQL Amazon S3 pricing meter license; \"Priva\" \"multicloud\" \"price\". Read the Priva service description, setup, policy pages, Data Map billing and S3 connector page; found product and dependency costs, not a multicloud-policy-specific rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Privacy Risk Management receives asset metadata, classification data and label data from Data Map.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/privacy/priva/priva-data-flows",
+      "quote": "Microsoft Priva Privacy Risk Management | N/A | Asset details, including asset metadata, classification data, and label data",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Priva receives no copies of data from Data Map.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Priva Data Map content metadata. Read Priva data flows, overview and alerts pages. The data-flow table says \"Asset details, including\" metadata, classification and labels; it does not expressly state that Priva never receives copies of data.",
+      "severity": "major",
+      "fix": "Remove \", not copies of the data\". Retain: \"Priva receives asset metadata, classification data and label data from Data Map.\""
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Why it matters; Scope: Prerequisites",
+      "type": "applicability",
+      "claim": "Priva evaluates organisational data sources registered through Microsoft Purview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/privacy/priva/priva-overview",
+      "quote": "Priva also evaluates your organization's data sources that are registered through Microsoft Purview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; rationale: risk",
+      "type": "default",
+      "claim": "A newly created template data overexposure policy begins in test mode.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/privacy/priva/risk-management-policy-data-overexposure",
+      "quote": "Your policy is created and you'll find it listed on your Polices page. It begins in test mode so you can monitor how it performs before turning it on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; controls[2].note; Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "Test mode sends no alerts or notifications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/privacy/priva/risk-management-policy-data-overexposure",
+      "quote": "In test mode, no alerts or notifications are sent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[2].note; Governance controls",
+      "type": "behaviour",
+      "claim": "A policy's details page shows insights when matches are detected in test mode.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/privacy/priva/risk-management-policies",
+      "quote": "However, you see insights on the policy's details page when matches are detected, including the types of data detected and their locations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Why it matters; Risk assessment: Data exposure; Governance controls",
+      "type": "role",
+      "claim": "Only users assigned a Priva role can access Priva, with actions restricted by role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/privacy/priva/priva-setup",
+      "quote": "Only users who are assigned a role can access Priva, and the actions allowed by each user are restricted by role type.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[0].governs; Scope: Roles; Governance controls",
+      "type": "role",
+      "claim": "Privacy Management and Privacy Management Administrators provide permissions to create and manage Privacy Risk Management policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/privacy/priva/priva-setup",
+      "quote": "Privacy Management ... contains all permission roles for Priva GA solutions ... Privacy Management Administrators ... creating, reading, updating, and deleting Privacy Risk Management policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Data exposure",
+      "type": "role",
+      "claim": "Privacy Management Investigators can investigate matches and access associated content items.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/privacy/priva/priva-setup",
+      "quote": "They can investigate policy matches, view associated file content, and take remediation actions. Members can access content items.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Data exposure",
+      "type": "role",
+      "claim": "Privacy Management Analysts can investigate matches but cannot access content items.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/privacy/priva/priva-setup",
+      "quote": "They can investigate policy matches, view file metadata, and take remediation actions. Members can't access content items.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[0].note",
+      "type": "role",
+      "claim": "The Role management role permits managing role groups through the portal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Sign in to the Microsoft Purview portal ... using credentials for an admin account assigned the Role management role. Go to Settings > Roles and scopes to view and manage compliance and governance roles",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[0].note",
+      "type": "role",
+      "claim": "Roles specific to Priva do not appear in Microsoft Entra ID.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/privacy/priva/priva-setup",
+      "quote": "Roles specific to Priva don't appear in Microsoft Entra ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Purview role-group route is Settings > Roles and scopes > Role groups > Role groups for Microsoft Purview solutions > role group > Edit > Edit members of the role group > Choose users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Go to Settings > Roles and scopes ... Select Role groups ... On Role groups for Microsoft Purview solutions, select a ... role group ... Select Edit ... On Edit members of the role group, select Choose users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[0].api; Governance controls prose and table",
+      "type": "command",
+      "claim": "Add-RoleGroupMember -Identity \"Privacy Management Administrators\" -Member \"<user-UPN>\" adds a member in Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+      "quote": "Use the Add-RoleGroupMember cmdlet to add members to a management role group. ... -Identity ... Security & Compliance ... -Member ... Security & Compliance ... User ID or user principal name (UPN)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The custom-policy route goes directly from Custom to Name and type without selecting Create.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/privacy/priva/risk-management-policy-data-overexposure",
+      "quote": "In the Custom box, select Create. On the Name and type page, select the Data overexposure policy template.",
+      "severity": "blocker",
+      "fix": "Replace controls[1].ui.path and its table rendering with \"Privacy Risk Management > Policies > Create a policy > Custom > Create > Name and type > Data overexposure > Data sources\", as documented at https://learn.microsoft.com/privacy/priva/risk-management-policy-data-overexposure."
+    },
+    {
+      "n": 33,
+      "where": "controls[1].api; Governance controls prose and table",
+      "type": "absence",
+      "claim": "No PowerShell or Microsoft Graph operation is documented for selecting Priva data overexposure policy data sources.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Priva Privacy Risk Management policy PowerShell New-PrivacyManagementPolicy Set-PrivacyManagementPolicy Microsoft Graph beta data sources; \"Priva\" \"PowerShell\" \"policy\"; \"Priva\" \"Graph\" \"beta\" \"risk management\". Read policy pages and Graph compliance API overview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[1].note; What's changing; Open questions",
+      "type": "absence",
+      "claim": "At writing, the cited overexposure wizard documentation lists SharePoint sites and OneDrive accounts but no Azure or AWS source options.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Priva multicloud Azure SQL Azure Data Lake Storage Amazon S3 policies; \"Priva\" \"Azure SQL\" \"Azure Data Lake Storage\". Read overexposure and general policy pages: the Data sources step lists only \"Microsoft 365 data sources ... SharePoint sites and OneDrive accounts\".",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[2].ui; Governance guidance: After rollout; Governance controls table",
+      "type": "admin-path",
+      "claim": "A test policy is enabled through Priva > Privacy Risk Management > Policies > policy > Policy status > Turn on policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/privacy/priva/risk-management-policies",
+      "quote": "From your Policies page, find the policy and select its name to open its details page. In the Policy status card, select Turn on policy. The policy will now be active and will generate any alerts you set up.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[2].api; Governance controls prose and table",
+      "type": "absence",
+      "claim": "No PowerShell or Microsoft Graph operation is documented for changing a Priva policy's test/on mode.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Priva Privacy Risk Management policy PowerShell Set-PrivacyManagementPolicy Microsoft Graph beta test mode; \"Priva\" \"PowerShell\" \"policy\"; \"Priva\" \"Graph\" \"beta\" \"risk management\". Read policy mode instructions and Graph compliance API overview; found UI only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[3].ui; Governance guidance: Before rollout; Governance controls table",
+      "type": "admin-path",
+      "claim": "Microsoft Purview > Data Map > Data sources > Register reaches data source registration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-map-data-sources-register-manage",
+      "quote": "In the Microsoft Purview portal, navigate to Data Map, Data sources, and select Register. ... Select a source type. ... Select Continue. ... Fill out the form on the Register sources page. ... Select Register.",
+      "severity": "minor",
+      "fix": "The route reaches registration but stops at its entry. Replace it with \"Data Map > Data sources > Register > source type > Register sources > Register\"; fields and Continue are procedure steps, not required path labels."
+    },
+    {
+      "n": 38,
+      "where": "controls[3].api; Governance controls table",
+      "type": "command",
+      "claim": "PUT {endpoint}/scan/datasources/{dataSourceName}?api-version=2023-09-01 creates or replaces a registered data source.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/rest/api/purview/scanningdataplane/data-sources/create-or-replace",
+      "quote": "Creates or replaces a data source. PUT {endpoint}/scan/datasources/{dataSourceName}?api-version=2023-09-01 ... kind ... The data source type. ... properties ... The properties of ADLS Gen2.",
+      "severity": "minor",
+      "fix": "Keep the call. Add to controls[3].note and its table rendering: \"The request body sets kind to the source type and properties to that source's configuration.\" The 2023-09-01 reference documents both fields."
+    },
+    {
+      "n": 39,
+      "where": "controls[3].note; Risk assessment: Security & identity; Scope: Roles",
+      "type": "role",
+      "claim": "Registering and managing a source in Data Map requires Data Source Admin plus another Data Map role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-map-data-sources-register-manage",
+      "quote": "To register and manage a source in Data Map, you need to be a Data Source Admin and have one of the other Data Map roles, such as Data Reader.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Governance controls: Data Map roles",
+      "type": "role",
+      "claim": "Data Map roles govern who can manage sources and scans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-map-domains-collections-manage#add-roles-and-restrict-access",
+      "quote": "Data source administrator - a role that allows a user to manage data sources and scans. If a user is granted only to Data source admin role on a given data source, they can run new scans using an existing scan rule.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/purview/data-map-domains-collections-manage to sources for the statement about scan-management permissions."
+    },
+    {
+      "n": 41,
+      "where": "controls[4].ui; Governance guidance: Before rollout; Governance controls table",
+      "type": "admin-path",
+      "claim": "Microsoft Purview > Audit > Start recording user and admin activity enables auditing when it is disabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "Select the Audit solution card. ... If auditing isn't turned on for your organization, a banner is displayed ... Select the Start recording user and admin activity banner.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[4].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-AdminAuditLogConfig -UnifiedAuditLogIngestionEnabled $true enables auditing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "Complete the following steps to turn on auditing by using Exchange Online PowerShell ... Set-AdminAuditLogConfig -UnifiedAuditLogIngestionEnabled $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[4].note; Governance controls",
+      "type": "role",
+      "claim": "Turning auditing on or off requires the Audit Logs role in Exchange Online.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "You must be assigned the Audit Logs role in Exchange Online to turn auditing on or off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Governance controls: auditing default",
+      "type": "default",
+      "claim": "Auditing is on by default for Microsoft 365 organisations without exceptions.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "Auditing isn't enabled by default for Small and Medium Business (SMB) licenses ... Additionally, unmanaged tenants that use free trials of enterprise licenses don't have auditing enabled by default.",
+      "severity": "blocker",
+      "fix": "Replace the default sentence with: \"Auditing is on by default for Microsoft 365 organisations except those using SMB licences, including Business Basic, Business Standard and Business Premium, and unmanaged tenants using free enterprise trials; these must enable it manually.\" Keep the Audit Logs role sentence."
+    },
+    {
+      "n": 45,
+      "where": "controls[4].note; Scope: Prerequisites; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Priva setup asks organisations using Privacy Risk Management to enable the Microsoft 365 audit log.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/privacy/priva/priva-setup",
+      "quote": "If using Privacy Risk Management, enable the Microsoft 365 audit log. ... Privacy risk management policies may use these activities for generating policy insights.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "What's changing; Scope: Sources; Open questions",
+      "type": "availability",
+      "claim": "The Reports page and its Azure and Amazon Web Services S3 insights are documented as preview despite the roadmap's Launched status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/privacy/priva/risk-management-find-visualize-data",
+      "quote": "The Reports (preview) page contains insights ... Data insights cover the locations of Microsoft 365, Microsoft Azure (preview), and Amazon Web Services S3 (preview).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The Overexposed personal data report covers locations within and beyond Microsoft 365.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/privacy/priva/risk-management-find-visualize-data",
+      "quote": "The Overexposed personal data card shows trends related to data overexposure policies ... covering locations within and beyond Microsoft 365, where content with personal data could be at risk of overexposure.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "The Reports page can be filtered to Azure and AWS locations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/privacy/priva/risk-management-find-visualize-data",
+      "quote": "Select the Microsoft 365, Azure (preview), or AWS (preview) buttons at the top of the Reports page to filter your view.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Scope: Policy type",
+      "type": "applicability",
+      "claim": "The Reports page's data transfer and unused personal data cards apply only to Microsoft 365 data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/privacy/priva/risk-management-find-visualize-data",
+      "quote": "The Data transfers detected in organization card ... applies only to data in your Microsoft 365 environment. ... The Unused personal data card ... applies only to data in your Microsoft 365 environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "What's changing; Open questions: Azure source types",
+      "type": "absence",
+      "claim": "The Priva pages do not name Azure SQL or Azure Data Lake Storage or resolve whether the Reports Azure location includes them.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Priva\" \"Azure SQL\" \"Azure Data Lake Storage\". Read Priva overview, data flows, setup, risk management, policies, overexposure, reports and alerts; they mention registered Purview sources or Azure preview, not these specific Azure services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Autonomy & actions; Open questions: outcomes",
+      "type": "absence",
+      "claim": "Learn does not specify which Priva remediation outcomes apply to Azure and AWS matches or identify the multicloud asset owner.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Priva\" \"multicloud\" \"remediation\"; Priva multicloud Azure SQL Amazon S3 policy remediation outcomes. Read overexposure, policies, risk management, alerts and reports; found general and Microsoft 365 remediation, not multicloud-specific applicability or owner identity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Microsoft documents making content items private, notifying owners and tagging as overexposure remediation options in its Microsoft 365 risk-management description.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/privacy/priva/risk-management",
+      "quote": "Privacy Risk Management gives you the capability to set up policies ... in your Microsoft 365 environment ... For data overexposure, these include making content items private, notifying content owners, or tagging items for further review.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The S3 scanner reads bucket data and reports only metadata and classification back to Azure.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/register-scan-amazon-s3",
+      "quote": "Uses this access to your Amazon S3 buckets to read your data, and then reports the scanning results, including only the metadata and classification, back to Azure.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Why it matters; Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "S3 scanning uses a Microsoft account in AWS and requires a dedicated IAM role allowing the scanner to read the data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/register-scan-amazon-s3",
+      "quote": "The Microsoft Purview scanner is deployed in a Microsoft account in AWS. To allow the Microsoft Purview scanner to read your S3 data, you must create a dedicated role in the AWS portal, in the IAM area, to be used by the scanner.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "The IAM role can use AmazonS3ReadOnlyAccess or a custom policy with the documented scanning permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/register-scan-amazon-s3",
+      "quote": "Select AmazonS3ReadOnlyAccess. ... To apply only the minimum permissions required for scanning your buckets, create a new policy ... Apply your new policy to the role instead of AmazonS3ReadOnlyAccess.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Cost and licensing: Meters; Governance guidance: After rollout; rationale: cost",
+      "type": "cost",
+      "claim": "S3 scanning incurs related data transfer charges according to the bucket region.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/register-scan-amazon-s3",
+      "quote": "Customers are charged for all related data transfer charges according to the region of their bucket.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Cost and licensing: Meters",
+      "type": "cost",
+      "claim": "Every Purview account has a Data Map starting at one capacity unit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-map",
+      "quote": "Every Microsoft Purview account has a Data Map that starts at one capacity unit",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Cost and licensing: Meters",
+      "type": "behaviour",
+      "claim": "Data Map scales according to request load and stored metadata.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-map",
+      "quote": "Can scale based on request load and the amount of metadata stored.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "front matter: cost; Why it matters; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Data Map has usage costs billed through capacity units, supporting a variable cost rating.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-map",
+      "quote": "You pay for one capacity unit ... Extra billing is based on the consumption of each extra capacity unit, calculated hourly.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Cost and licensing: Scan volume",
+      "type": "behaviour",
+      "claim": "Each Data Map scan can be scoped to the information needed instead of the whole source.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-map-scan-ingestion",
+      "quote": "For each scan, you can customize the process so that you only scan the information you need, rather than the whole source.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Cost and licensing: Scan volume; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Scans can be triggered immediately or scheduled periodically.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-map-scan-ingestion",
+      "quote": "You can trigger the scanning process to run immediately or schedule it to run periodically to keep your Microsoft Purview account up to date.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[3].note; Why it matters; Risk assessment: Change & support; changes",
+      "type": "behaviour",
+      "claim": "Data Map documentation carries a retirement notice for Purview data governance capabilities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-map",
+      "quote": "Microsoft Purview Unified Catalog and classic Microsoft Purview data governance capabilities (formerly Azure Purview) are being retired.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Why it matters; Open questions: retirement",
+      "type": "date",
+      "claim": "Existing Purview data governance capabilities remain in maintenance mode through November 12, 2027.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-map",
+      "quote": "Existing data governance capabilities will remain in maintenance mode through November 12, 2027.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Why it matters; Open questions: retirement",
+      "type": "absence",
+      "claim": "Microsoft has not explained the effect of the data governance retirement on Priva's use of registered multicloud sources.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Purview data governance retirement Priva multicloud Data Map unaffected November 12 2027. Read Data Map, registration, scanning, S3 and Priva pages; the notice exempts security/compliance but does not explain Priva's multicloud Data Map dependency.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Why it matters: existing behaviour",
+      "type": "absence",
+      "claim": "No consulted source says existing behaviour changes automatically on arrival.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Priva\" \"multicloud\" \"default\" existing policies. Read roadmap, Priva setup, policy creation, general policies and reports; none specifies an automatic change to existing behaviour or an existing-policy migration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Governance controls: Both must be in place",
+      "type": "role",
+      "claim": "Both Priva and Data Map permission models must be in place before a multicloud policy can detect anything.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Priva Privacy Risk Management Data Map permissions required policies detect matches role groups. Read Priva setup, policy, data-flow and Data Map role guidance; these describe user access and setup operations, not a combined permission gate on detection.",
+      "severity": "blocker",
+      "fix": "Remove \"Both must be in place before a multicloud policy finds anything.\" Retain the preceding sentences describing each product's documented user permissions without claiming an additional detection prerequisite."
+    },
+    {
+      "n": 67,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Microsoft recommends testing a policy for at least five days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/privacy/priva/risk-management-policies",
+      "quote": "We recommend testing your policy for at least five days to help you understand the type and volume of matches it will generate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Governance controls: Graph compliance and privacy APIs",
+      "type": "behaviour",
+      "claim": "The cited Graph compliance and privacy API overview documents Priva subject rights request operations, not Privacy Risk Management policy operations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/complianceapioverview?view=graph-rest-1.0",
+      "quote": "Use the Microsoft Graph compliance and privacy APIs to build applications that: Create and manage subject rights requests",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Governance controls: separate permission models; Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Priva role groups and Data Map source-management roles are separate permission mechanisms.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-map-data-sources-register-manage",
+      "quote": "To register and manage a source in Data Map, you need to be a Data Source Admin and have one of the other Data Map roles, such as Data Reader.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Why it matters: same policies and alert queue",
+      "type": "behaviour",
+      "claim": "Privacy Risk Management policies feed a shared Alerts page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/privacy/priva/risk-management",
+      "quote": "Alerts page: The Alerts page lists all policy alerts and provides current status and trends over time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Cost and licensing: Licence",
+      "type": "absence",
+      "claim": "The Priva service description publishes no Azure- or AWS-specific licensing rule.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Priva multicloud Azure SQL Amazon S3 pricing meter license; \"Priva\" \"multicloud\" \"price\". Read the complete Priva service description: it lists eligible subscriptions and add-on requirements but no Azure- or AWS-specific licensing rule.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Governance guidance: Before rollout and After rollout",
+      "type": "consistency",
+      "claim": "Several controls the governance checklist tells readers to review have no corresponding controls-table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: \"review the IAM role\", \"Reports page filtered to Azure and AWS\", \"Track Data Map capacity ... against the scan schedule\". Table: Priva role membership, policy sources, policy mode, Data Map registration and auditing only.",
+      "severity": "minor",
+      "fix": "The AWS scanner IAM role, Reports location filters, Data Map capacity monitoring and scan schedule checks lack table rows. No additional row is requested; this records the checklist/table mismatch."
+    },
+    {
+      "n": 73,
+      "where": "Scope: Out of scope",
+      "type": "availability",
+      "claim": "Priva is unavailable to tenants provisioned for residency in local data centres in Norway, Poland, Qatar, Singapore, South Africa, South Korea, Spain, Sweden, Switzerland or the United Arab Emirates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/privacy/priva/priva-setup",
+      "quote": "If your organization provisioned its tenant in one of the local data centers listed below ... the Priva solutions won't be available ... Norway; Poland; Qatar; Singapore; South Africa; South Korea; Spain; Sweden; Switzerland; United Arab Emirates",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-28T03:50:31.958Z",
+    "summary": {
+      "links": 19,
+      "unreachable": 0,
+      "uiPaths": 5,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 3,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=398711",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/privacy/priva/risk-management-policy-data-overexposure",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/privacy/priva/risk-management-policies",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/privacy/priva/risk-management-find-visualize-data",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/privacy/priva/priva-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/privacy/priva/priva-data-flows",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/privacy/priva/priva-setup",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/privacy/priva/risk-management",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/privacy/priva/risk-management-alerts",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-priva-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/data-map",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/register-scan-amazon-s3",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/complianceapioverview?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/data-map-scan-ingestion",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/purview-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/data-map-data-sources-register-manage",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/rest/api/purview/scanningdataplane/data-sources/create-or-replace",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Who can create, edit and turn on Privacy Risk Management policies (Privacy Management Administrators role group)",
+        "docs": "https://learn.microsoft.com/purview/purview-permissions",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Roles and scopes",
+          "Role groups",
+          "Role groups for Microsoft Purview solutions",
+          "role group",
+          "Edit",
+          "Edit members of the role group",
+          "Choose users"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Who can create, edit and turn on Privacy Risk Management policies (Privacy Management Administrators role group)",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "reachable": true,
+        "token": "Add-RoleGroupMember",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which data sources a data overexposure policy covers",
+        "docs": "https://learn.microsoft.com/privacy/priva/risk-management-policy-data-overexposure",
+        "reachable": true,
+        "segments": [
+          "Privacy Risk Management",
+          "Policies",
+          "Create a policy",
+          "Custom",
+          "Name and type",
+          "Data overexposure",
+          "Data sources"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether a policy is on and sends alerts and notifications, or stays in test mode",
+        "docs": "https://learn.microsoft.com/privacy/priva/risk-management-policies",
+        "reachable": true,
+        "segments": [
+          "Privacy Risk Management",
+          "Policies",
+          "Policy status",
+          "Turn on policy"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Which Azure and AWS sources are registered in Microsoft Purview Data Map for Priva to evaluate",
+        "docs": "https://learn.microsoft.com/purview/data-map-data-sources-register-manage",
+        "reachable": true,
+        "segments": [
+          "Data Map",
+          "Data sources",
+          "Register"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Which Azure and AWS sources are registered in Microsoft Purview Data Map for Priva to evaluate",
+        "docs": "https://learn.microsoft.com/rest/api/purview/scanningdataplane/data-sources/create-or-replace",
+        "reachable": true,
+        "token": "PUT {endpoint}/scan/datasources/{dataSourceName}?api-version=2023-09-01",
+        "found": true
+      },
+      {
+        "index": 4,
+        "side": "ui",
+        "governs": "Whether the unified audit log records activity for the organisation",
+        "docs": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+        "reachable": true,
+        "segments": [
+          "Audit",
+          "Start recording user and admin activity"
+        ],
+        "missing": []
+      },
+      {
+        "index": 4,
+        "side": "api",
+        "governs": "Whether the unified audit log records activity for the organisation",
+        "docs": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+        "reachable": true,
+        "token": "Set-AdminAuditLogConfig",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

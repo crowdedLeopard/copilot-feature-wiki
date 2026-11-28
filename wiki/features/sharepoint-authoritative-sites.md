@@ -40,6 +40,9 @@ sources:
   - title: "Manage sites in the SharePoint admin center"
     url: "https://learn.microsoft.com/sharepoint/manage-sites-in-new-admin-center"
     kind: "learn"
+  - title: "Restrict discovery of SharePoint sites and content"
+    url: "https://learn.microsoft.com/sharepoint/restricted-content-discovery"
+    kind: "learn"
 videos: []
 related: ["m365-admin-center-authoritative-content-management-for-m365-copilot-search","restricted-content-discovery","sharepoint-copilot-search-in-sharepoint-and-onedrive"]
 controls:
@@ -71,19 +74,23 @@ changes:
     note: "First briefing for this launched roadmap item, covering site designation by PowerShell, CSOM and the SharePoint admin center, and its licensing."
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 58 statements contradicted, 3 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-28"
+    note: "Corrected after the independent check: narrowed what marking a site does to content, corrected what Restricted Content Discovery covers, removed the per-geo 100-site reading and aligned the risk and impact rationales with the unstated default."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 62 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-28"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 58
-  confirmed: 53
-  unconfirmed: 3
-  contradicted: 2
-  attempts: 1
-  hash: "457426166b453b49c3307dc07861a9d1"
+  claims: 62
+  confirmed: 61
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "717222ff18e79fb1aefbb9b597bbb94b"
 ---
 
 ## What's changing
@@ -96,14 +103,14 @@ The roadmap record shows status Launched, release phase General Availability and
 
 ## Why it matters
 
-This gives a service owner a direct say in what Copilot Search presents as official. Marking the policy, HR and news sites lets their content stand out from copies, drafts and team-site versions of the same material. The same lever works in reverse: a marked site full of outdated or wrongly shared documents gets those documents promoted and labelled as coming from the organisation, so the list needs an owner and a review cycle.
+This gives a service owner a direct say in what Copilot Search presents as official. Marking the policy, HR and news sites lets their content stand out from copies, drafts and team-site versions of the same material. Copilot Search recognises content from marked sites as trusted. This makes reviewing candidate sites for stale or overshared content important, so the list needs an owner and a review cycle.
 
 Microsoft has not stated what happens on arrival, and no source says existing Copilot Search ranking changes before a site is marked. The pages describe marking as something an administrator does, one site at a time or in bulk, so the decision for most tenants is whether to use it and which sites qualify.
 
 ## Risk assessment
 
 **Data exposure**
-- Marking a site promotes whatever the site holds, including stale or overshared files, and labels it **From your organization**. Review each candidate site's content and sharing before marking it; to keep a site out of Copilot instead, see [Restricted Content Discovery](/concepts/restricted-content-discovery/).
+- Copilot Search recognises content from marked sites as trusted. This makes reviewing candidate sites for stale or overshared content important. Review each candidate site's content and sharing before marking it; to limit a site's discoverability in organisation-wide search and Microsoft Copilot discovery scenarios instead, see [Restricted Content Discovery](https://learn.microsoft.com/sharepoint/restricted-content-discovery) and [the concept page](/concepts/restricted-content-discovery/). Restricted Content Discovery does not prevent Copilot from summarising an open document.
 - Personal sites can't be marked as authoritative, per the Learn page.
 
 **Security & identity**
@@ -111,7 +118,7 @@ Microsoft has not stated what happens on arrival, and no source says existing Co
 - The CSOM route on the Learn page registers a Microsoft Entra ID app with `Sites.FullControl.All` application permissions for SharePoint and Microsoft Graph. Treat that app as a high-privilege credential and remove it when bulk work is done.
 
 **Autonomy & actions**
-- No change: the feature is a designation administrators set on sites; it takes no action on content.
+- The documented operation is an administrator setting an authoritative designation on a site.
 
 **Change & support**
 - Changes can take up to 72 hours to appear, so expect questions from site owners who check straight away.
@@ -138,7 +145,7 @@ Microsoft has not stated what happens on arrival, and no source says existing Co
 
 ### Before rollout
 - Name an owner for the authoritative site list, such as the intranet or internal communications team, and agree the criteria a site must meet.
-- Shortlist no more than 100 sites, per geo in a multi-geo tenant, starting with policy, HR and news sites.
+- Shortlist no more than 100 sites, starting with policy, HR and news sites. In multi-geo tenants, manage authoritative site data per geo.
 - Review each shortlisted site's content and sharing, and remove superseded documents before marking it.
 - Decide whether to mark sites with `Set-SPOSite`, the SharePoint admin center or the Microsoft 365 admin center list, and record the choice in the runbook.
 
@@ -176,20 +183,14 @@ The Learn page says configuration in the current release is through PowerShell a
 - Does a tenant with the SharePoint Advanced Management Plan 1 add-on but no Microsoft Copilot licence get the feature? Watch the prerequisites page.
 
 <!-- rationale
-risk: Low. A site becomes authoritative only when an administrator marks it, and Microsoft describes the effect as Copilot Search recognising that site's content as trusted and labelling it.
+risk: Low. The default is not stated, so this assessment assumes today's behaviour continues. Microsoft describes marked sites as trusted sources in Copilot Search.
 cost: Low. The feature page says a Microsoft Copilot licence is required and publishes no separate price or meter; the known cost is admin time to choose and maintain the list.
-impact: Low. Administrators make the change; users notice only once sites are marked, through ranking and the From your organization label in Copilot Search.
+impact: Low. The documented change is an administrator designation, with ranking and visual signals in Copilot Search. Microsoft has not stated what happens on arrival.
 -->
 
-<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Data exposure; Why it matters / behaviour: Marking a site promotes whatever it holds, including stale or overshared files, and labels all that content From your organization. | Found: Searched: '"authoritative sites" "all content" "no action"'; '"authoritative sites" "content" "permissions" "Restricted Content Discovery"'. Opened authoritative-sites and release-notes. Neither guarantees promotion and labelling of every file. | Fix: Replace the factual premise in both sections with: 'Copilot Search recognises content from marked sites as trusted. This makes reviewing candidate sites for stale or overshared content important.' Do not say that every file is promoted or labelled.
-- [contradicted, blocker] Risk assessment: Data exposure / applicability: Restricted Content Discovery can keep a site out of Copilot. | Found: Restricted Content Discovery doesn't affect experiences that operate on content that's already in use by the user, such as summarizing an open document. | Fix: Replace 'to keep a site out of Copilot instead' with 'to limit a site's discoverability in organization-wide search and Microsoft Copilot discovery scenarios instead'. Add: 'Restricted Content Discovery does not prevent Copilot from summarising an open document.' Cite https://learn.microsoft.com/sharepoint/restricted-content-discovery. | Source: https://learn.microsoft.com/sharepoint/restricted-content-discovery
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: The feature takes no action on content. | Found: Searched: '"authoritative sites" "all content" "no action"'. Opened authoritative-sites and the feature's release-note entry. They describe administrator designation and search effects, not an exhaustive guarantee of no content actions. | Fix: Replace 'No change: the feature is a designation administrators set on sites; it takes no action on content' with 'The documented operation is an administrator setting an authoritative designation on a site.'
-- [unsupported, blocker] Governance guidance: Before rollout / behaviour: A multi-geo tenant can shortlist up to 100 authoritative sites per geo. | Found: Searched: '"authoritative sites" "100" "geo"'. Opened authoritative-sites and release-notes. Learn separately states a 100-site limit and per-geo data management; it does not state that each geo receives its own 100-site allowance. | Fix: Replace the bullet with: 'Shortlist no more than 100 sites, starting with policy, HR and news sites. In multi-geo tenants, manage authoritative site data per geo.' Do not attach 'per geo' to the numerical allowance.
-- [contradicted, blocker] front matter: defaultState; Why it matters; rationale: risk; rationale: impact / consistency: The default is unknown, but the rationales assert that authoritative designation and user-visible changes happen only after administrator marking. | Found: defaultState: "unknown"; "Microsoft has not stated what happens on arrival"; "A site becomes authoritative only when an administrator marks it"; "users notice only once sites are marked" | Fix: Keep defaultState as unknown: searches for 'SharePoint authoritative sites default enabled tenant Set-SPOTenant IsAuthoritative default' and '"authoritative sites" "default" "automatically" "before"' found no stated arrival default. Replace the risk rationale with 'Low. The default is not stated, so this assessment assumes today's behaviour continues. Microsoft describes marked sites as trusted sources in Copilot Search.' Replace the impact rationale with 'Low. The documented change is an administrator designation, with ranking and visual signals in Copilot Search. Microsoft has not stated what happens on arrival.'
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].api; Governance controls; Governance guidance: At rollout / command: Set-SPOSite -Identity <site URL> -IsAuthoritative $true marks a site authoritative. | Found: Set-SPOSite -Identity "https://<tenant>.sharepoint.com/sites/<siteName>" -IsAuthoritative $true | Fix: Keep the call. Add to controls[0].note: 'The Set-SPOSite reference's supported-parameter list for Groups site collections omits IsAuthoritative, whereas the authoritative-sites page gives this general site command.' Both pages are already cited; the conflicting list is at https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-sposite?view=sharepoint-ps. | Source: https://learn.microsoft.com/sharepoint/sharepoint-authoritative-sites
-- [supported, minor] front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost / licensing: The authoritative-sites page requires a Microsoft Copilot license and points to SharePoint Advanced Management prerequisites. | Found: **Licensing**: A Microsoft Copilot license is required. (See Prerequisites for SharePoint Advanced Management.) | Fix: Add to the Licence paragraph: 'The Set-SPOSite IsAuthoritative reference describes an admin with a Copilot license marking the site, while the SharePoint Advanced Management prerequisites say the licensed user need not be a SharePoint administrator.' The differing wording is at https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-sposite?view=sharepoint-ps and https://learn.microsoft.com/sharepoint/sharepoint-advanced-management-prerequisites. | Source: https://learn.microsoft.com/sharepoint/sharepoint-authoritative-sites
+- [supported, minor] front matter: licensing.model and licensing.notes; Cost and licensing / licensing: The feature is included through the documented Copilot-backed SharePoint Advanced Management entitlement rather than a separately named authoritative-sites licence. | Found: If your organization has at least one Microsoft Copilot license assigned to a user, your SharePoint administrators automatically receive access to SharePoint Advanced Management capabilities to support your Copilot deployment. | Fix: Keep the entitlement account, but add: 'The Set-SPOSite -IsAuthoritative reference instead describes "an admin with a Copilot license", whereas the Advanced Management prerequisites say the licensed user does not need to be a SharePoint administrator.' Cite https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-sposite?view=sharepoint-ps beside this qualification; it is already in sources. | Source: https://learn.microsoft.com/sharepoint/sharepoint-advanced-management-prerequisites
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist's instruction to review candidate sites' sharing has a corresponding controls-table row. | Found: Review each shortlisted site's content and sharing ... Table rows: Whether a SharePoint site is marked as authoritative; Which SharePoint sites are authoritative content for Copilot Search, managed centrally. | Fix: The Before rollout sharing-review step has no corresponding controls row. Remove 'and sharing' from that checklist bullet; do not add an unverified control row.
 -->

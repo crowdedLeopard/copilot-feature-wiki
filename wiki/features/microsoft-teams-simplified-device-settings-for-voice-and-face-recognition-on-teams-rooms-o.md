@@ -108,19 +108,23 @@ changes:
     note: "Corrected: noted that roles scoped to an administrative unit cannot reach the Pro Management portal, removed a claim about the post-retirement route, revised the risk and impact rationales, completed the portal path and marked settings templates as Preview."
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 71 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-28"
+    note: "Corrected: the transcription check now covers both the meeting organiser's policy and the policy of the user who starts transcription; removed a role-review step that had no matching control."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 77 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-28"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 71
-  confirmed: 69
+  claims: 77
+  confirmed: 77
   unconfirmed: 0
-  contradicted: 2
-  attempts: 2
-  hash: "ebe32f9a03b7fcfbee1258b0ff234e24"
+  contradicted: 0
+  attempts: 0
+  hash: "bbab695aeafb7b902001351e5790b4cb"
 ---
 
 ## What's changing
@@ -174,7 +178,7 @@ If nobody acts, rooms configured through device settings keep Voice Recognition 
 - Decide, with your privacy or compliance lead, which rooms should identify enrolled people by voice and which should keep Voice Recognition off.
 - List rooms whose resource accounts use a meeting policy with `roomAttributeUserOverride` set, so you know which rooms rely on the route being retired.
 - Check the Teams AI policy (`EnrollVoice`, `PassiveVoiceEnrollment`) so enrolment for users matches what you decide for rooms.
-- Confirm the room resource accounts' meeting policy allows **Transcription**; without it voice identification does not occur.
+- Confirm that **Transcription** is enabled in the meeting organiser's policy and in the policy of the user who starts recording or transcription; voice identification requires transcription.
 
 ### At rollout
 - Turn on **Configure with device settings** and set **Voice Recognition** per room in the Pro Management portal (Rooms > room > Settings > Recognition > Configure with device settings > Voice Recognition), using Device setting jobs to apply it to many rooms at once.
@@ -183,7 +187,6 @@ If nobody acts, rooms configured through device settings keep Voice Recognition 
 
 ### After rollout
 - Review the Recognition setting across rooms in the Pro Management portal, including changes made on room consoles, which sync back to the portal.
-- Review who holds Teams Devices Administrator and Pro Management roles that can change the setting.
 - Watch the people recognition page and Message center for the retirement date of the meeting policy route.
 
 ## Governance controls
@@ -220,13 +223,8 @@ cost: Low. Recognition is exclusive to rooms with a Teams Rooms Pro licence; bey
 impact: Low. Room administrators see the new settings; enrolled meeting participants can notice speaker attribution in rooms configured for recognition.
 -->
 
-<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance guidance: Before rollout, Transcription bullet / applicability: Administrators should check the room resource accounts' meeting policy for the transcription permission on which voice identification depends. | Found: Transcription is both a per-organizer and per-user policy setting. ... the organizer must have this setting turned on. The user who starts the recording or transcript must also have this setting turned on. | Fix: Replace the Before rollout transcription bullet with: 'Confirm that **Transcription** is enabled in the meeting organiser's policy and in the policy of the user who starts recording or transcription; voice identification requires transcription.' The already-cited https://learn.microsoft.com/microsoftteams/meeting-transcription-captions states both requirements. | Source: https://learn.microsoft.com/microsoftteams/meeting-transcription-captions
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing; summary; controls[0].note; Cost and licensing; Scope; rationale: cost / licensing: Recognition is included for Teams Rooms devices with a Teams Rooms Pro licence and is exclusive to those devices. | Found: This feature is exclusive to Microsoft Teams Rooms devices with a Teams Rooms Pro license. | Fix: Keep the people-recognition page's Teams Rooms Pro requirement, but add: 'The Manage voice recognition for Intelligent Speaker page also notes that select devices under legacy Microsoft Teams Rooms Premium licences continue to be supported.' The already-cited https://learn.microsoft.com/microsoftteams/rooms/voice-recognition states that qualification. | Source: https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition
-- [supported, minor] What's changing; Risk assessment; rationale: risk / behaviour: Device settings and the still-documented meeting policy are alternative recognition configuration routes. | Found: Recognition in Teams Rooms can be configured through either device-level settings or a Teams Meeting policy. | Fix: After the two-route explanation, add: 'The Manage voice recognition for Intelligent Speaker page still describes roomAttributeUserOverride as required for Rooms accounts, whereas the people recognition page describes device settings or meeting policy as alternatives.' Both https://learn.microsoft.com/microsoftteams/rooms/voice-recognition and https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition are already cited. | Source: https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition
-- [supported, minor] controls[3].note; Why it matters; Governance controls table / default: The Teams AI policy enables voice and face enrolment for all users by default. | Found: The new policy includes three distinct settings which are enabled by default ... By default, voice and face recognition is available and enrollment is enabled for all users in the organization. | Fix: Keep the overview's default statement, but add: 'The Set-CsTeamsAIPolicy reference qualifies express enrolment: organisations that previously disabled EnrollVoice receive a one-time duplication of that state into PassiveVoiceEnrollment when express enrolment launches.' Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsaipolicy, whose reference says both settings have the same state at launch in that case. | Source: https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition
-- [contradicted, minor] Governance guidance: After rollout, role-review bullet / consistency: The role-assignment review in the checklist has no corresponding controls-table row. | Found: Review who holds Teams Devices Administrator and Pro Management roles that can change the setting. | The table contains room recognition, local recognition, meeting-policy identification, user enrolment and transcription, but no role-assignment control. | Fix: The After rollout step 'Review who holds Teams Devices Administrator and Pro Management roles that can change the setting' has no controls-table row. Remove that checklist bullet; retain the verified role information in Risk assessment and Scope.
+- [supported, minor] controls[3].note; Why it matters / default: The enrollment overview describes voice enrollment as enabled by default for all users. | Found: By default, voice and face recognition is available and enrollment is enabled for all users in the organization. | Fix: After the default-enrollment sentence add: 'The Set-CsTeamsAIPolicy reference qualifies the express-enrollment default: organizations that previously disabled EnrollVoice received the same initial state for PassiveVoiceEnrollment.' Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsaipolicy, whose description states the one-time state duplication; retain the overview's stated general default. | Source: https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition
 -->

@@ -119,26 +119,30 @@ changes:
     note: "Corrected: access now notes investigation membership alongside role groups; examination cost no longer described as proportional to files analysed; removed the claim that examination never alters source items; added access and Azure budget sources."
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 89 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-28"
+    note: "Corrected: the examination steps now start from Data Security Investigations in the Purview portal and Investigations; removed the claim that examination collects nothing new by itself."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 84 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-28"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 89
-  confirmed: 87
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 2
-  hash: "4fd38bed89e8427c7755b9b96dfc346b"
+  claims: 84
+  confirmed: 84
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "9d09afdd5be597196c8ed75ab0e3da55"
 ---
 
 ## What's changing
 
 Data Security Investigations (DSI, the Microsoft Purview solution for analysing content caught up in a data security incident) adds a **Personal data** examination focus area. It uses AI to identify and extract personal data from items an investigator selects in an investigation's scope, alongside the existing Credentials, Risk, Mitigation and Custom focus areas.
 
-Microsoft Learn documents the steps: in an investigation, open **Analysis**, select one or more items, select **Examine**, and choose *Personal data: Identify and extract the personally identifiable information in selected evidence* in the **Choose a focus area** field. **Add to scope** must have completed first. For each item the results give a risk level (High, Medium or Low), whether it contains personal data, the types found, the **extracted values**, a surrounding snippet, the AI's reasoning and any errors. Microsoft's examples put SSN/National ID and bank account numbers at High, email addresses, phone numbers and medical record numbers at Medium, and full names and addresses at Low, and says the list is not comprehensive.
+Microsoft Learn documents the steps: in the Microsoft Purview portal, open **Data Security Investigations**, select **Investigations**, select an investigation, and then open **Analysis**; select one or more items, select **Examine**, and choose *Personal data: Identify and extract the personally identifiable information in selected evidence* in the **Choose a focus area** field. **Add to scope** must have completed first. For each item the results give a risk level (High, Medium or Low), whether it contains personal data, the types found, the **extracted values**, a surrounding snippet, the AI's reasoning and any errors. Microsoft's examples put SSN/National ID and bank account numbers at High, email addresses, phone numbers and medical record numbers at Medium, and full names and addresses at Low, and says the list is not comprehensive.
 
 The roadmap item is marked Launched, in General Availability, with a target of April CY2026, for the Worldwide (Standard Multi-Tenant) cloud on the web.
 
@@ -152,7 +156,7 @@ Nothing changes for tenants that have not set up DSI. Where DSI is in use, Learn
 
 **Data exposure**
 - Results include each extracted personal data value and a surrounding snippet, so an investigation becomes a store of exposed personal data. DSI role groups grant examination permissions (row 1); investigation membership also controls access to the investigation.
-- The examination runs only on items already added to an investigation's scope; it collects nothing new by itself.
+- The examination runs only on items already added to an investigation's scope.
 - AI processing runs in the location chosen under **Set up AI capacity**, or anywhere with capacity if the tenant opts in, which Microsoft recommends (row 2). Check this against privacy commitments before running personal data examinations.
 
 **Security & identity**
@@ -232,11 +236,8 @@ cost: Variable. Examinations consume Data Security Investigations Compute Units,
 impact: Low. Only investigators and administrators who use Data Security Investigations see the new focus area.
 -->
 
-<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing: examination instructions / admin-path: The route for running an examination starts in an investigation at Analysis, then selects items, Examine and Personal data in Choose a focus area. | Found: 1. Go to Data Security Investigations in the Microsoft Purview portal ... 2. Select Investigations in the left navigation. 3. Select an investigation, and then select Analysis on the navigation bar. | Fix: Replace 'in an investigation, open Analysis' with 'in the Microsoft Purview portal, open Data Security Investigations, select Investigations, select an investigation, and then open Analysis'. Keep the subsequent item selection, Examine and Personal data focus-area instructions. The missing entry route is documented at https://learn.microsoft.com/purview/data-security-investigations-personal-data. | Source: https://learn.microsoft.com/purview/data-security-investigations-personal-data
-- [unsupported, major] Risk assessment: Data exposure / behaviour: The examination collects nothing new by itself. | Found: Searched: Data Security Investigations examination collects data automatically selected scope. Read personal-data, ai-analysis and returned scope/workflow excerpts: selected-item analysis is stated, but not a blanket no-collection assurance. | Fix: Remove '; it collects nothing new by itself'. Retain 'The examination runs only on items already added to an investigation's scope', which is supported by https://learn.microsoft.com/purview/data-security-investigations-personal-data.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters; Scope: Users; Governance controls; controls[0].note / applicability: DSI role groups determine access to examination capabilities. | Found: Run examination activities | Yes | Yes | Yes | Fix: Add to the existing investigation-access sentence: 'The access-settings page refers to a Data Security Investigations Manager role group, whereas the permissions page lists Admins, Investigators and Reviewers.' The differing prerequisite appears at https://learn.microsoft.com/purview/data-security-investigations-settings-access-permissions; retain the permissions page's documented role assignments. | Source: https://learn.microsoft.com/purview/data-security-investigations-permissions
+- [supported, minor] Why it matters; controls[0].note; controls[2].note; Governance controls; rationale: risk / applicability: Investigation membership controls investigation access in addition to DSI role-group permissions. | Found: You can add or remove users to manage who can access the investigation. However, before a user can access an investigation (and perform tasks in the investigation), you must add the user to the Data Security Investigations Manager role group in the Microsoft Purview portal. | Fix: Add this qualification to the existing investigation-access sentence: 'Microsoft's investigation-access page still names a Data Security Investigations Manager role group as a prerequisite, whereas its permissions page lists Admins, Investigators and Reviewers.' Retain the existing citations to https://learn.microsoft.com/purview/data-security-investigations-settings-access-permissions and https://learn.microsoft.com/purview/data-security-investigations-permissions. | Source: https://learn.microsoft.com/purview/data-security-investigations-settings-access-permissions
 -->

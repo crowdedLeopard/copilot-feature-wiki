@@ -55,7 +55,7 @@ controls:
     scope: "other"
     ui:
       surface: "Viva Glint admin dashboard"
-      path: "Configuration > Surveys > Survey programs > program > Program Setup > Auto-expand comments input"
+      path: "Configuration > Surveys > Survey programs > program > Program Summary > Program Setup > Auto-expand comments input"
       docs: "https://learn.microsoft.com/viva/glint/setup/program-set-up"
     api: null
     note: "Per survey program. Disabled by default; applies to rating items only. An existing setting, not documented as governing the new auto-scroll."
@@ -66,7 +66,7 @@ controls:
       path: "Configuration > Surveys > Survey programs > survey > Questions > question > Edit Question > Optional question"
       docs: "https://learn.microsoft.com/viva/glint/setup/questions-setup"
     api: null
-    note: "Per question. Open-ended questions are always optional. Not editable while the survey is live."
+    note: "Per question. For Engagement survey programs only; this route is not the 360 feedback setup route. Open-ended questions are always optional. Not editable while the survey is live."
 confidence: "medium"
 created: "2026-11-28"
 updated: "2026-11-28"
@@ -76,19 +76,23 @@ changes:
     note: "New briefing: Glint survey-taking refinements, with the Program Setup and question settings that shape the same survey moments."
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 46 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-28"
+    note: "Corrected: Optional question is now qualified as an Engagement survey program setting (not the 360 feedback route), and the Auto-expand comments input path now includes Program Summary."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 53 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-28"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 46
-  confirmed: 45
+  claims: 53
+  confirmed: 53
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "c659b43a38dd54500e24b1964434250d"
+  contradicted: 0
+  attempts: 0
+  hash: "358742cfe30359d622b9ffcc0a769943"
 ---
 
 ## What's changing
@@ -103,7 +107,7 @@ The roadmap item lists the change as Launched, General Availability, on the Web 
 
 This is a change to something every survey taker already uses, so the main work for a Glint service owner is communication and help-desk readiness rather than configuration. Employees who were told to look for "Skip" or "Done", or who are used to how the survey currently scrolls when they change an answer, will find the survey behaves differently. Organisations that copied Microsoft's survey-taker FAQ into their own intranet or survey communications should expect that text to describe buttons the survey no longer shows.
 
-Microsoft has not stated what happens on arrival, and Learn documents no switch for these refinements. The settings that already shape the same moments, **Auto-expand comments input** in Program Setup and **Optional question** on each item, stay in admins' hands, and how the new navigation works alongside them is the question to settle in a test survey before the next live cycle.
+Microsoft has not stated what happens on arrival, and Learn documents no switch for these refinements. The settings that already shape the same moments, **Auto-expand comments input** in Program Setup and, in Engagement survey programs, **Optional question** on each item, stay in admins' hands, and how the new navigation works alongside them is the question to settle in a test survey before the next live cycle.
 
 ## Risk assessment
 
@@ -119,7 +123,7 @@ Microsoft has not stated what happens on arrival, and Learn documents no switch 
 **Change & support**
 - A single "Next" button replaces "Skip" and "Done", per the roadmap. Learn's survey-taker FAQ still refers to "Skip" or "Next" at the time of writing, so internal guidance built from it will be out of step; expect questions to survey owners and managers.
 - With **Auto-expand comments input** disabled (its default), Learn says the survey automatically moves to the next item. The roadmap's refined auto-scroll touches the same moment, and how the two interact is not documented, so survey owners should check the behaviour in a test survey rather than assume it.
-- Whether a taker may move past a question without answering is still set per item by **Optional question**; with one button for both skipping and completing, takers may not see which items are mandatory as clearly. Learn's FAQ says that unless noted, all questions are mandatory.
+- In Engagement survey programs, whether a taker may move past a question without answering is still set per item by **Optional question**; with one button for both skipping and completing, takers may not see which items are mandatory as clearly. Learn's FAQ says that unless noted, all questions are mandatory.
 
 ## Cost and licensing
 
@@ -141,7 +145,7 @@ Microsoft has not stated what happens on arrival, and Learn documents no switch 
 ### Before rollout
 - Launch a test survey to an internal team and confirm how the single Next button behaves on mandatory, optional and open-ended items.
 - Check each program's **Auto-expand comments input** setting in Program Setup and decide, from the test survey, whether the refined auto-scroll changes your choice.
-- Review which items have **Optional question** enabled, since one Next button now serves both skipping and completing an item.
+- Review which items in Engagement survey programs have **Optional question** enabled, since one Next button now serves both skipping and completing an item.
 
 ### At rollout
 - Update intranet pages, survey invitations and manager talking points that tell employees to use "Skip" or "Done".
@@ -159,12 +163,12 @@ Microsoft has not stated what happens on arrival, and Learn documents no switch 
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Tenant-wide switch for the survey-taking refinements</strong><br><small>Tenant</small><br><small class="controls__note">Viva feature access management lists only Copilot in Viva Glint for Glint at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether a comment box shows after each rating item, or the survey moves on automatically</strong><br><small class="controls__note">Per survey program. Disabled by default; applies to rating items only. An existing setting, not documented as governing the new auto-scroll.</small></td><td data-label="Admin UI"><strong>Viva Glint admin dashboard</strong><br>Configuration › Surveys › Survey programs › program › Program Setup › Auto-expand comments input <a href="https://learn.microsoft.com/viva/glint/setup/program-set-up" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether survey takers may skip a rating or multiple-choice question</strong><br><small class="controls__note">Per question. Open-ended questions are always optional. Not editable while the survey is live.</small></td><td data-label="Admin UI"><strong>Viva Glint admin dashboard</strong><br>Configuration › Surveys › Survey programs › survey › Questions › question › Edit Question › Optional question <a href="https://learn.microsoft.com/viva/glint/setup/questions-setup" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether a comment box shows after each rating item, or the survey moves on automatically</strong><br><small class="controls__note">Per survey program. Disabled by default; applies to rating items only. An existing setting, not documented as governing the new auto-scroll.</small></td><td data-label="Admin UI"><strong>Viva Glint admin dashboard</strong><br>Configuration › Surveys › Survey programs › program › Program Summary › Program Setup › Auto-expand comments input <a href="https://learn.microsoft.com/viva/glint/setup/program-set-up" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether survey takers may skip a rating or multiple-choice question</strong><br><small class="controls__note">Per question. For Engagement survey programs only; this route is not the 360 feedback setup route. Open-ended questions are always optional. Not editable while the survey is live.</small></td><td data-label="Admin UI"><strong>Viva Glint admin dashboard</strong><br>Configuration › Surveys › Survey programs › survey › Questions › question › Edit Question › Optional question <a href="https://learn.microsoft.com/viva/glint/setup/questions-setup" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-Learn documents no admin switch for these refinements; the Viva feature access management page lists only Copilot in Viva Glint as a manageable Glint feature at the time of writing (November 2026). The two Glint settings in the table are existing controls over the same survey moments, not controls over the refinements themselves. **Auto-expand comments input** is set per survey program, is disabled by default and applies to rating items only. **Optional question** is set per item; Learn says open-ended questions are always optional and have no such setting, and that while a survey is live only language text, instruction text and comment placeholder text can be edited.
+Learn documents no admin switch for these refinements; the Viva feature access management page lists only Copilot in Viva Glint as a manageable Glint feature at the time of writing (November 2026). The two Glint settings in the table are existing controls over the same survey moments, not controls over the refinements themselves. **Auto-expand comments input** is set per survey program, is disabled by default and applies to rating items only. **Optional question** is set per item; the Questions setup page that documents it applies only to Engagement survey programs. Learn says open-ended questions are always optional and have no such setting, and that while a survey is live only language text, instruction text and comment placeholder text can be edited.
 
 ## Open questions
 
@@ -180,10 +184,10 @@ cost: Low. Viva Glint already requires a Viva Suite or Viva Glint subscription p
 impact: Medium. Every employee who takes a Glint survey meets the new Next button and changed scrolling, but only while taking a survey; the roadmap describes no change for admins or dashboard users.
 -->
 
-<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[2].governs and note; Why it matters; Risk assessment; Governance guidance; Governance controls / applicability: Optional question is presented without a survey-program qualification as the per-item control allowing rating and multiple-choice questions to be skipped. | Found: This documentation applies only to Engagement survey programs. If you are creating a 360 feedback program, please refer to the 360-specific documentation here. | Fix: Add 'For Engagement survey programs only; this route is not the 360 feedback setup route' to controls[2].note and its rendered note. Qualify the corresponding prose and checklist instructions as applying to Engagement survey programs. Keep the existing path. Cite https://learn.microsoft.com/viva/glint/setup/questions-setup for the qualification; the linked 360 page uses Survey Questions in Cycle Settings instead. | Source: https://learn.microsoft.com/viva/glint/setup/questions-setup
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: The comment-expansion control is at Configuration > Surveys > Survey programs > program > Program Setup > Auto-expand comments input in the Viva Glint admin dashboard. | Found: The Program Setup page is the first section in Program Summary for a Microsoft Viva Glint survey. In the first section on the Program setup page, define, enable, or disable each field: Auto-expand comments input. | Fix: Insert the omitted Program Summary heading: 'Configuration > Surveys > Survey programs > program > Program Summary > Program Setup > Auto-expand comments input'. Questions setup, already cited, supplies Configuration > Surveys > Survey programs and selection of the survey; the cited Program Setup page supplies the control. | Source: https://learn.microsoft.com/viva/glint/setup/program-set-up
+- [supported, minor] controls[1].ui; Governance controls: Auto-expand comments input row / admin-path: Auto-expand comments input is reached from the Viva Glint admin dashboard through Configuration > Surveys > Survey programs > program > Program Summary > Program Setup. | Found: The Program Setup page is the first section in Program Summary for a Microsoft Viva Glint survey. ... Auto-expand comments input | Fix: Keep the path. Add https://learn.microsoft.com/viva/glint/setup/employee-raw-data-export to sources: it states that selecting the survey from Survey Programs reaches Program Summary, where Program Setup is selected. Configuration > Surveys > Survey programs is already supported by the cited Questions setup and live-survey pages. | Source: https://learn.microsoft.com/viva/glint/setup/program-set-up
+- [supported, minor] controls[2].ui; Governance controls: Optional question row / admin-path: Optional question is reached through Configuration > Surveys > Survey programs > survey > Questions > question > Edit Question. | Found: Go to Configuration and choose Survey programs in Surveys. ... Select your blank recurring survey and go to the Questions tab. ... Select Edit Question from the ellipsis dropdown menu. | Fix: Use 'Configuration > Surveys > Survey programs > survey > Questions > question > ellipsis > Edit Question > Optional question' in controls[2].ui.path and the rendered row. The omitted ellipsis is the menu from which Edit Question is selected; the other printed steps are supported. | Source: https://learn.microsoft.com/viva/glint/setup/questions-setup
+- [supported, minor] Governance controls: closing sentence / behaviour: In the paragraph's question-editing context, live editing is restricted to language text, instruction text and comment placeholder text. | Found: You can edit language text, instruction text, and comment placeholder text only. Other fields are disabled and can't be edited until the survey is no longer live. | Fix: Replace 'while a survey is live only language text, instruction text and comment placeholder text can be edited' with 'when editing a question used in a live survey, only language text, instruction text and comment placeholder text can be edited'. The cited restriction is under the item-editing procedure; the same page also documents other live survey edits. | Source: https://learn.microsoft.com/viva/glint/setup/change-live-survey
 -->

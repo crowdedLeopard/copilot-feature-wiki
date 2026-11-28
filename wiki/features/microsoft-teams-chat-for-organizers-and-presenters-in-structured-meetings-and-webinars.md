@@ -18,7 +18,7 @@ defaultState: "on"
 action: "prepare"
 licensing:
   model: "included"
-  notes: "Microsoft's notice MC1188222 says the town hall backroom chat default applies regardless of licence type, and the Teams events licensing overview says all eligible Teams licences include the foundational event capabilities. No licence or price specific to this chat is published."
+  notes: "Microsoft's notice MC1188222 says the town hall backroom chat default applies regardless of licence type, and the Teams events licensing overview says all eligible Teams licences include the foundational event capabilities. For Teams Rooms on Android, the release notes mark private chat for organisers and presenters in webinars and structured meetings as requiring Teams Rooms Pro."
 audiences: ["m365-admin","service-owner","compliance","change-adoption"]
 tags: ["teams","teams-events","meeting-policy","ediscovery","retention","gcc"]
 sources:
@@ -39,6 +39,9 @@ sources:
     kind: "learn"
   - title: "Teams events licensing overview"
     url: "https://learn.microsoft.com/microsoftteams/events-licensing"
+    kind: "learn"
+  - title: "Release notes for Microsoft Teams Rooms"
+    url: "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note"
     kind: "learn"
   - title: "Learn about retention for Microsoft Teams"
     url: "https://learn.microsoft.com/purview/retention-policies-teams"
@@ -105,26 +108,30 @@ changes:
     note: "Corrected the town hall attendee chat PowerShell value to None and the Set-CsTeamsEventsPolicy reference's parameter default to None."
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 49 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-28"
+    note: "Corrected the statement that Learn does not describe the webinar chat, citing the Teams Rooms on Android release notes, and replaced the licence-absence statement with the release notes' Teams Rooms Pro requirement for Teams Rooms on Android."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 57 statements confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-28"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 49
-  confirmed: 47
+  claims: 57
+  confirmed: 57
   unconfirmed: 0
-  contradicted: 2
-  attempts: 3
-  hash: "13c9a9d05c37ae370b92f5b3dbaa9e80"
+  contradicted: 0
+  attempts: 0
+  hash: "2685c3883065ecdffddad05d39ee1c48"
 ---
 
 ## What's changing
 
 Organisers, co-organisers and presenters in Teams structured meetings and webinars get a private chat of their own, separate from the attendees' chat and available before, during and after the event. Microsoft's notice [MC1188222](https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1188222) adds a second change under the same roadmap item: backroom chat in town halls is unified so that it behaves the same in every structured meeting, where today it varies with whether streaming chat is on and whether the organiser has a Teams Premium licence.
 
-Microsoft Learn already describes this chat for events optimised for large audiences (town halls), where it is called the event group chat: organisers, co-organisers and presenters chat with each other in it, it is available before, during and after the event, and it is "a separate experience from the chat with attendees" ([Manage chat for Teams events](https://learn.microsoft.com/microsoftteams/manage-event-chat)). Learn does not yet describe the separate chat for webinars and structured meetings, so what follows about those is the roadmap item and the notice.
+Microsoft Learn already describes this chat for events optimised for large audiences (town halls), where it is called the event group chat: organisers, co-organisers and presenters chat with each other in it, it is available before, during and after the event, and it is "a separate experience from the chat with attendees" ([Manage chat for Teams events](https://learn.microsoft.com/microsoftteams/manage-event-chat)). The Manage chat for Teams events article does not yet describe the separate chat for webinars and structured meetings; the November 2026 Teams Rooms on Android [release notes](https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note) describe it as the Event Group chat.
 
 The notice says the backroom chat default will be ON for all town halls, regardless of streaming chat availability or licence type. Existing town halls adopt the new policy once their meeting options are updated, and town halls without a Teams Premium licence where backroom chat was off switch to on after rollout and a meeting options update. If an administrator turns the backroom chat policy off, any already scheduled town hall that had backroom chat on loses it once its meeting options are updated.
 
@@ -154,7 +161,7 @@ If nobody acts, the notice says town hall backroom chat will be on by default on
 
 ## Cost and licensing
 
-Microsoft's notice MC1188222 says the unified town hall backroom chat default applies "regardless of streaming chat availability or license type". The [Teams events licensing overview](https://learn.microsoft.com/microsoftteams/events-licensing) states that all eligible Teams licences include the foundational capabilities needed to create and run events; that page does not list the event group chat by name. No licence, price or meter specific to this chat is published at the time of writing (November 2026).
+Microsoft's notice MC1188222 says the unified town hall backroom chat default applies "regardless of streaming chat availability or license type". The [Teams events licensing overview](https://learn.microsoft.com/microsoftteams/events-licensing) states that all eligible Teams licences include the foundational capabilities needed to create and run events; that page does not list the event group chat by name. For Teams Rooms on Android, the [release notes](https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note) mark private chat for organisers and presenters in webinars and structured meetings as requiring Teams Rooms Pro.
 
 Indirect costs are admin and communications time: briefing organisers, presenters and helpdesk, and an eDiscovery test of where the chat is kept.
 
@@ -206,13 +213,6 @@ For events with up to 1,000 attendees, the same reference table says administrat
 
 <!-- rationale
 risk: Low. The chat is among the people running an event and Microsoft describes it as separate from attendee chat; the main change is that town hall backroom chat turns on by default where it was off.
-cost: Low. Microsoft's notice says the town hall default applies regardless of licence type, and no separate licence, price or meter is published; the cost is briefing event teams and helpdesk.
+cost: Low. Microsoft's notice says the town hall default applies regardless of licence type; for Teams Rooms on Android, the release notes mark private chat for organisers and presenters in webinars and structured meetings as requiring Teams Rooms Pro. The cost is briefing event teams and helpdesk.
 impact: Medium. Organisers, co-organisers and presenters of webinars, structured meetings and town halls notice a new chat, and town halls without Teams Premium gain backroom chat by default.
--->
-
-<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing / absence: Microsoft Learn does not yet describe the separate chat for webinars and structured meetings. | Found: When a Teams Rooms on Android is an organizer, co-organizer or presenter in a webinar and structured meeting, you have access to a private chat for event management known as the Event Group. | Fix: Replace the sentence with: 'The Manage chat for Teams events article does not yet describe the separate chat for webinars and structured meetings; the November 2026 Teams Rooms on Android release notes describe it as the Event Group chat.' Cite https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note. | Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note
-- [contradicted, blocker] front matter: licensing.notes; Cost and licensing; rationale: cost / absence: No licence specific to this chat is published as of November 2026. | Found: Features with ![](../media/mtr-pro-icon.png) are only available with Teams Rooms Pro license. Private chat for organizers and presenters for webinars and structured meetings ![](../media/mtr-pro-icon.png) | Fix: Replace the licence-absence statement in the licensing notes, Cost and licensing and cost rationale with: 'For Teams Rooms on Android, the release notes mark private chat for organisers and presenters in webinars and structured meetings as requiring Teams Rooms Pro.' Cite https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note. Keep licensing.model included: this is an existing room licence, not a separate chat add-on. | Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note
 -->
