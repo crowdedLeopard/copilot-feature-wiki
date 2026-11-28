@@ -136,7 +136,10 @@ The compile step runs on the repository owner's GitHub Copilot seat by default (
 needs `copilot-requests: write`, no secret required; an optional `COPILOT_GITHUB_TOKEN` fine-grained PAT with the
 "Copilot Requests" permission bills a specific user's seat instead). Spend is capped per briefing and per run
 (`COMPILE_ITEM_MAX_CREDITS`, `COMPILE_MAX_CREDITS` repository variables) and logged in `wiki/log.md`. The CLI refuses a
-credit cap under 30. `compile-copilot.mjs` preflights the token and model (falling back through `COPILOT_FALLBACK_MODELS`),
+credit cap under 30. The writer model is `claude-sonnet-5.5` unless the `COPILOT_MODEL` variable says otherwise: the seat
+refused `claude-opus-5.5` until 25 Nov 2026, then runs 168-171 wrote with it at 103-128 credits a page against Sonnet's
+45-55 while the same share of first drafts passed the check (52 of 95), so Opus is the fallback, not the default.
+`compile-copilot.mjs` preflights the token and model (falling back through `COPILOT_FALLBACK_MODELS`),
 retries a fast failure once, writes a plain-English summary and annotations, and only escalates (red run, via the
 `escalate` output and `data/last-compile.json`) after two failed runs in a row. Set `COMPILE_WRITER`
 to `claude-code` (needs `CLAUDE_CODE_OAUTH_TOKEN`) or `api` (needs `ANTHROPIC_API_KEY`) to use Claude capacity instead.
