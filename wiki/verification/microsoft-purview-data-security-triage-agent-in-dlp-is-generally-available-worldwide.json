@@ -1,0 +1,1383 @@
+{
+  "slug": "microsoft-purview-data-security-triage-agent-in-dlp-is-generally-available-worldwide",
+  "roadmapId": 542187,
+  "title": "Microsoft Purview: Data Security Triage Agent for DLP alerts reaches general availability",
+  "status": "held",
+  "date": "2026-11-28",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-28",
+    "reasons": [
+      "4 blocking findings (claims 47, 55, 79, 90)"
+    ]
+  },
+  "counts": {
+    "claims": 109,
+    "confirmed": 104,
+    "unconfirmed": 0,
+    "contradicted": 5,
+    "blocker": 4,
+    "major": 0,
+    "minor": 4
+  },
+  "summary": "Hold: the briefing implies administrators can configure the schedule, but Microsoft sets the schedule and only automatic versus manual execution is configurable. It also omits the Security Copilot owner role required to change overage capacity in that portal, omits the Teams app prerequisite for reminders, and describes the optional agent identity as unconditional in the risk rationale.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "Deployment is reached in Microsoft Purview through Agents > Explore agents > Triage agent in Data Loss Prevention > View Details > Setup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "In the left hand navigation pane, select **Agents**.\n3. Select **Explore agents**.\n4. On the card for the Triage agent in Data Loss Prevention, select **View Details** to open a page that shows the details about the agent.\n5. Select **Setup**",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Agent configuration is reached in Purview through Agents > Explore agents > Go to agent > Edit agent > Agent configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "select **Agents**.\n2. Select **Explore agents**.\n3. Select **Go to agent** for agent you want to edit.\n4. Select **Edit agent**.\n5. Select **Agent configuration** for editing and configuring settings like Trigger, alert timeframe, remediation reminders, reminder duration, and policy scope.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "Deactivation is reached in Purview through Agents > Explore agents > Go to agent > ellipses (three dots) > Deactivate agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "Select **Go to agent** for the agent you want to deactivate.\n5. On the far right upper right hand corner of the agent overview page, select the ellipses (three dots) that are located *next to* the **Edit agent** button.\n6. Select **Deactivate agent**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "Agent SCU usage monitoring is reached in Purview through Agents > Explore agents > View agent > Edit agent > Usage monitoring.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "In the left hand navigation pane, select **Agents**.\n3. Select **Explore agents**.\n4. Select **View agent** for agent you want to edit.\n5. Select **Edit agent**.\n6. Select **Usage monitoring**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "controls[4].ui",
+      "type": "admin-path",
+      "claim": "Purview role membership is reached through Settings > Roles and scopes > Role groups > Role groups for Microsoft Purview solutions > role group > Edit > Edit members of the role group > Choose users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Select **Role groups**.\n3. On **Role groups for Microsoft Purview solutions**, select a Microsoft Purview role group you want to add users to. Select **Edit** on the control bar.\n4. On **Edit members of the role group**, select **Choose users** or **Choose groups**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "controls[4].api",
+      "type": "command",
+      "claim": "Add-RoleGroupMember -Identity \"<role-group>\" -Member \"<user-UPN>\" adds a user to a Purview role group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+      "quote": "Add-RoleGroupMember\n    [-Identity] <RoleGroupIdParameter>\n    -Member <SecurityPrincipalIdParameter>\n\nWhen you add a member to a role group, the member is given the effective permissions provided by the management roles assigned to the role group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: defaultState; summary; Why it matters",
+      "type": "default",
+      "claim": "The agent is admin-opt-in and does not run until someone deploys it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+      "quote": "#### Will Microsoft Security Copilot agents be automatically enabled?\n\nNo, a customer's organization is required to set up and deploy agents in the relevant standalone or embedded experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: licensing.model; Cost and licensing",
+      "type": "licensing",
+      "claim": "The agent has mixed licensing requiring the standard per-seat and pay-as-you-go models.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "This agent requires [both the standard per seat licensing model and the pay-as-you-go billing model](purview-billing-models).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The organisation must be licensed for Microsoft Data Loss Prevention.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "Your organization must be licensed for:\n\n- Microsoft Data Loss Prevention (DLP) to use the DLP triage agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "title; front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap item is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\",\n  \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\n    \"General Availability\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is December CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"December CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The record has no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\n    \"Worldwide (Standard Multi-Tenant)\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: platforms; What's changing",
+      "type": "record",
+      "claim": "The record lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\n    \"Web\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The record lists Microsoft Purview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\n    \"Microsoft Purview\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap was modified at 2026-05-14T23:15:59.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-05-14T23:15:59\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says the GA release expands coverage to Endpoint DLP alerts.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "For this GA release, we’re introducing expanded coverage (which also includes Endpoint DLP alerts as well as alerts that leverage Custom SITs (Sensitive Information Types)) and support for Entra Agent ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap says the GA release covers alerts leveraging custom SITs.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "alerts that leverage Custom SITs (Sensitive Information Types)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says the GA release supports Entra Agent ID.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "and support for Entra Agent ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "The Data Security Triage Agent is a Security Copilot agent embedded in Purview DLP.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-agents-overview",
+      "quote": "Microsoft Security Copilot agents are AI-powered processes that help you with specific role-based tasks. Microsoft Purview offers:\n\n- [Microsoft Purview Data Loss Prevention (DLP)](dlp-learn-about-dlp) triage agent",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Why it matters; Risk assessment",
+      "type": "behaviour",
+      "claim": "The agent reads content associated with DLP alerts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-agents",
+      "quote": "Read file content and metadata involved in DLP alerts",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "The agent classifies alerts as Needs attention, Less urgent or Not categorized.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "The agent groups alerts into four categories:\n\n- **All**\n- **Needs attention**\n- **Less urgent**\n- **Not categorized**",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "The agent provides summaries explaining alert categorization.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-agents-overview",
+      "quote": "The agent offers a comprehensive explanation for the logic behind the categorization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Supported DLP policy locations are Exchange, Teams, OneDrive, SharePoint and devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "The Microsoft Purview Triage Agent in DLP triages alerts from policies that are scoped to Exchange, Teams, OneDrive, SharePoint, and devices (Endpoint) locations, *only*.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Risk assessment; Scope",
+      "type": "behaviour",
+      "claim": "Only active-mode policies are supported, not simulation-mode policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "The Triage agent in DLP only supports alerts from policies that are in active mode. It doesn't triage alerts from DLP policies that are running in simulation mode.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing",
+      "type": "applicability",
+      "claim": "Device alert triage requires evidence collection for file activities on devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "To triage alerts from Devices, you must enable [evidence collection for file activities on devices](dlp-copy-matched-items-learn).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Files up to 2 MB are triaged.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "Agents triage files up to 2 MB in size.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "For alerts with 10 or more files, the agent summarizes the top 10.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "When an alert includes 10 or more files, the agent uses the potentially top 10 files to generate the file risk summary.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing; rationale: impact",
+      "type": "behaviour",
+      "claim": "Purview DLP results appear in the Alerts page's Triage Agent view.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "Set the toggle to the **Triage Agent** view. This view shows agent triaged alerts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Agent summaries also appear in the Defender XDR DLP alert queue.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "Agent-provided summaries and risk factors will be available on DLP alerts triaged by the Agent as they are in Microsoft Purview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing; Scope; controls[0].note",
+      "type": "behaviour",
+      "claim": "The agent can be deployed from either Purview or Defender XDR.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "The Triage Agent can be deployed from both Microsoft Purview and Defender XDR portals",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing; Scope; Governance controls",
+      "type": "behaviour",
+      "claim": "Management, editing and disabling are only available in Purview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "but can only be managed, edited, and disabled from the Microsoft Purview portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing; controls[0].note",
+      "type": "behaviour",
+      "claim": "Only one instance exists per tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "There can be only one instance of each agent in a tenant, regardless of the portal in which it was deployed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The agent starts within 30-60 minutes after setup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "After setup is complete, the agent starts running within 30–60 minutes and begins triaging DLP alerts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What's changing; Why it matters",
+      "type": "default",
+      "claim": "All DLP policies are in scope by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "By default, the agent processes alerts from all DLP policies generated within the past 30 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing; Why it matters",
+      "type": "default",
+      "claim": "The default alert look-back is 30 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "Alert timeframe: Triage alerts from the last 30 days",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "A dedicated Microsoft Entra agent identity is a recommended identity option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-agents-overview",
+      "quote": "**Create and use agent identity (recommended):** Create a separate Microsoft Entra agent identity for the agent. Associate all agent activities with this agent identity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What's changing; Risk assessment",
+      "type": "behaviour",
+      "claim": "The alternative identity option uses the account of the person who sets up the agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-agents-overview",
+      "quote": "**Assign and use my identity:** Set up the agent by using the identity of the user or admin who sets up the agent. Associate all activities with the user's identity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Microsoft recommends migrating agents using a user identity to agent identity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "Regarding an agent that that was set up using a user's identity, migration to the agent identity in agent settings is recommended.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment; Governance controls",
+      "type": "behaviour",
+      "claim": "The identity settings can be changed at any time in deployment configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "These settings can be changed anytime by visiting the deployment configurations tab for the agent in Explore agents page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Why it matters",
+      "type": "role",
+      "claim": "With agent identity, the agent receives Data classification content viewer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "These roles are assigned to the Triage agent in DLP when agent identity is used:\n\n- Information Protection Analyst\n- Purview content Analyst\n- Data classification content viewer (needed to get the contextual summary)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "role",
+      "claim": "With agent identity, the agent receives Data classification content downloader for endpoint evidence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "These roles are assigned to the Triage agent in DLP when agent identity is used:\n\n- Information Protection Analyst\n- Purview content Analyst\n- Data classification content viewer (needed to get the contextual summary)\n- Data classification content downloader (needed for endpoint scenario)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The banner's one-click setup deploys the agent with default settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "A quick setup flow with default triggers was introduced. Any admin or analyst for a tenant (with no agent deployed) sees a banner or card on alerts page for Triage agent setup. Select **Start agent** to deploy and enable the agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Why it matters; rationale: risk",
+      "type": "role",
+      "claim": "Admins and analysts with the normal setup roles can deploy from the banner.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "The roles needed for this setup align with the roles mentioned previously for normal setup flow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Microsoft sets the automatic triage schedule.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "Microsoft sets the schedule and it isn't configurable by organizations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[1].governs; Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "Administrators can set the agent's schedule in Agent configuration.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "Choose to **Run automatically based on a set schedule**. If you don't choose this option, you must run the agent manually one at a time. Microsoft sets the schedule and it isn't configurable by organizations.",
+      "severity": "blocker",
+      "fix": "Replace 'Schedule' in controls[1].governs and its rendered row with 'Automatic versus manual execution'. Replace 'set the alert timeframe, schedule and policy scope deliberately' with 'set the alert timeframe, automatic versus manual execution and policy scope deliberately'."
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Automatic execution categorizes alerts without individual analyst review.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "If you select **Run automatically based on a set schedule**, the agent triages the alerts that are included in the **Select Alert timeframe** setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Analysts can give feedback that changes alert prioritization.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "If you disagree with the agent's initial categorization of an alert, you can use the feedback mechanism to revise the categorization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Preview custom instructions can raise or lower alert priority.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "### Custom instructions (Preview)\n\nRaising or lowering the alert’s priority if the content matches your custom instruction.",
+      "severity": "minor",
+      "fix": "After the custom-instructions sentence add: 'The agents overview page describes custom instructions as raising priority only, while the DLP get-started page describes raising or lowering it.' Both pages are already cited."
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Saved custom instructions affect future triage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "Once the instruction is saved, the agent uses it to triage all future alerts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Feedback can apply to the triggering policy or all policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "If you want to **Apply the feedback to all policies**, select that option. Otherwise, the feedback is applied only to the policy that triggered the alert.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[1].note; Risk assessment; Cost and licensing",
+      "type": "availability",
+      "claim": "Teams remediation reminders are preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "### Remediation reminder (Preview)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[1].note",
+      "type": "availability",
+      "claim": "Reminder duration is preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "### Reminder duration (Preview)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Turning on remediation reminders sends Teams messages to the last modifier of SharePoint or OneDrive files in Needs attention alerts.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "To use the Remediation Capability of the Triage Agent in Data Loss Prevention, you must configure the Microsoft Teams Admin Center to allow the Data Security Triage Agent app to send messages to users.",
+      "severity": "blocker",
+      "fix": "Add to that sentence: 'provided the Microsoft Teams admin center allows the Data Security Triage Agent app to send messages to users; reminders are not sent when the tenant blocks deployment of new Teams apps.' The cited get-started page states this prerequisite."
+    },
+    {
+      "n": 56,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Enabling remediation reminders enables the Teams bot for the tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "Enabling this setting also enables the bot in Microsoft Teams for the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "default",
+      "claim": "One-click deployment leaves remediation reminders off.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "Remediation reminder: Turned OFF (Preview)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Purview agents are not administrative-unit aware.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-agents-overview",
+      "quote": "Agents aren't [administrative unit aware](purview-admin-units).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "An unrestricted agent identity is not confined to one administrative unit's alerts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-agents-overview",
+      "quote": "But if the agent runs in the context of an administrative-unit restricted admin, and there are policies that are administrative-unit scoped to that admin, the agent only sees alerts from the policies that scoped to the admin unit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Unsuccessfully triaged alerts appear as Not categorized.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "**Not categorized**: Uncategorized results are the alerts that the agent wasn't able to successfully triage",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Analysts must manually analyze alerts the agent does not evaluate.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "Do manual analysis on alerts not evaluated by an agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "summary; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "The agent consumes Security Copilot SCUs, supporting the variable cost rating.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "The agent consumes security compute units (SCUs) as it performs its tasks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "SCUs must be provisioned for the agent to work.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "You must have SCUs provisioned for the triage agent to work.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "SCU consumption depends on the number and type of processed alerts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "The number of SCUs consumed depends on the number and type of alerts that are processed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "No fixed per-alert SCU figure is published for the Purview DLP triage agent.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview DLP triage agent SCU per alert consumption usage monitoring API export Security Copilot'. Read DLP get-started, Security Copilot manage-usage and capacity pages; results give variable consumption, not a DLP per-alert figure.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Generally available Security Copilot capabilities are charged SCUs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/manage-usage",
+      "quote": "| Generally available (GA) | Yes |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Public-preview Security Copilot capabilities are charged SCUs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/manage-usage",
+      "quote": "| Public preview | Yes |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Microsoft 365 E5 and E7 include 400 SCUs per month per 1,000 paid user licences at no extra cost.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+      "quote": "Customers with Microsoft 365 E5 and E7 will have 400 Security Compute Units (SCU) each month for every 1,000 paid user license, up to 10,000 SCUs each month at no additional cost.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The included E5/E7 allowance has a 10,000-SCU monthly maximum.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+      "quote": "up to 10,000 SCUs each month at no additional cost.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The included SCU allocation resets monthly.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+      "quote": "SCU allocations reset monthly and don't roll over if unused.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Cost and licensing; Open questions",
+      "type": "behaviour",
+      "claim": "Usage beyond included SCUs will be throttled at a future date.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+      "quote": "Usage beyond the allocated SCUs will be throttled at a future date.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "At that future date, extra capacity can be bought at $6 USD per SCU pay-as-you-go.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+      "quote": "Customers have an option to scale beyond the allocated amount at $6 USD for each SCU on a pay-as-you go basis at that time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Open questions",
+      "type": "date",
+      "claim": "Microsoft promises 30 days' advance notification when that extra-capacity option becomes available.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+      "quote": "Customers will get a 30-day advanced notification when this option is available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Why it matters",
+      "type": "cost",
+      "claim": "E5/E7 Default Security Copilot Capacity is shared across all tenant users and experiences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+      "quote": "Your tenant is assigned a Default Security Copilot Capacity.\n\n- It's shared across all users and experiences in the tenant",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Cost and licensing: Other tenants",
+      "type": "cost",
+      "claim": "Provisioned capacity is billed hourly.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-compute-units-capacity",
+      "quote": "Provisioned capacity is billed per hour and is best for steady, predictable usage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "Cost and licensing: Other tenants",
+      "type": "behaviour",
+      "claim": "Requests stop when provisioned SCUs are exhausted unless another capacity type is available.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-compute-units-capacity",
+      "quote": "If provisioned SCUs run out, Security Copilot requests stop unless another capacity type is available",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "Cost and licensing: Other tenants",
+      "type": "cost",
+      "claim": "Overage capacity can be maximum-limited or unlimited and is billed on consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-compute-units-capacity",
+      "quote": "Overage units are billed on-demand and can be set as unlimited or a maximum amount.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "Cost and licensing; Governance controls",
+      "type": "admin-path",
+      "claim": "Overage units are set in Security Copilot Settings under Number of overage units.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/manage-usage",
+      "quote": "Sign in to Security Copilot (https://securitycopilot.microsoft.com) and go to **Settings**.\n\nThrough the owner settings page: Under **Security compute units** or **Number of overage units**, select **Change**.",
+      "severity": "minor",
+      "fix": "Replace the parenthetical '(Number of overage units)' with '(Settings > Owner settings > Number of overage units > Change)' to finish the route at the control documented on the cited usage page."
+    },
+    {
+      "n": 79,
+      "where": "Governance controls: final sentence",
+      "type": "role",
+      "claim": "Changing overage limits in Security Copilot requires the Azure capacity owner or contributor role.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/security/manage-usage",
+      "quote": "**Azure portal required role:** Azure capacity owner or contributor.\n\n**Security Copilot portal required role:** Azure capacity owner or contributor who are also Security Copilot owners.",
+      "severity": "blocker",
+      "fix": "Replace the final sentence with: 'Overage SCU limits are set in Security Copilot, not in Purview, and require an Azure capacity owner or contributor who is also a Security Copilot owner.'"
+    },
+    {
+      "n": 80,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Remediation reminders incur no extra cost beyond the SCUs used to triage the alert.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "The Remediation Capability doesn't cost anything extra. The only costs associated with using this capability are the SCUs needed to triage the DLP alert first.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
+      "where": "Scope: Who uses it",
+      "type": "role",
+      "claim": "Setup and analysis require one role from each applicable documented group, including Security Copilot Contributor or Purview Copilot Workspace Contributor.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "For admins (any one from each group):\n\nFor analysts (any one from each group):\n\n| Security Copilot Contributor | (Managed in Security Copilot) |\n| Purview Copilot Workspace Contributor | Included in multiple role groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 82,
+      "where": "Scope: Who uses it",
+      "type": "behaviour",
+      "claim": "Analysts can run the agent manually on an individual alert.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "you can select the alert and then select **Run agent** to manually run the agent on the alert.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 83,
+      "where": "Scope: Prerequisites",
+      "type": "applicability",
+      "claim": "The tenant must be onboarded to Security Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "Your tenant must be onboarded to Microsoft Security Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 84,
+      "where": "Scope: Prerequisites",
+      "type": "applicability",
+      "claim": "Microsoft 365 data sharing must be enabled in Security Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "You must enable Microsoft 365 data sharing in Security Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 85,
+      "where": "Scope: Prerequisites",
+      "type": "applicability",
+      "claim": "The Microsoft Purview plug-in must be enabled in Security Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "You must enable the Microsoft Purview plug-in in Microsoft Security Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 86,
+      "where": "Scope: Alerts in scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "Policies with unsupported conditions can have Limited eligibility.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "If a policy has some unsupported conditions--a state called *limited eligibility*--the Microsoft Purview DLP triage agent might not be able to triage all the alerts from that policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 87,
+      "where": "Scope: Related",
+      "type": "behaviour",
+      "claim": "The Insider Risk Management triage agent is separate from the DLP triage agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-agents-overview",
+      "quote": "Microsoft Purview offers:\n\n- [Microsoft Purview Data Loss Prevention (DLP)](dlp-learn-about-dlp) triage agent\n- [Microsoft Purview Insider Risk Management](insider-risk-management) triage agent",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 88,
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Only triage new alerts is an available alert-timeframe option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "If **Only triage new alerts** is selected, the agent only triages alerts that are generated after the agent is deployed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 89,
+      "where": "Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Purview deployment can be reached through Agents > Explore agents > View Details > Setup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "On the card for the Triage agent in Data Loss Prevention, select **View Details** to open a page that shows the details about the agent.\n5. Select **Setup**",
+      "severity": "minor",
+      "fix": "Replace this prose path with 'Agents > Explore agents > Triage agent in Data Loss Prevention > View Details > Setup', matching controls[0].ui."
+    },
+    {
+      "n": 90,
+      "where": "rationale: risk; What's changing",
+      "type": "consistency",
+      "claim": "The risk rationale says every deployed agent runs under its own Entra agent identity, while the body also permits a user identity.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Once deployed, the agent runs under its own Microsoft Entra agent identity\n\nIt can run under a dedicated Microsoft Entra agent identity (recommended) or under the identity of the person who set it up.",
+      "severity": "blocker",
+      "fix": "Replace 'Once deployed, the agent runs under its own Microsoft Entra agent identity with roles that let it read and download the content behind DLP alerts' with 'When deployed using its own Microsoft Entra agent identity, the agent receives roles that let it read and download the content behind DLP alerts'."
+    },
+    {
+      "n": 91,
+      "where": "controls[0].api; Governance controls",
+      "type": "absence",
+      "claim": "No PowerShell, Graph or other deployment API for this DLP triage agent is documented as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview DLP Triage Agent deploy configure deactivate PowerShell Security Compliance Microsoft Graph API agent settings'; read DLP get-started and Learn results. No deployment API was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 92,
+      "where": "controls[1].api; Governance controls",
+      "type": "absence",
+      "claim": "No PowerShell, Graph or other configuration API for this DLP triage agent is documented as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview DLP Triage Agent deploy configure deactivate PowerShell Security Compliance Microsoft Graph API agent settings'; read DLP get-started and Learn results. No configuration API was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 93,
+      "where": "controls[2].api; Governance controls",
+      "type": "absence",
+      "claim": "No PowerShell, Graph or other deactivation API for this DLP triage agent is documented as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview DLP Triage Agent deploy configure deactivate PowerShell Security Compliance Microsoft Graph API agent settings'; read DLP get-started and Learn results. No deactivation API was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 94,
+      "where": "controls[3].api",
+      "type": "absence",
+      "claim": "No automation equivalent for this DLP triage agent's SCU usage monitoring is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview DLP triage agent SCU per alert consumption usage monitoring API export Security Copilot' and 'site:learn.microsoft.com/graph Security Copilot Purview triage agent configure deactivate usage'. Read DLP get-started, manage-usage and results; no usage API found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 95,
+      "where": "controls[4].note",
+      "type": "role",
+      "claim": "Managing Purview role-group membership requires Role management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Sign in to the [Microsoft Purview portal](https://purview.microsoft.com) by using credentials for an admin account assigned the *Role management* role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 96,
+      "where": "controls[4].note; Scope; Governance controls",
+      "type": "role",
+      "claim": "Security Copilot Contributor is managed in Security Copilot, separately from Purview role groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "| Security Copilot Contributor | (Managed in Security Copilot) |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 97,
+      "where": "controls[2].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Deactivating the agent stops triage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "Deactivating the agent stops the agent from triaging alerts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 98,
+      "where": "controls[2].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Deactivation does not remove the agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "It doesn't remove the agent",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 99,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Deactivation preserves the alert-timeframe reference point.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "it doesn't reset the **Select alert timeframe** reference point in time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 100,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Remove agent on the same ellipsis menu deletes the agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "select the ellipses (three dots) that are located *next to* the **Edit agent** button.\n6. Select **Remove agent**. Removing the agent deletes it from Microsoft Purview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 101,
+      "where": "What's changing; Open questions",
+      "type": "availability",
+      "claim": "The Microsoft Security Copilot agents in Purview page still labels the DLP agent preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-agents",
+      "quote": "### Alert Triage Agent in Data Loss Prevention (preview)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 102,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "The DLP get-started page still describes content risk in terms of Microsoft-provided SITs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "it covers sensitive content based on Microsoft provided sensitive information types (SIT), trainable classifiers, and default sensitivity labels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 103,
+      "where": "controls[1].governs; Why it matters; Governance guidance",
+      "type": "applicability",
+      "claim": "Agent configuration controls the alert timeframe.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "Select **Agent configuration** for editing and configuring settings like Trigger, alert timeframe, remediation reminders, reminder duration, and policy scope.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 104,
+      "where": "controls[1].governs; Why it matters; Governance guidance",
+      "type": "applicability",
+      "claim": "Agent configuration controls the DLP policy scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "Specify the policy scope of the triage agent to control which DLP policy alerts and which policies are eligible for remediation reminders.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 105,
+      "where": "controls[1].governs; Why it matters; Governance guidance",
+      "type": "applicability",
+      "claim": "Agent configuration controls whether Teams remediation reminders are enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "Select **Agent configuration** for editing and configuring settings like Trigger, alert timeframe, remediation reminders, reminder duration, and policy scope.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 106,
+      "where": "controls[3].note",
+      "type": "behaviour",
+      "claim": "Usage monitoring tracks consumption rather than setting a consumption limit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/manage-usage",
+      "quote": "The usage dashboard shows how many SCUs are consumed over a period of time by your Microsoft Security Copilot workloads.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 107,
+      "where": "controls[4].api",
+      "type": "command",
+      "claim": "The Member parameter accepts a user UPN and Identity identifies the target role group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+      "quote": "The Identity parameter specifies the role group to add a member to.\n\nYou can use any value that uniquely identifies the user or group. For example:\n\n- User ID or user principal name (UPN)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 108,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist tells readers to choose agent identity, but the controls table has no identity-selection control.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Choose agent identity rather than a user identity\n\nWhether the DLP triage agent is deployed in the tenant\nSchedule, alert timeframe, policy scope and Teams reminders the agent uses",
+      "severity": "minor",
+      "fix": "Remove the 'Choose agent identity rather than a user identity' checklist bullet; retain the documented identity choices and recommendation already explained in What's changing and Risk assessment."
+    },
+    {
+      "n": 109,
+      "where": "Risk assessment: Data exposure; Governance guidance; controls[4]",
+      "type": "applicability",
+      "claim": "Purview role-group membership governs possession of the Purview roles required to deploy or use this agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+      "quote": "Assign these roles for setting up the agent using an recommended agent identity, actions like configuring or customizing, or deactivating and removing agents:\n\nFor admins (any one from each group):\n\n| Role | Role Groups containing the role |",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-28T02:20:30.374Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 5,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/copilot-in-purview-agents-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/copilot-in-purview-agents",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/security/security-compute-units-capacity",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/security/manage-usage",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=542187",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/purview-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether the DLP triage agent is deployed in the tenant",
+        "docs": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "Explore agents",
+          "Triage agent in Data Loss Prevention",
+          "View Details",
+          "Setup"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Schedule, alert timeframe, policy scope and Teams reminders the agent uses",
+        "docs": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "Explore agents",
+          "Go to agent",
+          "Edit agent",
+          "Agent configuration"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether the agent keeps triaging alerts",
+        "docs": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "Explore agents",
+          "Go to agent",
+          "ellipses",
+          "Deactivate agent"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Security compute unit consumption by the agent",
+        "docs": "https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "Explore agents",
+          "View agent",
+          "Edit agent",
+          "Usage monitoring"
+        ],
+        "missing": []
+      },
+      {
+        "index": 4,
+        "side": "ui",
+        "governs": "Who holds the Purview roles needed to set up or use the agent",
+        "docs": "https://learn.microsoft.com/purview/purview-permissions",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Roles and scopes",
+          "Role groups",
+          "Role groups for Microsoft Purview solutions",
+          "role group",
+          "Edit",
+          "Edit members of the role group",
+          "Choose users"
+        ],
+        "missing": []
+      },
+      {
+        "index": 4,
+        "side": "api",
+        "governs": "Who holds the Purview roles needed to set up or use the agent",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "reachable": true,
+        "token": "Add-RoleGroupMember",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

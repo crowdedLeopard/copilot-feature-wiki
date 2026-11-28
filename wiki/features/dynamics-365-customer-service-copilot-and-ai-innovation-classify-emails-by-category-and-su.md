@@ -91,17 +91,19 @@ changes:
     note: "Corrected: the custom-action control row no longer lists the action as an API for the timing option; governance checklist limited to controls in the table, with simulation and downstream-rule testing moved to Risk assessment."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 91 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 85 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 91
-  confirmed: 91
+  claims: 85
+  confirmed: 84
   unconfirmed: 0
-  contradicted: 0
+  contradicted: 1
   attempts: 0
   hash: "9dcb3643e3f7b17ade0bda80abfbe085"
 ---
@@ -200,8 +202,9 @@ cost: Variable. Learn lists pay-as-you-go billing as a prerequisite and warns th
 impact: Medium. Customer Service administrators set it up, and service representatives and the routing and case-creation rules that use the category are the people who notice its results.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
 - [supported, minor] controls[1].ui; Governance controls table / admin-path: The taxonomy is at Copilot Service admin center > Email settings > Email classification > Manage > Define taxonomy. | Found: In Copilot Service admin center, go to Email settings > Email classification, and then select Manage. In Define taxonomy, select + Add. | Fix: Extend controls[1].ui.path and its rendered table path to 'Email settings > Email classification > Manage > Define taxonomy > + Add', as documented at https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification. | Source: https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification
+- [contradicted, minor] Governance guidance: At rollout / consistency: The checklist instructs a form/component configuration step that has no corresponding controls-table row. | Found: Add the Email category (AI) field and the EmailClassificationControl component to the email form if representatives should see or change categories. The table lists only enablement, taxonomy, scope and classification timing. | Fix: Remove the form/component bullet from Governance guidance: At rollout. Its supported explanation already remains in Cost and licensing, Scope and Governance controls; do not add a control row.
 -->

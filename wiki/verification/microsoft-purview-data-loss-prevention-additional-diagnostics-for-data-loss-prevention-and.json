@@ -1,0 +1,956 @@
+{
+  "slug": "microsoft-purview-data-loss-prevention-additional-diagnostics-for-data-loss-prevention-and",
+  "roadmapId": 547833,
+  "title": "Microsoft Purview: diagnostics that explain DLP and auto-labeling results for SharePoint, OneDrive and Exchange",
+  "status": "held",
+  "date": "2026-11-28",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-28",
+    "reasons": [
+      "2 blocking findings (claims 22, 24)"
+    ]
+  },
+  "counts": {
+    "claims": 69,
+    "confirmed": 67,
+    "unconfirmed": 1,
+    "contradicted": 1,
+    "blocker": 2,
+    "major": 0,
+    "minor": 1
+  },
+  "summary": "Hold: reviewing Purview role group membership alone does not establish who can run the diagnostics, because Microsoft Entra role assignments also grant access. The auto-labeling progress command is not documented as returning file failures; its scope needs to be distinguished from the portal failure list.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: products; title",
+      "type": "record",
+      "claim": "The change belongs to Microsoft Purview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Purview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap item is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "General availability was targeted for February CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"February CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is January CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"January CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The record lists General Availability and Preview as release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; Scope; Open questions",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-05-15T22:00:42.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-05-15T22:00:42\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap names a DLP diagnostic for SharePoint.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "DLP SharePoint Diagnostics",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap names a DLP diagnostic for Exchange Online.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "DLP EXO Diagnostics",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap names auto-labeling diagnostics for SharePoint and OneDrive.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Auto labeling diagnostics for SPO/ODB",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; summary; title",
+      "type": "record",
+      "claim": "The roadmap says the diagnostics help identify sensitive information in a document.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The below diagnostics will help users understand which sensitive information exist in their document",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says the diagnostics help explain which labels were applied.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "what labels applied",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; summary",
+      "type": "record",
+      "claim": "The roadmap says the diagnostics help explain which policies were triggered.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "what policies have been triggered",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Purview role group members can be added through Settings > Roles and scopes > Role groups > Role groups for Microsoft Purview solutions > role group > Edit > Edit members of the role group > Choose users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Go to Settings > Roles and scopes ... Select Role groups. On Role groups for Microsoft Purview solutions, select a Microsoft Purview role group you want to add users to. Select Edit on the control bar. On Edit members of the role group, select Choose users or Choose groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Add-RoleGroupMember -Identity \"<role-group>\" -Member \"<user-UPN>\" adds a user to a role group and grants the group's permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+      "quote": "When you add a member to a role group, the member is given the effective permissions provided by the management roles assigned to the role group. ... User ID or user principal name (UPN)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[1].ui; What's changing; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Purview portal DLP diagnostics are at Solutions > Data Loss Prevention > Diagnostics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "You can find these diagnostics on the following portal pages: ... Solutions > Data Loss Prevention > Diagnostics",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[1].api; Governance controls table; Why it matters",
+      "type": "command",
+      "claim": "Test-DlpPolicies -workload <workload> -Fileurl <path/direct link> -SendReportTo <smtpaddress> reports DLP policy matches for a SharePoint or OneDrive item.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-test-dlp-policies",
+      "quote": "Test-DlpPolicies -workload <workload> -Fileurl <path/direct link> -SendReportTo <smtpaddress>",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[2].ui; What's changing; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Purview portal auto-labeling diagnostic is on Solutions > Information Protection > Diagnostics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Solutions > Information Protection > Diagnostics ... Autolabeling isn't applied to a SharePoint or OneDrive file. Was the file evaluated correctly, and did it meet the autolabeling conditions?",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[2].api; controls[2].note; Governance controls table",
+      "type": "command",
+      "claim": "Learn links the auto-labeling diagnostic to Test-DlpPolicies, while the linked page describes DLP results and supplies the printed syntax.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Autolabeling ... Checks a file's properties and classification to determine whether autolabeling was applied. ... Test-DlpPolices",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[3].ui; Governance controls table; Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "Solutions > Information Protection > Policies > Auto-labeling policies > policy > View details reaches the auto-labeling failure view.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/sensitivity-labels/auto-labeling-failures-sharepoint-onedrive",
+      "quote": "Select Solutions > Information Protection > Policies > Auto-labeling policies. ... select View details in the policy details panel. ... Select Labeling failures to see failed label applications, or Label removal failures for a policy that removes labels.",
+      "severity": "minor",
+      "fix": "For label-application failures, extend controls[3].ui.path to 'Solutions > Information Protection > Policies > Auto-labeling policies > policy > View details > Labeling failures'. In the After rollout bullet, replace 'the policy's View details failure list' with 'the policy's View details > Labeling failures list'. The cited page also documents Label removal failures for removal policies."
+    },
+    {
+      "n": 22,
+      "where": "controls[3].api; controls[3].governs; Governance controls table",
+      "type": "command",
+      "claim": "Get-AutoSensitivityLabelPolicy -Identity \"<policy name>\" -IncludeProgressFeedback provides labeling failure results for the policy.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Get-AutoSensitivityLabelPolicy IncludeProgressFeedback labeling failures report. Opened get-autosensitivitylabelpolicy, apply-sensitivity-label-automatically, and auto-labeling-failures-sharepoint-onedrive. The command reference documents progress counts, not file-failure results.",
+      "severity": "blocker",
+      "fix": "Keep the command, but qualify controls[3].note and its rendered table note: 'The portal shows file failures. The cmdlet reports labeling progress only: files to be labeled, files labeled in the last 7 days, and total files labeled for enabled policies; file-failure details are not documented for this switch. Cmdlet is in Security & Compliance PowerShell.' See https://learn.microsoft.com/powershell/module/exchangepowershell/get-autosensitivitylabelpolicy."
+    },
+    {
+      "n": 23,
+      "where": "controls[0].note; Governance controls",
+      "type": "role",
+      "claim": "Managing Purview role group members through the documented portal procedure requires Role Management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Sign in to the Microsoft Purview portal by using credentials for an admin account assigned the Role management role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Data exposure; Governance controls",
+      "type": "applicability",
+      "claim": "Purview role group membership is the deciding control for who holds the roles that allow diagnostic access.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "If you assign both an Entra role and a scoped Microsoft Purview role group assignment to a user or group ... the Entra role takes precedence at runtime. As a result, the user's effective permissions are unscoped",
+      "severity": "blocker",
+      "fix": "Replace 'Role group membership (first row of the controls table) decides who that is' with 'Purview role group membership is one route to these permissions; Microsoft Entra assignments of the listed roles also grant access.' Replace 'Access to the diagnostics follows from the roles each set requires, so role group membership is the deciding control' with 'Access to the diagnostics follows from the roles each set requires; review both Purview role group membership and Microsoft Entra assignments of those roles.' The existing cited permissions page documents the Entra mappings and precedence."
+    },
+    {
+      "n": 25,
+      "where": "controls[2].note; Risk assessment: Security & identity; Scope",
+      "type": "role",
+      "claim": "Information Protection diagnostics require either Compliance Administrator or Security Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "To run the Information Protection diagnostics, you need to have either of the following roles: Compliance Administrator; Security Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Scope: Who runs them",
+      "type": "role",
+      "claim": "Compliance Administrator is an accepted DLP diagnostic role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "To run the DLP diagnostics, you need to have any of the following roles: ... Compliance Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Scope: Who runs them",
+      "type": "role",
+      "claim": "Security Administrator is an accepted DLP diagnostic role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "To run the DLP diagnostics, you need to have any of the following roles: ... Security Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Scope: Who runs them",
+      "type": "role",
+      "claim": "Organization Configuration is an accepted DLP diagnostic role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "To run the DLP diagnostics, you need to have any of the following roles: ... Organization Configuration",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Scope: Who runs them; Why it matters",
+      "type": "role",
+      "claim": "View-Only Configuration is an accepted DLP diagnostic role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "To run the DLP diagnostics, you need to have any of the following roles: ... View-Only Configuration",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Scope: Who runs them; Risk assessment: Data exposure",
+      "type": "role",
+      "claim": "Security Reader is an accepted DLP diagnostic role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "To run the DLP diagnostics, you need to have any of the following roles: ... Security Reader",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Scope: Who runs them",
+      "type": "role",
+      "claim": "DLP Compliance Management is an accepted DLP diagnostic role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "To run the DLP diagnostics, you need to have any of the following roles: ... DLP Compliance Management",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Scope: Who runs them; Risk assessment: Data exposure",
+      "type": "role",
+      "claim": "View-Only DLP Compliance Management is an accepted DLP diagnostic role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "To run the DLP diagnostics, you need to have any of the following roles: ... View-Only DLP Compliance Management",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Scope: Who runs them",
+      "type": "role",
+      "claim": "Insider Risk Management Administrator is an accepted DLP diagnostic role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "To run the DLP diagnostics, you need to have any of the following roles: ... Insider Risk Management Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Scope: Who runs them",
+      "type": "role",
+      "claim": "Information Protection Administrator is an accepted DLP diagnostic role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "To run the DLP diagnostics, you need to have any of the following roles: ... Information Protection Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Scope: Who runs them",
+      "type": "role",
+      "claim": "Information Protection Analyst is an accepted DLP diagnostic role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "To run the DLP diagnostics, you need to have any of the following roles: ... Information Protection Analyst",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Scope: Who runs them",
+      "type": "role",
+      "claim": "Information Protection Investigator is an accepted DLP diagnostic role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "To run the DLP diagnostics, you need to have any of the following roles: ... Information Protection Investigator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Scope: Who runs them; Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Data Security AI Administrator completes the twelve-role DLP diagnostic list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "To run the DLP diagnostics, you need to have any of the following roles: ... Data Security AI Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The SharePoint and OneDrive file checks take the full file path.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "When entering the file path, make sure that you provide the full file path, not a sharing link.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "A sharing link is not the required input for the file checks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "When entering the file path, make sure that you provide the full file path, not a sharing link.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "What's changing; controls[1].note; summary; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "The DLP file diagnostic checks file properties and classification and reports whether a rule matched.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Check a file's properties and classification to review whether a DLP rule matched or didn't match.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "What's changing; summary; controls[2].governs",
+      "type": "behaviour",
+      "claim": "The auto-labeling file diagnostic checks evaluation, conditions and whether auto-labeling was applied.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Was the file evaluated correctly, and did it meet the autolabeling conditions? ... Checks a file's properties and classification to determine whether autolabeling was applied.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "What's changing; Scope; Risk assessment; controls[1].note",
+      "type": "behaviour",
+      "claim": "The Exchange Online DLP check on the DLP diagnostics page reviews an uploaded message trace CSV.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "A DLP rule didn't apply or it was applied unexpectedly to an email message in Exchange Online. ... Upload the message trace log (.csv) to review the DLP rules applied to email messages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "What's changing",
+      "type": "command",
+      "claim": "Each Solutions-page diagnostic first runs Check-PurviewConfig, then the issue-specific cmdlet.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "When you select a diagnostic on a Solutions page, the diagnostic runs the Check-PurviewConfig cmdlet ... Then, the diagnostic calls the appropriate cmdlet that's listed in the following table to perform checks that are specific to your issue.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The diagnostics article prints the linked file-check cmdlet name as Test-DlpPolices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Test-DlpPolices",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "What's changing; Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "Diagnostics may fix some configuration issues but do not change the tenant without consent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Although the diagnostics can fix some configuration issues, they don't make changes to your tenant without your consent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "front matter: defaultState; Why it matters; Risk assessment: Autonomy & actions",
+      "type": "default",
+      "claim": "The diagnostic is used on demand when an authorized operator chooses it, matching user-opt-in.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "You can access the diagnostics by selecting the associated link in the fourth column. When you're prompted, sign in to the Microsoft Purview portal. ... When you select a diagnostic on a Solutions page, the diagnostic runs",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "summary: Nothing to switch on; front matter: defaultState",
+      "type": "absence",
+      "claim": "No separate administrator enablement switch is documented for these Solutions-page diagnostics.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Solutions self-help diagnostics enable disable tenant admin switch Check-PurviewConfig. Opened purview-compliance-diagnostics and purview-permissions; read Check-PurviewConfig search excerpts. Results describe selecting diagnostics and role requirements, not a feature enablement switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "What's changing; Scope: Rollout; Governance guidance: At rollout; Open questions",
+      "type": "availability",
+      "claim": "Learn describes a gradual Solutions-page diagnostic rollout that may not have reached every organization.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Diagnostics on Solutions pages are being rolled out gradually and might not yet be available in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "role",
+      "claim": "An operator with a read-only role can run the DLP diagnostic without having permission to edit policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Security Reader ... View and investigate active threats to your Microsoft 365 users, devices, and content, but (unlike the Security operator) they don't have permissions to respond by taking action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The Outlook on the web policy-tip diagnostic uses a HAR exported from browser Developer Tools.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Open Outlook on the web, and press F12 to open Developer Tools. ... Select the Network tab, select Preserve log, reproduce the issue, and export the HAR file.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Why it matters; Governance controls",
+      "type": "command",
+      "claim": "Test-DlpPolicies requires the ability to connect to Exchange Online PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-test-dlp-policies",
+      "quote": "You must be able to connect to Exchange Online PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Why it matters; Governance controls",
+      "type": "behaviour",
+      "claim": "Test-DlpPolicies sends its report to the SMTP address in SendReportTo.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-test-dlp-policies",
+      "quote": "The report is sent to the SMTP address specified in the -SendReportTo parameter of the Test-DlpPolicies command.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[1].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "Test-DlpPolicies reports only policies scoped to SharePoint alone, OneDrive alone or both.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-test-dlp-policies",
+      "quote": "Test-DlpPolices only reports results for policies that include SharePoint alone, OneDrive alone, or both SharePoint and OneDrive in their scope.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Change & support; Open questions",
+      "type": "behaviour",
+      "claim": "Test-DlpPolicies supports simple conditions, not complex, grouped or nested conditions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-test-dlp-policies",
+      "quote": "Test-DlpPolices works only with simple conditions. It doesn't work with complex, grouped, or nested conditions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The diagnostics are views inside licensed Purview DLP and Information Protection, so included describes their product-level entitlement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Appropriate subscription licenses are required for customer use of online services. ... Microsoft 365 E5/A5/G5/E3/A3/G3, Microsoft 365 Business Premium ... Client and service-side automatic sensitivity labeling | Included | Included",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Cost and licensing; front matter: licensing.notes",
+      "type": "licensing",
+      "claim": "The service description lists the stated Microsoft 365 and standalone plans as providing DLP rights for Exchange, SharePoint and OneDrive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Which licenses provide the rights for a user to benefit from the service? ... Microsoft 365 E5/A5/G5/E3/A3/G3, Microsoft 365 Business Premium, SharePoint Online Plan 2, OneDrive for Business (Plan 2), Exchange Online Plan 2",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Cost and licensing; front matter: licensing.notes",
+      "type": "licensing",
+      "claim": "Office 365 E5/A5/G5/E3/A3/G3 also provide the specified DLP service rights.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Office 365 E5/A5/G5/E3/A3/G3",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The specified Purview Suite and Microsoft Defender + Purview Suite FLW plans appear in the DLP rights list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Service-side automatic labeling for SharePoint, OneDrive and Exchange has a separate Client and service-side automatic sensitivity labeling entitlement entry.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "Service-side auto-labeling (SharePoint, OneDrive, Exchange) ... Check the Client and service-side automatic sensitivity labeling entry in the feature matrix linked below.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Client-only automatic labeling entitlements do not establish service-side entitlement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "Client-only entitlements don't establish service-side entitlement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No license specific to these self-help diagnostics is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview self-help diagnostics DLP SharePoint auto labeling pricing license charge pay as you go. Opened purview-compliance-diagnostics, Purview service description, apply-sensitivity-label-automatically and purview-billing-models; no diagnostics-specific entitlement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The diagnostic article gives role requirements without naming a license prerequisite for these checks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "To run the Information Protection diagnostics, you need to have either of the following roles ... To run the DLP diagnostics, you need to have any of the following roles",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No meter or charge for running these diagnostics is documented as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview self-help diagnostics DLP SharePoint auto labeling pricing license charge pay as you go. Opened purview-compliance-diagnostics, Purview service description and purview-billing-models; the billing table does not name these diagnostics.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Scope: Rollout",
+      "type": "behaviour",
+      "claim": "Separate Purview self-help diagnostics already exist in the Help pane.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Diagnostics on the Help pane ... You can search for diagnostics by using the Help menu in the Microsoft Purview portal or the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Scope: Rollout",
+      "type": "role",
+      "claim": "The Help-pane DLP policy and rule configuration diagnostic lists Global admin as its minimum role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "DLP policy and rule configuration ... Global admin",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Scope: Rollout",
+      "type": "availability",
+      "claim": "Help-pane diagnostics are unavailable in GCC High, DoD and Microsoft 365 operated by 21Vianet.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Diagnostics in the Help pane aren't available in the following environments: GCC High, DoD, and Microsoft 365 operated by 21Vianet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Open questions",
+      "type": "behaviour",
+      "claim": "Microsoft 365 admin center diagnostics temporarily process and store tenant and user configuration information outside the compliance boundary.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/admin/miscellaneous/data-used-by-self-help-diagnostics",
+      "quote": "When you run a self-help diagnostic in the Microsoft 365 admin center, a consent notice informs you that tenant and user configuration information will be processed and stored temporarily outside the compliance boundary.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "controls[3].api; Governance controls table",
+      "type": "command",
+      "claim": "Get-AutoSensitivityLabelPolicy -Identity \"<policy name>\" -IncludeProgressFeedback returns labeling progress for the named policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/get-autosensitivitylabelpolicy",
+      "quote": "The Identity parameter specifies the auto-labeling policy that you want to view. ... IncludeProgressFeedback specifies whether to include the labeling progress of files in SharePoint or OneDrive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "controls[3].note; Governance controls table",
+      "type": "command",
+      "claim": "Get-AutoSensitivityLabelPolicy is available only in Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/get-autosensitivitylabelpolicy",
+      "quote": "This cmdlet is available only in Security & Compliance PowerShell.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-28T02:20:19.165Z",
+    "summary": {
+      "links": 10,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 4,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=547833",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-test-dlp-policies",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/sensitivity-labels/auto-labeling-failures-sharepoint-onedrive",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/purview-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/troubleshoot/microsoft-365/admin/miscellaneous/data-used-by-self-help-diagnostics",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/get-autosensitivitylabelpolicy",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Who holds the Purview roles that open the DLP and Information Protection diagnostics",
+        "docs": "https://learn.microsoft.com/purview/purview-permissions",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Roles and scopes",
+          "Role groups",
+          "Role groups for Microsoft Purview solutions",
+          "role group",
+          "Edit",
+          "Edit members of the role group",
+          "Choose users"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Who holds the Purview roles that open the DLP and Information Protection diagnostics",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "reachable": true,
+        "token": "Add-RoleGroupMember",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which DLP policies and rules match a SharePoint or OneDrive file",
+        "docs": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "Data Loss Prevention",
+          "Diagnostics"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which DLP policies and rules match a SharePoint or OneDrive file",
+        "docs": "https://learn.microsoft.com/purview/dlp-test-dlp-policies",
+        "reachable": true,
+        "token": "Test-DlpPolicies",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether a SharePoint or OneDrive file met auto-labeling conditions",
+        "docs": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "Information Protection",
+          "Diagnostics"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Whether a SharePoint or OneDrive file met auto-labeling conditions",
+        "docs": "https://learn.microsoft.com/purview/dlp-test-dlp-policies",
+        "reachable": true,
+        "token": "Test-DlpPolicies",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Labelling progress and failures for an auto-labeling policy",
+        "docs": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/sensitivity-labels/auto-labeling-failures-sharepoint-onedrive",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "Information Protection",
+          "Policies",
+          "Auto-labeling policies",
+          "View details"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Labelling progress and failures for an auto-labeling policy",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/get-autosensitivitylabelpolicy",
+        "reachable": true,
+        "token": "Get-AutoSensitivityLabelPolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

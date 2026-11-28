@@ -15,7 +15,7 @@ risk: "low"
 cost: "low"
 impact: "low"
 defaultState: "admin-opt-in"
-action: "review"
+action: "prepare"
 licensing:
   model: "included"
   notes: "Cloud update requires users to hold Microsoft 365 A3 or A5, Microsoft 365 Business Standard or Business Premium, or Office 365 E3/E5 or Microsoft 365 E3/E5. Microsoft publishes no separate licence or charge for enhanced rollout waves."
@@ -43,7 +43,10 @@ sources:
   - title: "Overview of cloud update"
     url: "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update"
     kind: "learn"
-  - title: "Searching audit records of cloud update wave and deadline changes (Microsoft Purview portal)"
+  - title: "Profile and channel assignment"
+    url: "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-profiles-channels"
+    kind: "learn"
+  - title: "Search the audit log"
     url: "https://learn.microsoft.com/purview/audit-search"
     kind: "learn"
   - title: "Searching audit records of cloud update wave and deadline changes (PowerShell)"
@@ -56,7 +59,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft 365 Apps admin center"
-      path: "Cloud Update > Monthly Enterprise > Settings > Rollout configuration > Yes, create rollout waves > + Add waves"
+      path: "Cloud Update > Monthly Enterprise > Settings > Rollout configuration > Yes, create rollout waves > + Add waves > Delay before next wave"
       docs: "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-waves-deadline"
     api: null
     note: "Monthly Enterprise profile only. The delay is set in Delay before next wave, up to seven days per wave. Office Apps Administrator is the recommended role."
@@ -72,7 +75,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft 365 Apps admin center"
-      path: "Cloud Update > Monthly Enterprise > Overview > View waves overview"
+      path: "Cloud Update > Monthly Enterprise > Overview > wave chart > View waves overview"
       docs: "https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-progress-health"
     api: null
     note: "Read-only view of the wave schedule and progress."
@@ -86,29 +89,33 @@ controls:
       kind: "powershell"
       call: "Search-UnifiedAuditLog -StartDate <ExDateTime> -EndDate <ExDateTime> -Operations <String[]>"
       docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog?view=exchange-ps"
-    note: "Requires the Audit Logs or View-Only Audit Logs role. In the portal, search for cloud update in the activity list."
+    note: "Portal searches require Audit Logs or View-Only Audit Logs in Microsoft Purview; PowerShell searches require those roles in the Exchange admin center. In the portal, search for cloud update in the activity list."
 confidence: "high"
 created: "2026-11-27"
-updated: "2026-11-27"
+updated: "2026-11-28"
 roadmapModified: "2026-10-20T23:00:34"
 changes:
   - date: "2026-11-27"
     note: "New briefing: enhanced rollout waves for cloud update, with the 25-day limit, the one-time deadline reduction and the admin center paths."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 70 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-28"
+    note: "Corrected: the deadline cut is no longer called the only automatic change, channel moves now noted as following waves, narrowed data and group-membership statements, completed two admin paths, split audit roles by portal and PowerShell, and action is now prepare."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 84 statements confirmed"
+version: 2
 verification:
-  status: "held"
-  date: "2026-11-27"
-  version: 1
+  status: "verified"
+  date: "2026-11-28"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 70
-  confirmed: 66
-  unconfirmed: 1
-  contradicted: 3
-  attempts: 1
-  hash: "82c1fa7b12f75499b47040163b028de6"
+  claims: 84
+  confirmed: 84
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "bc2c130f7cafaa6e1058acce18350c5c"
 ---
 
 ## What's changing
@@ -125,15 +132,15 @@ The roadmap item is **Launched**, with a preview target of May CY2026 and genera
 
 Ten waves and per-wave delays let a service owner match update staging to real validation rings (IT, pilot, business-critical, everyone else) instead of squeezing them into fewer groups. The trade-off is security exposure: every day of delay is a day later devices get the month's security fixes, and the 25-day ceiling now constrains how long deadlines and delays can add up to.
 
-Nothing about staging changes unless an administrator configures waves, because rollout waves are disabled by default. The one thing that happened without anyone acting is the one-time cut to the update deadline in tenants whose wave delays plus deadline exceeded 25 days, so check the Monthly Enterprise deadline now rather than assuming it is still what was set.
+Rollout waves are optional and disabled by default; existing rollout wave settings are preserved apart from the documented deadline reduction. With this update, devices scheduled for a channel change follow their assigned wave. Another change applied by this update is the one-time cut to the update deadline in tenants whose wave delays plus deadline exceeded 25 days, so check the Monthly Enterprise deadline now rather than assuming it is still what was set.
 
 ## Risk assessment
 
 **Data exposure**
-- No change: the feature controls update timing and reads no organisational content.
+- The documented change controls update timing.
 
 **Security & identity**
-- Wave membership comes from Microsoft Entra groups, so anyone who can change membership of a wave group can move devices earlier or later in the schedule. Group assignment for waves is separate from profile assignment.
+- Wave group membership affects update timing, so review who can maintain those groups. Group assignment for waves is separate from profile assignment.
 - Long delays defer security updates for late waves; the 25-day total for wave delays plus deadline is the documented upper bound.
 
 **Autonomy & actions**
@@ -165,13 +172,12 @@ The real cost is administrator time: designing up to nine wave groups, setting d
 ### Before rollout
 - Check the **Update deadline** on the Monthly Enterprise profile's Rollout configuration page, since tenants over the 25-day limit had it reduced once.
 - Map validation rings to Microsoft Entra groups of no more than 20,000 objects each, using joined or hybrid joined device objects or licensed user objects.
-- Decide who may change membership of wave groups, because membership decides when a device is updated.
+- Decide who may maintain wave groups, because wave group membership affects update timing.
 - Budget the 25 days: for example, a 3-day deadline leaves 22 days for wave delays, at no more than seven days per wave.
 
 ### At rollout
 - Configure waves under Rollout configuration with **Yes, create rollout waves** and **+ Add waves**, using the Office Apps Administrator role.
 - Use the **Total delay** counter on the Rollout configuration page to confirm the total before saving.
-- Assign devices to the Monthly Enterprise profile early in a release month so their first update follows the wave schedule.
 
 ### After rollout
 - Review wave start dates, device counts and status in **View waves overview** after each Patch Tuesday release.
@@ -185,14 +191,14 @@ The real cost is administrator time: designing up to nine wave groups, setting d
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which Entra groups form each rollout wave and the delay before the next wave</strong><br><small>Tenant</small><br><small class="controls__note">Monthly Enterprise profile only. The delay is set in Delay before next wave, up to seven days per wave. Office Apps Administrator is the recommended role.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Cloud Update › Monthly Enterprise › Settings › Rollout configuration › Yes, create rollout waves › + Add waves <a href="https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-waves-deadline" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which Entra groups form each rollout wave and the delay before the next wave</strong><br><small>Tenant</small><br><small class="controls__note">Monthly Enterprise profile only. The delay is set in Delay before next wave, up to seven days per wave. Office Apps Administrator is the recommended role.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Cloud Update › Monthly Enterprise › Settings › Rollout configuration › Yes, create rollout waves › + Add waves › Delay before next wave <a href="https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-waves-deadline" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>How many days users have before the update prompt on the Monthly Enterprise profile</strong><br><small>Tenant</small><br><small class="controls__note">Default 3 days, range 0 to 14 days. Wave delays plus the deadline cannot exceed 25 days.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Cloud Update › Monthly Enterprise › Settings › Rollout configuration › Update deadline <a href="https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-waves-deadline" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Wave start dates, device counts and status for each rollout wave</strong><br><small>Tenant</small><br><small class="controls__note">Read-only view of the wave schedule and progress.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Cloud Update › Monthly Enterprise › Overview › View waves overview <a href="https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-progress-health" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Searching audit records of cloud update wave and deadline changes</strong><br><small>Tenant</small><br><small class="controls__note">Requires the Audit Logs or View-Only Audit Logs role. In the portal, search for cloud update in the activity list.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Audit › Search <a href="https://learn.microsoft.com/purview/audit-search" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Search-UnifiedAuditLog -StartDate &lt;ExDateTime&gt; -EndDate &lt;ExDateTime&gt; -Operations &lt;String[]&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog?view=exchange-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Wave start dates, device counts and status for each rollout wave</strong><br><small>Tenant</small><br><small class="controls__note">Read-only view of the wave schedule and progress.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Cloud Update › Monthly Enterprise › Overview › wave chart › View waves overview <a href="https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-progress-health" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Searching audit records of cloud update wave and deadline changes</strong><br><small>Tenant</small><br><small class="controls__note">Portal searches require Audit Logs or View-Only Audit Logs in Microsoft Purview; PowerShell searches require those roles in the Exchange admin center. In the portal, search for cloud update in the activity list.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Audit › Search <a href="https://learn.microsoft.com/purview/audit-search" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Search-UnifiedAuditLog -StartDate &lt;ExDateTime&gt; -EndDate &lt;ExDateTime&gt; -Operations &lt;String[]&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog?view=exchange-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-Cloud update is managed with the Office Apps Administrator (recommended), Security Administrator or Global Administrator role; Global Reader does not support it. Rollout waves and the update deadline share one 25-day budget on the Monthly Enterprise profile, so lengthening a wave delay can require shortening the deadline. Microsoft Learn documents no Microsoft Graph, PowerShell or other API for cloud update profiles, waves or deadlines at the time of writing (November 2026); configuration is in the Microsoft 365 Apps admin center. Cloud update audit records cover profile configuration changes such as setting update deadlines or configuring rollout waves, and need the Audit Logs or View-Only Audit Logs role to search.
+Cloud update is managed with the Office Apps Administrator (recommended), Security Administrator or Global Administrator role; Global Reader does not support it. Rollout waves and the update deadline share one 25-day budget on the Monthly Enterprise profile, so lengthening a wave delay can require shortening the deadline. Microsoft Learn documents no Microsoft Graph, PowerShell or other API for cloud update profiles, waves or deadlines at the time of writing (November 2026); configuration is in the Microsoft 365 Apps admin center. When auditing is enabled for Microsoft 365, cloud update audit records cover profile configuration changes such as setting update deadlines or configuring rollout waves. Portal searches require Audit Logs or View-Only Audit Logs in Microsoft Purview; PowerShell searches require those roles in the Exchange admin center.
 
 ## Open questions
 
@@ -204,20 +210,4 @@ Cloud update is managed with the Office Apps Administrator (recommended), Securi
 risk: Low. Rollout waves are optional and disabled by default; the main exposure is an admin-chosen delay that leaves late waves unpatched for longer, bounded by the 25-day limit on wave delays plus deadline.
 cost: Low. Cloud update is used under the Microsoft 365 and Office 365 plans its requirements page lists; the cost is admin time to design wave groups and review deadlines.
 impact: Low. Cloud update administrators see the new Rollout configuration page; users notice only when their device's wave and deadline change when updates arrive.
--->
-
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters: the one thing that happened without anyone acting / behaviour: The one-time deadline cut is the only change that happens without administrator action. | Found: Channel change now honors rollout waves, so that devices scheduled for channel change follow their assigned wave. All other existing rollout wave settings are preserved. | Fix: Replace 'The one thing that happened without anyone acting is' with 'Another change applied by this update is'. Existing wave settings are preserved, while the update also changes channel moves to follow their assigned wave; do not describe the deadline cut as the only automatic change. | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-enhancements
-- [unsupported, major] Risk assessment: Data exposure / behaviour: The feature reads no organisational content. | Found: Searched: 'cloud update organizational content data privacy rollout waves' and 'Microsoft 365 Apps cloud update rollout waves organizational content data collection'; opened cloud-update, cloud-update-enhancements and cloud-update-waves-deadline. None states this content-access exclusion. | Fix: Replace the bullet with 'The documented change controls update timing.' Remove the unsupported assertion that no organisational content is read.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters: nothing about staging changes / default: Nothing about staging changes unless an administrator configures waves, because waves are disabled by default. | Found: Rollout waves are optional for the Monthly Enterprise profile and disabled by default. | Fix: Replace this sentence with 'Rollout waves are optional and disabled by default; existing rollout wave settings are preserved apart from the documented deadline reduction.' This avoids suggesting that existing wave users must configure them again. | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-waves-deadline
-- [supported, minor] Risk assessment: Security & identity; Governance guidance: group membership / behaviour: Changing wave group membership can change when a device receives updates. | Found: After you assign devices to the destination profile, Cloud update changes the channel when each device becomes eligible, based on the destination profile's rollout configuration. Rollout waves: consider assigning devices to the first rollout wave. | Fix: Add https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-profiles-channels to sources. Narrow the risk sentence to 'Wave group membership affects update timing, so review who can maintain those groups.' | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-profiles-channels#move-devices-to-another-update-channel
-- [supported, minor] controls[0].ui; Governance guidance: At rollout / admin-path: Wave configuration is at Microsoft 365 Apps admin center > Cloud Update > Monthly Enterprise > Settings > Rollout configuration > Yes, create rollout waves > + Add waves. | Found: expand Cloud Update, and then select Monthly Enterprise. ... Settings ... Rollout configuration ... Yes, create rollout waves ... Select + Add waves, add your Microsoft Entra groups, set the Delay before next wave value | Fix: For a row governing delays as well as wave creation, extend the path to 'Cloud Update > Monthly Enterprise > Settings > Rollout configuration > Yes, create rollout waves > + Add waves > Delay before next wave'. The current path correctly reaches the configuration pane but stops before the delay control. | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-waves-deadline
-- [supported, minor] controls[2].ui; Governance guidance: After rollout / admin-path: Wave progress is at Microsoft 365 Apps admin center > Cloud Update > Monthly Enterprise > Overview > View waves overview. | Found: From the Overview tab, select View waves overview to open the flyout. The flyout shows wave details, including the wave name, start date, device count, and rollout status for each wave. | Fix: Use 'Cloud Update > Monthly Enterprise > Overview > wave chart > View waves overview'. The also-cited waves-deadline page documents reaching the Monthly Enterprise profile and says 'Under the wave chart, select View waves overview'; the missing heading is not a wrong navigation step. | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-progress-health
-- [supported, minor] controls[3].note; Governance controls / role: Searching the audit log requires the Audit Logs or View-Only Audit Logs role. | Found: You must be assigned the Audit Logs or View-Only Audit Logs roles in the Microsoft Purview portal to search the audit log. ... To access audit cmdlets, you must be assigned the Audit Logs or View-Only Audit Logs roles in the Exchange admin center. | Fix: Replace the role sentence in controls[3].note and Governance controls with 'Portal searches require Audit Logs or View-Only Audit Logs in Microsoft Purview; PowerShell searches require those roles in the Exchange admin center and run in Exchange Online PowerShell.' | Source: https://learn.microsoft.com/purview/audit-search
-- [supported, minor] Governance controls; controls[3].governs; Governance guidance: audit log / applicability: Cloud update audit records cover wave and deadline configuration changes and identify the administrator responsible. | Found: Audit records help you identify which admin action was performed, who performed it, when it occurred, and which cloud update object was affected. ... Profile configuration changes, such as setting update deadlines or configuring rollout waves. | Fix: Qualify the Governance controls audit sentence with 'When auditing is enabled for Microsoft 365,'. The cited cloud-update-purview page states that condition for record generation. | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-purview
-- [contradicted, minor] front matter: action / consistency: The action rating is review because this change is wholly optional. | Found: action: review; Where a tenant's existing settings exceed 25 days, Microsoft applies a one-time reduction to the update deadline with this update | Fix: Set action to 'prepare': this update arrives for existing customers and includes a deadline adjustment to check, rather than only a control that changes nothing until newly chosen. Risk and cost are low, so an act-now rating is not required by the scale.
-- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: Every control the governance checklist tells administrators to configure or take stock of has a controls-table row. | Found: Assign devices to the Monthly Enterprise profile early in a release month so their first update follows the wave schedule. ... Controls cover waves, deadlines, waves overview and audit search. | Fix: Remove the At rollout bullet that tells administrators to assign devices to the Monthly Enterprise profile; profile assignment has no controls-table row. Keep the existing factual explanation of early assignment in Risk assessment.
 -->

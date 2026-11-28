@@ -4,8 +4,8 @@ title: "Sensitive information types: how does Purview recognise sensitive data?"
 slug: "sensitive-information-types"
 summary: "Sensitive information types (SITs) are Microsoft Purview's pattern-based detectors for data such as card or national ID numbers. Administrators use them to decide what DLP, labelling and other rules match, and at what confidence."
 created: "2026-11-20"
-updated: "2026-11-20"
-version: 1
+updated: "2026-11-28"
+version: 2
 tags: ["sensitive-information-types","classifiers","dlp","information-protection","auto-labeling","purview","endpoint-dlp"]
 covers: []
 sources:
@@ -45,7 +45,10 @@ sources:
   - title: "sensitiveType resource type"
     url: "https://learn.microsoft.com/graph/api/resources/sensitivetype?view=graph-rest-beta"
     kind: "learn"
-related: ["endpoint-dlp","sensitivity-labels","microsoft-purview-information-protection-improved-sensitive-information-types","microsoft-purview-unified-classification-management-experience","purview-dlp-block-sensitive-data-in-copilot-web-search"]
+  - title: "Microsoft Purview service description"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description"
+    kind: "learn"
+related: ["endpoint-dlp","sensitivity-labels","microsoft-purview-information-protection-improved-sensitive-information-types"]
 controls:
   - governs: "Creating a custom sensitive information type, or copying a built-in one to edit"
     scope: "tenant"
@@ -57,7 +60,7 @@ controls:
       kind: "powershell"
       call: "New-DlpSensitiveInformationTypeRulePackage -FileData ([System.IO.File]::ReadAllBytes('<path to Unicode XML file>'))"
       docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpsensitiveinformationtyperulepackage"
-    note: "To copy, select a SIT on the same Sensitive info types page and choose Copy. The PowerShell route imports an XML rule package; maximum 10 rule packages."
+    note: "To copy, select a SIT on this page and choose Copy. SITs with 10 text processors or restricted text processors cannot be copied directly in the UI; use PowerShell for those. PowerShell imports an XML rule package."
   - governs: "Which sensitive information types a DLP rule matches, with confidence level and instance count"
     scope: "tenant"
     ui:
@@ -81,7 +84,7 @@ controls:
       docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/get-dlpsensitiveinformationtype"
     note: "Read-only view, not a setting. The RecommendedConfidence property gives the recommended level."
 confidence: "medium"
-dependents: 13
+dependents: 50
 changes:
   - date: "2026-11-20"
     note: "First concept page on sensitive information types: what they are, their limits, licensing and where to manage them."
@@ -89,18 +92,22 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 2 of 82 statements not yet confirmed"
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 110 statements contradicted, 2 unconfirmed; taken offline until corrected"
+  - date: "2026-11-28"
+    note: "Corrected: Why it matters no longer says a SIT change alters every referencing rule; the copy control notes that SITs with 10 or restricted text processors must be copied in PowerShell; removed checklist items with no control row."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 117 statements contradicted, 0 unconfirmed; taken offline until corrected"
 verification:
   status: "held"
-  date: "2026-11-27"
-  version: 1
+  date: "2026-11-28"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 110
-  confirmed: 106
-  unconfirmed: 2
+  claims: 117
+  confirmed: 115
+  unconfirmed: 0
   contradicted: 2
-  attempts: 1
-  hash: "fbf91592cd10816491caab6f74009ed9"
+  attempts: 2
+  hash: "fecb930a3b2c5ceefd7865053007ab37"
 ---
 
 ## What it is
@@ -122,7 +129,7 @@ A sensitive information type (SIT) is a pattern-based classifier in Microsoft Pu
 
 ## Why it matters
 
-A SIT is a shared detector: the same definition feeds DLP rules, auto-labeling and other solutions, so a change to one SIT, or to Microsoft's built-in definition, changes what every rule that references it matches. The rule that uses the SIT, not the SIT, decides what happens next (block, label, retain, alert). See [Microsoft Purview: improved built-in sensitive information types](/features/microsoft-purview-information-protection-improved-sensitive-information-types/) for a planned change to built-in definitions.
+SITs are used by DLP policies, sensitivity labels, retention labels and other Purview solutions. The rule that uses the SIT, not the SIT, decides what happens next (block, label, retain, alert). See [Microsoft Purview: improved built-in sensitive information types](/features/microsoft-purview-information-protection-improved-sensitive-information-types/) for a related briefing.
 
 The confidence level and instance count chosen in each rule set the balance between missed data and false alarms. Microsoft says the same SIT can return different results in email in transit, files at rest in SharePoint and OneDrive, and files on managed devices, so a rule that works in one workload is not proof for another. A poorly tuned custom SIT also has a cost outside DLP: Endpoint DLP classifies files against every SIT in the tenant, used or not.
 
@@ -147,7 +154,7 @@ The SIT overview page states one licence requirement: an E5 licence is required 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Creating a custom sensitive information type, or copying a built-in one to edit</strong><br><small>Tenant</small><br><small class="controls__note">To copy, select a SIT on the same Sensitive info types page and choose Copy. The PowerShell route imports an XML rule package; maximum 10 rule packages.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Information Protection › Classifiers › Sensitive info types › Create sensitive info type <a href="https://learn.microsoft.com/purview/sit-create-a-custom-sensitive-information-type" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpSensitiveInformationTypeRulePackage -FileData ([System.IO.File]::ReadAllBytes('&lt;path to Unicode XML file&gt;'))</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpsensitiveinformationtyperulepackage" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Creating a custom sensitive information type, or copying a built-in one to edit</strong><br><small>Tenant</small><br><small class="controls__note">To copy, select a SIT on this page and choose Copy. SITs with 10 text processors or restricted text processors cannot be copied directly in the UI; use PowerShell for those. PowerShell imports an XML rule package.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Information Protection › Classifiers › Sensitive info types › Create sensitive info type <a href="https://learn.microsoft.com/purview/sit-create-a-custom-sensitive-information-type" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpSensitiveInformationTypeRulePackage -FileData ([System.IO.File]::ReadAllBytes('&lt;path to Unicode XML file&gt;'))</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpsensitiveinformationtyperulepackage" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which sensitive information types a DLP rule matches, with confidence level and instance count</strong><br><small>Tenant</small><br><small class="controls__note">The reference's examples show the hashtable naming the SIT. Other Purview solutions that use SITs have their own policy surfaces.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies › Create policy › Enterprise applications &amp; devices › Custom › Custom policy › Create or customize advanced DLP rules › + Create rule › Add condition › Content contains › Add › Sensitive info types <a href="https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpComplianceRule -Name &lt;rule name&gt; -Policy &lt;policy name&gt; -ContentContainsSensitiveInformation &lt;hashtable&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Inventory of SITs in the tenant and each one's recommended confidence level</strong><br><small>Tenant</small><br><small class="controls__note">Read-only view, not a setting. The RecommendedConfidence property gives the recommended level.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Information Protection › Classifiers › Sensitive info types <a href="https://learn.microsoft.com/purview/sit-create-a-custom-sensitive-information-type" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Get-DlpSensitiveInformationType -Identity &quot;&lt;SIT name&gt;&quot;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/get-dlpsensitiveinformationtype" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
@@ -161,25 +168,19 @@ Removing a custom SIT through PowerShell means editing and re-importing its rule
 
 - Run `Get-DlpSensitiveInformationType` and review the Sensitive info types tab to list custom SITs; custom ones have a Publisher other than Microsoft Corporation.
 - Compare each DLP rule's confidence level and instance count (min 1 to 500, max 1 to 500 or Any) with the SIT's RecommendedConfidence value.
-- Test every custom SIT with a sample file, then in each workload where a rule uses it: mail flow, SharePoint or OneDrive, and endpoint.
-- Count custom SITs and rule packages against the published limits before adding more.
-- Remove custom SITs that no rule uses or that match most of your files, after checking that no DLP policy references them.
 
 ## Open questions
 
-- Does Microsoft document how and when changes to built-in SIT definitions reach a tenant, and any way to defer them? The planned improvement is covered in the briefing linked above.
+- Does Microsoft document how and when changes to built-in SIT definitions reach a tenant, and any way to defer them?
 - Is a supported Microsoft Graph operation for creating or editing SITs planned? The Graph reference describes a `sensitiveType` resource under `/beta/`.
 - Which licence does each solution that uses SITs require beyond the E5 requirement for credential scanning SITs?
 
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters: first paragraph / behaviour: Changing a custom or Microsoft-built-in SIT definition changes what every referencing rule matches across solutions. | Found: Searched: sensitive information type changing definition existing policies all rules automatically updated. Read SIT overview, custom creation, PowerShell creation and modification, and customization search excerpts; none establishes the asserted effect on every referencing rule. | Fix: Replace the first sentence of Why it matters with 'SITs are used by DLP policies, sensitivity labels, retention labels and other Purview solutions.' The narrower statement is supported by https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about.
-- [unsupported, major] Why it matters: first paragraph; Open questions: first bullet / behaviour: Microsoft has a planned improvement to built-in SIT definitions described by the linked wiki briefing. | Found: Searched: Microsoft Purview improved built-in sensitive information types planned updates definitions rollout; sensitive information types built-in improvements roadmap. Read SIT overview and What's new and customization search excerpts; no passage states this particular plan. | Fix: Change 'for a planned change to built-in definitions' to 'for a related briefing', and delete 'The planned improvement is covered in the briefing linked above.' from Open questions.
-- [contradicted, blocker] controls[0].note; Governance controls: first table row / admin-path: Selecting a copyable SIT on Sensitive info types and choosing Copy is the portal route to copying it, without a text-processor qualification. | Found: When you have 10 text processors or restricted text processors, such as keyword lists, regex, keyword dictionaries, or functions, you won't be able to copy the SIT from the UI directly. Instead, you need to use PowerShell for this task. | Fix: Add this qualification to controls[0].note and its rendered table note: 'SITs with 10 text processors or restricted text processors cannot be copied directly in the UI; use PowerShell for those.' Source: https://learn.microsoft.com/purview/sit-create-a-custom-sensitive-information-type. | Source: https://learn.microsoft.com/purview/sit-create-a-custom-sensitive-information-type
+- [contradicted, blocker] What it is: Where SITs are used / behaviour: Each content type selected in Content contains, including sensitivity and retention labels, has a confidence level. | Found: The rule will only look for the presence of any sensitivity labels and retention labels you pick. SITs have a predefined confidence level which you can alter if needed. | Fix: Replace the final sentence of Where SITs are used with: 'In a DLP rule, the Content contains condition picks SITs alongside sensitivity labels, retention labels and trainable classifiers. For each SIT, you can choose a confidence level and an instance count.' | Source: https://learn.microsoft.com/purview/dlp-policy-reference
+- [contradicted, blocker] What it is: Where SITs are used / behaviour: Each content type selected in Content contains, including sensitivity and retention labels, has an instance count. | Found: The rule will only look for the presence of any sensitivity labels and retention labels you pick. ... SITs have two different ways of defining the maximum unique instance count parameters. | Fix: Replace the final sentence of Where SITs are used with: 'In a DLP rule, the Content contains condition picks SITs alongside sensitivity labels, retention labels and trainable classifiers. For each SIT, you can choose a confidence level and an instance count.' | Source: https://learn.microsoft.com/purview/dlp-policy-reference
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing / licensing: Licensing for solutions that use SITs is governed by the requirements for the respective solution. | Found: appropriate subscription licenses are required for use of each online service. | Fix: Consolidated citation correction: add these sources for already-stated solution licensing, classifier-management permissions, labeling and retention behavior: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description ; https://learn.microsoft.com/microsoft-365/security/office-365-security/scc-permissions ; https://learn.microsoft.com/purview/sensitivity-labels ; https://learn.microsoft.com/purview/retention . | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
-- [supported, minor] controls[0].ui; Governance controls: first table row / admin-path: The portal creation route is Information Protection > Classifiers > Sensitive info types > Create sensitive info type. | Found: In the Microsoft Purview portal, navigate to Information Protection > Classifiers > Sensitive info types and choose Create sensitive info type. | Fix: Keep the supported entry path and add to its note: 'In the wizard, enter Name and Description, choose Create pattern, select the pattern confidence level and Primary element, set Character proximity, choose Create, and choose the recommended confidence level.' | Source: https://learn.microsoft.com/purview/sit-create-a-custom-sensitive-information-type
-- [supported, minor] controls[1].ui; Governance controls: second table row / admin-path: The printed DLP policy wizard route reaches Content contains > Add > Sensitive info types. | Found: On the Define policy settings page, make sure the Create or customize advanced DLP rules option is selected. Select + Create rule. Name the rule and provide a description. Under Conditions, select Add condition > Content contains > Add > Sensitive info types. | Fix: Use 'Data loss prevention > Policies > Create policy > Enterprise applications & devices > Custom > Custom policy > Define policy settings > Create or customize advanced DLP rules > + Create rule > Conditions > Add condition > Content contains > Add > Sensitive info types'. The omitted headings and administrative scope choices do not invalidate the printed route. | Source: https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine
-- [contradicted, minor] What to check; Governance controls table / consistency: The checklist's control coverage is consistent with the requirement that each reviewed control has a controls-table row. | Found: What to check: 'Test every custom SIT with a sample file'; 'Count custom SITs and rule packages'; 'Remove custom SITs'. The table covers creation/copying, DLP matching and SIT inventory, but not testing, rule-package inventory or removal. | Fix: The testing, rule-package inventory and removal checklist steps have no corresponding controls-table rows. Do not add new rows as part of this correction; remove those checklist steps if correcting this coverage finding.
+- [supported, minor] controls[1].ui / admin-path: The printed DLP policy-creation route reaches the Sensitive info types condition in the Microsoft Purview portal. | Found: On the Define policy settings page, make sure the Create or customize advanced DLP rules option is selected. ... Select + Create rule. ... Under Conditions, select Add condition > Content contains > Add > Sensitive info types. | Fix: Use this path in both the front matter and rendered table: Data loss prevention > Policies > Create policy > Enterprise applications & devices > Categories > Custom > Regulations > Custom policy > Admin units > Full directory > locations > Define policy settings > Create or customize advanced DLP rules > + Create rule > Conditions > Add condition > Content contains > Add > Sensitive info types. Here 'locations' is the scope the administrator selects; the cited example selects SharePoint sites and OneDrive accounts. | Source: https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine
+- [supported, minor] sources; Governance controls; Why it matters / behaviour: Some verified permissions, sensitivity-label and retention-action statements rely on Microsoft pages absent from the page's sources. | Found: The Microsoft Purview portal includes default role groups for tasks and functions for each compliance and governance solution that you need to assign people to. | Fix: Add these sources together: https://learn.microsoft.com/purview/purview-permissions (Permissions in the Microsoft Purview portal); https://learn.microsoft.com/purview/sensitivity-labels (Learn about sensitivity labels); https://learn.microsoft.com/purview/apply-retention-labels-automatically (Automatically apply a retention label to retain or delete content). | Source: https://learn.microsoft.com/purview/purview-permissions
 -->

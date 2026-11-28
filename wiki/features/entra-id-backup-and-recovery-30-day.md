@@ -149,15 +149,17 @@ changes:
     note: "Corrected after verification: service-principal restore now carries the target-object qualification, the Entra viewing and recovery rows apply to Standard and Premium backups, the recovery path ends at Recover, and risk is low."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 88 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 102 statements not yet confirmed"
 version: 7
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 7
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 88
-  confirmed: 87
+  claims: 102
+  confirmed: 101
   unconfirmed: 1
   contradicted: 0
   attempts: 0
@@ -263,11 +265,11 @@ cost: Variable. Premium is metered at $0.025 USD per protected Microsoft Entra o
 impact: Low. Identity, security and Microsoft 365 administrators notice it; end users see nothing unless a restore changes their account or group membership.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters / behaviour: Every other Microsoft 365 permission depends on identity. | Found: Searched: Microsoft Entra ID Microsoft 365 permissions identity access authorization. Read Graph identity-network-access overview, Entra data-residency page and Entra fundamentals search excerpts; these describe identity and access management, not every Microsoft 365 permission. | Fix: Remove 'Identity is the layer that every other Microsoft 365 permission depends on, and' from the first sentence of Why it matters; capitalise 'Soft delete'.
+- [unsupported, major] Why it matters / behaviour: Every other Microsoft 365 permission depends on identity. | Found: Searched: Microsoft Entra Microsoft 365 every permission identity access authorization. Read Entra data-residency and search passages from Graph identity-network-access overview, What is Microsoft Entra and Manage access to an application; none states this universal dependency. | Fix: Remove 'Identity is the layer that every other Microsoft 365 permission depends on, and' and capitalise 'Soft delete' in the first sentence of Why it matters.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Change & support; Governance guidance: Before rollout / behaviour: Changes to on-premises synced objects, except group memberships, are excluded from recovery. | Found: Any changes made to on-premises synced objects (except group memberships) appear in difference reports, but are automatically excluded from recovery. | Fix: After the synced-object exclusion sentence, add: 'The recovery-model article instead says on-premises synchronized objects cannot be recovered, without stating the group-membership exception.' Cite https://learn.microsoft.com/entra/backup/backup-difference-report-recovery-model. | Source: https://learn.microsoft.com/entra/backup/scope-supported-objects-limitations
-- [supported, minor] controls[3].ui / admin-path: Microsoft 365 admin center > Billing > Pay-as-you-go > Billing policies > Add a billing policy is the billing-policy setup route. | Found: go to Billing > Pay-as-you-go. ... On the Billing policies tab, select Add a billing policy. ... On the Review and create policy page ... select Create policy. | Fix: Extend controls[3].ui.path to 'Billing > Pay-as-you-go > Billing policies > Add a billing policy > Billing details > Choose users > Budget > Review and create policy > Create policy'. The cited page documents these wizard pages; entering a budget is optional. | Source: https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node
+- [supported, minor] Risk assessment: Change & support; Governance guidance: Before rollout / behaviour: Changes to on-premises synced objects, except group memberships, are excluded from recovery. | Found: Any changes made to on-premises synced objects (except group memberships) appear in difference reports, but are automatically excluded from recovery. | Fix: After this limitation, add: 'The recovery-model article instead says on-premises synchronized objects cannot be recovered, without stating the group-membership exception.' Cite https://learn.microsoft.com/entra/backup/backup-difference-report-recovery-model. | Source: https://learn.microsoft.com/entra/backup/scope-supported-objects-limitations
+- [supported, minor] controls[3].ui; Governance controls table / admin-path: Microsoft 365 admin center > Billing > Pay-as-you-go > Billing policies > Add a billing policy is the billing-policy setup route. | Found: go to Billing > Pay-as-you-go. ... On the Billing policies tab, select Add a billing policy. ... On the Review and create policy page ... select Create policy. | Fix: Extend the path to 'Billing > Pay-as-you-go > Billing policies > Add a billing policy > Billing details > Choose users > Budget > Review and create policy > Create policy'. Setting a budget is optional; choosing users is automatically All users for Backup. | Source: https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node
 -->

@@ -3,7 +3,7 @@
   "roadmapId": 577788,
   "title": "Dynamics 365 Contact Center: conversation orchestration with natural language playbooks",
   "status": "verified-with-gaps",
-  "date": "2026-11-24",
+  "date": "2026-11-28",
   "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
@@ -20,15 +20,15 @@
     "contradicted": 1,
     "blocker": 0,
     "major": 0,
-    "minor": 2
+    "minor": 4
   },
-  "summary": "The briefing's roadmap dates, administrator prerequisites and publication-based Copilot credit billing are supported. The control path stops before channel selection and publication, and several checklist controls have no corresponding table row; these are minor gaps.",
+  "summary": "The roadmap facts, opt-in configuration, routing behaviour and consumption-based billing are supported. The credit exemption is now documented without being described as planned, and the control path and checklist coverage need minor clarification.",
   "claims": [
     {
       "n": 1,
       "where": "title; summary; What's changing",
       "type": "behaviour",
-      "claim": "Dynamics 365 Contact Center administrators configure conversation orchestration using natural language playbooks.",
+      "claim": "Dynamics 365 Contact Center administrators define conversation orchestration using natural language playbooks.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
       "quote": "Administrators define the logic by using natural-language playbooks, and conversation orchestration handles the execution.",
@@ -50,7 +50,7 @@
       "n": 3,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "A playbook consists of a trigger event plus conditions and actions.",
+      "claim": "A playbook consists of a trigger event and conditions and actions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
       "quote": "A playbook consists of a trigger event and a set of conditions and actions to run when the trigger event occurs.",
@@ -61,7 +61,7 @@
       "n": 4,
       "where": "What's changing; Governance guidance",
       "type": "behaviour",
-      "claim": "Administrators create playbooks from guided templates.",
+      "claim": "Playbooks are configured through guided templates.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
       "quote": "Configure playbooks for each scenario through guided templates that keep instructions focused and reliable.",
@@ -70,64 +70,75 @@
     },
     {
       "n": 5,
-      "where": "What's changing",
+      "where": "What's changing; Governance guidance",
       "type": "behaviour",
-      "claim": "Dynamic prioritisation is one of the four documented scenario categories.",
+      "claim": "The configuration page documents four supported scenario categories.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
-      "quote": "Dynamic prioritization | Automatically increase or reset conversation priority based on wait time, queue transfers, or queue consults",
+      "quote": "Dynamic prioritization; Overflow handling; Assign to a preferred expert or previously engaged representative; Bullseye routing through user groups",
       "severity": null,
       "fix": null
     },
     {
       "n": 6,
-      "where": "What's changing",
+      "where": "summary; What's changing",
       "type": "behaviour",
-      "claim": "Overflow handling is a documented playbook scenario.",
+      "claim": "Dynamic prioritisation can increase or reset conversation priority.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
-      "quote": "Overflow handling | Configure real-time overflow actions when queue conditions change",
+      "quote": "Automatically increase or reset conversation priority based on wait time, queue transfers, or queue consults",
       "severity": null,
       "fix": null
     },
     {
       "n": 7,
-      "where": "What's changing",
+      "where": "summary; What's changing",
       "type": "behaviour",
-      "claim": "Assignment to a preferred or previously engaged representative is a documented playbook scenario.",
+      "claim": "Playbooks support overflow handling when queue conditions change.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
-      "quote": "Assign to a preferred expert or previously engaged representative | Route conversations to a preferred expert mapped to the contact or to a representative who previously interacted with the customer",
+      "quote": "Configure real-time overflow actions when queue conditions change",
       "severity": null,
       "fix": null
     },
     {
       "n": 8,
-      "where": "What's changing",
+      "where": "summary; What's changing",
       "type": "behaviour",
-      "claim": "Bullseye routing progressively expands eligible representatives through user groups.",
+      "claim": "Playbooks support assignment to a preferred or previously engaged representative.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
-      "quote": "Bullseye routing through user groups | Start assignment with a targeted Level 0 user group, then progressively expand to additional user groups as wait time increases.",
+      "quote": "Route conversations to a preferred expert mapped to the contact or to a representative who previously interacted with the customer",
       "severity": null,
       "fix": null
     },
     {
       "n": 9,
-      "where": "What's changing; Risk assessment; rationale: risk",
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "Publishing converts the playbook into a structured runtime format using a language model.",
+      "claim": "Bullseye routing progressively expands eligible representatives through user groups.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/contact-center/implement/conversation-orchestration-rai-faq",
-      "quote": "When you publish a playbook, the system uses a language model to convert it into a structured runtime format that the system then uses to perform playbook actions.",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "Start assignment with a targeted Level 0 user group, then progressively expand to additional user groups as wait time increases.",
       "severity": null,
       "fix": null
     },
     {
       "n": 10,
+      "where": "What's changing; Why it matters; rationale: risk",
+      "type": "behaviour",
+      "claim": "Publishing converts a playbook through a language model into a structured runtime format.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "The system uses a language model to convert them to a structured runtime format. The system uses the resulting runtime format to perform playbook actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
       "where": "What's changing; Risk assessment; rationale: risk",
       "type": "behaviour",
-      "claim": "Converted runtime output might not fully capture the intended playbook logic.",
+      "claim": "Converted output might not fully capture the intended logic.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
       "quote": "the converted output might not fully capture the intended playbook logic.",
@@ -135,10 +146,10 @@
       "fix": null
     },
     {
-      "n": 11,
-      "where": "What's changing; rationale: risk",
+      "n": 12,
+      "where": "What's changing; Risk assessment; rationale: risk",
       "type": "behaviour",
-      "claim": "Deviations from intended playbook logic can be identified only during runtime.",
+      "claim": "Deviations can be identified only during runtime.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
       "quote": "Any deviations can be identified only during runtime.",
@@ -146,10 +157,10 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "What's changing; Risk assessment",
+      "n": 13,
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "Playbook actions can change conversation priority.",
+      "claim": "An action can change conversation priority.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
       "quote": "Change priority | Changes the priority of a conversation based on the configured policy or elapsed wait time.",
@@ -157,10 +168,10 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 14,
       "where": "What's changing; Risk assessment; rationale: risk",
       "type": "behaviour",
-      "claim": "Playbook actions can transfer conversations to another queue.",
+      "claim": "An action can transfer a conversation to another queue.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
       "quote": "Transfer to another queue | Transfers the conversation to another queue when the configured conditions are met.",
@@ -168,10 +179,10 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "What's changing; Risk assessment; rationale: risk",
+      "n": 15,
+      "where": "What's changing; Risk assessment",
       "type": "behaviour",
-      "claim": "Playbook actions can transfer conversations to an external number.",
+      "claim": "An action can transfer to an external number.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
       "quote": "Transfer to an external number | Transfers the conversation to an external number.",
@@ -179,10 +190,10 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 16,
       "where": "What's changing; Risk assessment",
       "type": "behaviour",
-      "claim": "Playbook actions can offer a callback.",
+      "claim": "An action can offer a callback.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
       "quote": "Offer callback | Offers the customer a callback as an alternative to continuing to wait in the queue.",
@@ -190,10 +201,10 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 17,
       "where": "What's changing; Risk assessment",
       "type": "behaviour",
-      "claim": "Playbook actions can offer voicemail.",
+      "claim": "An action can offer voicemail.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
       "quote": "Offer voicemail | Offers voicemail as the configured action.",
@@ -201,10 +212,10 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 18,
       "where": "What's changing; Risk assessment; rationale: risk",
       "type": "behaviour",
-      "claim": "Playbook actions can end conversations.",
+      "claim": "An action can end the conversation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
       "quote": "End conversation | Ends the conversation when the configured conditions are met.",
@@ -212,10 +223,10 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 19,
       "where": "What's changing; Risk assessment",
       "type": "behaviour",
-      "claim": "Playbook actions can set a representative's presence.",
+      "claim": "An action can set a representative's presence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
       "quote": "Set user presence | Sets a representative's presence to the specified presence status.",
@@ -223,10 +234,10 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 20,
       "where": "What's changing; Scope",
       "type": "availability",
-      "claim": "Conversation orchestration is available only for voice and messaging channels.",
+      "claim": "Conversation orchestration is available for voice and messaging channels only.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
       "quote": "Conversation orchestration is available for voice and messaging channels only.",
@@ -234,7 +245,7 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 21,
       "where": "front matter: status; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap status is Launched.",
@@ -245,10 +256,10 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 22,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
-      "claim": "The roadmap target is October CY2026.",
+      "claim": "The roadmap target date is October CY2026.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"October CY2026\"",
@@ -256,7 +267,7 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 23,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
       "claim": "The roadmap preview date is April CY2026.",
@@ -267,10 +278,10 @@
       "fix": null
     },
     {
-      "n": 23,
+      "n": 24,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
-      "claim": "The record lists General Availability and Preview release phases.",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
@@ -278,10 +289,10 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 25,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The record lists Worldwide (Standard Multi-Tenant) and no US Government cloud.",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -289,7 +300,7 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 26,
       "where": "front matter: platforms; Scope",
       "type": "record",
       "claim": "The roadmap platform is Web.",
@@ -300,18 +311,18 @@
       "fix": null
     },
     {
-      "n": 26,
-      "where": "front matter: products; Scope",
+      "n": 27,
+      "where": "Scope",
       "type": "record",
-      "claim": "The roadmap products are Microsoft Copilot (Microsoft 365) and Dynamics 365 Contact Center.",
+      "claim": "The roadmap record lists no US Government cloud.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\", \"Dynamics 365 Contact Center\"]",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
       "severity": null,
       "fix": null
     },
     {
-      "n": 27,
+      "n": 28,
       "where": "What's changing",
       "type": "record",
       "claim": "MC1536059 was published on 3 November 2026.",
@@ -322,7 +333,7 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 29,
       "where": "What's changing; Scope",
       "type": "record",
       "claim": "MC1536059 gives GA rollout as beginning in late October 2026 and expected to complete by late November 2026.",
@@ -333,7 +344,7 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 30,
       "where": "What's changing",
       "type": "record",
       "claim": "MC1536059 sets no act-by date.",
@@ -344,10 +355,10 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 31,
       "where": "What's changing; Why it matters; Scope",
       "type": "record",
-      "claim": "Existing customers can continue using their configurations without additional action.",
+      "claim": "Existing customers can keep their configurations without additional action.",
       "status": "supported",
       "source": "Message Center post MC1536059",
       "quote": "Existing customers using Conversation Orchestration can continue using their existing configurations without additional action.",
@@ -355,7 +366,7 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 32,
       "where": "What's changing; Why it matters",
       "type": "record",
       "claim": "New customers can enable conversation orchestration and configure playbooks.",
@@ -366,10 +377,10 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 33,
       "where": "front matter: defaultState; summary; Why it matters",
       "type": "default",
-      "claim": "Conversation orchestration is administrator opt-in rather than a routing change that arrives without configuration.",
+      "claim": "The capability is admin-opt-in rather than an automatic change to unconfigured queues.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Enabled for: Enabled by admins/makers/marketers for end users",
@@ -377,10 +388,10 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 34,
       "where": "Why it matters; Risk assessment; Governance guidance",
       "type": "behaviour",
-      "claim": "Microsoft advises testing and monitoring runtime behaviour and revising playbooks that do not work as intended.",
+      "claim": "Microsoft tells administrators to test, monitor and revise runtime behaviour.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
       "quote": "Administrators should test and monitor runtime behavior and revise the playbook if orchestration doesn't work as intended.",
@@ -388,24 +399,13 @@
       "fix": null
     },
     {
-      "n": 34,
-      "where": "summary; Why it matters",
+      "n": 35,
+      "where": "Why it matters",
       "type": "absence",
-      "claim": "The notice and configuration page do not say routing changes for queues without an active playbook.",
+      "claim": "Neither the notice nor the configuration page says routing changes for queues without an active playbook.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: conversation orchestration enable feature toggle admin center. Read MC1536059 and configure-conversation-orchestration, including Draft/Active states and Things to consider; no automatic routing change for queues without active playbooks is stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Context variables such as CustomerTier, Is VIP Customer, Preferred Language, Customer Region and Account Type can shape playbook conditions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
-      "quote": "Choose from available context variables such as CustomerTier, Is VIP Customer, Preferred Language, Customer Region, or Account Type.",
+      "quote": "Searched: conversation orchestration feature toggle enable disable setting; read configuration page, Responsible AI FAQ and MC1536059. No automatic routing change for unconfigured queues stated.",
       "severity": null,
       "fix": null
     },
@@ -413,10 +413,10 @@
       "n": 36,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Customer attribute variables can be described and used in the playbook text.",
+      "claim": "Conditions use customer context variables such as CustomerTier, Is VIP Customer, Preferred Language, Customer Region and Account Type.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
-      "quote": "Provide a description for how the variable appears in the playbook. Select the values you want to use in your conditions.",
+      "quote": "Choose from available context variables such as CustomerTier, Is VIP Customer, Preferred Language, Customer Region, or Account Type.",
       "severity": null,
       "fix": null
     },
@@ -424,18 +424,18 @@
       "n": 37,
       "where": "Risk assessment: Data exposure; Open questions",
       "type": "absence",
-      "claim": "The configuration page does not specify what data the language model receives during playbook conversion.",
+      "claim": "The configuration page does not specify the data received by the language model during conversion.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: conversation orchestration language model data processing customer data. Read configure-conversation-orchestration and conversation-orchestration-rai-faq; they describe conversion of playbooks but do not enumerate the model's input payload or processing location.",
+      "quote": "Searched: conversation orchestration language model data receives privacy processing; read configuration page and Responsible AI FAQ. They describe playbook conversion but not the complete model-input payload or processing location.",
       "severity": null,
       "fix": null
     },
     {
       "n": 38,
-      "where": "controls[0].note; Risk assessment; Scope",
+      "where": "controls[0].note; Risk assessment; Scope; Governance guidance",
       "type": "role",
-      "claim": "Configuration requires the System administrator or Omnichannel administrator role.",
+      "claim": "Configuration requires System administrator or Omnichannel administrator.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
       "quote": "System administrator or Omnichannel administrator role.",
@@ -446,10 +446,10 @@
       "n": 39,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Microsoft says the feature is not intended for employment decisions such as compensation, rewards or seniority.",
+      "claim": "Microsoft says the feature should not be used for employment decisions including compensation, rewards or seniority.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
-      "quote": "This feature is not intended for use in making—and should not be used to make—decisions that affect the employment of an employee or group of employees, including compensation, rewards, seniority, or other rights or entitlements.",
+      "quote": "This feature is not intended for use in making—and should not be used to make—decisions that affect the employment of an employee or group of employees, including compensation, rewards, seniority",
       "severity": null,
       "fix": null
     },
@@ -457,7 +457,7 @@
       "n": 40,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Customers are responsible for lawful use, including end-user notification and consent where required by applicable laws.",
+      "claim": "Customers are responsible for lawful use, adequate notification and obtaining end-user consent where applicable law requires it.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
       "quote": "adequately notifying end users that their communications with representatives may be monitored, recorded, or stored and, as required by applicable laws, obtaining consent from end users before using the feature with them.",
@@ -468,7 +468,7 @@
       "n": 41,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Published playbooks automatically run configured actions without approval for each runtime execution.",
+      "claim": "Published playbooks run relevant actions automatically, without approval for each run.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
       "quote": "automatically runs the relevant action in accordance with your configured playbooks.",
@@ -479,7 +479,7 @@
       "n": 42,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Keeping a conversation unassigned is a supported action.",
+      "claim": "A playbook action can keep a conversation unassigned.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
       "quote": "Keep the conversation unassigned | Keeps the conversation unassigned in its current queue as the configured treatment.",
@@ -490,7 +490,7 @@
       "n": 43,
       "where": "Risk assessment; Governance controls",
       "type": "behaviour",
-      "claim": "Deleting an active playbook stops conversation orchestration for the corresponding queue immediately.",
+      "claim": "Deleting an active playbook immediately stops orchestration for the corresponding queue.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
       "quote": "If you delete an active playbook, conversation orchestration stops for the corresponding queue immediately.",
@@ -501,7 +501,7 @@
       "n": 44,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Multiple active playbooks for the same scenario and queue cause a conflict that prevents publication.",
+      "claim": "Multiple active playbooks for the same scenario and queue conflict and cannot be published.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
       "quote": "You can't have multiple active playbooks for the same scenario and the same queue. This configuration creates a conflict that prevents publishing.",
@@ -521,12 +521,12 @@
     },
     {
       "n": 46,
-      "where": "Risk assessment: Change & support; Governance guidance",
+      "where": "Risk assessment; Governance guidance",
       "type": "behaviour",
-      "claim": "Playbook validation warns about missing required fields, out-of-range values and duplicate or conflicting conditions.",
+      "claim": "The system displays validation warnings for required fields, ranges, duplicate conditions and conflicting conditions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
-      "quote": "Required fields | Mandatory fields are empty; Range validation | Values are outside allowed ranges; Duplicate conditions | Two conditions have identical variable-value combinations; Conflicting conditions | Overlapping conditions might cause unexpected behavior",
+      "quote": "Required fields; Range validation; Duplicate conditions; Conflicting conditions; Cross-playbook conflicts",
       "severity": null,
       "fix": null
     },
@@ -534,7 +534,7 @@
       "n": 47,
       "where": "Risk assessment; Governance guidance",
       "type": "behaviour",
-      "claim": "Diagnostics are provided for each conversation processed by an active playbook and can be viewed using a custom query.",
+      "claim": "Diagnostics exist for each conversation processed by an active playbook and can be viewed with a custom query.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
       "quote": "conversation orchestration provides diagnostics information for each conversation that is processed by an active playbook. You can view the diagnostics information by using a custom query.",
@@ -543,42 +543,42 @@
     },
     {
       "n": 48,
-      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "Licensing is mixed: specific Contact Center licensing requirements and consumption-based Copilot credit billing apply.",
+      "claim": "Licensing is mixed: specific Dynamics 365 licensing requirements apply alongside consumption-based Copilot Credits billing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
-      "quote": "Specific licensing requirements apply to configure and use conversation orchestration in Dynamics 365 Contact Center. Learn more in Dynamics 365 Licensing Guide. Set up consumption-based billing.",
+      "quote": "Specific licensing requirements apply to configure and use conversation orchestration in Dynamics 365 Contact Center. Learn more in Dynamics 365 Licensing Guide. ... Set up consumption-based billing.",
       "severity": null,
       "fix": null
     },
     {
       "n": 49,
-      "where": "Cost and licensing: Licence; rationale: cost; Open questions",
+      "where": "Cost and licensing: Licence; rationale: cost",
       "type": "absence",
-      "claim": "The feature configuration page points to the Dynamics 365 Licensing Guide but does not name the required licence.",
+      "claim": "The feature page points to the Dynamics 365 Licensing Guide but does not name the required licence itself.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Dynamics 365 Contact Center licensing conversation orchestration. Read configure-conversation-orchestration prerequisites and system-requirements-contact-center search excerpt; the configuration page refers to the licensing guide without naming a SKU.",
+      "quote": "Searched: conversation orchestration licensing Contact Center licence credits included; read configuration prerequisites and billing page. The feature prerequisites refer to the Dynamics 365 Licensing Guide without naming a licence.",
       "severity": null,
       "fix": null
     },
     {
       "n": 50,
-      "where": "summary; licensing.notes; Why it matters; Cost and licensing; rationale: cost",
+      "where": "summary; Why it matters; Cost and licensing; rationale: cost",
       "type": "cost",
-      "claim": "Conversation orchestration consumes Copilot credits at publication rather than runtime, subject to the separately described planned overflow exemption.",
+      "claim": "The feature page describes publishing a playbook as the credit-consuming event, rather than runtime conversation processing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
-      "quote": "Conversation orchestration consumes Copilot credits only when you publish a playbook, which makes the configured orchestration logic active for use.",
-      "severity": null,
-      "fix": null
+      "quote": "Conversation orchestration consumes Copilot credits only when you publish a playbook",
+      "severity": "minor",
+      "fix": "Qualify the summary and cost rationale with 'except qualifying one-branch, wait-time-only playbooks without context variables', as documented at https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow#understand-copilot-credit-usage. The feature page gives the general rule, but the cited overflow page now documents this exception without a planned qualifier."
     },
     {
       "n": 51,
-      "where": "Cost and licensing: Meter; Why it matters",
+      "where": "Cost and licensing: Meter",
       "type": "cost",
-      "claim": "After publication, a playbook can process any number of customer conversations without additional Copilot credit consumption.",
+      "claim": "A published playbook can process any number of customer conversations without extra Copilot Credits.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
       "quote": "After you publish, the playbook can process any number of customer conversations without consuming extra Copilot credits.",
@@ -589,7 +589,7 @@
       "n": 52,
       "where": "Cost and licensing: Meter; rationale: cost",
       "type": "cost",
-      "claim": "Saving drafts and enabling conversation orchestration do not consume Copilot credits.",
+      "claim": "Saving a draft or enabling conversation orchestration does not consume Copilot Credits.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
       "quote": "When you save the playbook as a draft or enable conversation orchestration, it doesn't consume Copilot credits.",
@@ -600,7 +600,7 @@
       "n": 53,
       "where": "Cost and licensing: Meter",
       "type": "record",
-      "claim": "MC1536059 also states that credits are consumed on publication and not during runtime execution.",
+      "claim": "MC1536059 also says credits are consumed on publication and not during runtime.",
       "status": "supported",
       "source": "Message Center post MC1536059",
       "quote": "Copilot credits are consumed when administrators publish playbooks. The feature does not consume Copilot credits during runtime execution.",
@@ -609,23 +609,23 @@
     },
     {
       "n": 54,
-      "where": "Cost and licensing: Meter; Governance controls",
-      "type": "behaviour",
-      "claim": "Save & publish on an active playbook immediately publishes edits.",
+      "where": "Cost and licensing: Planned exemption",
+      "type": "cost",
+      "claim": "Upgrading legacy wait-time in-queue overflow can use a credit-exempt playbook.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
-      "quote": "For active playbooks: Select Save & publish to save and immediately publish your changes.",
-      "severity": null,
-      "fix": null
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow",
+      "quote": "An upgraded or newly created playbook doesn't use Copilot credits if it meets all of these conditions:",
+      "severity": "minor",
+      "fix": "Replace the heading '**Planned exemption.**' with '**Credit exemption.**' and replace its opening sentence with 'The overflow documentation describes a credit exemption for upgraded or newly created playbooks that meet all the conditions below.' The current page does not call the exemption planned; keep the existing conditions and cite https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow#understand-copilot-credit-usage."
     },
     {
       "n": 55,
-      "where": "Cost and licensing: Meter; Open questions",
-      "type": "absence",
-      "claim": "Learn does not separately state whether Save & publish after an active-playbook edit consumes credits again.",
+      "where": "Cost and licensing: Planned exemption",
+      "type": "cost",
+      "claim": "The credit exemption requires exactly one branch, only the wait-time-in-queue-exceeds condition and no context variables.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: conversation orchestration Save & publish credits. Read configure-conversation-orchestration and manage-overflow; publication billing and Save & publish are described, but no separate repeat-publication charge statement is given. The expectation is labelled advice to confirm.",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow",
+      "quote": "It has one branch only. The branch contains the waiting time in queue exceeds condition only. The playbook doesn't use context variables.",
       "severity": null,
       "fix": null
     },
@@ -633,10 +633,10 @@
       "n": 56,
       "where": "Cost and licensing: Planned exemption",
       "type": "cost",
-      "claim": "Under the planned credit exemption, upgrading a single queue or multiple queues does not use Copilot credits.",
+      "claim": "Other conditions, multiple branches or any context variables cause playbooks to use Copilot Credits.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow",
-      "quote": "Under the planned credit exemption, upgrading a single queue or multiple queues doesn't use Copilot credits.",
+      "quote": "Playbooks use Copilot credits if they include other conditions, multiple branches, or any context variables.",
       "severity": null,
       "fix": null
     },
@@ -644,18 +644,18 @@
       "n": 57,
       "where": "Cost and licensing: Planned exemption",
       "type": "cost",
-      "claim": "Playbooks with other conditions, multiple branches or any context variables use Copilot credits.",
+      "claim": "Publishing fails when the required credits are unavailable.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow",
-      "quote": "Playbooks use Copilot credits if they include other conditions, multiple branches, or any context variables. Before you publish these changes, review the publish confirmation. Publishing fails if the required credits aren't available.",
+      "quote": "Publishing fails if the required credits aren't available.",
       "severity": null,
       "fix": null
     },
     {
       "n": 58,
-      "where": "Cost and licensing: Billing set-up; Scope",
+      "where": "Cost and licensing: Billing set-up; Scope; Governance guidance",
       "type": "licensing",
-      "claim": "Consumption-based billing is a prerequisite for conversation orchestration.",
+      "claim": "The prerequisites require consumption-based billing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
       "quote": "Set up consumption-based billing. If you use the Power Platform pay-as-you-go plan, you need an Azure subscription.",
@@ -664,9 +664,9 @@
     },
     {
       "n": 59,
-      "where": "Cost and licensing; Governance controls",
+      "where": "Cost and licensing: Billing set-up; Governance controls",
       "type": "cost",
-      "claim": "The Dynamics 365 billing page directs pay-as-you-go users to Microsoft Cost Management in the Azure portal for usage and budgets.",
+      "claim": "The Dynamics 365 billing page documents Microsoft Cost Management in the Azure portal for pay-as-you-go usage and budgets.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go",
       "quote": "For pay-as-you-go, use Microsoft Cost Management in the Azure portal to view detailed usage and adjust spending limits (budgets) to free up more capacity.",
@@ -675,12 +675,12 @@
     },
     {
       "n": 60,
-      "where": "licensing.notes; Cost and licensing: Not yet published; rationale: cost",
+      "where": "licensing.notes; Cost and licensing: Not yet published; Open questions; rationale: cost",
       "type": "absence",
-      "claim": "The configuration and billing pages do not state a number of Copilot credits per playbook publication.",
+      "claim": "The cited pages do not state a number of Copilot Credits per playbook publish or a separate repeat-publication rate.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: conversation orchestration Copilot credits publish rate licensing Contact Center. Read configure-conversation-orchestration, setup-pay-as-you-go, manage-overflow and Billing rates and management search excerpts; no playbook-publication credit quantity is stated.",
+      "quote": "Searched: conversation orchestration Copilot credits publish rate licensing; read configuration, billing, overflow and Responsible AI pages. No per-publish credit number or separate Save & publish rate stated.",
       "severity": null,
       "fix": null
     },
@@ -688,7 +688,7 @@
       "n": 61,
       "where": "Scope",
       "type": "behaviour",
-      "claim": "Unified routing must be enabled for the environment.",
+      "claim": "The prerequisites require unified routing enabled for the environment.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
       "quote": "Unified routing enabled for your environment. At least one queue and workstream is configured for voice or messaging channels. A voice or messaging channel is configured.",
@@ -697,39 +697,116 @@
     },
     {
       "n": 62,
-      "where": "controls[0].ui; Scope; Governance controls",
+      "where": "controls[0].ui; Scope; Governance guidance",
       "type": "admin-path",
-      "claim": "Copilot Service admin center > Customer support > Conversation Orchestration > Prompt gallery > scenario category > playbook template > Queues > Edit reaches the playbook queue and channel configuration pane.",
+      "claim": "The printed Copilot Service admin center path reaches the playbook queue and channel configuration pane.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
-      "quote": "go to Customer support > Conversation Orchestration. On the Conversation Orchestration page, select Prompt gallery. In the drop-down field, select a scenario category, and then select a playbook template. Select Queues > Edit to open the queues pane.",
+      "quote": "go to Customer support > Conversation Orchestration. ... select Prompt gallery. ... select a scenario category, and then select a playbook template. ... Select Queues > Edit to open the queues pane.",
       "severity": "minor",
-      "fix": "Keep the supported path, but complete its note: 'In Queues > Edit, select Channel: Voice or Messaging, then Apply to: All queues, List of queues, or All queues except. Return to the editor, select Save to save a draft, and select Publish to activate the playbook.' The printed route reaches the correct pane but does not itself reach publication."
+      "fix": "Keep the path and add to controls[0].note: 'In Queues > Edit, select Channel: Voice or Messaging and Apply to: All queues, List of queues, or All queues except. Return to the playbook editor, select Save to save a draft, and select Publish to activate the playbook.' The printed path reaches the right pane but not publication. Source: https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration."
     },
     {
       "n": 63,
       "where": "controls[0].api; controls[0].note; Governance controls; Open questions",
       "type": "absence",
-      "claim": "No documented Web API operation provides the equivalent playbook publication control; the documented GET only retrieves records.",
+      "claim": "No cited reference documents an automation operation that publishes a playbook with the configured queue and channel scope.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: conversation orchestration publish API msdyn_ccuserprompt msdyn_ccplaybookpolicy; msdyn_ccplaybookpolicy publish; msdyn_ccuserprompt msdyn_channel Update. Read configuration, CC User Prompt reference and CC Playbook Policy excerpts; no publication operation is documented.",
+      "quote": "Searched: conversation orchestration publish Web API msdyn_ccuserprompt msdyn_channel; read CC User Prompt reference and configuration page. Record CRUD and writable columns exist, but no publish-operation semantics or queue-list payload format is documented.",
       "severity": null,
       "fix": null
     },
     {
       "n": 64,
-      "where": "Governance guidance; Governance controls table",
-      "type": "consistency",
-      "claim": "All controls the governance checklist asks readers to set or review are represented in the controls table.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Checklist: 'Set up consumption-based billing'; 'Monitor playbook behaviour with the diagnostics custom query'. Table: 'Which queues and channels a playbook applies to, and whether it is published'.",
-      "severity": "minor",
-      "fix": "The billing set-up, administrator-role restriction, custom-prioritisation inventory and diagnostics-monitoring checklist steps lack corresponding control rows. Treat this as a table-coverage gap; do not add rows or unverified paths and automation."
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The Responsible AI FAQ says administrators can disable the feature toggle to turn off conversation orchestration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/implement/conversation-orchestration-rai-faq",
+      "quote": "Administrators of Dynamics 365 Contact Center can delete any saved or published playbooks, disable the feature toggle to turn off the feature",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 65,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Active-playbook edits use Save & publish to save and immediately publish changes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "For active playbooks: Select Save & publish to save and immediately publish your changes. The Save button is disabled for active playbooks ... If you cancel, the playbook reverts to the last published version.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Governance guidance; Governance controls table",
+      "type": "consistency",
+      "claim": "All controls the governance checklist asks readers to configure or monitor have corresponding table rows.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'Set up consumption-based billing'; 'Limit the System administrator and Omnichannel administrator roles'; 'Monitor playbook behaviour with the diagnostics custom query'. Table: 'Which queues and channels a playbook applies to, and whether it is published'.",
+      "severity": "minor",
+      "fix": "Record the table-coverage gap for billing set-up, administrator-role restriction, custom-prioritisation inventory and diagnostics monitoring. Do not add rows or unverified paths and automation as part of this correction."
+    },
+    {
+      "n": 67,
+      "where": "Cost and licensing: Billing set-up",
+      "type": "licensing",
+      "claim": "Power Platform pay-as-you-go requires an Azure subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go",
+      "quote": "To set up pay-as-you-go billing, you need an active Azure subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "At least one queue configured for voice or messaging is a prerequisite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "At least one queue and workstream is configured for voice or messaging channels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "At least one workstream configured for voice or messaging is a prerequisite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "At least one queue and workstream is configured for voice or messaging channels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "A configured voice or messaging channel is a prerequisite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "A voice or messaging channel is configured.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The configuration page does not give a feature-toggle path or state the toggle's scope.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: conversation orchestration feature toggle enable disable setting; read configuration page and Responsible AI FAQ. The FAQ names disabling a toggle but gives no navigation or scope; configuration gives playbook navigation only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
       "where": "Governance controls",
       "type": "behaviour",
       "claim": "The Save button is disabled for active playbooks.",
@@ -740,10 +817,10 @@
       "fix": null
     },
     {
-      "n": 66,
+      "n": 73,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Cancelling an edit reverts the playbook to the last published version.",
+      "claim": "Cancelling changes to an active playbook reverts it to the last published version.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
       "quote": "If you cancel, the playbook reverts to the last published version.",
@@ -751,90 +828,13 @@
       "fix": null
     },
     {
-      "n": 67,
-      "where": "Cost and licensing: Planned exemption",
-      "type": "cost",
-      "claim": "Under the planned exemption, upgraded and newly created playbooks do not use credits when they have one branch containing only the wait-time-in-queue-exceeds condition and no context variables.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow",
-      "quote": "Upgraded and newly created playbooks don't use Copilot credits when they have only one branch, that branch contains only the wait time in queue exceeds condition, and they don't use context variables.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 68,
-      "where": "Cost and licensing: Planned exemption",
-      "type": "cost",
-      "claim": "Publishing fails if the required Copilot credits are unavailable.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow",
-      "quote": "Publishing fails if the required credits aren't available.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 69,
-      "where": "Scope; controls[0].ui",
-      "type": "behaviour",
-      "claim": "For the selected voice or messaging channel, queue scope can be All queues, List of queues or All queues except.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
-      "quote": "All queues: Applies to all queues for the selected channel. List of queues: Select specific queues from the list. All queues except: Applies to all queues except the ones you exclude.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 70,
-      "where": "Governance guidance; Governance controls",
-      "type": "behaviour",
-      "claim": "Saving a draft does not activate the playbook.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
-      "quote": "Draft | The playbook is saved but not active. You can make changes freely.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 71,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Microsoft documents moving playbooks between environments by adding CC User Prompt to a solution and exporting and importing the solution.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
-      "quote": "Move a playbook from a source environment to a destination environment by adding it to a solution and using the solution export and import. Select and add CC User Prompt from other tables to the solution.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 72,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "The queues and context variables a playbook references must already exist in the destination before importing it.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
-      "quote": "A playbook references other configuration tables, like queues and context variables. Every related entity a playbook uses must already exist in the destination environment or organization before you import the solution, otherwise, the solution import fails.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 73,
-      "where": "Governance controls",
-      "type": "command",
-      "claim": "The CC User Prompt reference documents GET /msdyn_ccuserprompts for retrieving records.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt",
-      "quote": "RetrieveMultiple Event: True | GET /msdyn_ccuserprompts See Query data",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 74,
       "where": "Governance controls",
-      "type": "command",
-      "claim": "The documented GET retrieves records rather than setting queue scope or publishing or enabling a playbook.",
+      "type": "behaviour",
+      "claim": "Playbooks can be moved between environments using solution export and import.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt",
-      "quote": "RetrieveMultiple Event: True | GET /msdyn_ccuserprompts See Query data",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "Move a playbook from a source environment to a destination environment by adding it to a solution and using the solution export and import.",
       "severity": null,
       "fix": null
     },
@@ -842,98 +842,98 @@
       "n": 75,
       "where": "controls[0].note; Governance controls",
       "type": "behaviour",
-      "claim": "The configuration page names CC User Prompt in its solution-migration instructions, not as a Web API publication operation.",
+      "claim": "The configuration page names CC User Prompt as the table to add to a solution for migration, not as a Web API publication operation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
-      "quote": "Export the solution from the source environment: Select and add CC User Prompt from other tables to the solution.",
+      "quote": "Select and add CC User Prompt from other tables to the solution.",
       "severity": null,
       "fix": null
     },
     {
       "n": 76,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap record was modified at 2026-11-06T23:04:41.",
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "The CC User Prompt reference documents GET /msdyn_ccuserprompts to retrieve multiple records.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-11-06T23:04:41\"",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt",
+      "quote": "RetrieveMultiple ... GET /msdyn_ccuserprompts ... See Query data",
       "severity": null,
       "fix": null
     },
     {
       "n": 77,
-      "where": "Scope",
+      "where": "Governance controls",
       "type": "behaviour",
-      "claim": "At least one queue must be configured for voice or messaging.",
+      "claim": "GET /msdyn_ccuserprompts reads records rather than setting queue scope, publishing or enabling a playbook.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
-      "quote": "At least one queue and workstream is configured for voice or messaging channels.",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt",
+      "quote": "RetrieveMultiple ... GET /msdyn_ccuserprompts ... See Query data",
       "severity": null,
       "fix": null
     },
     {
       "n": 78,
-      "where": "Scope",
+      "where": "Governance controls",
       "type": "behaviour",
-      "claim": "At least one workstream must be configured for voice or messaging.",
+      "claim": "Referenced queues must exist in the destination before importing the playbook solution.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
-      "quote": "At least one queue and workstream is configured for voice or messaging channels.",
+      "quote": "Create or migrate the queues the playbook references.",
       "severity": null,
       "fix": null
     },
     {
       "n": 79,
-      "where": "Scope",
+      "where": "Governance controls",
       "type": "behaviour",
-      "claim": "A voice or messaging channel must be configured.",
+      "claim": "Referenced context variables must exist in the destination before importing the playbook solution.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
-      "quote": "A voice or messaging channel is configured.",
+      "quote": "Every related entity a playbook uses must already exist in the destination environment or organization before you import the solution ... Create or migrate the context variables the playbook reads or writes.",
       "severity": null,
       "fix": null
     },
     {
       "n": 80,
-      "where": "Cost and licensing: Billing set-up; Scope",
-      "type": "licensing",
-      "claim": "Using the Power Platform pay-as-you-go plan requires an Azure subscription.",
+      "where": "Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "For the selected voice or messaging channel, queue scope can be All queues, List of queues or All queues except.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
-      "quote": "If you use the Power Platform pay-as-you-go plan, you need an Azure subscription.",
+      "quote": "Channel: Select Voice or Messaging. In Apply to, select how to apply the playbook. All queues ... List of queues ... All queues except",
       "severity": null,
       "fix": null
     },
     {
       "n": 81,
-      "where": "Governance controls; Open questions",
-      "type": "behaviour",
-      "claim": "The Responsible AI FAQ says administrators can disable the feature toggle to turn off conversation orchestration.",
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "The variable cost rating reflects a Copilot Credits consumption meter.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/contact-center/implement/conversation-orchestration-rai-faq",
-      "quote": "Administrators of Dynamics 365 Contact Center can delete any saved or published playbooks, disable the feature toggle to turn off the feature, and log a service request with Microsoft if they need to provide feedback.",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "Conversation orchestration consumes Copilot credits only when you publish a playbook",
       "severity": null,
       "fix": null
     },
     {
       "n": 82,
-      "where": "Governance controls; Open questions",
-      "type": "absence",
-      "claim": "The configuration page does not give a navigation path to the feature toggle.",
+      "where": "Why it matters",
+      "type": "record",
+      "claim": "The roadmap describes a shift from static rules to orchestration driven by natural language playbooks.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: conversation orchestration enable feature toggle admin center. Read configure-conversation-orchestration and conversation-orchestration-rai-faq; the FAQ confirms a disable toggle but neither supplies its navigation path or scope.",
+      "source": "roadmap record",
+      "quote": "Instead of applying fixed rules at different stages of a conversation journey, conversation orchestration monitors each conversation as conditions evolve",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-24T01:20:05.267Z",
+    "at": "2026-11-28T02:20:44.556Z",
     "summary": {
       "links": 8,
-      "unreachable": 6,
+      "unreachable": 0,
       "uiPaths": 1,
-      "uiPathsWithMissingWords": 1,
+      "uiPathsWithMissingWords": 0,
       "apiCalls": 0,
       "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
@@ -946,28 +946,28 @@
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/contact-center/implement/conversation-orchestration-rai-faq",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1536059",
@@ -976,8 +976,8 @@
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow#upgrade-legacy-in-queue-overflow-to-a-conversation-orchestration-playbook",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -986,7 +986,7 @@
         "side": "ui",
         "governs": "Which queues and channels a playbook applies to, and whether it is published",
         "docs": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Customer support",
           "Conversation Orchestration",
@@ -996,15 +996,7 @@
           "Queues",
           "Edit"
         ],
-        "missing": [
-          "Customer support",
-          "Conversation Orchestration",
-          "Prompt gallery",
-          "scenario category",
-          "playbook template",
-          "Queues",
-          "Edit"
-        ]
+        "missing": []
       }
     ],
     "roadmapDrift": []
@@ -1018,6 +1010,12 @@
     },
     {
       "date": "2026-11-17",
+      "status": "verified-with-gaps",
+      "version": 2,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-24",
       "status": "verified-with-gaps",
       "version": 2,
       "model": "gpt-6.1-sol"

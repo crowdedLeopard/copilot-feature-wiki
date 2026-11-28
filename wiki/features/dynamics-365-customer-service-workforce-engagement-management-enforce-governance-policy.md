@@ -89,15 +89,17 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 68 statements not yet confirmed"
   - date: "2026-11-26"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 80 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 72 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-26"
+  date: "2026-11-28"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 80
-  confirmed: 79
+  claims: 72
+  confirmed: 71
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -200,8 +202,8 @@ cost: Variable. Learn lists Microsoft Copilot credits setup as a prerequisite an
 impact: Medium. Service representatives and supervisors who send email, and anyone running autonomous email agents, notice warnings or blocks once policies are published; other users do not.
 -->
 
-<!-- verifier-findings (2026-11-26, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance / controls-table consistency / consistency: The checklist directs readers to manage several controls that have no corresponding controls-table row. | Found: Checklist: role privileges, credits setup, cross-region consent, AI agents, simulation, custom Send validation, logs and consumption. Table: Whether governance is turned on for the environment; Creation of governance policy records. | Fix: Remove checklist instructions to take stock of role privileges, check credits setup, provide cross-region consent, enable AI agents, run simulations, check custom Send integration, review logs and monitor credits where no corresponding row exists. Retain their sourced explanatory prose; do not add control rows.
+- [contradicted, minor] Governance guidance; Governance controls / consistency: Every control the checklist tells readers to take stock of, check or set has a corresponding controls-table row. | Found: Checklist: role privileges, credits setup, cross-region consent, AI agents, simulations, custom Send validation, logs and consumption. Table: Whether governance is turned on for the environment; Creation of governance policy records. | Fix: Remove checklist instructions to take stock of role privileges, check credits setup, provide cross-region consent, confirm AI agents enablement, run simulations, check custom Send integration, review logs and monitor credits, because these have no corresponding table rows. Retain their sourced explanatory prose; do not add rows.
 -->

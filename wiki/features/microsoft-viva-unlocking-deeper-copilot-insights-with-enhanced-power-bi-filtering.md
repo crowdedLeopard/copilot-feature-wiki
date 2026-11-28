@@ -28,6 +28,9 @@ sources:
   - title: "Enable filters for out-of-the-box reports"
     url: "https://learn.microsoft.com/viva/insights/advanced/admin/enable-filters-for-reports"
     kind: "learn"
+  - title: "How to use the Reports page and create customized reports"
+    url: "https://learn.microsoft.com/viva/insights/advanced/analyst/reports-page"
+    kind: "learn"
   - title: "Access insights easily with ready-to-use Copilot Analytics reports"
     url: "https://learn.microsoft.com/viva/insights/org-team-insights/copilot-analytics-reports"
     kind: "learn"
@@ -59,33 +62,37 @@ controls:
     note: "Viva Insights Administrator. Organization, CountryOrRegion and FunctionType are enabled by default; Organization cannot be turned off."
 confidence: "medium"
 created: "2026-11-27"
-updated: "2026-11-27"
+updated: "2026-11-28"
 roadmapModified: "2026-06-26T22:01:51"
 changes:
   - date: "2026-11-27"
     note: "New briefing: admin-enabled attribute filters for Viva Insights Power BI reports, with the web app path and licensing."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 41 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-28"
+    note: "Corrected: filter results below the privacy threshold now cite the Reports page; filters described as narrowing data within a user's scope; removed unsupported identity and actions statements and two checklist items without table rows."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 42 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
-  date: "2026-11-27"
-  version: 1
+  status: "verified-with-gaps"
+  date: "2026-11-28"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 41
-  confirmed: 36
-  unconfirmed: 2
-  contradicted: 3
-  attempts: 1
-  hash: "2b0d8578b76eea1a1d36606d1dfb6d1d"
+  claims: 42
+  confirmed: 42
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "7a1df8abf42693c501eb02db849af86e"
 ---
 
 ## What's changing
 
 Insights administrators can now choose which organisational attributes analysts and report users can filter by in Viva Insights Power BI reports. The roadmap item says Global and Insights admins can turn on additional attributes as filters, including reserved attributes and the organisation's own custom attributes, and that users with access to the Power BI reports can then use them to tailor the reports.
 
-Microsoft Learn documents the setting on its [Enable filters for out-of-the-box reports](https://learn.microsoft.com/viva/insights/advanced/admin/enable-filters-for-reports) page. In the Viva Insights web app, the admin opens **Attribute filters** under **Analysis setup** and selects **Enable filter** for each attribute. Organization, CountryOrRegion and FunctionType are enabled by default for Power BI reports, and Organization is a mandatory filter that cannot be turned off. Once enabled, filters appear under **Filter by** in prebuilt reports on the **Reports** tab.
+Microsoft Learn documents the setting on its [Enable filters for out-of-the-box reports](https://learn.microsoft.com/viva/insights/advanced/admin/enable-filters-for-reports) page. In the Viva Insights web app, the admin goes to **Analysis setup > Attribute filters > Data field quality > Enable filter** for each attribute. Organization, CountryOrRegion and FunctionType are enabled by default for Power BI reports, and Organization is a mandatory filter that cannot be turned off. Once enabled, filters appear under **Filter by** in prebuilt reports on the **Reports** tab.
 
 The attributes come from the organisation's Viva Insights organisational data. Reserved attributes such as LevelDesignation, FunctionType and Location are fixed column names that Viva Insights uses to calculate, filter and group data; custom attributes are columns the organisation creates in its upload ([Prepare an organizational data file upload](https://learn.microsoft.com/viva/insights/advanced/admin/prepare-org-data)).
 
@@ -93,21 +100,21 @@ The roadmap record lists the item as Launched, General Availability, target June
 
 ## Why it matters
 
-This is the switch that decides how finely leaders and analysts can slice Copilot adoption and impact data: by level, location, function or any custom HR attribute the organisation has uploaded. Finer filters make the reports more useful for targeting adoption work, and they also make it easier to look at small populations, so the choice of attributes is a privacy decision as much as a reporting one.
+This is the switch that decides how finely leaders and analysts can slice Copilot adoption and impact data: by level, location, function or enabled custom HR attributes available in the report. Finer filters make the reports more useful for targeting adoption work, and they also make it easier to look at small populations, so the choice of attributes is a privacy decision as much as a reporting one.
 
 If nobody acts, reports keep the three default filters; extra attributes appear only when an administrator enables them. The value of the feature also depends on organisational data quality: an attribute that is missing or sparse for many people gives misleading filtered views.
 
 ## Risk assessment
 
 **Data exposure**
-- Enabling granular attributes (Microsoft names ManagerId and PersonId among the attributes available) lets report users narrow views to smaller groups. Viva Insights' minimum group size, which must be at least five, applies to data visualisations in advanced analysis Power BI templates; how it applies to newly enabled filters in prebuilt reports is not documented.
-- Custom attributes can carry sensitive HR data. Whatever is uploaded and then enabled becomes a filter for the people who can open the reports.
+- Enabling granular attributes (Microsoft names ManagerId and PersonId among the attributes available) lets report users narrow views to smaller groups. Viva Insights' minimum group size, which must be at least five, applies to data visualisations in advanced analysis Power BI templates; Microsoft says report-filter results can be blank or suppressed when a filter produces a group below the applicable privacy threshold ([Reports page](https://learn.microsoft.com/viva/insights/advanced/analyst/reports-page)).
+- Custom attributes can carry sensitive HR data. Available attributes depend on the report and the organisational data configured; filters do not grant access outside a user's role, delegation or analyst partition ([Reports page](https://learn.microsoft.com/viva/insights/advanced/analyst/reports-page)).
 
 **Security & identity**
-- No change to identities or sign-in. The setting is managed by a Viva Insights Administrator, a role that a Microsoft 365 Global Administrator assigns.
+- The setting is managed by a Viva Insights Administrator, a role that a Microsoft 365 Global Administrator assigns.
 
 **Autonomy & actions**
-- No change: the feature adds filters to reports and takes no actions.
+- The documented capability adds organisational attribute filters to reports.
 
 **Change & support**
 - Expect analysts and leaders to ask for attributes to be enabled and for gaps in organisational data to be fixed, and expect questions where the Copilot Analytics reports page and the filters page disagree.
@@ -130,11 +137,9 @@ If nobody acts, reports keep the three default filters; extra attributes appear 
 
 ### Before rollout
 - Decide with HR and privacy owners which reserved and custom attributes may be used as report filters, and which stay off.
-- Check that the organisational data upload covers the people in the Copilot measured population for each attribute you plan to enable.
-- Confirm who holds the Insights Administrator role, since that role controls the attribute filters.
 
 ### At rollout
-- Enable the agreed attributes in the Viva Insights web app under Analysis setup > Attribute filters.
+- Enable the agreed attributes in the Viva Insights web app under Analysis setup > Attribute filters > Data field quality > Enable filter.
 - Tell analysts and report viewers which new filters exist and where they appear (Filter by in prebuilt reports).
 
 ### After rollout
@@ -159,9 +164,7 @@ If nobody acts, reports keep the three default filters; extra attributes appear 
 
 ## Open questions
 
-- Does the minimum group size suppress results when a report user combines several newly enabled filters? Watch the Enable filters for out-of-the-box reports page.
 - Which Copilot Analytics reports honour the enabled filters, given the Copilot Analytics reports page still says out-of-the-box reports can't be customised with filters?
-- Can attribute filters be enabled per partition, or only for the whole tenant?
 - Will Microsoft offer an API or PowerShell cmdlet to manage attribute filters?
 
 <!-- rationale
@@ -170,18 +173,10 @@ cost: Low. The setting sits in Viva Insights advanced analysis, which Microsoft 
 impact: Low. Only Insights administrators who set the filters and the analysts and report viewers who use Viva Insights Power BI reports notice the change.
 -->
 
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure; Open questions / absence: How minimum group size applies to newly enabled filters in prebuilt reports is not documented. | Found: Results can be blank or suppressed when a filter produces a group below the applicable privacy threshold. | Fix: Replace the undocumented-application clause with: 'Microsoft says report-filter results can be blank or suppressed when a filter produces a group below the applicable privacy threshold.' Cite https://learn.microsoft.com/viva/insights/advanced/analyst/reports-page. Remove the first Open questions bullet, which asks whether combined filters suppress results. | Source: https://learn.microsoft.com/viva/insights/advanced/analyst/reports-page
-- [contradicted, blocker] Risk assessment: Data exposure; Why it matters / behaviour: Whatever custom HR attribute is uploaded and enabled becomes a filter for everyone who can open the reports. | Found: Available attributes depend on the report and on the organizational data configured by your organization. ... Filters narrow data; they don't grant access to people or groups outside your role, delegation, or analyst partition. | Fix: Replace 'Whatever is uploaded and then enabled becomes a filter for the people who can open the reports' with 'Available attributes depend on the report and the organisational data configured; filters do not grant access outside a user's role, delegation or analyst partition.' In Why it matters, replace 'or any custom HR attribute the organisation has uploaded' with 'or enabled custom HR attributes available in the report'. Cite https://learn.microsoft.com/viva/insights/advanced/analyst/reports-page. | Source: https://learn.microsoft.com/viva/insights/advanced/analyst/reports-page
-- [unsupported, major] Risk assessment: Security & identity / behaviour: The feature makes no change to identities or sign-in. | Found: Searched: Viva Insights attribute filters enabling authentication identity sign-in autonomous actions. Opened Enable filters for out-of-the-box reports and Reports page; neither states that identities or sign-in are unchanged. | Fix: Remove 'No change to identities or sign-in.' Retain the separately supported administrator-role statement.
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: The feature takes no actions. | Found: Searched: Viva Insights attribute filters enabling authentication identity sign-in autonomous actions. Opened Enable filters for out-of-the-box reports and Reports page; they describe filters, not an explicit guarantee that the feature takes no actions. | Fix: Replace 'No change: the feature adds filters to reports and takes no actions' with 'The documented capability adds organisational attribute filters to reports.'
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters; Governance guidance: Before rollout / behaviour: Missing or sparse organisational attributes can produce misleading filtered views. | Found: If quality scores are low, it's difficult to determine how people collaborate across different characteristics. Also, low quality scores on required data fields may give skewed (under-reported) metric calculations for metrics that rely on those attributes. | Fix: Cite https://learn.microsoft.com/viva/insights/advanced/admin/org-data-overview for the data-quality statement. | Source: https://learn.microsoft.com/viva/insights/advanced/admin/org-data-overview#organizational-data-in-the-viva-insights-web-app
-- [supported, minor] Why it matters; Risk assessment: Data exposure / behaviour: Descriptive HR attributes can reveal sensitive information or enable inference about individuals. | Found: depending on the kinds of descriptive employee attributes that the Insights Administrator has chosen to make available to Viva Insights, these attributes might provide enough context or be combined with other information such that an analyst can infer individual identity. | Fix: Cite https://learn.microsoft.com/viva/insights/advanced/privacy/privacy for the privacy risk from descriptive employee attributes. | Source: https://learn.microsoft.com/viva/insights/advanced/privacy/privacy#protecting-sensitive-data
-- [supported, minor] front matter: licensing.notes; Cost and licensing / licensing: The environment requirements page requires at least 50 assigned Viva Insights licences for advanced analysis and the Copilot Dashboard. | Found: At least 50 assigned Viva Insights licenses are required to access advanced analysis and the Microsoft Copilot Dashboard. | Fix: Keep the attributed 50-licence statement and add: 'Microsoft's Viva service description gives a different requirement: the Copilot Dashboard and Advanced Copilot Reporting come with Microsoft 365 Copilot or 10 Insights licences.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-viva-service-description. | Source: https://learn.microsoft.com/viva/insights/advanced/setup-maint/environment-requirements
-- [supported, minor] controls[0].scope; Governance controls table; Open questions / applicability: The administrator's attribute-filter setting has tenant scope. | Found: What you set as an admin (unless you’re setting up a partition) applies across your organization. | Fix: Cite https://learn.microsoft.com/viva/insights/advanced/admin/partitions for tenant scope. Replace the per-partition Open questions bullet with 'The attribute-filter admin setting applies across the organisation; analysts remain limited to the attributes in their assigned partitions.' | Source: https://learn.microsoft.com/viva/insights/advanced/admin/partitions
-- [supported, minor] What's changing; Governance guidance: At rollout / admin-path: Administrators enable attributes under Viva Insights web app > Analysis setup > Attribute filters. | Found: In the Viva Insights web app, under Analysis setup on the left, select Attribute filters. Under Data field quality, select Enable filter for the filtered attributes you'd like analysts to access in their reports. | Fix: Use the full existing control-table path in these prose instructions: 'Viva Insights web app > Analysis setup > Attribute filters > Data field quality > Enable filter'. | Source: https://learn.microsoft.com/viva/insights/advanced/admin/enable-filters-for-reports
-- [contradicted, minor] Governance guidance: Before rollout; controls / consistency: The checklist asks readers to check organisational data-upload coverage and who holds the Insights Administrator role, but neither control has a table row. | Found: Check that the organisational data upload covers the people ... Confirm who holds the Insights Administrator role ... The table contains only 'Which organisational attributes report users can filter by'. | Fix: Remove the Before rollout bullets beginning 'Check that the organisational data upload covers' and 'Confirm who holds the Insights Administrator role' to align the checklist with the existing table; do not add control rows.
+- [supported, minor] Why it matters / behaviour: Missing or sparsely populated attributes reduce the quality of filtered insights. | Found: If a column has too many blank rows, that attribute has low coverage. Attributes with less than 30% coverage are considered low-quality. Similar to missing insights, when data is of low quality, related insights are of low quality, too. | Fix: Add https://learn.microsoft.com/viva/insights/advanced/analyst/data-quality-analyst-experience to sources and cite it for the data-quality statement in Why it matters. | Source: https://learn.microsoft.com/viva/insights/advanced/analyst/data-quality-analyst-experience#attribute-filters-page
+- [supported, minor] front matter: licensing.notes; Cost and licensing / licensing: The environment requirements page states that at least 50 assigned Viva Insights licenses are needed for advanced analysis and the Copilot Dashboard. | Found: At least 50 assigned Viva Insights licenses are required to access advanced analysis and the Microsoft Copilot Dashboard. | Fix: Keep the attributed 50-license statement and add: 'Microsoft's service description gives a different threshold: Microsoft Copilot Dashboard and Advanced Copilot Reporting in Viva Insights comes with Microsoft 365 Copilot or 10 Insights licenses.' Cite and add https://learn.microsoft.com/office365/servicedescriptions/microsoft-viva-service-description#feature-availability to sources. | Source: https://learn.microsoft.com/viva/insights/advanced/setup-maint/environment-requirements
+- [supported, minor] controls[0].scope; Governance controls: Tenant / applicability: The administrator's attribute-filter setting has tenant scope. | Found: What you set as an admin (unless you’re setting up a partition) applies across your organization. | Fix: Add https://learn.microsoft.com/viva/insights/advanced/admin/partitions to sources as support for the tenant scope. | Source: https://learn.microsoft.com/viva/insights/advanced/admin/partitions#row-and-column-data
 -->

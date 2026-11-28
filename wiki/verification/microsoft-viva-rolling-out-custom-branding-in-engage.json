@@ -1,0 +1,728 @@
+{
+  "slug": "microsoft-viva-rolling-out-custom-branding-in-engage",
+  "roadmapId": 568364,
+  "title": "Viva Engage: tenant-wide custom branding from a Brand center in the Engage admin center",
+  "status": "verified-with-gaps",
+  "date": "2026-11-28",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 54,
+    "confirmed": 52,
+    "unconfirmed": 0,
+    "contradicted": 2,
+    "blocker": 0,
+    "major": 0,
+    "minor": 6
+  },
+  "summary": "The branding behaviour, licensing, roadmap facts and documented controls are supported by Microsoft's sources. Minor corrections should distinguish optional branding from automatic personal-theme retirement, complete the theme-control guidance and clarify the role-assignment API.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "What's changing; title; summary; Risk assessment",
+      "type": "record",
+      "claim": "Engage-level administrators can configure a tenant-wide brand name, large and small logos and theme colour.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Engage-level admins can configure a brand name, add large and small logos, and a theme color that is applied consistently for all users in the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "controls[0].ui; title; What's changing; Governance guidance; Governance controls",
+      "type": "admin-path",
+      "claim": "The Brand center in the Viva Engage admin center is the location for configuring and publishing branding.",
+      "status": "supported",
+      "source": "https://techcommunity.microsoft.com/blog/Viva_Engage_Blog/make-viva-engage-feel-more-like-your-organization-custom-branding-available-now/4547595",
+      "quote": "It's configured from a new Brand center in the Viva Engage admin center, and nothing changes for users in the tenant until an admin publishes it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "Custom branding is administrator opt-in and branding changes do not reach users until published.",
+      "status": "supported",
+      "source": "https://techcommunity.microsoft.com/blog/Viva_Engage_Blog/make-viva-engage-feel-more-like-your-organization-custom-branding-available-now/4547595",
+      "quote": "It's configured from a new Brand center in the Viva Engage admin center, and nothing changes for users in the tenant until an admin publishes it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "summary; What's changing; Scope; Why it matters; rationale: impact",
+      "type": "availability",
+      "claim": "Branding applies on Engage web, the Engage app in Teams and the iOS and Android mobile apps.",
+      "status": "supported",
+      "source": "https://techcommunity.microsoft.com/blog/Viva_Engage_Blog/make-viva-engage-feel-more-like-your-organization-custom-branding-available-now/4547595",
+      "quote": "Custom Branding is an admin-managed capability that applies a tenant-wide brand name, logos, and theme color across Viva Engage on the web, Engage app in Teams, and in the iOS and Android mobile apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Administrators can pick a colour from the existing theme palette.",
+      "status": "supported",
+      "source": "https://techcommunity.microsoft.com/blog/Viva_Engage_Blog/make-viva-engage-feel-more-like-your-organization-custom-branding-available-now/4547595",
+      "quote": "Pick from the existing theme palette or add your own hex value with the + under Themes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Administrators can supply their own hex colour value.",
+      "status": "supported",
+      "source": "https://techcommunity.microsoft.com/blog/Viva_Engage_Blog/make-viva-engage-feel-more-like-your-organization-custom-branding-available-now/4547595",
+      "quote": "Pick from the existing theme palette or add your own hex value with the + under Themes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing; Governance guidance; Cost and licensing",
+      "type": "behaviour",
+      "claim": "Administrators can preview branding on web, mobile and the Engage app in Teams before publishing.",
+      "status": "supported",
+      "source": "https://techcommunity.microsoft.com/blog/Viva_Engage_Blog/make-viva-engage-feel-more-like-your-organization-custom-branding-available-now/4547595",
+      "quote": "Preview before you publish — See exactly how your branding will look before anyone else does, on all platforms - Web, Mobile, Engage app in Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "Discarding unpublished changes returns to the last published branding version.",
+      "status": "supported",
+      "source": "https://techcommunity.microsoft.com/blog/Viva_Engage_Blog/make-viva-engage-feel-more-like-your-organization-custom-branding-available-now/4547595",
+      "quote": "When it's right, publish it to the organization. If it doesn't look right, discard changes to go back to the last published version.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Scope; Why it matters; Risk assessment; controls[0]",
+      "type": "behaviour",
+      "claim": "This release provides one brand name, logo set and theme colour for the entire tenant, rather than separate divisional branding.",
+      "status": "supported",
+      "source": "https://techcommunity.microsoft.com/blog/Viva_Engage_Blog/make-viva-engage-feel-more-like-your-organization-custom-branding-available-now/4547595",
+      "quote": "Custom Branding is tenant-wide in this release — one brand name, logo set, and theme color across the entire network.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Why it matters; Risk assessment; controls[2].note; Governance controls",
+      "type": "applicability",
+      "claim": "Published Engage branding takes precedence over the Microsoft 365 organisation theme inside Engage.",
+      "status": "supported",
+      "source": "https://techcommunity.microsoft.com/blog/Viva_Engage_Blog/make-viva-engage-feel-more-like-your-organization-custom-branding-available-now/4547595",
+      "quote": "Simply said, Branding set in Engage always has higher priority than M365 organizational theme, and wins in the case that both are applied.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; controls[2]; Governance guidance",
+      "type": "applicability",
+      "claim": "Before Engage branding is published, the Microsoft 365 organisation theme's navigation bar colour applies to the Engage web header.",
+      "status": "supported",
+      "source": "https://techcommunity.microsoft.com/blog/Viva_Engage_Blog/make-viva-engage-feel-more-like-your-organization-custom-branding-available-now/4547595",
+      "quote": "if an organizational theme was applied in a tenant (and no branding has been published), the navigation bar color will continue to be applied to the Engage web header",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "applicability",
+      "claim": "Before Engage branding is published, the Microsoft 365 organisation theme's accent colour applies to Engage web buttons and links.",
+      "status": "supported",
+      "source": "https://techcommunity.microsoft.com/blog/Viva_Engage_Blog/make-viva-engage-feel-more-like-your-organization-custom-branding-available-now/4547595",
+      "quote": "the Accent color will be applied to components such as buttons and links in the Web app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Without Engage branding or a Microsoft 365 organisation theme, users see the default Engage experience.",
+      "status": "supported",
+      "source": "https://techcommunity.microsoft.com/blog/Viva_Engage_Blog/make-viva-engage-feel-more-like-your-organization-custom-branding-available-now/4547595",
+      "quote": "If Branding is not set in Engage, then we attempt to pick the org theme set in M365 admin center. If the tenant has no M365 org theme either, then the users in that tenant see the default Engage experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "summary; What's changing; Why it matters; Risk assessment; Governance guidance; rationale: impact",
+      "type": "behaviour",
+      "claim": "Personal user themes are being retired with the branding rollout, separately announced in MC1162958.",
+      "status": "supported",
+      "source": "https://techcommunity.microsoft.com/blog/Viva_Engage_Blog/make-viva-engage-feel-more-like-your-organization-custom-branding-available-now/4547595",
+      "quote": "User themes are being deprecated with the roll out of Branding (announced in a separate communication, MC1162958).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Microsoft suggests notifying users that individual user themes will be removed.",
+      "status": "supported",
+      "source": "https://techcommunity.microsoft.com/blog/Viva_Engage_Blog/make-viva-engage-feel-more-like-your-organization-custom-branding-available-now/4547595",
+      "quote": "You may want to notify your users that individual user themes will be removed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap item is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is August CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"August CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Android, iOS and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"iOS\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "The announcement says rollout begins at the end of August 2026.",
+      "status": "supported",
+      "source": "https://techcommunity.microsoft.com/blog/Viva_Engage_Blog/make-viva-engage-feel-more-like-your-organization-custom-branding-available-now/4547595",
+      "quote": "Custom Branding is rolling out worldwide, beginning end of August 2026 and expected to complete by mid-September 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "The announcement gives expected rollout completion as mid-September 2026.",
+      "status": "supported",
+      "source": "https://techcommunity.microsoft.com/blog/Viva_Engage_Blog/make-viva-engage-feel-more-like-your-organization-custom-branding-available-now/4547595",
+      "quote": "Custom Branding is rolling out worldwide, beginning end of August 2026 and expected to complete by mid-September 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "The announcement points administrators to Message center post MC1447681.",
+      "status": "supported",
+      "source": "https://techcommunity.microsoft.com/blog/Viva_Engage_Blog/make-viva-engage-feel-more-like-your-organization-custom-branding-available-now/4547595",
+      "quote": "Admin details are in Message Center post MC1447681, and the feature is tracked as Microsoft 365 Roadmap ID 568364.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "Microsoft Learn has no dedicated page documenting the Brand center feature yet.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Engage custom branding Brand center Microsoft Learn navigation publish network verified administrator; Viva Engage Brand center navigation. Read setup, role and tenant pages; results link to the announcement, not a dedicated Brand center guide.",
+      "severity": "minor",
+      "fix": "Replace 'Microsoft Learn has no page for the feature yet' with 'The Microsoft Learn setup page links to the announcement rather than documenting the Brand center configuration steps.'"
+    },
+    {
+      "n": 26,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The Viva Engage setup page links to the custom-branding announcement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/setup",
+      "quote": "See Make Viva Engage feel more like your organization with custom branding.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Custom Branding is available to all Engage customers without premium Viva Suite or Viva Employee Communications and Communities licences.",
+      "status": "supported",
+      "source": "https://techcommunity.microsoft.com/blog/Viva_Engage_Blog/make-viva-engage-feel-more-like-your-organization-custom-branding-available-now/4547595",
+      "quote": "It is available to all Engage customers and does not require premium Viva suite or C&C bundle licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "Custom Branding is included for existing Engage customers.",
+      "status": "supported",
+      "source": "https://techcommunity.microsoft.com/blog/Viva_Engage_Blog/make-viva-engage-feel-more-like-your-organization-custom-branding-available-now/4547595",
+      "quote": "It is available to all Engage customers and does not require premium Viva suite or C&C bundle licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "The cost rating is none because branding is available to existing Engage customers without the premium bundles.",
+      "status": "supported",
+      "source": "https://techcommunity.microsoft.com/blog/Viva_Engage_Blog/make-viva-engage-feel-more-like-your-organization-custom-branding-available-now/4547595",
+      "quote": "It is available to all Engage customers and does not require premium Viva suite or C&C bundle licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Global administrators and Engage administrators need neither a Viva Engage Core nor premium licence to access the Engage admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions",
+      "quote": "Microsoft 365 Global administrators and Engage administrators don't require a Viva Engage Core or premium license to access the Engage website, the Engage Admin center, or legacy network admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment; Scope; controls[1]; Governance guidance",
+      "type": "role",
+      "claim": "The Engage Administrator role is called Yammer administrator in Microsoft Entra ID.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions",
+      "quote": "Engage Administrator | Configures and manages all aspects of Viva Engage including tenant settings, core and premium features, badges enablement, and compliance. This role is also referred to as Yammer administrator in Microsoft Entra ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Scope; Risk assessment; controls[1].note; Governance guidance",
+      "type": "role",
+      "claim": "The announcement restricts branding setup to a Viva Engage administrator with Engage admin center access.",
+      "status": "supported",
+      "source": "https://techcommunity.microsoft.com/blog/Viva_Engage_Blog/make-viva-engage-feel-more-like-your-organization-custom-branding-available-now/4547595",
+      "quote": "Only a Viva Engage administrator that can has access to the Engage admin center can set up Branding. Branding is applied to users only once an admin publishes it for the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Entra role-assignment route is Identity > Roles & admins > role > Add assignments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
+      "quote": "Browse to Identity > Roles & admins. Select a role name to open the role. Don't add a check mark next to the role. Select Add assignments and then select the users, groups, or agent identities you want to assign to this role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "POST /v1.0/roleManagement/directory/roleAssignments assigns an Entra directory role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
+      "quote": "POST https://graph.microsoft.com/v1.0/roleManagement/directory/roleAssignments\n{\n    \"@odata.type\": \"#microsoft.graph.unifiedRoleAssignment\",\n    \"principalId\": \"<Object ID of user or group>\",\n    \"roleDefinitionId\": \"<ID of role definition>\",\n    \"directoryScopeId\": \"/\"\n}",
+      "severity": "minor",
+      "fix": "Keep the call unchanged. Add to controls[1].note: 'The request body sets roleDefinitionId to the Yammer Administrator role definition, principalId to the assignee, and directoryScopeId to / for tenant scope.' The cited Entra role-assignment page documents these properties."
+    },
+    {
+      "n": 35,
+      "where": "controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "Assigning the Yammer Administrator role requires at least Privileged Role Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
+      "quote": "Sign in to the Microsoft Entra admin center as at least a Privileged Role Administrator.",
+      "severity": "minor",
+      "fix": "Keep the Entra requirement, but add: 'The Engage administrator-role page lists a Microsoft 365 Global administrator under Who can assign, whereas the Entra tenant-role assignment guide requires at least Privileged Role Administrator.' Cite https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions and https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal."
+    },
+    {
+      "n": 36,
+      "where": "controls[2].ui; Governance guidance; Governance controls table",
+      "type": "admin-path",
+      "claim": "Microsoft 365 organisation themes are reached through Settings > Org Settings > Organization profile > Custom themes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/setup/customize-your-organization-theme",
+      "quote": "In the admin center, go to the Settings > Org Settings page, and then choose the Organization profile tab. On the Organization profile tab, select Custom themes.",
+      "severity": "minor",
+      "fix": "The printed path correctly reaches the theme list. For the colour-setting control, extend controls[2].ui.path to 'Settings > Org Settings > Organization profile > Custom themes > Default Theme > Colors'. The cited page says to select Default Theme and documents Navigation bar color and Accent color on Colors. The checklist's inspection path can remain unchanged."
+    },
+    {
+      "n": 37,
+      "where": "controls[2].note; Governance controls",
+      "type": "role",
+      "claim": "Only Global Administrators can customise Microsoft 365 organisation themes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/setup/customize-your-organization-theme",
+      "quote": "Only global admins can customize company themes. Global readers have read-only access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Microsoft 365 themes recommend a 4.5:1 contrast ratio.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/setup/customize-your-organization-theme",
+      "quote": "The recommended contrast ratio between text, icon or button color and background color is 4.5:1. You can override this recommendation and still save your theme as this is not a requirement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Scope: Separate setting",
+      "type": "behaviour",
+      "claim": "The Viva Engage app's name can be customised through the Teams app store.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/setup",
+      "quote": "From the Teams app store, you can customize the appearance for the following Viva Engage properties: app name; app description; app icons; accent color.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Scope: Separate setting",
+      "type": "behaviour",
+      "claim": "The Viva Engage app's accent colour can be customised through the Teams app store.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/setup",
+      "quote": "From the Teams app store, you can customize the appearance for the following Viva Engage properties: app name; app description; app icons; accent color.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Scope: Separate setting",
+      "type": "applicability",
+      "claim": "Teams-store app customisations do not change branding inside the Engage experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/setup",
+      "quote": "Currently, customizations don't affect the Viva Engage app branding that appears within the Viva Engage experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Governance controls",
+      "type": "admin-path",
+      "claim": "The Engage admin center is reached from Viva Engage through Settings > Admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/configure-your-viva-engage-network/configure-viva-engage",
+      "quote": "In Viva Engage, select Settings > Admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Microsoft Graph's Viva Engage API covers communities, roles and user following.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/engagement-api-overview?view=graph-rest-beta",
+      "quote": "The Microsoft Graph API enables apps to manage communities and roles in Viva Engage. Viva Engage supports user following functionality that enables employees to connect with colleagues and stay updated on their activities within the platform.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[0].api; Governance controls",
+      "type": "absence",
+      "claim": "No branding-setting or publishing API is documented, including in the Viva Engage Microsoft Graph API.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Engage custom branding publish theme API Microsoft Graph Yammer REST PowerShell. Read Graph Engage overview (beta) and Yammer Core APIs; neither lists a branding operation. Search results describe messages, users, communities and roles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[2].api",
+      "type": "absence",
+      "claim": "No API for the Microsoft 365 suite-header organisation theme is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 organization custom themes suite header PowerShell Microsoft Graph API; Microsoft 365 Custom themes API navigation. Read customize-your-organization-theme and Graph organizationalBrandingTheme (beta); the latter configures sign-in pages, not suite-header themes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not explicitly stated whether the Network Administrator or Verified Administrator roles can publish the new branding.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Engage custom branding Brand center Microsoft Learn navigation publish network verified administrator. Read announcement FAQ, Engage admin roles and tenant settings. The FAQ does not explicitly name Network or Verified roles for branding.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Open questions",
+      "type": "behaviour",
+      "claim": "Engage tenant settings have an existing Tenant logo setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/configure-your-viva-engage-network/configure-viva-engage",
+      "quote": "Tenant logo | An Engage admin, network admin, or verified admin can upload the organization's logo to the Viva Engage tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Open questions",
+      "type": "behaviour",
+      "claim": "The existing Tenant logo appears on users' home feeds.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/configure-your-viva-engage-network/configure-viva-engage",
+      "quote": "The logo appears on every user’s home feed and on the Leadership corner header.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Open questions",
+      "type": "behaviour",
+      "claim": "The existing Tenant logo appears on the Leadership corner header.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/configure-your-viva-engage-network/configure-viva-engage",
+      "quote": "The logo appears on every user’s home feed and on the Leadership corner header.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "A specific audit event for publishing or discarding custom branding is not established by the documentation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Engage custom branding audit publish; Viva Engage activities branding theme. Read announcement and Learn search excerpts from track-engage-events and audit-log-activities; results document other network-setting events, not branding publish/discard events.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "Brand center logo-file limits are not yet documented in a Microsoft Learn guide.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Engage Brand center logo limit; Viva Engage Brand center navigation. Read announcement, setup and tenant configuration pages; results cover tenant-logo and unrelated branding limits, not Brand center logo-file limits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Branding is shown in light and dark modes on mobile.",
+      "status": "supported",
+      "source": "https://techcommunity.microsoft.com/blog/Viva_Engage_Blog/make-viva-engage-feel-more-like-your-organization-custom-branding-available-now/4547595",
+      "quote": "Branded Engage mobile app in light mode\nBranded Engage mobile app in dark mode",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "front matter: action; Why it matters",
+      "type": "consistency",
+      "claim": "The action rating review treats the entire described change as optional despite automatic personal-theme retirement.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "action: \"review\"\nThe change users will notice regardless is the retirement of personal user themes, which the announcement suggests telling users about.",
+      "severity": "minor",
+      "fix": "Set action to 'prepare': the briefing includes a user-theme retirement that arrives without administrator publishing and calls for communications. Keep defaultState as 'admin-opt-in' for the custom-branding control."
+    },
+    {
+      "n": 54,
+      "where": "front matter: impact; rationale: impact",
+      "type": "consistency",
+      "claim": "Impact is medium even though the rationale describes a tenant-wide change visible to every Engage user.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "impact: \"medium\"\nimpact: Medium. Once published, every Engage user sees the brand on web, Teams and mobile, and users who chose a personal theme lose it as user themes are retired.",
+      "severity": "minor",
+      "fix": "Set impact to 'high' and replace the rationale with 'High. Once published, every Engage user sees the brand on web, Teams and mobile; personal user themes are also retired with the rollout.' This matches the scale's most-users definition."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-28T02:20:35.955Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://techcommunity.microsoft.com/blog/Viva_Engage_Blog/make-viva-engage-feel-more-like-your-organization-custom-branding-available-now/4547595",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/engage/setup",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/engage/configure-your-viva-engage-network/configure-viva-engage",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/engagement-api-overview?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/setup/customize-your-organization-theme",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=568364",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "The tenant-wide Engage brand name, logos and theme colour, and when they are published",
+        "docs": "https://techcommunity.microsoft.com/blog/Viva_Engage_Blog/make-viva-engage-feel-more-like-your-organization-custom-branding-available-now/4547595",
+        "reachable": true,
+        "segments": [
+          "Brand center"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Who holds the Yammer Administrator (Engage administrator) role that can set up branding",
+        "docs": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
+        "reachable": true,
+        "segments": [
+          "Identity",
+          "Roles & admins",
+          "role",
+          "Add assignments"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Who holds the Yammer Administrator (Engage administrator) role that can set up branding",
+        "docs": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
+        "reachable": true,
+        "token": "/v1.0/roleManagement/directory",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "The Microsoft 365 organisation theme that colours Engage web until branding is published",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/setup/customize-your-organization-theme",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Org Settings",
+          "Organization profile",
+          "Custom themes"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

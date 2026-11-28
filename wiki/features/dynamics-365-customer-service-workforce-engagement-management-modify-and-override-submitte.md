@@ -87,17 +87,19 @@ changes:
     note: "Corrected: the Regenerate evaluation summary row now lists the documented API call; the impact rationale and the unsupported 'no separate switch' sentence were removed."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 57 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 60 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 57
-  confirmed: 57
+  claims: 60
+  confirmed: 59
   unconfirmed: 0
-  contradicted: 0
+  contradicted: 1
   attempts: 0
   hash: "d3c51d9eeb2df70b01a6672edfc0afdd"
 ---
@@ -193,8 +195,9 @@ cost: Variable. Quality evaluation needs Copilot credits set up and Dynamics 365
 impact: Low. Supervisors and quality administrators use the Edit action; edited scores can change what reports show.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui / admin-path: Power Platform admin center > Manage > Environments > environment > Settings > Users + permissions > Users > user > Manage security roles reaches role assignment. | Found: select Manage. select Environments, and then select an environment from the list. Select Settings. Select Users + permissions, and then select Users. On the Users page select a user, and then select Manage security roles. | Fix: Keep the path. Append to controls[0].note: 'This user screen manages only direct role assignments; roles inherited through group-team membership are managed separately.' The qualification is stated at https://learn.microsoft.com/power-platform/admin/assign-security-roles. | Source: https://learn.microsoft.com/power-platform/admin/assign-security-roles
+- [supported, minor] controls[0].ui; Governance controls; Governance guidance: Before rollout / admin-path: Power Platform admin center > Manage > Environments > environment > Settings > Users + permissions > Users > user > Manage security roles reaches user role assignment. | Found: select Manage. ... select Environments, and then select an environment from the list. Select Settings. Select Users + permissions, and then select Users. On the Users page select a user, and then select Manage security roles. | Fix: Keep the path. Append to controls[0].note and the rendered note: 'This user screen manages only direct role assignments; roles inherited through group-team membership are managed separately.' The qualification is documented at https://learn.microsoft.com/power-platform/admin/assign-security-roles. | Source: https://learn.microsoft.com/power-platform/admin/assign-security-roles
+- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist instructs readers to monitor Submission Overridden evaluations, but the controls table has no corresponding row. | Found: Review evaluations whose Submission Overridden value shows an override ... Controls rows: Which users can edit and override submitted evaluations (security role assignment); Whether evaluators can regenerate evaluation summaries after modifying responses. | Fix: The 'Review evaluations whose Submission Overridden value shows an override' checklist step has no corresponding control row. Remove that checklist bullet; retain the verified description of the Submission Overridden column in What's changing and Risk assessment.
 -->

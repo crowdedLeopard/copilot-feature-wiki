@@ -14,7 +14,7 @@ previewDate: "December CY2025"
 risk: "medium"
 cost: "variable"
 impact: "low"
-defaultState: "unknown"
+defaultState: "admin-opt-in"
 action: "prepare"
 licensing:
   model: "mixed"
@@ -27,6 +27,9 @@ sources:
     kind: "roadmap"
   - title: "Learn about Data Security Posture Management"
     url: "https://learn.microsoft.com/purview/data-security-posture-management-learn-about"
+    kind: "learn"
+  - title: "Application card: Microsoft Purview Data Security Posture Management"
+    url: "https://learn.microsoft.com/purview/data-security-posture-management-application-card"
     kind: "learn"
   - title: "Considerations for Microsoft Purview Data Security Posture Management"
     url: "https://learn.microsoft.com/purview/data-security-posture-management-considerations"
@@ -112,7 +115,7 @@ controls:
     note: "Preview. Connect to the Microsoft Sentinel content hub first; that needs Microsoft Sentinel Contributor."
 confidence: "medium"
 created: "2026-11-27"
-updated: "2026-11-27"
+updated: "2026-11-28"
 roadmapModified: "2026-06-01T23:15:29"
 changes:
   - date: "2026-11-27"
@@ -123,19 +126,23 @@ changes:
     note: "Corrected: the role group row now covers baseline DSPM access, with the extra roles some activities need; the service description is described as mentioning DSPM without a base licence; checklist items with no control row removed."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 121 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-28"
+    note: "Corrected: default state is now admin opt-in, since DSPM requires explicit opt-in before processing organisational data; the scheduled Posture Agent sentence now says each run consumes SCUs and deactivating stops the agent."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 133 statements confirmed"
+version: 3
 verification:
-  status: "held"
-  date: "2026-11-27"
-  version: 2
+  status: "verified"
+  date: "2026-11-28"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 121
-  confirmed: 119
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 2
-  hash: "3d2270029b703beff5f8fe28468e4d43"
+  claims: 133
+  confirmed: 133
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "2590db6e5fba7c44bc166b47603e505f"
 ---
 
 ## What's changing
@@ -144,7 +151,7 @@ Microsoft Purview Data Security Posture Management (DSPM) has a new version that
 
 The new version is organised around **Data security objectives**, such as *Prevent oversharing of sensitive data* and *Prevent exfiltration to risky locations*, each with suggested actions, one-click policies and progress metrics. It adds an **AI observability** page (an inventory of AI apps and agents with activity in the last 30 days), posture **Reports**, an **Asset explorer**, and Security Copilot features including the **Data Security Posture Agent**, a natural-language search for sensitive data that is in preview. Partner signals arrive through Microsoft Sentinel data lake, also in preview; the initial partners are Varonis (for Salesforce), Cyera (for Snowflake), BigID (for Databricks) and OneTrust (for Google Cloud Platform). Data risk assessments now cover Fabric workspaces, and custom Microsoft 365 assessments can scan at item level and act on individual items, including **Remove sharing link**. The roadmap describes this as "bulk disabling of overshared SharePoint links"; Learn documents item-level remediation for up to 10 SharePoint sites per assessment.
 
-Microsoft has not stated what changes in a tenant on arrival. Learn says that on first use an administrator is prompted to accept initial setup tasks if they are not already turned on, and that the Posture Agent must be activated and configured before it can be used.
+DSPM requires explicit opt-in before processing organisational data; analytics in Insider Risk Management and DLP must be enabled before it can generate insights ([application card](https://learn.microsoft.com/purview/data-security-posture-management-application-card)). Learn also says that on first use an administrator is prompted to accept initial setup tasks if they are not already turned on, and that the Posture Agent must be activated and configured before it can be used.
 
 The roadmap item is **Launched**, with preview in December CY2025 and general availability targeted for May CY2026, for the Worldwide (Standard Multi-Tenant) cloud on the web. Parts of the experience are still marked preview on Learn, including the Posture Agent and partner integration.
 
@@ -152,7 +159,7 @@ The roadmap item is **Launched**, with preview in December CY2025 and general av
 
 This is now where Microsoft puts new DSPM capability, so security teams that run the classic views will move here sooner or later, and the move is a chance to decide who gets which role and which of the metered pieces to switch on. The objectives turn findings into one-click policies and remediation, which means DSPM users can change DLP, labelling and sharing in a few clicks; the role split between view-only and edit roles matters more than it did for a dashboard.
 
-Cost now depends on which parts you use: the Posture Agent draws on SCUs every run, proactive AI insights draw on Data Security Investigations compute units every 24 hours, and some setup options need Purview pay-as-you-go billing. Microsoft has not stated whether anything starts on its own when the new version reaches a tenant, so plan as though nothing runs until an admin completes the setup tasks, and confirm that in the portal.
+Cost now depends on which parts you use: the Posture Agent draws on SCUs every run, proactive AI insights draw on Data Security Investigations compute units every 24 hours, and some setup options need Purview pay-as-you-go billing. DSPM requires explicit opt-in before processing organisational data; analytics in Insider Risk Management and DLP must be enabled before it can generate insights ([application card](https://learn.microsoft.com/purview/data-security-posture-management-application-card)).
 
 ## Risk assessment
 
@@ -168,7 +175,7 @@ Cost now depends on which parts you use: the Posture Agent draws on SCUs every r
 **Autonomy & actions**
 - Learn says AI agents in DSPM can act on detected risks, such as removing public sharing links, applying DLP policies or revoking permissions, under admin review, and that these actions are audited.
 - **Remove sharing link** cuts access through that link at once; Learn warns it can block legitimate users until the owner sets a narrower link.
-- Posture Agent prompts can be scheduled daily, weekly or monthly, so SCU use continues until the schedule is removed.
+- Posture Agent prompts can be scheduled daily, weekly or monthly, and each run consumes SCUs; deactivating the agent stops it from functioning.
 
 **Change & support**
 - Background processing of Microsoft 365 data pauses when nobody in the tenant has opened DSPM for more than 60 days, and resumes with a delay when an admin returns.
@@ -242,11 +249,4 @@ Cost now depends on which parts you use: the Posture Agent draws on SCUs every r
 risk: Medium. Agents and item-level remediation can label files and remove SharePoint sharing links, and item-level scanning needs an Entra app with Files.ReadWrite.All and Sites.ReadWrite.All; each piece is set up by an admin.
 cost: Variable. The Posture Agent consumes Security Compute Units (SCUs) each run, proactive AI insights consume Data Security Investigations compute units, and some options need Purview pay-as-you-go billing.
 impact: Low. The new experience is used by security and compliance admins; site owners can receive oversharing notices and users can lose access through removed sharing links.
--->
-
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: defaultState; What's changing; Why it matters / default: DSPM's default is unknown, and Microsoft has not stated what starts without administrator setup. | Found: **Opt-in analytics processing**: Data Security Posture Management requires explicit opt-in before processing organizational data. Analytics in both Insider Risk Management and DLP must be enabled before Data Security Posture Management can generate insights. | Fix: Set defaultState to admin-opt-in. Replace both broad unstated-default sentences with: 'DSPM requires explicit opt-in before processing organisational data; analytics in Insider Risk Management and DLP must be enabled before it can generate insights.' Cite https://learn.microsoft.com/purview/data-security-posture-management-application-card. Retain the separate documented Posture Agent activation requirement. | Source: https://learn.microsoft.com/purview/data-security-posture-management-application-card
-- [unsupported, blocker] Risk assessment: Autonomy & actions / cost: Scheduled Posture Agent SCU use continues until the schedule is removed. | Found: Searched: "Data Security Posture Agent" "remove" "schedule". Opened Posture Agent get-started: it documents recurring eligible prompts, SCUs per run and agent deactivation, but does not state the claimed schedule-removal condition. | Fix: Replace 'so SCU use continues until the schedule is removed' with 'and each run consumes SCUs; deactivating the agent stops it from functioning', as documented at https://learn.microsoft.com/purview/copilot-in-purview-posture-agent-get-started.
 -->

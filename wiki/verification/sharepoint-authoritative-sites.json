@@ -1,0 +1,755 @@
+{
+  "slug": "sharepoint-authoritative-sites",
+  "roadmapId": 561323,
+  "title": "SharePoint: mark sites as authoritative so Copilot prioritises their content",
+  "status": "held",
+  "date": "2026-11-28",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-28",
+    "reasons": [
+      "3 blocking findings (claims 55, 57, 58)"
+    ]
+  },
+  "counts": {
+    "claims": 58,
+    "confirmed": 53,
+    "unconfirmed": 3,
+    "contradicted": 2,
+    "blocker": 3,
+    "major": 2,
+    "minor": 2
+  },
+  "summary": "Hold: Restricted Content Discovery does not keep a site's content out of every Copilot experience, as the briefing suggests. The advice also assumes a separate 100-site allowance per geo without a stating passage, and the rationales promise administrator-only activation despite an unknown default. The listed admin paths and PowerShell command are documented.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is May CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"May CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap products are SharePoint and Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"SharePoint\", \"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap was modified at 2026-06-05T22:00:28.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-06-05T22:00:28\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "title; summary; What's changing; Why it matters; rationale: risk",
+      "type": "record",
+      "claim": "Administrators can designate specific SharePoint sites as official, trusted sources.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Authoritative Sites feature empowers administrators to designate specific SharePoint sites as official, trusted sources of information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Why it matters; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "The roadmap names company news, policies and updates as examples of content to promote.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "high-quality, credible content, such as company news, policies, and updates",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Scope; Governance guidance: At rollout; Open questions",
+      "type": "record",
+      "claim": "The roadmap says authoritative content is prioritised across Copilot Chat and Copilot Search.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "are prioritized across Copilot Chat and Copilot Search experiences",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "summary; What's changing; Why it matters; rationale: risk",
+      "type": "behaviour",
+      "claim": "Copilot Search recognises content from a marked authoritative site as trusted.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-authoritative-sites",
+      "quote": "When you mark a site as authoritative, Copilot Search experiences recognize its content as trusted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment; Governance guidance: At rollout; rationale: impact",
+      "type": "behaviour",
+      "claim": "Visual signals such as the From your organization label help identify trusted items.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-authoritative-sites",
+      "quote": "Visual signals, such as the **From your organization** label, make trusted items easier to identify.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; controls[0].note; Governance controls; front matter: changes",
+      "type": "behaviour",
+      "claim": "The feature's Learn page says the current release is configured through PowerShell and CSOM APIs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-authoritative-sites",
+      "quote": "In the current release, configure authoritative sites through PowerShell and CSOM APIs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Scope; controls[0].scope",
+      "type": "behaviour",
+      "claim": "Authoritative designation is site-level.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-authoritative-sites",
+      "quote": "Designation is currently site-level only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment: Data exposure; Scope",
+      "type": "availability",
+      "claim": "Personal sites cannot be marked authoritative.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-authoritative-sites",
+      "quote": "Personal sites can't be marked as authoritative.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "summary; What's changing; Cost and licensing; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "Up to 100 sites can be marked authoritative.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-authoritative-sites",
+      "quote": "You can mark up to 100 sites as authoritative.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Designation changes can take up to 72 hours to appear.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-authoritative-sites",
+      "quote": "Changes can take up to 72 hours to appear in supported experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Risk assessment: Change & support; Scope; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Multi-geo tenants manage authoritative site data per geo.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-authoritative-sites",
+      "quote": "Multi-geo tenants manage authoritative site data per geo.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "The PowerShell route requires the latest SharePoint Online Management Shell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-advanced-management-prerequisites",
+      "quote": "Always download the latest SharePoint Online Management Shell before running any of the commands.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Scope: Prerequisites; Governance controls",
+      "type": "behaviour",
+      "claim": "The CSOM route requires version 16.1.26914.12004 or later.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-authoritative-sites",
+      "quote": "CSOM version 16.1.26914.12004 or later is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[0].api; Governance controls; Governance guidance: At rollout",
+      "type": "command",
+      "claim": "Set-SPOSite -Identity <site URL> -IsAuthoritative $true marks a site authoritative.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-authoritative-sites",
+      "quote": "Set-SPOSite -Identity \"https://<tenant>.sharepoint.com/sites/<siteName>\" -IsAuthoritative $true",
+      "severity": "minor",
+      "fix": "Keep the call. Add to controls[0].note: 'The Set-SPOSite reference's supported-parameter list for Groups site collections omits IsAuthoritative, whereas the authoritative-sites page gives this general site command.' Both pages are already cited; the conflicting list is at https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-sposite?view=sharepoint-ps."
+    },
+    {
+      "n": 23,
+      "where": "controls[0].ui; Governance controls; What's changing; Governance guidance",
+      "type": "admin-path",
+      "claim": "The SharePoint admin center path is Sites > Active sites > site > Mark as authoritative site.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Open the SharePoint admin center. Select a site and choose 'Mark as authoritative site.'",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[0].note; Risk assessment: Security & identity; Scope; Governance guidance: At rollout",
+      "type": "role",
+      "claim": "Set-SPOSite requires a SharePoint Online administrator who is also a site collection administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-sposite?view=sharepoint-ps",
+      "quote": "You must be a SharePoint Online administrator and be a site collection administrator to run the cmdlet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; controls[0].note; Governance controls",
+      "type": "date",
+      "claim": "The release notes list Authoritative Sites under 11 August 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "## August 11, 2026\nUpdates released between July 28, 2026, and August 11, 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "The release notes list Windows and Web for Authoritative Sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "SharePoint: Authoritative Sites [Windows, Web]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Scope; Governance guidance: At rollout; Open questions",
+      "type": "absence",
+      "claim": "The feature's Learn page and its release-note entry describe Copilot Search rather than Copilot Chat.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'SharePoint authoritative sites Copilot Search IsAuthoritative'; 'Microsoft 365 Copilot release notes August 11 2026 authoritative sites authoritative content'. Opened authoritative-sites and release-notes; the feature page and its entry describe Search, not Chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The feature is included under the named Microsoft Copilot licensing entitlement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-advanced-management-prerequisites",
+      "quote": "If your organization has at least one Microsoft Copilot license assigned to a user, your SharePoint administrators automatically receive access to SharePoint Advanced Management capabilities to support your Copilot deployment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "licensing",
+      "claim": "The authoritative-sites page requires a Microsoft Copilot license and points to SharePoint Advanced Management prerequisites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-authoritative-sites",
+      "quote": "**Licensing**: A Microsoft Copilot license is required. (See Prerequisites for SharePoint Advanced Management.)",
+      "severity": "minor",
+      "fix": "Add to the Licence paragraph: 'The Set-SPOSite IsAuthoritative reference describes an admin with a Copilot license marking the site, while the SharePoint Advanced Management prerequisites say the licensed user need not be a SharePoint administrator.' The differing wording is at https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-sposite?view=sharepoint-ps and https://learn.microsoft.com/sharepoint/sharepoint-advanced-management-prerequisites."
+    },
+    {
+      "n": 30,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "SAM requires a listed base subscription: Office 365 E3, E5 or A5; Microsoft 365 E1, E3, E5 or A5; or Microsoft 365 GCC, GCC-High or DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-advanced-management-prerequisites",
+      "quote": "Your organization must have one of the following base licenses:\n- Office 365 E3, E5, or A5\n- Microsoft 365 E1, E3, E5, or A5\n- Microsoft 365 GCC, GCC-High, or DoD",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "At least one assigned Microsoft Copilot license is a route to SAM capabilities supporting a Copilot deployment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-advanced-management-prerequisites",
+      "quote": "At least one user in your organization is assigned a Microsoft Copilot license. (The user doesn't need to be a SharePoint administrator.)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Cost and licensing; Open questions",
+      "type": "licensing",
+      "claim": "The SAM prerequisites list the SharePoint Advanced Management Plan 1 add-on as another licensing route.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-advanced-management-prerequisites",
+      "quote": "Your subscription includes SharePoint K, P1, or P2, and your organization purchases the SharePoint Advanced Management Plan 1 add-on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The SAM prerequisites also list Microsoft 365 E7 as a route.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-advanced-management-prerequisites",
+      "quote": "Your organization has Microsoft 365 E7, also known as The Frontier Suite.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "front matter: licensing.notes; Cost and licensing: Meter; rationale: cost",
+      "type": "absence",
+      "claim": "No separate price or meter for authoritative-site designation is published in the cited feature page or release notes.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"authoritative\" \"Copilot\" \"pricing\" \"meter\"'. Opened authoritative-sites, SAM prerequisites and the relevant release-note entries; read Copilot pay-as-you-go meters search excerpt. No designation price or meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[1].ui; Governance controls; What's changing; Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "Roadmap 503553's central authoritative content management is at Microsoft 365 admin center > Copilot > Search > Authoritative content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "In the Microsoft 365 admin center, under Copilot > Search > Authoritative content, add and manage up to 100 SharePoint sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[1].api; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft has not documented an API for the Microsoft 365 admin center authoritative content list.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"authoritative content\" \"API\" \"copilotAdminSetting\"'; '\"authoritative content\" \"SharePoint\" \"CSOM\" \"Set-SPOSite\"'. Opened copilotAdminSetting and release-notes; read Graph v1/beta copilotAdmin and copilotPolicySetting excerpts. No list-setting operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The Microsoft 365 admin center list supports up to 100 authoritative SharePoint sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "add and manage up to 100 SharePoint sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[1].note; Scope: Who configures it; Governance controls",
+      "type": "role",
+      "claim": "The release notes say Global admin or Global reader roles can view, add and delete sites in the central list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Admins with Global admin or Global reader roles can view, add, delete, and bulk import or export up to 100 authoritative SharePoint sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[1].note; Scope; Governance controls; Why it matters",
+      "type": "behaviour",
+      "claim": "The central list supports bulk import and export.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Use the bulk import or export options to manage multiple sites efficiently.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[1].note; Risk assessment: Change & support; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated whether SharePoint site designation and the central authoritative content list are the same list.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"authoritative sites\" \"same\" \"admin center\"'; '\"authoritative content\" \"SharePoint\" \"CSOM\" \"Set-SPOSite\"'. Opened authoritative-sites and release-notes; read Set-SPOSite search excerpts. No explicit list equivalence found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated whether both designation surfaces share the same 100-site limit.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Graph beta authoritative content Copilot Search admin settings API SharePoint authoritative sites list same 100 pricing meter'; '\"authoritative sites\" \"100\" \"geo\"'. Opened authoritative-sites and release-notes. No shared-limit statement found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Open questions: tenant enablement",
+      "type": "absence",
+      "claim": "The tenant setting referred to by the feature's troubleshooting advice is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'SharePoint authoritative sites default enabled tenant Set-SPOTenant IsAuthoritative default'. Opened authoritative-sites; read Set-SPOTenant search excerpts. No authoritative-sites tenant-enablement setting found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Open questions: tenant enablement",
+      "type": "behaviour",
+      "claim": "The troubleshooting section tells administrators to ensure the feature is enabled in their tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-authoritative-sites",
+      "quote": "**Feature availability**: Make sure the feature is enabled in your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Microsoft advises reviewing the list regularly and removing outdated or no-longer-official sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-authoritative-sites",
+      "quote": "Review the list regularly and remove outdated or no-longer-official sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Microsoft advises validating behaviour after site deletion or restore events.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-authoritative-sites",
+      "quote": "Validate behavior after site deletion or restore events.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Security & identity; Cost and licensing; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The documented CSOM route registers a Microsoft Entra ID app for interactive authentication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-authoritative-sites",
+      "quote": "### Step 2: Register a Microsoft Entra ID app\nRegister an app for interactive authentication and copy the client ID from the output.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The registration example requests Sites.FullControl.All application permissions for SharePoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-authoritative-sites",
+      "quote": "-SharePointApplicationPermissions \"Sites.FullControl.All\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The registration example requests Sites.FullControl.All application permissions for Microsoft Graph.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-authoritative-sites",
+      "quote": "-GraphApplicationPermissions \"Sites.FullControl.All\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance controls: CSOM methods",
+      "type": "command",
+      "claim": "The CSOM tenant object exposes GetAuthoritativeResources to get authoritative sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-authoritative-sites",
+      "quote": "$authResources = $tenant.GetAuthoritativeResources()\n$ctx.ExecuteQuery()",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls: CSOM methods",
+      "type": "command",
+      "claim": "The CSOM tenant object exposes SetResourceAsAuthoritative to mark a site.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-authoritative-sites",
+      "quote": "$result = $tenant.SetResourceAsAuthoritative($siteId)\n$ctx.ExecuteQuery()",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance controls: CSOM methods",
+      "type": "command",
+      "claim": "The CSOM tenant object exposes RemoveResourceAsAuthoritative to remove a designation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-authoritative-sites",
+      "quote": "$result = $tenant.RemoveResourceAsAuthoritative($siteId)\n$ctx.ExecuteQuery()",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance controls: CSOM methods; Why it matters",
+      "type": "command",
+      "claim": "The CSOM tenant object exposes BulkSetResourceAsAuthoritative for bulk marking.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-authoritative-sites",
+      "quote": "$results = $tenant.BulkSetResourceAsAuthoritative($siteIds)\n$ctx.ExecuteQuery()",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance controls: CSOM methods",
+      "type": "command",
+      "claim": "The CSOM tenant object exposes BulkRemoveResourceAsAuthoritative for bulk removal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-authoritative-sites",
+      "quote": "$results = $tenant.BulkRemoveResourceAsAuthoritative($siteIds)\n$ctx.Load($results)\n$ctx.ExecuteQuery()",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Data exposure; Why it matters",
+      "type": "behaviour",
+      "claim": "Marking a site promotes whatever it holds, including stale or overshared files, and labels all that content From your organization.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: '\"authoritative sites\" \"all content\" \"no action\"'; '\"authoritative sites\" \"content\" \"permissions\" \"Restricted Content Discovery\"'. Opened authoritative-sites and release-notes. Neither guarantees promotion and labelling of every file.",
+      "severity": "major",
+      "fix": "Replace the factual premise in both sections with: 'Copilot Search recognises content from marked sites as trusted. This makes reviewing candidate sites for stale or overshared content important.' Do not say that every file is promoted or labelled."
+    },
+    {
+      "n": 55,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Restricted Content Discovery can keep a site out of Copilot.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "Restricted Content Discovery doesn't affect experiences that operate on content that's already in use by the user, such as summarizing an open document.",
+      "severity": "blocker",
+      "fix": "Replace 'to keep a site out of Copilot instead' with 'to limit a site's discoverability in organization-wide search and Microsoft Copilot discovery scenarios instead'. Add: 'Restricted Content Discovery does not prevent Copilot from summarising an open document.' Cite https://learn.microsoft.com/sharepoint/restricted-content-discovery."
+    },
+    {
+      "n": 56,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The feature takes no action on content.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: '\"authoritative sites\" \"all content\" \"no action\"'. Opened authoritative-sites and the feature's release-note entry. They describe administrator designation and search effects, not an exhaustive guarantee of no content actions.",
+      "severity": "major",
+      "fix": "Replace 'No change: the feature is a designation administrators set on sites; it takes no action on content' with 'The documented operation is an administrator setting an authoritative designation on a site.'"
+    },
+    {
+      "n": 57,
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "A multi-geo tenant can shortlist up to 100 authoritative sites per geo.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: '\"authoritative sites\" \"100\" \"geo\"'. Opened authoritative-sites and release-notes. Learn separately states a 100-site limit and per-geo data management; it does not state that each geo receives its own 100-site allowance.",
+      "severity": "blocker",
+      "fix": "Replace the bullet with: 'Shortlist no more than 100 sites, starting with policy, HR and news sites. In multi-geo tenants, manage authoritative site data per geo.' Do not attach 'per geo' to the numerical allowance."
+    },
+    {
+      "n": 58,
+      "where": "front matter: defaultState; Why it matters; rationale: risk; rationale: impact",
+      "type": "consistency",
+      "claim": "The default is unknown, but the rationales assert that authoritative designation and user-visible changes happen only after administrator marking.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "defaultState: \"unknown\"; \"Microsoft has not stated what happens on arrival\"; \"A site becomes authoritative only when an administrator marks it\"; \"users notice only once sites are marked\"",
+      "severity": "blocker",
+      "fix": "Keep defaultState as unknown: searches for 'SharePoint authoritative sites default enabled tenant Set-SPOTenant IsAuthoritative default' and '\"authoritative sites\" \"default\" \"automatically\" \"before\"' found no stated arrival default. Replace the risk rationale with 'Low. The default is not stated, so this assessment assumes today's behaviour continues. Microsoft describes marked sites as trusted sources in Copilot Search.' Replace the impact rationale with 'Low. The documented change is an administrator designation, with ranking and visual signals in Copilot Search. Microsoft has not stated what happens on arrival.'"
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-28T02:20:33.740Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=561323",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/sharepoint-authoritative-sites",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/sharepoint-advanced-management-prerequisites",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-sposite?view=sharepoint-ps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/manage-sites-in-new-admin-center",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether a SharePoint site is marked as authoritative",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+        "reachable": true,
+        "segments": [
+          "Sites",
+          "Active sites",
+          "Mark as authoritative site"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether a SharePoint site is marked as authoritative",
+        "docs": "https://learn.microsoft.com/sharepoint/sharepoint-authoritative-sites",
+        "reachable": true,
+        "token": "Set-SPOSite",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which SharePoint sites are authoritative content for Copilot Search, managed centrally",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Search",
+          "Authoritative content"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

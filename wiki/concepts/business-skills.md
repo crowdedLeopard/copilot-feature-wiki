@@ -4,8 +4,8 @@ title: "Business skills: which written processes do agents follow, and who contr
 slug: "business-skills"
 summary: "Business skills are natural-language process instructions stored as records in a Dataverse environment, which Copilot and agents discover and follow. Administrators decide which environments have them, which routes reach them and who can share them."
 created: "2026-11-27"
-updated: "2026-11-27"
-version: 1
+updated: "2026-11-28"
+version: 2
 tags: ["business-skills","dataverse","work-iq","dataverse-mcp","mcp","security-roles","power-platform-admin-center","agent-governance","solutions"]
 covers: []
 sources:
@@ -106,18 +106,22 @@ changes:
     note: "New concept page explaining business skills: how agents find and follow them, who can share them, what they cost and the environment and tenant controls."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 96 statements contradicted, 3 unconfirmed; taken offline until corrected"
+  - date: "2026-11-28"
+    note: "Corrected: role-based sharing needs both the selected role and Skill Sharing Role (general and direct access are unaffected); Work IQ governs availability; change timing and session refresh are stated for Sales agent only; sharing switch absence reworded as undocumented."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 118 statements not yet confirmed"
 verification:
-  status: "held"
-  date: "2026-11-27"
-  version: 1
+  status: "verified-with-gaps"
+  date: "2026-11-28"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 96
-  confirmed: 92
-  unconfirmed: 3
+  claims: 118
+  confirmed: 117
+  unconfirmed: 0
   contradicted: 1
-  attempts: 1
-  hash: "95880c4c4af9518cb18e07274eab6225"
+  attempts: 0
+  hash: "09fc96a8170d948063bb242d504e32d8"
 ---
 
 ## What it is
@@ -156,7 +160,7 @@ Microsoft tracks this cost by the experience used, not by a business application
 ## Risks and limits
 
 - **Guidance, not enforcement.** Agent selection is probabilistic, so an agent may skip the right skill or pick a near match; a skill does not stop an agent doing something its tools and permissions allow.
-- **Two-role trap.** A skill shared with a security role reaches only users who hold both that role and the **Skill Sharing Role**; either alone is not enough, so a user missing the Skill Sharing Role never gets the skill.
+- **Two-role trap.** Access through a Dataverse security role requires both the selected role and Skill Sharing Role; either alone is not enough for that route.
 - **Participation is not access control.** Microsoft states that Work IQ participation settings don't prevent agentic access to environment data; App Access controls that (see [Work IQ](/concepts/work-iq/)).
 - **Copilot Studio reads little of a resource.** With a Copilot Studio agent only text-based resource files are supported, and the agent reads only the first 20 KB. Resources are limited to 20 MB and uploads to 30 MB.
 - **Deletion is permanent.** Deleting a skill can't be undone and agents that reference it can no longer use it; deactivating keeps content and version history.
@@ -180,9 +184,9 @@ Microsoft tracks this cost by the experience used, not by a business application
 
 **Roles.** Power Platform Administrator manages environment settings and allowed Dataverse MCP clients; AI Administrator manages the Microsoft 365 admin center settings. For skills themselves, Basic User can create skills they own, Environment Maker can create and share skills they own, and System Administrator or System Customizer can create and share skills. Admins can share a skill with any security role; other owners only with roles assigned to them.
 
-**Sharing has no admin-centre switch.** Each owner shares a skill from **Business skills > Share**. Role-based sharing works only once an administrator assigns the **Skill Sharing Role** (see [Dataverse security roles](/concepts/security-roles/)).
+**No admin-centre sharing switch is documented.** Each owner shares a skill from **Business skills > Share**. Role-based sharing works only once an administrator assigns the **Skill Sharing Role** (see [Dataverse security roles](/concepts/security-roles/)).
 
-**How the controls stack.** The Work IQ setting decides whether skills exist in an environment. The Copilot audience setting governs only the Microsoft 365 Copilot route, the Work IQ MCP block applies to the entire server, and allowed MCP clients govern agents connecting directly to Dataverse; the Microsoft Copilot Studio client is enabled for all environments by default. Changes apply to new agent interactions, and users might need to refresh a session.
+**How the controls stack.** The Work IQ setting decides whether business skills are available in an environment. The Copilot audience setting governs only the Microsoft 365 Copilot route, the Work IQ MCP block applies to the entire server, and allowed MCP clients govern agents connecting directly to Dataverse; the Microsoft Copilot Studio client is enabled for all environments by default. For Sales agent, Microsoft states that these changes apply to new agent interactions, and Sales agent users might need to refresh an existing session.
 
 **Watching.** Version history records who changed or activated each version; the Business skills page shows no per-skill runtime usage.
 
@@ -202,13 +206,8 @@ Microsoft tracks this cost by the experience used, not by a business application
 - Which audit events, if any, record an agent retrieving and following a skill?
 - Will Microsoft publish a consumption rate for following a skill, separate from the experience that uses it?
 
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risks and limits: Two-role trap / role: A user missing Skill Sharing Role never gets a skill shared with a security role. | Found: Owners can provide general access to everyone in the environment, share with selected Dataverse security roles, or provide direct access to specific users or groups. | Fix: Replace the Two-role trap bullet with: 'Access through a Dataverse security role requires both the selected role and Skill Sharing Role; either alone is not enough for that route.' The requirement does not rule out general or direct access. Source: https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skill-overview. | Source: https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skill-overview
-- [unsupported, major] Governance controls: How the controls stack / behaviour: The Work IQ setting decides whether skills exist in an environment. | Found: Searched: Power Platform API environment Work IQ setting PowerShell organization intelligence business skills enable. Read default-settings, manage-participation, business skills overview/create and Sales agent setup; they state availability, not record existence. | Fix: Replace 'The Work IQ setting decides whether skills exist in an environment' with 'The Work IQ setting decides whether business skills are available in an environment.' Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings.
-- [unsupported, major] Governance controls: How the controls stack / behaviour: Changes to all the listed controls apply to new agent interactions. | Found: Searched: "business skills" "new agent interactions" "Work IQ". Read Sales agent setup, default-settings, manage-ai-experience-access and business skills overview/create; only Sales agent guidance states this timing, not every listed control and route. | Fix: Replace 'Changes apply to new agent interactions' with 'For Sales agent, Microsoft states that these changes apply to new agent interactions.' Source: https://learn.microsoft.com/microsoft-sales-copilot/business-skills-dataverse#disable-business-skills-or-mcp-access.
-- [unsupported, major] Governance controls: How the controls stack / behaviour: Users across the listed routes might need to refresh a session after control changes. | Found: Searched: "business skills" "new agent interactions" "Work IQ". Read Sales agent setup, default-settings, manage-ai-experience-access and business skills overview/create; session refresh is stated for Sales agent, not all listed routes. | Fix: Replace 'users might need to refresh a session' with 'Sales agent users might need to refresh an existing session.' Source: https://learn.microsoft.com/microsoft-sales-copilot/business-skills-dataverse#disable-business-skills-or-mcp-access.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance controls: Sharing has no admin-centre switch / absence: Sharing has no admin-centre switch. | Found: Searched: "business skills" admin sharing restriction switch Power Platform. Read business skills overview/create, connection/participation controls and Managed Environments sharing-limit excerpts; no admin-centre switch for sharing Dataverse skills found. | Fix: Change the heading to 'No admin-centre sharing switch is documented.' The search establishes an absence of documentation, not that no switch can exist.
+- [contradicted, minor] What to check: list active skills, owners and access / consistency: Every control the checklist asks readers to review appears in the controls table. | Found: Checklist: "list the active skills, their owners and who has access". Table: availability, activation, Copilot audience, Work IQ MCP blocking and allowed Dataverse MCP clients; no skill-sharing row. | Fix: Narrow the checklist bullet to: 'Open Business skills in Power Apps for each Work IQ environment and list the active skills.'
 -->

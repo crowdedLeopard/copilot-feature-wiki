@@ -90,15 +90,17 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 79 statements not yet confirmed"
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 74 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 84 statements not yet confirmed"
 version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-27"
+  date: "2026-11-28"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 74
-  confirmed: 73
+  claims: 84
+  confirmed: 83
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -208,9 +210,9 @@ cost: Variable. The Learn page says a Power Platform pay-as-you-go plan charges 
 impact: Low. Only administrators with the Omnichannel administrator role use it, and it changes setup work rather than anything agents or customers see directly.
 -->
 
-<!-- verifier-findings (2026-11-27, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
 - [supported, minor] Why it matters / behaviour: Conversational setup changes configuration without navigating each separate setup page. | Found: Create and update configuration artifacts without navigating multiple pages | Fix: Add https://learn.microsoft.com/dynamics365/contact-center/administer/overview-service-operations-agent to sources with the title 'Overview of Service Operations Agent in Dynamics 365 Contact Center'. | Source: https://learn.microsoft.com/dynamics365/contact-center/administer/overview-service-operations-agent
-- [contradicted, minor] Governance guidance; Governance controls table / consistency: The checklist names role assignments, Application Insights, the MCP connection and Cost Management budgets, but the controls table does not represent those controls. | Found: Identify who holds the Omnichannel administrator and System Administrator roles; Connect Application Insights; Review usage and budgets; Recheck the role holders and the connection. Table: billing-plan membership and an undocumented feature-off switch only. | Fix: Add after the table: 'The checklist also covers role assignments, the Application Insights connection, the MCP connection and Microsoft Cost Management budgets; those controls are not represented in this table.' Do not add rows in this correction.
+- [contradicted, minor] Governance guidance; Governance controls / consistency: The checklist tells administrators to check role assignments, Application Insights, the MCP connection and Cost Management budgets, but the table has no corresponding rows. | Found: Identify who holds the Omnichannel administrator and System Administrator roles; Connect Application Insights; Review usage and budgets; Recheck the role holders and the connection. Table: billing-plan membership and an undocumented feature-off switch only. | Fix: Add after the table: 'The checklist also covers role assignments, the Application Insights connection, the MCP connection and Microsoft Cost Management budgets; those controls are not represented in this table.' Do not add rows in this correction.
 -->

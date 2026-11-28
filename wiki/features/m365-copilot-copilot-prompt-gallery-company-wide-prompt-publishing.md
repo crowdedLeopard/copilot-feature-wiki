@@ -46,7 +46,7 @@ sources:
   - title: "copilotAdmin resource type"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/resources/copilotadmin"
     kind: "learn"
-  - title: "Who holds AI Administrator or Search Editor, the roles that can publish organisation prompts (Microsoft Graph)"
+  - title: "Create unifiedRoleAssignment"
     url: "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0"
     kind: "learn"
 videos: []
@@ -56,7 +56,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Copilot > Prompts > Create prompt"
+      path: "Copilot > Prompts > Create prompt > Publish"
       docs: "https://learn.microsoft.com/copilot/manage/organizational-prompts"
     api: null
     note: "AI Administrator or Search Editor, or a role with equivalent permissions. Import prompts on the same page takes up to 100 prompts per file; limit 1,000 per tenant."
@@ -86,7 +86,7 @@ controls:
       kind: "graph"
       call: "POST /v1.0/roleManagement/directory/roleAssignments"
       docs: "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0"
-    note: "The request body sets principalId and roleDefinitionId. Privileged Role Administrator is the least privileged role for the Graph call."
+    note: "The request body sets principalId and roleDefinitionId. For delegated access, Privileged Role Administrator is the least privileged supported built-in role; a custom role granting the required permissions is also supported."
   - governs: "Showing organisation prompts to only some users or groups"
     scope: "group"
     ui: null
@@ -94,26 +94,30 @@ controls:
     note: "Published prompts are shared with users across the organisation; the Department field only filters the prompt lab."
 confidence: "high"
 created: "2026-11-27"
-updated: "2026-11-27"
+updated: "2026-11-28"
 roadmapModified: "2026-07-07T23:01:01"
 changes:
   - date: "2026-11-27"
     note: "New briefing: organisation prompts published from Copilot > Prompts in the Microsoft 365 admin center, with roles, limits and the controls that exist."
   - date: "2026-11-27"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 63 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-28"
+    note: "Corrected the Graph role-assignment permission to cover delegated access and custom roles, removed an unsupported note on a separate delegated-publishing item, extended the publish path to Publish and trimmed checklist steps without table rows."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 63 statements confirmed"
+version: 2
 verification:
-  status: "held"
-  date: "2026-11-27"
-  version: 1
+  status: "verified"
+  date: "2026-11-28"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 63
-  confirmed: 58
-  unconfirmed: 1
-  contradicted: 4
-  attempts: 1
-  hash: "186e6d101d8a830a6fc4a173f7ad2ee8"
+  confirmed: 63
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "aff730da0f63781703396e4700d0f1bb"
 ---
 
 ## What's changing
@@ -160,7 +164,6 @@ If nobody acts, users see no organisation prompts: the page describes prompts re
 - **Cloud:** Worldwide (Standard Multi-Tenant), per the roadmap record.
 - **Platforms:** Desktop and Web, per the roadmap record.
 - **Limits:** 1,000 prompts per tenant, four pinned, 100 prompts per import file.
-- **Related change:** delegating publishing to users and groups is a separate roadmap item; see [delegated publishing of organisation prompts](/features/microsoft-copilot-microsoft-m365-delegated-prompt-publishing-for-organization-prompts/).
 
 ## Governance guidance
 
@@ -170,13 +173,11 @@ If nobody acts, users see no organisation prompts: the page describes prompts re
 - Decide which languages you will publish in, since each language needs its own prompt.
 
 ### At rollout
-- Build the first set through **Import prompts** using the downloaded template, and keep the CSV as the reviewed source.
 - Pin up to four prompts that suit most users, and tell users about the **Suggested** button in Copilot Chat.
 - Allow about 3 hours before checking that new prompts appear in the prompt lab.
 
 ### After rollout
-- Review **Active users** and **Submissions** for each prompt over 7, 14 or 28 days and retire prompts nobody uses.
-- Run **Export all prompts** before any bulk edit or deletion, as deletion is permanent.
+- Retire unwanted prompts using the Delete control; deletion is permanent.
 - Recheck Search Editor and AI Administrator assignments when people change roles.
 
 ## Governance controls
@@ -186,15 +187,15 @@ If nobody acts, users see no organisation prompts: the page describes prompts re
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Publishing a new organisation prompt to every user in the tenant</strong><br><small>Tenant</small><br><small class="controls__note">AI Administrator or Search Editor, or a role with equivalent permissions. Import prompts on the same page takes up to 100 prompts per file; limit 1,000 per tenant.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Prompts › Create prompt <a href="https://learn.microsoft.com/copilot/manage/organizational-prompts" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Publishing a new organisation prompt to every user in the tenant</strong><br><small>Tenant</small><br><small class="controls__note">AI Administrator or Search Editor, or a role with equivalent permissions. Import prompts on the same page takes up to 100 prompts per file; limit 1,000 per tenant.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Prompts › Create prompt › Publish <a href="https://learn.microsoft.com/copilot/manage/organizational-prompts" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which organisation prompts are pinned as suggested prompts in Copilot Chat</strong><br><small>Tenant</small><br><small class="controls__note">Up to four prompts can be pinned.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Prompts › prompt › more options menu (...) › Pin prompt <a href="https://learn.microsoft.com/copilot/manage/organizational-prompts" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Withdrawing an organisation prompt from users</strong><br><small>Tenant</small><br><small class="controls__note">Deletion is permanent; use Export all prompts first.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Prompts › prompt › Delete <a href="https://learn.microsoft.com/copilot/manage/organizational-prompts" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Who holds AI Administrator or Search Editor, the roles that can publish organisation prompts</strong><br><small>Tenant</small><br><small class="controls__note">The request body sets principalId and roleDefinitionId. Privileged Role Administrator is the least privileged role for the Graph call.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Roles › Role assignments › Microsoft Entra ID › role › Assigned › Add users <a href="https://learn.microsoft.com/microsoft-365/admin/add-users/assign-admin-roles" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/roleManagement/directory/roleAssignments</code> <a href="https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Who holds AI Administrator or Search Editor, the roles that can publish organisation prompts</strong><br><small>Tenant</small><br><small class="controls__note">The request body sets principalId and roleDefinitionId. For delegated access, Privileged Role Administrator is the least privileged supported built-in role; a custom role granting the required permissions is also supported.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Roles › Role assignments › Microsoft Entra ID › role › Assigned › Add users <a href="https://learn.microsoft.com/microsoft-365/admin/add-users/assign-admin-roles" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/roleManagement/directory/roleAssignments</code> <a href="https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Showing organisation prompts to only some users or groups</strong><br><small>Group</small><br><small class="controls__note">Published prompts are shared with users across the organisation; the Department field only filters the prompt lab.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-Microsoft Learn documents organisation prompts as managed in the Microsoft 365 admin center; the Microsoft Graph Copilot admin settings reference lists no organisational prompts resource at the time of writing (November 2026), so there is no documented way to script publishing. The Learn page documents no setting to show a prompt to particular users or groups, and it describes published prompts as shared with users in your organisation. Publishing rights come from the AI Administrator and Search Editor roles; assigning roles through Microsoft Graph needs Privileged Role Administrator at least. The **Supported apps** field on each prompt chooses the Copilot surfaces where it appears, not the audience.
+Microsoft Learn documents organisation prompts as managed in the Microsoft 365 admin center; the Microsoft Graph Copilot admin settings reference lists no organisational prompts resource at the time of writing (November 2026), so there is no documented way to script publishing. The Learn page documents no setting to show a prompt to particular users or groups, and it describes published prompts as shared with users in your organisation. Publishing rights come from the AI Administrator and Search Editor roles. For delegated Microsoft Graph role assignment, the signed-in user needs Privileged Role Administrator or a custom role granting the required permissions. The **Supported apps** field on each prompt chooses the Copilot surfaces where it appears, not the audience.
 
 ## Open questions
 
@@ -207,16 +208,4 @@ Microsoft Learn documents organisation prompts as managed in the Microsoft 365 a
 risk: Low. Nothing reaches users until an AI Administrator or Search Editor publishes a prompt, and a selected prompt is only placed in the chat box, not sent.
 cost: Low. Copilot Chat is available with an eligible Microsoft 365 subscription; the cost the sources show is admin and content-owner time to write and maintain the prompts.
 impact: Low. On arrival only admins see the new Prompts page; once prompts are published they appear to users across the organisation, with no documented way to target groups.
--->
-
-<!-- verifier-findings (2026-11-27, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[3].note; Governance controls / role: Assigning roles through Microsoft Graph requires at least Privileged Role Administrator, without distinguishing delegated and application access. | Found: Application | RoleManagement.ReadWrite.Directory ... For delegated access using work or school accounts, the signed-in user must be assigned a supported Microsoft Entra role or a custom role that grants the permissions required for this operation. | Fix: Replace the role sentence in controls[3].note and the rendered table with 'For delegated access, Privileged Role Administrator is the least privileged supported built-in role; a custom role granting the required permissions is also supported.' Replace the prose sentence with 'For delegated Microsoft Graph role assignment, the signed-in user needs Privileged Role Administrator or a custom role granting the required permissions.' Retain the principalId and roleDefinitionId sentence. | Source: https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0
-- [unsupported, major] Scope: Related change / behaviour: Delegating organisation prompt publishing to users and groups is a separate roadmap item. | Found: Searched: Copilot delegated prompt publishing organization prompts users groups roadmap; "Copilot" "delegated prompt publishing"; "Copilot Prompt Gallery" "delegate" "publish". Read release-notes and organizational-prompts; returned excerpts do not establish that separate item. | Fix: Remove the Scope bullet beginning 'Related change: delegating publishing to users and groups is a separate roadmap item'. The linked wiki briefing is not Microsoft evidence.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: Microsoft 365 admin center > Copilot > Prompts > Create prompt is the route for publishing a new prompt. | Found: Expand Copilot and select Prompts to display the list of organizational prompts. ... Select Create prompt. ... Select Publish to save and publish the prompt to your tenant. | Fix: Extend controls[0].ui.path to 'Copilot > Prompts > Create prompt > Publish' and mirror it in the rendered table. The current path correctly reaches the creation page but stops before its publishing control. | Source: https://learn.microsoft.com/copilot/manage/organizational-prompts
-- [contradicted, minor] Governance guidance: At rollout; controls / consistency: The checklist tells readers to use Import prompts, but that control has no row in the table. | Found: Build the first set through Import prompts using the downloaded template ... Controls rows cover Create prompt, Pin prompt, Delete, role assignment and audience targeting; import is mentioned only in a row note. | Fix: Remove the checklist bullet 'Build the first set through Import prompts using the downloaded template, and keep the CSV as the reviewed source.' It names an import control without a table row; do not add a row as part of this correction.
-- [contradicted, minor] Governance guidance: After rollout; controls / consistency: The checklist tells readers to run Export all prompts, but that control has no row in the table. | Found: Run Export all prompts before any bulk edit or deletion, as deletion is permanent. ... The controls table has a Delete row with an export recommendation, but no Export all prompts row. | Fix: Replace that checklist bullet with 'Retire unwanted prompts using the Delete control; deletion is permanent.' This uses the existing control row without adding a new one.
-- [contradicted, minor] Governance guidance: After rollout; controls / consistency: The checklist tells readers to review Active users and Submissions, but analytics has no row in the table. | Found: Review Active users and Submissions for each prompt over 7, 14 or 28 days and retire prompts nobody uses. ... No controls row covers prompt analytics. | Fix: Remove the checklist bullet beginning 'Review Active users and Submissions for each prompt over 7, 14 or 28 days'. The analytics control has no table row; do not add one as part of this correction.
 -->

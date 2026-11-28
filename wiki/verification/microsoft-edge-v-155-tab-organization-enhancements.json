@@ -1,0 +1,715 @@
+{
+  "slug": "microsoft-edge-v-155-tab-organization-enhancements",
+  "roadmapId": 570443,
+  "title": "Microsoft Edge: AI tab and Workspace organisation suggestions in version 155",
+  "status": "verified-with-gaps",
+  "date": "2026-11-28",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 54,
+    "confirmed": 53,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 0,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "The briefing passes: the roadmap facts, default state, data handling and both policy controls are supported. Licensing should distinguish the published OneDrive for Business prerequisite for creating enterprise Workspaces from the absence of suggestion-specific licensing, and the user-toggle checklist item has no controls-table row.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; rationale: impact",
+      "type": "record",
+      "claim": "Edge version 155 expands tab and Workspace organization suggestions to groupings, names, visuals and labels.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Edge: v.155 - Tab organization enhancements; Microsoft Edge is expanding tab and Workspace organization capabilities to suggest groupings, names, visuals, and labels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap proposes the setting label Let Microsoft Edge help keep your tabs organized.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users can manage these experiences through the proposed “Let Microsoft Edge help keep your tabs organized” setting",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "The roadmap places the proposed setting under Privacy, search, and services > Search and connected experiences.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "under Privacy, search, and services > Search and connected experiences",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "summary; What's changing; Why it matters; Open questions",
+      "type": "applicability",
+      "claim": "TabServicesEnabled controls the tab and Workspace organization enhancements.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-archive-stable-channel",
+      "quote": "administrators can control them using the [TabServicesEnabled](/en-us/deployedge/microsoft-edge-policies/tabservicesenabled) policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: status; What's changing; Why it matters",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is October CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: products; roadmapModified",
+      "type": "record",
+      "claim": "The Microsoft Edge roadmap record was modified on 2026-10-12T23:01:05.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-12T23:01:05\", \"products\": [\"Microsoft Edge\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "controls[0].ui; Governance guidance; Governance controls table",
+      "type": "admin-path",
+      "claim": "Group Policy exposes Enable tab organization suggestions under Administrative Templates > Microsoft Edge.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/tabservicesenabled",
+      "quote": "Group Policy (ADMX) info; GP name: Enable tab organization suggestions; GP path (Mandatory): Administrative Templates/Microsoft Edge",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[0].api; Governance guidance; Governance controls table",
+      "type": "command",
+      "claim": "The registry setting is TabServicesEnabled, REG_DWORD, under SOFTWARE\\Policies\\Microsoft\\Edge.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/tabservicesenabled",
+      "quote": "Path (Mandatory): SOFTWARE\\Policies\\Microsoft\\Edge; Value name: TabServicesEnabled; Value type: REG\\_DWORD",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[1].ui; Governance guidance; Governance controls table",
+      "type": "admin-path",
+      "claim": "Group Policy exposes Enable Workspaces under Administrative Templates > Microsoft Edge > Edge Workspaces settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeworkspacesenabled",
+      "quote": "Group Policy (ADMX) info; GP name: Enable Workspaces; GP path (Mandatory): Administrative Templates/Microsoft Edge/Edge Workspaces settings",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "The registry setting is EdgeWorkspacesEnabled, REG_DWORD, under SOFTWARE\\Policies\\Microsoft\\Edge.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeworkspacesenabled",
+      "quote": "Path (Mandatory): SOFTWARE\\Policies\\Microsoft\\Edge; Value name: EdgeWorkspacesEnabled; Value type: REG\\_DWORD",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "Tab organization is on by default without administrator action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/legal/microsoft-edge/privacy",
+      "quote": "The Microsoft Edge Tab organization behavior is turned on by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Licensing is unknown because no suggestion-specific licence has been published.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-workspaces",
+      "quote": "Users must have access to a OneDrive for Business license to create an Edge Workspace.",
+      "severity": "minor",
+      "fix": "For the Workspace portion, record licensing.model as included and qualify licensing.notes: 'Creating enterprise Edge Workspaces requires access to a OneDrive for Business license. Licensing specific to tab organization suggestions is not yet published (November 2026).' Add https://learn.microsoft.com/deployedge/microsoft-edge-workspaces to sources and give the same qualification in Cost and licensing; do not imply the Workspace prerequisite applies to ordinary tab groups."
+    },
+    {
+      "n": 18,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The cited feature documentation and roadmap name no suggestion-specific licence, price or meter.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Edge tab organization suggestions licensing price meter license included'; read TabServicesEnabled, Edge 155 Stable notes, privacy Tab organization, roadmap and Workspaces prerequisites. No suggestion-specific licence, price or meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Risk assessment; controls[0].governs",
+      "type": "behaviour",
+      "claim": "When TabServicesEnabled is enabled or unconfigured, tab-group creation and certain Group Similar Tabs features send tab data to the service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/tabservicesenabled",
+      "quote": "If you enable or don't configure this policy, when a user creates a tab group or activates certain \"Group Similar Tabs\" features Microsoft Edge sends tab data to its tab organization service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "summary; What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "The transmitted tab data includes URLs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/tabservicesenabled",
+      "quote": "This data includes URLs, page titles, and existing group information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "summary; What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "The transmitted tab data includes page titles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/tabservicesenabled",
+      "quote": "This data includes URLs, page titles, and existing group information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "The transmitted tab data includes existing group information.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/tabservicesenabled",
+      "quote": "This data includes URLs, page titles, and existing group information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Why it matters; Risk assessment; Governance guidance; rationale: risk",
+      "type": "applicability",
+      "claim": "Disabling TabServicesEnabled stops data being sent to the tab organization service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/tabservicesenabled",
+      "quote": "If you disable this policy, no data is sent to the tab organization service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[0].note; Scope; Governance controls table",
+      "type": "availability",
+      "claim": "TabServicesEnabled supports Edge on Windows version 113 or later.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/tabservicesenabled",
+      "quote": "Windows: ≥ 113",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[0].note; Scope; Governance controls table",
+      "type": "availability",
+      "claim": "TabServicesEnabled supports Edge on macOS version 113 or later.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/tabservicesenabled",
+      "quote": "macOS: ≥ 113",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "TabServicesEnabled is unsupported on Android.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/tabservicesenabled",
+      "quote": "Android: Not supported",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "TabServicesEnabled is unsupported on iOS.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/tabservicesenabled",
+      "quote": "iOS: Not supported",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "TabServicesEnabled supports mandatory policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/tabservicesenabled",
+      "quote": "Can be mandatory: Yes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "TabServicesEnabled cannot be deployed as a recommended policy that users may override.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/tabservicesenabled",
+      "quote": "Can be recommended: No; GP path (Recommended): N/A",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[0].note; Governance guidance: After rollout; Governance controls table",
+      "type": "behaviour",
+      "claim": "TabServicesEnabled refreshes dynamically without a browser restart.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/tabservicesenabled",
+      "quote": "Dynamic Policy Refresh: Yes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[0].note; Scope; Governance controls table",
+      "type": "applicability",
+      "claim": "TabServicesEnabled applies per profile.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/tabservicesenabled",
+      "quote": "Per Profile: Yes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[0].note; Risk assessment; Scope; Governance controls",
+      "type": "applicability",
+      "claim": "TabServicesEnabled does not apply to profiles signed in with a Microsoft account.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/tabservicesenabled",
+      "quote": "Applies to a profile that is signed in with a Microsoft account: No",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[0].note; Governance guidance: At rollout; Governance controls table",
+      "type": "command",
+      "claim": "The macOS preference key is TabServicesEnabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/tabservicesenabled",
+      "quote": "Mac information and settings; Preference Key name: TabServicesEnabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[1].governs; controls[1].note; Scope; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "Disabling EdgeWorkspacesEnabled removes access to Workspaces altogether rather than only organization suggestions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeworkspacesenabled",
+      "quote": "If you disable this policy, users won't be able to access the Microsoft Edge Workspaces feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "EdgeWorkspacesEnabled requires a browser restart.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeworkspacesenabled",
+      "quote": "Dynamic Policy Refresh: No - Requires browser restart",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[1].note; Governance controls",
+      "type": "applicability",
+      "claim": "EdgeWorkspacesEnabled does not apply to profiles signed in with a Microsoft account.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeworkspacesenabled",
+      "quote": "Applies to a profile that is signed in with a Microsoft account: No",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing; Risk assessment; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The AI-assisted service has three listed endpoints under edge.microsoft.com/taggrouptitlegeneration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-security-endpoints",
+      "quote": "https://edge.microsoft.com/taggrouptitlegeneration/api/TitleGeneration/gen/\nhttps://edge.microsoft.com/taggrouptitlegeneration/api/AutoGrouping/groupingacstreaming\nhttps://edge.microsoft.com/taggrouptitlegeneration/api/AutoNaming/workspaceautonaming",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The service automatically names tab groups and Workspaces on creation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-security-endpoints",
+      "quote": "These endpoints support auto-naming tab groups and Workspaces on creation",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What's changing; Risk assessment; Open questions",
+      "type": "behaviour",
+      "claim": "The service automatically assigns Workspace emojis on creation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-security-endpoints",
+      "quote": "auto-assigning Workspace emojis upon creation",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The service supports automatic grouping of tabs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-security-endpoints",
+      "quote": "and auto-grouping tabs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Edge also sends information identifying which tabs opened another tab.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/legal/microsoft-edge/privacy",
+      "quote": "Microsoft Edge also sends information about which tabs opened another tab",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Edge also sends the time each tab was opened.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/legal/microsoft-edge/privacy",
+      "quote": "and a timestamp of when a tab was opened.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Microsoft deletes transmitted tab information immediately after processing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/legal/microsoft-edge/privacy",
+      "quote": "All tab information that's sent to Microsoft is deleted immediately after processing occurs. No data is stored for any period of time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "What's changing; Governance guidance; Governance controls",
+      "type": "admin-path",
+      "claim": "The privacy statement lets users turn off Organize your tabs in Search and connected experiences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/legal/microsoft-edge/privacy",
+      "quote": "Select **Search and connected experiences**.\nFor these settings, Edge may use web services to improve your browsing experience.\nTurn off the **Organize your tabs** toggle.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Users start organizing all tabs through the Organize tabs dialog and confirm using Group tabs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/legal/microsoft-edge/privacy",
+      "quote": "The **Organize tabs** dialog opens.\nMake any adjustments, and then click the **Group tabs** button.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not separately documented the data sent for Workspace naming and emoji suggestions.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Edge Workspace auto naming emoji data sent privacy tab organization'; read privacy Tab organization and Workspaces, Workspaces documentation, endpoints and Edge 155 notes. No separate naming/emoji request payload documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Governance guidance: At rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist directs readers to the user toggle, but that control has no row in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Tell users where the user toggle sits (Privacy, search, and services > Search and connected experiences) if you leave the policy unconfigured. The controls table lists only TabServicesEnabled and EdgeWorkspacesEnabled.",
+      "severity": "minor",
+      "fix": "Remove the At rollout checklist bullet beginning 'Tell users where the user toggle sits'; its supported user-setting information already appears in What's changing and Governance controls."
+    },
+    {
+      "n": 48,
+      "where": "What's changing; Scope; Why it matters",
+      "type": "behaviour",
+      "claim": "The tab organization enhancements shipped in Stable version 155.0.4283.45.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-archive-stable-channel",
+      "quote": "Version 155.0.4283.45: October 08, 2026 (Stable) - Main Release; Tab organization enhancements",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "The Stable release containing the enhancements is dated October 08, 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-archive-stable-channel",
+      "quote": "Version 155.0.4283.45: October 08, 2026 (Stable) - Main Release",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Edge 116 already offered tab-group naming and Group Similar Tabs controlled by TabServicesEnabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-archive-stable-channel",
+      "quote": "Microsoft Edge can automatically generate a relevant name for the Tab Group. Furthermore, Microsoft Edge can suggest grouping for all of your tabs by using the \"Group Similar Tabs\" feature in the Tab Action menu.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Why it matters",
+      "type": "date",
+      "claim": "The Edge 116 release notes describing the existing tab organization feature date from August 2023.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-archive-stable-channel",
+      "quote": "Version 116.0.1938.62: August 25, 2023",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Edge Workspaces are shared sets of browser tabs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/legal/microsoft-edge/privacy",
+      "quote": "The Microsoft Edge Workspaces feature allows you to easily organize and share your browsing tasks with collaborators via customizable, shareable browsing windows. Each workspace shares favorites, a set of workspace tabs, and history",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Microsoft stores tab information sent for tab organization for no period of time.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/legal/microsoft-edge/privacy",
+      "quote": "No data is stored for any period of time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "With no configured policy, users can turn off tab organization using the Organize your tabs toggle.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/legal/microsoft-edge/privacy",
+      "quote": "To turn off Microsoft Edge Tab organization behavior: ... Turn off the **Organize your tabs** toggle.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-28T02:20:28.029Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=570443",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/tabservicesenabled",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/legal/microsoft-edge/privacy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/microsoft-edge-security-endpoints",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-archive-stable-channel",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeworkspacesenabled",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether Edge sends tab data to its tab organization service for grouping and naming suggestions",
+        "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/tabservicesenabled",
+        "reachable": true,
+        "segments": [
+          "Administrative Templates",
+          "Microsoft Edge",
+          "Enable tab organization suggestions"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether Edge sends tab data to its tab organization service for grouping and naming suggestions",
+        "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/tabservicesenabled",
+        "reachable": true,
+        "token": "Registry value",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether users can access Edge Workspaces at all",
+        "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeworkspacesenabled",
+        "reachable": true,
+        "segments": [
+          "Administrative Templates",
+          "Microsoft Edge",
+          "Edge Workspaces settings",
+          "Enable Workspaces"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether users can access Edge Workspaces at all",
+        "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeworkspacesenabled",
+        "reachable": true,
+        "token": "Registry value",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}
