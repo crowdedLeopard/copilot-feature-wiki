@@ -92,6 +92,21 @@ export const STANDARD_DATE = '2026-11-16';
 export const GRACE_EXISTING = (process.env.VERIFY_GRACE_EXISTING ?? '0') === '1';
 /** A verified page is checked again after this many days even if nothing changed. */
 export const MAX_AGE_DAYS = Number(process.env.VERIFY_MAX_AGE_DAYS || VERIFICATION.recheckDays || 90);
+/** Once the same text has passed CLEAN_PASSES checks in a row, its time-based re-check moves to SETTLED_AGE_DAYS. */
+export const CLEAN_PASSES = Number(process.env.VERIFY_CLEAN_PASSES || VERIFICATION.cleanPasses || 2);
+export const SETTLED_AGE_DAYS = Number(process.env.VERIFY_SETTLED_AGE_DAYS || VERIFICATION.settledRecheckDays || MAX_AGE_DAYS);
+export function recheckDaysFor(stamp) { return (stamp?.passes || 0) >= CLEAN_PASSES ? SETTLED_AGE_DAYS : MAX_AGE_DAYS; }
+/**
+ * Consecutive passing checks of this version of the text, for the new stamp: a hold resets it, a new version (a
+ * rewrite or a correction, which the check reads as new text) starts again at one, and a stamp from before the
+ * field counts as one pass.
+ */
+export function passStreak(previousStamp, version, status) {
+  const passing = (s) => s === 'verified' || s === 'verified-with-gaps';
+  if (!passing(status)) return 0;
+  if (!previousStamp || !passing(previousStamp.status) || previousStamp.version !== version) return 1;
+  return (previousStamp.passes || 1) + 1;
+}
 
 const FINDINGS_OPEN = '<!-- verifier-findings';
 const FINDINGS_RE = /\n*<!-- verifier-findings[\s\S]*?-->\n*/g;
@@ -591,7 +606,7 @@ export async function recordVerification(slug, rawVerdict, { model = 'unknown', 
   const date = today();
   const report = {
     slug, ...(kind === 'concept' ? { kind } : {}), roadmapId: data.roadmapId ?? null, title: data.title, status, date, version: data.version || 1, model, engine, attempts,
-    standard: STANDARD_HASH, writerStandard: WRITER_STANDARD_HASH, verifierVerdict: verdict.verdict, notes,
+    passes: passStreak(data.verification, data.version || 1, status), standard: STANDARD_HASH, writerStandard: WRITER_STANDARD_HASH, verifierVerdict: verdict.verdict, notes,
     hold: status === 'held' ? { reason: parked ? 'parked' : 'failed', since: failedBefore ? (previous.hold?.since || previous.date || date) : date, reasons } : status === 'needs-correction' ? { reason: 'grace', since: date, reasons } : null,
     counts, summary: verdict.summary, claims,
     precheck: pc ? { at: pc.at, summary: pc.summary, linkChecks: pc.linkChecks, controlChecks: pc.controlChecks, roadmapDrift: pc.roadmapDrift } : null,
@@ -604,7 +619,7 @@ export async function recordVerification(slug, rawVerdict, { model = 'unknown', 
   const verification = {
     status, date, version: report.version, model, engine,
     claims: counts.claims, confirmed: counts.confirmed, unconfirmed: counts.unconfirmed, contradicted: counts.contradicted, attempts,
-    hash: pageHash(data, cleanBody),
+    passes: report.passes, hash: pageHash(data, cleanBody),
   };
   // Every check is a line in the page's change log, beside the writer's own notes, so the reader can see what
   // changed, when, and what the check made of it. The same note is not written twice.
@@ -717,7 +732,9 @@ export async function writeHeldIndex() {
 /**
  * Why a live page needs the verifier, or null. In order: never checked; its text changed since the check (a new
  * version, or any edit: the stamp carries a hash of what was checked); a Microsoft page it cites changed after the
- * check (the daily source watch, passed in as sourceChangedAt); or the check is older than MAX_AGE_DAYS.
+ * check (the daily source watch, passed in as sourceChangedAt); or the check is older than MAX_AGE_DAYS (SETTLED_AGE_DAYS
+ * once the same text has passed CLEAN_PASSES checks in a row: the time cycle mostly catches our own writing drift, which
+ * two clean passes rule out, while the source watch still catches Microsoft's changes the same day).
  * An archived page is never due: it is kept for reference, out of every list, its cancelled or removed item will
  * drift away from Microsoft's pages, and a correction cannot change its archived state (lifecycle.mjs), so a check
  * could only take it offline. On 19 Nov 2026 the archive edit itself queued a page, the check faulted its cancelled
@@ -730,7 +747,7 @@ export function verificationDue(data, now = Date.now(), { body = null, sourceCha
   if (v.version !== (data.version || 1)) return 'changed-since-check';
   if (body != null && v.hash && pageHash(data, body) !== v.hash) return 'changed-since-check';
   if (sourceChangedAt && sourceChangedAt > v.date) return 'source-changed';
-  if ((now - new Date(v.date).getTime()) / 86400000 > MAX_AGE_DAYS) return 'check-expired';
+  if ((now - new Date(v.date).getTime()) / 86400000 > recheckDaysFor(v)) return 'check-expired';
   return null;
 }
 

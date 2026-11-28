@@ -14,6 +14,8 @@ const features = (await allFeatures()).sort((a, b) => a.data.title.localeCompare
 const concepts = await allConcepts();
 const v = stats.verification ?? { checked: 0, needsCorrection: 0, unchecked: 0, held: held.count };
 const recheckDays = v.recheckDays ?? VERIFICATION.recheckDays;
+const cleanPasses = v.cleanPasses ?? VERIFICATION.cleanPasses ?? 2;
+const settledDays = v.settledRecheckDays ?? VERIFICATION.settledRecheckDays ?? recheckDays;
 const topicLabel = (id: string) => (TOPIC_BY_ID as Record<string, { label: string }>)[id]?.label ?? id;
 const plusDays = (iso: string, days: number) => new Date(new Date(iso).getTime() + days * 86400000).toISOString().slice(0, 10);
 const today = new Date().toISOString().slice(0, 10);
@@ -26,8 +28,9 @@ function nextCheck(d: { verification?: any; version: number; slug: string }): { 
   if (s.version !== d.version) return { text: 'Queued: text changed', cls: 'due' };
   const changed = changedSourcesFor(d.slug, s.date);
   if (changed.length) return { text: `Queued: ${changed.length === 1 ? 'a cited Microsoft page' : `${changed.length} cited Microsoft pages`} changed`, cls: 'due' };
-  const due = plusDays(s.date, recheckDays);
-  return due <= today ? { text: 'Queued: routine re-check', cls: 'due' } : { text: `By ${formatDate(due)}`, cls: '' };
+  const settled = (s.passes ?? 0) >= cleanPasses;
+  const due = plusDays(s.date, settled ? settledDays : recheckDays);
+  return due <= today ? { text: 'Queued: routine re-check', cls: 'due' } : { text: `By ${formatDate(due)}${settled ? ' (settled)' : ''}`, cls: '' };
 }
 const rows: Row[] = features.map((f) => {
   const d = f.data;
@@ -55,7 +58,7 @@ const conceptRows = concepts.map((c) => ({ slug: c.data.slug, title: c.data.titl
     <div class="article-head" style="padding-bottom:1rem">
       <div class="eyebrow"><span>Accuracy</span><span class="sep"></span><span>As of {formatDate(stats.generated)}</span></div>
       <h1 class="display">Is it correct?</h1>
-      <p class="standfirst">Every briefing is checked by a second model, in a fresh session, statement by statement against the roadmap entry and Microsoft Learn before it is published, and again whenever its text changes, whenever a Microsoft page it cites changes, and in any case every {recheckDays} days. A page that fails is taken offline until it is corrected. This page shows where every briefing stands.</p>
+      <p class="standfirst">Every briefing is checked by a second model, in a fresh session, statement by statement against the roadmap entry and Microsoft Learn before it is published, and again whenever its text changes, whenever a Microsoft page it cites changes, and in any case every {recheckDays} days, or every {settledDays} days once the same text has passed {cleanPasses} checks in a row (marked "settled" below). A page that fails is taken offline until it is corrected. This page shows where every briefing stands.</p>
       <div class="stats" style="margin-top:1.5rem">
         <div class="stat"><b>{features.length}</b><span>live briefings</span></div>
         <div class="stat"><b>{v.checked}</b><span>passed the check</span></div>

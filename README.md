@@ -122,7 +122,7 @@ manual and the system prompt, and an append-only log records every run.
    continuous: a page is checked again whenever its text changes (the stamp carries a hash of what
    was checked), whenever a Microsoft page it cites changes (a daily source watch re-reads every
    cited `learn.microsoft.com` page, no model, `SOURCE_WATCH=off` skips it), and in any case every
-   7 days (`VERIFICATION.recheckDays` in `config/taxonomy.mjs`). Every check is written into the
+   7 days (`VERIFICATION.recheckDays` in `config/taxonomy.mjs`; 30 days once the same text has passed twice in a row, `settledRecheckDays`). Every check is written into the
    page's change log, and the site's Accuracy page lists every page's state and next check. Checks run `VERIFY_PARALLEL`
    (3) at a time, and the verifier stops starting sessions after `VERIFY_RUN_MINUTES` (75), so the
    run always reaches lint, index and the commit; pages it did not reach are held or stay unchecked.

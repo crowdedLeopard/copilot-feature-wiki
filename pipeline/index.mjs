@@ -73,6 +73,8 @@ async function main() {
       // Pages whose check is due again now (text changed, a cited Microsoft page changed, or the check is old).
       due: pages.filter((p) => p.data.verification && verificationDue(p.data, Date.now(), { body: p.body, sourceChangedAt: sourceChanges.get(p.slug) || null })).length,
       recheckDays: VERIFICATION.recheckDays,
+      cleanPasses: VERIFICATION.cleanPasses,
+      settledRecheckDays: VERIFICATION.settledRecheckDays,
       sourcesWatched: Object.keys(sources.sources || {}).length,
       sourcesChecked: sources.generated,
     },
