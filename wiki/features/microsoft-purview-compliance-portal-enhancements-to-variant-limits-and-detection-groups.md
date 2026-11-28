@@ -55,6 +55,9 @@ sources:
   - title: "Who can configure Insider Risk Management policies and settings (PowerShell)"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember"
     kind: "learn"
+  - title: "Configure inline alert customization in Insider Risk Management"
+    url: "https://learn.microsoft.com/purview/insider-risk-management-settings-inline-alert-customization"
+    kind: "learn"
 videos: []
 related: ["insider-risk-management","microsoft-purview-compliance-portal-insider-risk-management-recommended-thresholds","microsoft-purview-compliance-portal-insider-risk-management-bring-your-own-detections","role-groups","classifiers"]
 controls:
@@ -110,19 +113,23 @@ changes:
     note: "Corrected after review: default state is now Not stated, as Microsoft has not said what happens on arrival; detection group path extended to the Add domains field; impact rationale narrowed."
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 64 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-28"
+    note: "Corrected after review: the role group sentence no longer says configuration is limited to two role groups; the At rollout step now gives the full documented domain detection group path."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 62 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-28"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 64
-  confirmed: 63
+  claims: 62
+  confirmed: 62
   unconfirmed: 0
-  contradicted: 1
-  attempts: 3
-  hash: "678e4cbfeecc6fc48aeb091c95ca31ee"
+  contradicted: 0
+  attempts: 0
+  hash: "734ebbc23d53d1c19db9f815ba1edae2"
 ---
 
 ## What's changing
@@ -147,7 +154,7 @@ The flip side is that a variant set to ignore activity involving its groups, or 
 - Variants and detection groups narrow or widen what existing indicators score.
 
 **Security & identity**
-- Configuring policies and settings is limited to the *Insider Risk Management* and *Insider Risk Management Admins* role groups (and the Entra and Purview roles the permissions page lists). Keep membership small, since these roles can now exclude far more activity from scoring.
+- Members of the *Insider Risk Management* and *Insider Risk Management Admins* role groups can configure policies and settings; the Entra and Purview administrative roles listed on the permissions page have the same solution permissions as *Insider Risk Management Admins*. Keep membership small, since these roles can now exclude far more activity from scoring.
 
 **Autonomy & actions**
 - When variants are added to policies, the dashboard generates alerts.
@@ -176,7 +183,7 @@ The Get started page also states that some indicators are available only with Pu
 - Confirm who sits in the *Insider Risk Management* and *Insider Risk Management Admins* role groups, since both can change variants and detection groups.
 
 ### At rollout
-- Merge split detection groups into single groups of up to 500 items under Insider Risk Management > Settings > Detection groups, and update the variants that used them.
+- Consolidate split domain detection groups into single groups of up to 500 items under Microsoft Purview portal > Insider Risk Management > Settings > Detection groups > Type > Domains > New domain group > Add domains, and update the variants that used them.
 - Add new variants alongside their built-in indicator in the same policy, as Microsoft suggests, before switching to the variant alone.
 
 ### After rollout
@@ -212,11 +219,9 @@ cost: Low. Insider Risk Management comes with the Microsoft 365 subscriptions th
 impact: Low. The higher limits concern administrator configuration of indicator variants and detection groups.
 -->
 
-<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Security & identity / role: Configuring policies and settings is limited to the Insider Risk Management and Insider Risk Management Admins role groups and the listed Entra and Purview administrative roles. | Found: You can enable inline alert customization to allow users assigned to the Insider Risk Management Analysts and Insider Risk Management Investigators role groups to edit policy thresholds and to disable specific indicators. | Fix: Replace the first sentence with 'Members of the Insider Risk Management and Insider Risk Management Admins role groups can configure policies and settings; the Entra and Purview administrative roles listed on the permissions page have the same solution permissions as Insider Risk Management Admins.' This removes the unsupported exclusivity without adding a new control. | Source: https://learn.microsoft.com/purview/insider-risk-management-settings-inline-alert-customization
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].ui / admin-path: Microsoft Purview portal > Insider Risk Management > Policies > policy > Edit policy > Indicators reaches policy indicator selection. | Found: Go to the specific policy on the Policies page, select Edit policy, go to the Indicators page, and then select more indicators. | Fix: Extend the path to 'Insider Risk Management > Policies > policy > Edit policy > Indicators > built-in indicator > variant list > variant checkbox'. Keep the existing note. Add https://learn.microsoft.com/purview/insider-risk-management-policies to sources for the entry route; the already cited policy indicators page documents the variant-list steps. | Source: https://learn.microsoft.com/purview/insider-risk-management-best-practices-alert-tuning
-- [supported, minor] Governance guidance: At rollout / admin-path: Insider Risk Management > Settings > Detection groups reaches detection-group management. | Found: In Insider Risk Management settings, select Detection groups. ... under Type, select Domains. ... select New domain group. ... In the Add domains field, enter a domain, then press Enter. | Fix: Replace the abbreviated path in this bullet with 'Microsoft Purview portal > Insider Risk Management > Settings > Detection groups > Type > Domains > New domain group > Add domains' and change 'Merge split detection groups' to 'Consolidate split domain detection groups' so the advice uses the fully documented domain example already in the table. | Source: https://learn.microsoft.com/purview/insider-risk-management-settings-detection-groups
+- [supported, minor] controls[2].ui; Governance controls table / admin-path: Policy indicator selection is reached at Microsoft Purview portal > Insider Risk Management > Policies > policy > Edit policy > Indicators. | Found: Go to the specific policy on the Policies page, select Edit policy, go to the Indicators page, and then select more indicators. | Fix: Extend controls[2].ui.path and the rendered path to 'Insider Risk Management > Policies > policy > Edit policy > Indicators > built-in indicator > variant list > variant checkboxes'. These last steps are documented at https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators; retain the existing note. | Source: https://learn.microsoft.com/purview/insider-risk-management-best-practices-alert-tuning
+- [supported, minor] controls[3].ui; Governance controls table / admin-path: Role membership is reached at Microsoft Purview portal > Settings > Roles and groups > Roles groups > Insider Risk Management > Edit > Choose users. | Found: Select Settings in the upper-right corner of the page, select Roles and groups, then select Roles groups in the left navigation pane. Select the Insider Risk Management role group, then select Edit. Select Choose users | Fix: Keep the cited path, but append to controls[3].note: 'Microsoft documentation differs: the general Purview permissions page instead gives Settings > Roles and scopes > Role groups > Insider Risk Management > Edit > Choose users.' Cite https://learn.microsoft.com/purview/purview-permissions in sources and link that sentence to it. | Source: https://learn.microsoft.com/purview/insider-risk-management-permissions
 -->

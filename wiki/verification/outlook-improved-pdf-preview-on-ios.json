@@ -1,0 +1,606 @@
+{
+  "slug": "outlook-improved-pdf-preview-on-ios",
+  "roadmapId": 564970,
+  "title": "Outlook for iOS: PDF previewer opens sensitivity-label protected PDFs and adds a navigation toolbar",
+  "status": "verified-with-gaps",
+  "date": "2026-11-28",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 46,
+    "confirmed": 46,
+    "unconfirmed": 0,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 0,
+    "minor": 3
+  },
+  "summary": "The roadmap facts and PDF encryption command are supported, and targeted searches confirmed the feature-specific documentation gaps. The licensing model understates the published subscription requirements, and the briefing should acknowledge the Outlook FAQ's older statement that native attachment preview does not support rights management.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Scope; Governance guidance",
+      "type": "record",
+      "claim": "The Outlook for iOS PDF previewer now supports sensitivity-label protected PDFs.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "MIP-label protected PDFs are now supported in the PDF previewer along with a built-in control's toolbar for easier navigation.",
+      "severity": "minor",
+      "fix": "Add to What's changing: 'The Outlook for iOS and Android FAQ still says iOS native attachment preview does not support rights management and reports an error for rights-protected attachments; the roadmap now describes protected-PDF support.' The FAQ passage is at https://learn.microsoft.com/exchange/clients-and-mobile-in-exchange-online/outlook-for-ios-and-android/outlook-for-ios-and-android-faq#architecture-and-security."
+    },
+    {
+      "n": 2,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "The PDF previewer gains a built-in toolbar for easier document navigation.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "along with a built-in control's toolbar for easier navigation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "MIP means Microsoft Information Protection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/information-protection/what-is-information-protection",
+      "quote": "Are you looking for Microsoft Purview Information Protection, formerly Microsoft Information Protection (MIP)?",
+      "severity": "minor",
+      "fix": "Replace '(MIP is Microsoft Information Protection)' with '(MIP is the former name Microsoft Information Protection, now Microsoft Purview Information Protection)' and add https://learn.microsoft.com/azure/information-protection/what-is-information-protection to sources."
+    },
+    {
+      "n": 4,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap product is Outlook.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Outlook\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists iOS and names no Android change.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"iOS\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target date is July CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"July CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2026-10-05T23:03:05.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-05T23:03:05\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: defaultState; What's changing; Why it matters; Open questions",
+      "type": "default",
+      "claim": "The feature's default state is unknown; Microsoft has not stated whether every user gets it on arrival.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Outlook iOS improved PDF preview MIP label protected PDF previewer default version usage rights admin disable licensing meter'; '\"Outlook\" \"iOS\" \"PDF\" \"preview\" \"default\"'. Read roadmap, app configuration, label support and mobile release-note excerpts; no default found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is unknown.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/clients-and-mobile-in-exchange-online/outlook-for-ios-and-android/outlook-for-ios-and-android-faq",
+      "quote": "commercial users require an Office 365 or Microsoft 365 subscription that includes the Office desktop applications: Microsoft 365 Apps for Business, Microsoft 365 Business Standard, Microsoft 365 Apps for enterprise, Office 365 Enterprise E3, Office 365 Enterprise E5",
+      "severity": "minor",
+      "fix": "Set licensing.model to 'included'. Prepend to licensing.notes: 'The Outlook mobile FAQ documents commercial-use subscriptions including Office 365 Enterprise E3 and E5. It also allows Office 365 Enterprise E1, F1 and A1, Microsoft 365 Business Basic and Exchange Online-only subscriptions on devices with integrated screens 10.1 inches diagonally or less.' Retain the existing previewer-specific licensing gap and Information Protection licensing notes; the FAQ is already cited."
+    },
+    {
+      "n": 14,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft publishes no licence specific to previewing protected PDFs in Outlook for iOS.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Outlook iOS sensitivity label protected PDF preview licensing pricing meter'. Read sensitivity-label support, Purview service description Information Protection section and Get started with sensitivity labels licensing section; general subscriptions, no previewer-specific licence found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No meter is documented for this previewer.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Outlook iOS sensitivity label protected PDF preview licensing pricing meter'. Read Purview service description Information Protection and Get started with sensitivity labels licensing/billing sections; no Outlook PDF preview meter found; Data Map billing concerns non-Microsoft 365 data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[0].ui and api; summary; Governance controls",
+      "type": "absence",
+      "claim": "No admin UI switch or API/app configuration key for Outlook for iOS PDF preview availability is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Outlook iOS PDF preview disable admin app configuration PowerShell Graph attachment preview'. Read Outlook mobile app configuration settings and configuration-key tables, Exchange cmdlet reference and policy search excerpts; preview-blocking results concern Windows/OWA, not iOS.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[1].ui",
+      "type": "absence",
+      "claim": "No admin UI setting for EnablePdfEncryption is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'EnablePdfEncryption enable PDF attachment encryption admin center UI setting'. Read Message encryption FAQ, Set-IRMConfiguration reference and Automatically encrypt PDF documents with Exchange Online; each documents PowerShell, with no admin UI route found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[1].api; Governance guidance; Governance controls",
+      "type": "command",
+      "claim": "Set-IRMConfiguration -EnablePdfEncryption $true enables PDF attachment encryption using Microsoft Purview Message Encryption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-irmconfiguration",
+      "quote": "The EnablePdfEncryption parameter specifies whether to enable the encryption of PDF attachments using Microsoft Purview Message Encryption. Valid values are: - $true: Messages that contain PDF attachments can be encrypted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[1].scope",
+      "type": "applicability",
+      "claim": "The PDF attachment encryption setting has tenant scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-irmconfiguration",
+      "quote": "Use the Set-IRMConfiguration cmdlet to configure Information Rights Management (IRM) features on your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[1].note; Governance controls",
+      "type": "availability",
+      "claim": "EnablePdfEncryption is available in Exchange Online, not on-premises Exchange.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-irmconfiguration",
+      "quote": "### -EnablePdfEncryption\nApplicable: Exchange Online, Built-in security add-on for on-premises mailboxes\nThis parameter is available only in the cloud-based service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "Enabling PDF attachment encryption needs at least the Information Rights Management role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ome-faq",
+      "quote": "To enable encryption for PDF attachments, using a work or school account that has the Information Rights Management role at a minimum in your tenant, run the following command in Exchange Online PowerShell:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "A PDF automatically encrypted with the encrypted email inherits that email's permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/rights-management-usage-rights",
+      "quote": "When Exchange Online uses Microsoft Purview Message Encryption, you can automatically encrypt PDF documents when they're attached to an encrypted email. The document inherits the same permissions as those for the email message.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[1].note; Governance controls",
+      "type": "applicability",
+      "claim": "The documented PDF encryption configuration concerns Message Encryption rather than PDF encryption inherited from a labelled message.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "Outlook doesn't currently support PDF attachments inheriting encryption from a labeled message.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Exchange decrypts protected messages server-side before passing them to Outlook for iOS and Android.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/clients-and-mobile-in-exchange-online/outlook-for-ios-and-android/outlook-for-ios-and-android-faq",
+      "quote": "Exchange decrypts any protected messages before passing them to the client. In other words, decryption is performed server-side.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The Outlook for iOS and Android FAQ says the app does not decrypt protected messages itself.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/clients-and-mobile-in-exchange-online/outlook-for-ios-and-android/outlook-for-ios-and-android-faq",
+      "quote": "Outlook for iOS and Android doesn't perform any decryption itself.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not documented whether the new protected-PDF previewer decrypts attachments server-side or on the device.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Outlook iOS PDF sensitivity protected preview print copy save share usage rights decryption device server'. Read Outlook FAQ RMS section, sensitivity-label Office support, usage rights and mobile protection excerpts; message decryption is stated, new PDF-preview decryption is not.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity; Scope; Governance guidance",
+      "type": "availability",
+      "claim": "Sensitivity-label support in Outlook for iOS and Android requires a mailbox hosted in Exchange Online.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "For Outlook for Windows, Outlook for iOS and Android, Outlook on the web, and new Outlook for Windows, the mailbox must be hosted in Exchange Online.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Security & identity; Governance guidance",
+      "type": "availability",
+      "claim": "Sensitivity labels are not supported for on-premises mailboxes in Outlook for iOS and Android.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "Sensitivity labels aren't supported for mailboxes that are hosted on-premises.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Why it matters; Risk assessment: Change & support; Governance guidance",
+      "type": "date",
+      "claim": "The Azure Information Protection app for iOS and Android retired between May 30, 2025 and May 30, 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/information-protection/active-directory-rights-manage-mobile-device",
+      "quote": "We're retiring the RMS sharing app for MacOS and the Azure Information Protection app for iOS and Android starting May 30, 2025, and ending May 30, 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Microsoft recommends opening protected non-Office files in other productivity apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/information-protection/active-directory-rights-manage-mobile-device",
+      "quote": "Instead, we recommend opening protected non-Office files in other productivity apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Information Protection benefits include consuming content with sensitivity labels applied.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Users benefit by having the ability to create, manually apply or automatically apply sensitivity labels, and consume content that has sensitivity labels applied.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "End users need appropriate licences to use Information Protection functionality in their client applications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Similarly, end users also need the appropriate licenses to use the functionality in their respective client applications.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The service description lists Manual Sensitivity Labeling as included in the stated Microsoft 365 and Office 365 plans, among others.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "| Feature | Microsoft 365 E5/A5/G5/E3/A3/G3/F1/F3/Business Premium | OneDrive for Business (Plan 2) | Enterprise Mobility + Security E3/E5 | Office 365 E5/A5/E3/A3 | AIP Plan 1, AIP Plan 2|\n| Manual Sensitivity Labeling | Included | Included | Included | Included | Included |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The same service-description section says sensitivity labelling, including automatic or policy-based labelling, requires Microsoft 365 E5 or Microsoft 365 Information Protection and Governance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Sensitivity labeling, including automatic or policy-based labeling, requires a Microsoft 365 E5 license or Microsoft 365 Information Protection and Governance (IPG).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing; Risk assessment: Data exposure; Open questions; rationale: risk",
+      "type": "absence",
+      "claim": "The new Outlook for iOS PDF previewer's implementation of label restrictions on print, copy, save and share is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Outlook iOS PDF sensitivity protected preview print copy save share usage rights decryption device server'. Read usage rights, Office label support and Outlook FAQ passages. General rights are documented, but no implementation description for the new iOS PDF previewer was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What's changing; Scope; Open questions",
+      "type": "absence",
+      "claim": "The minimum Outlook for iOS version for the new protected-PDF previewer is not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Outlook iOS protected PDF preview sensitivity label toolbar release notes July 2026 minimum version'. Read Minimum versions for sensitivity labels Outlook table and Outlook mobile release-note excerpts; listed PDF support concerns Office conversion, not a version for this previewer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe this specific improved protected-PDF preview feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Outlook iOS improved PDF preview MIP label protected PDF previewer default version usage rights admin disable licensing meter'; 'Outlook iOS protected PDF preview sensitivity label toolbar release notes July 2026 minimum version'. Read label support, versions and mobile release-note excerpts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The cited Outlook mobile app configuration keys include no PDF preview key or attachment key beyond the sync window.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Outlook iOS PDF preview disable admin app configuration PowerShell Graph attachment preview'. Read the cited app configuration page's account, general, S/MIME, data-protection and days-based-sync key tables; PDF preview absent, attachment download covered by DaysToSync.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Open questions",
+      "type": "behaviour",
+      "claim": "The Message encryption FAQ's encrypted-attachment preview answer names PDF preview for Outlook on the web, not Outlook for iOS.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ome-faq",
+      "quote": "Outlook supports preview of Office documents (docx, xlsx, pptx, doc, xls, ppt). Outlook on the web supports preview of Office documents (docx, xlsx, pptx) and PDF.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap description introduces a PDF viewer enhancement without describing a new storage or transfer destination.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "MIP-label protected PDFs are now supported in the PDF previewer along with a built-in control's toolbar for easier navigation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap describes preview and navigation, not an automated action.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "MIP-label protected PDFs are now supported in the PDF previewer along with a built-in control's toolbar for easier navigation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "A sensitivity label can restrict printing through its usage rights.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/rights-management-usage-rights",
+      "quote": "Common name: Print Encoding in policy: PRINT | Enables the options to print the content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "A sensitivity label can restrict copying through its usage rights.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/rights-management-usage-rights",
+      "quote": "Common name: Copy Encoding in policy: EXTRACT | Enables options to copy data (including screen captures) from the item into the same or another item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "No source states that this feature changes existing sensitivity-label behaviour.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Outlook iOS PDF sensitivity protected preview print copy save share usage rights decryption device server'. Read roadmap, usage rights, Office label support and Outlook FAQ excerpts; new preview support is described, not a change to existing label semantics.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "No Message Center post was supplied for this item.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: supplied roadmap record, writer output and pre-check file for a Message Center post. None was supplied; this confirms the task-input statement, not the absence of a Microsoft notice elsewhere.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "summary; Scope; Governance guidance",
+      "type": "availability",
+      "claim": "Outlook for iOS covers both iPhone and iPad devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/clients-and-mobile-in-exchange-online/outlook-for-ios-and-android/outlook-for-ios-and-android-faq",
+      "quote": "Enabling \"Save Contacts\" simultaneously on multiple devices (such as an iPad and an iPhone).",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-28T09:36:03.065Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 0,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=564970",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/ome-faq",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/rights-management-usage-rights",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/exchange/clients-and-mobile-in-exchange-online/outlook-for-ios-and-android/outlook-for-ios-and-android-faq",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/exchange/clients-and-mobile-in-exchange-online/outlook-for-ios-and-android/outlook-for-ios-and-android-configuration-with-microsoft-intune",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/azure/information-protection/active-directory-rights-manage-mobile-device",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-irmconfiguration",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether PDF attachments on messages encrypted with Microsoft Purview Message Encryption are encrypted too",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-irmconfiguration",
+        "reachable": true,
+        "token": "Set-IRMConfiguration",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

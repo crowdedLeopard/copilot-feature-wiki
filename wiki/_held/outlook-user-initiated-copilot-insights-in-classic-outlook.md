@@ -37,7 +37,7 @@ sources:
   - title: "Agent 365 Package Management API overview"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview"
     kind: "learn"
-  - title: "Whether users can use the Copilot app in Outlook and the Microsoft Copilot app at all (Microsoft 365 admin center)"
+  - title: "Apps for Microsoft 365 that work across application hosts"
     url: "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365"
     kind: "learn"
   - title: "Which users hold a Microsoft 365 Copilot licence (Microsoft 365 admin center)"
@@ -82,19 +82,23 @@ changes:
     note: "New briefing: Explain This for selected email text in classic Outlook for Windows, on by default, with the broader Copilot controls that apply."
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 57 statements contradicted, 4 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-28"
+    note: "Corrected unsupported statements about selected-text processing, data access, execution identity and permissions; added the Integrated Apps page's Teams scope note and extended the licence-check path to the product."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 53 statements contradicted, 3 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-28"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 57
-  confirmed: 53
-  unconfirmed: 4
+  claims: 53
+  confirmed: 50
+  unconfirmed: 3
   contradicted: 0
-  attempts: 1
-  hash: "1ea120bcf47e8540212f16c0bf2aab88"
+  attempts: 2
+  hash: "c552bd1f06a86a702c1d846b9dbdb5f8"
 ---
 
 ## What's changing
@@ -107,7 +111,7 @@ The roadmap item is **Rolling out**, with a preview date of May CY2026 and a tar
 
 ## Why it matters
 
-This is a new way into Copilot, not new access. Nothing reaches Copilot unless a user selects it and asks, and the notice says existing protections still apply. But the button appears as soon as a user highlights text, so it will be noticed in organisations that have kept Copilot use low-key or that have Microsoft 365 Copilot (Basic) users in classic Outlook.
+This is a new way to invoke Copilot from selected email text. Users invoke this feature by selecting email text and asking Copilot for insights, and the notice says existing protections still apply. But the button appears as soon as a user highlights text, so it will be noticed in organisations that have kept Copilot use low-key or that have Microsoft 365 Copilot (Basic) users in classic Outlook.
 
 If nobody acts, eligible users have the button from the general availability rollout onwards. Microsoft's advice for organisations that do not want this is to remove or restrict Copilot capabilities. Microsoft Learn documents no setting that turns off this one feature while leaving the rest of Copilot in Outlook on, so the decision is about Copilot as a whole.
 
@@ -117,7 +121,7 @@ If nobody acts, eligible users have the button from the general availability rol
 - Selected email text is sent to Copilot to generate insights. The notice says existing Microsoft 365 security, compliance and data protection policies continue to apply. No new data source is described.
 
 **Security & identity**
-- No change described: the feature runs for the signed-in user inside Outlook, and no new add-in or permission is involved.
+- No change described: the feature is built into the Outlook experience and does not require a separate add-in.
 
 **Autonomy & actions**
 - No change: Copilot answers only when the user selects text and asks. Nothing in the sources describes it acting on the mailbox.
@@ -145,7 +149,7 @@ If nobody acts, eligible users have the button from the general availability rol
 ## Governance guidance
 
 ### Before rollout
-- Confirm which classic Outlook for Windows users hold a Microsoft 365 Copilot licence (Microsoft 365 admin center > Billing > Licenses), because the notice ties the feature to Copilot capabilities.
+- Confirm which classic Outlook for Windows users hold a Microsoft 365 Copilot licence (Microsoft 365 admin center > Billing > Licenses > product), because the notice ties the feature to Copilot capabilities.
 - Decide whether any group should not have Copilot in Outlook at all; Microsoft's notice points to removing or restricting Copilot, not to a switch for this feature.
 - Brief the helpdesk on the Explain This button that appears when users highlight email text.
 
@@ -171,7 +175,7 @@ If nobody acts, eligible users have the button from the general availability rol
 </tbody>
 </table>
 
-Microsoft Learn documents no setting, at the time of writing (November 2026), that turns off Explain This alone. The two controls in the table are broader. Microsoft's [Manage Copilot Chat](https://learn.microsoft.com/copilot/manage/manage-copilot-chat) page says blocking the Copilot app through Integrated Apps blocks Copilot in the Microsoft Copilot app, Teams, Outlook and Copilot Chat on the web, including for users assigned a Microsoft 365 Copilot licence; the page does not name the Explain This button. Removing the Microsoft 365 Copilot licence affects only features that need that licence, and which tier this feature belongs to is not yet published. The Integrated Apps controls are only available to Global Administrators; licence assignment needs at least a License Administrator or User Administrator.
+Microsoft Learn documents no setting, at the time of writing (November 2026), that turns off Explain This alone. The two controls in the table are broader. Microsoft's [Manage Copilot Chat](https://learn.microsoft.com/copilot/manage/manage-copilot-chat) page says blocking the Copilot app through Integrated Apps blocks Copilot in the Microsoft Copilot app, Teams, Outlook and Copilot Chat on the web, including for users assigned a Microsoft 365 Copilot licence; the page does not name the Explain This button. The [Integrated Apps management page](https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365) says its changes affect Outlook and the Microsoft Copilot application, while Teams continues to honour Teams admin center settings. Removing the Microsoft 365 Copilot licence affects only features that need that licence, and which tier this feature belongs to is not yet published. The Integrated Apps controls are only available to Global Administrators; licence assignment needs at least a License Administrator or User Administrator.
 
 ## Open questions
 
@@ -181,7 +185,7 @@ Microsoft Learn documents no setting, at the time of writing (November 2026), th
 - Which minimum classic Outlook for Windows build carries the feature? The notice asks only for the latest version.
 
 <!-- rationale
-risk: Low. Copilot only processes text the user chooses to select, and Microsoft's notice says existing Microsoft 365 security, compliance and data protection policies continue to apply.
+risk: Low. Copilot processes user-selected email content to generate insights, and Microsoft's notice says existing Microsoft 365 security, compliance and data protection policies continue to apply.
 cost: Low. The only cost the sources show is helpdesk briefing and user communication; which Copilot licence tier includes this feature is not yet published.
 impact: Medium. Every eligible classic Outlook for Windows user sees a new Explain This button when they highlight email text, and helpdesks will get questions about it.
 -->
@@ -189,11 +193,10 @@ impact: Medium. Every eligible classic Outlook for Windows user sees a new Expla
 <!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] rationale: risk; Why it matters / behaviour: Copilot processes only the text the user chooses to select. | Found: Searched: 'classic Outlook user initiated Copilot insights selected email content only context signed-in user permissions'. Read MC1311978, Copilot overview and privacy page; none states an exclusive selected-text processing boundary for Explain This. | Fix: Replace 'Copilot only processes text the user chooses to select' with 'Copilot processes user-selected email content to generate insights'. In Why it matters, replace 'Nothing reaches Copilot unless a user selects it and asks' with 'Users invoke this feature by selecting email text and asking Copilot for insights'.
-- [unsupported, major] Why it matters / behaviour: This feature introduces no new access to data. | Found: Searched: 'classic Outlook user initiated Copilot insights selected email content only context signed-in user permissions'. Read MC1311978 and Copilot privacy page; continuing security policies do not establish that this feature introduces no new data access. | Fix: Replace 'This is a new way into Copilot, not new access' with 'This is a new way to invoke Copilot from selected email text'.
-- [unsupported, major] Risk assessment: Security & identity / behaviour: The feature runs for the signed-in user inside Outlook. | Found: Searched: 'classic Outlook user initiated Copilot insights selected email content only context signed-in user permissions'. Read MC1311978, overview and privacy page; general user-permission boundaries do not document this feature's execution identity. | Fix: Replace 'the feature runs for the signed-in user inside Outlook' with 'the feature is built into the Outlook experience'.
-- [unsupported, major] Risk assessment: Security & identity / behaviour: No new permission is involved in this feature. | Found: Searched: 'classic Outlook Explain This turn off Copilot permissions no new permissions' and 'user initiated insights Outlook disable permission'. Read MC1311978 and Copilot privacy page; no passage states that no new permission is involved. | Fix: Remove 'or permission' from 'no new add-in or permission is involved'; retain only the supported statement that no separate add-in is required.
+- [unsupported, blocker] Why it matters: first paragraph / availability: The Explain This button will be noticed in organisations that have Microsoft 365 Copilot (Basic) users in classic Outlook. | Found: Searched: classic Outlook 'Explain This' 'User Initiated Insights' license billing Copilot Basic; '"Explain This" "insights" "Outlook" "license"'. Opened Copilot overview and license options; MC1311978 names capabilities, not Basic eligibility. | Fix: Remove 'or that have Microsoft 365 Copilot (Basic) users in classic Outlook' from the first paragraph of Why it matters. Keep the existing statement that eligibility by licence tier is not yet published.
+- [unsupported, major] Risk assessment: Change & support / behaviour: Users may be unable to see Explain This because their Outlook is not up to date. | Found: Searched: '"Explain This" "Outlook" "build"'; Outlook user initiated insights Explain This meter usage charge pricing latest version. Read MC1311978 and Copilot requirements excerpt; no source ties a missing Explain This button to an older build. | Fix: Replace 'Expect questions from users who did not ask for it and from those who cannot see it because their Outlook is not up to date' with 'Expect questions from users who did not ask for it and from those who cannot see it.'
+- [unsupported, blocker] summary; Risk assessment: Change & support / absence: There is no switch for this feature alone, so an organisation that wants it gone has to block or withhold Copilot more broadly. | Found: Searched: classic Outlook Explain This user initiated insights disable policy Cloud Policy PowerShell Exchange; '"Explain This" "policy" Outlook'. Read MC1311978, Manage Copilot Chat and Integrated Apps; none states that a per-feature switch cannot exist. | Fix: Change the summary clause 'there is no switch for this feature alone' to 'Microsoft has not documented a switch for this feature alone'. Replace 'An organisation that wants it gone has to block or withhold Copilot more broadly (see the controls table)' with 'Microsoft advises organisations that do not want access to remove or restrict Copilot capabilities (see the controls table).'
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].note; Governance controls / applicability: Manage Copilot Chat says the Integrated Apps block covers Copilot in Outlook, the Microsoft Copilot app, Teams and the web, including licensed users. | Found: This setting blocks Copilot in the Microsoft Copilot app, Teams, Outlook, and Copilot Chat on the web for all users. | Fix: Keep the cited scope, but add: 'The Integrated Apps management page says its changes affect Outlook and the Microsoft Copilot application, while Teams continues to honour Teams admin center settings.' Cite https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365 for this conflicting scope. | Source: https://learn.microsoft.com/copilot/manage/manage-copilot-chat
-- [supported, minor] Governance guidance: Before rollout, licence check / admin-path: Billing > Licenses is the starting page for checking users' Copilot licence assignments. | Found: In the admin center, go to the Billing > Licenses page. Select a product. Direct user assignments If a license is assigned directly to a user, the user appears individually in the list of assignments for that product. | Fix: Extend the checklist path to 'Microsoft 365 admin center > Billing > Licenses > product' so it reaches the chosen product's assignments. | Source: https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users
+- [supported, minor] front matter: licensing.model; licensing.notes; Cost and licensing; controls[1].note; rationale: cost / licensing: Licensing is unknown because Microsoft has not published whether Explain This requires the Copilot add-on or is available under Basic. | Found: Searched: classic Outlook 'Explain This' 'User Initiated Insights' license billing Copilot Basic. Opened Copilot overview and license options; product-level licensing is published, but neither names this feature or resolves its Basic/Premium tier. | Fix: Set licensing.model to 'included' for a new option within the existing licensed Copilot product, while retaining the narrower tier uncertainty. Use notes: 'Copilot capabilities are available through Microsoft 365 Copilot (Basic) without the Copilot add-on licence and Microsoft 365 Copilot (Premium) with the add-on licence. Microsoft has not published which tier includes Explain This.' Cite https://learn.microsoft.com/copilot/plan/copilot-overview. Do not claim that Basic includes Explain This.
+- [supported, minor] Governance guidance: Before rollout, first bullet / admin-path: Licence assignments can be checked at Microsoft 365 admin center > Billing > Licenses > product. | Found: If a license is assigned directly to a user, the user appears individually in the list of assignments for that product. Group-based assignments If a license is assigned to a group, the group name appears in the list instead of individual users. | Fix: Add to the first Before rollout bullet: 'Direct assignments list users; group-based assignments list groups instead. For group-based assignments, view the group's members at Microsoft 365 admin center > Teams & groups > Active teams & groups.' This qualification is documented at https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users. | Source: https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users
 -->

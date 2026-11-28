@@ -101,19 +101,23 @@ changes:
     note: "Corrected after the independent check: licensing now cites the Forms FAQ's Copilot licence requirement and the government-cloud add-on, cost raised to medium, and Scope names the AI Administrator role."
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 57 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-28"
+    note: "Corrected after the independent check: Scope now names the eligible prerequisite licences Microsoft publishes for the Copilot add-on in the US Government clouds, in place of saying they are not documented."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 66 statements confirmed"
+version: 5
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-28"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 57
-  confirmed: 56
+  claims: 66
+  confirmed: 66
   unconfirmed: 0
-  contradicted: 1
-  attempts: 3
-  hash: "dd086af9bf0673556d4e1597523d5140"
+  contradicted: 0
+  attempts: 0
+  hash: "d783c3a1e683db09f670ec851c55fcbf"
 ---
 
 ## What's changing
@@ -157,7 +161,7 @@ No meter or credit rate for Copilot in Forms is published. Indirect cost is admi
 
 The roadmap item covers GCC, GCC High and DoD, on the Web platform, at General Availability, with status Rolling out and a target of September CY2026.
 
-The Microsoft Copilot service description does not list a Forms row in its feature availability table for the US Government clouds. Whether availability differs between GCC, GCC High and DoD is not stated by Microsoft Learn; the roadmap item lists all three. Microsoft documents AI Administrator as a role for managing all aspects of Microsoft Copilot; no Forms-specific availability switch is documented. Any government-cloud-specific prerequisites are not yet documented.
+The Microsoft Copilot service description does not list a Forms row in its feature availability table for the US Government clouds. Whether availability differs between GCC, GCC High and DoD is not stated by Microsoft Learn; the roadmap item lists all three. Microsoft documents AI Administrator as a role for managing all aspects of Microsoft Copilot; no Forms-specific availability switch is documented. For the US Government clouds, License options for Microsoft Copilot lists the eligible prerequisite plans for the Microsoft Copilot add-on, including Microsoft 365 G5, Microsoft 365 G3, Microsoft 365 F1, Office 365 G5, Office 365 G3, Office 365 G1 and Office 365 F3; the government-cloud feature-by-feature licence split is not specified.
 
 ## Governance guidance
 
@@ -201,10 +205,4 @@ A Microsoft Q&A moderator answer states that Microsoft Forms has no user-facing 
 risk: Medium. Copilot in Forms covers form drafting and the analysis of responses, and Microsoft Learn documents no admin switch for it at the time of writing (November 2026).
 cost: Medium. The Forms FAQ requires a valid Microsoft Copilot licence, offered as an add-on in government clouds, so form owners without it may need licensing. The overview separately lists Basic question drafting; the government-cloud feature split remains unspecified.
 impact: Medium. Form owners, such as survey owners, HR and communications teams, are the potential audience for the new options; Microsoft has not stated the government-cloud eligibility or arrival default.
--->
-
-<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Scope: final sentence / absence: Any government-cloud-specific prerequisites are not yet documented. | Found: The following plans are eligible prerequisite licenses for Microsoft Copilot. ... US Government ... Microsoft 365 G5; Microsoft 365 G3; Microsoft 365 F1 ... Office 365 G5; Office 365 G3; Office 365 G1; Office 365 F3 | Fix: Remove 'Any government-cloud-specific prerequisites are not yet documented.' Microsoft publishes eligible prerequisite licences in the US Government section of https://learn.microsoft.com/copilot/plan/copilot-license-options. Keep the separate, narrower statement that the government-cloud feature-by-feature licence split is not specified. | Source: https://learn.microsoft.com/copilot/plan/copilot-license-options
 -->

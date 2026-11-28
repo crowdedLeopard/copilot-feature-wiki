@@ -94,15 +94,17 @@ changes:
     note: "Corrected the sending-domain admin path to end at Use a custom send-from domain address, and updated the roadmap status in the text to Rolling out."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 57 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 63 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 57
-  confirmed: 57
+  claims: 63
+  confirmed: 63
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -198,8 +200,8 @@ cost: Low. The only cost shown is admin time to set up a custom sending domain; 
 impact: Medium. Event organisers notice it, and recipients get invitation emails; admins see an effect only if the tenant has no custom domain for Microsoft 365 notifications.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].api; Governance controls table / command: Set-CsTeamsEventsPolicy -Identity <policy name> -EventAccessType EveryoneInCompanyExcludingGuests restricts smaller-event attendance to users in the organisation. | Found: To only allow users in your organization to attend events with up to 1,000 attendees created by organizers with this policy, run the following command: Set-CsTeamsEventsPolicy -Identity <policy name> -EventAccessType EveryoneInCompanyExcludingGuests | Fix: Add to Governance controls: 'The Set-CsTeamsEventsPolicy reference still labels Events policy as preview, although the admin guidance documents these settings without that label.' Cite https://learn.microsoft.com/powershell/module/teams/set-csteamseventspolicy, which states 'Note that this policy is currently still in preview.' The printed calls need no change. | Source: https://learn.microsoft.com/microsoftteams/set-up-events
+- [supported, minor] controls[1].api; Governance controls table / command: Set-CsTeamsEventsPolicy -Identity <policy name> -EventAccessType EveryoneInCompanyExcludingGuests restricts smaller-event attendance to users in the organisation. | Found: To only allow users in your organization to attend events with up to 1,000 attendees created by organizers with this policy, run the following command: Set-CsTeamsEventsPolicy -Identity <policy name> -EventAccessType EveryoneInCompanyExcludingGuests | Fix: Add to Governance controls: 'The Set-CsTeamsEventsPolicy reference still labels Events policy as preview, although the admin guidance documents these settings without that label.' Cite https://learn.microsoft.com/powershell/module/teams/set-csteamseventspolicy, which states 'Note that this policy is currently still in preview.' This qualification covers both printed commands; neither call needs changing. | Source: https://learn.microsoft.com/microsoftteams/set-up-events
 -->

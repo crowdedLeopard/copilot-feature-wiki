@@ -18,7 +18,7 @@ defaultState: "on"
 action: "act-now"
 licensing:
   model: "mixed"
-  notes: "Learn says Insider Risk Management needs a supported subscription, and that the feature uses pay-as-you-go billing or per-user licensing for Microsoft Purview capabilities or both. A rate or licence specific to agent monitoring is not yet published."
+  notes: "Learn says Insider Risk Management needs a supported subscription and uses pay-as-you-go billing, per-user licensing or both. The Purview service description says capabilities for agents on Microsoft Foundry and Entra-connected AI apps will be supported by Microsoft 365 E7 and Agent365 SKUs. A rate or meter specific to Risky Agents monitoring is not yet published."
 audiences: ["security","compliance","m365-admin"]
 tags: ["purview","insider-risk-management","agents","agent-governance","copilot-studio","microsoft-foundry","auditing","gcc","gcc-high","dod"]
 sources:
@@ -49,6 +49,12 @@ sources:
   - title: "Manage agent registry in Microsoft 365 admin center"
     url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview"
     kind: "learn"
+  - title: "Microsoft Purview service description"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description"
+    kind: "learn"
+  - title: "Manage pay-as-you-go and per-user licensing usage"
+    url: "https://learn.microsoft.com/purview/purview-billing-usage"
+    kind: "learn"
 videos: []
 related: ["auditing","microsoft-purview-insider-risk-management-ds-triage-agent-for-irm-available-in-defender","microsoft-purview-insider-risk-management-policy-recommendation-panel-in-irm","microsoft-purview-introducing-irm-alert-classification"]
 controls:
@@ -59,7 +65,7 @@ controls:
       path: "Insider Risk Management > Policies > Agent policy"
       docs: "https://learn.microsoft.com/purview/insider-risk-management-policies"
     api: null
-    note: "Policy dashboard separates User policy and Agent policy; Agent policy covers Copilot Studio and Microsoft Foundry agents."
+    note: "Policy dashboard separates User policy and Agent policy; Agent policy covers Copilot Studio and Microsoft Foundry agents. This route ends at the agent-policy dashboard; select a policy to see its details."
   - governs: "Whether the unified audit log records activity that Insider Risk Management policies read"
     scope: "tenant"
     ui:
@@ -73,7 +79,7 @@ controls:
     note: "Prerequisite, not agent-specific. Needs the Audit Logs role in Exchange Online; run in Exchange Online PowerShell."
 confidence: "medium"
 created: "2026-11-20"
-updated: "2026-11-21"
+updated: "2026-11-28"
 roadmapModified: "2026-11-04T00:02:09"
 changes:
   - date: "2026-11-20"
@@ -86,19 +92,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 61 statements not yet confirmed"
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 73 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-28"
+    note: "Corrected licensing: added the Purview service description's future Microsoft 365 E7 and Agent365 support for agent workloads, called the Usage center a preview, and removed two checklist items that had no control row."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 70 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-28"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 73
+  claims: 70
   confirmed: 70
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "bee641d0ea47ecd4fe2ec8b1f2d2be5a"
+  contradicted: 0
+  attempts: 0
+  hash: "8a79cd59e02b64cbe107e4d22accbcfe"
 ---
 
 ## What's changing
@@ -136,7 +146,7 @@ The practical decision is who will see and act on agent alerts, and whether the 
 
 Learn's Insider Risk Management setup page says administrators need to verify their organisation has a supported subscription and assign the appropriate licences to users; it points to a subscription requirements page and suggests Microsoft 365 Enterprise E5 for organisations that want to try the solution. The agent monitoring page points to that same section for licensing and says the policy is available by default to organisations with supported licences.
 
-The setup page also says some Insider Risk Management indicators are only available with pay-as-you-go billing, and that the feature uses pay-as-you-go billing or per-user licensing for Microsoft Purview capabilities or both, with the Usage center in the Microsoft Purview portal showing usage. A pay-as-you-go meter or licence specific to agent monitoring is not yet published, so budget analyst time and confirm in the Usage center whether any meter accrues. Roadmap record: no licence information.
+The setup page also says some Insider Risk Management indicators are only available with pay-as-you-go billing, and that the feature uses pay-as-you-go billing or per-user licensing for Microsoft Purview capabilities or both, with the preview Usage center in the Microsoft Purview portal showing usage. The Purview service description says security and compliance capabilities for agents on Microsoft Foundry and Entra-connected AI apps will be supported by Microsoft 365 E7 and Agent365 SKUs; it describes that support in future tense. A rate or meter specific to Risky Agents monitoring is not yet published, so budget analyst time and confirm in the Usage center whether any meter accrues. Roadmap record: no licence information.
 
 ## Scope
 
@@ -151,7 +161,6 @@ The setup page also says some Insider Risk Management indicators are only availa
 ### Before rollout
 - Confirm which licence your organisation holds for Insider Risk Management, using the subscription requirements page that Learn links, and which of its indicators need pay-as-you-go billing.
 - Check that auditing is on, because Insider Risk Management policies read the audit log (see the audit row in the controls table).
-- Decide which role groups will investigate agent alerts, and keep scoped analysts away from this work because admin units do not support agent alerts.
 
 ### At rollout
 - Open Insider Risk Management > Policies and switch to Agent policy to see whether the Risky Agents policy is present in your tenant.
@@ -159,7 +168,6 @@ The setup page also says some Insider Risk Management indicators are only availa
 
 ### After rollout
 - Triage agent alerts through the standard alert workflow and record which agent owners you contact.
-- Check the Usage center in the Microsoft Purview portal for any pay-as-you-go usage after agent alerts begin.
 - Watch the Learn page for the Risky Agents policy for the preview label to change.
 
 ## Governance controls
@@ -169,7 +177,7 @@ The setup page also says some Insider Risk Management indicators are only availa
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Agent policies, including the default Risky Agents policy and any custom agent policy</strong><br><small>Tenant</small><br><small class="controls__note">Policy dashboard separates User policy and Agent policy; Agent policy covers Copilot Studio and Microsoft Foundry agents.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Insider Risk Management › Policies › Agent policy <a href="https://learn.microsoft.com/purview/insider-risk-management-policies" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Agent policies, including the default Risky Agents policy and any custom agent policy</strong><br><small>Tenant</small><br><small class="controls__note">Policy dashboard separates User policy and Agent policy; Agent policy covers Copilot Studio and Microsoft Foundry agents. This route ends at the agent-policy dashboard; select a policy to see its details.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Insider Risk Management › Policies › Agent policy <a href="https://learn.microsoft.com/purview/insider-risk-management-policies" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether the unified audit log records activity that Insider Risk Management policies read</strong><br><small>Tenant</small><br><small class="controls__note">Prerequisite, not agent-specific. Needs the Audit Logs role in Exchange Online; run in Exchange Online PowerShell.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Audit › Start recording user and admin activity <a href="https://learn.microsoft.com/purview/audit-log-enable-disable" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-AdminAuditLogConfig -UnifiedAuditLogIngestionEnabled $true</code> <a href="https://learn.microsoft.com/purview/audit-log-enable-disable" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
@@ -182,22 +190,17 @@ The Insider Risk Management role groups decide who can configure policies and wh
 
 - When does Learn drop the preview label for the Risky Agents policy? Watch the Monitoring agents in Insider Risk Management page.
 - How is the insider risk score for an agent calculated and shown, given the roadmap says it is built for agents? Learn's agent pages do not describe it at the time of writing.
-- Does monitoring agents add a pay-as-you-go meter or licence beyond the Insider Risk Management subscription? Watch the Purview billing and licensing pages.
+- Does monitoring agents add a pay-as-you-go meter beyond the Insider Risk Management subscription? Watch the Purview billing and licensing pages.
 - Can the default Risky Agents policy be turned off or scoped to specific agents, and is there an API for it?
 
 <!-- rationale
 risk: Medium. Agent prompts, responses and file access become inputs to Insider Risk Management alerts, and Learn says the Risky Agents policy is present by default; role groups decide who can investigate them.
-cost: Low. The only cost Microsoft's pages show is admin and analyst time plus the Insider Risk Management subscription; no meter specific to agent monitoring is documented, though some Insider Risk Management indicators need pay-as-you-go billing.
+cost: Low. Budget admin and analyst time; the service description also names future Microsoft 365 E7 and Agent365 support for Foundry and Entra-connected agent workloads; no meter specific to agent monitoring is documented, though some Insider Risk Management indicators need pay-as-you-go billing.
 impact: Low. Insider risk analysts, compliance administrators and the owners of monitored agents notice it; ordinary users and agent users see no change that the sources describe.
 -->
 
-<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost / absence: Microsoft has not published a licence specific to agent monitoring beyond the general Insider Risk Management subscription. | Found: Microsoft Purview security and compliance capabilities for agents on Microsoft Foundry and Entra-connected AI apps will be supported by Microsoft 365 E7 and Agent365 SKUs. | Fix: Replace the unpublished-licence statement with: 'The Purview service description says security and compliance capabilities for agents on Microsoft Foundry and Entra-connected AI apps will be supported by Microsoft 365 E7 and Agent365 SKUs; it describes that support in future tense. A rate or meter specific to Risky Agents monitoring is not yet published.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description. In Open questions, remove 'or licence' from the billing question. In the cost rationale, replace the first clause with 'Budget admin and analyst time; the service description also names future Microsoft 365 E7 and Agent365 support for Foundry and Entra-connected agent workloads.' Do not present these SKUs as a current exclusive requirement. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing; Governance guidance: After rollout / behaviour: The Microsoft Purview portal Usage center shows pay-as-you-go and per-user licensing usage. | Found: The Microsoft Purview Usage center feature is in preview. ... You can view your pay-as-you-go billing usage and your per-user licensing usage for Microsoft Purview capabilities. | Fix: Call it 'the preview Usage center' and add https://learn.microsoft.com/purview/purview-billing-usage to sources. | Source: https://learn.microsoft.com/purview/purview-billing-usage
-- [supported, minor] controls[0].ui; Governance guidance: At rollout; Governance controls / admin-path: Microsoft Purview portal > Insider Risk Management > Policies > Agent policy reaches the agent-policy dashboard. | Found: Go to the Insider Risk Management solution. Select Policies in the left navigation. ... Your policies are separated into two categories: User policy and Agent policy. Switch between the two to locate relevant policy details. | Fix: Retain the path and add to controls[0].note: 'This route ends at the agent-policy dashboard; select a policy to see its details.' Apply the same note in the rendered row. | Source: https://learn.microsoft.com/purview/insider-risk-management-policies
-- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist asks readers to decide alert-investigation role groups, but the controls table has no permissions row. | Found: Decide which role groups will investigate agent alerts, and keep scoped analysts away from this work because admin units do not support agent alerts. [The controls table has only Agent policies and unified audit logging.] | Fix: Remove that Before rollout checklist bullet. Retain the role-planning advice in Why it matters; do not add a row.
-- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist asks readers to check the Usage center, but the controls table has no usage-monitoring row. | Found: Check the Usage center in the Microsoft Purview portal for any pay-as-you-go usage after agent alerts begin. [The controls table has no Usage center row.] | Fix: Remove that After rollout checklist bullet. Retain usage-checking advice in Cost and licensing; do not add a row.
+- [supported, minor] controls[0].ui / admin-path: Microsoft Purview portal > Insider Risk Management > Policies > Agent policy reaches the agent-policy dashboard. | Found: Go to the Insider Risk Management solution. Select Policies in the left navigation. ... Your policies are separated into two categories: User policy and Agent policy. Switch between the two to locate relevant policy details. | Fix: Extend controls[0].ui.path to 'Insider Risk Management > Policies > Agent policy > policy' to reach policy details, as documented at https://learn.microsoft.com/purview/insider-risk-management-policies. Keep the note that the administrator selects the policy to see its details. | Source: https://learn.microsoft.com/purview/insider-risk-management-policies
 -->

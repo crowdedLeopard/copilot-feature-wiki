@@ -75,8 +75,11 @@ controls:
       surface: "Microsoft Purview portal"
       path: "Settings > Roles and scopes > Role groups > Role groups for Microsoft Purview solutions > role group > Edit > Edit members of the role group > Choose users"
       docs: "https://learn.microsoft.com/purview/purview-permissions"
-    api: null
-    note: "Audit Reader grants View-Only Audit Logs; Audit Manager grants both audit roles. Needs the Role management role."
+    api:
+      kind: "powershell"
+      call: "Add-RoleGroupMember -Identity \"<role-group>\" -Member \"<user-UPN>\""
+      docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember"
+    note: "Audit Reader grants View-Only Audit Logs; Audit Manager grants both audit roles. Needs the Role management role. Run in Security & Compliance PowerShell with Audit Reader or Audit Manager as the target role group."
   - governs: "Whether the unified audit log records activity for the organisation"
     scope: "tenant"
     ui:
@@ -121,26 +124,30 @@ changes:
     note: "New briefing: audit search in Data Security Investigations, its role requirements, limits and storage billing."
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 103 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-28"
+    note: "Corrected: adding audit search results to scope, not each search, uses metered storage and compute; added the PowerShell call for audit role group membership; removed an unsupported claim that incomplete searches show no error."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 94 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-28"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 103
-  confirmed: 98
-  unconfirmed: 2
-  contradicted: 3
-  attempts: 1
-  hash: "9235cc1de1c803500646ccfdbaa5a4c7"
+  claims: 94
+  confirmed: 94
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "df36cdc9ba0235d80676decf2d4f9bfe"
 ---
 
 ## What's changing
 
 Data Security Investigations (DSI, the Microsoft Purview solution that uses generative AI to analyse content involved in a data security incident) gains an **Audit** search option that finds content through the unified audit log rather than by searching the content itself. An investigator picks a time range, activities, users, a file, folder or site location and keywords, and DSI queries the unified audit log and pulls the files and emails tied to matching records into the investigation scope.
 
-The Learn page for the feature describes it as a tab inside an existing investigation: **Summary > Search > Audit**. It supports a fixed list of content-linked activities: accessed, copied, deleted, downloaded, moved, renamed and uploaded files in SharePoint or OneDrive, changed or removed sensitivity labels on files, and **Sent email** from Exchange Online. Activities with no content item, such as signing in, are not supported. Results cannot be estimated or saved first; the page points investigators to the Audit solution to test a query before adding results. After **Add to scope**, DSI runs one audit search job and several add-to-scope jobs, then automatically vectorises the items for AI analysis.
+The Learn page for the feature describes it as a tab inside an existing investigation: **Microsoft Purview portal > Data Security Investigations > investigation > Summary > Search > Audit**. It supports a fixed list of content-linked activities: accessed, copied, deleted, downloaded, moved, renamed and uploaded files in SharePoint or OneDrive, changed or removed sensitivity labels on files, and **Sent email** from Exchange Online. Activities with no content item, such as signing in, are not supported. Results cannot be estimated or saved first; the page points investigators to the Audit solution to test a query before adding results. After **Add to scope**, DSI runs one audit search job and several add-to-scope jobs, then automatically vectorises the items for AI analysis.
 
 The page sets two limits: up to 10 concurrent audit searches per user, and searches returning more than about 3,000 items might not return complete results. Its workaround is to size the query in the Audit solution and run several smaller time slices; DSI deduplicates items across overlapping searches.
 
@@ -150,7 +157,7 @@ The roadmap item is **Launched**, with a preview date of April CY2026 and a gene
 
 This changes how fast content reaches an investigation, not who can see it. When an investigator selects **Add to scope**, the files and emails behind the matching audit records are copied into the investigation, where Investigators and Reviewers can run categorisation, examination and vector search over it. A broad query (a whole department over weeks of **Accessed file** events) can therefore put a large volume of other people's content in front of the investigation team, and on the storage bill, in one step.
 
-For service owners the decisions are who holds the DSI and audit roles, and whether finance knows that each audit search adds metered storage and compute. Microsoft's billing page says both billing models must be configured before Data Security Investigations can be used, so tenants that have not set it up are not affected.
+For service owners the decisions are who holds the DSI and audit roles, and whether finance knows that adding audit search results to scope uses metered storage and compute. Microsoft's billing page says both billing models must be configured before Data Security Investigations can be used, so tenants that have not set it up are not affected.
 
 ## Risk assessment
 
@@ -166,14 +173,14 @@ For service owners the decisions are who holds the DSI and audit roles, and whet
 - No change in autonomy: a person starts each search. After **Add to scope**, DSI vectorises the items without a further step, which is where compute is spent.
 
 **Change & support**
-- Searches over about 3,000 items might not return complete results, so an investigator can miss evidence without an error. Train investigators to size queries in the Audit solution and split them by time.
+- Searches over about 3,000 items might not return complete results, so an investigator can miss evidence. Train investigators to size queries in the Audit solution and split them by time.
 - Audit search returns nothing useful if the unified audit log is off. Microsoft says auditing is not on by default for Business Basic, Business Standard and Business Premium tenants.
 
 ## Cost and licensing
 
 **Licence.** Microsoft's billing page says DSI billing is based on stored data and AI compute capacity, and isn't based on a dedicated enterprise plan or licence. The feature page publishes no separate licence for audit search.
 
-**Meters.** The storage meter is pay-as-you-go, charged per GB per month for data in all investigations, through an Azure subscription linked in **Setup tasks > Setup pay-as-you-go-billing for data storage**. Data storage charges start when items are added to an investigation scope, which is what audit search does. The billing page lists **Add to scope** as using storage and compute, including automatic vectorisation, measured in DSI compute units. Rates are on the Azure Microsoft Purview pricing page; Microsoft publishes no rate specific to audit search.
+**Meters.** The storage meter is pay-as-you-go, charged per GB per month for data in all investigations, through an Azure subscription linked in **Microsoft Purview portal > Data Security Investigations > Setup tasks > Setup pay-as-you-go-billing for data storage**. Data storage charges start when items are added to an investigation scope, which is what audit search does. The billing page lists **Add to scope** as using storage and compute, including automatic vectorisation, measured in DSI compute units. Rates are on the Azure Microsoft Purview pricing page; Microsoft publishes no rate specific to audit search.
 
 **Watching spend.** The **Usage dashboard** (controls table) shows storage and compute units per investigation and per process; Microsoft says billing data can take up to 48 hours to appear. Microsoft documents that deleting an investigation stops storage charges for its data.
 
@@ -203,7 +210,6 @@ For service owners the decisions are who holds the DSI and audit roles, and whet
 ### After rollout
 - Search the audit log for the Submitted DSI search add to evidence set job operation to see who added content to investigations and when.
 - Review the Usage dashboard for investigations whose Add to scope storage or compute grows unexpectedly.
-- Delete closed investigations after exporting what must be kept, since storage is billed until the investigation is deleted.
 
 ## Governance controls
 
@@ -213,7 +219,7 @@ For service owners the decisions are who holds the DSI and audit roles, and whet
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Who administers Data Security Investigations and can create audit searches in any investigation</strong><br><small>Tenant</small><br><small class="controls__note">The Data Security Investigations Investigators role group can also create searches and add items to its assigned investigations; assign it on the same Role groups page.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and groups › Role groups › Data Security Investigations Admins › Edit › Choose users <a href="https://learn.microsoft.com/purview/data-security-investigations-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember -Identity &quot;&lt;role-group&gt;&quot; -Member &quot;&lt;user-UPN&gt;&quot;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Who can search the audit log, which audit search in DSI requires</strong><br><small>User</small><br><small class="controls__note">Audit Reader grants View-Only Audit Logs; Audit Manager grants both audit roles. Needs the Role management role.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and scopes › Role groups › Role groups for Microsoft Purview solutions › role group › Edit › Edit members of the role group › Choose users <a href="https://learn.microsoft.com/purview/purview-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Who can search the audit log, which audit search in DSI requires</strong><br><small>User</small><br><small class="controls__note">Audit Reader grants View-Only Audit Logs; Audit Manager grants both audit roles. Needs the Role management role. Run in Security &amp; Compliance PowerShell with Audit Reader or Audit Manager as the target role group.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and scopes › Role groups › Role groups for Microsoft Purview solutions › role group › Edit › Edit members of the role group › Choose users <a href="https://learn.microsoft.com/purview/purview-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember -Identity &quot;&lt;role-group&gt;&quot; -Member &quot;&lt;user-UPN&gt;&quot;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether the unified audit log records activity for the organisation</strong><br><small>Tenant</small><br><small class="controls__note">Exchange Online PowerShell; requires the Audit Logs role in Exchange Online.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Audit › Start recording user and admin activity <a href="https://learn.microsoft.com/purview/audit-log-enable-disable" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-AdminAuditLogConfig -UnifiedAuditLogIngestionEnabled $true</code> <a href="https://learn.microsoft.com/purview/audit-log-enable-disable" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Storage and compute unit spend per investigation</strong><br><small>Tenant</small><br><small class="controls__note">Monitoring only. Only the Data Security Investigations Admin role can open it; data can lag up to 48 hours.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data Security Investigations › Usage dashboard <a href="https://learn.microsoft.com/purview/data-security-investigations-billing" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Searching audit records of DSI activity, including content added to investigations</strong><br><small>Tenant</small><br><small class="controls__note">Look for the operation DSIPurviewSearchAddToEvidenceSetJobSubmitted. Exchange Online PowerShell.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Audit › Search <a href="https://learn.microsoft.com/purview/audit-search" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Search-UnifiedAuditLog</code> <a href="https://learn.microsoft.com/purview/audit-search" rel="noopener" class="controls__docs">Learn</a></td></tr>
@@ -235,19 +241,11 @@ The Usage dashboard shows spend; it does not stop it. Microsoft documents stoppi
 <!-- rationale
 risk: Medium. Audit search copies the content behind matching audit records into an investigation, where investigators can read and analyse it; access rests on Data Security Investigations and audit role groups.
 cost: Variable. Items added to scope are billed on the Data Security Investigations storage meter (GB per month, pay-as-you-go through Azure), and adding them also uses compute units for automatic vectorisation.
-impact: Low. Only investigators and administrators who hold Data Security Investigations roles see or use the Audit search option.
+impact: Low. Audit search is used by investigators and administrators with the required Data Security Investigations and audit permissions.
 -->
 
-<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Change & support: without an error; Open questions / behaviour: Incomplete audit searches can omit evidence without displaying an error. | Found: Searched: 'Data Security Investigations' 'audit search' 'incomplete' 'error'; read DSI search and limits pages and Activity history status excerpt. They state results might be incomplete but do not state whether truncation displays an error or warning. | Fix: Remove 'without an error'. Keep 'Searches over about 3,000 items might not return complete results, so an investigator can miss evidence.' Leave warning behaviour as an open question rather than asserting it.
-- [contradicted, blocker] Why it matters: each audit search adds metered storage and compute / cost: Each audit search adds metered storage and compute. | Found: To discard the search without adding results, select Cancel. ... Select Add to scope to add the content associated with the search results to your investigation scope. | Fix: Replace 'each audit search adds metered storage and compute' with 'adding audit search results to scope uses metered storage and compute'. The search can be cancelled without adding results; storage charges start at Add to scope, as documented at https://learn.microsoft.com/purview/data-security-investigations-search and https://learn.microsoft.com/purview/data-security-investigations-billing. | Source: https://learn.microsoft.com/purview/data-security-investigations-search
-- [contradicted, blocker] controls[1].api / absence: Automation for assigning membership of the audit-search role groups is not documented. | Found: Use the Add-RoleGroupMember cmdlet to add members to a management role group. ... The Identity parameter specifies the role group to add a member to. ... Applicable: ... Security & Compliance | Fix: Set controls[1].api to kind 'powershell', call 'Add-RoleGroupMember -Identity "<role-group>" -Member "<user-UPN>"', docs 'https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember'. Add to its note: 'Run role-group membership commands in Security & Compliance PowerShell; select Audit Reader or Audit Manager as the target role group.' The reference documents management role groups generally, including Security & Compliance, rather than requiring a separate audit-specific cmdlet. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing: Summary > Search > Audit / admin-path: Inside an existing investigation, Summary > Search > Audit reaches the audit search option. | Found: Go to Data Security Investigations in the Microsoft Purview portal and open an investigation. ... Select Summary from the navigation options at the top of the page. ... On the Search tab, select Audit. | Fix: Expand the contextual route to 'Microsoft Purview portal > Data Security Investigations > investigation > Summary > Search > Audit', as documented at https://learn.microsoft.com/purview/data-security-investigations-search. | Source: https://learn.microsoft.com/purview/data-security-investigations-search
-- [supported, minor] Cost and licensing: Setup tasks > Setup pay-as-you-go-billing for data storage / admin-path: The storage billing setup control is under Setup tasks > Setup pay-as-you-go-billing for data storage. | Found: Go to Data Security Investigations in the Microsoft Purview portal ... Select Setup pay-as-you-go-billing for data storage in the Setup tasks section. | Fix: Give the complete contextual route as 'Microsoft Purview portal > Data Security Investigations > Setup tasks > Setup pay-as-you-go-billing for data storage', as documented at https://learn.microsoft.com/purview/data-security-investigations-billing. | Source: https://learn.microsoft.com/purview/data-security-investigations-billing
-- [supported, minor] controls[0].ui / admin-path: Settings > Roles and groups > Role groups > Data Security Investigations Admins > Edit > Choose users manages DSI admin membership. | Found: Select Settings ... select Roles and groups, then select Role groups ... Select the Data Security Investigations Admins role group, then select Edit. ... Select Choose users | Fix: Add to this row's note: 'The DSI permissions article calls this settings area Roles and groups; the general Purview permissions article calls it Roles and scopes.' Both sources are already cited: https://learn.microsoft.com/purview/data-security-investigations-permissions and https://learn.microsoft.com/purview/purview-permissions. | Source: https://learn.microsoft.com/purview/data-security-investigations-permissions
-- [contradicted, minor] Governance guidance: After rollout: Delete closed investigations / consistency: The checklist tells administrators to delete investigations to stop storage charges, but the controls table has no investigation-deletion row. | Found: Delete closed investigations after exporting what must be kept ... Controls table: DSI membership; audit membership; audit recording; Usage dashboard; audit search; separate audit-search switch. | Fix: Remove the checklist bullet 'Delete closed investigations after exporting what must be kept, since storage is billed until the investigation is deleted.' Retain the verified explanation of deletion and billing in Cost and licensing and Governance controls; no new control row is requested.
-- [unsupported, minor] rationale: impact / behaviour: Only investigators and administrators who hold DSI roles see the Audit search option. | Found: Searched: 'Data Security Investigations' 'Audit' 'tab' 'Reviewers' visibility permissions; read DSI search and permissions and investigation-dashboard excerpt. They document who can create searches, not whether the Audit option is hidden from other roles. | Fix: Replace the impact rationale with 'Low. Audit search is used by investigators and administrators with the required Data Security Investigations and audit permissions.' This preserves the supported access statement without asserting undocumented UI visibility.
+- [supported, minor] controls[0].ui; rendered controls table / admin-path: DSI administrator membership is assigned at Settings > Roles and groups > Role groups > Data Security Investigations Admins > Edit > Choose users. | Found: Select **Settings** ... select **Roles and groups**, then select **Role groups** ... Select the *Data Security Investigations Admins* role group, then select **Edit**. ... Select **Choose users** | Fix: Keep the cited path and add to the row note: 'The DSI permissions article uses Roles and groups; the general portal permissions article uses Settings > Roles and scopes > Role groups.' The differing article is https://learn.microsoft.com/purview/purview-permissions, already cited. | Source: https://learn.microsoft.com/purview/data-security-investigations-permissions
 -->

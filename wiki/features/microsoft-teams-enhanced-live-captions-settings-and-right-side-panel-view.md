@@ -72,17 +72,19 @@ changes:
     note: "Corrected: live translated captions licence now carries the large-audience-event exception; Teams Premium described as an add-on; rollout wording says General Availability is expected to finish by the end of November 2026."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 77 statements confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 78 statements not yet confirmed"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-21"
+  status: "verified-with-gaps"
+  date: "2026-11-28"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 77
+  claims: 78
   confirmed: 77
   unconfirmed: 0
-  contradicted: 0
+  contradicted: 1
   attempts: 0
   hash: "9952d2e46282a53f04cc1aed7def5eb5"
 ---
@@ -180,4 +182,10 @@ Microsoft Learn documents no separate switch for the right-side panel or the aut
 risk: Low. The change is a new layout and a consolidated settings menu for captions; Microsoft's notice MC1447682 says existing administrator controls and policies are unchanged and that access stays subject to Teams policy.
 cost: Low. The only cost the sources show is admin time to brief support teams; live translated captions already need a Teams Premium licence for the organiser (town-hall style large-audience events excepted), and a price for the new panel or menu is not yet published.
 impact: Medium. Users who use live captions will see a new layout option, a new gear-icon menu and a thumbs-up and thumbs-down feedback control, and may ask the help desk about them.
+-->
+
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [contradicted, minor] Governance guidance: Before rollout; controls / consistency: The checklist asks administrators to review Teams Premium licence holders, but the controls table has no licensing-review row. | Found: Review who holds Teams Premium licences if your organisers rely on live translated captions outside the large-audience-event exception. Table rows: Whether users can turn on live captions in meetings; Tenant switch for the right-side captions panel or the automatic-start toggle. | Fix: Remove the Before rollout checklist bullet beginning 'Review who holds Teams Premium licences'; retain the already supported licence requirement and event exception in Cost and licensing.
 -->

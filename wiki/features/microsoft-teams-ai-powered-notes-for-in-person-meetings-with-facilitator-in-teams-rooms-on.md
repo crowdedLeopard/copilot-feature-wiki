@@ -160,15 +160,17 @@ changes:
     note: "Roadmap status moved from In development to Rolling out; Learn pages re-checked and unchanged on Android availability, and the Windows sibling item 560318 is now linked."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 85 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 90 statements not yet confirmed"
 version: 18
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 18
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 85
-  confirmed: 84
+  claims: 90
+  confirmed: 89
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -288,9 +290,10 @@ cost: Low. Learn says in-person note-taking is currently included with Teams Roo
 impact: Medium. People in Teams Rooms on Android rooms licensed with Teams Rooms Pro can start notes from the console, and the notes appear on the front-of-room display or touch board.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing / licensing: The Rooms Learn page says only the meeting organiser needs a Copilot licence for Facilitator in scheduled meetings. | Found: Only the meeting organizer requires a Copilot license. | Fix: Replace the sentence with: 'For scheduled meetings, the Rooms page says only the meeting organiser requires a Copilot licence; the Set up Facilitator page separately says only licensed users can initiate Facilitator and unlicensed users cannot prompt it (https://learn.microsoft.com/microsoftteams/facilitator-teams).' Both pages are already cited. | Source: https://learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms
-- [contradicted, minor] Governance guidance: Before rollout, first bullet / consistency: The checklist asks readers to confirm licence assignments, but no controls-table row covers licence assignment. | Found: Confirm Teams Rooms Pro licences are assigned to the resource accounts of the Android rooms you want covered. | Controls rows: Take notes button; Meeting transcription; IsLoopEnabled; IsCollabMeetingNotesFluidEnabled. | Fix: Remove the first Before rollout checklist bullet, 'Confirm Teams Rooms Pro licences are assigned to the resource accounts of the Android rooms you want covered.' Keep the verified licence prerequisite in Cost and licensing and Scope; do not add a control row.
+- [supported, minor] What's changing: Learn differences; Risk assessment: Change & support; Scope; Open questions / availability: The Rooms FAQ projects Android availability in a future release. | Found: Facilitator is available on Teams Rooms on Windows and is projected to release on Teams Rooms on Android in a future release. | Fix: After the Learn-differences paragraph, add: 'The Android release notes also now list AI-powered notes for in-person meetings with Facilitator, describing tap-to-start notes, front-of-room display and saving for meeting recap (https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note#teams-rooms-on-android-feature-introduction-and-issue-resolution).' This acknowledges the newer documented Android entry alongside the FAQ and comparison table. | Source: https://learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms
+- [supported, minor] Cost and licensing: first paragraph / licensing: The Rooms Learn page says only the organiser needs a Copilot licence for Facilitator in scheduled meetings. | Found: Only the meeting organizer requires a Copilot license. | Fix: Replace that sentence with: 'For scheduled meetings, the Rooms page says only the meeting organiser requires a Copilot licence; the Set up Facilitator page separately says only licensed users can initiate Facilitator and unlicensed users cannot prompt it (https://learn.microsoft.com/microsoftteams/facilitator-teams).' | Source: https://learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms
+- [contradicted, minor] Governance guidance: Before rollout, first bullet / consistency: The checklist asks readers to confirm licence assignments, but no controls-table row covers licence assignment. | Found: Confirm Teams Rooms Pro licences are assigned to the resource accounts of the Android rooms you want covered. | Table rows: Take notes button; Meeting transcription; IsLoopEnabled; IsCollabMeetingNotesFluidEnabled. | Fix: Remove the first Before rollout checklist bullet, 'Confirm Teams Rooms Pro licences are assigned to the resource accounts of the Android rooms you want covered.' Keep the licence prerequisite in Cost and licensing and Scope; do not add a control row.
 -->

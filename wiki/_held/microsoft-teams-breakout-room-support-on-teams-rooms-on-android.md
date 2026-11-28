@@ -76,18 +76,20 @@ changes:
     note: "Corrected: the Scope absence now says Microsoft has not documented additional prerequisites or an Android-specific admin role, and Governance controls notes the Plan for Teams meetings comparison."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 52 statements confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 53 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 3
 verification:
-  status: "verified"
-  date: "2026-11-21"
+  status: "held"
+  date: "2026-11-28"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 52
+  claims: 53
   confirmed: 52
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "2d9e124ea7d2a0fee8cbb304586249eb"
 ---
 
@@ -171,4 +173,12 @@ The documented control is the AllowBreakoutRooms parameter of the Teams meeting 
 risk: Low. The change extends an existing Teams meeting feature to Teams Rooms on Android; the existing AllowBreakoutRooms meeting policy parameter is the documented control for breakout rooms in general.
 cost: Low. Microsoft's notice and Learn name no new licence or meter for this feature; the known cost is admin time and organiser communication. The Teams Rooms Basic or Pro licence each device already needs still applies.
 impact: Medium. Meeting organisers who use breakout rooms and the people in rooms with Teams Rooms on Android devices notice it; Microsoft says the feature is on by default when rollout completes.
+-->
+
+<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[0].note; Governance controls prose; Open questions: first bullet / absence: Whether the general AllowBreakoutRooms policy governs the breakout-room participation introduced here is undocumented. | Found: Set to true to enable Breakout Rooms, set to false to disable the Breakout Rooms functionality. | Fix: Remove the applicability-unknown caveat from the prose and the first Open questions bullet. Replace the control note with 'Default is True. Set to true to enable Breakout Rooms; set to false to disable Breakout Rooms functionality.' Replace the two governance sentences beginning 'Learn's description of it covers' with 'Learn describes AllowBreakoutRooms as enabling or disabling Breakout Rooms functionality.' The reference states the general rule without excluding Android room participants. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Why it matters: second paragraph / record: The recommendation to brief organizers and room administrators before the December target is attributed to Microsoft's notice. | Found: We recommend that you: ... Inform meeting organizers and room administrators about this new capability. | Fix: Replace 'Brief organisers and room admins before the December 2026 target, as Microsoft's notice recommends' with 'Microsoft recommends informing organisers and room administrators about the capability; the wiki recommends doing so before the December 2026 target'. The notice recommends communication but does not set a communication deadline.
 -->

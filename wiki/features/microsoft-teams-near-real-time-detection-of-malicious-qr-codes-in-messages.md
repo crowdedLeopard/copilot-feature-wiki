@@ -70,15 +70,17 @@ changes:
     note: "First briefing for this item, including the November 10, 2026 timeline update in MC1526651 (rollout mid to late November 2026)."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 51 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 60 statements not yet confirmed"
 version: 1
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 51
-  confirmed: 50
+  claims: 60
+  confirmed: 59
   unconfirmed: 1
   contradicted: 0
   attempts: 0
@@ -175,8 +177,8 @@ cost: Low. Learn says malicious URL protection is available to all Teams users a
 impact: Medium. Every Teams messaging user is covered, but users see something new only when a malicious QR code is detected, so the people who notice are recipients of flagged messages and the help desk.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters / behaviour: QR codes in images can carry phishing links past text-based link checks. | Found: Searched: QR codes images phishing bypass text based URL link detection Microsoft Teams. Read malicious URL protection and QR obscuring, and returned Teams security and phishing excerpts; none states the claimed bypass of text-based checks. | Fix: Replace 'QR codes in images are a way to carry a phishing link past text-based link checks, and this change brings them under the same protection as typed URLs.' with 'This change brings destinations in QR codes under the same malicious URL protection as typed URLs.'
+- [unsupported, major] Why it matters / behaviour: QR codes in images can carry phishing links past text-based link checks. | Found: Searched: Microsoft Teams QR codes phishing bypass text based link checks detection. Read malicious URL protection, QR obscuring and Phishing trends and techniques. The latter describes moving interaction away from email scanning, not the claimed bypass of text-based checks. | Fix: Replace 'QR codes in images are a way to carry a phishing link past text-based link checks, and this change brings them under the same protection as typed URLs.' with 'This change brings destinations in QR codes under the same malicious URL protection as typed URLs.'
 -->

@@ -14,7 +14,7 @@ previewDate: null
 risk: "medium"
 cost: "low"
 impact: "medium"
-defaultState: "on"
+defaultState: "unknown"
 action: "act-now"
 licensing:
   model: "included"
@@ -93,34 +93,38 @@ changes:
     note: "New briefing: model choice in Copilot in PowerPoint, the Anthropic and OpenAI provider settings that govern it, and the December 9, 2026 change for EU, EFTA and UK tenants."
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 57 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-28"
+    note: "Corrected: the PowerPoint model choice's default is now Not stated; keeping Claude off for everyone needs No users before December 9, 2026; Message center title wording narrowed."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 64 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-28"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 57
-  confirmed: 55
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 1
-  hash: "cb9953be84586ceb8f923a1c1eb79f69"
+  claims: 64
+  confirmed: 64
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "23d0c0efb7d5b083c799817f448df5eb"
 ---
 
 ## What's changing
 
-Copilot in PowerPoint lets users choose which AI model it uses when they create or edit a presentation. The roadmap item names both OpenAI and Anthropic models and says the choice is available to Microsoft 365 Copilot-licensed users.
+Copilot in PowerPoint lets users choose which AI model it uses when they create or edit a presentation. The roadmap item names both OpenAI and Anthropic models and says the choice is available to Microsoft 365 Copilot-licensed users. The roadmap says model choice is available to Microsoft 365 Copilot-licensed users but does not state its rollout default; the provider defaults described below are separate.
 
 Microsoft Learn has no page for the PowerPoint model choice itself, so what it looks like in PowerPoint comes from the roadmap description. Microsoft's page on Claude models does name this kind of capability: "In capabilities such as Edit with Copilot in Microsoft 365 apps or Researcher, users can select Claude." Whether Claude appears depends on the tenant's **AI providers operating as Microsoft subprocessors** setting in the Microsoft 365 admin center. Microsoft enables Claude models by default for most commercial cloud customers, but not in the EU, EFTA or UK, where the default is **No users**. OpenAI-operated models have been enabled for all users of eligible commercial customers since July 24, 2026, unless an admin selects **No users**.
 
-For EU, EFTA and UK tenants a separate option, **All users for Microsoft 365 apps only**, limits Claude to Copilot in Excel, PowerPoint and Word. Microsoft's page says this option is enabled by default for tenants in those regions created after March 25, 2026. On **December 9, 2026** the option is withdrawn: tenants that selected it, or never made a selection, move to **All users**. Microsoft points to a Message center post sent on November 9, 2026 titled "Action may be required: Claude models in Microsoft Copilot."
+For EU, EFTA and UK tenants a separate option, **All users for Microsoft 365 apps only**, limits Claude to Copilot in Excel, PowerPoint and Word. Microsoft's page says this option is enabled by default for tenants in those regions created after March 25, 2026. On **December 9, 2026** the option is withdrawn: tenants that selected it, or never made a selection, move to **All users**. Microsoft points to a Message center post sent on November 9, 2026 whose title starts with "Action may be required: Claude models in Microsoft Copilot."
 
 The roadmap item is **Launched**, General Availability, with a target of April CY2026, for Desktop, Mac and Web in the Worldwide (Standard Multi-Tenant) cloud.
 
 ## Why it matters
 
-The model choice decides which company processes the presentation content and the prompt. Choosing Claude means Anthropic processes it as a Microsoft subprocessor. In most commercial tenants that is already allowed by default, so PowerPoint users can pick Claude without anyone in IT acting. For EU, EFTA and UK tenants, the December 9 change can widen Claude from Office apps to every Copilot experience, or turn it on where nobody made a choice. Tenants that want to keep Claude off must have **No users** or a specific group selected before then.
+The model choice decides which company processes the presentation content and the prompt. Choosing Claude means Anthropic processes it as a Microsoft subprocessor. In most commercial tenants that is already allowed by default. For EU, EFTA and UK tenants, the December 9 change can widen Claude from Office apps to every Copilot experience, or turn it on where nobody made a choice. Tenants that want to keep Claude off for everyone must select No users before December 9, 2026; selecting specific users and groups instead allows those assigned users to use Claude.
 
 The control works per provider, not per app. The same assignment that lets someone choose Claude in PowerPoint also governs Claude in Copilot, Researcher and Copilot Studio. Before changing it, check which other features depend on it.
 
@@ -201,11 +205,10 @@ cost: Low. The roadmap item makes it available to Microsoft 365 Copilot-licensed
 impact: Medium. Microsoft 365 Copilot-licensed users who create or edit presentations with Copilot in PowerPoint see the model choice; other users notice nothing.
 -->
 
-<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] front matter: defaultState / default: The PowerPoint model-choice feature is on by default without administrator action. | Found: Searched: PowerPoint Copilot model selection choose OpenAI Anthropic model default admin disable model picker policy; "PowerPoint" "model" "default" "Edit with Copilot". Read roadmap, provider and apps-only pages, and Copilot release-note excerpts; no selector rollout default stated. | Fix: Set defaultState to "unknown". State: "The roadmap says model choice is available to Microsoft 365 Copilot-licensed users but does not state its rollout default; the provider defaults described below are separate."
-- [contradicted, blocker] Why it matters / applicability: Tenants that want to keep Claude off can select either No users or a specific group before December 9. | Found: When access is restricted by user or group assignment, only the specified users or group members can use Copilot features that rely on that AI provider. | Fix: Replace the sentence with: "Tenants that want to keep Claude off for everyone must select No users before December 9, 2026; selecting specific users and groups instead allows those assigned users to use Claude." | Source: https://learn.microsoft.com/copilot/implement/copilot-ai-provider-user-sec-group-access
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing / behaviour: The Message center notice is titled Action may be required: Claude models in Microsoft Copilot. | Found: with a title that starts with "Action may be required: Claude models in Microsoft Copilot." | Fix: Replace "titled" with "whose title starts with" before the quoted Message center title. | Source: https://learn.microsoft.com/copilot/implement/copilot-anthropic-apps
+- [supported, minor] What's changing; Scope: Regional default; controls[0].note / default: The general Claude provider default is No users in EU, EFTA and UK. | Found: the default is set to No users. These regions include the European Union (EU), the European Free Trade Association (EFTA), and the United Kingdom (UK). | Fix: Qualify Scope: Regional default and controls[0].note: 'The general Claude provider page states No users for EU, EFTA and UK; the apps-only page states that All users for Microsoft 365 apps only is enabled by default for tenants in those regions created after March 25, 2026.' The exception is already described in What's changing. Cite https://learn.microsoft.com/copilot/implement/copilot-anthropic-apps. | Source: https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The Anthropic control is at Microsoft 365 admin center > Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Available subprocessors for your organization > Anthropic > Choose who can access Anthropic models for Copilot and generative AI experiences. | Found: select Copilot > Settings > View all. Select AI providers operating as Microsoft subprocessors. under Available subprocessors for your organization, select Anthropic. Under Choose who can access Anthropic models for Copilot and generative AI experiences, select your users or groups | Fix: Finish controls[0].ui.path at the selection: 'Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Available subprocessors for your organization > Anthropic > Choose who can access Anthropic models for Copilot and generative AI experiences > users or groups'. The printed route is correct but stops at the section containing the selection. | Source: https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor#opt-in-to-use-claude-models
+- [supported, minor] controls[2].ui; Governance controls table / admin-path: The OpenAI-operated models control is at Microsoft 365 admin center > Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Available subprocessors for your organization > OpenAI > Choose which users can access OpenAI operated models. | Found: select Copilot > Settings > View all. Select AI providers operating as Microsoft subprocessors. under Available subprocessors for your organization, select OpenAI. Under Choose which users can access OpenAI operated models, select All users, or specify users and groups | Fix: Finish controls[2].ui.path at an option: 'Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Available subprocessors for your organization > OpenAI > Choose which users can access OpenAI operated models > All users'. The printed route is correct but stops at the section containing the selection. | Source: https://learn.microsoft.com/copilot/implement/openai-subprocessor#enable-the-use-of-openai-operated-models
 -->

@@ -92,16 +92,18 @@ changes:
     note: "Corrected: Microsoft Learn's Teams admin release notes do confirm the list; layout and incompatibility criteria remain undocumented."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 59 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 66 statements not yet confirmed"
 version: 4
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 59
-  confirmed: 58
-  unconfirmed: 0
+  claims: 66
+  confirmed: 64
+  unconfirmed: 1
   contradicted: 1
   attempts: 0
   hash: "5c83b9f57a502df2dffc96c33f56f2a7"
@@ -195,8 +197,10 @@ cost: Low. The only cost the sources show is admin and developer time to find an
 impact: Medium. Teams administrators see the list, app developers must act on it, and users of affected custom apps in team channels notice if an app is not updated.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [unsupported, major] controls[1].note; Governance controls / behaviour: The Allow or Block control does not change whether an app supports private and shared channels. | Found: Searched: Teams admin center Allow Block apps supportsChannelFeatures private shared channels compatibility list setting automatic updates data access. Opened manage-apps, Update-M365TeamsApp and build-apps-for-shared-private-channels; none explicitly states this negative behavioural relationship. | Fix: Remove 'and does not change whether the app supports private and shared channels' from Governance controls. In controls[1].note and its rendered table note, replace 'Existing control for apps in general, not for channel support.' with 'Existing control for app availability.' Retain the synchronization qualification.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: After rollout; controls / consistency: The checklist tells administrators to synchronize blocked-app settings under Integrated apps in Microsoft 365 admin center, but the controls table has no row for that surface. | Found: keep blocked-app settings synchronized in Teams admin center and under Integrated apps in Microsoft 365 admin center. ... controls[1].ui.surface: Teams admin center | Fix: The After rollout instruction to synchronize blocked-app settings under Integrated apps in Microsoft 365 admin center has no corresponding control row. Retain the necessary synchronization qualification; this finding does not request an additional row.
+- [contradicted, minor] Governance guidance: After rollout; controls table / consistency: The checklist's instruction to synchronize blocked apps in Microsoft 365 admin center is represented in the controls table. | Found: keep blocked-app settings synchronized in Teams admin center and under Integrated apps in Microsoft 365 admin center. ... controls[1].ui.surface: Teams admin center | Fix: The After rollout step to synchronize blocked-app settings under Integrated apps in Microsoft 365 admin center has no corresponding controls-table row. Retain the necessary synchronization qualification; this finding does not request an additional row.
 -->

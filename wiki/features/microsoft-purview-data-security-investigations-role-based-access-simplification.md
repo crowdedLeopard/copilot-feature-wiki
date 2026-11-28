@@ -37,6 +37,12 @@ sources:
   - title: "Billing in Data Security Investigations"
     url: "https://learn.microsoft.com/purview/data-security-investigations-billing"
     kind: "learn"
+  - title: "Learn about Data Security Investigations"
+    url: "https://learn.microsoft.com/purview/data-security-investigations"
+    kind: "learn"
+  - title: "Tutorial: Create and manage budgets"
+    url: "https://learn.microsoft.com/azure/cost-management-billing/costs/tutorial-acm-create-budgets"
+    kind: "learn"
   - title: "Get-RoleGroupMember"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/get-rolegroupmember"
     kind: "learn"
@@ -81,7 +87,7 @@ controls:
       kind: "powershell"
       call: "Add-RoleGroupMember -Identity \"<role-group>\" -Member \"<user-UPN>\""
       docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember"
-    note: "Requires the Role management role. The portal steps offer Edit expiration for temporary access; the cmdlet syntax lists no expiration parameter."
+    note: "Requires the Role management role. To set expiry, select the users added on Edit members of the role group, then select Edit expiration. The cmdlet syntax lists no expiration parameter."
 confidence: "high"
 created: "2026-11-28"
 updated: "2026-11-28"
@@ -91,19 +97,23 @@ changes:
     note: "New briefing: DSI Admin and Contributor roles now come with four existing Purview role groups; Learn lists both roles for Organization Management."
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 64 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-28"
+    note: "Corrected the Security Administrator note: membership is managed centrally in Microsoft Entra, and Purview edits affect only security and compliance. Removed checklist steps with no control row; added the expiry step and two sources."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 66 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-28"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 64
-  confirmed: 62
-  unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "22b206f9a67a71bd630bb035873f2cb9"
+  claims: 66
+  confirmed: 65
+  unconfirmed: 1
+  contradicted: 0
+  attempts: 0
+  hash: "b84258b8b79b3eaa4791ba11f5141581"
 ---
 
 ## What's changing
@@ -112,7 +122,7 @@ Microsoft has added Data Security Investigations (DSI) roles to four built-in Mi
 
 The DSI permissions page on Microsoft Learn documents the result: members of these role groups "have Data Security Investigations access without needing explicit assignment". It lists Compliance Administrator with the Admin role (full administrative access), Data Security Management and Insider Risk Management with the Contributor role, and Organization Management with **both** the Admin and the Contributor roles. The roadmap mentions only the Contributor role for Organization Management; the Learn page is the more specific statement.
 
-The Contributor role can create investigations and manage those the member owns or belongs to. Learn says it does not include access to data storage, AI job execution or the Pay-as-you-go usage dashboard. The Purview roles reference also lists the Contributor role in the Security Administrator, Security Operator and Insider Risk Management Investigators role groups, which the roadmap item does not mention.
+The Contributor role can create investigations and manage those the member owns or belongs to. The roles reference describes Contributor more narrowly as able to create investigations and list or get investigations they own or belong to. Learn says it does not include access to data storage, AI job execution or the Pay-as-you-go usage dashboard. The Purview roles reference also lists the Contributor role in the Security Administrator, Security Operator and Insider Risk Management Investigators role groups, which the roadmap item does not mention.
 
 The roadmap item is Launched (General Availability), with a target of April CY2026, for the Worldwide (Standard Multi-Tenant) cloud on the web.
 
@@ -159,9 +169,7 @@ The change has already arrived. If nobody reviews the membership of these groups
 ## Governance guidance
 
 ### Before rollout
-- List the members of Compliance Administrator, Organization Management, Data Security Management and Insider Risk Management with Get-RoleGroupMember, and note who now holds DSI rights.
-- Decide with the security and privacy owners which of those people should be able to create or administer investigations.
-- Check who holds the Microsoft Entra Security Administrator role, since the Security Administrator role group inherits that membership and carries the Contributor role.
+- Decide with the security and privacy owners which members of Compliance Administrator, Organization Management, Data Security Management and Insider Risk Management should be able to create or administer investigations.
 
 ### At rollout
 - Remove people who should not hold DSI rights from the affected role groups in the Purview portal or with Remove-RoleGroupMember, and give them a role group scoped to their real duties.
@@ -169,9 +177,7 @@ The change has already arrived. If nobody reviews the membership of these groups
 - Use the Edit expiration option when adding members who need DSI access only for one investigation.
 
 ### After rollout
-- Review the DSI Pay-as-you-go usage dashboard for investigations started by newly entitled users.
-- Set Azure budget alerts on the DSI resource group, as Microsoft's billing page recommends.
-- Re-check role group membership after each Entra role change for Security Administrator.
+- Repeat the membership review of these four role groups when people change duties, and remove those who no longer need Data Security Investigations rights (controls table, first row).
 
 ## Governance controls
 
@@ -182,11 +188,11 @@ The change has already arrived. If nobody reviews the membership of these groups
 <tbody>
 <tr><td data-label="Control"><strong>Removing members from role groups that now carry DSI roles</strong><br><small>Group</small><br><small class="controls__note">Requires the Role management role in the portal. Applies to Compliance Administrator, Organization Management, Data Security Management and Insider Risk Management.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and scopes › Role groups › Role groups for Microsoft Purview solutions › role group › Edit › Edit members of the role group › Remove members <a href="https://learn.microsoft.com/purview/purview-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Remove-RoleGroupMember -Identity &quot;&lt;role-group&gt;&quot; -Member &quot;&lt;user-UPN&gt;&quot;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/remove-rolegroupmember" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Who administers Data Security Investigations through its dedicated role group</strong><br><small>Group</small><br><small class="controls__note">Microsoft advises keeping at least one user in Data Security Investigations Admins.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and groups › Role groups › Data Security Investigations Admins › Edit › Choose users <a href="https://learn.microsoft.com/purview/data-security-investigations-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember -Identity &quot;&lt;role-group&gt;&quot; -Member &quot;&lt;user-UPN&gt;&quot;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Adding members to a Purview role group, with optional expiry</strong><br><small>Group</small><br><small class="controls__note">Requires the Role management role. The portal steps offer Edit expiration for temporary access; the cmdlet syntax lists no expiration parameter.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and scopes › Role groups › Role groups for Microsoft Purview solutions › role group › Edit › Edit members of the role group › Choose users <a href="https://learn.microsoft.com/purview/purview-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember -Identity &quot;&lt;role-group&gt;&quot; -Member &quot;&lt;user-UPN&gt;&quot;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Adding members to a Purview role group, with optional expiry</strong><br><small>Group</small><br><small class="controls__note">Requires the Role management role. To set expiry, select the users added on Edit members of the role group, then select Edit expiration. The cmdlet syntax lists no expiration parameter.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and scopes › Role groups › Role groups for Microsoft Purview solutions › role group › Edit › Edit members of the role group › Choose users <a href="https://learn.microsoft.com/purview/purview-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember -Identity &quot;&lt;role-group&gt;&quot; -Member &quot;&lt;user-UPN&gt;&quot;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-These role groups are shared with other Purview solutions; the Remove-RoleGroupMember reference says a removed member can no longer manage the features the role group provides, where that group is their only route to them. Where that is not wanted, move them to a narrower role group rather than leaving them in place. Adding or removing members in the Purview portal needs the Role management role. Members of the Security Administrator role group are managed in the Microsoft Entra admin center, not on the Purview Role groups page. To list current members, Get-RoleGroupMember -Identity <role group> reads each group. Changes can take up to 30 minutes to apply.
+These role groups are shared with other Purview solutions; the Remove-RoleGroupMember reference says a removed member can no longer manage the features the role group provides, where that group is their only route to them. Where that is not wanted, move them to a narrower role group rather than leaving them in place. Adding or removing members in the Purview portal needs the Role management role. Manage Security Administrator membership centrally in the Microsoft Entra admin center. Editing this role group's membership or roles in the Purview portal affects only security and compliance, not other services. To list current members, Get-RoleGroupMember -Identity <role group> reads each group. Changes can take up to 30 minutes to apply.
 
 ## Open questions
 
@@ -201,15 +207,11 @@ cost: Low. Microsoft publishes no licence for the role change; Data Security Inv
 impact: Low. Only administrators and investigators who belong to the affected Purview role groups notice the new access.
 -->
 
-<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: paragraph after table / applicability: Security Administrator members are managed in Entra, not on the Purview Role groups page. | Found: If you edit this role group in these portals (membership or roles), those changes apply only to the security and compliance areas and not to any other services. | Fix: Replace the sentence with: 'Manage Security Administrator membership centrally in the Microsoft Entra admin center. Editing this role group's membership or roles in the Purview portal affects only security and compliance, not other services.' Keep the citation to https://learn.microsoft.com/defender-office-365/scc-permissions. | Source: https://learn.microsoft.com/defender-office-365/scc-permissions
+- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: The role change adds no automated action. | Found: Searched: Data Security Investigations role automatically simplification. Read DSI overview, permissions, billing and Get started search excerpts. They describe role additions and existing automated processing, but do not explicitly establish that this change adds no automated action. | Fix: Replace 'No change: the roles grant access to existing DSI functions and add no automated action.' with 'The roadmap describes this change as adding DSI roles to existing Purview role groups.'
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Risk assessment: Data exposure / role: Contributor-role holders can manage and see investigations they own or belong to. | Found: Members with the Data Security Investigation Contributor role can create and manage investigations they own or are members of. | Fix: Add after this statement: 'The roles reference describes Contributor more narrowly as able to create investigations and list or get investigations they own or belong to.' Cite https://learn.microsoft.com/defender-office-365/scc-permissions, whose Contributor row says 'Create investigations and list or get the investigations that they own or are members of.' | Source: https://learn.microsoft.com/purview/data-security-investigations-permissions
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: The cited DSI page gives Settings > Roles and groups > Role groups > Data Security Investigations Admins > Edit > Choose users. | Found: select Roles and groups, then select Role groups in the left navigation. ... Select the Data Security Investigations Admins role group, then select Edit. ... Select Choose users | Fix: Append to controls[1].note: 'The DSI permissions page gives Roles and groups; the general Purview permissions page instead gives Settings > Roles and scopes > Role groups > Role groups for Microsoft Purview solutions > role group > Edit > Edit members of the role group > Choose users.' Both pages are already cited. | Source: https://learn.microsoft.com/purview/data-security-investigations-permissions
-- [supported, minor] controls[2].ui; Governance controls table / admin-path: The add-with-optional-expiry path stops at Settings > Roles and scopes > Role groups > Role groups for Microsoft Purview solutions > role group > Edit > Edit members of the role group > Choose users. | Found: On Edit members of the role group, select Choose users or Choose groups. ... If the selected users or groups need temporary access, select the users or groups and select Edit expiration. | Fix: The printed steps reach the correct membership page but stop before the expiry control. Add to controls[2].note: 'To set expiry, select the users added on Edit members of the role group, then select Edit expiration.' Keep the existing add path. | Source: https://learn.microsoft.com/purview/purview-permissions
-- [supported, minor] Why it matters / behaviour: DSI collects organisational content into investigations. | Found: The investigation helps you analyze the alert details, understand what they mean, and collect and examine data for deeper review and mitigation efforts. | Fix: Add 'Learn about Data Security Investigations', https://learn.microsoft.com/purview/data-security-investigations, to sources to support the content-collection statement. | Source: https://learn.microsoft.com/purview/data-security-investigations
-- [supported, minor] Cost and licensing: Spend controls / cost: Azure budgets and alerts are not a consumption cap. | Found: Notifications are triggered when the budget thresholds are exceeded. Resources aren't affected, and your consumption isn't stopped. | Fix: Cite 'Tutorial: Create and manage budgets', https://learn.microsoft.com/azure/cost-management-billing/costs/tutorial-acm-create-budgets, for the statement that Azure budgets do not stop consumption. | Source: https://learn.microsoft.com/azure/cost-management-billing/costs/tutorial-acm-create-budgets
-- [contradicted, minor] Governance guidance; Governance controls table / consistency: The checklist names controls absent from the controls table. | Found: Checklist: Get-RoleGroupMember inventory; Entra Security Administrator review; DSI usage dashboard review; Azure budget alerts. Table: removal, dedicated DSI admin membership, adding members with optional expiry. | Fix: The membership-inventory, Entra Security Administrator, DSI usage-dashboard and Azure-budget checklist steps have no corresponding control rows. Remove these four checklist instructions, and the repeated Entra membership re-check instruction under After rollout; retain the supported explanatory prose. Do not add control rows as part of this correction.
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: The DSI page gives Settings > Roles and groups > Role groups > Data Security Investigations Admins > Edit > Choose users. | Found: Select Settings ... select Roles and groups, then select Role groups ... Select the Data Security Investigations Admins role group, then select Edit. ... Select Choose users | Fix: Keep the cited path, and add to controls[1].note: 'The DSI permissions page calls this navigation Roles and groups; the general Purview permissions page calls it Roles and scopes.' Both pages are already cited. | Source: https://learn.microsoft.com/purview/data-security-investigations-permissions
+- [supported, minor] controls[0].note; controls[2].note; Scope; Governance controls / role: The general Purview portal membership procedures require an account assigned the Role management role. | Found: Sign in to the Microsoft Purview portal by using credentials for an admin account assigned the Role management role. | Fix: Add to controls[1].note: 'The DSI permissions page additionally says users following its role-group configuration steps must be assigned to Data Security Investigations Admins.' The source is https://learn.microsoft.com/purview/data-security-investigations-permissions, which says 'To continue with these configuration steps ... you must be assigned to the Data Security Investigations Admins role group.' | Source: https://learn.microsoft.com/purview/purview-permissions
 -->

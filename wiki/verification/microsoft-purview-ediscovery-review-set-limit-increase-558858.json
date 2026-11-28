@@ -1,0 +1,799 @@
+{
+  "slug": "microsoft-purview-ediscovery-review-set-limit-increase-558858",
+  "roadmapId": 558858,
+  "title": "Microsoft Purview eDiscovery: review set limit per case rises from 20 to 100 (Worldwide)",
+  "status": "held",
+  "date": "2026-11-28",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-28",
+    "reasons": [
+      "2 blocking findings (claims 21, 50)"
+    ]
+  },
+  "counts": {
+    "claims": 56,
+    "confirmed": 54,
+    "unconfirmed": 1,
+    "contradicted": 1,
+    "blocker": 2,
+    "major": 0,
+    "minor": 3
+  },
+  "summary": "The published limit and roadmap details are supported, but the access boundary is overstated: eDiscovery Administrators can access case data without first becoming case members. The sources also do not explicitly establish the higher limit's rollout default, and the storage-cost paragraph needs to acknowledge Microsoft's separate billing guidance.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Why it matters; Governance guidance; changes",
+      "type": "record",
+      "claim": "The review set limit per case increases from 20 to 100.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Review set limit per case is increased from 20 per case to 100 per case.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "Roadmap item 558858 is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "title; summary; front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Item 558858 covers Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target was April CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"April CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap record supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modified timestamp is 2026-05-01T21:45:13.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-05-01T21:45:13\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Separate roadmap item 560322 describes the same increase from 20 to 100 review sets per case.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"id\": 560322; \"description\": \"Review set limit per case is increased from 20 per case to 100 per case.\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Roadmap item 560322 is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Item 560322: \"status\": \"Launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Roadmap item 560322 has a target of May CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Item 560322: \"targetDate\": \"May CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "Roadmap item 560322 covers GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Item 560322: \"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "summary; What's changing; Scope; controls[1]; rationale: cost",
+      "type": "applicability",
+      "claim": "The maximum of 100 review sets per case is documented for premium eDiscovery feature support.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-ref-limits",
+      "quote": "The following table lists the limits for cases and review sets in eDiscovery with premium feature support. ... Maximum number of review sets per case. | 100",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Governance guidance; Open questions",
+      "type": "behaviour",
+      "claim": "A case can contain at most 40 million documents across all its review sets.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-ref-limits",
+      "quote": "Total number of documents that you can add to a case (for all review sets in a case). | 40 million",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The maximum size per review set is 1 TB.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-ref-limits",
+      "quote": "Maximum size per review set. | 1 TB",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Review sets provide a copied working set of search results for filtering, tagging, analysis and export.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-add-to-review-set",
+      "quote": "Copying the original data to the review set also facilitates the review and analysis process ... select the review set to start the process of filtering, reviewing, tagging, and exporting data in the review set.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "Adding content copies the items and their metadata into Microsoft-managed Azure Storage dedicated to the case.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-add-to-review-set",
+      "quote": "When you add content to a review set, the items and their metadata are copied to a Microsoft-managed Azure Storage location dedicated to the case.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Storage is provisioned per case and shared by review sets in that case.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-add-to-review-set",
+      "quote": "Storage is provisioned per case. Multiple review sets within the same case share the underlying case storage, with logical separation so each review set's content remains independently queryable, taggable, and exportable.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Cost and licensing: Meter and storage; rationale: cost",
+      "type": "cost",
+      "claim": "Microsoft states that customers do not see, manage or pay directly for review set storage resources.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-add-to-review-set",
+      "quote": "The storage is Microsoft-owned and Microsoft-managed. Customers don't see, manage, or pay for these storage resources directly.",
+      "severity": "minor",
+      "fix": "Keep the quoted storage-resource statement, but add: 'Microsoft's Billing in eDiscovery page separately says that adding non-Microsoft 365 AI data to a review set incurs pay-as-you-go data-storage charges; legacy review-set imports are excluded.' Cite https://learn.microsoft.com/purview/edisc-billing. Narrow the cost rationale to the higher limit itself rather than implying that every review-set data type is unbilled."
+    },
+    {
+      "n": 20,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Customers have no direct storage URL or key, and review set content is accessible through the Purview portal and approved export workflows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-add-to-review-set",
+      "quote": "There's no customer-accessible SAS token, account key, or storage URL for review set content. Access to review set content is only through the Microsoft Purview portal and approved export workflows.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Data exposure",
+      "type": "role",
+      "claim": "Access to case content stays limited to case members.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "Access case data for any case in the organization. ... Manage any eDiscovery case after they add themselves as a member of the case.",
+      "severity": "blocker",
+      "fix": "Replace 'Access stays limited to case members' with 'Access is governed by eDiscovery permissions; eDiscovery Administrators can access case data for any case in the organisation, and must add themselves as members to manage a case.' Keep the separate portal/export access statement."
+    },
+    {
+      "n": 22,
+      "where": "Why it matters; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "In data-spillage scenarios, removing items from review sets requires deleting the eDiscovery case.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-settings-cases",
+      "quote": "In data spillage scenarios, the only way to remove items in a review set is to delete the eDiscovery case. Other search and purge methods don't remove items from a review set.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Security & identity; rationale: risk",
+      "type": "applicability",
+      "claim": "Existing eDiscovery role-based permissions govern case management and access to review sets.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "This role lets users create, edit, delete, and control access to eDiscovery cases in the Microsoft Purview portal. ... This role lets users access review sets in eDiscovery.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Governance controls; controls[0].governs; Governance guidance",
+      "type": "role",
+      "claim": "eDiscovery Managers can create and manage cases and access case data, with the documented restriction to cases they create.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "Members can also create and manage cases ... and access case data. eDiscovery Managers can only access and manage the cases they create.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "eDiscovery Administrators can access all eDiscovery cases.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "An eDiscovery Administrator can view and access all eDiscovery cases, they can audit and oversee all cases and associated compliance searches.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Members of the Reviewer role group can only access data in a review set.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "This role doesn't allow the user to preview the results of a search that's associated with the case or do other search or case management tasks. Users with this role can only access the data in a review set.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Users create review sets by adding search results to a new review set.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-add-to-review-set",
+      "quote": "Select a search on the Searches tab, and then select Add to review set. ... select Add to a new review set or Add to an existing review set.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "A single case can contain the investigation's membership, holds and review sets.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/security-ediscovery-apioverview?view=graph-rest-1.0",
+      "quote": "The container for all eDiscovery objects including custodians, holds, searches, review sets, and exports.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Adding data to a review set is a long-running process.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-add-to-review-set",
+      "quote": "Adding data to a review set is a long-running process that includes gathering items from the original data sources in Microsoft 365 ... copying them to the Azure Storage location ... and then reindexing the items.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Change & support",
+      "type": "admin-path",
+      "claim": "The Process manager page tracks the progress of adding data to a review set.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-add-to-review-set",
+      "quote": "You can track the progress on the Process manager page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "eDiscovery retains organisation-wide concurrent-process limits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-ref-limits",
+      "quote": "Maximum number of concurrent processes in your organization. | 50 | 200",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "eDiscovery retains organisation-wide daily-job limits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-ref-limits",
+      "quote": "Maximum number of jobs per day in your organization. | 500 | 1,000",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Review sets, tagging and analytics are premium features unavailable in the E3/Standard API tier.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/security-ediscovery-apioverview?view=graph-rest-1.0",
+      "quote": "Premium features incl: Review sets, tagging, analytics | No | Yes | Yes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "Analysing a user's data with premium features requires Office 365 E5 or Microsoft 365 E5 for that user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "To analyze a user's data when premium eDiscovery features are enabled, the user must be assigned an Office 365 E5 or Microsoft 365 E5 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "Eligible E1/E3 users can instead receive a Microsoft Purview Suite or Microsoft 365 eDiscovery and Audit add-on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "Alternatively, users with an Office 365 E1 or an Office 365 or Microsoft 365 E3 license can be assigned a Microsoft Purview Suite (formerly known as Microsoft 365 E5 Compliance) or Microsoft 365 eDiscovery and Audit add-on license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Administrators, compliance officers and legal personnel working as case members do not need an E5 licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "Administrators, compliance officers, or legal personnel who are assigned to cases as members and use premium eDiscovery features to collect, view, and analyze data don't need an E5 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The higher service limit is included within the premium eDiscovery entitlement already needed to use review sets.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-ref-limits",
+      "quote": "The following table lists the limits for cases and review sets in eDiscovery with premium feature support. ... Maximum number of review sets per case. | 100",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing: Not yet published",
+      "type": "absence",
+      "claim": "Microsoft publishes no separate licence specifically for the higher review set count.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'eDiscovery higher review set limit 100 additional license pricing billing storage'; read edisc-ref-limits, edisc-permissions, edisc-billing and the Graph eDiscovery API overview. They give premium entitlements, not a licence for the count increase.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing: Not yet published",
+      "type": "absence",
+      "claim": "Microsoft publishes no separate charge specifically for the increase in review set count.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'eDiscovery review set limit increase 100 configure setting additional license charge' and 'eDiscovery higher review set limit 100 additional license pricing billing storage'; read edisc-ref-limits and edisc-billing. No count-increase charge was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "The Purview path to assigning eDiscovery Managers is Settings > Role groups > Role groups for Microsoft Purview solutions > eDiscovery Manager > Edit > Choose users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "Go to Settings > Role groups. ... On Role groups for Microsoft Purview solutions, select eDiscovery Manager. ... Select Edit. ... On Manage eDiscovery Manager, select Choose users or Choose groups.",
+      "severity": "minor",
+      "fix": "Use the full path 'Settings > Role groups > Role groups for Microsoft Purview solutions > eDiscovery Manager > Edit > Manage eDiscovery Manager > Choose users'. The omitted wizard heading is not a selectable branch, so this does not invalidate the route."
+    },
+    {
+      "n": 41,
+      "where": "controls[0].api; Governance controls",
+      "type": "command",
+      "claim": "Add-RoleGroupMember \"eDiscoveryManager\" -Member <name of security group> adds a mail-enabled security group to eDiscovery Managers in Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "You can add a mail-enabled security group ... by using the Add-RoleGroupMember cmdlet in Security & Compliance PowerShell. ... Add-RoleGroupMember \"eDiscoveryManager\" -Member <name of security group>",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[0].note",
+      "type": "role",
+      "claim": "Assigning eDiscovery permissions requires Organization Management membership or the Role Management role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "You need to be a member of the Organization Management role group or be assigned the Role Management role to assign eDiscovery permissions in the Microsoft Purview portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "A mail-enabled security group cannot be added to the eDiscovery Administrators subgroup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "However, you can't add a mail-enabled security group to the eDiscovery Administrators subgroup.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[1].ui; Governance guidance",
+      "type": "admin-path",
+      "claim": "The case premium-features toggle is in Microsoft Purview at eDiscovery > Cases > case > Case settings > Premium features > eDiscovery (Premium).",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-settings-cases",
+      "quote": "Select the eDiscovery solution card, then select Cases in the left navigation. Select a case, then select Case settings. ... Premium features ... To use premium eDiscovery features for the selected case, turn on the eDiscovery (Premium) toggle.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[1].api; controls[1].note",
+      "type": "command",
+      "claim": "PATCH /v1.0/security/cases/ediscoveryCases/{ediscoveryCaseId}/settings updates case settings, including caseType values standard and premium.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/security-ediscoverycasesettings-update?view=graph-rest-1.0",
+      "quote": "PATCH https://graph.microsoft.com/v1.0/security/cases/ediscoveryCases/b0073e4e-4184-41c6-9eb7-8c8cc3e2288b/settings ... caseType ... The type of the eDiscovery case. The possible values are: standard, premium, unknownFutureValue.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[1].note; Governance controls; Open questions",
+      "type": "behaviour",
+      "claim": "The case management page disagrees with the case settings page about whether the toggle governs access to premium features.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-cases-manage",
+      "quote": "All cases created in the Microsoft Purview portal are the Premium type, regardless of your license or subscription. Access to premium features isn't governed by the case settings toggle.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "Audit > Search in the Microsoft Purview portal reaches the audit-search interface for review-set creation records.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "Select the Audit solution card. ... On the Search page, configure the following search criteria as applicable: ... Activities - operations names: Enter the exact operation names to search for audited activities to include in your search results.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "Search-UnifiedAuditLog -StartDate <start date> -EndDate <end date> -Operations ReviewSetAdded searches audit records by date range and review-set creation operation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog",
+      "quote": "Search-UnifiedAuditLog -EndDate <ExDateTime> -StartDate <ExDateTime> ... [-Operations <String[]>] ... The Operations parameter filters the log entries by operation. ... For a list of the available values for this parameter, see Audited activities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[2].note; Governance guidance",
+      "type": "behaviour",
+      "claim": "Creating a review set is audited as ReviewSetAdded.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-activities",
+      "quote": "Added review set | ReviewSetAdded | User created a review set.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "The higher limit is on by default on arrival without administrator action.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'eDiscovery review set limit 100 automatic default increase setting configure'; read roadmap 558858, edisc-ref-limits, edisc-settings-cases and edisc-settings-general. The 100 limit is documented, but rollout default is not; premium-feature defaults concern a different setting.",
+      "severity": "blocker",
+      "fix": "Set defaultState to 'unknown'. If describing the rollout default, say 'Microsoft has not explicitly stated the rollout default for the higher review set limit.' Retain the separately supported launched status and published maximum of 100."
+    },
+    {
+      "n": 51,
+      "where": "summary; What's changing; Why it matters; Governance controls; changes",
+      "type": "absence",
+      "claim": "The roadmap names no setting for the count increase, and Microsoft documentation gives no control that changes the review set count limit itself.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'eDiscovery review set limit 100 automatic default increase setting configure'; read roadmap 558858, edisc-ref-limits, edisc-settings-cases, edisc-settings-general, edisc-settings-review-sets and Graph case-settings update. None gives a review-set-count limit setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance controls",
+      "type": "admin-path",
+      "claim": "The organisation's new-case premium-feature setting is at eDiscovery > Settings > eDiscovery > General > eDiscovery (Premium) in Microsoft Purview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-settings-general",
+      "quote": "Select the eDiscovery solution card, then go to Settings > eDiscovery > General. Select or clear the toggle for eDiscovery (Premium).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Only eDiscovery Administrators can access the general premium-feature setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-settings-general",
+      "quote": "Only users assigned to the eDiscovery Administrators role can access this setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The general premium-feature setting affects new cases, not existing cases.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-settings-general",
+      "quote": "Enabling premium eDiscovery features only affects new cases and doesn't affect the license state of any existing cases.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Open questions",
+      "type": "behaviour",
+      "claim": "Review sets in limited-format cases use the legacy eDiscovery experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-review-set-manage",
+      "quote": "Review sets for limited format cases use the legacy eDiscovery experience. Some features aren't available for these cases in the new eDiscovery experience.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/purview/edisc-review-set-manage for the clause that limited-format review sets use the legacy experience, and add it to sources."
+    },
+    {
+      "n": 56,
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "The count-limit increase itself belongs to the existing premium entitlement rather than a new billed operation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-ref-limits",
+      "quote": "The following table lists the limits for cases and review sets in eDiscovery with premium feature support. ... Maximum number of review sets per case. | 100",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-28T09:36:09.775Z",
+    "summary": {
+      "links": 12,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 3,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=558858",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/edisc-ref-limits",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/edisc-search-add-to-review-set",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/edisc-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/edisc-settings-cases",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/edisc-cases-manage",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/edisc-settings-general",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/security-ediscovery-apioverview?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-log-activities",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/security-ediscoverycasesettings-update?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-search",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Who can create and manage eDiscovery cases and access case data",
+        "docs": "https://learn.microsoft.com/purview/edisc-permissions",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Role groups",
+          "Role groups for Microsoft Purview solutions",
+          "eDiscovery Manager",
+          "Edit",
+          "Choose users"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Who can create and manage eDiscovery cases and access case data",
+        "docs": "https://learn.microsoft.com/purview/edisc-permissions",
+        "reachable": true,
+        "token": "Add-RoleGroupMember",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether premium eDiscovery features, under which the 100 limit is listed, are on for a case",
+        "docs": "https://learn.microsoft.com/purview/edisc-settings-cases",
+        "reachable": true,
+        "segments": [
+          "eDiscovery",
+          "Cases",
+          "case",
+          "Case settings",
+          "Premium features",
+          "eDiscovery"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether premium eDiscovery features, under which the 100 limit is listed, are on for a case",
+        "docs": "https://learn.microsoft.com/graph/api/security-ediscoverycasesettings-update?view=graph-rest-1.0",
+        "reachable": true,
+        "token": "/v1.0/security/cases",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Audit record of review sets created in eDiscovery cases (ReviewSetAdded)",
+        "docs": "https://learn.microsoft.com/purview/audit-search",
+        "reachable": true,
+        "segments": [
+          "Audit",
+          "Search"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Audit record of review sets created in eDiscovery cases (ReviewSetAdded)",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog",
+        "reachable": true,
+        "token": "Search-UnifiedAuditLog",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

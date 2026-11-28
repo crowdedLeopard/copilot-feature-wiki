@@ -89,15 +89,17 @@ changes:
     note: "Correction: noted that Channel Agent auto-creation is off by default for EDU tenants, described the Targeted Release dates as the notice's window, added the Copilot licence source and the Purview DLP caveat, and removed the audit-log checklist step."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 82 statements confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 85 statements confirmed"
 version: 2
 verification:
   status: "verified"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 82
-  confirmed: 82
+  claims: 85
+  confirmed: 85
   unconfirmed: 0
   contradicted: 0
   attempts: 0

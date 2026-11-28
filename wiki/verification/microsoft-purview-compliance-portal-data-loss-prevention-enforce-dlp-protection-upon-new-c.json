@@ -1,0 +1,550 @@
+{
+  "slug": "microsoft-purview-compliance-portal-data-loss-prevention-enforce-dlp-protection-upon-new-c",
+  "roadmapId": 511791,
+  "title": "Microsoft Purview Endpoint DLP: protect unsaved content from printing, USB and network shares (Worldwide)",
+  "status": "held",
+  "date": "2026-11-28",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-28",
+    "reasons": [
+      "1 blocking finding (claim 24)"
+    ]
+  },
+  "counts": {
+    "claims": 39,
+    "confirmed": 38,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 1,
+    "major": 0,
+    "minor": 1
+  },
+  "summary": "Hold: the platform list omits Microsoft's Windows Server exclusions and prerequisites, which could lead administrators to rely on protection on unsupported or unconfigured servers. The roadmap facts, licensing and documented device-rule command are supported; the UI route needs a small completion.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Why it matters; rationale: impact",
+      "type": "record",
+      "claim": "The roadmap describes monitoring or protecting files with unsaved sensitive content against printing or moving to USB or a network share.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Monitor or protect file with unsaved sensitive content from being printed or being moved to USB or network share.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is April CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"April CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "title; front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap platform list contains only Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-05-04T23:00:45.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-05-04T23:00:45\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Endpoint DLP extends Microsoft Purview DLP protection to onboarded Windows and macOS devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "Endpoint data loss prevention (Endpoint DLP) extends the activity monitoring and protection capabilities of DLP to Windows 10/11, macOS (the three latest released major versions) devices, and Windows certain server versions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "Learn still says Endpoint DLP cannot scan or classify data never saved to a file on the local device.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "If data is never saved to a file on the local device, Endpoint DLP cannot scan or classify it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Learn says a Word document saved directly to USB without first being stored locally cannot be inspected or blocked.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "For example, if a user opens a document in Word and saves it directly to a USB device without first storing it locally, Endpoint DLP cannot inspect or block that action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Learn describes file creation or modification as triggering a full scan for sensitive information.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "Creation or Modification: Every time a file is created or modified, it is fully scanned for sensitive information types (SITs) and labels. The file is then evaluated for matches against DLP policies and rules.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; front matter: changes; Open questions",
+      "type": "absence",
+      "claim": "Learn has not yet described the new unsaved-content protection, despite the roadmap's Launched status.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Endpoint DLP\" \"unsaved\" setting policy default apps licensing print; \"Purview\" \"unsaved content\" \"policy\". Opened endpoint-dlp-learn-about and whats-new; the former retains the unsaved-files gap and neither documents the new protection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: defaultState; What's changing; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "Microsoft has not stated whether unsaved-content protection starts enforcing automatically or needs configuration.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Endpoint DLP\" \"unsaved\" setting policy default apps licensing print. Read the roadmap description; opened endpoint-dlp-learn-about, dlp-configure-endpoint-settings, Set-PolicyConfig and whats-new. None states this change's default or application to existing rules.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not documented which apps the new unsaved-content protection covers.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Endpoint DLP\" \"unsaved\" setting policy default apps licensing print; \"Endpoint DLP\" \"unsaved\" blocked user notification platform. Opened endpoint-dlp-learn-about, dlp-configure-endpoint-settings and whats-new; no app coverage for the new protection was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment: Change & support; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not described the user experience or disposition of unsaved content when the new protection blocks an action.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Endpoint DLP\" \"unsaved\" blocked user notification platform. Opened endpoint-dlp-learn-about, dlp-configure-endpoint-settings and whats-new; results describe saved-file or other controls, not the new unsaved-content blocking experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "Learn has not documented how or when unsaved-content protection reaches an endpoint.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Endpoint DLP unsaved content before saved printing USB network share default existing rules licensing; \"Endpoint DLP\" \"unsaved\" setting policy default apps licensing print. Opened endpoint-dlp-learn-about and whats-new; no feature-specific deployment instructions were found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[0].note; Risk assessment: Autonomy & actions; Governance controls",
+      "type": "absence",
+      "claim": "Learn has not established that existing device-rule actions govern the new unsaved-content protection.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Endpoint DLP\" \"unsaved\" setting policy default apps licensing print; \"Purview\" \"unsaved content\" \"policy\". Opened endpoint-dlp-learn-about, dlp-configure-endpoint-settings and Set-DlpComplianceRule; current documented reach is stored files, with an explicit unsaved-files gap.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Why it matters; Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "behaviour",
+      "claim": "Existing Endpoint DLP rules can block, warn or audit printing of protected files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "When this activity is detected, you can block, warn, or audit the printing of protected files from an endpoint device.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Why it matters; Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "behaviour",
+      "claim": "Existing Endpoint DLP rules can block, warn or audit copying or moving protected files to USB removable media.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "When this activity is detected, you can block, warn, or audit the copying or moving of protected files from an endpoint device to USB removable media.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Why it matters; Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "behaviour",
+      "claim": "Existing Endpoint DLP rules can block, warn or audit copying or moving protected files to network shares.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "When this activity is detected, you can block, warn, or audit the copying or moving of protected files from an endpoint device to any network share",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[0].note; Scope: Users and devices; Governance guidance",
+      "type": "applicability",
+      "claim": "Endpoint enforcement requires both the user and device to be included in the DLP policy scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "For a DLP policy to be enforced on an endpoint, both the user and the device must be included in the policy scope.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Scope: Platforms",
+      "type": "availability",
+      "claim": "Learn's activity table supports Print, USB copying and network-share copying on x64 Windows 10 and Windows 11 versions 21H2 and 22H2.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "Windows 10 (21H2, 22H2), Windows 11 (21H2, 22H2), Windows Server 2019 and later versions for Endpoints (X64)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Scope: Platforms",
+      "type": "availability",
+      "claim": "Windows Server 2019 and later on x64 are listed as supported without any server exclusions or configuration qualification.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "Endpoint DLP is not supported on Windows Servers configured as Domain Controllers or Windows Servers with the Core Server option selected during installation. By default, Endpoint DLP isn't enabled for Windows servers when they're initially onboarded.",
+      "severity": "blocker",
+      "fix": "Remove 'and Windows Server 2019 and later' from the Scope platform bullet. The source at https://learn.microsoft.com/purview/endpoint-dlp-learn-about excludes domain controllers and Core installations, requires server enablement, and says supported server KBs disable classification; narrowing this bullet to Windows PCs avoids implying unconditional server coverage."
+    },
+    {
+      "n": 25,
+      "where": "Scope: Platforms",
+      "type": "availability",
+      "claim": "Learn's activity table supports Print, USB copying and network-share copying on ARM64 Windows 11 versions 21H2 and 22H2.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "Windows 11 (21H2, 22H2) for Endpoints (ARM64)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Scope: Platforms",
+      "type": "availability",
+      "claim": "Learn's activity table supports Print, USB copying and network-share copying on the three latest released macOS versions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "macOS three latest released versions | Auditable/Restrictable",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Scope: Platforms; Open questions",
+      "type": "absence",
+      "claim": "The device platforms receiving the new unsaved-content protection have not been documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Endpoint DLP\" \"unsaved\" blocked user notification platform. Opened endpoint-dlp-learn-about and whats-new; the general activity support table does not document unsaved-content protection. The roadmap lists Web but no device OS.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Scope: Roles; Governance controls",
+      "type": "role",
+      "claim": "EndpointDlpRestrictions requires membership in Compliance Administrator or Compliance Data Administrator in Microsoft Entra ID.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule",
+      "quote": "Note: This parameter requires membership in the Compliance Administrator or Compliance Data Administrator roles in Microsoft Entra ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Endpoint DLP is Included in the listed Microsoft 365 E5/A5/G5, Purview Suite and FLW suite plans, and E5/A5/F5/G5 Information Protection & Governance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, Microsoft 365 E5/A5/F5/G5 Information Protection & Governance | Endpoint Data Loss Prevention (DLP) | Included",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "Microsoft has published no licensing requirement specific to unsaved-content protection.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Purview\" \"unsaved\" \"license\"; \"Endpoint DLP\" \"unsaved\" setting policy default apps licensing print. Opened the Purview service description and endpoint-dlp-learn-about; no unsaved-content-specific licence was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Cost and licensing: Meter",
+      "type": "absence",
+      "claim": "The service description publishes no meter for Endpoint DLP activity restrictions.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Endpoint DLP\" activity restrictions billing meter pay as you go. Read the service description's Endpoint DLP section and searched its text for meter/pay-as-you-go; it lists Included, not an activity meter. Billing-model search results distinguish endpoint licensing from other PAYG capabilities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The printed Purview portal path reaches Apply restrictions to specific activity in a device DLP rule.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-edlp-scan-fails",
+      "quote": "Open Data Loss Prevention > Policies. Select Create policy. Select Enterprise applications & devices. Select the Custom from the Categories then Custom policy template from Regulations. Select Apply restrictions to specific activity",
+      "severity": "minor",
+      "fix": "Complete controls[0].ui.path and its rendered copy with the documented scope selection and an activity/action: 'Data Loss Prevention > Policies > Create policy > Enterprise applications & devices > Categories > Custom > Regulations > Custom policy > Admin units > Full directory > Devices > rule > Actions > Audit or restrict activities on devices > Apply restrictions to specific activity > Copy to a removable USB device > Block with override'. The cited walkthrough gives these labels and choices; the existing path stops on the correct page before choosing an activity."
+    },
+    {
+      "n": 33,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-DlpComplianceRule with Identity and EndpointDlpRestrictions Setting=RemovableMedia, Value=Block sets the rule's USB restriction.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule",
+      "quote": "The Identity parameter specifies the DLP rule that you want to modify. Example values: @{\"Setting\"=\"RemovableMedia\"; \"Value\"=\"Block\";}",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[0].note; Governance controls table",
+      "type": "command",
+      "claim": "Print, RemovableMedia and NetworkShare are documented EndpointDlpRestrictions settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule",
+      "quote": "@{\"Setting\"=\"Print\"; \"Value\"=\"Block\"} / @{\"Setting\"=\"RemovableMedia\"; \"Value\"=\"Block\";} / @{\"Setting\"=\"NetworkShare\"; \"Value\"=\"Block\";}",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "Block or Warn values for EndpointDlpRestrictions also require NotifyUser.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule",
+      "quote": "When you use the values Block or Warn in this parameter, also need to use the NotifyUser parameter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The UI walkthrough concerns files that fail scanning, and that scenario is marked preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-edlp-scan-fails",
+      "quote": "Applying controls to supported files that fail scanning is currently in preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[1] (ui and api null); Governance controls; Why it matters",
+      "type": "absence",
+      "claim": "No separate tenant or policy switch for unsaved-content protection is documented in either the portal or automation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Endpoint DLP\" \"unsaved\" setting policy default apps licensing print; \"Purview\" \"unsaved content\" \"policy\". Opened dlp-configure-endpoint-settings, Set-PolicyConfig, Set-DlpComplianceRule and whats-new; searched for unsaved/before saved/new content. No dedicated UI or API switch was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The roadmap description contains no new identity, permission or sign-in behaviour.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Monitor or protect file with unsaved sensitive content from being printed or being moved to USB or network share.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: cost; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "The low cost rating reflects an included Endpoint DLP capability with testing and helpdesk time as the known incremental costs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Endpoint Data Loss Prevention (DLP) | Included",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-28T09:36:00.256Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=511791",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/whats-new",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-create-policy-edlp-scan-fails",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether a device rule audits, warns or blocks printing and copying to USB or network shares",
+        "docs": "https://learn.microsoft.com/purview/dlp-create-policy-edlp-scan-fails",
+        "reachable": true,
+        "segments": [
+          "Data Loss Prevention",
+          "Policies",
+          "Create policy",
+          "Enterprise applications & devices",
+          "Custom",
+          "Custom policy",
+          "Devices",
+          "Actions",
+          "Audit or restrict activities on devices",
+          "Apply restrictions to specific activity"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether a device rule audits, warns or blocks printing and copying to USB or network shares",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule",
+        "reachable": true,
+        "token": "Set-DlpComplianceRule",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

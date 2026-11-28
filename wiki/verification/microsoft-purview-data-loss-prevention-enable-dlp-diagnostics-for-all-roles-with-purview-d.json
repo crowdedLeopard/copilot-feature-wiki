@@ -1,0 +1,818 @@
+{
+  "slug": "microsoft-purview-data-loss-prevention-enable-dlp-diagnostics-for-all-roles-with-purview-d",
+  "roadmapId": 557192,
+  "title": "Microsoft Purview DLP: every role that can view DLP policies can now run DLP diagnostics",
+  "status": "verified-with-gaps",
+  "date": "2026-11-28",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 65,
+    "confirmed": 63,
+    "unconfirmed": 1,
+    "contradicted": 1,
+    "blocker": 0,
+    "major": 1,
+    "minor": 4
+  },
+  "summary": "The briefing passes: the expanded role access, roadmap dates, diagnostic location and role-group controls are supported. Narrow the absolute statement about diagnostics never running automatically to the documented user-selected workflow; the remaining findings concern missing citations and checklist presentation.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Microsoft has expanded diagnostic access to all roles with permission to view Purview DLP policies.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "We’re updating permissions to ensure that all roles with access to view DLP policies in Microsoft Purview can also run diagnostics on those policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing; Scope",
+      "type": "role",
+      "claim": "Compliance Administrator can run the Solutions-page DLP diagnostics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "To run the DLP diagnostics, you need to have any of the following roles: - Compliance Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; Scope",
+      "type": "role",
+      "claim": "Security Administrator can run the Solutions-page DLP diagnostics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "To run the DLP diagnostics, you need to have any of the following roles: - Compliance Administrator - Security Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing; Scope",
+      "type": "role",
+      "claim": "Organization Configuration can run the Solutions-page DLP diagnostics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "To run the DLP diagnostics, you need to have any of the following roles: - Compliance Administrator - Security Administrator - Organization Configuration",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing; Scope",
+      "type": "role",
+      "claim": "View-Only Configuration can run the Solutions-page DLP diagnostics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "- Organization Configuration - View-Only Configuration - Security Reader",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What's changing; Scope; rationale: risk",
+      "type": "role",
+      "claim": "Security Reader can run the Solutions-page DLP diagnostics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "- View-Only Configuration - Security Reader - DLP Compliance Management",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing; Scope",
+      "type": "role",
+      "claim": "DLP Compliance Management can run the Solutions-page DLP diagnostics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "- Security Reader - DLP Compliance Management - View-Only DLP Compliance Management",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Scope; Governance guidance",
+      "type": "role",
+      "claim": "View-Only DLP Compliance Management can run the Solutions-page DLP diagnostics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "- DLP Compliance Management - View-Only DLP Compliance Management - Insider Risk Management Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Scope",
+      "type": "role",
+      "claim": "Insider Risk Management Administrator can run the Solutions-page DLP diagnostics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "- View-Only DLP Compliance Management - Insider Risk Management Administrator - Information Protection Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Scope",
+      "type": "role",
+      "claim": "Information Protection Administrator can run the Solutions-page DLP diagnostics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "- Insider Risk Management Administrator - Information Protection Administrator - Information Protection Analyst",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Scope",
+      "type": "role",
+      "claim": "Information Protection Analyst can run the Solutions-page DLP diagnostics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "- Information Protection Administrator - Information Protection Analyst - Information Protection Investigator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Scope",
+      "type": "role",
+      "claim": "Information Protection Investigator can run the Solutions-page DLP diagnostics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "- Information Protection Analyst - Information Protection Investigator - Data Security AI Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Scope",
+      "type": "role",
+      "claim": "Data Security AI Administrator can run the Solutions-page DLP diagnostics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "- Information Protection Investigator - Data Security AI Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: defaultState; Why it matters",
+      "type": "default",
+      "claim": "The expanded access is on for existing holders of the listed roles without an administrator enabling a separate feature switch.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The following roles will now have diagnostic access:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The general availability target is April CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"April CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The preview date is February CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"February CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) as its only cloud.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [ \"Worldwide (Standard Multi-Tenant)\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [ \"Web\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The release phases are General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [ \"General Availability\", \"Preview\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-05-04T23:00:45.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-05-04T23:00:45\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "The twelve-role Learn list matches the roadmap list, using expanded Administrator names for the roadmap's Admin abbreviations.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Compliance Admin\nSecurity Admin\nSecurity Reader\nDLP Compliance Management\nView-Only DLP Compliance Management\nInsider Risk Management Admin\nInformation Protection Admin\nInformation Protection Analyst\nInformation Protection Investigator\nData Security AI Admin",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Scope; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The DLP diagnostics are in Microsoft Purview portal at Solutions > Data Loss Prevention > Diagnostics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "You can find these diagnostics on the following portal pages: - Solutions > Information Protection > Diagnostics - Solutions > Data Loss Prevention > Diagnostics",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "A diagnostic returns the DLP policy names that apply to a user and where those policies apply.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Checks which DLP policies apply to a user. Diagnostic results include the policy names and where the policies apply.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "A file-path diagnostic checks a SharePoint or OneDrive file's properties and classification to determine whether a DLP rule matched.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Check a file's properties and classification to review whether a DLP rule matched or didn't match. When entering the file path, make sure that you provide the full file path, not a sharing link.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "A diagnostic checks missing alerts and issues in DLP rule configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Check for alerts, and determine whether any issues affect the DLP rule configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "A diagnostic investigates why an alert for an activity or audit event is missing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Check for the alert related to an activity or audit event, and investigate why the alert could be missing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "A diagnostic checks Endpoint DLP policy sync issues.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Endpoint DLP isn’t working as expected. Are there any issues that affect policy sync on the device? | Check for policy sync issues, and provide recommendations for how to resolve them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "An uploaded message trace log lets a diagnostic review DLP rules applied to Exchange Online email messages.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "A DLP rule didn't apply or it was applied unexpectedly to an email message in Exchange Online. | Upload the message trace log (.csv) to review the DLP rules applied to email messages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Selecting a Solutions-page diagnostic first invokes Check-PurviewConfig to check the organisation's configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "When you select a diagnostic on a Solutions page, the diagnostic runs the Check-PurviewConfig cmdlet to check your organization's configuration settings in Microsoft Purview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Issue-specific DLP diagnostic checks invoke Get-DlpCompliancePolicy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "A DLP rule isn't enforced for a particular user. Is this user included in the DLP policy? | Checks which DLP policies apply to a user. Diagnostic results include the policy names and where the policies apply. | Get-DlpCompliancePolicy Get-DlpComplianceRule",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Issue-specific DLP diagnostic checks invoke Get-DlpComplianceRule.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Alerts aren't working for a DLP rule. Are there any issues that affect the DLP rule configuration? | Check for alerts, and determine whether any issues affect the DLP rule configuration. | Get-DlpCompliancePolicy Get-DlpComplianceRule",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The diagnostics can fix some configuration issues.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Although the diagnostics can fix some configuration issues, they don't make changes to your tenant without your consent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The diagnostics do not change the tenant without consent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Although the diagnostics can fix some configuration issues, they don't make changes to your tenant without your consent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing; Scope: Out of scope",
+      "type": "role",
+      "claim": "Compliance Administrator is one of the two roles Learn lists for Information Protection diagnostics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "To run the Information Protection diagnostics, you need to have either of the following roles: - Compliance Administrator - Security Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What's changing; Scope: Out of scope",
+      "type": "role",
+      "claim": "Security Administrator is the other role Learn lists for Information Protection diagnostics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "To run the Information Protection diagnostics, you need to have either of the following roles: - Compliance Administrator - Security Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing; Risk assessment: Change & support; Scope",
+      "type": "role",
+      "claim": "The Help-pane DLP diagnostics still list Global admin as their minimum role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "DLP policy and rule configuration for policy tips | Troubleshoots common policy tip configuration issues that affect a DLP rule and its policy for Outlook desktop clients and Outlook on the web. | Global admin",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What's changing; Scope; Governance guidance: At rollout",
+      "type": "availability",
+      "claim": "Learn notes gradual rollout of Solutions-page diagnostics and possible unavailability in an organisation, despite the roadmap's Launched status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Diagnostics on Solutions pages are being rolled out gradually and might not yet be available in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Why it matters",
+      "type": "role",
+      "claim": "Security Reader and View-Only DLP Compliance Management let staff troubleshoot without granting DLP policy editing rights.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/scc-permissions",
+      "quote": "View-Only DLP Compliance Management | View the settings and reports for data loss prevention (DLP) policies. | Compliance Administrator Compliance Data Administrator Global Reader Organization Management Security Administrator Security Operator Security Reader",
+      "severity": "minor",
+      "fix": "Add 'Roles and role groups in Microsoft Defender for Office 365 and Microsoft Purview' at https://learn.microsoft.com/defender-office-365/scc-permissions to sources for the read-only DLP permissions statement."
+    },
+    {
+      "n": 40,
+      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "A user's UPN can be supplied to identify the account whose DLP coverage is checked.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/check-purviewconfig",
+      "quote": "The UserPrincipalName parameter specifies the user account to analyze in the test case (for example, sathya@contoso.onmicrosoft.com).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Security & identity; Governance controls",
+      "type": "role",
+      "claim": "Microsoft Entra Compliance Administrator maps to the Purview Compliance Administrator role group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Compliance Administrator | Help your organization stay compliant with any regulatory requirements, manage eDiscovery cases, and maintain data governance policies across Microsoft 365 locations, identities, and apps. | Compliance Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Security & identity; Governance controls",
+      "type": "role",
+      "claim": "Microsoft Entra Security Administrator maps to the Purview Security Administrator role group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Security Administrator | Control your organization's overall security by managing security policies, reviewing security analytics and reports across Microsoft 365 products, and staying up-to-speed on the threat landscape. | Security Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Security & identity; Governance controls",
+      "type": "role",
+      "claim": "Microsoft Entra Security Reader maps to the Purview Security Reader role group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Security Reader | View and investigate active threats to your Microsoft 365 users, devices, and content, but (unlike the Security operator) they don't have permissions to respond by taking action. | Security Reader",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Security & identity; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "Entra role assignments take precedence over administrative-unit-scoped Purview role assignments and grant unscoped access for overlapping capabilities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "When both scoped Microsoft Purview role assignments and Entra roles are present, Entra roles always take precedence, and scoping applied through Administrative Units doesn't restrict the user's effective permissions for overlapping capabilities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The printed Purview Settings > Roles and scopes > Role groups route reaches Choose users for editing built-in role-group membership.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "On Role groups for Microsoft Purview solutions, select a Microsoft Purview role group you want to add users to. Select Edit on the control bar. On Edit members of the role group, select Choose users or Choose groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Add-RoleGroupMember -Identity \"<role-group>\" -Member \"<user-UPN>\" adds the identified user to the role group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+      "quote": "Add-RoleGroupMember [-Identity] <RoleGroupIdParameter> -Member <SecurityPrincipalIdParameter>; The Member parameter specifies who you want to add to the role group. ... User ID or user principal name (UPN)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[0].note; Scope; Governance controls",
+      "type": "role",
+      "claim": "Editing Purview role-group membership in the portal requires the Role management role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Sign in to the Microsoft Purview portal by using credentials for an admin account assigned the Role management role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[0].note; Governance controls",
+      "type": "applicability",
+      "claim": "Role-group membership grants the other permissions of the group's assigned roles as well as diagnostic access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+      "quote": "When you add a member to a role group, the member is given the effective permissions provided by the management roles assigned to the role group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[0].note; Scope; Governance controls",
+      "type": "admin-path",
+      "claim": "Microsoft Entra role members are managed through Manage members in Microsoft Entra ID from the Purview role details.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "You can view the users currently assigned to each role by selecting an admin role and viewing the role panel details. To manage members of a Microsoft Entra role, select Manage members in Microsoft Entra ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[1].ui and .api; controls[1].note; Governance controls",
+      "type": "absence",
+      "claim": "No tenant UI or PowerShell switch to disable Solutions-page DLP diagnostics or restrict them separately from role-based access is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview DLP diagnostics disable restrict access tenant switch Security Compliance PowerShell'; opened Self-help diagnostics for Microsoft Purview, Permissions in the Microsoft Purview portal, and Check-PurviewConfig; no separate switch documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The self-help diagnostics page lists the required roles and names no licence prerequisite for running DLP diagnostics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "To run the DLP diagnostics, you need to have any of the following roles:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "front matter: licensing.model and notes",
+      "type": "licensing",
+      "claim": "The included licensing model describes a new diagnostic option inside licensed DLP, with the product-level entitlement named and no separate diagnostic entitlement published.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Which licenses provide the rights for a user to benefit from the service? - Microsoft 365 E5/A5/G5/E3/A3/G3, Microsoft 365 Business Premium, SharePoint Online Plan 2, OneDrive for Business (Plan 2), Exchange Online Plan 2",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The service description lists the stated Microsoft 365, Office 365, standalone Plan 2 and Purview Suite plans for DLP covering Exchange Online, SharePoint Online and OneDrive for Business.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft 365 E5/A5/G5/E3/A3/G3, Microsoft 365 Business Premium, SharePoint Online Plan 2, OneDrive for Business (Plan 2), Exchange Online Plan 2; Office 365 E5/A5/G5/E3/A3/G3; Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "front matter: licensing.notes",
+      "type": "absence",
+      "claim": "No separate licensing requirement specific to the expanded DLP diagnostic access is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview self help DLP diagnostics license pricing meter'; opened Self-help diagnostics for Microsoft Purview and Microsoft Purview service description; found product-level DLP licences but no separate diagnostic entitlement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Cost and licensing: Meter; rationale: cost",
+      "type": "absence",
+      "claim": "The self-help diagnostics page publishes no price or meter for running these diagnostics as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview self help DLP diagnostics license pricing meter'; read Self-help diagnostics for Microsoft Purview in full and the service description's DLP licensing section; neither gives a diagnostics meter or price.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Risk assessment: Autonomy & actions; Open questions",
+      "type": "absence",
+      "claim": "Microsoft does not state whether a view-only role holder can consent to a configuration fix offered by a diagnostic.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview DLP diagnostics view only role consent fix file classification permissions cannot access file administrative units'; read Self-help diagnostics for Microsoft Purview and Purview permissions; consent authority for view-only roles is not stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Microsoft does not state whether file-path diagnostics reveal classification when the operator cannot open the file.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview DLP diagnostics view only role consent fix file classification permissions cannot access file administrative units'; read Self-help diagnostics for Microsoft Purview and Test your Data Loss Prevention policies; no file-read-permission condition found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "The behaviour of the DLP diagnostic results under administrative-unit-scoped Purview role assignments remains unspecified.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview DLP diagnostics view only role consent fix file classification permissions cannot access file administrative units'; read diagnostics, permissions and Administrative units in Microsoft Purview; DLP role-group scoping is documented, but diagnostic-result scoping is not.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "Whether each Solutions-page diagnostic run is recorded in the unified audit log, and its activity name, is not specified.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview DLP diagnostics Check-PurviewConfig audit log diagnostic run activity'; read diagnostics and Check-PurviewConfig; searched Audit log activities for Check-PurviewConfig, diagnostic and cmdlet; no named event for these diagnostic runs found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "No diagnostic runs on its own and every run is started by a person.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'Purview Solutions DLP diagnostics automatic scheduled runs Check-PurviewConfig user selects diagnostic'; opened self-help diagnostics and Check-PurviewConfig. They describe user-selected execution but do not state that every possible run must be started by a person.",
+      "severity": "major",
+      "fix": "Replace 'No diagnostic runs on its own; each is started by a person.' with 'Learn describes starting a Solutions-page diagnostic by selecting it in the portal.' See https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics."
+    },
+    {
+      "n": 61,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "Check-PurviewConfig can also be invoked in Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/check-purviewconfig",
+      "quote": "This cmdlet is available only in Security & Compliance PowerShell. ... Use the Check-PurviewConfig cmdlet to run Microsoft Information Protection diagnostic test cases for your organization and check the results.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "The Check-PurviewConfig reference grants its invocation to administrators assigned Organization Configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/check-purviewconfig",
+      "quote": "Admins with the Organization Configuration role assigned have the necessary permissions to run this cmdlet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Governance guidance: Before rollout, first bullet",
+      "type": "admin-path",
+      "claim": "Settings > Roles and scopes > Role groups is the portal location for listing membership of groups carrying the named roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Go to Settings > Roles and scopes to view and manage compliance and governance roles in your organization. Select Role groups. On Role groups for Microsoft Purview solutions, select a Microsoft Purview role group ... Select Edit on the control bar.",
+      "severity": "minor",
+      "fix": "Extend the first Before rollout bullet's route to 'Microsoft Purview portal > Settings > Roles and scopes > Role groups > Role groups for Microsoft Purview solutions > role group > Edit > Edit members of the role group', specifying a role group that carries the role. See https://learn.microsoft.com/purview/purview-permissions."
+    },
+    {
+      "n": 64,
+      "where": "Governance guidance: Before rollout, second bullet; controls",
+      "type": "consistency",
+      "claim": "The checklist asks administrators to review Microsoft Entra role membership, but the table has no row for that separate control.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Check who holds the Microsoft Entra Compliance Administrator, Security Administrator and Security Reader roles ... / table: Purview role-group membership; tenant switch to turn off DLP diagnostics.",
+      "severity": "minor",
+      "fix": "Remove the second Before rollout checklist bullet about checking Microsoft Entra role membership; retain the verified Entra precedence explanation in Risk assessment and Governance controls. Do not add a control row in this correction."
+    },
+    {
+      "n": 65,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The file diagnostic's underlying Test-DlpPolicies report exposes the file's classification and evaluated policy and rule details.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-test-dlp-policies",
+      "quote": "Classification ID | The sensitive information type (SIT) the item is categorized as; Policy Details | The name and GUID of the policy that was evaluated; Rules - Rule Details | The DLP rule name and GUID",
+      "severity": "minor",
+      "fix": "Add 'Test your Data Loss Prevention policies' at https://learn.microsoft.com/purview/dlp-test-dlp-policies to sources for the file-classification and policy/rule output description."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-28T09:36:04.777Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/purview-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/check-purviewconfig",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=557192",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Who can run the DLP diagnostics (membership of the Purview role groups that carry the listed roles)",
+        "docs": "https://learn.microsoft.com/purview/purview-permissions",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Roles and scopes",
+          "Role groups",
+          "Role groups for Microsoft Purview solutions",
+          "role group",
+          "Edit",
+          "Edit members of the role group",
+          "Choose users"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Who can run the DLP diagnostics (membership of the Purview role groups that carry the listed roles)",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "reachable": true,
+        "token": "Add-RoleGroupMember",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

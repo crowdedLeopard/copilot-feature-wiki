@@ -81,10 +81,12 @@ changes:
     note: "Corrected after the independent check: removed the sentence tying the Gallery default to a Pro licence, raised impact to high, and added the enrolment page as a source."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 66 statements confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 66 statements confirmed"
 version: 4
 verification:
   status: "verified"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"

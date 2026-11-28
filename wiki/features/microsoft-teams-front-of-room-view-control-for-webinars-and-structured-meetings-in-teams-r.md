@@ -58,15 +58,17 @@ changes:
     note: "Corrected after the independent check: cost rationale now covers only rooms already on Teams Rooms Pro, and the rollout-stages and device-maker-schedule claims are replaced with the release notes' wording on device delays."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 41 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 49 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 41
-  confirmed: 40
+  claims: 49
+  confirmed: 48
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -164,8 +166,8 @@ cost: Low. For Android rooms already licensed with Teams Rooms Pro, the cost is 
 impact: Medium. Presenters and in-room audiences in Teams Rooms on Android see a different default display during webinars and structured meetings; remote attendees are not affected, according to Microsoft's notice.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: The guidance names the presenter's view-switch control without a corresponding console-control row in the table. | Found: Tell organisers and presenters ... Switch to presenter view on the console changes the front-of-room display. ... Default front-of-room view for Teams Rooms on Android presenters | Not yet documented | Not yet documented | Fix: The At rollout instruction naming Switch to presenter view, and the instruction to switch back to attendee view, have no presenter-console control row; the existing row describes only the missing administrator default-setting control.
+- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: The rollout checklist names presenter view-switch controls without a corresponding control row. | Found: Switch to presenter view on the console changes the front-of-room display. ... Update internal room guides to say presenters switch back to attendee view ... Default front-of-room view for Teams Rooms on Android presenters | Not yet documented | Not yet documented | Fix: In Governance guidance: At rollout, replace the first bullet with 'Tell organisers and presenters about the updated room-display experience.' Remove the bullet instructing internal room guides to say presenters switch back to attendee view. These steps name presenter-console controls with no table row.
 -->

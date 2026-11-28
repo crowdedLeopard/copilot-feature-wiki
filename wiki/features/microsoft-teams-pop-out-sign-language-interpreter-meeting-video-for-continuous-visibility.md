@@ -77,15 +77,17 @@ changes:
     note: "Added Microsoft's notice MC1559642: preview from early December 2026, GA from mid January 2027, user steps, and no admin policy. Default is now user opt-in."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 60 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 59 statements not yet confirmed"
 version: 4
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 60
+  claims: 59
+  confirmed: 59
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -186,8 +188,10 @@ cost: Low. Microsoft has published no licence or meter specific to this feature;
 impact: Low. The notice aims the feature at Deaf and Hard of Hearing users and their paired interpreters on Teams desktop for Windows and Mac, a small group in most tenants; each user turns it on for themselves.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; Governance guidance: Before rollout; Governance controls table / admin-path: The accessibility guide documents Teams admin center > Meetings > Meeting policies > policy > Audio & video > IP video. | Found: In the Teams admin center, go to Meetings, and then select Meeting policies. ... Select the policy you want to modify. ... Go to the Audio & video section. ... Check that IP video is turned On | Fix: Keep the cited path, but add: 'The accessibility guide says users of Unified Policies & Settings management find these options under Settings & Policies. The audio and video policy article calls IP video "Video conferencing": https://learn.microsoft.com/microsoftteams/meeting-policies-audio-and-video.' | Source: https://learn.microsoft.com/microsoftteams/accessibility-guide-admin
+- [supported, minor] controls[1].governs and note; Risk assessment: Change & support; Governance controls / applicability: The accessibility guide ties the IP video meeting policy setting to interpreters sharing an IP video feed. | Found: Give sign language interpreters the ability to share IP video feed during Microsoft Teams meetings ... Check that IP video is turned On | Fix: Keep the attribution to the accessibility guide, and add: 'The audio and video policy article currently warns that Video conferencing does not turn off video for meetings and events, and directs organisers to Allow camera for attendees in Meeting Options.' Cite https://learn.microsoft.com/microsoftteams/meeting-policies-audio-and-video. This is differing general video-control guidance, not documentation of a pop-out switch. | Source: https://learn.microsoft.com/microsoftteams/accessibility-guide-admin
+- [supported, minor] controls[1].ui; Governance guidance: Before rollout; Governance controls table / admin-path: The accessibility guide gives Teams admin center > Meetings > Meeting policies > policy > Audio & video > IP video. | Found: In the Teams admin center, go to Meetings, and then select Meeting policies. ... Select the policy you want to modify. ... Go to the Audio & video section. ... Check that IP video is turned On | Fix: Keep the cited path, but add: 'For the Unified Policies & Settings management experience, the accessibility guide says these options are under Settings & Policies. The audio and video policy article calls IP video "Video conferencing".' Cite https://learn.microsoft.com/microsoftteams/meeting-policies-audio-and-video alongside the existing accessibility guide. | Source: https://learn.microsoft.com/microsoftteams/accessibility-guide-admin
+- [supported, minor] controls[1].scope; Governance controls / applicability: Meeting policies are assigned to users and the IP video setting applies to policy holders. | Found: You can assign a policy directly to users, either individually or at scale through a batch assignment (if supported for the policy type), or to a group that the users are members of (if supported for the policy type). | Fix: Add https://learn.microsoft.com/microsoftteams/meeting-policies-overview to sources for the existing statement that meeting policies are assigned to users. Keep the statement and the user scope. | Source: https://learn.microsoft.com/microsoftteams/meeting-policies-overview
 -->

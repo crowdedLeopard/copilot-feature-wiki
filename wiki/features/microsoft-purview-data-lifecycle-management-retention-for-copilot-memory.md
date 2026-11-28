@@ -34,6 +34,9 @@ sources:
   - title: "New-AppRetentionCompliancePolicy"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-appretentioncompliancepolicy"
     kind: "learn"
+  - title: "New-AppRetentionComplianceRule"
+    url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-appretentioncompliancerule"
+    kind: "learn"
   - title: "Update enhancedPersonalizationSetting"
     url: "https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta"
     kind: "learn"
@@ -54,9 +57,9 @@ controls:
       docs: "https://learn.microsoft.com/purview/create-retention-policies"
     api:
       kind: "powershell"
-      call: "New-AppRetentionCompliancePolicy -Name \"<PolicyName>\" -Applications \"User:M365Copilot,CopilotForSecurity,CopilotinFabricPowerBI,CopilotStudio,CopilotinBusinessApplicationplatformsSales,SQLCopilot\" -ExchangeLocation All"
-      docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-appretentioncompliancepolicy"
-    note: "Learn says Purview retention policies and labels don't apply to Copilot memory. The Microsoft Copilot experiences location is the one Learn documents for Copilot interactions."
+      call: "New-AppRetentionComplianceRule -Name \"<RuleName>\" -Policy \"<PolicyName>\" -RetentionDuration <days> -RetentionComplianceAction <Keep|Delete|KeepAndDelete>"
+      docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-appretentioncompliancerule"
+    note: "Learn says Purview retention policies and labels don't apply to Copilot memory. This sets the retention duration and action on an existing policy; create that policy separately with New-AppRetentionCompliancePolicy."
   - governs: "Whether Copilot memory can be used (Enhanced personalization control)"
     scope: "tenant"
     ui: null
@@ -67,7 +70,7 @@ controls:
     note: "The request body sets isEnabledInOrganization and optionally disabledForGroup. Beta API; delegated access needs at least the People Administrator role."
 confidence: "medium"
 created: "2026-11-21"
-updated: "2026-11-21"
+updated: "2026-11-28"
 roadmapModified: "2026-11-03T00:14:11"
 changes:
   - date: "2026-11-21"
@@ -80,19 +83,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 50 statements not yet confirmed"
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 61 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-28"
+    note: "Corrected the retention row's command to New-AppRetentionComplianceRule, which sets the retention duration and action, and removed the eDiscovery search step from the pilot test."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 60 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-28"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 61
-  confirmed: 59
+  claims: 60
+  confirmed: 60
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "87c7fc80d78c3143a2e5885d17b4c58f"
+  contradicted: 0
+  attempts: 0
+  hash: "e989f61e9c85c994b5ca990b540cea7f"
 ---
 
 ## What's changing
@@ -145,7 +152,7 @@ Memory belongs to users of Copilot Chat and Microsoft 365 Copilot, and Learn say
 - List which existing retention policies include the **Microsoft Copilot experiences** location and record that Learn says they do not delete memories.
 
 ### At rollout
-- Test with a pilot user: create a memory, apply the retention configuration you are evaluating, and check whether versions of inactive memory items appear in an eDiscovery search for item class IPM.Contact.
+- Test with a pilot user: create a memory and apply the retention configuration you are evaluating.
 - Decide whether to keep the Enhanced personalization control on for the tenant, or disable it for a group, while retention behaviour is unconfirmed.
 
 ### After rollout
@@ -159,7 +166,7 @@ Memory belongs to users of Copilot Chat and Microsoft 365 Copilot, and Learn say
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Retention policy for Microsoft Copilot experiences (not documented as covering memory)</strong><br><small>Tenant</small><br><small class="controls__note">Learn says Purview retention policies and labels don't apply to Copilot memory. The Microsoft Copilot experiences location is the one Learn documents for Copilot interactions.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Data Lifecycle Management › Policies › Retention policies › New retention policy <a href="https://learn.microsoft.com/purview/create-retention-policies" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-AppRetentionCompliancePolicy -Name &quot;&lt;PolicyName&gt;&quot; -Applications &quot;User:M365Copilot,CopilotForSecurity,CopilotinFabricPowerBI,CopilotStudio,CopilotinBusinessApplicationplatformsSales,SQLCopilot&quot; -ExchangeLocation All</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-appretentioncompliancepolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Retention policy for Microsoft Copilot experiences (not documented as covering memory)</strong><br><small>Tenant</small><br><small class="controls__note">Learn says Purview retention policies and labels don't apply to Copilot memory. This sets the retention duration and action on an existing policy; create that policy separately with New-AppRetentionCompliancePolicy.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Data Lifecycle Management › Policies › Retention policies › New retention policy <a href="https://learn.microsoft.com/purview/create-retention-policies" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-AppRetentionComplianceRule -Name &quot;&lt;RuleName&gt;&quot; -Policy &quot;&lt;PolicyName&gt;&quot; -RetentionDuration &lt;days&gt; -RetentionComplianceAction &lt;Keep|Delete|KeepAndDelete&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-appretentioncompliancerule" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether Copilot memory can be used (Enhanced personalization control)</strong><br><small>Tenant</small><br><small class="controls__note">The request body sets isEnabledInOrganization and optionally disabledForGroup. Beta API; delegated access needs at least the People Administrator role.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH https://graph.microsoft.com/beta/copilot/settings/people/enhancedpersonalization</code> <a href="https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
@@ -181,11 +188,8 @@ cost: Low. The only cost the sources show is admin time and the existing Purview
 impact: Low. Compliance and security administrators notice it. The roadmap describes retention of inactive memory items while the Copilot experience keeps managing active memory, so end users are not described as changed.
 -->
 
-<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; Governance controls table / command: The displayed New-AppRetentionCompliancePolicy call is the automation that sets the row's retention control. | Found: Use the New-AppRetentionCompliancePolicy to create app retention compliance policies. ... After you create the retention policy, use the New-AppRetentionComplianceRule cmdlet to create a retention rule | Fix: Replace controls[0].api.call and its rendered copy with 'New-AppRetentionComplianceRule -Name "<RuleName>" -Policy "<PolicyName>" -RetentionDuration <days> -RetentionComplianceAction <Keep|Delete|KeepAndDelete>' and set api.docs to https://learn.microsoft.com/powershell/module/exchangepowershell/new-appretentioncompliancerule. Add to the existing note: 'This sets the retention duration and action on an existing policy; create that policy separately with New-AppRetentionCompliancePolicy.' Keep the existing memory-exclusion caveat and policy-creation explanation. The rule reference documents integer days and the three printed action values. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/new-appretentioncompliancepolicy
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy opens the relevant Purview retention wizard. | Found: Sign in to the Microsoft Purview portal > Solutions > Data Lifecycle Management > Policies > Retention policies. ... Select New retention policy to start the Create retention policy configuration | Fix: Extend the static-policy route to 'Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy > Choose the type of retention policy to create > Static > Choose locations to apply the policy > Microsoft Copilot experiences > Decide if you want to retain content, delete it, or both', as documented at https://learn.microsoft.com/purview/create-retention-policies. The existing route is correct but stops before the location and retention settings. | Source: https://learn.microsoft.com/purview/create-retention-policies
-- [contradicted, minor] Governance guidance: At rollout / consistency: The governance checklist names an eDiscovery-search control that is absent from the controls table. | Found: check whether versions of inactive memory items appear in an eDiscovery search for item class IPM.Contact. ... Table controls: Retention policy for Microsoft Copilot experiences; Whether Copilot memory can be used. | Fix: Replace the pilot bullet with 'Test with a pilot user: create a memory and apply the retention configuration you are evaluating.' This removes the checklist's unrepresented search control without adding a row.
+- [supported, minor] controls[0].ui / admin-path: Microsoft Purview portal > Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy starts creation of the retention policy. | Found: Sign in to the Microsoft Purview portal > Solutions > Data Lifecycle Management > Policies > Retention policies. ... Select New retention policy to start the Create retention policy configuration | Fix: Extend controls[0].ui.path and its rendered table path to 'Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy > Assign admin units > Full directory > Choose the type of retention policy to create > Static > Choose locations to apply the policy > Microsoft Copilot experiences > Decide if you want to retain content, delete it, or both'. This is the documented static-policy route at https://learn.microsoft.com/purview/create-retention-policies. | Source: https://learn.microsoft.com/purview/create-retention-policies
 -->

@@ -66,15 +66,17 @@ changes:
     note: "Corrected after the independent check: users, not organisers, are named as adding files; removed a visibility claim; Facilitator availability is now an alternative lever, with app-centric management wording and the IsBlocked caveat."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 57 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 65 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 57
-  confirmed: 56
+  claims: 65
+  confirmed: 64
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -170,9 +172,9 @@ cost: Low. The only documented cost is admin time; Facilitator is included with 
 impact: Medium. Users who add files and every participant who receives them notice it, and Facilitator answers in the meeting for everyone to see.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model / licensing: The licensing model is included for this new option inside Teams, with feature-specific licensing unpublished. | Found: Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams. | Fix: Keep model 'included', but add to licensing.notes and Cost and licensing: 'Except for joining Teams meetings anonymously, each user in the organisation must have a Teams license before using Teams, according to Manage Teams licenses.' Cite https://learn.microsoft.com/microsoftteams/user-access. Retain the separate Facilitator prerequisites and the feature-specific licensing gap. | Source: https://learn.microsoft.com/microsoftteams/user-access
-- [contradicted, minor] Governance guidance: After rollout; controls[0] / consistency: The checklist recommends restricting Facilitator for groups, but the table provides only its tenant-wide Allow or Block control. | Found: After rollout: 'decide whether to restrict Facilitator for those groups.' controls[0]: 'Whether Facilitator is allowed or blocked for the organisation'; scope: 'tenant'. | Fix: Replace the After rollout bullet with 'Review support requests about files visible to the wrong participants and decide whether to allow or block Facilitator for the organisation.' This aligns the checklist with the existing tenant-level row without adding a control.
+- [supported, minor] front matter: licensing.model / licensing.notes; Cost and licensing / licensing: The licensing model is included for a new option within Teams, with feature-specific licensing unpublished. | Found: Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams. | Fix: Keep licensing.model as 'included'. Add to licensing.notes and Cost and licensing: 'Except for joining Teams meetings anonymously, each user in the organisation must have a Teams license before using Teams, according to Manage Teams licenses.' Add https://learn.microsoft.com/microsoftteams/user-access to sources. Retain the distinct Facilitator prerequisites and feature-specific licensing gap. | Source: https://learn.microsoft.com/microsoftteams/user-access
+- [contradicted, minor] Governance guidance: After rollout; controls[0] / consistency: The checklist recommends restricting Facilitator for groups, but no group-availability control appears in the controls table. | Found: After rollout: 'decide whether to restrict Facilitator for those groups.' controls[0]: 'Whether Facilitator is allowed or blocked for the organisation'; scope: 'tenant'. | Fix: Replace the After rollout bullet with: 'Review support requests about files visible to the wrong participants and decide whether to allow or block Facilitator for the organisation.' This uses the existing tenant-level row without adding a control.
 -->

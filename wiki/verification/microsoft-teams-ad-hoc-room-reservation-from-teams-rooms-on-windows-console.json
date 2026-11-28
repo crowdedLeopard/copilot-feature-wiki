@@ -1,0 +1,720 @@
+{
+  "slug": "microsoft-teams-ad-hoc-room-reservation-from-teams-rooms-on-windows-console",
+  "roadmapId": 548648,
+  "title": "Microsoft Teams Rooms on Windows: reserve a free room on the spot from the console",
+  "status": "held",
+  "date": "2026-11-28",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-28",
+    "reasons": [
+      "3 blocking findings (claims 22, 23, 38)"
+    ]
+  },
+  "counts": {
+    "claims": 53,
+    "confirmed": 49,
+    "unconfirmed": 0,
+    "contradicted": 4,
+    "blocker": 3,
+    "major": 0,
+    "minor": 4
+  },
+  "summary": "Hold: the role-assignment requirement omits Microsoft's documented option to use a custom role with role-management permissions. The statement that console reservation display details are undocumented is also too broad: Microsoft documents the room calendar's displayed fields and privacy behavior. The roadmap facts, Pro licensing and reservation toggle are supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "People can book the meeting room for immediate use from its Teams Rooms on Windows console.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "With Teams Rooms on Windows consoles, you can quickly book a meeting room for immediate use",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; Governance guidance; rationale: impact",
+      "type": "behaviour",
+      "claim": "A Reserve button appears on the console calendar when the room is available.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/mtr-home-refresh",
+      "quote": "A Reserve button appears on the calendar when the room is available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Microsoft describes the feature as helping avoid scheduling conflicts and interruptions to spontaneous meetings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/mtr-home-refresh",
+      "quote": "Allow users to quickly book the meeting room for immediate use, helping to avoid scheduling conflicts and ensure uninterrupted spontaneous meetings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is July CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"July CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap record supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Desktop and Teams and Surface Devices.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Teams and Surface Devices\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap product is Microsoft Teams.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Teams\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-10-05T23:03:05.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-05T23:03:05\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: licensing.model and cost; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Ad-hoc room reservation is included with Teams Rooms Pro, without a further feature licence for rooms already on Pro.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Available in Teams Rooms Pro-licensed rooms.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: licensing.notes; What's changing; Cost and licensing",
+      "type": "licensing",
+      "claim": "The release notes mark ad-hoc room reservation with the icon for features available only with Teams Rooms Pro.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note",
+      "quote": "Features with the ![](../media/mtr-pro-icon.png) icon are available only with Teams Rooms Pro license. ... **Ad-hoc room reservation**![](../media/mtr-pro-icon.png)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: licensing.notes; Cost and licensing: Rooms on Basic; rationale: cost",
+      "type": "licensing",
+      "claim": "Teams Rooms Basic devices cannot use this Pro-only feature and would need a Teams Rooms Pro licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing",
+      "quote": "If a feature isn't available for a license, that feature can't be used on Teams Rooms devices that have been assigned that license. To use a feature on a Teams Rooms device, assign the license in which that feature is available to that device.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; Open questions",
+      "type": "default",
+      "claim": "Microsoft does not state whether Allow ad hoc room reservation is initially on or off.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Allow ad hoc room reservation\" \"default\"; Teams Rooms Windows Allow ad hoc room reservation default enabled bulk settings templates PowerShell XML Microsoft Graph. Read home-screen and release-note sections; searched remote-settings and XML references; none states its default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[0].ui; summary; What's changing; Governance guidance; rationale: risk",
+      "type": "admin-path",
+      "claim": "The per-room Windows toggle is in Teams Rooms Pro Management portal > Rooms > room > Settings > Meetings > Allow ad hoc room reservation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/mtr-home-refresh",
+      "quote": "On Teams Rooms on Windows devices: open the Pro Management Portal > Rooms > select your room > Settings > Meetings > toggle Allow ad hoc room reservation to control this functionality.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[0].api; Governance controls table",
+      "type": "absence",
+      "claim": "No documented API or automation operation sets Allow ad hoc room reservation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Rooms Pro Management portal ad hoc room reservation API PowerShell device settings automation; Teams Rooms Windows Allow ad hoc room reservation default enabled bulk settings templates PowerShell XML Microsoft Graph. Read home screen, XML and Graph features references.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[1].ui; Governance controls table; Governance guidance",
+      "type": "admin-path",
+      "claim": "Portal role assignments are reached through Settings > Roles > role > Assignments > Add assignment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac",
+      "quote": "In the left navigation ... expand Settings > Roles. ... Select the role you want to assign. ... In the role pane, select Assignments > Add assignment.",
+      "severity": "minor",
+      "fix": "The path correctly opens the assignment wizard but stops before its user and room selections. Extend controls[1].ui.path and the matching table path to 'Settings > Roles > role > Assignments > Add assignment > General settings > Members > Scope', as documented at https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac."
+    },
+    {
+      "n": 19,
+      "where": "controls[1].api; Governance controls table",
+      "type": "absence",
+      "claim": "Microsoft documents no API for the portal's own room-scoped role assignments.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Rooms Pro Management portal RBAC role assignments automate API PowerShell Microsoft Graph. Read rooms-pro-rbac and search excerpts on Entra role assignment APIs; these describe directory roles, not the portal's own room-scoped assignments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[1].governs; Governance guidance",
+      "type": "applicability",
+      "claim": "Portal RBAC roles determine what portal users can see and change.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac",
+      "quote": "By assigning roles to your portal users, you can limit what they can see and change. Each role has a set of permissions that determines what users with that role can access and change within your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[0].note; Scope: Who configures it; Governance controls",
+      "type": "role",
+      "claim": "Configuring device settings requires RBAC permissions for room management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
+      "quote": "you can configure settings for Microsoft Teams devices ... provided you have the necessary role-based access control permissions for Rooms Management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Governance controls: creating and editing roles",
+      "type": "role",
+      "claim": "Creating or editing portal roles requires Global Administrator, Teams Administrator or Teams Rooms Pro Manager permissions.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac",
+      "quote": "Teams Administrator or Teams Devices Administrator assigned to an Administrative Unit (AU), can't access the Teams Rooms Pro Management portal, as AUs aren't currently supported.",
+      "severity": "blocker",
+      "fix": "Qualify Teams Administrator as tenant-wide in the role requirement: 'Creating or editing portal roles requires Global Administrator, tenant-wide Teams Administrator, or Teams Rooms Pro Manager.' Apply together with the assignment correction below. Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac."
+    },
+    {
+      "n": 23,
+      "where": "controls[1].note; Governance controls: assigning roles",
+      "type": "role",
+      "claim": "Assigning portal roles requires Global Administrator, Teams Administrator or Teams Rooms Pro Manager.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac",
+      "quote": "To assign roles, you must be a Global Administrator/ Teams Administrator or Teams Rooms Pro Manager role or have a custom role with role management permissions.",
+      "severity": "blocker",
+      "fix": "Replace the assignment requirement in controls[1].note and the matching table note with 'Assigning roles requires Global Administrator, tenant-wide Teams Administrator, Teams Rooms Pro Manager, or a custom role with role management permissions.' In Governance controls, replace the combined requirement sentence with 'Creating or editing portal roles requires Global Administrator, tenant-wide Teams Administrator, or Teams Rooms Pro Manager. Assigning roles also permits a custom role with role management permissions.' Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac; its note says an Administrative Unit-scoped Teams Administrator cannot access the portal."
+    },
+    {
+      "n": 24,
+      "where": "controls[1].note; Governance controls table; Governance guidance",
+      "type": "applicability",
+      "claim": "Portal role assignments can be scoped to rooms or room groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac",
+      "quote": "On the Scope page, in the Search for room or room group box, type the name of either a room or room group that the user will be allowed to manage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[0].note; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Apply Now queues the setting change and restarts the device as soon as possible.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
+      "quote": "Apply Now - Queues a job to apply the setting and restarts the device as soon as possible to apply the setting changes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[0].note; Risk assessment; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Schedule Later applies the settings change during the nightly maintenance window.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
+      "quote": "Schedule Later - Schedules the settings change to be applied during the nightly maintenance window to avoid disrupting scheduled meetings during business hours.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Scope: Devices",
+      "type": "availability",
+      "claim": "Portal settings changes can be applied only to signed-in devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
+      "quote": "Settings management is available only for signed-in devices. Ensure that the device is signed in for settings changes from the Teams Rooms Pro management portal to be applied successfully.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Why it matters; Scope: Version",
+      "type": "availability",
+      "claim": "The release notes list the feature under Teams Rooms app version 5.6.137.0.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note",
+      "quote": "### 5.6.137.0 (6/18/2026) ... **Ad-hoc room reservation**![](../media/mtr-pro-icon.png)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Scope: Version",
+      "type": "date",
+      "claim": "The feature was added through a web client build on 7/20/2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note",
+      "quote": "These features were added to this release as part of a web client build on 7/20/2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing; Scope: Not in this item",
+      "type": "behaviour",
+      "claim": "Teams Rooms on Android has the same ad-hoc reservation capability, separate from this Windows roadmap item.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/mtr-home-refresh",
+      "quote": "On Teams Rooms on Android devices: open Teams Admin Settings > Meetings and toggle Allow ad hoc room reservation to toggle this functionality or use the configuration profile within Teams Admin Center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing: Android device setting; Scope",
+      "type": "behaviour",
+      "claim": "Android devices have an Allow ad hoc room reservation setting on the device.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/mtr-home-refresh",
+      "quote": "On Teams Rooms on Android devices: open Teams Admin Settings > Meetings and toggle Allow ad hoc room reservation",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing: Android configuration profile",
+      "type": "behaviour",
+      "claim": "The Android reservation setting can also be controlled using a Teams admin center configuration profile.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/mtr-home-refresh",
+      "quote": "toggle Allow ad hoc room reservation to toggle this functionality or use the configuration profile within Teams Admin Center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Cost and licensing: Management",
+      "type": "licensing",
+      "claim": "The Pro Management portal can be enabled once a Teams Rooms Pro licence is available in the tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-deploy",
+      "quote": "Once you have a Teams Rooms Pro license available in your Microsoft 365 tenant, you can enable the Teams Rooms Pro Management Portal",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Why it matters; Risk assessment: Autonomy & actions; rationale: impact",
+      "type": "behaviour",
+      "claim": "Reservations made at the console are room-calendar bookings alongside scheduled meetings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/mtr-home-refresh",
+      "quote": "The room calendar on Teams Rooms (Windows and Android) devices shows the room availability and scheduled meetings in the room ... A Reserve button appears on the calendar when the room is available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Why it matters: booking from Outlook",
+      "type": "behaviour",
+      "claim": "Users can book meeting rooms from Outlook.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/hybrid-meetings-device-config-calendar",
+      "quote": "Room Finder is an Outlook feature that helps users find rooms that are near them, available for reservation, and meet other criteria such as the availability of a display.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoftteams/hybrid-meetings-device-config-calendar to sources for the Outlook booking premise in Why it matters, or remove 'from Outlook' from that sentence."
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "Microsoft describes no new data reach beyond booking the meeting room.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Rooms Windows ad hoc room reservation Reserve organizer identity duration calendar processing Exchange privacy data. Read home screen, release notes and resource-account search excerpts; the reservation description names room booking, not additional data access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Microsoft does not document which account appears as organizer for a Windows console reservation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams Rooms\" \"reservation\" \"organizer\" \"duration\" console Windows. Read home screen, release notes and panel-reservation search excerpts; the panel-specific organizer statement does not establish Windows console behavior.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "What the console shows of a room-calendar reservation is not documented.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/mtr-home-refresh",
+      "quote": "By default, room users can join meetings in one touch and view meeting details including the meeting name, organizer, time, and platform. ... meeting names can be hidden ... and replaced with the organizer name if desired",
+      "severity": "blocker",
+      "fix": "Narrow the sentence to 'Who the booking shows as organiser is not documented; check on a test room before relying on meeting-name privacy settings.' Remove 'and what the console shows of it': https://learn.microsoft.com/microsoftteams/rooms/mtr-home-refresh documents the general room-calendar display fields and meeting-name privacy behavior, even though it does not identify the organizer account or generated subject for this reservation."
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "Microsoft does not describe the identity used to create a Windows console reservation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Rooms Windows ad hoc room reservation Reserve organizer identity duration calendar processing Exchange privacy data. Read home screen and release notes and resource-account excerpts; no passage identifies the reservation-creation identity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Autonomy & actions; Open questions",
+      "type": "absence",
+      "claim": "The duration of a Windows console reservation is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams Rooms\" \"reservation\" \"organizer\" \"duration\" console Windows. Read home screen, release notes and Teams panels reservation excerpts; published panel duration rules are not stated for Windows console reservations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Autonomy & actions; Open questions",
+      "type": "absence",
+      "claim": "Microsoft does not document whether Exchange calendar-processing settings apply to reservations created directly at the console.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Rooms Windows ad hoc room reservation Reserve organizer identity duration calendar processing Exchange privacy data. Read home-screen Calendar and resource-account Configure Exchange mailbox properties excerpts; these discuss meeting invitations, not the console reservation write path.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Change & support; Why it matters; Open questions",
+      "type": "behaviour",
+      "claim": "Microsoft lists an unresolved Windows reservation issue with the new British Columbia, Alberta and Manitoba time zones.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/devices/known-issues",
+      "quote": "Teams Rooms on Windows devices should automatically pickup new Windows time zones \"British Columbia Standard Time, Albert Standard Time, and Manitoba Standard Time however, ad-hoc room reservation may not correctly adjust to these time zones.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Microsoft's workaround is to temporarily disable ad-hoc room reservation through the Pro Management portal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/devices/known-issues",
+      "quote": "Temporarily disable ad-hoc room reservation using Settings Management in the Pro Management Portal",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Configuring alternative console time zones is another Microsoft-documented workaround.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/devices/known-issues",
+      "quote": "or configure alternative time zones as a workaround until the region specific time zone is resolved: ... Alberta (UTC -6): UTC-06:00 Saskatchewan ... Most of British Columbia (UTC -7): UTC-07:00 Arizona ... Manitoba (UTC -5): UTC-05:00 Bogota, Lima, Quito, Rio Branco",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance controls: remote-management settings list",
+      "type": "absence",
+      "claim": "The published remote-management settings list does not include Allow ad hoc room reservation at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"ad.hoc|reserv\" throughout the fetched device-settings-available?tabs=WindowsSettings reference; no matches. Read its Windows Meetings table. Search query: \"ad-hoc room reservation\" \"bulk\" \"templates\" Windows.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance controls: bulk application; Open questions",
+      "type": "absence",
+      "claim": "Whether this particular toggle can be applied in bulk with jobs or templates is unconfirmed.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"ad-hoc room reservation\" \"bulk\" \"templates\" Windows. Read pro-portal-settings, device-settings-available, home screen and XML introduction; general jobs/templates are documented but no passage explicitly establishes bulk support for this toggle.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Governance controls: device settings jobs",
+      "type": "behaviour",
+      "claim": "The portal documents device settings jobs for applying settings to multiple devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
+      "quote": "a job can be created to apply one or more settings to one or more Teams devices through the Teams Rooms Pro management portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Governance controls: settings templates",
+      "type": "behaviour",
+      "claim": "The portal documents reusable settings templates for bulk configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
+      "quote": "Settings templates let you define a named, reusable configuration that is assigned to specific devices or device groups. ... Navigate to: Settings > Device settings page > Templates (Preview) tab",
+      "severity": "minor",
+      "fix": "Change 'device settings jobs and settings templates for bulk changes' to 'device settings jobs and preview settings templates for bulk changes' in Governance controls, preserving the existing caveat about this toggle. Source: https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings."
+    },
+    {
+      "n": 49,
+      "where": "Governance controls: XML publication policy",
+      "type": "behaviour",
+      "claim": "Microsoft no longer publishes new XML settings and recommends portal configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/xml-config-file",
+      "quote": "We recommend using the individual and bulk settings configuration options within the Teams Rooms Pro Management Portal instead of the XML configuration. We no longer publish new XML settings but all settings are managable within the Portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls: XML configuration is not a route",
+      "type": "absence",
+      "claim": "The XML reference provides no documented XML setting for ad-hoc room reservation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"ad.hoc|[Rr]eserv\" throughout the fetched xml-config-file reference; no matches. Query: Teams Rooms Windows Allow ad hoc room reservation default enabled bulk settings templates PowerShell XML Microsoft Graph. Read XML introduction and returned configuration-table excerpts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance controls: Microsoft Graph features resource",
+      "type": "absence",
+      "claim": "Microsoft Graph's teamworkFeaturesConfiguration reference has no property for this reservation toggle.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Rooms Pro Management portal ad hoc room reservation API PowerShell device settings automation. Read the complete beta teamworkFeaturesConfiguration reference; its properties cover logs/feedback, screen share, Bluetooth and meeting-name visibility, not reservations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance guidance: At rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist tells administrators to change console time zones, but the controls table has no time-zone control.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "At rollout: 'or move those consoles to the alternative time zones Microsoft lists.' The controls table contains only the reservation toggle and portal role assignments.",
+      "severity": "minor",
+      "fix": "The alternative-time-zone checklist action has no controls-table row. Remove ', or move those consoles to the alternative time zones Microsoft lists' from Governance guidance: At rollout, leaving the documented disable-setting action. The workaround description in Risk assessment can remain."
+    },
+    {
+      "n": 53,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "The release notes date Teams Rooms app version 5.6.137.0 to 6/18/2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note",
+      "quote": "### 5.6.137.0 (6/18/2026)",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-28T09:36:01.552Z",
+    "summary": {
+      "links": 11,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=548648",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/rooms/mtr-home-refresh",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/devices/known-issues",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/rooms/rooms-deploy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/rooms/device-settings-available?tabs=WindowsSettings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/rooms/xml-config-file",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/teamworkfeaturesconfiguration?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether the Reserve button for ad-hoc room reservation appears on a room's Teams Rooms on Windows console",
+        "docs": "https://learn.microsoft.com/microsoftteams/rooms/mtr-home-refresh",
+        "reachable": true,
+        "segments": [
+          "Rooms",
+          "room",
+          "Settings",
+          "Meetings",
+          "Allow ad hoc room reservation"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which portal users can change room settings, and for which rooms",
+        "docs": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Roles",
+          "role",
+          "Assignments",
+          "Add assignment"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

@@ -88,18 +88,20 @@ changes:
     note: "Status moved from In development to Rolling out; release notes now tie the surveys to the November 2026 app version and feedback policies, and the Cloud Policy licence and group condition is flagged to confirm for room accounts."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 71 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 69 statements contradicted, 2 unconfirmed; taken offline until corrected"
 version: 6
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-21"
+  status: "held"
+  date: "2026-11-28"
   version: 6
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 71
-  confirmed: 70
-  unconfirmed: 1
-  contradicted: 0
-  attempts: 0
+  claims: 69
+  confirmed: 66
+  unconfirmed: 2
+  contradicted: 1
+  attempts: 1
   hash: "2a8ae5b9ddec8fc9ee05ac7a6109aa11"
 ---
 
@@ -194,8 +196,13 @@ cost: Low. The only cost the sources show is admin time for device updates and u
 impact: Medium. People who attend meetings on Teams Rooms on Android devices will periodically be prompted after a meeting ends; admins and other users do not otherwise notice it.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [unsupported, major] Risk assessment: Security & identity / behaviour: The Learn page on managing Teams Rooms says in-product surveys can be shown to signed-in room accounts. | Found: Searched: Teams Rooms signed-in surveys; Teams Rooms in-product surveys Cloud Policy; Teams Rooms surveys room accounts Cloud Policy. rooms-manage redirects to Pro Management and has no such passage; release notes and feedback pages do not state this signed-in-account claim. | Fix: Remove 'The Learn page on managing Teams Rooms says in-product surveys can be shown to signed-in room accounts.'
+- [contradicted, blocker] Risk assessment: Change & support; Governance guidance: At rollout / admin-path: Administrators should check Android room device update status in the Teams admin center without a portal-transition qualification. | Found: SIP, MTR-A and Panels devices administration experience in TAC will start deprecating by Mid-November and will complete by end of November. After the deprecation, admins will no longer be able to update these devices from TAC | Fix: Replace 'Check device update status in the Teams admin center' in both places with 'Check device update status in the Teams Rooms Pro Management portal under Rooms > device > Updates'. Cite https://learn.microsoft.com/microsoftteams/rooms/androidupdatemanagementinpmp, which documents that route and viewing update history. | Source: https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [unsupported, minor] rationale: impact / behaviour: Administrators and other users do not otherwise notice this change. | Found: Searched: Teams Rooms Android call quality feedback surveys affected administrators other users impact. Read MC1490912 and Rooms release notes, management and feedback documentation; none states that administrators and other users do not otherwise notice it. | Fix: Remove '; admins and other users do not otherwise notice it' from the impact rationale, ending the sentence after 'after a meeting ends'.
+- [supported, minor] What's changing; Cost and licensing / record: The notice recommends updating Android room devices to the latest supported app version through the Teams admin center. | Found: Update Teams Rooms on Android devices to the latest supported application version through the Teams admin center. | Fix: Keep the notice attribution, then add: 'Microsoft's current transition guidance makes the Teams Rooms Pro Management portal the primary management portal; public-cloud Android room administration in the Teams admin center is being retired from mid-November to the end of November 2026.' Cite https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1.
+- [supported, minor] controls[0].governs; Governance controls; Governance guidance: Before rollout / applicability: The general Allow users to receive and respond to in-product surveys from Microsoft policy controls survey display for Teams Rooms. | Found: Teams Rooms | Yes | Yes | Yes | No ... Allow users to receive and respond to in-product surveys from Microsoft | Controls whether surveys appear within product. | Fix: Replace 'the Teams Rooms management page says Teams Rooms devices may display in-product surveys, including call quality feedback prompts, and points administrators to Cloud Policy service for Microsoft 365 to disable them' with 'the feedback policies page lists Teams Rooms as supporting in-product surveys and documents the Allow users to receive and respond to in-product surveys from Microsoft policy, configured through Cloud Policy'. The cited rooms-manage URL now redirects to Pro Management and no longer contains the attributed passage. | Source: https://learn.microsoft.com/privacy/microsoft-365/feedback/feedback-manage
+- [unsupported, minor] rationale: impact / behaviour: Administrators and other users do not otherwise notice the change. | Found: Searched: Teams Rooms call quality feedback surveys administrators impact. Read MC1490912, Rooms release notes, feedback documentation and CQD monitoring excerpts; none says administrators and other users do not otherwise notice the change. | Fix: Remove '; admins and other users do not otherwise notice it' from the impact rationale, ending the sentence after 'after a meeting ends'.
 -->

@@ -46,6 +46,9 @@ sources:
   - title: "Supported Microsoft 365 environments for Viva Insights features"
     url: "https://learn.microsoft.com/viva/insights/advanced/setup-maint/supported-environments"
     kind: "learn"
+  - title: "Configure Microsoft Copilot settings in the Microsoft 365 admin center"
+    url: "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center"
+    kind: "learn"
 videos: []
 related: ["viva-feature-access-management","microsoft-viva-access-management-for-copilot-analytics","microsoft-viva-copilot-analytics-all-licensed-user-page-copilot-dashboard","m365-copilot-your-command-center-for-ai-success","web-search"]
 controls:
@@ -55,8 +58,11 @@ controls:
       surface: "Microsoft 365 admin center"
       path: "Settings > Microsoft Viva > Viva Insights > Set up and management > Microsoft Copilot Dashboard > Manage access settings for Microsoft Copilot Dashboard > Users > Add"
       docs: "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard"
-    api: null
-    note: "AI Administrator or Global Administrator. Select Groups instead of Users to add Entra ID groups. Changes take effect in 24 hours."
+    api:
+      kind: "powershell"
+      call: "Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId \"Viva Insights web app\" -Name EnableSelectedUsers -IsFeatureEnabled $true -UserIds <user-UPNs>"
+      docs: "https://learn.microsoft.com/powershell/module/exchange/add-vivamodulefeaturepolicy"
+    note: "AI Administrator or Global Administrator. Select Groups instead of Users to add Entra ID groups. Changes take effect in 24 hours. The policy covers the whole Viva Insights web app, not the Readiness page alone; use -GroupIds for groups."
   - governs: "Whether the Viva Insights web app, which hosts the Copilot Dashboard, is on for the tenant, groups or users"
     scope: "tenant"
     ui:
@@ -70,12 +76,15 @@ controls:
     note: "Choose the Viva Insights web app feature. On by default. Turning it off disables the whole app, not only the Readiness page."
   - governs: "Whether senior leaders are given Copilot Dashboard access automatically"
     scope: "tenant"
-    ui: null
+    ui:
+      surface: "Microsoft 365 admin center"
+      path: "Settings > Viva > Settings > Manage feature access > Create a policy > app and feature > Access setting"
+      docs: "https://learn.microsoft.com/viva/control-access-admin-center"
     api:
       kind: "powershell"
       call: "Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId AutoCxoIdentification -Name DisableFeatureForAll -IsFeatureEnabled $false -Everyone"
       docs: "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard"
-    note: "Enabled by default. Tenant-level policies only; user and group policies do not take effect."
+    note: "Enabled by default. Select the Copilot Dashboard Auto Enablement feature and apply the policy to Everyone; only tenant-level policies take effect."
   - governs: "Separate switch for the Readiness page recommendation cards"
     scope: "tenant"
     ui: null
@@ -90,19 +99,23 @@ changes:
     note: "New briefing: configuration recommendation cards on the Copilot Dashboard Readiness page, who sees them and the dashboard access controls."
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 71 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-28"
+    note: "Corrected the Contact admin steps and data-period wording, added the PowerShell call for dashboard access and the admin centre path for auto-enablement, and removed the change-log checklist step."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 73 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-28"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 71
-  confirmed: 66
-  unconfirmed: 1
-  contradicted: 4
-  attempts: 1
-  hash: "c0218b8a7953c3820178bf970e0b7ce4"
+  claims: 73
+  confirmed: 72
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 2
+  hash: "e30d03f8529acdd4f556c96fc22648d6"
 ---
 
 ## What's changing
@@ -115,7 +128,7 @@ The recommendations appear as cards in three groups:
 - **Maximize value with Copilot**: outstanding Copilot licence requests, and Copilot Chat users and Microsoft 365 users who are candidates for a Copilot licence.
 - **Boost productivity with agents**: agents built by Microsoft are blocked; users cannot install agents built by the organisation.
 
-A viewer acts on a card by selecting **Contact admin**, which opens their email software with the chosen admins' aliases filled in. Learn notes that the tab does not give a comprehensive summary of all Copilot readiness and eligibility requirements. Dashboard data covers the previous 28 days, with up to a six-day delay.
+A viewer selects **Contact admin** to review admin details and contact information, then selects **Send email** to open their email software with the selected admins' aliases prefilled in the To line. Learn notes that the tab does not give a comprehensive summary of all Copilot readiness and eligibility requirements. Readiness, adoption and impact metrics cover the previous 28 days, with up to a six-day delay; sentiment data instead covers the selected survey duration.
 
 The roadmap item is **Launched** (General Availability, Web), with a target of April CY2026, for the Worldwide (Standard Multi-Tenant) cloud. The Microsoft 365 Copilot release notes announced the change on 5 May 2026.
 
@@ -128,10 +141,10 @@ The page is already live and the Viva Insights web app that hosts it is on by de
 ## Risk assessment
 
 **Data exposure**
-- The section shows tenant-level configuration state (which Copilot and agent settings are off) and licence-request counts to everyone who can open the Readiness page. Delegates do not see the recommendations section and managers do not see the Readiness page; Global admins, auto-enabled senior leaders and Viva Insights Analysts with global partition access can. The access list (control row 2) decides who that is.
+- The section shows tenant-level configuration state (which Copilot and agent settings are off) and outstanding Copilot licence requests to eligible viewers. Delegates do not see the recommendations section and managers do not see the Readiness page; Global admins, auto-enabled senior leaders and Viva Insights Analysts with global partition access can. The access list (control row 1) decides who that is.
 
 **Security & identity**
-- Several cards recommend loosening a setting: turning on web search for Copilot Chat, unblocking Microsoft-built agents, and allowing users to install agents built by the organisation. Accepted without review, each widens what Copilot can reach or run. Learn describes the cards as prompts to contact an admin; the settings stay in their own admin centres.
+- Several cards recommend loosening a setting: turning on web search for Copilot Chat, unblocking Microsoft-built agents, and allowing users to install agents built by the organisation. Accepted without review, each widens what Copilot can reach or run. Learn describes the cards as prompts to contact an admin; the settings are managed outside the Readiness recommendation section.
 
 **Autonomy & actions**
 - No change: Learn describes each card as a prompt to contact an admin, not as an action the page takes.
@@ -142,7 +155,7 @@ The page is already live and the Viva Insights web app that hosts it is on by de
 
 ## Cost and licensing
 
-**Licence.** The Copilot Dashboard Learn page says the dashboard "is available to any customer with a Microsoft 365 or Office 365 subscription for business or enterprise, and who has an active Exchange Online account", and that users don't need a paid Viva Insights or Copilot licence. Its licence table lists the Readiness page as included for tenants with 1 to 49 Copilot licences, 50 or more Copilot licences, or at least 50 Viva Insights licences. Data processing starts only once a tenant has at least 50 assigned Viva Insights licences or 1 assigned Copilot licence.
+**Licence.** The Copilot Dashboard Learn page says the dashboard "is available to any customer with a Microsoft 365 or Office 365 subscription for business or enterprise, and who has an active Exchange Online account", and that users don't need a paid Viva Insights or Copilot licence. Its licence table lists the Readiness page as included for tenants with 1 to 49 Copilot licences, 50 or more Copilot licences, or at least 50 Viva Insights licences. Data processing starts only once a tenant has at least 50 assigned Viva Insights licences or 1 assigned Copilot licence (including the Viva Insights service plan).
 
 **Meter.** The Copilot Dashboard page documents no meter or Copilot Credits charge for the dashboard at the time of writing (November 2026).
 
@@ -159,7 +172,7 @@ The page is already live and the Viva Insights web app that hosts it is on by de
 ## Governance guidance
 
 ### Before rollout
-- Check who can open the Copilot Dashboard in the Microsoft 365 admin center (Settings > Microsoft Viva > Viva Insights > Set up and management > Manage access settings for Microsoft Copilot Dashboard) and remove users who should not see tenant configuration state.
+- Check who can open the Copilot Dashboard in the Microsoft 365 admin center (Settings > Microsoft Viva > Viva Insights > Set up and management > Microsoft Copilot Dashboard > Manage access settings for Microsoft Copilot Dashboard > Users > Remove selected users) and remove users who should not see tenant configuration state.
 - Decide whether senior leaders should keep automatic dashboard access, and if not, add the AutoCxoIdentification policy with Add-VivaModuleFeaturePolicy.
 - Add Global admins to the access list explicitly if the tenant uses PIM, so the people receiving Contact admin emails can see the cards.
 
@@ -171,7 +184,6 @@ The page is already live and the Viva Insights web app that hosts it is on by de
 ### After rollout
 - Revisit the Readiness page monthly, since its data covers the previous 28 days.
 - Check the Copilot requirements page as well, because the Readiness tab does not list every requirement.
-- Review the Viva Feature Access Management change logs in Microsoft Purview for changes to the dashboard policies.
 
 ## Governance controls
 
@@ -180,16 +192,16 @@ The page is already live and the Viva Insights web app that hosts it is on by de
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which users and groups are given access to the Copilot Dashboard, including the Readiness page</strong><br><small>User</small><br><small class="controls__note">AI Administrator or Global Administrator. Select Groups instead of Users to add Entra ID groups. Changes take effect in 24 hours.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Microsoft Viva › Viva Insights › Set up and management › Microsoft Copilot Dashboard › Manage access settings for Microsoft Copilot Dashboard › Users › Add <a href="https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which users and groups are given access to the Copilot Dashboard, including the Readiness page</strong><br><small>User</small><br><small class="controls__note">AI Administrator or Global Administrator. Select Groups instead of Users to add Entra ID groups. Changes take effect in 24 hours. The policy covers the whole Viva Insights web app, not the Readiness page alone; use -GroupIds for groups.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Microsoft Viva › Viva Insights › Set up and management › Microsoft Copilot Dashboard › Manage access settings for Microsoft Copilot Dashboard › Users › Add <a href="https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId &quot;Viva Insights web app&quot; -Name EnableSelectedUsers -IsFeatureEnabled $true -UserIds &lt;user-UPNs&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchange/add-vivamodulefeaturepolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether the Viva Insights web app, which hosts the Copilot Dashboard, is on for the tenant, groups or users</strong><br><small>Tenant</small><br><small class="controls__note">Choose the Viva Insights web app feature. On by default. Turning it off disables the whole app, not only the Readiness page.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Viva › Settings › Manage feature access › Create a policy › app and feature › Access setting <a href="https://learn.microsoft.com/viva/control-access-admin-center" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId &quot;Viva Insights web app&quot; -Name DisableFeatureForAll -IsFeatureEnabled $false -Everyone</code> <a href="https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether senior leaders are given Copilot Dashboard access automatically</strong><br><small>Tenant</small><br><small class="controls__note">Enabled by default. Tenant-level policies only; user and group policies do not take effect.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId AutoCxoIdentification -Name DisableFeatureForAll -IsFeatureEnabled $false -Everyone</code> <a href="https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether senior leaders are given Copilot Dashboard access automatically</strong><br><small>Tenant</small><br><small class="controls__note">Enabled by default. Select the Copilot Dashboard Auto Enablement feature and apply the policy to Everyone; only tenant-level policies take effect.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Viva › Settings › Manage feature access › Create a policy › app and feature › Access setting <a href="https://learn.microsoft.com/viva/control-access-admin-center" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId AutoCxoIdentification -Name DisableFeatureForAll -IsFeatureEnabled $false -Everyone</code> <a href="https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Separate switch for the Readiness page recommendation cards</strong><br><small>Tenant</small><br><small class="controls__note">Use the dashboard access controls above instead.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
 Microsoft Learn documents no separate switch for the recommendation cards at the time of writing (November 2026); the documented controls act on the dashboard or the whole web app. Turning off the Viva Insights web app removes the whole Copilot Dashboard, Copilot Analytics reports and advanced analysis tools, not only the cards.
 
-The Copilot Dashboard settings page documents the web app and auto-enablement controls for the AI Administrator and says Global Administrators can manage all settings; the feature access management table lists Global admin for both features. Changes to the access list take effect in 24 hours. The PowerShell controls need Exchange Online PowerShell and Connect-ExchangeOnline. The auto-enablement control supports tenant-level policies only. The cards point to settings in other admin centres (Copilot app access, update channels, pinning, web search, agent settings); those settings govern Copilot itself and are covered in their own briefings, not by this page.
+The Copilot Dashboard settings page documents the web app and auto-enablement controls for the AI Administrator and says Global Administrators can manage all settings; the feature access management table lists Global admin for both features. Changes to the access list take effect in 24 hours. The PowerShell controls need Exchange Online PowerShell and Connect-ExchangeOnline. The auto-enablement control supports tenant-level policies only. The cards point to settings managed outside the Readiness recommendation section (Copilot app access, update channels, pinning, web search, agent settings); those settings govern Copilot itself and are covered in their own briefings, not by this page.
 
 ## Open questions
 
@@ -207,15 +219,5 @@ impact: Low. Only people with Copilot Dashboard access see it, such as Global ad
 <!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing: Contact admin / behaviour: Selecting Contact admin opens the email application with selected admins' aliases prefilled. | Found: select Contact admin, then review the details and contact information that appears for the admins. Select Send email to open your email software with the selected admins' aliases prefilled in the To line. | Fix: Replace with: 'Select Contact admin to review admin details and contact information, then select Send email to open your email software with the selected admins' aliases prefilled in the To line.' | Source: https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard
-- [unsupported, major] Risk assessment: Data exposure / behaviour: The recommendations section shows license-request counts. | Found: Searched: 'Copilot Dashboard license requests count'; read dashboard Readiness section and search excerpts. Learn documents an outstanding-request card, but no passage states that it displays request counts. | Fix: Replace 'and licence-request counts' with 'and outstanding Copilot licence requests'.
-- [contradicted, blocker] controls[0].api; Governance controls table / absence: No API or automation is documented for controlling dashboard access for individual users or groups. | Found: Policies are used to restrict or grant access to the specified feature for specific users, groups, or the entire tenant. ... -UserIds <String[]> ... -GroupIds <String[]> | Fix: Replace controls[0].api null with PowerShell 'Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId "Viva Insights web app" -Name EnableSelectedUsers -IsFeatureEnabled $true -UserIds <user-UPNs>' and docs https://learn.microsoft.com/powershell/module/exchange/add-vivamodulefeaturepolicy. The cited settings page explicitly places dashboard access under the Viva Insights web app and supports user/group policies for it. Add to the note: 'This policy controls access to the whole Viva Insights web app, not the Readiness page alone; use -GroupIds for groups.' | Source: https://learn.microsoft.com/powershell/module/exchange/add-vivamodulefeaturepolicy
-- [contradicted, blocker] controls[2].ui; Governance controls table / absence: No admin UI is documented for dashboard auto-enablement policies. | Found: Admins with correct permissions in the Microsoft 365 admin center or in PowerShell can create and manage access policies. ... | Copilot Dashboard Auto Enablement | No | Global admin | Viva Insights | | Fix: Replace controls[2].ui null with surface 'Microsoft 365 admin center', path 'Settings > Viva > Settings > Manage feature access > Create a policy > app and feature > Access setting', docs https://learn.microsoft.com/viva/control-access-admin-center. Add to the note: 'Select the Copilot Dashboard Auto Enablement feature and apply the policy to Everyone; only tenant-level policies take effect.' The feature-access-management table includes this feature in its documented admin-center policy coverage; the feature-specific PowerShell section does not state that UI management is excluded. | Source: https://learn.microsoft.com/viva/feature-access-management
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Governance guidance: After rollout / behaviour: Dashboard data covers the previous 28 days. | Found: Data ... for the readiness, adoption, and impact pages represents data over the previous 28 days. ... Sentiment data ... reflects data for the period of your selected survey duration, not the previous 28 days. | Fix: Replace 'Dashboard data covers the previous 28 days' with 'Readiness, adoption and impact metrics cover the previous 28 days; sentiment data instead covers the selected survey duration.' | Source: https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard
-- [supported, minor] Cost and licensing: Licence / licensing: Data processing requires at least 50 assigned Viva Insights licenses or one assigned Copilot license. | Found: A minimum of 50 assigned Viva Insights licenses, or 1 assigned Copilot license (including the Viva Insights service plan), is required for data processing to kick off. | Fix: Add the source's qualification: 'or 1 assigned Copilot licence (including the Viva Insights service plan)'. | Source: https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard
-- [supported, minor] Risk assessment: Data exposure / behaviour: The recommendation section exposes tenant configuration state to eligible viewers, with access managed by the access list. | Found: The page only shows Copilot- and agent-related configuration recommendations that are relevant to your organization. ... Agents built by Microsoft are blocked ... Agent installation is turned off | Fix: Replace the opening of Data exposure with 'The section shows tenant-level configuration state and outstanding Copilot licence requests to eligible viewers.' Change '(control row 2)' to '(control row 1)' for the access list. Keep the existing manager and delegate exclusions. | Source: https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard
-- [supported, minor] Governance guidance: Before rollout, access-list path / admin-path: The checklist reaches the dashboard access page via Settings > Microsoft Viva > Viva Insights > Set up and management > Manage access settings for Microsoft Copilot Dashboard. | Found: Go to the Settings tab and select Microsoft Viva, then Viva Insights. ... Set up and management tab. ... Under Microsoft Copilot Dashboard, select Manage access settings for Microsoft Copilot Dashboard. | Fix: Use 'Settings > Microsoft Viva > Viva Insights > Set up and management > Microsoft Copilot Dashboard > Manage access settings for Microsoft Copilot Dashboard > Users > Remove selected users' for the checklist's user-removal instruction. The omitted Microsoft Copilot Dashboard step is a heading, not a selection. | Source: https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard
-- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The checklist asks readers to review VFAM change logs, but the controls table has no monitoring row for that step. | Found: Review the Viva Feature Access Management change logs in Microsoft Purview for changes to the dashboard policies. ... Which users and groups are given access to the Copilot Dashboard ... Whether senior leaders are given Copilot Dashboard access automatically ... Separate switch for the Readiness pag | Fix: Remove the checklist bullet 'Review the Viva Feature Access Management change logs in Microsoft Purview for changes to the dashboard policies.' It has no corresponding controls-table row; do not add a row in this correction.
-- [supported, minor] Risk assessment: Security & identity; Governance controls: settings outside the dashboard / behaviour: The settings recommended by the cards are managed outside the Readiness recommendation section. | Found: Some settings you configure there, and others link to the admin center or policy service where you make the change. ... Agents ... Copilot > Settings > Data access > Agents ... Follow the link ... Allow web search in Copilot cloud policy | Fix: Replace 'the settings stay in their own admin centres' with 'the settings are managed outside the Readiness recommendation section.' Likewise replace 'The cards point to settings in other admin centres' with 'The cards point to settings managed outside the Readiness recommendation section'. Add https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center to sources. | Source: https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center
+- [contradicted, blocker] Risk assessment: Change & support; Why it matters / behaviour: Contact admin sends viewers' requests by email, allowing them to email Global admins in two clicks. | Found: select Contact admin, then review the details and contact information that appears for the admins. Select Send email to open your email software with the selected admins' aliases prefilled in the To line. | Fix: Replace the Change & support bullet with 'Contact admin displays administrator details; Send email opens the viewer's email software with the selected admins' aliases prefilled in the To line.' In Why it matters, replace 'email the Global admins about it in two clicks' with 'open their email software with selected admins' aliases prefilled using Contact admin and Send email'. These are the documented actions at https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard#readiness; neither sends a message. | Source: https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard
 -->

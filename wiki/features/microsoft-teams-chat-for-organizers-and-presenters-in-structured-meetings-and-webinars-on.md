@@ -95,15 +95,17 @@ changes:
     note: "Corrected after verification: Learn's release notes list this chat in Android build 1449/1.0.96.2026344105 (November 2026), so the earlier statement that only the town hall version was listed is replaced and its open question removed."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 59 statements confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 61 statements not yet confirmed"
 version: 4
 verification:
-  status: "verified"
-  date: "2026-11-21"
+  status: "verified-with-gaps"
+  date: "2026-11-28"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 59
-  confirmed: 59
+  claims: 61
+  confirmed: 61
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -204,4 +206,10 @@ The notice says no Teams admin center or Teams Pro Management portal configurati
 risk: Low. The roadmap item and Microsoft's notice describe a chat tab for room presenters in meetings that already have a green room; no agent behaviour is described, and the one related admin control is the existing Meeting chat policy.
 cost: Low. The feature is included for Teams Rooms Pro-licensed Android rooms; the expected indirect cost is admin time to brief organisers and room users.
 impact: Low. Only people in a Teams Rooms on Android Pro room who join a green-room-enabled webinar or structured meeting as organiser, co-organiser or presenter will notice the extra chat tab.
+-->
+
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] What's changing; Scope: Rollout / date: The notice gives General Availability as completing by late November 2026. | Found: General Availability (Worldwide): We will begin rolling out in mid November 2026 and expect to complete by late November 2026. | Fix: In What's changing and Scope, replace the General Availability timing with 'The notice gives General Availability (Worldwide) as beginning mid November 2026 and expected to complete by late November 2026.' This retains the notice's distinction between a scheduled start and expected completion.
 -->
