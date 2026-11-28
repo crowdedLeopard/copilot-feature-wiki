@@ -58,10 +58,10 @@ controls:
       kind: "powershell"
       call: "Set-CsTeamsMeetingPolicy -Identity <policy name> -ExternalBotAccessMode RequireApprovalWhenDetected"
       docs: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps"
-    note: "Existing setting, not the planned allow list. The external-bots guide lists detection with approval and no detection; the cmdlet reference also documents BlockDetectedBots to block detected external bots."
+    note: "Existing setting, not the planned allow list. The external-bots guide documents Do not detect bots, When detected, require approval before joining (default), and Block all detected bots."
 confidence: "medium"
 created: "2026-11-20"
-updated: "2026-11-21"
+updated: "2026-11-28"
 roadmapModified: "2026-11-20T23:20:27"
 changes:
   - date: "2026-11-20"
@@ -86,19 +86,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 64 statements not yet confirmed"
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 58 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 5
+  - date: "2026-11-28"
+    note: "Corrected after verification: lobby placement and explicit admission now apply only to the approval option, the Block all detected bots behaviour and email verification recovery are stated, and all three existing options are listed."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 65 statements confirmed"
+version: 6
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-28"
-  version: 5
+  version: 6
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 58
-  confirmed: 55
+  claims: 65
+  confirmed: 65
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "5f80ab5003cd0f7321452159e3ae8ed8"
+  contradicted: 0
+  attempts: 0
+  hash: "22c38db6f81259d1fa6c5d3053b40288"
 ---
 
 ## What's changing
@@ -107,13 +111,13 @@ Microsoft Teams plans to let administrators keep a list of external meeting note
 
 Microsoft Learn does not describe this feature yet, so what follows about its behaviour is the roadmap's description. The roadmap does not say how a bot is named on the list or how Teams recognises it. It does not say which existing behaviour it means by the "high friction lobby" either.
 
-The nearest documented behaviour is the existing meeting policy setting **Manage external bots and their access to meetings**. Learn says Teams detects external bots from signals collected during the join process and places detected bots in the lobby irrespective of the meeting's lobby configuration. Detected bots require explicit admission; the external-bots guidance says presenters can also admit them depending on the meeting setting. The Teams Bot Identification Program page instead describes detected bots as requiring organizer approval before joining (https://learn.microsoft.com/microsoftteams/teams-bot-identification). Its default option, **When detected, require approval before joining** (`RequireApprovalWhenDetected`), keeps detected bots in the lobby until explicitly admitted. Treat this as background, not as a description of the new list.
+The nearest documented behaviour is the existing meeting policy setting **Manage external bots and their access to meetings**. Learn says Teams detects external bots from signals collected during the join process. Under When detected, require approval before joining, detected bots are placed in the lobby irrespective of the meeting's lobby configuration. Under that approval option, detected bots require explicit admission; the external-bots guidance says presenters can also admit them depending on the meeting setting. The Teams Bot Identification Program page instead describes detected bots as requiring organizer approval before joining (https://learn.microsoft.com/microsoftteams/teams-bot-identification). Its default option, **When detected, require approval before joining** (`RequireApprovalWhenDetected`), keeps detected bots in the lobby until explicitly admitted. Treat this as background, not as a description of the new list.
 
 The roadmap item is In development, with a target of January CY2027, General Availability, for Worldwide (Standard Multi-Tenant) and GCC, on Android, Desktop, iOS, Mac and Web.
 
 ## Why it matters
 
-Notetaker bots are the exposure the Learn page describes: external tools can record or transcribe meetings without participants' awareness and store meeting data in third-party systems outside the organisation's compliance boundary. Today the external-bots guide lists detection with approval and no detection. The cited Set-CsTeamsMeetingPolicy reference additionally documents BlockDetectedBots to block detected external bots. A named allow list would let a security team approve the tools it has vetted instead of leaving each organiser to judge a lobby request.
+Notetaker bots are the exposure the Learn page describes: external tools can record or transcribe meetings without participants' awareness and store meeting data in third-party systems outside the organisation's compliance boundary. Today the external-bots guide documents three options: Do not detect bots, When detected, require approval before joining (the default), and Block all detected bots. A named allow list would let a security team approve the tools it has vetted instead of leaving each organiser to judge a lobby request.
 
 Microsoft has not stated what happens on arrival, and no source says existing behaviour will change; this briefing therefore treats the list as a decision for security and Teams owners rather than a deadline. The roadmap gives no act-by date and no Message Center post was supplied with the item.
 
@@ -127,7 +131,7 @@ Microsoft has not stated what happens on arrival, and no source says existing be
 **Security & identity**
 
 - Microsoft has not said how a bot is identified for the list. If a vetted bot's identity can be matched loosely, an unvetted tool may be admitted. Ask Microsoft how entries are matched before relying on the list.
-- The Teams Bot Identification Program, which Learn describes as a public preview for software vendors, lets eligible vendors register and include a self-identification marker in join requests. Learn does not say whether it relates to this allow list.
+- The Teams Bot Identification Program, which Learn describes as a public preview for software vendors, lets eligible vendors register and include a self-identification marker in join requests. The public preview has reached its current bot provider capacity; Microsoft says it will publish onboarding guidance and next steps when the program becomes generally available. Learn does not say whether it relates to this allow list.
 
 **Autonomy & actions**
 
@@ -136,7 +140,7 @@ Microsoft has not stated what happens on arrival, and no source says existing be
 **Change & support**
 
 - Choosing to block all other bots could stop tools that staff use today, such as a team's own notetaker. Expect support requests from users whose preferred bot is not on the list.
-- Learn says detection may occasionally misclassify human participants as bots, and that organisers can admit them from the lobby and mark them "This is not a bot". Microsoft has not said whether a blocked participant has that route.
+- Learn says detection may occasionally misclassify human participants as bots; under Require approval before joining, organisers can admit them from the lobby and mark them "This is not a bot". Under the existing Block all detected bots option, detected participants are not placed in the lobby and organisers cannot admit them. Where supported, eligible people incorrectly identified as bots can use email verification recovery to verify their identity and attempt to join. Recovery for the planned allowed-bots list is not yet documented.
 
 ## Cost and licensing
 
@@ -176,11 +180,11 @@ The roadmap describes controls for bots joining meetings hosted in your organisa
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Allowed list of external meeting notetaker bots, with the choice to block or lobby all others (planned)</strong><br><small class="controls__note">Described only on the roadmap item. Microsoft Learn documents no setting or API for it at the time of writing (November 2026). The configuration and assignment scope of the planned list is not yet documented.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>How external bots are detected and handled in meetings today (existing meeting policy setting)</strong><br><small>User</small><br><small class="controls__note">Existing setting, not the planned allow list. The external-bots guide lists detection with approval and no detection; the cmdlet reference also documents BlockDetectedBots to block detected external bots.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Meeting Join and Lobby › Manage external bots and their access to meetings <a href="https://learn.microsoft.com/microsoftteams/manage-external-bots" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy name&gt; -ExternalBotAccessMode RequireApprovalWhenDetected</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>How external bots are detected and handled in meetings today (existing meeting policy setting)</strong><br><small>User</small><br><small class="controls__note">Existing setting, not the planned allow list. The external-bots guide documents Do not detect bots, When detected, require approval before joining (default), and Block all detected bots.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Meeting Join and Lobby › Manage external bots and their access to meetings <a href="https://learn.microsoft.com/microsoftteams/manage-external-bots" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy name&gt; -ExternalBotAccessMode RequireApprovalWhenDetected</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-At the time of writing (November 2026), Microsoft Learn documents no admin centre setting or API for an allowed-bots list, so the first row is empty until Microsoft publishes it. The second row is today's alternative: it decides whether bots are detected and held in the lobby, and Learn does not say it can approve named bots.
+At the time of writing (November 2026), Microsoft Learn documents no admin centre setting or API for an allowed-bots list, so the first row is empty until Microsoft publishes it. The second row is today's alternative: it decides whether detected bots are held in the lobby or blocked, and Learn does not say it can approve named bots.
 
 Learn says the existing setting is assigned through meeting policies at user or group level. The admin role needed to edit meeting policies is not stated on the external bots page. Learn's tip for the lobby is to allow only organisers and co-organisers to admit participants from the meeting lobby, which is set in the same **Meeting join & lobby** section of a meeting policy.
 
@@ -193,20 +197,7 @@ Learn says the existing setting is assigned through meeting policies at user or 
 - Will a bot that is neither allowed nor blocked still reach the lobby, and can organisers still override a block? Watch Learn.
 
 <!-- rationale
-risk: Low. This is a new control over external bots; Microsoft has not stated its default, so exposure is rated on today's documented behaviour continuing, where detected bots require explicit admission and Learn says presenters can also admit them depending on the meeting setting.
+risk: Low. This is a new control over external bots; Microsoft has not stated its default, so exposure is rated on today's documented behaviour continuing, where, under the default approval option, detected bots require explicit admission and Learn says presenters can also admit them depending on the meeting setting.
 cost: Low. The only cost the sources show is admin time to build the list and brief organisers; no licence or meter is published for this feature, and the Learn page on external bots lists none.
 impact: Low. Admins who manage meeting policies see the control; organisers and guests notice only where a policy blocks or admits a bot, and Microsoft has not said whether it applies to anyone before an admin configures it.
--->
-
-<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing: existing external-bots setting / behaviour: The existing setting places detected bots in the lobby irrespective of the meeting's lobby configuration. | Found: Block all detected bots: Detected bots are automatically blocked from joining the meeting. They aren't placed in the meeting lobby for organizer approval, and meeting organizers can't admit them. | Fix: Replace the sentence beginning 'Learn says Teams detects' with: 'Learn says Teams detects external bots from signals collected during the join process. Under When detected, require approval before joining, detected bots are placed in the lobby irrespective of the meeting's lobby configuration.' | Source: https://learn.microsoft.com/microsoftteams/manage-external-bots
-- [contradicted, blocker] What's changing: Detected bots require explicit admission / behaviour: Detected bots require explicit admission under the existing setting without qualification by policy mode. | Found: Detected external bots are automatically blocked from joining meetings. They can't be admitted by meeting organizers or other participants. | Fix: Replace 'Detected bots require explicit admission' with 'Under that approval option, detected bots require explicit admission'. This refers to When detected, require approval before joining, not Block all detected bots. | Source: https://learn.microsoft.com/microsoftteams/manage-external-bots
-- [contradicted, blocker] Risk assessment: Change & support / absence: Microsoft has not said whether a blocked participant has the lobby admission and This is not a bot route. | Found: They aren't placed in the meeting lobby for organizer approval, and meeting organizers can't admit them. Where supported, eligible participants can use the email verification recovery experience to verify their identity and attempt to join. | Fix: Replace 'Microsoft has not said whether a blocked participant has that route' with: 'Under the existing Block all detected bots option, detected participants are not placed in the lobby and organisers cannot admit them. Where supported, eligible people incorrectly identified as bots can use email verification recovery to verify their identity and attempt to join. Recovery for the planned allowed-bots list is not yet documented.' | Source: https://learn.microsoft.com/microsoftteams/manage-external-bots
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].note; Why it matters; Governance controls / behaviour: The external-bots guide lists detection with approval and no detection, while blocking is described as additionally documented in the cmdlet reference. | Found: Do not detect bots | AllowBots; When detected, require approval before joining (default) | RequireApprovalWhenDetected; Block all detected bots | BlockDetectedBots | Fix: Replace the options comparison in controls[1].note and its table rendering with: 'Existing setting, not the planned allow list. The external-bots guide documents Do not detect bots, When detected, require approval before joining (default), and Block all detected bots.' Replace the corresponding two sentences in Why it matters with the same three-option list. Blocking is now documented in both sources. | Source: https://learn.microsoft.com/microsoftteams/manage-external-bots
-- [supported, minor] Risk assessment: Security & identity / behaviour: The program lets eligible bot vendors register with Microsoft. | Found: Through this program, eligible bot providers can register with Microsoft and include a self-identification marker in their meeting join requests. The public preview has reached its current bot provider capacity. | Fix: Append after the program description: 'The public preview has reached its current bot provider capacity; Microsoft says it will publish onboarding guidance and next steps when the program becomes generally available.' | Source: https://learn.microsoft.com/microsoftteams/teams-bot-identification
-- [supported, minor] Risk assessment: Change & support / behaviour: Organizers can admit misclassified people from the lobby and mark them This is not a bot. | Found: Require approval before joining: Organizers can admit the participant from the lobby and use the This is not a bot option to correct the participant's representation in that meeting. | Fix: Replace the sentence with: 'Learn says detection may occasionally misclassify human participants as bots; under Require approval before joining, organisers can admit them from the lobby and mark them "This is not a bot".' | Source: https://learn.microsoft.com/microsoftteams/manage-external-bots
-- [supported, minor] controls[1].api; Governance controls: existing setting automation / command: Set-CsTeamsMeetingPolicy -Identity <policy name> -ExternalBotAccessMode RequireApprovalWhenDetected sets the existing detection-and-approval control. | Found: RequireApprovalWhenDetected: When detected, bots will be enforced to the meeting lobby, regardless of the lobby setting of the meeting. They will require approval before getting access to the meetings. This is the default value. | Fix: Keep the call. Append to controls[1].note and its table rendering: 'The external-bots guide names Set-CsTeamsMeetingPolicy but its code examples use Set-CsTeamsEventsPolicy; the linked MicrosoftTeams cmdlet reference documents the meeting-policy call shown here.' | Source: https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps
 -->

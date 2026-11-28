@@ -1,0 +1,732 @@
+{
+  "slug": "microsoft-teams-local-ptz-for-microsoft-teams-rooms-on-windows",
+  "roadmapId": 409534,
+  "title": "Microsoft Teams Rooms on Windows: local pan, tilt and zoom controls on the room console",
+  "status": "verified-with-gaps",
+  "date": "2026-11-28",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 57,
+    "confirmed": 56,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 0,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "The briefing passes: its roadmap facts, local camera controls, XML setting and known camera issue are supported. It should acknowledge Microsoft's conflicting default-state documentation and remove the checklist instruction for Reset, which has no controls-table row.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Scope: Who uses it; rationale: impact",
+      "type": "behaviour",
+      "claim": "People in the room can manually adjust the selected camera from the Teams Rooms on Windows console during a meeting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/camera-controls",
+      "quote": "Local PTZ controls allow people in the room to manually adjust a camera from the Teams Rooms console. When available, people can pan, tilt, and zoom the selected camera to better frame the room or focus on a specific area.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Both cameras with physical lens movement and cameras that adjust the image digitally can support local PTZ.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/camera-controls",
+      "quote": "Both mechanically controlled cameras and cameras that adjust the image digitally can support local PTZ controls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing; changes",
+      "type": "record",
+      "claim": "The roadmap item is Rolling out.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Rolling out\", \"statusKey\": \"rolling-out\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is September CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"September CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing",
+      "type": "record",
+      "claim": "The roadmap platform is Desktop.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: clouds; Scope: Clouds",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: defaultState; summary; controls[0].note; What's changing; Why it matters; Governance controls",
+      "type": "default",
+      "claim": "The local PTZ room control is enabled by default on Teams Rooms on Windows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/camera-controls",
+      "quote": "The local PTZ room control is enabled by default on Teams Rooms on Windows.",
+      "severity": "minor",
+      "fix": "Keep defaultState on, but add: 'The camera controls and XML configuration pages say local PTZ is enabled by default; the portal settings reference instead lists Local camera PTZ control as Disabled by default.' Cite https://learn.microsoft.com/microsoftteams/rooms/device-settings-available, whose Windows Peripherals table gives that conflicting default."
+    },
+    {
+      "n": 10,
+      "where": "front matter: licensing.model and licensing.notes",
+      "type": "licensing",
+      "claim": "The licensing model is included in the Teams Rooms product licence, with the local PTZ tier not specified.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing",
+      "quote": "Teams Rooms devices should only be assigned Teams Rooms Basic or Teams Rooms Pro licenses (Teams Rooms legacy licenses are also valid).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "controls[0].ui; Governance controls: table; Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "Local PTZ is configured in Teams Rooms Pro Management portal at Rooms > room > Device settings > Peripherals > Local PTZ controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/camera-controls",
+      "quote": "Open Teams Rooms Pro Management. Select the room. Navigate to Device settings. Select the Peripherals tab. Enable or disable Local PTZ controls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "controls[0].api; Governance controls: table; Governance guidance: Before rollout",
+      "type": "command",
+      "claim": "Setting the SkypeSettings.xml element LocalPtzControlsEnabled to false disables local PTZ controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/xml-config-file",
+      "quote": "<LocalPtzControlsEnabled> | Boolean | First | Enabled by default. If true, in-room participants can pan, tilt, and zoom a supported room camera from the console during meetings. A boolean flag can be: true, false, 0, or 1.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "admin-path",
+      "claim": "During a meeting, the chevron next to the camera icon on the room console opens Camera settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/camera-controls",
+      "quote": "During a meeting, select the chevron next to the camera icon on the room console to open Camera settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Scope: Devices",
+      "type": "behaviour",
+      "claim": "The displayed PTZ operations are limited to those supported by the selected camera.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/camera-controls",
+      "quote": "When local PTZ controls are available, Teams Rooms displays the operations supported by the selected camera. Some cameras support pan, tilt, and zoom, while others support only a subset of those operations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment: Change & support; Governance controls; rationale: impact",
+      "type": "behaviour",
+      "claim": "Local PTZ controls are hidden while Enhanced framing is on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/camera-controls",
+      "quote": "Local PTZ controls are hidden while Enhanced framing is on, so manual adjustments don't conflict with automatic framing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment: Change & support; Governance controls; rationale: impact",
+      "type": "behaviour",
+      "claim": "Local PTZ controls are not offered while Multiple camera view is active.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/camera-controls",
+      "quote": "Local PTZ controls aren't offered while multiple camera view is active.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Governance controls",
+      "type": "behaviour",
+      "claim": "The room's local PTZ control must be enabled for controls to appear.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/camera-controls",
+      "quote": "On Teams Rooms on Windows, all of the following room and camera conditions must also be met: ... Local PTZ controls are enabled for the room.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "The local PTZ feature must also be enabled on the Teams Rooms device.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/camera-controls",
+      "quote": "The local PTZ feature is enabled on the Teams Rooms device.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Scope: Eligibility; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Windows camera eligibility requires inclusion in the Cloud IntelliFrame Cameras enabled by default list or reporting its automatic-framing state to Teams Rooms.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/camera-controls",
+      "quote": "A camera qualifies for local PTZ when it is on the Cameras enabled by default list for Cloud IntelliFrame or reports its automatic-framing state to Teams Rooms.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Scope: Eligibility",
+      "type": "behaviour",
+      "claim": "Cloud IntelliFrame itself need not be enabled to use local PTZ.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/camera-controls",
+      "quote": "The Cloud IntelliFrame list is used as an eligibility reference; Cloud IntelliFrame doesn't need to be turned on to use local PTZ.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Why it matters; Scope: Devices; changes",
+      "type": "availability",
+      "claim": "Teams Rooms on Windows app version 5.7.112.0 or later includes local PTZ, subject to camera and feature-enablement requirements.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/camera-controls",
+      "quote": "Local PTZ controls | Included in app version 5.7.112.0 or later; requires feature enablement and a compatible camera",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "The release notes date Teams Rooms on Windows 5.7.112.0 to 9/28/2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note",
+      "quote": "5.7.112.0 (9/28/2026)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "The release notes list local PTZ in 5.7.112.0 and state that feature enablement is complete.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note",
+      "quote": "Local Pan-tilt-zoom (PTZ) controls: Native PTZ control support for compatible cameras from the in-room console. Feature enablement is complete.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Installing a supported app version does not by itself establish that local PTZ is enabled on a device.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/camera-controls",
+      "quote": "Having a supported Teams Rooms version doesn't by itself establish that local PTZ or the updated Reset behavior is enabled on the device.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Reset returns supported camera-view adjustments to their default values.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/camera-controls",
+      "quote": "Reset returns supported camera-view adjustments to their default values.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "What Reset restores depends on the control method Teams Rooms uses for the camera.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/camera-controls",
+      "quote": "Which adjustments return to their defaults depends on whether Teams Rooms uses digital PTZ, absolute hardware positioning, or relative-only hardware pan and tilt.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Why it matters; Risk assessment: Autonomy & actions; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "Ending a Windows Teams Rooms meeting does not automatically invoke local PTZ Reset, so camera-position changes can persist.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/camera-controls",
+      "quote": "Camera-position changes can persist after a meeting. On Teams Rooms on Windows, ending a meeting doesn't automatically invoke local PTZ Reset.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Why it matters; Risk assessment: Autonomy & actions; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "When Teams Rooms uses relative-only hardware pan and tilt, Reset restores zoom but leaves physical pan and tilt at their adjusted positions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/camera-controls",
+      "quote": "Hardware pan and tilt with relative-only positioning | Resets zoom; physical pan and tilt remain at their adjusted positions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Local PTZ operates on the room's selected camera by re-aiming it or adjusting its captured image, rather than selecting a new data source.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/camera-controls",
+      "quote": "When available, people can pan, tilt, and zoom the selected camera to better frame the room or focus on a specific area. ... digital pan and tilt move the view within the captured image.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Data exposure; Governance controls",
+      "type": "applicability",
+      "claim": "The per-room Local PTZ controls switch governs whether the local controls are offered.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/camera-controls",
+      "quote": "Local PTZ controls are enabled for the room. ... Enable or disable Local PTZ controls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "Microsoft documents no new account, permission or sign-in requirement for local PTZ use.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Rooms local PTZ controls permission account sign-in requirements. Opened Camera controls in Teams Rooms and XML configuration; read search excerpts for Teams Rooms security and FECC. No local-PTZ-specific account, sign-in or permission requirement was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Why it matters; Risk assessment: Change & support; Governance guidance: After rollout; rationale: risk",
+      "type": "behaviour",
+      "claim": "Some camera and firmware combinations can cause Teams Rooms on Windows to stop responding when local PTZ zoom is used.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/devices/known-issues",
+      "quote": "On Teams Rooms on Windows, using local pan, tilt, and zoom controls with some camera and firmware combinations may cause the Teams Rooms app to stop responding or close unexpectedly.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Change & support; Governance guidance: Before rollout; Open questions",
+      "type": "behaviour",
+      "claim": "Microsoft observed the hang with repeated zoom commands on an AVer CAM520 Pro running firmware V0.0.1000.26.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/devices/known-issues",
+      "quote": "This has been observed with repeated zoom commands on an AVer CAM520 Pro running firmware V0.0.1000.26.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout; Open questions",
+      "type": "behaviour",
+      "claim": "Microsoft is still evaluating the broader camera and firmware impact of the local PTZ hang.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/devices/known-issues",
+      "quote": "Broader camera and firmware impact is still being evaluated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Change & support; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "Microsoft's temporary avoidance for the hang is to disable local PTZ controls and restart the console.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/devices/known-issues",
+      "quote": "As a temporary avoidance measure, admins can disable local PTZ controls and restart the Teams Rooms console. Disabling local PTZ is an avoidance measure and does not resolve the underlying issue.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "A camera controllable through manufacturer tools can still expose no supported local PTZ controls to Teams Rooms.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/camera-controls",
+      "quote": "If a camera doesn't expose supported PTZ controls to Teams Rooms, local PTZ controls won't appear, even if the camera can be controlled through the manufacturer's application, remote control, or other management tools.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "A device used as a shared meeting device requires a Teams Rooms licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing",
+      "quote": "A device used as a shared meeting device requires a Teams Rooms license whether it participates by signing in to a Microsoft Teams client, by anonymous join, or by authenticating a Microsoft 365 identity",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "Teams Rooms devices should be assigned Teams Rooms Basic or Teams Rooms Pro; legacy Teams Rooms licences remain valid.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing",
+      "quote": "Teams Rooms devices should only be assigned Teams Rooms Basic or Teams Rooms Pro licenses (Teams Rooms legacy licenses are also valid).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.notes; Cost and licensing: Licence; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "The Basic/Pro comparison does not list local PTZ, and a local-PTZ-specific licence tier is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Rooms Windows local PTZ controls Basic Pro license pricing meter charge; \"local PTZ\" \"license\" \"Basic\" \"Pro\". Opened rooms-licensing, camera-controls, rooms-release-note and device-settings-available. No explicit local PTZ tier requirement was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: licensing.notes; controls[0].note; Cost and licensing: Managing it remotely",
+      "type": "licensing",
+      "claim": "The licence comparison lists Remote configuration for Teams Rooms Pro, not Basic.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing",
+      "quote": "Microsoft Teams Rooms Basic | Microsoft Teams Rooms Pro ... Remote configuration | | ✔",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing: Managing it remotely",
+      "type": "licensing",
+      "claim": "A feature unavailable for a licence cannot be used on Teams Rooms devices assigned that licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing",
+      "quote": "If a feature isn't available for a license, that feature can't be used on Teams Rooms devices that have been assigned that license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing: Meter; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft documents no feature-specific meter or charge for local PTZ.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Rooms Windows local PTZ controls Basic Pro license pricing meter charge; \"local PTZ\" \"meter\" \"price\" \"billing\". Opened rooms-licensing and camera-controls; searched results named no local PTZ meter or charge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Scope: Devices",
+      "type": "behaviour",
+      "claim": "Microsoft's camera examples include brands Jabra, Lenovo, Logitech, Microsoft, Poly and Yealink.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/camera-controls",
+      "quote": "Jabra | Original PanaCast; Lenovo | ThinkSmart One; Logitech | Original BRIO/BRIO 4K; Webcam C920; Rally; original MeetUp; Microsoft | LifeCam Studio; Poly | Studio E60; Studio E70; Yealink | UVC30 Room; UVC34; original UVC40",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Scope: Devices; Open questions",
+      "type": "behaviour",
+      "claim": "Microsoft's camera examples are not an exhaustive list of cameras that can show local controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/camera-controls",
+      "quote": "They aren't an exhaustive list of cameras that can show local controls and don't guarantee identical Reset behavior.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Scope: Devices",
+      "type": "behaviour",
+      "claim": "The camera must be connected to the Teams Rooms device and selected as the room camera.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/camera-controls",
+      "quote": "A camera connected to the Teams Rooms device and selected as the room camera.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope: Out of scope for this item",
+      "type": "availability",
+      "claim": "Teams Rooms on Android has local PTZ documented separately with different eligibility rules from Windows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/camera-controls",
+      "quote": "On Teams Rooms on Android, availability depends on the PTZ capabilities exposed through the device's camera integration and supported firmware. The Windows Cloud IntelliFrame-list eligibility rule isn't an Android requirement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Scope: Who configures it; controls[0].note",
+      "type": "role",
+      "claim": "The control is configured per room through Pro Management, or by transferring the XML configuration to the device.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/xml-config-file",
+      "quote": "You can use any method you like so long as you can use it to transfer files and trigger a restart on the console device.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[0].note; Governance guidance: Before rollout; Governance controls",
+      "type": "behaviour",
+      "claim": "Restarting the console after pushing SkypeSettings.xml processes the configuration changes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/xml-config-file",
+      "quote": "Once the file is pushed to the console, restart it to process the configuration changes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The console reads and applies SkypeSettings.xml at startup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/xml-config-file",
+      "quote": "At startup, if a Microsoft Teams Rooms console finds an XML file named SkypeSettings.xml ... it applies the configuration settings indicated by the XML file then deletes the XML file.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The XML configuration file is deleted after successful processing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/xml-config-file",
+      "quote": "The XML configuration file is deleted after it's successfully processed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Cost and licensing: Indirect costs; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Microsoft advises using the latest supported firmware recommended by the manufacturer for the Teams Rooms device and camera configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/camera-controls",
+      "quote": "Use the latest supported firmware that the manufacturer recommends for the specific Teams Rooms device and camera configuration. Don't use preview or unsupported firmware.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Microsoft advises evaluating pan, tilt, zoom and Reset separately using the app version and firmware planned for deployment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/camera-controls",
+      "quote": "Before deploying broadly, confirm the camera's capabilities and manufacturer-recommended firmware, and evaluate pan, tilt, zoom, and Reset separately. Use the Teams Rooms app version and camera firmware planned for deployment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Enhanced framing provides automatic framing modes such as IntelliFrame.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/camera-controls",
+      "quote": "When Enhanced framing is on, the camera or the cloud automatically reframes the room using an available framing mode, such as IntelliFrame, Active speaker, or Group framing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance controls",
+      "type": "admin-path",
+      "claim": "Room users can turn Enhanced framing off in Camera settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/camera-controls",
+      "quote": "On the room console, select the chevron next to the camera icon to open Camera settings. ... If Enhanced framing is on, turn it off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft documents no setting that automatically resets the camera when a meeting ends.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Rooms Windows local PTZ automatic Reset camera end meeting setting XML PowerShell. Opened camera-controls and XML configuration; read relevant known-issues and FECC search excerpts. No end-of-meeting automatic camera reset setting was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance guidance: At rollout; Governance controls: table",
+      "type": "consistency",
+      "claim": "The checklist tells readers to have users select Reset, but Reset has no row in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Ask users to select Reset at the end of a meeting, because ending the meeting does not reset the camera. / The table contains only Whether local pan, tilt and zoom controls are offered on a room's console.",
+      "severity": "minor",
+      "fix": "Remove the At rollout bullet 'Ask users to select Reset at the end of a meeting, because ending the meeting does not reset the camera.' The checklist step names Reset without a controls-table row; this correction does not add rows."
+    },
+    {
+      "n": 57,
+      "where": "controls[0].ui: Rooms navigation step",
+      "type": "admin-path",
+      "claim": "Rooms is a navigation entry in the Teams Rooms Pro Management portal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
+      "quote": "Log in to the Teams Pro Management Portal. Select Rooms.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-28T14:11:55.144Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 1,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=409534",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/rooms/camera-controls",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/rooms/xml-config-file",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/devices/known-issues",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether local pan, tilt and zoom controls are offered on a room's console",
+        "docs": "https://learn.microsoft.com/microsoftteams/rooms/camera-controls",
+        "reachable": true,
+        "segments": [
+          "Rooms",
+          "room",
+          "Device settings",
+          "Peripherals",
+          "Local PTZ controls"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether local pan, tilt and zoom controls are offered on a room's console",
+        "docs": "https://learn.microsoft.com/microsoftteams/rooms/xml-config-file",
+        "reachable": true,
+        "token": "SkypeSettings.xml element",
+        "found": false
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

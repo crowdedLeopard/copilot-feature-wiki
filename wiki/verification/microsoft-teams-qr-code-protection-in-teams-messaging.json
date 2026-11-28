@@ -3,7 +3,7 @@
   "roadmapId": 570439,
   "title": "Microsoft Teams: QR code images from external senders are blurred by default",
   "status": "verified",
-  "date": "2026-11-21",
+  "date": "2026-11-28",
   "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
@@ -14,15 +14,15 @@
   "notes": [],
   "hold": null,
   "counts": {
-    "claims": 47,
-    "confirmed": 47,
+    "claims": 43,
+    "confirmed": 43,
     "unconfirmed": 0,
     "contradicted": 0,
     "blocker": 0,
     "major": 0,
     "minor": 0
   },
-  "summary": "The briefing passes: Microsoft documents default QR code blurring, the recipient's reveal option and the absence of an administrator on/off control. The external-domain controls and Teams licensing statement are supported, and the briefing correctly distinguishes the roadmap target from the updated tenant-notice rollout window.",
+  "summary": "The briefing passes: Microsoft documents default QR code blurring, the recipient's reveal action and the absence of an administrator enable or disable control. The external-domain controls, Teams licensing statement and revised rollout window match the sources checked.",
   "claims": [
     {
       "n": 1,
@@ -37,12 +37,12 @@
     },
     {
       "n": 2,
-      "where": "summary; What's changing; Why it matters; Governance guidance; rationale: risk",
+      "where": "summary; What's changing; Why it matters; Risk assessment; Governance guidance; rationale: risk",
       "type": "behaviour",
-      "claim": "The recipient can select Reveal QR code to view or scan the image.",
+      "claim": "The recipient selects Reveal QR code to reveal the image before viewing or scanning it.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/qr-code-obscuring-teams-messages",
-      "quote": "Users can select Reveal QR code to view or scan the QR code.",
+      "quote": "Users must explicitly reveal the image before they can view or scan the QR code. Users can select Reveal QR code to view or scan the QR code.",
       "severity": null,
       "fix": null
     },
@@ -50,7 +50,7 @@
       "n": 3,
       "where": "What's changing; Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "QR code content can be used in phishing and fraud attempts.",
+      "claim": "Microsoft describes obscuring as precautionary protection encouraging deliberate interaction with QR content that can be used in phishing and fraud.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/qr-code-obscuring-teams-messages",
       "quote": "This precautionary protection helps increase user awareness and encourages more deliberate interaction with QR code content, which can be used in phishing and fraud attempts.",
@@ -61,29 +61,18 @@
       "n": 4,
       "where": "What's changing; Risk assessment: Data exposure; Governance guidance: Before rollout",
       "type": "behaviour",
-      "claim": "Blurring does not mean Teams determined that the QR code is malicious.",
+      "claim": "A blurred QR code does not mean Teams determined that the code is malicious, as both Learn and the notice state.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/qr-code-obscuring-teams-messages",
-      "quote": "A blurred QR code doesn't mean that Teams identified the QR code as malicious.",
+      "quote": "Learn: A blurred QR code doesn't mean that Teams identified the QR code as malicious. MC1470410: The blurred image does not indicate that Microsoft Teams has determined the QR code to be malicious.",
       "severity": null,
       "fix": null
     },
     {
       "n": 5,
-      "where": "What's changing; Why it matters",
-      "type": "behaviour",
-      "claim": "Microsoft describes obscuring as precautionary protection that encourages informed, deliberate interaction.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/qr-code-obscuring-teams-messages",
-      "quote": "Teams applies this protection to reduce risk and help users make more informed decisions when interacting with QR codes.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "front matter: defaultState; summary; controls[0].note; What's changing; Scope",
+      "where": "front matter: defaultState; summary; What's changing; Scope: Rollout; controls[0].note",
       "type": "default",
-      "claim": "QR code obscuring is enabled by default, so defaultState is on.",
+      "claim": "QR code obscuring is enabled by default, correctly represented by defaultState on.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/qr-code-obscuring-teams-messages",
       "quote": "This experience is enabled by default, and there are no admin controls to enable or disable it.",
@@ -91,54 +80,21 @@
       "fix": null
     },
     {
+      "n": 6,
+      "where": "What's changing; Risk assessment: Security & identity; Scope: Clouds and platforms",
+      "type": "availability",
+      "claim": "Learn documents support on Teams desktop, web and mobile clients.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/qr-code-obscuring-teams-messages",
+      "quote": "This experience is supported on Teams desktop, web, and mobile clients.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 7,
-      "where": "controls[0]; summary; Risk assessment; Governance controls; Open questions; rationale: risk",
-      "type": "absence",
-      "claim": "No administrator UI or automation control is documented to enable or disable QR code obscuring.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams QR code obscuring PowerShell MicrosoftTeams Set-CsTeamsMessagingConfiguration admin disable trusted sender allow list detection. Opened QR code obscuring in Microsoft Teams (explicitly no admin enable/disable controls) and Set-CsTeamsMessagingConfiguration (no obscuring parameter).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "What's changing; Risk assessment: Security & identity; Scope",
-      "type": "availability",
-      "claim": "QR code obscuring is supported on Teams desktop clients.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/qr-code-obscuring-teams-messages",
-      "quote": "This experience is supported on Teams desktop, web, and mobile clients.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "What's changing; Risk assessment: Security & identity; Scope",
-      "type": "availability",
-      "claim": "QR code obscuring is supported on Teams web clients.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/qr-code-obscuring-teams-messages",
-      "quote": "This experience is supported on Teams desktop, web, and mobile clients.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "What's changing; Risk assessment: Security & identity; Scope",
-      "type": "availability",
-      "claim": "QR code obscuring is supported on Teams mobile clients.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/qr-code-obscuring-teams-messages",
-      "quote": "This experience is supported on Teams desktop, web, and mobile clients.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
       "where": "What's changing; Risk assessment: Change & support",
       "type": "availability",
-      "claim": "For users in China on Teams mobile, obscuring applies to messages from both internal and external users.",
+      "claim": "For users in China on Teams mobile, obscuring applies to QR codes from both internal and external senders.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/qr-code-obscuring-teams-messages",
       "quote": "For users in China on Teams mobile, this experience applies to QR codes in messages sent by both internal and external users.",
@@ -146,7 +102,7 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 8,
       "where": "front matter: status; What's changing; Scope: Rollout",
       "type": "record",
       "claim": "The roadmap status is Rolling out.",
@@ -157,10 +113,10 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 9,
       "where": "front matter: targetDate; What's changing; Scope: Rollout; Open questions",
       "type": "record",
-      "claim": "The roadmap target is October CY2026.",
+      "claim": "The roadmap target is October CY2026, reported as a target rather than a commitment.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"October CY2026\"",
@@ -168,7 +124,7 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 10,
       "where": "front matter: clouds; What's changing; Scope: Clouds and platforms",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
@@ -179,7 +135,7 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 11,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
       "claim": "The roadmap lists General Availability and Targeted Release.",
@@ -190,7 +146,7 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 12,
       "where": "front matter: platforms; What's changing; Scope: Clouds and platforms",
       "type": "record",
       "claim": "The roadmap lists Android, Desktop, iOS, Mac and Web.",
@@ -201,10 +157,10 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 13,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap supplies no preview date.",
+      "claim": "The roadmap gives no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -212,21 +168,10 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap record was modified at 2026-10-09T22:04:35.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-10-09T22:04:35\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
+      "n": 14,
       "where": "What's changing",
       "type": "record",
-      "claim": "MC1470410 was last updated on 3 November 2026 and revised the timeline.",
+      "claim": "MC1470410 was last updated on 3 November 2026 with a revised timeline.",
       "status": "supported",
       "source": "Message Center post MC1470410",
       "quote": "Updated November 3, 2026: We have updated the timeline. Thank you for your patience.",
@@ -234,10 +179,10 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 15,
       "where": "What's changing; Governance guidance: At rollout",
       "type": "record",
-      "claim": "MC1470410 gives the Targeted Release start as mid-October 2026.",
+      "claim": "MC1470410 gives Targeted Release beginning in mid-October 2026.",
       "status": "supported",
       "source": "Message Center post MC1470410",
       "quote": "Targeted Release: Beginning in mid-October 2026 (previously early October)",
@@ -245,10 +190,10 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 16,
       "where": "What's changing",
       "type": "record",
-      "claim": "MC1470410 expects Targeted Release to complete in mid-October 2026.",
+      "claim": "MC1470410 gives expected Targeted Release completion in mid-October 2026.",
       "status": "supported",
       "source": "Message Center post MC1470410",
       "quote": "expected to complete in mid-October 2026 (previously early October)",
@@ -256,10 +201,10 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 17,
       "where": "What's changing; Governance guidance: At rollout",
       "type": "record",
-      "claim": "MC1470410 gives the General Availability Worldwide start as late October 2026.",
+      "claim": "MC1470410 gives General Availability (Worldwide) beginning in late October 2026.",
       "status": "supported",
       "source": "Message Center post MC1470410",
       "quote": "General Availability (Worldwide): Beginning in late October 2026 (previously mid-October)",
@@ -267,10 +212,10 @@
       "fix": null
     },
     {
-      "n": 23,
+      "n": 18,
       "where": "What's changing; Governance guidance: At rollout; Open questions",
       "type": "record",
-      "claim": "MC1470410 expects General Availability Worldwide to complete by the end of November 2026.",
+      "claim": "MC1470410 gives expected General Availability completion by the end of November 2026.",
       "status": "supported",
       "source": "Message Center post MC1470410",
       "quote": "expected to complete by end of November 2026 (previously late October)",
@@ -278,10 +223,10 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 19,
       "where": "What's changing",
       "type": "record",
-      "claim": "MC1470410 sets no administrator act-by date.",
+      "claim": "The supplied notice sets no administrator act-by date.",
       "status": "supported",
       "source": "Message Center post MC1470410",
       "quote": "Act by: none. No admin action is required before rollout.",
@@ -289,32 +234,21 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "Why it matters; Scope: Rollout; Governance controls",
+      "n": 20,
+      "where": "Why it matters; Cost and licensing; Scope: Rollout; Governance controls",
       "type": "record",
-      "claim": "The notice says blurring is applied automatically and enabled by default as part of rollout.",
+      "claim": "The notice says obscuring is applied automatically and requires no administrator configuration or policy changes.",
       "status": "supported",
       "source": "Message Center post MC1470410",
-      "quote": "The protection is applied automatically to QR code images received from external senders. ... The feature will be enabled by default as part of the rollout.",
+      "quote": "The protection is applied automatically to QR code images received from external senders. No administrator configuration or policy changes are required. The feature will be enabled by default as part of the rollout.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 26,
-      "where": "Why it matters; Cost and licensing; Governance controls",
-      "type": "record",
-      "claim": "The notice says no administrator configuration or policy changes are required.",
-      "status": "supported",
-      "source": "Message Center post MC1470410",
-      "quote": "No administrator configuration or policy changes are required.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
+      "n": 21,
       "where": "Scope: Who is affected; Why it matters",
       "type": "record",
-      "claim": "The notice lists organisations that allow external communication in Teams as affected.",
+      "claim": "The notice identifies organisations that allow Teams communication with external users as affected.",
       "status": "supported",
       "source": "Message Center post MC1470410",
       "quote": "Organizations that allow communication with external users in Microsoft Teams.",
@@ -322,10 +256,10 @@
       "fix": null
     },
     {
-      "n": 28,
-      "where": "Scope: Who is affected; rationale: impact",
+      "n": 22,
+      "where": "Scope: Who is affected",
       "type": "record",
-      "claim": "The notice lists users receiving Teams messages from external senders as affected.",
+      "claim": "The notice identifies users receiving Teams messages from external senders as affected.",
       "status": "supported",
       "source": "Message Center post MC1470410",
       "quote": "Users who receive Teams messages from external senders.",
@@ -333,10 +267,10 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 23,
       "where": "Scope: Who is affected",
       "type": "record",
-      "claim": "The notice lists Teams administrators and support teams managing external collaboration policies as affected.",
+      "claim": "The notice identifies Teams administrators and support teams managing external collaboration policies as affected.",
       "status": "supported",
       "source": "Message Center post MC1470410",
       "quote": "Teams administrators and support teams that manage external collaboration policies.",
@@ -344,18 +278,18 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 24,
       "where": "Why it matters; Governance guidance: Before rollout",
       "type": "record",
       "claim": "Microsoft recommends informing users that QR code images from external senders may appear blurred.",
       "status": "supported",
       "source": "Message Center post MC1470410",
-      "quote": "Inform users that QR code images from external senders may appear blurred by default.",
+      "quote": "We recommend that administrators: Inform users that QR code images from external senders may appear blurred by default.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 31,
+      "n": 25,
       "where": "Why it matters; Governance guidance: Before rollout",
       "type": "record",
       "claim": "Microsoft recommends reminding users to verify the sender before revealing or scanning QR codes.",
@@ -366,10 +300,10 @@
       "fix": null
     },
     {
-      "n": 32,
-      "where": "Why it matters; Cost and licensing; Governance guidance",
+      "n": 26,
+      "where": "Why it matters; Cost and licensing; Governance guidance: After rollout",
       "type": "record",
-      "claim": "Microsoft recommends reviewing phishing, QR code safety and external collaboration education material.",
+      "claim": "Microsoft recommends reviewing phishing, QR code safety and external collaboration education materials.",
       "status": "supported",
       "source": "Message Center post MC1470410",
       "quote": "Review existing user education materials related to phishing awareness, QR code safety, and external collaboration.",
@@ -377,10 +311,10 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "Why it matters; Cost and licensing; Governance guidance: Before rollout; rationale: cost",
+      "n": 27,
+      "where": "Why it matters; Cost and licensing; Governance guidance: Before rollout",
       "type": "record",
-      "claim": "Microsoft recommends updating help desk documentation for the new user experience.",
+      "claim": "Microsoft recommends updating internal help desk documentation for the new experience.",
       "status": "supported",
       "source": "Message Center post MC1470410",
       "quote": "Update internal help desk documentation to reflect the new user experience.",
@@ -388,10 +322,43 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 28,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "absence",
+      "claim": "Microsoft does not describe new data access for this feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams QR code obscuring image detection processing data access autonomous actions other content types. Read the complete QR code obscuring Learn page, roadmap record and MC1470410; none describes new data access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "The Learn page does not explain image QR code detection or what happens to images it does not detect.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams QR code obscuring image detection processing data access autonomous actions other content types. Read QR code obscuring in Microsoft Teams in full; it gives the blur/reveal experience, not a detection algorithm or undetected-image behaviour.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "No autonomous action beyond the described image-display protection is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams QR code obscuring image detection processing data access autonomous actions other content types. Read the feature Learn page and MC1470410; neither describes an autonomous action beyond automatically obscuring the image.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
       "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
       "type": "licensing",
-      "claim": "Each user in the organisation needs a Teams license to use Teams, except for joining meetings anonymously.",
+      "claim": "Each user in the organisation needs a Teams license to use Teams, except when joining Teams meetings anonymously.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/user-access",
       "quote": "Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams.",
@@ -399,32 +366,54 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 32,
       "where": "front matter: licensing.model",
       "type": "licensing",
-      "claim": "The entitlement model is included in the Teams license the product already requires.",
+      "claim": "The licensing model is included under Teams' existing product-level license requirement, with feature-specific entitlement explicitly unpublished.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/user-access",
-      "quote": "Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams.",
+      "quote": "You manage access to Teams at the user level by assigning or removing a Microsoft Teams product license. Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 36,
+      "n": 33,
       "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
       "type": "absence",
       "claim": "Microsoft has not published a licensing requirement specific to QR code obscuring as of November 2026.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams QR code obscuring licensing license add-on price. Opened QR code obscuring in Microsoft Teams and Manage Teams licenses; read Teams add-on licenses and Teams Premium licensing search excerpts. No obscuring-specific licence requirement found.",
+      "quote": "Searched: \"QR code obscuring\" Teams licensing add-on price meter requirements. Read QR code obscuring, Manage Teams licenses and Microsoft Teams add-on licenses; no QR-obscuring-specific entitlement appears in these pages or the returned licensing excerpts.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 37,
+      "n": 34,
+      "where": "front matter: cost; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "The cost identified by the sources is communication and help desk work, supporting cost low without asserting a published zero price.",
+      "status": "supported",
+      "source": "Message Center post MC1470410",
+      "quote": "Review existing user education materials related to phishing awareness, QR code safety, and external collaboration. Update internal help desk documentation to reflect the new user experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[0]; summary; Risk assessment: Security & identity; Governance controls; rationale: risk",
+      "type": "absence",
+      "claim": "No administrator UI or API to enable or disable QR code obscuring is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams QR code obscuring protection messages PowerShell Set-CsTeamsMessagingPolicy Graph admin allowlist disable. Read feature page (no admin controls); searched Set-CsTeamsMessagingPolicy reference for QR, obscur, blur and phish: no matches.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
       "where": "controls[1].ui; Governance controls: external domain row",
       "type": "admin-path",
-      "claim": "The documented route is Teams admin center > Users > External access > Teams and Skype for Business users in external organizations > Block only specific external domains > Block external domains.",
+      "claim": "The Teams admin center route is Users > External access > Teams and Skype for Business users in external organizations > Block only specific external domains > Block external domains.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/trusted-organizations-external-meetings-chat",
       "quote": "In the Teams admin center, go to Users > External access. Next to Teams and Skype for Business users in external organizations, choose Block only specific external domains. Select Block external domains.",
@@ -432,31 +421,31 @@
       "fix": null
     },
     {
-      "n": 38,
+      "n": 37,
       "where": "controls[1].api; Governance controls: external domain row",
       "type": "command",
-      "claim": "MicrosoftTeams PowerShell supports Set-CsTenantFederationConfiguration -BlockedDomains <domain list> to set the tenant's blocked-domain list.",
+      "claim": "MicrosoftTeams PowerShell supports Set-CsTenantFederationConfiguration -BlockedDomains <domain list> to set the tenant blocked-domain list.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/teams/set-cstenantfederationconfiguration",
-      "quote": "Module: MicrosoftTeams PowerShell module. ... [-BlockedDomains <List>] ... $list.add(\"contoso.com\") ... $list.add(\"fabrikam.com\") ... Set-CsTenantFederationConfiguration -BlockedDomains $list",
+      "quote": "Module: MicrosoftTeams PowerShell module. $list = New-Object Collections.Generic.List[String]; $list.add(\"contoso.com\"); $list.add(\"fabrikam.com\"); Set-CsTenantFederationConfiguration -BlockedDomains $list",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[1].governs; controls[1].note; Risk assessment: Security & identity; Governance controls",
+      "type": "applicability",
+      "claim": "The external-domain row manages the organisation-level domain list for external Teams communication, distinct from user-specific policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/trusted-organizations-external-meetings-chat",
+      "quote": "For meetings and chat with other Microsoft 365 organizations, you can specify which domains you want to trust. By default, all external domains are allowed. You can allow or block certain domains in order to define which organizations your organization trusts for external meetings and chat.",
       "severity": null,
       "fix": null
     },
     {
       "n": 39,
-      "where": "controls[1].governs; controls[1].note; Risk assessment; Governance controls",
-      "type": "applicability",
-      "claim": "The external-domain row configures the organisation-level domain list for external Teams communication.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/trusted-organizations-external-meetings-chat",
-      "quote": "For meetings and chat with other Microsoft 365 organizations, you can specify which domains you want to trust. ... Specify blocked domains | -BlockedDomains",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
       "where": "controls[1].note; Risk assessment: Security & identity; Governance controls",
-      "type": "applicability",
+      "type": "behaviour",
       "claim": "Custom external access policies can inherit the organisation-level domain list.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/trusted-organizations-external-meetings-chat",
@@ -465,10 +454,10 @@
       "fix": null
     },
     {
-      "n": 41,
+      "n": 40,
       "where": "controls[1].note; Risk assessment: Security & identity; Governance controls",
-      "type": "applicability",
-      "claim": "Custom external access policies can specify different domain lists for assigned users.",
+      "type": "behaviour",
+      "claim": "Custom external access policies can specify a different domain list for assigned users.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/trusted-organizations-external-meetings-chat",
       "quote": "Custom policy assigned to user: The value for Allow or block external domains setting in the custom policy takes precedence over organization settings.",
@@ -476,74 +465,41 @@
       "fix": null
     },
     {
-      "n": 42,
+      "n": 41,
       "where": "controls[1].note; Governance controls",
       "type": "applicability",
-      "claim": "The external-domain list does not change how a QR code image received from an allowed sender is displayed.",
+      "claim": "The external-domain list is not a control over how a QR code image from an allowed sender is displayed.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/qr-code-obscuring-teams-messages",
-      "quote": "When an external user sends a message that contains an image with a QR code, Teams blurs the image. ... This experience is enabled by default, and there are no admin controls to enable or disable it.",
+      "quote": "When an external user sends a message that contains an image with a QR code, Teams blurs the image. This experience is enabled by default, and there are no admin controls to enable or disable it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Scope: Out of scope",
+      "type": "absence",
+      "claim": "The QR code obscuring Learn page does not describe protection for other content types.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams QR code obscuring image detection processing data access autonomous actions other content types. Read the complete QR code obscuring page; it describes images containing QR codes in Teams messages, not other content types.",
       "severity": null,
       "fix": null
     },
     {
       "n": 43,
-      "where": "Risk assessment: Security & identity; Open questions",
+      "where": "Open questions: trusted-sender allow list",
       "type": "absence",
-      "claim": "The Learn feature page does not describe the QR code detection mechanism or what happens to undetected images.",
+      "claim": "No feature-specific administrator allow list for trusted external senders or domains is documented for QR code obscuring.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"QR code obscuring\" \"Teams\" detection processing data access autonomous content types trusted allowlist. Read the entire QR code obscuring page; it explains blur and reveal, not detection mechanics or undetected-image handling.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "Risk assessment: Data exposure; rationale: risk",
-      "type": "absence",
-      "claim": "Microsoft does not describe new data access for QR code obscuring.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"QR code obscuring\" \"Teams\" detection processing data access autonomous content types trusted allowlist. Read the entire QR code obscuring page and MC1470410; neither describes additional data access.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "absence",
-      "claim": "No autonomous action beyond the documented display protection is described; revealing is the user's choice.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"QR code obscuring\" \"Teams\" detection processing data access autonomous content types trusted allowlist. Read QR code obscuring in Microsoft Teams and MC1470410; both describe user-initiated reveal, not autonomous follow-on actions.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "Scope: Out of scope",
-      "type": "absence",
-      "claim": "The Learn feature page describes obscuring for QR code images in Teams messages, not other content types.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"QR code obscuring\" \"Teams\" detection processing data access autonomous content types trusted allowlist. Read the entire QR code obscuring page; its described content is images containing QR codes in messages.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "Open questions: admin control or allow list",
-      "type": "absence",
-      "claim": "No administrator allow list is documented to exempt trusted external senders or domains from QR code obscuring.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams QR code obscuring PowerShell MicrosoftTeams Set-CsTeamsMessagingConfiguration admin disable trusted sender allow list detection. Opened the feature page, messaging configuration reference and external-access page; no obscuring exemption found.",
+      "quote": "Searched: Teams QR code obscuring protection messages PowerShell Set-CsTeamsMessagingPolicy Graph admin allowlist disable. Read QR code obscuring and external-access Learn pages; no QR-specific allow list is documented, and general domain lists govern communication.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-21T03:13:32.195Z",
+    "at": "2026-11-28T14:11:58.605Z",
     "summary": {
       "links": 6,
       "unreachable": 0,
@@ -624,6 +580,12 @@
       "date": "2026-11-21",
       "status": "held",
       "version": 2,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-21",
+      "status": "verified",
+      "version": 3,
       "model": "gpt-6.1-sol"
     }
   ]

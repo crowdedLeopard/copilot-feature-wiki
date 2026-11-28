@@ -1,0 +1,565 @@
+{
+  "slug": "m365-copilot-copilot-chats-conversations",
+  "roadmapId": 506751,
+  "title": "Microsoft 365 Copilot: past Copilot chats appear in search results, with a Copilot Chats data source",
+  "status": "held",
+  "date": "2026-11-28",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-28",
+    "reasons": [
+      "4 blocking findings (claims 13, 23, 24, 28)"
+    ]
+  },
+  "counts": {
+    "claims": 41,
+    "confirmed": 35,
+    "unconfirmed": 4,
+    "contradicted": 2,
+    "blocker": 4,
+    "major": 2,
+    "minor": 3
+  },
+  "summary": "Hold: the briefing treats compliance retention as a documented limit on how far back users can search Copilot chats, but Microsoft has not documented that relationship. It also omits the retain-only exception to expiry-driven deletion and the same-location qualification for competing retention policies. The feature-specific default is not established, and Microsoft's retention command documentation gives conflicting parameter guidance.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Risk assessment; Scope; Governance guidance",
+      "type": "record",
+      "claim": "Historical Copilot conversations, including notebook, agent and main-interface chats, become search results.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users can now retrieve historical Copilot interaction, including chats from notebooks, agents, and the main Copilot chat interface, directly in the search results (SERP).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "title; summary; What's changing; Governance guidance; rationale: impact",
+      "type": "record",
+      "claim": "A new Copilot Chats entry in the right rail scopes searches to Copilot-generated content.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "A new entry labeled “Copilot Chats” appears in the right rail, allowing users to scope their search specifically to Copilot-generated content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Selecting Copilot Chats makes the search box offer query-formulation suggestions scoped to that source.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "When users select “Copilot Chats” as the active data source, the search box dynamically offers scoped QF suggestions tailored to that source.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The scoped suggestions are intended to distinguish recalling a session from executing a prompt.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "These suggestions help differentiate between session recall and prompt execution, aligning with user intent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: status; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target date is December CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"December CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: previewDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap preview date is November CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"November CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The listed release phases are General Availability, Preview and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists only Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists Android, Desktop, iOS and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe this specific Copilot Chats search feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Copilot Conversations\" \"search results\" \"suggestions\"' and '\"Copilot Chats\" data source admin UI hide disable'; opened Copilot Search overview, FAQ and admin experience. No passage describes this specific feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Copilot Search has a right-rail data source filter including SharePoint, Teams and Outlook emails.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-search-faq",
+      "quote": "The data source filter is in the right rail of Copilot Search. It enables users to filter the search results, narrowing results to specific data sources in Microsoft 365 like SharePoint (and OneDrive for Business), Teams, Outlook Emails",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: defaultState; Why it matters",
+      "type": "default",
+      "claim": "The Copilot Chats search feature is on without administrator action.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: '\"Copilot Chats\" \"on by default\"' and '\"Copilot Chats\" \"Search\" default enable disable admin settings Graph API'; opened Search overview, FAQ and admin experience. No-action setup describes Copilot Search generally, not this feature's default.",
+      "severity": "blocker",
+      "fix": "Set defaultState to \"unknown\". Replace the 'If nobody acts' sentence with: 'The roadmap describes a new Copilot Chats entry, but does not state the feature's default. Microsoft says no action is needed to set up Copilot Search generally.'"
+    },
+    {
+      "n": 14,
+      "where": "front matter: licensing.model and notes; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "Copilot Search is included with an eligible Microsoft Copilot licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-search-overview",
+      "quote": "Copilot Search is available to users with an eligible Microsoft Copilot license at no extra cost.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "No separate licensing rule for the Copilot Chats data source is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Copilot Chats\" conversations search licensing meter retention deleted results'; opened Copilot Search overview and FAQ licensing sections. They license Search generally and publish no separate Copilot Chats entitlement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: cost; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Copilot Search has no additional direct cost for eligible licensed users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-search-faq",
+      "quote": "No, there's no additional cost for Microsoft Copilot Search itself. It's included as part of the Microsoft Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "Microsoft documents no meter specific to this feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Copilot Chats\" conversations search licensing meter retention deleted results'; opened Copilot Search overview and FAQ. Neither names a meter for conversation search; separately priced third-party connectors are not this feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Why it matters; Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "Admins and users need take no action to set up Copilot Search.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-search-overview",
+      "quote": "Admins and users don't need to take any action to set up Copilot Search. If a user has an eligible Microsoft Copilot license, Copilot Search appears as a tab in the Microsoft Copilot app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Copilot Search follows Microsoft Copilot's data protection, privacy standards and security configurations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-search-overview",
+      "quote": "Microsoft Copilot Search follows the same data protection, privacy standards, and security configurations as Microsoft Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Copilot interaction data is stored in a hidden folder in the user's mailbox.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention-policies-copilot",
+      "quote": "Data from generative AI messages is stored in a hidden folder in the mailbox of the user who runs the AI app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Copilot messages in hidden mailbox folders are searchable with eDiscovery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention-policies-copilot",
+      "quote": "Messages stored in mailboxes, including the hidden folders, are searchable by eDiscovery tools. Until messages are permanently deleted from the SubstrateHolds folder, they remain searchable by eDiscovery tools.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[1].governs; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "The Microsoft Copilot experiences retention location covers Microsoft 365 Copilot prompts and responses for compliance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-retention-policies",
+      "quote": "Microsoft Copilot experiences: For built-in and custom Copilot experiences, all user prompts responses. Includes Microsoft 365 Copilot, Security Copilot, Copilot in Fabric, Copilot Studio.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Why it matters; controls[1].governs; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "How long compliance retention keeps interactions determines how far back users can search Copilot Chats.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: '\"Copilot Chats\" \"search\" \"retention\"' and '\"Copilot Chats\" conversations search licensing meter retention deleted results'; opened retention-policies-copilot, create-retention-policies and Search FAQ. None specifies the Copilot Chats search-history boundary.",
+      "severity": "blocker",
+      "fix": "Replace 'how long Copilot interactions are kept now also decides how far back users can search their own chats' with 'Retention policies govern compliance retention and deletion of Copilot interactions.' Remove 'and therefore findable' and 'and so how long past chats are kept' where they imply a search limit. Replace 'Retention is the control that bears on what users can find' with 'Retention governs stored Copilot interactions; Microsoft has not documented how it affects Copilot Chats search results.'"
+    },
+    {
+      "n": 24,
+      "where": "Governance controls; Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "When messages expire under a retention policy, deletion is relayed to the Copilot app.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/retention-policies-copilot",
+      "quote": "Content paths for retain-only retention policy ... If messages remain in your AI app after the retention period expires, nothing happens before and after the retention period; the message remains in its original location.",
+      "severity": "blocker",
+      "fix": "Qualify expiry-driven deletion throughout: 'For retain-and-delete or delete-only policies, expiry triggers backend deletion processes and a delete operation is relayed to the Copilot app; communication delays or caching can leave messages visible briefly. For retain-only policies, messages still in the app remain in their original location after expiry.' Do not describe every expired chat as deleted."
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Users can delete an associated chat in Microsoft 365 Copilot Chat when that option is available.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention-policies-copilot",
+      "quote": "Users delete (when this option is available) the associated chat in Microsoft 365 Copilot Chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "User-deleted or retention-expired chats may remain in Copilot Chats search results temporarily because of caching or deletion propagation.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: '\"Copilot Chats\" \"search\" \"retention\"' and '\"Copilot Chats\" conversations search licensing meter retention deleted results'; opened retention-policies-copilot and Search FAQ. Documented delays concern messages visible in the Copilot app, not search results.",
+      "severity": "major",
+      "fix": "Replace the search-results assertion with 'Microsoft documents that retention-triggered deletion can leave messages visible briefly in the Copilot app because of communication delays or caching. It does not state how quickly deleted chats disappear from Copilot Chats search results.' Remove the claim that this documented mechanism also covers user-deleted search results."
+    },
+    {
+      "n": 27,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Messages visible in AI apps do not accurately establish compliance retention or permanent deletion, which should be verified with eDiscovery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention-policies-copilot",
+      "quote": "Use this section to understand how your compliance requirements are met by backend storage and processes, and should be verified by eDiscovery tools rather than by messages that are currently visible in your AI apps, such as Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Any other retention policy affecting the mailbox suspends permanent deletion, alongside Litigation Hold, delay hold or eDiscovery hold.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/retention-policies-copilot",
+      "quote": "permanent deletion from the SubstrateHolds folder is always suspended if the mailbox is affected by another retention policy for the same location, Litigation Hold, delay hold, or if an eDiscovery hold is applied to the mailbox",
+      "severity": "blocker",
+      "fix": "Replace 'another retention policy' with 'another retention policy for the same location' in the permanent-deletion sentence."
+    },
+    {
+      "n": 29,
+      "where": "controls[1].note; Why it matters; Cost and licensing; Governance guidance",
+      "type": "date",
+      "claim": "Beginning 15 January 2027, Teams chats and Copilot interactions policies govern Teams content only and no longer cover Copilot interactions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-retention-policies",
+      "quote": "Beginning 15th January, 2027; Teams chats and Copilot interactions policies will continue to govern only Teams content, and will no longer cover Microsoft 365 Copilot interactions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The printed Purview route reaches the Static policy wizard's Microsoft Copilot experiences location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-retention-policies",
+      "quote": "For the Choose the type of retention policy to create page, select Adaptive or Static ... If you chose Static: On the Choose locations to apply the policy page, select one or more locations ... Microsoft Copilot experiences",
+      "severity": "minor",
+      "fix": "Use the fuller route: 'Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy > Assign admin units > Full directory > Choose the type of retention policy to create > Static > Choose locations to apply the policy > Microsoft Copilot experiences'. The omitted admin-unit scope/default and wizard heading are not invented steps or a different route."
+    },
+    {
+      "n": 31,
+      "where": "controls[1].api and note; Governance guidance; Governance controls table",
+      "type": "command",
+      "claim": "Set-AppRetentionCompliancePolicy -Identity \"<policy name>\" -Applications \"User:M365Copilot\" adds Copilot interactions to an existing newer-location retention policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-retention-policies",
+      "quote": "To add Microsoft 365 Copilot interactions to an existing retention policy for newer locations, such as Teams private channel messages and Viva Engage: Set-AppRetentionCompliancePolicy -Identity “<policy name>” -Applications \"User:M365Copilot\"",
+      "severity": "minor",
+      "fix": "Keep the cited example but add this qualification to the note and cite https://learn.microsoft.com/powershell/module/exchangepowershell/set-appretentioncompliancepolicy: 'The Purview procedure gives this single-app example, but the cmdlet reference marks Microsoft Copilot experiences as preview and says all these values must be supplied together: User:M365Copilot,CopilotForSecurity,CopilotinFabricPowerBI,CopilotStudio,CopilotinBusinessApplicationplatformsSales,SQLCopilot. Microsoft documentation therefore disagrees on the required Applications value.'"
+    },
+    {
+      "n": 32,
+      "where": "controls[0].note; Governance controls",
+      "type": "admin-path",
+      "claim": "Search configuration sits under Settings > Search & intelligence in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center",
+      "quote": "Search | Configure Microsoft Search under Settings > Search & intelligence in the Microsoft 365 admin center.",
+      "severity": "minor",
+      "fix": "Replace the broad Copilot Search route statement with 'The Copilot settings page directs Microsoft Search configuration to Settings > Search & intelligence; the Copilot Search admin experience page gives Microsoft 365 admin center > Copilot > Search for Copilot Search administration.' Both pages are already cited."
+    },
+    {
+      "n": 33,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Copilot Search administration includes bookmarks, acronyms, results and filters, usage metrics and connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-search-admin-experience",
+      "quote": "Configure frequently searched content within your organization like bookmarks and acronyms. Customize search results and filters. Monitor usage, adoption, and performance metrics. Manage all your data sources with over 100 connectors",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[0].ui and api; summary; Risk assessment; Governance controls",
+      "type": "absence",
+      "claim": "No feature-specific admin UI or automation setting is documented for hiding or disabling the Copilot Chats source and its results.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Copilot Chats\" data source admin UI hide disable'; 'Microsoft Graph copilotAdminSetting Copilot Search data source settings API'. Opened Search admin experience, configure-copilot-admin-center, copilotAdminSetting and copilotPolicySetting; none exposes this control.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "No new identity, permission or sign-in requirement is described for this feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Copilot Chats\" \"Search\" default enable disable admin settings Graph API'; read the roadmap and opened Copilot Search overview, FAQ and admin experience. They give general Search eligibility and security, not a new identity requirement for this feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "The roadmap does not state whether results contain only the user's own conversations or also shared-notebook conversations.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Copilot Chats\" conversations search licensing meter retention deleted results'; read the roadmap and Search FAQ. The record lists notebook, agent and main-interface chats without stating ownership or shared-notebook visibility.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes suggestions, not autonomous actions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "the search box dynamically offers scoped QF suggestions tailored to that source. These suggestions help differentiate between session recall and prompt execution, aligning with user intent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The scoped suggestions let a user run a prompt from the search box.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'Copilot Chats search box scoped suggestions prompt execution search results'; opened Search overview and FAQ and read the roadmap. The record distinguishes recall and execution but does not document executing a prompt from the search box.",
+      "severity": "major",
+      "fix": "Replace the first Autonomy & actions sentence with 'The roadmap says scoped suggestions distinguish session recall from prompt execution; it does not describe the execution flow.'"
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing; Open questions; rationale: impact",
+      "type": "licensing",
+      "claim": "Users without an eligible Microsoft Copilot licence receive Microsoft Search when selecting Search in the Microsoft 365 app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-search-admin-experience",
+      "quote": "Users without an eligible Microsoft Copilot license receive the Microsoft Search experience when they select the Search module in the Microsoft 365 app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap product is Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-04-27T23:15:13.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-04-27T23:15:13\"",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-28T14:11:54.890Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/copilot/manage/copilot-search-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/manage/copilot-search-faq",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/manage/copilot-search-admin-experience",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/retention-policies-copilot",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/create-retention-policies",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=506751",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which retention policy covers Microsoft 365 Copilot interactions, and so how long past chats are kept",
+        "docs": "https://learn.microsoft.com/purview/create-retention-policies",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "Data Lifecycle Management",
+          "Policies",
+          "Retention policies",
+          "New retention policy",
+          "Static",
+          "Choose locations to apply the policy",
+          "Microsoft Copilot experiences"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which retention policy covers Microsoft 365 Copilot interactions, and so how long past chats are kept",
+        "docs": "https://learn.microsoft.com/purview/create-retention-policies",
+        "reachable": true,
+        "token": "Set-AppRetentionCompliancePolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

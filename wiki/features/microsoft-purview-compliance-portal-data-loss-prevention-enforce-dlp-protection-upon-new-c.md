@@ -74,19 +74,23 @@ changes:
     note: "New briefing: the roadmap lists the item as launched for Worldwide, while Learn still documents that unsaved data is not scanned and no dedicated setting is documented."
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 39 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-28"
+    note: "Corrected the Scope platform list: removed Windows Server 2019 and later, which Learn supports only with exclusions and after server enablement."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 43 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-28"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 39
-  confirmed: 38
+  claims: 43
+  confirmed: 43
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "71f96720c46ee39d9eb6239fe764dfe0"
+  contradicted: 0
+  attempts: 0
+  hash: "e0b79aca713ca9f7bda427cb04081c58"
 ---
 
 ## What's changing
@@ -128,7 +132,7 @@ Microsoft has not stated what happens on arrival. If the protection attaches to 
 ## Scope
 
 - **Users and devices:** Learn states that for a DLP policy to be enforced on an endpoint, both the user and the device must be included in the policy scope.
-- **Platforms:** Learn lists Print, Copy to USB removable device and Copy to a network share as supported on Windows 10 (21H2, 22H2), Windows 11 (21H2, 22H2) and Windows Server 2019 and later on x64, Windows 11 (21H2, 22H2) on ARM64, and the three latest released macOS versions. The roadmap record lists the platform as Web. Which platforms get unsaved-content protection is not yet documented.
+- **Platforms:** Learn lists Print, Copy to USB removable device and Copy to a network share as supported on Windows 10 (21H2, 22H2) and Windows 11 (21H2, 22H2) on x64, Windows 11 (21H2, 22H2) on ARM64, and the three latest released macOS versions. The roadmap record lists the platform as Web. Which platforms get unsaved-content protection is not yet documented.
 - **Clouds:** the roadmap record lists Worldwide (Standard Multi-Tenant).
 - **Rollout:** the record lists the item as Launched, General Availability, with a target of April CY2026.
 - **Roles:** the `EndpointDlpRestrictions` parameter of `Set-DlpComplianceRule` requires membership in the Compliance Administrator or Compliance Data Administrator roles in Microsoft Entra ID.
@@ -176,10 +180,8 @@ cost: Low. Endpoint DLP is included in Microsoft 365 E5/A5/G5 and the other plan
 impact: Medium. Users of onboarded devices in the scope of device rules that restrict printing, USB or network-share copies may meet warnings or blocks on documents they have not yet saved.
 -->
 
-<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Scope: Platforms / availability: Windows Server 2019 and later on x64 are listed as supported without any server exclusions or configuration qualification. | Found: Endpoint DLP is not supported on Windows Servers configured as Domain Controllers or Windows Servers with the Core Server option selected during installation. By default, Endpoint DLP isn't enabled for Windows servers when they're initially onboarded. | Fix: Remove 'and Windows Server 2019 and later' from the Scope platform bullet. The source at https://learn.microsoft.com/purview/endpoint-dlp-learn-about excludes domain controllers and Core installations, requires server enablement, and says supported server KBs disable classification; narrowing this bullet to Windows PCs avoids implying unconditional server coverage. | Source: https://learn.microsoft.com/purview/endpoint-dlp-learn-about
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The printed Purview portal path reaches Apply restrictions to specific activity in a device DLP rule. | Found: Open Data Loss Prevention > Policies. Select Create policy. Select Enterprise applications & devices. Select the Custom from the Categories then Custom policy template from Regulations. Select Apply restrictions to specific activity | Fix: Complete controls[0].ui.path and its rendered copy with the documented scope selection and an activity/action: 'Data Loss Prevention > Policies > Create policy > Enterprise applications & devices > Categories > Custom > Regulations > Custom policy > Admin units > Full directory > Devices > rule > Actions > Audit or restrict activities on devices > Apply restrictions to specific activity > Copy to a removable USB device > Block with override'. The cited walkthrough gives these labels and choices; the existing path stops on the correct page before choosing an activity. | Source: https://learn.microsoft.com/purview/dlp-create-policy-edlp-scan-fails
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The printed Microsoft Purview portal path reaches Apply restrictions to specific activity in a device policy rule. | Found: Select the Custom from the Categories then Custom policy template from Regulations. ... Scope the location to Devices only. ... In Actions: ... Select Audit or restrict activities on devices. ... Select Apply restrictions to specific activity | Fix: Expand controls[0].ui.path and its rendered copy to 'Data Loss Prevention > Policies > Create policy > Enterprise applications & devices > Categories > Custom > Regulations > Custom policy > Admin units > Full directory > Devices > rule > Actions > Audit or restrict activities on devices > Apply restrictions to specific activity > Copy to a removable USB device > Block with override'. This is the USB restriction route given at https://learn.microsoft.com/purview/dlp-create-policy-edlp-scan-fails; the same page separately documents Copy to a network share > Block with override. | Source: https://learn.microsoft.com/purview/dlp-create-policy-edlp-scan-fails
 -->

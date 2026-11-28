@@ -14,7 +14,7 @@ previewDate: null
 risk: "low"
 cost: "none"
 impact: "low"
-defaultState: "on"
+defaultState: "unknown"
 action: "none"
 licensing:
   model: "included"
@@ -49,6 +49,12 @@ sources:
   - title: "Audit log activities"
     url: "https://learn.microsoft.com/purview/audit-log-activities"
     kind: "learn"
+  - title: "Billing in eDiscovery"
+    url: "https://learn.microsoft.com/purview/edisc-billing"
+    kind: "learn"
+  - title: "Manage review sets in eDiscovery"
+    url: "https://learn.microsoft.com/purview/edisc-review-set-manage"
+    kind: "learn"
   - title: "Whether premium eDiscovery features, under which the 100 limit is listed, are on for a case (Microsoft Graph)"
     url: "https://learn.microsoft.com/graph/api/security-ediscoverycasesettings-update?view=graph-rest-1.0"
     kind: "learn"
@@ -65,7 +71,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Settings > Role groups > Role groups for Microsoft Purview solutions > eDiscovery Manager > Edit > Choose users"
+      path: "Settings > Role groups > Role groups for Microsoft Purview solutions > eDiscovery Manager > Edit > Manage eDiscovery Manager > Choose users"
       docs: "https://learn.microsoft.com/purview/edisc-permissions"
     api:
       kind: "powershell"
@@ -103,26 +109,30 @@ changes:
     note: "New briefing: review sets per eDiscovery case rise from 20 to 100 in the Worldwide cloud; launched, no setting to change."
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 56 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-28"
+    note: "Corrected: eDiscovery Administrators can reach any case's data; default state now Not stated; added pay-as-you-go billing for non-Microsoft 365 AI data in review sets; fuller role group path."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 69 statements contradicted, 3 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-28"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 56
-  confirmed: 54
-  unconfirmed: 1
+  claims: 69
+  confirmed: 65
+  unconfirmed: 3
   contradicted: 1
-  attempts: 1
-  hash: "d5a9ace01460b4fb1545d9d9f2e70e42"
+  attempts: 2
+  hash: "4e570472866ffe07bc2fae2439cbac53"
 ---
 
 ## What's changing
 
 Microsoft Purview eDiscovery now allows up to 100 review sets in a single case, up from 20. A review set is the working copy of search results that investigators filter, tag, analyse and export; adding search results to one copies the items and their metadata into Microsoft-managed Azure Storage dedicated to the case.
 
-Microsoft's [Limits in eDiscovery](https://learn.microsoft.com/purview/edisc-ref-limits) page lists 100 as the maximum number of review sets per case, in the column for premium eDiscovery feature support. The roadmap item describes the change as an increase from 20 per case to 100 per case, with no setting attached. The same page gives other per-case limits that the roadmap item does not mention: a case holds at most 40 million documents across all its review sets, and each review set is limited to 1 TB.
+Microsoft's [Limits in eDiscovery](https://learn.microsoft.com/purview/edisc-ref-limits) page lists 100 as the maximum number of review sets per case, in the column for premium eDiscovery feature support. The roadmap item describes the change as an increase from 20 per case to 100 per case, with no setting attached. Microsoft has not explicitly stated the rollout default for the higher review set limit. The same page gives other per-case limits that the roadmap item does not mention: a case holds at most 40 million documents across all its review sets, and each review set is limited to 1 TB.
 
 The roadmap item (558858) covers the Worldwide (Standard Multi-Tenant) cloud on the web, is marked Launched with General Availability, and had a target of April CY2026. Microsoft lists the same change for GCC, GCC High and DoD under a separate roadmap item, 560322, which is also Launched, with a target of May CY2026.
 
@@ -135,7 +145,7 @@ The flip side is that each review set is another copy of collected content. Stor
 ## Risk assessment
 
 **Data exposure**
-- More review sets per case means more copies of collected mail, chats and files in the case's Microsoft-managed storage. Access stays limited to case members and the Microsoft Purview portal or approved export workflows; Microsoft states there is no customer-accessible storage URL or key.
+- More review sets per case means more copies of collected mail, chats and files in the case's Microsoft-managed storage. Access is governed by eDiscovery permissions; eDiscovery Administrators can access case data for any case in the organisation, and must add themselves as members to manage a case. Access to review set content is through the Microsoft Purview portal and approved export workflows; Microsoft states there is no customer-accessible storage URL or key.
 - Spilled data copied into review sets can only be removed by deleting the case, so a case with dozens of review sets makes a spillage clean-up larger.
 
 **Security & identity**
@@ -151,7 +161,7 @@ The flip side is that each review set is another copy of collected content. Stor
 
 **Licence.** Review sets are a premium eDiscovery feature: the Microsoft Graph eDiscovery API overview lists review sets, tagging and analytics as unavailable at the E3/Standard tier. According to [Assign permissions in eDiscovery](https://learn.microsoft.com/purview/edisc-permissions), to analyse a user's data with premium features the user must have Office 365 E5 or Microsoft 365 E5, or an E1 or E3 licence plus a Microsoft Purview Suite or Microsoft 365 eDiscovery and Audit add-on. Administrators, compliance officers and legal staff who work in cases don't need an E5 licence.
 
-**Meter and storage.** Review set content is stored in Microsoft-owned, Microsoft-managed storage, and Microsoft states customers don't see, manage or pay for it directly ([Add search results to a review set](https://learn.microsoft.com/purview/edisc-search-add-to-review-set)).
+**Meter and storage.** Review set content is stored in Microsoft-owned, Microsoft-managed storage, and Microsoft states customers don't see, manage or pay for it directly ([Add search results to a review set](https://learn.microsoft.com/purview/edisc-search-add-to-review-set)). Microsoft's [Billing in eDiscovery](https://learn.microsoft.com/purview/edisc-billing) page separately says that adding non-Microsoft 365 AI data to a review set incurs pay-as-you-go data-storage charges; legacy review-set imports are excluded.
 
 **Not yet published.** Microsoft has published no separate licence or charge for the higher limit itself.
 
@@ -185,7 +195,7 @@ The flip side is that each review set is another copy of collected content. Stor
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Who can create and manage eDiscovery cases and access case data</strong><br><small>Tenant</small><br><small class="controls__note">Assigning needs Organization Management or the Role Management role. The cmdlet runs in Security &amp; Compliance PowerShell and takes a mail-enabled security group.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Role groups › Role groups for Microsoft Purview solutions › eDiscovery Manager › Edit › Choose users <a href="https://learn.microsoft.com/purview/edisc-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember &quot;eDiscoveryManager&quot; -Member &lt;name of security group&gt;</code> <a href="https://learn.microsoft.com/purview/edisc-permissions" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Who can create and manage eDiscovery cases and access case data</strong><br><small>Tenant</small><br><small class="controls__note">Assigning needs Organization Management or the Role Management role. The cmdlet runs in Security &amp; Compliance PowerShell and takes a mail-enabled security group.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Role groups › Role groups for Microsoft Purview solutions › eDiscovery Manager › Edit › Manage eDiscovery Manager › Choose users <a href="https://learn.microsoft.com/purview/edisc-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember &quot;eDiscoveryManager&quot; -Member &lt;name of security group&gt;</code> <a href="https://learn.microsoft.com/purview/edisc-permissions" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether premium eDiscovery features, under which the 100 limit is listed, are on for a case</strong><br><small class="controls__note">Per case. The request body sets caseType (standard or premium). Another Learn page says access to premium features isn't governed by the case settings toggle.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>eDiscovery › Cases › case › Case settings › Premium features › eDiscovery (Premium) <a href="https://learn.microsoft.com/purview/edisc-settings-cases" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /v1.0/security/cases/ediscoveryCases/{ediscoveryCaseId}/settings</code> <a href="https://learn.microsoft.com/graph/api/security-ediscoverycasesettings-update?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Audit record of review sets created in eDiscovery cases (ReviewSetAdded)</strong><br><small>Tenant</small><br><small class="controls__note">ReviewSetAdded is listed under eDiscovery activities on the Audit log activities page.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Audit › Search <a href="https://learn.microsoft.com/purview/audit-search" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Search-UnifiedAuditLog -StartDate &lt;start date&gt; -EndDate &lt;end date&gt; -Operations ReviewSetAdded</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
@@ -199,24 +209,25 @@ The flip side is that each review set is another copy of collected content. Stor
 
 ## Open questions
 
-- Does the 100 review set limit apply to limited format cases, which use the legacy review set experience? Watch the [Limits in eDiscovery](https://learn.microsoft.com/purview/edisc-ref-limits) page.
+- Does the 100 review set limit apply to limited format cases, which [use the legacy eDiscovery experience](https://learn.microsoft.com/purview/edisc-review-set-manage) for review sets? Watch the [Limits in eDiscovery](https://learn.microsoft.com/purview/edisc-ref-limits) page.
 - Will Microsoft raise the 40 million documents per case limit, now shared across up to five times as many review sets?
 - What happens to a case holding more than 20 review sets if premium features are turned off for it?
 - Which case settings toggle governs access to premium features, given the two Learn pages that disagree?
 
 <!-- rationale
 risk: Low. The change raises a ceiling inside existing eDiscovery cases; who can create review sets is still decided by eDiscovery role groups, and review set content stays in Microsoft-managed storage for the case.
-cost: None. The limit sits under premium eDiscovery features, which already require Office 365 or Microsoft 365 E5 or an eligible add-on, and Microsoft states customers don't pay for review set storage directly.
+cost: None. Microsoft publishes no separate charge for the higher limit itself; it sits under premium eDiscovery features, which already require Office 365 or Microsoft 365 E5 or an eligible add-on. Adding non-Microsoft 365 AI data to a review set is billed pay-as-you-go whatever the limit.
 impact: Low. Only eDiscovery managers, administrators and reviewers who work in large cases will notice: they can split collections across more review sets in one case.
 -->
 
 <!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure / role: Access to case content stays limited to case members. | Found: Access case data for any case in the organization. ... Manage any eDiscovery case after they add themselves as a member of the case. | Fix: Replace 'Access stays limited to case members' with 'Access is governed by eDiscovery permissions; eDiscovery Administrators can access case data for any case in the organisation, and must add themselves as members to manage a case.' Keep the separate portal/export access statement. | Source: https://learn.microsoft.com/purview/edisc-permissions
-- [unsupported, blocker] front matter: defaultState / default: The higher limit is on by default on arrival without administrator action. | Found: Searched: 'eDiscovery review set limit 100 automatic default increase setting configure'; read roadmap 558858, edisc-ref-limits, edisc-settings-cases and edisc-settings-general. The 100 limit is documented, but rollout default is not; premium-feature defaults concern a different setting. | Fix: Set defaultState to 'unknown'. If describing the rollout default, say 'Microsoft has not explicitly stated the rollout default for the higher review set limit.' Retain the separately supported launched status and published maximum of 100.
+- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: The higher limit does not create anything on its own. | Found: Searched: eDiscovery review sets 20 limit split extra cases same investigation automatic create review sets; eDiscovery review sets 100 automatically default. Opened edisc-search-add-to-review-set, edisc-review-set-manage and the roadmap record; none explicitly states this negative. | Fix: Replace 'the higher limit does not create anything on its own' with 'the roadmap describes a limit increase, not an automatic creation workflow'. The supplied roadmap description states only that the limit rises from 20 to 100.
+- [unsupported, blocker] controls[1].api; controls[1].governs; Governance controls table / command: PATCH /v1.0/security/cases/ediscoveryCases/{ediscoveryCaseId}/settings with caseType sets whether premium features are on for the case. | Found: Searched: Microsoft Graph ediscoveryCaseSettings caseType premium enable disable premium features case settings toggle. Opened Graph update/resource references and edisc-cases-manage: PATCH changes case type; no passage establishes that it operates the premium-features toggle. | Fix: Set controls[1].api to null and remove 'The request body sets caseType (standard or premium).' from its note and rendered table. The reference documents updating caseType, not enabling premium feature access; retain the existing note about the conflicting UI documentation.
+- [unsupported, major] Why it matters / behaviour: With the previous ceiling of 20, teams had to open extra cases for the same matter. | Found: Searched: eDiscovery review sets 20 limit split extra cases same investigation automatic create review sets. Read edisc-ref-limits, edisc-cases-manage, edisc-review-set-manage and roadmap records; none states that teams had to open extra cases rather than organise fewer sets. | Fix: Replace 'With a ceiling of 20, teams had to open extra cases for the same matter' with 'For teams that split a matter across cases to stay below 20 review sets, the higher limit may simplify case organisation'. This is conditional analysis, not an assertion of documented historical necessity.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing: Meter and storage; rationale: cost / cost: Microsoft states that customers do not see, manage or pay directly for review set storage resources. | Found: The storage is Microsoft-owned and Microsoft-managed. Customers don't see, manage, or pay for these storage resources directly. | Fix: Keep the quoted storage-resource statement, but add: 'Microsoft's Billing in eDiscovery page separately says that adding non-Microsoft 365 AI data to a review set incurs pay-as-you-go data-storage charges; legacy review-set imports are excluded.' Cite https://learn.microsoft.com/purview/edisc-billing. Narrow the cost rationale to the higher limit itself rather than implying that every review-set data type is unbilled. | Source: https://learn.microsoft.com/purview/edisc-search-add-to-review-set
-- [supported, minor] controls[0].ui / admin-path: The Purview path to assigning eDiscovery Managers is Settings > Role groups > Role groups for Microsoft Purview solutions > eDiscovery Manager > Edit > Choose users. | Found: Go to Settings > Role groups. ... On Role groups for Microsoft Purview solutions, select eDiscovery Manager. ... Select Edit. ... On Manage eDiscovery Manager, select Choose users or Choose groups. | Fix: Use the full path 'Settings > Role groups > Role groups for Microsoft Purview solutions > eDiscovery Manager > Edit > Manage eDiscovery Manager > Choose users'. The omitted wizard heading is not a selectable branch, so this does not invalidate the route. | Source: https://learn.microsoft.com/purview/edisc-permissions
-- [supported, minor] Open questions / behaviour: Review sets in limited-format cases use the legacy eDiscovery experience. | Found: Review sets for limited format cases use the legacy eDiscovery experience. Some features aren't available for these cases in the new eDiscovery experience. | Fix: Cite https://learn.microsoft.com/purview/edisc-review-set-manage for the clause that limited-format review sets use the legacy experience, and add it to sources. | Source: https://learn.microsoft.com/purview/edisc-review-set-manage
+- [supported, minor] What's changing; Scope: Cloud / record: Separate roadmap item 560322 covers the same increase for GCC, GCC High and DoD. | Found: 560322: "description": "Review set limit per case is increased from 20 per case to 100 per case."; "clouds": ["GCC", "GCC High", "DoD"] | Fix: Add https://www.microsoft.com/microsoft-365/roadmap?id=560322 to sources as a roadmap source titled 'Microsoft 365 Roadmap item 560322'. Its supplied repository record supports the government-cloud facts.
+- [supported, minor] Governance controls: organisation premium-features setting / admin-path: The organisation's premium-features default is at eDiscovery > Settings > eDiscovery > General > eDiscovery (Premium). | Found: This setting isn't available for organizations with Microsoft 365 Enterprise E3 subscription. ... Select the eDiscovery solution card, then go to Settings > eDiscovery > General. ... Select or clear the toggle for eDiscovery (Premium). | Fix: Add the cited qualification to this sentence: 'This setting is not available for organisations with a Microsoft 365 Enterprise E3 subscription.' Source: https://learn.microsoft.com/purview/edisc-settings-general. | Source: https://learn.microsoft.com/purview/edisc-settings-general
+- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The checklist asks readers to monitor review-set count and the case document ceiling without a corresponding controls-table row. | Found: Include review set count in case close-out checks ... Watch cases approaching the 40 million documents per case ... [Table rows cover role assignment, premium features and audit search, not case count or document-limit monitoring.] | Fix: The 'Include review set count in case close-out checks' and 'Watch cases approaching the 40 million documents per case' checklist steps have no corresponding control row. Remove those two steps; do not add unverified control rows.
 -->

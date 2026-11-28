@@ -51,15 +51,17 @@ changes:
     note: "First briefing: recently used emojis and reactions sync across Teams clients, on by default per MC1256307; no admin control for it is documented."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 54 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 64 statements not yet confirmed"
 version: 1
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 54
-  confirmed: 53
+  claims: 64
+  confirmed: 63
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -161,9 +163,9 @@ cost: Low. The only cost the sources show is admin time for helpdesk notes; neit
 impact: Medium. Every Teams user on a supported client sees the change, but it is limited to the recently used emoji and reaction list.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model and notes; Cost and licensing; Open questions / licensing: Feature-specific licensing is not published, so the briefing reports the licensing model as unknown. | Found: Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams. | Fix: Set licensing.model to 'included'. Replace licensing.notes and the 'so no entitlement is stated' wording with: 'Teams users need a Teams license. Microsoft has not published a licence requirement specific to recently used emoji sync.' Cite https://learn.microsoft.com/microsoftteams/user-access in sources and in Cost and licensing. | Source: https://learn.microsoft.com/microsoftteams/user-access
-- [contradicted, minor] front matter: impact; rationale: impact / consistency: Impact is medium despite the stated default change affecting every Teams user on supported clients. | Found: impact: "medium"; impact: Medium. Every Teams user on a supported client sees the change, but it is limited to the recently used emoji and reaction list. | Fix: Set impact to 'high' and replace its rationale with: 'High. Every Teams user on a supported client sees a change to the default recently used emoji and reaction list.' The assessment scale defines high as most users or a change to default behaviour; cosmetic scope is already reflected in low risk.
+- [supported, minor] front matter: licensing.model and notes; Cost and licensing; Open questions / licensing: Feature-specific licensing is not published, so the briefing reports the licensing model as unknown and states no entitlement. | Found: Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams. | Fix: Set licensing.model to 'included'. Replace licensing.notes with 'Teams users need a Teams license. Microsoft has not published a licence requirement specific to recently used emoji sync.' Replace 'so no entitlement is stated' in Cost and licensing with 'Teams users need a Teams license; no feature-specific requirement is published.' Cite https://learn.microsoft.com/microsoftteams/user-access in sources and Cost and licensing. | Source: https://learn.microsoft.com/microsoftteams/user-access
+- [contradicted, minor] front matter: impact; rationale: impact / consistency: Impact is medium even though the briefing describes a default change affecting every Teams user on supported clients. | Found: impact: "medium"; impact: Medium. Every Teams user on a supported client sees the change, but it is limited to the recently used emoji and reaction list. | Fix: Set impact to 'high' and replace its rationale with 'High. Every Teams user on a supported client sees a change to the default recently used emoji and reaction list.' The assessment scale defines high impact as most users or a change to default behaviour.
 -->

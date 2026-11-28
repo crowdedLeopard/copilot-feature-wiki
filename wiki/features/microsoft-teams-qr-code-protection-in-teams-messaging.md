@@ -76,15 +76,17 @@ changes:
     note: "Corrected after verification: removed the claim that a tenant cannot tune the behaviour, and restated how custom external access policies relate to the organisation domain list."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 47 statements confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 43 statements confirmed"
 version: 3
 verification:
   status: "verified"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 47
-  confirmed: 47
+  claims: 43
+  confirmed: 43
   unconfirmed: 0
   contradicted: 0
   attempts: 0

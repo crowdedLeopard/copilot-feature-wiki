@@ -65,15 +65,17 @@ changes:
     note: "Corrected after verification: removed an unsupported Planner Plan 1 licence statement; licensing now recorded as the Microsoft Copilot licence Planner Agent requires."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 45 statements confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 54 statements confirmed"
 version: 3
 verification:
   status: "verified"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 45
-  confirmed: 45
+  claims: 54
+  confirmed: 54
   unconfirmed: 0
   contradicted: 0
   attempts: 0

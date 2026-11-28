@@ -88,15 +88,17 @@ changes:
     note: "Corrected after the independent check: licensing model now rests on the SharePoint licence requirement, removed the unsupported 'no new data' statements, and completed three policy paths."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 63 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 65 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 63
-  confirmed: 63
+  claims: 65
+  confirmed: 65
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -197,9 +199,9 @@ cost: Low. The only cost the sources show is admin time and owner communication;
 impact: Medium. Site owners are the people who notice: the roadmap says the dashboard and consolidated notifications replace multiple emails with one place to act.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].ui; controls[2].note; Governance controls / admin-path: Inactive policy scope is reached through Policies > Site lifecycle management > Inactive site policies > Open > + Create policy > Set policy scope. | Found: Under Inactive site policies, select Open. Select + Create policy. Review the Manage inactive sites information, and then select Next. On the Set policy scope step, choose your policy scope option | Fix: Use 'Policies > Site lifecycle management > Inactive site policies > Open > + Create policy > Manage inactive sites > Set policy scope' in controls[2].ui.path and the rendered table, as documented at https://learn.microsoft.com/sharepoint/inactive-site-policy. | Source: https://learn.microsoft.com/sharepoint/inactive-site-policy
-- [supported, minor] controls[3].ui; controls[3].note; Governance controls / admin-path: Policies > Site lifecycle management > Site ownership policies > Open > + Create policy opens the ownership wizard, where scope and ownership criteria can be configured. | Found: Under Site ownership policies, select Open. Then, select + Create policy. On Manage ownership of sites ... On Set policy scope, choose your policy scope parameters ... On Configure policy, specify criteria for your policy | Fix: Complete controls[3].ui.path and the rendered table as 'Policies > Site lifecycle management > Site ownership policies > Open > + Create policy > Manage ownership of sites > Set policy scope > Configure policy', using https://learn.microsoft.com/sharepoint/site-ownership-policy. The current route is correct but stops at the wizard entrance. | Source: https://learn.microsoft.com/sharepoint/site-ownership-policy
+- [supported, minor] controls[2].ui; controls[2].note; Governance controls / inactive row / admin-path: The inactive policy scope is reached through Policies > Site lifecycle management > Inactive site policies > Open > + Create policy > Set policy scope in the SharePoint admin center. | Found: Under Inactive site policies, select Open. ... Select + Create policy. Review the Manage inactive sites information, and then select Next. ... On the Set policy scope step, choose your policy scope option | Fix: Set controls[2].ui.path and the corresponding rendered table path to 'Policies > Site lifecycle management > Inactive site policies > Open > + Create policy > Manage inactive sites > Set policy scope', as documented at https://learn.microsoft.com/sharepoint/inactive-site-policy. | Source: https://learn.microsoft.com/sharepoint/inactive-site-policy
+- [supported, minor] controls[3].ui; controls[3].note; Governance controls / ownership row / admin-path: Policies > Site lifecycle management > Site ownership policies > Open > + Create policy opens the ownership wizard, where site scope and ownership criteria are configured. | Found: Under Site ownership policies, select Open. Then, select + Create policy. ... On Manage ownership of sites ... On Set policy scope, choose your policy scope parameters ... On Configure policy, specify criteria for your policy | Fix: Set controls[3].ui.path and the corresponding rendered table path to 'Policies > Site lifecycle management > Site ownership policies > Open > + Create policy > Manage ownership of sites > Set policy scope > Configure policy', as documented at https://learn.microsoft.com/sharepoint/site-ownership-policy. | Source: https://learn.microsoft.com/sharepoint/site-ownership-policy
 -->

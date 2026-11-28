@@ -25,6 +25,9 @@ sources:
   - title: "Microsoft 365 Roadmap item 560322"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=560322"
     kind: "roadmap"
+  - title: "Microsoft 365 Roadmap item 558858"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=558858"
+    kind: "roadmap"
   - title: "Limits in eDiscovery"
     url: "https://learn.microsoft.com/purview/edisc-ref-limits"
     kind: "learn"
@@ -36,6 +39,9 @@ sources:
     kind: "learn"
   - title: "Learn about case settings in eDiscovery"
     url: "https://learn.microsoft.com/purview/edisc-settings-cases"
+    kind: "learn"
+  - title: "Create and manage cases in eDiscovery"
+    url: "https://learn.microsoft.com/purview/edisc-cases-manage#cases-dashboard"
     kind: "learn"
   - title: "Configure general settings in eDiscovery"
     url: "https://learn.microsoft.com/purview/edisc-settings-general"
@@ -76,7 +82,7 @@ controls:
       kind: "graph"
       call: "PATCH /v1.0/security/cases/ediscoveryCases/{ediscoveryCaseId}/settings"
       docs: "https://learn.microsoft.com/graph/api/security-ediscoverycasesettings-update?view=graph-rest-1.0"
-    note: "Per case. The request body sets caseType (standard or premium). Premium features are on by default for tenants with premium feature access."
+    note: "Per case. The request body sets caseType (standard or premium). Premium features are on by default for tenants with premium feature access. The cases dashboard page says access to premium features isn't governed by this toggle."
   - governs: "Creating a new review set in a case"
     scope: "other"
     ui:
@@ -108,19 +114,23 @@ changes:
     note: "New briefing: review set limit per eDiscovery case rises from 20 to 100 in GCC, GCC High and DoD, with the role, case and Graph controls around review sets."
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 57 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-28"
+    note: "Corrected: Graph review set creation supports application permissions; removed an unsupported 'no change to access' claim; refined Reviewer and eDiscovery Administrator wording; noted the cases dashboard caveat on the premium toggle; added roadmap item 558858."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 64 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-28"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 57
-  confirmed: 54
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "9c24cbf7fba9c5f10491d6378fe78119"
+  claims: 64
+  confirmed: 64
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "714d70e6b8830b7f6edfc209b9799aa5"
 ---
 
 ## What's changing
@@ -144,10 +154,10 @@ The flip side is that each review set is a further copy of mailbox and site cont
 - Where the tenant uses Customer Key, Microsoft states review set content at rest is encrypted with the customer-managed key.
 
 **Security & identity**
-- No change to who can reach review sets. An eDiscovery Manager can access review sets in cases they create and are members of; an eDiscovery Administrator can access review sets in all cases; a Reviewer has read-only access in cases where they are a member. Membership of the eDiscovery Manager role group is the control (first row of the table).
+- An eDiscovery Manager can access review sets in cases they create and are members of; an eDiscovery Administrator can access review sets in all cases; a Reviewer can view and tag documents in review sets in cases where they are a member, but cannot perform other case management tasks. Membership of the eDiscovery Manager role group is the control (first row of the table).
 
 **Autonomy & actions**
-- No change: review sets are still created by a person, from a search in the portal or through the Microsoft Graph API.
+- Review sets can be created from a search in the portal or through the Microsoft Graph API, whose create reviewSets operation supports application permissions.
 
 **Change & support**
 - Spilled content in a review set is removed only by deleting the whole case, which first needs every hold policy in the case deleted. A case with dozens of review sets makes that a larger loss of work.
@@ -180,7 +190,7 @@ The indirect cost is people's time: more review sets in a case mean more materia
 - Update any scripts that create review sets through the Microsoft Graph create reviewSets operation if they were written to stop at 20.
 
 ### After rollout
-- Delete any case whose review sets hold spilled content, after deleting its hold policies, as the only documented way to remove those items.
+- Delete any case whose review sets hold spilled content, as the only documented way to remove those items.
 
 ## Governance controls
 
@@ -190,13 +200,13 @@ The indirect cost is people's time: more review sets in a case mean more materia
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Who can create eDiscovery cases and review sets</strong><br><small>Tenant</small><br><small class="controls__note">Security &amp; Compliance PowerShell; the cmdlet adds a mail-enabled security group to the eDiscovery Managers subgroup.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Role groups › Role groups for Microsoft Purview solutions › eDiscovery Manager › Edit › Manage eDiscovery Manager › Choose users <a href="https://learn.microsoft.com/purview/edisc-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember &quot;eDiscoveryManager&quot; -Member &lt;name of security group&gt;</code> <a href="https://learn.microsoft.com/purview/edisc-permissions" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether a case has premium eDiscovery features, including review sets</strong><br><small class="controls__note">Per case. The request body sets caseType (standard or premium). Premium features are on by default for tenants with premium feature access.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>eDiscovery › Cases › case › Case settings › Premium features › eDiscovery (Premium) <a href="https://learn.microsoft.com/purview/edisc-settings-cases" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /v1.0/security/cases/ediscoveryCases/{ediscoveryCaseId}/settings</code> <a href="https://learn.microsoft.com/graph/api/security-ediscoverycasesettings-update?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether a case has premium eDiscovery features, including review sets</strong><br><small class="controls__note">Per case. The request body sets caseType (standard or premium). Premium features are on by default for tenants with premium feature access. The cases dashboard page says access to premium features isn't governed by this toggle.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>eDiscovery › Cases › case › Case settings › Premium features › eDiscovery (Premium) <a href="https://learn.microsoft.com/purview/edisc-settings-cases" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /v1.0/security/cases/ediscoveryCases/{ediscoveryCaseId}/settings</code> <a href="https://learn.microsoft.com/graph/api/security-ediscoverycasesettings-update?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Creating a new review set in a case</strong><br><small class="controls__note">Needs an eDiscovery role; eDiscovery Manager is the least privileged option for review sets in the user's own cases.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>eDiscovery › Cases › case › Searches › search › Add to review set › Add items to review set › Add to a new review set <a href="https://learn.microsoft.com/purview/edisc-search-add-to-review-set" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/security/cases/ediscoveryCases/{ediscoveryCaseId}/reviewSets</code> <a href="https://learn.microsoft.com/graph/api/security-ediscoverycase-post-reviewsets?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Removing review set content by deleting the case</strong><br><small class="controls__note">Deletes searches, review sets and exports in the case and cannot be undone. All hold policies in the case must be deleted first.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>eDiscovery › Cases › case › Case settings › Actions › Delete case <a href="https://learn.microsoft.com/purview/edisc-settings-cases" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>DELETE /v1.0/security/cases/ediscoveryCases/{ediscoveryCaseId}</code> <a href="https://learn.microsoft.com/graph/api/security-casesroot-delete-ediscoverycases?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-- An eDiscovery Manager can manage only the cases they create; an eDiscovery Administrator can access and manage all cases and configure eDiscovery settings. For delegated access, the Graph operations in the table require the signed-in user to hold a supported Microsoft Purview eDiscovery role.
+- An eDiscovery Manager can manage only the cases they create; an eDiscovery Administrator can access all cases, manage any case after adding themselves as a member, and configure eDiscovery settings. For delegated access, the Graph operations in the table require the signed-in user to hold a supported Microsoft Purview eDiscovery role.
 - The tenant-wide default for new cases is set in the Microsoft Purview portal at **eDiscovery > Settings > eDiscovery > General > eDiscovery (Premium)**. Only eDiscovery Administrators can open it, and it affects new cases only, not existing ones.
 - A case can be deleted only after all its hold policies, including those with a status of Off, are deleted.
 
@@ -207,20 +217,7 @@ The indirect cost is people's time: more review sets in a case mean more materia
 - Will Microsoft offer a way to remove spilled items from a single review set without deleting the whole case? Watch the [case settings](https://learn.microsoft.com/purview/edisc-settings-cases) page.
 
 <!-- rationale
-risk: Low. The change raises a ceiling inside existing premium eDiscovery cases; review sets are still created only by people holding eDiscovery roles, and their content stays in Microsoft-managed case storage.
+risk: Low. The change raises a ceiling inside existing premium eDiscovery cases; review set content stays in Microsoft-managed case storage.
 cost: Low. Review sets are a premium eDiscovery feature tied to E5 subscriptions, and Microsoft says customers don't pay directly for review set storage; the cost that remains is reviewers' and administrators' time.
 impact: Low. Only eDiscovery managers, administrators and reviewers working in premium cases notice the higher ceiling.
--->
-
-<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Autonomy & actions; rationale: risk / behaviour: Review sets are created only by people holding eDiscovery roles, including when created through Graph. | Found: Graph API app-only authentication: Graph API calls are made by the application itself, without a user context. The app authenticates using its own credentials | Fix: Replace the Autonomy & actions bullet with 'Review sets can be created from a search in the portal or through the Microsoft Graph API, whose create reviewSets operation supports application permissions.' In the risk rationale remove 'review sets are still created only by people holding eDiscovery roles, and'. The cited create reviewSets reference documents application permissions: https://learn.microsoft.com/graph/api/security-ediscoverycase-post-reviewsets?view=graph-rest-1.0. | Source: https://learn.microsoft.com/purview/edisc
-- [unsupported, major] Risk assessment: Security & identity / behaviour: This increase makes no change to who can reach review sets. | Found: Searched: 'Microsoft Purview eDiscovery review set limit increase 100 unchanged permissions access eDiscovery Manager Administrator'; read edisc-permissions, edisc and Graph create reviewSets. These state current permissions, not that this change leaves historical access unchanged. | Fix: Remove 'No change to who can reach review sets.' Keep the separately documented current role permissions.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Scope: Clouds / record: Roadmap item 558858 covers the same increase for Worldwide. | Found: 558858: "description": "Review set limit per case is increased from 20 per case to 100 per case."; "clouds": ["Worldwide (Standard Multi-Tenant)"] | Fix: Add https://www.microsoft.com/microsoft-365/roadmap?id=558858 to sources as 'Microsoft 365 Roadmap item 558858', kind roadmap, for the Worldwide item, its status and its target date.
-- [supported, minor] Risk assessment: Security & identity; Scope / role: Reviewers have read-only access to review sets in cases where they are members. | Found: Reviewer. Provides read-only access to review sets within eDiscovery cases where the user is a member. Reviewers can view and tag documents but cannot perform other case management tasks. | Fix: Replace 'a Reviewer has read-only access in cases where they are a member' with 'a Reviewer can view and tag documents in review sets in cases where they are a member, but cannot perform other case management tasks', as stated at https://learn.microsoft.com/graph/api/security-ediscoverycase-post-reviewsets?view=graph-rest-1.0. | Source: https://learn.microsoft.com/graph/api/security-ediscoverycase-post-reviewsets?view=graph-rest-1.0
-- [supported, minor] Governance controls: first bullet / role: An eDiscovery Administrator can manage all cases. | Found: Manage any eDiscovery case after they add themselves as a member of the case. | Fix: Replace 'an eDiscovery Administrator can access and manage all cases and configure eDiscovery settings' with 'an eDiscovery Administrator can access all cases, manage any case after adding themselves as a member, and configure eDiscovery settings', following https://learn.microsoft.com/purview/edisc-permissions. | Source: https://learn.microsoft.com/purview/edisc-permissions
-- [supported, minor] controls[1].governs and note; rendered control table / applicability: The case premium setting is controlled through caseType with standard or premium values. | Found: caseType | microsoft.graph.security.caseType | The type of the eDiscovery case. The possible values are: standard, premium, unknownFutureValue. | Fix: Add to controls[1].note: 'The cases dashboard documentation separately says access to premium features is not governed by the case settings toggle.' Cite https://learn.microsoft.com/purview/edisc-cases-manage#cases-dashboard, which states 'Access to premium features isn't governed by the case settings toggle', alongside the existing case settings guidance that says to turn on the toggle to use premium features. | Source: https://learn.microsoft.com/graph/api/security-ediscoverycasesettings-update?view=graph-rest-1.0
-- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The checklist instructs administrators to delete hold policies, but the controls table has no control row for that operation. | Found: Delete any case whose review sets hold spilled content, after deleting its hold policies ... Table rows cover role membership, premium features, review set creation and case deletion; none covers deleting hold policies. | Fix: Remove the procedural instruction 'after deleting its hold policies' from the After rollout checklist bullet. Keep the verified hold-deletion prerequisite in the existing case-deletion row note and Governance controls prose; do not add a control row.
 -->

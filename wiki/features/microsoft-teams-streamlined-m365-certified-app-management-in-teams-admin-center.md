@@ -93,15 +93,17 @@ changes:
     note: "Corrected after verification: the Third-party apps control exempts individually saved and blocked apps; removed checklist steps with no controls row; added two consent and permissions sources."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 54 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 56 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 54
-  confirmed: 54
+  claims: 56
+  confirmed: 56
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -198,9 +200,9 @@ cost: Low. The only cost the sources show is admin time to review apps; a Teams 
 impact: Low. Teams administrators notice first; users see a change only when an admin alters which third-party apps are available.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.notes; Cost and licensing; rationale: cost / licensing: Each user needs a Teams licence before using Teams. | Found: Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams. | Fix: Qualify the licensing sentence and repeated notes as: 'Except for joining Teams meetings anonymously, each user in your organization needs a Teams licence before using Teams.' The exception does not change the licence needed to use the apps discussed here. Source: https://learn.microsoft.com/microsoftteams/user-access. | Source: https://learn.microsoft.com/microsoftteams/user-access
-- [supported, minor] Governance guidance: After rollout / record: Microsoft promises at least 60 days' notice for further unified-management changes. | Found: 3. Phase 3 – Automatic Unification (Future) ... We will inform customers of the timeline and additional details at least 60 days in advance before this phase begins. | Fix: Replace the last After rollout bullet with: 'Re-read MC796790 and the Learn page for the unified management phases; Microsoft says it will announce the timeline and additional details for Phase 3 automatic availability unification at least 60 days before that phase begins.'
+- [supported, minor] front matter: licensing.notes; Cost and licensing; rationale: cost / licensing: Each user needs a Teams licence before using Teams. | Found: Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams. | Fix: Qualify the licensing sentence and repeated notes as: 'Except for joining Teams meetings anonymously, each user in your organization needs a Teams licence before using Teams.' The exception does not change the licence needed to use the apps discussed here. | Source: https://learn.microsoft.com/microsoftteams/user-access
+- [supported, minor] Governance guidance: After rollout / record: Microsoft says further unified-management changes will come with at least 60 days' notice. | Found: 3. Phase 3 – Automatic Unification (Future) ... We will inform customers of the timeline and additional details at least 60 days in advance before this phase begins. | Fix: Replace the last After rollout bullet with: 'Re-read MC796790 and the Learn page for the unified management phases; Microsoft says it will announce the timeline and additional details for Phase 3 automatic availability unification at least 60 days before that phase begins.'
 -->

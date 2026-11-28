@@ -1,0 +1,984 @@
+{
+  "slug": "licensing",
+  "kind": "concept",
+  "roadmapId": null,
+  "title": "Licensing and licence assignment: which users get which Microsoft 365 product?",
+  "status": "verified-with-gaps",
+  "date": "2026-11-28",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 71,
+    "confirmed": 70,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 0,
+    "major": 0,
+    "minor": 6
+  },
+  "summary": "The documented assignment paths, commands, costs and data-retention statements are supported. Minor corrections should identify the group API's request-body property, acknowledge differing Microsoft guidance on eligible groups and licensing prerequisites, complete the self-service viewing route, and cite the additional supporting pages.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "Direct licence assignment is at Microsoft 365 admin center > Users > Active users > user > Licenses and Apps > Licenses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "In the admin center, go to the Users > Active users page. Select the row of the user that you want to assign a license to. In the right pane, select Licenses and Apps. Expand the Licenses section",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @() assigns a product licence to a user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+      "quote": "To assign a license to a user, use the following command in PowerShell.\nSet-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @()",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Group-based licence assignment is reached at Microsoft 365 admin center > Billing > Licenses > Assign licenses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/manage-group-licenses",
+      "quote": "Go to the Billing > Licenses page. On the Licenses page, select Assign licenses. In the side panel, search for the group that you want to assign licenses to, then select the name from the dropdown list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "POST /v1.0/groups/{id}/assignLicense assigns product licences to a group's members.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/group-assignlicense",
+      "quote": "POST https://graph.microsoft.com/v1.0/groups/1132b215-826f-42a9-8cfe-1643d19d17fd/assignLicense\naddLicenses ... objects that specify the licenses to add.",
+      "severity": "minor",
+      "fix": "Keep the endpoint. Append to controls[1].note and its rendered row: 'The request body sets addLicenses to assignedLicense objects containing skuId.' The reference is https://learn.microsoft.com/graph/api/group-assignlicense."
+    },
+    {
+      "n": 5,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "Service-plan access during assignment is configured at Microsoft 365 admin center > Billing > Licenses > product > Assign licenses > Turn apps and services on or off.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "In the admin center, go to the Billing > Licenses page. Select a product. On the product details page, select Assign licenses. ... Select Turn apps and services on or off to assign or remove access to specific items.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "POST /v1.0/users/{id | userPrincipalName}/assignLicense configures service plans through disabledPlans on assignedLicense objects in addLicenses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/user-assignlicense",
+      "quote": "POST /users/{id | userPrincipalName}/assignLicense\nYou can disable servicePlans associated with a license by setting the disabledPlans property on an assignedLicense object.\nPOST https://graph.microsoft.com/v1.0/me/assignLicense",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "The cited PowerShell guidance gives Azure portal > Active Directory > Users > user account > Profile > Contact info > Country or region for setting a user's location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+      "quote": "The Azure portal (Active Directory > Users > user account > Profile > Contact info > Country or region).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "controls[3].api",
+      "type": "command",
+      "claim": "Update-MgUser -UserId $userUPN -UsageLocation $userLoc sets the account's usage location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+      "quote": "To set the UsageLocation value on an account, run this command.\nUpdate-MgUser -UserId $userUPN -UsageLocation $userLoc",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "controls[4].ui",
+      "type": "admin-path",
+      "claim": "Self-service purchase and trial options are at Microsoft 365 admin center > Settings > Org settings > Services > Self-service trials and purchases > product > Allow, Allow for trials only or Do not allow.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/subscriptions/manage-self-service-purchases-admins",
+      "quote": "go to the Settings > Org settings page. ... On the Services tab ... select Self-service trials and purchases. ... select the product name. ... select Allow, Allow for trials only, or Do not allow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "controls[4].api",
+      "type": "command",
+      "claim": "Update-MSCommerceProductPolicy -PolicyId AllowSelfServicePurchase -ProductId <ProductId> -Enabled $False disables self-service purchases and trials for the product.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-block-viral-signups",
+      "quote": "Update-MSCommerceProductPolicy -PolicyId AllowSelfServicePurchase -ProductId <ProductId> -Enabled $False\nWhen you disable self-service purchase for a product, users can't sign up for trials or purchase licenses independently for that product.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What it is",
+      "type": "licensing",
+      "claim": "A user licence grants the right to use the Microsoft cloud product and services assigned to that user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/user-assignlicense",
+      "quote": "Add or remove licenses for the user to enable or disable their use of Microsoft cloud offerings that the company has licenses to.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What it is",
+      "type": "licensing",
+      "claim": "Microsoft's assignment guidance states that users cannot use Microsoft 365 services until their accounts have a licence from a licensing plan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+      "quote": "Users can't use any Microsoft 365 services until their account has been assigned a license from a licensing plan.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What it is: subscription",
+      "type": "licensing",
+      "claim": "An organisation purchases a subscription with a number of licences and assigns those licences to people.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/licenses/subscriptions-and-licenses",
+      "quote": "When you buy a subscription, you specify the number of licenses that you need, based on how many people you have in your organization. After you buy a subscription, you create accounts for people in your organization, and then assign a license to each person.",
+      "severity": "minor",
+      "fix": "Add the additional Microsoft pages supporting the definition, subscription costs, credit meter and product-policy examples to sources: https://learn.microsoft.com/microsoft-365/commerce/licenses/subscriptions-and-licenses; https://learn.microsoft.com/microsoft-365/enterprise/view-licenses-and-services-with-microsoft-365-powershell; https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management; https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration; https://learn.microsoft.com/MicrosoftTeams/teams-policies. Also add the two comparison sources used in the group-guidance corrections: https://learn.microsoft.com/graph/api/resources/groups-overview and https://learn.microsoft.com/microsoft-365/education/deploy/license-users."
+    },
+    {
+      "n": 14,
+      "where": "What it is: subscription example",
+      "type": "licensing",
+      "claim": "Microsoft 365 E5 is an example of a licensing plan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+      "quote": "This example assigns a license from the SPE_E5 (Microsoft 365 E5) licensing plan to the unlicensed user",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What it is: service plans",
+      "type": "licensing",
+      "claim": "Service plans are the individual products, features and capabilities included in a licensing plan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/view-licenses-and-services-with-microsoft-365-powershell",
+      "quote": "Services These are also known as service plans. Services are the Microsoft 365 products, features, and capabilities that are available in each licensing plan, for example, Exchange Online and Microsoft 365 Apps for enterprise",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What it is; Why it matters",
+      "type": "behaviour",
+      "claim": "Service plans can be turned on or off for an assignment without removing the product licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+      "quote": "This example updates a user with SPE_E5 (Microsoft 365 E5) and turns off the Sway and Forms service plans while leaving the user's existing disabled plans in their current state",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What it is: Sway",
+      "type": "behaviour",
+      "claim": "Some services, such as Sway, are automatically assigned to users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "Some services, like Sway, are automatically assigned to users, and don't need to be assigned individually.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What it is: Two ways to assign",
+      "type": "behaviour",
+      "claim": "Direct assignment applies a licence directly to the user account.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "Direct user assignments If a license is assigned directly to a user, the user appears individually in the list of assignments for that product.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What it is: Two ways to assign",
+      "type": "behaviour",
+      "claim": "Group-based licensing assigns licences to security groups, mail-enabled groups or Microsoft 365 groups, whose members receive them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/manage-group-licenses",
+      "quote": "If you have security groups, mail-enabled groups, or Microsoft 365 groups, you can assign or unassign licenses for those groups on the Licenses page in the Microsoft 365 admin center.",
+      "severity": "minor",
+      "fix": "After the assignment table, add: 'Microsoft's admin-center guidance lists security groups, mail-enabled groups and Microsoft 365 groups. Its Graph group overview restricts group-based licensing to security groups and Microsoft 365 groups with securityEnabled set to true.' Cite https://learn.microsoft.com/graph/api/resources/groups-overview, which states that restriction. Preserve both sources rather than silently choosing one."
+    },
+    {
+      "n": 20,
+      "where": "What it is: Two ways to assign, Direct",
+      "type": "behaviour",
+      "claim": "Direct licence-assignment errors appear immediately.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/manage-group-licenses",
+      "quote": "Unlike direct user license assignment, where errors appear immediately",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What it is: Two ways to assign, Group-based",
+      "type": "behaviour",
+      "claim": "Group-based assignment failures are recorded on the user object and surfaced later in the admin portal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/manage-group-licenses",
+      "quote": "group-based licensing records the failure on the user object and surfaces it later in the admin portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What it is: both routes",
+      "type": "behaviour",
+      "claim": "A user can hold direct and group-based licence assignments simultaneously.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/manage-group-licenses",
+      "quote": "A user has Office 365 E1 directly assigned, and then receives Office 365 E3 through a group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What it is: usage location",
+      "type": "licensing",
+      "claim": "The account needs a usage location before licence assignment, subject to the group-based tenant-location fallback described later on the page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/manage-group-licenses",
+      "quote": "Before a license can be assigned to a user, the administrator must specify the user's location setting. For group-based licensing, any users without a specific location inherit the location of the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[3].note",
+      "type": "licensing",
+      "claim": "UsageLocation takes a valid ISO 3166-1 alpha-2 country code.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+      "quote": "You can only assign licenses to user accounts that have the UsageLocation property set to a valid ISO 3166-1 alpha-2 country code.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What it is: usage location",
+      "type": "availability",
+      "claim": "Some Microsoft 365 services are unavailable in certain countries or regions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+      "quote": "Some Microsoft 365 services aren't available in certain countries/regions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[3].note; Risks and limits: Usage location",
+      "type": "default",
+      "claim": "Group-based licensing uses the tenant location for users without a specific usage location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/manage-group-licenses",
+      "quote": "For group-based licensing, any users without a specific location inherit the location of the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What it is: self-service",
+      "type": "licensing",
+      "claim": "Users can obtain product licences through their own self-service purchases and trials rather than central assignment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/subscriptions/manage-self-service-purchases-admins",
+      "quote": "We use the directory data to provide the user with a license and to send email about the subscription to that user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Why it matters: Not enough licenses",
+      "type": "licensing",
+      "claim": "A shortage of available licences causes a Not enough licenses group-assignment error, remedied by buying or freeing licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/manage-group-licenses",
+      "quote": "Not enough licenses | There aren't enough available licenses for one of the products assigned to the group. | Buy more licenses, remove unused direct assignments, or free licenses from other groups or users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Why it matters: self-service default",
+      "type": "default",
+      "claim": "Microsoft states that new products allow self-service purchases by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/subscriptions/manage-self-service-purchases-admins",
+      "quote": "By default, all new products are set to allow users to make a self-service purchase.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing: subscription costs",
+      "type": "cost",
+      "claim": "The described licensing cost is purchasing licences through product subscriptions, whose apps and services depend on the purchased product.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/licenses/subscriptions-and-licenses",
+      "quote": "When you buy a subscription to Microsoft 365 for business, you sign up for a set of apps and services that you pay for on a recurring basis. The applications and services that you receive as part of your subscription depend on which product you purchased",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Cost and licensing: available licences",
+      "type": "licensing",
+      "claim": "Microsoft's PowerShell guidance calculates available licences as ActiveUnits - WarningUnits - ConsumedUnits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+      "quote": "The number of available licenses in each plan is ActiveUnits - WarningUnits - ConsumedUnits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Cost and licensing; What to check: Get-MgSubscribedSku",
+      "type": "command",
+      "claim": "Get-MgSubscribedSku reads available licensing plans and licence availability in the organisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+      "quote": "Run the Get-MgSubscribedSku command to view the available licensing plans and the number of available licenses in each plan in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Cost and licensing: buy more",
+      "type": "cost",
+      "claim": "Microsoft notes that insufficient licences for the selected users may require buying more.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "You might have to buy more licenses if you don't have enough licenses for everyone.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing: deleting a user",
+      "type": "behaviour",
+      "claim": "Deleting a user account immediately frees its licence for assignment to someone else.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "When you delete a user account, their license is immediately available to assign to someone else.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing: Licenses totals",
+      "type": "behaviour",
+      "claim": "The Licenses page can aggregate licence totals across subscriptions with the same product name.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "The Licenses page might show an aggregate total of licenses for all subscriptions for the same product name.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing: Your products",
+      "type": "behaviour",
+      "claim": "The Your products page displays a row for each owned subscription, including subscriptions for the same product.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "the Your products page, which displays a row for each subscription you own, even if they are for the same product.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing: Copilot Credits",
+      "type": "cost",
+      "claim": "Copilot Credits measure agent usage and provide a usage-based billing measure distinct from per-user assignment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
+      "quote": "Copilot Credits are the unit that measures agent usage. You calculate the total cost based on the sum of the Copilot Credits your organization uses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing: self-service payment",
+      "type": "cost",
+      "claim": "Self-service purchases require a payment method at sign-up.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/subscriptions/manage-self-service-purchases-admins",
+      "quote": "Self-service purchases require a payment method at sign-up",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing: self-service renewal",
+      "type": "behaviour",
+      "claim": "Self-service purchases automatically renew at the end of the subscription term.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/subscriptions/manage-self-service-purchases-admins",
+      "quote": "Self-service purchases ... automatically renew at the end of the subscription term.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing: purchase price",
+      "type": "behaviour",
+      "claim": "Admins can see the purchase price of each self-service purchase or trial subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/subscriptions/manage-self-service-purchases-admins",
+      "quote": "For each purchase or trial subscription, you can see the following details: ... purchase price",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing: assigned users",
+      "type": "behaviour",
+      "claim": "Admins can see assigned users for each self-service purchase or trial subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/subscriptions/manage-self-service-purchases-admins",
+      "quote": "For each purchase or trial subscription, you can see the following details: ... assigned users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risks and limits: Removing a licence",
+      "type": "behaviour",
+      "claim": "Exchange Online data associated with the account is held for 30 days after licence removal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "When a license is removed from a user, Exchange Online data that is associated with that account is held for 30 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risks and limits: Removing a licence",
+      "type": "behaviour",
+      "claim": "After that 30-day grace period the data is deleted and cannot be recovered, subject to the stated retention-label exception.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "After the 30-day grace period, the data is deleted and can't be recovered. However, it's linked to the retention policy, and the content that matches retention labels is retained for discovery.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risks and limits: Removing a licence",
+      "type": "behaviour",
+      "claim": "Content matching retention labels is retained for discovery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "the content that matches retention labels is retained for discovery.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risks and limits: Removing a licence",
+      "type": "behaviour",
+      "claim": "After licence removal the mailbox is no longer searchable with Content Search or eDiscovery (Premium).",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "When the license is removed, the user's mailbox is no longer searchable by using an eDiscovery tool such as Content Search or eDiscovery (Premium).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[1].note; Risks and limits: Nested groups; What to check",
+      "type": "behaviour",
+      "claim": "Group-based licensing does not support nested groups and assigns licences only to users in the first-level group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/manage-group-licenses",
+      "quote": "Group-based licensing doesn't currently support nested groups (groups that contain other groups). If you assign licenses to a nested group, only users in the first-level group are assigned licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risks and limits: Moving users",
+      "type": "behaviour",
+      "claim": "Removing a user from the source licensed group first leaves the user unlicensed until the destination assignment finishes processing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/manage-group-licenses",
+      "quote": "If you remove the user from the source group first, the user is unlicensed until group-based licensing finishes processing the new group's assignment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risks and limits: Moving users",
+      "type": "behaviour",
+      "claim": "The temporary loss of access during a group move can last longer in large tenants or under high load.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/manage-group-licenses",
+      "quote": "Processing time varies based on tenant size and current load. In large tenants or during high-load periods, the temporary loss of access can last longer than expected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risks and limits: One failing product",
+      "type": "behaviour",
+      "claim": "Failure of one product because of licence shortages, conflicts or dependencies can prevent other products in the same group from being assigned.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/manage-group-licenses",
+      "quote": "If one product fails because of insufficient licenses, conflicts, or dependency issues, the other products in that group might not be assigned either.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risks and limits: Add-ons",
+      "type": "licensing",
+      "claim": "Some add-on products require a prerequisite service plan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/manage-group-licenses",
+      "quote": "Some products are add-ons and require a prerequisite service plan.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risks and limits: Add-ons",
+      "type": "behaviour",
+      "claim": "Assigning such an add-on alone to a group causes licensing to fail.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/manage-group-licenses",
+      "quote": "If you assign the add-on alone to a group, licensing fails.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risks and limits: Conflicting service plans",
+      "type": "behaviour",
+      "claim": "A group-assigned product can conflict with a service plan already assigned directly through another product.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/manage-group-licenses",
+      "quote": "A service plan in one product conflicts with a service plan already assigned to the user through another product. Example: A user has Office 365 E1 directly assigned, and then receives Office 365 E3 through a group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risks and limits: Large groups",
+      "type": "behaviour",
+      "claim": "Licence changes for a group of around 100,000 users can take a long time under high load.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/manage-group-licenses",
+      "quote": "When you assign or modify licenses for a large group, like 100,000 users, it can affect performance. In certain high load situations, it might take a long time to process license changes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risks and limits: Self-service subscriptions",
+      "type": "behaviour",
+      "claim": "Admins cannot assign or unassign licences for user-bought self-service subscriptions until taking them over.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/subscriptions/manage-self-service-purchases-admins",
+      "quote": "As an admin, you can't assign or unassign licenses for a purchase or trial subscription bought by a user in your organization. However, you can Take over a self-service purchase or trial subscription, and then assign or unassign licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[4].note; Risks and limits: Self-service subscriptions",
+      "type": "behaviour",
+      "claim": "The AllowSelfServicePurchase policy is managed per product.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/subscriptions/manage-self-service-purchases-admins",
+      "quote": "The AllowSelfServicePurchase policy is managed on a per-product basis.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Risks and limits: Self-service subscriptions",
+      "type": "behaviour",
+      "claim": "There is no single command that completely disables self-service purchases and trials across the tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/subscriptions/manage-self-service-purchases-admins",
+      "quote": "Self-service purchases and trials can't be completely turned off at the tenant level with a single command.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[4].note; Risks and limits: Self-service subscriptions",
+      "type": "behaviour",
+      "claim": "Disabling the self-service policy can take up to 72 hours to take effect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/subscriptions/manage-self-service-purchases-admins",
+      "quote": "It can take up to 72 hours for the policy to be disabled and changes to occur.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[0].note; Governance controls: Roles",
+      "type": "role",
+      "claim": "User licence assignment requires at least License Administrator or User Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "You must be at least a License or User Administrator to assign licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[1].note; Governance controls: Roles",
+      "type": "role",
+      "claim": "Group assignment supports Groups Administrator, License Administrator or User Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/manage-group-licenses",
+      "quote": "You must be at least a Groups Administrator, License Administrator, or User Administrator to assign licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Governance controls: Roles",
+      "type": "role",
+      "claim": "LicenseAssignment.ReadWrite.All is the least-privileged Graph permission for user assignLicense.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/user-assignlicense",
+      "quote": "Delegated (work or school account) | LicenseAssignment.ReadWrite.All\nApplication | LicenseAssignment.ReadWrite.All",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Governance controls: Roles",
+      "type": "role",
+      "claim": "LicenseAssignment.ReadWrite.All is the least-privileged Graph permission for group assignLicense.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/group-assignlicense",
+      "quote": "Delegated (work or school account) | LicenseAssignment.ReadWrite.All\nApplication | LicenseAssignment.ReadWrite.All",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Governance controls: Roles",
+      "type": "role",
+      "claim": "In delegated Graph use, Directory Writers, License Administrator or User Administrator are supported roles for both assignLicense operations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/group-assignlicense",
+      "quote": "The following least privileged roles are supported for this operation:\nDirectory Writers\nGroups Administrator\nLicense Administrator\nUser Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[4].note; Governance controls: Roles",
+      "type": "role",
+      "claim": "Changing the self-service purchase setting through the admin centre requires Global Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/subscriptions/manage-self-service-purchases-admins",
+      "quote": "Use the Microsoft 365 admin center to allow or block self-service purchases and trials ... You must be a Global Administrator to do the following steps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Governance controls: How they interact",
+      "type": "applicability",
+      "claim": "Copilot-related product policies can restrict what users can do after product access is established.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "Copilot Pages and Copilot Notebooks check the following Cloud Policy settings: ... Create and view Copilot Pages and Copilot Notebooks ... Disabled: Copilot Pages and Copilot Notebooks creation and integration aren't available to the users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Governance controls: How they interact",
+      "type": "applicability",
+      "claim": "Teams policies control what users can do within the product.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/MicrosoftTeams/teams-policies",
+      "quote": "As an admin, you can use policies in Microsoft Teams to control what users in your organization can do in teams and channels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Governance controls: Watching; What to check: Errors & Issues",
+      "type": "admin-path",
+      "claim": "Each product's Errors & Issues tab under Billing > Licenses lists users with licence-assignment problems and their reasons.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/manage-group-licenses",
+      "quote": "go to Billing > Licenses. Select the product that you want to view licenses for. Select the Errors & issues tab to see a list of users who have license assignment problems. Select a user to inspect what type of error they encountered.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Governance controls: Watching; What to check: Reprocess",
+      "type": "behaviour",
+      "claim": "Reprocess retries licence assignment after the underlying error is fixed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "Select the user with the error to open the details pane, then select Reprocess. Reprocessing attempts to apply the license again using the current configuration and available licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Governance controls: Watching, self-service",
+      "type": "admin-path",
+      "claim": "Self-service purchases can be viewed under Billing > Your products by filtering to Self-service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/subscriptions/manage-self-service-purchases-admins",
+      "quote": "go to the Billing > Your products page. On the Products tab, select the filter icon, then select Self-service.",
+      "severity": "minor",
+      "fix": "Replace the final Watching sentence with: 'Self-service purchases are listed under Billing > Your products > Products, filtered to Self-service.' The omitted Products tab lists the items being inspected; the existing route reaches the correct page."
+    },
+    {
+      "n": 69,
+      "where": "Open questions: group-based licensing prerequisite",
+      "type": "absence",
+      "claim": "The Microsoft 365 admin-center group-licensing page does not state a Microsoft Entra ID licensing prerequisite.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: group-based licensing Microsoft Entra ID license prerequisites; \"group-based licensing\" \"prerequisites\" \"license\". Read manage-group-licenses and entra/fundamentals/licensing; the admin-center article gives roles but no Entra licensing prerequisite.",
+      "severity": "minor",
+      "fix": "Replace the first Open questions bullet with: 'Which current licensing prerequisite applies to group-based licensing? The Microsoft 365 admin-center group-licensing article gives none, while Microsoft's education deployment guidance lists a paid or trial Microsoft Entra Basic subscription or Office 365 Enterprise E3 or Office 365 A3 and above.' Cite https://learn.microsoft.com/microsoft-365/education/deploy/license-users. This preserves the narrow, true absence while acknowledging the requirement stated on another Microsoft page."
+    },
+    {
+      "n": 70,
+      "where": "Open questions: new feature service plans",
+      "type": "absence",
+      "claim": "Microsoft documents no general rule deciding whether a new feature gets a separate service plan or is included in an existing plan.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 new features service plans existing plan automatically added general rule; \"new features\" \"service plan\" \"licensing\" \"Microsoft 365\". Read assignment guidance and service-plan-reference search excerpts; found mappings, not a general rule.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "What to check: Errors & Issues and reprocessing",
+      "type": "consistency",
+      "claim": "The checklist asks the reader to inspect assignment errors and reprocess users, but that control has no row in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Open the Errors & Issues tab for each group-licensed product and reprocess users once the cause is fixed. | The table contains direct assignment, group assignment, service plans, usage location and self-service purchase, but no error/reprocessing row.",
+      "severity": "minor",
+      "fix": "Remove the Errors & Issues/reprocessing bullet from What to check. Keep the existing explanation in Watching; do not add a control row."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-28T14:11:48.194Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 5,
+      "uiPathsWithMissingWords": 1,
+      "apiCalls": 5,
+      "apiCallsNotOnPage": 2,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/manage/manage-group-licenses",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/user-assignlicense",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/group-assignlicense",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/commerce/subscriptions/manage-self-service-purchases-admins",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/admin-block-viral-signups",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which users hold a licence for a product (direct assignment)",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+        "reachable": true,
+        "segments": [
+          "Users",
+          "Active users",
+          "Licenses and Apps",
+          "Licenses"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Which users hold a licence for a product (direct assignment)",
+        "docs": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+        "reachable": true,
+        "token": "Set-MgUserLicense",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which groups' members receive a licence (group-based licensing)",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/manage/manage-group-licenses",
+        "reachable": true,
+        "segments": [
+          "Billing",
+          "Licenses",
+          "Assign licenses"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which groups' members receive a licence (group-based licensing)",
+        "docs": "https://learn.microsoft.com/graph/api/group-assignlicense",
+        "reachable": true,
+        "token": "/v1.0/groups/assignLicense",
+        "found": false
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Which apps and services (service plans) within a licence are turned on",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+        "reachable": true,
+        "segments": [
+          "Billing",
+          "Licenses",
+          "product",
+          "Assign licenses",
+          "Turn apps and services on or off"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Which apps and services (service plans) within a licence are turned on",
+        "docs": "https://learn.microsoft.com/graph/api/user-assignlicense",
+        "reachable": true,
+        "token": "/v1.0/users/{id",
+        "found": false
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Usage location an account needs before a licence can be assigned",
+        "docs": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+        "reachable": true,
+        "segments": [
+          "Active Directory",
+          "Users",
+          "user account",
+          "Profile",
+          "Contact info",
+          "Country or region"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Usage location an account needs before a licence can be assigned",
+        "docs": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+        "reachable": true,
+        "token": "Update-MgUser",
+        "found": true
+      },
+      {
+        "index": 4,
+        "side": "ui",
+        "governs": "Whether users can buy or start a trial of a product themselves (self-service purchase)",
+        "docs": "https://learn.microsoft.com/microsoft-365/commerce/subscriptions/manage-self-service-purchases-admins",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Org settings",
+          "Services",
+          "Self-service trials and purchases",
+          "product",
+          "Allow, Allow for trials only or Do not allow"
+        ],
+        "missing": [
+          "Allow, Allow for trials only or Do not allow"
+        ]
+      },
+      {
+        "index": 4,
+        "side": "api",
+        "governs": "Whether users can buy or start a trial of a product themselves (self-service purchase)",
+        "docs": "https://learn.microsoft.com/microsoft-copilot-studio/admin-block-viral-signups",
+        "reachable": true,
+        "token": "Update-MSCommerceProductPolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

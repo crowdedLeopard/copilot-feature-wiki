@@ -101,10 +101,12 @@ changes:
     note: "Correction after the independent check: the Rollout line in Scope now says Microsoft documents automatic portal enrollment but has not stated the default of this licence-enforcement change; the custom backgrounds page was added as a source."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 72 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 72 statements not yet confirmed"
 version: 4
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
@@ -208,9 +210,9 @@ cost: Low. The roadmap item states no price; Learn describes Teams Rooms Basic a
 impact: Low. Room administrators see licence status in the portal; people using the rooms are not named in the roadmap item as affected.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing / availability: Microsoft's Pro Management overview says the service supports all Microsoft clouds except DoD and Office 365 operated by 21Vianet. | Found: | **Supported clouds** | All Microsoft clouds except DoD and Office 365 operated by 21Vianet. | | Fix: Append: 'The Teams Android management transition guide nevertheless lists DoD portal access at https://devices.dod.teams.microsoft.us/; these pages describe different cloud coverage.' The other statement is under 'Step 1: Access the Teams Rooms Pro Management Portal' at https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1, already in sources. Do not change this roadmap item's cloud list. | Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-management
-- [supported, minor] controls[1].ui; Governance controls table; Governance guidance: Before rollout / admin-path: The Pro Management portal licence inventory is reached through Planning > Inventory. | Found: Sign in to the Teams Rooms Pro Management portal. Select **Planning** then **Inventory** in the left navigation pane. | Fix: Complete controls[1].ui.path and the corresponding table path as 'Planning > Inventory > resource account > License Type', where resource account means finding the account assigned to the device, not opening another pane. Set its docs to https://learn.microsoft.com/microsoftteams/rooms/custom-backgrounds, which states this licence-specific route and is already cited. The current route stops on the correct inventory page. | Source: https://learn.microsoft.com/microsoftteams/rooms/inventory
+- [supported, minor] controls[1].ui; Governance controls table; Governance guidance: Before rollout / admin-path: The licence inventory is reached in the Teams Rooms Pro Management portal through Planning > Inventory. | Found: Sign in to the Teams Rooms Pro Management portal. Select **Planning** then **Inventory** in the left navigation pane. | Fix: Complete controls[1].ui.path and the corresponding table route as 'Planning > Inventory > resource account > License Type'. The resource account step means finding the device's assigned account, not opening it. Set docs to https://learn.microsoft.com/microsoftteams/rooms/custom-backgrounds, which explicitly gives these licence-check steps and is already cited. | Source: https://learn.microsoft.com/microsoftteams/rooms/inventory
+- [supported, minor] What's changing / availability: The Pro Management overview says the service supports all Microsoft clouds except DoD and Office 365 operated by 21Vianet. | Found: | **Supported clouds** | All Microsoft clouds except DoD and Office 365 operated by 21Vianet. | | Fix: Append: 'The Teams Android management transition guide nevertheless lists DoD portal access at https://devices.dod.teams.microsoft.us/; these pages describe different cloud coverage.' That guide is https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1, already cited. Leave this roadmap item's cloud list unchanged. | Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-management
 -->

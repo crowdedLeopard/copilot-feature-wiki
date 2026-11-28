@@ -114,15 +114,17 @@ changes:
     note: "Corrected after verification: added the new-policy step for policies covering more than 100,000 sites, rated risk Low, and removed two checklist items that had no controls-table row."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 118 statements confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 124 statements confirmed"
 version: 2
 verification:
   status: "verified"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 118
-  confirmed: 118
+  claims: 124
+  confirmed: 124
   unconfirmed: 0
   contradicted: 0
   attempts: 0

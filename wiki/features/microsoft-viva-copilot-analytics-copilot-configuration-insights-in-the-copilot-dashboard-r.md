@@ -103,19 +103,23 @@ changes:
     note: "Corrected the Contact admin steps and data-period wording, added the PowerShell call for dashboard access and the admin centre path for auto-enablement, and removed the change-log checklist step."
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 73 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-28"
+    note: "Corrected the Contact admin description: it shows admin details, and Send email opens the viewer's email software with the admins' aliases prefilled; it does not send a message."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 75 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-28"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 73
-  confirmed: 72
+  claims: 75
+  confirmed: 75
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "e30d03f8529acdd4f556c96fc22648d6"
+  contradicted: 0
+  attempts: 0
+  hash: "0a03bbe35e68c6ec9894054d5b826336"
 ---
 
 ## What's changing
@@ -134,7 +138,7 @@ The roadmap item is **Launched** (General Availability, Web), with a target of A
 
 ## Why it matters
 
-The cards turn the tenant's Copilot settings into a to-do list that people outside IT can see. Senior leaders whom the dashboard enables automatically can read that, for example, Microsoft agents are blocked or web search is off, and email the Global admins about it in two clicks. Each of those settings was usually switched off on purpose, so expect requests that reopen decisions already taken.
+The cards turn the tenant's Copilot settings into a to-do list that people outside IT can see. Senior leaders whom the dashboard enables automatically can read that, for example, Microsoft agents are blocked or web search is off, and open their email software with selected admins' aliases prefilled using Contact admin and Send email. Each of those settings was usually switched off on purpose, so expect requests that reopen decisions already taken.
 
 The page is already live and the Viva Insights web app that hosts it is on by default, so no admin action is needed for the cards to appear to existing dashboard users. What an administrator decides is who those users are, and what answer to give for each card before the questions arrive.
 
@@ -150,7 +154,7 @@ The page is already live and the Viva Insights web app that hosts it is on by de
 - No change: Learn describes each card as a prompt to contact an admin, not as an action the page takes.
 
 **Change & support**
-- **Contact admin** sends viewers' requests by email to the Global admins they select, which adds a new channel for Copilot configuration requests.
+- Contact admin displays administrator details; Send email opens the viewer's email software with the selected admins' aliases prefilled in the To line.
 - In tenants with Privileged Identity Management (PIM), Global admins might not have dashboard access, so the people receiving requests may not be able to see the cards that prompted them.
 
 ## Cost and licensing
@@ -214,10 +218,4 @@ The Copilot Dashboard settings page documents the web app and auto-enablement co
 risk: Low. The cards report tenant configuration and ask viewers to contact an admin; Learn describes no setting that a card changes itself.
 cost: Low. The Readiness page is included with the Copilot Dashboard licence tiers; the cost is admin time to review cards, some of which suggest buying more Copilot licences.
 impact: Low. Only people with Copilot Dashboard access see it, such as Global admins and auto-enabled senior leaders; managers have no access to the Readiness page.
--->
-
-<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Change & support; Why it matters / behaviour: Contact admin sends viewers' requests by email, allowing them to email Global admins in two clicks. | Found: select Contact admin, then review the details and contact information that appears for the admins. Select Send email to open your email software with the selected admins' aliases prefilled in the To line. | Fix: Replace the Change & support bullet with 'Contact admin displays administrator details; Send email opens the viewer's email software with the selected admins' aliases prefilled in the To line.' In Why it matters, replace 'email the Global admins about it in two clicks' with 'open their email software with selected admins' aliases prefilled using Contact admin and Send email'. These are the documented actions at https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard#readiness; neither sends a message. | Source: https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard
 -->

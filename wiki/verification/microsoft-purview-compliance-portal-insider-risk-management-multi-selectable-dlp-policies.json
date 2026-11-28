@@ -1,0 +1,769 @@
+{
+  "slug": "microsoft-purview-compliance-portal-insider-risk-management-multi-selectable-dlp-policies",
+  "roadmapId": 493757,
+  "title": "Microsoft Purview Insider Risk Management: several DLP policies as triggering events in one Data leaks policy",
+  "status": "held",
+  "date": "2026-11-28",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [
+    "claim 49: severity major on a rationale: impact rating lowered to minor; ratings are judgements and cannot hold a page"
+  ],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-28",
+    "reasons": [
+      "1 blocking finding (claim 25)"
+    ]
+  },
+  "counts": {
+    "claims": 53,
+    "confirmed": 49,
+    "unconfirmed": 2,
+    "contradicted": 2,
+    "blocker": 1,
+    "major": 1,
+    "minor": 3
+  },
+  "summary": "The multiple-policy capability, 20-policy limit, licensing and roadmap details are supported. The DLP severity control links to instructions for enabling alert notifications, not for selecting High severity; a different cited Microsoft page documents that setting. Two assurances about unchanged data access and user experience also lack explicit supporting text.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Insider Risk Management now supports selecting multiple DLP policies as triggering events within a policy.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Insider Risk Management is releasing the ability to select multiple Data Loss Prevention (DLP) policies as triggering events in a policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Previously, administrators could select only one DLP policy as a triggering event.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Previously, admins could only select one DLP policy as a triggering event within Insider Risk Management policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is December CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"December CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is August CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"August CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: clouds; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The record lists GCC, GCC High and DoD, and does not list Worldwide.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-05-01T21:45:13.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-05-01T21:45:13\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "A triggering event brings an assigned user into scope for activity scoring.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "You can select a DLP policy or indicators for triggering events that bring users assigned to the policy in-scope for activity scoring.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Scope; controls[0].note; Governance guidance; changes",
+      "type": "behaviour",
+      "claim": "A policy created from the Data leaks template can have up to 20 DLP policies assigned as triggering events.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-policy-templates",
+      "quote": "Each Insider Risk Management policy created from the **Data leaks** template can have up to 20 DLP policies assigned when using this triggering event option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "The Get started guide still describes selecting a single DLP policy from a dropdown at step 12.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "If you select the **User matches a data loss prevention (DLP) policy triggering event** option, you must select a DLP policy from the DLP policy dropdown list to enable triggering indicators for the DLP Policy for this Insider Risk Management policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Why it matters; Scope",
+      "type": "behaviour",
+      "claim": "A DLP policy is an optional trigger for the Data leaks and Data leaks by priority users templates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "A DLP policy is optional when using the following policy templates:\n- Data leaks\n- Data leaks by priority users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The alternative exfiltration-activity triggering event uses selected indicators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "If you select the **User performs an exfiltration activity triggering event** option, you must select one or more of the listed indicators for the policy triggering event.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment; Scope; controls[1].note; rationale: risk",
+      "type": "applicability",
+      "claim": "The DLP triggering-event integration requires High Incident reports severity and does not generate Insider Risk Management alerts from Low or Medium rules.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-policy-templates",
+      "quote": "The *High* severity level is the triggering events and Insider Risk Management alerts aren't generated from rules in DLP policies with the **Incident reports** field set at *Low* or *Medium*.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "Risk assessment; controls[1].note",
+      "type": "default",
+      "claim": "Low is the default DLP rule report severity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule",
+      "quote": "The ReportSeverityLevel parameter specifies the severity level of the incident report for content detections based on the rule. Valid values are:\n- None: You can't select this value if the rule has no actions configured.\n- Low: This value is the default.\n- Medium\n- High",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Scope",
+      "type": "applicability",
+      "claim": "Only Exchange Online, SharePoint Online and OneDrive for Business DLP alerts are processed by the High Severity DLP Alert indicator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "If your DLP policy spans multiple workloads (for example, Exchange + Endpoint), only the alerts from the supported workloads (Exchange Online, SharePoint Online, and OneDrive for Business) are processed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Risk assessment; Governance guidance",
+      "type": "applicability",
+      "claim": "Policies applying exclusively to Endpoint DLP, Teams, Microsoft 365 Copilot, on-premises repositories or Power BI do not trigger this indicator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "Alerts generated by DLP policies that apply exclusively to these workloads won't trigger the indicator and won't appear in Insider Risk Management alerts, cases, or activity views:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Why it matters; Governance guidance",
+      "type": "behaviour",
+      "claim": "The Data leaks policy processes high-severity alerts only for users included in both the DLP rule and the insider risk policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-policy-templates",
+      "quote": "Only users included in Insider Risk Management policies using the **Data leaks** template have high severity DLP policy alerts processed. Additionally, only users included in a rule for a high severity DLP alert are analyzed by the Insider Risk Management policy for consideration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "High-severity rules in selected DLP policies provide triggering events, subject to the documented user and workload scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-policy-templates",
+      "quote": "Whenever a high severity alert is generated by a DLP policy rule and added to the Office 365 audit log, insider risk policies created with this template automatically examine the high severity DLP alert.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment; rationale: impact",
+      "type": "behaviour",
+      "claim": "An in-scope user's high-severity DLP alert is automatically examined and processed for insider risk scoring.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-policy-templates",
+      "quote": "If the alert contains an in-scope user defined in the insider risk policy, the alert is processed by the insider risk policy as a new alert and assigned an insider risk severity and risk score.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "The option does not give Insider Risk Management new content sources or expose data.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: '\"Insider Risk Management\" \"multiple DLP policies\" \"data sources\"'; read policy templates, policy indicators and roadmap description. They describe trigger selection and supported alerts, not an explicit guarantee of unchanged content access.",
+      "severity": "major",
+      "fix": "Replace the Data exposure bullet with 'The option selects which existing DLP alerts start scoring.' Remove 'rather than exposing data' from the risk rationale."
+    },
+    {
+      "n": 23,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Purview policy-creation path reaches the Data leaks DLP triggering-event option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "If you select the **User matches a data loss prevention (DLP) policy triggering event** option, you must select a DLP policy from the DLP policy dropdown list to enable triggering indicators for the DLP Policy for this Insider Risk Management policy.",
+      "severity": "minor",
+      "fix": "Extend the path to 'Insider Risk Management > Policies > Create policy > Policy template > category > Data leaks > Triggers for this policy > User matches a data loss prevention (DLP) policy triggering event > DLP policy dropdown list'. The guide documents the trigger label; the pre-check's missing-word result is not a wrong label."
+    },
+    {
+      "n": 24,
+      "where": "controls[0].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No documented Security & Compliance PowerShell or Microsoft Graph operation creates or edits Insider Risk Management policies or sets their DLP triggering events.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'site:learn.microsoft.com/powershell Insider Risk Management New-InsiderRiskPolicy Set-InsiderRiskPolicy DLP triggering policies'; 'site:learn.microsoft.com/graph insider risk management policy create update DLP triggering events'. Read scc-powershell and policy workflow; no operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The linked endpoint DLP tutorial documents the path through Incident reports to Use this severity level in admin alerts and reports.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-create-policy-detect-pii-data-exposure",
+      "quote": "Scroll down to the **Incident reports** section and toggle **Send an alert to admins when a rule match occurs** to **On**.",
+      "severity": "blocker",
+      "fix": "Change controls[1].ui.docs and the corresponding table link to 'https://learn.microsoft.com/purview/dlp-create-policy-cc-email'. That already-cited page states: 'Under Incident reports, set Use this severity level in admin alerts and reports to High.' The existing endpoint tutorial supports the editing route but does not document the severity control itself; retain the path."
+    },
+    {
+      "n": 26,
+      "where": "controls[1].api; Governance controls table and prose",
+      "type": "command",
+      "claim": "Set-DlpComplianceRule -Identity \"<rule name>\" -ReportSeverityLevel High sets the DLP rule's report severity in Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule",
+      "quote": "The ReportSeverityLevel parameter specifies the severity level of the incident report for content detections based on the rule. Valid values are:\n- None: You can't select this value if the rule has no actions configured.\n- Low: This value is the default.\n- Medium\n- High",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Purview Settings > Roles and groups > Roles groups > Insider Risk Management > Edit > Choose users adds users to the role group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "Select **Settings** in the upper-right corner of the page, select **Roles and groups**, then select **Roles groups** in the left navigation pane.\n3. Select the *Insider Risk Management* role group, then select **Edit**.\n4. Select **Choose users**",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "Add-RoleGroupMember -Identity \"Insider Risk Management\" -Member \"<user-UPN>\" adds the specified user to the role group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+      "quote": "Use the Add-RoleGroupMember cmdlet to add members to a management role group.\nThe Identity parameter specifies the role group to add a member to.\nThe Member parameter specifies who you want to add to the role group.\n- User ID or user principal name (UPN)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment; Scope; controls[0].note; controls[2].note; Governance guidance",
+      "type": "role",
+      "claim": "Among the Insider Risk Management role groups, Insider Risk Management and Insider Risk Management Admins can configure policies and settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "| Actions | Insider Risk Management | Insider Risk Management Admins | Insider Risk Management Analysts | Insider Risk Management Investigators | Insider Risk Management Auditors | Insider Risk Management Approvers |\n| Configure policies and settings | Yes | Yes | No | No | No | No |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Global Administrator, Compliance Administrator and Organization Management members have the solution permissions of Insider Risk Management Admins.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "Members of the following roles can assign users to Insider Risk Management role groups and have the same solution permissions included with the *Insider Risk Management Admins* role group:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Scope; Governance controls",
+      "type": "role",
+      "claim": "Administrative-unit-scoped administrators configure policies within their assigned scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "*Scoped* in the following table means that the admin actions for that role are limited by their assigned admin unit.\n| Configure policies | Scoped | Scoped | Never allowed | Never allowed | Never allowed |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Scope",
+      "type": "role",
+      "claim": "Restricted or scoped administrators cannot create priority-user-specific policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "Unrestricted administrators can select priority user groups without selecting admin units, but restricted or scoped administrators can't create these policies at all.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[2].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "Role group permissions can take up to 30 minutes to apply.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "After configuring your role groups, it might take up to 30 minutes for the role group permissions to apply to assigned users across your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The multiple-DLP-policy triggering-event control is admin-opt-in: administrators select and configure its DLP policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "If you select the **User matches a data loss prevention (DLP) policy triggering event** option, you must select a DLP policy from the DLP policy dropdown list to enable triggering indicators for the DLP Policy for this Insider Risk Management policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Why it matters; Governance controls",
+      "type": "admin-path",
+      "claim": "Administrators create policies through the Purview policy workflow.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-policies",
+      "quote": "To create a new Insider Risk Management policy, generally use the policy workflow in the **Insider Risk Management** solution in the Microsoft Purview portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "No source states that arrival of multiple selection automatically changes existing policies.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Insider Risk Management existing policies automatically multiple DLP policies triggering events'. Read roadmap description, Get started workflow and Create and manage policies. Found administrator selection and editing instructions, not automatic policy conversion.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The included licensing model reflects Insider Risk Management's inclusion in the listed Microsoft 365 plans and Purview suites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "| Feature | Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, and Microsoft 365 E5/A5/F5/G5 Insider Risk Management |\n| --- | --- |\n| Insider Risk Management | Included |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft publishes no licence specific to selecting multiple DLP policies as triggering events.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Insider Risk Management multi selectable DLP policies triggering event licensing billing price'. Read Purview service description, Get started licensing and Purview billing models. They give product licensing, not a separate licence for multi-selection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "Microsoft publishes no price specific to this multiple-DLP-policy option.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Insider Risk Management multi selectable DLP policies triggering event licensing billing price'. Read Purview service description, Get started and Purview billing models. No multi-selection price was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft publishes no meter specific to this multiple-DLP-policy option.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Insider Risk Management multi selectable DLP policies triggering event licensing billing price'. Read Purview billing models, Get started and policy indicators. Published Insider Risk Management meters cover other indicator categories, not DLP-trigger multi-selection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "Some Insider Risk Management indicators require pay-as-you-go billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "Some indicators included in Insider Risk Management are only available if you enable the [pay-as-you-go billing model](purview-billing-models) for your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing: Meter",
+      "type": "absence",
+      "claim": "The Get started page does not name the DLP triggering event as a pay-as-you-go indicator.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: DLP, billing, pay-as-you-go and licensing in the fetched Get started page; read its billing and DLP prerequisite passages and the linked policy-indicators billing sections. The Get started page does not name the DLP trigger as pay-as-you-go.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "A DLP trigger policy without high-severity alerts does not meet requirements and produces the DLP policy doesn't meet requirements health notification.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-policies",
+      "quote": "| **DLP policy doesn't meet requirements** | - Data leaks - Data leaks by priority users | DLP policies used as triggering events must be configured to generate high severity alerts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Turning off the DLP policy used as a trigger produces a policy health notification.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-policies",
+      "quote": "| **DLP policy used in this policy is turned off** | - Data leaks - Data leaks by priority users | DLP policy used in this policy is turned off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Deleting a selected DLP triggering policy produces a policy health notification.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-policies",
+      "quote": "| **DLP policy isn't selected as the triggering event** | - Data leaks - Data leaks by priority users | A DLP policy wasn't selected as a triggering event or the selected DLP policy was deleted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Why it matters; Governance guidance",
+      "type": "behaviour",
+      "claim": "Policy health warns when a triggering event repeatedly occurs for over 15% of users in a policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-policies",
+      "quote": "| **Triggering event is repeatedly occurring for over 15% of users in this policy** | All policy templates | Adjust the triggering event to help reduce how often users are brought into the policy scope. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Governance guidance: At rollout; Why it matters",
+      "type": "behaviour",
+      "claim": "Microsoft advises prioritizing exfiltration events and selectively assigning High severity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-policy-templates",
+      "quote": "Prioritize data exfiltration events and be selective when assigning **Incident reports** settings to *High* when configuring rules in your DLP policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Raising rule report severity also changes the severity used in DLP admin alerts and reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-cc-email",
+      "quote": "Under **Incident reports**, set **Use this severity level in admin alerts and reports** to **High**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "rationale: impact",
+      "type": "behaviour",
+      "claim": "Users see nothing new as a result of this change.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: '\"Insider Risk Management\" \"multiple DLP policies\" \"users\" \"experience\"'. Read roadmap description, policy templates and policy workflow. They describe administrator selection and scoring, not an explicit assurance of unchanged end-user experience.",
+      "severity": "minor",
+      "fix": "Remove 'users see nothing new, though' and write the impact rationale as 'Low. Insider Risk Management admins and analysts notice it; more users may be scored once more DLP policies feed a policy.'"
+    },
+    {
+      "n": 50,
+      "where": "Governance guidance: After rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The policy-health monitoring instruction has a corresponding controls-table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Watch each policy's health card for **DLP policy doesn't meet requirements**, **DLP policy used in this policy is turned off** and the over-15%-of-users triggering warning. The table contains only trigger selection, rule severity and role membership.",
+      "severity": "minor",
+      "fix": "The first After rollout bullet asks readers to monitor policy health, which has no controls-table row. Remove that bullet; retain the already-supported health facts in Risk assessment and Why it matters. Do not add a new control row."
+    },
+    {
+      "n": 51,
+      "where": "Scope; Open questions",
+      "type": "absence",
+      "claim": "Microsoft does not explicitly state a numerical DLP-policy selection limit for the Data leaks by priority users template.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Insider Risk Management\" \"DLP\" \"20\" \"priority\"'. Read the Data leaks and Data leaks by priority users template sections and Get started step 12. The numerical limit explicitly names Data leaks; the priority-users section refers to its guidelines without stating a number.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Why it matters",
+      "type": "admin-path",
+      "claim": "Existing insider risk policies can be changed through Edit policy on their policy details page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-policies",
+      "quote": "On the policy dashboard, select the policy you want to update.\n5. On the policy details page, select **Edit policy**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Why it matters; Cost and licensing",
+      "type": "behaviour",
+      "claim": "Over-assigning High severity to DLP rules can increase Insider Risk Management alert noise and analyst effort.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-policy-templates",
+      "quote": "Over-assigning the *High* level in the **Incident reports** settings in other DLP policy rules can increase the noise in the Insider Risk Management alert workflow and make it more difficult for your data investigators and analysts to properly evaluate these alerts.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-28T14:11:50.000Z",
+    "summary": {
+      "links": 12,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 2,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=493757",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-policy-templates",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-policies",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-policy-reference",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-create-policy-cc-email",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/endpoint-dlp-create-policy-detect-pii-data-exposure",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which DLP policies act as the triggering event for a Data leaks insider risk policy",
+        "docs": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+        "reachable": true,
+        "segments": [
+          "Insider Risk Management",
+          "Policies",
+          "Create policy",
+          "Policy template",
+          "category",
+          "Data leaks",
+          "Triggers for this policy",
+          "User matches a data loss prevention  policy triggering event"
+        ],
+        "missing": [
+          "User matches a data loss prevention  policy triggering event"
+        ]
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether a DLP rule's alerts reach Insider Risk Management (High report severity)",
+        "docs": "https://learn.microsoft.com/purview/endpoint-dlp-create-policy-detect-pii-data-exposure",
+        "reachable": true,
+        "segments": [
+          "Data loss prevention",
+          "Policies",
+          "Edit policy",
+          "Customize advanced DLP rules",
+          "Incident reports",
+          "Use this severity level in admin alerts and reports"
+        ],
+        "missing": [
+          "Use this severity level in admin alerts and reports"
+        ]
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether a DLP rule's alerts reach Insider Risk Management (High report severity)",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule",
+        "reachable": true,
+        "token": "Set-DlpComplianceRule",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Who can configure Insider Risk Management policies and settings",
+        "docs": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Roles and groups",
+          "Roles groups",
+          "Insider Risk Management",
+          "Edit",
+          "Choose users"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Who can configure Insider Risk Management policies and settings",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "reachable": true,
+        "token": "Add-RoleGroupMember",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

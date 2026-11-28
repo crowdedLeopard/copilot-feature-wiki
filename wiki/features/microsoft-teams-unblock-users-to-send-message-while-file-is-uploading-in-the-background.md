@@ -64,15 +64,17 @@ changes:
     note: "Corrected the prerequisite statement: no admin role specific to this change is documented, and existing chat file sharing requires OneDrive for Business, tied to the SharePoint licence."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 51 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 54 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 51
-  confirmed: 51
+  claims: 54
+  confirmed: 54
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -171,8 +173,8 @@ cost: Low. The only cost the sources show is admin time to brief users and updat
 impact: High. The notice says all Teams users who send files in chats or channels are affected, and the message box no longer blocks during an upload, which is a change to default behaviour.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing / record: Targeted Release rollout began in early August 2026. | Found: Targeted Release: Rollout will begin in early August 2026 (previously early July) | Fix: Replace 'Targeted Release rollout began in early August 2026' with 'Targeted Release rollout was scheduled to begin in early August 2026'. The notice gives a planned start, not confirmation that rollout actually began then.
+- [supported, minor] What's changing / record: Targeted Release rollout began in early August 2026. | Found: Targeted Release: Rollout will begin in early August 2026 (previously early July) | Fix: Replace 'Targeted Release rollout began in early August 2026' with 'Targeted Release rollout was scheduled to begin in early August 2026'. The notice supplies a planned start, not confirmation that rollout began.
 -->

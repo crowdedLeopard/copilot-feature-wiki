@@ -91,18 +91,20 @@ changes:
     note: "Corrected the controls note: edits to a label's encryption permissions reach existing files when users reauthenticate, not immediately for every file."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 55 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 47 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 3
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-21"
+  status: "held"
+  date: "2026-11-28"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 55
-  confirmed: 55
+  claims: 47
+  confirmed: 46
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "454c4863a3edbfafc17a6b7335b087cf"
 ---
 
@@ -192,8 +194,10 @@ cost: Low. The only cost the sources show is admin time to test it; a licence or
 impact: Low. Only users who open label-protected PDFs in the OneDrive or SharePoint web viewer, and hold usage rights on them, would notice.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[1].api; Governance controls / command: Set-Label -Identity <MasterIdParameter> -EncryptionRightsDefinitions <EncryptionRightsDefinitionsParameter> is the call that changes users' encryption usage rights. | Found: This parameter is meaningful only when the EncryptionEnabled parameter value is either $true or $false and the EncryptionProtectionType parameter value is Template. | Fix: Replace controls[1].api.call and the matching rendered call with 'Set-Label -Identity <MasterIdParameter> -EncryptionEnabled $true -EncryptionProtectionType Template -EncryptionRightsDefinitions <EncryptionRightsDefinitionsParameter>'. The reference explicitly conditions EncryptionRightsDefinitions on these encryption parameters; the replacement keeps encryption enabled while setting template-based rights. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/set-label
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; Governance controls / admin-path: Solutions > Information Protection > Sensitivity labels in the Microsoft Purview portal is the route shown for managing a label's encryption permissions. | Found: Sign in to the Microsoft Purview portal > Solutions > Information Protection > Sensitivity labels ... To edit an existing label, select it, and then select the Edit label icon. | Fix: Extend controls[1].ui.path and the matching rendered path to 'Solutions > Information Protection > Sensitivity labels > label > Edit label > Define the scope for this label > Files & other data assets > Choose protection settings for the types of items you selected > Control access > Access control > Configure access control settings > Assign permissions now > Assign permissions > Choose permissions'. Set controls[1].ui.docs and its rendered Learn link to https://learn.microsoft.com/purview/encryption-sensitivity-labels, which documents the permission settings. Retain create-sensitivity-labels in sources for the route to editing a label. | Source: https://learn.microsoft.com/purview/create-sensitivity-labels
+- [supported, minor] controls[1].ui; Governance controls / admin-path: Solutions > Information Protection > Sensitivity labels in the Microsoft Purview portal is the route given for managing label encryption permissions. | Found: Sign in to the Microsoft Purview portal > Solutions > Information Protection > Sensitivity labels ... To edit an existing label, select it, and then select the Edit label icon. | Fix: Extend controls[1].ui.path and the matching rendered path to 'Solutions > Information Protection > Sensitivity labels > label > Edit label > Define the scope for this label > Files & other data assets > Choose protection settings for the types of items you selected > Control access > Access control > Configure access control settings > Assign permissions now > Assign permissions > Choose permissions'. Set controls[1].ui.docs and its rendered Learn link to https://learn.microsoft.com/purview/encryption-sensitivity-labels, which documents the permission settings; retain create-sensitivity-labels in sources for the editing route. | Source: https://learn.microsoft.com/purview/create-sensitivity-labels
 -->

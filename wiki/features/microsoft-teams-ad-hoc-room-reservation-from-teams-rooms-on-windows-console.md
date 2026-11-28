@@ -70,10 +70,10 @@ controls:
     scope: "other"
     ui:
       surface: "Teams Rooms Pro Management portal"
-      path: "Settings > Roles > role > Assignments > Add assignment"
+      path: "Settings > Roles > role > Assignments > Add assignment > General settings > Members > Scope"
       docs: "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac"
     api: null
-    note: "Assigning roles needs Global Administrator or Teams Administrator in Microsoft Entra ID, or Teams Rooms Pro Manager. Assignments are scoped to rooms or room groups."
+    note: "Assigning roles requires Global Administrator, tenant-wide Teams Administrator, Teams Rooms Pro Manager, or a custom role with role management permissions. Assignments are scoped to rooms or room groups."
 confidence: "medium"
 created: "2026-11-28"
 updated: "2026-11-28"
@@ -83,19 +83,23 @@ changes:
     note: "New briefing: ad-hoc room reservation on Teams Rooms on Windows consoles, its Pro Management portal toggle, Pro licensing and the Canada time zone known issue."
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 53 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-28"
+    note: "Corrected the roles needed to create, edit and assign Pro Management portal roles (tenant-wide Teams Administrator; custom roles for assignment), narrowed the organiser gap, extended the assignment path and dropped the time-zone checklist step."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 52 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-28"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 53
-  confirmed: 49
+  claims: 52
+  confirmed: 52
   unconfirmed: 0
-  contradicted: 4
-  attempts: 1
-  hash: "d770b9cde19ae4b2066fb33fc31c4559"
+  contradicted: 0
+  attempts: 0
+  hash: "2ad0c6d676b2fc59891f9033ff43cd87"
 ---
 
 ## What's changing
@@ -108,14 +112,14 @@ The roadmap item is **Launched**, with a target of July CY2026, for General Avai
 
 ## Why it matters
 
-The change moves some room booking from Outlook to the room itself. A walk-in group can hold a free room on the calendar rather than risk being displaced by someone who books it from their desk a minute later. For workplace and facilities teams that rely on the room calendar for utilisation figures, short-notice bookings made at the console will appear alongside scheduled ones.
+The change moves some room booking to the room itself. A walk-in group can hold a free room on the calendar rather than risk being displaced by someone who books it from their desk a minute later. For workplace and facilities teams that rely on the room calendar for utilisation figures, short-notice bookings made at the console will appear alongside scheduled ones.
 
 Microsoft has not stated whether the toggle starts on or off, so check a Pro-licensed room on version 5.6.137.0 or later to see whether the button is showing. If your rooms use Canada's newer time zones, the known issue under Risk assessment is the decision that matters most.
 
 ## Risk assessment
 
 **Data exposure**
-- No new data reach is described: the feature books the room it is running in. Who the booking shows as organiser, and what the console shows of it, is not documented; check on a test room before relying on meeting-name privacy settings.
+- No new data reach is described: the feature books the room it is running in. Who the booking shows as organiser is not documented; check on a test room before relying on meeting-name privacy settings.
 
 **Security & identity**
 - Microsoft does not describe which identity creates the reservation, so confirm it on a test room rather than assume it.
@@ -152,7 +156,7 @@ Microsoft has not stated whether the toggle starts on or off, so check a Pro-lic
 
 ### At rollout
 - Turn off **Allow ad hoc room reservation** on rooms that should not take walk-in bookings, choosing **Schedule Later** so the device restart falls in the nightly maintenance window.
-- Disable the setting on rooms set to the British Columbia, Alberta or Manitoba time zones until Microsoft resolves the known issue, or move those consoles to the alternative time zones Microsoft lists.
+- Disable the setting on rooms set to the British Columbia, Alberta or Manitoba time zones until Microsoft resolves the known issue.
 - Tell room users that a free room can be held from the console with **Reserve**.
 
 ### After rollout
@@ -167,11 +171,11 @@ Microsoft has not stated whether the toggle starts on or off, so check a Pro-lic
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether the Reserve button for ad-hoc room reservation appears on a room's Teams Rooms on Windows console</strong><br><small class="controls__note">Set per room. Apply Now restarts the device; Schedule Later applies it in the nightly maintenance window. Needs RBAC permissions for room management.</small></td><td data-label="Admin UI"><strong>Teams Rooms Pro Management portal</strong><br>Rooms › room › Settings › Meetings › Allow ad hoc room reservation <a href="https://learn.microsoft.com/microsoftteams/rooms/mtr-home-refresh" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which portal users can change room settings, and for which rooms</strong><br><small class="controls__note">Assigning roles needs Global Administrator or Teams Administrator in Microsoft Entra ID, or Teams Rooms Pro Manager. Assignments are scoped to rooms or room groups.</small></td><td data-label="Admin UI"><strong>Teams Rooms Pro Management portal</strong><br>Settings › Roles › role › Assignments › Add assignment <a href="https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which portal users can change room settings, and for which rooms</strong><br><small class="controls__note">Assigning roles requires Global Administrator, tenant-wide Teams Administrator, Teams Rooms Pro Manager, or a custom role with role management permissions. Assignments are scoped to rooms or room groups.</small></td><td data-label="Admin UI"><strong>Teams Rooms Pro Management portal</strong><br>Settings › Roles › role › Assignments › Add assignment › General settings › Members › Scope <a href="https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-The toggle is set per room. Microsoft's settings page describes device settings jobs and settings templates for bulk changes, but its list of settings available for remote management does not include **Allow ad hoc room reservation** at the time of writing (November 2026), so whether it can be applied in bulk is unconfirmed. Settings changes need RBAC permissions for room management. To create, edit or assign Pro Management portal roles, an account needs Global Administrator or Teams Administrator in Microsoft Entra ID, or the Teams Rooms Pro Manager role in the portal. The XML configuration file is not a route: Microsoft no longer publishes new XML settings and points admins to the portal. The Microsoft Graph Teams device features configuration resource documents no property for this setting at the time of writing (November 2026).
+The toggle is set per room. Microsoft's settings page describes device settings jobs and preview settings templates for bulk changes, but its list of settings available for remote management does not include **Allow ad hoc room reservation** at the time of writing (November 2026), so whether it can be applied in bulk is unconfirmed. Settings changes need RBAC permissions for room management. Creating or editing portal roles requires Global Administrator, tenant-wide Teams Administrator, or Teams Rooms Pro Manager. Assigning roles also permits a custom role with role management permissions. The XML configuration file is not a route: Microsoft no longer publishes new XML settings and points admins to the portal. The Microsoft Graph Teams device features configuration resource documents no property for this setting at the time of writing (November 2026).
 
 ## Open questions
 
@@ -185,17 +189,4 @@ The toggle is set per room. Microsoft's settings page describes device settings 
 risk: Low. The feature books the room's own calendar for immediate use from the console in that room, and each room has an Allow ad hoc room reservation toggle in the Pro Management portal.
 cost: None. Microsoft's release notes mark the feature as available only with the Teams Rooms Pro licence, so rooms already on Pro get it without a further licence; rooms on Teams Rooms Basic do not.
 impact: Medium. People who use Pro-licensed Teams Rooms on Windows rooms see a new Reserve button on the console calendar, and the teams who manage room bookings see short-notice bookings made at the console.
--->
-
-<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: creating and editing roles / role: Creating or editing portal roles requires Global Administrator, Teams Administrator or Teams Rooms Pro Manager permissions. | Found: Teams Administrator or Teams Devices Administrator assigned to an Administrative Unit (AU), can't access the Teams Rooms Pro Management portal, as AUs aren't currently supported. | Fix: Qualify Teams Administrator as tenant-wide in the role requirement: 'Creating or editing portal roles requires Global Administrator, tenant-wide Teams Administrator, or Teams Rooms Pro Manager.' Apply together with the assignment correction below. Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac. | Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac
-- [contradicted, blocker] controls[1].note; Governance controls: assigning roles / role: Assigning portal roles requires Global Administrator, Teams Administrator or Teams Rooms Pro Manager. | Found: To assign roles, you must be a Global Administrator/ Teams Administrator or Teams Rooms Pro Manager role or have a custom role with role management permissions. | Fix: Replace the assignment requirement in controls[1].note and the matching table note with 'Assigning roles requires Global Administrator, tenant-wide Teams Administrator, Teams Rooms Pro Manager, or a custom role with role management permissions.' In Governance controls, replace the combined requirement sentence with 'Creating or editing portal roles requires Global Administrator, tenant-wide Teams Administrator, or Teams Rooms Pro Manager. Assigning roles also permits a custom role with role management permissions.' Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac; its note says an Administrative Unit-scoped Teams Administrator cannot access the portal. | Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac
-- [contradicted, blocker] Risk assessment: Data exposure / absence: What the console shows of a room-calendar reservation is not documented. | Found: By default, room users can join meetings in one touch and view meeting details including the meeting name, organizer, time, and platform. ... meeting names can be hidden ... and replaced with the organizer name if desired | Fix: Narrow the sentence to 'Who the booking shows as organiser is not documented; check on a test room before relying on meeting-name privacy settings.' Remove 'and what the console shows of it': https://learn.microsoft.com/microsoftteams/rooms/mtr-home-refresh documents the general room-calendar display fields and meeting-name privacy behavior, even though it does not identify the organizer account or generated subject for this reservation. | Source: https://learn.microsoft.com/microsoftteams/rooms/mtr-home-refresh
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; Governance controls table; Governance guidance / admin-path: Portal role assignments are reached through Settings > Roles > role > Assignments > Add assignment. | Found: In the left navigation ... expand Settings > Roles. ... Select the role you want to assign. ... In the role pane, select Assignments > Add assignment. | Fix: The path correctly opens the assignment wizard but stops before its user and room selections. Extend controls[1].ui.path and the matching table path to 'Settings > Roles > role > Assignments > Add assignment > General settings > Members > Scope', as documented at https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac. | Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac
-- [supported, minor] Why it matters: booking from Outlook / behaviour: Users can book meeting rooms from Outlook. | Found: Room Finder is an Outlook feature that helps users find rooms that are near them, available for reservation, and meet other criteria such as the availability of a display. | Fix: Add https://learn.microsoft.com/microsoftteams/hybrid-meetings-device-config-calendar to sources for the Outlook booking premise in Why it matters, or remove 'from Outlook' from that sentence. | Source: https://learn.microsoft.com/microsoftteams/hybrid-meetings-device-config-calendar
-- [supported, minor] Governance controls: settings templates / behaviour: The portal documents reusable settings templates for bulk configuration. | Found: Settings templates let you define a named, reusable configuration that is assigned to specific devices or device groups. ... Navigate to: Settings > Device settings page > Templates (Preview) tab | Fix: Change 'device settings jobs and settings templates for bulk changes' to 'device settings jobs and preview settings templates for bulk changes' in Governance controls, preserving the existing caveat about this toggle. Source: https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings. | Source: https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings
-- [contradicted, minor] Governance guidance: At rollout; Governance controls table / consistency: The checklist tells administrators to change console time zones, but the controls table has no time-zone control. | Found: At rollout: 'or move those consoles to the alternative time zones Microsoft lists.' The controls table contains only the reservation toggle and portal role assignments. | Fix: The alternative-time-zone checklist action has no controls-table row. Remove ', or move those consoles to the alternative time zones Microsoft lists' from Governance guidance: At rollout, leaving the documented disable-setting action. The workaround description in Risk assessment can remain.
 -->

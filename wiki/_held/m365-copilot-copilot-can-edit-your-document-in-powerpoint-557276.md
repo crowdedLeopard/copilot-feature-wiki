@@ -25,6 +25,9 @@ sources:
   - title: "Microsoft 365 Roadmap item 557276"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=557276"
     kind: "roadmap"
+  - title: "Microsoft 365 Roadmap item 557177"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=557177"
+    kind: "roadmap"
   - title: "Microsoft Copilot overview"
     url: "https://learn.microsoft.com/copilot/plan/copilot-overview"
     kind: "learn"
@@ -49,6 +52,9 @@ sources:
   - title: "Enable Claude models only for Copilot experiences in Microsoft 365 apps"
     url: "https://learn.microsoft.com/copilot/implement/copilot-anthropic-apps"
     kind: "learn"
+  - title: "Limits for features in Microsoft Copilot Chat"
+    url: "https://support.microsoft.com/microsoft-365-copilot/limits-for-features-copilot-chat"
+    kind: "docs"
   - title: "Which users can use Anthropic (Claude) models in Copilot experiences, PowerPoint included (Microsoft 365 admin center)"
     url: "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor#opt-in-to-use-claude-models"
     kind: "learn"
@@ -65,7 +71,7 @@ controls:
     scope: "user"
     ui:
       surface: "Microsoft 365 Apps admin center"
-      path: "Customization > Policy Management > policy configuration > Choose the scope > Configure Settings > Allow the use of connected experiences in Office that analyze content"
+      path: "Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings > Allow the use of connected experiences in Office that analyze content"
       docs: "https://learn.microsoft.com/microsoft-365-apps/privacy/mac-privacy-preferences"
     api:
       kind: "other"
@@ -113,19 +119,23 @@ changes:
     note: "New briefing: Copilot editing in PowerPoint for Mac for Copilot Chat users, with the conflicting licence statements, the Mac connected-experiences preference and the December 9, 2026 Anthropic change."
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 67 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-28"
+    note: "Corrected the Cloud Policy admin path, noted that roadmap item 557177 has a different description, removed an unsupported claim about the Anthropic change widening PowerPoint's models, and reworded the editing description to the roadmap's terms."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 72 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-28"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 67
-  confirmed: 62
-  unconfirmed: 2
-  contradicted: 3
-  attempts: 1
-  hash: "b8a85092b5872475b95dfe92149e1e91"
+  claims: 72
+  confirmed: 71
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 2
+  hash: "72c031a372ec5c124360feeac2585435"
 ---
 
 ## What's changing
@@ -136,13 +146,13 @@ Microsoft Learn has no page for this Mac item, so its behaviour here is the road
 
 The sources disagree on who gets it. The [Copilot service description](https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot) lists "Edit with Copilot in Word, Excel, PowerPoint, and OneNote" as a Microsoft 365 Copilot (Premium) feature, for which a Microsoft 365 Copilot licence is required, available in Commercial/Worldwide and not currently in GCC, GCC High or DoD.
 
-The roadmap item's status is Launched, General Availability, with a target of April CY2026, for the Worldwide (Standard Multi-Tenant) cloud on Mac. Microsoft lists the same feature for Mac under roadmap item 557177, also Launched for Worldwide with a target of March CY2026; the records name no other difference. Separate items cover desktop and web.
+The roadmap item's status is Launched, General Availability, with a target of April CY2026, for the Worldwide (Standard Multi-Tenant) cloud on Mac. Microsoft also lists roadmap item 557177 for Mac under the same title, also Launched for Worldwide with a target of March CY2026, but its description differs from this item's: it describes Copilot connecting to a brand kit and is available to Microsoft 365 Copilot–licensed users. Separate items cover desktop and web.
 
 ## Why it matters
 
 If nobody acts, Mac users who can use Copilot in PowerPoint can have it add, rewrite and restyle slides in shared decks, whether or not the organisation bought Copilot for them, if the roadmap is right. Edits land in the presentation itself, so a wrong figure or reworded claim can reach a customer deck before anyone checks it. Microsoft Learn documents no setting that turns Copilot editing in PowerPoint off on its own; the documented Mac control removes Copilot features from Excel, OneNote, Outlook, PowerPoint and Word together.
 
-The licence conflict is a support question as much as a cost one: some unlicensed users may see the feature and others not, depending on which source proves right. For tenants in the EU, EFTA and the UK, Microsoft's Anthropic setting changes on December 9, 2026, which can widen which AI models Copilot in PowerPoint uses.
+The licence conflict is a support question as much as a cost one: some unlicensed users may see the feature and others not, depending on which source proves right. For tenants in the EU, EFTA and the UK, Microsoft's Anthropic setting changes on December 9, 2026.
 
 ## Risk assessment
 
@@ -153,10 +163,10 @@ The licence conflict is a support question as much as a cost one: some unlicense
 - No new sign-in, permission or connector is described for this feature. Where the Anthropic subprocessor is enabled, Claude models are among the models available to Copilot experiences in PowerPoint; the Microsoft 365 admin center setting decides which users can use them.
 
 **Autonomy & actions**
-- Copilot changes slide content, layout and design in response to one request. The roadmap describes edits made directly in the presentation; Microsoft documents no approval step an administrator can require before changes are written.
+- The roadmap describes Copilot updating slide content, improving layouts and polishing design through natural conversation. The roadmap describes edits made directly in the presentation; Microsoft documents no approval step an administrator can require before changes are written.
 
 **Change & support**
-- Microsoft lists the same feature under two Mac roadmap ids with different targets, and its licence sources disagree. Expect questions from Mac users about why the feature appears for some and not others.
+- Microsoft lists two Mac roadmap items under this title with different targets, and its licence sources disagree. Expect questions from Mac users about why the feature appears for some and not others.
 
 ## Cost and licensing
 
@@ -197,7 +207,7 @@ The licence conflict is a support question as much as a cost one: some unlicense
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether Copilot features, editing included, are available in PowerPoint and other Office apps on Mac</strong><br><small>User</small><br><small class="controls__note">Turning it off removes Copilot features from Excel, OneNote, Outlook, PowerPoint and Word, not editing alone. Unset, these experiences stay available.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › policy configuration › Choose the scope › Configure Settings › Allow the use of connected experiences in Office that analyze content <a href="https://learn.microsoft.com/microsoft-365-apps/privacy/mac-privacy-preferences" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Preference OfficeExperiencesAnalyzingContentPreference set to FALSE in domain com.microsoft.office, through a Configuration Profile or MDM</code> <a href="https://learn.microsoft.com/microsoft-365-apps/privacy/mac-privacy-preferences" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether Copilot features, editing included, are available in PowerPoint and other Office apps on Mac</strong><br><small>User</small><br><small class="controls__note">Turning it off removes Copilot features from Excel, OneNote, Outlook, PowerPoint and Word, not editing alone. Unset, these experiences stay available.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › Policy configurations › Create › Start with the basics › Choose the scope › Configure Settings › Allow the use of connected experiences in Office that analyze content <a href="https://learn.microsoft.com/microsoft-365-apps/privacy/mac-privacy-preferences" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Preference OfficeExperiencesAnalyzingContentPreference set to FALSE in domain com.microsoft.office, through a Configuration Profile or MDM</code> <a href="https://learn.microsoft.com/microsoft-365-apps/privacy/mac-privacy-preferences" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Admin setting that turns off Copilot editing in PowerPoint for Mac alone</strong><br><small>Tenant</small><br><small class="controls__note">Microsoft Learn documents no such setting at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether content with a given sensitivity label is excluded from Copilot in PowerPoint</strong><br><small class="controls__note">Security &amp; Compliance PowerShell only; not available in the Microsoft Purview portal. Labelled content stays available to Copilot in Teams and Copilot Chat.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-Label -Identity &quot;&lt;label GUID&gt;&quot; -AdvancedSettings @{BlockContentAnalysisServices=&quot;True&quot;}</code> <a href="https://learn.microsoft.com/purview/sensitivity-labels-office-apps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which users can use Anthropic (Claude) models in Copilot experiences, PowerPoint included</strong><br><small>Tenant</small><br><small class="controls__note">AI Administrator or Global Administrator. For EU, EFTA and UK tenants, setting changes take effect on December 9, 2026.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › View all › AI providers operating as Microsoft subprocessors › Available subprocessors for your organization › Anthropic › Choose who can access Anthropic models for Copilot and generative AI experiences <a href="https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor#opt-in-to-use-claude-models" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
@@ -218,7 +228,7 @@ The licence conflict is a support question as much as a cost one: some unlicense
 - What fair use limits apply to Copilot edits in PowerPoint for users without the add-on?
 
 <!-- rationale
-risk: Medium. Copilot can rewrite slides in any presentation a Mac user has open with no admin step, and the documented off switch removes Copilot from Word, Excel, PowerPoint, OneNote and Outlook together rather than from editing alone.
+risk: Medium. Copilot can rewrite slides in a presentation a Mac user has open with no admin step, and the documented off switch removes Copilot from Word, Excel, PowerPoint, OneNote and Outlook together rather than from editing alone.
 cost: Low. The roadmap says no Microsoft 365 Copilot licence is needed, so the known cost is admin and support time; Microsoft's service description instead lists Edit with Copilot in PowerPoint as needing that licence.
 impact: Medium. PowerPoint users on Mac notice it, including those without a Microsoft 365 Copilot licence if the roadmap item is right.
 -->
@@ -226,11 +236,7 @@ impact: Medium. PowerPoint users on Mac notice it, including those without a Mic
 <!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing / record: The two Mac roadmap records name no difference other than their target dates. | Found: 557177: Copilot connects to your brand kit so you can apply branded templates, insert brand‑approved images, and check for brand compliance. Available to Microsoft 365 Copilot–licensed users. 557276: Available to Copilot Chat users (without a Microsoft 365 Copilot license). | Fix: Remove 'the records name no other difference'. Keep the other item's status, cloud and target statements, but do not present the records as identical.
-- [contradicted, blocker] controls[0].ui; Governance controls table / admin-path: Selecting an existing policy configuration leads through Choose the scope and Configure Settings to the named connected-experiences policy. | Found: On the Policy configurations page, select Create. On the Start with the basics page, enter a name (required) and a description (optional), then select Next. On the Choose the scope page, determine whether the policy configuration applies to all users | Fix: Replace the path with 'Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings > Allow the use of connected experiences in Office that analyze content'. Keep the Mac privacy reference for the setting and the already-cited Cloud Policy overview for the route. | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy
-- [unsupported, major] Why it matters / behaviour: The December 9 change can widen which AI models Copilot in PowerPoint uses. | Found: Searched: "Anthropic" "subprocessor" "graph" "API" setting. Read copilot-anthropic-apps and connect-to-ai-subprocessor: changes concern user access and apps-only scope, not additional PowerPoint models. | Fix: Remove ', which can widen which AI models Copilot in PowerPoint uses'. The preceding statement about the December 9, 2026 setting change can remain.
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: Copilot changes slide content, layout and design in response to one request. | Found: Searched: Copilot PowerPoint Mac edit presentations admin disable editing only approval policy 557276; "557276" "557177" Copilot PowerPoint. Read roadmap and overview; they describe conversational editing but do not establish that the combined changes happen in one request. | Fix: Replace the sentence with 'The roadmap describes Copilot updating slide content, improving layouts and polishing design through natural conversation.'
+- [contradicted, blocker] front matter: defaultState; What's changing: each user chooses to ask Copilot for an edit / default: The feature's default state is user-opt-in. | Found: Copilot is an AI-powered assistant available in PowerPoint for Windows, Mac, and the web. It can be accessed by opening Copilot Chat using the Copilot icon at the bottom-right corner of the screen. It is on by default in the prompt box. | Fix: Set defaultState to "on". Replace "Neither source describes a step an administrator must take before users can use it; each user chooses to ask Copilot for an edit" with "Microsoft's Edit with Copilot in PowerPoint page says it is on by default in the prompt box; users ask for changes through Copilot Chat." Cite and add https://support.microsoft.com/en-us/topic/008f17aa-8e5f-4cda-ba6c-0588000bdad7 to sources. | Source: https://support.microsoft.com/en-us/topic/008f17aa-8e5f-4cda-ba6c-0588000bdad7
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing; Open questions / absence: Microsoft has not published a specific fair-use limit for Copilot editing in PowerPoint for Mac. | Found: Searched: PowerPoint Mac Copilot editing fair use limits without Microsoft 365 Copilot license; limits-for-features-copilot-chat PowerPoint editing limits. Read overview and Limits for features in Microsoft Copilot Chat: Microsoft does not publish specific numeric limits. | Fix: Cite https://support.microsoft.com/microsoft-365-copilot/limits-for-features-copilot-chat for the limit statement; it explicitly says Microsoft does not publish or share specific numeric limits.
-- [contradicted, minor] rationale: risk / behaviour: Copilot can rewrite slides in any presentation a Mac user has open. | Found: Although content with the configured sensitivity label will be excluded from Microsoft 365 Copilot in the named Office apps, the content remains available to Microsoft 365 Copilot for other scenarios. | Fix: Replace 'in any presentation a Mac user has open' with 'in a presentation a Mac user has open'. Do not claim that all open presentations can be edited regardless of the label restriction. | Source: https://learn.microsoft.com/purview/sensitivity-labels-office-apps
+- [supported, minor] controls[2].governs; Risk assessment: Data exposure; Governance guidance; Governance controls / applicability: BlockContentAnalysisServices excludes labelled content from Copilot in Word, Excel, PowerPoint and Outlook. | Found: Support for this setting differs for clients and apps. Identify the minimum versions of Office that support this setting by using the capabilities tables ... content with the configured sensitivity label will be excluded from Microsoft 365 Copilot in the named Office apps | Fix: Qualify the Risk assessment sentence as: "On Office clients that support the setting, a sensitivity label with the advanced setting BlockContentAnalysisServices excludes labelled content from Microsoft 365 Copilot in Word, Excel, PowerPoint and Outlook." Add "Requires an Office client version that supports this setting" to controls[2].note; the existing cited page links to the supported-version tables. | Source: https://learn.microsoft.com/purview/sensitivity-labels-office-apps
 -->

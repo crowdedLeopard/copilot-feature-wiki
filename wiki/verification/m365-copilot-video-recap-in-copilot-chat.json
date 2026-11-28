@@ -1,0 +1,695 @@
+{
+  "slug": "m365-copilot-video-recap-in-copilot-chat",
+  "roadmapId": 501452,
+  "title": "Microsoft Copilot (Microsoft 365): video recap of recorded meetings in Copilot Chat",
+  "status": "held",
+  "date": "2026-11-28",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-28",
+    "reasons": [
+      "2 blocking findings (claims 35, 40)"
+    ]
+  },
+  "counts": {
+    "claims": 47,
+    "confirmed": 45,
+    "unconfirmed": 0,
+    "contradicted": 2,
+    "blocker": 2,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "Hold: the recording-permissions statement omits the exception for guests and external attendees, who need the recording explicitly shared with them. The page also says intelligent recap requires transcription even though a cited Microsoft page documents recap without it. The listed paths and commands are documented, but Microsoft pages disagree about whether the intelligent recap switch currently takes effect.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; front matter: products",
+      "type": "record",
+      "claim": "The roadmap product is Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "Roadmap item 501452 is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is December CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"December CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists only Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Desktop and Web platforms.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The record gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-04-27T23:15:13.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-04-27T23:15:13\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "title; summary; What's changing; Why it matters",
+      "type": "record",
+      "claim": "Video recaps let users catch up on recorded meetings directly in Copilot Chat.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Video recaps in Copilot Chat makes it easy to catch up on recorded meetings directly in Copilot Chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Copilot Chat video recap identifies and extracts key topics from transcripts.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "It identifies and extracts key topics from transcripts",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing; Risk assessment; Governance guidance; rationale: risk",
+      "type": "record",
+      "claim": "Copilot Chat video recap provides AI-generated narration summarising discussions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "provides AI generated narration to summarize discussions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "summary; What's changing; Governance guidance",
+      "type": "record",
+      "claim": "The narration is paired with 20–40 second video snippets from the meeting.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "pairs these with 20–40 second video snippets highlighting impactful moments of your meeting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; controls[3].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Teams intelligent meeting recap includes narrated video highlights from recorded and transcribed meetings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
+      "quote": "Video recap creates narrated highlights from recorded and transcribed meetings. This feature combines AI-generated summaries with short video clips from the recording",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Risk assessment; Cost and licensing; rationale: cost",
+      "type": "behaviour",
+      "claim": "Teams video recap data is stored as part of the original recording file in OneDrive or SharePoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
+      "quote": "Video recap data is stored as part of the original Teams meeting recording file in OneDrive or SharePoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment",
+      "type": "behaviour",
+      "claim": "Each highlight adds a small amount of data, with up to 100 highlights allowed per recording.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
+      "quote": "Each highlight adds a small amount of data (short clip and associated transcript), with up to 100 highlights allowed per recording.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment; Scope",
+      "type": "behaviour",
+      "claim": "The documented video recap requires a meeting at least 10 minutes long.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
+      "quote": "The meeting must be at least 10 minutes long.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[1].note; What's changing; Risk assessment; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "A meeting transcribed but not recorded does not support video recap.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
+      "quote": "Video recap isn't available for meetings that are transcribed but not recorded. Meetings with only transcription can generate recap insights but don't support video highlights.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "Learn documents viewing Teams video recaps on desktop and mobile clients.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
+      "quote": "Users can view video recaps for recorded and transcribed meetings on Teams desktop and mobile clients.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Learn has not documented the Copilot Chat video recap entry point beyond the roadmap description.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"video recap\" \"Copilot Chat\"; video recap Copilot Chat default automatically available Microsoft Copilot license recording permissions. Read intelligent-recap-calls-meetings, manage-meeting-recaps-app and returned release-notes excerpts; none described this Chat entry point.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: defaultState; What's changing; Why it matters",
+      "type": "absence",
+      "claim": "Microsoft has not stated the arrival default for video recap specifically in Copilot Chat.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: video recap Copilot Chat default automatically available Microsoft Copilot license recording permissions; \"video recap\" \"Copilot Chat\". Read roadmap record, intelligent-recap-calls-meetings and manage-meeting-recaps-app; automatic availability is stated for Teams, not Chat video recap.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: licensing.model and notes; controls[0].note; summary; Cost and licensing; Scope",
+      "type": "licensing",
+      "claim": "Video recap is included for users with the Microsoft Copilot licence that the Meeting Recaps app page requires.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-meeting-recaps-app",
+      "quote": "AI-generated recap experiences, including audio recap and video recap, require a Microsoft Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Teams intelligent recap also requires a Microsoft 365 subscription including Teams, or a no-Teams subscription plus a separate Teams licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
+      "quote": "You must assign your users a Microsoft 365 subscription that includes Teams or a Microsoft 365 (no Teams) subscription with a separate Teams license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft publishes no separate video recap price or meter.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: video recap Microsoft Copilot license pricing meter Copilot Chat users without license; \"video recap\" \"license\". Read manage-meeting-recaps-app, copilot/plan/copilot-license-options and copilot/plan/pay-as-you-go-meters; no separate video recap price or meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not published whether an unlicensed Copilot Chat user can open a video recap.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: video recap Microsoft Copilot license pricing meter Copilot Chat users without license; \"video recap\" \"Copilot Chat\". Read manage-meeting-recaps-app and copilot-license-options; the licence requirement is documented for Teams recap, but no unlicensed Chat playback case.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "Microsoft 365 admin center > Billing > Licenses > product > Assign licenses reaches licence assignment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "In the admin center, go to the Billing > Licenses page.\n2. Select a product.\n3. On the product details page, select Assign licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "Set-MgUserLicense with UserId, AddLicenses containing SkuId, and empty RemoveLicenses assigns the specified licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+      "quote": "To assign a license to a user, use the following command in PowerShell.\nSet-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @()",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Teams admin center > Meetings > Meeting policies > policy > Meeting recording reaches the recording toggle.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
+      "quote": "go to Meetings > Meeting policies.\n2. Select an existing policy or create a new one.\n3. Turn the Meeting recording toggle On or Off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity \"Your Policy Name\" -AllowCloudRecording $true enables recording permission in that meeting policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
+      "quote": "Set-CsTeamsMeetingPolicy -Identity \"Your Policy Name\" -AllowCloudRecording $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "Teams admin center > Meetings > Meeting policies > policy > Transcription reaches the transcription toggle.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+      "quote": "go to Meetings > Meeting policies.\n2. Select the policy that you want to edit or create a new one.\n3. Toggle Transcription On or Off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity \"Your Policy Name\" -AllowTranscription $true enables transcription permission in that meeting policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+      "quote": "Set-CsTeamsMeetingPolicy -Identity \"Your Policy Name\" -AllowTranscription $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[2].note",
+      "type": "default",
+      "claim": "Transcription is on by default for new meeting policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+      "quote": "Toggle Transcription On or Off. This setting is On by default for new policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[3].api and note; Governance guidance; Governance controls",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policyname> -AllowIntelligentRecap $false disables intelligent recap for all meetings covered by the policy, including meetings without saved transcripts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "Turning off intelligent recap disables intelligent recap for all meetings, regardless of whether transcripts are saved.\nSet-CsTeamsMeetingPolicy -Identity <policyname> -AllowIntelligentRecap $false",
+      "severity": "minor",
+      "fix": "Keep the call and add to controls[3].note and the advice relying on it: 'The intelligent recap guidance documents this switch, but the Set-CsTeamsMeetingPolicy reference says the feature is not fully released and the setting has no effect; test enforcement before relying on it.' Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy, whose -AllowIntelligentRecap section says 'This feature has not been fully released yet, so the setting will have no effect.'"
+    },
+    {
+      "n": 33,
+      "where": "controls[3].ui",
+      "type": "absence",
+      "claim": "No Teams admin center path is documented for the policy switch that disables intelligent recap.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams admin center turn off intelligent recap AllowIntelligentRecap Copilot and other AI. Read intelligent-recap-without-saving-transcripts and Set-CsTeamsMeetingPolicy; the disable operation is PowerShell, while the documented UI is for document expiration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[4]; Risk assessment; Governance controls; rationale: risk",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no UI or API setting that disables video recap alone in Teams or Copilot Chat.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: video recap disable setting Teams Copilot Chat PowerShell Microsoft Graph policy; \"video recap\" \"policy\" \"disable\". Read intelligent-recap-calls-meetings, intelligent-recap-without-saving-transcripts and searched Set-CsTeamsMeetingPolicy for VideoRecap; no separate switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[2].governs; Scope",
+      "type": "applicability",
+      "claim": "Intelligent recap depends on transcription being enabled.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "With this feature, an AI summary is generated even when recording and transcription aren't enabled.",
+      "severity": "blocker",
+      "fix": "Change controls[2].governs to 'Whether users can transcribe meetings, which video recap depends on'. Replace 'Transcription must be on for intelligent recap' in Scope with 'Video recap requires a recorded and transcribed meeting', as stated at https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings. Apply the same control label in the rendered table."
+    },
+    {
+      "n": 36,
+      "where": "Scope; Risk assessment",
+      "type": "applicability",
+      "claim": "Recording is required for the full intelligent recap experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
+      "quote": "For the full recap experience for meetings and events, you must assign a policy that allows recording for your users. If recording is turned off, users experience recap without the recording, speakers, topics, and chapters.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Both the meeting organiser and recording initiator need recording permission.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
+      "quote": "Both the organizer and recording initiator need to have recording permissions to record the meeting or event.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Transcription is a per-organiser and per-user policy setting that must be enabled for the organiser and recording or transcript initiator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+      "quote": "Transcription is both a per-organizer and per-user policy setting. For meetings and events to include transcripts, the organizer must have this setting turned on. The user who starts the recording or transcript must also have this setting turned on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "New or updated policies are assigned to users or groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
+      "quote": "After you create or update new policies, assign them to users or groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Data exposure",
+      "type": "availability",
+      "claim": "People invited to a meeting have permissions to its recording.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/copilot-admin-mtr",
+      "quote": "People invited to the meeting have permissions to the recording (guests and external attendees can view the recording only if the recording is explicitly shared with them).",
+      "severity": "blocker",
+      "fix": "Add the source's qualification: 'People invited to a meeting have permissions to its recording; guests and external attendees can view it only if the recording is explicitly shared with them.' Keep the following Copilot Chat test recommendation."
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "Microsoft documents no new identity, connection or permission specific to video recap.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: video recap Copilot Chat identity permissions recording access retention eDiscovery. Read intelligent-recap-calls-meetings, manage-meeting-recaps-app and searched microsoft-365-copilot-privacy; no identity, connection or permission introduced specifically for video recap.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Microsoft warns that AI-generated audio recaps might contain inaccuracies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
+      "quote": "Audio recaps, including voices, are AI-generated and might contain inaccuracies or audio glitches.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "People who can access the recording may see clips of it through Copilot Chat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy",
+      "quote": "Microsoft Copilot only surfaces organizational data to which individual users have at least view permissions.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy for the general permission boundary. Keep the explicit test recommendation and the open question about the exact Copilot Chat video recap access experience."
+    },
+    {
+      "n": 44,
+      "where": "controls[3].note; Governance guidance; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated whether AllowIntelligentRecap also removes video recap from Copilot Chat.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: video recap disable setting Teams Copilot Chat PowerShell Microsoft Graph policy; \"video recap\" \"Copilot Chat\". Read intelligent-recap-without-saving-transcripts and Set-CsTeamsMeetingPolicy; both describe meetings and Teams, not the Copilot Chat video recap surface.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "rationale: cost",
+      "type": "cost",
+      "claim": "The indirect storage cost is a small amount of additional recording-file data in OneDrive or SharePoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
+      "quote": "Video recap data is stored as part of the original Teams meeting recording file in OneDrive or SharePoint. Each highlight adds a small amount of data (short clip and associated transcript)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Why it matters",
+      "type": "default",
+      "claim": "Teams intelligent recap is automatically available to users with the required licences and policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
+      "quote": "Intelligent recap is automatically available to users in your organization with the following required licenses and policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "Microsoft asks administrators to ensure the required OneDrive or SharePoint storage is available before enabling meeting recording.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
+      "quote": "Before you enable meeting recording, review Permissions and storage and make sure the required OneDrive or SharePoint storage is available.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-28T14:11:56.747Z",
+    "summary": {
+      "links": 10,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 4,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=501452",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/manage-meeting-recaps-app",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/rooms/copilot-admin-mtr",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/meeting-recording",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which users hold the Microsoft Copilot licence that video recap requires",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+        "reachable": true,
+        "segments": [
+          "Billing",
+          "Licenses",
+          "product",
+          "Assign licenses"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Which users hold the Microsoft Copilot licence that video recap requires",
+        "docs": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+        "reachable": true,
+        "token": "Set-MgUserLicense",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether users can record meetings, without which no video recap is made",
+        "docs": "https://learn.microsoft.com/microsoftteams/meeting-recording",
+        "reachable": true,
+        "segments": [
+          "Meetings",
+          "Meeting policies",
+          "Meeting recording"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether users can record meetings, without which no video recap is made",
+        "docs": "https://learn.microsoft.com/microsoftteams/meeting-recording",
+        "reachable": true,
+        "token": "Set-CsTeamsMeetingPolicy",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether users can transcribe meetings, which intelligent recap depends on",
+        "docs": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+        "reachable": true,
+        "segments": [
+          "Meetings",
+          "Meeting policies",
+          "Transcription"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Whether users can transcribe meetings, which intelligent recap depends on",
+        "docs": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+        "reachable": true,
+        "token": "Set-CsTeamsMeetingPolicy",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Whether intelligent recap, which includes video recap in Teams, is available",
+        "docs": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+        "reachable": true,
+        "token": "Set-CsTeamsMeetingPolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

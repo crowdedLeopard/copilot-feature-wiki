@@ -92,15 +92,17 @@ changes:
     note: "Corrected the Before rollout checklist (font files in the brand center app, font packages via Get-SPOFontPackage; dropped the Public CDN check) and set the licence model to included, citing the SharePoint service description."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 55 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 56 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 55
-  confirmed: 53
+  claims: 56
+  confirmed: 54
   unconfirmed: 1
   contradicted: 1
   attempts: 0
@@ -198,10 +200,10 @@ cost: Low. The only cost the sources show is administrator time; no licence or m
 impact: Low. Administrators and brand managers use it; readers of pages that use a deleted font would see the Microsoft-defined fallback font.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Governance guidance: After rollout / behaviour: Viva Connections experiences using the deleted font now show the Microsoft-defined fallback font. | Found: Searched: Viva Connections removed font fallback Remove-SPOFontFile. Read Remove-SPOFontFile, Brand Fonts and Font packages; they establish page fallback and Viva font usage, but do not explicitly state the deletion fallback for Viva Connections experiences. | Fix: Replace the first After rollout bullet with 'Review sites that used the deleted font, whose pages now show the Microsoft-defined fallback font.' The page fallback is documented at https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/remove-spofontfile?view=sharepoint-ps.
+- [unsupported, major] Governance guidance: After rollout / behaviour: Viva Connections experiences that used the deleted font now show the Microsoft-defined fallback font. | Found: Searched: Viva Connections removed font file Microsoft-defined fallback Remove-SPOFontFile. Read Remove-SPOFontFile, Brand Fonts and Font packages; they document SharePoint page fallback and Viva font usage, but not this fallback for Viva Connections experiences. | Fix: Replace the first After rollout bullet with 'Review sites that used the deleted font, whose pages now show the Microsoft-defined fallback font.' This page fallback is documented at https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/remove-spofontfile?view=sharepoint-ps.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout and After rollout / consistency: The checklist names package inspection and editing operations that have no corresponding controls-table row. | Found: Checklist: "inspect custom font packages with Get-SPOFontPackage"; "Remove or edit font packages". Table: file deletion, file Visible and package removal only. | Fix: Remove 'and inspect custom font packages with `Get-SPOFontPackage`' from the Before rollout bullet, and change 'Remove or edit font packages' to 'Remove font packages' in the After rollout bullet; these checklist operations have no table row. Do not add rows.
+- [contradicted, minor] Governance guidance: Before rollout and After rollout / consistency: The governance checklist names package inspection and editing controls that have no controls-table row. | Found: Checklist: 'inspect custom font packages with Get-SPOFontPackage'; 'Remove or edit font packages'. Table: font-file deletion, font-file Visible and font-package removal only. | Fix: Remove 'and inspect custom font packages with `Get-SPOFontPackage`' from the Before rollout bullet and replace 'Remove or edit font packages' with 'Remove font packages' in the After rollout bullet. Do not add rows.
 -->

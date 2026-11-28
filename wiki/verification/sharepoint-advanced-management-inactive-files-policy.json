@@ -3,7 +3,7 @@
   "roadmapId": 573699,
   "title": "SharePoint: automatically archive inactive files with an Advanced Management policy",
   "status": "verified",
-  "date": "2026-11-21",
+  "date": "2026-11-28",
   "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
@@ -14,15 +14,15 @@
   "notes": [],
   "hold": null,
   "counts": {
-    "claims": 118,
-    "confirmed": 118,
+    "claims": 124,
+    "confirmed": 124,
     "unconfirmed": 0,
     "contradicted": 0,
     "blocker": 0,
     "major": 0,
     "minor": 0
   },
-  "summary": "The briefing passes: the preview controls, licensing prerequisites and storage billing statements are supported by Microsoft documentation. It correctly reports the conflicting default thresholds and OneDrive scope descriptions rather than assuming either is settled.",
+  "summary": "The briefing's controls, opt-in default and licensing and billing statements are supported by Microsoft documentation. It correctly reports the roadmap targets and flags the documented differences in default thresholds and OneDrive scope.",
   "claims": [
     {
       "n": 1,
@@ -31,12 +31,45 @@
       "claim": "The roadmap status is In development.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"status\": \"In development\"",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The release phases are General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: clouds; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The roadmap lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The general availability target is December CY2026.",
@@ -47,7 +80,7 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 6,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
       "claim": "The preview target is October CY2026.",
@@ -58,43 +91,10 @@
       "fix": null
     },
     {
-      "n": 4,
-      "where": "front matter: releasePhase",
-      "type": "record",
-      "claim": "The listed release phases are General Availability and Preview.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [ \"General Availability\", \"Preview\" ]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "front matter: clouds; Scope",
-      "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [ \"Worldwide (Standard Multi-Tenant)\" ]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "front matter: platforms; Scope",
-      "type": "record",
-      "claim": "The roadmap lists the Web platform.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [ \"Web\" ]",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 7,
-      "where": "title; summary; What's changing; Scope",
+      "where": "front matter: products; Scope",
       "type": "record",
-      "claim": "SharePoint administrators can use an Advanced Management inactive files policy to automatically archive files by last access.",
+      "claim": "The feature concerns SharePoint and targets SharePoint administrators.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "SharePoint administrators can use the Inactive files policy in SharePoint Advanced Management to automatically archive files based on when they were last accessed.",
@@ -103,7 +103,172 @@
     },
     {
       "n": 8,
-      "where": "What's changing",
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-10-05T23:03:05.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-05T23:03:05\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The policy is admin-opt-in and does not archive anything until an administrator creates and activates it outside simulation mode.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/new-spofilearchivepolicy?view=sharepoint-ps",
+      "quote": "The policy is created in an Inactive state and must be activated using `Set-SPOFileArchivePolicy` with `-State Active` before it takes effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is mixed, combining a SharePoint Advanced Management entitlement with Archive billing prerequisites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
+      "quote": "Your tenant has the required SharePoint Advanced Management entitlement. ... Your tenant meets the applicable Microsoft 365 Archive service and billing prerequisites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "Cost is variable because Archive storage is metered.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/archive/archive-pricing?view=o365-worldwide",
+      "quote": "Storage consumption is charged at a per-GB monthly rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "controls[0].api; Governance controls",
+      "type": "command",
+      "claim": "New-SPOFileArchivePolicy -PolicyType SelectedSites -LastAccessDateCriteria 12 creates a selected-sites policy with a 12-month inactivity criterion.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/new-spofilearchivepolicy?view=sharepoint-ps",
+      "quote": "New-SPOFileArchivePolicy -PolicyType \"SelectedSites\" -Name \"ArchiveMarketing\" -LastAccessDateCriteria 12",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[1].api; Governance guidance; Governance controls",
+      "type": "command",
+      "claim": "Set-SPOFileArchivePolicy -PolicyId <policy GUID> -State Active activates the identified policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spofilearchivepolicy?view=sharepoint-ps",
+      "quote": "Set-SPOFileArchivePolicy -PolicyId \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\" -State \"Active\"\nActivates the specified file archive policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[2].api; Governance guidance; Governance controls",
+      "type": "command",
+      "claim": "Set-SPOFileArchivePolicy -PolicyId <policy GUID> -IsWhatIfMode $false selects enforcement for the identified policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spofilearchivepolicy?view=sharepoint-ps",
+      "quote": "-PolicyId <Guid> ... [-IsWhatIfMode <Boolean>]\nWhen set to `$false`, the policy archives files normally when active.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[3].api; Governance guidance; Governance controls",
+      "type": "command",
+      "claim": "Add-SPOSiteToFileArchivePolicy -PolicyId <policy GUID> -Site <site URL> -Exclude adds a site exclusion to the identified policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/add-spositetofilearchivepolicy?view=sharepoint-ps",
+      "quote": "Add-SPOSiteToFileArchivePolicy\n    -PolicyId <Guid>\n    -Site <SpoSitePipeBind>\n    [-Exclude]\nAdds the site as an exclusion instead of an inclusion, exempting it from the policy when the policy runs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[4].api; Governance guidance; Governance controls",
+      "type": "command",
+      "claim": "Get-SPOFileArchivePolicyReport -PolicyId <policy GUID> retrieves run reports for the identified policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/get-spofilearchivepolicyreport?view=sharepoint-ps",
+      "quote": "Get-SPOFileArchivePolicyReport\n    -PolicyId <Guid>\nThis cmdlet retrieves the run reports for a file archive policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[0].ui; Governance controls",
+      "type": "absence",
+      "claim": "No admin UI for the policy's inactivity threshold, scope and file types is documented for the current preview.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"inactive files policy\" \"admin center\" threshold activation simulation exclusions reports; SharePoint inactive files policy PowerShell admin UI last access licensing preview. Opened manage-inactive-files and New-SPOFileArchivePolicy; preview management is PowerShell-only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[1].ui; Governance controls",
+      "type": "absence",
+      "claim": "No admin UI for starting or stopping an inactive files policy is documented for the current preview.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"inactive files policy\" \"admin center\" threshold activation simulation exclusions reports; SharePoint inactive files policy PowerShell admin UI last access licensing preview. Opened manage-inactive-files and Set-SPOFileArchivePolicy; preview management is PowerShell-only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[2].ui; Governance controls",
+      "type": "absence",
+      "claim": "No admin UI for choosing simulation or enforcement is documented for the current preview.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"inactive files policy\" \"admin center\" threshold activation simulation exclusions reports; SharePoint inactive files policy PowerShell admin UI last access licensing preview. Opened manage-inactive-files and Set-SPOFileArchivePolicy; preview management is PowerShell-only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[3].ui; Governance controls",
+      "type": "absence",
+      "claim": "No admin UI for site inclusions and exclusions is documented for the current preview.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"inactive files policy\" \"admin center\" threshold activation simulation exclusions reports; SharePoint inactive files policy PowerShell admin UI last access licensing preview. Opened manage-inactive-files and Add-SPOSiteToFileArchivePolicy; preview management is PowerShell-only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[4].ui; Governance controls",
+      "type": "absence",
+      "claim": "No admin UI for reviewing inactive files policy run reports is documented for the current preview.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"inactive files policy\" \"admin center\" threshold activation simulation exclusions reports; SharePoint inactive files policy PowerShell admin UI last access licensing preview. Opened manage-inactive-files and Get-SPOFileArchivePolicyReport; preview management is PowerShell-only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "title; summary; What's changing",
+      "type": "behaviour",
+      "claim": "SharePoint Advanced Management's inactive files policy automatically archives eligible SharePoint files based on last access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
+      "quote": "Inactive files policies in SharePoint Advanced Management help administrators automatically archive eligible SharePoint files based on when they were last accessed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "summary; What's changing",
       "type": "behaviour",
       "claim": "Microsoft 365 Archive provides the cold-storage tier.",
       "status": "supported",
@@ -113,7 +278,7 @@
       "fix": null
     },
     {
-      "n": 9,
+      "n": 24,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "Microsoft 365 Archive provides the file reactivation experience.",
@@ -124,10 +289,10 @@
       "fix": null
     },
     {
-      "n": 10,
-      "where": "What's changing",
+      "n": 25,
+      "where": "What's changing; Why it matters",
       "type": "behaviour",
-      "claim": "The SAM policy supplies the rules and automation that select eligible files.",
+      "claim": "SAM policies provide the rules and automation that select files rather than requiring individual manual selections.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
       "quote": "SharePoint Advanced Management policies provide the rules and automation that select eligible files for archiving.",
@@ -135,10 +300,10 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 26,
       "where": "What's changing",
       "type": "record",
-      "claim": "Archived files remain in place.",
+      "claim": "Per the roadmap, archived files remain in place.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Eligible files move to the Microsoft 365 Archive cold-storage tier while remaining in place",
@@ -146,10 +311,10 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 27,
       "where": "What's changing",
       "type": "record",
-      "claim": "Archived files retain metadata.",
+      "claim": "Per the roadmap, archived files retain their metadata.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "retaining their metadata, permissions, compliance, and searchability",
@@ -157,10 +322,10 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 28,
       "where": "What's changing",
       "type": "record",
-      "claim": "Archived files retain permissions.",
+      "claim": "Per the roadmap, archived files retain their permissions.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "retaining their metadata, permissions, compliance, and searchability",
@@ -168,10 +333,10 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 29,
       "where": "What's changing",
       "type": "record",
-      "claim": "Archived files retain compliance.",
+      "claim": "Per the roadmap, archived files retain compliance.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "retaining their metadata, permissions, compliance, and searchability",
@@ -179,10 +344,10 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 30,
       "where": "What's changing",
       "type": "record",
-      "claim": "Archived files retain searchability.",
+      "claim": "Per the roadmap, archived files retain searchability.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "retaining their metadata, permissions, compliance, and searchability",
@@ -190,10 +355,10 @@
       "fix": null
     },
     {
-      "n": 16,
-      "where": "summary; What's changing; controls[0].note",
+      "n": 31,
+      "where": "summary; controls[0].note; What's changing",
       "type": "behaviour",
-      "claim": "The inactivity threshold accepts 6 through 48 months.",
+      "claim": "The inactivity threshold accepts 6 to 48 months.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/new-spofilearchivepolicy?view=sharepoint-ps",
       "quote": "Specifies the number of months since a file was last accessed before it becomes eligible for archiving. Valid values range from 6 to 48.",
@@ -201,21 +366,10 @@
       "fix": null
     },
     {
-      "n": 17,
-      "where": "What's changing; Why it matters; Governance guidance",
+      "n": 32,
+      "where": "What's changing; controls[0].api",
       "type": "behaviour",
-      "claim": "AllSites applies broadly to eligible SharePoint sites except explicit exclusions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
-      "quote": "AllSites | Applies broadly to eligible SharePoint sites, except sites that you explicitly exclude.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "What's changing; Governance guidance",
-      "type": "behaviour",
-      "claim": "SelectedSites applies only to explicitly included SharePoint sites.",
+      "claim": "SelectedSites policies apply to explicitly included sites.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
       "quote": "SelectedSites | Applies only to the SharePoint sites that you explicitly add.",
@@ -223,62 +377,62 @@
       "fix": null
     },
     {
-      "n": 19,
-      "where": "What's changing; controls[0].note",
-      "type": "command",
-      "claim": "FileTypeCriteria filters eligible files by included extensions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/new-spofilearchivepolicy?view=sharepoint-ps",
-      "quote": "Specifies an array of file extensions to include in the policy, in dot-prefixed format (for example, .docx). Only files matching the specified extensions are considered for archiving.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "What's changing; controls[0].note",
-      "type": "command",
-      "claim": "FileTypeExclusionCriteria excludes files by extension.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/new-spofilearchivepolicy?view=sharepoint-ps",
-      "quote": "Specifies an array of file extensions to exclude from the policy, in dot-prefixed format (for example, .docx). Files matching the specified extensions aren't archived.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "What's changing; Governance guidance; controls[2].note",
+      "n": 33,
+      "where": "What's changing; Why it matters",
       "type": "behaviour",
-      "claim": "IsWhatIfMode true evaluates and reports eligible files without archiving them.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spofilearchivepolicy?view=sharepoint-ps",
-      "quote": "When set to $true, the policy will evaluate which files meet the archiving criteria and report the results, but will not actually archive any files.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "What's changing; controls[0].note; rationale: risk",
-      "type": "default",
-      "claim": "Creating a policy leaves it Inactive.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/new-spofilearchivepolicy?view=sharepoint-ps",
-      "quote": "The policy is created in an Inactive state and must be activated using Set-SPOFileArchivePolicy with -State Active before it takes effect.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "What's changing; Governance guidance; rationale: risk",
-      "type": "behaviour",
-      "claim": "Activating a policy in simulation mode does not enable enforcement.",
+      "claim": "AllSites policies apply broadly to eligible SharePoint sites except explicit exclusions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
-      "quote": "Creating a policy doesn't activate it. Likewise, activating a policy in simulation mode doesn't enable enforcement.",
+      "quote": "AllSites | Applies broadly to eligible SharePoint sites, except sites that you explicitly exclude.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 24,
+      "n": 34,
+      "where": "controls[0].note; What's changing; Governance controls",
+      "type": "command",
+      "claim": "-FileTypeCriteria filters included file extensions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/new-spofilearchivepolicy?view=sharepoint-ps",
+      "quote": "-FileTypeCriteria\nSpecifies an array of file extensions to include in the policy, in dot-prefixed format (for example, `.docx`).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[0].note; What's changing; Governance controls",
+      "type": "command",
+      "claim": "-FileTypeExclusionCriteria filters excluded file extensions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/new-spofilearchivepolicy?view=sharepoint-ps",
+      "quote": "-FileTypeExclusionCriteria\nSpecifies an array of file extensions to exclude from the policy, in dot-prefixed format (for example, `.docx`).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[0].note; What's changing; Governance guidance; rationale: risk",
+      "type": "default",
+      "claim": "Creating a policy leaves it Inactive rather than activating it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/new-spofilearchivepolicy?view=sharepoint-ps",
+      "quote": "The policy is created in an Inactive state and must be activated using `Set-SPOFileArchivePolicy` with `-State Active` before it takes effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[2].note; What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "An active policy with IsWhatIfMode $true evaluates and reports without archiving.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
+      "quote": "Active | `$true` | Evaluate and report without archiving files.\nLikewise, activating a policy in simulation mode doesn't enable enforcement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "Last access date is the recorded date a human last accessed the file.",
@@ -289,7 +443,7 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 39,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "AI agent access does not update last access date.",
@@ -300,7 +454,7 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 40,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "Application access does not update last access date.",
@@ -311,7 +465,7 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 41,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "Script access does not update last access date.",
@@ -322,7 +476,7 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 42,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "System access does not update last access date.",
@@ -333,18 +487,7 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "What's changing; Scope; Governance controls; controls[].note",
-      "type": "availability",
-      "claim": "The feature and its policy cmdlets are documented as preview.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/new-spofilearchivepolicy?view=sharepoint-ps",
-      "quote": "This cmdlet is part of the file archive policies feature which is currently in preview.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
+      "n": 43,
       "where": "What's changing",
       "type": "date",
       "claim": "Learn says public preview is planned for October 2026.",
@@ -355,21 +498,21 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 44,
       "where": "What's changing",
       "type": "date",
       "claim": "Learn says general availability is planned by the end of 2026.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
-      "quote": "General availability is planned by the end of 2026. These dates are targets and may change.",
+      "quote": "General availability is planned by the end of 2026.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 32,
+      "n": 45,
       "where": "What's changing",
       "type": "date",
-      "claim": "Learn describes its availability dates as targets that may change.",
+      "claim": "The Learn availability dates are targets that may change.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
       "quote": "These dates are targets and may change.",
@@ -377,18 +520,18 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "summary; What's changing; Governance controls",
+      "n": 46,
+      "where": "summary; controls[].note; What's changing; Governance controls",
       "type": "availability",
-      "claim": "The current preview is available only through PowerShell.",
+      "claim": "The feature is in preview and its current management experience is PowerShell-only.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
-      "quote": "The current preview is available only through PowerShell.",
+      "quote": "Manage inactive files policy with SharePoint Advanced Management (preview)\nThe current preview is available only through PowerShell.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 34,
+      "n": 47,
       "where": "What's changing; Governance controls; Open questions",
       "type": "availability",
       "claim": "SharePoint Admin Agent support is planned before general availability.",
@@ -399,29 +542,29 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 48,
       "where": "Why it matters",
       "type": "cost",
-      "claim": "Archive storage is a cheaper tier than active storage.",
+      "claim": "Archive provides a cheaper tier for inactive content.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/archive/archive-faq?view=o365-worldwide",
-      "quote": "Storage for archived sites is metered and charged at a $0.05/GB/month rate vs. the normal standard storage rate of $0.20/GB/month.",
+      "source": "https://learn.microsoft.com/microsoft-365/archive/archive-overview?view=o365-worldwide",
+      "quote": "Cost savings - A lower list price on storage consumption beyond your license-allocated Microsoft 365 storage quota.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 36,
+      "n": 49,
       "where": "Why it matters; Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "Archived content is not used by Microsoft Copilot.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/archive-faq?view=o365-worldwide",
-      "quote": "Does archived content get returned in Microsoft Copilot queries? No, archived content isn't used by Microsoft Copilot.",
+      "quote": "Does archived content get returned in Microsoft Copilot queries?\nNo, archived content isn't used by Microsoft Copilot.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 37,
+      "n": 50,
       "where": "Risk assessment: Data exposure; rationale: impact",
       "type": "behaviour",
       "claim": "Archived content is not directly accessible until reactivated.",
@@ -432,10 +575,10 @@
       "fix": null
     },
     {
-      "n": 38,
+      "n": 51,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Full content search continues to work for Purview Content Search.",
+      "claim": "Full content search still works for Purview Content Search.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/archive-overview?view=o365-worldwide",
       "quote": "Full content search works for Purview Content Search, end-user search, and eDiscovery search experiences.",
@@ -443,10 +586,10 @@
       "fix": null
     },
     {
-      "n": 39,
+      "n": 52,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Full content search continues to work for end-user search.",
+      "claim": "Full content search still works for end-user search.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/archive-overview?view=o365-worldwide",
       "quote": "Full content search works for Purview Content Search, end-user search, and eDiscovery search experiences.",
@@ -454,10 +597,10 @@
       "fix": null
     },
     {
-      "n": 40,
+      "n": 53,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Full content search continues to work for eDiscovery.",
+      "claim": "Full content search still works for eDiscovery.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/archive-overview?view=o365-worldwide",
       "quote": "Full content search works for Purview Content Search, end-user search, and eDiscovery search experiences.",
@@ -465,10 +608,10 @@
       "fix": null
     },
     {
-      "n": 41,
+      "n": 54,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Archiving changes storage and access state rather than replacing retention requirements.",
+      "claim": "Archiving changes storage and access state but does not replace retention requirements.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
       "quote": "Archiving changes the file's storage and access state; it doesn't replace retention requirements.",
@@ -476,10 +619,10 @@
       "fix": null
     },
     {
-      "n": 42,
+      "n": 55,
       "where": "Risk assessment: Security & identity; Scope; Governance guidance",
       "type": "role",
-      "claim": "Policy configuration requires the SharePoint Administrator or Global Administrator role.",
+      "claim": "Policy configuration requires a SharePoint Administrator or Global Administrator account.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
       "quote": "Your administrator account has the SharePoint Administrator or Global Administrator role.",
@@ -487,21 +630,21 @@
       "fix": null
     },
     {
-      "n": 43,
+      "n": 56,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "The Microsoft 365 audit log records an Archived file activity named FileArchived.",
+      "claim": "The Microsoft 365 audit log records Archived file (FileArchived) activity.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
-      "quote": "Use the Microsoft 365 audit log to investigate file archive activity. The Archived file (FileArchived) activity distinguishes user and system actions.",
+      "quote": "Use the Microsoft 365 audit log to investigate file archive activity.\nThe Archived file (FileArchived) activity distinguishes user and system actions.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 44,
+      "n": 57,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "FileArchived distinguishes user and system actions.",
+      "claim": "FileArchived activity distinguishes user and system actions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
       "quote": "The Archived file (FileArchived) activity distinguishes user and system actions.",
@@ -509,10 +652,10 @@
       "fix": null
     },
     {
-      "n": 45,
+      "n": 58,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Automatic policy archive events include the policy ID.",
+      "claim": "Automatic policy archive audit events include the policy ID.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
       "quote": "Automatic policy archive events include the policy ID, policy version, and file's last access date.",
@@ -520,10 +663,10 @@
       "fix": null
     },
     {
-      "n": 46,
+      "n": 59,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Automatic policy archive events include the policy version.",
+      "claim": "Automatic policy archive audit events include the policy version.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
       "quote": "Automatic policy archive events include the policy ID, policy version, and file's last access date.",
@@ -531,10 +674,10 @@
       "fix": null
     },
     {
-      "n": 47,
+      "n": 60,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Automatic policy archive events include the file's last access date.",
+      "claim": "Automatic policy archive audit events include the file's last access date.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
       "quote": "Automatic policy archive events include the policy ID, policy version, and file's last access date.",
@@ -542,21 +685,21 @@
       "fix": null
     },
     {
-      "n": 48,
-      "where": "Risk assessment: Autonomy & actions; controls[2].note; rationale: risk",
+      "n": 61,
+      "where": "controls[2].note; Risk assessment: Autonomy & actions; rationale: risk",
       "type": "behaviour",
-      "claim": "An active policy with simulation disabled automatically archives qualifying files when processed.",
+      "claim": "An active policy outside simulation archives qualifying files when it processes them without per-file approval.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
-      "quote": "Active | $false | Archive files that qualify when the policy processes them.",
+      "quote": "Active | `$false` | Archive files that qualify when the policy processes them.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 49,
+      "n": 62,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Recorded last access date updates can lag human access by up to 30 days.",
+      "claim": "Last access date updates can lag human access by up to 30 days.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
       "quote": "Last access date updates can take up to 30 days.",
@@ -564,7 +707,7 @@
       "fix": null
     },
     {
-      "n": 50,
+      "n": 63,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
       "claim": "A recently accessed file can still qualify during the last access date update delay.",
@@ -575,10 +718,10 @@
       "fix": null
     },
     {
-      "n": 51,
+      "n": 64,
       "where": "Why it matters; Risk assessment: Autonomy & actions; Governance guidance",
-      "type": "date",
-      "claim": "Human access before July 2025 may not have been captured.",
+      "type": "behaviour",
+      "claim": "Human access before July 2025 may not have been captured, making a file appear inactive for longer than it was.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
       "quote": "Human access before July 2025 might not have been captured, so a recorded LAD can make a file look inactive longer than it really was.",
@@ -586,7 +729,7 @@
       "fix": null
     },
     {
-      "n": 52,
+      "n": 65,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
       "claim": "Policies still use last access dates older than July 2025.",
@@ -597,10 +740,10 @@
       "fix": null
     },
     {
-      "n": 53,
+      "n": 66,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Simulation results are estimates.",
+      "claim": "Simulation results are estimates rather than guarantees.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
       "quote": "Simulation results are estimates, not a guarantee of the files or storage that will ultimately be archived.",
@@ -608,10 +751,10 @@
       "fix": null
     },
     {
-      "n": 54,
+      "n": 67,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Enforcement need not archive exactly the files evaluated by simulation.",
+      "claim": "Enforcement need not archive exactly the files evaluated during simulation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
       "quote": "Don't assume that an enforcement policy archives precisely the same set of files that the simulation evaluated.",
@@ -619,7 +762,7 @@
       "fix": null
     },
     {
-      "n": 55,
+      "n": 68,
       "where": "Risk assessment: Change & support",
       "type": "availability",
       "claim": "Word for the web does not yet support file-level archive.",
@@ -630,7 +773,7 @@
       "fix": null
     },
     {
-      "n": 56,
+      "n": 69,
       "where": "Risk assessment: Change & support",
       "type": "availability",
       "claim": "PowerPoint for the web does not yet support file-level archive.",
@@ -641,54 +784,54 @@
       "fix": null
     },
     {
-      "n": 57,
+      "n": 70,
       "where": "Risk assessment: Change & support",
       "type": "availability",
-      "claim": "The Teams mobile application does not yet support file-level archive.",
+      "claim": "The Teams mobile app does not yet support file-level archive.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/archive-overview?view=o365-worldwide",
-      "quote": "Teams, OneDrive, and SharePoint mobile applications.",
+      "quote": "Some Microsoft 365 applications and services don't yet support file-level archiving. ... Teams, OneDrive, and SharePoint mobile applications.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 58,
+      "n": 71,
       "where": "Risk assessment: Change & support",
       "type": "availability",
-      "claim": "The OneDrive mobile application does not yet support file-level archive.",
+      "claim": "The OneDrive mobile app does not yet support file-level archive.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/archive-overview?view=o365-worldwide",
-      "quote": "Teams, OneDrive, and SharePoint mobile applications.",
+      "quote": "Some Microsoft 365 applications and services don't yet support file-level archiving. ... Teams, OneDrive, and SharePoint mobile applications.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 59,
+      "n": 72,
       "where": "Risk assessment: Change & support",
       "type": "availability",
-      "claim": "The SharePoint mobile application does not yet support file-level archive.",
+      "claim": "The SharePoint mobile app does not yet support file-level archive.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/archive-overview?view=o365-worldwide",
-      "quote": "Teams, OneDrive, and SharePoint mobile applications.",
+      "quote": "Some Microsoft 365 applications and services don't yet support file-level archiving. ... Teams, OneDrive, and SharePoint mobile applications.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 60,
+      "n": 73,
       "where": "Risk assessment: Change & support",
       "type": "availability",
       "claim": "The OneDrive sync client on macOS does not yet support file-level archive.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/archive-overview?view=o365-worldwide",
-      "quote": "macOS with the OneDrive sync client.",
+      "quote": "Some Microsoft 365 applications and services don't yet support file-level archiving. ... macOS with the OneDrive sync client.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 61,
-      "where": "Risk assessment: Change & support; Why it matters; Cost and licensing",
+      "n": 74,
+      "where": "Why it matters; Risk assessment: Change & support; Cost and licensing",
       "type": "behaviour",
-      "claim": "Unsupported applications may show errors or fail to open archived files.",
+      "claim": "Users may encounter errors when opening archived content in unsupported apps.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/archive-overview?view=o365-worldwide",
       "quote": "These applications might display incorrect error messages, fail to load correctly, or fail actions taken with archived content.",
@@ -696,7 +839,7 @@
       "fix": null
     },
     {
-      "n": 62,
+      "n": 75,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
       "claim": "Reactivated files cannot be archived again for 120 days.",
@@ -707,10 +850,21 @@
       "fix": null
     },
     {
-      "n": 63,
-      "where": "Risk assessment: Change & support; Governance guidance; controls[1].note",
+      "n": 76,
+      "where": "controls[1].note; Governance guidance; Governance controls",
+      "type": "command",
+      "claim": "Setting -State Inactive stops the policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
+      "quote": "To make a policy inactive:\nSet-SPOFileArchivePolicy -PolicyId $policyId -State \"Inactive\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "controls[1].note; Risk assessment: Change & support; Governance guidance",
       "type": "behaviour",
-      "claim": "Stopping a policy does not reactivate files already archived.",
+      "claim": "Stopping a policy leaves previously archived files archived until reactivated.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
       "quote": "Stopping a policy doesn't reactivate files it already archived. Reactivate those files when you need to access them.",
@@ -718,10 +872,21 @@
       "fix": null
     },
     {
-      "n": 64,
+      "n": 78,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "A site exclusion affects future processing by that policy and does not reactivate already archived files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
+      "quote": "A site exclusion affects future processing by that policy. It doesn't reactivate files already archived, reverse previous policy actions, or exempt the site from another archive policy or manual archiving method.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
       "where": "Risk assessment: Change & support; Governance controls",
       "type": "applicability",
-      "claim": "A site exclusion does not exempt a site from another archive policy.",
+      "claim": "Excluding a site from one policy does not exempt it from another archive policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
       "quote": "It doesn't reactivate files already archived, reverse previous policy actions, or exempt the site from another archive policy or manual archiving method.",
@@ -729,10 +894,10 @@
       "fix": null
     },
     {
-      "n": 65,
+      "n": 80,
       "where": "Risk assessment: Change & support; Governance controls",
       "type": "applicability",
-      "claim": "A site exclusion does not exempt a site from manual archiving.",
+      "claim": "Excluding a site from a policy does not exempt it from manual archiving.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
       "quote": "It doesn't reactivate files already archived, reverse previous policy actions, or exempt the site from another archive policy or manual archiving method.",
@@ -740,10 +905,10 @@
       "fix": null
     },
     {
-      "n": 66,
+      "n": 81,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Running multiple AllSites policies concurrently slows overall processing.",
+      "claim": "Running multiple AllSites policies simultaneously slows overall processing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
       "quote": "Running multiple AllSites policies at the same time slows overall processing, because the policies compete for system resources.",
@@ -751,10 +916,10 @@
       "fix": null
     },
     {
-      "n": 67,
-      "where": "licensing.notes; Cost and licensing; Governance guidance; rationale: cost",
+      "n": 82,
+      "where": "front matter: licensing.notes; Cost and licensing; Governance guidance; rationale: cost",
       "type": "licensing",
-      "claim": "The policy requires a SharePoint Advanced Management entitlement.",
+      "claim": "The feature requires SharePoint Advanced Management entitlement.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
       "quote": "Your tenant has the required SharePoint Advanced Management entitlement.",
@@ -762,8 +927,8 @@
       "fix": null
     },
     {
-      "n": 68,
-      "where": "Cost and licensing; Scope",
+      "n": 83,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope",
       "type": "licensing",
       "claim": "The tenant must meet Microsoft 365 Archive service and billing prerequisites.",
       "status": "supported",
@@ -773,21 +938,21 @@
       "fix": null
     },
     {
-      "n": 69,
+      "n": 84,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "SAM prerequisites include a Microsoft 365 or Office 365 base subscription.",
+      "claim": "The SAM prerequisites page requires a Microsoft 365 or Office 365 base subscription.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/sharepoint-advanced-management-prerequisites",
-      "quote": "Your organization must have one of the following base licenses: Office 365 E3, E5, or A5; Microsoft 365 E1, E3, E5, or A5; Microsoft 365 GCC, GCC-High, or DoD",
+      "quote": "Your organization must have one of the following base licenses:\nOffice 365 E3, E5, or A5\nMicrosoft 365 E1, E3, E5, or A5\nMicrosoft 365 GCC, GCC-High, or DoD",
       "severity": null,
       "fix": null
     },
     {
-      "n": 70,
+      "n": 85,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "One general SAM entitlement route is at least one user assigned a Microsoft Copilot licence.",
+      "claim": "The SAM prerequisites page lists at least one user assigned a Microsoft Copilot licence as an entitlement route.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/sharepoint-advanced-management-prerequisites",
       "quote": "At least one user in your organization is assigned a Microsoft Copilot license. (The user doesn't need to be a SharePoint administrator.)",
@@ -795,10 +960,10 @@
       "fix": null
     },
     {
-      "n": 71,
+      "n": 86,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Another general SAM entitlement route is the Plan 1 add-on with a subscription including SharePoint K, P1 or P2.",
+      "claim": "The SAM prerequisites page lists the SharePoint Advanced Management Plan 1 add-on with SharePoint K, P1 or P2 as an entitlement route.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/sharepoint-advanced-management-prerequisites",
       "quote": "Your subscription includes SharePoint K, P1, or P2, and your organization purchases the SharePoint Advanced Management Plan 1 add-on.",
@@ -806,10 +971,10 @@
       "fix": null
     },
     {
-      "n": 72,
+      "n": 87,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Microsoft 365 E7 is another listed general SAM entitlement route.",
+      "claim": "The SAM prerequisites page lists Microsoft 365 E7 as an entitlement route.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/sharepoint-advanced-management-prerequisites",
       "quote": "Your organization has Microsoft 365 E7, also known as The Frontier Suite.",
@@ -817,21 +982,21 @@
       "fix": null
     },
     {
-      "n": 73,
+      "n": 88,
       "where": "Cost and licensing; Open questions",
       "type": "absence",
-      "claim": "The cited SAM features-in-Copilot table does not list the inactive files policy.",
+      "claim": "The Copilot-licence SAM feature table does not list the inactive files policy.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: SharePoint Advanced Management inactive files policy licensing entitlement Copilot Plan 1 prerequisites; opened sharepoint-advanced-management-features-copilot-license and read its full table, which lists inactive site policies but no inactive files policy.",
+      "quote": "Searched: SharePoint inactive files policy PowerShell admin UI last access licensing preview. Opened the SAM prerequisites page and read the entire SharePoint Advanced Management features in Microsoft Copilot licenses table; inactive files policy is not listed.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 74,
-      "where": "summary; licensing.notes; Cost and licensing; rationale: cost",
+      "n": 89,
+      "where": "summary; front matter: licensing.notes; Cost and licensing; Scope",
       "type": "cost",
-      "claim": "Microsoft 365 Archive uses pay-as-you-go billing.",
+      "claim": "Microsoft 365 Archive follows a pay-as-you-go billing model.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/archive-setup?view=o365-worldwide",
       "quote": "Microsoft 365 Archive follows a pay-as-you-go model, and is configured through the Microsoft 365 admin center.",
@@ -839,10 +1004,10 @@
       "fix": null
     },
     {
-      "n": 75,
-      "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "n": 90,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "cost",
-      "claim": "Archive storage consumption is billed per GB per month.",
+      "claim": "Archive storage is billed per GB archived on a monthly basis.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/archive-pricing?view=o365-worldwide",
       "quote": "Storage consumption is charged at a per-GB monthly rate.",
@@ -850,10 +1015,10 @@
       "fix": null
     },
     {
-      "n": 76,
+      "n": 91,
       "where": "Why it matters; Cost and licensing; rationale: cost",
       "type": "cost",
-      "claim": "The storage meter charges only when archived plus active storage exceeds licensed tenant SharePoint storage capacity.",
+      "claim": "Archive storage charges apply only when combined archived and active SharePoint storage exceeds the tenant's included or licensed capacity.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/archive-pricing?view=o365-worldwide",
       "quote": "This meter is charged only when archived storage plus active storage in SharePoint exceeds the included or licensed allocated SharePoint storage capacity limit of the tenant.",
@@ -861,10 +1026,10 @@
       "fix": null
     },
     {
-      "n": 77,
-      "where": "licensing.notes; Cost and licensing",
+      "n": 92,
+      "where": "front matter: licensing.notes; Cost and licensing",
       "type": "cost",
-      "claim": "The pricing page's billing scenarios use $0.05/GB/month.",
+      "claim": "The pricing page's billing examples use $0.05/GB/month.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/archive-pricing?view=o365-worldwide",
       "quote": "Pay at $0.05/GB/month for 200 GB of archive storage.",
@@ -872,10 +1037,10 @@
       "fix": null
     },
     {
-      "n": 78,
+      "n": 93,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "The pricing page points to Pay-as-you-go services and pricing for pricing.",
+      "claim": "The Archive pricing page points to Pay-as-you-go services and pricing for pricing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/archive-pricing?view=o365-worldwide",
       "quote": "To see the pricing for Microsoft 365 Archive, see Pay-as-you-go services and pricing.",
@@ -883,10 +1048,10 @@
       "fix": null
     },
     {
-      "n": 79,
+      "n": 94,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "Monthly archive usage counts archived sites plus archived files in non-archived SharePoint sites.",
+      "claim": "Monthly archive usage includes storage used by archived SharePoint sites.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/archive-pricing?view=o365-worldwide",
       "quote": "Monthly archive storage usage is calculated as the total of two components: (1) the storage used by all archived SharePoint sites, and (2) the storage used by archived files that reside in non-archived SharePoint sites.",
@@ -894,10 +1059,21 @@
       "fix": null
     },
     {
-      "n": 80,
+      "n": 95,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Monthly archive usage also includes archived files in non-archived SharePoint sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/archive/archive-pricing?view=o365-worldwide",
+      "quote": "Monthly archive storage usage is calculated as the total of two components: (1) the storage used by all archived SharePoint sites, and (2) the storage used by archived files that reside in non-archived SharePoint sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 96,
       "where": "Cost and licensing",
       "type": "behaviour",
-      "claim": "Archived content remains archived if Archive is disabled or its billing is unhealthy.",
+      "claim": "Archived content remains archived when Archive is turned off or billing is unhealthy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/archive-pricing?view=o365-worldwide",
       "quote": "If Microsoft 365 Archive is turned off, or if the associated archive billing subscription is unhealthy or turned off, archived content stays archived.",
@@ -905,10 +1081,10 @@
       "fix": null
     },
     {
-      "n": 81,
+      "n": 97,
       "where": "Cost and licensing",
       "type": "behaviour",
-      "claim": "Archived content can still be reactivated when Archive or its billing is unavailable.",
+      "claim": "Archived content can still be reactivated when Archive or billing is unavailable.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/archive-pricing?view=o365-worldwide",
       "quote": "Archived content can still be reactivated.",
@@ -916,7 +1092,7 @@
       "fix": null
     },
     {
-      "n": 82,
+      "n": 98,
       "where": "Cost and licensing",
       "type": "behaviour",
       "claim": "New archive actions are blocked until Archive is enabled and billing is healthy.",
@@ -927,7 +1103,7 @@
       "fix": null
     },
     {
-      "n": 83,
+      "n": 99,
       "where": "Cost and licensing",
       "type": "cost",
       "claim": "Archived content counts as active storage while Archive or billing is unavailable.",
@@ -938,10 +1114,10 @@
       "fix": null
     },
     {
-      "n": 84,
+      "n": 100,
       "where": "Scope; Open questions",
       "type": "availability",
-      "claim": "The feature page says OneDrive sites are not supported in this preview.",
+      "claim": "OneDrive sites are not supported in the policy preview described by the feature page.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
       "quote": "OneDrive sites aren't supported in this preview. Use a SharePoint site for your pilot.",
@@ -949,10 +1125,10 @@
       "fix": null
     },
     {
-      "n": 85,
+      "n": 101,
       "where": "Scope; Open questions",
       "type": "command",
-      "claim": "New-SPOFileArchivePolicy nevertheless lists AllODBSites for OneDrive for Business sites.",
+      "claim": "The New-SPOFileArchivePolicy reference nevertheless lists AllODBSites as a policy type for OneDrive for Business.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/new-spofilearchivepolicy?view=sharepoint-ps",
       "quote": "AllODBSites: The policy applies to all OneDrive for Business sites in the tenant.",
@@ -960,10 +1136,10 @@
       "fix": null
     },
     {
-      "n": 86,
-      "where": "Scope; Governance guidance",
+      "n": 102,
+      "where": "Scope; Governance guidance; controls[].api",
       "type": "behaviour",
-      "claim": "The policy requires Microsoft.Online.SharePoint.PowerShell version 16.0.27709.12000 or later.",
+      "claim": "The required PowerShell module is Microsoft.Online.SharePoint.PowerShell version 16.0.27709.12000 or later.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
       "quote": "You're using Microsoft.Online.SharePoint.PowerShell version 16.0.27709.12000 or later.",
@@ -971,10 +1147,10 @@
       "fix": null
     },
     {
-      "n": 87,
-      "where": "Scope; controls[3].note",
+      "n": 103,
+      "where": "controls[3].note; Scope; Governance controls",
       "type": "behaviour",
-      "claim": "A policy has a maximum of 1,000 associated sites.",
+      "claim": "A policy can hold at most 1,000 associated sites, counting inclusions or exclusions rather than the entire AllSites scope.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
       "quote": "A single policy can contain a maximum of 1,000 associated sites. For SelectedSites policies, those associations are inclusions. For AllSites policies, those associations are exclusions.",
@@ -982,10 +1158,10 @@
       "fix": null
     },
     {
-      "n": 88,
-      "where": "Scope",
+      "n": 104,
+      "where": "Scope; Governance guidance",
       "type": "behaviour",
-      "claim": "An AllSites policy run scans at most 100,000 sites during preview.",
+      "claim": "Each AllSites policy run scans at most 100,000 sites during preview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
       "quote": "Sites scanned per AllSites policy run | 100,000 sites | Hard limit per run",
@@ -993,21 +1169,21 @@
       "fix": null
     },
     {
-      "n": 89,
+      "n": 105,
       "where": "Scope",
       "type": "behaviour",
       "claim": "Remaining AllSites sites are scanned in subsequent monthly runs.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
-      "quote": "The policy continues scanning remaining sites in subsequent monthly runs.",
+      "quote": "The policy continues scanning remaining sites in subsequent monthly runs. Evaluating all eligible sites can therefore require more than one monthly run.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 90,
+      "n": 106,
       "where": "Scope",
       "type": "behaviour",
-      "claim": "Microsoft plans to raise the AllSites scan limit to 1,000,000 sites per run by general availability.",
+      "claim": "Microsoft plans to increase the AllSites scan limit to 1,000,000 sites per run by general availability.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
       "quote": "Microsoft plans to increase the AllSites scan limit to 1,000,000 sites per run by general availability.",
@@ -1015,10 +1191,10 @@
       "fix": null
     },
     {
-      "n": 91,
+      "n": 107,
       "where": "Scope",
       "type": "behaviour",
-      "claim": "Built-in file type exclusions apply regardless of policy file type filters.",
+      "claim": "Built-in file type exclusions apply regardless of the policy's file type filters.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/archive-overview?view=o365-worldwide",
       "quote": "These exclusions apply regardless of the file type filters configured for the policy.",
@@ -1026,7 +1202,7 @@
       "fix": null
     },
     {
-      "n": 92,
+      "n": 108,
       "where": "Scope",
       "type": "behaviour",
       "claim": "OneNote files cannot be archived.",
@@ -1037,7 +1213,7 @@
       "fix": null
     },
     {
-      "n": 93,
+      "n": 109,
       "where": "Scope",
       "type": "behaviour",
       "claim": "SharePoint pages cannot be archived.",
@@ -1048,7 +1224,7 @@
       "fix": null
     },
     {
-      "n": 94,
+      "n": 110,
       "where": "Scope",
       "type": "behaviour",
       "claim": "SharePoint agents cannot be archived.",
@@ -1059,21 +1235,21 @@
       "fix": null
     },
     {
-      "n": 95,
-      "where": "Scope",
-      "type": "licensing",
-      "claim": "Archive must be configured with pay-as-you-go billing in the Microsoft 365 admin center.",
+      "n": 111,
+      "where": "Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "Microsoft 365 Archive must be set up with pay-as-you-go billing in the Microsoft 365 admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/archive-setup?view=o365-worldwide",
-      "quote": "Set up pay-as-you-go billing in the Microsoft 365 admin center. Turn on Microsoft 365 Archive in the Microsoft 365 admin center.",
+      "quote": "Microsoft 365 Archive follows a pay-as-you-go model, and is configured through the Microsoft 365 admin center.\nBefore you can use Microsoft 365 Archive, you must first link your Azure subscription in pay-as-you-go billing.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 96,
-      "where": "Scope; Why it matters; front matter: defaultState; rationale: risk",
+      "n": 112,
+      "where": "Scope: Prerequisites; Why it matters",
       "type": "default",
-      "claim": "The policy is admin-opt-in: enabling Archive alone does not create a policy, and a created policy requires activation.",
+      "claim": "Enabling Archive alone does not create an inactive files policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/archive-setup?view=o365-worldwide",
       "quote": "The current preview requires SharePoint Advanced Management entitlement and PowerShell configuration; enabling Archive alone doesn't create a policy.",
@@ -1081,21 +1257,76 @@
       "fix": null
     },
     {
-      "n": 97,
-      "where": "Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "For more than 100,000 sites, Microsoft directs administrators to create a new matching policy with IsWhatIfMode false for enforcement.",
+      "n": 113,
+      "where": "controls[3].note; Governance guidance; Governance controls",
+      "type": "command",
+      "claim": "-Exclude is valid only for AllSites or AllODBSites policies.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
-      "quote": "If your policy covers more than 100,000 sites, create a new policy with the same criteria, scope, and site inclusions or exclusions when you're ready to archive files. Set IsWhatIfMode to $false on the new policy.",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/add-spositetofilearchivepolicy?view=sharepoint-ps",
+      "quote": "Exclusions are only valid for a policy whose PolicyType is `AllSites` or `AllODBSites`. Adding an exclusion to a `SelectedSites` policy returns an error.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 98,
+      "n": 114,
+      "where": "controls[3].note; Governance guidance; Governance controls",
+      "type": "command",
+      "claim": "Omitting -Exclude adds an inclusion, which is valid only for SelectedSites policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/add-spositetofilearchivepolicy?view=sharepoint-ps",
+      "quote": "By default, the site is added as an inclusion. Inclusions are only valid for a policy whose PolicyType is `SelectedSites`",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 115,
+      "where": "controls[4].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Policy run reports are available for the past 12 months.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/get-spofilearchivepolicyreport?view=sharepoint-ps",
+      "quote": "Reports are kept for the past 12 months and include details about each policy run such as how many sites were processed, how many files were archived, and the total storage archived.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 116,
+      "where": "controls[4].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The report command is read-only and does not change the policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/get-spofilearchivepolicyreport?view=sharepoint-ps",
+      "quote": "This cmdlet retrieves the run reports for a file archive policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 117,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "A SelectedSites policy needs at least one included site before activation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spofilearchivepolicy?view=sharepoint-ps",
+      "quote": "To activate a `SelectedSites` policy, at least one site must have been added as an inclusion using `Add-SPOSiteToFileArchivePolicy` without `-Exclude`. Excluded sites don't satisfy this requirement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 118,
       "where": "Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Switching an existing simulation policy to enforcement resumes processing and might skip sites already evaluated in simulation.",
+      "claim": "For policies covering more than 100,000 sites, Microsoft directs administrators to create a new policy with the same criteria and scope and set IsWhatIfMode $false on that new policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
+      "quote": "If your policy covers more than 100,000 sites, create a new policy with the same criteria, scope, and site inclusions or exclusions when you're ready to archive files. Set `IsWhatIfMode` to `$false` on the new policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 119,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Switching the existing simulation policy to archiving resumes its previous processing position and may skip sites already evaluated in simulation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
       "quote": "Switching the existing simulation policy to archiving resumes from its previous processing position instead of starting over, so sites already evaluated in simulation might be skipped.",
@@ -1103,142 +1334,10 @@
       "fix": null
     },
     {
-      "n": 99,
-      "where": "controls[0].api; Governance controls table; Governance guidance",
-      "type": "command",
-      "claim": "New-SPOFileArchivePolicy -PolicyType SelectedSites -LastAccessDateCriteria 12 creates the scoped policy with a 12-month threshold.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/new-spofilearchivepolicy?view=sharepoint-ps",
-      "quote": "New-SPOFileArchivePolicy -PolicyType \"SelectedSites\" -Name \"ArchiveMarketing\" -LastAccessDateCriteria 12",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 100,
-      "where": "controls[1].api; Governance controls table; Governance guidance",
-      "type": "command",
-      "claim": "Set-SPOFileArchivePolicy -PolicyId <policy GUID> -State Active activates the identified policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spofilearchivepolicy?view=sharepoint-ps",
-      "quote": "Set-SPOFileArchivePolicy -PolicyId \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\" -State \"Active\"\nActivates the specified file archive policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 101,
-      "where": "controls[2].api; Governance controls table; Governance guidance",
-      "type": "command",
-      "claim": "Set-SPOFileArchivePolicy -PolicyId <policy GUID> -IsWhatIfMode $false disables simulation for the identified policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spofilearchivepolicy?view=sharepoint-ps",
-      "quote": "-PolicyId <Guid> ... [-IsWhatIfMode <Boolean>]\nWhen set to $false, the policy archives files normally when active.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 102,
-      "where": "controls[3].api; Governance controls table; Governance guidance",
-      "type": "command",
-      "claim": "Add-SPOSiteToFileArchivePolicy -PolicyId <policy GUID> -Site <site URL> -Exclude adds an exclusion for AllSites or AllODBSites.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/add-spositetofilearchivepolicy?view=sharepoint-ps",
-      "quote": "Add-SPOSiteToFileArchivePolicy -PolicyId <Guid> -Site <SpoSitePipeBind> [-Exclude]\nUse this parameter only with a policy whose PolicyType is AllSites or AllODBSites. Omit it when adding sites to a SelectedSites policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 103,
-      "where": "controls[4].api; controls[4].note; Governance controls table; Governance guidance",
-      "type": "command",
-      "claim": "Get-SPOFileArchivePolicyReport -PolicyId <policy GUID> retrieves read-only reports for the preceding 12 months.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/get-spofilearchivepolicyreport?view=sharepoint-ps",
-      "quote": "Get-SPOFileArchivePolicyReport -PolicyId \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\"\nReturns all run reports for the specified file archive policy from the past 12 months.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 104,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "absence",
-      "claim": "No admin UI for configuring inactive files policy criteria is documented for the current preview.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: SharePoint inactive files policy admin center UI create activate simulation site exclusions reports PowerShell only; opened manage-inactive-files and New-SPOFileArchivePolicy. The feature page states PowerShell is the only supported management experience.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 105,
-      "where": "controls[1].ui; Governance controls table",
-      "type": "absence",
-      "claim": "No admin UI for activating or stopping an inactive files policy is documented for the current preview.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: SharePoint inactive files policy admin center UI create activate simulation site exclusions reports PowerShell only; opened manage-inactive-files and Set-SPOFileArchivePolicy. The feature page states PowerShell is the only supported management experience.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 106,
-      "where": "controls[2].ui; Governance controls table",
-      "type": "absence",
-      "claim": "No admin UI for switching policy simulation and enforcement is documented for the current preview.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: SharePoint inactive files policy admin center UI create activate simulation site exclusions reports PowerShell only; opened manage-inactive-files and Set-SPOFileArchivePolicy. The feature page states PowerShell is the only supported management experience.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 107,
-      "where": "controls[3].ui; Governance controls table",
-      "type": "absence",
-      "claim": "No admin UI for inactive files policy site inclusions or exclusions is documented for the current preview.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: SharePoint inactive files policy admin center UI create activate simulation site exclusions reports PowerShell only; opened manage-inactive-files and Add-SPOSiteToFileArchivePolicy. The feature page states PowerShell is the only supported management experience.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 108,
-      "where": "controls[4].ui; Governance controls table",
-      "type": "absence",
-      "claim": "No admin UI for reviewing inactive files policy run reports is documented for the current preview.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: SharePoint inactive files policy admin center UI create activate simulation site exclusions reports PowerShell only; opened manage-inactive-files and Get-SPOFileArchivePolicyReport. The feature page states PowerShell is the only supported management experience.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 109,
-      "where": "front matter: licensing.model; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "The licensing model is mixed, combining SAM entitlement with metered Microsoft 365 Archive storage.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/archive/archive-setup?view=o365-worldwide",
-      "quote": "Microsoft 365 Archive is billed based on the number of gigabytes (GB) archived. ... The current preview requires SharePoint Advanced Management entitlement and PowerShell configuration",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 110,
-      "where": "Governance controls; controls[3].note",
-      "type": "command",
-      "claim": "A SelectedSites policy requires an included site before activation, and omitting Exclude adds an inclusion only for that policy type.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/add-spositetofilearchivepolicy?view=sharepoint-ps",
-      "quote": "By default, the site is added as an inclusion. Inclusions are only valid for a policy whose PolicyType is SelectedSites, and at least one site must be added before such a policy can be activated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 111,
+      "n": 120,
       "where": "What's changing; Open questions",
       "type": "default",
-      "claim": "The New-SPOFileArchivePolicy reference says the omitted inactivity threshold defaults to 18 months.",
+      "claim": "The New-SPOFileArchivePolicy reference states that an omitted -LastAccessDateCriteria results in an 18-month service threshold.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/new-spofilearchivepolicy?view=sharepoint-ps",
       "quote": "This parameter has no PowerShell-side default. When omitted, the service applies an inactivity threshold of 18 months to the new policy.",
@@ -1246,10 +1345,10 @@
       "fix": null
     },
     {
-      "n": 112,
+      "n": 121,
       "where": "What's changing; Open questions",
       "type": "default",
-      "claim": "The feature page instead says the default inactivity threshold is 24 months.",
+      "claim": "The feature page instead states a 24-month default inactivity threshold.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
       "quote": "The policy commands accept an inactivity threshold from 6 through 48 months. The default is 24 months.",
@@ -1257,32 +1356,10 @@
       "fix": null
     },
     {
-      "n": 113,
+      "n": 122,
       "where": "Governance controls",
       "type": "applicability",
-      "claim": "A site exclusion affects future processing by that policy only.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
-      "quote": "A site exclusion affects future processing by that policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 114,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Excluding a site does not reactivate its already archived files.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
-      "quote": "It doesn't reactivate files already archived, reverse previous policy actions, or exempt the site from another archive policy or manual archiving method.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 115,
-      "where": "Governance controls",
-      "type": "applicability",
-      "claim": "Disabling the user-facing Archive action does not prevent automatic policies from archiving files.",
+      "claim": "Manual file archiving is a separate control, and disabling the user-facing Archive action does not prevent automatic policy archiving.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
       "quote": "Manual file archiving and automatic policy archiving are separate controls. Disabling the user-facing Archive action doesn't prevent automatic policies from archiving files.",
@@ -1290,41 +1367,30 @@
       "fix": null
     },
     {
-      "n": 116,
-      "where": "controls[1].note; Governance controls table; Governance guidance",
-      "type": "command",
-      "claim": "Setting State to Inactive stops the policy.",
+      "n": 123,
+      "where": "Governance controls; controls[].note",
+      "type": "availability",
+      "claim": "The file archive policy cmdlet references mark the feature as currently in preview.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
-      "quote": "To make a policy inactive:\nSet-SPOFileArchivePolicy -PolicyId $policyId -State \"Inactive\"",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/get-spofilearchivepolicyreport?view=sharepoint-ps",
+      "quote": "This cmdlet is part of the file archive policies feature which is currently in preview.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 117,
-      "where": "Governance guidance: At rollout",
-      "type": "command",
-      "claim": "New-SPOFileArchivePolicy can create a SelectedSites pilot with IsWhatIfMode explicitly set to true.",
+      "n": 124,
+      "where": "controls[4].governs; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Policy reports provide simulation or enforcement run results for reviewing processing coverage and archive impact.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide",
-      "quote": "New-SPOFileArchivePolicy -Name \"MarketingInactiveFilesPreview\" -PolicyType \"SelectedSites\" -LastAccessDateCriteria 12 -FileTypeCriteria @(\".docx\", \".pdf\") -IsWhatIfMode $true",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 118,
-      "where": "front matter: cost; rationale: cost",
-      "type": "cost",
-      "claim": "The variable cost rating reflects the documented archive storage meter.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/archive/archive-pricing?view=o365-worldwide",
-      "quote": "Microsoft 365 Archive charges you for storage. Storage consumption is charged at a per-GB monthly rate.",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/get-spofilearchivepolicyreport?view=sharepoint-ps",
+      "quote": "Reports are kept for the past 12 months and include details about each policy run such as how many sites were processed, how many files were archived, and the total storage archived.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-21T06:06:26.005Z",
+    "at": "2026-11-28T14:12:04.451Z",
     "summary": {
       "links": 12,
       "unreachable": 0,
@@ -1450,6 +1516,12 @@
       "date": "2026-11-21",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-21",
+      "status": "verified",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

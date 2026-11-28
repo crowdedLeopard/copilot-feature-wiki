@@ -99,15 +99,17 @@ changes:
     note: "Corrected after the independent check: the Cloud Policy row now links the Learn page that documents the setting, and the storage and quota statements now reflect the OneDrive storage page, with legacy SharePoint Embedded items noted."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 91 statements confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 87 statements confirmed"
 version: 3
 verification:
   status: "verified"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 91
-  confirmed: 91
+  claims: 87
+  confirmed: 87
   unconfirmed: 0
   contradicted: 0
   attempts: 0

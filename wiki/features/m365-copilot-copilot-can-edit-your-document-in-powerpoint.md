@@ -25,6 +25,9 @@ sources:
   - title: "Microsoft 365 Roadmap item 557277"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=557277"
     kind: "roadmap"
+  - title: "Microsoft 365 Roadmap item 499655"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=499655"
+    kind: "roadmap"
   - title: "Microsoft Copilot overview"
     url: "https://learn.microsoft.com/copilot/plan/copilot-overview"
     kind: "learn"
@@ -78,7 +81,7 @@ controls:
       path: "Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Available subprocessors for your organization > Anthropic > Choose who can access Anthropic models for Copilot and generative AI experiences"
       docs: "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor#opt-in-to-use-claude-models"
     api: null
-    note: "AI Administrator or Global Administrator. Decides model choice, not whether editing is available."
+    note: "AI Administrator or Global Administrator. Decides who can use Claude models."
 confidence: "medium"
 created: "2026-11-28"
 updated: "2026-11-28"
@@ -88,19 +91,23 @@ changes:
     note: "New briefing for the desktop roadmap item 557277, which Microsoft also lists as 499655."
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 58 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-28"
+    note: "Corrected: removed the unsupported claim that the Anthropic setting does not turn editing off, reworded the opening of Why it matters, and described 499655 as a separate licensed-user item."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 62 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-28"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 58
-  confirmed: 56
-  unconfirmed: 2
+  claims: 62
+  confirmed: 62
+  unconfirmed: 0
   contradicted: 0
-  attempts: 1
-  hash: "110332a4571a3a9b6cab5f60002bb39c"
+  attempts: 0
+  hash: "f05240704e4b3cb8cb13d09a7a9b7634"
 ---
 
 ## What's changing
@@ -109,11 +116,11 @@ Copilot in PowerPoint on desktop can create, edit and refine a presentation thro
 
 Microsoft's [Copilot overview](https://learn.microsoft.com/copilot/plan/copilot-overview) lists, among the in-app features for Microsoft 365 Copilot (Basic) users (people without the Copilot add-on licence who have Copilot inside the apps), PowerPoint's ability to "create presentations from prompts or existing content, summarize presentations or edit presentations (add images, apply deck-wide formatting changes)". Microsoft's [Copilot service description](https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot) lists **Edit with Copilot in Word, Excel, PowerPoint, and OneNote** as a Microsoft 365 Copilot (Premium) feature, for which a Microsoft 365 Copilot licence is required. The two statements disagree about who gets the editing experience; Cost and licensing gives both.
 
-The roadmap record shows the item as Launched, in General Availability, for Desktop in the Worldwide (Standard Multi-Tenant) cloud, with a target of April CY2026. Microsoft lists the same desktop feature under roadmap item 499655 as well (target March CY2026); the two records name the same platform and cloud. Mac and web are listed under separate items.
+The roadmap record shows the item as Launched, in General Availability, for Desktop in the Worldwide (Standard Multi-Tenant) cloud, with a target of April CY2026. [Roadmap item 499655](https://www.microsoft.com/microsoft-365/roadmap?id=499655) describes desktop conversational editing for Microsoft 365 Copilot-licensed users (target March CY2026); the two records name the same platform and cloud. Mac and web are listed under separate items.
 
 ## Why it matters
 
-This moves Copilot from answering questions about a deck to changing it, for the Copilot Chat population and not only for people who went through a Copilot licence rollout. Expect questions about what unlicensed users may do, about slide quality and branding, and, in tenants with data residency commitments, about which AI model processed the content.
+The roadmap describes presentation editing for the Copilot Chat population, not only for people with a Microsoft 365 Copilot licence. Expect questions about what unlicensed users may do, about slide quality and branding, and, in tenants with data residency commitments, about which AI model processed the content.
 
 If nobody acts, the feature is available: the roadmap says it is available to Copilot Chat users, and Microsoft's privacy-controls page says connected experiences that analyse content are available to users when the policy governing them is not configured. Tenants that have turned that policy off do not get Copilot features in PowerPoint at all. Where Claude models are enabled, users of Edit with Copilot can choose them, and Microsoft states those models are currently excluded from the EU Data Boundary.
 
@@ -170,11 +177,11 @@ If nobody acts, the feature is available: the roadmap says it is available to Co
 <tbody>
 <tr><td data-label="Control"><strong>Whether Copilot features, editing included, are available in PowerPoint and the other Office apps</strong><br><small>User</small><br><small class="controls__note">Also settable through Cloud Policy. Turning it off removes Copilot features from Excel, OneNote, Outlook, PowerPoint and Word, not editing alone. Unconfigured, these experiences stay available.</small></td><td data-label="Admin UI"><strong>Group Policy Management</strong><br>User Configuration › Policies › Administrative Templates › Microsoft Office 2016 › Privacy › Trust Center › Allow the use of connected experiences in Office that analyze content <a href="https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Registry value UserContentDisabled set to 2 (Disabled) under HKEY_CURRENT_USER\Software\Policies\Microsoft\office\16.0\common\privacy</code> <a href="https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether content under a sensitivity label is excluded from Microsoft 365 Copilot in PowerPoint</strong><br><small class="controls__note">Security &amp; Compliance PowerShell. Labelled content stays available to Copilot in other scenarios, such as Teams and Copilot Chat.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-Label -Identity &lt;label GUID&gt; -AdvancedSettings @{BlockContentAnalysisServices=&quot;True&quot;}</code> <a href="https://learn.microsoft.com/purview/sensitivity-labels-office-apps" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which users can use Claude models, including in Edit with Copilot</strong><br><small>User</small><br><small class="controls__note">AI Administrator or Global Administrator. Decides model choice, not whether editing is available.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › View all › AI providers operating as Microsoft subprocessors › Available subprocessors for your organization › Anthropic › Choose who can access Anthropic models for Copilot and generative AI experiences <a href="https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor#opt-in-to-use-claude-models" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which users can use Claude models, including in Edit with Copilot</strong><br><small>User</small><br><small class="controls__note">AI Administrator or Global Administrator. Decides who can use Claude models.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › View all › AI providers operating as Microsoft subprocessors › Available subprocessors for your organization › Anthropic › Choose who can access Anthropic models for Copilot and generative AI experiences <a href="https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor#opt-in-to-use-claude-models" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-The connected-experiences policy is set per user through Group Policy or Cloud Policy; Microsoft's page lists Excel, OneNote, Outlook, PowerPoint and Word as the apps where Copilot features become unavailable when it is turned off, and when it is not configured these experiences are available. The sensitivity label setting is set only through Security & Compliance PowerShell and keeps labelled content out of Copilot in the named Office apps, not out of Copilot in Teams or Copilot Chat. The Anthropic setting decides who can use Claude models and needs the AI Administrator or Global Administrator role; it does not turn the editing feature off. Blocking the Copilot app in Integrated Apps blocks Copilot in the Microsoft Copilot app, Teams, Outlook and Copilot Chat on the web, according to [Manage Copilot Chat](https://learn.microsoft.com/copilot/manage/manage-copilot-chat).
+The connected-experiences policy is set per user through Group Policy or Cloud Policy; Microsoft's page lists Excel, OneNote, Outlook, PowerPoint and Word as the apps where Copilot features become unavailable when it is turned off, and when it is not configured these experiences are available. The sensitivity label setting is set only through Security & Compliance PowerShell and keeps labelled content out of Copilot in the named Office apps, not out of Copilot in Teams or Copilot Chat. The Anthropic setting decides who can use Claude models and needs the AI Administrator or Global Administrator role. Blocking the Copilot app in Integrated Apps blocks Copilot in the Microsoft Copilot app, Teams, Outlook and Copilot Chat on the web, according to [Manage Copilot Chat](https://learn.microsoft.com/copilot/manage/manage-copilot-chat).
 
 ## Open questions
 
@@ -189,11 +196,9 @@ cost: Low. The roadmap says no Microsoft 365 Copilot licence is needed, leaving 
 impact: Medium. PowerPoint desktop users who open Copilot notice it, including people without a Copilot licence; nothing changes for users who do not use Copilot.
 -->
 
-<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] controls[2].note; Governance controls / applicability: The Anthropic setting controls model choice but cannot turn off the editing feature. | Found: Searched: 'PowerPoint Edit with Copilot Anthropic disabled editing available OpenAI'; '"Edit with Copilot" "PowerPoint" "OpenAI"'. Read connect-to-ai-subprocessor and copilot-ai-provider-user-sec-group-access; neither states editing remains available. | Fix: Remove 'not whether editing is available' from controls[2].note and 'it does not turn the editing feature off' from Governance controls. Keep only the verified statement that the setting decides who can use Claude models.
-- [unsupported, major] Why it matters / behaviour: This change moves Copilot for the Copilot Chat population from answering questions about decks to changing them. | Found: Searched: 'PowerPoint Copilot previously answering questions creating editing presentations before Edit with Copilot'. Read November 2023 archived release notes: chat editing already existed; no passage establishes the claimed previous limitation for unlicensed Copilot Chat users. | Fix: Replace the first sentence of Why it matters with 'The roadmap describes presentation editing for the Copilot Chat population, not only for people with a Microsoft 365 Copilot licence.'
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; front matter: changes / record: Roadmap item 499655 also describes conversational editing in PowerPoint. | Found: 499655: Copilot in PowerPoint lets you create, edit, and refine presentations through natural conversation, directly in your presentation. ... Available to Microsoft 365 Copilot–licensed users. | Fix: Replace 'Microsoft lists the same desktop feature under roadmap item 499655 as well' with 'Roadmap item 499655 describes desktop conversational editing for Microsoft 365 Copilot-licensed users' and cite https://www.microsoft.com/microsoft-365/roadmap?id=499655. Change the change note's 'which Microsoft also lists as 499655' to 'with a separate licensed-user item, 499655'.
+- [supported, minor] controls[0].governs/note; Why it matters; Scope; Governance guidance; Governance controls; rationale: risk / applicability: Turning off connected experiences that analyse content makes Copilot features unavailable in Excel, OneNote, Outlook, PowerPoint and Word. | Found: If you turn off connected experiences that analyze your content on devices in your organization, Microsoft Copilot features won't be available ... This applies to when you're running the most current version of these apps on Windows, Mac, iOS, or Android devices. | Fix: Add to controls[0].note and qualify the corresponding prose: 'This applies when running the most current version of these apps.' The qualification is stated at https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy#microsoft-copilot-and-privacy-controls-for-connected-experiences. | Source: https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy
+- [supported, minor] controls[1].governs; Risk assessment; Governance guidance; Governance controls; rationale: risk / applicability: BlockContentAnalysisServices excludes labelled content from Microsoft 365 Copilot in Word, Excel, PowerPoint and Outlook. | Found: Although content with the configured sensitivity label will be excluded from Microsoft 365 Copilot in the named Office apps ... Support for this setting differs for clients and apps. | Fix: Add to controls[1].note: 'Support differs by client and app; check the minimum supported Office versions in the sensitivity-label capabilities tables.' Cite https://learn.microsoft.com/purview/sensitivity-labels-office-apps#prevent-connected-experiences-that-analyze-content for this qualification. | Source: https://learn.microsoft.com/purview/sensitivity-labels-office-apps
 -->

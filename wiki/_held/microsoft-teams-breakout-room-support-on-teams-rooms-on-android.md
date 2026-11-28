@@ -47,7 +47,7 @@ sources:
     url: "https://learn.microsoft.com/microsoftteams/plan-meetings"
     kind: "learn"
 videos: []
-related: ["meeting-policy","microsoft-teams-call-quality-feedback-surveys-for-teams-rooms-on-android","microsoft-teams-chat-for-organizers-and-presenters-in-structured-meetings-and-webinars-on","microsoft-teams-one-stop-admin-portal-for-teams-devices-with-teams-rooms-pro-management"]
+related: ["meeting-policy","microsoft-teams-chat-for-organizers-and-presenters-in-structured-meetings-and-webinars-on","microsoft-teams-one-stop-admin-portal-for-teams-devices-with-teams-rooms-pro-management"]
 controls:
   - governs: "Whether meeting organisers can use breakout rooms"
     scope: "user"
@@ -56,10 +56,10 @@ controls:
       kind: "powershell"
       call: "Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowBreakoutRooms $false"
       docs: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps"
-    note: "Default is True. Learn describes it for breakout rooms in general; its effect on Teams Rooms on Android is not described."
+    note: "Default is True. Set to true to enable Breakout Rooms; set to false to disable Breakout Rooms functionality."
 confidence: "medium"
 created: "2026-11-19"
-updated: "2026-11-21"
+updated: "2026-11-28"
 roadmapModified: "2026-11-04T00:02:09"
 changes:
   - date: "2026-11-19"
@@ -78,19 +78,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 52 statements confirmed"
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 53 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-28"
+    note: "Corrected: the AllowBreakoutRooms note and Governance controls now give Learn's description of the parameter without the Android applicability caveat, and that open question is removed."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 50 statements contradicted, 1 unconfirmed; taken offline until corrected"
+version: 4
 verification:
   status: "held"
   date: "2026-11-28"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 53
-  confirmed: 52
-  unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "2d9e124ea7d2a0fee8cbb304586249eb"
+  claims: 50
+  confirmed: 49
+  unconfirmed: 1
+  contradicted: 0
+  attempts: 2
+  hash: "4160c3e23e4fe1fb1e3cde60906c1c83"
 ---
 
 ## What's changing
@@ -105,7 +109,7 @@ The roadmap record shows the item as In development, with a target of December C
 
 Organisers who run breakout sessions in rooms equipped with Teams Rooms on Android devices gain a way to include the room device in those sessions. Because Microsoft says the capability is on by default, organisers will find it without any admin step, so the first questions will go to room administrators and the helpdesk.
 
-The wiki's view: the change is low risk and low cost, but it changes what a room device does in a meeting. Brief organisers and room admins before the December 2026 target, as Microsoft's notice recommends, and test one room first so support staff know what a room looks like when it is moved between sessions.
+The wiki's view: the change is low risk and low cost, but it changes what a room device does in a meeting. Microsoft recommends informing organisers and room administrators about the capability; the wiki recommends doing so before the December 2026 target, and testing one room first so support staff know what a room looks like when it is moved between sessions.
 
 ## Risk assessment
 
@@ -156,15 +160,14 @@ Learn introduces breakout room support in Android app update 1449/1.0.96.2026344
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether meeting organisers can use breakout rooms</strong><br><small>User</small><br><small class="controls__note">Default is True. Learn describes it for breakout rooms in general; its effect on Teams Rooms on Android is not described.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy name&gt; -AllowBreakoutRooms $false</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether meeting organisers can use breakout rooms</strong><br><small>User</small><br><small class="controls__note">Default is True. Set to true to enable Breakout Rooms; set to false to disable Breakout Rooms functionality.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy name&gt; -AllowBreakoutRooms $false</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-The documented control is the AllowBreakoutRooms parameter of the Teams meeting policy, set with PowerShell. Learn's settings and policies reference lists it under 'PowerShell-only audio & video meeting policies', so no Teams admin center setting is documented for it at the time of writing (November 2026). Learn's description of it covers breakout rooms in general; whether it also governs participation by Teams Rooms on Android devices is not described. Learn's Plan for Teams meetings comparison lists breakout rooms as having "No control" for admins, whereas the PowerShell reference documents AllowBreakoutRooms.
+The documented control is the AllowBreakoutRooms parameter of the Teams meeting policy, set with PowerShell. Learn's settings and policies reference lists it under 'PowerShell-only audio & video meeting policies', so no Teams admin center setting is documented for it at the time of writing (November 2026). Learn describes AllowBreakoutRooms as enabling or disabling Breakout Rooms functionality. Learn's Plan for Teams meetings comparison lists breakout rooms as having "No control" for admins, whereas the PowerShell reference documents AllowBreakoutRooms.
 
 ## Open questions
 
-- Does the AllowBreakoutRooms meeting policy parameter govern whether Teams Rooms on Android devices can be assigned to breakout rooms? Watch the Set-CsTeamsMeetingPolicy reference and MC1488847.
 - Is there a setting in the Teams admin center or on the device to turn this capability off for Teams Rooms on Android alone? Watch the Teams Rooms on Android admin documentation.
 - Does the capability need a Teams Rooms Pro licence rather than Basic? Watch the Teams Rooms licensing page.
 - When will GCC tenants get it? The roadmap lists GCC, but MC1488847 gives a Worldwide schedule only.
@@ -178,7 +181,5 @@ impact: Medium. Meeting organisers who use breakout rooms and the people in room
 <!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].note; Governance controls prose; Open questions: first bullet / absence: Whether the general AllowBreakoutRooms policy governs the breakout-room participation introduced here is undocumented. | Found: Set to true to enable Breakout Rooms, set to false to disable the Breakout Rooms functionality. | Fix: Remove the applicability-unknown caveat from the prose and the first Open questions bullet. Replace the control note with 'Default is True. Set to true to enable Breakout Rooms; set to false to disable Breakout Rooms functionality.' Replace the two governance sentences beginning 'Learn's description of it covers' with 'Learn describes AllowBreakoutRooms as enabling or disabling Breakout Rooms functionality.' The reference states the general rule without excluding Android room participants. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters: second paragraph / record: The recommendation to brief organizers and room administrators before the December target is attributed to Microsoft's notice. | Found: We recommend that you: ... Inform meeting organizers and room administrators about this new capability. | Fix: Replace 'Brief organisers and room admins before the December 2026 target, as Microsoft's notice recommends' with 'Microsoft recommends informing organisers and room administrators about the capability; the wiki recommends doing so before the December 2026 target'. The notice recommends communication but does not set a communication deadline.
+- [unsupported, blocker] Risk assessment: Security & identity; rationale: cost / licensing: The device keeps its existing Basic or Pro licence and that licence still applies to the new capability. | Found: Searched: Teams Rooms breakout rooms Basic additional license. Opened rooms/rooms-licensing and rooms/rooms-release-note; read roadmap and MC1488847. General device licences are stated, but no passage confirms this capability needs no Basic-to-Pro upgrade. | Fix: Replace 'The device keeps the Teams Rooms Basic or Pro licence it already has' with 'Teams Rooms devices require a Teams Rooms licence; entitlement to Android breakout-room participation under Basic versus Pro is not yet published.' Remove 'The Teams Rooms Basic or Pro licence each device already needs still applies' from the cost rationale. Keep licensing.model included for the documented product-level requirement, as described at https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing.
 -->

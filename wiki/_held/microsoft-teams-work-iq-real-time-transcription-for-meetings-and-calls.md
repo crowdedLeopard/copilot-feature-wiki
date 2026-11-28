@@ -88,18 +88,20 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 80 statements not yet confirmed"
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 80 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 83 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-21"
+  status: "held"
+  date: "2026-11-28"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 80
+  claims: 83
   confirmed: 80
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 3
+  attempts: 1
   hash: "8ddd900f8f89bddccb117eefbfba1693"
 ---
 
@@ -197,8 +199,14 @@ cost: Variable. Learn says Work IQ API usage is billed in Copilot Credits; no ra
 impact: Low. New use requires an administrator to enable access, but existing Work IQ transcript integrations needed the setting enabled before 14 November 2026 to keep working.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] What's changing: third paragraph / absence: Microsoft Learn does not document an MCP transcript tool at the time of writing in November 2026. | Found: Your app subscribes to the meeting transcript by calling the create_entity tool. Work IQ returns a subscription ID and a stream URL. | Fix: Replace the first sentence of What's changing's third paragraph with: "Microsoft Learn now documents Work IQ real-time transcripts through the Work IQ MCP server in a public-preview developer guide." Add https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/real-time-transcripts to sources. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/real-time-transcripts
+- [contradicted, blocker] Governance controls: third paragraph after table; Open questions: first bullet / absence: Learn does not say whether WorkIQ access applies to the MCP live-transcript route. | Found: You subscribe to a live meeting through the Work IQ MCP server ... Work IQ access to real-time transcripts is on ... turn on WorkIQ access, or run Set-CsTeamsMeetingConfiguration -EnableWorkIQTranscriptAccess $true -Identity Global. | Fix: Replace the sentence beginning "Learn does not say whether the setting applies" with: "The public-preview real-time transcripts developer guide confirms that WorkIQ access must be on for live transcripts through the Work IQ MCP server." Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/real-time-transcripts. Remove the first Open questions bullet because that guide answers it. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/real-time-transcripts
+- [contradicted, blocker] Governance controls: third paragraph after table / absence: Microsoft does not explicitly map Work IQ MCP policy controls to live-transcript access. | Found: Work IQ MCP policy allows the subscription operations ... Subscribing, retrieving segments, and unsubscribing use the create_entity, do_action, and delete_entity tools. | Fix: Replace "Microsoft Learn documents tenant-level Work IQ MCP policy controls separately; it does not explicitly map those controls to this planned live-transcript capability" with: "Microsoft Learn documents tenant-level Work IQ MCP policy controls separately; the real-time transcripts developer guide requires that policy to allow subscription operations using create_entity, do_action and delete_entity." Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/real-time-transcripts alongside the existing policy-governance link. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/real-time-transcripts
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: previewDate; What's changing; Open questions / record: The roadmap preview target is December CY2026. | Found: "previewDate": "December CY2026" | Fix: Keep the roadmap preview target. Add to What's changing: "Microsoft Learn now describes Work IQ real-time transcripts through MCP as available in public preview; features, schemas and payload fields can change before general availability." Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/real-time-transcripts and retain the separately attributed roadmap targets.
 - [supported, minor] Cost and licensing: setup-guide prerequisites; Scope: second paragraph / role: Enabling Work IQ is described as a setup performed by a Global Administrator. | Found: A user with Global Administrator role for the one-time Work IQ setup | Fix: Keep the prerequisites attributed to the setup guide. Replace Scope's final sentence in its second paragraph with: "The Work IQ setup guide describes a one-time Global Administrator setup; the MCP overview says the service principal is created automatically on first use, with manual provisioning potentially needed before first use." Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/overview#authentication, which states: "The Work IQ service principal is created automatically in the tenant when you use Work IQ for the first time." | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq
+- [supported, minor] Open questions: fourth bullet / record: The roadmap requires applicable permissions and consent but names none. | Found: requires applicable permissions and consent | Fix: Replace the fourth Open questions bullet with: "The public-preview developer guide specifies the Work IQ delegated permission WorkIQAgent.Ask and requires admin consent for live-transcript access through MCP." Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/real-time-transcripts#prerequisites, which says "Add the Work IQ delegated permission WorkIQAgent.Ask" and "Grant admin consent for the permission." The roadmap's omission is accurate, but presenting the permission as an unanswered question is misleading now.
 -->

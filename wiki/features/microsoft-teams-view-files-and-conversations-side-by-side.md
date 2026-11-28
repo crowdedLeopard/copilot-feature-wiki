@@ -54,15 +54,17 @@ changes:
     note: "First briefing: Teams side-by-side file and conversation view, rolling out from late December 2026 per MC1562279."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 43 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 55 statements not yet confirmed"
 version: 1
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 43
-  confirmed: 43
+  claims: 55
+  confirmed: 55
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -158,8 +160,8 @@ cost: Low. The only cost the sources show is admin time to brief the help desk a
 impact: Medium. Users on Teams for Windows, Mac and the web who open PDF, Markdown or HTML files from chat or channel messages will see a new pane, so the help desk may field questions.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model; Cost and licensing; Open questions / licensing: The licensing model is unknown because no entitlement specific to this view is published. | Found: Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams. | Fix: Set licensing.model to 'included' under the standard for a new view inside a licensed product. Replace the entitlement sentence and licensing notes with: 'Manage Teams licenses states that each organisational user needs a Teams license before using Teams, except for joining meetings anonymously. No licence requirement specific to this view is published at the time of writing (November 2026).' Cite https://learn.microsoft.com/microsoftteams/user-access. Replace the licensing open question with 'Will Microsoft publish a licence requirement specific to this view?' | Source: https://learn.microsoft.com/microsoftteams/user-access
+- [supported, minor] front matter: licensing.model and notes; Cost and licensing; Open questions / licensing; rationale: cost / licensing: Licensing is classified as unknown because no entitlement specific to this new view is published. | Found: Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams. | Fix: Set licensing.model to 'included'. Replace licensing.notes and the entitlement sentence in Cost and licensing with: 'Manage Teams licenses states that, except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams. No licence requirement specific to this view is published at the time of writing (November 2026).' Add https://learn.microsoft.com/microsoftteams/user-access to sources. Replace the licensing open question with 'Will Microsoft publish a licence requirement specific to this view?' In the cost rationale, replace 'no licence or meter for this view is yet published' with 'no licence requirement or meter specific to this view is yet published'. | Source: https://learn.microsoft.com/microsoftteams/user-access
 -->

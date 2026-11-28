@@ -75,15 +75,17 @@ changes:
     note: "Corrected the Scope section: the feature-specific rollout window is not stated, and Microsoft's release notes describe a gradual safe deployment model for Copilot features."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 50 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 55 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 50
-  confirmed: 49
+  claims: 55
+  confirmed: 54
   unconfirmed: 1
   contradicted: 0
   attempts: 0
@@ -178,8 +180,8 @@ cost: Low. The only cost the sources show is admin and communication time; no me
 impact: Medium. Users of the PowerPoint agent on the web would notice it; the roadmap gives no sign that other apps or users are affected.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters / behaviour: These notifications can reach users outside the PowerPoint tab. | Found: Searched: 'PowerPoint Copilot agent notifications content delivery complete requires attention waiting user away'; 'PowerPoint notifications completion Copilot'. Read roadmap, release notes and agent documentation; leaving PowerPoint is planned, but no delivery surface is specified. | Fix: Replace 'It matters to a service owner mainly because notifications can reach users outside the PowerPoint tab, and Microsoft has not yet said where or with what content.' with 'It matters to a service owner mainly because the roadmap aims to let users leave PowerPoint while awaiting a notification, and Microsoft has not yet said where that notification appears or what it contains.'
+- [unsupported, major] Why it matters / behaviour: These notifications can reach users outside the PowerPoint tab. | Found: Searched: 'PowerPoint agent async notifications content delivery devices offline waiting attention permissions rollout configure role'. Read roadmap, release notes and agent documentation; the roadmap names leaving PowerPoint, not an outside-tab delivery surface. | Fix: Replace the sentence with: 'It matters to a service owner mainly because the roadmap aims to let users leave PowerPoint while awaiting a notification, and Microsoft has not yet said where that notification appears or what it contains.'
 -->

@@ -1,0 +1,660 @@
+{
+  "slug": "microsoft-purview-compliance-portal-communication-compliance-recommended-policy-scope",
+  "roadmapId": 168843,
+  "title": "Microsoft Purview Communication Compliance: insights on matching users left out of a policy's scope",
+  "status": "held",
+  "date": "2026-11-28",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [
+    "claim 46: severity blocker on a rationale: impact rating lowered to minor; ratings are judgements and cannot hold a page",
+    "claim 47: severity major on a rationale: impact rating lowered to minor; ratings are judgements and cannot hold a page"
+  ],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-28",
+    "reasons": [
+      "3 blocking findings (claims 29, 44, 45)"
+    ]
+  },
+  "counts": {
+    "claims": 48,
+    "confirmed": 42,
+    "unconfirmed": 1,
+    "contradicted": 5,
+    "blocker": 3,
+    "major": 0,
+    "minor": 6
+  },
+  "summary": "Hold: the briefing incorrectly says a policy's scope changes only when an administrator accepts a recommendation, although Microsoft documents other ways to update scoped users. It also promises that nothing changes automatically despite reporting the arrival default as unknown, and omits the requirement that a policy be active and not updating before administrators act on recommendations.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is December CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"December CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Mac as the platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Mac\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-04-29T23:15:48.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-04-29T23:15:48\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "title; front matter: products",
+      "type": "record",
+      "claim": "The feature belongs to Microsoft Purview Communication Compliance.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"title\": \"Microsoft Purview compliance portal: Communication Compliance - Recommended policy scope\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "summary; What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Selected-users policies can provide insights about matching messages from users outside their scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
+      "quote": "When you turn on this checkbox, you see insights and recommendations for users who are sending messages that match the policy condition but aren't included in the scope of the policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "controls[0].note; What's changing; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "The per-policy checkbox is named Show insights and recommendations for users who match this policy's conditions but weren't included in the policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-configure",
+      "quote": "The Show insights and recommendations for users who match this policy's conditions but weren't included in the policy checkbox appears when you select this option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "controls[0].note; What's changing; Scope; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "The checkbox appears with Select users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-configure",
+      "quote": "Select users: Start typing to find specific users or groups. The Show insights and recommendations for users who match this policy's conditions but weren't included in the policy checkbox appears when you select this option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Scope",
+      "type": "applicability",
+      "claim": "The checkbox is unavailable with All users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-configure",
+      "quote": "This setting isn't available if you choose the All users option or the Select adaptive scopes option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Scope",
+      "type": "applicability",
+      "claim": "The checkbox is unavailable with Select adaptive scopes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-configure",
+      "quote": "This setting isn't available if you choose the All users option or the Select adaptive scopes option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "When insights are enabled, Communication Compliance recommends adding matching out-of-scope users for message review.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
+      "quote": "In this case, Communication Compliance recommends that you include those users in the scope of the policy so that you can review the messages sent by those users and take actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Administrators can select specific users to add.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
+      "quote": "You can select the specific users that you want to add or you can extend the policy to all users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment: Data exposure; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Administrators can extend the policy to all users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
+      "quote": "You can select the specific users that you want to add or you can extend the policy to all users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "summary; What's changing; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Insights for matching users outside the policy are aggregated.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
+      "quote": "Insights for these users are aggregated; you can't see the messages sent by them until you add them to the scope of the policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "These insights do not expose those users' messages before they are added to the policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
+      "quote": "Insights for these users are aggregated; you can't see the messages sent by them until you add them to the scope of the policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Why it matters; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "A recommendation recurs if an administrator does not act on it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
+      "quote": "If an admin doesn't act on a recommendation, the recommendation continues to recur.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Turning off the checkbox stops recommendations for out-of-scope users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
+      "quote": "To turn off recommendations for users outside the scope of the policy, turn off the checkbox.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Policy health includes a recommendation named Reduce user scoping blind spots.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
+      "quote": "Reduce user scoping blind spots: This recommendation prompts you to reduce blind spots by turning on the Show insights and recommendations for users who match this policy's conditions but weren't included in the policy checkbox",
+      "severity": "minor",
+      "fix": "Replace the sentence beginning 'The recommendation, named' with 'The Policy health view on the Policies page, which Learn marks as preview, includes a Reduce user scoping blind spots recommendation that prompts administrators to turn on the insights checkbox.' The cited page distinguishes this enablement recommendation from the subsequent recommendations to add users."
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Risk assessment: Change & support; Scope; Open questions",
+      "type": "availability",
+      "claim": "Microsoft Learn marks Policy health as preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
+      "quote": "## Policy health (preview)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The Policies page has a Policy health column linking to warnings or recommendations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
+      "quote": "At the top of the Policies page, you see a summary that lists the total number of policy warnings and recommendations, and the total number of healthy policies. If a specific policy has a warning or recommendations, the Policy health column lists a link to the warning or recommendations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Ignoring a recommendation does not stop the policy from working.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
+      "quote": "If you ignore a policy recommendation, the policy continues to work.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "default",
+      "claim": "The policy creation instructions say to leave the checkbox selected to receive recommendations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-configure",
+      "quote": "Leave this checkbox selected if you want to reduce blind spots by receiving recommendations when users outside of the selected users match the policy conditions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "front matter: defaultState; What's changing; Why it matters; Open questions",
+      "type": "absence",
+      "claim": "The arrival default for pre-existing policies is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Communication Compliance policy scope insights checkbox default existing policies Show insights recommendations users. Read communication-compliance-policies and communication-compliance-configure; neither specifies the checkbox's rollout state for pre-existing policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Purview path is Communication Compliance > Policies > Create policy > Custom policy > Choose users and reviewers > Choose users and groups > Select users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-configure",
+      "quote": "Select Create policy, then select Custom policy. ... On the Choose users and reviewers page: ... In the Choose users and groups section ... Select users",
+      "severity": "minor",
+      "fix": "Use 'Communication Compliance > Policies > Create policy > Custom policy > Name and describe your policy > Choose users and reviewers > Choose users and groups > Select users > Show insights and recommendations for users who match this policy's conditions but weren't included in the policy'. In the note, add 'If the organisation has admin units, the Admin units (preview) page appears between Name and describe your policy and Choose users and reviewers.' The present path reaches the right page but omits the wizard's name page and stops before the checkbox."
+    },
+    {
+      "n": 28,
+      "where": "controls[0].api; Governance controls table",
+      "type": "absence",
+      "claim": "No documented automation operation sets the insights checkbox.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Communication Compliance policy scope insights checkbox PowerShell Graph API Set-SupervisoryReviewPolicyV2; policy scope insights Graph API enable recommendations checkbox automation. Read the policy guide and Set-SupervisoryReviewPolicyV2 reference; no checkbox operation was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[1].note; Risk assessment: Security & identity; Scope; Governance guidance",
+      "type": "role",
+      "claim": "Communication Compliance and Communication Compliance Admins members can act on recommendations without a policy-state qualification.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
+      "quote": "If you're a member of the Communication Compliance or Communication Compliance Admins group, you can act on a recommendation as long as the policy is active and if it's not updating.",
+      "severity": "blocker",
+      "fix": "Qualify each statement that these groups can act on recommendations with 'when the policy is active and not updating', including controls[1].note and its rendered table note, Risk assessment, Scope and the Before rollout membership-check bullet. Source: https://learn.microsoft.com/purview/communication-compliance-policies#policy-health-preview."
+    },
+    {
+      "n": 30,
+      "where": "controls[1].note; Risk assessment: Security & identity; Scope",
+      "type": "role",
+      "claim": "Communication Compliance Analysts and Investigators can see recommendations but must ask an administrator to act.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
+      "quote": "If you're a member of the Communication Compliance Analysts or Communication Compliance Investigators group, you can see the warning or recommendation so you can prompt your admin to take action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Role membership is edited in Microsoft Purview portal at Settings > Roles and groups > Role groups > role group > Edit > Choose users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-permissions",
+      "quote": "Select Settings in the upper-right corner of the page, select Roles and groups, then select Role groups in the left navigation pane. ... Select the Communication Compliance role group, then select Edit. ... Select Choose users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "Add-RoleGroupMember -Identity \"<role-group>\" -Member \"<user-UPN>\" adds a user to the role group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+      "quote": "Use the Add-RoleGroupMember cmdlet to add members to a management role group. ... The Identity parameter specifies the role group to add a member to. ... User ID or user principal name (UPN)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Role group permissions can take up to 30 minutes to apply.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-permissions",
+      "quote": "After configuring your role groups, it might take up to 30 minutes for the role group permissions to apply to assigned users across your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[1].governs",
+      "type": "role",
+      "claim": "The Communication Compliance and Communication Compliance Admins groups can configure policies and settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-permissions",
+      "quote": "| Actions | Communication Compliance | Communication Compliance Admins | Communication Compliance Analysts | Communication Compliance Investigators | Communication Compliance Viewers | ... | Configure policies and settings | Yes | Yes | No | No | No |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Microsoft advises keeping at least one user in Communication Compliance or Communication Compliance Admins.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-permissions",
+      "quote": "Make sure you always have at least one user in the Communication Compliance or Communication Compliance Admins role groups (depending on the option you choose) so that your Communication Compliance configuration doesn't get in to a 'zero administrator' scenario",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing; Cost and licensing: Licence; rationale: cost",
+      "type": "licensing",
+      "claim": "Communication Compliance is included in the listed E5/A5/G5, Purview Suite, Insider Risk Management and Copilot-combination plans, supporting an included model for this policy option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, and Microsoft 365 E5/A5/F5/G5 Insider Risk Management | Office 365 E5/A5/G5 ... | Communication Compliance | Included | Included | Included | Included |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing: Meter",
+      "type": "licensing",
+      "claim": "The Get started page says Communication Compliance uses pay-as-you-go, per-user licensing or both.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-configure",
+      "quote": "This feature uses pay-as-you-go billing or per-user licensing for Microsoft Purview capabilities or both.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing: Meter",
+      "type": "licensing",
+      "claim": "Detecting risky interactions in non-Microsoft 365 AI data requires enabling pay-as-you-go billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-configure",
+      "quote": "Additionally, to detect inappropriate or risky interactions for non-Microsoft 365 AI data, you need to enable pay-as-you-go billing in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing: Meter",
+      "type": "admin-path",
+      "claim": "The Microsoft Purview portal provides a Usage center for understanding and managing usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-configure",
+      "quote": "To help you understand and manage your usage, Microsoft Purview provides a Usage center in the Microsoft Purview portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: licensing.notes; Cost and licensing: Not yet published; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft publishes no licence, separate charge or meter specific to policy scope insights.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Communication Compliance policy scope insights licensing billing meter charge. Read the service description, Get started guide and purview-billing-models. General product licences and non-Microsoft 365 AI text-record billing are documented, but no separate policy-scope-insights charge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Scope: Admin units",
+      "type": "applicability",
+      "claim": "For a policy scoped by admin units, only users in those admin units can be selected.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-configure",
+      "quote": "If the policy is scoped by one or more admin units, you can only select users that are part of those admin units.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Learn says PowerShell is not supported for creating and managing Communication Compliance policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
+      "quote": "PowerShell isn't supported for creating and managing Communication Compliance policies. To create and manage these policies, use the policy management controls in the Communication Compliance solution.",
+      "severity": "minor",
+      "fix": "After this sentence, add 'The Set-SupervisoryReviewPolicyV2 reference nevertheless documents a cmdlet for modifying supervisory review policies, but does not document a parameter for this insights checkbox.' Both pages are already cited: https://learn.microsoft.com/purview/communication-compliance-policies and https://learn.microsoft.com/powershell/module/exchangepowershell/set-supervisoryreviewpolicyv2."
+    },
+    {
+      "n": 43,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Set-SupervisoryReviewPolicyV2, in Security & Compliance PowerShell, has no documented parameter for this checkbox.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Communication Compliance policy scope insights checkbox PowerShell Graph API Set-SupervisoryReviewPolicyV2. Read its complete syntax and parameters: no insights checkbox parameter. The reference identifies Security & Compliance PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "consistency",
+      "claim": "Nothing changes automatically on arrival.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "defaultState: \"unknown\"; \"Microsoft has not stated whether existing policies show these insights without anyone acting.\" versus \"Nothing changes automatically.\"",
+      "severity": "blocker",
+      "fix": "Replace 'Nothing changes automatically.' with 'Microsoft has not stated whether existing policies show these insights without anyone acting.' Keep defaultState as unknown; the search and the cited guides do not establish the arrival state for existing policies."
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "A policy's scope changes only when a permitted administrator accepts a recommendation.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-configure",
+      "quote": "Run the following PowerShell script on a recurring schedule to add users to the Communication Compliance policy:",
+      "severity": "blocker",
+      "fix": "Replace this sentence with 'Communication Compliance recommends including matching out-of-scope users; administrators can select specific users to add or extend the policy to all users.' This is the documented recommendation behaviour at https://learn.microsoft.com/purview/communication-compliance-policies#reduce-user-scoping-blind-spots and does not falsely exclude other scope-management routes."
+    },
+    {
+      "n": 46,
+      "where": "rationale: impact",
+      "type": "role",
+      "claim": "Only members of Communication Compliance role groups can see the insights.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-permissions",
+      "quote": "Members of the following roles have the same solution permissions included with the Communication Compliance Admins role group: ... Microsoft Entra ID Global Administrator ... Microsoft Purview portal Organization Management",
+      "severity": "minor",
+      "fix": "Replace 'Only members of the Communication Compliance role groups see the insights' with 'The Policy health view presents insights and recommendations to compliance administrators'. This avoids excluding other roles that the cited permissions page gives the same solution permissions."
+    },
+    {
+      "n": 47,
+      "where": "rationale: impact",
+      "type": "behaviour",
+      "claim": "Monitored users notice nothing unless an administrator widens a policy's scope.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Communication Compliance policy insights only role groups see recommendations no automatic scope changes. Read the policy guide, Get started guide and permissions page; aggregation and reviewer access are documented, but none states this complete absence of user-visible effects.",
+      "severity": "minor",
+      "fix": "Remove the clause 'monitored users notice nothing unless an admin widens a policy's scope'. Retain the Low impact judgement, based on the documented administrator-facing Policy health view."
+    },
+    {
+      "n": 48,
+      "where": "Governance guidance: At rollout and After rollout",
+      "type": "consistency",
+      "claim": "The checklist tells readers to review Policy health, but neither control row represents that view.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "\"Review the Policy health column on the Policies page\"; \"Recheck the Policy health view while it is in preview\"; controls cover only the insights checkbox and role membership.",
+      "severity": "minor",
+      "fix": "Remove the At rollout bullet beginning 'Review the Policy health column' and the After rollout bullet beginning 'Recheck the Policy health view'. The existing What's changing section can retain its verified description of the view; do not add a control row."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-28T14:11:46.862Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=168843",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/communication-compliance-policies",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/communication-compliance-configure",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/communication-compliance-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-supervisoryreviewpolicyv2",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether a selected-users policy shows insights and recommendations for matching users outside its scope",
+        "docs": "https://learn.microsoft.com/purview/communication-compliance-configure",
+        "reachable": true,
+        "segments": [
+          "Communication Compliance",
+          "Policies",
+          "Create policy",
+          "Custom policy",
+          "Choose users and reviewers",
+          "Choose users and groups",
+          "Select users"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Who can configure Communication Compliance policies and act on policy recommendations",
+        "docs": "https://learn.microsoft.com/purview/communication-compliance-permissions",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Roles and groups",
+          "Role groups",
+          "role group",
+          "Edit",
+          "Choose users"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Who can configure Communication Compliance policies and act on policy recommendations",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "reachable": true,
+        "token": "Add-RoleGroupMember",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

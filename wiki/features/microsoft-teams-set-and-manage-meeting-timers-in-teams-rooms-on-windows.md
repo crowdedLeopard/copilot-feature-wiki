@@ -59,10 +59,12 @@ changes:
     note: "Correction: reworded the January CY2027 communication step as a roadmap target, narrowed the cost rationale to admin time, and qualified the Basic and Pro price wording as the sources give it."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 41 statements confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 41 statements confirmed"
 version: 3
 verification:
   status: "verified"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"

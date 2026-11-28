@@ -83,15 +83,17 @@ changes:
     note: "Corrected: All Accounts example now says to set Configuration setting to Enabled first; control paths completed; audit-log bullet removed to match the controls table."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 46 statements not yet confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 57 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 46
-  confirmed: 46
+  claims: 57
+  confirmed: 57
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -189,8 +191,8 @@ cost: Low. Admin time to design and test policies is the only cost the sources s
 impact: Low. Admins configure it; users notice only the Outlook settings an admin chooses to set or lock for their group, and Microsoft has not yet said which settings are covered.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls / admin-path: Microsoft 365 Apps admin center > Customization > Policy Management > Policy configurations > Create > Choose the scope > specific groups > Configure Settings reaches the general Cloud Policy settings wizard. | Found: Under Customization, select Policy Management. On the Policy configurations page, select Create. On the Choose the scope page, determine whether the policy configuration applies to all users, specific groups | Fix: Complete controls[0].ui.path as 'Customization > Policy Management > Policy configurations > Create > Choose the scope > specific groups > Add Groups > groups > Configure Settings'. Keep the note that this is the general wizard and the item's new settings are not yet listed. | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy
+- [supported, minor] controls[0].ui; Governance controls / admin-path: Customization > Policy Management > Policy configurations > Create > Choose the scope > specific groups > Configure Settings reaches the general Cloud Policy settings wizard in the Microsoft 365 Apps admin center. | Found: Under Customization, select Policy Management. On the Policy configurations page, select Create. To add groups, select Add Groups and choose the relevant groups. On the Configure Settings page, select the policies that you want to include in the policy configuration. | Fix: Set controls[0].ui.path and its rendered path to 'Customization > Policy Management > Policy configurations > Create > Choose the scope > specific groups > Add Groups > groups > Configure Settings'. Keep the note identifying this as the general wizard rather than documented settings for this roadmap item. | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy
 -->

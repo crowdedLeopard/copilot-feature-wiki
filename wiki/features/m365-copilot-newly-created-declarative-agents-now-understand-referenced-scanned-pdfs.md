@@ -12,7 +12,7 @@ platforms: ["Desktop"]
 targetDate: "February CY2026"
 previewDate: null
 risk: "medium"
-cost: "low"
+cost: "variable"
 impact: "medium"
 defaultState: "unknown"
 action: "act-now"
@@ -100,19 +100,23 @@ changes:
     note: "Corrected after the independent check: the Copilot Credits route for SharePoint knowledge now states its Azure subscription, billing-policy and security-group prerequisites, and checklist steps naming controls absent from the table were removed."
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 68 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-28"
+    note: "Corrected after the independent check: cost rating changed from low to variable, because SharePoint-grounded declarative agents can be billed in Copilot Credits under usage-based billing."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 65 statements not yet confirmed"
+version: 5
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-28"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 68
-  confirmed: 67
+  claims: 65
+  confirmed: 65
   unconfirmed: 0
-  contradicted: 1
-  attempts: 3
-  hash: "c73e3754dd56a34c59ddf17459a69025"
+  contradicted: 0
+  attempts: 0
+  hash: "68b282757f4d9791bc73b072d30d5e7e"
 ---
 
 ## What's changing
@@ -201,12 +205,12 @@ Restricted Content Discovery changes discoverability, not permissions, and the p
 
 <!-- rationale
 risk: Medium. Scanned documents described by the roadmap as previously hard to use become more usable as answer sources, so oversharing in SharePoint libraries holding scans surfaces more readily; the agent pages say existing permissions and sensitivity labels still apply.
-cost: Low. Reviewing scanned-document libraries creates admin and maker work. Microsoft documents SharePoint knowledge through a Copilot licence or metered usage, but no scanned-PDF-specific charge or meter is published.
+cost: Variable. SharePoint-grounded declarative agents can use usage-based billing measured in Copilot Credits; Microsoft has not published a rate specific to scanned-PDF grounding.
 impact: Medium. Makers and users of declarative agents grounded in SharePoint libraries of scans, such as contracts, forms and archived records, notice better answers; other users see no change.
 -->
 
-<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-28, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: cost; rationale: cost / consistency: A low cost rating, meaning indirect costs only, is consistent with the documented metered SharePoint-grounding route. | Found: cost: "low" Low. Reviewing scanned-document libraries creates admin and maker work. Microsoft documents SharePoint knowledge through a Copilot licence or metered usage, but no scanned-PDF-specific charge or meter is published. | Fix: Set cost to variable. Replace the cost rationale with: 'Variable. SharePoint-grounded declarative agents can use usage-based billing measured in Copilot Credits; Microsoft has not published a rate specific to scanned-PDF grounding.' The metered route is stated at https://learn.microsoft.com/plugins/prerequisites#agent-capabilities-and-licensing-models; a separate feature-specific meter is not required for the standard's variable rating.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[1].ui / admin-path: SharePoint admin center > Sites > Active sites > site > Settings > Restrict content from Microsoft Copilot reaches Restricted Content Discovery. | Found: In the SharePoint admin center, expand Sites and select Active sites. Select the site you want to configure. Open the Settings tab, and then turn Restrict content from Microsoft Copilot on. | Fix: Keep the cited path. Add to the row note: 'Microsoft's Get ready for Microsoft 365 Copilot and agents with SharePoint Advanced Management page calls this setting Restrict content discovery.' Cite https://learn.microsoft.com/microsoft-365/copilot/get-ready-copilot-sharepoint-advanced-management#step-3-prevent-accidental-oversharing, which says 'Under Restrict content discovery, select On.' | Source: https://learn.microsoft.com/sharepoint/restricted-content-discovery
 -->

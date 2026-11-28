@@ -15,7 +15,7 @@ risk: "medium"
 cost: "low"
 impact: "medium"
 defaultState: "user-opt-in"
-action: "act-now"
+action: "review"
 licensing:
   model: "included"
   notes: "Microsoft's Copilot overview places editing presentations in PowerPoint under Microsoft 365 Copilot (Basic), for users without the Copilot add-on licence. The Copilot service description lists Edit with Copilot in PowerPoint as a Premium feature that requires a Microsoft 365 Copilot licence."
@@ -30,6 +30,9 @@ sources:
     kind: "learn"
   - title: "Claude models from Anthropic in Microsoft Online Services"
     url: "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor"
+    kind: "learn"
+  - title: "Enable Claude models only for Copilot experiences in Microsoft 365 apps"
+    url: "https://learn.microsoft.com/copilot/implement/copilot-anthropic-apps"
     kind: "learn"
   - title: "Data, Privacy, and Security for Microsoft Copilot"
     url: "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy"
@@ -46,10 +49,13 @@ sources:
   - title: "Microsoft 365 Copilot release notes"
     url: "https://learn.microsoft.com/microsoft-365/copilot/release-notes"
     kind: "learn"
+  - title: "PowerPoint for the web"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/office-online-service-description/powerpoint-online"
+    kind: "learn"
   - title: "Microsoft 365 Roadmap item 548646"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=548646"
     kind: "roadmap"
-  - title: "Microsoft 365 Roadmap 548520 (the same feature, listed again)"
+  - title: "Microsoft 365 Roadmap item 548520"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=548520"
     kind: "roadmap"
   - title: "Which users may use Claude models from Anthropic, including in Edit with Copilot in Microsoft 365 apps (Microsoft 365 admin center)"
@@ -76,7 +82,7 @@ controls:
       path: "Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Available subprocessors for your organization > Anthropic > Choose who can access Anthropic models for Copilot and generative AI experiences"
       docs: "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor#opt-in-to-use-claude-models"
     api: null
-    note: "AI Administrator or Global Administrator. Claude is on by default for most commercial tenants, off by default in the EU/EFTA and UK."
+    note: "AI Administrator or Global Administrator. The general subprocessor page says Claude is off by default in the EU/EFTA and UK; the apps-only page says its option is enabled by default for tenants there created after March 25, 2026."
   - governs: "Which users hold the Microsoft 365 Copilot licence the service description ties Edit with Copilot to"
     scope: "user"
     ui:
@@ -97,19 +103,23 @@ changes:
     note: "New briefing: Copilot editing in PowerPoint on the web for Copilot Chat users, with the conflicting licence statements, the Claude access setting and the lack of a feature-specific switch."
   - date: "2026-11-28"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 66 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-28"
+    note: "Corrected: roadmap item 548520 is the listing for Copilot-licensed users, not a duplicate; removed 'from one request'; narrowed the co-authoring statement; gave both Claude regional defaults; action is now review."
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 75 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-28"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 66
-  confirmed: 63
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "1e256931fb41d656d9dda31d2bd5a5b1"
+  claims: 75
+  confirmed: 75
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "18c8ecf0273397df3d2dc901deee7b57"
 ---
 
 ## What's changing
@@ -118,7 +128,7 @@ Copilot in PowerPoint on the web can now create and edit a presentation through 
 
 Users start it themselves: Microsoft's release notes describe opening PowerPoint and starting edit with Copilot. Microsoft's [Copilot overview](https://learn.microsoft.com/copilot/plan/copilot-overview) lists, for Microsoft 365 Copilot (Basic) users (those without the Copilot add-on who have Copilot inside the apps), creating presentations from prompts or existing content, summarising them, and editing them (adding images, applying deck-wide formatting changes). The [Copilot service description](https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot) instead lists Edit with Copilot in Word, Excel, PowerPoint and OneNote as a Microsoft 365 Copilot (Premium) feature that needs a Microsoft 365 Copilot licence. The two statements disagree on who gets it.
 
-The roadmap item's status is Launched, with a target of February CY2026, General Availability, for the Worldwide (Standard Multi-Tenant) cloud on the web. Microsoft lists the same feature for PowerPoint on the web under roadmap items 548646 and 548520, with no difference between them; desktop (499655, 557277) and Mac (557177, 557276) have their own items.
+The roadmap item's status is Launched, with a target of February CY2026, General Availability, for the Worldwide (Standard Multi-Tenant) cloud on the web. Roadmap item 548520 covers PowerPoint on the web for Microsoft 365 Copilot-licensed users and additionally describes brand-kit integration; item 548646 covers Copilot Chat users without that licence. Desktop (499655, 557277) and Mac (557177, 557276) have their own items.
 
 ## Why it matters
 
@@ -136,7 +146,7 @@ If the service description is right, users without a licence will not see edit m
 - Prompts and responses are covered by Enterprise Data Protection when users sign in with Microsoft Entra accounts, as for other Copilot use. No new connector or permission is described for this feature.
 
 **Autonomy & actions**
-- Copilot changes slide content, layout and design in the open presentation from one request. In shared or branded decks, an unwanted change reaches every co-author until someone reverts it; review is the user's job, not an admin control.
+- Copilot changes slide content, layout and design in the open presentation. In shared or branded decks, [co-authors can see changes as they are made](https://learn.microsoft.com/office365/servicedescriptions/office-online-service-description/powerpoint-online); review is the user's job, not an admin control.
 
 **Change & support**
 - The roadmap and the service description disagree on whether users without a licence get edit mode, so expect questions about who has it, and confusion with the separate PowerPoint Agent in the Copilot app, which Microsoft says needs a paid Microsoft 365 Copilot licence.
@@ -178,7 +188,7 @@ If the service description is right, users without a licence will not see edit m
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Setting that turns Edit with Copilot in PowerPoint on the web on or off on its own</strong><br><small>Tenant</small><br><small class="controls__note">The connected-experiences control that removes Copilot from PowerPoint is stated for device apps; the web side-pane setting is not edit-specific.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which users may use Claude models from Anthropic, including in Edit with Copilot in Microsoft 365 apps</strong><br><small>Group</small><br><small class="controls__note">AI Administrator or Global Administrator. Claude is on by default for most commercial tenants, off by default in the EU/EFTA and UK.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › View all › AI providers operating as Microsoft subprocessors › Available subprocessors for your organization › Anthropic › Choose who can access Anthropic models for Copilot and generative AI experiences <a href="https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor#opt-in-to-use-claude-models" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which users may use Claude models from Anthropic, including in Edit with Copilot in Microsoft 365 apps</strong><br><small>Group</small><br><small class="controls__note">AI Administrator or Global Administrator. The general subprocessor page says Claude is off by default in the EU/EFTA and UK; the apps-only page says its option is enabled by default for tenants there created after March 25, 2026.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › View all › AI providers operating as Microsoft subprocessors › Available subprocessors for your organization › Anthropic › Choose who can access Anthropic models for Copilot and generative AI experiences <a href="https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor#opt-in-to-use-claude-models" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which users hold the Microsoft 365 Copilot licence the service description ties Edit with Copilot to</strong><br><small>User</small><br><small class="controls__note">Governs this feature only if the service description is right; the roadmap item says users without this licence get it.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Users › Active users › user › Licenses and Apps › Licenses <a href="https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = &quot;&lt;SkuId&gt;&quot;} -RemoveLicenses @()</code> <a href="https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
@@ -200,15 +210,4 @@ If the service description is right, users without a licence will not see edit m
 risk: Medium. Copilot changes slide content and design in the presentation a user has open, and Microsoft Learn documents no admin setting that turns this editing on or off on its own.
 cost: Low. The roadmap item makes it available to Copilot Chat users without a Microsoft 365 Copilot licence and Microsoft names no meter for it, so the known cost is support and communication; the Copilot service description, however, lists Edit with Copilot as needing that licence.
 impact: Medium. PowerPoint on the web users who open Copilot, including those without a Copilot licence, gain a way to have Copilot rewrite and restyle their decks; users who never open Copilot notice nothing.
--->
-
-<!-- verifier-findings (2026-11-28, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing; sources: roadmap 548520 title / record: Roadmap items 548646 and 548520 list the same PowerPoint web feature with no difference between them. | Found: 548520: Available to Microsoft 365 Copilot–licensed users. 548646: Available to Copilot Chat users (without a Microsoft 365 Copilot license). | Fix: Replace the duplicate-entry sentence with 'Roadmap item 548520 covers PowerPoint on the web for Microsoft 365 Copilot-licensed users and additionally describes brand-kit integration; item 548646 covers Copilot Chat users without that licence.' Rename the 548520 source to 'Microsoft 365 Roadmap item 548520'.
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: Copilot changes slide content, layout and design from one request. | Found: Searched: PowerPoint edit Copilot web new connector permissions prerequisite approval admin review changes; PowerPoint edit Copilot shared presentation coauthors review changes license Basic. Read roadmap 548646 and release-note excerpts; none establishes the single-request claim. | Fix: Remove 'from one request', leaving 'Copilot changes slide content, layout and design in the open presentation.'
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].note / default: Claude models are off by default in the EU/EFTA and UK. | Found: Customers within the EU Data Boundary and customers in the UK have Claude models disabled by default. | Fix: Replace the regional-default clause with 'The general subprocessor page says Claude is off by default in the EU/EFTA and UK; the apps-only page says its option is enabled by default for tenants there created after March 25, 2026.' Cite https://learn.microsoft.com/copilot/implement/copilot-anthropic-apps. | Source: https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor
-- [supported, minor] Risk assessment: Autonomy & actions / behaviour: Changes to a shared PowerPoint web presentation are visible to co-authors. | Found: Multiple authors can work simultaneously in PowerPoint for the web and PowerPoint 2016. Real-time presence helps you see where your co-authors are working in the presentation so that you don't create conflicts as you edit, and you can see changes as they're being made. | Fix: Cite https://learn.microsoft.com/office365/servicedescriptions/office-online-service-description/powerpoint-online for the co-authoring premise. Narrow 'an unwanted change reaches every co-author until someone reverts it' to 'co-authors can see changes as they are made'. | Source: https://learn.microsoft.com/office365/servicedescriptions/office-online-service-description/powerpoint-online
-- [contradicted, minor] front matter: action / consistency: The act-now action rating fits an optional user-started capability. | Found: action: "act-now"; defaultState: "user-opt-in"; 'Users start it themselves'; standard: 'review: an optional capability ... that changes nothing until an admin or maker chooses it.' | Fix: Set action to 'review': the feature is user-started and no supplied Message Center post sets an act-by deadline. Retain the advice to check licence availability and Claude access.
 -->

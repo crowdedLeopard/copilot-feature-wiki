@@ -80,10 +80,12 @@ changes:
     note: "Corrected after verification: licensing model set to unknown, impact and cost rationales and one sentence in Why it matters reworded, Anthropic path completed, Before rollout checklist adjusted."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 63 statements confirmed"
+  - date: "2026-11-28"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 63 statements confirmed"
 version: 2
 verification:
   status: "verified"
-  date: "2026-11-21"
+  date: "2026-11-28"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
